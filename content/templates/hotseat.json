@@ -1,0 +1,179 @@
+{
+  "id": "__ID__",
+  "company": "Company name",
+  "title": "A short, punchy title",
+  "hook": "One line that makes people want to play.",
+  "role": "You run Company, 2001 to 2010",
+  "years": "2001–2010",
+  "cover": "img:__ID___cover",
+  "draft": true,
+  "complexity": 2,
+  "minutes": 6,
+  "start": "intro",
+  "startMeters": { "profit": 60, "future": 30 },
+  "startTrust": 3,
+  "meters": {
+    "profit": { "label": "Profit", "hint": "Money the business makes today" },
+    "future": { "label": "Future", "hint": "How ready the company is for what comes next" }
+  },
+  "nodes": {
+    "intro": {
+      "id": "intro",
+      "type": "scene",
+      "year": "2001",
+      "media": "img:__ID___intro",
+      "text": "Set the scene in two or three short sentences. Who are you, and what is about to change?",
+      "next": "d1"
+    },
+    "d1": {
+      "id": "d1",
+      "type": "decision",
+      "year": "2001",
+      "title": "The first big call",
+      "media": "img:__ID___d1",
+      "setup": "What is happening right now, in plain words.",
+      "question": "What do you do?",
+      "advisor": "One line of advice that hints at the trade-off, without giving the answer away.",
+      "options": [
+        {
+          "id": "safe",
+          "label": "The safe-looking option.",
+          "grade": "ok",
+          "real": true,
+          "effect": { "future": 10 },
+          "next": "d2",
+          "media": "img:__ID___d1_safe",
+          "outcome": "What happened next, told as a short story. Real history on the real option.",
+          "why": "Why this was only a risky call.",
+          "better": "What would have worked instead.",
+          "takeaway": "One line the player keeps in their notes.",
+          "traits": { "horizon": 0, "risk": -1, "disrupt": 0 }
+        },
+        {
+          "id": "bold",
+          "label": "The bold option that pays off.",
+          "grade": "great",
+          "effect": { "future": 30 },
+          "next": "d2",
+          "media": "img:__ID___d1_bold",
+          "outcome": "An estimated alternate outcome, written as a plausible story.",
+          "why": "Why this was the great call.",
+          "takeaway": "One line the player keeps in their notes.",
+          "traits": { "horizon": 1, "risk": 1, "disrupt": 1 }
+        },
+        {
+          "id": "costly",
+          "label": "The option that loses the board.",
+          "grade": "bad",
+          "effect": { "profit": -10, "future": -10, "trust": -3 },
+          "next": "d2",
+          "media": "img:__ID___d1_costly",
+          "outcome": "What went wrong. In this template it costs all three hearts, so the board fires you.",
+          "why": "Why this was a costly call.",
+          "better": "What would have worked instead.",
+          "takeaway": "One line the player keeps in their notes.",
+          "traits": { "horizon": -1, "risk": -1, "disrupt": -1 }
+        }
+      ]
+    },
+    "d2": {
+      "id": "d2",
+      "type": "decision",
+      "year": "2005",
+      "title": "The last big call",
+      "media": "img:__ID___d2",
+      "setup": [
+        { "when": { "minFuture": 50 }, "text": "Setup text when the player's earlier call went well." },
+        { "text": "Setup text for everyone else." }
+      ],
+      "question": "What do you do now?",
+      "advisor": "One line of advice.",
+      "options": [
+        {
+          "id": "reinvent",
+          "label": "Reinvent the business.",
+          "grade": "great",
+          "effect": { "future": 40 },
+          "next": "ending_route",
+          "media": "img:__ID___d2_reinvent",
+          "outcome": "An estimated alternate outcome.",
+          "why": "Why this was the great call.",
+          "takeaway": "One line the player keeps in their notes.",
+          "traits": { "horizon": 1, "risk": 1, "disrupt": 1 }
+        },
+        {
+          "id": "steady",
+          "label": "Keep things steady.",
+          "grade": "ok",
+          "effect": { "future": 10 },
+          "next": "ending_route",
+          "media": "img:__ID___d2_steady",
+          "outcome": "An estimated alternate outcome.",
+          "why": "Why this was only a risky call.",
+          "better": "What would have worked instead.",
+          "takeaway": "One line the player keeps in their notes.",
+          "traits": { "horizon": 0, "risk": 0, "disrupt": 0 }
+        },
+        {
+          "id": "retreat",
+          "label": "Cut back and protect the old business.",
+          "grade": "bad",
+          "real": true,
+          "effect": { "future": -10, "trust": -1 },
+          "next": "ending_route",
+          "media": "img:__ID___d2_retreat",
+          "outcome": "What really happened, from the sources.",
+          "why": "Why this was a costly call.",
+          "better": "What would have worked instead.",
+          "takeaway": "One line the player keeps in their notes.",
+          "traits": { "horizon": -1, "risk": -1, "disrupt": -1 }
+        }
+      ]
+    },
+    "ending_route": {
+      "id": "ending_route",
+      "type": "route",
+      "routes": [{ "when": { "minFuture": 70 }, "to": "legend" }, { "when": { "minFuture": 40 }, "to": "survivor" }, { "to": "collapse" }]
+    },
+    "legend": {
+      "id": "legend",
+      "type": "ending",
+      "tier": "legend",
+      "title": "The best ending",
+      "media": "img:__ID___legend",
+      "text": "How the story ends when the player gets it right. Label it as an estimate.",
+      "bonus": 15
+    },
+    "survivor": {
+      "id": "survivor",
+      "type": "ending",
+      "tier": "survivor",
+      "title": "A middle ending",
+      "media": "img:__ID___survivor",
+      "text": "The company survives, but smaller.",
+      "bonus": 5
+    },
+    "collapse": {
+      "id": "collapse",
+      "type": "ending",
+      "tier": "collapse",
+      "title": "What really happened",
+      "media": "img:__ID___collapse",
+      "text": "The real ending, from the sources.",
+      "bonus": 0
+    },
+    "fired": {
+      "id": "fired",
+      "type": "ending",
+      "tier": "fired",
+      "title": "The board lets you go",
+      "media": "img:__ID___fired",
+      "text": "You lost the board's trust before the story could finish.",
+      "bonus": 0
+    }
+  },
+  "realEnding": "collapse",
+  "realHistory": "What actually happened, in three or four short sentences, with dates.",
+  "sources": [{ "label": "Source title (publisher, year)", "url": "https://example.com" }],
+  "credits": "Media credits: archive clips and their public-domain sources."
+}

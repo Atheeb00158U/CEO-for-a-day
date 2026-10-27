@@ -7,7 +7,6 @@
     "build": "next build",
     "start": "next start",
     "validate": "vitest run src/content/hotseats.test.ts --silent=false",
-    "treemap": "node scripts/treemap.mjs",
     "voices": "node scripts/list-voice-lines.mjs > voice-lines.json",
     "lint": "eslint .",
     "format": "prettier --write .",
@@ -15,7 +14,9 @@
     "test": "vitest run",
     "predev": "node scripts/sync-media.mjs",
     "prebuild": "node scripts/sync-media.mjs",
-    "hotseat:check": "node scripts/hotseat.mjs check"
+    "hotseat:check": "node scripts/hotseat.mjs check",
+    "hotseat:new": "node scripts/hotseat.mjs new",
+    "hotseat:tree": "node scripts/hotseat.mjs tree"
   },
   "dependencies": {
     "next": "16.4.1",

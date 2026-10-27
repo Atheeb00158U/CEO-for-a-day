@@ -58,6 +58,16 @@ describe("hotseat:check catches broken Hot Seats", () => {
     expect(fixture("draft", (hs) => (hs.draft = true), false)).toBe("");
   });
 
+  it("accepts the hotseat:new template as a valid draft", () => {
+    const dir = join(tmp, "template-check");
+    mkdirSync(dir);
+    const template = readFileSync(new URL("../../content/templates/hotseat.json", import.meta.url), "utf8");
+    writeFileSync(join(dir, "hotseat.json"), template.replaceAll("__ID__", "template-check"));
+    const r = checkHotSeat(dir);
+    expect(r.errors).toEqual([]);
+    expect(Object.keys(r.stats!.endings).sort()).toEqual(["collapse", "fired", "legend", "survivor"]);
+  });
+
   it("requires the folder name to match the id", () => {
     expect(fixture("folder", (hs) => (hs.id = "other"))).toMatch(/id "other" must match its folder "folder"/);
   });
