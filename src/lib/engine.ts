@@ -1,14 +1,4 @@
-import type {
-  DecisionNode,
-  EndingNode,
-  HotSeat,
-  HotSeatNode,
-  MeterKey,
-  Option,
-  Text,
-  TraitKey,
-  When,
-} from "./hotseat-types";
+import type { DecisionNode, EndingNode, HotSeat, HotSeatNode, MeterKey, Option, Text, TraitKey, When } from "./hotseat-types";
 
 export interface Choice {
   nodeId: string;
@@ -128,18 +118,34 @@ export function findOption(hs: HotSeat, p: Choice): { node: DecisionNode; option
 export function buildDebrief(hs: HotSeat, s: RunState) {
   const lines = s.picks.map((p) => {
     const { node, option } = findOption(hs, p);
-    return { year: node.year, title: node.title, choice: option.label, grade: option.grade, real: !!option.real, takeaway: option.takeaway, better: option.better };
+    return {
+      year: node.year,
+      title: node.title,
+      choice: option.label,
+      grade: option.grade,
+      real: !!option.real,
+      takeaway: option.takeaway,
+      better: option.better,
+    };
   });
   const bad = s.picks.filter((p) => p.grade === "bad").length;
   const firstBad = s.picks.findIndex((p) => p.grade === "bad");
   const recovered = firstBad >= 0 && s.picks.slice(firstBad + 1).some((p) => p.grade === "great");
   const t = traitTotals(hs, s);
   const patterns: string[] = [];
-  if (bad === 0) patterns.push("You never made a call the board punished. You read each shift early and acted before it was forced on you.");
+  if (bad === 0)
+    patterns.push("You never made a call the board punished. You read each shift early and acted before it was forced on you.");
   if (recovered) patterns.push("You made a costly call, then fixed course. Turnarounds start with admitting the first decision was wrong.");
-  if (bad >= 2 && !recovered) patterns.push("Your mistakes compounded. Each 'safe' call made the next fix more expensive. Spot that pattern early in your own business.");
-  if (t.disrupt < 0) patterns.push("You leaned toward protecting what already worked. That instinct keeps a business stable, until the market moves without you.");
-  if (t.disrupt > 1) patterns.push("You were willing to compete with your own best product. That's the hardest habit for a successful company to keep.");
+  if (bad >= 2 && !recovered)
+    patterns.push(
+      "Your mistakes compounded. Each 'safe' call made the next fix more expensive. Spot that pattern early in your own business.",
+    );
+  if (t.disrupt < 0)
+    patterns.push(
+      "You leaned toward protecting what already worked. That instinct keeps a business stable, until the market moves without you.",
+    );
+  if (t.disrupt > 1)
+    patterns.push("You were willing to compete with your own best product. That's the hardest habit for a successful company to keep.");
   if (s.onRealPath && s.picks.length) patterns.push(`You made the same calls ${hs.company} made, and got the same result.`);
   return { lines, patterns, recovered };
 }

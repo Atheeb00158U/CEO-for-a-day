@@ -4,7 +4,12 @@ import { kodak } from "../src/content/hotseats/kodak.ts";
 const all = { kodak };
 const hs = all[process.argv[2] || "kodak"];
 const g = { great: ":::great", ok: ":::ok", bad: ":::bad" };
-const out = ["flowchart TD", "classDef great fill:#58cc02,color:#000", "classDef ok fill:#ffc800,color:#000", "classDef bad fill:#ff4b4b,color:#fff"];
+const out = [
+  "flowchart TD",
+  "classDef great fill:#58cc02,color:#000",
+  "classDef ok fill:#ffc800,color:#000",
+  "classDef bad fill:#ff4b4b,color:#fff",
+];
 const esc = (s) => String(s).replace(/"/g, "'");
 for (const n of Object.values(hs.nodes)) {
   if (n.type === "scene") out.push(`${n.id}["${n.year} · scene"] --> ${n.next}`);
@@ -17,7 +22,8 @@ for (const n of Object.values(hs.nodes)) {
       for (const x of nexts) out.push(`${oid} --> ${x}`);
     }
   }
-  if (n.type === "route") for (const r of n.routes) out.push(`${n.id}{{"final Future meter"}} -->|${r.when ? "Future ≥ " + r.when.minFuture : "else"}| ${r.to}`);
+  if (n.type === "route")
+    for (const r of n.routes) out.push(`${n.id}{{"final Future meter"}} -->|${r.when ? "Future ≥ " + r.when.minFuture : "else"}| ${r.to}`);
   if (n.type === "ending") out.push(`${n.id}(["END: ${esc(n.title)}"])`);
 }
 out.push(`anyloss(["Board trust hits 0 at any point"]) --> fired`);

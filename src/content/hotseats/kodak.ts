@@ -76,7 +76,8 @@ export const kodak: HotSeat = {
             "The film division cheers. Kodak patents the camera and keeps researching quietly, but nobody is asked to turn it into a product. Sasson later recalled executives asking why anyone would want to take pictures this way.",
           why: "Protecting your best business feels safe. But a new technology that looks worse at first can still replace you, and every year you wait, someone else learns it first.",
           better: "Give digital to a small, separate team that's allowed to compete with film, and fund it from film profits.",
-          takeaway: "In 1975 you protected film instead of learning digital. Big companies rarely lose to better products; they lose to products they dismissed.",
+          takeaway:
+            "In 1975 you protected film instead of learning digital. Big companies rarely lose to better products; they lose to products they dismissed.",
           traits: { horizon: -1, risk: -1, disrupt: -1 },
         },
         {
@@ -114,9 +115,17 @@ export const kodak: HotSeat = {
       year: "1981",
       media: "vid:comp10",
       text: [
-        { when: { flags: ["shelved"] }, text: "August 1981. Sony announces the Mavica, an electronic camera that records pictures on a small magnetic disk instead of film. The idea you locked away is now on the front pages, with Sony's name on it. You can still fix this." },
-        { when: { flags: ["unit"] }, text: "August 1981. Sony announces the Mavica, an electronic camera that records pictures on a magnetic disk instead of film. Retailers panic. Your digital team isn't surprised; they've been building something similar for six years." },
-        { text: "August 1981. Sony announces the Mavica, an electronic camera that records pictures on a magnetic disk instead of film. Your early camera flopped, but the world just caught up with the idea." },
+        {
+          when: { flags: ["shelved"] },
+          text: "August 1981. Sony announces the Mavica, an electronic camera that records pictures on a small magnetic disk instead of film. The idea you locked away is now on the front pages, with Sony's name on it. You can still fix this.",
+        },
+        {
+          when: { flags: ["unit"] },
+          text: "August 1981. Sony announces the Mavica, an electronic camera that records pictures on a magnetic disk instead of film. Retailers panic. Your digital team isn't surprised; they've been building something similar for six years.",
+        },
+        {
+          text: "August 1981. Sony announces the Mavica, an electronic camera that records pictures on a magnetic disk instead of film. Your early camera flopped, but the world just caught up with the idea.",
+        },
       ],
       next: "d2",
     },
@@ -127,7 +136,10 @@ export const kodak: HotSeat = {
       title: "Sony's filmless camera",
       media: "vid:comp7",
       setup: [
-        { when: { maxTrust: 2 }, text: "The board is uneasy about your last call. A big retailer asks what Sony's camera means for film. Investors want an answer this week." },
+        {
+          when: { maxTrust: 2 },
+          text: "The board is uneasy about your last call. A big retailer asks what Sony's camera means for film. Investors want an answer this week.",
+        },
         { text: "A big retailer asks what Sony's camera means for film. Investors want an answer this week." },
       ],
       question: "How do you respond to Sony?",
@@ -173,8 +185,13 @@ export const kodak: HotSeat = {
           next: "web2001",
           media: "img:c2_unit",
           outcome: [
-            { when: { flags: ["shelved"] }, text: "You pull the 1975 prototype out of the cupboard and put its inventor in charge. It's six years late, but Kodak still has the money, the patents and the brand to catch up." },
-            { text: "You announce that a growing share of film profits will fund digital imaging every year. Wall Street grumbles about lower margins. Your engineers stop job hunting." },
+            {
+              when: { flags: ["shelved"] },
+              text: "You pull the 1975 prototype out of the cupboard and put its inventor in charge. It's six years late, but Kodak still has the money, the patents and the brand to catch up.",
+            },
+            {
+              text: "You announce that a growing share of film profits will fund digital imaging every year. Wall Street grumbles about lower margins. Your engineers stop job hunting.",
+            },
           ],
           why: "You used the cash from the old business to pay for the new one while you still could. That's the move most incumbents make too late.",
           takeaway: "In 1981 you used today's profits to pay for tomorrow's business, before you were forced to.",
@@ -188,9 +205,17 @@ export const kodak: HotSeat = {
       year: "2001",
       media: "img:c3_web",
       text: [
-        { when: { minFuture: 55 }, text: "It's 2001. Your digital cameras are among the best sellers in America, and people are starting to put their photos online. Kodak has just bought Ofoto, a website where people upload pictures." },
-        { when: { minFuture: 30 }, text: "It's 2001. Digital cameras are finally taking off and Kodak is selling them, but film is still where the money is. You've just bought Ofoto, a website where people upload pictures." },
-        { text: "It's 2001. Digital cameras are taking off and Kodak is late. Film sales have peaked. You've just bought Ofoto, a website where people upload pictures. This may be your best chance to catch up." },
+        {
+          when: { minFuture: 55 },
+          text: "It's 2001. Your digital cameras are among the best sellers in America, and people are starting to put their photos online. Kodak has just bought Ofoto, a website where people upload pictures.",
+        },
+        {
+          when: { minFuture: 30 },
+          text: "It's 2001. Digital cameras are finally taking off and Kodak is selling them, but film is still where the money is. You've just bought Ofoto, a website where people upload pictures.",
+        },
+        {
+          text: "It's 2001. Digital cameras are taking off and Kodak is late. Film sales have peaked. You've just bought Ofoto, a website where people upload pictures. This may be your best chance to catch up.",
+        },
       ],
       next: "d3",
     },
@@ -257,9 +282,17 @@ export const kodak: HotSeat = {
       year: "2006",
       media: "img:c3_cameras",
       text: [
-        { when: { minFuture: 60 }, text: "It's 2006. Film sales are collapsing across the industry, but your digital businesses are growing fast enough to carry the company. You have a strong hand. Don't waste it." },
-        { when: { minFuture: 30 }, text: "It's 2006. Film sales are collapsing. Your digital business is real but not yet big enough to replace what film used to earn. This is your last big decision." },
-        { text: "It's 2006. Film sales are collapsing and your factories are closing one by one. Phones are starting to have cameras. This is your last chance to save the company." },
+        {
+          when: { minFuture: 60 },
+          text: "It's 2006. Film sales are collapsing across the industry, but your digital businesses are growing fast enough to carry the company. You have a strong hand. Don't waste it.",
+        },
+        {
+          when: { minFuture: 30 },
+          text: "It's 2006. Film sales are collapsing. Your digital business is real but not yet big enough to replace what film used to earn. This is your last big decision.",
+        },
+        {
+          text: "It's 2006. Film sales are collapsing and your factories are closing one by one. Phones are starting to have cameras. This is your last chance to save the company.",
+        },
       ],
       next: "d4",
     },
@@ -320,11 +353,7 @@ export const kodak: HotSeat = {
     ending_route: {
       id: "ending_route",
       type: "route",
-      routes: [
-        { when: { minFuture: 70 }, to: "legend" },
-        { when: { minFuture: 40 }, to: "survivor" },
-        { to: "collapse" },
-      ],
+      routes: [{ when: { minFuture: 70 }, to: "legend" }, { when: { minFuture: 40 }, to: "survivor" }, { to: "collapse" }],
     },
     legend: {
       id: "legend",
@@ -368,11 +397,20 @@ export const kodak: HotSeat = {
     "Kodak shelved digital in 1975, studied it slowly after Sony's 1981 Mavica, used Ofoto to sell prints, and bet on home inkjet printers in 2007. It filed for bankruptcy on January 19, 2012 and emerged in 2013 as a much smaller company. Fujifilm, facing the same collapse, moved into healthcare, cosmetics and materials, and survived.",
   sources: [
     { label: "IEEE Milestone: Handheld Digital Camera, 1975", url: "https://ethw.org/Milestones:Handheld_Digital_Camera%2C_1975" },
-    { label: "Snopes: Did Kodak invent the digital camera?", url: "https://www.snopes.com/fact-check/eastman-kodak-invented-first-digital-camera/" },
+    {
+      label: "Snopes: Did Kodak invent the digital camera?",
+      url: "https://www.snopes.com/fact-check/eastman-kodak-invented-first-digital-camera/",
+    },
     { label: "Sony Mavica, 1981 (History of Information)", url: "https://www.historyofinformation.com/detail.php?id=956" },
     { label: "Kodak Gallery (Wikipedia)", url: "https://en.wikipedia.org/wiki/Kodak_Gallery" },
-    { label: "Kodak takes the wraps off consumer inkjet printers (RBJ, 2007)", url: "https://rbj.net/2007/02/05/kodak-takes-wraps-off-consumer-inkjet-printers" },
-    { label: "Why Fujifilm survived the digital apocalypse that killed Kodak (Fstoppers)", url: "https://fstoppers.com/business/why-fujifilm-survived-digital-apocalypse-killed-kodak-904196" },
+    {
+      label: "Kodak takes the wraps off consumer inkjet printers (RBJ, 2007)",
+      url: "https://rbj.net/2007/02/05/kodak-takes-wraps-off-consumer-inkjet-printers",
+    },
+    {
+      label: "Why Fujifilm survived the digital apocalypse that killed Kodak (Fstoppers)",
+      url: "https://fstoppers.com/business/why-fujifilm-survived-digital-apocalypse-killed-kodak-904196",
+    },
     { label: "Kodak's growth and decline: a timeline (RBJ)", url: "https://rbj.net/2012/01/19/kodaks-growth-and-decline-a-timeline/" },
   ],
   credits:

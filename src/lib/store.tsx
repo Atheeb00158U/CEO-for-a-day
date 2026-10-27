@@ -60,7 +60,8 @@ export interface GameState {
 }
 
 const KEY = "cfad.v1";
-export const today = (d = new Date()) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+export const today = (d = new Date()) =>
+  `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
 export const weekId = (d = new Date()) => {
   const t = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
   const day = (t.getUTCDay() + 6) % 7; // Monday = 0
@@ -72,11 +73,25 @@ const dayDiff = (a: string, b: string) => Math.round((new Date(b).getTime() - ne
 function fresh(): GameState {
   const seed = Math.random().toString(36).slice(2, 10);
   return {
-    v: 1, seed, name: "You", xp: 0, coins: ECONOMY.starter.coins, streak: 0, bestStreak: 0, lastActiveDay: null,
-    freezes: ECONOMY.starter.freezes, boosters: ECONOMY.starter.boosters, boosterUntil: 0, hindsights: ECONOMY.starter.hindsights,
-    league: { tier: 0, weekId: weekId(), weeklyXp: 0 }, runs: [], best: {},
-    quests: { day: today(), decisions: 0, great: 0, xp: 0, claimed: [] }, badges: [],
-    traits: { horizon: 0, risk: 0, disrupt: 0 }, settings: { voice: true, lang: "en" },
+    v: 1,
+    seed,
+    name: "You",
+    xp: 0,
+    coins: ECONOMY.starter.coins,
+    streak: 0,
+    bestStreak: 0,
+    lastActiveDay: null,
+    freezes: ECONOMY.starter.freezes,
+    boosters: ECONOMY.starter.boosters,
+    boosterUntil: 0,
+    hindsights: ECONOMY.starter.hindsights,
+    league: { tier: 0, weekId: weekId(), weeklyXp: 0 },
+    runs: [],
+    best: {},
+    quests: { day: today(), decisions: 0, great: 0, xp: 0, claimed: [] },
+    badges: [],
+    traits: { horizon: 0, risk: 0, disrupt: 0 },
+    settings: { voice: true, lang: "en" },
   };
 }
 
@@ -97,7 +112,13 @@ function rollover(s: GameState): GameState {
   }
   if (next.league.weekId !== weekId()) {
     // Settle last week: top players move up a league, bottom players move down.
-    const rows = leagueRows({ seed: next.seed, weekId: next.league.weekId, tier: next.league.tier, yourXp: next.league.weeklyXp, yourName: next.name });
+    const rows = leagueRows({
+      seed: next.seed,
+      weekId: next.league.weekId,
+      tier: next.league.tier,
+      yourXp: next.league.weeklyXp,
+      yourName: next.name,
+    });
     const rank = rows.findIndex((r) => r.you);
     let tier = next.league.tier;
     if (next.league.weeklyXp > 0 && rank < PROMOTE) tier = Math.min(LEAGUES.length - 1, tier + 1);
@@ -118,7 +139,11 @@ interface Ctx {
   ready: boolean;
   boosterActive: boolean;
   recordDecision: (grade: Grade) => void;
-  finishRun: (r: Omit<RunRecord, "xp" | "at">, traits: Record<TraitKey, number>, flags: { recovered: boolean; beatHistory: boolean }) => RunRecord;
+  finishRun: (
+    r: Omit<RunRecord, "xp" | "at">,
+    traits: Record<TraitKey, number>,
+    flags: { recovered: boolean; beatHistory: boolean },
+  ) => RunRecord;
   buy: (item: keyof typeof ECONOMY.prices) => boolean;
   activateBooster: () => boolean;
   spendHindsight: () => boolean;
@@ -152,7 +177,11 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     if (!loaded.current) return;
-    try { localStorage.setItem(KEY, JSON.stringify(s)); } catch { /* ignore */ }
+    try {
+      localStorage.setItem(KEY, JSON.stringify(s));
+    } catch {
+      /* ignore */
+    }
   }, [s]);
 
   const boosterActive = s.boosterUntil > Date.now();
@@ -229,12 +258,24 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
   const claimQuest = (id: string) => {
     const q = QUESTS.find((x) => x.id === id);
     if (!q) return;
-    setS((x) => (x.quests.claimed.includes(id) || q.read(x.quests) < q.goal ? x : { ...x, coins: x.coins + q.reward, quests: { ...x.quests, claimed: [...x.quests.claimed, id] } }));
+    setS((x) =>
+      x.quests.claimed.includes(id) || q.read(x.quests) < q.goal
+        ? x
+        : { ...x, coins: x.coins + q.reward, quests: { ...x.quests, claimed: [...x.quests.claimed, id] } },
+    );
   };
 
   const value = useMemo<Ctx>(
     () => ({
-      s, ready, boosterActive, recordDecision, finishRun, buy, activateBooster, spendHindsight, claimQuest,
+      s,
+      ready,
+      boosterActive,
+      recordDecision,
+      finishRun,
+      buy,
+      activateBooster,
+      spendHindsight,
+      claimQuest,
       setSetting: (k, v) => setS((x) => ({ ...x, settings: { ...x.settings, [k]: v } })),
       setName: (n) => setS((x) => ({ ...x, name: n.slice(0, 20) || "You" })),
       reset: () => setS(fresh()),

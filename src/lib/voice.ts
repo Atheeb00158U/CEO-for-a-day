@@ -18,7 +18,10 @@ let raf = 0;
 
 export function stopVoice() {
   cancelAnimationFrame(raf);
-  if (audio) { audio.pause(); audio.src = ""; }
+  if (audio) {
+    audio.pause();
+    audio.src = "";
+  }
   if (typeof window !== "undefined" && "speechSynthesis" in window) window.speechSynthesis.cancel();
 }
 
@@ -27,7 +30,10 @@ export function speak(text: string, voice = NARRATOR, progress?: (p: number) => 
   stopVoice();
   onProgress = progress ?? null;
   const id = byText.get(voice + "|" + text);
-  const done = () => { onProgress?.(1); onEnd?.(); };
+  const done = () => {
+    onProgress?.(1);
+    onEnd?.();
+  };
   const fallback = () => speakBrowser(text, voice, done);
   if (!id) return fallback();
   audio = audio ?? new Audio();
@@ -50,7 +56,9 @@ function speakBrowser(text: string, voice: string, done: () => void) {
   u.voice = voices.find((v) => want.test(v.lang)) ?? voices.find((v) => /^en/i.test(v.lang)) ?? null;
   u.rate = 1;
   const words = text.split(/\s+/).length;
-  u.onboundary = (e) => { if (e.name === "word") onProgress?.(Math.min(1, text.slice(0, e.charIndex).split(/\s+/).length / words)); };
+  u.onboundary = (e) => {
+    if (e.name === "word") onProgress?.(Math.min(1, text.slice(0, e.charIndex).split(/\s+/).length / words));
+  };
   u.onend = done;
   u.onerror = done;
   window.speechSynthesis.speak(u);

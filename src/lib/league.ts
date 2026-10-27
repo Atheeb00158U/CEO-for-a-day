@@ -4,9 +4,36 @@
  * Replace `leagueRows` with a server call when real players exist.
  */
 const NAMES = [
-  "Aarav", "Diya", "Kabir", "Ananya", "Rohan", "Meera", "Vihaan", "Ishita", "Arjun", "Sneha",
-  "Karthik", "Priya", "Rahul", "Fatima", "Aditya", "Neha", "Siddharth", "Pooja", "Imran", "Lakshmi",
-  "Sourav", "Tanvi", "Harsh", "Riya", "Manoj", "Divya", "Yash", "Sana", "Nikhil", "Bhavna",
+  "Aarav",
+  "Diya",
+  "Kabir",
+  "Ananya",
+  "Rohan",
+  "Meera",
+  "Vihaan",
+  "Ishita",
+  "Arjun",
+  "Sneha",
+  "Karthik",
+  "Priya",
+  "Rahul",
+  "Fatima",
+  "Aditya",
+  "Neha",
+  "Siddharth",
+  "Pooja",
+  "Imran",
+  "Lakshmi",
+  "Sourav",
+  "Tanvi",
+  "Harsh",
+  "Riya",
+  "Manoj",
+  "Divya",
+  "Yash",
+  "Sana",
+  "Nikhil",
+  "Bhavna",
 ];
 const AVATARS = ["#1cb0f6", "#58cc02", "#ff9600", "#ce82ff", "#ff4b4b", "#ffc800", "#2bd9c5", "#ff86d0"];
 
@@ -27,7 +54,13 @@ function rng(seed: string) {
   };
 }
 
-export interface LeagueRow { id: string; name: string; xp: number; color: string; you?: boolean }
+export interface LeagueRow {
+  id: string;
+  name: string;
+  xp: number;
+  color: string;
+  you?: boolean;
+}
 
 export function leagueRows(opts: { seed: string; weekId: string; tier: number; yourXp: number; yourName: string }): LeagueRow[] {
   const r = rng(opts.seed + opts.weekId + opts.tier);
@@ -37,7 +70,7 @@ export function leagueRows(opts: { seed: string; weekId: string; tier: number; y
   const pool = [...NAMES].sort(() => r() - 0.5);
   const scale = 1 + opts.tier * 0.6;
   const bots: LeagueRow[] = pool.slice(0, LEAGUE_SIZE - 1).map((name, i) => {
-    const weekly = Math.round((r() ** 1.7) * 900 * scale);
+    const weekly = Math.round(r() ** 1.7 * 900 * scale);
     return { id: "b" + i, name, xp: Math.round(weekly * progress), color: AVATARS[Math.floor(r() * AVATARS.length)] };
   });
   const you: LeagueRow = { id: "you", name: opts.yourName, xp: opts.yourXp, color: "#1cb0f6", you: true };
