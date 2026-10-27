@@ -2,7 +2,7 @@
 
 import { useMemo } from "react";
 import { CATALOG, HOT_SEATS } from "@/content/catalog";
-import { playerOrder } from "@/lib/engine";
+import { callsPerRun, playerOrder } from "@/lib/engine";
 import { QUESTS, today, useGame } from "@/lib/store";
 import { Bar, Card, Icon, MediaView } from "./ui";
 
@@ -36,7 +36,7 @@ export function HomeTab({ onPlay, onShop }: { onPlay: (id: string) => void; onSh
           <h2 className="mt-1 text-[28px] font-black leading-tight text-balance">{hs.title}</h2>
           <p className="mt-1 text-[16px] font-bold text-muted">{hs.hook}</p>
           <p className="mt-2 text-[14px] font-bold text-muted">
-            4 big calls · {hs.minutes} min · {best !== undefined ? `Your best: ${best}` : "Narrated"}
+            {callsPerRun(hs)} big calls · {hs.minutes} min · {best !== undefined ? `Your best: ${best}` : "Narrated"}
           </p>
           <div className="mx-auto mt-4 max-w-[360px]">
             <button type="button" className="btn3d green" onClick={() => onPlay(hs.id)}>

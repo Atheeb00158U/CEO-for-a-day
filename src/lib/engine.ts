@@ -150,6 +150,31 @@ export function buildDebrief(hs: HotSeat, s: RunState) {
   return { lines, patterns, recovered };
 }
 
+/** The most decisions any run can face: the longest route from the start, ignoring conditions. */
+export function callsPerRun(hs: HotSeat): number {
+  const memo = new Map<string, number>();
+  const onPath = new Set<string>();
+  const longest = (id: string): number => {
+    const n = hs.nodes[id];
+    if (!n || onPath.has(id)) return 0; // missing nodes and loops are reported by the Hot Seat walker test
+    if (memo.has(id)) return memo.get(id)!;
+    onPath.add(id);
+    const targets =
+      n.type === "scene"
+        ? [n.next]
+        : n.type === "route"
+          ? n.routes.map((r) => r.to)
+          : n.type === "decision"
+            ? n.options.flatMap((o) => (typeof o.next === "string" ? [o.next] : o.next.map((r) => r.to)))
+            : [];
+    const calls = Math.max(0, ...targets.map(longest)) + (n.type === "decision" ? 1 : 0);
+    onPath.delete(id);
+    memo.set(id, calls);
+    return calls;
+  };
+  return longest(hs.start);
+}
+
 /** Deterministic per-player order of Hot Seats: seeded shuffle, but the first two stay gentle. */
 export function playerOrder<T extends { id: string; complexity: number }>(items: T[], seed: string): T[] {
   let h = 2166136261;

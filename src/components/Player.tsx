@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { HOT_SEATS } from "@/content/catalog";
-import { buildDebrief, choose, resolveNode, resolveText, score, startRun, traitTotals, type RunState } from "@/lib/engine";
+import { buildDebrief, callsPerRun, choose, resolveNode, resolveText, score, startRun, traitTotals, type RunState } from "@/lib/engine";
 import type { DecisionNode, EndingNode, HotSeat, Option, SceneNode } from "@/lib/hotseat-types";
 import { useGame, type RunRecord } from "@/lib/store";
 import { ADVISOR, NARRATOR, speak, stopVoice } from "@/lib/voice";
@@ -29,7 +29,7 @@ export function Player({ hotSeatId, onExit, onNotes }: { hotSeatId: string; onEx
   const [phase, setPhase] = useState<Phase>(() => toPhase(hs, startRun(hs)));
   const [usedHindsight, setUsedHindsight] = useState(false);
   const [badgesBefore, setBadgesBefore] = useState(game.s.badges);
-  const totalDecisions = useMemo(() => Object.values(hs.nodes).filter((n) => n.type === "decision").length, [hs]);
+  const totalDecisions = useMemo(() => callsPerRun(hs), [hs]);
 
   useEffect(() => () => stopVoice(), []);
 

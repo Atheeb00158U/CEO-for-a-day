@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { kodak } from "@/content/hotseats/kodak";
 import { CATALOG } from "@/content/catalog";
-import { buildDebrief, choose, playerOrder, resolveNode, score, startRun, type RunState } from "./engine";
-import type { DecisionNode, EndingNode } from "./hotseat-types";
+import { buildDebrief, callsPerRun, choose, playerOrder, resolveNode, score, startRun, type RunState } from "./engine";
+import type { DecisionNode, EndingNode, HotSeat } from "./hotseat-types";
 
 /** Play Kodak by option id, skipping scenes. Returns the final state and the node it stops on. */
 function play(ids: string[]) {
@@ -133,5 +133,30 @@ describe("playerOrder", () => {
     const order = playerOrder(items, "s");
     expect(order[0].id).toBe("y");
     expect(order.map((c) => c.id).sort()).toEqual(["x", "y", "z"]);
+  });
+});
+
+describe("callsPerRun", () => {
+  it("counts Kodak's four calls", () => {
+    expect(callsPerRun(kodak)).toBe(4);
+  });
+
+  it("counts the longest route, not every decision in the tree", () => {
+    // d1 branches to d2 or d3; either way a run faces 2 calls, though the tree has 3 decisions.
+    const to = (next: string) => ({ ...d1.options[0], next });
+    const branching: HotSeat = {
+      ...kodak,
+      start: "d1",
+      nodes: {
+        d1: { ...d1, options: [to("d2"), { ...to("d3"), id: "other" }] },
+        d2: { ...d1, id: "d2", options: [to("ending_route")] },
+        d3: { ...d1, id: "d3", options: [to("ending_route")] },
+        ending_route: kodak.nodes.ending_route,
+        legend: kodak.nodes.legend,
+        survivor: kodak.nodes.survivor,
+        collapse: kodak.nodes.collapse,
+      },
+    };
+    expect(callsPerRun(branching)).toBe(2);
   });
 });

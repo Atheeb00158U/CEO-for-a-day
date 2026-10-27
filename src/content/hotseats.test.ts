@@ -1,7 +1,7 @@
 // Walks every possible path through every registered Hot Seat and checks the tree is complete.
 // Run: npm run validate
 import { describe, expect, it } from "vitest";
-import { choose, resolveNode, score, startRun, type RunState } from "@/lib/engine";
+import { callsPerRun, choose, resolveNode, score, startRun, type RunState } from "@/lib/engine";
 import type { EndingNode, HotSeat } from "@/lib/hotseat-types";
 import { HOT_SEATS } from "./catalog";
 
@@ -10,6 +10,7 @@ function walkAll(hs: HotSeat) {
   const endings: Record<string, number> = {};
   const scores: number[] = [];
   let paths = 0;
+  const calls = callsPerRun(hs);
   const walk = (state: RunState, trail: string[]) => {
     let node = resolveNode(hs, state, state.nodeId);
     while (node.type === "scene") {
@@ -17,6 +18,7 @@ function walkAll(hs: HotSeat) {
       node = resolveNode(hs, state, node.next);
     }
     if (node.type === "ending") {
+      if (state.picks.length > calls) problems.push(`path longer than callsPerRun (${calls}): ${trail.join(" > ")}`);
       paths++;
       endings[node.id] = (endings[node.id] ?? 0) + 1;
       scores.push(score(hs, state, node as EndingNode));
