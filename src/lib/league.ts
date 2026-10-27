@@ -62,9 +62,16 @@ export interface LeagueRow {
   you?: boolean;
 }
 
-export function leagueRows(opts: { seed: string; weekId: string; tier: number; yourXp: number; yourName: string }): LeagueRow[] {
+export function leagueRows(opts: {
+  seed: string;
+  weekId: string;
+  tier: number;
+  yourXp: number;
+  yourName: string;
+  now?: Date;
+}): LeagueRow[] {
   const r = rng(opts.seed + opts.weekId + opts.tier);
-  const now = new Date();
+  const now = opts.now ?? new Date();
   const weekStart = new Date(opts.weekId + "T00:00:00");
   const progress = Math.min(1, Math.max(0.05, (now.getTime() - weekStart.getTime()) / (7 * 864e5)));
   const pool = [...NAMES].sort(() => r() - 0.5);
