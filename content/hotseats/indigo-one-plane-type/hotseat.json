@@ -3,7 +3,7 @@
   "company": "IndiGo",
   "title": "One plane, on time",
   "hook": "A new airline with no planes orders 100 of them. Then the sky gets rough.",
-  "role": "You run IndiGo, 2005 to 2011",
+  "role": "You run IndiGo, 2005 to 2012",
   "years": "2005–2012",
   "cover": "img:ig_cover",
   "draft": true,
@@ -31,7 +31,7 @@
       "type": "scene",
       "year": "2005",
       "media": "img:ig_intro",
-      "text": "It is 2005. India opened its skies to private airlines in 2004, and about six new ones have started. The economy grew 6.9% last year, and air travel may grow up to 20% a year. You and a co-founder, backed by the travel group InterGlobe, plan a new low-cost airline. You have no planes and no flights yet.",
+      "text": "It is 2005. India opened its airline market to more competition in 2004, and about six new airlines have started. The economy is expected to grow about 6.9% this year, and air travel may grow up to 20% a year. You and a co-founder, backed by the travel group InterGlobe, plan a new low-cost airline. You have no planes and no flights yet.",
       "next": "d1"
     },
     "d1": {
@@ -306,7 +306,7 @@
       "year": "2008",
       "title": "A storm for everyone",
       "media": "img:ig_d4",
-      "setup": "Some airlines sell tickets for as little as Rs 500, below cost. India's tax on jet fuel is several times the world average. Rivals are joining hands to survive, and new planes keep arriving at your door.",
+      "setup": "Some airlines sell tickets far below cost. India's tax on jet fuel is several times the world average. Rivals are joining hands to survive.",
       "question": "How do you get through the storm?",
       "advisor": "In a storm, everyone looks for a big move. Sometimes the big move is to keep doing the simple thing well.",
       "options": [
@@ -396,10 +396,10 @@
           "when": {
             "flags": ["one_type", "on_time", "leaseback", "steady"]
           },
-          "text": "It is the end of 2010. IndiGo is now India's third-biggest airline, carrying 17.3% of flyers, ahead of Air India. Airbus is getting ready to launch a new version of the A320, called the A320neo."
+          "text": "It is the end of 2010. IndiGo is now India's third-biggest airline, carrying 17.3% of flyers, ahead of Air India. Airbus has just launched a new version of the A320, called the A320neo."
         },
         {
-          "text": "Our estimate: it is the end of 2010. You have survived the bad years, but you are not yet among India's biggest airlines. Airbus is getting ready to launch a new version of the A320, called the A320neo."
+          "text": "Our estimate: it is the end of 2010. You have survived the bad years, but you are not yet among India's biggest airlines. Airbus has just launched a new version of the A320, called the A320neo."
         }
       ],
       "next": "d5"
@@ -459,7 +459,7 @@
         },
         {
           "id": "neo",
-          "label": "Order 180 more A320s, including the new A320neo.",
+          "label": "Order 180 more planes, including the new A320neo.",
           "grade": "great",
           "real": true,
           "effect": {
@@ -522,7 +522,7 @@
           "when": {
             "flags": ["one_type", "on_time", "leaseback", "steady", "neo"]
           },
-          "text": "By October 2011, IndiGo carried 19.6% of Indian flyers and was the only big Indian airline making a profit. In October 2012 Kingfisher's planes stopped flying, and it lost its licence with debts of about $2.49 billion. IndiGo added flights. In 2012 it carried more passengers than any other Indian airline, and in the year to March 2013 its profit rose six times, to Rs 7.87 billion."
+          "text": "By October 2011, IndiGo carried 19.6% of Indian flyers and was the only big Indian airline making a profit. In October 2012 Kingfisher's planes stopped flying, and its licence was suspended, with debts estimated at about $2.49 billion. IndiGo added flights. In 2012 it carried more passengers than any other Indian airline, and in the year to March 2013 its profit rose six times, to Rs 7.87 billion."
         },
         {
           "text": "Our estimate: you made enough smart calls to pull ahead. Your simple, on-time airline becomes one of India's biggest, while rivals with heavy costs struggle."
