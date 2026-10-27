@@ -2,7 +2,7 @@
  * A Hot Seat is a pre-mapped decision story. You play the CEO; every choice moves
  * the company's meters, can cost you the board's trust, and routes you to the next
  * node. Everything is authored in advance, so every outcome is known (see
- * scripts/validate-hotseats.mjs, which walks every possible path).
+ * src/content/hotseats.test.ts, which walks every possible path).
  */
 
 export type MeterKey = "profit" | "future";
