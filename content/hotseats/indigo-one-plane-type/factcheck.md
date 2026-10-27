@@ -1,5 +1,5 @@
 # Fact-check: indigo-one-plane-type
-checked-sha256: 1aece9dd339655e383bdc30fa3c44bb97f02f1a94458e1031b6c6c4f7d36b49f
+checked-sha256: 4c83f3507caa618f2d204b18f36aa257f4972b7892382353b142d5b9c73a4f14
 Checked: 2026-10-27 · by: independent fact-check agent
 
 ## Sources opened
