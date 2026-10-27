@@ -97,8 +97,8 @@ export function Debrief({
       <Card>
         <h2 className="text-[19px] font-black">Your calls</h2>
         <ol className="mt-3 flex flex-col gap-3">
-          {d.lines.map((l) => (
-            <li key={l.year} className="flex gap-3">
+          {d.lines.map((l, i) => (
+            <li key={i} className="flex gap-3">
               <span className="w-11 shrink-0 pt-0.5 text-[14px] font-black tabular-nums text-muted">{l.year}</span>
               <div className="min-w-0">
                 <p className="text-[15px] font-extrabold leading-snug">{l.choice}</p>
@@ -119,8 +119,8 @@ export function Debrief({
           {d.patterns.map((p) => (
             <li key={p}>{p}</li>
           ))}
-          {d.lines.map((l) => (
-            <li key={l.year}>{l.takeaway}</li>
+          {d.lines.map((l, i) => (
+            <li key={i}>{l.takeaway}</li>
           ))}
         </ul>
       </Card>

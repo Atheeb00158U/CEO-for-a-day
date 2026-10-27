@@ -49,8 +49,8 @@ export function NotesTab({ onPlay }: { onPlay: () => void }) {
               ))}
             </ul>
             <div className="flex flex-col gap-2">
-              {r.notes.map((n) => (
-                <div key={n.year} className="rounded-2xl bg-surface-2 p-3">
+              {r.notes.map((n, i) => (
+                <div key={i} className="rounded-2xl bg-surface-2 p-3">
                   <p className="text-[12px] font-black uppercase tracking-wider" style={{ color: GRADE_COLOR[n.grade] }}>
                     {n.year} · {n.title}
                   </p>
