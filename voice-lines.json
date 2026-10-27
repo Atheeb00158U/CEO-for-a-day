@@ -1120,9 +1120,9 @@
   "text": "Our estimate: three costly calls in a row. The board loses its trust in you and asks someone else to fly the airline through the storm."
  },
  {
-  "id": "4f6f0100950c",
+  "id": "0cb743646c07",
   "voice": "af_heart",
-  "text": "It is 1982. In 1970 Intel made the 1103, one of the first DRAM memory chips sold to the public. It was the first chip to seriously challenge the old magnetic memory in computers. Memory chips built your company. Last year IBM launched its first PC, and inside it is your 8088 processor. But in Japan, makers like NEC, Hitachi and Fujitsu now get up to 40% more good chips from each batch than you do, at lower cost."
+  "text": "It is 1982. In 1970 Intel made the 1103, one of the first DRAM memory chips sold to the public. It was the first chip to seriously challenge the old magnetic memory in computers. Memory chips built your company. Last year IBM launched its first PC, and inside it is your 8088 processor. But in Japan, makers like NEC, Hitachi and Fujitsu now get up to 40% more good chips from each batch than US makers do, at lower cost."
  },
  {
   "id": "ffe1ff6ab222",
@@ -1150,9 +1150,9 @@
   "text": "You put fresh money into the business where you were already losing on cost. Money cannot fix a cost gap that big. What would have worked: Put the money where you are ahead: research and factories for processors, the chips inside the PC."
  },
  {
-  "id": "7d5455687b86",
+  "id": "4406597cfc70",
   "voice": "af_heart",
-  "text": "In December 1982 IBM paid $250 million, or $40 a share, for 12% of Intel. Intel said the money would go to research and more production capacity. The two companies were now tied closely together. In 1983 IBM also won the right to make some Intel chips itself."
+  "text": "In December 1982 IBM agreed to pay $250 million, or $40 a share, for 12% of Intel. Intel said the money would go to research and more production capacity. The two companies were now tied closely together. In 1983 IBM also won the right to make some Intel chips itself."
  },
  {
   "id": "c5c63aa04de0",
@@ -1170,14 +1170,14 @@
   "text": "Independence has value, but turning away cheap money from your best customer slowed your growth when it mattered. What would have worked: Take the investment, keep control of your decisions, and spend the money on research and capacity."
  },
  {
-  "id": "0deeaade728f",
+  "id": "8489da30474e",
   "voice": "af_heart",
-  "text": "Our estimate: IBM's money went into memory lines, and you are still behind Japan on cost. Now the PC boom of 1983 and 1984 is ending. Orders collapse, and there are far too many chips. For five years memory has been a small part of what you sell. Processors are now your core."
+  "text": "Our estimate: IBM's money went into memory lines, and you are still behind Japan on cost. Now the PC boom of 1983 and 1984 is ending. Orders collapse, and there are far too many chips. For five years DRAM memory has been a small part of what you sell. Processors are now your core."
  },
  {
-  "id": "e65981f83ee7",
+  "id": "8a26d8921b99",
   "voice": "af_heart",
-  "text": "The PC boom of 1983 and 1984 is ending fast. At the end of 1984 orders collapse, and there are far too many chips in the world. Japanese makers still make memory chips better and cheaper. For five years memory has been a small part of what you sell. Processors are now your core."
+  "text": "The PC boom of 1983 and 1984 is ending fast. At the end of 1984 orders collapse, and there are far too many chips in the world. Japanese makers still make memory chips better and cheaper. For five years DRAM memory has been a small part of what you sell. Processors are now your core."
  },
  {
   "id": "4d0a220f1581",
@@ -1225,9 +1225,9 @@
   "text": "Our estimate: your new memory factory is running, but prices fall faster than your costs. Japan makes most of the world's memory chips. Every chip you sell loses money."
  },
  {
-  "id": "967c56fa8905",
+  "id": "8b5b0e5aa6e0",
   "voice": "af_heart",
-  "text": "In 1970 Intel made one of the first DRAM memory chips sold to the public. Now Japan makes most of the world's memory chips, and a 256K chip sells for under $3. DRAM memory is less than 5% of your business, but it still uses a lot of your factory space."
+  "text": "In 1970 Intel made one of the first DRAM memory chips sold to the public. Now Japan makes most of the world's memory chips, and a 256K chip sells for under $3. DRAM memory is less than 5% of your business."
  },
  {
   "id": "ffbd3cdb02e7",
@@ -1280,9 +1280,9 @@
   "text": "Our estimate: it is late 1985. You left memory a year early, so your losses are smaller. The first samples of your new 386 processor are out. But the chip boom is over, and you still have too many people and plants for the business you have."
  },
  {
-  "id": "3256c0a64320",
+  "id": "641f7876d4aa",
   "voice": "af_heart",
-  "text": "It is late 1985. The first samples of your new 386 processor came out in October. But the chip boom ended in late 1984. Your costs were built for a company with $2 to 3 billion in yearly sales, and you are becoming a $1 to 1.5 billion company. Sales have dropped sharply, and you face the biggest loss in Intel's history so far."
+  "text": "It is late 1985. The first samples of your new 386 processor came out in October. But the chip boom ended in late 1984. Your costs were built for a company with $2 to 3 billion in yearly sales, and you are becoming a $1 to 1.5 billion company. Sales have dropped sharply, and profits have all but disappeared."
  },
  {
   "id": "4c9d595a0277",
@@ -1320,9 +1320,9 @@
   "text": "In a tech company, research is the future. Cutting it to save today's jobs puts every job at risk later. What would have worked: Cut old plants and overhead, but keep paying for the products that will bring you back."
  },
  {
-  "id": "c872cdd3bfe2",
+  "id": "b694d11fbf26",
   "voice": "af_heart",
-  "text": "Over 1985 and 1986 Intel closed eight older, smaller plants and cut its workforce by 7,200 people, through layoffs and people leaving. It was the hardest time in its history. But it still spent $210 million on new equipment, and in 1986 it raised research spending to $228 million, 18% of its sales. Its factories became twice as productive in two years."
+  "text": "Over 1985 and 1986 Intel closed eight older, smaller plants and cut its workforce by 7,200 people, through layoffs and people leaving. It was the hardest time in its history. But it kept buying new equipment, and in 1986 it raised research spending to $228 million, 18% of its sales. Its factories became twice as productive in two years."
  },
  {
   "id": "e07616173f97",
@@ -1380,9 +1380,9 @@
   "text": "You broke an old industry habit because the facts had changed. You kept your best product and found another way to earn buyers' trust."
  },
  {
-  "id": "8bf3fed6747f",
+  "id": "968033d40d28",
   "voice": "af_heart",
-  "text": "IBM, your biggest customer, is not interested in the 386. It is building its own version of your older 286 chip and wants more control over the PC. Meanwhile Compaq, a young company that makes IBM-compatible PCs, is ready to move fast."
+  "text": "IBM, which put your chip in its PC, is not interested in the 386. It is building its own version of your older 286 chip and wants more control over the PC. Meanwhile Compaq, a young company that makes IBM-compatible PCs, is ready to move fast."
  },
  {
   "id": "7b6a94d8b539",
@@ -1390,9 +1390,9 @@
   "text": "How do you launch the 386?"
  },
  {
-  "id": "6b752adc4001",
+  "id": "a9d30c05ad9a",
   "voice": "bm_george",
-  "text": "Your biggest customer is not always your best partner for the next thing."
+  "text": "Your most famous customer is not always your best partner for the next thing."
  },
  {
   "id": "0ddae4482c9b",
