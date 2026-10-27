@@ -9,6 +9,8 @@ import { NotesTab } from "./NotesTab";
 import { ShopTab } from "./ShopTab";
 import { ProfileTab } from "./ProfileTab";
 import { Player } from "./Player";
+import { DailyPlayer } from "./DailyPlayer";
+import { todaysCall } from "@/content/catalog";
 
 export type Tab = "home" | "league" | "notes" | "shop" | "profile";
 const TABS: { id: Tab; label: string; icon: keyof typeof Icon }[] = [
@@ -30,6 +32,7 @@ export function App() {
 function Shell() {
   const [tab, setTab] = useState<Tab>("home");
   const [playing, setPlaying] = useState<string | null>(null);
+  const [playingDaily, setPlayingDaily] = useState(false);
 
   useEffect(() => {
     const fromHash = () => {
@@ -65,6 +68,9 @@ function Shell() {
     );
   }
 
+  const daily = playingDaily ? todaysCall(today()) : undefined;
+  if (daily) return <DailyPlayer call={daily} onExit={() => setPlayingDaily(false)} />;
+
   if (playing)
     return (
       <Player
@@ -81,7 +87,7 @@ function Shell() {
     <div className="mx-auto flex min-h-dvh max-w-[480px] flex-col">
       <TopBar onShop={() => go("shop")} />
       <main className="flex-1 px-4 pb-28">
-        {tab === "home" && <HomeTab onPlay={setPlaying} onShop={() => go("shop")} />}
+        {tab === "home" && <HomeTab onPlay={setPlaying} onDaily={() => setPlayingDaily(true)} onShop={() => go("shop")} />}
         {tab === "league" && <LeagueTab onPlay={() => go("home")} />}
         {tab === "notes" && <NotesTab onPlay={() => go("home")} />}
         {tab === "shop" && <ShopTab />}

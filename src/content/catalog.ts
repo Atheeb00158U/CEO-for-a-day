@@ -1,4 +1,5 @@
-import type { CatalogEntry, HotSeat } from "@/lib/hotseat-types";
+import { dailyFor } from "@/lib/engine";
+import type { CatalogEntry, DailyCall, DailyPool, HotSeat } from "@/lib/hotseat-types";
 
 /** Every content/hotseats/<id>/hotseat.json, found at build time. Validated by `npm run hotseat:check` and the tests, not here. */
 const found = import.meta.glob<HotSeat>("/content/hotseats/*/hotseat.json", { eager: true, import: "default" });
@@ -68,3 +69,13 @@ export const CATALOG: CatalogEntry[] = [
   })),
   ...COMING_SOON.filter((c) => !HOT_SEATS[c.id]),
 ];
+
+const dailyFile = import.meta.glob<DailyPool>("/content/daily/daily.json", { eager: true, import: "default" });
+/** The Daily Call pool, in schedule order (empty until content/daily/daily.json exists). */
+export const DAILY: DailyPool = Object.values(dailyFile)[0] ?? { startDay: "2026-01-01", calls: [] };
+
+/** Today's Daily Call. Undefined when there is none, or in production when today's call is still a draft (never a stand-in). */
+export function todaysCall(day: string): DailyCall | undefined {
+  const call = dailyFor(day, DAILY);
+  return call && (!call.draft || process.env.NODE_ENV !== "production") ? call : undefined;
+}

@@ -4,11 +4,21 @@ import Link from "next/link";
 import { Badge } from "@/components/shadcn/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/shadcn/card";
 import { EndingsBar } from "@/components/admin/EndingsBar";
-import { HOTSEATS_DIR, hotSeatIds, readHotSeat } from "@/lib/content-files";
-import { AUDIO_DIR, checkHotSeat } from "@/lib/hotseat-check";
+import { DAILY_DIR, HOTSEATS_DIR, hotSeatIds, readDailyPool, readHotSeat } from "@/lib/content-files";
+import { dailyFor } from "@/lib/engine";
+import { today } from "@/lib/game-state";
+import { AUDIO_DIR, checkDailyPool, checkHotSeat } from "@/lib/hotseat-check";
 
 export default function AdminHome() {
   const seats = hotSeatIds().map((id) => ({ hs: readHotSeat(id), check: checkHotSeat(join(HOTSEATS_DIR, id), AUDIO_DIR) }));
+  // Built at build time, so "today" is the build date; rebuilds move the schedule window along.
+  const day = today();
+  const pool = readDailyPool();
+  const daily = checkDailyPool(DAILY_DIR, day, AUDIO_DIR);
+  const next14 = Array.from({ length: 14 }, (_, i) => {
+    const d = new Date(Date.parse(day) + i * 864e5).toISOString().slice(0, 10);
+    return { day: d, call: dailyFor(d, pool) };
+  });
 
   return (
     <main className="mx-auto max-w-[1400px] px-4 py-8 sm:px-6">
@@ -73,6 +83,52 @@ export default function AdminHome() {
           </li>
         ))}
       </ul>
+
+      <h2 className="mt-12 text-[24px] font-black">Daily Calls</h2>
+      <p className="font-bold text-muted">
+        {pool.calls.length} calls in content/daily/daily.json
+        {daily.daysLeft !== undefined && ` · ${daily.daysLeft} days left after ${day}`}. The order of the list is the schedule.
+      </p>
+      {(daily.errors.length > 0 || daily.warnings.length > 0) && (
+        <ul className="mt-3 flex flex-col gap-1 text-[13px] font-bold">
+          {daily.errors.map((e) => (
+            <li key={e} className="text-red">
+              {e}
+            </li>
+          ))}
+          {daily.warnings.map((w) => (
+            <li key={w} className="text-muted">
+              {w}
+            </li>
+          ))}
+        </ul>
+      )}
+      {pool.calls.length > 0 && (
+        <Card className="mt-4 border-2 border-line">
+          <CardContent>
+            <table className="w-full text-left text-[14px] font-bold">
+              <thead className="text-[11px] tracking-wider text-muted uppercase">
+                <tr>
+                  <th className="py-1 pr-4">Day</th>
+                  <th className="py-1 pr-4">Company</th>
+                  <th className="py-1 pr-4">Call</th>
+                  <th className="py-1">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {next14.map(({ day: d, call }) => (
+                  <tr key={d} className="border-t border-line">
+                    <td className="py-2 pr-4 tabular-nums text-muted">{d}</td>
+                    <td className="py-2 pr-4">{call?.company}</td>
+                    <td className="py-2 pr-4">{call?.title}</td>
+                    <td className="py-2">{call?.draft ? <Badge variant="secondary">Draft</Badge> : <Badge>Ready</Badge>}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </CardContent>
+        </Card>
+      )}
     </main>
   );
 }

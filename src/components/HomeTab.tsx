@@ -1,17 +1,19 @@
 "use client";
 
 import { useMemo } from "react";
-import { CATALOG, HOT_SEATS } from "@/content/catalog";
+import { CATALOG, HOT_SEATS, todaysCall } from "@/content/catalog";
 import { callsPerRun, playerOrder } from "@/lib/engine";
 import { QUESTS, today, useGame } from "@/lib/store";
 import { Bar, Card, Icon, MediaView } from "./ui";
 
-export function HomeTab({ onPlay, onShop }: { onPlay: (id: string) => void; onShop: () => void }) {
+export function HomeTab({ onPlay, onDaily, onShop }: { onPlay: (id: string) => void; onDaily: () => void; onShop: () => void }) {
   const { s, boosterActive, activateBooster } = useGame();
   const order = useMemo(() => playerOrder(CATALOG, s.seed), [s.seed]);
   const current = order.find((c) => c.available && s.best[c.id] === undefined) ?? order.find((c) => c.available)!;
   const hs = HOT_SEATS[current.id];
   const playedToday = s.lastActiveDay === today();
+  const call = todaysCall(today());
+  const dailyDone = call && s.daily?.day === today() && s.daily.id === call.id ? s.daily : null;
   const best = s.best[current.id];
 
   return (
@@ -25,6 +27,28 @@ export function HomeTab({ onPlay, onShop }: { onPlay: (id: string) => void; onSh
         </div>
         {playedToday ? <Icon.flame className="size-14" /> : <Icon.flameOff className="size-14" />}
       </section>
+
+      {/* Today's call */}
+      {call && (
+        <button
+          type="button"
+          onClick={onDaily}
+          className="flex items-center gap-4 rounded-2xl border-2 border-blue/50 bg-blue/10 p-4 text-left focus-visible:ring-4 focus-visible:ring-blue/50 focus-visible:outline-none"
+        >
+          <span className="grid size-12 shrink-0 place-items-center rounded-xl bg-blue text-[#04121b]">
+            {dailyDone ? <Icon.check className="size-7" /> : <Icon.bolt className="size-7 [&_path]:fill-[#04121b]" />}
+          </span>
+          <span className="min-w-0 flex-1">
+            <span className="block text-[12px] font-black tracking-[.12em] text-blue uppercase">Today&apos;s call · 1 min</span>
+            <span className="block text-[17px] leading-tight font-black">
+              {call.company} · {call.title}
+            </span>
+            <span className="block text-[14px] font-bold text-muted">
+              {dailyDone ? `Done today · +${dailyDone.xp} XP · tap to see it again` : "One decision. Keeps your streak alive."}
+            </span>
+          </span>
+        </button>
+      )}
 
       {/* Current Hot Seat */}
       <section className="-mx-4">

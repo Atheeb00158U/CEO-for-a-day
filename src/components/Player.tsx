@@ -14,7 +14,7 @@ import {
   traitTotals,
   type RunState,
 } from "@/lib/engine";
-import type { DecisionNode, EndingNode, HotSeat, Option, SceneNode } from "@/lib/hotseat-types";
+import type { DecisionNode, EndingNode, Grade, HotSeat, Media, Option, SceneNode } from "@/lib/hotseat-types";
 import { useGame, type RunRecord } from "@/lib/store";
 import { ADVISOR, NARRATOR, speak, stopVoice } from "@/lib/voice";
 import { Bar, Caption, Icon, MediaView } from "./ui";
@@ -134,18 +134,40 @@ export function Player({ hotSeatId, onExit, onNotes }: { hotSeatId: string; onEx
         <SceneView key={phase.node.id} hs={hs} run={run} node={phase.node} onNext={() => advance(run, phase.node.next)} />
       )}
       {phase.kind === "decision" && (
-        <DecisionView key={phase.node.id + (usedHindsight ? "h" : "")} hs={hs} run={run} node={phase.node} onChoose={onChoose} />
+        <DecisionView
+          key={phase.node.id + (usedHindsight ? "h" : "")}
+          year={phase.node.year}
+          media={phase.node.media}
+          setup={resolveText(phase.node.setup, run)}
+          question={phase.node.question}
+          advisor={resolveText(phase.node.advisor, run)}
+          warning={run.trust === 1 ? "Board warning: one more costly call and you're out." : undefined}
+          options={phase.node.options}
+          onChoose={(id) =>
+            onChoose(
+              phase.node,
+              phase.node.options.find((o) => o.id === id)!,
+            )
+          }
+        />
       )}
       {phase.kind === "reveal" && (
         <RevealView
           key={phase.node.id + phase.option.id}
-          hs={hs}
-          run={run}
-          node={phase.node}
-          option={phase.option}
-          canHindsight={!usedHindsight && game.s.hindsights > 0 && phase.option.grade !== "great"}
-          hindsights={game.s.hindsights}
-          onHindsight={onHindsight}
+          year={phase.node.year}
+          media={phase.option.media}
+          real={!!phase.option.real}
+          outcome={resolveText(phase.option.outcome, run)}
+          grade={phase.option.grade}
+          why={phase.option.why}
+          better={phase.option.better}
+          pointsLabel={VERDICT[phase.option.grade].points}
+          realChoice={realChoiceFor(hs, phase.node, phase.option)}
+          hindsight={
+            !usedHindsight && game.s.hindsights > 0 && phase.option.grade !== "great"
+              ? { left: game.s.hindsights, onUse: onHindsight }
+              : undefined
+          }
           onNext={() => {
             // Counted here, not at "Lock it in", so a Hindsight redo never counts the undone pick.
             game.recordDecision(phase.option.grade);
@@ -156,6 +178,11 @@ export function Player({ hotSeatId, onExit, onNotes }: { hotSeatId: string; onEx
       {phase.kind === "ending" && <EndingView key={phase.node.id} run={run} node={phase.node} onNext={() => finish(phase.node)} />}
     </div>
   );
+}
+
+function realChoiceFor(hs: HotSeat, node: DecisionNode, option: Option) {
+  const real = node.options.find((o) => o.real);
+  return !option.real && real ? { company: hs.company, label: real.label } : undefined;
 }
 
 function toPhase(hs: HotSeat, s: RunState): Phase {
@@ -282,47 +309,60 @@ function SceneView({ run, node, onNext }: { hs: HotSeat; run: RunState; node: Sc
   );
 }
 
-function DecisionView({
-  run,
-  node,
+export interface ChoiceItem {
+  id: string;
+  label: string;
+}
+
+/** The decision screen. Takes text already resolved for the player's path, so Hot Seats and Daily Calls share it. */
+export function DecisionView({
+  year,
+  media,
+  setup,
+  question,
+  advisor,
+  warning,
+  options,
   onChoose,
 }: {
-  hs: HotSeat;
-  run: RunState;
-  node: DecisionNode;
-  onChoose: (n: DecisionNode, o: Option) => void;
+  year: string;
+  media?: Media;
+  setup: string;
+  question: string;
+  advisor?: string;
+  warning?: string;
+  options: ChoiceItem[];
+  onChoose: (optionId: string) => void;
 }) {
   const { s } = useGame();
   const [sel, setSel] = useState<string | null>(null);
-  const setup = resolveText(node.setup, run);
-  const advisor = resolveText(node.advisor, run);
-  const { prog } = useNarration([{ text: setup }, { text: node.question }, { text: advisor, voice: ADVISOR }], s.settings.voice);
-  const opt = node.options.find((o) => o.id === sel);
+  const { prog } = useNarration(
+    [{ text: setup }, { text: question }, ...(advisor ? [{ text: advisor, voice: ADVISOR }] : [])],
+    s.settings.voice,
+  );
   return (
     <div className="flex flex-1 flex-col gap-4">
       <div className="flex items-center gap-3">
-        <MediaView media={node.media} className="size-20 shrink-0 !rounded-2xl" kenBurns={false} label={false} />
+        {media && <MediaView media={media} className="size-20 shrink-0 !rounded-2xl" kenBurns={false} label={false} />}
         <div className="min-w-0">
-          <YearChip year={node.year} />
+          <YearChip year={year} />
           <p className="mt-1 text-[13px] font-black uppercase tracking-[.12em] text-blue">Your call</p>
         </div>
       </div>
       <Caption text={setup} progress={prog(0)} className="text-[17px] font-bold leading-snug" />
-      <h2 className="text-[25px] font-black leading-tight text-balance">{node.question}</h2>
-      <div className="flex gap-3">
-        <div className="grid size-10 shrink-0 place-items-center rounded-full bg-purple font-black text-[#160a2c]">A</div>
-        <div className="relative rounded-2xl rounded-tl-sm border-2 border-line bg-surface px-3 py-2">
-          <p className="text-[12px] font-black uppercase tracking-wider text-purple">Your advisor</p>
-          <Caption text={advisor} progress={prog(2)} className="text-[15px] font-bold" />
+      <h2 className="text-[25px] font-black leading-tight text-balance">{question}</h2>
+      {advisor && (
+        <div className="flex gap-3">
+          <div className="grid size-10 shrink-0 place-items-center rounded-full bg-purple font-black text-[#160a2c]">A</div>
+          <div className="relative rounded-2xl rounded-tl-sm border-2 border-line bg-surface px-3 py-2">
+            <p className="text-[12px] font-black uppercase tracking-wider text-purple">Your advisor</p>
+            <Caption text={advisor} progress={prog(2)} className="text-[15px] font-bold" />
+          </div>
         </div>
-      </div>
-      {run.trust === 1 && (
-        <p className="shake rounded-2xl bg-red/15 px-3 py-2 text-[14px] font-extrabold text-red">
-          Board warning: one more costly call and you&apos;re out.
-        </p>
       )}
+      {warning && <p className="shake rounded-2xl bg-red/15 px-3 py-2 text-[14px] font-extrabold text-red">{warning}</p>}
       <div className="flex flex-col gap-3" role="radiogroup" aria-label="Options">
-        {node.options.map((o, i) => (
+        {options.map((o, i) => (
           <button
             key={o.id}
             type="button"
@@ -339,7 +379,7 @@ function DecisionView({
         ))}
       </div>
       <div className="mt-auto pb-6 pt-2">
-        <button type="button" className="btn3d green" disabled={!opt} onClick={() => opt && onChoose(node, opt)}>
+        <button type="button" className="btn3d green" disabled={!sel} onClick={() => sel && onChoose(sel)}>
           Lock it in
         </button>
       </div>
@@ -347,44 +387,52 @@ function DecisionView({
   );
 }
 
-function RevealView({
-  hs,
-  run,
-  node,
-  option,
-  canHindsight,
-  hindsights,
-  onHindsight,
+/** What happened, then the verdict sheet. Plain values in, so Hot Seats and Daily Calls share it. */
+export function RevealView({
+  year,
+  media,
+  real,
+  outcome,
+  grade,
+  why,
+  better,
+  pointsLabel,
+  realChoice,
+  extra,
+  hindsight,
   onNext,
 }: {
-  hs: HotSeat;
-  run: RunState;
-  node: DecisionNode;
-  option: Option;
-  canHindsight: boolean;
-  hindsights: number;
-  onHindsight: () => void;
+  year: string;
+  media?: Media;
+  real: boolean;
+  outcome: string;
+  grade: Grade;
+  why: string;
+  better?: string;
+  pointsLabel: string;
+  /** Shown when the player didn't make the real company's call. */
+  realChoice?: { company: string; label: string };
+  extra?: React.ReactNode;
+  hindsight?: { left: number; onUse: () => void };
   onNext: () => void;
 }) {
   const { s } = useGame();
-  const v = VERDICT[option.grade];
-  const outcome = resolveText(option.outcome, run);
-  const whyText = spokenWhy(option);
-  const { prog, replay } = useNarration([{ text: outcome }, { text: whyText }], s.settings.voice);
-  const real = node.options.find((o) => o.real);
+  const v = VERDICT[grade];
+  const { prog, replay } = useNarration([{ text: outcome }, { text: spokenWhy({ why, better }) }], s.settings.voice);
   return (
     <div className="flex flex-1 flex-col gap-4 pb-[300px]">
-      <MediaView media={option.media} className="aspect-[16/9] w-full" />
-      <YearChip year={node.year} real={!!option.real} />
+      {media && <MediaView media={media} className="aspect-[16/9] w-full" />}
+      <YearChip year={year} real={real} />
       <p className="text-[13px] font-black uppercase tracking-[.12em] text-muted">What happened</p>
       <Caption text={outcome} progress={prog(0)} className="-mt-2 text-[20px] font-bold leading-snug" />
       {s.settings.voice && <VoiceButton onClick={replay} />}
-      {!option.real && real && (
+      {realChoice && (
         <div className="rounded-2xl border-2 border-line bg-surface p-3">
-          <p className="text-[11px] font-black uppercase tracking-wider text-muted">What {hs.company} actually did</p>
-          <p className="mt-1 text-[15px] font-bold">{real.label}</p>
+          <p className="text-[11px] font-black uppercase tracking-wider text-muted">What {realChoice.company} actually did</p>
+          <p className="mt-1 text-[15px] font-bold">{realChoice.label}</p>
         </div>
       )}
+      {extra}
 
       <div className={`sheet fixed inset-x-0 bottom-0 z-30 ${v.bg}`} style={{ paddingBottom: "max(16px, env(safe-area-inset-bottom))" }}>
         <div className="mx-auto flex max-w-[480px] flex-col gap-2 px-4 pt-4">
@@ -393,32 +441,32 @@ function RevealView({
               {v.title}
             </h3>
             <span className="text-[14px] font-black" style={{ color: v.color }}>
-              {v.points}
+              {pointsLabel}
             </span>
           </div>
           <p className="text-[15px] font-bold leading-snug">
             <span className="font-black" style={{ color: v.color }}>
-              {option.grade === "great" ? "Why it worked: " : "Why it hurt: "}
+              {grade === "great" ? "Why it worked: " : "Why it hurt: "}
             </span>
-            {option.why}
+            {why}
           </p>
-          {option.better && (
+          {better && (
             <p className="text-[15px] font-bold leading-snug">
               <span className="font-black" style={{ color: v.color }}>
                 What would have worked:{" "}
               </span>
-              {option.better}
+              {better}
             </p>
           )}
           <div className="mt-2 flex gap-3">
-            {canHindsight && (
+            {hindsight && (
               <button
                 type="button"
                 className="btn3d ghost !w-auto shrink-0 !px-3 !text-[13px]"
-                onClick={onHindsight}
-                aria-label={`Use Hindsight to redo this call. ${hindsights} left`}
+                onClick={hindsight.onUse}
+                aria-label={`Use Hindsight to redo this call. ${hindsight.left} left`}
               >
-                <Icon.rewind className="size-5" /> Redo ({hindsights})
+                <Icon.rewind className="size-5" /> Redo ({hindsight.left})
               </button>
             )}
             <button type="button" className={`btn3d ${v.btn}`} onClick={onNext}>

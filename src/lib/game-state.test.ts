@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { fresh, rollover, touchStreak, weekId, type GameState } from "./game-state";
+import { applyDaily, fresh, rollover, touchStreak, weekId, type GameState } from "./game-state";
+import type { DailyCall } from "./hotseat-types";
 import { DEMOTE, leagueRows, PROMOTE } from "./league";
 
 const now = new Date(2026, 9, 27, 12); // Tue 27 Oct 2026, local time
@@ -65,5 +66,54 @@ describe("league week rollover", () => {
   it("leaves the league alone mid-week", () => {
     const s = base({ league: { tier: 2, weekId: weekId(now), weeklyXp: 120 } });
     expect(rollover(s, now).league).toEqual(s.league);
+  });
+});
+
+describe("applyDaily", () => {
+  const call: DailyCall = {
+    id: "acme-2001",
+    company: "Acme",
+    year: "2001",
+    title: "Price war",
+    setup: "A rival cuts prices.",
+    question: "What do you do?",
+    options: [
+      {
+        id: "a",
+        label: "Match it",
+        grade: "bad",
+        real: true,
+        outcome: "Margins vanish.",
+        why: "Ouch.",
+        better: "Compete on value.",
+        takeaway: "Don't race to the bottom.",
+      },
+      { id: "b", label: "Add value", grade: "great", outcome: "Customers stay.", why: "Value wins.", takeaway: "Compete on value." },
+      { id: "c", label: "Wait", grade: "ok", outcome: "You lose a little.", why: "Slow.", better: "Act.", takeaway: "Waiting costs." },
+    ],
+    realHistory: "They matched the price.",
+    sources: [{ label: "S", url: "https://example.com" }],
+  };
+
+  it("pays XP, counts the decision, extends the streak and saves the takeaway", () => {
+    const s = applyDaily(base({ streak: 2, lastActiveDay: "2026-10-26" }), call, "b", now);
+    expect(s.daily).toEqual({ day: "2026-10-27", id: "acme-2001", optionId: "b", grade: "great", xp: 15 });
+    expect(s.streak).toBe(3);
+    expect(s.quests).toMatchObject({ decisions: 1, great: 1, xp: 15 });
+    expect(s.league.weeklyXp).toBe(15);
+    expect(s.dailyLog[0]).toMatchObject({ company: "Acme", choice: "Add value", takeaway: "Compete on value." });
+  });
+
+  it("only counts once a day, so a replay pays nothing and can't change the answer", () => {
+    const once = applyDaily(base({}), call, "a", now);
+    expect(applyDaily(once, call, "b", now)).toBe(once);
+    expect(once.daily?.grade).toBe("bad");
+  });
+
+  it("doubles XP while a booster runs, and opens again the next day", () => {
+    const boosted = applyDaily(base({ boosterUntil: now.getTime() + 60_000 }), call, "c", now);
+    expect(boosted.daily?.xp).toBe(20);
+    const tomorrow = new Date(2026, 9, 28, 9);
+    expect(applyDaily(boosted, call, "b", tomorrow).daily?.day).toBe("2026-10-28");
   });
 });

@@ -17,7 +17,7 @@ export function NotesTab({ onPlay }: { onPlay: () => void }) {
         <h1 className="text-[28px] font-black">Revision notes</h1>
         <p className="font-bold text-muted">Every hot seat you finish leaves notes here, written for the calls you made.</p>
       </div>
-      {latest.length === 0 && (
+      {latest.length === 0 && s.dailyLog.length === 0 && (
         <Card className="flex flex-col items-center gap-3 py-8 text-center">
           <Icon.navNotes className="size-12 text-muted" />
           <p className="text-[18px] font-black">No notes yet</p>
@@ -62,6 +62,25 @@ export function NotesTab({ onPlay }: { onPlay: () => void }) {
           </Card>
         );
       })}
+      {s.dailyLog.length > 0 && (
+        <Card className="flex flex-col gap-3">
+          <div>
+            <p className="text-[12px] font-black uppercase tracking-[.12em] text-blue">Daily calls</p>
+            <h2 className="text-[19px] font-black leading-tight">One decision a day</h2>
+          </div>
+          <div className="flex flex-col gap-2">
+            {s.dailyLog.map((n) => (
+              <div key={n.day} className="rounded-2xl bg-surface-2 p-3">
+                <p className="text-[12px] font-black uppercase tracking-wider" style={{ color: GRADE_COLOR[n.grade] }}>
+                  {n.company} · {n.title}
+                </p>
+                <p className="mt-1 text-[15px] font-bold leading-snug">{n.takeaway}</p>
+                {n.better && <p className="mt-1 text-[13px] font-bold text-muted">Next time: {n.better}</p>}
+              </div>
+            ))}
+          </div>
+        </Card>
+      )}
     </div>
   );
 }

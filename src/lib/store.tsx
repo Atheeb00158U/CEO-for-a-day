@@ -1,8 +1,8 @@
 "use client";
 
-import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
-import type { Grade, TraitKey } from "./hotseat-types";
-import { ECONOMY, fresh, rollover, touchStreak, type GameState, type RunRecord } from "./game-state";
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
+import type { DailyCall, Grade, TraitKey } from "./hotseat-types";
+import { applyDaily, ECONOMY, fresh, rollover, touchStreak, type GameState, type RunRecord } from "./game-state";
 
 export { BADGES, ECONOMY, LEAGUES, today, type GameState, type RunRecord } from "./game-state";
 
@@ -28,6 +28,8 @@ interface Ctx {
   activateBooster: () => boolean;
   spendHindsight: () => boolean;
   claimQuest: (id: string) => void;
+  /** Lock in today's Daily Call. Does nothing if today's call was already played. */
+  playDaily: (call: DailyCall, optionId: string) => void;
   setSetting: <K extends keyof GameState["settings"]>(k: K, v: GameState["settings"][K]) => void;
   setName: (n: string) => void;
   reset: () => void;
@@ -39,7 +41,6 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
   const [s, setS] = useState<GameState>(fresh);
   const [ready, setReady] = useState(false);
   const [, tick] = useState(0);
-  const loaded = useRef(false);
 
   useEffect(() => {
     try {
@@ -49,20 +50,21 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
     } catch {
       /* private mode or blocked storage: play without saving */
     }
-    loaded.current = true;
     setReady(true);
     const id = setInterval(() => tick((n) => n + 1), 30_000); // refresh booster countdown
     return () => clearInterval(id);
   }, []);
 
   useEffect(() => {
-    if (!loaded.current) return;
+    // `ready` is state, not a ref: in the render that loads the save, it's still false here, so the blank
+    // starting state is never written over the player's progress.
+    if (!ready) return;
     try {
       localStorage.setItem(KEY, JSON.stringify(s));
     } catch {
       /* ignore */
     }
-  }, [s]);
+  }, [s, ready]);
 
   const boosterActive = s.boosterUntil > Date.now();
 
@@ -147,6 +149,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
       activateBooster,
       spendHindsight,
       claimQuest,
+      playDaily: (call, optionId) => setS((x) => applyDaily(x, call, optionId)),
       setSetting: (k, v) => setS((x) => ({ ...x, settings: { ...x.settings, [k]: v } })),
       setName: (n) => setS((x) => ({ ...x, name: n.slice(0, 20) || "You" })),
       reset: () => setS(fresh()),

@@ -1,4 +1,4 @@
-import type { Grade, TraitKey } from "./hotseat-types";
+import type { DailyCall, Grade, TraitKey } from "./hotseat-types";
 import { DEMOTE, leagueRows, PROMOTE } from "./league.ts";
 
 /* ------------------------------------------------------------------ */
@@ -55,6 +55,21 @@ export interface GameState {
   badges: string[];
   traits: Record<TraitKey, number>;
   settings: { voice: boolean; lang: "en" | "hi" | "ta" | "bn" };
+  /** Today's Daily Call, saved the moment it's locked in so closing the app can't buy a second try. */
+  daily: { day: string; id: string; optionId: string; grade: Grade; xp: number } | null;
+  /** Takeaways from past Daily Calls, newest first (last 60). */
+  dailyLog: DailyNote[];
+}
+
+export interface DailyNote {
+  day: string;
+  company: string;
+  title: string;
+  choice: string;
+  grade: Grade;
+  real: boolean;
+  takeaway: string;
+  better?: string;
 }
 
 export const today = (d = new Date()) =>
@@ -89,6 +104,8 @@ export function fresh(): GameState {
     badges: [],
     traits: { horizon: 0, risk: 0, disrupt: 0 },
     settings: { voice: true, lang: "en" },
+    daily: null,
+    dailyLog: [],
   };
 }
 
@@ -138,3 +155,39 @@ export function touchStreak(x: GameState, now = new Date()): GameState {
 
 /** XP for a Daily Call: by grade, doubled while a booster runs. */
 export const dailyXp = (grade: Grade, boosted: boolean) => ECONOMY.dailyXp[grade] * (boosted ? 2 : 1);
+
+/**
+ * Lock in today's Daily Call: one play per day. Counts as a decision for the streak and quests, pays dailyXp,
+ * and saves the takeaway. A second play the same day returns the state unchanged.
+ */
+export function applyDaily(s: GameState, call: DailyCall, optionId: string, now = new Date()): GameState {
+  const day = today(now);
+  if (s.daily?.day === day) return s;
+  const option = call.options.find((o) => o.id === optionId);
+  if (!option) return s;
+  const xp = dailyXp(option.grade, s.boosterUntil > now.getTime());
+  const x = touchStreak(rollover(s, now), now);
+  const note: DailyNote = {
+    day,
+    company: call.company,
+    title: call.title,
+    choice: option.label,
+    grade: option.grade,
+    real: !!option.real,
+    takeaway: option.takeaway,
+    better: option.better,
+  };
+  return {
+    ...x,
+    xp: x.xp + xp,
+    league: { ...x.league, weeklyXp: x.league.weeklyXp + xp },
+    quests: {
+      ...x.quests,
+      decisions: x.quests.decisions + 1,
+      great: x.quests.great + (option.grade === "great" ? 1 : 0),
+      xp: x.quests.xp + xp,
+    },
+    daily: { day, id: call.id, optionId, grade: option.grade, xp },
+    dailyLog: [note, ...x.dailyLog].slice(0, 60),
+  };
+}
