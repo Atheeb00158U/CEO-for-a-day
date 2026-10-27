@@ -2,7 +2,7 @@
 // Loaded by Node in the hotseat CLI, so: relative .ts imports, type-only imports for types, no path aliases.
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { basename, extname, join } from "node:path";
-import { callsPerRun, choose, resolveNode, score, startRun, type RunState } from "./engine.ts";
+import { callsPerRun, choose, debriefKey, resolveNode, score, startRun, type RunState } from "./engine.ts";
 import { HotSeatSchema } from "./hotseat-schema.ts";
 import type { EndingNode, HotSeat, Media } from "./hotseat-types";
 import { voiceLines } from "./voice-lines.ts";
@@ -111,6 +111,19 @@ export function checkHotSeat(dir: string, audioDir = AUDIO_DIR): CheckResult {
   for (const f of onDisk) if (!used.has(f)) warnings.push(`media/${f} is not used`);
   for (const l of voiceLines([hs]))
     if (!existsSync(join(audioDir, `${l.id}.mp3`))) soft(`no audio for "${l.text.slice(0, 50)}…" (${l.id})`);
+
+  // Pre-written debriefs: a key that matches no path is left over from an edit and will never be shown.
+  const debriefsFile = join(dir, "debriefs.json");
+  if (existsSync(debriefsFile)) {
+    try {
+      const paths = new Set(runs.map((r) => debriefKey(r.state.picks)));
+      for (const key of Object.keys(JSON.parse(readFileSync(debriefsFile, "utf8")))) {
+        if (!paths.has(key)) warnings.push(`debriefs.json has "${key}", which no path matches any more`);
+      }
+    } catch (e) {
+      errors.push(`debriefs.json: ${(e as Error).message}`);
+    }
+  }
 
   return { ...result, stats: { paths: runs.length, endings, scores: [Math.min(...scores), Math.max(...scores)], calls } };
 }

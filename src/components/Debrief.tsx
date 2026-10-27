@@ -1,11 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { buildDebrief, type RunState } from "@/lib/engine";
+import { buildDebrief, reviewedDebrief, type Debriefs, type RunState } from "@/lib/engine";
 import type { EndingNode, HotSeat } from "@/lib/hotseat-types";
 import { BADGES, ECONOMY, useGame, type RunRecord } from "@/lib/store";
 import { stopVoice } from "@/lib/voice";
 import { Card, Icon } from "./ui";
+
+// Loaded only when a debrief opens, as its own chunk.
+const DEBRIEFS = import.meta.glob<Debriefs>("/content/hotseats/*/debriefs.json", { import: "default" });
 
 const GRADE = {
   great: { c: "var(--color-green)", t: "Great" },
@@ -35,6 +38,12 @@ export function Debrief({
 }) {
   const { s } = useGame();
   const d = buildDebrief(hs, run);
+  const [written, setWritten] = useState<string>();
+  useEffect(() => {
+    DEBRIEFS[`/content/hotseats/${hs.id}/debriefs.json`]?.()
+      .then((all) => setWritten(reviewedDebrief(all, run.picks)))
+      .catch(() => {}); // offline or missing: the assembled takeaways below still show
+  }, [hs.id, run.picks]);
   const [shown, setShown] = useState(0);
   useEffect(() => {
     stopVoice();
@@ -115,10 +124,15 @@ export function Debrief({
       <Card className="border-blue/40 bg-blue/5">
         <h2 className="text-[19px] font-black">Your key takeaways</h2>
         <p className="text-[13px] font-bold text-muted">Saved to your notes, written for the calls you made.</p>
+        {written
+          ? written.split(/\n\s*\n/).map((para, i) => (
+              <p key={i} className="mt-3 text-[15px] font-bold leading-snug">
+                {para}
+              </p>
+            ))
+          : null}
         <ul className="mt-3 flex list-disc flex-col gap-2 pl-5 text-[15px] font-bold leading-snug marker:text-blue">
-          {d.patterns.map((p) => (
-            <li key={p}>{p}</li>
-          ))}
+          {!written && d.patterns.map((p) => <li key={p}>{p}</li>)}
           {d.lines.map((l, i) => (
             <li key={i}>{l.takeaway}</li>
           ))}

@@ -18,7 +18,8 @@
     "hotseat:new": "node scripts/hotseat.mjs new",
     "hotseat:tree": "node scripts/hotseat.mjs tree",
     "media": "node scripts/media.mjs",
-    "narrate": "npm run -s voices && python3 scripts/narrate.py voice-lines.json public/audio \"$KOKORO_MODEL\" \"$KOKORO_VOICES\""
+    "narrate": "npm run -s voices && python3 scripts/narrate.py voice-lines.json public/audio \"$KOKORO_MODEL\" \"$KOKORO_VOICES\"",
+    "debriefs": "node scripts/debriefs.mjs"
   },
   "dependencies": {
     "next": "16.4.1",
@@ -26,6 +27,7 @@
     "react-dom": "19.3.0"
   },
   "devDependencies": {
+    "@anthropic-ai/sdk": "1.3.0",
     "@tailwindcss/postcss": "4.3.3",
     "@types/node": "22.20.4",
     "@types/react": "19.2.16",

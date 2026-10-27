@@ -1,6 +1,17 @@
 import { describe, expect, it } from "vitest";
 import { CATALOG, HOT_SEATS } from "@/content/catalog";
-import { buildDebrief, callsPerRun, choose, playerOrder, resolveNode, score, startRun, type RunState } from "./engine";
+import {
+  buildDebrief,
+  callsPerRun,
+  choose,
+  debriefKey,
+  playerOrder,
+  reviewedDebrief,
+  resolveNode,
+  score,
+  startRun,
+  type RunState,
+} from "./engine";
 import type { DecisionNode, EndingNode, HotSeat } from "./hotseat-types";
 
 const kodak = HOT_SEATS.kodak;
@@ -159,5 +170,20 @@ describe("callsPerRun", () => {
       },
     };
     expect(callsPerRun(branching)).toBe(2);
+  });
+});
+
+describe("pre-written debriefs", () => {
+  const { s } = play(["shelve", "study", "prints", "inkjet"]);
+  const key = "d1:shelve>d2:study>d3:prints>d4:inkjet";
+
+  it("keys a path by node and option", () => {
+    expect(debriefKey(s.picks)).toBe(key);
+  });
+
+  it("only uses reviewed drafts", () => {
+    expect(reviewedDebrief({ [key]: { text: "Draft", reviewed: false } }, s.picks)).toBeUndefined();
+    expect(reviewedDebrief({ [key]: { text: "Checked", reviewed: true } }, s.picks)).toBe("Checked");
+    expect(reviewedDebrief(undefined, s.picks)).toBeUndefined();
   });
 });
