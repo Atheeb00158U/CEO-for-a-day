@@ -38,7 +38,7 @@ export function speak(text: string, voice = NARRATOR, progress?: (p: number) => 
   const fallback = () => speakBrowser(text, voice, done);
   if (!id) return fallback();
   audio = audio ?? new Audio();
-  audio.src = `./audio/${id}.mp3`;
+  audio.src = `/audio/${id}.mp3`;
   audio.onended = done;
   audio.onerror = fallback;
   const loop = () => {

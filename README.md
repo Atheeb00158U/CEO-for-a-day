@@ -15,7 +15,6 @@ npm run dev          # http://localhost:3000
 | `npm run treemap -- kodak` | Prints a Mermaid diagram of a Hot Seat's full decision tree |
 | `npm run voices` | Lists every narrated line in `voice-lines.json` |
 | `python3 scripts/narrate.py voice-lines.json public/audio <model.onnx> <voices.npz>` | Pre-generates Kokoro narration |
-| `PREVIEW_EXPORT=1 npm run build` | Static export to `out/` with relative paths |
 
 ## Where things live
 - `content/hotseats/kodak/`: the Kodak Hot Seat (`hotseat.json` + `media/`)

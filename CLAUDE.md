@@ -21,7 +21,6 @@ UI components: use shadcn/ui, restyled to this look. Add gluestack-ui only if we
 - `npm run validate`: run this after any Hot Seat edit
 - `npm run treemap -- kodak`
 - `npm run voices`, then `scripts/narrate.py`: regenerate narration after text edits
-- `PREVIEW_EXPORT=1 npm run build`: static export to `out/` with relative paths
 
 ## The build plan
 Follow `docs/BUILD-PLAN.md` phase by phase and tick items off as you finish them. `HANDOFF.md` has the kickoff instructions.
