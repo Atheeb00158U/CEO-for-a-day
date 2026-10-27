@@ -74,6 +74,19 @@ describe("hotseat:check catches broken Hot Seats", () => {
     expect(Object.keys(r.stats!.endings).sort()).toEqual(["collapse", "fired", "legend", "survivor"]);
   });
 
+  it("needs a real option only on decisions the real company faced", () => {
+    // d2b is reachable only after the alternate "unit" call, so it may (and must) have no real option.
+    const branch = (hs: Json, markReal: boolean) => {
+      hs.nodes.d1.options[1].next = "d2b";
+      hs.nodes.d2b = { ...hs.nodes.d2, id: "d2b", options: hs.nodes.d2.options.map((o: Json) => ({ ...o, real: markReal && o.real })) };
+    };
+    expect(fixture("alt-ok", (hs) => branch(hs, false))).not.toMatch(/d2b/);
+    expect(fixture("alt-bad", (hs) => branch(hs, true))).toMatch(/d2b is only reachable on alternate paths/);
+    expect(fixture("real-missing", (hs) => (hs.nodes.d2.options = hs.nodes.d2.options.map((o: Json) => ({ ...o, real: false }))))).toMatch(
+      /d2 is on the real path, so it needs exactly one option marked real \(has 0\)/,
+    );
+  });
+
   it("requires the folder name to match the id", () => {
     expect(fixture("folder", (hs) => (hs.id = "other"))).toMatch(/id "other" must match its folder "folder"/);
   });

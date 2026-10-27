@@ -70,15 +70,20 @@ export function factcheckProblems(dir: string, contentFile: string): string[] {
   return out;
 }
 
-/** Rules every set of options shares, in Hot Seats and Daily Calls. */
+/**
+ * Rules every set of options shares, in Hot Seats and Daily Calls. A decision the real company faced needs exactly one
+ * option marked real; a decision only reachable on alternate paths may have none (the real company never faced it).
+ */
 export function optionProblems(
   at: string,
   options: { id: string; grade: string; real?: boolean; label: string; why: string; takeaway: string; better?: string; outcome: unknown }[],
+  onRealPath = true,
 ): string[] {
   const out: string[] = [];
   if (!options.some((o) => o.grade === "great")) out.push(`${at} needs at least one great option`);
   const real = options.filter((o) => o.real).length;
-  if (real !== 1) out.push(`${at} needs exactly one option marked real (has ${real})`);
+  if (onRealPath && real !== 1) out.push(`${at} is on the real path, so it needs exactly one option marked real (has ${real})`);
+  if (!onRealPath && real > 0) out.push(`${at} is only reachable on alternate paths, so no option may be marked real (has ${real})`);
   for (const o of options) {
     for (const k of ["label", "outcome", "why", "takeaway"] as const) if (!o[k]) out.push(`${at}/${o.id} is missing ${k}`);
     if (o.grade !== "great" && !o.better) out.push(`${at}/${o.id}: ok/bad options need "better"`);
@@ -123,9 +128,25 @@ export function checkHotSeat(dir: string, audioDir = AUDIO_DIR): CheckResult {
       for (const o of n.options) {
         (typeof o.next === "string" ? [o.next] : o.next.map((r) => r.to)).forEach((to) => link(`${n.id}/${o.id}`, to));
       }
-      errors.push(...optionProblems(n.id, n.options));
     }
   }
+  if (errors.length) return result;
+
+  // Follow the real company's calls from the start; those decisions need a real option, the rest must have none.
+  const realDecisions = new Set<string>();
+  let state = startRun(hs);
+  for (let i = 0; i < 50; i++) {
+    const node = resolveNode(hs, state, state.nodeId);
+    if (node.type === "scene") state = { ...state, nodeId: node.next };
+    else if (node.type === "decision") {
+      realDecisions.add(node.id);
+      const real = node.options.find((o) => o.real);
+      if (!real) break;
+      state = choose(hs, state, node, real);
+    } else break;
+  }
+  for (const n of Object.values(hs.nodes))
+    if (n.type === "decision") errors.push(...optionProblems(n.id, n.options, realDecisions.has(n.id)));
   if (errors.length) return result;
 
   // Walk every path.

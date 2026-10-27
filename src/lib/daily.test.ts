@@ -81,7 +81,7 @@ describe("checkDailyPool", () => {
     const twoReal = call("x", { options: call("x").options.map((o) => ({ ...o, real: true })) });
     const noBetter = call("y", { options: call("y").options.map((o) => ({ ...o, better: undefined })) });
     const errors = check("broken", { startDay: "2026-11-01", calls: [twoReal, noBetter, call("y")] }).errors.join("\n");
-    expect(errors).toMatch(/daily x needs exactly one option marked real \(has 3\)/);
+    expect(errors).toMatch(/daily x .*exactly one option marked real \(has 3\)/);
     expect(errors).toMatch(/daily y\/b: ok\/bad options need "better"/);
     expect(errors).toMatch(/daily y: the id is used twice/);
   });
