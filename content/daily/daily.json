@@ -1,0 +1,679 @@
+{
+  "startDay": "2026-11-02",
+  "calls": [
+    {
+      "id": "flipkart-cod-2010",
+      "company": "Flipkart",
+      "year": "2010",
+      "title": "Pay when it arrives",
+      "setup": "You sell books online in India. But few Indians use credit cards. Couriers that collect cash for you take weeks to pay you, and they charge high fees.",
+      "question": "How do you let people pay?",
+      "options": [
+        {
+          "id": "cards",
+          "label": "Accept cards only and grow slowly.",
+          "grade": "bad",
+          "outcome": "Our estimate: the few people with cards buy from you, but most of India never tries your shop.",
+          "why": "If most customers can't pay your way, you have shut the door on them.",
+          "better": "Let customers pay cash at the door, and build your own delivery so the cash comes back fast.",
+          "takeaway": "Your payment method can decide who becomes a customer."
+        },
+        {
+          "id": "own_cod",
+          "label": "Offer cash on delivery, and start your own delivery team.",
+          "grade": "great",
+          "real": true,
+          "outcome": "Flipkart offered cash on delivery and started its own delivery arm as a pilot in December 2010, because it did not want outside couriers holding its cash. That arm, eKart, later grew to serve over 800 cities.",
+          "why": "Customers who didn't trust online shopping could see the product first. And owning delivery meant your cash came back quickly.",
+          "takeaway": "If customers don't trust you yet, let them pay after they see the product."
+        },
+        {
+          "id": "courier_cod",
+          "label": "Offer cash on delivery through outside couriers.",
+          "grade": "ok",
+          "outcome": "Our estimate: more people buy, but your money is stuck with couriers for weeks, and you run short of cash.",
+          "why": "You solved the customer's problem but created a cash problem for yourself.",
+          "better": "Offer cash on delivery and run your own delivery, so the cash reaches you fast.",
+          "takeaway": "Fix the customer's problem without creating a cash problem."
+        }
+      ],
+      "realHistory": "Flipkart offered cash on delivery and began its own delivery arm in December 2010. It later grew to serve over 800 cities.",
+      "sources": [
+        {
+          "label": "Can Flipkart Deliver? (Forbes India, 2012)",
+          "url": "https://www.forbesindia.com/article/boardroom/can-flipkart-deliver/33240/1"
+        },
+        {
+          "label": "Flipkart: Born to race (Forbes India, 2018)",
+          "url": "https://www.forbesindia.com/article/walmarts-mega-flipkart-deal/flipkart-born-to-race/50255/1"
+        }
+      ],
+      "draft": true
+    },
+    {
+      "id": "nirma-1969",
+      "company": "Nirma",
+      "year": "1969",
+      "title": "A quarter of the price",
+      "setup": "You make washing powder at home. The big brand, Surf, sells at Rs 13 a kilo, and most families can't afford it.",
+      "question": "How do you price your powder?",
+      "options": [
+        {
+          "id": "near_surf",
+          "label": "Price close to Surf, and hope quality wins.",
+          "grade": "bad",
+          "outcome": "Our estimate: shoppers pick the famous brand at the same price, and your powder stays on the shelf.",
+          "why": "Against a famous brand, a similar price gives buyers no reason to switch.",
+          "better": "Price far below Surf for families who could never afford it, and sell to them directly.",
+          "takeaway": "A new brand needs a clear reason to choose it."
+        },
+        {
+          "id": "one_city",
+          "label": "Sell only through shops in your own city.",
+          "grade": "ok",
+          "outcome": "Our estimate: you build a small, loyal following, but growth is slow.",
+          "why": "Starting small is safe, but it leaves the huge market below Surf's price for someone else.",
+          "better": "Go after that huge market directly, with a very low price and door-to-door selling.",
+          "takeaway": "Safe and small can mean someone else takes the big market."
+        },
+        {
+          "id": "quarter",
+          "label": "Price it at Rs 3.50 a kilo and sell door to door.",
+          "grade": "great",
+          "real": true,
+          "outcome": "The founder priced Nirma at Rs 3.50 a kilo and sold it door to door by bicycle. Nirma became India's largest-selling detergent within a decade, and Surf was badly hurt.",
+          "why": "Millions of families wanted washing powder but could not afford the big brand. You built a product for them.",
+          "takeaway": "A huge market often waits below the big brand's price."
+        }
+      ],
+      "realHistory": "Nirma launched at Rs 3.50 a kilo against Surf's Rs 13, sold door to door, and became India's largest-selling detergent within a decade.",
+      "sources": [
+        {
+          "label": "From selling detergent door-to-door on his bicycle (Business Today, 2023)",
+          "url": "https://www.businesstoday.in/visualstories/corporates/from-selling-detergent-door-to-door-on-his-bicycle-to-competing-with-unilever-and-pg-meet-nirma-founder-karsanbhai-patel-and-know-the-tragic-story-behind-the-iconic-nirma-girl-61616-10-09-2023"
+        },
+        {
+          "label": "Multinational Strategies and Developing Countries (Harvard Business School, 2010)",
+          "url": "https://www.hbs.edu/ris/Publication%20Files/10-076_0f98ff7b-1d22-4090-b621-f1a45036a6db.pdf"
+        }
+      ],
+      "draft": true
+    },
+    {
+      "id": "tylenol-1982",
+      "company": "Johnson & Johnson",
+      "year": "1982",
+      "title": "Recall everything?",
+      "setup": "Seven people near Chicago have died after taking Tylenol capsules that someone had poisoned in stores. Tylenol is your best-selling medicine, with 35% of its market.",
+      "question": "What do you do?",
+      "options": [
+        {
+          "id": "chicago",
+          "label": "Recall Tylenol only in the Chicago area.",
+          "grade": "ok",
+          "outcome": "Our estimate: you save money, but people across the country stay afraid and stop buying.",
+          "why": "Fear does not stay inside one city. A small recall looks like you care more about money than safety.",
+          "better": "Recall every bottle across the country, and come back with packaging that can't be tampered with.",
+          "takeaway": "Customers judge you by how much you are willing to lose for their safety."
+        },
+        {
+          "id": "nationwide",
+          "label": "Recall every bottle in the country, whatever it costs.",
+          "grade": "great",
+          "real": true,
+          "outcome": "Johnson & Johnson recalled 31 million bottles across the US, at a cost of $100 million. Tylenol's share fell to 7%. After it came back in tamper-proof packaging, it returned to 35% by the end of 1983.",
+          "why": "You put customer safety above short-term money, and customers trusted you again.",
+          "takeaway": "Putting customer safety first can save the brand."
+        },
+        {
+          "id": "wait",
+          "label": "Warn the public and wait for the police to find the cause.",
+          "grade": "bad",
+          "outcome": "Our estimate: while you wait, more people stop trusting the brand, and every day of silence makes it worse.",
+          "why": "When lives are at risk, waiting looks like you don't care.",
+          "better": "Act at once: recall everything, then fix the packaging.",
+          "takeaway": "In a safety crisis, waiting is a decision too, and usually the wrong one."
+        }
+      ],
+      "realHistory": "Johnson & Johnson recalled 31 million bottles nationwide and relaunched Tylenol in tamper-proof packaging. Its share fell to 7%, then returned to 35% by the end of 1983.",
+      "sources": [
+        {
+          "label": "Tylenol and the legacy of J&J's James Burke (Knowledge at Wharton, 2012)",
+          "url": "https://knowledge.wharton.upenn.edu/?p=12494"
+        }
+      ],
+      "draft": true
+    },
+    {
+      "id": "zoho-university-2004",
+      "company": "Zoho",
+      "year": "2004",
+      "title": "Hire school-leavers",
+      "setup": "Your software company in Chennai needs programmers. Graduates from top colleges are expensive and many want to work abroad. You believe young people without degrees could do as well with training.",
+      "question": "How do you find talent?",
+      "options": [
+        {
+          "id": "top_grads",
+          "label": "Pay more to win graduates from top colleges.",
+          "grade": "ok",
+          "outcome": "Our estimate: you hire good people, but the cost keeps rising and many leave for bigger offers.",
+          "why": "Competing on salary alone is a race where the richest company wins.",
+          "better": "Train your own talent from people others overlook.",
+          "takeaway": "Buying talent is expensive. Building it can be cheaper and more loyal."
+        },
+        {
+          "id": "train",
+          "label": "Train students straight out of school, and pay them while they learn.",
+          "grade": "great",
+          "real": true,
+          "outcome": "In 2004 Zoho started Zoho University, a two-year course for Class 12 students. Students pay no fees and get Rs 10,000 a month. Most are hired by Zoho, and many come from low-income, often rural, families.",
+          "why": "You found talent where others weren't looking, and trained it the way your company works.",
+          "takeaway": "You can train talent instead of buying it."
+        },
+        {
+          "id": "outsource",
+          "label": "Send the coding to outside agencies.",
+          "grade": "bad",
+          "outcome": "Our estimate: work gets done, but you never build your own skilled team, and quality is hard to control.",
+          "why": "For a software company, the people who write the code are the business.",
+          "better": "Build your own team, even if it means training people yourself.",
+          "takeaway": "Don't outsource the thing that makes your company special."
+        }
+      ],
+      "realHistory": "Zoho started Zoho University in 2004, training Class 12 students for two years with a stipend. Most of them go on to work at Zoho.",
+      "sources": [
+        {
+          "label": "Why did Zoho start a school? (Scroll, 2024)",
+          "url": "https://scroll.in/article/1070670/why-did-zoho-start-a-school-for-contextual-knowledge-and-whom-is-it-for"
+        }
+      ],
+      "draft": true
+    },
+    {
+      "id": "chik-sachet-1983",
+      "company": "CavinKare",
+      "year": "1983",
+      "title": "Shampoo for small change",
+      "setup": "Shampoo comes in bottles that most families in small towns can't afford. Your family has already tried selling products in small packets.",
+      "question": "How do you sell your shampoo?",
+      "options": [
+        {
+          "id": "bottles",
+          "label": "Sell in bottles like the big brands, and spend on ads.",
+          "grade": "bad",
+          "outcome": "Our estimate: you fight the big brands on their ground, with less money, and lose.",
+          "why": "Copying the leader's pack and price gives poorer buyers no new reason to try you.",
+          "better": "Make a pack small enough for the customer's pocket.",
+          "takeaway": "Don't fight the leader on the leader's terms."
+        },
+        {
+          "id": "small_bottles",
+          "label": "Sell smaller bottles in cities.",
+          "grade": "ok",
+          "outcome": "Our estimate: a few more people can afford it, but you still miss the villages and small towns.",
+          "why": "Smaller helped, but not small enough for the biggest group of buyers.",
+          "better": "Go all the way down to a single-use packet at a tiny price, sold in rural shops.",
+          "takeaway": "Close to affordable is not affordable."
+        },
+        {
+          "id": "sachet",
+          "label": "Sell single-use packets at a tiny price in rural shops.",
+          "grade": "great",
+          "real": true,
+          "outcome": "CavinKare launched Chik shampoo in 10 ml packets in 1983, at a very low price, and pushed it in rural markets. Within a couple of years Chik became the top shampoo in South India.",
+          "why": "You made the product fit what customers could pay each day, not what the big brands wanted to sell.",
+          "takeaway": "Make the pack small enough for the customer's pocket."
+        }
+      ],
+      "realHistory": "Chik launched 10 ml shampoo packets in 1983 at a very low price and became South India's top shampoo within a couple of years.",
+      "sources": [
+        {
+          "label": "CavinKare tries 'sachet' magic once again (afaqs, 2020)",
+          "url": "https://www.afaqs.com/news/mktg/cavinkare-enters-hand-sanitiser-category-tries-sachet-magic-once-again"
+        },
+        {
+          "label": "The man behind the sachet revolution in India (Madras Musings, 2021)",
+          "url": "https://madrasmusings.com/vol-30-no-17/the-man-behind-the-sachet-revolution-in-india/"
+        }
+      ],
+      "draft": true
+    },
+    {
+      "id": "airbnb-cereal-2008",
+      "company": "Airbnb",
+      "year": "2008",
+      "title": "Sell cereal to stay alive",
+      "setup": "Your startup lets people stay in strangers' homes. Investor after investor has said no. Your money is almost gone.",
+      "question": "What do you do?",
+      "options": [
+        {
+          "id": "quit",
+          "label": "Shut down and take jobs.",
+          "grade": "bad",
+          "outcome": "Our estimate: you are safe, but you will never know if the idea could have worked.",
+          "why": "Many good ideas look bad to investors at first. Quitting early ends the test before it starts.",
+          "better": "Find a creative way to raise a little cash and keep going long enough to prove the idea.",
+          "takeaway": "Early rejection is normal. Quitting is a choice."
+        },
+        {
+          "id": "cards",
+          "label": "Borrow more on your personal credit cards.",
+          "grade": "ok",
+          "outcome": "Our estimate: you survive a few more months, but the debt grows and nothing proves the idea to anyone.",
+          "why": "Debt buys time but does not show anyone why they should believe in you.",
+          "better": "Raise cash in a way that also shows your grit and creativity.",
+          "takeaway": "Buying time is not the same as building proof."
+        },
+        {
+          "id": "cereal",
+          "label": "Design and sell special cereal boxes to raise cash.",
+          "grade": "great",
+          "real": true,
+          "outcome": "The founders designed and sold election-themed cereal boxes at $40 each and raised about $30,000. The hustle impressed the startup programme Y Combinator, which accepted them and invested $20,000.",
+          "why": "You kept the company alive and showed investors exactly the kind of grit they look for.",
+          "takeaway": "Showing grit can win your first backers."
+        }
+      ],
+      "realHistory": "Airbnb's founders sold election-themed cereal boxes at $40 each, raised about $30,000, and won a place and $20,000 from Y Combinator.",
+      "sources": [
+        {
+          "label": "Airbnb's CEO says a $40 cereal box changed the course of the company (Fortune, 2023)",
+          "url": "https://fortune.com/2023/04/19/airbnb-ceo-cereal-box-investors-changed-everything-billion-dollar-company/"
+        }
+      ],
+      "draft": true
+    },
+    {
+      "id": "titan-quartz-1987",
+      "company": "Titan",
+      "year": "1987",
+      "title": "Quartz only",
+      "setup": "A government-owned company rules India's watch market with mechanical watches that need winding. New quartz watches run on a battery and keep better time.",
+      "question": "What kind of watches do you make?",
+      "options": [
+        {
+          "id": "mechanical",
+          "label": "Make mechanical watches like the market leader.",
+          "grade": "bad",
+          "outcome": "Our estimate: you become a smaller copy of the leader, just as the market starts moving to quartz.",
+          "why": "Copying the leader's old technology means you arrive late to the future.",
+          "better": "Build only for the new technology, quartz.",
+          "takeaway": "Don't copy the leader's past."
+        },
+        {
+          "id": "quartz",
+          "label": "Make only quartz watches.",
+          "grade": "great",
+          "real": true,
+          "outcome": "Titan, a joint venture of Tata and the Tamil Nadu government, made only quartz watches. Its first range sold at Rs 350 to 900. The old leader, HMT, went into slow decline, and Titan held over 60% of India's organised watch market by 2012.",
+          "why": "You built for where the technology was going, not where it had been.",
+          "takeaway": "When technology is changing, build for the new thing, not the old one."
+        },
+        {
+          "id": "mix",
+          "label": "Make a mix of both to stay safe.",
+          "grade": "ok",
+          "outcome": "Our estimate: you cover both markets, but your quartz watches don't stand out, and your mechanical ones fade.",
+          "why": "Hedging felt safe, but it split your effort just when one side was winning.",
+          "better": "Commit fully to quartz and be the best at it.",
+          "takeaway": "Half a bet on the future is often a weak bet."
+        }
+      ],
+      "realHistory": "Titan launched in 1987 with quartz watches only, while the old leader HMT stuck with mechanical ones. By 2012 Titan held over 60% of India's organised watch market.",
+      "sources": [
+        {
+          "label": "The timekeeper (Business Today, 2012)",
+          "url": "https://www.businesstoday.in/magazine/cover-story/story/best-ceos-tata-group-titan-industries-bhaskar-bhat-28990-2012-01-12"
+        },
+        {
+          "label": "A Titan of transformation (Tata.com, 2023)",
+          "url": "https://tata.com/newsroom/business/titan-company-india-75-years-independence"
+        }
+      ],
+      "draft": true
+    },
+    {
+      "id": "cadbury-2003",
+      "company": "Cadbury India",
+      "year": "2003",
+      "title": "Worms before Diwali",
+      "setup": "It is October 2003, just before Diwali. Worms have been found in your chocolates in Maharashtra. At first you defended your factory and said you could not watch every shop. The regulator moved to prosecute, and sales are falling.",
+      "question": "What do you do now?",
+      "options": [
+        {
+          "id": "keep_blaming",
+          "label": "Keep saying the factory is fine and the shops are to blame.",
+          "grade": "bad",
+          "outcome": "Our estimate: you may be right about the shops, but parents keep away, and the story stays in the news.",
+          "why": "Even if you are right, blaming others does not make a parent feel safe buying chocolate for a child.",
+          "better": "Fix the problem you can control, like the packaging, and show customers the fix.",
+          "takeaway": "In a crisis, being right is not enough. Customers need to see you act."
+        },
+        {
+          "id": "cut_price",
+          "label": "Cut prices to win buyers back.",
+          "grade": "ok",
+          "outcome": "Our estimate: some buyers return for the discount, but the worry stays, and cheap prices make the brand look desperate.",
+          "why": "A discount fixes price, but the problem was trust.",
+          "better": "Fix the packaging and show people how you make your chocolate.",
+          "takeaway": "Don't answer a trust problem with a discount."
+        },
+        {
+          "id": "fix_show",
+          "label": "Improve the packaging and show people how the chocolate is made.",
+          "grade": "great",
+          "real": true,
+          "outcome": "Cadbury improved its packaging and ran ads in which a famous film star visited the factory. Sales, which had fallen after the news, recovered.",
+          "why": "You fixed what you could control and let customers see it for themselves.",
+          "takeaway": "In a crisis, fix the problem and show the fix."
+        }
+      ],
+      "realHistory": "Cadbury first defended its factory and blamed storage in shops. It then improved its packaging and ran an ad campaign showing its factory, and sales recovered.",
+      "sources": [
+        {
+          "label": "Cadbury worm controversy (IPS News, 2003)",
+          "url": "https://www.ipsnews.net/?p=7712"
+        },
+        {
+          "label": "Previous food and beverage scares in India (The National, 2015)",
+          "url": "https://thenationalnews.com/business/previous-food-and-beverage-scares-in-india-1.635709"
+        }
+      ],
+      "draft": true
+    },
+    {
+      "id": "hul-wheel",
+      "company": "Hindustan Lever",
+      "year": "1980s",
+      "title": "Answer the cheap rival",
+      "setup": "You make Surf, India's leading washing powder. A cheap new powder called Nirma is taking millions of customers who never bought Surf, and now some who did.",
+      "question": "How do you respond?",
+      "options": [
+        {
+          "id": "ignore",
+          "label": "Ignore it. Nirma is for people who can't afford us anyway.",
+          "grade": "bad",
+          "outcome": "Our estimate: Nirma keeps growing, and by the time you act, it is the biggest name in the market.",
+          "why": "Cheap rivals start with customers you don't want, then move up to the ones you do.",
+          "better": "Launch your own low-price brand early, and keep Surf as the premium one.",
+          "takeaway": "Never dismiss a cheap rival because its first customers aren't yours."
+        },
+        {
+          "id": "second_brand",
+          "label": "Launch your own cheap brand, and keep Surf premium.",
+          "grade": "great",
+          "real": true,
+          "outcome": "Hindustan Lever launched a low-cost brand, Wheel, to fight Nirma, and kept Surf as its premium brand. But its answer came only after a long delay. The shock changed how Unilever sold in poorer markets, including selling small packets.",
+          "why": "A second brand let you fight on price without cheapening Surf. The mistake was waiting so long.",
+          "takeaway": "When a cheap rival attacks, fight with a second brand, and fight early."
+        },
+        {
+          "id": "cut_surf",
+          "label": "Cut Surf's price to match.",
+          "grade": "ok",
+          "outcome": "Our estimate: you win some buyers back, but your profits fall and Surf starts to look ordinary.",
+          "why": "Cutting the price of your premium brand damages it to fight a battle it wasn't built for.",
+          "better": "Fight with a separate cheaper brand, and keep Surf premium.",
+          "takeaway": "Don't cheapen your best brand to fight a price war."
+        }
+      ],
+      "realHistory": "Hindustan Lever answered Nirma with a low-cost brand, Wheel, while keeping Surf premium, but only after a long delay. The lesson shaped Unilever's later push into small packets for poorer markets.",
+      "sources": [
+        {
+          "label": "Multinational Strategies and Developing Countries (Harvard Business School, 2010)",
+          "url": "https://www.hbs.edu/ris/Publication%20Files/10-076_0f98ff7b-1d22-4090-b621-f1a45036a6db.pdf"
+        },
+        {
+          "label": "Hindustan Unilever: how the FMCG giant tailored itself for India (Forbes India, 2024)",
+          "url": "https://www.forbesindia.com/article/leadership/hindustan-unilever-how-fmcg-giant-tailored-itself-for-india/93982/1"
+        }
+      ],
+      "draft": true
+    },
+    {
+      "id": "tata-tetley-2000",
+      "company": "Tata Tea",
+      "year": "2000",
+      "title": "The small fish buys the big fish",
+      "setup": "Tata Tea grows tea but wants to own famous tea brands. Its first try to buy the British brand Tetley, the world's second-biggest tea company, failed for lack of money. Now Tetley is for sale again.",
+      "question": "Do you borrow heavily to buy a brand bigger than you?",
+      "options": [
+        {
+          "id": "slow_brand",
+          "label": "Build your own brand abroad, slowly.",
+          "grade": "ok",
+          "outcome": "Our estimate: you grow abroad step by step, but it takes many years and a lot of advertising to become known.",
+          "why": "Building a global brand from zero is slow and costly.",
+          "better": "Buy a famous brand whose own profits can repay the loan.",
+          "takeaway": "Sometimes buying a brand is faster than building one."
+        },
+        {
+          "id": "plantations",
+          "label": "Buy more tea gardens instead.",
+          "grade": "bad",
+          "outcome": "Our estimate: you grow more tea, but you stay a seller of a raw product while others earn the brand profits.",
+          "why": "More gardens make you bigger in the low-profit part of the business.",
+          "better": "Move into brands, where the profits are.",
+          "takeaway": "Growing bigger in the wrong part of the business is not growth."
+        },
+        {
+          "id": "buy_tetley",
+          "label": "Borrow to buy Tetley.",
+          "grade": "great",
+          "real": true,
+          "outcome": "In 2000 Tata Tea bought Tetley for £271 million, a deal funded largely by borrowing. Tetley became Tata's main global brand, and about two-thirds of Tata Tea's sales later came from the Tetley Group.",
+          "why": "You bought what you could not build quickly, and Tetley's own cash helped repay the loan.",
+          "takeaway": "Borrowing to buy a brand can work if its cash can repay the loan."
+        }
+      ],
+      "realHistory": "Tata Tea bought Tetley in 2000 for £271 million, mostly with borrowed money. Tetley became its main global brand.",
+      "sources": [
+        {
+          "label": "Tata Tea Ltd company history (Encyclopedia.com)",
+          "url": "https://encyclopedia.com/books/politics-and-business-magazines/tata-tea-ltd"
+        },
+        {
+          "label": "Tata buys Tetley tea (Farmers Weekly, 2000)",
+          "url": "https://www.fwi.co.uk/news/tata-buys-tetley-tea"
+        }
+      ],
+      "draft": true
+    },
+    {
+      "id": "starbucks-2008",
+      "company": "Starbucks",
+      "year": "2008",
+      "title": "Close every store for training",
+      "setup": "It is early 2008. Customers say Starbucks coffee and service have slipped. Your returning CEO has a plan that includes better staff training.",
+      "question": "How do you retrain thousands of baristas?",
+      "options": [
+        {
+          "id": "close_all",
+          "label": "Close every US store for one evening to retrain everyone at once.",
+          "grade": "great",
+          "real": true,
+          "outcome": "On 26 February 2008, Starbucks closed nearly 7,100 US stores for one evening to retrain baristas. Many called it a gimmick. Starbucks also closed about 600 weak US stores, and its profit fell sharply that year. By 2010 it posted record results, after a turnaround that included much more than the training evening.",
+          "why": "Closing every store showed staff and customers that quality mattered more than one night of sales.",
+          "takeaway": "Your people are the product, so invest in their skills."
+        },
+        {
+          "id": "batches",
+          "label": "Train staff in small groups, with no closures.",
+          "grade": "ok",
+          "outcome": "Our estimate: training happens, but slowly, and nobody notices that anything has changed.",
+          "why": "Quiet training works, but a turnaround also needs everyone to see that you are serious.",
+          "better": "Make one big, visible move that shows staff and customers quality comes first.",
+          "takeaway": "In a turnaround, people need to see the change, not just hear about it."
+        },
+        {
+          "id": "videos",
+          "label": "Just send training videos to every store.",
+          "grade": "bad",
+          "outcome": "Our estimate: busy staff watch them when they can, and service stays the same.",
+          "why": "Cheap training sends the message that training doesn't matter.",
+          "better": "Invest real time in training, together, so the change sticks.",
+          "takeaway": "How you train shows how much you value your people."
+        }
+      ],
+      "realHistory": "Starbucks closed nearly 7,100 US stores for one evening in February 2008 to retrain baristas, as part of a wider turnaround that led to record results in 2010.",
+      "sources": [
+        {
+          "label": "Starbucks closes 7,100 stores for training (Retail Customer Experience, 2008)",
+          "url": "https://www.retailcustomerexperience.com/news/starbucks-closes-7100-stores-for-training/"
+        },
+        {
+          "label": "Starbucks fiscal 2008 results (SEC filing, 2008)",
+          "url": "https://www.sec.gov/Archives/edgar/data/0000829224/000095013408020062/v50479exv99w1.htm"
+        },
+        {
+          "label": "Starbucks record fiscal 2010 results (SEC filing, 2010)",
+          "url": "https://www.sec.gov/Archives/edgar/data/0000829224/000119312510248069/dex991.htm"
+        }
+      ],
+      "draft": true
+    },
+    {
+      "id": "paper-boat-2013",
+      "company": "Hector Beverages",
+      "year": "2013",
+      "title": "From energy drink to aam panna",
+      "setup": "Your company sells a cheap energy drink, Tzinga, at Rs 25 against Red Bull's Rs 95. One day a co-founder's home-made aam panna gives the team an idea.",
+      "question": "What do you bet on next?",
+      "options": [
+        {
+          "id": "more_ads",
+          "label": "Spend more on ads for the energy drink.",
+          "grade": "bad",
+          "outcome": "Our estimate: sales rise a little, but you are still fighting giants in a market they own.",
+          "why": "More ads for a me-too product rarely beat a famous brand.",
+          "better": "Sell something customers love but can't find in shops.",
+          "takeaway": "Don't outspend giants. Out-think them."
+        },
+        {
+          "id": "juices",
+          "label": "Launch Western-style fruit juices like the big brands.",
+          "grade": "ok",
+          "outcome": "Our estimate: you get on the shelf, but your juices look like everyone else's.",
+          "why": "Copying the big brands' products gives shoppers no reason to choose you.",
+          "better": "Bottle the traditional Indian drinks people grew up with.",
+          "takeaway": "Different beats slightly cheaper."
+        },
+        {
+          "id": "paper_boat",
+          "label": "Bottle traditional Indian drinks like aam panna.",
+          "grade": "great",
+          "real": true,
+          "outcome": "Hector Beverages launched Paper Boat drinks in Delhi and Bengaluru in August 2013, in pouches that cost less to make than cartons. By 2015 Paper Boat made about 90% of the company's sales.",
+          "why": "You sold something customers already loved but couldn't buy in shops.",
+          "takeaway": "Sell what customers already love but can't find in shops."
+        }
+      ],
+      "realHistory": "Hector Beverages launched Paper Boat's traditional Indian drinks in August 2013. Within two years they made about 90% of its sales.",
+      "sources": [
+        {
+          "label": "Bottled nostalgia (Outlook Business, 2015)",
+          "url": "https://outlookbusiness.com/magazine/business/story/bottled-nostalgia-965"
+        }
+      ],
+      "draft": true
+    },
+    {
+      "id": "zerodha-bootstrap",
+      "company": "Zerodha",
+      "year": "2010s",
+      "title": "Say no to investor money",
+      "setup": "Your low-cost online share trading company, founded in 2010, made a profit in its second year. Investors are keen to give you money to grow faster.",
+      "question": "Do you take investor money?",
+      "options": [
+        {
+          "id": "raise_vc",
+          "label": "Take the money and spend big on ads to grow fast.",
+          "grade": "ok",
+          "outcome": "Our estimate: you grow faster, but you now answer to investors who want even faster growth, and costs climb.",
+          "why": "Investor money speeds things up, but it brings pressure that a profitable company may not need.",
+          "better": "If customers already pay you well, grow from your own profits and keep control.",
+          "takeaway": "Money from investors is not free; it comes with their goals."
+        },
+        {
+          "id": "bootstrap",
+          "label": "Grow only from your own profits, and keep ads small.",
+          "grade": "great",
+          "real": true,
+          "outcome": "Zerodha stayed bootstrapped and avoided big ad spending, because its founder did not want to answer to investors. In 2023-24 it made a profit of about Rs 4,700 crore on Rs 8,320 crore of revenue, still without outside investors.",
+          "why": "A profitable business that customers love can fund its own growth and keep control.",
+          "takeaway": "If customers pay you well, you may not need investors."
+        },
+        {
+          "id": "loan",
+          "label": "Take a big loan to grow faster.",
+          "grade": "bad",
+          "outcome": "Our estimate: you grow, but the loan payments eat into your profits every month, and one bad year could hurt badly.",
+          "why": "Debt adds risk to a business that didn't need it.",
+          "better": "Grow from the profits you already make.",
+          "takeaway": "Don't add risk you don't need."
+        }
+      ],
+      "realHistory": "Zerodha never took outside investment. By 2023-24 it made about Rs 4,700 crore in profit.",
+      "sources": [
+        {
+          "label": "Zerodha startup story (Inc42, 2016)",
+          "url": "https://inc42.com/startups/zerodha-startup/"
+        },
+        {
+          "label": "Zerodha FY24 profit (Inc42, 2024)",
+          "url": "https://inc42.com/buzz/zerodha-fy24-profit-jumps-61-yoy-to-inr-4700-cr-revenue-grows-21/"
+        }
+      ],
+      "draft": true
+    },
+    {
+      "id": "zomato-instant-2022",
+      "company": "Zomato",
+      "year": "2022",
+      "title": "The 10-minute promise",
+      "setup": "Food delivery is a race for speed. You could promise food in 10 minutes. Critics warn it could push delivery riders to ride unsafely.",
+      "question": "What do you do?",
+      "options": [
+        {
+          "id": "launch_big",
+          "label": "Announce 10-minute delivery loudly and start in one city.",
+          "grade": "bad",
+          "real": true,
+          "outcome": "Zomato announced Zomato Instant in March 2022 and tried it in Gurugram, saying riders would not be punished for late orders. But daily orders were too low to cover the fixed costs. By February 2023 it was relaunched as Zomato Everyday, home-style meals from Rs 89.",
+          "why": "A bold promise got headlines, but each order did not make money, and the safety worries hurt the brand.",
+          "better": "Test quietly with a few users and prove each order can make money before making big promises.",
+          "takeaway": "A big promise must also make money on each order."
+        },
+        {
+          "id": "test_quietly",
+          "label": "Test quietly with a few customers first.",
+          "grade": "great",
+          "outcome": "Our estimate: you learn how much each fast order really costs before anyone knows, and only grow it if it makes money.",
+          "why": "Quiet tests let you fail cheaply and learn the real numbers.",
+          "takeaway": "Test the money before you announce the promise."
+        },
+        {
+          "id": "safe_promise",
+          "label": "Promise a safer 20 to 30 minutes instead.",
+          "grade": "ok",
+          "outcome": "Our estimate: fewer headlines, but riders stay safe and customers still get fast food.",
+          "why": "A realistic promise is easier to keep, but it doesn't stand out.",
+          "better": "Test a faster option quietly, and only promise it when the numbers work.",
+          "takeaway": "Promise what you can keep, and test the rest."
+        }
+      ],
+      "realHistory": "Zomato launched 10-minute delivery in 2022, but orders were too low to cover costs, and in 2023 it relaunched the service as Zomato Everyday.",
+      "sources": [
+        {
+          "label": "Zomato to rebrand 10-minute delivery service (MediaNama, 2023)",
+          "url": "https://www.medianama.com/2023/01/223-zomato-rebrand-10-minute-delivery-service/"
+        },
+        {
+          "label": "Zomato launches rebranded meal service Zomato Everyday (Inc42, 2023)",
+          "url": "https://inc42.com/?p=385492"
+        }
+      ],
+      "draft": true
+    }
+  ]
+}
