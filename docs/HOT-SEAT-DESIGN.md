@@ -35,7 +35,7 @@ Every path is known in advance, so the debrief is assembled from:
 1. the authored takeaway line for each option the player picked, and
 2. pattern lines triggered by the path (no mistakes; recovered after a mistake; mistakes compounded; protected the core; disrupted yourself; made exactly the real company's calls).
 
-To go further, run a build-time script that enumerates every path (`npm run validate` already does this; Kodak has 79) and asks an LLM **once per path** to write a richer debrief. Store the results keyed by the path (e.g. `shelve>study>network>reinvent`), have a human review them, and ship them as static JSON. Players get LLM-quality personalisation with zero runtime cost and no risk of the model saying something wrong live.
+To go further, `npm run debriefs -- <id>` enumerates every path (Kodak has 79) and asks Claude **once per path**, offline, to write a richer debrief. The drafts go to `content/hotseats/<id>/debriefs.json`, keyed by the path (e.g. `d1:shelve>d2:study>d3:network>d4:reinvent`), with `reviewed: false`. A person reads each one and sets `reviewed: true`; only then does the app show it, in place of the assembled pattern lines. `hotseat:check` warns about drafts whose path no longer exists after an edit. Players get richer personalisation with zero runtime cost and no risk of the model saying something wrong live.
 
 ## Authoring rules
 
@@ -43,8 +43,10 @@ To go further, run a build-time script that enumerates every path (`npm run vali
 - **Every option needs**: outcome, why, takeaway; ok/bad options also need `better`.
 - **Real facts only on real paths.** Alternate-history outcomes must read as plausible estimates, and the UI labels them.
 - **Use 4–6 decisions per Hot Seat**, so a run takes 5–8 minutes.
-- **Validate before shipping**: `npm run validate` walks every path, checks that every ending is reachable, and prints the score range. `npm run treemap -- kodak` prints a Mermaid diagram of the whole tree.
-- **Regenerate the voice lines** after editing text: `npm run voices`, then `scripts/narrate.py`. Lines without audio fall back to the browser's voice.
+- **Start from the template**: `npm run hotseat:new -- <id>` creates `content/hotseats/<id>/hotseat.json` as a draft.
+- **Check before shipping**: `npm run hotseat:check -- <id>` checks the schema and links, walks every path, checks that every ending is reachable, that every image, clip and narrated line exists, and prints the score range. `/admin/<id>` shows every path as a tree; `npm run hotseat:tree -- <id>` writes a Mermaid version.
+- **Media**: `npm run media -- <id> <files…>` makes 1080 px webp images and ≤ 9 s silent clips. Name them uniquely across Hot Seats.
+- **Regenerate the voice lines** after editing text: `npm run narrate`. Lines without audio fall back to the browser's voice.
 
 ## Ordering ("level planning")
 

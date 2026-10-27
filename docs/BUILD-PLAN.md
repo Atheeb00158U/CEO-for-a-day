@@ -32,24 +32,25 @@ This is the plan for taking the prototype in this folder to a launchable product
 
 ## Phase 1: Content pipeline (1–2 days)
 Hot Seats should be data files, not TypeScript.
-- [ ] Move each Hot Seat to `content/hotseats/<id>/hotseat.json` (+ `media/`), validated by a Zod schema generated from `hotseat-types.ts`.
-- [ ] Build a loader that reads all Hot Seats at build time.
-- [ ] Add a CLI: `npm run hotseat:new -- <id>` scaffolds a Hot Seat from a template.
-- [ ] Add a CLI: `npm run hotseat:check -- <id>`, which:
-  - [ ] validates the schema,
-  - [ ] walks every path,
-  - [ ] confirms every ending is reachable,
-  - [ ] checks every ok/bad option has `better`,
-  - [ ] confirms all media files exist,
-  - [ ] confirms every voice line has audio.
-- [ ] Add a CLI: `npm run hotseat:tree -- <id>`, which writes a Mermaid file and an SVG of the tree map.
-- [ ] Build an asset pipeline:
-  - [ ] `scripts/narrate.py` generates the missing narration (Kokoro, voices `af_heart` and `bm_george`).
-  - [ ] A script converts images to webp at 1080 px wide.
-  - [ ] A script trims and compresses clips (≤ 9 s, no audio, H.264).
-- [ ] Write an **LLM pre-generation script** (offline, never at runtime). For each Hot Seat, enumerate every path and draft one richer personalised debrief per path with the Claude API. Save the drafts to `debriefs.json` with `reviewed: false`. The app uses a debrief only when `reviewed: true`, otherwise it falls back to the assembled debrief. Ask for the API key.
-- [ ] Optional authoring UI: a local-only `/studio` route that edits the JSON, shows the tree and plays any path.
-- [ ] **Done when** Kodak runs from JSON exactly as it does today, and a new Hot Seat can be scaffolded and checked from the CLI.
+- [x] Move each Hot Seat to `content/hotseats/<id>/hotseat.json` (+ `media/`), validated by a Zod schema generated from `hotseat-types.ts`. *Hand-written schema plus an exact type-equality check that fails the build if the two drift.*
+- [x] Build a loader that reads all Hot Seats at build time.
+- [x] Add a CLI: `npm run hotseat:new -- <id>` scaffolds a Hot Seat from a template.
+- [x] Add a CLI: `npm run hotseat:check -- <id>`, which:
+  - [x] validates the schema,
+  - [x] walks every path,
+  - [x] confirms every ending is reachable,
+  - [x] checks every ok/bad option has `better`,
+  - [x] confirms all media files exist,
+  - [x] confirms every voice line has audio.
+- [x] Add a CLI: `npm run hotseat:tree -- <id>`, which writes a Mermaid file and an SVG of the tree map. *Writes the Mermaid file; at Atheeb's request the picture is the branded tree at `/admin/<id>` instead of an SVG.*
+- [x] Build an asset pipeline:
+  - [x] `scripts/narrate.py` generates the missing narration (Kokoro, voices `af_heart` and `bm_george`).
+  - [x] A script converts images to webp at 1080 px wide.
+  - [x] A script trims and compresses clips (≤ 9 s, no audio, H.264).
+- [x] Write an **LLM pre-generation script** (offline, never at runtime). For each Hot Seat, enumerate every path and draft one richer personalised debrief per path with the Claude API. Save the drafts to `debriefs.json` with `reviewed: false`. The app uses a debrief only when `reviewed: true`, otherwise it falls back to the assembled debrief. Ask for the API key. *Script done (`npm run debriefs`, Opus 5.5); the first real run waits for the key.*
+- [ ] Optional authoring UI: a local-only `/studio` route that edits the JSON, shows the tree and plays any path. *Skipped for now: `/admin` shows the tree and every path's text.*
+- [x] **Done when** Kodak runs from JSON exactly as it does today, and a new Hot Seat can be scaffolded and checked from the CLI.
+- [x] Added at Atheeb's request: `/` is the website, `/app` the game, `/admin` (password) lists every Hot Seat and shows every path as a tree.
 
 ## Phase 2: More content and the Daily Call (ongoing, starts now)
 - [ ] Write the **Daily Call** format: a one-decision mini Hot Seat that takes about 60 seconds and keeps the streak alive. Add a `daily.json` pool and a schedule.
@@ -98,6 +99,7 @@ Hot Seats should be data files, not TypeScript.
 - [ ] **Done when** a test-mode subscription unlocks Hot Seats and cancelling removes access at the end of the period.
 
 ## Phase 5: Installable app and distribution (2–3 days)
+*Note from Phase 1: the PWA's `scope` and `start_url` are `/app`, and the service worker must never cache `/admin` or 401 responses.*
 - [ ] Make it a PWA:
   - [ ] Manifest and icons.
   - [ ] A service worker that caches the app shell and each played Hot Seat's media.
