@@ -1,53 +1,64 @@
-// Walks every possible path through every registered Hot Seat and checks the tree is complete.
-// Run: npm run validate
-import { describe, expect, it } from "vitest";
-import { callsPerRun, choose, resolveNode, score, startRun, type RunState } from "@/lib/engine";
-import type { EndingNode, HotSeat } from "@/lib/hotseat-types";
-import { HOT_SEATS } from "./catalog";
+// Runs `hotseat:check` on every Hot Seat in content/hotseats. Run: npm run validate
+import { cpSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
+import { afterAll, describe, expect, it } from "vitest";
+import { HOTSEATS_DIR, hotSeatIds } from "@/lib/content-files";
+import { checkHotSeat, mediaCollisions } from "@/lib/hotseat-check";
 
-function walkAll(hs: HotSeat) {
-  const problems: string[] = [];
-  const endings: Record<string, number> = {};
-  const scores: number[] = [];
-  let paths = 0;
-  const calls = callsPerRun(hs);
-  const walk = (state: RunState, trail: string[]) => {
-    let node = resolveNode(hs, state, state.nodeId);
-    while (node.type === "scene") {
-      state = { ...state, nodeId: node.next };
-      node = resolveNode(hs, state, node.next);
-    }
-    if (node.type === "ending") {
-      if (state.picks.length > calls) problems.push(`path longer than callsPerRun (${calls}): ${trail.join(" > ")}`);
-      paths++;
-      endings[node.id] = (endings[node.id] ?? 0) + 1;
-      scores.push(score(hs, state, node as EndingNode));
-      return;
-    }
-    if (node.type !== "decision") throw new Error(`${hs.id}: unexpected node ${node.id}`);
-    if (trail.length > 20) throw new Error(`${hs.id}: path too long, loop? ${trail.join(" > ")}`);
-    for (const opt of node.options) {
-      for (const k of ["outcome", "why", "takeaway", "label"] as const) if (!opt[k]) problems.push(`${node.id}/${opt.id} missing ${k}`);
-      if (opt.grade !== "great" && !opt.better) problems.push(`${node.id}/${opt.id}: ok/bad option needs "better"`);
-      walk(choose(hs, state, node, opt), [...trail, `${node.id}:${opt.id}`]);
-    }
+describe.each(hotSeatIds())("Hot Seat %s", (id) => {
+  it("passes hotseat:check", () => {
+    const r = checkHotSeat(join(HOTSEATS_DIR, id));
+    if (r.stats)
+      console.log(`${id}: ${r.stats.paths} possible playthroughs`, r.stats.endings, `CEO score range ${r.stats.scores.join("–")}`);
+    expect(r.errors).toEqual([]);
+  });
+});
+
+it("has no media names shared between Hot Seats", () => {
+  expect(mediaCollisions(hotSeatIds().map((id) => join(HOTSEATS_DIR, id)))).toEqual([]);
+});
+
+describe("hotseat:check catches broken Hot Seats", () => {
+  const tmp = mkdtempSync(join(tmpdir(), "hotseat-"));
+  afterAll(() => rmSync(tmp, { recursive: true, force: true }));
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- fixtures are deliberately broken JSON
+  type Json = any;
+  /** A copy of Kodak in <tmp>/<name>, changed by `edit`, optionally without its media. Returns the errors. */
+  const fixture = (name: string, edit: (hs: Json) => void, withMedia = true) => {
+    const dir = join(tmp, name);
+    mkdirSync(dir);
+    if (withMedia) cpSync(join(HOTSEATS_DIR, "kodak", "media"), join(dir, "media"), { recursive: true });
+    const hs = { ...JSON.parse(readFileSync(join(HOTSEATS_DIR, "kodak", "hotseat.json"), "utf8")), id: name };
+    edit(hs);
+    writeFileSync(join(dir, "hotseat.json"), JSON.stringify(hs));
+    return checkHotSeat(dir).errors.join("\n");
   };
-  walk(startRun(hs), []);
-  const unreached = Object.values(hs.nodes)
-    .filter((n) => n.type === "ending" && !endings[n.id])
-    .map((n) => n.id);
-  return { problems, endings, scores, paths, unreached };
-}
 
-describe.each(Object.values(HOT_SEATS))("Hot Seat $id", (hs) => {
-  it("has a complete tree", () => {
-    const r = walkAll(hs);
-    console.log(
-      `${hs.company}: ${r.paths} possible playthroughs`,
-      r.endings,
-      `CEO score range ${Math.min(...r.scores)}–${Math.max(...r.scores)}`,
-    );
-    expect(r.problems).toEqual([]);
-    expect(r.unreached, "endings nobody can reach").toEqual([]);
+  it("rejects unknown keys", () => {
+    expect(fixture("typo", (hs) => (hs.nodes.d1.options[0].beter = "x"))).toMatch(/nodes\.d1\.options\.0: Unrecognized key: "beter"/);
+  });
+
+  it("rejects links to missing nodes and mismatched ids", () => {
+    const errors = fixture("links", (hs) => {
+      hs.nodes.d1.options[1].next = "nowhere";
+      hs.nodes.lab.id = "lab2";
+    });
+    expect(errors).toMatch(/d1\/unit links to missing node "nowhere"/);
+    expect(errors).toMatch(/nodes\.lab has id "lab2"/);
+  });
+
+  it("reports unreachable endings and missing media", () => {
+    const errors = fixture("orphan", (hs) => (hs.nodes.orphan = { ...hs.nodes.legend, id: "orphan" }), false);
+    expect(errors).toMatch(/ending "orphan" can't be reached/);
+    expect(errors).toMatch(/media\/c2_prototype\.webp is missing/);
+  });
+
+  it("only warns about missing media for drafts", () => {
+    expect(fixture("draft", (hs) => (hs.draft = true), false)).toBe("");
+  });
+
+  it("requires the folder name to match the id", () => {
+    expect(fixture("folder", (hs) => (hs.id = "other"))).toMatch(/id "other" must match its folder "folder"/);
   });
 });

@@ -14,7 +14,8 @@
     "format:check": "prettier --check .",
     "test": "vitest run",
     "predev": "node scripts/sync-media.mjs",
-    "prebuild": "node scripts/sync-media.mjs"
+    "prebuild": "node scripts/sync-media.mjs",
+    "hotseat:check": "node scripts/hotseat.mjs check"
   },
   "dependencies": {
     "next": "16.4.1",
