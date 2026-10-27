@@ -31,6 +31,8 @@
   },
   "devDependencies": {
     "@anthropic-ai/sdk": "1.3.0",
+    "@emnapi/core": "1.11.3",
+    "@emnapi/runtime": "1.11.3",
     "@tailwindcss/postcss": "4.3.3",
     "@types/node": "22.20.4",
     "@types/react": "19.2.16",
