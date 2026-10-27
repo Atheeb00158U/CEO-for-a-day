@@ -217,7 +217,7 @@ function DecisionView({ run, node, onChoose }: { hs: HotSeat; run: RunState; nod
       {run.trust === 1 && <p className="shake rounded-2xl bg-red/15 px-3 py-2 text-[14px] font-extrabold text-red">Board warning: one more costly call and you&apos;re out.</p>}
       <div className="flex flex-col gap-3" role="radiogroup" aria-label="Options">
         {node.options.map((o, i) => (
-          <button key={o.id} type="button" role="radio" aria-checked={sel === o.id} aria-pressed={sel === o.id} className="tile flex gap-3" onClick={() => setSel(o.id)}>
+          <button key={o.id} type="button" role="radio" aria-checked={sel === o.id} className="tile flex gap-3" onClick={() => setSel(o.id)}>
             <span className="grid size-7 shrink-0 place-items-center rounded-lg border-2 border-line text-[13px] font-black text-muted">{i + 1}</span>
             <span>{o.label}</span>
           </button>

@@ -83,7 +83,7 @@ function fresh(): GameState {
 /** Roll daily/weekly state forward: streak freezes, quest reset, league week. */
 function rollover(s: GameState): GameState {
   const t = today();
-  let next = { ...s };
+  const next = { ...s };
   if (next.quests.day !== t) next.quests = { day: t, decisions: 0, great: 0, xp: 0, claimed: [] };
   if (next.lastActiveDay && next.streak > 0) {
     const gap = dayDiff(next.lastActiveDay, t);

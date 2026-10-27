@@ -1,0 +1,4 @@
+public/
+*.md
+voice-lines.json
+package-lock.json
