@@ -31,7 +31,7 @@
       "type": "scene",
       "year": "1984",
       "media": "img:nc_intro",
-      "text": "It is 1984. Coca-Cola is the best-selling soft drink in the world, and its taste has not changed since 1886. But for 15 years in a row, your lead over your biggest rival has been shrinking. Since 1975, Pepsi has run the Pepsi Challenge: people taste two colas without seeing the names, and more of them pick Pepsi.",
+      "text": "It is 1984. Coca-Cola is the best-selling soft drink in the world, and its formula has barely changed in nearly 100 years. But for 15 years in a row, your lead over your biggest rival has been shrinking. Since 1975, Pepsi has run the Pepsi Challenge: people taste two colas without seeing the names, and more of them pick Pepsi.",
       "next": "d1"
     },
     "d1": {
@@ -163,7 +163,7 @@
           },
           "next": "d3",
           "media": "img:nc_d2_replace",
-          "outcome": "On April 23, 1985, at an event in New York, Coca-Cola announced its first new formula in 99 years. The old recipe was taken off the market. Coca-Cola's shares fell and Pepsi's rose. Pepsi gave its staff a day off and ran full-page newspaper ads. Pepsi's sales that month were 14% higher than a year before.",
+          "outcome": "On April 23, 1985, at an event in New York, Coca-Cola announced its first new formula in 99 years. The old recipe was taken off the market. Pepsi gave its staff a day off and ran full-page newspaper ads.",
           "why": "You took away something millions of people loved, and you trusted a sip test more than their feelings. The warning signs were in your own research.",
           "better": "Sell the new taste as an extra drink, or test it in a few cities first, and never take the old one away.",
           "takeaway": "In 1985 you took away what fans loved because a test said they would like something else.",
@@ -202,7 +202,7 @@
       "year": "1985",
       "title": "The fans fight back",
       "media": "img:nc_d3",
-      "setup": "Within weeks, angry calls pour in. By June your hotline gets 1,500 calls a day, up from 400. About 40,000 letters arrive. Fans form protest groups, and one says it has 100,000 members. Some people buy up all the old Coke they can find. A poll finds only 13 in 100 soda drinkers like the new taste.",
+      "setup": "Within weeks, angry calls pour in. By June your hotline gets 1,500 calls a day, up from 400. About 40,000 letters arrive. Fans form protest groups, and one says it has signed up 100,000 supporters. Some people buy up all the old Coke they can find. A poll finds only 13 in 100 soda drinkers like the new taste.",
       "question": "Your fans are furious. What do you do?",
       "advisor": "Your tests said people love the new taste. Your phones are saying something else.",
       "options": [
@@ -506,7 +506,7 @@
           "when": {
             "flags": ["classic", "both"]
           },
-          "text": "By the end of 1985, Coca-Cola Classic was selling well ahead of both the new drink and Pepsi. The sweeter recipe became a small side drink and was dropped in 2002. In 2009 the word Classic came off the label: it was just Coca-Cola again. Coca-Cola came out of the mess stronger, after learning in public how much its fans loved the old taste."
+          "text": "By the end of 1985, Coca-Cola Classic was selling well ahead of both the new drink and Pepsi. The sweeter recipe became a small side drink and was dropped in 2002. In 2009 the word Classic came off the label in North America: it was just Coca-Cola again. Coca-Cola came out of the mess stronger, after learning in public how much its fans loved the old taste."
         },
         {
           "text": "Our estimate: you made some costly moves, but you listened in time. Your fans stay with you, and Coke stays ahead of Pepsi."
