@@ -1,5 +1,6 @@
 // Checks one Hot Seat folder: schema, tree, media and narration. Used by `npm run hotseat:check` and the tests.
 // Loaded by Node in the hotseat CLI, so: relative .ts imports, type-only imports for types, no path aliases.
+import { createHash } from "node:crypto";
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { basename, extname, join } from "node:path";
 import { callsPerRun, choose, debriefKey, resolveNode, score, startRun, type RunState } from "./engine.ts";
@@ -48,6 +49,25 @@ export function mediaFiles(hs: HotSeat): Set<string> {
     if (n.type === "decision") for (const o of n.options) refs.push(o.media);
   }
   return new Set(refs.map((m) => m.replace(/^img:(.*)$/, "$1.webp").replace(/^vid:(.*)$/, "$1.mp4")));
+}
+
+/**
+ * factcheck.md must be for this exact content file: its "checked-sha256:" line is the hash of the file it checked,
+ * and no claim may still be marked [unsupported] or [contradicted]. See docs/AUTHORING.md.
+ */
+export function factcheckProblems(dir: string, contentFile: string): string[] {
+  const report = join(dir, "factcheck.md");
+  if (!existsSync(report)) return ["no factcheck.md yet; run the fact-check (docs/AUTHORING.md)"];
+  const text = readFileSync(report, "utf8");
+  const stamped = text.match(/^checked-sha256: ([0-9a-f]{64})$/m)?.[1];
+  const actual = createHash("sha256")
+    .update(readFileSync(join(dir, contentFile)))
+    .digest("hex");
+  const out: string[] = [];
+  if (stamped !== actual) out.push(`factcheck.md was made for a different version of ${contentFile}; check the changes and re-stamp it`);
+  const open = text.match(/^- \[(unsupported|contradicted)\]/gm)?.length ?? 0;
+  if (open) out.push(`factcheck.md still has ${open} unsupported or contradicted claim(s)`);
+  return out;
 }
 
 /** Rules every set of options shares, in Hot Seats and Daily Calls. */
@@ -125,7 +145,11 @@ export function checkHotSeat(dir: string, audioDir = AUDIO_DIR): CheckResult {
   for (const f of used) if (!onDisk.has(f)) soft(`media/${f} is missing`);
   for (const f of onDisk) if (!used.has(f)) warnings.push(`media/${f} is not used`);
   for (const l of voiceLines([hs]))
-    if (!existsSync(join(audioDir, `${l.id}.mp3`))) soft(`no audio for "${l.text.slice(0, 50)}…" (${l.id})`);
+    // Missing audio is only a warning: the app falls back to the browser's voice, and narration is recorded
+    // on Atheeb's Mac in batches, so a text fix (often a fact fix) must never wait for it.
+    if (!existsSync(join(audioDir, `${l.id}.mp3`))) warnings.push(`no audio for "${l.text.slice(0, 50)}…" (${l.id}); run npm run narrate`);
+
+  for (const p of factcheckProblems(dir, "hotseat.json")) soft(p);
 
   // Pre-written debriefs: a key that matches no path is left over from an edit and will never be shown.
   const debriefsFile = join(dir, "debriefs.json");
@@ -189,9 +213,12 @@ export function checkDailyPool(dir: string, today: string, audioDir = AUDIO_DIR)
       if (!onDisk.has(f)) soft(`daily ${c.id}: media/${f} is missing`);
     }
     for (const l of voiceLines([], [c]))
-      if (!existsSync(join(audioDir, `${l.id}.mp3`))) soft(`daily ${c.id}: no audio for "${l.text.slice(0, 40)}…"`);
+      if (!existsSync(join(audioDir, `${l.id}.mp3`)))
+        warnings.push(`daily ${c.id}: no audio for "${l.text.slice(0, 40)}…"; run npm run narrate`);
   }
   for (const f of onDisk) if (!used.has(f)) warnings.push(`daily media/${f} is not used`);
+  const anyPublished = pool.calls.some((c) => !c.draft);
+  for (const p of factcheckProblems(dir, "daily.json")) (anyPublished ? errors : warnings).push(`daily: ${p}`);
 
   // The order of the list is the schedule; warn before it runs out.
   const n = Math.round((Date.parse(today) - Date.parse(pool.startDay)) / 864e5);

@@ -4,7 +4,8 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterAll, describe, expect, it } from "vitest";
 import { DAILY_DIR, HOTSEATS_DIR, hotSeatIds } from "@/lib/content-files";
-import { checkDailyPool, checkHotSeat, mediaCollisions } from "@/lib/hotseat-check";
+import { checkDailyPool, checkHotSeat, factcheckProblems, mediaCollisions } from "@/lib/hotseat-check";
+import { createHash } from "node:crypto";
 import { today } from "@/lib/game-state";
 
 describe.each(hotSeatIds())("Hot Seat %s", (id) => {
@@ -75,5 +76,34 @@ describe("hotseat:check catches broken Hot Seats", () => {
 
   it("requires the folder name to match the id", () => {
     expect(fixture("folder", (hs) => (hs.id = "other"))).toMatch(/id "other" must match its folder "folder"/);
+  });
+});
+
+describe("factcheck.md", () => {
+  const tmp = mkdtempSync(join(tmpdir(), "factcheck-"));
+  afterAll(() => rmSync(tmp, { recursive: true, force: true }));
+  const setup = (name: string, report?: (hash: string) => string) => {
+    const dir = join(tmp, name);
+    mkdirSync(dir);
+    writeFileSync(join(dir, "hotseat.json"), '{"id":"x"}');
+    const hash = createHash("sha256").update('{"id":"x"}').digest("hex");
+    if (report) writeFileSync(join(dir, "factcheck.md"), report(hash));
+    return factcheckProblems(dir, "hotseat.json").join("\n");
+  };
+
+  it("passes when the stamp matches and every claim is supported", () => {
+    expect(setup("ok", (h) => `# Fact-check\nchecked-sha256: ${h}\n\n- [supported] A claim — [1]\n`)).toBe("");
+  });
+
+  it("needs a report", () => {
+    expect(setup("none")).toMatch(/no factcheck.md yet/);
+  });
+
+  it("needs the stamp to match the current file", () => {
+    expect(setup("stale", () => `checked-sha256: ${"0".repeat(64)}\n`)).toMatch(/different version of hotseat.json/);
+  });
+
+  it("refuses open claims", () => {
+    expect(setup("open", (h) => `checked-sha256: ${h}\n- [unsupported] X\n- [contradicted] Y\n`)).toMatch(/2 unsupported or contradicted/);
   });
 });

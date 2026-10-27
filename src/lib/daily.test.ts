@@ -86,10 +86,10 @@ describe("checkDailyPool", () => {
     expect(errors).toMatch(/daily y: the id is used twice/);
   });
 
-  it("needs media and audio for published calls, but only warns for drafts", () => {
+  it("needs media for published calls, only warns about audio, and only warns for drafts", () => {
     const published = check("published", { startDay: "2026-11-01", calls: [call("p", { draft: false, media: "img:nothing" })] });
     expect(published.errors.join("\n")).toMatch(/daily p: media\/nothing\.webp is missing/);
-    expect(published.errors.join("\n")).toMatch(/daily p: no audio/);
+    expect(published.warnings.join("\n")).toMatch(/daily p: no audio/);
     expect(check("draft", { startDay: "2026-11-01", calls: [call("d", { media: "img:nothing" })] }).errors).toEqual([]);
   });
 
