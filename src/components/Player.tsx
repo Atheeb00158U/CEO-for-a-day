@@ -40,7 +40,6 @@ export function Player({ hotSeatId, onExit, onNotes }: { hotSeatId: string; onEx
   };
 
   const onChoose = (node: DecisionNode, opt: Option) => {
-    game.recordDecision(opt.grade);
     const next = choose(hs, run, node, opt);
     setPhase({ kind: "reveal", node, option: opt, before: run });
     setRun(next);
@@ -132,7 +131,11 @@ export function Player({ hotSeatId, onExit, onNotes }: { hotSeatId: string; onEx
           canHindsight={!usedHindsight && game.s.hindsights > 0 && phase.option.grade !== "great"}
           hindsights={game.s.hindsights}
           onHindsight={onHindsight}
-          onNext={() => setPhase(toPhase(hs, run))}
+          onNext={() => {
+            // Counted here, not at "Lock it in", so a Hindsight redo never counts the undone pick.
+            game.recordDecision(phase.option.grade);
+            setPhase(toPhase(hs, run));
+          }}
         />
       )}
       {phase.kind === "ending" && <EndingView key={phase.node.id} run={run} node={phase.node} onNext={() => finish(phase.node)} />}
