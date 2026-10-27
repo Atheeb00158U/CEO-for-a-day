@@ -18,6 +18,7 @@ export function Debrief({
   run,
   ending,
   record,
+  badgesBefore,
   onExit,
   onNotes,
   onReplay,
@@ -26,6 +27,8 @@ export function Debrief({
   run: RunState;
   ending: EndingNode;
   record: RunRecord;
+  /** Badges the player had when this run started; only newer ones are shown. */
+  badgesBefore: string[];
   onExit: () => void;
   onNotes: () => void;
   onReplay: () => void;
@@ -40,7 +43,7 @@ export function Debrief({
   }, [record.score]);
   const boosted = record.xp > ECONOMY.completionXp + record.score;
   const ring = 2 * Math.PI * 52;
-  const newBadges = s.badges.filter((b) => BADGES[b]);
+  const newBadges = s.badges.filter((b) => BADGES[b] && !badgesBefore.includes(b));
 
   return (
     <div

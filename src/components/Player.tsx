@@ -28,6 +28,7 @@ export function Player({ hotSeatId, onExit, onNotes }: { hotSeatId: string; onEx
   const [run, setRun] = useState<RunState>(() => startRun(hs));
   const [phase, setPhase] = useState<Phase>(() => toPhase(hs, startRun(hs)));
   const [usedHindsight, setUsedHindsight] = useState(false);
+  const [badgesBefore, setBadgesBefore] = useState(game.s.badges);
   const totalDecisions = useMemo(() => Object.values(hs.nodes).filter((n) => n.type === "decision").length, [hs]);
 
   useEffect(() => () => stopVoice(), []);
@@ -75,12 +76,14 @@ export function Player({ hotSeatId, onExit, onNotes }: { hotSeatId: string; onEx
         run={run}
         ending={phase.node}
         record={phase.record}
+        badgesBefore={badgesBefore}
         onExit={onExit}
         onNotes={onNotes}
         onReplay={() => {
           const r = startRun(hs);
           setRun(r);
           setUsedHindsight(false);
+          setBadgesBefore(game.s.badges);
           setPhase(toPhase(hs, r));
         }}
       />
