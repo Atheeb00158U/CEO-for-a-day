@@ -285,7 +285,7 @@
               "when": {
                 "flags": ["expand", "galidor"]
               },
-              "text": "In 2004 LEGO cut about 1,000 jobs and closed its video game company. Some of its staff set up a new firm that published LEGO games made by an outside studio. Their LEGO Star Wars game came out in 2005 and sold 3.3 million copies by March 2006. DUPLO came back in 2004. In 2005 LEGO sold its four LEGOLAND parks to Merlin Entertainments, owned by Blackstone, for €375 million, and kept 30% of Merlin. The money helped LEGO fix its main business."
+              "text": "In 2004 LEGO cut about 1,000 jobs and closed its video game company. Some of its staff set up a new firm that published LEGO games made by an outside studio. Their LEGO Star Wars game came out in 2005 and sold 3.3 million copies by March 2006. DUPLO came back in 2004. In 2005 LEGO sold its four LEGOLAND parks to Merlin Entertainments, owned by Blackstone, for €375 million, and took a 30% stake in Merlin."
             },
             {
               "text": "Our estimate: you sell the parks to a theme park company and keep a share. You close your game team and let a partner make LEGO games. The cash gives you room to fix the brick business."
@@ -349,7 +349,7 @@
               "when": {
                 "flags": ["expand", "galidor", "core"]
               },
-              "text": "LEGO cut the number of different pieces it made from about 13,000 to 6,000, and stopped making toys that did not sell. It put profit first and growth second. In 2005 LEGO made a profit of 505 million kroner, after losing 1.93 billion kroner in 2004. Sales grew 12% to 7.05 billion kroner, led by Bionicle, DUPLO, LEGO City and LEGO Star Wars."
+              "text": "LEGO cut the number of different pieces it made from about 13,000 to about 6,000–6,500 over several years, and stopped making toys that did not sell. It put profit first and growth second. In 2005 LEGO made a profit of 505 million kroner, after losing 1.93 billion kroner in 2004. Sales grew 12% to 7.05 billion kroner, led by Bionicle, DUPLO, LEGO City and LEGO Star Wars."
             },
             {
               "text": "Our estimate: with about half as many pieces, sets cost less to make and are easier to keep in stock. Designers get more creative inside clear limits, and profit starts to come back."
@@ -508,14 +508,14 @@
       "id": "legend",
       "type": "ending",
       "tier": "legend",
-      "title": "The world's biggest toy maker",
+      "title": "The brick comes back",
       "media": "img:lg_legend",
       "text": [
         {
           "when": {
             "flags": ["expand", "galidor", "core", "cut", "outsource"]
           },
-          "text": "LEGO kept growing. In the first half of 2014 its sales were more than three times what they were in the first half of 2008. The LEGO Movie came out in 2014 and earned about $500 million around the world, and that year LEGO passed Mattel, the maker of Barbie, in half-year sales. By 2015 LEGO was the biggest toy company in the world by sales. A company that almost ran out of cash in 2003 was now the leader."
+          "text": "LEGO kept growing. In the first half of 2014 its sales were more than three times what they were in the first half of 2008. The LEGO Movie came out in 2014 and earned about $470 million around the world, and that year LEGO passed Mattel, the maker of Barbie, in half-year sales. By 2015 LEGO made more profit than any other toy company. A company that almost ran out of cash in 2003 was now one of the strongest in its industry."
         },
         {
           "text": "Our estimate: you kept LEGO close to the brick and fixed problems early. LEGO grows year after year and becomes one of the most loved toy companies in the world."
@@ -552,7 +552,7 @@
     }
   },
   "realEnding": "legend",
-  "realHistory": "In the late 1990s LEGO grew far beyond the brick: theme parks, video games, clothes, electronics and toys like Explore and Galidor. In 2003 it lost about 1.4 billion kroner before tax, its biggest loss ever, and it was almost out of cash. A new CEO took over in 2004. LEGO closed its game company, sold its four LEGOLAND parks for €375 million, brought back DUPLO and cut its pieces from about 13,000 to 6,000. It made a profit again in 2005. A plan to let another company make its bricks failed, and LEGO took the work back in 2008. By 2015 LEGO was the biggest toy company in the world by sales.",
+  "realHistory": "From the late 1990s LEGO grew far beyond the brick: theme parks, video games, clothes, electronics and toys like Explore and Galidor. In 2003 it lost about 1.4 billion kroner before tax, and it was almost out of cash. A new CEO took over in 2004. LEGO closed its game company, sold its four LEGOLAND parks for €375 million, brought back DUPLO and cut its pieces from about 13,000 to about 6,000–6,500 over several years. It made a profit again in 2005. A plan to let another company make its bricks failed, and LEGO took the work back in 2008. By 2015 it made more profit than any other toy company.",
   "sources": [
     {
       "label": "The Lego Group (Wikipedia)",
