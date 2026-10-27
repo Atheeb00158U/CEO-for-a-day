@@ -3,7 +3,8 @@ import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import type { HotSeat } from "./hotseat-types";
 
-export const HOTSEATS_DIR = join(import.meta.dirname, "../../content/hotseats");
+// From the project root (npm scripts, Vitest and Next all run there), so it also works inside the Next server build.
+export const HOTSEATS_DIR = join(process.cwd(), "content/hotseats");
 
 /** Ids of every folder in content/hotseats that has a hotseat.json, sorted. */
 export const hotSeatIds = () =>

@@ -7,7 +7,7 @@ import { HotSeatSchema } from "./hotseat-schema.ts";
 import type { EndingNode, HotSeat, Media } from "./hotseat-types";
 import { voiceLines } from "./voice-lines.ts";
 
-export const AUDIO_DIR = join(import.meta.dirname, "../../public/audio");
+export const AUDIO_DIR = join(process.cwd(), "public/audio");
 
 export interface Run {
   state: RunState;
