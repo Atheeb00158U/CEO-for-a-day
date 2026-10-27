@@ -1,7 +1,7 @@
 // Reads Hot Seat folders from disk, for Node scripts and the hotseat CLI (the app uses import.meta.glob in catalog.ts).
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
-import type { HotSeat } from "./hotseat-types";
+import type { DailyPool, HotSeat } from "./hotseat-types";
 
 // From the project root (npm scripts, Vitest and Next all run there), so it also works inside the Next server build.
 export const HOTSEATS_DIR = join(process.cwd(), "content/hotseats");
@@ -14,3 +14,11 @@ export const hotSeatIds = () =>
 
 /** Parsed but unvalidated; run checkHotSeat before trusting it. */
 export const readHotSeat = (id: string): HotSeat => JSON.parse(readFileSync(join(HOTSEATS_DIR, id, "hotseat.json"), "utf8"));
+
+export const DAILY_DIR = join(process.cwd(), "content/daily");
+
+/** content/daily/daily.json, or an empty pool before the first Daily Call exists. Unvalidated; see checkDailyPool. */
+export const readDailyPool = (): DailyPool =>
+  existsSync(join(DAILY_DIR, "daily.json"))
+    ? JSON.parse(readFileSync(join(DAILY_DIR, "daily.json"), "utf8"))
+    : { startDay: "2026-01-01", calls: [] };

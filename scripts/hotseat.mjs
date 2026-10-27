@@ -5,8 +5,9 @@
 import { execFileSync } from "node:child_process";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import { HOTSEATS_DIR, hotSeatIds, readHotSeat } from "../src/lib/content-files.ts";
-import { checkHotSeat, mediaCollisions } from "../src/lib/hotseat-check.ts";
+import { DAILY_DIR, HOTSEATS_DIR, hotSeatIds, readHotSeat } from "../src/lib/content-files.ts";
+import { checkDailyPool, checkHotSeat, mediaCollisions } from "../src/lib/hotseat-check.ts";
+import { today } from "../src/lib/game-state.ts";
 
 const [cmd, id] = process.argv.slice(2);
 
@@ -23,7 +24,16 @@ function check(ids) {
     for (const w of r.warnings) console.log(`  warning: ${w}`);
     failed ||= r.errors.length > 0;
   }
-  const clashes = mediaCollisions(hotSeatIds().map((x) => join(HOTSEATS_DIR, x)));
+  const daily = checkDailyPool(DAILY_DIR, today());
+  if (daily.errors.length || daily.warnings.length || daily.daysLeft !== undefined) {
+    console.log(
+      `\n${daily.errors.length ? "✗" : "✓"} daily calls${daily.daysLeft !== undefined ? ` (${daily.daysLeft} days left after today)` : ""}`,
+    );
+    for (const e of daily.errors) console.log(`  error: ${e}`);
+    for (const w of daily.warnings) console.log(`  warning: ${w}`);
+  }
+  failed ||= daily.errors.length > 0;
+  const clashes = mediaCollisions([...hotSeatIds().map((x) => join(HOTSEATS_DIR, x)), DAILY_DIR]);
   for (const c of clashes) console.log(`error: ${c}`);
   return failed || clashes.length > 0;
 }

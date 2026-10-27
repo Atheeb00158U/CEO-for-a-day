@@ -1,5 +1,5 @@
 import type { Grade, TraitKey } from "./hotseat-types";
-import { DEMOTE, leagueRows, PROMOTE } from "./league";
+import { DEMOTE, leagueRows, PROMOTE } from "./league.ts";
 
 /* ------------------------------------------------------------------ */
 /* Economy. Tune these in one place.                                   */
@@ -10,6 +10,7 @@ export const ECONOMY = {
   boosterMinutes: 15,
   prices: { freeze: 200, booster: 150, hindsight: 100 },
   starter: { coins: 120, freezes: 1, hindsights: 1, boosters: 1 },
+  dailyXp: { great: 15, ok: 10, bad: 5 } satisfies Record<Grade, number>,
 };
 
 export const LEAGUES = ["Intern", "Manager", "Director", "VP", "CEO", "Tycoon"] as const;
@@ -134,3 +135,6 @@ export function touchStreak(x: GameState, now = new Date()): GameState {
   const badges = streak >= 3 && !x.badges.includes("streak_3") ? [...x.badges, "streak_3"] : x.badges;
   return { ...x, streak, bestStreak: Math.max(x.bestStreak, streak), lastActiveDay: t, badges };
 }
+
+/** XP for a Daily Call: by grade, doubled while a booster runs. */
+export const dailyXp = (grade: Grade, boosted: boolean) => ECONOMY.dailyXp[grade] * (boosted ? 2 : 1);

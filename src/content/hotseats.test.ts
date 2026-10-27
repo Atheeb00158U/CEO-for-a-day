@@ -3,8 +3,9 @@ import { cpSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } f
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterAll, describe, expect, it } from "vitest";
-import { HOTSEATS_DIR, hotSeatIds } from "@/lib/content-files";
-import { checkHotSeat, mediaCollisions } from "@/lib/hotseat-check";
+import { DAILY_DIR, HOTSEATS_DIR, hotSeatIds } from "@/lib/content-files";
+import { checkDailyPool, checkHotSeat, mediaCollisions } from "@/lib/hotseat-check";
+import { today } from "@/lib/game-state";
 
 describe.each(hotSeatIds())("Hot Seat %s", (id) => {
   it("passes hotseat:check", () => {
@@ -16,7 +17,11 @@ describe.each(hotSeatIds())("Hot Seat %s", (id) => {
 });
 
 it("has no media names shared between Hot Seats", () => {
-  expect(mediaCollisions(hotSeatIds().map((id) => join(HOTSEATS_DIR, id)))).toEqual([]);
+  expect(mediaCollisions([...hotSeatIds().map((id) => join(HOTSEATS_DIR, id)), DAILY_DIR])).toEqual([]);
+});
+
+it("has valid Daily Calls", () => {
+  expect(checkDailyPool(DAILY_DIR, today()).errors).toEqual([]);
 });
 
 describe("hotseat:check catches broken Hot Seats", () => {

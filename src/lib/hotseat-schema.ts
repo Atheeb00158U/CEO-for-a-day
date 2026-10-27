@@ -1,7 +1,7 @@
 // Zod schema for Hot Seat JSON. It mirrors hotseat-types.ts; the Eq check at the bottom fails the build if they drift.
 // Loaded by Node in the hotseat CLI, so: type-only imports and no path aliases.
 import { z } from "zod";
-import type { HotSeat } from "./hotseat-types";
+import type { DailyPool, HotSeat } from "./hotseat-types";
 
 const Media = z.union([z.templateLiteral(["img:", z.string()]), z.templateLiteral(["vid:", z.string()])]);
 
@@ -80,7 +80,44 @@ export const HotSeatSchema = z.strictObject({
   credits: z.string(),
 });
 
+const Source = z.strictObject({ label: z.string(), url: z.string() });
+
+export const DailyPoolSchema = z.strictObject({
+  startDay: z.iso.date(),
+  calls: z.array(
+    z.strictObject({
+      id: z.string().regex(/^[a-z0-9-]+$/),
+      company: z.string(),
+      year: z.string(),
+      title: z.string(),
+      media: Media.optional(),
+      setup: z.string(),
+      question: z.string(),
+      advisor: z.string().optional(),
+      options: z
+        .array(
+          z.strictObject({
+            id: z.string(),
+            label: z.string(),
+            grade: z.enum(["great", "ok", "bad"]),
+            real: z.boolean().optional(),
+            outcome: z.string(),
+            why: z.string(),
+            better: z.string().optional(),
+            takeaway: z.string(),
+          }),
+        )
+        .length(3),
+      realHistory: z.string(),
+      sources: z.array(Source).min(1),
+      draft: z.boolean().optional(),
+    }),
+  ),
+});
+
 // Exact type equality (optional fields included): a compile error here means the schema and hotseat-types.ts differ.
 type Eq<A, B> = (<T>() => T extends A ? 1 : 2) extends <T>() => T extends B ? 1 : 2 ? true : false;
 const inSync: Eq<z.infer<typeof HotSeatSchema>, HotSeat> = true;
+const dailyInSync: Eq<z.infer<typeof DailyPoolSchema>, DailyPool> = true;
 void inSync;
+void dailyInSync;

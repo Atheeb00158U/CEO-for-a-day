@@ -3,7 +3,7 @@
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { basename, extname, join } from "node:path";
 import { callsPerRun, choose, debriefKey, resolveNode, score, startRun, type RunState } from "./engine.ts";
-import { HotSeatSchema } from "./hotseat-schema.ts";
+import { DailyPoolSchema, HotSeatSchema } from "./hotseat-schema.ts";
 import type { EndingNode, HotSeat, Media } from "./hotseat-types";
 import { voiceLines } from "./voice-lines.ts";
 
@@ -50,6 +50,22 @@ export function mediaFiles(hs: HotSeat): Set<string> {
   return new Set(refs.map((m) => m.replace(/^img:(.*)$/, "$1.webp").replace(/^vid:(.*)$/, "$1.mp4")));
 }
 
+/** Rules every set of options shares, in Hot Seats and Daily Calls. */
+export function optionProblems(
+  at: string,
+  options: { id: string; grade: string; real?: boolean; label: string; why: string; takeaway: string; better?: string; outcome: unknown }[],
+): string[] {
+  const out: string[] = [];
+  if (!options.some((o) => o.grade === "great")) out.push(`${at} needs at least one great option`);
+  const real = options.filter((o) => o.real).length;
+  if (real !== 1) out.push(`${at} needs exactly one option marked real (has ${real})`);
+  for (const o of options) {
+    for (const k of ["label", "outcome", "why", "takeaway"] as const) if (!o[k]) out.push(`${at}/${o.id} is missing ${k}`);
+    if (o.grade !== "great" && !o.better) out.push(`${at}/${o.id}: ok/bad options need "better"`);
+  }
+  return out;
+}
+
 export interface CheckResult {
   errors: string[];
   warnings: string[];
@@ -86,9 +102,8 @@ export function checkHotSeat(dir: string, audioDir = AUDIO_DIR): CheckResult {
     if (n.type === "decision") {
       for (const o of n.options) {
         (typeof o.next === "string" ? [o.next] : o.next.map((r) => r.to)).forEach((to) => link(`${n.id}/${o.id}`, to));
-        for (const k of ["label", "outcome", "why", "takeaway"] as const) if (!o[k]) errors.push(`${n.id}/${o.id} is missing ${k}`);
-        if (o.grade !== "great" && !o.better) errors.push(`${n.id}/${o.id}: ok/bad options need "better"`);
       }
+      errors.push(...optionProblems(n.id, n.options));
     }
   }
   if (errors.length) return result;
@@ -140,4 +155,49 @@ export function mediaCollisions(dirs: string[]): string[] {
     }
   }
   return clashes;
+}
+
+/** Checks content/daily/daily.json: schema, option rules, media, narration, and how many days of calls are left. */
+export function checkDailyPool(dir: string, today: string, audioDir = AUDIO_DIR): CheckResult & { daysLeft?: number } {
+  const errors: string[] = [];
+  const warnings: string[] = [];
+  const file = join(dir, "daily.json");
+  if (!existsSync(file)) return { errors, warnings };
+  let raw: unknown;
+  try {
+    raw = JSON.parse(readFileSync(file, "utf8"));
+  } catch (e) {
+    return { errors: [`daily.json: ${(e as Error).message}`], warnings };
+  }
+  const parsed = DailyPoolSchema.safeParse(raw);
+  if (!parsed.success) {
+    for (const i of parsed.error.issues) errors.push(`daily.json schema: ${i.path.join(".") || "(root)"}: ${i.message}`);
+    return { errors, warnings };
+  }
+  const pool = parsed.data;
+  const seen = new Set<string>();
+  const onDisk = new Set(existsSync(join(dir, "media")) ? readdirSync(join(dir, "media")) : []);
+  const used = new Set<string>();
+  for (const c of pool.calls) {
+    const soft = (msg: string) => (c.draft ? warnings : errors).push(msg);
+    if (seen.has(c.id)) errors.push(`daily ${c.id}: the id is used twice`);
+    seen.add(c.id);
+    errors.push(...optionProblems(`daily ${c.id}`, c.options));
+    if (c.media) {
+      const f = c.media.replace(/^img:(.*)$/, "$1.webp").replace(/^vid:(.*)$/, "$1.mp4");
+      used.add(f);
+      if (!onDisk.has(f)) soft(`daily ${c.id}: media/${f} is missing`);
+    }
+    for (const l of voiceLines([], [c]))
+      if (!existsSync(join(audioDir, `${l.id}.mp3`))) soft(`daily ${c.id}: no audio for "${l.text.slice(0, 40)}…"`);
+  }
+  for (const f of onDisk) if (!used.has(f)) warnings.push(`daily media/${f} is not used`);
+
+  // The order of the list is the schedule; warn before it runs out.
+  const n = Math.round((Date.parse(today) - Date.parse(pool.startDay)) / 864e5);
+  const daysLeft = Math.max(0, pool.calls.length - Math.max(n, 0) - 1);
+  if (pool.calls.length && n >= pool.calls.length)
+    warnings.push(`the Daily Calls ran out ${n - pool.calls.length + 1} days ago and are repeating; append more`);
+  else if (daysLeft < 14) warnings.push(`only ${daysLeft} days of Daily Calls left after today; append more`);
+  return { errors, warnings, daysLeft };
 }

@@ -1,4 +1,16 @@
-import type { DecisionNode, EndingNode, HotSeat, HotSeatNode, MeterKey, Option, Text, TraitKey, When } from "./hotseat-types";
+import type {
+  DailyCall,
+  DailyPool,
+  DecisionNode,
+  EndingNode,
+  HotSeat,
+  HotSeatNode,
+  MeterKey,
+  Option,
+  Text,
+  TraitKey,
+  When,
+} from "./hotseat-types";
 
 export interface Choice {
   nodeId: string;
@@ -23,7 +35,7 @@ export const NARRATOR = "af_heart";
 export const ADVISOR = "bm_george";
 
 /** The verdict line as narrated: why, plus what would have worked for ok/bad calls. */
-export const spokenWhy = (o: Option) => o.why + (o.better ? " What would have worked: " + o.better : "");
+export const spokenWhy = (o: Pick<Option, "why" | "better">) => o.why + (o.better ? " What would have worked: " + o.better : "");
 
 export const POINTS: Record<Option["grade"], number> = { great: 25, ok: 10, bad: 0 };
 const clamp = (n: number) => Math.max(0, Math.min(100, n));
@@ -206,4 +218,15 @@ export function playerOrder<T extends { id: string; complexity: number }>(items:
   }
   const gentle = arr.filter((x) => x.complexity <= 2).slice(0, 2);
   return [...gentle, ...arr.filter((x) => !gentle.includes(x))];
+}
+
+/**
+ * Today's Daily Call. `day` is "YYYY-MM-DD" in the same local calendar the streak uses.
+ * Day N after startDay plays calls[N]; past the end of the list it cycles. Appending calls never changes a day inside the list.
+ */
+export function dailyFor(day: string, pool: DailyPool): DailyCall | undefined {
+  const len = pool.calls.length;
+  if (!len) return undefined;
+  const n = Math.round((Date.parse(day) - Date.parse(pool.startDay)) / 864e5);
+  return pool.calls[((n % len) + len) % len];
 }

@@ -130,3 +130,38 @@ export interface CatalogEntry {
   complexity: 1 | 2 | 3 | 4 | 5;
   available: boolean;
 }
+
+/** One option in a Daily Call: like a Hot Seat option, without meters, routing or media. */
+export interface DailyOption {
+  id: string;
+  label: string;
+  grade: Grade;
+  real?: boolean;
+  outcome: string;
+  why: string;
+  better?: string;
+  takeaway: string;
+}
+
+/** A one-decision, one-minute story that keeps the streak alive. Lives in content/daily/daily.json. */
+export interface DailyCall {
+  id: string;
+  company: string;
+  year: string;
+  title: string;
+  media?: Media;
+  setup: string;
+  question: string;
+  advisor?: string;
+  options: DailyOption[];
+  /** One or two lines on what the company really did and how it turned out. */
+  realHistory: string;
+  sources: { label: string; url: string }[];
+  draft?: boolean;
+}
+
+/** content/daily/daily.json. The order of `calls` is the schedule: day N after `startDay` plays calls[N mod length]. Append only. */
+export interface DailyPool {
+  startDay: string;
+  calls: DailyCall[];
+}

@@ -3,7 +3,7 @@
 // Loaded by Node (scripts, hotseat CLI): node:crypto, relative .ts imports, type-only imports. Never import it in the app.
 import { createHash } from "node:crypto";
 import { ADVISOR, NARRATOR, spokenWhy } from "./engine.ts";
-import type { HotSeat, Text } from "./hotseat-types";
+import type { DailyCall, HotSeat, Text } from "./hotseat-types";
 
 export interface VoiceLine {
   id: string;
@@ -17,7 +17,7 @@ export const lineId = (voice: string, text: string) =>
     .digest("hex")
     .slice(0, 12);
 
-export function voiceLines(hotSeats: HotSeat[]): VoiceLine[] {
+export function voiceLines(hotSeats: HotSeat[], daily: DailyCall[] = []): VoiceLine[] {
   const lines = new Map<string, VoiceLine>();
   const add = (text: Text, voice = NARRATOR) => {
     for (const t of typeof text === "string" ? [text] : text.map((v) => v.text))
@@ -35,6 +35,15 @@ export function voiceLines(hotSeats: HotSeat[]): VoiceLine[] {
           add(spokenWhy(o));
         }
       }
+    }
+  }
+  for (const c of daily) {
+    add(c.setup);
+    add(c.question);
+    if (c.advisor) add(c.advisor, ADVISOR);
+    for (const o of c.options) {
+      add(o.outcome);
+      add(spokenWhy(o));
     }
   }
   return [...lines.values()];
