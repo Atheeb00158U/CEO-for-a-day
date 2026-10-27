@@ -1,11 +1,17 @@
-"""Pre-generate Kokoro-82M narration for every line in voice-lines.json.
-Usage: python3 scripts/narrate.py voice-lines.json public/audio <model.onnx> <voices.npz>
+"""Pre-generate Kokoro-82M narration for every line in voice-lines.json. Runs offline on your Mac only.
+Usage: KOKORO_MODEL=<kokoro-v1.0.onnx> KOKORO_VOICES=<voices-v1.0.bin> npm run narrate
+   or: python3 scripts/narrate.py voice-lines.json public/audio <model.onnx> <voices.bin>
+Setup: pip install kokoro-onnx soundfile, and download the model and voices files from the kokoro-onnx releases.
 Skips lines that already have audio. Output: <id>.mp3 (mono, 48 kbps, loudness -16 LUFS)."""
 import json, os, sys, subprocess, tempfile
+
+src, out, model, voices = (sys.argv[1:5] + ["", "", "", ""])[:4]
+if not (model and voices and os.path.isfile(model) and os.path.isfile(voices)):
+    sys.exit("Set KOKORO_MODEL and KOKORO_VOICES to the Kokoro model and voices files (see the top of scripts/narrate.py).")
+
 import soundfile as sf
 from kokoro_onnx import Kokoro
 
-src, out, model, voices = sys.argv[1:5]
 os.makedirs(out, exist_ok=True)
 k = Kokoro(model, voices)
 for line in json.load(open(src)):

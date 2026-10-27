@@ -16,7 +16,9 @@
     "prebuild": "node scripts/sync-media.mjs",
     "hotseat:check": "node scripts/hotseat.mjs check",
     "hotseat:new": "node scripts/hotseat.mjs new",
-    "hotseat:tree": "node scripts/hotseat.mjs tree"
+    "hotseat:tree": "node scripts/hotseat.mjs tree",
+    "media": "node scripts/media.mjs",
+    "narrate": "npm run -s voices && python3 scripts/narrate.py voice-lines.json public/audio \"$KOKORO_MODEL\" \"$KOKORO_VOICES\""
   },
   "dependencies": {
     "next": "16.4.1",
@@ -31,6 +33,7 @@
     "eslint": "9.39.5",
     "eslint-config-next": "16.4.3",
     "prettier": "3.9.10",
+    "sharp": "0.35.5",
     "tailwindcss": "4.3.3",
     "typescript": "5.9.3",
     "vitest": "5.0.5",
