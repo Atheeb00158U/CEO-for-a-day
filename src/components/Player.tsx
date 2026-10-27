@@ -30,6 +30,7 @@ export function Player({ hotSeatId, onExit, onNotes }: { hotSeatId: string; onEx
   const [usedHindsight, setUsedHindsight] = useState(false);
   const [badgesBefore, setBadgesBefore] = useState(game.s.badges);
   const totalDecisions = useMemo(() => callsPerRun(hs), [hs]);
+  const finished = useRef(false); // a double tap on "See your results" must not pay out twice
 
   useEffect(() => () => stopVoice(), []);
 
@@ -53,6 +54,8 @@ export function Player({ hotSeatId, onExit, onNotes }: { hotSeatId: string; onEx
   };
 
   const finish = (node: EndingNode) => {
+    if (finished.current) return;
+    finished.current = true;
     const d = buildDebrief(hs, run);
     const sc = score(hs, run, node);
     const realEnding = hs.realEnding;
@@ -83,6 +86,7 @@ export function Player({ hotSeatId, onExit, onNotes }: { hotSeatId: string; onEx
           setRun(r);
           setUsedHindsight(false);
           setBadgesBefore(game.s.badges);
+          finished.current = false;
           setPhase(toPhase(hs, r));
         }}
       />
