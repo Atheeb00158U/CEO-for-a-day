@@ -18,17 +18,17 @@ This is the plan for taking the prototype in this folder to a launchable product
 ---
 
 ## Phase 0: Clean up the prototype (half a day)
-- [ ] Initialise git, commit the prototype as-is, and add a GitHub repo (ask for the remote).
-- [ ] Add ESLint (`eslint-config-next`), Prettier and Vitest. Add a `test` script.
-- [ ] Unit-test `engine.ts`:
-  - [ ] `choose`, `resolveNode` and `score`.
-  - [ ] The fired rule: a run ends early only before the final decision.
-  - [ ] `buildDebrief` patterns.
-  - [ ] `playerOrder`: same seed gives the same order, and the first two are gentle.
-- [ ] Unit-test `store.tsx` logic: streak, freeze use, quest reset and league week rollover. Move the pure logic out of the React file so it can be tested.
-- [ ] Turn `scripts/validate-hotseats.mjs` into a Vitest test that runs over every registered Hot Seat.
+- [x] Initialise git, commit the prototype as-is, and add a GitHub repo (ask for the remote). *Git is set up; Atheeb adds the remote and pushes.*
+- [x] Add ESLint (`eslint-config-next`), Prettier and Vitest. Add a `test` script.
+- [x] Unit-test `engine.ts`:
+  - [x] `choose`, `resolveNode` and `score`.
+  - [x] The fired rule: a run ends early only before the final decision.
+  - [x] `buildDebrief` patterns.
+  - [x] `playerOrder`: same seed gives the same order, and the first two are gentle.
+- [x] Unit-test `store.tsx` logic: streak, freeze use, quest reset and league week rollover. Move the pure logic out of the React file so it can be tested.
+- [x] Turn `scripts/validate-hotseats.mjs` into a Vitest test that runs over every registered Hot Seat.
 - [ ] Remove the `PREVIEW_EXPORT` hack once a real deployment exists.
-- [ ] **Done when** lint, tests, validate and build all pass in CI (GitHub Actions).
+- [ ] **Done when** lint, tests, validate and build all pass in CI (GitHub Actions). *All pass locally with the CI steps; ticks once the first push is green.*
 
 ## Phase 1: Content pipeline (1–2 days)
 Hot Seats should be data files, not TypeScript.
