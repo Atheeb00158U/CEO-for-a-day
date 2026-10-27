@@ -1,8 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { kodak } from "@/content/hotseats/kodak";
-import { CATALOG } from "@/content/catalog";
+import { CATALOG, HOT_SEATS } from "@/content/catalog";
 import { buildDebrief, callsPerRun, choose, playerOrder, resolveNode, score, startRun, type RunState } from "./engine";
 import type { DecisionNode, EndingNode, HotSeat } from "./hotseat-types";
+
+const kodak = HOT_SEATS.kodak;
 
 /** Play Kodak by option id, skipping scenes. Returns the final state and the node it stops on. */
 function play(ids: string[]) {

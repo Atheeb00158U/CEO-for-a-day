@@ -12,7 +12,9 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "test": "vitest run"
+    "test": "vitest run",
+    "predev": "node scripts/sync-media.mjs",
+    "prebuild": "node scripts/sync-media.mjs"
   },
   "dependencies": {
     "next": "16.4.1",

@@ -2,7 +2,18 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { HOT_SEATS } from "@/content/catalog";
-import { buildDebrief, callsPerRun, choose, resolveNode, resolveText, score, startRun, traitTotals, type RunState } from "@/lib/engine";
+import {
+  buildDebrief,
+  callsPerRun,
+  choose,
+  spokenWhy,
+  resolveNode,
+  resolveText,
+  score,
+  startRun,
+  traitTotals,
+  type RunState,
+} from "@/lib/engine";
 import type { DecisionNode, EndingNode, HotSeat, Option, SceneNode } from "@/lib/hotseat-types";
 import { useGame, type RunRecord } from "@/lib/store";
 import { ADVISOR, NARRATOR, speak, stopVoice } from "@/lib/voice";
@@ -358,7 +369,7 @@ function RevealView({
   const { s } = useGame();
   const v = VERDICT[option.grade];
   const outcome = resolveText(option.outcome, run);
-  const whyText = option.why + (option.better ? " What would have worked: " + option.better : "");
+  const whyText = spokenWhy(option);
   const { prog, replay } = useNarration([{ text: outcome }, { text: whyText }], s.settings.voice);
   const real = node.options.find((o) => o.real);
   return (

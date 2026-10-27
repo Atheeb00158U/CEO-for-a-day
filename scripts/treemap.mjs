@@ -1,8 +1,8 @@
 // Prints a Mermaid flowchart of a Hot Seat's decision map. Paste into any Mermaid viewer.
 // Run: npm run treemap -- kodak
-import { kodak } from "../src/content/hotseats/kodak.ts";
-const all = { kodak };
-const hs = all[process.argv[2] || "kodak"];
+import { readHotSeat } from "../src/lib/content-files.ts";
+
+const hs = readHotSeat(process.argv[2] || "kodak");
 const g = { great: ":::great", ok: ":::ok", bad: ":::bad" };
 const out = [
   "flowchart TD",

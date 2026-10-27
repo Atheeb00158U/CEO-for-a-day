@@ -18,6 +18,13 @@ export interface RunState {
   onRealPath: boolean;
 }
 
+/** Kokoro voices: the narrator reads the story, the advisor speaks the advice. */
+export const NARRATOR = "af_heart";
+export const ADVISOR = "bm_george";
+
+/** The verdict line as narrated: why, plus what would have worked for ok/bad calls. */
+export const spokenWhy = (o: Option) => o.why + (o.better ? " What would have worked: " + o.better : "");
+
 export const POINTS: Record<Option["grade"], number> = { great: 25, ok: 10, bad: 0 };
 const clamp = (n: number) => Math.max(0, Math.min(100, n));
 

@@ -1,20 +1,18 @@
 import type { CatalogEntry, HotSeat } from "@/lib/hotseat-types";
-import { kodak } from "./hotseats/kodak";
 
-/** Playable Hot Seats. Add a new file in ./hotseats and register it here. */
-export const HOT_SEATS: Record<string, HotSeat> = { kodak };
+/** Every content/hotseats/<id>/hotseat.json, found at build time. Validated by `npm run hotseat:check` and the tests, not here. */
+const found = import.meta.glob<HotSeat>("/content/hotseats/*/hotseat.json", { eager: true, import: "default" });
 
-/** Everything shown on the map, including ones still being written. */
-export const CATALOG: CatalogEntry[] = [
-  {
-    id: "kodak",
-    company: kodak.company,
-    title: kodak.title,
-    hook: kodak.hook,
-    cover: kodak.cover,
-    complexity: kodak.complexity,
-    available: true,
-  },
+// shortcut: every Hot Seat ships in the main bundle; switch to lazy glob imports when the Phase 5 performance budget needs it.
+/** Playable Hot Seats. Drafts only show in `npm run dev`. */
+export const HOT_SEATS: Record<string, HotSeat> = Object.fromEntries(
+  Object.values(found)
+    .filter((hs) => !hs.draft || process.env.NODE_ENV !== "production")
+    .map((hs) => [hs.id, hs]),
+);
+
+/** Shown on the map as "coming soon" until a Hot Seat with the same id exists. */
+const COMING_SOON: CatalogEntry[] = [
   {
     id: "blockbuster",
     company: "Blockbuster",
@@ -55,4 +53,18 @@ export const CATALOG: CatalogEntry[] = [
     complexity: 4,
     available: false,
   },
+];
+
+/** Everything shown on the map. */
+export const CATALOG: CatalogEntry[] = [
+  ...Object.values(HOT_SEATS).map((hs) => ({
+    id: hs.id,
+    company: hs.company,
+    title: hs.title,
+    hook: hs.hook,
+    cover: hs.cover,
+    complexity: hs.complexity,
+    available: true,
+  })),
+  ...COMING_SOON.filter((c) => !HOT_SEATS[c.id]),
 ];

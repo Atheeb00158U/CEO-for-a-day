@@ -9,8 +9,9 @@ import lines from "../../voice-lines.json";
 const byText = new Map<string, string>();
 for (const l of lines as { id: string; voice: string; text: string }[]) byText.set(l.voice + "|" + l.text, l.id);
 
-export const NARRATOR = "af_heart";
-export const ADVISOR = "bm_george";
+import { ADVISOR, NARRATOR } from "./engine";
+
+export { ADVISOR, NARRATOR };
 
 let audio: HTMLAudioElement | null = null;
 let onProgress: ((p: number) => void) | null = null;

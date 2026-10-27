@@ -18,7 +18,7 @@ npm run dev          # http://localhost:3000
 | `PREVIEW_EXPORT=1 npm run build` | Static export to `out/` with relative paths |
 
 ## Where things live
-- `src/content/hotseats/kodak.ts`: the Kodak Hot Seat (the tree map is in the file header)
+- `content/hotseats/kodak/`: the Kodak Hot Seat (`hotseat.json` + `media/`)
 - `src/content/catalog.ts`: which Hot Seats exist and which are playable
 - `src/lib/engine.ts`: the game engine (choices, meters, board trust, scoring, personalised debrief, per-player ordering)
 - `src/lib/store.tsx`: player state (XP, streak, freezes, booster, coins, quests, league, notes, badges), saved on the device

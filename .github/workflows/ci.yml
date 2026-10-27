@@ -17,6 +17,6 @@ jobs:
       - run: npm run lint
       - run: npm run format:check
       - run: npm test
-      # Node runs this .mjs straight against kodak.ts, so it checks TypeScript stripping still works.
+      # Node runs this .mjs against src/lib/*.ts directly, so it checks TypeScript stripping still works.
       - run: node scripts/treemap.mjs kodak > /dev/null
       - run: npm run build
