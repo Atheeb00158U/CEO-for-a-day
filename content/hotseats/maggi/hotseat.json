@@ -1,0 +1,345 @@
+{
+  "id": "maggi",
+  "company": "Maggi",
+  "title": "Two minutes to crisis",
+  "hook": "India's favourite noodles get pulled off the shelves.",
+  "role": "You run Nestlé India, 2014 to 2015",
+  "years": "2014–2015",
+  "cover": "img:mg_cover",
+  "draft": true,
+  "complexity": 2,
+  "minutes": 6,
+  "start": "intro",
+  "startMeters": { "profit": 80, "future": 70 },
+  "startTrust": 3,
+  "meters": {
+    "profit": { "label": "Sales", "hint": "How much Maggi sells today" },
+    "future": { "label": "Trust", "hint": "How much families trust Maggi" }
+  },
+  "nodes": {
+    "intro": {
+      "id": "intro",
+      "type": "scene",
+      "year": "2014",
+      "media": "img:mg_intro",
+      "text": "You run Nestlé India. Maggi is the country's favourite instant noodles, a two-minute meal in millions of kitchens and hostel rooms. It makes up about 30% of your company's sales.",
+      "next": "d1"
+    },
+    "d1": {
+      "id": "d1",
+      "type": "decision",
+      "year": "2014",
+      "title": "The first lab report",
+      "media": "img:mg_d1",
+      "setup": "Food safety officers in Barabanki, Uttar Pradesh, picked up a Maggi batch for a routine check. A state lab now reports lead at 17.2 ppm, against a limit of 2 ppm. It also found MSG, though your pack says no added MSG.",
+      "question": "How do you respond to the report?",
+      "advisor": "This is one batch in one district. But how you treat one batch tells people how you'll treat the next.",
+      "options": [
+        {
+          "id": "appeal",
+          "label": "Use the official appeal and send the samples to the central lab.",
+          "grade": "ok",
+          "real": true,
+          "effect": { "future": -10, "flags": ["appealed"] },
+          "next": "scene2015",
+          "media": "img:mg_d1_appeal",
+          "outcome": "Nestlé appealed and asked for the samples to go to the central referral lab in Kolkata. That lab confirmed the findings. The problem did not go away. It grew.",
+          "why": "Using the proper appeal was your right. But treating it only as a legal step left the public question, about the label and the lead, unanswered.",
+          "better": "Appeal if you disagree, but also fix the label and order fresh independent tests, then tell the public what you found.",
+          "takeaway": "In 2014 you treated a trust problem as a paperwork problem.",
+          "traits": { "horizon": 0, "risk": 0, "disrupt": 0 }
+        },
+        {
+          "id": "quiet",
+          "label": "Quietly pull that batch and say nothing.",
+          "grade": "bad",
+          "effect": { "future": -20, "trust": -1, "flags": ["quiet"] },
+          "next": "scene2015",
+          "media": "img:mg_d1_quiet",
+          "outcome": "Our estimate: the batch disappears, but the lab report doesn't. When it comes out later, saying nothing looks like hiding.",
+          "why": "Silence feels safe until the news comes out. Then it looks like you had something to hide.",
+          "better": "Act in the open: test independently, fix the label, and tell people what you found.",
+          "takeaway": "In 2014 you hoped silence would make a problem go away.",
+          "traits": { "horizon": -1, "risk": -1, "disrupt": -1 }
+        },
+        {
+          "id": "open",
+          "label": "Fix the label, order fresh independent tests, and share the results.",
+          "grade": "great",
+          "effect": { "profit": -5, "future": 5, "flags": ["open"] },
+          "next": "scene2015",
+          "media": "img:mg_d1_open",
+          "outcome": "Our estimate: it costs money and some awkward headlines, but when other states start testing, you already have your own independent results to show.",
+          "why": "Being open early builds a store of trust you can draw on when things get worse.",
+          "takeaway": "In 2014 you got ahead of the story instead of waiting for it.",
+          "traits": { "horizon": 1, "risk": 0, "disrupt": 1 }
+        }
+      ]
+    },
+    "scene2015": {
+      "id": "scene2015",
+      "type": "scene",
+      "year": "2015",
+      "media": "img:mg_2015",
+      "text": "April 2015. Uttar Pradesh orders a recall of a batch made in February 2014. Nestlé says that batch had already passed its best-before date. Other states start testing. Delhi reports that 10 of 13 samples are above its limit and bans sales for 15 days. On 3 June, Nestlé India's shares fall about 10%, their biggest one-day drop in nine years.",
+      "next": "d2"
+    },
+    "d2": {
+      "id": "d2",
+      "type": "decision",
+      "year": "2015",
+      "title": "Defend or retreat?",
+      "media": "img:mg_d2",
+      "setup": [
+        {
+          "when": { "flags": ["open"] },
+          "text": "Your own independent tests are already public, but the bans are spreading state by state. Parents are worried."
+        },
+        {
+          "text": "The bans are spreading state by state. Big shops are asking whether to keep Maggi on their shelves. Parents are worried."
+        }
+      ],
+      "question": "What do you say and do?",
+      "advisor": "You may be right about the science. The question is what worried parents need from you this week.",
+      "options": [
+        {
+          "id": "defend",
+          "label": "Defend the product with your test results and keep selling where it's allowed.",
+          "grade": "bad",
+          "real": true,
+          "effect": { "profit": 5, "future": -25, "trust": -1, "flags": ["defended"] },
+          "next": "scene_pull",
+          "media": "img:mg_d2_defend",
+          "outcome": "Nestlé said more than 1,000 batches had been tested and lead was within limits, and that only Uttar Pradesh had ordered a recall. More states banned sales, and big shops and the Indian army dropped Maggi. Many critics called the response slow.",
+          "why": "You answered fear with numbers. Even if the numbers were right, parents heard a company protecting its sales.",
+          "better": "Take the product off the shelves yourself, say safety comes first, and let the tests speak later.",
+          "takeaway": "In 2015 you defended the product before you calmed the customer.",
+          "traits": { "horizon": -1, "risk": 1, "disrupt": -1 }
+        },
+        {
+          "id": "pull_now",
+          "label": "Take every packet off the shelves now, while the tests are checked.",
+          "grade": "great",
+          "effect": { "profit": -25, "future": 0, "flags": ["pulled_early"] },
+          "next": "scene_pull",
+          "media": "img:mg_d2_pull",
+          "outcome": "Our estimate: sales stop overnight and the cost is huge. But because you acted first, people see a company that puts their families first.",
+          "why": "Putting safety ahead of sales, before anyone forced you, protects the one thing a food brand can't buy back: trust.",
+          "takeaway": "In 2015 you protected trust first, and argued the science later.",
+          "traits": { "horizon": 1, "risk": 1, "disrupt": 1 }
+        },
+        {
+          "id": "worst_states",
+          "label": "Withdraw only in the states that banned it.",
+          "grade": "ok",
+          "effect": { "profit": -10, "future": -10, "flags": ["partial"] },
+          "next": "scene_pull",
+          "media": "img:mg_d2_partial",
+          "outcome": "Our estimate: you follow each ban as it comes, but every new state makes headlines, and it looks like you only act when forced.",
+          "why": "Following the rules state by state is reasonable, but it lets the crisis set the pace instead of you.",
+          "better": "Make one clear move yourself across the whole country.",
+          "takeaway": "In 2015 you reacted state by state instead of leading.",
+          "traits": { "horizon": 0, "risk": 0, "disrupt": 0 }
+        }
+      ]
+    },
+    "scene_pull": {
+      "id": "scene_pull",
+      "type": "scene",
+      "year": "2015",
+      "media": "img:mg_pull",
+      "text": [
+        {
+          "when": { "flags": ["pulled_early"] },
+          "text": "Our estimate: the empty shelves make the news, but so does your choice. Then the national food regulator orders a recall of all approved Maggi variants and calls them unsafe."
+        },
+        {
+          "text": "On 5 June 2015, Nestlé announced it was withdrawing Maggi from shelves across India. The same day, the national food regulator ordered a recall of all nine approved variants and called them unsafe. About 38,000 tonnes of noodles were destroyed, burned in cement plants. Nestlé India reported a loss of Rs 64.4 crore for the quarter."
+        }
+      ],
+      "next": "d3"
+    },
+    "d3": {
+      "id": "d3",
+      "type": "decision",
+      "year": "2015",
+      "title": "Fight the ban?",
+      "media": "img:mg_d3",
+      "setup": "The regulator's order covers all nine variants, including ones that were never tested. You believe the testing process was unfair.",
+      "question": "What do you do about the ban?",
+      "advisor": "You can be right in court and still lose in people's kitchens. Think about both.",
+      "options": [
+        {
+          "id": "court",
+          "label": "Challenge the order in the High Court, and ask for fair retests.",
+          "grade": "great",
+          "real": true,
+          "effect": { "future": 10, "flags": ["court"] },
+          "next": "d4",
+          "media": "img:mg_d3_court",
+          "outcome": "Nestlé challenged the order in the Bombay High Court. In August 2015 the court set the ban aside. It found that Nestlé had not been given a fair hearing, that the labs used were not accredited, and that the ban covered variants never tested. It ordered new tests in three accredited labs. The regulator later appealed to the Supreme Court.",
+          "why": "You challenged the process, not the people, and asked for fair tests. That gave you a clear, public way back.",
+          "takeaway": "In 2015 you asked for a fair process instead of fighting the public.",
+          "traits": { "horizon": 1, "risk": 1, "disrupt": 0 }
+        },
+        {
+          "id": "ads",
+          "label": "Run ads attacking the regulator and the labs.",
+          "grade": "bad",
+          "effect": { "future": -15, "trust": -1, "flags": ["attacked"] },
+          "next": "d4",
+          "media": "img:mg_d3_ads",
+          "outcome": "Our estimate: the ads make the fight personal. Officials dig in, and many people now see a big company bullying its regulator.",
+          "why": "Attacking the people who keep food safe looks like you don't care about safety.",
+          "better": "Use the courts to ask for a fair process, and keep your public message about safety.",
+          "takeaway": "In 2015 you made a safety question into a public fight.",
+          "traits": { "horizon": -1, "risk": 1, "disrupt": -1 }
+        },
+        {
+          "id": "accept",
+          "label": "Accept the order and wait quietly for new tests.",
+          "grade": "ok",
+          "effect": { "profit": -10, "future": 0, "flags": ["accepted"] },
+          "next": "d4",
+          "media": "img:mg_d3_accept",
+          "outcome": "Our estimate: you avoid a public fight, but with no clear process for retesting, the noodles stay off the shelves for much longer.",
+          "why": "Calm was good, but without a fair process to ask for, you had no clear way back.",
+          "better": "Respectfully ask a court for a fair process and accredited retests.",
+          "takeaway": "In 2015 you waited when you needed a clear way back.",
+          "traits": { "horizon": 0, "risk": -1, "disrupt": 0 }
+        }
+      ]
+    },
+    "d4": {
+      "id": "d4",
+      "type": "decision",
+      "year": "2015",
+      "title": "The comeback",
+      "media": "img:mg_d4",
+      "setup": [
+        {
+          "when": { "flags": ["court"] },
+          "text": "October 2015. All 90 samples in the court-ordered tests have come back clear, and three factories have started making Maggi again."
+        },
+        { "text": "The noodles are cleared to return. You have one chance to win families back." }
+      ],
+      "question": "How do you bring Maggi back?",
+      "advisor": "Coming back is not just restocking shelves. It is asking families to trust you again.",
+      "options": [
+        {
+          "id": "rebrand",
+          "label": "Launch the noodles under a new name.",
+          "grade": "bad",
+          "effect": { "profit": -10, "future": -15, "trust": -1 },
+          "next": "ending_route",
+          "media": "img:mg_d4_rebrand",
+          "outcome": "Our estimate: a new name confuses loyal fans and looks like you are hiding from Maggi's past.",
+          "why": "Your brand's history is also its strength. Running from it throws away years of love.",
+          "better": "Bring Maggi back under its own name, carefully, once new batches have also passed the tests.",
+          "takeaway": "In 2015 you ran from your brand instead of rebuilding it.",
+          "traits": { "horizon": -1, "risk": 1, "disrupt": -1 }
+        },
+        {
+          "id": "rush",
+          "label": "Restock every variant everywhere at once, as fast as possible.",
+          "grade": "ok",
+          "effect": { "profit": 15, "future": 0 },
+          "next": "ending_route",
+          "media": "img:mg_d4_rush",
+          "outcome": "Our estimate: sales jump back quickly, but one bad test on a rushed batch could start the whole crisis again.",
+          "why": "Speed brings sales back, but trust needs proof before volume.",
+          "better": "Wait until new batches also pass the tests, then return with a big, careful launch.",
+          "takeaway": "In 2015 you chased sales back faster than trust could follow.",
+          "traits": { "horizon": 0, "risk": 1, "disrupt": 0 }
+        },
+        {
+          "id": "festive",
+          "label": "Wait for new batches to pass too, then relaunch big at Diwali.",
+          "grade": "great",
+          "real": true,
+          "effect": { "profit": 15, "future": 15 },
+          "next": "ending_route",
+          "media": "img:mg_d4_festive",
+          "outcome": "Nestlé waited until new batches also cleared the tests. On 9 November 2015, around Diwali, Maggi went back on sale in 100 cities, with an online shopping partner.",
+          "why": "You came back with proof first and then a big, warm moment, giving families a reason to try Maggi again.",
+          "takeaway": "In 2015 you came back with proof first and a celebration second.",
+          "traits": { "horizon": 1, "risk": 0, "disrupt": 1 }
+        }
+      ]
+    },
+    "ending_route": {
+      "id": "ending_route",
+      "type": "route",
+      "routes": [{ "when": { "minFuture": 70 }, "to": "legend" }, { "when": { "minFuture": 40 }, "to": "survivor" }, { "to": "collapse" }]
+    },
+    "legend": {
+      "id": "legend",
+      "type": "ending",
+      "tier": "legend",
+      "title": "Back on top",
+      "media": "img:mg_legend",
+      "text": "Our estimate: because you put families first from the start, Maggi comes back with its fans' trust intact and soon wins back almost all of the market.",
+      "bonus": 15
+    },
+    "survivor": {
+      "id": "survivor",
+      "type": "ending",
+      "tier": "survivor",
+      "title": "Back, but bruised",
+      "media": "img:mg_survivor",
+      "text": "Maggi came back. By October 2016 Nestlé put its share of instant noodles at 57%, against 75% before the crisis, with new rivals now on the shelf. In 2024 the national consumer commission dismissed the government's case after a central lab found lead within limits.",
+      "bonus": 5
+    },
+    "collapse": {
+      "id": "collapse",
+      "type": "ending",
+      "tier": "collapse",
+      "title": "A lost favourite",
+      "media": "img:mg_collapse",
+      "text": "Our estimate: the noodles come back, but families have moved on to rival brands, and Maggi never wins back its old place.",
+      "bonus": 0
+    },
+    "fired": {
+      "id": "fired",
+      "type": "ending",
+      "tier": "fired",
+      "title": "The board lets you go",
+      "media": "img:mg_fired",
+      "text": "Our estimate: after three costly calls in a row, the board loses its trust in you and asks someone else to lead the company through the crisis.",
+      "bonus": 0
+    }
+  },
+  "realEnding": "survivor",
+  "realHistory": "A routine lab test in one Uttar Pradesh district in 2014 grew into a nationwide ban in June 2015. Nestlé first defended the product, then pulled it everywhere and destroyed about 38,000 tonnes of noodles. It won in the Bombay High Court on process grounds, passed the retests, and Maggi returned in November 2015. Its share recovered to 57% within a year, below its pre-crisis level. The government's consumer case was dismissed in 2024.",
+  "sources": [
+    {
+      "label": "Nestlé India in hot water over reports of excess lead in noodle soup (NPR, 2015)",
+      "url": "https://www.wgbh.org/news/2015-06-03/nestle-india-in-hot-water-over-reports-of-excess-lead-in-noodle-soup"
+    },
+    {
+      "label": "Nestle pulls Maggi noodles off Indian shelves as food scare spreads (Reuters, 2015)",
+      "url": "https://www.foxnews.com/health/nestle-pulls-maggi-noodles-off-indian-shelves-as-food-scare-spreads"
+    },
+    {
+      "label": "No discrimination against Nestle (Gulf News, 2015)",
+      "url": "https://gulfnews.com/world/asia/india/no-discrimination-against-nestle-1.1538261"
+    },
+    {
+      "label": "Bombay High Court quashes Maggi ban order by FSSAI; orders re-test (LiveLaw, 2015)",
+      "url": "https://www.livelaw.in/bombay-high-court-quashes-maggi-ban-order-by-fssai-orders-re-test-read-jt"
+    },
+    {
+      "label": "Nestle announces Maggi's re-launch (IANS, 2015)",
+      "url": "https://thepeninsulaqatar.com/article/09/11/2015/Nestle-announces-Maggi-s-re-launch,-pact-with-Snapdeal"
+    },
+    {
+      "label": "Maggi makes a comeback, wins 57% market share (Business Today, 2016)",
+      "url": "https://www.businesstoday.in/amp/latest/corporate/story/maggi-makes-a-comeback-wins-market-share-on-sustained-recovery-68477-2016-10-20"
+    },
+    {
+      "label": "NCDRC dismisses Government's 2015 complaint (SCC Online, 2024)",
+      "url": "https://www.scconline.com/blog/post/2024/04/11/maggie-noodles-lead-found-consumer-complaint-union-of-india-ncdrc-legal-news"
+    }
+  ],
+  "credits": "LEGAL HOLD: do not publish until Atheeb has checked the Supreme Court status of SLP (C) 33251/2015 and any open criminal cases (see content/hotseats/maggi/research.md, Risks). Research brief and full source list: research.md. Images are AI illustrations."
+}
