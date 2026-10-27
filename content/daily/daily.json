@@ -55,7 +55,7 @@
       "company": "Nirma",
       "year": "1969",
       "title": "A quarter of the price",
-      "setup": "You make washing powder at home. The big brand, Surf, sells at Rs 13 a kilo, and most families can't afford it.",
+      "setup": "You make washing powder at home. The big brand, Surf, sells at Rs 13 a kilo.",
       "question": "How do you price your powder?",
       "options": [
         {
@@ -104,7 +104,7 @@
       "company": "Johnson & Johnson",
       "year": "1982",
       "title": "Recall everything?",
-      "setup": "Seven people near Chicago have died after taking Tylenol capsules that someone had poisoned in stores. Tylenol is your best-selling medicine, with 35% of its market.",
+      "setup": "Seven people near Chicago have died after taking Tylenol capsules that someone had laced with poison. The capsules were sold in Chicago-area stores. Tylenol has 35% of its market.",
       "question": "What do you do?",
       "options": [
         {
@@ -149,7 +149,7 @@
       "company": "Zoho",
       "year": "2004",
       "title": "Hire school-leavers",
-      "setup": "Your software company in Chennai needs programmers. Graduates from top colleges are expensive and many want to work abroad. You believe young people without degrees could do as well with training.",
+      "setup": "Your software company in Chennai needs programmers. You could compete for graduates from top colleges. But you believe young people without degrees could do as well with training.",
       "question": "How do you find talent?",
       "options": [
         {
@@ -166,7 +166,7 @@
           "label": "Train students straight out of school, and pay them while they learn.",
           "grade": "great",
           "real": true,
-          "outcome": "In 2004 Zoho started Zoho University, a two-year course for Class 12 students. Students pay no fees and get Rs 10,000 a month. Most are hired by Zoho, and many come from low-income, often rural, families.",
+          "outcome": "In 2004 the company, then called AdventNet and now Zoho, started what became Zoho University: a two-year course for Class 12 students. Students pay no fees and get Rs 10,000 a month. Most are hired by Zoho, and many come from low-income, often rural, families.",
           "why": "You found talent where others weren't looking, and trained it the way your company works.",
           "takeaway": "You can train talent instead of buying it."
         },
@@ -194,7 +194,7 @@
       "company": "CavinKare",
       "year": "1983",
       "title": "Shampoo for small change",
-      "setup": "Shampoo comes in bottles that most families in small towns can't afford. Your family has already tried selling products in small packets.",
+      "setup": "Shampoo is sold in bottles. Your family has already tried selling products in small, cheap packets.",
       "question": "How do you sell your shampoo?",
       "options": [
         {
@@ -220,7 +220,7 @@
           "label": "Sell single-use packets at a tiny price in rural shops.",
           "grade": "great",
           "real": true,
-          "outcome": "CavinKare launched Chik shampoo in 10 ml packets in 1983, at a very low price, and pushed it in rural markets. Within a couple of years Chik became the top shampoo in South India.",
+          "outcome": "The founder's company, then called Beauty Products and later renamed CavinKare, launched Chik shampoo in 10 ml packets in 1983, at a very low price, and pushed it in rural markets. Within a couple of years Chik became the top shampoo in South India.",
           "why": "You made the product fit what customers could pay each day, not what the big brands wanted to sell.",
           "takeaway": "Make the pack small enough for the customer's pocket."
         }
@@ -243,7 +243,7 @@
       "company": "Airbnb",
       "year": "2008",
       "title": "Sell cereal to stay alive",
-      "setup": "Your startup lets people stay in strangers' homes. Investor after investor has said no. Your money is almost gone.",
+      "setup": "Your startup lets people stay in strangers' homes. Investor after investor has said no, and the business needs money to survive.",
       "question": "What do you do?",
       "options": [
         {
@@ -288,7 +288,7 @@
       "company": "Titan",
       "year": "1987",
       "title": "Quartz only",
-      "setup": "A government-owned company rules India's watch market with mechanical watches that need winding. New quartz watches run on a battery and keep better time.",
+      "setup": "A government-owned company rules India's watch market, mainly with mechanical watches that need winding. Quartz watches are a newer technology.",
       "question": "What kind of watches do you make?",
       "options": [
         {
@@ -305,7 +305,7 @@
           "label": "Make only quartz watches.",
           "grade": "great",
           "real": true,
-          "outcome": "Titan, a joint venture of Tata and the Tamil Nadu government, made only quartz watches. Its first range sold at Rs 350 to 900. The old leader, HMT, went into slow decline, and Titan held over 60% of India's organised watch market by 2012.",
+          "outcome": "Titan, a joint venture of Tata and TIDCO, a Tamil Nadu government agency, made only quartz watches. Its first range sold at Rs 350 to 900. The old leader, HMT, went into slow decline, and Titan held over 60% of India's organised watch market by 2012.",
           "why": "You built for where the technology was going, not where it had been.",
           "takeaway": "When technology is changing, build for the new thing, not the old one."
         },
@@ -319,7 +319,7 @@
           "takeaway": "Half a bet on the future is often a weak bet."
         }
       ],
-      "realHistory": "Titan launched in 1987 with quartz watches only, while the old leader HMT stuck with mechanical ones. By 2012 Titan held over 60% of India's organised watch market.",
+      "realHistory": "Titan launched in 1987 with quartz watches only, against a leader that mainly made mechanical ones. By 2012 Titan held over 60% of India's organised watch market.",
       "sources": [
         {
           "label": "The timekeeper (Business Today, 2012)",
@@ -336,8 +336,8 @@
       "id": "cadbury-2003",
       "company": "Cadbury India",
       "year": "2003",
-      "title": "Worms before Diwali",
-      "setup": "It is October 2003, just before Diwali. Worms have been found in your chocolates in Maharashtra. At first you defended your factory and said you could not watch every shop. The regulator moved to prosecute, and sales are falling.",
+      "title": "Worms in the chocolate",
+      "setup": "It is October 2003. Worms have been found in your chocolates in Maharashtra. At first you defended your factory and said you could not watch every shop. The regulator moved to prosecute, and sales are falling.",
       "question": "What do you do now?",
       "options": [
         {
@@ -368,7 +368,7 @@
           "takeaway": "In a crisis, fix the problem and show the fix."
         }
       ],
-      "realHistory": "Cadbury first defended its factory and blamed storage in shops. It then improved its packaging and ran an ad campaign showing its factory, and sales recovered.",
+      "realHistory": "Cadbury first defended its factory standards and said it could not watch every shop. It then improved its packaging and ran an ad campaign showing its factory, and sales recovered.",
       "sources": [
         {
           "label": "Cadbury worm controversy (IPS News, 2003)",
@@ -384,9 +384,9 @@
     {
       "id": "hul-wheel",
       "company": "Hindustan Lever",
-      "year": "1980s",
+      "year": "Late 1980s",
       "title": "Answer the cheap rival",
-      "setup": "You make Surf, India's leading washing powder. A cheap new powder called Nirma is taking millions of customers who never bought Surf, and now some who did.",
+      "setup": "You make Surf, India's leading washing powder. A cheap new powder called Nirma is winning huge numbers of customers who never bought Surf, and now some who did.",
       "question": "How do you respond?",
       "options": [
         {
@@ -403,8 +403,8 @@
           "label": "Launch your own cheap brand, and keep Surf premium.",
           "grade": "great",
           "real": true,
-          "outcome": "Hindustan Lever launched a low-cost brand, Wheel, to fight Nirma, and kept Surf as its premium brand. But its answer came only after a long delay. The shock changed how Unilever sold in poorer markets, including selling small packets.",
-          "why": "A second brand let you fight on price without cheapening Surf. The mistake was waiting so long.",
+          "outcome": "Hindustan Lever launched a low-cost brand, Wheel, to fight Nirma. But its answer came only after a long delay. The shock changed how Unilever sold in poorer markets, including selling small packets.",
+          "why": "A second, cheaper brand let you fight on price without cutting Surf's. The mistake was waiting so long.",
           "takeaway": "When a cheap rival attacks, fight with a second brand, and fight early."
         },
         {
@@ -417,7 +417,7 @@
           "takeaway": "Don't cheapen your best brand to fight a price war."
         }
       ],
-      "realHistory": "Hindustan Lever answered Nirma with a low-cost brand, Wheel, while keeping Surf premium, but only after a long delay. The lesson shaped Unilever's later push into small packets for poorer markets.",
+      "realHistory": "Hindustan Lever answered Nirma with a low-cost brand, Wheel, but only after a long delay. The lesson shaped Unilever's later push into small packets for poorer markets.",
       "sources": [
         {
           "label": "Multinational Strategies and Developing Countries (Harvard Business School, 2010)",
@@ -435,8 +435,8 @@
       "company": "Tata Tea",
       "year": "2000",
       "title": "The small fish buys the big fish",
-      "setup": "Tata Tea grows tea but wants to own famous tea brands. Its first try to buy the British brand Tetley, the world's second-biggest tea company, failed for lack of money. Now Tetley is for sale again.",
-      "question": "Do you borrow heavily to buy a brand bigger than you?",
+      "setup": "Tata Tea grows tea but wants to own famous tea brands. Its first try to buy the British brand Tetley, the world's second-biggest tea company, failed for lack of money. Now there is another chance.",
+      "question": "Do you borrow heavily to buy a famous global brand?",
       "options": [
         {
           "id": "slow_brand",
@@ -444,7 +444,7 @@
           "grade": "ok",
           "outcome": "Our estimate: you grow abroad step by step, but it takes many years and a lot of advertising to become known.",
           "why": "Building a global brand from zero is slow and costly.",
-          "better": "Buy a famous brand whose own profits can repay the loan.",
+          "better": "Buy a famous brand that can earn enough to repay the loan.",
           "takeaway": "Sometimes buying a brand is faster than building one."
         },
         {
@@ -462,8 +462,8 @@
           "grade": "great",
           "real": true,
           "outcome": "In 2000 Tata Tea bought Tetley for £271 million, a deal funded largely by borrowing. Tetley became Tata's main global brand, and about two-thirds of Tata Tea's sales later came from the Tetley Group.",
-          "why": "You bought what you could not build quickly, and Tetley's own cash helped repay the loan.",
-          "takeaway": "Borrowing to buy a brand can work if its cash can repay the loan."
+          "why": "You bought what you could not build quickly, and got a famous global brand in one step.",
+          "takeaway": "Borrowing to buy a brand can work if the brand can earn enough to repay the loan."
         }
       ],
       "realHistory": "Tata Tea bought Tetley in 2000 for £271 million, mostly with borrowed money. Tetley became its main global brand.",
@@ -484,7 +484,7 @@
       "company": "Starbucks",
       "year": "2008",
       "title": "Close every store for training",
-      "setup": "It is early 2008. Customers say Starbucks coffee and service have slipped. Your returning CEO has a plan that includes better staff training.",
+      "setup": "It is early 2008. Your company believes Starbucks has lost its way in its US stores. Your returning CEO has a plan that includes better staff training.",
       "question": "How do you retrain thousands of baristas?",
       "options": [
         {
@@ -537,7 +537,7 @@
       "company": "Hector Beverages",
       "year": "2013",
       "title": "From energy drink to aam panna",
-      "setup": "Your company sells a cheap energy drink, Tzinga, at Rs 25 against Red Bull's Rs 95. One day a co-founder's home-made aam panna gives the team an idea.",
+      "setup": "Your company sells a cheap energy drink, Tzinga, at Rs 25 against Red Bull's Rs 95. One day a co-founder brings aam panna to work, and it gives the team an idea.",
       "question": "What do you bet on next?",
       "options": [
         {
@@ -582,7 +582,7 @@
       "company": "Zerodha",
       "year": "2010s",
       "title": "Say no to investor money",
-      "setup": "Your low-cost online share trading company, founded in 2010, made a profit in its second year. Investors are keen to give you money to grow faster.",
+      "setup": "Your low-cost online share trading company, founded in 2010, made a profit in its second year. You could raise money from investors to grow faster.",
       "question": "Do you take investor money?",
       "options": [
         {
@@ -640,7 +640,7 @@
           "grade": "bad",
           "real": true,
           "outcome": "Zomato announced Zomato Instant in March 2022 and tried it in Gurugram, saying riders would not be punished for late orders. But daily orders were too low to cover the fixed costs. By February 2023 it was relaunched as Zomato Everyday, home-style meals from Rs 89.",
-          "why": "A bold promise got headlines, but each order did not make money, and the safety worries hurt the brand.",
+          "why": "A bold promise got headlines, but daily orders were too low to cover the fixed costs of running it.",
           "better": "Test quietly with a few users and prove each order can make money before making big promises.",
           "takeaway": "A big promise must also make money on each order."
         },
