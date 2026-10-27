@@ -1,0 +1,598 @@
+{
+  "id": "indigo-one-plane-type",
+  "company": "IndiGo",
+  "title": "One plane, on time",
+  "hook": "A new airline with no planes orders 100 of them. Then the sky gets rough.",
+  "role": "You run IndiGo, 2005 to 2011",
+  "years": "2005–2012",
+  "cover": "img:ig_cover",
+  "draft": true,
+  "complexity": 3,
+  "minutes": 7,
+  "start": "intro",
+  "startMeters": {
+    "profit": 50,
+    "future": 30
+  },
+  "startTrust": 3,
+  "meters": {
+    "profit": {
+      "label": "Cash",
+      "hint": "Money in the bank to get through bad times"
+    },
+    "future": {
+      "label": "Edge",
+      "hint": "How far ahead of rival airlines you are"
+    }
+  },
+  "nodes": {
+    "intro": {
+      "id": "intro",
+      "type": "scene",
+      "year": "2005",
+      "media": "img:ig_intro",
+      "text": "It is 2005. India opened its skies to private airlines in 2004, and about six new ones have started. The economy grew 6.9% last year, and air travel may grow up to 20% a year. You and a co-founder, backed by the travel group InterGlobe, plan a new low-cost airline. You have no planes and no flights yet.",
+      "next": "d1"
+    },
+    "d1": {
+      "id": "d1",
+      "type": "decision",
+      "year": "2005",
+      "title": "How big to start?",
+      "media": "img:ig_d1",
+      "setup": "Three airlines, Jet, Kingfisher and Air India, carry nearly 8 in 10 Indian flyers. Kingfisher is thinking big and has ordered giant superjumbo jets. Airbus says 100 million more Indians could become flyers by 2010. You are at the Paris Air Show, where airlines buy planes.",
+      "question": "How do you build your fleet?",
+      "advisor": "A small start feels safe. But in airlines, size and sameness can be the cheapest thing you buy.",
+      "options": [
+        {
+          "id": "lease_few",
+          "label": "Lease 10 used planes of different types and grow slowly.",
+          "grade": "ok",
+          "effect": {
+            "profit": 5,
+            "future": 5,
+            "flags": ["lease_few"]
+          },
+          "next": "d2",
+          "media": "img:ig_d1_lease",
+          "outcome": "Our estimate: you start flying with little risk. But used planes of different types need different spare parts and trained crews. Your costs stay close to your rivals', and growth is slow.",
+          "why": "Starting small saves money today, but it gives you no cost edge over bigger airlines.",
+          "better": "Order many new planes of one type at once. A big order gets a better price, and one type keeps training and repairs simple.",
+          "takeaway": "In 2005 you started small and safe, and gave up the cost edge a big, simple fleet would bring.",
+          "traits": {
+            "horizon": 0,
+            "risk": -1,
+            "disrupt": 0
+          }
+        },
+        {
+          "id": "order",
+          "label": "Order 100 new planes, all the same type: the Airbus A320.",
+          "grade": "great",
+          "real": true,
+          "effect": {
+            "profit": -10,
+            "future": 15,
+            "flags": ["one_type"]
+          },
+          "next": "d2",
+          "media": "img:ig_d1_order",
+          "outcome": "On 16 June 2005, at the Paris Air Show, IndiGo ordered 100 Airbus A320 planes, worth $6 billion at list prices. It had not flown a single flight. The first plane arrived on 28 July 2006. On 4 August 2006, IndiGo flew its first flight, from Delhi to Imphal via Guwahati.",
+          "why": "One big order of one plane type gave you a bulk price, simple training and simple repairs for years to come.",
+          "takeaway": "In 2005 you bought big and kept it simple: one plane type, ordered in bulk.",
+          "traits": {
+            "horizon": 1,
+            "risk": 1,
+            "disrupt": 1
+          }
+        },
+        {
+          "id": "mixed",
+          "label": "Buy small, medium and large jets so you can fly every kind of route.",
+          "grade": "bad",
+          "effect": {
+            "profit": -15,
+            "future": -10,
+            "trust": -1,
+            "flags": ["mixed"]
+          },
+          "next": "d2",
+          "media": "img:ig_d1_mixed",
+          "outcome": "Our estimate: every plane type needs its own pilots, engineers and spare parts. Your costs climb before your first ticket is sold, and planes sit idle waiting for the right crew.",
+          "why": "A mixed fleet adds cost everywhere: training, repairs, spare parts and scheduling. A low-cost airline cannot afford that.",
+          "better": "Pick one plane type and order it in bulk. Keep the fleet simple so every pilot and engineer can work on every plane.",
+          "takeaway": "In 2005 you bought every kind of plane, and your costs grew with every type.",
+          "traits": {
+            "horizon": -1,
+            "risk": 1,
+            "disrupt": -1
+          }
+        }
+      ]
+    },
+    "d2": {
+      "id": "d2",
+      "type": "decision",
+      "year": "2006",
+      "title": "What will you sell?",
+      "media": "img:ig_d2",
+      "setup": "It is 2006 and your first planes are arriving. Air Deccan, India's first low-cost airline, sells very cheap tickets but is struggling. Kingfisher is buying giant jets. And in India, a flight leaving 15 to 20 minutes late is normal.",
+      "question": "What kind of airline will you be?",
+      "advisor": "Ask what a normal Indian flyer really wants. Is it a free meal, or is it to reach the meeting on time?",
+      "options": [
+        {
+          "id": "luxury",
+          "label": "Go full service: free meals, lounges and a business class.",
+          "grade": "bad",
+          "effect": {
+            "profit": -15,
+            "future": -10,
+            "trust": -1,
+            "flags": ["luxury"]
+          },
+          "next": "d3",
+          "media": "img:ig_d2_luxury",
+          "outcome": "Our estimate: flyers love the meals, but your costs are now as high as the big airlines'. You must charge their fares, and most flyers have no reason to pick a new name.",
+          "why": "You copied the big airlines' costs without their size or fame. A new airline needs a clear reason to be chosen.",
+          "better": "Cut what flyers will not miss, like free meals and a business class, and give them what they care about most: low fares and on-time flights.",
+          "takeaway": "In 2006 you copied your rivals' costly comforts instead of giving flyers a new reason to choose you.",
+          "traits": {
+            "horizon": -1,
+            "risk": 0,
+            "disrupt": -1
+          }
+        },
+        {
+          "id": "cheapest",
+          "label": "Sell the cheapest tickets in India, even below cost, to win flyers fast.",
+          "grade": "ok",
+          "effect": {
+            "profit": -10,
+            "future": 5,
+            "flags": ["cheapest"]
+          },
+          "next": "d3",
+          "media": "img:ig_d2_cheapest",
+          "outcome": "Our estimate: your planes fill up fast, but every seat sold below cost loses money. Rivals cut their fares too, and soon nobody is making money.",
+          "why": "Low fares win flyers, but fares below cost only work while the cash lasts. A price war has no winner.",
+          "better": "Keep fares low by keeping costs low, not by losing money. Then win flyers with something rivals find hard to copy, like being on time.",
+          "takeaway": "In 2006 you bought flyers with losses. Cheap only works when your costs are cheaper too.",
+          "traits": {
+            "horizon": 0,
+            "risk": 1,
+            "disrupt": 0
+          }
+        },
+        {
+          "id": "on_time",
+          "label": "Low fares, one class, no free meals, and a promise: we leave on time.",
+          "grade": "great",
+          "real": true,
+          "effect": {
+            "profit": 10,
+            "future": 15,
+            "flags": ["on_time"]
+          },
+          "next": "d3",
+          "media": "img:ig_d2_ontime",
+          "outcome": [
+            {
+              "when": {
+                "flags": ["one_type"]
+              },
+              "text": "IndiGo launched with one class only. No business seats, no free meals, no loyalty points. Snacks were for sale. Its big promise was simple: your flight leaves on time. Because every plane was an A320, pilots, crew and engineers worked faster, and a plane could be ready again in 20 to 30 minutes. In November 2009, 78.4% of IndiGo flights were on time, against 74.5% for all Indian airlines."
+            },
+            {
+              "text": "Our estimate: flyers like the low fares and the on-time promise. But with mixed or used planes, your ground teams work slower, and keeping the promise is harder than making it."
+            }
+          ],
+          "why": "You cut what flyers would not miss and promised what they wanted most. A simple promise, kept every day, builds trust.",
+          "takeaway": "In 2006 you sold low fares and on-time flights, and cut everything else.",
+          "traits": {
+            "horizon": 1,
+            "risk": 0,
+            "disrupt": 1
+          }
+        }
+      ]
+    },
+    "d3": {
+      "id": "d3",
+      "type": "decision",
+      "year": "2007",
+      "title": "Paying for the planes",
+      "media": "img:ig_d3",
+      "setup": [
+        {
+          "when": {
+            "flags": ["one_type"]
+          },
+          "text": "You have ordered 100 planes worth $6 billion at list prices. Six planes flew by the end of 2006, and nine more are joining in 2007. A young airline cannot pay for all of them from its own pocket."
+        },
+        {
+          "text": "Our estimate: your fleet is growing, and planes cost a lot of money. A young airline cannot pay for all of them from its own pocket."
+        }
+      ],
+      "question": "How do you pay for your planes?",
+      "advisor": "You need planes to fly, not planes to own. Think about what you really need.",
+      "options": [
+        {
+          "id": "leaseback",
+          "label": "Sell each new plane to a leasing company, rent it back, and swap it for a new one after about six years.",
+          "grade": "great",
+          "real": true,
+          "effect": {
+            "profit": 15,
+            "future": 10,
+            "flags": ["leaseback"]
+          },
+          "next": "scene2008",
+          "media": "img:ig_d3_leaseback",
+          "outcome": [
+            {
+              "when": {
+                "flags": ["one_type"]
+              },
+              "text": "IndiGo bought planes in bulk at a discount, sold them to leasing companies around the time they arrived, and leased them back. It gave planes back within about six years. This kept big loans off its books, brought cash in up front, and kept the fleet young, so fewer flights were delayed by repairs."
+            },
+            {
+              "text": "Our estimate: leasing companies pay you less, because you are not buying in bulk. Still, you free up cash and keep your planes fairly new."
+            }
+          ],
+          "why": "You turned a huge bill into cash in hand, and young planes meant fewer repairs and fewer delays.",
+          "takeaway": "In 2007 you rented your planes instead of owning them, and kept your fleet young and your cash free.",
+          "traits": {
+            "horizon": 1,
+            "risk": 0,
+            "disrupt": 1
+          }
+        },
+        {
+          "id": "loans",
+          "label": "Borrow from banks and own every plane.",
+          "grade": "ok",
+          "effect": {
+            "profit": -10,
+            "future": 5,
+            "flags": ["loans"]
+          },
+          "next": "scene2008",
+          "media": "img:ig_d3_loans",
+          "outcome": "Our estimate: you own your planes, but you also own big loans. Every month the interest is due, even when flights fly half empty. And as your planes age, repair bills grow.",
+          "why": "Owning planes ties up money and adds debt. In a business where profits swing, heavy debt is dangerous.",
+          "better": "Sell new planes to leasing companies and rent them back. You get cash up front and can swap old planes for new ones.",
+          "takeaway": "In 2007 you took on big loans to own planes you only needed to fly.",
+          "traits": {
+            "horizon": 0,
+            "risk": 0,
+            "disrupt": 0
+          }
+        },
+        {
+          "id": "old_planes",
+          "label": "Save money by renting cheap, old planes instead.",
+          "grade": "bad",
+          "effect": {
+            "profit": 5,
+            "future": -15,
+            "trust": -1,
+            "flags": ["old_planes"]
+          },
+          "next": "scene2008",
+          "media": "img:ig_d3_old",
+          "outcome": "Our estimate: the rent is cheap, but old planes break down more often. They burn more fuel and spend more days in the repair shop. Your on-time record starts to slip.",
+          "why": "Old planes look cheap but cost more in fuel, repairs and delays. For an airline that promises to be on time, that is a bad trade.",
+          "better": "Keep the fleet young. Sell new planes to leasing companies, rent them back, and swap them before they get old.",
+          "takeaway": "In 2007 you chose cheap, old planes, and paid for it in repairs and delays.",
+          "traits": {
+            "horizon": -1,
+            "risk": 0,
+            "disrupt": -1
+          }
+        }
+      ]
+    },
+    "scene2008": {
+      "id": "scene2008",
+      "type": "scene",
+      "year": "2008",
+      "media": "img:ig_2008",
+      "text": "It is 2008. Fuel prices have shot up, and fares with them. In 2007 Kingfisher's parent company bought 26% of Air Deccan. Now Jet Airways and Kingfisher are working together to cut costs. This year, Indian airlines will lose $2.5 billion, a quarter of all airline losses in the world.",
+      "next": "d4"
+    },
+    "d4": {
+      "id": "d4",
+      "type": "decision",
+      "year": "2008",
+      "title": "A storm for everyone",
+      "media": "img:ig_d4",
+      "setup": "Some airlines sell tickets for as little as Rs 500, below cost. India's tax on jet fuel is several times the world average. Rivals are joining hands to survive, and new planes keep arriving at your door.",
+      "question": "How do you get through the storm?",
+      "advisor": "In a storm, everyone looks for a big move. Sometimes the big move is to keep doing the simple thing well.",
+      "options": [
+        {
+          "id": "buy_rival",
+          "label": "Buy a struggling rival airline to get bigger fast.",
+          "grade": "bad",
+          "effect": {
+            "profit": -20,
+            "future": -15,
+            "trust": -1,
+            "flags": ["buy_rival"]
+          },
+          "next": "scene2010",
+          "media": "img:ig_d4_buy",
+          "outcome": "Our estimate: you get more planes and routes overnight, but also their debts, their mixed fleet and their late flights. Your teams spend a year fixing someone else's problems.",
+          "why": "Buying a weak rival in a downturn means buying its losses too. It breaks the simple model that made you strong.",
+          "better": "Stay on your own. Keep your simple model and tight costs, and let weaker rivals shrink.",
+          "takeaway": "In 2008 you bought a rival's problems and diluted your own strength.",
+          "traits": {
+            "horizon": -1,
+            "risk": 1,
+            "disrupt": -1
+          }
+        },
+        {
+          "id": "steady",
+          "label": "Stay on your own. Keep one plane type, keep costs tight, and keep adding planes.",
+          "grade": "great",
+          "real": true,
+          "effect": {
+            "profit": 10,
+            "future": 10,
+            "flags": ["steady"]
+          },
+          "next": "scene2010",
+          "media": "img:ig_d4_steady",
+          "outcome": [
+            {
+              "when": {
+                "flags": ["one_type", "on_time", "leaseback"]
+              },
+              "text": "IndiGo kept flying only A320s, with one class and tight costs, and kept adding planes. Its 25th plane arrived in 2009. In the year to March 2009, IndiGo made a profit of $17.6 million. In the same year Kingfisher lost $342.7 million, Jet Airways lost $86.1 million and SpiceJet lost $75.4 million."
+            },
+            {
+              "text": "Our estimate: staying calm helps, but your costs are higher than they could be. You lose a little money this year, though far less than the rivals who panicked."
+            }
+          ],
+          "why": "When everyone else was chasing size, you protected the low costs that let you make money even in a bad year.",
+          "takeaway": "In 2008 you stuck to your simple, low-cost model while rivals lost their way.",
+          "traits": {
+            "horizon": 1,
+            "risk": 0,
+            "disrupt": 0
+          }
+        },
+        {
+          "id": "park",
+          "label": "Park half your planes and wait for better times.",
+          "grade": "ok",
+          "effect": {
+            "profit": 5,
+            "future": 0,
+            "flags": ["park"]
+          },
+          "next": "scene2010",
+          "media": "img:ig_d4_park",
+          "outcome": "Our estimate: you save on fuel, but parked planes still cost rent. Flyers and travel agents get used to other airlines on your old routes.",
+          "why": "Shrinking saves cash in the short run, but you give away routes and flyers that are hard to win back.",
+          "better": "If your costs are the lowest, keep flying. A low-cost airline can make money when others cannot, and take their flyers.",
+          "takeaway": "In 2008 you hid from the storm and gave rivals your routes.",
+          "traits": {
+            "horizon": -1,
+            "risk": -1,
+            "disrupt": 0
+          }
+        }
+      ]
+    },
+    "scene2010": {
+      "id": "scene2010",
+      "type": "scene",
+      "year": "2010",
+      "media": "img:ig_2010",
+      "text": [
+        {
+          "when": {
+            "flags": ["one_type", "on_time", "leaseback", "steady"]
+          },
+          "text": "It is the end of 2010. IndiGo is now India's third-biggest airline, carrying 17.3% of flyers, ahead of Air India. Airbus is getting ready to launch a new version of the A320, called the A320neo."
+        },
+        {
+          "text": "Our estimate: it is the end of 2010. You have survived the bad years, but you are not yet among India's biggest airlines. Airbus is getting ready to launch a new version of the A320, called the A320neo."
+        }
+      ],
+      "next": "d5"
+    },
+    "d5": {
+      "id": "d5",
+      "type": "decision",
+      "year": "2011",
+      "title": "The next big bet",
+      "media": "img:ig_d5",
+      "setup": "Only a few Indians fly today, so the room to grow is huge. Newer planes need fewer repairs and burn less fuel. And in January 2011, you get a licence to fly abroad.",
+      "question": "What do you order next?",
+      "advisor": "The plan that got you here is simple. Do you scale it, change it, or rest?",
+      "options": [
+        {
+          "id": "pause",
+          "label": "Pause new orders and save cash for a while.",
+          "grade": "ok",
+          "effect": {
+            "profit": 10,
+            "future": 0,
+            "flags": ["pause"]
+          },
+          "next": "ending_route",
+          "media": "img:ig_d5_pause",
+          "outcome": "Our estimate: your bank balance looks good, but in a few years you run out of planes to grow with. Rivals take the new routes first.",
+          "why": "Saving cash is safe, but planes take years to arrive. A pause today means no growth in five years.",
+          "better": "Lock in a big order of the same plane type now, while you have the cash and the bargaining power.",
+          "takeaway": "In 2011 you rested while the market kept growing.",
+          "traits": {
+            "horizon": -1,
+            "risk": -1,
+            "disrupt": 0
+          }
+        },
+        {
+          "id": "wide",
+          "label": "Buy big long-range jets to fly to Europe and America.",
+          "grade": "bad",
+          "effect": {
+            "profit": -15,
+            "future": -15,
+            "trust": -1,
+            "flags": ["wide"]
+          },
+          "next": "ending_route",
+          "media": "img:ig_d5_wide",
+          "outcome": "Our estimate: big jets need new pilots, new engineers and new spare parts. Long flights fight strong foreign airlines. Your simple, low-cost model gets complicated overnight.",
+          "why": "Adding a second, very different plane type breaks the one-type model that kept your costs low.",
+          "better": "Stay with one plane type. Grow at home and fly to nearby countries with the same planes.",
+          "takeaway": "In 2011 you chased glamour routes and broke your own simple model.",
+          "traits": {
+            "horizon": 0,
+            "risk": 1,
+            "disrupt": -1
+          }
+        },
+        {
+          "id": "neo",
+          "label": "Order 180 more A320s, including the new A320neo.",
+          "grade": "great",
+          "real": true,
+          "effect": {
+            "profit": -10,
+            "future": 15,
+            "flags": ["neo"]
+          },
+          "next": "ending_route",
+          "media": "img:ig_d5_neo",
+          "outcome": [
+            {
+              "when": {
+                "flags": ["one_type", "on_time", "leaseback", "steady"]
+              },
+              "text": "On 12 January 2011, IndiGo agreed to buy 180 more planes: 150 A320neo and 30 A320, worth $15.6 billion at list prices. Airbus called it the largest single firm order for big jets in its history. IndiGo was one of the first buyers of the A320neo. On 1 September 2011, it flew its first international flight, from Delhi to Dubai."
+            },
+            {
+              "text": "Our estimate: a big order of one plane type gives you a good price and room to grow. But your earlier choices mean you start this new chapter with less money and a weaker name than you could have."
+            }
+          ],
+          "why": "You scaled the model that worked, with the same plane type, at a bulk price, years before you needed the planes.",
+          "takeaway": "In 2011 you doubled down on what worked: one plane type, ordered big and early.",
+          "traits": {
+            "horizon": 1,
+            "risk": 1,
+            "disrupt": 1
+          }
+        }
+      ]
+    },
+    "ending_route": {
+      "id": "ending_route",
+      "type": "route",
+      "routes": [
+        {
+          "when": {
+            "minFuture": 70
+          },
+          "to": "legend"
+        },
+        {
+          "when": {
+            "minFuture": 40
+          },
+          "to": "survivor"
+        },
+        {
+          "to": "collapse"
+        }
+      ]
+    },
+    "legend": {
+      "id": "legend",
+      "type": "ending",
+      "tier": "legend",
+      "title": "India's biggest airline",
+      "media": "img:ig_legend",
+      "text": [
+        {
+          "when": {
+            "flags": ["one_type", "on_time", "leaseback", "steady", "neo"]
+          },
+          "text": "By October 2011, IndiGo carried 19.6% of Indian flyers and was the only big Indian airline making a profit. In October 2012 Kingfisher's planes stopped flying, and it lost its licence with debts of about $2.49 billion. IndiGo added flights. In 2012 it carried more passengers than any other Indian airline, and in the year to March 2013 its profit rose six times, to Rs 7.87 billion."
+        },
+        {
+          "text": "Our estimate: you made enough smart calls to pull ahead. Your simple, on-time airline becomes one of India's biggest, while rivals with heavy costs struggle."
+        }
+      ],
+      "bonus": 15
+    },
+    "survivor": {
+      "id": "survivor",
+      "type": "ending",
+      "tier": "survivor",
+      "title": "Still flying",
+      "media": "img:ig_survivor",
+      "text": "Our estimate: your airline survives the hard years, but it is one of many. With higher costs than it could have had, it never pulls clearly ahead of its rivals.",
+      "bonus": 5
+    },
+    "collapse": {
+      "id": "collapse",
+      "type": "ending",
+      "tier": "collapse",
+      "title": "Grounded",
+      "media": "img:ig_collapse",
+      "text": "Our estimate: high costs and debts catch up with you. Like several Indian airlines of this time, your planes go back to their owners and your flights stop.",
+      "bonus": 0
+    },
+    "fired": {
+      "id": "fired",
+      "type": "ending",
+      "tier": "fired",
+      "title": "The board lets you go",
+      "media": "img:ig_fired",
+      "text": "Our estimate: three costly calls in a row. The board loses its trust in you and asks someone else to fly the airline through the storm.",
+      "bonus": 0
+    }
+  },
+  "realEnding": "legend",
+  "realHistory": "IndiGo ordered 100 Airbus A320s in June 2005, before it had flown at all, and flew its first flight in August 2006. It flew one plane type with one class, sold no free meals, promised on-time flights, and paid for planes by selling them to leasing companies and renting them back. In the year to March 2009, when most Indian airlines lost money, IndiGo made a profit. In 2011 it ordered 180 more A320-family planes and began flying abroad. In October 2012 Kingfisher stopped flying and lost its licence, and in 2012 IndiGo carried more passengers than any other Indian airline.",
+  "sources": [
+    {
+      "label": "New Indian Airline Orders 100 Airbus Jets for $6B (Fox News / AP, 2005)",
+      "url": "https://www.foxnews.com/story/new-indian-airline-orders-100-airbus-jets-for-6b.amp"
+    },
+    {
+      "label": "How IndiGo Airlines Disrupted the Indian Skies (HBS RCTOM)",
+      "url": "https://d3.harvard.edu/platform-rctom/submission/how-indigo-airlines-disrupted-the-indian-skies/"
+    },
+    {
+      "label": "Indian airlines' FY2008/09 financial highlights (CAPA, 2009)",
+      "url": "https://centreforaviation.com/news/indian-ministry-of-civil-aviation-reports-indian-airlines-fy200809-financial-highlights-28408"
+    },
+    {
+      "label": "After rapid climb, India's airlines face steep descent (Christian Science Monitor, 2009)",
+      "url": "https://csmonitor.com/World/Asia-Pacific/2009/0901/p12s01-woap.html"
+    },
+    {
+      "label": "The $40b jet buying spree: IndiGo's big bet (Reuters via The Daily Star, 2014)",
+      "url": "https://www.thedailystar.net/the-40b-jet-buying-spree-indigos-big-bet-46483"
+    },
+    {
+      "label": "Airbus Celebrates $15.6 Billion Indian Deal (IndustryWeek, 2011)",
+      "url": "https://www.industryweek.com/companies-amp-executives/airbus-celebrates-156-billion-indian-deal"
+    },
+    {
+      "label": "Kingfisher Airlines' Loss is IndiGo's Gain (IBTimes, 2011)",
+      "url": "https://www.ibtimes.com/kingfisher-airlines-loss-indigos-gain-372308"
+    },
+    {
+      "label": "Kingfisher loses licence to fly (TTG Asia, 2012)",
+      "url": "https://www.ttgasia.com/2012/10/22/kingfisher-loses-licence-to-fly/"
+    }
+  ],
+  "credits": "Research brief and full source list: content/hotseats/indigo-one-plane-type/research.md. Images are AI illustrations."
+}
