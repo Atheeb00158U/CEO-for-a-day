@@ -1,0 +1,27 @@
+{
+  "name": "ceo-for-a-day",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "validate": "node scripts/validate-hotseats.mjs",
+    "treemap": "node scripts/treemap.mjs",
+    "voices": "node scripts/list-voice-lines.mjs > voice-lines.json"
+  },
+  "dependencies": {
+    "next": "16.4.1",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "4.3.3",
+    "tailwindcss": "4.3.3",
+    "typescript": "5.9.3",
+    "@types/react": "19.2.16",
+    "@types/react-dom": "19.2.3",
+    "@types/node": "22.20.4"
+  },
+  "type": "module"
+}
