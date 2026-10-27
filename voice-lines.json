@@ -845,14 +845,14 @@
   "text": "Three costly calls in a row. The board has lost its trust in you and asks someone else to lead Netflix."
  },
  {
-  "id": "be575c441dc4",
+  "id": "25a714b5aa4f",
   "voice": "af_heart",
-  "text": "It is the end of 2007. Nokia sold 435 million phones this year. Four in every ten phones sold in the world are yours. In India, almost everyone you meet carries a Nokia."
+  "text": "It is the end of 2007. Nokia sold 435 million phones this year. Four in every ten phones sold in the world are yours, and India is one of your biggest markets."
  },
  {
-  "id": "54833bd4e3d4",
+  "id": "03c657b84010",
   "voice": "af_heart",
-  "text": "Your Symbian software runs on more than half of all smartphones. You own about half of the company that makes it. But a new rival is coming: Google's Android, free and open. And a year ago, a phone with a big touchscreen arrived."
+  "text": "Your Symbian software runs on more than half of all smartphones. You own about half of the company that makes it. But a new rival is coming: Google's Android. And a year ago, a phone with a big touchscreen arrived."
  },
  {
   "id": "e698e46c28d2",
@@ -865,9 +865,9 @@
   "text": "Symbian is winning today. The question is whether it can win the next five years."
  },
  {
-  "id": "cd8e158df257",
+  "id": "f51eb278eced",
   "voice": "af_heart",
-  "text": "Nokia paid about €264 million for the rest of Symbian and planned to make its code free for anyone. It now fully controlled the most popular smartphone software. But the software itself was old, and touchscreens needed something new."
+  "text": "Nokia paid about €264 million for the rest of Symbian and planned to open its code to everyone through a new Symbian Foundation. It now owned all of the most popular smartphone software. But it was software from before the touchscreen era."
  },
  {
   "id": "b901d3cedd3e",
@@ -895,19 +895,19 @@
   "text": "You protected today's business and built tomorrow's at the same time, with a team that was free to break old habits."
  },
  {
-  "id": "8e1da669512b",
+  "id": "e00d42d5ca6d",
   "voice": "af_heart",
-  "text": "It is late 2010. Your new touch phones keep you in the race, but the market is moving fast. By the end of the year Apple has 16% of smartphone sales. The board wants a clear plan for the future."
+  "text": "Our estimate: it is late 2010, and your new touch phones keep you in the race. But by the end of the year Apple has 16% of smartphone sales, and the board wants a clear plan for the future."
  },
  {
-  "id": "f0b90bbac0fd",
+  "id": "e232ee537d2b",
   "voice": "af_heart",
-  "text": "It is late 2010. Your share of smartphones has fallen from almost half in 2007 to 30.8%, while Apple now has 16%. You and Intel have joined forces on new software called MeeGo, but only plans exist so far. The board has just brought in a new CEO from Microsoft. That CEO is you."
+  "text": "It is late 2010. Your share of smartphones has fallen from almost half in 2007 to 30.8%, while Apple now has 16%. You and Intel have joined forces on new software called MeeGo, but only plans exist so far. In September the board brought in a new CEO from Microsoft. That CEO is you."
  },
  {
-  "id": "bc615804e9b5",
+  "id": "a38c5868982b",
   "voice": "af_heart",
-  "text": "Samsung, LG and HTC all use Google's free Android, and they are growing fast. Microsoft wants a big partner for its Windows Phone, which has only 3.4% of the market. Your own MeeGo software is still not finished."
+  "text": "Samsung, LG and HTC all use Google's Android. Microsoft wants a big partner for its phone software, which has only 3.4% of smartphone sales. Your own MeeGo software is still not finished."
  },
  {
   "id": "ff7c83b50f1c",
@@ -940,19 +940,19 @@
   "text": "When a platform has already won, the smart move is to use it and compete where you are strongest: making, pricing and selling phones everywhere."
  },
  {
-  "id": "506926dfc319",
+  "id": "3f8c6d80ef67",
   "voice": "af_heart",
-  "text": "In February 2011 Nokia made Windows Phone its main smartphone software and pushed Symbian and MeeGo aside. Its share price fell 9.5% that morning. Nokia said Android would turn it into just another phone maker and give Google too much of the money from services. The first Windows phone, the Lumia 800, only arrived in October 2011."
+  "text": "In February 2011 Nokia made Windows Phone its main smartphone software and pushed Symbian and MeeGo aside. Its share price fell 9.5% that morning. Nokia said Android would turn it into just another phone maker and give Google too much of the money from services. The first Windows phones, the Lumia 800 and 710, only arrived in October 2011."
  },
  {
-  "id": "4e37c570c16c",
+  "id": "db96bd6d562c",
   "voice": "af_heart",
-  "text": "You tied your future to software that very few people used, and your old phones lost value the day you announced it. It also took months before you had anything new to sell. What would have worked: Choose the platform buyers and app makers had already chosen, and fight on hardware, price and distribution."
+  "text": "You tied your future to software that very few people used, and it took months before you had anything new to sell. What would have worked: Choose the platform buyers and app makers had already chosen, and fight on hardware, price and distribution."
  },
  {
-  "id": "cb024e560ad5",
+  "id": "eb498efce0b7",
   "voice": "af_heart",
-  "text": "While your new smartphones are months away, India is slipping. You once had about 70% of India's phone market, but your share has fallen for nine quarters in a row. About half of Indian buyers want phones that take two SIM cards, and local brands sell them cheap."
+  "text": "Your new smartphones are still on the way, and India is slipping. You once had about 70% of India's phone market, but your share has fallen for nine quarters in a row. About half of Indian buyers want phones that take two SIM cards, and local brands sell them cheap."
  },
  {
   "id": "e6998340526c",
@@ -990,9 +990,9 @@
   "text": "Cutting prices helps, but it does not fix the real gap: the phone buyers wanted was not on your shelf. What would have worked: Build the cheap, dual-SIM phones buyers were asking for, and keep smartphone prices for later."
  },
  {
-  "id": "de75afb9c274",
+  "id": "fe8bea139294",
   "voice": "af_heart",
-  "text": "In June 2011 Nokia launched dual-SIM phones in India. It sold its Asha phones for about Rs 3,000 to 8,000 and gave shops more margin. Its share of phones shipped in India still fell, from 31% in 2011 to 22.2% in the first half of 2012, but Nokia stayed number one."
+  "text": "In June 2011 Nokia launched dual-SIM phones in India. It also sold its new Asha phones for about Rs 3,000 to 8,000 and gave shops more margin. Its share of phones shipped in India still fell, from 31% in 2011 to 22.2% in the first half of 2012, but Nokia stayed number one."
  },
  {
   "id": "e801c88980a1",
@@ -1000,9 +1000,9 @@
   "text": "You listened to what Indian buyers wanted and used your biggest strength, the shops that already sold your phones everywhere."
  },
  {
-  "id": "c05f086d59db",
+  "id": "057904f51a9f",
   "voice": "af_heart",
-  "text": "It is 2013. Your Android phones sell well, but the fight with Samsung is tough and margins are thin. Meanwhile your network equipment business, Nokia Siemens Networks, quietly makes good money."
+  "text": "Our estimate: it is 2013, your Android phones sell well, but the fight with Samsung is tough and margins are thin. Meanwhile your network equipment business, Nokia Siemens Networks, quietly makes good money."
  },
  {
   "id": "d5816d36e2a3",
@@ -1010,9 +1010,9 @@
   "text": "It is 2013. At the end of 2012 Samsung sold 22.7% of the world's phones and Nokia 18%. Symbian is down to 1.2% of smartphone sales. Your phone business made €14.9 billion in sales in 2012, but it lost over €1 billion. Your network equipment business, Nokia Siemens Networks, is doing much better."
  },
  {
-  "id": "1f6a00a047a6",
+  "id": "11b9145d381e",
   "voice": "af_heart",
-  "text": "Nokia Siemens Networks builds the equipment that mobile networks run on. In 2012 it made €822 million in operating profit. Your partner, Siemens, wants to sell its half."
+  "text": "Nokia Siemens Networks builds the equipment that mobile networks run on. In 2012 it made €822 million in adjusted operating profit. Your partner, Siemens, wants to sell its half."
  },
  {
   "id": "93a3f89f624f",
@@ -1055,14 +1055,14 @@
   "text": "It was a safe middle path, but it gave away control of your best asset at the moment you needed it most. What would have worked: Take full control of the profitable networks business and build the company's future around it."
  },
  {
-  "id": "6bcb6f9fa035",
+  "id": "26358c1887ad",
   "voice": "af_heart",
-  "text": "Your Android phones are holding their own, but Samsung is bigger and the price war never stops. Microsoft offers to buy your whole phone business."
+  "text": "Our estimate: your Android phones are holding their own, but Samsung is bigger and the price war never stops. Now Microsoft is ready to buy your whole phone business."
  },
  {
-  "id": "544a712d3a57",
+  "id": "1d7159ef381b",
   "voice": "af_heart",
-  "text": "Your phone business is losing over €1 billion a year, and Windows phones are not catching up. Microsoft, your software partner, offers to buy your whole phone business."
+  "text": "Your phone business is losing over €1 billion a year. Microsoft, your software partner, is ready to buy your whole phone business."
  },
  {
   "id": "fc6208e37e87",
