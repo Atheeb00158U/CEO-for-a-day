@@ -28,6 +28,13 @@ UI components: use shadcn/ui, restyled to this look. Add gluestack-ui only if we
 - `npm run narrate`: regenerate narration after text edits (needs the Kokoro files on Atheeb's Mac)
 - `npm run debriefs -- <id>`: offline Claude drafts of per-path debriefs; a person sets `reviewed: true` before the app shows one
 
+## Writing stories
+Follow `docs/AUTHORING.md` for every Hot Seat and Daily Call: research brief → draft → check → fresh-context fact-check (stamped `factcheck.md`) → image prompts → Atheeb's review. A published story needs a `factcheck.md` stamped for its exact file, with no open claims. Missing narration is only a warning (the app falls back to the browser's voice).
+
+## Daily Call
+- One decision, about a minute, shown above the Hot Seat on Home. Content is `content/daily/daily.json`; its order is the schedule (day N after `startDay` plays call N). Only append.
+- It uses the same local date as the streak. The answer is saved at "Lock it in" (`applyDaily`): one play a day, no Hindsight, 15/10/5 XP.
+
 ## Hot Seat content
 - Each Hot Seat is `content/hotseats/<id>/hotseat.json` (+ `media/`), checked by the Zod schema in `src/lib/hotseat-schema.ts`, which must match `hotseat-types.ts` exactly (a type check fails the build otherwise).
 - `draft: true` hides a Hot Seat from the production game and turns missing media and audio into warnings. Its JSON is still bundled (every Hot Seat is, through `import.meta.glob`), so don't commit anything secret in a draft; the Phase 5 switch to lazy loading can drop drafts from the bundle.

@@ -23,6 +23,8 @@ npm run dev          # http://localhost:3000
 | `npm run media -- <id> <files…>` | Turns images into 1080 px webp and clips into ≤ 9 s silent H.264, into the Hot Seat's `media/` |
 | `npm run narrate` | Refreshes `voice-lines.json` and records missing lines with Kokoro (needs `KOKORO_MODEL` and `KOKORO_VOICES`) |
 | `npm run debriefs -- <id> [--dry-run]` | Drafts one debrief per path with Claude, offline, into `debriefs.json` for review |
+
+How to write a Hot Seat or a Daily Call, step by step: `docs/AUTHORING.md`. Daily Calls live in `content/daily/daily.json`.
 | `npm test` / `npm run validate` | All tests / just the Hot Seat checks |
 
 ## Where things live

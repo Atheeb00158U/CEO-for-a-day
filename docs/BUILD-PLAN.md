@@ -53,14 +53,17 @@ Hot Seats should be data files, not TypeScript.
 - [x] Added at Atheeb's request: `/` is the website, `/app` the game, `/admin` (password) lists every Hot Seat and shows every path as a tree.
 
 ## Phase 2: More content and the Daily Call (ongoing, starts now)
-- [ ] Write the **Daily Call** format: a one-decision mini Hot Seat that takes about 60 seconds and keeps the streak alive. Add a `daily.json` pool and a schedule.
-- [ ] Draft the next three Hot Seats. Suggested: Blockbuster (complexity 1), Maggi 2015 (2) and Nokia (3). Atheeb picks the final three.
-  - [ ] Each one has 4–6 decisions, a recovery path after every bad call, real facts with sources, labelled alternate history, and no logos or invented quotes from real people.
-  - [ ] Queue media for each one: archive footage from movingimagearchive.com first. Generate the rest with `~/Documents/case-game/get_assets.sh` (Z-Image Turbo via mflux), which Atheeb runs on his Mac.
-- [ ] Regenerate two out-of-period Kodak images: `c1_box` (should be a 1900 cardboard box camera) and `c2_rush` (a 1976 store, no flat screens).
-- [ ] **Done when** at least 4 Hot Seats and 14 Daily Calls pass `hotseat:check`.
+- [x] Write the **Daily Call** format: a one-decision mini Hot Seat that takes about 60 seconds and keeps the streak alive. Add a `daily.json` pool and a schedule. *`content/daily/daily.json`; its order is the schedule.*
+- [x] Draft the next three Hot Seats. Suggested: Blockbuster (complexity 1), Maggi 2015 (2) and Nokia (3). Atheeb picks the final three. *Atheeb picked Blockbuster, Nokia, Maggi 2015 and Netflix. Blockbuster, Nokia and Netflix are drafted and fact-checked. Maggi is researched but on hold: the regulator's Supreme Court appeal and some criminal cases may still be open (see `content/hotseats/maggi/research.md`).*
+  - [x] Each one has 4–6 decisions, a recovery path after every bad call, real facts with sources, labelled alternate history, and no logos or invented quotes from real people.
+  - [ ] Queue media for each one: archive footage from movingimagearchive.com first. Generate the rest with `~/Documents/case-game/get_assets.sh` (Z-Image Turbo via mflux), which Atheeb runs on his Mac. *Archive searches are in each `research.md`. Image prompts still to write per Hot Seat; `~/Documents/case-game` is no longer on disk.*
+- [ ] Regenerate two out-of-period Kodak images: `c1_box` (should be a 1900 cardboard box camera) and `c2_rush` (a 1976 store, no flat screens). *Prompts written in `content/hotseats/kodak/image_prompts.json`; images to generate on Atheeb's Mac.*
+- [x] **Done when** at least 4 Hot Seats and 14 Daily Calls pass `hotseat:check`. *Kodak, Nokia, Blockbuster and Netflix plus 14 Daily Calls pass with no errors. The new ones are still drafts until images and narration exist.*
+- [x] Added: `docs/AUTHORING.md`, the recipe for every story, and fact-checks tied to the exact file they checked (`factcheck.md` with `checked-sha256:`).
+- [ ] Added: `docs/HOTSEAT-ROADMAP.md`, about 110 candidates for Atheeb to cut to 100.
 
 ## Phase 3: Backend, accounts and real leagues (3–5 days)
+- [ ] **Blocking, before the first public deploy:** every Hot Seat, draft and future Daily Call is bundled into `/app` today. Load each Hot Seat lazily, leave drafts out at build time, and serve only today's Daily Call. Move streaks, quests and the Daily Call to server-side IST together.
 *Decision:* the default proposal is **Supabase** (Postgres, Auth, Storage) plus Next.js route handlers on **Vercel**. Confirm with Atheeb before you start.
 - [ ] Data model:
   - [ ] `profiles`
