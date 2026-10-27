@@ -28,7 +28,7 @@ This is the plan for taking the prototype in this folder to a launchable product
 - [x] Unit-test `store.tsx` logic: streak, freeze use, quest reset and league week rollover. Move the pure logic out of the React file so it can be tested.
 - [x] Turn `scripts/validate-hotseats.mjs` into a Vitest test that runs over every registered Hot Seat.
 - [ ] Remove the `PREVIEW_EXPORT` hack once a real deployment exists.
-- [ ] **Done when** lint, tests, validate and build all pass in CI (GitHub Actions). *All pass locally with the CI steps; ticks once the first push is green.*
+- [x] **Done when** lint, tests, validate and build all pass in CI (GitHub Actions).
 
 ## Phase 1: Content pipeline (1–2 days)
 Hot Seats should be data files, not TypeScript.
