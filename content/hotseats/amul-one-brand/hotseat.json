@@ -193,7 +193,7 @@
           },
           "next": "scene1955",
           "media": "img:am_d2_plant",
-          "outcome": "The government of India helped the Union get money from UNICEF and help from New Zealand, with technical aid from the FAO. A Rs 50 lakh factory for milk powder and butter was planned. The President of India laid its foundation stone on 15 November 1954. In 1955 a dairy engineer at Anand installed the world's first spray-dryer for buffalo milk. Experts had said buffalo milk could not be dried. On 31 October 1955 the Prime Minister opened the factory. Now the Union could take farmers' milk all year round.",
+          "outcome": "The government of India helped the Union get money from UNICEF and help from New Zealand, with technical aid from the FAO. A Rs 50 lakh factory for milk powder and butter was planned. The President of India laid its foundation stone on 15 November 1954. In 1955 a dairy engineer at Anand installed a spray-dryer for buffalo milk, which Amul describes as the first in the world. Experts had said buffalo milk could not be dried. In 1955 the Prime Minister opened the factory. Now the Union could take farmers' milk all year round.",
           "why": "You turned the problem into a product. Milk that went bad in hours became butter and powder that could keep and travel.",
           "takeaway": "In 1955 you built the plant the experts said could not work, and turned extra milk into products that keep.",
           "traits": {
@@ -214,7 +214,7 @@
           "when": {
             "flags": ["plant"]
           },
-          "text": "Your new dairy makes butter and milk powder from buffalo milk, a first in the world. You sell them under one name: Amul, from the Sanskrit word 'Amulya', which means priceless. In the years that follow, Amul also makes cheese and baby food from buffalo milk."
+          "text": "Your new dairy makes butter and milk powder from buffalo milk, which Amul says was a first in the world. You sell them under one name: Amul, from the Sanskrit word 'Amulya', which means priceless. In the years that follow, Amul also makes cheese and baby food from buffalo milk."
         },
         {
           "text": "Our estimate: after more hard winters, you build a smaller butter plant, years late. You sell under one name, Amul, from the Sanskrit word for priceless. But private dairies already have a head start."
@@ -394,10 +394,10 @@
           "when": {
             "flags": ["national"]
           },
-          "text": "On 13 January 1970 Operation Flood begins. Its first phase is paid for with milk powder and butter oil given by Europe through the World Food Programme. It links 18 milk areas to Delhi, Bombay, Calcutta and Madras. In Gujarat, other districts like Mehsana, Banaskantha, Baroda, Sabarkantha and Surat have built milk unions just like yours."
+          "text": "On 13 January 1970 Operation Flood begins. Its first phase is paid for with milk powder and butter oil given by Europe through the World Food Programme. It links 18 milk areas to Delhi, Bombay, Calcutta and Madras. In Gujarat, other districts like Mehsana and Banaskantha have built milk unions just like yours."
         },
         {
-          "text": "Our estimate: it is 1970. In most of India, milk is still run by middlemen. But in Gujarat, other districts like Mehsana, Banaskantha, Baroda, Sabarkantha and Surat have built milk unions of their own."
+          "text": "Our estimate: it is 1970. In most of India, milk is still run by middlemen. But in Gujarat, other districts like Mehsana and Banaskantha have built milk unions of their own."
         }
       ],
       "next": "d5"
@@ -557,7 +557,7 @@
     }
   },
   "realEnding": "legend",
-  "realHistory": "In 1946 the milk farmers of Kaira, Gujarat, went on a 15-day milk strike and won the right to sell through their own co-operative Union. In 1955 they opened a factory that made milk powder and butter from buffalo milk, a world first, and sold it under the name Amul. From 1965 the National Dairy Development Board copied the model across India through Operation Flood. In 1966 the cheeky Amul girl ads began. In 1973 Gujarat's milk unions formed one federation, GCMMF, to sell under one brand: Amul. By the end of 1985, 4.25 million producers were in 43,000 village co-operatives, and in 1998 India became the world's largest milk producer.",
+  "realHistory": "In 1946 the milk farmers of Kaira, Gujarat, went on a 15-day milk strike and won the right to sell through their own co-operative Union. In 1955 they opened a factory that made milk powder and butter from buffalo milk, which Amul calls a world first, and sold it under the name Amul. In 1965 the National Dairy Development Board was set up to copy the model across India, and in 1970 Operation Flood began. In 1966 the cheeky Amul girl ads began. In 1973 Gujarat's milk unions formed one federation, GCMMF, to sell under one brand: Amul. By the end of 1985, 4.25 million producers were in 43,000 village co-operatives, and in 1998 India became the world's largest milk producer.",
   "sources": [
     {
       "label": "History: Milk, the inspiration behind a revolution (Amul Dairy, Kaira Union)",
