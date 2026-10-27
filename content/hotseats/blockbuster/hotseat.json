@@ -3,18 +3,27 @@
   "company": "Blockbuster",
   "title": "The $50 million offer",
   "hook": "A tiny DVD-by-mail startup wants you to buy it.",
-  "role": "You run Blockbuster, 2000 to 2008",
+  "role": "You lead Blockbuster, 2000 to 2008",
   "years": "2000–2008",
   "cover": "img:bb_cover",
   "draft": true,
   "complexity": 1,
   "minutes": 6,
   "start": "intro",
-  "startMeters": { "profit": 85, "future": 30 },
+  "startMeters": {
+    "profit": 85,
+    "future": 30
+  },
   "startTrust": 3,
   "meters": {
-    "profit": { "label": "Profit", "hint": "Money the video stores make today" },
-    "future": { "label": "Future", "hint": "How ready Blockbuster is for what comes next" }
+    "profit": {
+      "label": "Profit",
+      "hint": "Money the video stores make today"
+    },
+    "future": {
+      "label": "Future",
+      "hint": "How ready Blockbuster is for what comes next"
+    }
   },
   "nodes": {
     "intro": {
@@ -22,7 +31,7 @@
       "type": "scene",
       "year": "2000",
       "media": "img:bb_intro",
-      "text": "It is 2000. You run Blockbuster, the biggest name in movie rental, with video shops in towns across America. A small startup called Netflix rents DVDs by post. It is losing money, and its founders have come to see you.",
+      "text": "It is 2000. You run Blockbuster, with thousands of video shops across America. A small startup called Netflix rents DVDs by post. It is losing money, and its founders have come to see you.",
       "next": "d1"
     },
     "d1": {
@@ -31,7 +40,7 @@
       "year": "2000",
       "title": "The $50 million offer",
       "media": "img:bb_d1",
-      "setup": "Netflix wants Blockbuster to buy it for $50 million. Your stores make a lot of money. Netflix has never made a profit.",
+      "setup": "Netflix wants Blockbuster to buy it for $50 million. Your stores bring in billions in revenue. Netflix has never made a profit.",
       "question": "What do you say?",
       "advisor": "Ask yourself what customers might want in five years, not what they want today.",
       "options": [
@@ -39,40 +48,65 @@
           "id": "build",
           "label": "Say no, but start our own online rental service right away.",
           "grade": "ok",
-          "effect": { "profit": -5, "future": 10, "flags": ["built_early"] },
+          "effect": {
+            "profit": -5,
+            "future": 10,
+            "flags": ["built_early"]
+          },
           "next": "scene2004",
           "media": "img:bb_d1_build",
           "outcome": "Our estimate: your own online service starts small and slow, because store managers see it as a threat. But you learn about online rental years earlier than you otherwise would.",
           "why": "You saw the shift and started learning, which was smart. But building from zero is slower than buying a team that already knows how.",
           "better": "Buy the startup for a small price, keep its team, and let it run separately from the stores.",
           "takeaway": "In 2000 you chose to build instead of buy. Building is slower, but it beats ignoring the shift.",
-          "traits": { "horizon": 1, "risk": 0, "disrupt": 1 }
+          "traits": {
+            "horizon": 1,
+            "risk": 0,
+            "disrupt": 1
+          }
         },
         {
           "id": "buy",
           "label": "Buy Netflix for $50 million and let it run on its own.",
           "grade": "great",
-          "effect": { "profit": -5, "future": 25, "flags": ["bought_netflix"] },
+          "effect": {
+            "profit": -5,
+            "future": 25,
+            "flags": ["bought_netflix"]
+          },
           "next": "scene2004",
           "media": "img:bb_d1_buy",
-          "outcome": "Our estimate: for less than a few weeks of store profits, you own the most promising rental startup in America. Its team keeps building, away from the stores, and you now have a foot in the future.",
+          "outcome": "Our estimate: for a small sum, for a company your size,, you own the most promising rental startup in America. Its team keeps building, away from the stores, and you now have a foot in the future.",
           "why": "$50 million was small for a company your size. Buying a fast-learning team is cheap insurance against your own business being disrupted.",
           "takeaway": "In 2000 you bought a small bet on the future while it was still cheap.",
-          "traits": { "horizon": 1, "risk": 1, "disrupt": 1 }
+          "traits": {
+            "horizon": 1,
+            "risk": 1,
+            "disrupt": 1
+          }
         },
         {
           "id": "no",
-          "label": "Say no. A loss-making mail-order company is a tiny niche.",
+          "label": "Say no. A mail-order DVD service is a small niche.",
           "grade": "bad",
           "real": true,
-          "effect": { "profit": 5, "future": -15, "trust": -1, "flags": ["said_no"] },
+          "effect": {
+            "profit": 5,
+            "future": -15,
+            "trust": -1,
+            "flags": ["said_no"]
+          },
           "next": "scene2004",
           "media": "img:bb_d1_no",
           "outcome": "Blockbuster said no. Netflix was losing money at the time, and according to one of its founders, Blockbuster saw it as a small niche business. Blockbuster did not launch its own online rental service in the US until August 2004.",
-          "why": "Judging a startup by today's profit hides the real question: is it learning something your customers will want? Saying no cost you four years.",
+          "why": "Judging a startup only by its size today hides the real question: is it learning something your customers will want?",
           "better": "Buy it cheaply and let it run on its own, or at least start your own online rental service right away.",
-          "takeaway": "In 2000 you judged a startup by its losses instead of by what it was learning.",
-          "traits": { "horizon": -1, "risk": -1, "disrupt": -1 }
+          "takeaway": "In 2000 you judged a startup by its size today instead of by what it was learning.",
+          "traits": {
+            "horizon": -1,
+            "risk": -1,
+            "disrupt": -1
+          }
         }
       ]
     },
@@ -83,8 +117,10 @@
       "media": "img:bb_2004",
       "text": [
         {
-          "when": { "flags": ["bought_netflix"] },
-          "text": "It is 2004. Your Netflix team is growing fast, and more people rent DVDs online every month. Your stores still bring in most of the money, but sales in them are starting to slip."
+          "when": {
+            "flags": ["bought_netflix"]
+          },
+          "text": "Our estimate: it is 2004, your Netflix team is growing fast, and more people rent DVDs online every month. Your stores still bring in most of the money, but sales in them are starting to slip."
         },
         {
           "text": "It is 2004. Blockbuster has over 9,000 stores and $6.1 billion in revenue. But in the first half of the year, sales in your existing stores fell 5.1%, and renting DVDs online is growing fast."
@@ -100,14 +136,20 @@
       "media": "img:bb_d2",
       "setup": [
         {
-          "when": { "flags": ["bought_netflix"] },
+          "when": {
+            "flags": ["bought_netflix"]
+          },
           "text": "Your Netflix team wants more money to grow. Your store managers say online rental is stealing their customers."
         },
         {
-          "when": { "flags": ["built_early"] },
+          "when": {
+            "flags": ["built_early"]
+          },
           "text": "Your small online service has a few loyal members. Now the market is big enough to matter."
         },
-        { "text": "Online rental is no longer a niche. You have no online service of your own." }
+        {
+          "text": "Online rental is no longer a niche. You have no online service of your own."
+        }
       ],
       "question": "What do you do about online rental?",
       "advisor": "Your stores are a strength no website has. The question is how to use them.",
@@ -116,40 +158,65 @@
           "id": "stores_only",
           "label": "Stay a store business. Put the money into better shops.",
           "grade": "bad",
-          "effect": { "profit": 5, "future": -15, "trust": -1, "flags": ["stores_only"] },
+          "effect": {
+            "profit": 5,
+            "future": -15,
+            "trust": -1,
+            "flags": ["stores_only"]
+          },
           "next": "scene2006",
           "media": "img:bb_d2_stores",
           "outcome": "Our estimate: the shops look great, but each year fewer people drive to them. Online services keep growing without you.",
           "why": "Making the old business nicer does not stop customers moving to a new habit.",
           "better": "Go online now and use your stores as something online-only rivals cannot match.",
           "takeaway": "In 2004 you polished the old business while customers moved online.",
-          "traits": { "horizon": -1, "risk": -1, "disrupt": -1 }
+          "traits": {
+            "horizon": -1,
+            "risk": -1,
+            "disrupt": -1
+          }
         },
         {
           "id": "online",
           "label": "Launch our own online rental, a little cheaper than Netflix.",
           "grade": "ok",
           "real": true,
-          "effect": { "profit": -10, "future": 5, "flags": ["online"] },
+          "effect": {
+            "profit": -10,
+            "future": 5,
+            "flags": ["online"]
+          },
           "next": "scene2006",
           "media": "img:bb_d2_online",
           "outcome": "In August 2004 Blockbuster launched Blockbuster Online at $19.99 a month for three DVDs at a time, about $2 less than Netflix, with no late fees. It passed 1 million subscribers in under a year, but it was expensive: analysts expected it to add about $170 million to spending in 2005.",
-          "why": "It was the right move, but four years late and mostly a copy of Netflix. Being cheaper is a weak edge against a rival who got there first.",
+          "why": "It was the right move, but it came four years after you turned Netflix down, and it was mostly a copy of Netflix. Being cheaper is a weak edge against a rival who got there first.",
           "better": "Launch online and link it to your stores from day one, so you offer something no online-only rival can.",
           "takeaway": "In 2004 you finally went online, but late and as a copy.",
-          "traits": { "horizon": 0, "risk": 1, "disrupt": 1 }
+          "traits": {
+            "horizon": 0,
+            "risk": 1,
+            "disrupt": 1
+          }
         },
         {
           "id": "linked",
           "label": "Go online and link it to our stores from day one.",
           "grade": "great",
-          "effect": { "profit": -10, "future": 20, "flags": ["linked"] },
+          "effect": {
+            "profit": -10,
+            "future": 20,
+            "flags": ["linked"]
+          },
           "next": "scene2006",
           "media": "img:bb_d2_linked",
           "outcome": "Our estimate: members get DVDs by post and can also return them at any store for a new movie on the spot. No online-only rival can offer that, and members flock to you.",
           "why": "You turned your biggest cost, thousands of stores, into a feature a website alone could not copy.",
           "takeaway": "In 2004 you used your old strength to win in the new market.",
-          "traits": { "horizon": 1, "risk": 1, "disrupt": 1 }
+          "traits": {
+            "horizon": 1,
+            "risk": 1,
+            "disrupt": 1
+          }
         }
       ]
     },
@@ -160,11 +227,13 @@
       "media": "img:bb_2006",
       "text": [
         {
-          "when": { "flags": ["linked"] },
-          "text": "It is 2006. Members love swapping mailed DVDs in your stores. Blockbuster also ended late fees in January 2005, which customers liked but which cost a lot: in the first three months, late-fee money fell by $128.5 million. Online is growing, but so are the costs."
+          "when": {
+            "flags": ["linked"]
+          },
+          "text": "Our estimate: it is 2006, and members love swapping mailed DVDs in your stores. Blockbuster also ended late fees in January 2005, and in the first three months late-fee money fell by $128.5 million. Online is growing, but so are the costs."
         },
         {
-          "text": "It is 2006. Blockbuster ended late fees in January 2005. Customers liked it, but in the first three months late-fee money fell by $128.5 million, and the company lost $57.5 million. In mid-2005 Netflix had about 3 million online members, against about 1 million for you."
+          "text": "It is 2006. Blockbuster ended late fees in January 2005. In the first three months, late-fee money fell by $128.5 million, and the company lost $57.5 million. In mid-2005 Netflix had about 3 million online members, against about 1 million for you."
         }
       ],
       "next": "d3"
@@ -183,40 +252,65 @@
           "id": "cut",
           "label": "Cut online spending to save cash for the stores.",
           "grade": "bad",
-          "effect": { "profit": 10, "future": -15, "trust": -1, "flags": ["cut_online"] },
+          "effect": {
+            "profit": 10,
+            "future": -15,
+            "trust": -1,
+            "flags": ["cut_online"]
+          },
           "next": "scene2007",
           "media": "img:bb_d3_cut",
           "outcome": "Our estimate: profits look better this year, but online members drift to Netflix and do not come back.",
           "why": "Saving cash by shrinking the part of the business that is growing only makes the shrinking part more important.",
           "better": "Spend to link your stores and online service, the one thing your rival cannot copy.",
           "takeaway": "In 2006 you cut the growing business to protect the shrinking one.",
-          "traits": { "horizon": -1, "risk": -1, "disrupt": -1 }
+          "traits": {
+            "horizon": -1,
+            "risk": -1,
+            "disrupt": -1
+          }
         },
         {
           "id": "separate",
           "label": "Keep online and stores separate, and just market harder.",
           "grade": "ok",
-          "effect": { "profit": -5, "future": 5, "flags": ["separate"] },
+          "effect": {
+            "profit": -5,
+            "future": 5,
+            "flags": ["separate"]
+          },
           "next": "scene2007",
           "media": "img:bb_d3_separate",
           "outcome": "Our estimate: more advertising brings some new members, but there is still no clear reason to choose you over Netflix.",
           "why": "Marketing a copy harder does not make it different.",
           "better": "Give members something only you can offer: swap mailed DVDs in your stores.",
           "takeaway": "In 2006 you spent on ads instead of on a real difference.",
-          "traits": { "horizon": 0, "risk": 0, "disrupt": 0 }
+          "traits": {
+            "horizon": 0,
+            "risk": 0,
+            "disrupt": 0
+          }
         },
         {
           "id": "total_access",
           "label": "Let online members swap their mailed DVDs for free rentals in our stores.",
           "grade": "great",
           "real": true,
-          "effect": { "profit": -10, "future": 15, "flags": ["total_access"] },
+          "effect": {
+            "profit": -10,
+            "future": 15,
+            "flags": ["total_access"]
+          },
           "next": "scene2007",
           "media": "img:bb_d3_total",
           "outcome": "On November 1, 2006, Blockbuster launched Total Access. Members could swap DVDs that came by post for free rentals in its stores, with plans from $5.99 a month. Subscribers grew strongly, but launch costs were higher than expected.",
           "why": "You finally used what Netflix did not have, your stores, to make the online service better. That is a real reason for customers to choose you.",
           "takeaway": "In 2006 you turned your old strength into a weapon in the new market.",
-          "traits": { "horizon": 1, "risk": 1, "disrupt": 1 }
+          "traits": {
+            "horizon": 1,
+            "risk": 1,
+            "disrupt": 1
+          }
         }
       ]
     },
@@ -225,7 +319,7 @@
       "type": "scene",
       "year": "2007",
       "media": "img:bb_2007",
-      "text": "It is 2007. The board and the old CEO have fallen out over pay, and a new CEO takes over. That's you. From 2002 to 2005 Blockbuster lost over $4 billion. The free in-store swaps are popular, but they cost a lot of money.",
+      "text": "It is 2007. Blockbuster's chief executive has left after a fight with the board over pay, and a new one takes over. Now you see the company through new eyes. From 2002 to 2005 Blockbuster lost over $4 billion. The free in-store swaps are popular, but they cost a lot of money.",
       "next": "d4"
     },
     "d4": {
@@ -236,10 +330,14 @@
       "media": "img:bb_d4",
       "setup": [
         {
-          "when": { "flags": ["total_access"] },
+          "when": {
+            "flags": ["total_access"]
+          },
           "text": "Total Access is winning members from Netflix, but free in-store swaps are expensive. Investors want losses to stop."
         },
-        { "text": "Online is still behind Netflix, and investors want losses to stop." }
+        {
+          "text": "Online is still behind Netflix, and investors want losses to stop."
+        }
       ],
       "question": "What is your plan?",
       "advisor": "Cutting costs is easy. Cutting the right costs is the job.",
@@ -249,46 +347,84 @@
           "label": "Charge members extra for in-store swaps and put money back into the stores.",
           "grade": "bad",
           "real": true,
-          "effect": { "profit": 5, "future": -15, "trust": -1 },
+          "effect": {
+            "profit": 5,
+            "future": -15,
+            "trust": -1
+          },
           "next": "ending_route",
           "media": "img:bb_d4_charge",
-          "outcome": "The new CEO charged members $7 more a month for in-store swaps, tried new store formats and sold more electronics. Blockbuster lost 500,000 online subscribers in summer 2007, and its shares fell 17% after a November 2007 meeting with investors.",
+          "outcome": "The new CEO charged members $7 more a month for in-store swaps, and planned tests of new store layouts and of selling small electronics. Blockbuster lost 500,000 online subscribers in summer 2007, and its shares fell 17% after a November 2007 meeting with investors.",
           "why": "You raised the price on the one thing that made you different, just when customers were choosing between you and a rival.",
           "better": "Keep the swaps cheap, close weak stores to save money, and invest the savings in movie downloads.",
           "takeaway": "In 2007 you charged more for your only real advantage.",
-          "traits": { "horizon": -1, "risk": 0, "disrupt": -1 }
+          "traits": {
+            "horizon": -1,
+            "risk": 0,
+            "disrupt": -1
+          }
         },
         {
           "id": "downloads",
           "label": "Keep swaps cheap, close weak stores, and invest in movie downloads.",
           "grade": "great",
-          "effect": { "profit": -5, "future": 20 },
+          "effect": {
+            "profit": -5,
+            "future": 20
+          },
           "next": "ending_route",
           "media": "img:bb_d4_downloads",
           "outcome": "Our estimate: you shrink the store network carefully, keep members happy, and start building for a world where movies arrive over the internet, not on discs.",
           "why": "You cut the past to fund the future, and kept the feature customers loved.",
           "takeaway": "In 2007 you paid for the future by shrinking the past, not the other way round.",
-          "traits": { "horizon": 1, "risk": 1, "disrupt": 1 }
+          "traits": {
+            "horizon": 1,
+            "risk": 1,
+            "disrupt": 1
+          }
         },
         {
           "id": "close_half",
           "label": "Close half the stores and keep online exactly as it is.",
           "grade": "ok",
-          "effect": { "profit": 5, "future": 5 },
+          "effect": {
+            "profit": 5,
+            "future": 5
+          },
           "next": "ending_route",
           "media": "img:bb_d4_close",
           "outcome": "Our estimate: costs fall fast, but every closed store means fewer places to swap DVDs, so online gets a little less special.",
           "why": "Cutting costs was needed, but you cut without a plan for what comes after discs.",
           "better": "Close weak stores and put the savings into what comes next: movie downloads.",
           "takeaway": "In 2007 you cut costs without a plan for the next format.",
-          "traits": { "horizon": 0, "risk": 0, "disrupt": 0 }
+          "traits": {
+            "horizon": 0,
+            "risk": 0,
+            "disrupt": 0
+          }
         }
       ]
     },
     "ending_route": {
       "id": "ending_route",
       "type": "route",
-      "routes": [{ "when": { "minFuture": 70 }, "to": "legend" }, { "when": { "minFuture": 40 }, "to": "survivor" }, { "to": "collapse" }]
+      "routes": [
+        {
+          "when": {
+            "minFuture": 70
+          },
+          "to": "legend"
+        },
+        {
+          "when": {
+            "minFuture": 40
+          },
+          "to": "survivor"
+        },
+        {
+          "to": "collapse"
+        }
+      ]
     },
     "legend": {
       "id": "legend",
@@ -328,7 +464,7 @@
     }
   },
   "realEnding": "collapse",
-  "realHistory": "In 2000 Blockbuster said no to buying Netflix for $50 million. It launched its own online service only in 2004, ended late fees in 2005, and in 2006 let online members swap DVDs in its stores. A new CEO charged extra for those swaps in 2007. In 2010 Blockbuster went bankrupt, and in 2011 DISH Network bought its assets for about $320 million.",
+  "realHistory": "In 2000 Blockbuster said no to buying Netflix for $50 million. It launched its own online DVD rental service only in 2004, ended late fees in 2005, and in 2006 let online members swap DVDs in its stores. A new CEO charged extra for those swaps in 2007. In 2010 Blockbuster went bankrupt, and in 2011 DISH Network bought its assets for about $320 million.",
   "sources": [
     {
       "label": "Netflix co-founder recalls Blockbuster rejecting chance to buy it (Fortune, 2023)",
