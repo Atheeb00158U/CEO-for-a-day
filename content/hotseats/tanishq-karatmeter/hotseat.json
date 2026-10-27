@@ -31,7 +31,7 @@
       "type": "scene",
       "year": "1994",
       "media": "img:tq_intro",
-      "text": "It is 1994. Titan, a Tata company, sells more quartz watches than anyone in India. When India ran short of foreign money in 1991, Titan decided to earn dollars by making jewellery for Europe. It built a Rs 65 crore jewellery plant in Hosur, Tamil Nadu. But buyers in Europe were not interested, and the export plan has failed.",
+      "text": "It is 1994. Titan, a Tata company, sells more quartz watches than anyone in India. When India ran short of foreign money in 1991, Titan decided to earn dollars by making jewellery for Europe. It built a Rs 65 crore jewellery plant in Hosur, Tamil Nadu. But costs were high and Titan did not know the European market, and the export plan has failed.",
       "next": "d1"
     },
     "d1": {
@@ -224,7 +224,7 @@
           "when": {
             "flags": ["western", "add22"]
           },
-          "text": "It is 1997. Tanishq lost Rs 10.6 crore last year. Titan's annual report now admits that Indians strongly prefer 22-karat gold. It also says buyers often get jewellery with less gold, sold as 22-karat. A new head of jewellery brings more 22-karat lines, and price tags now show the gold weight and the making charges separately."
+          "text": "It is 1997. Tanishq lost Rs 10.6 crore last year. Titan's annual report now admits that Indians strongly prefer 22-karat gold. It also says buyers often get jewellery with less gold, sold as 22-karat. A new head of jewellery brings more 22-karat lines, and buyers now see the gold weight and the making charges shown separately."
         },
         {
           "text": "Our estimate: it is 1997. More 22-karat pieces help, but buyers still trust their old family jeweller more than a new brand."
@@ -265,7 +265,7 @@
         },
         {
           "id": "karatmeter",
-          "label": "Put machines in your stores and test anyone's gold for free.",
+          "label": "Put machines in your stores and test anyone's gold.",
           "grade": "great",
           "real": true,
           "effect": {
@@ -275,7 +275,7 @@
           },
           "next": "scene2000",
           "media": "img:tq_d3_meter",
-          "outcome": "From 1997 the machines went into Tanishq stores across India. The ad agency Lintas named it the Karatmeter. Testing was free, even for gold bought from other jewellers. Hundreds of people queued. Some broke down when they saw how little gold their jewellery held. Local jewellers pressured Tanishq's shop owners to stop, and some even threatened violence. Purity became the heart of Tanishq's ads.",
+          "outcome": "From 1997 the machines went into Tanishq stores across India. The ad agency Lintas named it the Karatmeter. Customers could bring in gold they already owned. Hundreds of people queued. Some broke down when they saw how little gold their jewellery held. Local jewellers pressured Tanishq's shop owners to stop, and some even threatened violence. Purity became the heart of Tanishq's ads.",
           "why": "You turned an invisible problem into something people could see. Trust that customers check for themselves is very hard for rivals to copy.",
           "takeaway": "In 1997 you let customers prove your promise themselves.",
           "traits": {
@@ -318,16 +318,16 @@
           "when": {
             "flags": ["western", "add22", "karatmeter"]
           },
-          "text": "It is 2000. Sales have grown from Rs 32 crore in 1996–97 to Rs 141 crore in 1999–2000. But Tanishq has lost money every year. In May a new managing director takes over. The next day the chief operating officer quits and takes six senior people with him. The whole sales and marketing team resigns. You are asked to lead the jewellery business."
+          "text": "It is 2000. Sales have grown from Rs 32 crore in 1996–97 to Rs 141 crore in 1999–2000. But Tanishq has lost money every year. In May the board names the next managing director. The next day the chief operating officer quits and takes six senior people with him. The whole sales and marketing team resigns. You are asked to lead the jewellery business."
         },
         {
           "when": {
             "flags": ["nometer"]
           },
-          "text": "Our estimate: it is 2000. Your losses keep piling up and buyers see no reason to leave their family jeweller. In May there is a new managing director, and many senior people quit. You are asked to lead the jewellery business."
+          "text": "Our estimate: it is 2000. Your losses keep piling up and buyers see no reason to leave their family jeweller. In May the board names the next managing director, and many senior people quit. You are asked to lead the jewellery business."
         },
         {
-          "text": "Our estimate: it is 2000. Sales are growing, but you still lose money. In May there is a new managing director, and many senior people quit. You are asked to lead the jewellery business."
+          "text": "Our estimate: it is 2000. Sales are growing, but you still lose money. In May the board names the next managing director, and many senior people quit. You are asked to lead the jewellery business."
         }
       ],
       "next": "d4"
@@ -397,7 +397,7 @@
         },
         {
           "id": "cheer",
-          "label": "Hold a fifth-birthday offer, show real products and prices in ads, and launch pieces from Rs 399.",
+          "label": "Hold a big anniversary offer, show real products and prices in ads, and launch pieces from Rs 399.",
           "grade": "great",
           "real": true,
           "effect": {
@@ -407,7 +407,7 @@
           },
           "next": "d5",
           "media": "img:tq_d4_cheer",
-          "outcome": "The fifth-anniversary offer brought large crowds. Ads now showed bracelets, rings, chains and pendants. A range starting at Rs 399 told buyers that Tanishq was for them too. New collections for working women and sales to companies brought in more first-time buyers. In 2000–01 Tanishq made its first profit, Rs 2.07 crore, on sales of Rs 188 crore.",
+          "outcome": "The anniversary offer brought large crowds. Ads now showed bracelets, rings, chains and pendants. A range starting at Rs 399 told buyers that Tanishq was for them too. New collections for working women followed, and sales to companies brought in new customers. In 2000–01 Tanishq made its first profit, Rs 2.07 crore, on sales of Rs 188 crore.",
           "why": "You fixed the real problem, empty stores, by giving people a clear reason and a low price to walk in.",
           "takeaway": "In 2000 you made the brand feel open to everyone and got buyers through the door.",
           "traits": {
@@ -440,7 +440,7 @@
       "options": [
         {
           "id": "swap",
-          "label": "Swap any 19 to 22-karat piece for a 22-karat Tanishq piece. They pay only the making charges.",
+          "label": "Swap any 19 to 22-karat piece for a 22-karat Tanishq piece. No extra cost for the gold.",
           "grade": "great",
           "real": true,
           "effect": {
@@ -450,7 +450,7 @@
           },
           "next": "ending_route",
           "media": "img:tq_d5_swap",
-          "outcome": "Tanishq ran an exchange called Impure to Pure. Old jewellery that tested between 19 and 22 karat could be swapped for 22-karat Tanishq jewellery. The buyer paid only the making charges, and Tanishq paid for the missing gold. It helped win customers from traditional jewellers. In 2002–03 retail sales grew 39% to Rs 332 crore, and profit grew 318%. Tanishq now had 60 stores in 47 towns.",
+          "outcome": "Tanishq ran an exchange called Impure to Pure. Old jewellery that tested between 19 and 22 karat could be swapped for 22-karat Tanishq jewellery. Tanishq paid for the missing gold, at no extra cost to the buyer. It helped win customers from traditional jewellers. In 2002–03 retail sales grew 39% to Rs 332 crore, and profit grew 318%. Tanishq now had 60 stores in 47 towns.",
           "why": "You turned the customer's anger into a reason to switch. Paying for the missing gold cost you, but it won families for life.",
           "takeaway": "In 2002 you paid to fix the customer's problem and won their trust.",
           "traits": {
@@ -461,7 +461,7 @@
         },
         {
           "id": "stoptest",
-          "label": "Stop free testing. It angers local jewellers and brings no sales.",
+          "label": "Stop the gold testing. It angers local jewellers and brings no sales.",
           "grade": "bad",
           "effect": {
             "profit": 5,
@@ -573,7 +573,7 @@
     }
   },
   "realEnding": "legend",
-  "realHistory": "Titan built a jewellery plant to sell to Europe, but the export plan failed. Tanishq launched in India in 1996 with Western 18-karat diamond jewellery, and lost money every year. It moved to 22-karat gold, and from 1997 its Karatmeter let anyone test their gold for free, showing that much 22-karat jewellery held less gold. After a crisis in 2000, a new team brought buyers in and made the first profit. The Impure to Pure exchange won families from their old jewellers, and Tanishq became India's biggest jewellery brand.",
+  "realHistory": "Titan built a jewellery plant to sell to Europe, but the export plan failed. Tanishq opened its first store in 1996 with Western 18-karat diamond jewellery, and lost money every year. It moved to 22-karat gold, and from 1997 its Karatmeter let customers test their gold in the store, showing that much 22-karat jewellery held less gold. After a crisis in 2000, a new team brought buyers in and made the first profit. The Impure to Pure exchange won families from their old jewellers, and Tanishq became India's biggest jewellery brand.",
   "sources": [
     {
       "label": "The Tanishq Story, Chapter 1 sample (Juggernaut Books, 2024)",
