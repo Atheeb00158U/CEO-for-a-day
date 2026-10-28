@@ -21,7 +21,7 @@ export function ProfileTab() {
   return (
     <div className="flex flex-col gap-5 pt-2">
       <div className="flex items-center gap-4">
-        <div className="grid size-20 place-items-center rounded-full bg-blue text-[34px] font-black text-[#04121b]">
+        <div className="grid size-20 place-items-center rounded-full bg-brand text-[34px] font-black text-[#1a1206]">
           {s.name[0]?.toUpperCase()}
         </div>
         <div className="min-w-0">
@@ -41,7 +41,7 @@ export function ProfileTab() {
       <div className="grid grid-cols-2 gap-3">
         <Stat icon={<Icon.flame className="size-7" />} value={s.streak} label="Day streak" />
         <Stat icon={<Icon.bolt className="size-7" />} value={s.xp} label="Total XP" />
-        <Stat icon={<Icon.chair className="size-7 text-blue" />} value={s.runs.length} label="Hot seats played" />
+        <Stat icon={<Icon.chair className="size-7 text-brand" />} value={s.runs.length} label="Hot seats played" />
         <Stat icon={<Icon.flame className="size-7" />} value={s.bestStreak} label="Best streak" />
       </div>
 
@@ -57,7 +57,7 @@ export function ProfileTab() {
                 <div className="relative mt-2 h-3 rounded-full bg-surface-2">
                   <span className="absolute inset-y-[-4px] left-1/2 w-0.5 bg-line" />
                   <span
-                    className="absolute top-1/2 size-6 -translate-x-1/2 -translate-y-1/2 rounded-full border-4 border-surface bg-blue transition-[left] duration-700"
+                    className="absolute top-1/2 size-6 -translate-x-1/2 -translate-y-1/2 rounded-full border-4 border-surface bg-brand transition-[left] duration-700"
                     style={{ left: `${pos}%` }}
                   />
                 </div>
@@ -102,7 +102,7 @@ export function ProfileTab() {
             type="checkbox"
             checked={s.settings.voice}
             onChange={(e) => setSetting("voice", e.target.checked)}
-            className="size-6 accent-[var(--color-blue)]"
+            className="size-6 accent-[var(--color-brand)]"
           />
         </label>
         <div>
@@ -114,7 +114,7 @@ export function ProfileTab() {
                 type="button"
                 disabled={!l.ready}
                 onClick={() => setSetting("lang", l.id)}
-                className={`rounded-full border-2 px-3 py-1.5 text-[15px] font-extrabold ${s.settings.lang === l.id ? "border-blue text-blue" : "border-line text-muted"} disabled:opacity-60`}
+                className={`rounded-full border-2 px-3 py-1.5 text-[15px] font-extrabold ${s.settings.lang === l.id ? "border-brand text-brand" : "border-line text-muted"} disabled:opacity-60`}
               >
                 {l.label}
                 {!l.ready && <span className="ml-1 text-[11px]">soon</span>}

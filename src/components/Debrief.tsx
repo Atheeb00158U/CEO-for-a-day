@@ -60,7 +60,7 @@ export function Debrief({
       style={{ paddingTop: "max(20px, env(safe-area-inset-top))" }}
     >
       <div className="flex flex-col items-center text-center">
-        <p className="text-[13px] font-black uppercase tracking-[.14em] text-blue">Hot Seat complete · {hs.company}</p>
+        <p className="text-[13px] font-black uppercase tracking-[.14em] text-brand">Hot Seat complete · {hs.company}</p>
         <h1 className="mt-1 text-[30px] font-black leading-tight">{ending.title}</h1>
         <div className="relative mt-4 size-[140px]">
           <svg viewBox="0 0 120 120" className="size-full -rotate-90" aria-hidden="true">
@@ -121,7 +121,7 @@ export function Debrief({
         </ol>
       </Card>
 
-      <Card className="border-blue/40 bg-blue/5">
+      <Card className="border-brand/40 bg-brand/5">
         <h2 className="text-[19px] font-black">Your key takeaways</h2>
         <p className="text-[13px] font-bold text-muted">Saved to your notes, written for the calls you made.</p>
         {written
@@ -131,7 +131,7 @@ export function Debrief({
               </p>
             ))
           : null}
-        <ul className="mt-3 flex list-disc flex-col gap-2 pl-5 text-[15px] font-bold leading-snug marker:text-blue">
+        <ul className="mt-3 flex list-disc flex-col gap-2 pl-5 text-[15px] font-bold leading-snug marker:text-brand">
           {!written && d.patterns.map((p) => <li key={p}>{p}</li>)}
           {d.lines.map((l, i) => (
             <li key={i}>{l.takeaway}</li>
@@ -143,7 +143,7 @@ export function Debrief({
         <h2 className="text-[19px] font-black">What really happened</h2>
         <p className="mt-2 text-[15px] font-bold leading-snug text-muted">{hs.realHistory}</p>
         <details className="mt-3 text-[13px] font-bold text-muted">
-          <summary className="cursor-pointer font-black text-blue">Sources</summary>
+          <summary className="cursor-pointer font-black text-brand">Sources</summary>
           <ul className="mt-2 flex flex-col gap-1.5">
             {hs.sources.map((x) => (
               <li key={x.url}>

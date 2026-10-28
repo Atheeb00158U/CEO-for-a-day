@@ -23,7 +23,7 @@ const STEPS = [
 const HABITS = [
   { icon: <Icon.flame className="size-10" />, title: "Daily streak", text: "One call a day keeps your streak alive." },
   { icon: <Icon.navLeague className="size-10 text-gold" />, title: "Weekly leagues", text: "Earn XP, climb from Intern to Tycoon." },
-  { icon: <Icon.navNotes className="size-10 text-blue" />, title: "Your notes", text: "Every Hot Seat leaves lessons you can reread." },
+  { icon: <Icon.navNotes className="size-10 text-brand" />, title: "Your notes", text: "Every Hot Seat leaves lessons you can reread." },
 ];
 
 function PlayButton({ children = "Play free", className = "" }: { children?: React.ReactNode; className?: string }) {
@@ -43,7 +43,7 @@ export default function Home() {
       <LegacyHashRedirect />
 
       <header className="mx-auto flex max-w-[1100px] items-center gap-3 px-4 py-4 sm:px-6">
-        <div className="grid size-10 place-items-center rounded-xl bg-blue text-[#04121b]">
+        <div className="grid size-10 place-items-center rounded-xl bg-brand text-[#1a1206]">
           <Icon.chair className="size-6" />
         </div>
         <span className="mr-auto text-[15px] leading-none font-black">
@@ -58,7 +58,7 @@ export default function Home() {
         {/* Hero */}
         <section className="mx-auto grid max-w-[1100px] items-center gap-10 px-4 pt-6 pb-16 sm:px-6 md:grid-cols-[1.1fr_1fr] md:pt-14 md:pb-24">
           <div>
-            <p className="text-[13px] font-black tracking-[.14em] text-blue uppercase">A game about real business calls</p>
+            <p className="text-[13px] font-black tracking-[.14em] text-brand uppercase">A game about real business calls</p>
             <h1 className="mt-3 text-[40px] leading-[1.05] font-black text-balance sm:text-[56px]">
               Sit in the hot seat of a real company.
             </h1>
@@ -87,7 +87,7 @@ export default function Home() {
                 className="relative mx-4 -mt-10 rounded-2xl border-2 border-line bg-surface p-4 shadow-2xl md:absolute md:inset-x-8 md:-bottom-8 md:mx-0 md:mt-0"
               >
                 <div className="flex items-center justify-between">
-                  <p className="text-[12px] font-black tracking-wider text-blue uppercase">Your call · 1975</p>
+                  <p className="text-[12px] font-black tracking-wider text-brand uppercase">Your call · 1975</p>
                   <span className="flex gap-0.5">
                     <Icon.heart className="size-5" />
                     <Icon.heart className="size-5" />
@@ -113,7 +113,7 @@ export default function Home() {
             <ol className="mt-8 grid gap-4 md:grid-cols-3">
               {STEPS.map((s, i) => (
                 <li key={s.title} className="rounded-2xl border-2 border-line bg-bg p-5">
-                  <span className="grid size-10 place-items-center rounded-xl bg-blue text-[18px] font-black text-[#04121b]">{i + 1}</span>
+                  <span className="grid size-10 place-items-center rounded-xl bg-brand text-[18px] font-black text-[#1a1206]">{i + 1}</span>
                   <h3 className="mt-4 text-[20px] font-black">{s.title}</h3>
                   <p className="mt-1 text-[16px] leading-snug font-bold text-muted">{s.text}</p>
                 </li>
@@ -141,7 +141,7 @@ export default function Home() {
                   </div>
                 )}
                 <div className="p-4">
-                  <p className="text-[12px] font-black tracking-[.12em] text-blue uppercase">{c.company}</p>
+                  <p className="text-[12px] font-black tracking-[.12em] text-brand uppercase">{c.company}</p>
                   <h3 className="mt-1 text-[19px] leading-tight font-black">{c.title}</h3>
                   <p className="mt-1 text-[15px] leading-snug font-bold text-muted">{c.hook}</p>
                   {c.available ? (

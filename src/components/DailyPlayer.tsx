@@ -31,7 +31,7 @@ export function DailyPlayer({ call, onExit }: { call: DailyCall; onExit: () => v
         >
           <Icon.close />
         </button>
-        <p className="text-[13px] font-black tracking-[.12em] text-blue uppercase">Today&apos;s call · {call.company}</p>
+        <p className="text-[13px] font-black tracking-[.12em] text-brand uppercase">Today&apos;s call · {call.company}</p>
       </div>
 
       {!revealed || !option ? (

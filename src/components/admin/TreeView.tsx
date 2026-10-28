@@ -105,7 +105,7 @@ export function TreeView({ hs }: { hs: HotSeat }) {
     <div className="flex flex-col gap-5">
       <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
         <div className="max-w-[560px]">
-          <p className="text-[12px] font-black tracking-[.12em] text-blue uppercase">
+          <p className="text-[12px] font-black tracking-[.12em] text-brand uppercase">
             {hs.company} · {hs.years}
             {hs.draft && " · draft"}
           </p>
@@ -210,9 +210,9 @@ export function TreeView({ hs }: { hs: HotSeat }) {
                     type="button"
                     onClick={() => setSelected(node)}
                     aria-label={`${label}${option ? `, ${GRADE_LABEL[option.grade]}` : ""}${option?.real ? ", what the real company did" : ""}`}
-                    className="flex min-w-0 flex-1 items-center gap-2 rounded-full border-2 bg-bg px-3 text-left text-[13px] font-extrabold transition-transform hover:scale-[1.03] focus-visible:ring-4 focus-visible:ring-blue/50 focus-visible:outline-none"
+                    className="flex min-w-0 flex-1 items-center gap-2 rounded-full border-2 bg-bg px-3 text-left text-[13px] font-extrabold transition-transform hover:scale-[1.03] focus-visible:ring-4 focus-visible:ring-brand/50 focus-visible:outline-none"
                     style={{
-                      borderColor: option ? GRADE_COLOR[option.grade] : "var(--color-blue)",
+                      borderColor: option ? GRADE_COLOR[option.grade] : "var(--color-brand)",
                       boxShadow: node.depth > 0 && node.state.onRealPath ? "0 0 0 2px var(--color-gold)" : undefined,
                     }}
                   >
@@ -295,7 +295,7 @@ function Detail({ hs, node }: { hs: HotSeat; node: TreeNode }) {
   return (
     <div className="flex flex-col gap-5 p-4">
       <SheetHeader className="p-0">
-        <SheetDescription className="text-[12px] font-black tracking-[.12em] text-blue uppercase">
+        <SheetDescription className="text-[12px] font-black tracking-[.12em] text-brand uppercase">
           Call {node.depth} · {decision.year} · {decision.title}
         </SheetDescription>
         <SheetTitle className="text-[22px] leading-tight font-black">{decision.question}</SheetTitle>

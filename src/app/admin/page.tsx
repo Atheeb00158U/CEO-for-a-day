@@ -29,12 +29,12 @@ export default function AdminHome() {
           <li key={hs.id}>
             <Link
               href={`/admin/${hs.id}`}
-              className="block rounded-xl focus-visible:ring-4 focus-visible:ring-blue/50 focus-visible:outline-none"
+              className="block rounded-xl focus-visible:ring-4 focus-visible:ring-brand/50 focus-visible:outline-none"
             >
-              <Card className="h-full border-2 border-line transition-colors hover:border-blue/60">
+              <Card className="h-full border-2 border-line transition-colors hover:border-brand/60">
                 <CardHeader>
                   <div className="flex flex-wrap items-center gap-2">
-                    <span className="text-[12px] font-black tracking-[.12em] text-blue uppercase">
+                    <span className="text-[12px] font-black tracking-[.12em] text-brand uppercase">
                       {hs.company} · {hs.years}
                     </span>
                     {hs.draft && <Badge variant="secondary">Draft</Badge>}

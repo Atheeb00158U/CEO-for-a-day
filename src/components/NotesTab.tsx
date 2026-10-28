@@ -34,7 +34,7 @@ export function NotesTab({ onPlay }: { onPlay: () => void }) {
             <div className="flex items-center gap-3">
               <MediaView media={hs.cover} className="size-16 shrink-0 !rounded-2xl" kenBurns={false} label={false} />
               <div className="min-w-0">
-                <p className="text-[12px] font-black uppercase tracking-[.12em] text-blue">
+                <p className="text-[12px] font-black uppercase tracking-[.12em] text-brand">
                   {hs.company} · score {r.score}
                 </p>
                 <h2 className="text-[19px] font-black leading-tight">{hs.title}</h2>
@@ -43,7 +43,7 @@ export function NotesTab({ onPlay }: { onPlay: () => void }) {
                 </p>
               </div>
             </div>
-            <ul className="flex list-disc flex-col gap-2 pl-5 text-[15px] font-bold leading-snug marker:text-blue">
+            <ul className="flex list-disc flex-col gap-2 pl-5 text-[15px] font-bold leading-snug marker:text-brand">
               {r.patterns.map((p) => (
                 <li key={p}>{p}</li>
               ))}
@@ -65,7 +65,7 @@ export function NotesTab({ onPlay }: { onPlay: () => void }) {
       {s.dailyLog.length > 0 && (
         <Card className="flex flex-col gap-3">
           <div>
-            <p className="text-[12px] font-black uppercase tracking-[.12em] text-blue">Daily calls</p>
+            <p className="text-[12px] font-black uppercase tracking-[.12em] text-brand">Daily calls</p>
             <h2 className="text-[19px] font-black leading-tight">One decision a day</h2>
           </div>
           <div className="flex flex-col gap-2">

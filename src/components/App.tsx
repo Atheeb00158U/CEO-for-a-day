@@ -59,7 +59,7 @@ function Shell() {
     return (
       <div className="grid min-h-dvh place-items-center">
         <div className="flex flex-col items-center gap-3">
-          <div className="pop grid size-20 place-items-center rounded-3xl bg-blue text-[#04121b]">
+          <div className="pop grid size-20 place-items-center rounded-3xl bg-brand text-[#1a1206]">
             <Icon.chair className="size-12" />
           </div>
           <p className="text-[20px] font-black">CEO for a day</p>
@@ -107,7 +107,7 @@ function Shell() {
                 type="button"
                 onClick={() => go(t.id)}
                 aria-current={on ? "page" : undefined}
-                className={`flex flex-col items-center gap-0.5 rounded-2xl px-3 py-1.5 text-[11px] font-extrabold uppercase tracking-wide ${on ? "bg-blue/15 text-blue ring-2 ring-blue/60" : "text-muted"}`}
+                className={`flex flex-col items-center gap-0.5 rounded-2xl px-3 py-1.5 text-[11px] font-extrabold uppercase tracking-wide ${on ? "bg-brand/15 text-brand ring-2 ring-brand/60" : "text-muted"}`}
               >
                 <I className="size-7" />
                 {t.label}
@@ -130,7 +130,7 @@ function TopBar({ onShop }: { onShop: () => void }) {
       style={{ paddingTop: "max(12px, env(safe-area-inset-top))" }}
     >
       <div className="mr-auto flex items-center gap-2">
-        <div className="grid size-10 place-items-center rounded-xl bg-blue text-[#04121b]">
+        <div className="grid size-10 place-items-center rounded-xl bg-brand text-[#1a1206]">
           <Icon.chair className="size-6" />
         </div>
         <span className="text-[15px] font-black leading-none">

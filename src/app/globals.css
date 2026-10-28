@@ -8,6 +8,8 @@
   --color-line: #2b3640;
   --color-ink: #f2f6f9;
   --color-muted: #8b9aa6;
+  --color-brand: #f3ae47;
+  --color-brand-dark: #b87a1f;
   --color-blue: #1cb0f6;
   --color-blue-dark: #1287c0;
   --color-green: #58cc02;
@@ -28,8 +30,8 @@
   --color-card-foreground: var(--color-ink);
   --color-popover: var(--color-surface-2);
   --color-popover-foreground: var(--color-ink);
-  --color-primary: var(--color-blue);
-  --color-primary-foreground: #04121b;
+  --color-primary: var(--color-brand);
+  --color-primary-foreground: #1a1206;
   --color-secondary: var(--color-surface-2);
   --color-secondary-foreground: var(--color-ink);
   --color-accent: var(--color-surface-2);
@@ -38,7 +40,7 @@
   --color-destructive: var(--color-red);
   --color-border: var(--color-line);
   --color-input: var(--color-line);
-  --color-ring: var(--color-blue);
+  --color-ring: var(--color-brand);
 }
 
 :root {
@@ -58,9 +60,9 @@ body {
 
 /* Chunky 3D button: the signature press-down feel. */
 .btn3d {
-  --face: var(--color-blue);
-  --edge: var(--color-blue-dark);
-  --text: #04121b;
+  --face: var(--color-brand);
+  --edge: var(--color-brand-dark);
+  --text: #1a1206;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -146,10 +148,10 @@ body {
   box-shadow: 0 2px 0 var(--color-line);
 }
 .tile[aria-pressed="true"] {
-  border-color: var(--color-blue);
-  box-shadow: 0 4px 0 var(--color-blue-dark);
-  background: #0f2533;
-  color: #bfe9ff;
+  border-color: var(--color-brand);
+  box-shadow: 0 4px 0 var(--color-brand-dark);
+  background: #2a1f0d;
+  color: #ffe2b0;
 }
 
 /* Wavy-edged banner, like a torn ticket. */

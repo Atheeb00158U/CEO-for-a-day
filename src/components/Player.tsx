@@ -268,7 +268,7 @@ function VoiceButton({ onClick }: { onClick: () => void }) {
     <button
       type="button"
       onClick={onClick}
-      className="flex items-center gap-1.5 self-start rounded-full border-2 border-line px-3 py-1.5 text-[13px] font-black uppercase tracking-wide text-blue"
+      className="flex items-center gap-1.5 self-start rounded-full border-2 border-line px-3 py-1.5 text-[13px] font-black uppercase tracking-wide text-brand"
     >
       <Icon.speaker /> Replay
     </button>
@@ -346,7 +346,7 @@ export function DecisionView({
         {media && <MediaView media={media} className="size-20 shrink-0 !rounded-2xl" kenBurns={false} label={false} />}
         <div className="min-w-0">
           <YearChip year={year} />
-          <p className="mt-1 text-[13px] font-black uppercase tracking-[.12em] text-blue">Your call</p>
+          <p className="mt-1 text-[13px] font-black uppercase tracking-[.12em] text-brand">Your call</p>
         </div>
       </div>
       <Caption text={setup} progress={prog(0)} className="text-[17px] font-bold leading-snug" />

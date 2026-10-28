@@ -33,13 +33,13 @@ export function HomeTab({ onPlay, onDaily, onShop }: { onPlay: (id: string) => v
         <button
           type="button"
           onClick={onDaily}
-          className="flex items-center gap-4 rounded-2xl border-2 border-blue/50 bg-blue/10 p-4 text-left focus-visible:ring-4 focus-visible:ring-blue/50 focus-visible:outline-none"
+          className="flex items-center gap-4 rounded-2xl border-2 border-brand/50 bg-brand/10 p-4 text-left focus-visible:ring-4 focus-visible:ring-brand/50 focus-visible:outline-none"
         >
-          <span className="grid size-12 shrink-0 place-items-center rounded-xl bg-blue text-[#04121b]">
-            {dailyDone ? <Icon.check className="size-7" /> : <Icon.bolt className="size-7 [&_path]:fill-[#04121b]" />}
+          <span className="grid size-12 shrink-0 place-items-center rounded-xl bg-brand text-[#1a1206]">
+            {dailyDone ? <Icon.check className="size-7" /> : <Icon.bolt className="size-7 [&_path]:fill-[#1a1206]" />}
           </span>
           <span className="min-w-0 flex-1">
-            <span className="block text-[12px] font-black tracking-[.12em] text-blue uppercase">Today&apos;s call · 1 min</span>
+            <span className="block text-[12px] font-black tracking-[.12em] text-brand uppercase">Today&apos;s call · 1 min</span>
             <span className="block text-[17px] leading-tight font-black">
               {call.company} · {call.title}
             </span>
@@ -54,7 +54,7 @@ export function HomeTab({ onPlay, onDaily, onShop }: { onPlay: (id: string) => v
       <section className="-mx-4">
         <MediaView media={hs.cover} wavy className="aspect-[16/9] w-full" />
         <div className="px-4 pt-4 text-center">
-          <p className="text-[13px] font-black uppercase tracking-[.14em] text-blue">
+          <p className="text-[13px] font-black uppercase tracking-[.14em] text-brand">
             Hot Seat · {hs.company} · {hs.years}
           </p>
           <h2 className="mt-1 text-[28px] font-black leading-tight text-balance">{hs.title}</h2>
@@ -102,13 +102,13 @@ export function HomeTab({ onPlay, onDaily, onShop }: { onPlay: (id: string) => v
                 className="flex flex-col items-center gap-2 text-center disabled:cursor-default"
               >
                 <span
-                  className={`node-ring relative grid size-[84px] place-items-center rounded-full ${done ? "bg-[#0f2533] text-blue" : isCurrent ? "bg-blue text-[#04121b]" : "bg-surface-2 text-[#4a5863]"}`}
+                  className={`node-ring relative grid size-[84px] place-items-center rounded-full ${done ? "bg-[#2a1f0d] text-brand" : isCurrent ? "bg-brand text-[#1a1206]" : "bg-surface-2 text-[#4a5863]"}`}
                 >
-                  {isCurrent && <span className="absolute -inset-[7px] rounded-full border-[5px] border-blue/30 border-t-blue" />}
+                  {isCurrent && <span className="absolute -inset-[7px] rounded-full border-[5px] border-brand/30 border-t-brand" />}
                   {done ? <Icon.check /> : c.available ? <Icon.play /> : <Icon.lock />}
                 </span>
                 <span
-                  className={`text-[14px] font-extrabold leading-tight ${isCurrent ? "text-blue" : c.available ? "text-ink" : "text-muted"}`}
+                  className={`text-[14px] font-extrabold leading-tight ${isCurrent ? "text-brand" : c.available ? "text-ink" : "text-muted"}`}
                 >
                   {c.company}
                   <span className="block text-[12px] font-bold text-muted">
@@ -126,7 +126,7 @@ export function HomeTab({ onPlay, onDaily, onShop }: { onPlay: (id: string) => v
       <Card>
         <div className="mb-3 flex items-center justify-between">
           <h3 className="font-black">Daily quests</h3>
-          <button type="button" onClick={onShop} className="text-[14px] font-black uppercase text-blue">
+          <button type="button" onClick={onShop} className="text-[14px] font-black uppercase text-brand">
             View all
           </button>
         </div>
