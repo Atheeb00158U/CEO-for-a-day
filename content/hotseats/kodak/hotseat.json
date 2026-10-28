@@ -6,6 +6,7 @@
   "role": "You run Kodak, 1975 to 2012",
   "years": "1975–2012",
   "cover": "img:c2_prototype",
+  "emblem": "img:kd_emblem",
   "complexity": 2,
   "minutes": 7,
   "start": "intro",

@@ -1,5 +1,5 @@
 # Fact-check: new-coke
-checked-sha256: b7a6d424c8770e3f0a8d56f6b7623a4e7d6396324a95b9034fd443a884fc00af
+checked-sha256: 9de6540d7e41280fdfb63e9bd19fcad520905c64d093208b4b4431370461df84
 Checked: 2026-10-27 · by: independent fact-check agent
 
 ## Sources opened
@@ -99,3 +99,6 @@ Optional: say "supporters" instead of "members" for the protest group; add "in N
 
 ## Credits update (2026-10-28)
 - Only the credits line changed (the image-source wording was removed). No story text changed. Re-stamped.
+
+## Emblem added (2026-10-28)
+- Only a new emblem image ref was added. No story text changed. Re-stamped.

@@ -1,5 +1,5 @@
 # Fact-check: maruti-800
-checked-sha256: fe971215f616b7c68150cdf46b05360afb98f849b13f84101b5c64575d2339e7
+checked-sha256: 66fe3b475821df395f886da59854ea44b3094d3b60a3587a3e662fc68c7cb7f9
 Checked: 2026-10-27 · by: independent fact-check agent
 
 ## Sources opened
@@ -121,3 +121,6 @@ Price: Rs 47,500 is well sourced for what the first buyer paid [4][10][14], and 
 
 ## Credits update (2026-10-28)
 - Only the credits line changed (the image-source wording was removed). No story text changed. Re-stamped.
+
+## Emblem added (2026-10-28)
+- Only a new emblem image ref was added. No story text changed. Re-stamped.

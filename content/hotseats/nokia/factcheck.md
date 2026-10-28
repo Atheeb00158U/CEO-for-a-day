@@ -1,5 +1,5 @@
 # Fact-check: nokia
-checked-sha256: 3edd9d0e69e8660d4939b5fb85cad4c0f21ec4d9129ed9889b539939e72af826
+checked-sha256: 601def77ced9dace413feca67ed1f0c97371480dbc4e6013fc9c8b5450a3178d
 Checked: 2026-10-27 · by: independent fact-check agent
 
 ## Sources opened
@@ -142,3 +142,6 @@ Top 3 fixes:
 
 ## Credits update (2026-10-28)
 - Only the credits line changed (the image-source wording was removed). No story text changed. Re-stamped.
+
+## Emblem added (2026-10-28)
+- Only a new emblem image ref was added. No story text changed. Re-stamped.

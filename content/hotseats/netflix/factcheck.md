@@ -1,5 +1,5 @@
 # Fact-check: netflix
-checked-sha256: ae552a3ef0103ef9f4bf49d5ca1af80b8fe909f886c493c149f21d4a1e8e565e
+checked-sha256: 59d3fe5bf98dba82eb7833d3859f8bd9b08b5072992e8994e147c19ea8224eb4
 Checked: 2026-10-27 · by: independent fact-check agent
 
 ## Sources opened
@@ -110,3 +110,6 @@ Top 3 fixes:
 
 ## Credits update (2026-10-28)
 - Only the credits line changed (the image-source wording was removed). No story text changed. Re-stamped.
+
+## Emblem added (2026-10-28)
+- Only a new emblem image ref was added. No story text changed. Re-stamped.

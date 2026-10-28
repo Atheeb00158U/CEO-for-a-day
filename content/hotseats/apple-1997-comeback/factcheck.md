@@ -1,5 +1,5 @@
 # Fact-check: apple-1997-comeback
-checked-sha256: 5e17ba9937cf0bf17720f2f20ebee1e64a9c1971f3a7b708603a36f91de8bf0c
+checked-sha256: 95d66304cd0d71e2747ae128bba6e6e9eb16a761714fcd8f03075a818737ef62
 Checked: 2026-10-27 · by: independent fact-check agent
 
 ## Sources opened
@@ -110,3 +110,6 @@ Fixes needed: (1) d1.setup/intro: Copland was officially cancelled in August 199
 
 ## Credits update (2026-10-28)
 - Only the credits line changed (the image-source wording was removed). No story text changed. Re-stamped.
+
+## Emblem added (2026-10-28)
+- Only a new emblem image ref was added. No story text changed. Re-stamped.

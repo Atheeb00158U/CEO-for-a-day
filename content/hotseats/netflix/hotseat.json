@@ -6,6 +6,7 @@
   "role": "You run Netflix, 2000 to 2011",
   "years": "2000–2011",
   "cover": "img:nf_cover",
+  "emblem": "img:nf_emblem",
   "draft": true,
   "complexity": 3,
   "minutes": 8,

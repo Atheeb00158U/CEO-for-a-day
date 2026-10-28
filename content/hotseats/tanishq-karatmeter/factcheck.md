@@ -1,5 +1,5 @@
 # Fact-check: tanishq-karatmeter
-checked-sha256: 286498318016bfa2b0802129cee660fdefb41e42efefa4dc99900769ede06392
+checked-sha256: 408f5b916e35426e7a06450fac7a19980a812495c5aa0a3422429b6d1ce02868
 Checked: 2026-10-27 · by: independent fact-check agent
 
 ## Sources opened
@@ -109,3 +109,6 @@ No specific jewellers are defamed and no living people are named.
 
 ## Credits update (2026-10-28)
 - Only the credits line changed (the image-source wording was removed). No story text changed. Re-stamped.
+
+## Emblem added (2026-10-28)
+- Only a new emblem image ref was added. No story text changed. Re-stamped.

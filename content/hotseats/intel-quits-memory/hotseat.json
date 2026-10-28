@@ -6,6 +6,7 @@
   "role": "You run Intel, 1982 to 1986",
   "years": "1982–1986",
   "cover": "img:in_cover",
+  "emblem": "img:in_emblem",
   "draft": true,
   "complexity": 3,
   "minutes": 7,

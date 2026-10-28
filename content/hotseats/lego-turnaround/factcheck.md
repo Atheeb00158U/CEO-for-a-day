@@ -1,5 +1,5 @@
 # Fact-check: lego-turnaround
-checked-sha256: a2a107edadd2abbf681c9d0dd2631d701e21a9ac5b63f980765c3a9ad9033eac
+checked-sha256: 8bed3d96b82fdfbe034d323fb95de6c9888bdffa8f0ca74eb911d2eb80600c2e
 Checked: 2026-10-27 · by: independent fact-check agent
 
 ## Sources opened
@@ -130,3 +130,6 @@ Conflicting figures resolved: 2003 loss, use DKK 1.4bn pre-tax ([5], [1]); Brick
 
 ## Credits update (2026-10-28)
 - Only the credits line changed (the image-source wording was removed). No story text changed. Re-stamped.
+
+## Emblem added (2026-10-28)
+- Only a new emblem image ref was added. No story text changed. Re-stamped.

@@ -1,5 +1,5 @@
 # Fact-check: blockbuster
-checked-sha256: 1f772d9f54a46afb2067008f44d1181840fb6bf3ddd86e11a885df7cafee5b2f
+checked-sha256: 3c5ed5df89b6453697852004a7f79f0d517f2511b78a5e734b25abf0e0e33b5d
 Checked: 2026-10-27 · by: independent fact-check agent
 
 ## Sources opened
@@ -106,3 +106,6 @@ Top 3 fixes:
 
 ## Credits update (2026-10-28)
 - Only the credits line changed (the image-source wording was removed). No story text changed. Re-stamped.
+
+## Emblem added (2026-10-28)
+- Only a new emblem image ref was added. No story text changed. Re-stamped.

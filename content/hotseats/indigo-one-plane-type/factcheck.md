@@ -1,5 +1,5 @@
 # Fact-check: indigo-one-plane-type
-checked-sha256: 49eec7c1e49cfa606f3ad5cb377d50c805b662318fb6fb6052e697c427e24bcf
+checked-sha256: 473d9eeb22a3e558519a34275b9a9aa2c407f247ece13f3bcf6dc7ca1c248c0b
 Checked: 2026-10-27 · by: independent fact-check agent
 
 ## Sources opened
@@ -92,3 +92,6 @@ Checked: 2026-10-27 · by: independent fact-check agent
 
 ## Credits update (2026-10-28)
 - Only the credits line changed (the image-source wording was removed). No story text changed. Re-stamped.
+
+## Emblem added (2026-10-28)
+- Only a new emblem image ref was added. No story text changed. Re-stamped.

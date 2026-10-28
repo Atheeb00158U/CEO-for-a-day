@@ -1,5 +1,5 @@
 # Fact-check: intel-quits-memory
-checked-sha256: 7713b9d1d376b36b719f16c89a627b11e91e40963e083eaf7e4b2698bb8c971d
+checked-sha256: bee3083972d552e8cfed0f04b45e1c5bd0bd975f8a5b808856c5b5dfb18a79cf
 Checked: 2026-10-27 · by: independent fact-check agent
 
 ## Sources opened
@@ -124,3 +124,6 @@ IBM's $250M for 12% at $40 a share, the sole-sourced 386 made in two fabs, the 4
 
 ## Credits update (2026-10-28)
 - Only the credits line changed (the image-source wording was removed). No story text changed. Re-stamped.
+
+## Emblem added (2026-10-28)
+- Only a new emblem image ref was added. No story text changed. Re-stamped.

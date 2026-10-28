@@ -6,6 +6,7 @@
   "role": "You lead Blockbuster, 2000 to 2008",
   "years": "2000–2008",
   "cover": "img:bb_cover",
+  "emblem": "img:bb_emblem",
   "draft": true,
   "complexity": 1,
   "minutes": 6,

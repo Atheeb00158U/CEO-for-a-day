@@ -1,5 +1,5 @@
 # Fact-check: kodak
-checked-sha256: 674258e61461d54abebfca8f1528181c2c8fdc2c837735193f1e171d3d2c1fdd
+checked-sha256: c03d88af3eddeb31ccf6955a3cb5c09dfa8b0912ac12dbc698e40a26827b5726
 Checked: 2026-10-27 · by: independent fact-check agent
 
 ## Sources opened
@@ -99,3 +99,6 @@ The 3 most important fixes:
 
 ## Credits update (2026-10-28)
 - Only the credits line changed (the image-source wording was removed). No story text changed. Re-stamped.
+
+## Emblem added (2026-10-28)
+- Only a new emblem image ref was added. No story text changed. Re-stamped.

@@ -6,6 +6,7 @@
   "role": "You run Tanishq, 1994 to 2003",
   "years": "1994–2003",
   "cover": "img:tq_cover",
+  "emblem": "img:tq_emblem",
   "draft": true,
   "complexity": 2,
   "minutes": 6,

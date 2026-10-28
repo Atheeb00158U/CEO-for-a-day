@@ -6,6 +6,7 @@
   "role": "You lead the Kaira milk farmers, 1946 to 1973",
   "years": "1946–1973",
   "cover": "img:am_cover",
+  "emblem": "img:am_emblem",
   "draft": true,
   "complexity": 2,
   "minutes": 7,

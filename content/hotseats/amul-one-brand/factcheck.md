@@ -1,5 +1,5 @@
 # Fact-check: amul-one-brand
-checked-sha256: f12e0fc51c0d1dc5a69886c28174966e8459ca399f25f5dc395e6153039bca75
+checked-sha256: b8001dec87d5625c2cd574c01a59e395214de84ad4133ddca98b2b875a0bd9bb
 Checked: 2026-10-27 · by: independent fact-check agent
 
 ## Sources opened
@@ -126,3 +126,6 @@ Most important fixes:
 
 ## Credits update (2026-10-28)
 - Only the credits line changed (the image-source wording was removed). No story text changed. Re-stamped.
+
+## Emblem added (2026-10-28)
+- Only a new emblem image ref was added. No story text changed. Re-stamped.

@@ -1,5 +1,5 @@
 # Fact-check: maggi
-checked-sha256: 8e6930e450b1bb09e16c844a42914dddbc15664157024a48da65594150e436d3
+checked-sha256: 4a01d073d210bc4b7ab8e5b3b422e4b90e440dae29e79a72f5b1d468c041103c
 Checked: 2026-10-27 · by: independent fact-check agent
 
 ## Sources opened
@@ -129,3 +129,6 @@ Most important fixes:
 
 ## Credits update (2026-10-28)
 - Only the credits line changed (the image-source wording was removed). No story text changed. Re-stamped.
+
+## Emblem added (2026-10-28)
+- Only a new emblem image ref was added. No story text changed. Re-stamped.
