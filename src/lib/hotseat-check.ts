@@ -71,6 +71,13 @@ export function factcheckProblems(dir: string, contentFile: string): string[] {
   return out;
 }
 
+/** The app badges every off-path screen "Our estimate", so the story text must not say it again. */
+function saysEstimate(lines: { text: string }[], at = ""): string[] {
+  return lines
+    .filter((l) => /\bour estimate\b/i.test(l.text))
+    .map((l) => `${at}"${l.text.slice(0, 50)}…" says "our estimate"; the app shows that as a badge, so cut it from the text`);
+}
+
 /**
  * Rules every set of options shares, in Hot Seats and Daily Calls. A decision the real company faced needs exactly one
  * option marked real; a decision only reachable on alternate paths may have none (the real company never faced it).
@@ -173,10 +180,7 @@ export function checkHotSeat(dir: string, audioDir = AUDIO_DIR): CheckResult {
 
   for (const p of factcheckProblems(dir, "hotseat.json")) soft(p);
 
-  // The app badges every off-path screen "Our estimate", so the story text must not say it again.
-  for (const l of voiceLines([hs]))
-    if (/\bour estimate\b/i.test(l.text))
-      errors.push(`"${l.text.slice(0, 50)}…" says "our estimate"; the app shows that as a badge, so cut it from the text`);
+  errors.push(...saysEstimate(voiceLines([hs])));
 
   // Pre-written debriefs: a key that matches no path is left over from an edit and will never be shown.
   const debriefsFile = join(dir, "debriefs.json");
@@ -239,6 +243,7 @@ export function checkDailyPool(dir: string, today: string, audioDir = AUDIO_DIR)
       used.add(f);
       if (!onDisk.has(f)) soft(`daily ${c.id}: media/${f} is missing`);
     }
+    errors.push(...saysEstimate(voiceLines([], [c]), `daily ${c.id}: `));
     for (const l of voiceLines([], [c]))
       if (!existsSync(join(audioDir, `${l.id}.mp3`)))
         warnings.push(`daily ${c.id}: no audio for "${l.text.slice(0, 40)}…"; run npm run narrate`);
