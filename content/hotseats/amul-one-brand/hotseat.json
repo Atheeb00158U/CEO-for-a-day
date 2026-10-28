@@ -2,7 +2,7 @@
   "id": "amul-one-brand",
   "company": "Amul",
   "title": "The farmers' own brand",
-  "hook": "Middlemen set the price of your milk. What if farmers owned the dairy?",
+  "hook": "Middlemen decide what your milk is worth. What if the farmers themselves owned the dairy?",
   "role": "You lead the Kaira milk farmers, 1946 to 1973",
   "years": "1946–1973",
   "cover": "img:am_cover",
@@ -32,7 +32,7 @@
       "type": "scene",
       "year": "1945",
       "media": "vid:am_intro",
-      "text": "It is 1945, in Kaira district, Gujarat. Your village farmers keep buffaloes, and most families have only one or two litres of milk to sell each day. The government of Bombay has started the Bombay Milk Scheme. Milk travels 427 km from Anand to Bombay. A private dairy, Polson, holds the contract. But no one has fixed the price paid to farmers. The milk contractors pay whatever they like.",
+      "text": "Kaira district, Gujarat, 1945. Most farmers here are poor and sell only a litre or two of milk a day. A private dairy, Polson, has the contract to send Anand's milk to Bombay, and milk contractors decide what farmers are paid. Milk goes sour in hours, so farmers have little choice but to take whatever they are offered.",
       "next": "d1"
     },
     "d1": {
@@ -41,13 +41,13 @@
       "year": "1946",
       "title": "Who sets the price?",
       "media": "vid:am_d1",
-      "setup": "The government makes money from the scheme. Polson keeps a good margin. The contractors take the biggest cut. Farmers get what is left. Milk spoils fast, so they must sell at whatever price they are offered. The freedom leader Sardar Patel has given your farmers advice: build your own co-operative, with your own plant. If the government says no, stop selling milk, even if it hurts for a while.",
+      "setup": "The farmers have asked you to lead them. Sardar Patel, the freedom leader, has given them his advice: build your own co-operative with its own plant, and if the government won't buy from it, stop selling milk. But for a family that lives on one litre a day, even a few days without milk money is hard.",
       "question": "How do you fight for a fair price?",
-      "advisor": "Milk spoils in hours. Whoever owns the plant decides the price.",
+      "advisor": "A strike could change everything, but the poorest families would suffer first. And because milk spoils in hours, we cannot hold out for long.",
       "options": [
         {
           "id": "talk",
-          "label": "Start village societies, but keep selling to Polson while you talk to the government.",
+          "label": "Start village societies, but keep selling to Polson while you talk. No one loses a day's money.",
           "grade": "ok",
           "effect": {
             "profit": 5,
@@ -56,7 +56,7 @@
           },
           "next": "scene1948",
           "media": "img:am_d1_talk",
-          "outcome": "Our estimate: the talks drag on. Farmers keep getting low prices and some lose hope. Your union does start, but later and smaller than it could have been.",
+          "outcome": "The talks drag on for months. Prices stay low, some farmers lose hope, and when your Union finally starts, it is smaller than it could have been.",
           "why": "Talking without pressure gave the buyers no reason to change. The farmers stayed weak while you waited.",
           "better": "Organise every village and be ready to stop supplying. The milk was the only real power the farmers had.",
           "takeaway": "In 1946 you talked but kept selling. Without pressure, the other side has no reason to move.",
@@ -68,7 +68,7 @@
         },
         {
           "id": "strike",
-          "label": "Form a society in every village and one union with its own plant. If the government says no, stop selling milk.",
+          "label": "Form village societies and make the government buy from you, or strike, even if families go unpaid.",
           "grade": "great",
           "real": true,
           "effect": {
@@ -78,7 +78,7 @@
           },
           "next": "scene1948",
           "media": "img:am_d1_strike",
-          "outcome": "On 4 January 1946, at a meeting in Samarkha village, farmers agreed: every village would form a milk society, and all of them would join one Union that owned its own plant. The government said no. So the farmers went on a milk strike for 15 days. Not a drop of milk was sold to the traders. No milk reached Bombay from Anand, and the Bombay Milk Scheme almost collapsed. The government gave in. Your Union was registered on 14 December 1946.",
+          "outcome": "On 4 January 1946, at a meeting in Samarkha village, the farmers agree to form a society in every village and one Union that owns its own plant. The government says no, so for 15 days not a drop is sold to the traders. No milk reaches Bombay from Anand, the Bombay Milk Scheme nearly collapses, and the government gives in.",
           "why": "Alone, each farmer had no power. Together, and owning the plant, they controlled the milk Bombay needed.",
           "takeaway": "In 1946 you united the sellers and owned the plant. Together, small farmers had the power one farmer never had.",
           "traits": {
@@ -89,7 +89,7 @@
         },
         {
           "id": "beg",
-          "label": "Ask the government to fix a fair price, and keep selling through the contractors.",
+          "label": "Ask the government to fix a fair price by law, and keep the contractors' trucks and network.",
           "grade": "bad",
           "effect": {
             "profit": 5,
@@ -99,7 +99,7 @@
           },
           "next": "scene1948",
           "media": "img:am_d1_beg",
-          "outcome": "Our estimate: the government promises to look into it. The contractors still decide what farmers get, and a fair price never comes. Farmers start to say that nothing will ever change.",
+          "outcome": "The government promises to look into it, but nothing changes. The contractors still set the price, and farmers begin to feel that nothing ever will.",
           "why": "You asked others to fix your problem and kept the same middlemen. Nothing in the system changed.",
           "better": "Unite the farmers in their own co-operative, own the plant, and be ready to stop selling.",
           "takeaway": "In 1946 you asked for a favour instead of building power. A fair deal rarely comes to those who cannot walk away.",
@@ -121,10 +121,16 @@
           "when": {
             "flags": ["strike"]
           },
-          "text": "It is June 1948. Your Union starts to pasteurise milk for Bombay. At first it is just two village societies and about 250 litres a day. Any farmer can join, whatever their caste or religion. A sure market is a big pull. By the end of the year 432 farmers have joined, and you handle 5,000 litres a day."
+          "text": "Your Union is registered in December 1946, and in June 1948 it starts to pasteurise milk for Bombay. At first it is just two village societies and about 250 litres a day, but any farmer can join, whatever their caste or religion. By the end of the year 432 farmers have joined, and you handle 5,000 litres a day."
         },
         {
-          "text": "Our estimate: it is 1948. Your union is finally running, but only in a few villages. Farmers who saw the contractors win are slow to trust you, and growth is slow."
+          "when": {
+            "flags": ["talk"]
+          },
+          "text": "It is 1948. Your Union is running at last, but only in a few villages, and farmers who waited months for it are slow to trust it."
+        },
+        {
+          "text": "It is 1948. Nothing has changed with the contractors, so a few villages start milk societies of their own. You join them late, and the farmers trust you less than before."
         }
       ],
       "next": "d2"
@@ -135,13 +141,13 @@
       "year": "1953",
       "title": "Too much milk in winter",
       "media": "vid:am_d2",
-      "setup": "It is 1953. In winter, buffaloes give about two and a half times more milk than in summer. Bombay cannot take all of it. Your farmers are selling the extra milk cheap to middlemen again. And experts around the world say buffalo milk has too much fat to turn into milk powder.",
+      "setup": "It is 1953. In winter, buffaloes give about about two and a half times as much milk as in summer, and Bombay can't take it all, so farmers are selling the extra cheap to middlemen again. A factory could turn it into butter and milk powder, but experts around the world say buffalo milk has too much fat to make into powder.",
       "question": "What do you do with the extra winter milk?",
-      "advisor": "The buffalo does not take a holiday. Your farmers cannot either.",
+      "advisor": "A factory will take years and lakhs of rupees, and the experts may be right. But every winter we wait, our farmers go back to the middlemen.",
       "options": [
         {
           "id": "holiday",
-          "label": "Take less milk in winter. Tell farmers to keep the extra at home.",
+          "label": "Take only the milk Bombay can use, so the Union never pays for milk it can't sell.",
           "grade": "bad",
           "effect": {
             "profit": -10,
@@ -151,7 +157,7 @@
           },
           "next": "scene1955",
           "media": "img:am_d2_holiday",
-          "outcome": "Our estimate: farmers pour away milk or sell it cheap to traders. Many stop trusting the union, because it is not there when they need it most.",
+          "outcome": "Every winter, farmers pour away milk or sell it cheap to traders. Many stop trusting the Union, because it isn't there when they need it most.",
           "why": "A co-operative that turns away its members' milk breaks its main promise: a sure market, every day.",
           "better": "Find a way to use every litre: make products that keep, like butter and milk powder.",
           "takeaway": "In 1953 you turned away your members' milk. A promise that only works in good times is not a promise.",
@@ -163,7 +169,7 @@
         },
         {
           "id": "sell",
-          "label": "Sell the extra winter milk to private butter makers at whatever price they pay.",
+          "label": "Sell the extra winter milk to private butter makers. It's quick, but they set the price.",
           "grade": "ok",
           "effect": {
             "profit": 5,
@@ -172,7 +178,7 @@
           },
           "next": "scene1955",
           "media": "img:am_d2_sell",
-          "outcome": "Our estimate: the milk gets used, but the private buyers set a low winter price. Farmers earn something, and the middlemen are back in the game.",
+          "outcome": "The milk gets used, but the private butter makers set a low winter price. Farmers earn something, and the middlemen are back in the game.",
           "why": "It solved this winter, but it handed the price back to the people you had just escaped.",
           "better": "Build your own factory to turn the extra milk into butter and powder, so the value stays with the farmers.",
           "takeaway": "In 1953 you sold the surplus cheap. A quick fix can bring back the problem you fought to end.",
@@ -184,7 +190,7 @@
         },
         {
           "id": "plant",
-          "label": "Build your own factory to make butter and milk powder, even from buffalo milk.",
+          "label": "Build your own butter and powder factory, despite the cost and the experts' doubts.",
           "grade": "great",
           "real": true,
           "effect": {
@@ -194,7 +200,17 @@
           },
           "next": "scene1955",
           "media": "vid:am_d2_plant",
-          "outcome": "The government of India helped the Union get money from UNICEF and help from New Zealand, with technical aid from the FAO. A Rs 50 lakh factory for milk powder and butter was planned. The President of India laid its foundation stone on 15 November 1954. In 1955 a dairy engineer at Anand installed a spray-dryer for buffalo milk, which Amul describes as the first in the world. Experts had said buffalo milk could not be dried. In 1955 the Prime Minister opened the factory. Now the Union could take farmers' milk all year round.",
+          "outcome": [
+            {
+              "when": {
+                "flags": ["strike"]
+              },
+              "text": "With the government's help, help comes from UNICEF and New Zealand, with advice from the FAO, and in November 1954 the President lays the foundation stone of a Rs 50 lakh factory. Then a dairy engineer at Anand does what the experts said could not be done: in 1955 he puts in a spray-dryer that turns buffalo milk into powder."
+            },
+            {
+              "text": "You raise money for a factory, but your Union is small and lenders believe the experts, so it takes years longer. In the end your engineers find a way to turn buffalo milk into powder."
+            }
+          ],
           "why": "You turned the problem into a product. Milk that went bad in hours became butter and powder that could keep and travel.",
           "takeaway": "In 1955 you built the plant the experts said could not work, and turned extra milk into products that keep.",
           "traits": {
@@ -213,12 +229,18 @@
       "text": [
         {
           "when": {
-            "flags": ["plant"]
+            "flags": ["strike", "plant"]
           },
-          "text": "Your new dairy makes butter and milk powder from buffalo milk, which Amul says was a first in the world. You sell them under one name: Amul, from the Sanskrit word 'Amulya', which means priceless. In the years that follow, Amul also makes cheese and baby food from buffalo milk."
+          "text": "On 31 October 1955 the Prime Minister opens the factory. Its butter and milk powder are made from buffalo milk, which Amul says was a first in the world, and you sell them under one name, Amul, from the Sanskrit word 'Amulya', meaning priceless. Now the Union can take every farmer's milk, all year round."
         },
         {
-          "text": "Our estimate: after more hard winters, you build a smaller butter plant, years late. You sell under one name, Amul, from the Sanskrit word for priceless. But private dairies already have a head start."
+          "when": {
+            "flags": ["plant"]
+          },
+          "text": "Your factory opens at last, a few years late. You sell its butter under one name, Amul, from the Sanskrit word for priceless, and now the Union can take milk all year round."
+        },
+        {
+          "text": "After more hard winters, you build a small butter plant, years late, and call your butter Amul, from the Sanskrit word for priceless. By then, private dairies already have a head start."
         }
       ],
       "next": "d3"
@@ -234,18 +256,18 @@
           "when": {
             "flags": ["strike", "plant"]
           },
-          "text": "It is October 1964. The Prime Minister comes to Anand to open your new cattle feed plant. He spends a night in a village with your farmers. He sees how well it works, and he wants your model copied across India."
+          "text": "In October 1964 the Prime Minister comes to Anand to open your new cattle feed plant, and he spends a night in a village with your farmers. He sees how well it works, and he wants your model copied across India."
         },
         {
-          "text": "Our estimate: it is 1964. Your union is smaller than it could be, but it works. The Prime Minister visits Anand, and he wants farmers across India to have something like it."
+          "text": "It is 1964. Your Union is smaller than it could be, but it works. When the Prime Minister visits Anand, he says he wants farmers across India to have something like it."
         }
       ],
       "question": "What do you do with what you have learned?",
-      "advisor": "One district cannot feed a country. But a good model can travel.",
+      "advisor": "Running Amul across India would make us big, fast. Teaching others is slow, and the credit goes to them. But keeping it all here leaves the rest of India to the middlemen.",
       "options": [
         {
           "id": "national",
-          "label": "Help farmers across India build their own co-operatives on the same model.",
+          "label": "Teach other districts to build co-operatives they own. Amul stays smaller, and they get the credit.",
           "grade": "great",
           "real": true,
           "effect": {
@@ -255,7 +277,7 @@
           },
           "next": "d4",
           "media": "img:am_d3_national",
-          "outcome": "In 1965 the National Dairy Development Board was set up at Anand to copy the Amul model across India. It later drew up Operation Flood, the biggest dairy program in the world. It was built on what people called the 'Anand Pattern': a society in each village, a union in each district, and a federation in each state.",
+          "outcome": "In 1965 the National Dairy Development Board is set up at Anand to copy your model across India. It is built on what people call the 'Anand Pattern': a society in every village, a union in every district, and a federation in every state.",
           "why": "You gave away the recipe, not the business. Farmers everywhere got their own co-operatives, and the whole movement grew stronger.",
           "takeaway": "In 1965 you shared your model with the whole country instead of keeping it for yourself.",
           "traits": {
@@ -266,7 +288,7 @@
         },
         {
           "id": "closed",
-          "label": "Keep your know-how in Kaira. Farmers in other states are your rivals.",
+          "label": "Keep your know-how in Kaira. Your farmers built it, and they should come first.",
           "grade": "bad",
           "effect": {
             "profit": 5,
@@ -276,7 +298,7 @@
           },
           "next": "d4",
           "media": "img:am_d3_closed",
-          "outcome": "Our estimate: Kaira's farmers do well, but the rest of India stays in the hands of middlemen. Without a national movement, big private dairies grow strong enough to squeeze even you.",
+          "outcome": "Kaira's farmers do well, but the rest of India stays in the hands of middlemen. Without a national movement, big private dairies grow strong enough to squeeze even you.",
           "why": "Farmers in other states were not your rivals. The middlemen were. Keeping the model to yourself left you alone.",
           "better": "Help other farmers build co-operatives of their own, so that farmers, not traders, run India's milk.",
           "takeaway": "In 1964 you kept a good idea to yourself. A movement grows stronger when it is shared.",
@@ -288,7 +310,7 @@
         },
         {
           "id": "empire",
-          "label": "Grow Amul itself: buy milk in other states and run it all from Anand.",
+          "label": "Take Amul national: buy milk in other states and run it from Anand. It's the fastest way to grow.",
           "grade": "ok",
           "effect": {
             "profit": 10,
@@ -297,7 +319,7 @@
           },
           "next": "d4",
           "media": "img:am_d3_empire",
-          "outcome": "Our estimate: Amul grows big, but farmers far away are just suppliers to a dairy in Gujarat. They do not own it, so they do not feel it is theirs.",
+          "outcome": "Amul grows big, but farmers far away are only suppliers to a dairy in Gujarat. They don't own it, so they don't feel it is theirs.",
           "why": "Growth helped, but farmers who do not own the dairy have no reason to stay loyal when a trader offers more.",
           "better": "Let farmers in every state own their own co-operatives on the same model, and link them together.",
           "takeaway": "In 1964 you grew a company instead of a movement. Ownership is what keeps farmers loyal.",
@@ -315,13 +337,23 @@
       "year": "1966",
       "title": "Make India love the butter",
       "media": "img:am_d4",
-      "setup": "It is 1966. Amul Butter's ads use an old line: 'Purely the Best'. You want families in every city to ask for Amul by name.",
+      "setup": [
+        {
+          "when": {
+            "flags": ["closed"]
+          },
+          "text": "It is 1966. Your butter is good, but private dairies from other states now sell in the big cities too, and Amul Butter's ads still use an old line: 'Purely the Best'. You want families in every city to ask for Amul by name."
+        },
+        {
+          "text": "It is 1966. Amul Butter is good, but its ads still use an old line: 'Purely the Best'. You want families in every city to ask for Amul by name."
+        }
+      ],
       "question": "How do you sell your butter to India's homes?",
-      "advisor": "People forget a product. They remember a friend.",
+      "advisor": "Ads cost the farmers' money. But a butter nobody remembers stays on the shelf.",
       "options": [
         {
           "id": "plain",
-          "label": "Run plain ads: the price, the purity and a picture of the pack.",
+          "label": "Run plain ads about price and purity. They're safe and clear, but easy to forget.",
           "grade": "ok",
           "effect": {
             "profit": 0,
@@ -330,7 +362,7 @@
           },
           "next": "scene1970",
           "media": "img:am_d4_plain",
-          "outcome": "Our estimate: the ads are correct and safe. People see them, but they do not talk about them, and the butter still looks like any other brand.",
+          "outcome": "The ads are correct and safe. People see them, but nobody talks about them, and your butter still looks like any other brand.",
           "why": "Plain facts tell people what you sell. They do not make people care.",
           "better": "Give the brand a face and a voice, something people look forward to seeing.",
           "takeaway": "In 1966 you ran safe ads. Being correct is not the same as being remembered.",
@@ -342,7 +374,7 @@
         },
         {
           "id": "no_ads",
-          "label": "No ads. Good butter sells itself, and ads waste the farmers' money.",
+          "label": "No ads. Good butter sells itself, and the money stays with the farmers.",
           "grade": "bad",
           "effect": {
             "profit": -5,
@@ -352,7 +384,7 @@
           },
           "next": "scene1970",
           "media": "img:am_d4_noads",
-          "outcome": "Our estimate: you save money, but big private brands fill the cities with their ads. Shoppers pick the name they know, and it is not yours.",
+          "outcome": "You save money, but big private brands fill the cities with their ads. Shoppers pick the name they know, and it isn't yours.",
           "why": "A good product nobody has heard of loses to an average product everyone knows.",
           "better": "Spend on a smart, cheap campaign that makes your brand a friend of the family.",
           "takeaway": "In 1966 you thought quality was enough. Customers can only choose a brand they remember.",
@@ -364,7 +396,7 @@
         },
         {
           "id": "girl",
-          "label": "Hire a sharp ad agency for a cheeky campaign, with a little girl who jokes about the news.",
+          "label": "Hire an ad man for a cheeky campaign that jokes about the news. Some people may be offended.",
           "grade": "great",
           "real": true,
           "effect": {
@@ -374,7 +406,7 @@
           },
           "next": "scene1970",
           "media": "img:am_d4_girl",
-          "outcome": "In 1966 Amul hired the head of an ad agency to make a new campaign for Amul Butter. He created a little girl mascot to win over mothers and children. Her first topical ad made a joke about horse racing. From 1967 she began to joke about the news of the day, on big roadside boards. The campaign later set a Guinness World Record as the longest-running ad campaign in the world.",
+          "outcome": "The ad man you hire creates a little girl mascot to win over mothers and children. Her first joke is about horse racing, and from 1967 she jokes about the news of the day on big roadside boards. Years later, it will set a world record as the longest-running ad campaign.",
           "why": "A funny, friendly mascot made a farmers' product feel like part of the family, and the news gave her something new to say every week.",
           "takeaway": "In 1966 you gave your brand a face and a sense of humour that people looked forward to.",
           "traits": {
@@ -395,10 +427,22 @@
           "when": {
             "flags": ["national"]
           },
-          "text": "On 13 January 1970 Operation Flood begins. Its first phase is paid for with milk powder and butter oil given by Europe through the World Food Programme. It links 18 milk areas to Delhi, Bombay, Calcutta and Madras. In Gujarat, other districts like Mehsana and Banaskantha have built milk unions just like yours."
+          "text": "On 13 January 1970 Operation Flood begins. Paid for by selling milk powder and butter oil given by Europe, it links 18 milk areas to Delhi, Bombay, Calcutta and Madras. Back in Gujarat, districts like Mehsana and Banaskantha now have milk unions just like yours."
         },
         {
-          "text": "Our estimate: it is 1970. In most of India, milk is still run by middlemen. But in Gujarat, other districts like Mehsana and Banaskantha have built milk unions of their own."
+          "when": {
+            "flags": ["closed"]
+          },
+          "text": "It is 1970. Most of India's milk is still in the hands of middlemen. In Gujarat, districts like Mehsana and Banaskantha have built milk unions on their own, without your help, and they don't owe you anything."
+        },
+        {
+          "when": {
+            "flags": ["empire"]
+          },
+          "text": "It is 1970. Amul now buys milk far beyond Kaira, but the farmers there feel like suppliers, not owners. Back in Gujarat, districts like Mehsana and Banaskantha have built milk unions of their own."
+        },
+        {
+          "text": "It is 1970. In most of India, milk is still run by middlemen. But in Gujarat, districts like Mehsana and Banaskantha have built milk unions of their own."
         }
       ],
       "next": "d5"
@@ -414,18 +458,18 @@
           "when": {
             "flags": ["closed"]
           },
-          "text": "Our estimate: it is 1973. Even without your help, Gujarat's other milk unions have grown. Now they fight with you and with each other in the same towns, each one paying for its own ads."
+          "text": "It is 1973. Gujarat's other milk unions have grown without your help, and now they fight you and each other in the same towns, each one paying for its own ads."
         },
         {
-          "text": "It is 1973. Gujarat's milk unions all grew from the same idea. But now they compete with each other in the same markets, each one paying for its own ads."
+          "text": "It is 1973. Gujarat's milk unions all grew from the same idea, but now they compete with each other in the same towns, each one paying for its own ads."
         }
       ],
       "question": "How should Gujarat's milk unions sell?",
-      "advisor": "Farmers fighting farmers is a gift to every big company.",
+      "advisor": "One brand means Kaira gives up control of the Amul name it built. Separate brands mean farmers keep competing with farmers.",
       "options": [
         {
           "id": "price_war",
-          "label": "Let Kaira's Amul win the price war. The other unions can look after themselves.",
+          "label": "Compete on price. Kaira's Amul is the strongest, and competition keeps every union sharp.",
           "grade": "bad",
           "effect": {
             "profit": 5,
@@ -435,7 +479,7 @@
           },
           "next": "ending_route",
           "media": "img:am_d5_pricewar",
-          "outcome": "Our estimate: you cut prices to beat the other unions. Farmers in every district earn less, and private dairies smile as the co-operatives weaken each other.",
+          "outcome": "You cut prices to beat the other unions. Farmers in every district earn less, and the private dairies are happy to watch the co-operatives weaken each other.",
           "why": "Your real competitors were the big private dairies. A war between farmers only made all farmers poorer.",
           "better": "Join forces: one federation, one brand, one budget, with every union owning a share.",
           "takeaway": "In 1973 you fought your own allies. Divided farmers are easy to beat.",
@@ -447,7 +491,7 @@
         },
         {
           "id": "one_brand",
-          "label": "Form one marketing federation. Every union sells under one brand: Amul.",
+          "label": "Form one federation and sell everything as Amul. Kaira must give away its own brand.",
           "grade": "great",
           "real": true,
           "effect": {
@@ -457,7 +501,7 @@
           },
           "next": "ending_route",
           "media": "img:am_d5_onebrand",
-          "outcome": "In 1973 the unions set up the Gujarat Co-operative Milk Marketing Federation, GCMMF, to sell for all of them. They pooled their strength, cut ad costs and stopped competing with each other. The Kaira Union handed its Amul brand over to the federation. Now farmers owned their village societies, the societies owned the district unions, and the unions owned the federation.",
+          "outcome": "In 1973 the unions set up the Gujarat Co-operative Milk Marketing Federation, GCMMF, to sell for all of them, and the Kaira Union hands it the Amul brand. They stop competing and cut ad costs. Now farmers own their village societies, the societies own the district unions, and the unions own the federation.",
           "why": "One brand gave millions of small farmers the power of one big company, while they still owned every part of it.",
           "takeaway": "In 1973 you gave up your own brand so all farmers could share it. One strong brand beats many weak ones.",
           "traits": {
@@ -468,7 +512,7 @@
         },
         {
           "id": "share",
-          "label": "Share trucks and shops, but let each union keep its own brand.",
+          "label": "Share trucks and shops, but let each union keep its own name and its own pride.",
           "grade": "ok",
           "effect": {
             "profit": 5,
@@ -477,7 +521,7 @@
           },
           "next": "ending_route",
           "media": "img:am_d5_share",
-          "outcome": "Our estimate: you save some money on trucks, but shoppers see five or six milk names from Gujarat. Each one is too small to stand up to the big brands.",
+          "outcome": "You save some money on trucks, but shoppers see five or six milk names from Gujarat, and each one is too small to stand up to the big brands.",
           "why": "Sharing costs helped, but the brands still split the shopper's attention and the ad money.",
           "better": "Put everything under one brand, so every rupee spent on ads helps every farmer.",
           "takeaway": "In 1973 you shared the trucks but not the name. Saving costs is not the same as building one strong brand.",
@@ -521,10 +565,10 @@
           "when": {
             "flags": ["strike", "plant", "national", "girl", "one_brand"]
           },
-          "text": "In 1976 GCMMF made a film about the milk co-operatives, Manthan. It was paid for by 500,000 farmers, who gave two rupees each. By the end of 1985, 4.25 million milk producers were part of 43,000 village co-operatives. In 1998 India became the largest milk producer in the world. Today 3.6 million milk producers control GCMMF, and Amul is still their brand."
+          "text": "In 1976 the federation makes a film about the milk co-operatives, Manthan, paid for by 500,000 farmers who give two rupees each. By the end of 1985, 4.25 million milk producers belong to 43,000 village co-operatives, and in 1998 India becomes the world's largest milk producer. Amul is still the farmers' brand today."
         },
         {
-          "text": "Our estimate: you took a slightly different road, but you kept the farmers united and in charge. Their co-operative grows into one of India's best-known food brands."
+          "text": "You took a slightly different road, but you kept the farmers united and in charge. Their co-operative grows into one of India's best-known food brands."
         }
       ],
       "bonus": 15
@@ -535,7 +579,17 @@
       "tier": "survivor",
       "title": "A strong local dairy",
       "media": "img:am_survivor",
-      "text": "Our estimate: the farmers keep their union and earn more than in the days of the contractors. But without one strong brand and a national plan, private dairies keep most of India's big city markets.",
+      "text": [
+        {
+          "when": {
+            "flags": ["closed"]
+          },
+          "text": "Kaira's farmers keep their Union and earn far more than in the days of the contractors. But the rest of India never gets the same chance, and private dairies keep most of the big city markets."
+        },
+        {
+          "text": "The farmers keep their Union and earn more than in the days of the contractors. But without one strong brand and a plan for all of India, private dairies keep most of the big city markets."
+        }
+      ],
       "bonus": 5
     },
     "collapse": {
@@ -544,7 +598,7 @@
       "tier": "collapse",
       "title": "The middlemen win again",
       "media": "img:am_collapse",
-      "text": "Our estimate: the farmers stay divided, and the middlemen and big dairies win again. Your union shrinks to a small local dairy, and most farmers still sell milk at whatever price they are offered.",
+      "text": "The farmers stay divided, and the middlemen and big dairies take control again. Your Union shrinks to a small local dairy, and most farmers still sell their milk at whatever price they are offered.",
       "bonus": 0
     },
     "fired": {
@@ -553,7 +607,7 @@
       "tier": "fired",
       "title": "The farmers choose a new leader",
       "media": "img:am_fired",
-      "text": "Our estimate: after three costly calls, the union's elected board loses its trust in you and chooses someone else to lead the farmers.",
+      "text": "After three costly calls, the Union's elected board loses faith in you, and the farmers choose someone else to lead them.",
       "bonus": 0
     }
   },
