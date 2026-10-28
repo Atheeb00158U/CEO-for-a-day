@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { GameProvider, today, useGame } from "@/lib/store";
 import { Icon, Pill } from "./ui";
+import { Logo } from "./Logo";
 import { HomeTab } from "./HomeTab";
 import { LeagueTab } from "./LeagueTab";
 import { NotesTab } from "./NotesTab";
@@ -59,9 +60,7 @@ function Shell() {
     return (
       <div className="grid min-h-dvh place-items-center">
         <div className="flex flex-col items-center gap-3">
-          <div className="pop grid size-20 place-items-center rounded-3xl bg-brand text-[#1a1206]">
-            <Icon.chair className="size-12" />
-          </div>
+          <Logo size={112} className="pop" />
           <p className="text-[20px] font-black">CEO for a day</p>
         </div>
       </div>
@@ -130,9 +129,7 @@ function TopBar({ onShop }: { onShop: () => void }) {
       style={{ paddingTop: "max(12px, env(safe-area-inset-top))" }}
     >
       <div className="mr-auto flex items-center gap-2">
-        <div className="grid size-10 place-items-center rounded-xl bg-brand text-[#1a1206]">
-          <Icon.chair className="size-6" />
-        </div>
+        <Logo size={40} />
         <span className="text-[15px] font-black leading-none">
           CEO
           <br />

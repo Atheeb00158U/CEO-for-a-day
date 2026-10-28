@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CATALOG } from "@/content/catalog";
 import { Icon } from "@/components/icons";
+import { Logo } from "@/components/Logo";
 import { LegacyHashRedirect } from "@/components/LegacyHashRedirect";
 
 export const metadata: Metadata = {
@@ -43,9 +44,7 @@ export default function Home() {
       <LegacyHashRedirect />
 
       <header className="mx-auto flex max-w-[1100px] items-center gap-3 px-4 py-4 sm:px-6">
-        <div className="grid size-10 place-items-center rounded-xl bg-brand text-[#1a1206]">
-          <Icon.chair className="size-6" />
-        </div>
+        <Logo size={40} />
         <span className="mr-auto text-[15px] leading-none font-black">
           CEO
           <br />
