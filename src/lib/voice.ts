@@ -69,7 +69,8 @@ function start(text: string, voice: string, progress?: (p: number) => void, onEn
     if (audio && !audio.paused) raf = requestAnimationFrame(loop);
   };
   audio.onplay = () => (raf = requestAnimationFrame(loop));
-  audio.play().catch(() => done());
+  // A missing file rejects here too, after onerror has handed over to the browser voice: let that voice finish.
+  audio.play().catch((e) => e?.name === "NotAllowedError" && done());
 }
 
 function speakBrowser(text: string, voice: string, done: () => void) {
