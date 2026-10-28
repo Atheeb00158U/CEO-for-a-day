@@ -4735,9 +4735,9 @@
   "text": "The board has seen enough. After three costly calls and years of losses, it asks someone else to run the jewellery business."
  },
  {
-  "id": "e85ead4c1f98",
+  "id": "dc26012dabce",
   "voice": "narrator",
-  "text": "You sell books online in India. But few Indians use credit cards. Couriers that collect cash for you take weeks to pay you, and they charge high fees."
+  "text": "You sell books online in India, but few Indians use credit cards. Couriers who collect cash for you take weeks to pay you, and they charge high fees."
  },
  {
   "id": "be63f95416cc",
@@ -4745,29 +4745,19 @@
   "text": "How do you let people pay?"
  },
  {
-  "id": "28bd28ae9867",
-  "voice": "narrator",
-  "text": "Our estimate: the few people with cards buy from you, but most of India never tries your shop."
- },
- {
-  "id": "3ea39c9d0564",
-  "voice": "narrator",
-  "text": "If most customers can't pay your way, you have shut the door on them. What would have worked: Let customers pay cash at the door, and build your own delivery so the cash comes back fast."
- },
- {
   "id": "d58ed966ec43",
   "voice": "narrator",
   "text": "Flipkart offered cash on delivery and started its own delivery arm as a pilot in December 2010, because it did not want outside couriers holding its cash. That arm, eKart, later grew to serve over 800 cities."
  },
  {
-  "id": "27dd6ae54b2b",
+  "id": "889e64fb0f38",
   "voice": "narrator",
-  "text": "Customers who didn't trust online shopping could see the product first. And owning delivery meant your cash came back quickly."
+  "text": "Buyers who didn't trust online shopping could see the product before paying, and running delivery yourself meant the cash came back fast."
  },
  {
-  "id": "ea37034dc22b",
+  "id": "5070eaf8c4db",
   "voice": "narrator",
-  "text": "Our estimate: more people buy, but your money is stuck with couriers for weeks, and you run short of cash."
+  "text": "More people buy, but your money sits with the couriers for weeks. The more you sell, the less cash you have in hand."
  },
  {
   "id": "0f06f602e6ff",
@@ -4775,9 +4765,19 @@
   "text": "You solved the customer's problem but created a cash problem for yourself. What would have worked: Offer cash on delivery and run your own delivery, so the cash reaches you fast."
  },
  {
-  "id": "76d8bcd8eac1",
+  "id": "cac9e76d5fbd",
   "voice": "narrator",
-  "text": "You make washing powder at home. The big brand, Surf, sells at Rs 13 a kilo."
+  "text": "Your cash reaches you directly, but most buyers don't trust paying online yet. While you spend years teaching them, your shop grows slowly."
+ },
+ {
+  "id": "255f6273a9a2",
+  "voice": "narrator",
+  "text": "The real wall was trust, not just cards. Teaching a whole country a new habit is slow, and a rival who takes cash wins those buyers first. What would have worked: Let customers pay cash at the door, and build your own delivery so the cash comes back fast."
+ },
+ {
+  "id": "d28cc9618665",
+  "voice": "narrator",
+  "text": "You make washing powder at home, while the big brand, Surf, sells at Rs 13 a kilo."
  },
  {
   "id": "465af096be4b",
@@ -4785,24 +4785,24 @@
   "text": "How do you price your powder?"
  },
  {
-  "id": "078463df486b",
+  "id": "4c610199a1c5",
   "voice": "narrator",
-  "text": "Our estimate: shoppers pick the famous brand at the same price, and your powder stays on the shelf."
+  "text": "Shoppers see two powders at almost the same price and pick the famous one. Your powder stays on the shelf."
  },
  {
-  "id": "75b0afcbbace",
+  "id": "107b13591e2d",
   "voice": "narrator",
-  "text": "Against a famous brand, a similar price gives buyers no reason to switch. What would have worked: Price far below Surf for families who could never afford it, and sell to them directly."
+  "text": "Against a famous brand, a slightly lower price gives buyers no real reason to switch. What would have worked: Price far below Surf for families who could never afford it, and sell to them directly."
  },
  {
-  "id": "15f0d6fda6ef",
+  "id": "004e23b644b0",
   "voice": "narrator",
-  "text": "Our estimate: you build a small, loyal following, but growth is slow."
+  "text": "You build a small, loyal following, but growth is slow, and the shops take a cut of every packet."
  },
  {
-  "id": "076bf4e57ff7",
+  "id": "2fd2fb1c6177",
   "voice": "narrator",
-  "text": "Starting small is safe, but it leaves the huge market below Surf's price for someone else. What would have worked: Go after that huge market directly, with a very low price and door-to-door selling."
+  "text": "Starting small keeps risk low, but it leaves the huge market below Surf's price for someone faster. What would have worked: Go after that huge market directly, with a very low price and door-to-door selling."
  },
  {
   "id": "c5b06ebbb183",
@@ -4820,14 +4820,14 @@
   "text": "Seven people near Chicago have died after taking Tylenol capsules that someone had laced with poison. The capsules were sold in Chicago-area stores. Tylenol has 35% of its market."
  },
  {
-  "id": "9d7afb9ca7a8",
+  "id": "df68ef899d2c",
   "voice": "narrator",
-  "text": "Our estimate: you save money, but people across the country stay afraid and stop buying."
+  "text": "You spend less on the recall, but fear doesn't stay in Chicago. Shoppers across the country can't tell safe bottles from bad ones, so they stop buying."
  },
  {
-  "id": "0da88e0d855f",
+  "id": "c9698a7d671d",
   "voice": "narrator",
-  "text": "Fear does not stay inside one city. A small recall looks like you care more about money than safety. What would have worked: Recall every bottle across the country, and come back with packaging that can't be tampered with."
+  "text": "The poison was found in one city, but the doubt was everywhere. A local recall left every other bottle in question. What would have worked: Recall every bottle in the country, and come back with packaging no one can tamper with."
  },
  {
   "id": "7d06ae60724b",
@@ -4835,24 +4835,24 @@
   "text": "Johnson & Johnson recalled 31 million bottles across the US, at a cost of $100 million. Tylenol's share fell to 7%. After it came back in tamper-proof packaging, it returned to 35% by the end of 1983."
  },
  {
-  "id": "3616471a54a3",
+  "id": "9941604ec633",
   "voice": "narrator",
-  "text": "You put customer safety above short-term money, and customers trusted you again."
+  "text": "Only a full recall removed every doubt, and the new sealed packs then gave shoppers a reason to come back."
  },
  {
-  "id": "08225375f933",
+  "id": "b4e3667c4133",
   "voice": "narrator",
-  "text": "Our estimate: while you wait, more people stop trusting the brand, and every day of silence makes it worse."
+  "text": "While you wait, rumours fill the silence. Shops pull Tylenol on their own, and shoppers learn to buy other brands."
  },
  {
-  "id": "48e2302821a0",
+  "id": "70c65d363474",
   "voice": "narrator",
-  "text": "When lives are at risk, waiting looks like you don't care. What would have worked: Act at once: recall everything, then fix the packaging."
+  "text": "Fear spreads faster than facts. By waiting, you let the news and the shops decide what happened to your brand. What would have worked: Act first and big: recall every bottle, then come back with packaging no one can tamper with."
  },
  {
-  "id": "5d9b2592b54c",
+  "id": "9b0015ea5ea8",
   "voice": "narrator",
-  "text": "Your software company in Chennai needs programmers. You could compete for graduates from top colleges. But you believe young people without degrees could do as well with training."
+  "text": "Your software company in Chennai needs programmers. Graduates from top colleges get many job offers. Young people straight out of school would need two years of training."
  },
  {
   "id": "f975885caa8c",
@@ -4860,9 +4860,9 @@
   "text": "How do you find talent?"
  },
  {
-  "id": "23a2e4823a31",
+  "id": "330e5db53b78",
   "voice": "narrator",
-  "text": "Our estimate: you hire good people, but the cost keeps rising and many leave for bigger offers."
+  "text": "You hire good people, but salaries keep rising, and many leave when a bigger company offers more."
  },
  {
   "id": "7b3c5674c907",
@@ -4870,54 +4870,34 @@
   "text": "Competing on salary alone is a race where the richest company wins. What would have worked: Train your own talent from people others overlook."
  },
  {
+  "id": "6df97528fac9",
+  "voice": "narrator",
+  "text": "Work gets done and costs stay low, but your best know-how sits with agencies that also work for others. Quality is hard to control."
+ },
+ {
+  "id": "e6f6e7a51e91",
+  "voice": "narrator",
+  "text": "For a software company, the people who write the code are the product, so handing that work to others means handing away your future. What would have worked: Build your own team, even if it means training people yourself."
+ },
+ {
   "id": "7d8c61f98915",
   "voice": "narrator",
   "text": "In 2004 the company, then called AdventNet and now Zoho, started what became Zoho University: a two-year course for Class 12 students. Students pay no fees and get Rs 10,000 a month. Most are hired by Zoho, and many come from low-income, often rural, families."
  },
  {
-  "id": "f0e9d93c7314",
+  "id": "bcf21a8b9392",
   "voice": "narrator",
-  "text": "You found talent where others weren't looking, and trained it the way your company works."
+  "text": "You found talent where others weren't looking, and trained it the way your company works. Most of them went on to work for you."
  },
  {
-  "id": "50dd8276ed98",
+  "id": "e2967c63c3b9",
   "voice": "narrator",
-  "text": "Our estimate: work gets done, but you never build your own skilled team, and quality is hard to control."
- },
- {
-  "id": "58b0a32a09c1",
-  "voice": "narrator",
-  "text": "For a software company, the people who write the code are the business. What would have worked: Build your own team, even if it means training people yourself."
- },
- {
-  "id": "497eb5412835",
-  "voice": "narrator",
-  "text": "Shampoo is sold in bottles. Your family has already tried selling products in small, cheap packets."
+  "text": "Shampoo is mostly sold in bottles. One brand already sells small packets at Rs 2 each. You have a new shampoo to launch."
  },
  {
   "id": "48d58c32c08b",
   "voice": "narrator",
   "text": "How do you sell your shampoo?"
- },
- {
-  "id": "3ebd9ec5c75c",
-  "voice": "narrator",
-  "text": "Our estimate: you fight the big brands on their ground, with less money, and lose."
- },
- {
-  "id": "2a3502f8d61c",
-  "voice": "narrator",
-  "text": "Copying the leader's pack and price gives poorer buyers no new reason to try you. What would have worked: Make a pack small enough for the customer's pocket."
- },
- {
-  "id": "3943882d26a2",
-  "voice": "narrator",
-  "text": "Our estimate: a few more people can afford it, but you still miss the villages and small towns."
- },
- {
-  "id": "f02b2a7f47b4",
-  "voice": "narrator",
-  "text": "Smaller helped, but not small enough for the biggest group of buyers. What would have worked: Go all the way down to a single-use packet at a tiny price, sold in rural shops."
  },
  {
   "id": "feb632b6c6cd",
@@ -4930,24 +4910,34 @@
   "text": "You made the product fit what customers could pay each day, not what the big brands wanted to sell."
  },
  {
+  "id": "de60e5266ddc",
+  "voice": "narrator",
+  "text": "You fight the big brands on their own ground, with much less money. Shops give you little space, and few buyers switch."
+ },
+ {
+  "id": "2a3502f8d61c",
+  "voice": "narrator",
+  "text": "Copying the leader's pack and price gives poorer buyers no new reason to try you. What would have worked: Make a pack small enough for the customer's pocket."
+ },
+ {
+  "id": "542af1c712b2",
+  "voice": "narrator",
+  "text": "A few more people can afford it, but a bottle is still too much for many families. You miss the villages and small towns."
+ },
+ {
+  "id": "f02b2a7f47b4",
+  "voice": "narrator",
+  "text": "Smaller helped, but not small enough for the biggest group of buyers. What would have worked: Go all the way down to a single-use packet at a tiny price, sold in rural shops."
+ },
+ {
   "id": "9915284027cc",
   "voice": "narrator",
   "text": "Your startup lets people stay in strangers' homes. Investor after investor has said no, and the business needs money to survive."
  },
  {
-  "id": "d456887a791a",
+  "id": "9d21e7124161",
   "voice": "narrator",
-  "text": "Our estimate: you are safe, but you will never know if the idea could have worked."
- },
- {
-  "id": "ff57f9dd41bb",
-  "voice": "narrator",
-  "text": "Many good ideas look bad to investors at first. Quitting early ends the test before it starts. What would have worked: Find a creative way to raise a little cash and keep going long enough to prove the idea."
- },
- {
-  "id": "2aef9d158454",
-  "voice": "narrator",
-  "text": "Our estimate: you survive a few more months, but the debt grows and nothing proves the idea to anyone."
+  "text": "You survive a few more months, but the debt grows, and you still have nothing new to show investors."
  },
  {
   "id": "d0cf558ae3a8",
@@ -4965,6 +4955,16 @@
   "text": "You kept the company alive and showed investors exactly the kind of grit they look for."
  },
  {
+  "id": "5cb522b39004",
+  "voice": "narrator",
+  "text": "Investors listen more, but now you are one more booking site against big rivals. The thing that made you different is gone."
+ },
+ {
+  "id": "eab6e287bf5c",
+  "voice": "narrator",
+  "text": "Investors saying no doesn't mean the idea is bad, because many good ideas look strange at first. By dropping yours, you became ordinary. What would have worked: Find a creative way to raise a little cash and keep going long enough to prove the idea."
+ },
+ {
   "id": "56b035eec64b",
   "voice": "narrator",
   "text": "A government-owned company rules India's watch market, mainly with mechanical watches that need winding. Quartz watches are a newer technology."
@@ -4973,16 +4973,6 @@
   "id": "a02efc550164",
   "voice": "narrator",
   "text": "What kind of watches do you make?"
- },
- {
-  "id": "c0012b5040b9",
-  "voice": "narrator",
-  "text": "Our estimate: you become a smaller copy of the leader, just as the market starts moving to quartz."
- },
- {
-  "id": "843b79fd0057",
-  "voice": "narrator",
-  "text": "Copying the leader's old technology means you arrive late to the future. What would have worked: Build only for the new technology, quartz."
  },
  {
   "id": "2902ef351e4a",
@@ -4995,14 +4985,24 @@
   "text": "You built for where the technology was going, not where it had been."
  },
  {
-  "id": "7f2886764fbd",
+  "id": "0fd1bd90435f",
   "voice": "narrator",
-  "text": "Our estimate: you cover both markets, but your quartz watches don't stand out, and your mechanical ones fade."
+  "text": "You become a smaller copy of the leader, just as buyers start moving to quartz."
  },
  {
-  "id": "c4ad815b44da",
+  "id": "2565ea9d02a7",
   "voice": "narrator",
-  "text": "Hedging felt safe, but it split your effort just when one side was winning. What would have worked: Commit fully to quartz and be the best at it."
+  "text": "Copying the leader's technology means you arrive late, just as the market changes. What would have worked: Build only for the new technology, quartz."
+ },
+ {
+  "id": "44b9395b3119",
+  "voice": "narrator",
+  "text": "You cover both markets, but your quartz watches don't stand out, and your mechanical ones fade."
+ },
+ {
+  "id": "3f4c204c9531",
+  "voice": "narrator",
+  "text": "Covering both sides lowers the risk of choosing wrong, but it splits your effort just as the market moves. What would have worked: Commit fully to quartz and be the best at it."
  },
  {
   "id": "1f0b447b89ce",
@@ -5015,19 +5015,19 @@
   "text": "What do you do now?"
  },
  {
-  "id": "5c23e8532b5b",
+  "id": "26e140c9c9e4",
   "voice": "narrator",
-  "text": "Our estimate: you may be right about the shops, but parents keep away, and the story stays in the news."
+  "text": "You may be right about the shops, but parents don't read factory reports. They keep away, and the story stays in the news."
  },
  {
-  "id": "9fa0b949e279",
+  "id": "7d5bceb98549",
   "voice": "narrator",
-  "text": "Even if you are right, blaming others does not make a parent feel safe buying chocolate for a child. What would have worked: Fix the problem you can control, like the packaging, and show customers the fix."
+  "text": "Even if you are right, a report doesn't make a parent feel safe. Buyers needed to see a change they could hold in their hands. What would have worked: Fix the part you control, like the packaging, and show customers the fix."
  },
  {
-  "id": "9f2ff5904a38",
+  "id": "3378e3ca6932",
   "voice": "narrator",
-  "text": "Our estimate: some buyers return for the discount, but the worry stays, and cheap prices make the brand look desperate."
+  "text": "Some buyers come back for the discount, but the worry stays. When prices go back up, they leave again."
  },
  {
   "id": "3df61626dc1a",
@@ -5055,14 +5055,14 @@
   "text": "How do you respond?"
  },
  {
-  "id": "99768815365b",
+  "id": "faf76fec6eb2",
   "voice": "narrator",
-  "text": "Our estimate: Nirma keeps growing, and by the time you act, it is the biggest name in the market."
+  "text": "Nirma keeps growing, and by the time you act, it is the biggest name in the market."
  },
  {
-  "id": "1764e2e751e0",
+  "id": "1391d3b77819",
   "voice": "narrator",
-  "text": "Cheap rivals start with customers you don't want, then move up to the ones you do. What would have worked: Launch your own low-price brand early, and keep Surf as the premium one."
+  "text": "Cheap rivals start with buyers you don't want, then move up to the ones you do. What would have worked: Launch your own low-price brand early, and keep Surf as the premium one."
  },
  {
   "id": "51dc05f04827",
@@ -5075,9 +5075,9 @@
   "text": "A second, cheaper brand let you fight on price without cutting Surf's. The mistake was waiting so long."
  },
  {
-  "id": "8749f9cbed56",
+  "id": "f0a2eaead136",
   "voice": "narrator",
-  "text": "Our estimate: you win some buyers back, but your profits fall and Surf starts to look ordinary."
+  "text": "You win some buyers back, but your profits fall, and Surf starts to look ordinary."
  },
  {
   "id": "1b09cd7f3b84",
@@ -5085,34 +5085,9 @@
   "text": "Cutting the price of your premium brand damages it to fight a battle it wasn't built for. What would have worked: Fight with a separate cheaper brand, and keep Surf premium."
  },
  {
-  "id": "978e58f5fac0",
+  "id": "352a875bb90c",
   "voice": "narrator",
-  "text": "Tata Tea grows tea but wants to own famous tea brands. Its first try to buy the British brand Tetley, the world's second-biggest tea company, failed for lack of money. Now there is another chance."
- },
- {
-  "id": "41ab7c4d726d",
-  "voice": "narrator",
-  "text": "Do you borrow heavily to buy a famous global brand?"
- },
- {
-  "id": "162c56f5733d",
-  "voice": "narrator",
-  "text": "Our estimate: you grow abroad step by step, but it takes many years and a lot of advertising to become known."
- },
- {
-  "id": "4e8514a9337e",
-  "voice": "narrator",
-  "text": "Building a global brand from zero is slow and costly. What would have worked: Buy a famous brand that can earn enough to repay the loan."
- },
- {
-  "id": "62c7ce9adf8d",
-  "voice": "narrator",
-  "text": "Our estimate: you grow more tea, but you stay a seller of a raw product while others earn the brand profits."
- },
- {
-  "id": "53dc2bd02cb2",
-  "voice": "narrator",
-  "text": "More gardens make you bigger in the low-profit part of the business. What would have worked: Move into brands, where the profits are."
+  "text": "Tata Tea grows tea and wants to grow abroad. Its first try to buy the British brand Tetley, the world's second-biggest tea company, failed for lack of money. Now there is another chance."
  },
  {
   "id": "e3b33393f770",
@@ -5120,9 +5095,29 @@
   "text": "In 2000 Tata Tea bought Tetley for £271 million, a deal funded largely by borrowing. Tetley became Tata's main global brand, and about two-thirds of Tata Tea's sales later came from the Tetley Group."
  },
  {
-  "id": "fdad5e91ba10",
+  "id": "7fc552cf3418",
   "voice": "narrator",
-  "text": "You bought what you could not build quickly, and got a famous global brand in one step."
+  "text": "You bought a global brand that would have taken years to build yourself."
+ },
+ {
+  "id": "39d299a04db3",
+  "voice": "narrator",
+  "text": "You grow more tea, but you stay a seller of raw tea while others earn the brand profits."
+ },
+ {
+  "id": "53dc2bd02cb2",
+  "voice": "narrator",
+  "text": "More gardens make you bigger in the low-profit part of the business. What would have worked: Move into brands, where the profits are."
+ },
+ {
+  "id": "03caebd9e344",
+  "voice": "narrator",
+  "text": "You grow abroad step by step, but it takes many years and a lot of advertising to become known."
+ },
+ {
+  "id": "4e8514a9337e",
+  "voice": "narrator",
+  "text": "Building a global brand from zero is slow and costly. What would have worked: Buy a famous brand that can earn enough to repay the loan."
  },
  {
   "id": "5344e519b251",
@@ -5135,6 +5130,26 @@
   "text": "How do you retrain thousands of baristas?"
  },
  {
+  "id": "1da5e00166eb",
+  "voice": "narrator",
+  "text": "Busy staff watch them between orders, and service stays the same."
+ },
+ {
+  "id": "7d46024cd26e",
+  "voice": "narrator",
+  "text": "Busy staff can't learn much between orders, and a turnaround needs a moment that everyone can see. What would have worked: Invest real time in training, together, so the change sticks."
+ },
+ {
+  "id": "2433ac3ab699",
+  "voice": "narrator",
+  "text": "Staff get trained, but slowly, and customers see little change."
+ },
+ {
+  "id": "27f5ddb33c9e",
+  "voice": "narrator",
+  "text": "Quiet training works, but a turnaround also needs everyone to see that you are serious. What would have worked: Make one big, visible move that shows staff and customers quality comes first."
+ },
+ {
   "id": "aab4d64e62ab",
   "voice": "narrator",
   "text": "On 26 February 2008, Starbucks closed nearly 7,100 US stores for one evening to retrain baristas. Many called it a gimmick. Starbucks also closed about 600 weak US stores, and its profit fell sharply that year. By 2010 it posted record results, after a turnaround that included much more than the training evening."
@@ -5143,26 +5158,6 @@
   "id": "83aa29d30081",
   "voice": "narrator",
   "text": "Closing every store showed staff and customers that quality mattered more than one night of sales."
- },
- {
-  "id": "960c40dd07cc",
-  "voice": "narrator",
-  "text": "Our estimate: training happens, but slowly, and nobody notices that anything has changed."
- },
- {
-  "id": "27f5ddb33c9e",
-  "voice": "narrator",
-  "text": "Quiet training works, but a turnaround also needs everyone to see that you are serious. What would have worked: Make one big, visible move that shows staff and customers quality comes first."
- },
- {
-  "id": "b2940799bff8",
-  "voice": "narrator",
-  "text": "Our estimate: busy staff watch them when they can, and service stays the same."
- },
- {
-  "id": "6bde0c036e7e",
-  "voice": "narrator",
-  "text": "Cheap training sends the message that training doesn't matter. What would have worked: Invest real time in training, together, so the change sticks."
  },
  {
   "id": "164c57e14baa",
@@ -5175,19 +5170,9 @@
   "text": "What do you bet on next?"
  },
  {
-  "id": "ae999482bf8c",
+  "id": "db5ed3fdfd19",
   "voice": "narrator",
-  "text": "Our estimate: sales rise a little, but you are still fighting giants in a market they own."
- },
- {
-  "id": "f7743eb00f06",
-  "voice": "narrator",
-  "text": "More ads for a me-too product rarely beat a famous brand. What would have worked: Sell something customers love but can't find in shops."
- },
- {
-  "id": "65f047d0e494",
-  "voice": "narrator",
-  "text": "Our estimate: you get on the shelf, but your juices look like everyone else's."
+  "text": "You get on the shelf, but your juices look like everyone else's."
  },
  {
   "id": "5480b14e3b09",
@@ -5205,24 +5190,44 @@
   "text": "You sold something customers already loved but couldn't buy in shops."
  },
  {
+  "id": "f3b5ee6fea49",
+  "voice": "narrator",
+  "text": "Sales rise a little, but you are still fighting giants in a market they own."
+ },
+ {
+  "id": "0b1334205984",
+  "voice": "narrator",
+  "text": "More ads for a drink like the giants' rarely beat a famous brand. What would have worked: Sell something customers love but can't find in shops."
+ },
+ {
   "id": "92a5a5a7c307",
   "voice": "narrator",
   "text": "Your low-cost online share trading company, founded in 2010, made a profit in its second year. You could raise money from investors to grow faster."
  },
  {
-  "id": "58bdd734e0ba",
+  "id": "af0b3bf59256",
   "voice": "narrator",
-  "text": "Do you take investor money?"
+  "text": "How do you pay for growth?"
  },
  {
-  "id": "34f4aed542c5",
+  "id": "3ee21a81e9ed",
   "voice": "narrator",
-  "text": "Our estimate: you grow faster, but you now answer to investors who want even faster growth, and costs climb."
+  "text": "You grow faster, but now you answer to investors who want even faster growth, and costs climb."
  },
  {
   "id": "dca2e70f76ca",
   "voice": "narrator",
   "text": "Investor money speeds things up, but it brings pressure that a profitable company may not need. What would have worked: If customers already pay you well, grow from your own profits and keep control."
+ },
+ {
+  "id": "19a0b84ec65c",
+  "voice": "narrator",
+  "text": "You grow, but loan payments eat into your profits every month, and one bad year could hurt badly."
+ },
+ {
+  "id": "65a557a2489d",
+  "voice": "narrator",
+  "text": "Debt lets you keep ownership, but it adds fixed payments to a business that already pays for itself. What would have worked: Grow from the profits you already make."
  },
  {
   "id": "d56a095afb6d",
@@ -5235,19 +5240,19 @@
   "text": "A profitable business that customers love can fund its own growth and keep control."
  },
  {
-  "id": "a801a1bfb43c",
+  "id": "fbb13fe53e86",
   "voice": "narrator",
-  "text": "Our estimate: you grow, but the loan payments eat into your profits every month, and one bad year could hurt badly."
+  "text": "Food delivery is a race for speed, and you could promise food in 10 minutes. It would get attention, but it would cost money to run every day, whether orders come or not."
  },
  {
-  "id": "bd603a5e3f2d",
+  "id": "4dc5dff6af7a",
   "voice": "narrator",
-  "text": "Debt adds risk to a business that didn't need it. What would have worked: Grow from the profits you already make."
+  "text": "You learn what each fast order really costs before anyone knows, and you only grow it if it makes money."
  },
  {
-  "id": "72afbeb8206c",
+  "id": "ba38c38fe941",
   "voice": "narrator",
-  "text": "Food delivery is a race for speed. You could promise food in 10 minutes. Critics warn it could push delivery riders to ride unsafely."
+  "text": "A small test shows you the real costs before you commit to a big launch."
  },
  {
   "id": "553248cd7429",
@@ -5260,23 +5265,13 @@
   "text": "A bold promise got headlines, but daily orders were too low to cover the fixed costs of running it. What would have worked: Test quietly with a few users and prove each order can make money before making big promises."
  },
  {
-  "id": "1a73ea818cbb",
+  "id": "2e1ff47dce1c",
   "voice": "narrator",
-  "text": "Our estimate: you learn how much each fast order really costs before anyone knows, and only grow it if it makes money."
+  "text": "You keep the promise easily, but it is close to what customers already get, so few switch to you for it."
  },
  {
-  "id": "d34a9e0889cf",
+  "id": "36908ea41cbc",
   "voice": "narrator",
-  "text": "Quiet tests let you fail cheaply and learn the real numbers."
- },
- {
-  "id": "76e5c040a1f6",
-  "voice": "narrator",
-  "text": "Our estimate: fewer headlines, but riders stay safe and customers still get fast food."
- },
- {
-  "id": "2ff7580b7ef6",
-  "voice": "narrator",
-  "text": "A realistic promise is easier to keep, but it doesn't stand out. What would have worked: Test a faster option quietly, and only promise it when the numbers work."
+  "text": "A realistic promise is easy to keep, but it gives customers no new reason to choose you. What would have worked: Test a faster option quietly, and only promise it when the numbers work."
  }
 ]

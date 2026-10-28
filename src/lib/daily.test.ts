@@ -93,6 +93,11 @@ describe("checkDailyPool", () => {
     expect(check("draft", { startDay: "2026-11-01", calls: [call("d", { media: "img:nothing" })] }).errors).toEqual([]);
   });
 
+  it('rejects text that says "our estimate", which the app shows as a badge', () => {
+    const said = call("e", { options: call("e").options.map((o) => ({ ...o, outcome: `Our estimate: ${o.outcome}` })) });
+    expect(check("estimate", { startDay: "2026-11-01", calls: [said] }).errors.join("\n")).toMatch(/daily e: .*says "our estimate"/);
+  });
+
   it("needs exactly three options", () => {
     const two = call("t", { options: call("t").options.slice(0, 2) });
     expect(check("two", { startDay: "2026-11-01", calls: [two] }).errors.join("\n")).toMatch(/options/);
