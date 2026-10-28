@@ -1,6 +1,6 @@
 # Fact-check: maruti-800
-checked-sha256: 66fe3b475821df395f886da59854ea44b3094d3b60a3587a3e662fc68c7cb7f9
-Checked: 2026-10-27 · by: independent fact-check agent
+checked-sha256: 3515228f7a1e605a5d85153f72be2fdd37a463db799e754943fe1ca77a9ca132
+Checked: 2026-10-28 · by: independent fact-check agent (fresh context)
 
 ## Sources opened
 1. [The Incredible Maruti Story (Autocar Professional, 2023)](https://www.autocarpro.in/opinion-blogs/the-incredible-maruti-story-118430)
@@ -11,116 +11,61 @@ Checked: 2026-10-27 · by: independent fact-check agent
 6. [Maruti Suzuki (Wikipedia)](https://en.wikipedia.org/wiki/Maruti_Suzuki)
 7. [30 years of Maruti (Autocar India, 2013)](https://www.autocarindia.com/auto-features/30-years-of-maruti-367623)
 8. [Maruti 800 @ 40 (Autocar India, 2023)](https://www.autocarindia.com/auto-blogs-amp/maruti-800-40-430092)
-9. [India at 75: How the 800 reshaped mobility (Autocar Professional, 2022)](https://www.autocarpro.in/feature/how-the-800-reshaped-mobility-92490)
-10. [No one knew what Maruti 800's launch would lead to (Autocar India, 2023)](https://www.autocarindia.com/auto-features-amp/no-one-knew-what-maruti-800s-launch-would-lead-to-rc-bhargava-430104)
-11. [Osamu Suzuki, the man who made Maruti Suzuki happen, passes away (National Herald, 2024)](https://www.nationalheraldindia.com/amp/story/business/osamu-suzuki-the-man-who-made-maruti-suzuki-happen-passes-away)
-12. [40 years on, memories of 'Maruti 800' linger (The Week, 2023)](https://www.theweek.in/news/biz-tech/2023/12/14/40-years-on-memories-of-maruti-800-linger-as-the-car-that-changed-personal-mobility-in-india.amp.html)
-13. [Maruti Suzuki loses market grip amid SUV shift, share slips to 13-year low in FY26 (Outlook Business, 2026)](https://www.outlookbusiness.com/news/maruti-suzuki-loses-market-grip-amid-suv-shift-share-slips-to-13-year-low-in-fy26)
-14. [India's first Maruti 800 gathers rust unattended (CarTrade)](https://www.Cartrade.com/news/india-s-first-maruti-800-gathers-rust-unattended-128226.html)
-15. [Maruti Suzuki India crosses 25 lakh units milestone of cumulative exports (Outlook Business)](https://www.outlookbusiness.com/news/maruti-suzuki-india-crosses-25-lakh-units-milestone-of-cumulative-exports-news-274215)
-16. [Maruti turns 35, long live the 800 (Campaign India, 2017)](https://www.campaignindia.in/article/blog-maruti-turns-35-long-live-the-800/448967)
+9. [No one knew what Maruti 800's launch would lead to (Autocar India, 2023)](https://www.autocarindia.com/auto-features-amp/no-one-knew-what-maruti-800s-launch-would-lead-to-rc-bhargava-430104)
+10. [Osamu Suzuki, the man who made Maruti Suzuki happen, passes away (National Herald, 2024)](https://www.nationalheraldindia.com/amp/story/business/osamu-suzuki-the-man-who-made-maruti-suzuki-happen-passes-away)
+11. [Suzuki Jimny (Wikipedia)](https://en.wikipedia.org/wiki/Suzuki_Jimny)
+12. [Suzuki Carry (Wikipedia)](https://en.wikipedia.org/wiki/Suzuki_Carry)
+13. [India's first Maruti 800 gathers rust unattended (CarTrade)](https://www.cartrade.com/news/india-s-first-maruti-800-gathers-rust-unattended-128226.html)
+14. [10 interesting things about the Maruti 800 (Asianet News)](https://www.asianetnews.com/auto-blog/10-interesting-things-about-indians-most-loved-car-maruti-800-puzp43)
+15. Web search: Maruti market share 2024 (Autocar Pro FY2024 sales; Inovev H1 2024: 42%; March 2024: 41.3%)
 
 ## Claims
-- [supported] An earlier Maruti company tried to build a small car in Gurgaon, made only a handful of cars and was closed (nodes.intro.text) — [6] (21 units by March 1976; court-ordered dissolution 1978; Gurgaon land). Note: [1] says it made none.
-- [supported] FIXED: intro now says the new company was also in Gurgaon — [sources]
-- [supported] The government started Maruti Udyog in 1981 (nodes.intro.text; realHistory) — [6] (24 Feb 1981).
-- [supported] The team had no car experience (nodes.intro.text; realHistory) — [3] (marketing head "knew nothing about cars"). Thin: one person's account, generalised to the team/company.
-- [supported] India's car market was about 35,000–40,000 a year; target 1,00,000 a year (nodes.intro.text) — [3]
-- [supported] The market was mostly the Ambassador and Padmini (nodes.intro.text; d2 setup) — [12][8]
-- [supported] Fiat, Peugeot, Volkswagen, Renault and Nissan said no (nodes.d1.setup) — [1]
-- [supported] Most other partners wanted to bring their own staff and machines (nodes.d1.setup) — [3]
-- [supported] Daihatsu was the front-runner; a February 1982 message suggested it was not serious; Suzuki then sent a telex (nodes.d1.setup) — [1][2] ([2]: a Daihatsu telex to Escorts in Feb 1982; Suzuki telex "within days").
-- [supported] Talks with Suzuki began in April 1982 (nodes.d1.options.1.outcome) — [4][6]
-- [supported] Suzuki's president met the Indian team himself and its money offer was the best (nodes.d1.options.1.outcome) — [3]
-- [supported] Signed on 2 October 1982 (nodes.d1.options.1.outcome; realHistory "October 1982") — [1][6]
-- [supported] Suzuki paid about USD 20.8 million for 26% (nodes.d1.options.1.outcome) — [7]
-- [supported] Agreed to go up to 40% in five years (nodes.d1.options.1.outcome) — [4][6]
-- [supported] More than 9 in 10 car trips carried four people or fewer, mostly in cities (nodes.d2.setup.0) — [3]
-- [supported] Car based on Suzuki's 1979 Alto, 796 cc three-cylinder (nodes.d2.options.2.outcome.0) — [5]
-- [supported] New to Indian buyers: front-wheel drive, front disc brakes, bucket seats, floor gear lever (nodes.d2.options.2.outcome.0) — [9][8]
-- [supported] A van with the same engine followed in 1984 (nodes.d2.options.2.outcome.0; s1987) — [6]
-- [supported] Factory, suppliers and dealers built in 14 months (nodes.s1983.text.0; s_launch.text.0; realHistory) — [1][8]
-- [supported] Launch fixed for December 1983 (nodes.s1983.text.0) — [2] ("The December 1983 deadline"); [8]
-- [supported] Indian parts makers were not ready; deliveries often late (nodes.d3.setup) — [2] (vendors had to upgrade technology and attitude to quality; many did not think small delays in supply schedules mattered).
-- [supported] Started by assembling kits from Japan (nodes.d3.options.0.outcome.0) — [2][9]
-- [supported] First 192 cars in December 1983; only MRF tyres (Madras) and Chloride India batteries (Calcutta) were Indian (nodes.d3.options.0.outcome.0) — [2]
-- [supported] 2.76% local content at launch (nodes.d3.options.0.outcome.0) — [2]
-- [supported] Promised 95% in five years (nodes.d3.options.0.outcome.0; d5.setup.0) — [2]
-- [supported] 14 December 1983, New Delhi; Prime Minister Indira Gandhi handed the first car's keys to an Indian Airlines employee (nodes.s_launch.text.0; realHistory) — [1][5][8]
-- [supported] The first owner won the chance in a lucky draw (nodes.s_launch.text.0) — [5][12]
-- [supported] The first owner paid Rs 47,500 (nodes.s_launch.text.0) — [4][10][14]. Price conflict noted: official price "Rs 50,000" [1][8], "Rs 48,000" [7], "Rs 52,000" [16]. Rs 47,500 is the best-sourced figure for what the first buyer paid; keep it tied to the first buyer, as written.
-- [supported] About 1,20,000 bookings; planned 20,000 in the first year (nodes.d4.setup.0; realHistory) — [4][10][6]
-- [supported] Buyers ready to pay much more than the official price to skip the queue (nodes.d4.setup.0) — [1][8] (about double)
-- [supported] Building more needed foreign exchange India lacked (nodes.d4.setup.0) — [4][10]
-- [supported] Official price about Rs 50,000 (nodes.d4.options.1.label and outcome.0) — [1][8]; within range of [7] (Rs 48,000) and [16] (Rs 52,000).
-- [supported] Allotment by lucky draw (nodes.d4.options.1.label and outcome.0) — [14] ("the vehicle was being handed over on basis of lucky draw system"). Thin: [5] and [12] describe the draw only for the first owner; [4], [8], [10] do not mention it. Consider "Maruti used lucky draws to hand out cars" with no further detail, as written.
-- [supported] About 20,000 cars a year (nodes.d4.options.1.outcome.0) — [1][8]
-- [supported] Buyers waited almost three years; some paid black-market premiums (nodes.d4.options.1.outcome.0) — [5] (premiums "as much as 40%"); [1][8] (about double)
-- [supported] FIXED: d4 lottery outcome now says shortages lasted into the early 1990s — [Autocar Pro 2023]
-- [supported] Less than 10% local content until March 1984 (nodes.d5.setup.0) — [2]
-- [supported] Hundreds of Indian suppliers had to change how they work (nodes.d5.setup.*; d5.options.1.outcome; realHistory) — [2]
-- [supported] A politician pushed for business; Maruti's supplier team turned him down; the rule was "no compromises" (nodes.d5.setup.*; d5.options.1.outcome) — [2]. Wording note: in [2] the politician wanted to set up as a parts maker himself, not to steer an order to "a firm he favours". Close enough, but "a politician wants an order for a parts firm he plans to start" would be more exact. He is unnamed in [2] and in the game; fine.
-- [supported, slight overstatement] Suppliers had to upgrade "their machines, their methods and their attitude to quality and delivery" (nodes.d5.options.1.outcome) — [2] says "technology and manufacturing processes" and attitude to quality and commitments; "machines" is an inference. Suggest "their technology, their methods…".
-- [supported] Suppliers were told to work as if they faced competition (nodes.d5.options.1.outcome) — [3]
-- [supported] After 1984–85, suppliers took Maruti seriously once it was clear it would not fail (nodes.d5.options.1.outcome) — [2]
-- [supported] In 1984–85, its first full year, Maruti beat its 20,000-car target (nodes.d5.options.1.outcome) — [2]
-- [supported] 1,00,000th car built in 1986 (nodes.s1987.text.0) — [6]; [12] says 1986–87.
-- [supported] Gypsy four-wheel-drive in 1985 (nodes.s1987.text.0) — [6]
-- [supported] Late 1986, the 800 got a newer body (nodes.s1987.text.0) — [5] (SB308 presented late 1986)
-- [supported] In 1987 the queue was still years long (nodes.s1987.text.0; d6.setup.0) — [4][5]
-- [supported, slight overstatement] Suzuki and Maruti's own chairman opposed exporting (nodes.d6.setup.0; d6.options.1.outcome) — [3]. [3] says they opposed it; "say Maruti is not ready" puts a reason in their mouths. Suggest "both advise against selling abroad".
-- [supported] The aim of exporting was higher quality (nodes.d6.options.1.outcome) — [3]
-- [supported] FIXED: d6 export outcome and realHistory now say exporting to Europe began in 1987 (earlier exports went to Bangladesh and Nepal) — [Outlook Business]
-- [supported] 500 cars to Hungary, the first arriving 24 October 1987 (nodes.d6.options.1.outcome) — [5]; [15] (500 cars shipped to Hungary in September 1987)
-- [supported] France in 1989, the Netherlands in 1990 (nodes.d6.options.1.outcome) — [5]
-- [supported] Seat belts were fitted only once exports began (nodes.d6.options.1.outcome) — [5]
-- [supported] By 1988 Gurgaon could make 1,00,000 cars a year (nodes.legend.text.0; realHistory) — [6]
-- [supported] Maruti 1000 around 1990 (nodes.legend.text.0) — [6] (1989 in history section, 1990 in table)
-- [supported] The 800 stayed on sale until 2014; about 2.87 million built (nodes.legend.text.0; realHistory) — [5]
-- [supported] FIXED: legend now says that in 2024 Maruti Suzuki sold about 4 in every 10 passenger cars in India — [Outlook Business]
-- [supported] Maruti Suzuki is still India's biggest carmaker (realHistory) — [13]
-
-## Alternate history
-- d1.wait, d1.partner_runs (options 0, 2): ok (both "Our estimate:").
-- d2 setup.1, options 0, 1, options.2.outcome.1: ok.
-- s1983.text.1: ok.
-- d3 options 1, 2, options.0.outcome.1: ok.
-- s_launch text.1, text.2: ok.
-- d4 setup.1, options 0, 2, options.1.outcome.1: ok.
-- d5 setup.1, setup.2, options 0, 2: ok. They repeat the politician detail, which is real on any path and stated in the setup, not invented.
-- s1987.text.1: ok.
-- d6 setup.1, options 0, 2: ok.
-- legend.text.1, survivor, collapse, fired: ok.
-
-## Other issues
-- Quotes: none from real people. The "no compromises" rule is paraphrased, not in quotation marks; fine.
-- Living people: none named. Indira Gandhi (died) is named neutrally as Prime Minister. Sanjay Gandhi is not named. The first owner (Harpal Singh), the chairman, the marketing director (living, R.C. Bhargava) and Suzuki's president are referred to only by role. The politician is unnamed and nothing points to a specific person.
-- Neutral wording: ok. The launch's link to Sanjay Gandhi's birthday [8] is left out, which is fine.
-- Anachronisms: none found. "Madras" and "Calcutta" are period-correct.
-- Path logic:
-  - nodes.d5.options.1.outcome has no conditions. "In 1984–85, its first full year, Maruti made more than its target of 20,000 cars" and "After 1984–85, once it was clear Maruti would not fail" are wrong on the `delayed` path, where the first car arrives in 1985. Add a variant for `delayed` (or require `kits`) with an "Our estimate:" fallback.
-  - nodes.d6.options.1.outcome has no conditions. "Seat belts were fitted to the 800" and "against the advice of its partner" assume the 800 and Suzuki. On a path without `small` (sedan or van) or without `suzuki`, this refers to things that did not happen there. Add flagged variants.
-  - nodes.d5.setup.0 needs only `suzuki` + `kits`; it does not mention the 800, so it is ok.
-- Minor overstatement: "machines" (d5 outcome) and "not ready" (d6 setup); see Claims.
-- Thin sourcing: the claim that lucky draws allotted cars generally rests on one trade-news page [14]; the reputable sources describe the draw only for the first car.
-
-## Summary
-58 claims checked: 54 supported (2 with slight overstatement, several thin), 1 unsupported, 3 contradicted. Most important fixes:
-1. d4.options.1.outcome.0: "Shortages lasted until 1991" → into the early 1990s / until 1992–93 [4][10].
-2. legend.text.0: "Today … about 41.6%" is a 2024 figure; FY26 share is 39.26% [13]. Date it to 2024 or say "about 4 in 10".
-3. d6.options.1.outcome and realHistory: exports began in 1986–87 to Nepal and Bangladesh [15]; say "exporting to Europe in 1987".
-4. intro: "on the same site" is unsupported; say "also in Gurgaon".
-5. Path logic: give d5.options.1.outcome a variant for the `delayed` path and give d6.options.1.outcome variants for paths without `small` or `suzuki`.
-6. Optional wording: "machines" → "technology"; "say Maruti is not ready" → "advise against selling abroad"; the politician wanted to become a supplier himself.
-Price: Rs 47,500 is well sourced for what the first buyer paid [4][10][14], and "about Rs 50,000" for the official price [1][8]; keep both as written. The 2.76% / 95%-in-five-years figures, the Hungary export (500 cars, 24 Oct 1987) and the neutral wording about the Gandhis all check out. No living people are named.
-
-## Fixes applied (2026-10-27)
-- Every open claim above was fixed in hotseat.json as noted on its line.
-- Path logic: d5 quality and d6 export outcomes now have path-specific variants: the real text shows only where its facts hold (not on the delayed path; only with the Suzuki partner and the small car), with an "Our estimate:" fallback elsewhere.
-- Wording: d5 says suppliers upgraded their "technology".
-
-## Credits update (2026-10-28)
-- Only the credits line changed (the image-source wording was removed). No story text changed. Re-stamped.
-
-## Emblem added (2026-10-28)
-- Only a new emblem image ref was added. No story text changed. Re-stamped.
+- [supported] Ten years earlier a company on the same land promised a small car, made only a handful and was shut down (nodes.intro.text) — [6] (Maruti Motors Aug 1971; 21 cars by March 1976; dissolution ordered 1978). [1] says it made none; "a handful" follows [6].
+- [supported] Government started Maruti Udyog, 1981 (nodes.intro.text; realHistory) — [6]
+- [supported] Goal of 1,00,000 cars a year; India bought fewer than 40,000 (nodes.s_goal.text) — [3] ("35,000-40,000")
+- [supported] Market mostly Ambassadors and Padminis (nodes.s_goal.text) — [8]
+- [supported] Nobody on the team had built a car (nodes.s_goal.text; realHistory) — [3] (thin: one person's account generalised)
+- [supported] Fiat, Volkswagen, Renault, Peugeot and Nissan said no (nodes.d1.setup) — [1]
+- [supported] Most other carmakers wanted to bring their own people to run the plant (nodes.d1.setup) — [3] ("bringing their own manpower and machinery")
+- [supported] Daihatsu was the front-runner (nodes.d1.setup) — [1]
+- [supported] FIXED: d1 setup now says a Daihatsu telex shows it plans to build its car with another Indian firm (nodes.d1.setup) — [2]
+- [supported] A few days later a telex arrives from Suzuki, a smaller Japanese maker (nodes.d1.setup) — [2] ("within days"); [7]
+- [supported] Talks begin April 1982 (nodes.d1.options.suzuki.outcome) — [4][6][10]
+- [supported] Suzuki's president met the team himself; best money offer (nodes.d1.options.suzuki.outcome) — [3]
+- [supported] Signed 2 October 1982 (nodes.d1.options.suzuki.outcome) — [1][10]
+- [supported] Suzuki bought about a quarter, with a plan to own more later (nodes.d1.options.suzuki.outcome) — [4][6][7] (26%, to rise to 40% in five years)
+- [supported] In 1982 Suzuki made a tiny four-seat car, a small van and a light jeep (nodes.d2.setup) — [5] (1979 Alto), [12] (7th-gen Carry van 1979–85, later Maruti Omni), [11] (SJ30/SJ410 Jimny 1981–82; "Light Jeep" lineage). Not in the Hot Seat's own sources list; add [11][12] if kept.
+- [supported] 9 in 10 car trips carried four people or fewer, mostly inside cities (nodes.d2.setup) — [3] ("more than 90 percent"; "predominantly used for intra-city commutes"; from Maruti's own market survey, so "studies show" is slightly generous; "a survey showed" is exact)
+- [supported] Based on Suzuki's 1979 Alto, 796 cc (nodes.d2.options.small.outcome) — [5]
+- [supported] Front-wheel drive and disc brakes new for Indian buyers (nodes.d2.options.small.outcome) — [8] ("first car to get disc brakes, front-wheel drive"); floor gear lever is listed by [8] among things that impressed buyers, not stated as a first (minor)
+- [supported] Launch set for December 1983 (nodes.s1983.text) — [2][8]
+- [supported] Factory, hundreds of parts firms and dealers in 14 months (nodes.s1983.text; s_launch.text) — [1][2]
+- [supported] FIXED: "Suzuki's engineers work beside yours" removed; s1983 now says only that your people fly to Japan to learn how Suzuki does it (nodes.s1983.text.0) — [10] (training in Japan)
+- [supported] Maruti's people went to Japan to learn (nodes.s1983.text) — [4][9] ("training in Japan")
+- [supported] Indian parts makers not ready; quality uneven, deliveries late (nodes.d3.setup) — [2]
+- [supported] Kits shipped from Japan (nodes.d3.options.kits.outcome) — [2][5]
+- [supported] First 192 cars in Dec 1983; only MRF tyres and Chloride batteries Indian; under 3% (2.76%) Indian; 95% promised in five years (nodes.d3.options.kits.outcome) — [2]
+- [supported] 14 Dec 1983, New Delhi; Indira Gandhi hands keys to an Indian Airlines employee who paid Rs 47,500 (nodes.s_launch.text) — [4][8]
+- [supported] About 1,20,000 bookings; about 20,000 cars in the first year (nodes.d4.setup) — [4][6][9]
+- [supported] Some buyers would pay far more (nodes.d4.setup) — [1][8] (about twice); [5] (up to 40%)
+- [supported] More capacity needed foreign money India lacked (nodes.d4.setup) — [4][9]
+- [supported] Price about Rs 50,000 (nodes.d4.options.lottery.label/outcome) — [1][8]; [7] says Rs 48,000
+- [supported] FIXED: lucky draw removed from the d4 lottery option; label and outcome now say buyers wait their turn at about Rs 50,000 (nodes.d4.options.lottery) — [1][8] (price, queue); [5] (almost three years, premiums)
+- [supported] Buyers waited almost three years; some paid middlemen extra (nodes.d4.options.lottery.outcome) — [5]
+- [supported] Less than a tenth Indian until March 1984 (nodes.d5.setup) — [2]
+- [supported] Hundreds of small Indian firms had to raise quality (nodes.d5.setup) — [2]
+- [supported] FIXED: d5 setup now says hundreds of firms must learn to make much better parts (nodes.d5.setup) — [2]
+- [supported] FIXED: d5 setup now says a powerful politician asks to become one of your suppliers himself; the real outcome says the supplier team told him to bring a sample and be tested like everyone else, and he never came back (nodes.d5.setup; nodes.d5.options.quality.outcome.0) — [2]
+- [supported, loose] Supplier team says no to the politician and makes no exceptions (nodes.d5.options.quality.outcome) — [2]: vendor officer told him to pick a part, get technology and bring a sample like anyone else; chairman said he would handle it; he never came back; "no compromises" message went out
+- [supported] Firms took Maruti seriously once it was clear it would not fail; beat 20,000 target in 1984–85 (nodes.d5.options.quality.outcome) — [2]
+- [supported] Van 1984, Gypsy 1985, 1,00,000th Maruti 1986, newer 800 body 1986 (nodes.s1987.text) — [6][5][8]
+- [supported] Queue still years long in 1987 (nodes.s1987.text) — [4][5]
+- [supported] Suzuki and the chairman advised against exports (nodes.d6.setup; d6.options.export.label) — [3]
+- [supported] 500 cars to Hungary, first arriving 24 Oct 1987; France 1989; Netherlands 1990; seat belts only once exports began (nodes.d6.options.export.outcome) — [5][6]
+- [supported] Exports aimed at raising quality (nodes.d6.options.export.why) — [3]
+- [supported] 1,00,000 a year capacity by 1988 (nodes.legend.text; realHistory) — [6]
+- [supported] 800 on sale until 2014; nearly 29 lakh built (nodes.legend.text; realHistory) — [5] (last car 18 Jan 2014; about 2.87 million)
+- [supported] In 2024 about 4 in 10 cars sold in India were Marutis (nodes.legend.text) — [10] (41.6%, Dec 2024); [15]
+- [supported] realHistory: founded 1981, Suzuki Oct 1982, 14 months, first car 14 Dec 1983, about 1,20,000 bookings, supplier push, exports to Europe 1987, 1,00,000 a year by 1988, 800 until 2014, still India's biggest carmaker — [1][2][3][4][5][6][10]
+- [ok] No quotes from real people anywhere in the file.
+- [ok] Off-path text: alternate outcomes describe the player's own invented company, not claims about real Maruti. The Daihatsu variant of d2 (car, van, jeep) is broadly true of Daihatsu's 1982 range (Cuore/Mira, Hijet, Taft). The off-path d5 setups repeat the contradicted politician framing.
