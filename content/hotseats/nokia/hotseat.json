@@ -2,9 +2,9 @@
   "id": "nokia",
   "company": "Nokia",
   "title": "The phone that ruled the world",
-  "hook": "Almost everyone owns your phone. Then a touchscreen arrives.",
-  "role": "You run Nokia, 2008 to 2013",
-  "years": "2008–2013",
+  "hook": "Four in ten phones on Earth are yours. Then a phone that is almost all screen arrives.",
+  "role": "You run Nokia, 2007 to 2013",
+  "years": "2007–2014",
   "cover": "img:nk_cover",
   "emblem": "img:nk_emblem",
   "draft": true,
@@ -32,7 +32,7 @@
       "type": "scene",
       "year": "2007",
       "media": "img:nk_intro",
-      "text": "It is the end of 2007. Nokia sold 435 million phones this year. Four in every ten phones sold in the world are yours, and India is one of your biggest markets.",
+      "text": "It is the end of 2007, and you run Nokia. This year, you sold 435 million phones, almost four in every ten phones sold on Earth, and India is one of your biggest markets. But in June, Apple started selling a phone that is almost all screen.",
       "next": "d1"
     },
     "d1": {
@@ -41,13 +41,13 @@
       "year": "2008",
       "title": "The software question",
       "media": "img:nk_d1",
-      "setup": "Your Symbian software runs on more than half of all smartphones. You own about half of the company that makes it. But a new rival is coming: Google's Android. And a year ago, a phone with a big touchscreen arrived.",
+      "setup": "Most smartphones in the world run your Symbian software, and you own about half of the company that makes it. But Symbian was built for phones with keypads, and now Google is bringing out Android, a new rival system for phones.",
       "question": "What do you do with your smartphone software?",
-      "advisor": "Symbian is winning today. The question is whether it can win the next five years.",
+      "advisor": "Symbian earns us money today, and our engineers know it inside out. Starting again would be slow, costly and risky.",
       "options": [
         {
           "id": "symbian",
-          "label": "Buy all of Symbian and give it away free, so more phone makers use it.",
+          "label": "Buy all of Symbian and make it free for phone makers. It will cost millions.",
           "grade": "ok",
           "real": true,
           "effect": {
@@ -57,10 +57,10 @@
           },
           "next": "scene2010",
           "media": "img:nk_d1_symbian",
-          "outcome": "Nokia paid about €264 million for the rest of Symbian and planned to open its code to everyone through a new Symbian Foundation. It now owned all of the most popular smartphone software. But it was software from before the touchscreen era.",
-          "why": "Owning Symbian gave you control, but it was control of yesterday's software. Giving it away did not make it better for touchscreens.",
-          "better": "Keep Symbian for cheap phones, but start a new, touch-first software team now and give it the best people.",
-          "takeaway": "In 2008 you bought control of your old software instead of building the new one.",
+          "outcome": "You pay about €264 million for the rest of Symbian and plan to open its code to everyone. Now you own the world's most popular smartphone software, but it was built before the touchscreen, and making it feel modern is slow work.",
+          "why": "Owning Symbian gave you control, but the software was built for an earlier kind of phone. Giving it away did not make it any better for touchscreens.",
+          "better": "Keep Symbian for cheap phones, but start a new touch-first software team now and give it your best people.",
+          "takeaway": "In 2008 you bought the past instead of building the future.",
           "traits": {
             "horizon": 0,
             "risk": 0,
@@ -69,7 +69,7 @@
         },
         {
           "id": "fad",
-          "label": "Keep Symbian as it is. Touchscreen phones are a fad for rich people.",
+          "label": "Keep Symbian and add touch step by step. It costs less, but progress will be slower.",
           "grade": "bad",
           "effect": {
             "profit": 5,
@@ -79,10 +79,10 @@
           },
           "next": "scene2010",
           "media": "img:nk_d1_fad",
-          "outcome": "Our estimate: you save money this year, but your phones start to look old in shop windows. Buyers with money to spend begin to choose touchscreens instead.",
-          "why": "Rich buyers set the trend that everyone else follows a few years later. Calling a new product a fad is how leaders get left behind.",
-          "better": "Take the touchscreen seriously and build software made for it, even if today's phones still sell well.",
-          "takeaway": "In 2008 you called a big shift a fad. Leaders lose when they dismiss what customers are starting to love.",
+          "outcome": "Your engineers add touch to Symbian bit by bit. Each new phone is a little better than the last, but next to an iPhone it still feels old, and young buyers start to notice.",
+          "why": "Small fixes to old software could not catch up with phones built for touch from day one.",
+          "better": "Start a new touch-first software team now, even if it competes with Symbian.",
+          "takeaway": "In 2008 you patched old software while the market moved on.",
           "traits": {
             "horizon": -1,
             "risk": -1,
@@ -91,7 +91,7 @@
         },
         {
           "id": "touch",
-          "label": "Start a new touch-first software team now, separate from Symbian.",
+          "label": "Start a separate touch-first software team. It will cost more and split your engineers.",
           "grade": "great",
           "effect": {
             "profit": -10,
@@ -100,9 +100,9 @@
           },
           "next": "scene2010",
           "media": "img:nk_d1_touch",
-          "outcome": "Our estimate: a small team builds new touch software while Symbian keeps paying the bills. It costs money and causes fights inside the company, but by 2010 you have a modern phone ready.",
-          "why": "You protected today's business and built tomorrow's at the same time, with a team that was free to break old habits.",
-          "takeaway": "In 2008 you built the new thing beside the old one, before you were forced to.",
+          "outcome": "A small team starts building new touch software while Symbian keeps paying the bills. It costs a lot and starts fights inside the company, but the team learns fast.",
+          "why": "You paid to compete with your own best product before someone else did it for you.",
+          "takeaway": "In 2008 you built your next software while the old one still made money.",
           "traits": {
             "horizon": 1,
             "risk": 1,
@@ -119,12 +119,18 @@
       "text": [
         {
           "when": {
-            "flags": ["touch"]
+            "flags": ["symbian"]
           },
-          "text": "Our estimate: it is late 2010, and your new touch phones keep you in the race. But by the end of the year Apple has 16% of smartphone sales, and the board wants a clear plan for the future."
+          "text": "By late 2010 your share of smartphones has fallen from almost half to under a third, and Apple now sells about one in six. You and Intel have joined your software into a new system called MeeGo, but no phone uses it yet. In September the board brings in a new boss from Microsoft. From here on, that boss is you."
         },
         {
-          "text": "It is late 2010. Your share of smartphones has fallen from almost half in 2007 to 30.8%, while Apple now has 16%. You and Intel have joined forces on new software called MeeGo, but only plans exist so far. In September the board brought in a new CEO from Microsoft. That CEO is you."
+          "when": {
+            "flags": ["fad"]
+          },
+          "text": "By late 2010, iPhones and Android phones are everywhere, and your share of smartphones is falling fast. The board is losing patience, and it wants a new plan from you."
+        },
+        {
+          "text": "By late 2010 your new touch phones are in the shops, and they keep you in the race. But iPhones and Android phones are selling fast, and the board wants a plan for the next five years."
         }
       ],
       "next": "d2"
@@ -135,13 +141,23 @@
       "year": "2011",
       "title": "Pick a platform",
       "media": "img:nk_d2",
-      "setup": "Samsung, LG and HTC all use Google's Android. Microsoft wants a big partner for its phone software, which has only 3.4% of smartphone sales. Your own MeeGo software is still not finished.",
+      "setup": [
+        {
+          "when": {
+            "flags": ["touch"]
+          },
+          "text": "Your own touch software works, but app makers are busy with Apple and Android. Samsung, LG and HTC all use Android. Microsoft wants a big partner for its own phone software, which very few people use."
+        },
+        {
+          "text": "Samsung, LG and HTC all use Google's Android. Microsoft wants a big partner for its phone software, which runs on only about 3 in every 100 smartphones. Your own new software, MeeGo, still isn't ready."
+        }
+      ],
       "question": "Which software will power your smartphones?",
-      "advisor": "Whatever you choose, choose fast. Every month you wait, buyers move on.",
+      "advisor": "Whatever you choose, choose fast. Every month we wait, more buyers move on.",
       "options": [
         {
           "id": "meego",
-          "label": "Put everything into finishing your own MeeGo software.",
+          "label": "Bet everything on your own software. You keep control, but app makers may stay away.",
           "grade": "ok",
           "effect": {
             "profit": -10,
@@ -150,10 +166,20 @@
           },
           "next": "d3",
           "media": "img:nk_d2_meego",
-          "outcome": "Our estimate: you keep full control, but the software arrives late and few app makers want to build for a fourth platform. Your phones are beautiful, but their app stores are empty.",
-          "why": "Owning your software is powerful only if developers build for it. Arriving late with a new platform is a hard climb.",
-          "better": "Join the platform where the apps and buyers already are, and compete on hardware, price and reach.",
-          "takeaway": "In 2011 you bet on your own late platform. Control matters less than where customers and app makers already are.",
+          "outcome": [
+            {
+              "when": {
+                "flags": ["touch"]
+              },
+              "text": "Your own software keeps getting better, and reviewers love it. But app makers stay with Apple and Android, so your phones have beautiful screens and nearly empty app stores."
+            },
+            {
+              "text": "You keep full control, but the software arrives late, and few app makers want to build for one more system. Your phones look great, but their app stores are nearly empty."
+            }
+          ],
+          "why": "Phones live or die by their apps. A fourth system, however good, struggled to win app makers.",
+          "better": "Join the system app makers already support, and fight on hardware, price and shops.",
+          "takeaway": "In 2011 you kept control, but your app store stayed empty.",
           "traits": {
             "horizon": 0,
             "risk": 1,
@@ -162,7 +188,7 @@
         },
         {
           "id": "android",
-          "label": "Switch to Android now and win on hardware, price and reach.",
+          "label": "Switch to Android like Samsung. You move faster, but Google sets the rules.",
           "grade": "great",
           "effect": {
             "profit": -5,
@@ -171,9 +197,9 @@
           },
           "next": "d3",
           "media": "img:nk_d2_android",
-          "outcome": "Our estimate: your first Android phones arrive within a year. With the world's best supply chain and shops in every town, you sell them at every price, and buyers who left start coming back.",
-          "why": "When a platform has already won, the smart move is to use it and compete where you are strongest: making, pricing and selling phones everywhere.",
-          "takeaway": "In 2011 you joined the winning platform and competed on your real strengths.",
+          "outcome": "Your first Android phones arrive within a year. With huge factories and shops in every town, you sell them at every price, and buyers who left start to come back. But Google, not you, now sets the rules.",
+          "why": "You joined the system buyers and app makers had already chosen, and fought with your real strengths: making phones and selling them everywhere.",
+          "takeaway": "In 2011 you joined the winning system and fought on your strengths.",
           "traits": {
             "horizon": 1,
             "risk": 1,
@@ -182,7 +208,7 @@
         },
         {
           "id": "windows",
-          "label": "Partner with Microsoft and make Windows Phone your main software.",
+          "label": "Partner with Microsoft on Windows Phone. You become its top partner, but few people use it yet.",
           "grade": "bad",
           "real": true,
           "effect": {
@@ -193,14 +219,24 @@
           },
           "next": "d3",
           "media": "img:nk_d2_windows",
-          "outcome": "In February 2011 Nokia made Windows Phone its main smartphone software and pushed Symbian and MeeGo aside. Its share price fell 9.5% that morning. Nokia said Android would turn it into just another phone maker and give Google too much of the money from services. The first Windows phones, the Lumia 800 and 710, only arrived in October 2011.",
+          "outcome": [
+            {
+              "when": {
+                "flags": ["symbian"]
+              },
+              "text": "In February 2011 you make Windows Phone your main smartphone software and push Symbian and MeeGo aside. Your share price falls almost a tenth that morning. You fear that with Android, Nokia would be just one of many phone makers, and the first Lumia phones arrive only in October."
+            },
+            {
+              "text": "Microsoft makes you its top partner, and you drop your own software. For most of a year you have no new smartphones to sell, and the people who were waiting for you buy an iPhone or an Android phone."
+            }
+          ],
           "why": "You tied your future to software that very few people used, and it took months before you had anything new to sell.",
-          "better": "Choose the platform buyers and app makers had already chosen, and fight on hardware, price and distribution.",
-          "takeaway": "In 2011 you bet on the smallest platform and gave buyers a reason to wait instead of buy.",
+          "better": "Choose the system buyers and app makers had already chosen, and fight on hardware, price and shops.",
+          "takeaway": "In 2011 you bet on the software almost nobody was using.",
           "traits": {
             "horizon": -1,
             "risk": 1,
-            "disrupt": 0
+            "disrupt": -1
           }
         }
       ]
@@ -216,18 +252,18 @@
           "when": {
             "flags": ["windows"]
           },
-          "text": "Your new smartphones are still on the way, and India is slipping. You once had about 70% of India's phone market, but your share has fallen for nine quarters in a row. About half of Indian buyers want phones that take two SIM cards, and local brands sell them cheap."
+          "text": "Your new smartphones are still months away, and India is slipping. You once had about 70% of India's phone market, but your share has fallen for nine quarters in a row. About half of Indian buyers want phones that take two SIM cards, and local brands like Micromax already sell them."
         },
         {
-          "text": "India is your biggest test. You once had about 70% of its phone market, but your share has fallen for nine quarters in a row. About half of Indian buyers want phones that take two SIM cards, and local brands sell them cheap."
+          "text": "India is your biggest test. You once had about 70% of its phone market, but your share has fallen for nine quarters in a row. About half of Indian buyers want phones that take two SIM cards, and local brands like Micromax already sell them."
         }
       ],
       "question": "How do you fight for India?",
-      "advisor": "Indian buyers are not asking for your fanciest phone. Listen to what they are asking for.",
+      "advisor": "Smartphones are where the world is going, but most Indian buyers today still count every rupee.",
       "options": [
         {
           "id": "premium",
-          "label": "Focus on expensive smartphones. Cheap phones make little money.",
+          "label": "Focus on smartphones. You invest in the future but give up more of the cheap-phone market.",
           "grade": "bad",
           "effect": {
             "profit": -5,
@@ -237,10 +273,10 @@
           },
           "next": "scene2013",
           "media": "img:nk_d3_premium",
-          "outcome": "Our estimate: local brands and Samsung take the cheap and middle market, which is most of India. Your shops still show your name, but fewer people walk out with your phone.",
-          "why": "In a price-sensitive market, the cheap phone is how a customer meets your brand. Give it away and you lose them for years.",
-          "better": "Give Indian buyers what they asked for: cheap, tough phones with two SIM slots, sold through the shops you already have.",
-          "takeaway": "In 2011 you chased profit per phone and gave away the customers who would have grown with you.",
+          "outcome": "Samsung and local brands take the cheap and middle market, which is most of India. Your name is still in every shop, but fewer people walk out with your phone.",
+          "why": "Most of India was buying cheap phones. Walking away from them handed your biggest market to rivals.",
+          "better": "Give Indian buyers what they asked for: cheap phones with two SIM slots, sold through the shops you already had.",
+          "takeaway": "In 2011 you chased rich buyers and lost India's millions.",
           "traits": {
             "horizon": -1,
             "risk": 0,
@@ -249,7 +285,7 @@
         },
         {
           "id": "lumia_cut",
-          "label": "Cut the price of your smartphones in India.",
+          "label": "Cut smartphone prices in India. You may win buyers, but you lose money on every phone.",
           "grade": "ok",
           "effect": {
             "profit": -10,
@@ -258,19 +294,19 @@
           },
           "next": "scene2013",
           "media": "img:nk_d3_lumia",
-          "outcome": "Our estimate: some buyers trade up, but most Indian phone buyers still want a cheap phone with two SIM slots. You win a little and lose a lot of margin.",
-          "why": "Cutting prices helps, but it does not fix the real gap: the phone buyers wanted was not on your shelf.",
-          "better": "Build the cheap, dual-SIM phones buyers were asking for, and keep smartphone prices for later.",
-          "takeaway": "In 2011 you cut prices instead of changing the product. Discounts don't fix a missing product.",
+          "outcome": "Some buyers trade up to your smartphones, but most Indian buyers still want a cheap phone with two SIM slots. You win a little, and lose a lot of money on each phone.",
+          "why": "Cheaper smartphones helped a little, but they were not what most Indian buyers were asking for.",
+          "better": "Launch cheap dual-SIM phones, and give the shops that sell them a better margin.",
+          "takeaway": "In 2011 you discounted the wrong phone.",
           "traits": {
             "horizon": 0,
-            "risk": 0,
+            "risk": 1,
             "disrupt": 0
           }
         },
         {
           "id": "dual_sim",
-          "label": "Launch cheap dual-SIM phones and give shops a better margin.",
+          "label": "Launch cheap dual-SIM phones and pay shops more. You protect share but stay in low-profit phones.",
           "grade": "great",
           "real": true,
           "effect": {
@@ -280,9 +316,19 @@
           },
           "next": "scene2013",
           "media": "img:nk_d3_dualsim",
-          "outcome": "In June 2011 Nokia launched dual-SIM phones in India. It also sold its new Asha phones for about Rs 3,000 to 8,000 and gave shops more margin. Its share of phones shipped in India still fell, from 31% in 2011 to 22.2% in the first half of 2012, but Nokia stayed number one.",
-          "why": "You listened to what Indian buyers wanted and used your biggest strength, the shops that already sold your phones everywhere.",
-          "takeaway": "In 2011 you built the product the market asked for and used your shop network to sell it.",
+          "outcome": [
+            {
+              "when": {
+                "flags": ["symbian", "windows"]
+              },
+              "text": "In June 2011 you launch dual-SIM phones in India. Later that year your new Asha phones sell for about Rs 3,000 to 8,000, and you give shops more margin. Your share of phones shipped still slips, from about a third to just over a fifth, but Nokia stays number one."
+            },
+            {
+              "text": "Cheap dual-SIM phones and better margins for shops slow the slide. Nokia stays the name most Indian shopkeepers push first."
+            }
+          ],
+          "why": "You gave Indian buyers what they asked for and used your biggest strength, the shops that already sold your phones everywhere.",
+          "takeaway": "In 2011 you listened to Indian buyers and used your shops.",
           "traits": {
             "horizon": 1,
             "risk": 0,
@@ -299,12 +345,24 @@
       "text": [
         {
           "when": {
-            "flags": ["android"]
+            "flags": ["symbian", "windows", "dual_sim"]
           },
-          "text": "Our estimate: it is 2013, your Android phones sell well, but the fight with Samsung is tough and margins are thin. Meanwhile your network equipment business, Nokia Siemens Networks, quietly makes good money."
+          "text": "It is 2013. Samsung now sells more phones than you, and Symbian has almost vanished. In 2012 your phone business sold €14.9 billion worth of phones but lost over €1 billion. Only one part of Nokia is doing well: Nokia Siemens Networks, which builds the equipment that mobile networks run on."
         },
         {
-          "text": "It is 2013. At the end of 2012 Samsung sold 22.7% of the world's phones and Nokia 18%. Symbian is down to 1.2% of smartphone sales. Your phone business made €14.9 billion in sales in 2012, but it lost over €1 billion. Your network equipment business, Nokia Siemens Networks, is doing much better."
+          "when": {
+            "flags": ["android"]
+          },
+          "text": "It is 2013. Your Android phones sell well, but the price war with Samsung never stops, and profits are thin. Meanwhile Nokia Siemens Networks, which builds the equipment that mobile networks run on, quietly makes good money."
+        },
+        {
+          "when": {
+            "flags": ["windows"]
+          },
+          "text": "It is 2013. Samsung now sells more phones than you, Windows phones are still rare, and your phone business loses money every quarter. Only one part of Nokia is doing well: Nokia Siemens Networks, which builds the equipment that mobile networks run on."
+        },
+        {
+          "text": "It is 2013. Your own phones still struggle to win app makers, and the losses are growing. Only one part of Nokia is doing well: Nokia Siemens Networks, which builds the equipment that mobile networks run on."
         }
       ],
       "next": "d4"
@@ -315,13 +373,13 @@
       "year": "2013",
       "title": "The quiet winner",
       "media": "img:nk_d4",
-      "setup": "Nokia Siemens Networks builds the equipment that mobile networks run on. In 2012 it made €822 million in adjusted operating profit. Your partner, Siemens, wants to sell its half.",
+      "setup": "Nokia Siemens Networks made money in 2012 if you leave out one-off costs, while the phones lost money. Now your partner, Siemens, wants to sell its half of the networks business, and your cash is getting tight.",
       "question": "What do you do with the networks business?",
-      "advisor": "Sometimes your future is already inside the company. You just have not been looking at it.",
+      "advisor": "Cash is short, and whatever we do with the networks business, we cannot easily undo it.",
       "options": [
         {
           "id": "sell_half",
-          "label": "Sell your half too and use the cash to save the phones.",
+          "label": "Sell your half too. The cash keeps the phones going, but the networks profit is gone.",
           "grade": "bad",
           "effect": {
             "profit": 10,
@@ -331,19 +389,19 @@
           },
           "next": "d5",
           "media": "img:nk_d4_sell",
-          "outcome": "Our estimate: you get a big cheque, but it disappears into a phone business that keeps losing money. Now you have no strong business left to fall back on.",
-          "why": "You sold your healthiest business to feed your weakest one. That buys time, not a future.",
-          "better": "Keep the business that makes money and has a future, even if it is less famous.",
-          "takeaway": "In 2013 you sold your best business to prop up your worst one.",
+          "outcome": "You get a big cheque, but it disappears into a phone business that keeps losing money. Soon you have no strong business left to fall back on.",
+          "why": "You sold the one business with a future to feed the one that was losing money.",
+          "better": "Keep the profitable networks business, and own it fully if you can.",
+          "takeaway": "In 2013 you sold your future to pay for your past.",
           "traits": {
             "horizon": -1,
-            "risk": 1,
+            "risk": 0,
             "disrupt": -1
           }
         },
         {
           "id": "buy_half",
-          "label": "Buy Siemens' half and own the networks business fully.",
+          "label": "Buy Siemens' half and own it all. You gain control but use much of your cash.",
           "grade": "great",
           "real": true,
           "effect": {
@@ -353,9 +411,19 @@
           },
           "next": "d5",
           "media": "img:nk_d4_buy",
-          "outcome": "In July 2013 Nokia agreed to buy Siemens' half of Nokia Siemens Networks for €1.7 billion. Nokia's shares rose more than 7% that day. The deal used a lot of cash: Nokia's net cash was expected to drop to about €2.0 to 2.5 billion.",
-          "why": "You spent money to fully own the part of the company that was profitable and had a future, even while the famous part was in trouble.",
-          "takeaway": "In 2013 you bet on the business that was quietly working, not the one that was famous.",
+          "outcome": [
+            {
+              "when": {
+                "flags": ["symbian", "windows"]
+              },
+              "text": "In July 2013 you agree to buy Siemens' half for €1.7 billion. Your shares rise more than 7% that day, but the deal uses up a lot of your cash."
+            },
+            {
+              "text": "You buy out Siemens and own the networks business fully. It uses up a lot of cash, but now all of its profit is yours."
+            }
+          ],
+          "why": "You spent money to fully own the part of the company that made a profit and had a future, even while the famous part was in trouble.",
+          "takeaway": "In 2013 you backed the quiet winner inside your own company.",
           "traits": {
             "horizon": 1,
             "risk": 1,
@@ -364,7 +432,7 @@
         },
         {
           "id": "list",
-          "label": "List the networks business on the stock market and keep a share.",
+          "label": "List it on the stock market and keep a share. You raise cash but lose control.",
           "grade": "ok",
           "effect": {
             "profit": 5,
@@ -373,10 +441,10 @@
           },
           "next": "d5",
           "media": "img:nk_d4_list",
-          "outcome": "Our estimate: you raise some cash and keep part of the profits, but you no longer control the business that could become Nokia's future.",
-          "why": "It was a safe middle path, but it gave away control of your best asset at the moment you needed it most.",
-          "better": "Take full control of the profitable networks business and build the company's future around it.",
-          "takeaway": "In 2013 you played safe with your best asset instead of betting on it.",
+          "outcome": "You raise some cash and keep part of the profits, but you no longer control the business that could become Nokia's future.",
+          "why": "Listing raised money, but it gave away control of your strongest business just when you needed it most.",
+          "better": "Buy Siemens' half and own the profitable networks business fully.",
+          "takeaway": "In 2013 you kept a slice of your future instead of all of it.",
           "traits": {
             "horizon": 0,
             "risk": -1,
@@ -394,32 +462,39 @@
       "setup": [
         {
           "when": {
-            "flags": ["android"]
+            "flags": ["windows"]
           },
-          "text": "Our estimate: your Android phones are holding their own, but Samsung is bigger and the price war never stops. Now Microsoft is ready to buy your whole phone business."
+          "text": "Your phone business is losing over €1 billion a year. Microsoft, your software partner, is ready to buy all of it."
         },
         {
-          "text": "Your phone business is losing over €1 billion a year. Microsoft, your software partner, is ready to buy your whole phone business."
+          "when": {
+            "flags": ["android"]
+          },
+          "text": "Your Android phones hold their own, but Samsung is bigger and the price war never stops. Now a big tech company offers to buy your whole phone business."
+        },
+        {
+          "text": "Your phone business keeps losing money, and a big tech company offers to buy all of it."
         }
       ],
       "question": "What do you do with the phone business that made Nokia famous?",
-      "advisor": "The name on the phone is not the same as the company. Ask what keeps Nokia alive.",
+      "advisor": "If we sell, Nokia stops making the phones the world knows us for. If we keep them, the losses go on. Neither choice is painless.",
       "options": [
         {
           "id": "fight",
-          "label": "Refuse. Keep fighting with new phones. Nokia is a phone company.",
+          "label": "Refuse the deal and keep fighting. You keep the phone business but risk more losses.",
           "grade": "bad",
           "effect": {
             "profit": -20,
             "future": -15,
-            "trust": -1
+            "trust": -1,
+            "flags": ["fought"]
           },
           "next": "ending_route",
           "media": "img:nk_d5_fight",
-          "outcome": "Our estimate: you keep the famous phones, but the losses keep growing and eat the cash your other businesses need.",
-          "why": "Pride in what made you famous can stop you from protecting what keeps you alive.",
-          "better": "Sell the losing business while it is still worth a lot, and put the company's future into what works.",
-          "takeaway": "In 2013 you held on to your famous business while it drained the rest.",
+          "outcome": "You keep the famous phones, but the losses keep growing and eat up the cash your other businesses need.",
+          "why": "You protected the name on the phone instead of the company behind it.",
+          "better": "Sell while the business is still worth billions, and build on what makes money.",
+          "takeaway": "In 2013 you held on to the past at any price.",
           "traits": {
             "horizon": -1,
             "risk": 1,
@@ -428,18 +503,29 @@
         },
         {
           "id": "sell",
-          "label": "Sell the phone business to Microsoft and focus on networks, maps and patents.",
+          "label": "Sell the phones and keep networks, maps and patents. You gain cash but leave phones behind.",
           "grade": "great",
           "real": true,
           "effect": {
             "profit": 10,
-            "future": 10
+            "future": 10,
+            "flags": ["sold_phones"]
           },
           "next": "ending_route",
           "media": "img:nk_d5_sell",
-          "outcome": "In September 2013 Nokia agreed to sell its phone business to Microsoft for €5.44 billion, including €1.65 billion for a licence to its patents. About 32,000 staff moved to Microsoft. Nokia kept its networks business, its HERE maps and its patents.",
-          "why": "You let go of what made Nokia famous to save what could keep Nokia alive, and you sold while the business was still worth billions.",
-          "takeaway": "In 2013 you sold the famous business to save the company.",
+          "outcome": [
+            {
+              "when": {
+                "flags": ["symbian", "windows", "bought_nsn"]
+              },
+              "text": "In September 2013 you agree to sell the phone business to Microsoft for €5.44 billion, including money for a licence to your patents. About 32,000 staff move to Microsoft, and Nokia keeps its networks business, its HERE maps and its patents."
+            },
+            {
+              "text": "You sell the phones while they are still worth billions. It hurts to see your famous phones go, but Nokia now has cash and a clear road ahead."
+            }
+          ],
+          "why": "You let go of what made Nokia famous to save what could keep Nokia alive, and you sold while the business was still worth a lot.",
+          "takeaway": "In 2013 you let go of the famous part to save the company.",
           "traits": {
             "horizon": 1,
             "risk": 1,
@@ -447,23 +533,24 @@
           }
         },
         {
-          "id": "android_now",
-          "label": "Say no, and switch the phones to Android now.",
+          "id": "shrink",
+          "label": "Refuse the deal and shrink the phone business. You cut losses but may lose more ground.",
           "grade": "ok",
           "effect": {
-            "profit": -10,
-            "future": 5
+            "profit": -5,
+            "future": 5,
+            "flags": ["shrank"]
           },
           "next": "ending_route",
-          "media": "img:nk_d5_android",
-          "outcome": "Our estimate: the switch helps a little, but you are years behind Samsung, and the phone business keeps losing money while you catch up.",
-          "why": "It was the right platform, but two years too late. Late fixes cost more and win less.",
-          "better": "Either move to the winning platform early, or sell the business while it still has value.",
-          "takeaway": "In 2013 you made the right move too late.",
+          "media": "img:nk_d5_shrink",
+          "outcome": "You close factories and sell only the phones that make money. The losses shrink, but so does Nokia, and the famous name slowly fades from the shops.",
+          "why": "Shrinking slowed the bleeding, but it kept money and attention tied to a business that was fading.",
+          "better": "Sell the phones while they are still worth billions, and put everything into networks.",
+          "takeaway": "In 2013 you kept a smaller phone business alive, at a cost.",
           "traits": {
             "horizon": 0,
-            "risk": 1,
-            "disrupt": 1
+            "risk": -1,
+            "disrupt": 0
           }
         }
       ]
@@ -493,17 +580,23 @@
       "id": "legend",
       "type": "ending",
       "tier": "legend",
-      "title": "Still the people's phone",
+      "title": "Nokia comes out on top",
       "media": "img:nk_legend",
       "text": [
         {
           "when": {
-            "flags": ["android"]
+            "flags": ["sold_phones"]
           },
-          "text": "Our estimate: with early Android phones, shops in every town and cheap phones India wanted, Nokia stays one of the world's top phone makers. Your network business grows alongside it."
+          "text": "You sold the phones while they were still worth a lot, then built Nokia around the networks that carry the world's calls. The famous phones are gone, but Nokia comes out strong and ready for what comes next."
         },
         {
-          "text": "Our estimate: you moved early and listened to buyers. Nokia stays a leader, in phones or in the networks that carry their calls."
+          "when": {
+            "flags": ["android", "dual_sim"]
+          },
+          "text": "With early Android phones, shops in every town and the cheap phones India wanted, Nokia stays one of the world's top phone makers, and its networks business grows beside it."
+        },
+        {
+          "text": "You moved early and listened to buyers. Nokia stays one of the world's top phone makers, and its networks business grows beside it."
         }
       ],
       "bonus": 15
@@ -514,7 +607,23 @@
       "tier": "survivor",
       "title": "A smaller, stronger Nokia",
       "media": "img:nk_survivor",
-      "text": "In April 2014 the sale to Microsoft closed. Nokia became mainly a networks company, with HERE maps and its patents, led by the head of its networks business. The phones that made it famous now belonged to someone else, but Nokia itself survived.",
+      "text": [
+        {
+          "when": {
+            "flags": ["windows", "dual_sim", "bought_nsn", "sold_phones"]
+          },
+          "text": "In April 2014 the sale to Microsoft closes. Nokia becomes mainly a networks company, with HERE maps and its patents, led by the head of its networks business. The phones that made it famous now belong to someone else, but Nokia itself survives."
+        },
+        {
+          "when": {
+            "flags": ["sold_phones"]
+          },
+          "text": "The phones that made Nokia famous now belong to someone else. What is left is smaller, but it makes money, and Nokia itself survives."
+        },
+        {
+          "text": "Nokia still makes phones, but it is a smaller name every year. Its networks business is what keeps the company alive."
+        }
+      ],
       "bonus": 5
     },
     "collapse": {
@@ -523,7 +632,17 @@
       "tier": "collapse",
       "title": "The fall of a giant",
       "media": "img:nk_collapse",
-      "text": "Our estimate: you held on to the past for too long. With the phones losing money and no strong business left to fall back on, Nokia becomes a story people tell about how leaders fall.",
+      "text": [
+        {
+          "when": {
+            "flags": ["sold_nsn"]
+          },
+          "text": "You held on to the past for too long, and you sold the one business that could have saved you. With the phones losing money and nothing strong to fall back on, Nokia becomes a story about how giants fall."
+        },
+        {
+          "text": "You held on to the past for too long. With the phones losing money and your cash running out, Nokia becomes a story people tell about how giants fall."
+        }
+      ],
       "bonus": 0
     },
     "fired": {
@@ -532,7 +651,7 @@
       "tier": "fired",
       "title": "The board lets you go",
       "media": "img:nk_fired",
-      "text": "Three costly calls in a row. The board has lost its trust in you and asks someone else to lead Nokia through the storm.",
+      "text": "The board has seen enough. After three costly calls, it asks someone else to steer Nokia through the storm.",
       "bonus": 0
     }
   },
@@ -562,6 +681,22 @@
     {
       "label": "Nokia Sells Devices Business to Microsoft (Light Reading, 2013)",
       "url": "https://www.lightreading.com/smartphones-devices/nokia-sells-devices-business-to-microsoft"
+    },
+    {
+      "label": "iPhone premieres this Friday night (Apple Newsroom, 2007)",
+      "url": "https://www.apple.com/newsroom/2007/06/28iPhone-Premieres-This-Friday-Night-at-Apple-Retail-Stores/"
+    },
+    {
+      "label": "India now second largest market for Nokia (Microwave Journal, 2007)",
+      "url": "https://microwavejournal.com/articles/5425-india-now-second-largest-market-for-nokia"
+    },
+    {
+      "label": "S60 glossary entry (Phone Scoop)",
+      "url": "https://www.phonescoop.com/glossary/term.php?gid=129"
+    },
+    {
+      "label": "Nokia Q4 and full year 2012 interim report (Investegate, 2013)",
+      "url": "https://www.investegate.co.uk/announcement/rns/nokia-oyj--0haf/nokia-corporation-q4-and-full-year-2012-interim-/2862578"
     }
   ],
   "credits": "Research brief and full source list: content/hotseats/nokia/research.md. Archive footage from archive.org (public domain)."
