@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { playSfx } from "@/lib/sfx";
 import { GameProvider, today, useGame } from "@/lib/store";
 import { Icon, Pill } from "./ui";
 import { Logo } from "./Logo";
@@ -46,6 +47,7 @@ function Shell() {
   }, []);
 
   const go = (t: Tab) => {
+    playSfx("tab");
     setTab(t);
     try {
       history.replaceState(null, "", "#" + t);

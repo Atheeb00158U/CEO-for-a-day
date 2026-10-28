@@ -16,6 +16,7 @@ import {
 } from "@/lib/engine";
 import type { DecisionNode, EndingNode, Grade, HotSeat, Media, Option, SceneNode } from "@/lib/hotseat-types";
 import { useGame, type RunRecord } from "@/lib/store";
+import { playSfx } from "@/lib/sfx";
 import { ADVISOR, NARRATOR, speak, stopVoice } from "@/lib/voice";
 import { Bar, Caption, Icon, MediaView } from "./ui";
 import { Debrief } from "./Debrief";
@@ -44,6 +45,13 @@ export function Player({ hotSeatId, onExit, onNotes }: { hotSeatId: string; onEx
   const finished = useRef(false); // a double tap on "See your results" must not pay out twice
 
   useEffect(() => () => stopVoice(), []);
+
+  // A lost heart lands after the verdict and meter sounds (see RevealView and Meters).
+  const trustBefore = useRef(run.trust);
+  useEffect(() => {
+    if (run.trust < trustBefore.current) playSfx("heart", 800);
+    trustBefore.current = run.trust;
+  }, [run.trust]);
 
   const advance = (state: RunState, nextId: string) => {
     const s2 = { ...state, nodeId: nextId };
@@ -200,6 +208,7 @@ function Meters({ hs, run }: { hs: HotSeat; run: RunState }) {
     const d = { profit: run.meters.profit - prev.current.profit, future: run.meters.future - prev.current.future };
     prev.current = run.meters;
     if (d.profit || d.future) {
+      playSfx(d.profit + d.future >= 0 ? "up" : "down", 500);
       setDelta(d);
       const t = setTimeout(() => setDelta({ profit: 0, future: 0 }), 2600);
       return () => clearTimeout(t);
@@ -301,7 +310,14 @@ function SceneView({ run, node, onNext }: { hs: HotSeat; run: RunState; node: Sc
       <Caption text={text} progress={prog(0)} className="text-[21px] font-bold leading-snug" />
       {s.settings.voice && <VoiceButton onClick={replay} />}
       <div className="mt-auto pb-6 pt-4">
-        <button type="button" className="btn3d" onClick={onNext}>
+        <button
+          type="button"
+          className="btn3d"
+          onClick={() => {
+            playSfx("next");
+            onNext();
+          }}
+        >
           Continue
         </button>
       </div>
@@ -336,6 +352,9 @@ export function DecisionView({
 }) {
   const { s } = useGame();
   const [sel, setSel] = useState<string | null>(null);
+  useEffect(() => {
+    if (warning) playSfx("warning");
+  }, [warning]);
   const { prog } = useNarration(
     [{ text: setup }, { text: question }, ...(advisor ? [{ text: advisor, voice: ADVISOR }] : [])],
     s.settings.voice,
@@ -369,7 +388,10 @@ export function DecisionView({
             role="radio"
             aria-checked={sel === o.id}
             className="tile flex gap-3"
-            onClick={() => setSel(o.id)}
+            onClick={() => {
+              playSfx("select");
+              setSel(o.id);
+            }}
           >
             <span className="grid size-7 shrink-0 place-items-center rounded-lg border-2 border-line text-[13px] font-black text-muted">
               {i + 1}
@@ -379,7 +401,16 @@ export function DecisionView({
         ))}
       </div>
       <div className="mt-auto pb-6 pt-2">
-        <button type="button" className="btn3d green" disabled={!sel} onClick={() => sel && onChoose(sel)}>
+        <button
+          type="button"
+          className="btn3d green"
+          disabled={!sel}
+          onClick={() => {
+            if (!sel) return;
+            playSfx("lock");
+            onChoose(sel);
+          }}
+        >
           Lock it in
         </button>
       </div>
@@ -418,6 +449,7 @@ export function RevealView({
 }) {
   const { s } = useGame();
   const v = VERDICT[grade];
+  useEffect(() => playSfx(grade, 120), [grade]);
   const { prog, replay } = useNarration([{ text: outcome }, { text: spokenWhy({ why, better }) }], s.settings.voice);
   return (
     <div className="flex flex-1 flex-col gap-4 pb-[300px]">
@@ -469,7 +501,14 @@ export function RevealView({
                 <Icon.rewind className="size-5" /> Redo ({hindsight.left})
               </button>
             )}
-            <button type="button" className={`btn3d ${v.btn}`} onClick={onNext}>
+            <button
+              type="button"
+              className={`btn3d ${v.btn}`}
+              onClick={() => {
+                playSfx("next");
+                onNext();
+              }}
+            >
               Continue
             </button>
           </div>
@@ -482,6 +521,7 @@ export function RevealView({
 function EndingView({ run, node, onNext }: { run: RunState; node: EndingNode; onNext: () => void }) {
   const { s } = useGame();
   const text = resolveText(node.text, run);
+  useEffect(() => playSfx(node.tier === "legend" || node.tier === "survivor" ? "legend" : "lose"), [node.tier]);
   const { prog } = useNarration([{ text }], s.settings.voice);
   const color = { legend: "var(--color-gold)", survivor: "var(--color-blue)", collapse: "var(--color-red)", fired: "var(--color-red)" }[
     node.tier
