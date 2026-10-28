@@ -1,5 +1,5 @@
 # Fact-check: maruti-800
-checked-sha256: 3515228f7a1e605a5d85153f72be2fdd37a463db799e754943fe1ca77a9ca132
+checked-sha256: ecc94b38d3e42df59c07b029b53ed2959b9272af8ce5c3d4712f8e4906a53d89
 Checked: 2026-10-28 · by: independent fact-check agent (fresh context)
 
 ## Sources opened
@@ -69,3 +69,6 @@ Checked: 2026-10-28 · by: independent fact-check agent (fresh context)
 - [supported] realHistory: founded 1981, Suzuki Oct 1982, 14 months, first car 14 Dec 1983, about 1,20,000 bookings, supplier push, exports to Europe 1987, 1,00,000 a year by 1988, 800 until 2014, still India's biggest carmaker — [1][2][3][4][5][6][10]
 - [ok] No quotes from real people anywhere in the file.
 - [ok] Off-path text: alternate outcomes describe the player's own invented company, not claims about real Maruti. The Daihatsu variant of d2 (car, van, jeep) is broadly true of Daihatsu's 1982 range (Cuore/Mira, Hijet, Taft). The off-path d5 setups repeat the contradicted politician framing.
+
+## Changes after this check (2026-10-28)
+- Option rework so costly options are strategy mistakes, not ethical ones: d4 `raise` (now risky, alternate), new d4 `cheap`, new d5 `spread`, new d6 `second`, d5 advisor, d5 `quality` label/why/takeaway, two s1987 alternate variants. No real-path facts changed: the `quality` label ("pick a few firms on quality alone and push them hard") restates the sourced vendor policy in [2]; real outcomes, scenes and setups are unchanged. Checked by the author.

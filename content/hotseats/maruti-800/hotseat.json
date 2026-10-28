@@ -390,25 +390,25 @@
       "advisor": "If we don't take the extra money, middlemen will. But if the price climbs too high, who is this car really for?",
       "options": [
         {
-          "id": "raise",
-          "label": "Raise the price to what buyers will pay, and use the money to build more.",
+          "id": "cheap",
+          "label": "Also build a cheaper, simpler model, so even more families can afford a car.",
           "grade": "bad",
           "effect": {
-            "profit": 15,
+            "profit": -5,
             "future": -15,
             "trust": -1,
-            "flags": ["raised"]
+            "flags": ["cheap"]
           },
           "next": "d5",
-          "media": "img:mu_d4_raise",
-          "outcome": "Money pours in, but now the clerks and teachers it was made for can't afford it. The papers call it a rich man's toy, and Delhi is not pleased.",
-          "why": "Maruti's promise was a vehicle for ordinary families. Pricing them out broke that promise and turned the government, which owns you, against you.",
-          "better": "Keep the price fair, and find a way to make more, sooner.",
-          "takeaway": "In 1984 you took the quick money and lost the people's trust.",
+          "media": "img:mu_d4_cheap",
+          "outcome": "Now two cars share one small factory. The queue for both grows longer, the cheap model feels bare, and buyers start asking whether a Maruti is really any better than the old cars.",
+          "why": "The problem was too few cars, not too high a price. A second model split your small factory in two and made the wait longer for everyone.",
+          "better": "Fix supply first: keep one car, and find the money for a second line.",
+          "takeaway": "In 1984 you added a model when the real problem was too few cars.",
           "traits": {
             "horizon": -1,
-            "risk": 0,
-            "disrupt": -1
+            "risk": 1,
+            "disrupt": 0
           }
         },
         {
@@ -462,6 +462,27 @@
             "risk": 1,
             "disrupt": 1
           }
+        },
+        {
+          "id": "raise",
+          "label": "Raise the price to what buyers will really pay, and spend the extra on a second line.",
+          "grade": "ok",
+          "effect": {
+            "profit": 15,
+            "future": 0,
+            "flags": ["raised"]
+          },
+          "next": "d5",
+          "media": "img:mu_d4_raise",
+          "outcome": "The extra money goes to Maruti instead of to middlemen, and it pays for new machines. But the papers call it a rich man's car, and Delhi, which owns you, is not pleased.",
+          "why": "Taking the money that middlemen were making was smart, and it paid for more cars. But Maruti was sold as a people's car, and the price rise cost you goodwill in Delhi.",
+          "better": "Keep the price, and push Delhi for a foreign loan to build a second line.",
+          "takeaway": "In 1984 you raised the price to pay for growth, and paid in goodwill.",
+          "traits": {
+            "horizon": 0,
+            "risk": 1,
+            "disrupt": 0
+          }
         }
       ]
     },
@@ -495,33 +516,33 @@
         }
       ],
       "question": "How do you choose your suppliers?",
-      "advisor": "Our car is only as good as its worst bolt. And in Delhi, someone is watching every order we give.",
+      "advisor": "If we choose only a few firms, many people will be angry with us. If we choose many, can any of them get good?",
       "options": [
         {
-          "id": "friends",
-          "label": "Make him a supplier. The government owns Maruti, and you may need Delhi later.",
+          "id": "spread",
+          "label": "Give orders to many small firms across India, so the work and the skills spread to every state.",
           "grade": "bad",
           "effect": {
             "profit": 0,
             "future": -15,
             "trust": -1,
-            "flags": ["friends"]
+            "flags": ["spread"]
           },
           "next": "s1987",
-          "media": "img:mu_d5_friends",
-          "outcome": "The politician is pleased. But his parts are poor, cars come back for repairs, and good suppliers stop bidding for your work because they think the game is fixed.",
-          "why": "Once connections beat quality, good suppliers give up, and your car gets worse.",
-          "better": "Pick suppliers on quality alone, and say no to pressure politely but firmly.",
-          "takeaway": "In 1984 you traded quality for favours.",
+          "media": "img:mu_d5_spread",
+          "outcome": "Politicians in every state are happy, and hundreds of firms get a start. But each one makes too few parts to get good at it, so quality stays uneven and costs stay high.",
+          "why": "Spreading orders thin felt fair, but no firm made enough parts to invest in better machines or to learn properly.",
+          "better": "Pick a few strong firms on quality alone, give them big orders and train them hard.",
+          "takeaway": "In 1984 you spread your orders thin and nobody got good.",
           "traits": {
             "horizon": -1,
-            "risk": 0,
-            "disrupt": -1
+            "risk": -1,
+            "disrupt": 0
           }
         },
         {
           "id": "quality",
-          "label": "Pick suppliers on quality alone and train them. It's slow, and the politician will be angry.",
+          "label": "Pick a few firms on quality alone and push them hard. Most local firms will get nothing.",
           "grade": "great",
           "real": true,
           "effect": {
@@ -542,8 +563,8 @@
               "text": "You tell the politician he will be tested like everyone else, and you hold every supplier to one standard. It is slow and painful, but parts start arriving on time and fitting right."
             }
           ],
-          "why": "You built a supplier base on merit and helped it grow, which made the car cheaper, more Indian and better, all at once.",
-          "takeaway": "In 1984 you chose suppliers on quality, not connections, and helped them grow.",
+          "why": "You gave big orders to a few firms that earned them, and trained them hard. That made the car cheaper, more Indian and better, even though many firms were left out.",
+          "takeaway": "In 1984 you chose a few strong suppliers on merit and pushed them hard.",
           "traits": {
             "horizon": 1,
             "risk": 1,
@@ -587,15 +608,15 @@
         },
         {
           "when": {
-            "flags": ["friends"]
+            "flags": ["spread"]
           },
-          "text": "It is 1987. Your vehicles are on Indian roads, but so are the stories about weak parts, and the best suppliers now work for other companies."
+          "text": "It is 1987. Your parts now come from all over India, but quality is uneven, and many small firms can't keep up with your orders."
         },
         {
           "when": {
             "flags": ["raised"]
           },
-          "text": "It is 1987. Your vehicles sell well to people with money, but most families still ride scooters, and the papers have not forgotten your price rise."
+          "text": "It is 1987. The higher price paid for new machines, but the papers still call Maruti a rich man's car, and Delhi has not forgotten."
         },
         {
           "when": {
@@ -682,25 +703,25 @@
           }
         },
         {
-          "id": "rush",
-          "label": "Speed up the line and cut some checks, so more people get cars sooner.",
+          "id": "second",
+          "label": "Bring in a second foreign partner, so Maruti doesn't depend on one company.",
           "grade": "bad",
           "effect": {
-            "profit": 10,
+            "profit": 0,
             "future": -15,
             "trust": -1,
-            "flags": ["rushed"]
+            "flags": ["second"]
           },
           "next": "ending_route",
-          "media": "img:mu_d6_rush",
-          "outcome": "More cars leave the gate, and more come back broken. Buyers start saying that Maruti is just like the old car makers.",
-          "why": "You used the queue as an excuse to drop your standards, which were the very thing that made Maruti different.",
-          "better": "Test yourself against tougher buyers, so quality keeps rising even with no rivals at home.",
-          "takeaway": "In 1987 you let the queue lower your standards.",
+          "media": "img:mu_d6_second",
+          "outcome": "Your partner feels betrayed and slows its help. Your engineers now juggle two ways of building cars, and quality stops improving just when it should be climbing.",
+          "why": "Spreading risk sounds wise, but your partner was teaching you everything. Two partners meant two systems and half the help from each.",
+          "better": "Stay with the partner that is teaching you, and push your quality up by facing tougher buyers abroad.",
+          "takeaway": "In 1987 you hedged your bets and lost your best teacher's trust.",
           "traits": {
             "horizon": -1,
             "risk": 1,
-            "disrupt": -1
+            "disrupt": 0
           }
         }
       ]
