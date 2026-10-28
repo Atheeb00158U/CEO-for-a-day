@@ -105,6 +105,15 @@ export function ProfileTab() {
             className="size-6 accent-[var(--color-brand)]"
           />
         </label>
+        <label className="flex items-center justify-between font-extrabold">
+          Sound effects
+          <input
+            type="checkbox"
+            checked={s.settings.sfx}
+            onChange={(e) => setSetting("sfx", e.target.checked)}
+            className="size-6 accent-[var(--color-brand)]"
+          />
+        </label>
         <div>
           <p className="mb-2 font-extrabold">Language</p>
           <div className="flex flex-wrap gap-2">

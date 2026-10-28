@@ -10,17 +10,20 @@ const byText = new Map<string, string>();
 for (const l of lines as { id: string; voice: string; text: string }[]) byText.set(l.voice + "|" + l.text, l.id);
 
 import { ADVISOR, NARRATOR } from "./engine";
+import { sfxQuietIn } from "./sfx";
 
 export { ADVISOR, NARRATOR };
 
 let audio: HTMLAudioElement | null = null;
 let onProgress: ((p: number) => void) | null = null;
 let raf = 0;
+let wait: ReturnType<typeof setTimeout> | undefined;
 /** Bumped on every stop, so callbacks from a stopped line (ended, error, cancelled speech) do nothing. */
 let gen = 0;
 
 export function stopVoice() {
   gen++;
+  clearTimeout(wait);
   cancelAnimationFrame(raf);
   if (audio) {
     audio.onended = audio.onerror = audio.onplay = null;
@@ -30,9 +33,23 @@ export function stopVoice() {
   if (typeof window !== "undefined" && "speechSynthesis" in window) window.speechSynthesis.cancel();
 }
 
-/** Speak a line. `progress` gets 0..1 so captions can highlight word by word. */
+/**
+ * Speak a line. `progress` gets 0..1 so captions can highlight word by word.
+ * It starts once any sound effect has finished; the timeout also lets effects that fire in the same render
+ * (a verdict sound, a lost heart) be scheduled first.
+ */
 export function speak(text: string, voice = NARRATOR, progress?: (p: number) => void, onEnd?: () => void) {
   stopVoice();
+  const g = gen;
+  wait = setTimeout(() => g === gen && start(text, voice, progress, onEnd), 0);
+}
+
+function start(text: string, voice: string, progress?: (p: number) => void, onEnd?: () => void) {
+  const quiet = sfxQuietIn();
+  if (quiet > 0) {
+    wait = setTimeout(() => start(text, voice, progress, onEnd), quiet + 80);
+    return;
+  }
   onProgress = progress ?? null;
   const id = byText.get(voice + "|" + text);
   const g = gen;

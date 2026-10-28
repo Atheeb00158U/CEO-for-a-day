@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { buildDebrief, reviewedDebrief, type Debriefs, type RunState } from "@/lib/engine";
 import type { EndingNode, HotSeat } from "@/lib/hotseat-types";
 import { BADGES, ECONOMY, useGame, type RunRecord } from "@/lib/store";
+import { playSfx } from "@/lib/sfx";
 import { stopVoice } from "@/lib/voice";
 import { Card, Icon } from "./ui";
 
@@ -45,14 +46,18 @@ export function Debrief({
       .catch(() => {}); // offline or missing: the assembled takeaways below still show
   }, [hs.id, run.picks]);
   const [shown, setShown] = useState(0);
-  useEffect(() => {
-    stopVoice();
-    const t = setTimeout(() => setShown(record.score), 120);
-    return () => clearTimeout(t);
-  }, [record.score]);
   const boosted = record.xp > ECONOMY.completionXp + record.score;
   const ring = 2 * Math.PI * 52;
   const newBadges = s.badges.filter((b) => BADGES[b] && !badgesBefore.includes(b));
+  const gotBadge = newBadges.length > 0;
+  useEffect(() => {
+    stopVoice();
+    const t = setTimeout(() => setShown(record.score), 120);
+    // XP and coins as the score ring fills, then a new badge once it has.
+    playSfx("coins", 300);
+    if (gotBadge) playSfx("badge", 1500);
+    return () => clearTimeout(t);
+  }, [record.score, gotBadge]);
 
   return (
     <div

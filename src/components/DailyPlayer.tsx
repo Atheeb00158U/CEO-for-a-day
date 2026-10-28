@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import type { DailyCall } from "@/lib/hotseat-types";
 import { today, useGame } from "@/lib/store";
+import { playSfx } from "@/lib/sfx";
 import { stopVoice } from "@/lib/voice";
 import { DecisionView, RevealView } from "./Player";
 import { Icon } from "./ui";
@@ -44,6 +45,7 @@ export function DailyPlayer({ call, onExit }: { call: DailyCall; onExit: () => v
           options={call.options}
           onChoose={(id) => {
             game.playDaily(call, id);
+            playSfx("coins", 1000); // the XP, after the verdict sound
             setRevealed(true);
           }}
         />

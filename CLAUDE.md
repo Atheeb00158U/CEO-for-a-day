@@ -27,6 +27,7 @@ UI components: use shadcn/ui, restyled to this look. Add gluestack-ui only if we
 - `npm run media -- <id> <files…>`: prepare images and clips
 - `npm run narrate`: regenerate narration after text edits (needs VoiceStudio on Atheeb's Mac; about 3 hours for every line)
 - `npm run debriefs -- <id>`: offline Claude drafts of per-path debriefs; a person sets `reviewed: true` before the app shows one
+- `python scripts/make-sfx.py`: rebuild the sound effects in `public/sfx/` (needs earshot + ffmpeg; sources, licences and mix levels in `docs/SOUNDS.md`)
 
 ## Writing stories
 Follow `docs/AUTHORING.md` for every Hot Seat and Daily Call: research brief → draft → check → fresh-context fact-check (stamped `factcheck.md`) → image prompts → Atheeb's review. A published story needs a `factcheck.md` stamped for its exact file, with no open claims. Missing narration is only a warning (the app falls back to the browser's voice).

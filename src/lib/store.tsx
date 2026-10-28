@@ -2,6 +2,7 @@
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import type { DailyCall, Grade, TraitKey } from "./hotseat-types";
+import { setSfxOn } from "./sfx";
 import { applyDaily, ECONOMY, fresh, rollover, touchStreak, type GameState, type RunRecord } from "./game-state";
 
 export { BADGES, ECONOMY, LEAGUES, today, type GameState, type RunRecord } from "./game-state";
@@ -45,8 +46,11 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     try {
       const raw = localStorage.getItem(KEY);
-      if (raw) setS(rollover({ ...fresh(), ...JSON.parse(raw) }));
-      else setS((x) => rollover(x));
+      if (raw) {
+        const saved = JSON.parse(raw);
+        // Merge settings one level down too, so a save from before a setting existed gets its default.
+        setS(rollover({ ...fresh(), ...saved, settings: { ...fresh().settings, ...saved.settings } }));
+      } else setS((x) => rollover(x));
     } catch {
       /* private mode or blocked storage: play without saving */
     }
@@ -65,6 +69,8 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
       /* ignore */
     }
   }, [s, ready]);
+
+  useEffect(() => setSfxOn(s.settings.sfx), [s.settings.sfx]);
 
   const boosterActive = s.boosterUntil > Date.now();
 
