@@ -147,11 +147,18 @@ body {
   transform: translateY(2px);
   box-shadow: 0 2px 0 var(--color-line);
 }
-.tile[aria-pressed="true"] {
+.tile[aria-pressed="true"],
+.tile[aria-checked="true"] {
   border-color: var(--color-brand);
   box-shadow: 0 4px 0 var(--color-brand-dark);
   background: #2a1f0d;
   color: #ffe2b0;
+}
+/* The option number fills in, so the picked answer reads at a glance. */
+.tile[aria-checked="true"] > span:first-child {
+  border-color: var(--color-brand);
+  background: var(--color-brand);
+  color: #160d00;
 }
 
 /* Wavy-edged banner, like a torn ticket. */
