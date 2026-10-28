@@ -26,7 +26,7 @@ A Hot Seat takes 5–8 minutes. That's too long to protect a daily streak. Add a
 ## 5. Languages (after the English launch)
 - An i18n layer for the UI text (for example `next-intl`), plus one content file per language for each Hot Seat.
 - Fonts for Indian scripts (Noto Sans Devanagari, Tamil and Bengali).
-- **Voice:** Kokoro has Hindi voices, but not Tamil or Bengali. Evaluate an Indian-language TTS model and check that its licence allows commercial use.
+- **Voice:** narration is made with OmniVoice. Its code is Apache 2.0, but the model weights are CC-BY-NC (non-commercial). Atheeb has chosen to use it; confirm the licence position before charging. OmniVoice also covers Hindi, Tamil and Bengali.
 
 ## 6. Distribution
 - Make the app installable from the browser (a PWA, with offline caching of media), then wrap it for the Play Store with a Trusted Web Activity or Capacitor. Do iOS later.

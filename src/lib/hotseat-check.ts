@@ -44,6 +44,7 @@ export function walkRuns(hs: HotSeat): { runs: Run[]; errors: string[] } {
 /** Every media ref in a Hot Seat, as file names ("img:x" → "x.webp"). */
 export function mediaFiles(hs: HotSeat): Set<string> {
   const refs: Media[] = [hs.cover];
+  if (hs.emblem) refs.push(hs.emblem);
   for (const n of Object.values(hs.nodes)) {
     if (n.type !== "route") refs.push(n.media);
     if (n.type === "decision") for (const o of n.options) refs.push(o.media);

@@ -66,6 +66,7 @@ export const HotSeatSchema = z.strictObject({
   role: z.string(),
   years: z.string(),
   cover: Media,
+  emblem: Media.optional(),
   draft: z.boolean().optional(),
   complexity: z.literal([1, 2, 3, 4, 5]),
   minutes: z.number(),

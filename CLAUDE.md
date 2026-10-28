@@ -13,7 +13,7 @@ UI components: use shadcn/ui, restyled to this look. Add gluestack-ui only if we
 - **Trees are fully pre-mapped.** There are no live LLM calls during play. Personalised takeaways are assembled from authored lines; richer per-path debriefs can be pre-generated at build time.
 - **Choice feedback:** every choice shows what happened (as story), why it was good or bad, and, for ok/bad choices, what would have worked. Alternate-history outcomes are labelled as estimates.
 - **Board trust (3 hearts):** losing them all before the last decision ends the run (the "fired" ending). Players can fix mistakes until it's too late.
-- **Media sources:** archive footage from movingimagearchive.com (public domain). Other images are generated with Z-Image Turbo via mflux on the owner's Mac (`~/Documents/case-game/get_assets.sh`). Narration uses Kokoro-82M, voices `af_heart` (narrator) and `bm_george` (advisor).
+- **Media sources:** archive footage from movingimagearchive.com (public domain). Other images are generated with Z-Image Turbo via mflux on the owner's Mac (`~/Documents/case-game/get_assets.sh`). Narration uses OmniVoice (the engine in Atheeb's VoiceStudio app): the narrator is Atheeb's cloned voice and the advisor a designed voice (female, middle-aged, Indian accent), both cloned from `scripts/voices/`.
 - **Pricing plan (not built):** ₹599/week, ₹1,499/month, or ₹999/month billed yearly.
 
 ## Routes
@@ -25,7 +25,7 @@ UI components: use shadcn/ui, restyled to this look. Add gluestack-ui only if we
 - `npm run hotseat:check`: run this after any Hot Seat edit (CI runs it too)
 - `npm run hotseat:new -- <id>`, `npm run hotseat:tree -- <id>`
 - `npm run media -- <id> <files…>`: prepare images and clips
-- `npm run narrate`: regenerate narration after text edits (needs the Kokoro files on Atheeb's Mac)
+- `npm run narrate`: regenerate narration after text edits (needs VoiceStudio on Atheeb's Mac; about 3 hours for every line)
 - `npm run debriefs -- <id>`: offline Claude drafts of per-path debriefs; a person sets `reviewed: true` before the app shows one
 
 ## Writing stories

@@ -30,9 +30,9 @@ export interface RunState {
   onRealPath: boolean;
 }
 
-/** Kokoro voices: the narrator reads the story, the advisor speaks the advice. */
-export const NARRATOR = "af_heart";
-export const ADVISOR = "bm_george";
+/** Voices: the narrator reads the story, the advisor speaks the advice (see scripts/narrate.py). */
+export const NARRATOR = "narrator";
+export const ADVISOR = "advisor";
 
 /** The verdict line as narrated: why, plus what would have worked for ok/bad calls. */
 export const spokenWhy = (o: Pick<Option, "why" | "better">) => o.why + (o.better ? " What would have worked: " + o.better : "");

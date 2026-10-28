@@ -229,6 +229,15 @@ body {
     transform: translateX(6px);
   }
 }
+/* The next Hot Seat's emblem bobs gently on Home. */
+.bob {
+  animation: bob 2.4s ease-in-out infinite;
+}
+@keyframes bob {
+  50% {
+    transform: translateY(-5px) rotate(-3deg);
+  }
+}
 .word {
   color: var(--color-muted);
   transition: color 0.12s;

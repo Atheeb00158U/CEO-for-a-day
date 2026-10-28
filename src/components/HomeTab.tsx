@@ -105,7 +105,20 @@ export function HomeTab({ onPlay, onDaily, onShop }: { onPlay: (id: string) => v
                   className={`node-ring relative grid size-[84px] place-items-center rounded-full ${done ? "bg-[#2a1f0d] text-brand" : isCurrent ? "bg-brand text-[#1a1206]" : "bg-surface-2 text-[#4a5863]"}`}
                 >
                   {isCurrent && <span className="absolute -inset-[7px] rounded-full border-[5px] border-brand/30 border-t-brand" />}
-                  {done ? <Icon.check /> : c.available ? <Icon.play /> : <Icon.lock />}
+                  {c.emblem ? (
+                    <MediaView media={c.emblem} kenBurns={false} className={`!absolute inset-0 !rounded-full ${isCurrent ? "bob" : ""}`} />
+                  ) : done ? (
+                    <Icon.check />
+                  ) : c.available ? (
+                    <Icon.play />
+                  ) : (
+                    <Icon.lock />
+                  )}
+                  {done && c.emblem && (
+                    <span className="absolute -right-1 -bottom-1 grid size-8 place-items-center rounded-full border-[3px] border-bg bg-brand text-[#1a1206]">
+                      <Icon.check className="size-4" />
+                    </span>
+                  )}
                 </span>
                 <span
                   className={`text-[14px] font-extrabold leading-tight ${isCurrent ? "text-brand" : c.available ? "text-ink" : "text-muted"}`}

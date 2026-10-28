@@ -3,7 +3,7 @@
 import lines from "../../voice-lines.json";
 
 /**
- * Narration. Pre-generated Kokoro audio (public/audio/<id>.mp3) is used when it exists;
+ * Narration. Pre-generated audio (public/audio/<id>.mp3) is used when it exists;
  * otherwise the browser's built-in speech voice reads the line, so nothing is ever silent.
  */
 const byText = new Map<string, string>();
@@ -16,12 +16,16 @@ export { ADVISOR, NARRATOR };
 let audio: HTMLAudioElement | null = null;
 let onProgress: ((p: number) => void) | null = null;
 let raf = 0;
+/** Bumped on every stop, so callbacks from a stopped line (ended, error, cancelled speech) do nothing. */
+let gen = 0;
 
 export function stopVoice() {
+  gen++;
   cancelAnimationFrame(raf);
   if (audio) {
+    audio.onended = audio.onerror = audio.onplay = null;
     audio.pause();
-    audio.src = "";
+    audio.removeAttribute("src");
   }
   if (typeof window !== "undefined" && "speechSynthesis" in window) window.speechSynthesis.cancel();
 }
@@ -31,11 +35,13 @@ export function speak(text: string, voice = NARRATOR, progress?: (p: number) => 
   stopVoice();
   onProgress = progress ?? null;
   const id = byText.get(voice + "|" + text);
+  const g = gen;
   const done = () => {
+    if (g !== gen) return;
     onProgress?.(1);
     onEnd?.();
   };
-  const fallback = () => speakBrowser(text, voice, done);
+  const fallback = () => g === gen && speakBrowser(text, voice, done);
   if (!id) return fallback();
   audio = audio ?? new Audio();
   audio.src = `/audio/${id}.mp3`;

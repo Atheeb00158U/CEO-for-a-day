@@ -64,6 +64,7 @@ export const CATALOG: CatalogEntry[] = [
     title: hs.title,
     hook: hs.hook,
     cover: hs.cover,
+    emblem: hs.emblem,
     complexity: hs.complexity,
     available: true,
   })),

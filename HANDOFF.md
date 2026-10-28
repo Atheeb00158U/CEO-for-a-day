@@ -39,7 +39,7 @@ Then build the product end to end by following docs/BUILD-PLAN.md phase by phase
 - Real history must be sourced. Alternate outcomes must be labelled as estimates.
 - Media: archive footage from movingimagearchive.com first. Generated images come from
   ~/Documents/case-game/get_assets.sh, which I run on my Mac (Z-Image Turbo via mflux).
-  Narration comes from scripts/narrate.py (Kokoro-82M).
+  Narration comes from scripts/narrate.py (OmniVoice, through VoiceStudio).
 
 Start with step 1 now.
 ```

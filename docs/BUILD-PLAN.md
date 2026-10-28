@@ -44,7 +44,7 @@ Hot Seats should be data files, not TypeScript.
   - [x] confirms every voice line has audio.
 - [x] Add a CLI: `npm run hotseat:tree -- <id>`, which writes a Mermaid file and an SVG of the tree map. *Writes the Mermaid file; at Atheeb's request the picture is the branded tree at `/admin/<id>` instead of an SVG.*
 - [x] Build an asset pipeline:
-  - [x] `scripts/narrate.py` generates the missing narration (Kokoro, voices `af_heart` and `bm_george`).
+  - [x] `scripts/narrate.py` generates the missing narration (OmniVoice via VoiceStudio; `narrator` and `advisor` voices from `scripts/voices/`).
   - [x] A script converts images to webp at 1080 px wide.
   - [x] A script trims and compresses clips (≤ 9 s, no audio, H.264).
 - [x] Write an **LLM pre-generation script** (offline, never at runtime). For each Hot Seat, enumerate every path and draft one richer personalised debrief per path with the Claude API. Save the drafts to `debriefs.json` with `reviewed: false`. The app uses a debrief only when `reviewed: true`, otherwise it falls back to the assembled debrief. Ask for the API key. *Script done (`npm run debriefs`, Opus 5.5); the first real run waits for the key.*
@@ -141,7 +141,7 @@ Hot Seats should be data files, not TypeScript.
 ## Phase 8: Languages (close to launch, not before)
 - [ ] Add `next-intl` for UI strings, and per-language Hot Seat files (`hotseat.hi.json`, …) that share the same node ids.
 - [ ] Load Noto Sans Devanagari, Tamil and Bengali fonts per language.
-- [ ] Voice: Kokoro covers Hindi. Find a commercial-use TTS for Tamil and Bengali and confirm its licence with Atheeb.
+- [ ] Voice: OmniVoice covers Hindi, Tamil and Bengali. Check how the cloned voices sound in each.
 - [ ] A translation workflow with human review, because business terms must read naturally.
 
 ---

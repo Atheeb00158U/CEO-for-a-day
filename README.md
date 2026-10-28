@@ -21,7 +21,7 @@ npm run dev          # http://localhost:3000
 | `npm run hotseat:check [-- <id>]` | Checks the schema, walks every path, and checks endings, media and narration |
 | `npm run hotseat:tree -- <id>` | Writes `tree.mmd`, a Mermaid map of the tree (`/admin/<id>` shows the full path tree) |
 | `npm run media -- <id> <files…>` | Turns images into 1080 px webp and clips into ≤ 9 s silent H.264, into the Hot Seat's `media/` |
-| `npm run narrate` | Refreshes `voice-lines.json` and records missing lines with Kokoro (needs `KOKORO_MODEL` and `KOKORO_VOICES`) |
+| `npm run narrate` | Refreshes `voice-lines.json` and records missing lines with OmniVoice (needs VoiceStudio installed) |
 | `npm run debriefs -- <id> [--dry-run]` | Drafts one debrief per path with Claude, offline, into `debriefs.json` for review |
 
 How to write a Hot Seat or a Daily Call, step by step: `docs/AUTHORING.md`. Daily Calls live in `content/daily/daily.json`.
@@ -39,4 +39,4 @@ How to write a Hot Seat or a Daily Call, step by step: `docs/AUTHORING.md`. Dail
 - `docs/HOT-SEAT-DESIGN.md`: how Hot Seats, scoring and personalisation work
 - `docs/LAUNCH-CHECKLIST.md`: what's still missing before launch
 
-Media: archive clips from the Moving Image Archive (public domain), illustrations generated with Z-Image Turbo, and narration from Kokoro-82M (both Apache 2.0).
+Media: archive clips from the Moving Image Archive (public domain), illustrations generated with Z-Image Turbo (Apache 2.0), and narration from OmniVoice.

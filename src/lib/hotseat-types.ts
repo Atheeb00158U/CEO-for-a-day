@@ -103,6 +103,8 @@ export interface HotSeat {
   role: string;
   years: string;
   cover: Media;
+  /** Cartoon badge for the Hot Seat grid on Home. */
+  emblem?: Media;
   /** Still being written: shown in `npm run dev`, left out of production builds, and missing media/audio are only warnings. */
   draft?: boolean;
   /** Hidden from players. Used only to keep a new player's first Hot Seats gentle. */
@@ -127,6 +129,7 @@ export interface CatalogEntry {
   title: string;
   hook: string;
   cover?: Media;
+  emblem?: Media;
   complexity: 1 | 2 | 3 | 4 | 5;
   available: boolean;
 }
