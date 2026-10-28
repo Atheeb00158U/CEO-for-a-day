@@ -1,5 +1,5 @@
 # Fact-check: tanishq-karatmeter
-checked-sha256: cc4933d5c6e32aa81732fb866bded47621f9751da5f013c937fc142a09cb1b1a
+checked-sha256: 286498318016bfa2b0802129cee660fdefb41e42efefa4dc99900769ede06392
 Checked: 2026-10-27 · by: independent fact-check agent
 
 ## Sources opened
@@ -106,3 +106,6 @@ No specific jewellers are defamed and no living people are named.
 - Every open claim above was fixed in hotseat.json as noted on its line.
 - Wording: the intro blames high costs and poor market knowledge for the export failure; scene1997 says the gold weight and making charges were shown separately (not "price tags"); d4 credits new customers to sales to companies only.
 - Path logic: the d4 offer is now an "anniversary offer", so it reads correctly on the d1 research path where the store opened later. The 2002–03 figures in the d5 swap outcome are left as they are: they describe the real company, but show on every path that reaches d5, including after "shrink". A follow-up should add a `when` variant for those paths.
+
+## Credits update (2026-10-28)
+- Only the credits line changed (the image-source wording was removed). No story text changed. Re-stamped.

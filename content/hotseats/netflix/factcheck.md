@@ -1,5 +1,5 @@
 # Fact-check: netflix
-checked-sha256: cdf3568d6fc6a9d490182e50b62b2a96bc32d7ee872f02281c346706d9b32922
+checked-sha256: ae552a3ef0103ef9f4bf49d5ca1af80b8fe909f886c493c149f21d4a1e8e565e
 Checked: 2026-10-27 · by: independent fact-check agent
 
 ## Sources opened
@@ -107,3 +107,6 @@ Top 3 fixes:
 - The fired ending now starts with "Our estimate:".
 - Story logic: d6 (the Qwikster reversal) is now reached only after choosing Qwikster in d5; the other d5 choices go straight to the ending. d6's setup is the Qwikster text only.
 - Wording: "70,000 titles" (not movies) [3]; the advisor says networks "usually" test a pilot; the reversal outcome now places the 24.6M → 23.8M fall in the July to September quarter, before the October reversal [9].
+
+## Credits update (2026-10-28)
+- Only the credits line changed (the image-source wording was removed). No story text changed. Re-stamped.

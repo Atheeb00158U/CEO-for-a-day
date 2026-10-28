@@ -32,7 +32,7 @@ export function NotesTab({ onPlay }: { onPlay: () => void }) {
         return (
           <Card key={r.hotSeatId} className="flex flex-col gap-3">
             <div className="flex items-center gap-3">
-              <MediaView media={hs.cover} className="size-16 shrink-0 !rounded-2xl" kenBurns={false} label={false} />
+              <MediaView media={hs.cover} className="size-16 shrink-0 !rounded-2xl" kenBurns={false} />
               <div className="min-w-0">
                 <p className="text-[12px] font-black uppercase tracking-[.12em] text-brand">
                   {hs.company} · score {r.score}

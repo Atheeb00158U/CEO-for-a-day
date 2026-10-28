@@ -1,5 +1,5 @@
 # Fact-check: blockbuster
-checked-sha256: 07302952107bfbd46984ab5cabf513a1ddcc22c92986c6800f90cabcc200790f
+checked-sha256: 1f772d9f54a46afb2067008f44d1181840fb6bf3ddd86e11a885df7cafee5b2f
 Checked: 2026-10-27 · by: independent fact-check agent
 
 ## Sources opened
@@ -103,3 +103,6 @@ Top 3 fixes:
 - The two alternate-branch scene variants (scene2004 bought_netflix, scene2006 linked) now start with "Our estimate:".
 - The role is now "You lead Blockbuster", and scene2007 no longer says the player is the new CEO who replaced the old one; the player sees the company "through new eyes".
 - d1 "buy" (alternate) no longer rests on an unverified profit figure; d2 "online" why now says the launch came four years after turning Netflix down (2000 → 2004) [1][4].
+
+## Credits update (2026-10-28)
+- Only the credits line changed (the image-source wording was removed). No story text changed. Re-stamped.

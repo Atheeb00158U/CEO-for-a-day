@@ -41,13 +41,11 @@ export function MediaView({
   className = "",
   wavy = false,
   kenBurns = true,
-  label = true,
 }: {
   media: Media;
   className?: string;
   wavy?: boolean;
   kenBurns?: boolean;
-  label?: boolean;
 }) {
   const [kind, name] = media.split(":");
   return (
@@ -71,11 +69,6 @@ export function MediaView({
           alt=""
           className={`develop absolute inset-0 size-full object-cover ${kenBurns ? "kb" : ""}`}
         />
-      )}
-      {label && (
-        <span className="absolute bottom-2 right-2 rounded-md bg-black/55 px-1.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-white/80">
-          {kind === "vid" ? "Archive footage" : "AI illustration"}
-        </span>
       )}
     </div>
   );

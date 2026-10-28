@@ -1,5 +1,5 @@
 # Fact-check: intel-quits-memory
-checked-sha256: 7c94581e90d54639c0ccaae736c5304c97de1b569fc68d6e6f06f526eb831d8c
+checked-sha256: 7713b9d1d376b36b719f16c89a627b11e91e40963e083eaf7e4b2698bb8c971d
 Checked: 2026-10-27 · by: independent fact-check agent
 
 ## Sources opened
@@ -121,3 +121,6 @@ IBM's $250M for 12% at $40 a share, the sole-sourced 386 made in two fabs, the 4
 - Every open claim above was fixed in hotseat.json as noted on its line.
 - The 1986 figures (eight plants, 7,200 jobs, R&D of $228M) are now sourced to Intel's own 1986 annual report, which replaces the Substack summary in `sources`. The $210M equipment figure was dropped, since Intel's 1985 report gives a different capital-spending figure.
 - Wording: IBM "agreed to pay" in December 1982; the 40% yield gap is against US makers; realHistory says Intel stayed in DRAM until 1985.
+
+## Credits update (2026-10-28)
+- Only the credits line changed (the image-source wording was removed). No story text changed. Re-stamped.

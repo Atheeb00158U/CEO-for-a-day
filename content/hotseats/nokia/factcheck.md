@@ -1,5 +1,5 @@
 # Fact-check: nokia
-checked-sha256: 85401ff6b39fbb17250c8b8c0be561ba0f6372467c97cb3c6b6dd98c5f51cb4e
+checked-sha256: 3edd9d0e69e8660d4939b5fb85cad4c0f21ec4d9129ed9889b539939e72af826
 Checked: 2026-10-27 · by: independent fact-check agent
 
 ## Sources opened
@@ -139,3 +139,6 @@ Top 3 fixes:
 - Every open claim above was fixed in hotseat.json as noted on its line.
 - The three alternate-path variants that stated invented events as fact (scene2010 text[0], scene2013 text[0], d5.setup[0]) now start with "Our estimate:".
 - Wording: the networks unit's €822 million is now "adjusted" operating profit [7]; the CEO change is now dated to September 2010 [1]; the Asha phones are described as a separate, later step from the June 2011 dual-SIM launch [9][16].
+
+## Credits update (2026-10-28)
+- Only the credits line changed (the image-source wording was removed). No story text changed. Re-stamped.

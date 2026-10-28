@@ -1,5 +1,5 @@
 # Fact-check: amul-one-brand
-checked-sha256: 006ac978768b9666b76b2e5308290b85645531d0ec236f07e81742056613192f
+checked-sha256: f12e0fc51c0d1dc5a69886c28174966e8459ca399f25f5dc395e6153039bca75
 Checked: 2026-10-27 · by: independent fact-check agent
 
 ## Sources opened
@@ -123,3 +123,6 @@ Most important fixes:
 
 ## Media update (2026-10-28)
 - Only media refs (am_intro, am_d1, am_1948, am_d2, am_d2_plant, am_1955 now play archive clips) and the credits line changed. No story text changed, so the claims above stand. Re-stamped.
+
+## Credits update (2026-10-28)
+- Only the credits line changed (the image-source wording was removed). No story text changed. Re-stamped.

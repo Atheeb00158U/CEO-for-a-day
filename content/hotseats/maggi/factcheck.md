@@ -1,5 +1,5 @@
 # Fact-check: maggi
-checked-sha256: b7c6cde3b0d9f70c7606b0fa7e150cb9313803e304069848c06ca321b878f802
+checked-sha256: 8e6930e450b1bb09e16c844a42914dddbc15664157024a48da65594150e436d3
 Checked: 2026-10-27 · by: independent fact-check agent
 
 ## Sources opened
@@ -126,3 +126,6 @@ Most important fixes:
 - d1 setup now gives the company's side (it disputes the result; it adds no MSG and glutamate occurs naturally) and drops the conflicting 17.2 ppm / 2 ppm figures.
 - d4 default setup (non-court path) now starts with "Our estimate:".
 - LEGAL HOLD stands: no source found on the outcome of SLP (C) 33251/2015.
+
+## Credits update (2026-10-28)
+- Only the credits line changed (the image-source wording was removed). No story text changed. Re-stamped.

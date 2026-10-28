@@ -1,5 +1,5 @@
 # Fact-check: kodak
-checked-sha256: cd9d4a5f702247b68d6a177b4d39b84b7fb6998fe5fd356aae010b45b1fa66e8
+checked-sha256: 674258e61461d54abebfca8f1528181c2c8fdc2c837735193f1e171d3d2c1fdd
 Checked: 2026-10-27 · by: independent fact-check agent
 
 ## Sources opened
@@ -96,3 +96,6 @@ The 3 most important fixes:
 - The open claims above were fixed in hotseat.json as noted on each line.
 - Also fixed from the drift and other notes: "a fraction of rivals' prices" is now "by up to half" [3]; the decision and its takeaways now say 2007, matching the February 2007 launch [3]; the 2007 scene no longer says phones were "starting to have cameras" [15]; the shelved Mavica variant now says it was electronic and needed no film, but was not digital yet [6]; realHistory now says Kodak's leaders "were not convinced" rather than that it "shelved" digital [1][8].
 - The unopenable sources (Snopes, History of Information) were replaced in `sources` by ones the fact-checker opened.
+
+## Credits update (2026-10-28)
+- Only the credits line changed (the image-source wording was removed). No story text changed. Re-stamped.

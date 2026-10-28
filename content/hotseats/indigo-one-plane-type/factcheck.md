@@ -1,5 +1,5 @@
 # Fact-check: indigo-one-plane-type
-checked-sha256: 4c83f3507caa618f2d204b18f36aa257f4972b7892382353b142d5b9c73a4f14
+checked-sha256: 49eec7c1e49cfa606f3ad5cb377d50c805b662318fb6fb6052e697c427e24bcf
 Checked: 2026-10-27 · by: independent fact-check agent
 
 ## Sources opened
@@ -89,3 +89,6 @@ Checked: 2026-10-27 · by: independent fact-check agent
 - Every open claim above was fixed in hotseat.json as noted on its line.
 - Path logic: d4 setup no longer says new planes keep arriving (not true on paths without an order); the d5 option now says "180 more planes" rather than "180 more A320s".
 - Role now says 2005 to 2012, matching the years field.
+
+## Credits update (2026-10-28)
+- Only the credits line changed (the image-source wording was removed). No story text changed. Re-stamped.

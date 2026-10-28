@@ -1,5 +1,5 @@
 # Fact-check: lego-turnaround
-checked-sha256: 893dab0d5fc874d42721edc3f551c86dccbf499c3ed95e47ad4fc94b9877bcf4
+checked-sha256: a2a107edadd2abbf681c9d0dd2631d701e21a9ac5b63f980765c3a9ad9033eac
 Checked: 2026-10-27 · by: independent fact-check agent
 
 ## Sources opened
@@ -127,3 +127,6 @@ Conflicting figures resolved: 2003 loss, use DKK 1.4bn pre-tax ([5], [1]); Brick
 - Every open claim above was fixed in hotseat.json as noted on its line.
 - The piece cut now reads "from about 13,000 to about 6,000–6,500 over several years" (ABC and Atradius differ; Atradius says it took several years).
 - realHistory now says "From the late 1990s", since Explore and Galidor came in 2002.
+
+## Credits update (2026-10-28)
+- Only the credits line changed (the image-source wording was removed). No story text changed. Re-stamped.

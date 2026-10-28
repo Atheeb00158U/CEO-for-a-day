@@ -1,5 +1,5 @@
 # Fact-check: maruti-800
-checked-sha256: 2b6ca28dfd0f3cba54f821ed4c9865cf978e350688902e37422e1a815254a128
+checked-sha256: fe971215f616b7c68150cdf46b05360afb98f849b13f84101b5c64575d2339e7
 Checked: 2026-10-27 · by: independent fact-check agent
 
 ## Sources opened
@@ -118,3 +118,6 @@ Price: Rs 47,500 is well sourced for what the first buyer paid [4][10][14], and 
 - Every open claim above was fixed in hotseat.json as noted on its line.
 - Path logic: d5 quality and d6 export outcomes now have path-specific variants: the real text shows only where its facts hold (not on the delayed path; only with the Suzuki partner and the small car), with an "Our estimate:" fallback elsewhere.
 - Wording: d5 says suppliers upgraded their "technology".
+
+## Credits update (2026-10-28)
+- Only the credits line changed (the image-source wording was removed). No story text changed. Re-stamped.

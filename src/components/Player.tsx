@@ -343,7 +343,7 @@ export function DecisionView({
   return (
     <div className="flex flex-1 flex-col gap-4">
       <div className="flex items-center gap-3">
-        {media && <MediaView media={media} className="size-20 shrink-0 !rounded-2xl" kenBurns={false} label={false} />}
+        {media && <MediaView media={media} className="size-20 shrink-0 !rounded-2xl" kenBurns={false} />}
         <div className="min-w-0">
           <YearChip year={year} />
           <p className="mt-1 text-[13px] font-black uppercase tracking-[.12em] text-brand">Your call</p>

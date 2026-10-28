@@ -1,5 +1,5 @@
 # Fact-check: apple-1997-comeback
-checked-sha256: 9a160410103e76e83048ea85279f41784b3f9b0da58f7ce496f19e23fa602e2c
+checked-sha256: 5e17ba9937cf0bf17720f2f20ebee1e64a9c1971f3a7b708603a36f91de8bf0c
 Checked: 2026-10-27 · by: independent fact-check agent
 
 ## Sources opened
@@ -107,3 +107,6 @@ Fixes needed: (1) d1.setup/intro: Copland was officially cancelled in August 199
 ## Fixes applied (2026-10-27)
 - Every open claim above was fixed in hotseat.json as noted on its line.
 - Wording: the hook says "hundreds of millions" (the 1996 loss was $816M); Microsoft's browser "would become" the default; realHistory says Apple "sold Microsoft $150 million of shares"; the December 1998 quarter says "made a profit" instead of $152M, which included a one-off ARM share gain.
+
+## Credits update (2026-10-28)
+- Only the credits line changed (the image-source wording was removed). No story text changed. Re-stamped.
