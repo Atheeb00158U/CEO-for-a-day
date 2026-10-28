@@ -2,8 +2,8 @@
   "id": "apple-1997-comeback",
   "company": "Apple",
   "title": "Back from the edge",
-  "hook": "Your company is losing hundreds of millions of dollars. Fans are leaving. Can you save it?",
-  "role": "You run Apple, 1996 to 1998",
+  "hook": "Your company is losing hundreds of millions of dollars, and its fans are leaving. Can you save it?",
+  "role": "You lead Apple, 1996 to 1998",
   "years": "1996–1998",
   "cover": "img:ap_cover",
   "emblem": "img:ap_emblem",
@@ -32,8 +32,8 @@
       "type": "scene",
       "year": "1996",
       "media": "img:ap_intro",
-      "text": "It is late 1996. You run Apple, the maker of the Mac computer. In the year to September 1996, Apple lost $816 million. For years it has promised new software to run the Mac, and that software is still not ready.",
-      "next": "d1"
+      "next": "d1",
+      "text": "Late 1996. You are running Apple, the maker of the Mac, and it has just lost $816 million in a single year. Mac sales keep falling, and the board wants a plan before buyers give up on the Mac for good."
     },
     "d1": {
       "id": "d1",
@@ -41,13 +41,13 @@
       "year": "1996",
       "title": "The missing software",
       "media": "img:ap_d1",
-      "setup": "The Mac needs a modern operating system, the main software that runs a computer. Your own project, called Copland, has been shelved after years of delays. Be, a young company, has fast new software, but it is still being tested. NeXT, the company Apple's co-founder started in 1985, has mature software that is good at networks and at running many programs at once.",
+      "setup": "The heart of the problem is the Mac's operating system, the main program that runs the computer. It is old, and Apple's own new one, Copland, was years late, and Apple has put it on hold. Be, a young company, has fast new software that is still being tested. NeXT, the company Apple's co-founder started in 1985, has software that is older but proven.",
       "question": "Where do you get the Mac's new software?",
-      "advisor": "You can't sell tomorrow's computers on yesterday's software. And you can't wait much longer.",
+      "advisor": "Whatever we choose, we are betting the company on it. And every month we wait, more buyers move to Windows.",
       "options": [
         {
           "id": "copland",
-          "label": "Restart Copland and give your own team about 18 more months.",
+          "label": "Restart Copland and give your team about 18 more months. You keep control, but you lose time.",
           "grade": "bad",
           "effect": {
             "profit": -10,
@@ -57,10 +57,10 @@
           },
           "next": "scene1997",
           "media": "img:ap_d1_copland",
-          "outcome": "Our estimate: the team works hard, but the software keeps slipping. Buyers are tired of promises, and rivals keep moving while you wait.",
-          "why": "Apple had already broken many promises about Copland. Giving a late project more time rarely makes it early.",
-          "better": "Buy software that already works, and spend your time making it a great Mac.",
-          "takeaway": "In 1996 you gave a late project more time instead of finding something that already worked.",
+          "outcome": "Your engineers get their 18 months. But the deadlines keep slipping, and every month the Mac falls further behind Windows.",
+          "why": "Copland had already slipped for years. Giving a late project more time left Apple with nothing new to sell.",
+          "better": "Buy software that already works, even if it is not perfect, and build the next Mac on it.",
+          "takeaway": "In 1996 you gave a late project more time instead of buying something that already worked.",
           "traits": {
             "horizon": -1,
             "risk": -1,
@@ -69,7 +69,7 @@
         },
         {
           "id": "next",
-          "label": "Buy NeXT and bring Apple's co-founder back to help.",
+          "label": "Buy NeXT for $400 million. It costs the most, but its software already works.",
           "grade": "great",
           "real": true,
           "effect": {
@@ -79,9 +79,9 @@
           },
           "next": "scene1997",
           "media": "img:ap_d1_next",
-          "outcome": "On 20 December 1996, Apple agreed to buy NeXT for $400 million. Apple said NeXT's software was the clear choice for the next Mac system. Apple's co-founder came back as an adviser to the CEO.",
-          "why": "You bought software that was already mature, and you got back a founder who knew Apple and had built a company since.",
-          "takeaway": "In 1996 you bought a working solution and brought back people who knew how to build.",
+          "outcome": "On 20 December 1996 you agree to buy NeXT for $400 million. Its software will become the heart of the next Mac system, and Apple's co-founder, who started NeXT, comes back to Apple as an adviser.",
+          "why": "You bought software that already worked, along with the people who knew how to use it, including the man who started Apple.",
+          "takeaway": "In 1996 you bought working software and the people behind it.",
           "traits": {
             "horizon": 1,
             "risk": 1,
@@ -90,7 +90,7 @@
         },
         {
           "id": "be",
-          "label": "Buy Be. Its software is fast but still in testing, and it wants $300 million.",
+          "label": "Buy Be for about $300 million. Its software is fast and modern, but still being tested.",
           "grade": "ok",
           "effect": {
             "profit": -10,
@@ -99,10 +99,10 @@
           },
           "next": "scene1997",
           "media": "img:ap_d1_be",
-          "outcome": "Our estimate: you get clever new software and a small, bright team. But it needs years of work before ordinary buyers can use it, and the price is high for a young company.",
-          "why": "Be's software was promising, but not finished. You paid a big price for more waiting.",
-          "better": "Buy software that is already proven, so your team can spend its time on the Mac, not on finishing someone else's work.",
-          "takeaway": "In 1996 you bought a promise instead of a finished product.",
+          "outcome": "You buy Be. Its software is quick, but it needs years more work before it can run every Mac, and the Mac keeps falling behind while you wait.",
+          "why": "Be's software was exciting, but unfinished. You paid for a promise when Apple needed something it could ship.",
+          "better": "Choose the software that is already finished and tested, even if it costs more.",
+          "takeaway": "In 1996 you paid for fast software that wasn't ready.",
           "traits": {
             "horizon": 1,
             "risk": 1,
@@ -116,18 +116,24 @@
       "type": "scene",
       "year": "1997",
       "media": "img:ap_1997",
+      "next": "d2",
       "text": [
         {
           "when": {
             "flags": ["next"]
           },
-          "text": "It is July 1997. Apple is still losing money. The CEO who bought NeXT resigns after 18 months. The money chief runs things day to day, and the returning co-founder gets a bigger role advising the board. Now you are the one making the calls."
+          "text": "July 1997. Apple is still losing money, and the CEO who signed the NeXT deal resigns after 18 months. The returning co-founder's role grows fast, and from here on, you play him: the calls are now yours."
         },
         {
-          "text": "Our estimate: it is mid-1997. Your new software is still far from ready, and the losses keep coming. The board replaces the CEO, and now you are the one making the calls."
+          "when": {
+            "flags": ["copland"]
+          },
+          "text": "July 1997. Copland is still not ready, Apple is still losing money, and the board is losing patience. You keep your job, but only just."
+        },
+        {
+          "text": "July 1997. Be's software is still not ready for the Mac, Apple is still losing money, and the board is losing patience. You keep your job, but only just."
         }
-      ],
-      "next": "d2"
+      ]
     },
     "d2": {
       "id": "d2",
@@ -135,13 +141,13 @@
       "year": "1997",
       "title": "Deal with the rival?",
       "media": "img:ap_d2",
-      "setup": "It is August 1997, and Apple is losing money. For years Apple and Microsoft have fought in court over how the Mac looks. But Microsoft has also made software for the Mac since its early days, including its Office programs. Now Microsoft is ready to make peace and invest in Apple.",
+      "setup": "For years Apple has fought Microsoft in court over how the Mac looks. Yet Microsoft also makes Office for the Mac, and many buyers would leave if it stopped. Now Microsoft offers to end the fight and put $150 million into Apple.",
       "question": "What do you do about Microsoft?",
-      "advisor": "Your fans see Microsoft as the enemy. Your bank account may see it differently.",
+      "advisor": "Our fans see Microsoft as the enemy. But they also use its Office on their Macs every day.",
       "options": [
         {
           "id": "fight",
-          "label": "Refuse. Keep fighting in court and build your own office software.",
+          "label": "Keep fighting in court. A win could make Microsoft pay, and your fans stay loyal.",
           "grade": "bad",
           "effect": {
             "profit": -10,
@@ -151,10 +157,10 @@
           },
           "next": "d3",
           "media": "img:ap_d2_fight",
-          "outcome": "Our estimate: fans cheer, but lawyers cost money, and businesses worry that their work software may not run on Macs next year. Some of them stop buying.",
-          "why": "You fought an old war while your company was running out of money. Pride does not pay salaries.",
-          "better": "Make peace, take the money and the promise of software, and spend your energy on great products.",
-          "takeaway": "In 1997 you chose an old fight over a deal that would have helped you survive.",
+          "outcome": "The court fight drags on. Microsoft goes quiet about new Office versions for the Mac, and schools and offices start asking if the Mac has a future.",
+          "why": "Pride won the day, but the Mac needed Office far more than Apple needed to win in court.",
+          "better": "End the fight, take the money, and lock in Office for the Mac.",
+          "takeaway": "In 1997 you kept fighting a rival whose software your buyers needed.",
           "traits": {
             "horizon": -1,
             "risk": 1,
@@ -163,7 +169,7 @@
         },
         {
           "id": "bank",
-          "label": "Say no to Microsoft. Raise money by borrowing or selling new shares.",
+          "label": "Raise money by selling shares or borrowing, and stay free of your biggest rival.",
           "grade": "ok",
           "effect": {
             "profit": -5,
@@ -172,10 +178,10 @@
           },
           "next": "d3",
           "media": "img:ap_d2_bank",
-          "outcome": "Our estimate: you raise some cash, but at a high price, because lenders and investors know you are losing money. The court fight goes on, and buyers still wonder about Mac software.",
-          "why": "Cash helps, but it does not end the fight or calm buyers who need their work software.",
-          "better": "Take the deal that brings cash, peace and software together.",
-          "takeaway": "In 1997 you raised money but left the bigger problem unsolved.",
+          "outcome": "You raise the money, but it costs a lot, because lenders can see the losses. The fight with Microsoft goes on, and so do the doubts about Office.",
+          "why": "You found cash, but at a high price, and the bigger risk, losing Office, was still there.",
+          "better": "Take the deal that brings both money and a promise of Office.",
+          "takeaway": "In 1997 you paid a high price for money and left the Office risk open.",
           "traits": {
             "horizon": 0,
             "risk": 0,
@@ -184,7 +190,7 @@
         },
         {
           "id": "peace",
-          "label": "Make peace: take Microsoft's $150 million and its promise of Mac software.",
+          "label": "Take the deal. You get money and Office for years, but your fans may feel betrayed.",
           "grade": "great",
           "real": true,
           "effect": {
@@ -194,9 +200,19 @@
           },
           "next": "d3",
           "media": "img:ap_d2_peace",
-          "outcome": "On 6 August 1997 at Macworld Boston, Apple and Microsoft made a deal. Microsoft bought $150 million of Apple shares with no votes. The two shared their patents, Microsoft promised new Office versions for the Mac, and its web browser would become the Mac's default. Many fans in the hall booed. But Apple's share price rose 35% that day.",
-          "why": "You put the company's survival above old pride. You got cash, peace and the software your buyers needed.",
-          "takeaway": "In 1997 you made peace with a rival to save your company.",
+          "outcome": [
+            {
+              "when": {
+                "flags": ["next"]
+              },
+              "text": "On 6 August 1997 at Macworld Boston, you announce the deal. Microsoft buys $150 million of Apple shares, the long court fight ends, and Office keeps coming to the Mac. Part of the crowd boos, but Apple's share price jumps 35% that day."
+            },
+            {
+              "text": "You sign the deal. Microsoft buys $150 million of Apple shares, the long court fight ends, and Office keeps coming to the Mac. Some fans are angry, but investors are relieved."
+            }
+          ],
+          "why": "You put the Mac's future ahead of an old fight. The money helped, but the promise of Office mattered even more.",
+          "takeaway": "In 1997 you made peace with a rival to keep your customers' key software.",
           "traits": {
             "horizon": 1,
             "risk": 1,
@@ -216,18 +232,30 @@
           "when": {
             "flags": ["next"]
           },
-          "text": "In September 1997 the board makes the returning co-founder interim CEO. You look at the product list. Apple sells dozens of Mac desktops, laptops and servers, plus printers, cameras and a hand-held computer. Few of them make money. Other companies also sell copies of the Mac, called clones, and pay Apple only $80 for each one."
+          "text": "September 1997. The board makes you interim CEO. You look at the product list: dozens of Macs, plus printers, cameras and a hand-held computer called the Newton, and few of them make money. Sales of Macs and Mac copies have fallen by almost a fifth in two years. Clone makers sell copies of the Mac and pay Apple just $80 for each one."
         },
         {
-          "text": "You look at the product list. Apple sells dozens of Mac desktops, laptops and servers, plus printers, cameras and a hand-held computer. Few of them make money. Other companies also sell copies of the Mac, called clones, and pay Apple only $80 for each one."
+          "when": {
+            "flags": ["fight"]
+          },
+          "text": "Money is tighter than ever. You look at the product list: dozens of Macs, plus printers, cameras and a hand-held computer, and few of them make money. Sales of Macs and Mac copies have fallen by almost a fifth in two years. Clone makers sell copies of the Mac and pay Apple just $80 for each one."
+        },
+        {
+          "when": {
+            "flags": ["bank"]
+          },
+          "text": "The new money will not last long. You look at the product list: dozens of Macs, plus printers, cameras and a hand-held computer, and few of them make money. Sales of Macs and Mac copies have fallen by almost a fifth in two years. Clone makers sell copies of the Mac and pay Apple just $80 for each one."
+        },
+        {
+          "text": "You look at the product list: dozens of Macs, plus printers, cameras and a hand-held computer, and few of them make money. Sales of Macs and Mac copies have fallen by almost a fifth in two years. Clone makers sell copies of the Mac and pay Apple just $80 for each one."
         }
       ],
       "question": "What do you do with all these products?",
-      "advisor": "Even shop staff can't explain which Mac to buy. If they can't, how can a customer?",
+      "advisor": "Even shop staff can't explain which Mac to buy. But every product we cut has buyers, and people who build it.",
       "options": [
         {
           "id": "grid",
-          "label": "Cut to just four: a home and a pro model, each as a desktop and a laptop. End the clones.",
+          "label": "Cut to four Macs, home and pro, desktop and laptop, and end the clones. Thousands lose jobs.",
           "grade": "great",
           "real": true,
           "effect": {
@@ -237,9 +265,19 @@
           },
           "next": "d4",
           "media": "img:ap_d3_grid",
-          "outcome": "Apple cut more than 70% of its products down to a simple grid of four boxes. It stopped letting others copy the Mac, and paid $10 million in cash and $100 million in shares for the main Mac business of Power Computing, a clone maker. Over 3,000 jobs went. In February 1998 it also stopped its hand-held Newton.",
-          "why": "Focus is saying no. Four great products are easier to build, sell and explain than dozens of weak ones.",
-          "takeaway": "In 1997 you cut to a few products you could make great.",
+          "outcome": [
+            {
+              "when": {
+                "flags": ["next", "peace"]
+              },
+              "text": "You cut more than 70% of the products, down to a grid of four boxes. Apple stops licensing the Mac and buys the main Mac business of Power Computing, a clone maker. More than 3,000 jobs go, and early in 1998 the Newton goes too."
+            },
+            {
+              "text": "You cut the list down to four Macs and end the clone deals. It is painful, and thousands of jobs go, but costs fall fast and buyers can finally understand what Apple sells."
+            }
+          ],
+          "why": "You stopped spending on things that didn't sell and put all your effort into a few products people could understand.",
+          "takeaway": "In 1997 you cut to a few products and did them well.",
           "traits": {
             "horizon": 1,
             "risk": 1,
@@ -248,7 +286,7 @@
         },
         {
           "id": "keep",
-          "label": "Keep every product and sign up more clone makers to win market share.",
+          "label": "Keep every product and add more clone makers. More Macs in use could bring more fans.",
           "grade": "bad",
           "effect": {
             "profit": -10,
@@ -258,10 +296,10 @@
           },
           "next": "d4",
           "media": "img:ap_d3_keep",
-          "outcome": "Our estimate: more Macs are sold, but more of them are cheap clones that earn you $80 each. Your own teams are spread thin, and your warehouses fill with products few people want.",
-          "why": "You chased size instead of profit. Clones sold to your own customers, and too many products split your best people.",
-          "better": "Cut to a few products you can make great, and stop others selling cheaper copies of your best idea.",
-          "takeaway": "In 1997 you kept everything, so nothing got your full attention.",
+          "outcome": "Sales hold up for a while, but every clone sold is a Mac that Apple didn't sell, and the losses keep growing.",
+          "why": "The clones paid Apple only $80 a machine, and the long product list kept wasting money.",
+          "better": "Cut to a few products people can understand, and stop the clones.",
+          "takeaway": "In 1997 you kept everything and let the clones eat your sales.",
           "traits": {
             "horizon": -1,
             "risk": -1,
@@ -270,7 +308,7 @@
         },
         {
           "id": "trim",
-          "label": "Cut a few of the weakest products, but keep the clones.",
+          "label": "Cut a few weak products, but keep the clones and the fees they pay.",
           "grade": "ok",
           "effect": {
             "profit": 5,
@@ -279,10 +317,10 @@
           },
           "next": "d4",
           "media": "img:ap_d3_trim",
-          "outcome": "Our estimate: costs fall a little, but the product list is still confusing, and clone makers keep selling against you at lower prices.",
-          "why": "A small trim feels safe, but it does not fix the real problem: too many products and copies of your own.",
-          "better": "Make a deep cut to a few clear products, and end the clone deals.",
-          "takeaway": "In 1997 you trimmed when the company needed a deep cut.",
+          "outcome": "The list gets a little shorter, but buyers are still confused, and the clone makers keep taking your best customers.",
+          "why": "A small trim felt safe, but it fixed neither the confusing list nor the clones.",
+          "better": "Make the deep cut: a few clear products, and no more clones.",
+          "takeaway": "In 1997 you trimmed when Apple needed a deep cut.",
           "traits": {
             "horizon": 0,
             "risk": -1,
@@ -297,35 +335,23 @@
       "year": "1997",
       "title": "What does Apple stand for?",
       "media": "img:ap_d4",
-      "setup": "Sales of Mac computers have fallen by almost 20% in two years, and Apple is losing money. Money is tight, but the ad agency that made Apple's famous 1984 ad is ready to work with you again.",
-      "question": "How do you talk to buyers now?",
-      "advisor": "People don't just buy a computer. They buy what it says about them.",
-      "options": [
+      "setup": [
         {
-          "id": "cut_ads",
-          "label": "Stop almost all advertising to save cash.",
-          "grade": "bad",
-          "effect": {
-            "profit": 5,
-            "future": -10,
-            "trust": -1,
-            "flags": ["cut_ads"]
+          "when": {
+            "flags": ["keep"]
           },
-          "next": "scene1998",
-          "media": "img:ap_d4_cut",
-          "outcome": "Our estimate: you save money this year, but silence looks like surrender. Shops give your computers less space, and buyers decide Apple really is finished.",
-          "why": "When people think you are dying, silence proves them right.",
-          "better": "Spend on a clear message about who you are, even when money is tight.",
-          "takeaway": "In 1997 you went quiet just when buyers needed a reason to believe.",
-          "traits": {
-            "horizon": -1,
-            "risk": -1,
-            "disrupt": -1
-          }
+          "text": "With so many products, even your own people can't say what Apple is about, and buyers have heard two years of bad news. Money is tight, but the agency behind Apple's famous 1984 ad is ready to work with you again."
         },
         {
+          "text": "Buyers have heard two years of bad news about Apple, and money is tight. But the agency behind Apple's famous 1984 ad is ready to work with you again."
+        }
+      ],
+      "question": "How do you talk to buyers now?",
+      "advisor": "Ads won't fix a bad product. But if people stop believing in Apple, even a good product won't sell.",
+      "options": [
+        {
           "id": "think",
-          "label": "Run a bold brand campaign about Apple's values, not about specs.",
+          "label": "Run ads about what Apple stands for. They cost a lot and don't sell any one Mac.",
           "grade": "great",
           "real": true,
           "effect": {
@@ -335,9 +361,19 @@
           },
           "next": "scene1998",
           "media": "img:ap_d4_think",
-          "outcome": "On 28 September 1997, Apple's new \"Think different\" ads appeared on US TV, in the first network showing of the film Toy Story. They were made by the same agency as the 1984 ad. Apple said it was the start of a bigger push to show it was going back to its core values.",
-          "why": "You reminded people why they loved Apple before you asked them to buy again.",
-          "takeaway": "In 1997 you told people what Apple stood for, not just what it sold.",
+          "outcome": [
+            {
+              "when": {
+                "flags": ["next", "peace", "grid"]
+              },
+              "text": "On 28 September 1997, your \"Think different\" ads appear on US TV, during the first network showing of the film Toy Story. They come from the same agency as the 1984 ad, and they talk about Apple's values, not its chips."
+            },
+            {
+              "text": "Your new ads talk about the people who use a Mac, not about chips. Slowly, the talk about Apple changes from whether it will survive to what it will do next."
+            }
+          ],
+          "why": "You reminded people why they loved Apple, at the moment they had stopped believing in it.",
+          "takeaway": "In 1997 you sold what Apple stood for, not its speed.",
           "traits": {
             "horizon": 1,
             "risk": 1,
@@ -346,7 +382,7 @@
         },
         {
           "id": "specs",
-          "label": "Run ads that compare Mac speed and price with Windows PCs.",
+          "label": "Run ads showing that a Mac beats a Windows PC on speed and price.",
           "grade": "ok",
           "effect": {
             "profit": 0,
@@ -355,14 +391,36 @@
           },
           "next": "scene1998",
           "media": "img:ap_d4_specs",
-          "outcome": "Our estimate: some buyers notice the numbers, but rivals answer with their own numbers next month. Apple sounds like just another computer seller.",
-          "why": "Fighting on specs plays the rival's game, where there are many more players and lower prices.",
-          "better": "Remind people what makes Apple different, then back it up with great products.",
-          "takeaway": "In 1997 you talked numbers when buyers needed a reason to care.",
+          "outcome": "The ads make their case, but buyers have heard speed claims from everyone. Apple starts to sound like one more PC maker.",
+          "why": "Comparing chips was a fight on Windows' ground, and it didn't fix Apple's damaged name.",
+          "better": "Remind people what Apple stands for, then give them a product that proves it.",
+          "takeaway": "In 1997 you sold specs when Apple needed belief.",
           "traits": {
             "horizon": 0,
             "risk": 0,
             "disrupt": 0
+          }
+        },
+        {
+          "id": "cut_ads",
+          "label": "Stop almost all advertising, and save the cash for the products.",
+          "grade": "bad",
+          "effect": {
+            "profit": 5,
+            "future": -10,
+            "trust": -1,
+            "flags": ["cut_ads"]
+          },
+          "next": "scene1998",
+          "media": "img:ap_d4_cut",
+          "outcome": "You save money, but Apple goes quiet just when people are asking whether it will survive, and shops push buyers toward Windows PCs.",
+          "why": "Going silent looked like giving up. A brand in trouble needs to speak up, not disappear.",
+          "better": "Spend on one clear message about what Apple stands for.",
+          "takeaway": "In 1997 you went silent when Apple most needed to be heard.",
+          "traits": {
+            "horizon": -1,
+            "risk": -1,
+            "disrupt": -1
           }
         }
       ]
@@ -372,18 +430,30 @@
       "type": "scene",
       "year": "1998",
       "media": "img:ap_1998",
+      "next": "d5",
       "text": [
         {
           "when": {
-            "flags": ["next", "peace", "grid"]
+            "flags": ["next", "peace", "grid", "think"]
           },
-          "text": "In October 1997, Apple reported a loss of $1 billion for the year. Sales fell 28%, to $7.1 billion. Much of the loss was one-time costs for reorganising and for buying NeXT and the clone business. Then, in the three months to December 1997, Apple made a profit of $47 million."
+          "text": "In October 1997 Apple reports a loss of $1 billion for the year, much of it one-time costs for the clean-up. But the cuts start working, and in the three months to December, Apple makes a profit of $47 million. The home desktop box in your grid still has no product."
         },
         {
-          "text": "Our estimate: it is early 1998. Apple is still fighting to stop the losses, and the board wants proof that ordinary buyers will come back."
+          "when": {
+            "flags": ["grid"]
+          },
+          "text": "The cuts hurt, but costs fall fast and the losses begin to shrink. The home desktop box in your grid still has no product."
+        },
+        {
+          "when": {
+            "flags": ["keep"]
+          },
+          "text": "1998. You still sell dozens of products, and the losses keep coming. Apple needs one computer that people actually want."
+        },
+        {
+          "text": "1998. Apple is a little smaller and the losses are shrinking, but it still has nothing that excites home buyers."
         }
-      ],
-      "next": "d5"
+      ]
     },
     "d5": {
       "id": "d5",
@@ -391,45 +461,13 @@
       "year": "1998",
       "title": "A computer for everyone",
       "media": "img:ap_d5",
-      "setup": [
-        {
-          "when": {
-            "flags": ["grid"]
-          },
-          "text": "Your four-box plan has an empty box: a desktop for homes and schools. Apple needs something that brings in new buyers, not just old fans."
-        },
-        {
-          "text": "Apple needs a desktop for homes and schools, something that brings in new buyers, not just old fans."
-        }
-      ],
+      "setup": "Apple needs a desktop for homes and schools, one that brings in new buyers, not just old fans. At the same time, more and more people want a computer for one reason: to get on the internet.",
       "question": "What kind of home computer do you build?",
-      "advisor": "Don't build what the market already has. Build what it doesn't know it wants yet.",
+      "advisor": "Plain and cheap is safe, because buyers know what they are getting. Something new could be a big hit, or a very public flop.",
       "options": [
         {
-          "id": "loyal",
-          "label": "Skip the home market. Sell only to designers and schools who already love the Mac.",
-          "grade": "bad",
-          "effect": {
-            "profit": 0,
-            "future": -10,
-            "trust": -1,
-            "flags": ["loyal"]
-          },
-          "next": "ending_route",
-          "media": "img:ap_d5_loyal",
-          "outcome": "Our estimate: your loyal buyers stay, but there are not enough of them. Each year the Mac becomes a smaller club, and app makers pay less attention to it.",
-          "why": "A company that only sells to its fans slowly shrinks. You need new buyers to grow.",
-          "better": "Build a simple, striking computer that brings first-time buyers to the Mac.",
-          "takeaway": "In 1998 you served old fans and gave up on new buyers.",
-          "traits": {
-            "horizon": -1,
-            "risk": -1,
-            "disrupt": -1
-          }
-        },
-        {
           "id": "beige",
-          "label": "Make a cheap beige Mac that looks like any other PC.",
+          "label": "Make a cheap, plain Mac that looks like any PC. It feels safe, but it is easy to ignore.",
           "grade": "ok",
           "effect": {
             "profit": 5,
@@ -438,10 +476,10 @@
           },
           "next": "ending_route",
           "media": "img:ap_d5_beige",
-          "outcome": "Our estimate: it sells a little, but it gets lost on shop shelves full of beige boxes, and cheap PCs still win on price.",
-          "why": "Copying the rival's look means fighting only on price, where you are weakest.",
-          "better": "Make a computer that looks and feels different, and is easy to get online with.",
-          "takeaway": "In 1998 you made a computer that looked like everyone else's.",
+          "outcome": "It sells a little, mostly to Mac fans. In a shop full of beige boxes, nobody else notices it.",
+          "why": "Copying the PC makers gave buyers no reason to switch to a Mac.",
+          "better": "Build something new and simple that first-time buyers will want to own.",
+          "takeaway": "In 1998 you built a safe computer that nobody noticed.",
           "traits": {
             "horizon": 0,
             "risk": -1,
@@ -450,7 +488,7 @@
         },
         {
           "id": "imac",
-          "label": "Build a simple all-in-one Mac made for the internet, in a bright see-through case.",
+          "label": "Build a bright, see-through, all-in-one Mac for the internet, with no floppy drive.",
           "grade": "great",
           "real": true,
           "effect": {
@@ -460,13 +498,45 @@
           },
           "next": "ending_route",
           "media": "img:ap_d5_imac",
-          "outcome": "Apple showed the iMac on 6 May 1998, at $1,299. It had a see-through case, was built for the internet and dropped the floppy disk drive. It reached shops on 15 August 1998, and many stores sold out. In six weeks Apple sold 278,000, the fastest-selling Mac ever. Almost 3 in 10 early buyers had never owned a computer before.",
-          "why": "You built something new, simple and easy to love, and it brought people to the Mac who had never owned a computer.",
-          "takeaway": "In 1998 you built a product that looked like the future and was easy to start using.",
+          "outcome": [
+            {
+              "when": {
+                "flags": ["next", "peace", "grid", "think"]
+              },
+              "text": "On 6 May 1998 you show the iMac, at $1,299. It has a see-through case, it is built for the internet, and it has no floppy drive. It reaches shops on 15 August and many sell out. In six weeks you sell 278,000, and almost 3 in 10 early buyers have never owned a computer."
+            },
+            {
+              "text": "Your bright, simple Mac is a surprise hit with first-time buyers, although some old fans miss the floppy drive."
+            }
+          ],
+          "why": "You built something new for people who had never owned a computer, and made the internet easy for them.",
+          "takeaway": "In 1998 you built a new kind of computer for first-time buyers.",
           "traits": {
             "horizon": 1,
             "risk": 1,
             "disrupt": 1
+          }
+        },
+        {
+          "id": "loyal",
+          "label": "Skip home buyers. Serve the designers and schools who already love the Mac.",
+          "grade": "bad",
+          "effect": {
+            "profit": 0,
+            "future": -10,
+            "trust": -1,
+            "flags": ["loyal"]
+          },
+          "next": "ending_route",
+          "media": "img:ap_d5_loyal",
+          "outcome": "Your loyal users stay, but they are a shrinking group, and the big wave of new home buyers goes to Windows.",
+          "why": "Old fans alone could not pay for Apple's future. The growth was with new buyers.",
+          "better": "Build a computer that brings in people who have never owned a Mac.",
+          "takeaway": "In 1998 you served your fans and missed the new buyers.",
+          "traits": {
+            "horizon": -1,
+            "risk": -1,
+            "disrupt": -1
           }
         }
       ]
@@ -503,10 +573,10 @@
           "when": {
             "flags": ["next", "peace", "grid", "think", "imac"]
           },
-          "text": "In the year to September 1998, Apple made a profit of $309 million, its first profitable year since 1995. Its cash grew to $2.3 billion. In the three months to December 1998 it sold 519,000 iMacs and made a profit. It was Apple's fifth profitable quarter in a row."
+          "text": "In the year to September 1998, Apple makes a profit of $309 million, its first profitable year since 1995, and its cash grows to $2.3 billion. In the last three months of 1998 it sells 519,000 iMacs, and makes a profit for the fifth quarter in a row."
         },
         {
-          "text": "Our estimate: you fixed the software, focused the products and gave buyers a reason to believe. Apple is back to making money and has a clear future."
+          "text": "You fixed the software, focused the products and gave buyers a reason to believe again. Apple is making money and has a clear future."
         }
       ],
       "bonus": 15
@@ -517,7 +587,23 @@
       "tier": "survivor",
       "title": "Still standing",
       "media": "img:ap_survivor",
-      "text": "Our estimate: Apple survives, but it stays small and stuck. It makes a little money, yet buyers and app makers see it as a side choice, not the future.",
+      "text": [
+        {
+          "when": {
+            "flags": ["copland"]
+          },
+          "text": "Apple survives, but it is stuck with old software it never managed to replace. It makes a little money, yet buyers and software makers see the Mac as a side choice, not the future."
+        },
+        {
+          "when": {
+            "flags": ["be"]
+          },
+          "text": "Apple survives, but Be's software takes years to finish, and the Mac stays behind. It makes a little money, yet buyers see it as a side choice, not the future."
+        },
+        {
+          "text": "Apple survives, but it stays small and stuck. It makes a little money, yet buyers and software makers see it as a side choice, not the future."
+        }
+      ],
       "bonus": 5
     },
     "collapse": {
@@ -526,7 +612,7 @@
       "tier": "collapse",
       "title": "The lights go out",
       "media": "img:ap_collapse",
-      "text": "Our estimate: the losses never stop and the cash runs out. Apple is sold off in pieces, and the Mac becomes a memory.",
+      "text": "The losses never stop, and the cash runs out. Apple is sold off in pieces, and the Mac becomes a memory.",
       "bonus": 0
     },
     "fired": {
@@ -535,12 +621,12 @@
       "tier": "fired",
       "title": "The board lets you go",
       "media": "img:ap_fired",
-      "text": "Our estimate: three costly calls in a row. The board has lost its trust in you and asks someone else to save Apple.",
+      "text": "The board has seen enough. After three costly calls, it asks someone else to save Apple.",
       "bonus": 0
     }
   },
   "realEnding": "legend",
-  "realHistory": "Apple lost $816 million in 1996 and $1 billion in 1997. In December 1996 it bought NeXT for $400 million, and its co-founder came back. In 1997 it sold Microsoft $150 million of shares and ended their fight, cut more than 70% of its products, ended the Mac clones and launched the \"Think different\" ads. The iMac came out in 1998. In the year to September 1998 Apple made $309 million, its first profitable year since 1995.",
+  "realHistory": "Apple lost $816 million in 1996 and $1 billion in 1997. In December 1996 it bought NeXT for $400 million, and its co-founder came back, becoming interim CEO in September 1997. In 1997 Microsoft bought $150 million of Apple shares and their court fight ended. Apple cut more than 70% of its products, ended the Mac clones and launched the \"Think different\" ads. The iMac came out in 1998. In the year to September 1998 Apple made $309 million, its first profitable year since 1995.",
   "sources": [
     {
       "label": "Apple Computer, Inc. Agrees to Acquire NeXT Software (MacTech, 1996)",

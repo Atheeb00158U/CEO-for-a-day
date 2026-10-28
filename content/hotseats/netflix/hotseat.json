@@ -2,7 +2,7 @@
   "id": "netflix",
   "company": "Netflix",
   "title": "Kill your own business",
-  "hook": "Your DVD business is booming. Do you bet on streaming?",
+  "hook": "You rent DVDs by post and face a giant. Can you build what comes next before it is too late?",
   "role": "You run Netflix, 2000 to 2011",
   "years": "2000–2011",
   "cover": "img:nf_cover",
@@ -32,8 +32,16 @@
       "type": "scene",
       "year": "2000",
       "media": "img:nf_intro",
-      "text": "It is 2000. You run Netflix, a small company that rents DVDs by post. You are losing money. Meanwhile Blockbuster, the giant of movie rental, earns about $800 million a year from late fees alone.",
-      "next": "d1"
+      "next": "s_giant",
+      "text": "It is 2000, and you run Netflix, a small company that rents DVDs by post. People choose films on your website, the discs arrive in the mail, and customers love the service. But you are losing money, and you need a way to keep going."
+    },
+    "s_giant": {
+      "id": "s_giant",
+      "type": "scene",
+      "year": "2000",
+      "media": "img:nf_giant",
+      "next": "d1",
+      "text": "The giant of film rental is Blockbuster, with shops in towns all over America. It earns about $800 million a year from late fees alone. Your members pay one monthly fee instead, and they never pay a late fee."
     },
     "d1": {
       "id": "d1",
@@ -41,13 +49,13 @@
       "year": "2000",
       "title": "Sell to the giant?",
       "media": "img:nf_d1",
-      "setup": "Money is tight. Blockbuster has stores everywhere and cash to spare. You could ask them to buy you and run their online rental for them.",
+      "setup": "You are losing a lot of money, and the company could fail. You could ask Blockbuster to buy you and let you run its online rentals. You could look for new investors and keep going alone. Or you could cut costs hard and live on what you earn.",
       "question": "What do you do?",
-      "advisor": "There is no shame in looking for a safe harbour. Just don't give up on what you are building.",
+      "advisor": "Selling removes one risk, but it gives someone else control. Staying independent keeps control, but the money problem stays with you.",
       "options": [
         {
           "id": "offer",
-          "label": "Offer to sell Netflix to Blockbuster for $50 million.",
+          "label": "Offer Netflix to Blockbuster for $50 million, and give up control if it says yes.",
           "grade": "ok",
           "real": true,
           "effect": {
@@ -57,9 +65,9 @@
           },
           "next": "scene2006",
           "media": "img:nf_d1_offer",
-          "outcome": "The founders offered to sell Netflix to Blockbuster for $50 million, and Blockbuster said no. Netflix kept growing its flat monthly fee and no-late-fee service, and reached 1 million subscribers within about three years.",
-          "why": "Looking for a buyer was a sensible hedge for a small company losing money. But it could have handed your idea to a company that did not believe in it.",
-          "better": "Raise money from investors who believe in the idea, and keep control of what you are building.",
+          "outcome": "You offer Netflix to Blockbuster for $50 million, and Blockbuster says no. So you keep going alone with your one monthly fee and no late fees, and within about three years, 1 million people have signed up.",
+          "why": "Selling would have handed your best idea to a company that made its money from late fees. Blockbuster's no was luck, not your plan.",
+          "better": "Keep control and raise money from people who believe in a world without late fees.",
           "takeaway": "In 2000 you tried to sell. Luckily the giant said no, and you kept your future.",
           "traits": {
             "horizon": 0,
@@ -69,7 +77,7 @@
         },
         {
           "id": "shrink",
-          "label": "Cut back to a tiny team and wait for better times.",
+          "label": "Cut costs hard and grow only as fast as profits allow. Slower, but no risk of running out.",
           "grade": "bad",
           "effect": {
             "profit": 10,
@@ -79,10 +87,10 @@
           },
           "next": "scene2006",
           "media": "img:nf_d1_shrink",
-          "outcome": "Our estimate: you survive, but slowly. While you wait, others start renting DVDs online too.",
-          "why": "Shrinking a young company saves money but stops the learning that makes it valuable.",
-          "better": "Keep building, and raise money from people who believe in the idea.",
-          "takeaway": "In 2000 you shrank when you should have kept learning.",
+          "outcome": "You cut costs to the bone and grow only with the money you earn. Netflix is safe, but it grows slowly, and every slow month gives Blockbuster more time to copy your idea.",
+          "why": "Living within your means is usually wise, but your idea needed to grow fast before the giant woke up. Saving cash cost you the lead.",
+          "better": "Raise money from people who believe in the idea, and grow while you are ahead.",
+          "takeaway": "In 2000 you played it safe on cash when speed mattered more.",
           "traits": {
             "horizon": -1,
             "risk": -1,
@@ -91,7 +99,7 @@
         },
         {
           "id": "raise",
-          "label": "Stay independent and raise money from investors who believe in it.",
+          "label": "Stay independent and raise money from new investors. You keep control, but cash could run out first.",
           "grade": "great",
           "effect": {
             "profit": -5,
@@ -100,8 +108,8 @@
           },
           "next": "scene2006",
           "media": "img:nf_d1_raise",
-          "outcome": "Our estimate: raising money is hard in a bad year, but you keep control. You keep growing the no-late-fee service that customers love.",
-          "why": "You protected the thing that made you special, a model customers loved, instead of handing it to a rival.",
+          "outcome": "Investors who believe in the idea put in more money. The next few years are hard, but you keep control, and members keep signing up.",
+          "why": "Customers already loved paying one fee with no late fees. Keeping control meant you, not a rival, would decide where that idea went.",
           "takeaway": "In 2000 you kept control of a model customers loved.",
           "traits": {
             "horizon": 1,
@@ -116,8 +124,24 @@
       "type": "scene",
       "year": "2006",
       "media": "img:nf_2006",
-      "text": "It is 2006. Netflix went public in 2002, with over 500,000 subscribers, a $19.95 monthly plan and no late fees. Blockbuster launched its own online service in 2004, and now it lets members return DVDs in its stores. By the end of 2006 you have 6 million subscribers.",
-      "next": "d2"
+      "next": "d2",
+      "text": [
+        {
+          "when": {
+            "flags": ["offered"]
+          },
+          "text": "It is 2006. Netflix went public in 2002, and people still love the one monthly fee with no late fees. Blockbuster now has its own online rentals, and its members can even return discs in its shops, which you can't match. Even so, by the end of the year you have 6 million members."
+        },
+        {
+          "when": {
+            "flags": ["raised"]
+          },
+          "text": "It is 2006. With your investors' money you grew year after year. Blockbuster now has its own online rentals, and its members can return discs in its shops, but your members are loyal, and there are millions of them."
+        },
+        {
+          "text": "It is 2006. Netflix is still small. Blockbuster has built its own online rentals, and its members can return discs in its shops. Your members are loyal, but there aren't many of them."
+        }
+      ]
     },
     "d2": {
       "id": "d2",
@@ -125,13 +149,23 @@
       "year": "2007",
       "title": "Start streaming?",
       "media": "img:nf_d2",
-      "setup": "Your DVD business is strong, with more than 70,000 titles to choose from. Internet speeds are getting better, but watching movies online is still new and clumsy.",
+      "setup": [
+        {
+          "when": {
+            "flags": ["shrunk"]
+          },
+          "text": "You now offer more than 70,000 films on disc, but you have very little money to spare. The internet is getting faster, and some people are starting to watch videos online, although watching a whole film that way is still slow and clumsy."
+        },
+        {
+          "text": "Your DVD business is strong, with more than 70,000 films to choose from. The internet is getting faster, and some people are starting to watch videos online, although watching a whole film that way is still slow and clumsy."
+        }
+      ],
       "question": "What do you do about streaming?",
-      "advisor": "The DVD business is paying the bills. The question is how long it will keep doing that.",
+      "advisor": "Money spent on streaming comes out of the DVD business that pays the bills. But waiting has a cost too, if the way people watch starts to change.",
       "options": [
         {
           "id": "wait",
-          "label": "Wait until internet speeds are better. DVDs are doing fine.",
+          "label": "Put the money into faster DVD delivery and more films while streaming technology improves.",
           "grade": "bad",
           "effect": {
             "profit": 10,
@@ -139,12 +173,12 @@
             "trust": -1,
             "flags": ["waited"]
           },
-          "next": "d3",
+          "next": "scene2010",
           "media": "img:nf_d2_wait",
-          "outcome": "Our estimate: profits look good for a few years, but when streaming takes off, others are ready and you are not.",
-          "why": "Waiting for a technology to be perfect means a rival learns it first.",
-          "better": "Start streaming now, even small, and learn while the DVD business pays the bills.",
-          "takeaway": "In 2007 you waited for the future to be ready instead of getting ready for it.",
+          "outcome": "Your discs arrive faster and members love the bigger choice. But other companies start putting films and shows online, and by the time you begin, you are learning what they already know.",
+          "why": "Making the business that paid the bills even better looked sensible, but it handed the early years of streaming to others. The best time to learn a new business is before you need it.",
+          "better": "Start streaming small while DVDs still pay the bills, and learn as the internet gets faster.",
+          "takeaway": "In 2007 you polished the old business while the new one started without you.",
           "traits": {
             "horizon": -1,
             "risk": -1,
@@ -153,18 +187,18 @@
         },
         {
           "id": "paid",
-          "label": "Launch streaming as a paid extra on top of DVD plans.",
+          "label": "Launch streaming as a paid extra. It earns money, but few may pay for something new.",
           "grade": "ok",
           "effect": {
             "profit": 5,
             "future": 10,
             "flags": ["paid_stream"]
           },
-          "next": "d3",
+          "next": "scene2010",
           "media": "img:nf_d2_paid",
-          "outcome": "Our estimate: a few keen fans pay extra, but most members never try it, so you learn slowly.",
-          "why": "Charging for something new and clumsy keeps most people from trying it.",
-          "better": "Give streaming away free inside existing plans so every member tries it.",
+          "outcome": "Streaming arrives as a paid extra. A few keen members pay for it, but most don't bother, so it grows slowly and you learn little about what people want to watch.",
+          "why": "Charging for something people had never tried kept most of them away, so streaming stayed small.",
+          "better": "Put streaming inside every plan at no extra cost, so every member tries it.",
           "takeaway": "In 2007 you charged for the future before people knew they wanted it.",
           "traits": {
             "horizon": 1,
@@ -174,7 +208,7 @@
         },
         {
           "id": "free",
-          "label": "Add streaming free inside every plan.",
+          "label": "Add streaming free to every plan. It costs you money and earns nothing at first.",
           "grade": "great",
           "real": true,
           "effect": {
@@ -184,8 +218,18 @@
           },
           "next": "scene2010",
           "media": "img:nf_d2_free",
-          "outcome": "In January 2007 Netflix added instant streaming on computers at no extra charge, with about 1,000 titles. How many hours you could watch depended on your plan.",
-          "why": "Making streaming free meant every member tried it. You started moving customers to the future while the DVD business still paid the bills.",
+          "outcome": [
+            {
+              "when": {
+                "flags": ["offered"]
+              },
+              "text": "In January 2007 you add instant streaming to your plans at no extra cost. It is small, with about 1,000 films that play only on computers, and the hours you can watch depend on your plan. But for members, trying it costs nothing."
+            },
+            {
+              "text": "You add streaming to every plan at no extra cost. There isn't much to watch yet, but members try it, because it is free."
+            }
+          ],
+          "why": "Giving streaming away meant millions of members tried it at once, while DVDs kept paying the bills.",
           "takeaway": "In 2007 you gave the future away free so every customer would try it.",
           "traits": {
             "horizon": 1,
@@ -200,8 +244,30 @@
       "type": "scene",
       "year": "2010",
       "media": "img:nf_2010",
-      "text": "It is 2010. Blockbuster has gone bankrupt, and Netflix has 20 million subscribers. In November you added a $7.99 streaming-only plan and raised the price of DVD plans. Netflix made $160 million in profit this year.",
-      "next": "d3"
+      "next": "d3",
+      "text": [
+        {
+          "when": {
+            "flags": ["offered", "free_stream"]
+          },
+          "text": "It is 2010. Blockbuster has gone bankrupt, and Netflix has 20 million members. In November you add a cheap plan that is streaming only, and you raise the price of the DVD plans. The year ends with a healthy profit."
+        },
+        {
+          "when": {
+            "flags": ["free_stream"]
+          },
+          "text": "It is 2010. Blockbuster has gone bankrupt, and your free streaming has made Netflix the name people think of when they want a film at home."
+        },
+        {
+          "when": {
+            "flags": ["paid_stream"]
+          },
+          "text": "It is 2010. Blockbuster has gone bankrupt, and your DVD business is huge. But streaming is still a small paid extra, and new rivals are offering cheap online plans."
+        },
+        {
+          "text": "It is 2010. Blockbuster has gone bankrupt, but you have only just started streaming. Rivals are already online, and your members ask why you are so late."
+        }
+      ]
     },
     "d3": {
       "id": "d3",
@@ -212,20 +278,20 @@
       "setup": [
         {
           "when": {
-            "flags": ["waited"]
+            "flags": ["free_stream"]
           },
-          "text": "Streaming is taking off and you are behind. Every show you offer belongs to someone else, and they can take it away."
+          "text": "Almost everything you stream belongs to film studios and TV networks, and they can raise their prices or take their shows away when a deal ends. Now a new political drama, House of Cards, is looking for a home, and HBO and AMC want it too."
         },
         {
-          "text": "Almost everything you stream belongs to movie studios and TV networks. They can raise their prices or take shows away. A new political drama is looking for a home."
+          "text": "Your streaming is still small, and almost everything in it belongs to film studios and TV networks. Now a new political drama, House of Cards, is looking for a home, and HBO and AMC want it too."
         }
       ],
       "question": "Do you start paying for your own shows?",
-      "advisor": "TV networks usually test a pilot first. You do not have to play by their rules.",
+      "advisor": "A TV network would test one pilot episode first. Two whole seasons is a huge bet on a show nobody has seen.",
       "options": [
         {
           "id": "license",
-          "label": "Keep licensing other people's shows. It is cheaper.",
+          "label": "Spend the money renting many more films and shows instead. More choice for members now.",
           "grade": "bad",
           "effect": {
             "profit": 5,
@@ -235,9 +301,9 @@
           },
           "next": "d4",
           "media": "img:nf_d3_license",
-          "outcome": "Our estimate: costs stay low for a while, but studios raise prices each year and keep their best shows for their own services.",
-          "why": "If everything you sell belongs to someone else, they decide your future.",
-          "better": "Own some of your shows, so you have something no one can take away.",
+          "outcome": "Members get a much bigger library. But the studios notice how much you need them, and the price of every new deal goes up.",
+          "why": "More choice pleased members today, but it left you depending on companies that could become your rivals.",
+          "better": "Own some shows yourself, so members have a reason to stay that nobody can take away.",
           "takeaway": "In 2011 you stayed dependent on suppliers who would one day be rivals.",
           "traits": {
             "horizon": -1,
@@ -247,7 +313,7 @@
         },
         {
           "id": "pilot",
-          "label": "Order a pilot episode first, like TV networks do.",
+          "label": "Ask for one pilot episode first, like the TV networks. Safer, but you may lose the show.",
           "grade": "ok",
           "effect": {
             "profit": -5,
@@ -256,9 +322,9 @@
           },
           "next": "d4",
           "media": "img:nf_d3_pilot",
-          "outcome": "Our estimate: you play it safe, but the show's makers want a full commitment, and a TV network wins the deal.",
-          "why": "Playing by the old rules made you an ordinary bidder. Bold makers want a partner who commits.",
-          "better": "Commit to a full series without a pilot and win the show.",
+          "outcome": "You ask for a pilot first. A rival offers more and takes the show, and the drama everyone ends up talking about goes somewhere else.",
+          "why": "Playing safe by the old rules lost you a show that wanted a bold partner.",
+          "better": "Make the bold offer the networks won't: full seasons, no pilot.",
           "takeaway": "In 2011 you played by the old rules and lost a show that wanted a bold partner.",
           "traits": {
             "horizon": 0,
@@ -268,7 +334,7 @@
         },
         {
           "id": "commit",
-          "label": "Outbid the TV networks and order two full seasons, with no pilot.",
+          "label": "Outbid the networks and order two full seasons, with no pilot. A huge, blind bet.",
           "grade": "great",
           "real": true,
           "effect": {
@@ -278,8 +344,18 @@
           },
           "next": "d4",
           "media": "img:nf_d3_commit",
-          "outcome": "In March 2011 Netflix outbid HBO and AMC for a new drama called House of Cards and ordered two seasons, 26 episodes, without a pilot. The show would not be ready for almost two years.",
-          "why": "You made a big bet on owning something no one else could offer, and you won it by committing more than the old players would.",
+          "outcome": [
+            {
+              "when": {
+                "flags": ["offered", "free_stream"]
+              },
+              "text": "In March 2011 you beat HBO and AMC to House of Cards and order two seasons, 26 episodes, with no pilot. Now you wait, because the first episodes won't be ready for almost two years."
+            },
+            {
+              "text": "You win the show with a big, risky order. It won't be ready for almost two years, and until then it is all cost."
+            }
+          ],
+          "why": "Owning a show meant no studio could take it away, and it gave members a reason to stay that only you could offer.",
           "takeaway": "In 2011 you bought your way out of depending on suppliers.",
           "traits": {
             "horizon": 1,
@@ -295,13 +371,23 @@
       "year": "2011",
       "title": "Split the price",
       "media": "img:nf_d4",
-      "setup": "It is July 2011. Your stock is near its highest ever, close to $304 a share. You want to push members toward streaming and buy more shows to stream. Members who want both DVDs and streaming pay about $10 a month.",
+      "setup": [
+        {
+          "when": {
+            "flags": ["offered", "free_stream"]
+          },
+          "text": "It is July 2011, and your shares are at their highest ever. You want members to move to streaming, and you need far more money to buy shows to stream. Right now, members who want both discs and streaming pay about $10 a month."
+        },
+        {
+          "text": "It is July 2011. You want members to move to streaming, and you need more money to buy shows to stream. Right now, members who want both discs and streaming pay about $10 a month."
+        }
+      ],
       "question": "How do you change your plans?",
-      "advisor": "Members will forgive a change they understand. They hate a surprise in their bill.",
+      "advisor": "Moving slowly brings in less money for streaming. Moving fast brings in more, but members may react badly to a sudden change.",
       "options": [
         {
           "id": "slow",
-          "label": "Keep one plan and raise the price a little, with plenty of notice.",
+          "label": "Keep one plan and raise the price a little, with plenty of warning. Money comes slowly.",
           "grade": "great",
           "effect": {
             "profit": 10,
@@ -310,8 +396,8 @@
           },
           "next": "d5",
           "media": "img:nf_d4_slow",
-          "outcome": "Our estimate: a few members grumble, but most stay. You get more money for new shows without a shock.",
-          "why": "Small, well-explained changes keep trust while still moving the business forward.",
+          "outcome": "You warn members early and raise the price a little. A few grumble, but hardly anyone leaves, and the extra money starts paying for more shows.",
+          "why": "A small change with plenty of warning kept members' trust while still raising money for streaming.",
           "takeaway": "In 2011 you changed prices slowly and kept your members' trust.",
           "traits": {
             "horizon": 1,
@@ -321,7 +407,7 @@
         },
         {
           "id": "split",
-          "label": "Split DVDs and streaming into two plans at $7.99 each.",
+          "label": "Split discs and streaming into two plans at $7.99 each. Fast money, but a big jump for many.",
           "grade": "bad",
           "real": true,
           "effect": {
@@ -332,9 +418,9 @@
           },
           "next": "d5",
           "media": "img:nf_d4_split",
-          "outcome": "Netflix made DVDs and streaming separate plans at $7.99 each. Members who wanted both now paid about $16 instead of about $10. Many were angry, and in September Netflix lowered its forecast of how many subscribers it would have.",
-          "why": "A 60% price rise all at once felt like a betrayal to loyal members.",
-          "better": "Raise prices slowly and explain why, so members feel part of the change instead of punished by it.",
+          "outcome": "Discs and streaming become two plans at $7.99 each, so members who want both now pay about $16 instead of $10. Many are furious, and in September you lower your forecast of how many members you will have.",
+          "why": "The plan made sense for the business, but a price jump of more than half, all at once, made loyal members feel ignored.",
+          "better": "Raise prices in small steps, explain why, and give members time to choose.",
           "takeaway": "In 2011 you shocked loyal members with a big price rise all at once.",
           "traits": {
             "horizon": 1,
@@ -344,7 +430,7 @@
         },
         {
           "id": "drop_dvd",
-          "label": "Stop DVDs completely and go streaming-only.",
+          "label": "Announce that DVDs will end, and push everyone to streaming. Clear, but many still love discs.",
           "grade": "ok",
           "effect": {
             "profit": -15,
@@ -353,9 +439,9 @@
           },
           "next": "d5",
           "media": "img:nf_d4_nodvd",
-          "outcome": "Our estimate: many members who still love DVDs leave, and you lose money you need for new shows.",
-          "why": "The direction was right, but cutting off a business customers still used was too fast.",
-          "better": "Keep DVDs while they still earn money, and move people to streaming with price and better shows.",
+          "outcome": "Streaming fans cheer. But millions of members who still rent discs, many with slow internet, feel pushed out, and they start to cancel.",
+          "why": "Streaming was the future, but you moved faster than your customers could follow.",
+          "better": "Keep DVDs for the members who need them, and let streaming win them over with time.",
           "takeaway": "In 2011 you moved to the future faster than your customers could.",
           "traits": {
             "horizon": 1,
@@ -376,14 +462,20 @@
           "when": {
             "flags": ["split"]
           },
-          "text": "It is September 2011. Members are cancelling and your stock is falling. You think the plan is right, but people feel ignored."
+          "text": "It is September 2011. Members are cancelling, your shares are falling, and people feel you raised the price without listening. You think the DVD side is slowing streaming down."
         },
         {
-          "text": "It is September 2011. You want DVDs and streaming to be two different businesses, each with its own focus."
+          "when": {
+            "flags": ["no_dvd"]
+          },
+          "text": "It is September 2011. Members who still rent discs are angry that DVDs are going away, and your shares are slipping. Inside the company, many say DVDs should become a separate business."
+        },
+        {
+          "text": "It is September 2011. The price change went smoothly, but discs and streaming still share one website, and many in the company think the DVD side is slowing streaming down."
         }
       ],
       "question": "What do you do with the DVD business?",
-      "advisor": "When customers are angry, ask first what they actually need from you.",
+      "advisor": "Separating the two businesses could make each one easier to run. But another big change could mean more work for members.",
       "options": [
         {
           "id": "qwikster",
@@ -398,9 +490,19 @@
           },
           "next": "d6",
           "media": "img:nf_d5_qwikster",
-          "outcome": "Netflix's CEO apologized for poor communication and said DVDs would move to a new brand called Qwikster, with its own website. People mocked the name, and by October Netflix shares had lost more than half their value since July.",
-          "why": "Members asked for one simple service. You gave them two websites and two bills, right when they were already upset.",
-          "better": "Listen first: keep one website and one account, and explain clearly why prices changed.",
+          "outcome": [
+            {
+              "when": {
+                "flags": ["split"]
+              },
+              "text": "You say sorry for explaining things badly, and then you announce that DVDs will move to a new company called Qwikster, with its own website. People mock the name, and by October your shares have lost more than half their value since July."
+            },
+            {
+              "text": "You move DVDs to a new company with a new name and its own website. Members now need two accounts, and many of them give up."
+            }
+          ],
+          "why": "When members were already angry, you made their lives more complicated: two websites, two accounts and a name people laughed at.",
+          "better": "Keep one website and one account, and explain the changes plainly.",
           "takeaway": "In 2011 you answered angry customers with more complexity.",
           "traits": {
             "horizon": 0,
@@ -410,7 +512,7 @@
         },
         {
           "id": "listen",
-          "label": "Keep one website and one account, and explain the change clearly.",
+          "label": "Keep one website and one account, and explain the changes plainly to members.",
           "grade": "great",
           "effect": {
             "future": 10,
@@ -418,8 +520,8 @@
           },
           "next": "ending_route",
           "media": "img:nf_d5_listen",
-          "outcome": "Our estimate: the anger cools down. Some members leave, but most stay, because the service still feels simple.",
-          "why": "When trust is hurt, simple and honest beats clever.",
+          "outcome": "You keep things simple and explain why prices are changing. Some members still leave, but most stay, and the anger slowly fades.",
+          "why": "You kept things simple when trust was low, so members could stay without any extra effort.",
           "takeaway": "In 2011 you kept things simple when trust was at its lowest.",
           "traits": {
             "horizon": 1,
@@ -429,7 +531,7 @@
         },
         {
           "id": "roll_back",
-          "label": "Undo everything and go back to the old prices.",
+          "label": "Undo the changes and go back to the old prices, even though it costs you.",
           "grade": "ok",
           "effect": {
             "profit": -10,
@@ -438,9 +540,9 @@
           },
           "next": "ending_route",
           "media": "img:nf_d5_rollback",
-          "outcome": "Our estimate: members calm down, but you lose the money you needed for new shows, and investors wonder if you have a plan.",
-          "why": "Rolling everything back fixes the anger but gives up a strategy that was right in direction.",
-          "better": "Keep the strategy, fix how it was done: one account, clear communication.",
+          "outcome": "You undo the changes. Members calm down, but the money you needed for new shows is gone, and investors wonder whether you have a plan at all.",
+          "why": "Backing down calmed members, but it threw away the money for shows, when the real problem was how the plan had been explained.",
+          "better": "Keep the plan, but make it simple and explain it clearly.",
           "takeaway": "In 2011 you gave up a good plan because it was done badly.",
           "traits": {
             "horizon": -1,
@@ -456,13 +558,23 @@
       "year": "2011",
       "title": "One last chance to fix it",
       "media": "img:nf_d6",
-      "setup": "It is October 2011. Everyone is laughing at the name Qwikster, and your stock keeps falling. You have weeks, not months.",
+      "setup": [
+        {
+          "when": {
+            "flags": ["split"]
+          },
+          "text": "It is October 2011. Everyone is laughing at the name Qwikster, and your shares keep falling. You have weeks, not months, to fix this."
+        },
+        {
+          "text": "It is October 2011. Members hate having two websites and two accounts, and your shares keep falling. You have weeks, not months, to fix this."
+        }
+      ],
       "question": "What now?",
-      "advisor": "Admitting a mistake fast is cheaper than defending it slowly.",
+      "advisor": "Changing course again could hurt your credibility. Keeping the plan could cost you more members if the problems go on.",
       "options": [
         {
           "id": "push_on",
-          "label": "Push ahead. Two companies is the right long-term plan.",
+          "label": "Push ahead with two companies, and accept more cancellations while the long-term plan takes hold.",
           "grade": "bad",
           "effect": {
             "profit": -10,
@@ -471,9 +583,9 @@
           },
           "next": "ending_route",
           "media": "img:nf_d6_push",
-          "outcome": "Our estimate: more members leave, and the fight distracts everyone from building the streaming service.",
-          "why": "Defending a mistake because you announced it only makes it bigger.",
-          "better": "Drop the part customers hated quickly, and keep the part that serves the long-term plan.",
+          "outcome": "You keep the two companies. Members juggle two accounts, more of them cancel, and the board starts asking whether you should stay.",
+          "why": "You defended a plan your customers had already rejected, and every week cost you more members.",
+          "better": "Admit the mistake quickly, go back to one website, and keep what really works.",
           "takeaway": "In 2011 you defended a mistake instead of fixing it.",
           "traits": {
             "horizon": -1,
@@ -483,8 +595,8 @@
         },
         {
           "id": "drop_qwikster",
-          "label": "Drop the separate DVD company, but keep the new prices.",
-          "grade": "ok",
+          "label": "Drop the new DVD company but keep the new prices, knowing some angry members may still leave.",
+          "grade": "great",
           "real": true,
           "effect": {
             "profit": 5,
@@ -492,10 +604,19 @@
           },
           "next": "ending_route",
           "media": "img:nf_d6_drop",
-          "outcome": "Within weeks Netflix dropped Qwikster and kept one website and one account, but kept the new prices. In the July to September quarter its US subscribers had fallen from 24.6 million to 23.8 million, and Netflix said the price rise had hurt more than the name.",
-          "why": "Backing down fast on the confusing part was smart. Keeping the prices gave you money for new shows, but cost you members.",
-          "better": "Fix the mistake quickly, and pair the higher price with something members can see, like new shows.",
-          "takeaway": "In 2011 you fixed the confusing part fast but kept the painful part.",
+          "outcome": [
+            {
+              "when": {
+                "flags": ["split", "qwikster"]
+              },
+              "text": "Within weeks you drop Qwikster and go back to one website and one account, but you keep the new prices. From July to September you lost about 800,000 US members, and you admit that the price rise hurt more than the name did."
+            },
+            {
+              "text": "You drop the second company and keep the new prices. The confusion ends, although some members never come back."
+            }
+          ],
+          "why": "You fixed the confusing part fast and kept the higher prices, even though they were unpopular. That money paid for the shows that would win members back.",
+          "takeaway": "In 2011 you fixed the confusion fast but held firm on price.",
           "traits": {
             "horizon": 1,
             "risk": 0,
@@ -504,22 +625,23 @@
         },
         {
           "id": "reset",
-          "label": "Drop the DVD company and lower prices again for loyal members.",
-          "grade": "great",
+          "label": "Drop the DVD company and lower prices again, giving up money to rebuild trust with loyal members.",
+          "grade": "ok",
           "effect": {
-            "profit": -5,
-            "future": 15
+            "profit": -10,
+            "future": 5
           },
           "next": "ending_route",
           "media": "img:nf_d6_reset",
-          "outcome": "Our estimate: loyal members feel heard and come back. You have less money for shows this year, but trust is restored.",
-          "why": "You fixed both the confusion and the shock, and showed members their loyalty mattered.",
-          "takeaway": "In 2011 you won back trust by fixing both mistakes.",
+          "outcome": "You fold DVDs back in and lower your prices. Members are grateful, but the money for new shows dries up, and for a year there is little new to watch.",
+          "why": "Lowering prices won goodwill, but it took away the money you needed for the shows that keep members coming back.",
+          "takeaway": "In 2011 you bought back goodwill with the money meant for new shows.",
           "traits": {
             "horizon": 1,
             "risk": 0,
             "disrupt": 0
-          }
+          },
+          "better": "Drop the second company, but keep the new prices, and use the money to buy and make shows."
         }
       ]
     },
@@ -553,12 +675,18 @@
       "text": [
         {
           "when": {
-            "flags": ["house_of_cards"]
+            "flags": ["offered", "free_stream", "house_of_cards", "split", "qwikster"]
           },
-          "text": "On February 1, 2013, Netflix released all 13 episodes of House of Cards on the same day. That quarter it added 2 million US streaming members, reaching 29.2 million, and its shares jumped 24% after the results."
+          "text": "On 1 February 2013, all 13 episodes of House of Cards go online on the same day. In the first three months of 2013, Netflix gains 2 million US streaming members, and your shares jump. The company Blockbuster once refused to buy is growing again."
         },
         {
-          "text": "Our estimate: you moved early to streaming and kept your members' trust. Netflix becomes the place people go to watch."
+          "when": {
+            "flags": ["house_of_cards"]
+          },
+          "text": "In 2013 your own show, House of Cards, goes online all at once, and people watch it in a weekend. Members pour in, and Netflix becomes the place to watch shows nobody else has."
+        },
+        {
+          "text": "You moved early to streaming and kept your members' trust. Year after year, more people watch at home through Netflix."
         }
       ],
       "bonus": 15
@@ -569,7 +697,23 @@
       "tier": "survivor",
       "title": "Bruised but alive",
       "media": "img:nf_survivor",
-      "text": "Our estimate: Netflix survives the storm, but rivals have caught up, and you spend years winning back what you lost.",
+      "text": [
+        {
+          "when": {
+            "flags": ["licensed"]
+          },
+          "text": "Netflix survives as a big streaming shop for other people's shows. But the studios keep raising their prices, and every year your profits get thinner."
+        },
+        {
+          "when": {
+            "flags": ["pilot"]
+          },
+          "text": "Netflix survives, but the shows people talk about are on other services. You spend years trying to win a hit of your own."
+        },
+        {
+          "text": "Netflix survives the storm, but rivals have caught up, and you spend years winning back what you lost."
+        }
+      ],
       "bonus": 5
     },
     "collapse": {
@@ -578,7 +722,17 @@
       "tier": "collapse",
       "title": "The next Blockbuster",
       "media": "img:nf_collapse",
-      "text": "Our estimate: you waited too long or lost your members' trust. A rival becomes the home of streaming, and Netflix fades like the company it once beat.",
+      "text": [
+        {
+          "when": {
+            "flags": ["waited"]
+          },
+          "text": "You were late to streaming, and the rivals never let you catch up. Like Blockbuster before you, Netflix is remembered as a company that held on to discs for too long."
+        },
+        {
+          "text": "You lost your members' trust just when rivals were ready. Another company becomes the home of streaming, and Netflix fades like the giant it once beat."
+        }
+      ],
       "bonus": 0
     },
     "fired": {
@@ -587,12 +741,12 @@
       "tier": "fired",
       "title": "The board lets you go",
       "media": "img:nf_fired",
-      "text": "Our estimate: after three costly calls in a row, the board loses its trust in you and asks someone else to lead Netflix.",
+      "text": "Members are leaving and your shares have crashed. After three costly calls, the board decides Netflix needs someone else in charge.",
       "bonus": 0
     }
   },
   "realEnding": "legend",
-  "realHistory": "In 2000 Netflix offered to sell itself to Blockbuster for $50 million, and Blockbuster said no. In 2007 Netflix added streaming free to its DVD plans. In 2011 it ordered House of Cards without a pilot, then raised the price of DVDs plus streaming from about $10 to $16 and announced Qwikster, losing members and over half its stock value. It dropped Qwikster within weeks but kept the prices, and House of Cards helped it grow again in 2013.",
+  "realHistory": "In 2000 Netflix, a small DVD-by-post company, offered to sell itself to Blockbuster for $50 million, and Blockbuster said no. In 2007 Netflix added streaming free to its DVD plans, and by 2010 it had 20 million members while Blockbuster was bankrupt. In 2011 it ordered House of Cards without a pilot. Then it raised the price of discs plus streaming from about $10 to $16 and announced Qwikster, and it lost members and more than half its share value. It dropped Qwikster within weeks but kept the prices, and House of Cards helped it grow again in 2013.",
   "sources": [
     {
       "label": "How Netflix almost lost the movie rental wars (CNBC, 2021)",
@@ -621,6 +775,30 @@
     {
       "label": "House of Cards helps Netflix grow 2 million streaming customers (NBC News, 2013)",
       "url": "https://www.nbcnews.com/business/business-news/house-cards-helps-netflix-grow-2-million-streaming-customers-flna6c9553186"
+    },
+    {
+      "label": "Netflix Form 10-K for fiscal 2002 (SEC, 2003)",
+      "url": "https://www.sec.gov/Archives/edgar/data/0001065280/000095016803001155/d10k.htm"
+    },
+    {
+      "label": "Netflix CEO apologizes for price increase, announces Qwikster (ABC News, 2011)",
+      "url": "https://abcnews.com/blogs/technology/2011/09/netflix-ceo-apologizes-for-price-increase-announces-qwikster-to-mail-dvds"
+    },
+    {
+      "label": "Letter to shareholders, Sept 15, 2011 (Netflix 8-K Ex. 99.1, SEC)",
+      "url": "https://www.sec.gov/Archives/edgar/data/0001065280/000119312511248698/d231910dex991.htm"
+    },
+    {
+      "label": "Netflix to release House of Cards next February (Tubefilter, 2012)",
+      "url": "https://tubefilter.com/2012/10/05/house-of-cards-netflix-release/"
+    },
+    {
+      "label": "Netflix cofounder Marc Randolph recalls Blockbuster rejecting chance to buy it (Fortune, 2023)",
+      "url": "https://fortune.com/2023/04/14/netflix-cofounder-marc-randolph-recalls-blockbuster-rejecting-chance-to-buy-it"
+    },
+    {
+      "label": "The truth about Blockbuster turning down purchasing Netflix (Today I Found Out, 2022)",
+      "url": "https://www.todayifoundout.com/index.php/2022/12/the-truth-about-blockbuster-turning-down-purchasing-netflix-and-what-seemingly-everyone-gets-wrong/"
     }
   ],
   "credits": "Research brief and full source list: content/hotseats/netflix/research.md. Archive footage from archive.org (public domain)."

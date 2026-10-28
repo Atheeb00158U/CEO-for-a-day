@@ -87,6 +87,10 @@ describe("hotseat:check catches broken Hot Seats", () => {
     );
   });
 
+  it("leaves 'our estimate' to the app's badge, not the story text", () => {
+    expect(fixture("estimate", (hs) => (hs.nodes.lab.text = "Our estimate: the lab closes."))).toMatch(/says "our estimate"/);
+  });
+
   it("requires the folder name to match the id", () => {
     expect(fixture("folder", (hs) => (hs.id = "other"))).toMatch(/id "other" must match its folder "folder"/);
   });

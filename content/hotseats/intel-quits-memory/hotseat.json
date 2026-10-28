@@ -2,7 +2,7 @@
   "id": "intel-quits-memory",
   "company": "Intel",
   "title": "The chip that built Intel",
-  "hook": "Memory chips made your name. Now Japan makes them cheaper.",
+  "hook": "Memory chips made your name. Now Japan makes them cheaper, and your future may be somewhere else.",
   "role": "You run Intel, 1982 to 1986",
   "years": "1982–1986",
   "cover": "img:in_cover",
@@ -32,7 +32,15 @@
       "type": "scene",
       "year": "1982",
       "media": "img:in_intro",
-      "text": "It is 1982. In 1970 Intel made the 1103, one of the first DRAM memory chips sold to the public. It was the first chip to seriously challenge the old magnetic memory in computers. Memory chips built your company. Last year IBM launched its first PC, and inside it is your 8088 processor. But in Japan, makers like NEC, Hitachi and Fujitsu now get up to 40% more good chips from each batch than US makers do, at lower cost.",
+      "text": "California, 1982. You run Intel, the company that made its name with memory chips, the tiny parts that help a computer remember things. Last year IBM put another Intel chip, the 8088, inside its new personal computer. That chip is the computer's brain, and the PC is selling far better than anyone expected.",
+      "next": "s_goal"
+    },
+    "s_goal": {
+      "id": "s_goal",
+      "type": "scene",
+      "year": "1982",
+      "media": "img:in_goal",
+      "text": "Memory chips still bring in more money than anything else you make. But in Japan, makers like NEC, Hitachi and Fujitsu are making memory chips better and cheaper every year. You need money for research and new factories, and sooner or later you must decide which business is Intel's future.",
       "next": "d1"
     },
     "d1": {
@@ -41,13 +49,13 @@
       "year": "1982",
       "title": "IBM wants a piece of you",
       "media": "img:in_d1",
-      "setup": "The IBM PC is selling far better than anyone expected. IBM's buyers made you find a second company, AMD, to also make your processors, so they never run short. Now IBM offers to buy 12% of Intel for $250 million.",
-      "question": "What do you do with IBM's offer?",
-      "advisor": "Money is useful. What you spend it on matters more.",
+      "setup": "IBM, the giant whose PC runs on your chip, offers to buy a share of Intel. The money would pay for research and new factories. But IBM would own part of Intel, and your company has always made its own decisions.",
+      "question": "Do you take IBM's money, and how do you use it?",
+      "advisor": "IBM's money would bring us closer to the PC business. But a part-owner may want a say in our choices.",
       "options": [
         {
           "id": "memory_cash",
-          "label": "Take the money and use it to win the memory price war with Japan.",
+          "label": "Take the money and invest it in memory chips, where you still earn most today.",
           "grade": "bad",
           "effect": {
             "profit": -5,
@@ -55,11 +63,11 @@
             "trust": -1,
             "flags": ["memory_cash"]
           },
-          "next": "d2",
+          "next": "s_boom",
           "media": "img:in_d1_memory",
-          "outcome": "Our estimate: you build more memory lines and cut your prices. Japanese makers, with better yields, cut even deeper. The $250 million melts away in a price war you cannot win.",
-          "why": "You put fresh money into the business where you were already losing on cost. Money cannot fix a cost gap that big.",
-          "better": "Put the money where you are ahead: research and factories for processors, the chips inside the PC.",
+          "outcome": "You pour IBM's money into new memory lines. For a while they run flat out, but the Japanese keep cutting prices, and each new chip sells for less than the last.",
+          "why": "Memory was the business Japan was winning on cost. You put fresh money into the fight you were losing, not the one you could win.",
+          "better": "Take the money, but spend it on research and the PC brain chips, where Intel led.",
           "takeaway": "In 1982 you spent new money defending a business where rivals made things cheaper.",
           "traits": {
             "horizon": -1,
@@ -69,7 +77,7 @@
         },
         {
           "id": "stake",
-          "label": "Take the money and spend it on research and new factories.",
+          "label": "Take the money for research and factories, even though IBM will own part of Intel.",
           "grade": "great",
           "real": true,
           "effect": {
@@ -77,10 +85,10 @@
             "future": 10,
             "flags": ["ibm_stake"]
           },
-          "next": "d2",
+          "next": "s_boom",
           "media": "img:in_d1_stake",
-          "outcome": "In December 1982 IBM agreed to pay $250 million, or $40 a share, for 12% of Intel. Intel said the money would go to research and more production capacity. The two companies were now tied closely together. In 1983 IBM also won the right to make some Intel chips itself.",
-          "why": "You took cash from your most important customer and put it into the future: research and capacity for the PC boom.",
+          "outcome": "In December 1982 IBM pays $250 million for a share of Intel, about one-eighth, and you put the money into research and more factory space. IBM is now a big buyer and a part-owner.",
+          "why": "You got money to grow from the company that was making your chip famous, and you spent it on the future, not on the past.",
           "takeaway": "In 1982 you used a big customer's money to build for the future.",
           "traits": {
             "horizon": 1,
@@ -90,19 +98,19 @@
         },
         {
           "id": "refuse",
-          "label": "Say no. Stay fully independent and borrow if you need money.",
+          "label": "Say no and stay fully independent, even if you have less money to grow.",
           "grade": "ok",
           "effect": {
             "profit": -5,
             "future": 5,
             "flags": ["refused_ibm"]
           },
-          "next": "d2",
+          "next": "s_boom",
           "media": "img:in_d1_refuse",
-          "outcome": "Our estimate: you keep full freedom, but you have less cash for new factories just as demand starts to boom. Borrowing costs you more, and you build less than you could.",
-          "why": "Independence has value, but turning away cheap money from your best customer slowed your growth when it mattered.",
-          "better": "Take the investment, keep control of your decisions, and spend the money on research and capacity.",
-          "takeaway": "In 1982 you chose freedom over fuel just before a boom.",
+          "outcome": "You keep Intel fully yours, but money is tight. New factories wait, and IBM starts to wonder whether a small, stretched supplier can keep up with its PC.",
+          "why": "Your freedom was worth something, but you turned down money for growth just as the PC took off.",
+          "better": "Take the money, keep control of your decisions, and spend it on research and capacity.",
+          "takeaway": "In 1982 you chose independence over growth money just before a boom.",
           "traits": {
             "horizon": 0,
             "risk": -1,
@@ -110,6 +118,30 @@
           }
         }
       ]
+    },
+    "s_boom": {
+      "id": "s_boom",
+      "type": "scene",
+      "year": "1984",
+      "media": "img:in_boom",
+      "text": [
+        {
+          "when": {
+            "flags": ["memory_cash"]
+          },
+          "text": "1983 and 1984 are boom years, and your new memory lines run day and night. Then, late in 1984, the boom ends almost overnight. Orders vanish, and memory prices start to crash, just as your new lines are at full speed."
+        },
+        {
+          "when": {
+            "flags": ["refused_ibm"]
+          },
+          "text": "1983 and 1984 are boom years, but without IBM's money you can't build as fast as demand grows. Then, late in 1984, the boom ends almost overnight. Orders vanish, and memory prices start to crash."
+        },
+        {
+          "text": "1983 and 1984 are boom years. PCs fly off the shelves, and in 1984 Intel makes a record profit. Then, late in 1984, the boom ends almost overnight. Orders vanish, and memory prices start to crash."
+        }
+      ],
+      "next": "d2"
     },
     "d2": {
       "id": "d2",
@@ -122,18 +154,18 @@
           "when": {
             "flags": ["memory_cash"]
           },
-          "text": "Our estimate: IBM's money went into memory lines, and you are still behind Japan on cost. Now the PC boom of 1983 and 1984 is ending. Orders collapse, and there are far too many chips. For five years DRAM memory has been a small part of what you sell. Processors are now your core."
+          "text": "Japanese makers get more working chips from each batch than American makers do, so their costs are lower and they keep cutting prices. Your new memory lines make it worse, because now you have even more chips to sell at a loss. Meanwhile the PC brain chips have quietly become your core business."
         },
         {
-          "text": "The PC boom of 1983 and 1984 is ending fast. At the end of 1984 orders collapse, and there are far too many chips in the world. Japanese makers still make memory chips better and cheaper. For five years DRAM memory has been a small part of what you sell. Processors are now your core."
+          "text": "Japanese makers get more working chips from each batch than American makers do, so their costs are lower and they keep cutting prices. For five years the main memory chips have been a small part of what you sell, while the PC brain chips have become your core business. But memory is where Intel began, and many of your people still think of Intel as a memory company."
         }
       ],
-      "question": "What do you do about memory chips?",
-      "advisor": "Be honest. Are you staying because it pays, or because it is your history?",
+      "question": "What do you do about memory?",
+      "advisor": "Staying means more losses. Leaving means giving up the business that built Intel. Which cost can we live with?",
       "options": [
         {
           "id": "big_fab",
-          "label": "Build a huge new memory factory to match Japan on cost.",
+          "label": "Build a huge new memory factory to bring your costs down to Japan's level.",
           "grade": "bad",
           "effect": {
             "profit": -15,
@@ -143,9 +175,9 @@
           },
           "next": "d3",
           "media": "img:in_d2_bigfab",
-          "outcome": "Our estimate: the new factory takes two years and a lot of cash to build. By the time it runs, prices have fallen again, and Japanese rivals have moved to the next, bigger chip.",
-          "why": "You bet a fortune on catching up in a race your rivals were already winning, during a price crash.",
-          "better": "Stop pouring money into memory and move your best factories to processors, where you lead.",
+          "outcome": "You start a huge new memory factory. Before it is half built, prices fall again and the Japanese are still cheaper, so you are left with a giant bill and a building you can't use.",
+          "why": "Matching Japan on cost would take years and a fortune, in a market that was collapsing. It was the biggest bet on the weakest business.",
+          "better": "Stop putting money into memory and move your factories to the PC brain chips.",
           "takeaway": "In 1984 you doubled down on a losing race during a crash.",
           "traits": {
             "horizon": -1,
@@ -155,7 +187,7 @@
         },
         {
           "id": "wait",
-          "label": "Keep making memory chips on a small scale and wait for prices to recover.",
+          "label": "Keep making memory chips and wait for prices to recover, even as losses grow.",
           "grade": "ok",
           "real": true,
           "effect": {
@@ -165,9 +197,9 @@
           },
           "next": "d3",
           "media": "img:in_d2_wait",
-          "outcome": "Intel stayed in the memory chip business through 1984 and into 1985. Prices did not recover. They kept falling in 1985. A 256K memory chip sold for less than $3, and Intel expected heavy losses to go on.",
-          "why": "Waiting felt safe, but it only made the losses last longer. Prices were falling for deep reasons, not bad luck.",
-          "better": "Accept that memory is lost, leave early, and give the factories to processors.",
+          "outcome": "You hold on into 1985, hoping prices will come back. They don't. A newer memory chip now sells for under $3, and Intel expects to keep losing money on them.",
+          "why": "Waiting felt careful, but prices kept falling, and every month in memory cost money that the processors needed.",
+          "better": "Face the numbers early, and move people and factories to the chips that were already your core.",
           "takeaway": "In 1984 you waited for a recovery that was never coming.",
           "traits": {
             "horizon": 0,
@@ -177,7 +209,7 @@
         },
         {
           "id": "exit_now",
-          "label": "Leave memory chips now and use those factories for processors.",
+          "label": "Leave memory chips now and move factories to PC chips, despite Intel's history in memory.",
           "grade": "great",
           "effect": {
             "profit": -5,
@@ -186,8 +218,8 @@
           },
           "next": "scene1985",
           "media": "img:in_d2_exit",
-          "outcome": "Our estimate: it hurts to walk away from the product that built Intel. But you stop the losses a year early and put your best factories to work on processors.",
-          "why": "You looked at the numbers, not your history. Leaving early saved money and time for the business with a future.",
+          "outcome": "You stop making the main memory chips at the start of 1985. It hurts, and some of your oldest engineers feel betrayed, but the factories and people you free up go straight to work on PC brain chips.",
+          "why": "You read the market early. Memory was a small, losing business, and the PC brain chips were your future.",
           "takeaway": "In 1984 you left a losing business before it dragged you down.",
           "traits": {
             "horizon": 1,
@@ -208,18 +240,18 @@
           "when": {
             "flags": ["big_fab"]
           },
-          "text": "Our estimate: your new memory factory is running, but prices fall faster than your costs. Japan makes most of the world's memory chips. Every chip you sell loses money."
+          "text": "Your half-built memory factory is losing money every day. Japan now makes most of the world's memory chips, and the main memory chips are less than 5% of your business, yet they are dragging all of Intel down."
         },
         {
-          "text": "In 1970 Intel made one of the first DRAM memory chips sold to the public. Now Japan makes most of the world's memory chips, and a 256K chip sells for under $3. DRAM memory is less than 5% of your business."
+          "text": "Intel made the first big-selling memory chip back in 1970. Now Japan makes most of the world's memory chips, and the main memory chips are less than 5% of your business, yet they are dragging all of Intel down."
         }
       ],
-      "question": "What do you do with your memory chips?",
-      "advisor": "The business that made you is not always the business that will keep you.",
+      "question": "Is it time to leave?",
+      "advisor": "Leaving the business we started may feel like failure. Staying could cost even more if we cannot win.",
       "options": [
         {
           "id": "protect",
-          "label": "Stay in, and ask the government to stop Japan selling chips below cost.",
+          "label": "Stay in and ask the US government to stop Japan selling chips below cost, even if it takes years.",
           "grade": "bad",
           "effect": {
             "profit": -10,
@@ -229,9 +261,9 @@
           },
           "next": "scene1985",
           "media": "img:in_d3_protect",
-          "outcome": "Our estimate: trade talks take years. Meanwhile you keep losing money on every memory chip, and your best factory space stays tied up making them.",
-          "why": "Help from the government might slow rivals down, but it does not fix your own costs. You stayed in a race you had already lost.",
-          "better": "Leave DRAM, keep only the products where you lead, and give your factories to processors.",
+          "outcome": "Your lawyers take the case to the US government, but rulings take time. Meanwhile every memory chip you make still loses money, and your best engineers are stuck on a losing product.",
+          "why": "Help from the government was slow and uncertain, and it could not fix your higher costs. You stayed in the business that was draining you.",
+          "better": "Leave the main memory chips, keep the special ones where you are strong, and fight unfair pricing on the side.",
           "takeaway": "In 1985 you hoped for rescue instead of changing course.",
           "traits": {
             "horizon": -1,
@@ -241,7 +273,7 @@
         },
         {
           "id": "exit_dram",
-          "label": "Leave DRAM, but keep EPROMs, the memory chip where you are still strong.",
+          "label": "Leave the main memory chips, but keep EPROMs, special memory chips you still sell well.",
           "grade": "great",
           "real": true,
           "effect": {
@@ -251,8 +283,8 @@
           },
           "next": "scene1985",
           "media": "img:in_d3_exit",
-          "outcome": "In 1985 Intel left the DRAM business. It said too many factories around the world had pushed prices to levels it could not accept. Intel kept EPROMs, a chip it had invented, and won more of that market in 1985 and 1986. It also complained that Japanese makers sold EPROMs below cost, and a US trade body agreed.",
-          "why": "You let go of the product that built Intel, but kept the part that still made money and freed your factories for processors.",
+          "outcome": "In 1985 Intel leaves the main memory business it started. You keep the EPROMs, special memory chips that hold data even when the power is off, and accuse Japanese makers of selling them below cost. In 1986 the US trade body rules for you.",
+          "why": "You cut the loss that was hurting you, kept a memory business where you were still strong, and freed your people for the PC brain chips.",
           "takeaway": "In 1985 you walked away from your first business to save the company.",
           "traits": {
             "horizon": 1,
@@ -262,7 +294,7 @@
         },
         {
           "id": "quit_all",
-          "label": "Leave every kind of memory chip, EPROMs too.",
+          "label": "Leave all memory at once, so every person and factory works on PC chips.",
           "grade": "ok",
           "effect": {
             "profit": -5,
@@ -271,9 +303,9 @@
           },
           "next": "scene1985",
           "media": "img:in_d3_quitall",
-          "outcome": "Our estimate: you get out of memory cleanly, but you also give up EPROMs, a chip you invented and still lead in. You lose a steady stream of money just when you need it most.",
-          "why": "Leaving the losing part was right. Leaving the winning part too threw away cash for no reason.",
-          "better": "Cut only what is losing. Keep the products where you are still the leader.",
+          "outcome": "You walk away from all memory, even the special chips that still earn money. Everyone knows where Intel is going now, but you have thrown away cash you will soon need.",
+          "why": "Leaving the main memory chips was right, but the special ones still made money in a hard year.",
+          "better": "Leave the losing memory chips, and keep the ones that still pay their way.",
           "takeaway": "In 1985 you cut the good with the bad.",
           "traits": {
             "horizon": 0,
@@ -293,16 +325,22 @@
           "when": {
             "flags": ["stayed_dram"]
           },
-          "text": "Our estimate: it is late 1985. You are still making memory chips and still losing money on them. The first samples of your new 386 processor are out. But the chip boom is over, and you have far too many people and plants for the business you have."
+          "text": "Late 1985. You are still making memory chips, still losing money on them, and the PC boom is over. Sales have fallen, and Intel has more factories and people than it can pay for."
         },
         {
           "when": {
             "flags": ["early_exit"]
           },
-          "text": "Our estimate: it is late 1985. You left memory a year early, so your losses are smaller. The first samples of your new 386 processor are out. But the chip boom is over, and you still have too many people and plants for the business you have."
+          "text": "Late 1985. Leaving memory early saved you some pain, but this is still a hard year. Sales have fallen with the end of the boom, and Intel has more factories and people than it can pay for."
         },
         {
-          "text": "It is late 1985. The first samples of your new 386 processor came out in October. But the chip boom ended in late 1984. Your costs were built for a company with $2 to 3 billion in yearly sales, and you are becoming a $1 to 1.5 billion company. Sales have dropped sharply, and profits have all but disappeared."
+          "when": {
+            "flags": ["big_fab"]
+          },
+          "text": "Late 1985. You are out of memory at last, but the giant factory you started is a heavy loss. Sales have fallen, and Intel has more factories and people than it can pay for."
+        },
+        {
+          "text": "Late 1985. It is one of the hardest years Intel has known. Sales have fallen 16%, and the profit is almost gone. Your costs were built for a company about twice your size."
         }
       ],
       "next": "d4"
@@ -313,13 +351,13 @@
       "year": "1985",
       "title": "Too big for the business you have",
       "media": "img:in_d4",
-      "setup": "You have too many plants and too many people for the sales you have. Some of your plants are old and small. The 386 needs money for research and new machines.",
+      "setup": "The board wants the losses to stop. Meanwhile your next PC brain chip, the 386, has been in the making since 1982, and the first test chips are now going out to computer makers. You need money to make it a success.",
       "question": "How do you cut costs?",
-      "advisor": "Cut deep once, not a little every month. But do not cut the future.",
+      "advisor": "Every cut hurts people who did nothing wrong. But if we cut the wrong things, there will be no Intel left to protect them.",
       "options": [
         {
           "id": "pay_cut",
-          "label": "Cut everyone's pay a little and keep every plant open.",
+          "label": "Cut everyone's pay a little and keep every plant open, so no one loses a job.",
           "grade": "ok",
           "effect": {
             "profit": -5,
@@ -328,9 +366,9 @@
           },
           "next": "d5",
           "media": "img:in_d4_paycut",
-          "outcome": "Our estimate: nobody loses a job this year, and people are grateful. But the old plants keep eating money, and the cuts are not deep enough. A year later you have to cut again.",
-          "why": "Small, kind cuts feel fair, but they often only delay the hard choice and make the pain last longer.",
-          "better": "Close the old plants in one go, protect research, and tell people the plan honestly.",
+          "outcome": "People are grateful and stay. But the old plants keep eating money, and the losses drag on much longer than they should.",
+          "why": "It was kind, but small pay cuts could not close a gap that big, and the old plants kept draining cash.",
+          "better": "Close the older plants, but protect research and new equipment.",
           "takeaway": "In 1985 you cut too little to fix the problem.",
           "traits": {
             "horizon": 0,
@@ -340,7 +378,7 @@
         },
         {
           "id": "cut_rd",
-          "label": "Cut research spending to save as many jobs as you can.",
+          "label": "Cut research spending to save jobs. The 386, your big project, is nearly done.",
           "grade": "bad",
           "effect": {
             "profit": 10,
@@ -350,9 +388,9 @@
           },
           "next": "d5",
           "media": "img:in_d4_cutrd",
-          "outcome": "Our estimate: the numbers look better this year, but the 386 slips. New chips arrive late, and rivals get time to catch up.",
-          "why": "In a tech company, research is the future. Cutting it to save today's jobs puts every job at risk later.",
-          "better": "Cut old plants and overhead, but keep paying for the products that will bring you back.",
+          "outcome": "This year's numbers look better. But the teams working on the chips after the 386 shrink, and rivals start catching up on the designs that come next.",
+          "why": "Research was the future. Cutting it to protect the present made Intel weaker just when the 386 needed a strong team behind it.",
+          "better": "Cut older plants and jobs, but keep spending on research and new machines.",
           "takeaway": "In 1985 you saved today by cutting tomorrow.",
           "traits": {
             "horizon": -1,
@@ -372,8 +410,8 @@
           },
           "next": "d5",
           "media": "img:in_d4_restructure",
-          "outcome": "Over 1985 and 1986 Intel closed eight older, smaller plants and cut its workforce by 7,200 people, through layoffs and people leaving. It was the hardest time in its history. But it kept buying new equipment, and in 1986 it raised research spending to $228 million, 18% of its sales. Its factories became twice as productive in two years.",
-          "why": "You made the painful cuts in the old parts of the company and protected the parts that would bring you back.",
+          "outcome": "Over 1985 and 1986, along with pay cuts, you close eight older plants, and about 7,200 people leave Intel. It is painful. But you keep buying new equipment and raise research spending, and in two years your factories become twice as productive.",
+          "why": "You cut what belonged to the past and protected what would build the future: research and modern factories.",
           "takeaway": "In 1985 you cut deep in the past and kept investing in the future.",
           "traits": {
             "horizon": 1,
@@ -394,18 +432,18 @@
           "when": {
             "flags": ["cut_rd"]
           },
-          "text": "Our estimate: after your research cuts, the 386 is running late. For years, big buyers have demanded that a second company also make your chips, in case you fail to deliver. AMD did this for your earlier chips. Now you must decide who makes the 386."
+          "text": "The 386 is ready, though your research cuts have left a thinner team behind it. For years, big buyers have wanted a second maker for every chip, so they are never stuck if one factory fails. AMD has made your older chips this way, but Intel feels it has not got enough back in return."
         },
         {
-          "text": "Your 386 took four years and $100 million to build. For years, big buyers have demanded that a second company also make your chips, in case you fail to deliver. AMD did this for your earlier chips. But AMD has not given you the products you wanted in return, and your lawyers are in court to protect the code inside your chips."
+          "text": "The 386 has cost $100 million to build. For years, big buyers have wanted a second maker for every chip, so they are never stuck if one factory fails. AMD has made your older chips this way, but Intel feels it has not got enough back in return."
         }
       ],
-      "question": "Who gets to make your 386?",
-      "advisor": "Sharing made sense when buyers had no other way to trust you. Do they still need it?",
+      "question": "Who gets to make the 386?",
+      "advisor": "Sharing makes buyers feel safer. Keeping it gives us more control and profit. Which risk matters more?",
       "options": [
         {
           "id": "many",
-          "label": "License it to many makers, so it spreads fast and gets cheap.",
+          "label": "Let many companies make it, so it spreads quickly and buyers have backup suppliers.",
           "grade": "bad",
           "effect": {
             "profit": -5,
@@ -415,9 +453,9 @@
           },
           "next": "d6",
           "media": "img:in_d5_many",
-          "outcome": "Our estimate: the 386 spreads fast, but so does the price war. Many makers sell your design, prices crash, and you earn little from the chip you spent $100 million to build.",
-          "why": "You gave away your best product to rivals. The money from a winning chip went to everyone except you.",
-          "better": "Keep the 386 to yourself and win buyers' trust by building enough of it in more than one factory.",
+          "outcome": "Soon several companies make your chip and fight each other on price. The 386 spreads fast, but the money from your four-year bet goes to everyone.",
+          "why": "You gave away the reward for four years of work. A price war among makers of your own chip helped everyone but Intel.",
+          "better": "Make it yourself, and show buyers they are safe by building it in more than one of your own factories.",
           "takeaway": "In 1986 you gave away the one thing nobody else had.",
           "traits": {
             "horizon": -1,
@@ -427,7 +465,7 @@
         },
         {
           "id": "amd",
-          "label": "License it to AMD, as you did before.",
+          "label": "Let AMD make it as before, giving buyers a backup while you share the profit.",
           "grade": "ok",
           "effect": {
             "profit": 0,
@@ -436,9 +474,9 @@
           },
           "next": "d6",
           "media": "img:in_d5_amd",
-          "outcome": "Our estimate: buyers feel safe, and the 386 sells well. But AMD sells the same chip at a lower price, and you share profits you could have kept.",
-          "why": "It was the safe old habit. But the market had changed, and you no longer needed to share your best chip.",
-          "better": "Be the only maker, and show buyers you can deliver by building the 386 in two of your own factories.",
+          "outcome": "AMD makes the 386 too. Buyers feel safe, but many of the chips sold are AMD's, and you share the reward for four years of work.",
+          "why": "It was the usual way, but the 386 was your best chip ever, and sharing it gave a rival half the prize.",
+          "better": "Keep the 386 to yourself, and build it in two of your own factories so buyers feel safe.",
           "takeaway": "In 1986 you followed an old habit after the reason for it was gone.",
           "traits": {
             "horizon": 0,
@@ -448,7 +486,7 @@
         },
         {
           "id": "sole",
-          "label": "Be the only maker, and build it in two of your own factories so buyers feel safe.",
+          "label": "Make it only yourself, in two of your own factories, even if some buyers object.",
           "grade": "great",
           "real": true,
           "effect": {
@@ -458,8 +496,8 @@
           },
           "next": "d6",
           "media": "img:in_d5_sole",
-          "outcome": "After a fierce debate among Intel's top managers, Intel decided not to give the 386 to AMD or anyone else. To reassure buyers, it made the chip in two of its own factories. For 4.7 years Intel was the only company selling the 386. AMD's own version came only in March 1991, after legal fights.",
-          "why": "You broke an old industry habit because the facts had changed. You kept your best product and found another way to earn buyers' trust.",
+          "outcome": "After a heated debate inside Intel, you keep the 386 to yourself and build it in two of your own factories, so buyers know they won't be stuck. No one else sells a 386 for almost five years, until AMD's version arrives in 1991 after a long legal fight.",
+          "why": "You kept the reward for your biggest bet, and you answered the buyers' fear with two factories instead of a rival.",
           "takeaway": "In 1986 you kept your best product for yourself and solved the trust problem another way.",
           "traits": {
             "horizon": 1,
@@ -475,13 +513,23 @@
       "year": "1986",
       "title": "IBM says no",
       "media": "img:in_d6",
-      "setup": "IBM, which put your chip in its PC, is not interested in the 386. It is building its own version of your older 286 chip and wants more control over the PC. Meanwhile Compaq, a young company that makes IBM-compatible PCs, is ready to move fast.",
+      "setup": [
+        {
+          "when": {
+            "flags": ["refused_ibm"]
+          },
+          "text": "IBM, which you turned away in 1982, is not interested in the 386. It is busy making its own version of your older chip. Without IBM, who will build the first 386 computer?"
+        },
+        {
+          "text": "IBM, your biggest buyer, is not interested in the 386. It is busy making its own version of your older chip. Without IBM, who will build the first 386 computer?"
+        }
+      ],
       "question": "How do you launch the 386?",
-      "advisor": "Your most famous customer is not always your best partner for the next thing.",
+      "advisor": "Every PC so far has followed IBM's lead. Moving without IBM could open the market, or upset your biggest buyer.",
       "options": [
         {
           "id": "wait_ibm",
-          "label": "Wait until IBM is ready. Nobody wins in PCs without IBM.",
+          "label": "Wait for IBM. Every big PC so far has followed IBM's lead.",
           "grade": "bad",
           "effect": {
             "profit": -10,
@@ -490,9 +538,9 @@
           },
           "next": "ending_route",
           "media": "img:in_d6_wait",
-          "outcome": "Our estimate: the 386 sits on the shelf for a year. Other chip makers get time to catch up, and your newest product earns almost nothing while you wait.",
-          "why": "You let one customer set your timing. A great product is worth little if it waits for permission.",
-          "better": "Find a partner who wants to move now and launch with them.",
+          "outcome": "Months pass while IBM works on its own plans. Your newest chip waits on the shelf, and the money you spent building it earns nothing.",
+          "why": "IBM had its own reasons to go slow. Waiting for your biggest buyer let it decide when your best chip could start earning.",
+          "better": "Find a partner that wants to move first, and launch without IBM.",
           "takeaway": "In 1986 you waited for permission from a customer who did not want your product.",
           "traits": {
             "horizon": -1,
@@ -502,7 +550,7 @@
         },
         {
           "id": "compaq",
-          "label": "Work closely with Compaq and Microsoft to launch the first 386 PC.",
+          "label": "Work with Compaq, a young PC maker, and Microsoft on the first 386 PC, without IBM.",
           "grade": "great",
           "real": true,
           "effect": {
@@ -512,8 +560,8 @@
           },
           "next": "ending_route",
           "media": "img:in_d6_compaq",
-          "outcome": "Intel, Microsoft and Compaq worked closely together. On 9 September 1986 Compaq announced the Deskpro 386, the first PC with the 386 chip. IBM's first 386 PC came only in July 1987, nearly a year later. For the first time, a company other than IBM had moved the PC forward. By late 1987 Intel could not make 386 chips fast enough.",
-          "why": "You did not wait for the giant. You found a hungry partner and let the market decide.",
+          "outcome": "You, Compaq and Microsoft work together, and on 9 September 1986 Compaq announces the first PC with a 386 inside. IBM's own 386 PC arrives only in July 1987, nearly a year later. For the first time, someone other than IBM has moved the PC forward.",
+          "why": "You stopped waiting for permission. A hungry partner got your chip to buyers fast, and the PC world learned it no longer had to follow IBM.",
           "takeaway": "In 1986 you launched with the partner who was ready, not the biggest one.",
           "traits": {
             "horizon": 1,
@@ -523,7 +571,7 @@
         },
         {
           "id": "open",
-          "label": "Sell the 386 to every PC maker, with no special partner.",
+          "label": "Sell the 386 to any PC maker, without choosing one partner to launch first.",
           "grade": "ok",
           "effect": {
             "profit": 5,
@@ -531,9 +579,9 @@
           },
           "next": "ending_route",
           "media": "img:in_d6_open",
-          "outcome": "Our estimate: PC makers slowly test the 386, but nobody rushes to be first without IBM. The chip sells, but it takes longer to catch on.",
-          "why": "Being open to everyone was fine, but a new product needs a champion who goes first.",
-          "better": "Work closely with one bold partner to launch fast, then sell to everyone.",
+          "outcome": "PC makers buy the 386 slowly, each waiting to see what the others will do. It sells, but it takes much longer to catch on.",
+          "why": "Without a partner to go first, everyone waited for everyone else, and your best chip caught on slowly.",
+          "better": "Pick one eager PC maker and help it launch the first 386 computer.",
           "takeaway": "In 1986 you waited for the market instead of leading it.",
           "traits": {
             "horizon": 0,
@@ -575,10 +623,16 @@
           "when": {
             "flags": ["ibm_stake", "waited", "exit_dram", "restructured", "sole", "compaq"]
           },
-          "text": "In 1986 Intel lost $173 million. But the 386 sold faster than Intel could make it, and by late 1987 Intel expected a record profit. By 1992 it had 83% of the microprocessor market and made more than $1 billion a year. The memory company had become the processor company."
+          "text": "In 1986 Intel still loses money. But the 386 sells faster than Intel can make it, and by late 1987 it expects a record profit. By 1992 Intel makes 8 in every 10 computer brain chips sold and earns more than $1 billion a year. The memory company has become the PC chip company."
         },
         {
-          "text": "Our estimate: you let go of memory and bet on processors at the right time. The 386 sells faster than you can make it, and Intel becomes the company whose chips are inside most of the world's PCs."
+          "when": {
+            "flags": ["early_exit"]
+          },
+          "text": "Because you left memory early, you lost less and moved faster. The 386 sells faster than you can make it, and Intel becomes the company whose chips are inside most of the world's PCs."
+        },
+        {
+          "text": "You let go of memory and bet on the PC brain chips at the right time. The 386 sells faster than you can make it, and Intel becomes the company whose chips are inside most of the world's PCs."
         }
       ],
       "bonus": 15
@@ -589,7 +643,23 @@
       "tier": "survivor",
       "title": "Alive, but not the leader",
       "media": "img:in_survivor",
-      "text": "Our estimate: Intel survives the memory crash and still makes good processors. But you shared too much or moved too slowly, and others take a big part of the PC chip market you could have owned.",
+      "text": [
+        {
+          "when": {
+            "flags": ["many"]
+          },
+          "text": "Intel survives the memory crash and still makes good chips. But many companies now make your 386, and the price war means Intel never earns what its best chip was worth."
+        },
+        {
+          "when": {
+            "flags": ["amd"]
+          },
+          "text": "Intel survives the memory crash and still makes good chips. But AMD sells the 386 too, and it takes a big part of the market you could have owned."
+        },
+        {
+          "text": "Intel survives the memory crash and still makes good chips. But you moved too slowly in places, and others take a big part of the PC chip market you could have owned."
+        }
+      ],
       "bonus": 5
     },
     "collapse": {
@@ -598,7 +668,17 @@
       "tier": "collapse",
       "title": "Stuck in the past",
       "media": "img:in_collapse",
-      "text": "Our estimate: you held on to memory chips and old habits for too long. The losses ate the money the processors needed, and Intel ends up as one more chip maker beaten by cheaper rivals.",
+      "text": [
+        {
+          "when": {
+            "flags": ["stayed_dram"]
+          },
+          "text": "You held on to memory for too long. The losses ate the money the PC chips needed, and Intel ends up as one more chip maker beaten by cheaper rivals."
+        },
+        {
+          "text": "Old habits and slow moves cost you the PC era. The losses ate the money the new chips needed, and Intel ends up as one more chip maker beaten by cheaper rivals."
+        }
+      ],
       "bonus": 0
     },
     "fired": {
@@ -607,12 +687,12 @@
       "tier": "fired",
       "title": "The board lets you go",
       "media": "img:in_fired",
-      "text": "Our estimate: three costly calls in a row. The board has lost its trust in you and asks someone else to lead Intel through the crash.",
+      "text": "The board has seen enough. After three costly calls in the worst crash Intel has known, it asks someone else to lead the company.",
       "bonus": 0
     }
   },
   "realEnding": "legend",
-  "realHistory": "Intel began as a memory company and in 1970 made one of the first DRAM memory chips sold to the public. In the early 1980s Japanese makers made memory chips better and cheaper. In 1982 IBM paid $250 million for 12% of Intel. Intel stayed in DRAM until 1985, then left it. Over 1985 and 1986 it closed eight plants and cut 7,200 jobs, and it lost $173 million in 1986. It kept the new 386 processor to itself instead of sharing it with AMD, and Compaq launched the first 386 PC in September 1986. By 1992 Intel had 83% of the microprocessor market.",
+  "realHistory": "Intel began as a memory company, and in 1970 it made one of the first memory chips sold to the public. In the early 1980s Japanese makers made memory chips better and cheaper. In 1982 IBM paid $250 million for 12% of Intel. Intel stayed in the main memory chip business until 1985, then left it. Over 1985 and 1986 it closed eight plants and cut 7,200 jobs, and it lost $173 million in 1986. It kept its new 386 chip, a computer's brain, to itself instead of sharing it with AMD, and Compaq launched the first 386 PC in September 1986. By 1992 Intel had 83% of the market for these brain chips.",
   "sources": [
     {
       "label": "Intel and Memory: A History of Exits (TrendForce, 2026)",

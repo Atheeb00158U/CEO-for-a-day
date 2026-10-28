@@ -173,6 +173,11 @@ export function checkHotSeat(dir: string, audioDir = AUDIO_DIR): CheckResult {
 
   for (const p of factcheckProblems(dir, "hotseat.json")) soft(p);
 
+  // The app badges every off-path screen "Our estimate", so the story text must not say it again.
+  for (const l of voiceLines([hs]))
+    if (/\bour estimate\b/i.test(l.text))
+      errors.push(`"${l.text.slice(0, 50)}…" says "our estimate"; the app shows that as a badge, so cut it from the text`);
+
   // Pre-written debriefs: a key that matches no path is left over from an edit and will never be shown.
   const debriefsFile = join(dir, "debriefs.json");
   if (existsSync(debriefsFile)) {

@@ -6,7 +6,7 @@ Read `HOT-SEAT-DESIGN.md` first for how a Hot Seat plays.
 
 ## The house rules
 - **Real history is sourced.** Every fact on the real path (dates, numbers, names, events) must be backed by a source someone actually opened.
-- **Alternate history is an estimate.** Options the company didn't take are written as plausible stories, never as facts about the real company. The app labels them "Alternate history".
+- **Alternate history is an estimate.** Options the company didn't take are written as plausible stories, never as facts about the real company. The app badges every off-path screen "Our estimate", so the text itself never says so.
 - **No quotes from real people**, no logos, no real faces in images.
 - **Avoid** companies in active litigation, and stories that turn on a living person's private life. When unsure, flag it for Atheeb.
 - **Simple English.** Short words, short sentences. Many players have basic English.
@@ -34,6 +34,16 @@ Start from `npm run hotseat:new -- <id>` (it's a draft). Then:
 - **Path-aware text:** scenes and setups that change with earlier calls use `[{ "when": …, "text": … }]` variants.
 - **Endings:** route by the Future meter to legend, survivor and collapse, plus fired. Set `realEnding` to the tier the real company reached.
 - **Sources:** list the main sources in `sources`.
+- **Story:** follow the *Story rules* in `HOT-SEAT-DESIGN.md`: a person, a goal and a clock up front; each call follows from the last; short beats; no telegraphed answers; off-path text that fits the path.
+- **Read every path.** Before the copy passes, play the real path and at least three wrong or mixed paths start to finish (in `/admin/<id>` or `npm run dev`) and fix anything that doesn't follow.
+
+### 2b. Copy (required)
+All player-facing text, in Hot Seats and Daily Calls, goes through three passes before the fact-check. One drafting pass is never enough.
+1. **slopmonster** (`anthropic-skills:slopmonster`): run its checker on every line of text and fix what it finds.
+2. **fluent-prose** (`anthropic-skills:fluent-prose`): join related ideas so it reads as one story, not a list of notes, while keeping words simple and sentences short to medium for readers with basic English.
+3. **ChatGPT** in the browser pane (Atheeb is logged in at chatgpt.com): paste every line as `[key] text` with the rules above (keep every fact and number; no new facts; balanced option labels; the advisor doesn't give the answer away) and ask for an edit plus notes on continuity and give-aways. Take what helps, check every change against the facts, and keep sentences connected where it chops them up.
+
+Then run `npm run hotseat:check` and `npm run voices` again.
 
 ### 3. Check
 `npm run hotseat:check -- <id>` must show no errors. A draft may only warn about missing media and audio (and about the fact-check, until step 4). Look at the whole tree at `/admin/<id>`.
@@ -83,5 +93,6 @@ Atheeb reviews the story in `/admin/<id>` and plays it in `npm run dev`. Then:
   - Add a one-line `realHistory` and at least one source.
   - At most one image (`media` on the call). Options have none.
 - **Schedule:** the order of `calls` is the schedule. Day N after `startDay` plays call N. Only ever append; never reorder or delete calls that have already been played. Keep the same company at least a week apart. `hotseat:check` warns when fewer than 14 days are left.
+- **Copy:** the same three copy passes as a Hot Seat (step 2b), and the same no-telegraphing rule for options and the advisor.
 - **Fact-check:** one shared `content/daily/factcheck.md` checks every call and is stamped with the hash of `daily.json`. Re-stamp after any edit.
 - **Publish:** record the narration with `npm run narrate`, then set `draft: false` on each call.

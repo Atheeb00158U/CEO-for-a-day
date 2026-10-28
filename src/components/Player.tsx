@@ -141,6 +141,7 @@ export function Player({ hotSeatId, onExit, onNotes }: { hotSeatId: string; onEx
           setup={resolveText(phase.node.setup, run)}
           question={phase.node.question}
           advisor={resolveText(phase.node.advisor, run)}
+          estimate={!run.onRealPath}
           warning={run.trust === 1 ? "Board warning: one more costly call and you're out." : undefined}
           options={phase.node.options}
           onChoose={(id) =>
@@ -156,7 +157,7 @@ export function Player({ hotSeatId, onExit, onNotes }: { hotSeatId: string; onEx
           key={phase.node.id + phase.option.id}
           year={phase.node.year}
           media={phase.option.media}
-          real={!!phase.option.real}
+          real={run.onRealPath}
           outcome={resolveText(phase.option.outcome, run)}
           grade={phase.option.grade}
           why={phase.option.why}
@@ -275,15 +276,15 @@ function VoiceButton({ onClick }: { onClick: () => void }) {
   );
 }
 
-function YearChip({ year, real }: { year: string; real?: boolean }) {
+function YearChip({ year, real }: { year?: string; real?: boolean }) {
   return (
     <div className="flex items-center gap-2">
-      <span className="rounded-lg bg-surface-2 px-2 py-1 text-[13px] font-black tabular-nums text-ink">{year}</span>
+      {year && <span className="rounded-lg bg-surface-2 px-2 py-1 text-[13px] font-black tabular-nums text-ink">{year}</span>}
       {real !== undefined && (
         <span
           className={`rounded-lg px-2 py-1 text-[11px] font-black uppercase tracking-wider ${real ? "bg-ink text-bg" : "border-2 border-dashed border-muted text-muted"}`}
         >
-          {real ? "Real history" : "Alternate history"}
+          {real ? "Real history" : "Our estimate"}
         </span>
       )}
     </div>
@@ -322,6 +323,7 @@ export function DecisionView({
   question,
   advisor,
   warning,
+  estimate,
   options,
   onChoose,
 }: {
@@ -331,6 +333,8 @@ export function DecisionView({
   question: string;
   advisor?: string;
   warning?: string;
+  /** The player has left the real path, so this situation is our estimate. */
+  estimate?: boolean;
   options: ChoiceItem[];
   onChoose: (optionId: string) => void;
 }) {
@@ -345,7 +349,7 @@ export function DecisionView({
       <div className="flex items-center gap-3">
         {media && <MediaView media={media} className="size-20 shrink-0 !rounded-2xl" kenBurns={false} />}
         <div className="min-w-0">
-          <YearChip year={year} />
+          <YearChip year={year} real={estimate ? false : undefined} />
           <p className="mt-1 text-[13px] font-black uppercase tracking-[.12em] text-brand">Your call</p>
         </div>
       </div>
@@ -404,6 +408,7 @@ export function RevealView({
 }: {
   year: string;
   media?: Media;
+  /** Real history, or our estimate of what would have happened. */
   real: boolean;
   outcome: string;
   grade: Grade;
@@ -489,6 +494,7 @@ function EndingView({ run, node, onNext }: { run: RunState; node: EndingNode; on
   return (
     <div className="flex flex-1 flex-col gap-4">
       <MediaView media={node.media} className="aspect-[4/3] w-full" />
+      {!run.onRealPath && <YearChip real={false} />}
       <p className="text-[13px] font-black uppercase tracking-[.14em]" style={{ color }}>
         {node.tier === "fired" ? "Game over" : "The end"}
       </p>

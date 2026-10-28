@@ -2,8 +2,8 @@
   "id": "lego-turnaround",
   "company": "LEGO",
   "title": "Back to the brick",
-  "hook": "Kids are moving to screens. How far do you take the brick?",
-  "role": "You run LEGO, 1999 to 2006",
+  "hook": "Kids are moving to screens, and LEGO has just lost money for the first time. How far do you take the brick?",
+  "role": "You help run LEGO from 1998, then lead it",
   "years": "1998–2015",
   "cover": "img:lg_cover",
   "emblem": "img:lg_emblem",
@@ -32,7 +32,7 @@
       "type": "scene",
       "year": "1998",
       "media": "img:lg_intro",
-      "text": "It is 1998. For about 50 years, children have built with your plastic bricks. You run LEGOLAND parks in Denmark and England, and in 1996 you started a team to make computer games. But kids now love game consoles, and this year, for the first time in its history, LEGO loses money.",
+      "text": "It is 1998, and you are one of the people running LEGO. For about 50 years, children have built with its plastic bricks, but now they want game consoles, and this year LEGO loses money for the first time in its history. You need a way to grow again.",
       "next": "d1"
     },
     "d1": {
@@ -41,13 +41,13 @@
       "year": "1999",
       "title": "Beyond the brick",
       "media": "img:lg_d1",
-      "setup": "Since 1993 your sales have hardly grown. You keep adding new toys, but you are not selling more of them. Now you can make Star Wars sets. Some of your team also want more parks, more games, clothes and many new products.",
+      "setup": "Since 1993 sales have hardly grown, and adding more toys has not helped. Now you have a chance to make Star Wars sets. Some of your team want to go much further, with more LEGOLAND parks, video games, clothes and watches.",
       "question": "How do you grow LEGO?",
-      "advisor": "Kids still love to build. The question is how far from the brick you can go.",
+      "advisor": "Kids are moving to screens, so we have to follow them somehow. But each new business also takes us further from the brick.",
       "options": [
         {
           "id": "expand",
-          "label": "Go big: Star Wars sets, new parks, games, clothes and many new toys.",
+          "label": "Go big with Star Wars, new parks, games and clothes, despite the higher cost.",
           "grade": "ok",
           "real": true,
           "effect": {
@@ -55,9 +55,9 @@
             "future": 5,
             "flags": ["expand"]
           },
-          "next": "d2",
+          "next": "s2000",
           "media": "img:lg_d1_expand",
-          "outcome": "In 1999 LEGO launched its first Star Wars sets. They sold so well that LEGO made a profit again that year. LEGOLAND California opened too. LEGO also moved into electronics, video games, jewellery and learning centres, and it had three times as many products as before. But in 2000 LEGO lost 831 million kroner. It cut 1,500 jobs and stopped making clothes, watches and books.",
+          "outcome": "In 1999 your first Star Wars sets fly off the shelves, and LEGO makes a profit again. LEGOLAND California opens too. You also move into video games and electronics, and even jewellery and learning centres, until LEGO has three times as many products as before.",
           "why": "Star Wars was a smart bet, because it still sold bricks. But parks, clothes and watches pulled money and attention away from the brick, and too many products made everything cost more.",
           "better": "Take the Star Wars deal, because it sells bricks, but say no to side businesses that are not built from the brick.",
           "takeaway": "In 1999 you grew in every direction at once. Some bets sold bricks; many just added cost.",
@@ -69,16 +69,16 @@
         },
         {
           "id": "focus",
-          "label": "Make Star Wars sets, but only brick sets. Say no to clothes and side businesses.",
+          "label": "Take Star Wars only as brick sets and skip new businesses, even if growth is slower.",
           "grade": "great",
           "effect": {
             "profit": 10,
             "future": 15,
             "flags": ["focus"]
           },
-          "next": "d2",
+          "next": "s2000",
           "media": "img:lg_d1_focus",
-          "outcome": "Our estimate: Star Wars sets bring new fans to the brick. With fewer side businesses, your money and your best people stay on the toy kids love most, and costs stay under control.",
+          "outcome": "The Star Wars sets sell well, and LEGO makes money again. With no new parks or side businesses to pay for, you have cash to spare, though some of your team say you are thinking too small.",
           "why": "You used a popular story to sell more of what you do best, and you did not spread yourself thin.",
           "takeaway": "In 1999 you grew through the brick, not away from it.",
           "traits": {
@@ -89,7 +89,7 @@
         },
         {
           "id": "brick_only",
-          "label": "Say no to films and screens. Keep making classic brick sets as they are.",
+          "label": "Say no to films and screens and keep the classic sets, even if kids drift away.",
           "grade": "bad",
           "effect": {
             "profit": -5,
@@ -97,9 +97,9 @@
             "trust": -1,
             "flags": ["brick_only"]
           },
-          "next": "d2",
+          "next": "s2000",
           "media": "img:lg_d1_brickonly",
-          "outcome": "Our estimate: you keep things simple, but you miss the Star Wars boom. Kids who love films and games walk past your sets, and sales keep slipping.",
+          "outcome": "Kids walk past your shelves to the Star Wars toys and the video games. Classic sets still sell, but a little less every year, and LEGO starts to look old-fashioned.",
           "why": "Kids' lives were changing. Ignoring that change does not protect the brick; it makes the brick look old.",
           "better": "Use popular stories like Star Wars to bring kids to the brick, while staying careful about side businesses.",
           "takeaway": "In 1999 you ignored how kids were changing. Standing still is also a risky bet.",
@@ -111,6 +111,30 @@
         }
       ]
     },
+    "s2000": {
+      "id": "s2000",
+      "type": "scene",
+      "year": "2000",
+      "media": "img:lg_2000",
+      "text": [
+        {
+          "when": {
+            "flags": ["expand"]
+          },
+          "text": "Then 2000 goes badly. LEGO loses 831 million kroner, so you cut 1,500 jobs and stop making clothes, watches and books. A year later, a new line called Bionicle becomes a hit: heroes that kids build from LEGO parts, each with a story of its own."
+        },
+        {
+          "when": {
+            "flags": ["brick_only"]
+          },
+          "text": "By 2000 the losses are growing, and you have to cut jobs. Then in 2001 a new line called Bionicle gives you hope: heroes that kids build from LEGO parts, each with a story of its own."
+        },
+        {
+          "text": "By 2000 LEGO is steady, though it isn't growing fast. Then in 2001 a new line called Bionicle becomes a hit: heroes that kids build from LEGO parts, each with a story of its own."
+        }
+      ],
+      "next": "d2"
+    },
     "d2": {
       "id": "d2",
       "type": "decision",
@@ -120,20 +144,26 @@
       "setup": [
         {
           "when": {
-            "flags": ["brick_only"]
+            "flags": ["expand"]
           },
-          "text": "Our estimate: it is 2002. Without film sets, your sales are flat. Your own new line, Bionicle, sells well: heroes you build from LEGO parts, with their own story. Your team wants to move further from the brick."
+          "text": "Star Wars and Harry Potter sets sell very well, but only in years when a new film comes out. Your team wants to move further from the brick, with toys and TV shows that grab kids the way screens do."
         },
         {
-          "text": "It is 2002. Your Star Wars and Harry Potter sets sell very well, but only in years when a new film comes out. Your own new line, Bionicle, is a hit: heroes you build from LEGO parts, with their own story. Your team wants to move further from the brick."
+          "when": {
+            "flags": ["brick_only"]
+          },
+          "text": "Without film sets, your shelves look quiet next to the Star Wars toys. Your team wants new toys and TV shows that grab kids the way screens do."
+        },
+        {
+          "text": "Your Star Wars sets sell very well, but only in years when a new film comes out. Your team wants new toys and TV shows that grab kids the way screens do."
         }
       ],
       "question": "Which new toys do you bet on?",
-      "advisor": "Every new toy should answer one question: does it make kids want to build?",
+      "advisor": "Parents trust the LEGO name. The question is how far we can stretch that name before their trust starts to fade.",
       "options": [
         {
           "id": "galidor",
-          "label": "Replace DUPLO in America with Explore toys, and launch Galidor action figures with a TV show.",
+          "label": "Replace DUPLO in America with Explore, and launch Galidor figures with a TV show. A big bet.",
           "grade": "bad",
           "real": true,
           "effect": {
@@ -144,7 +174,7 @@
           },
           "next": "scene2004",
           "media": "img:lg_d2_galidor",
-          "outcome": "In 2002 LEGO replaced DUPLO, its big bricks for small children, with a new brand called Explore in the United States. Parents did not see Explore as LEGO, and it did not sell. It cost about 500 million kroner. LEGO also launched Galidor, action figures with special parts and a TV show that LEGO paid for. The show was not popular, and the toys sold badly.",
+          "outcome": "Explore, the new brand for small children, confuses American parents, who don't see it as LEGO, and it costs about 500 million kroner. Galidor, a line of action figures with a TV show that LEGO pays for, sells badly too.",
           "why": "You swapped a brand parents trusted for one they did not know, and you made toys that were hardly LEGO at all. Both moved you away from the brick.",
           "better": "Grow from the brick, like Bionicle did: new stories and new shapes, but always built from parts that fit with other LEGO parts.",
           "takeaway": "In 2002 you moved away from what customers loved, and they stopped buying.",
@@ -156,7 +186,7 @@
         },
         {
           "id": "discount",
-          "label": "Cut prices on your sets to keep sales up between films.",
+          "label": "Cut prices to keep sales up between films, even though every set earns less.",
           "grade": "ok",
           "effect": {
             "profit": -10,
@@ -165,7 +195,7 @@
           },
           "next": "scene2004",
           "media": "img:lg_d2_discount",
-          "outcome": "Our estimate: shops sell more boxes, but each one makes less money. The real problem, too many costly products, stays hidden.",
+          "outcome": "Sales hold up for a while, but every set earns less, and shops start waiting for the next sale before they order.",
           "why": "Lower prices bought some sales, but they did not fix what was wrong with the product range.",
           "better": "Fix the range first: fewer, better sets built from the brick, and stories like Bionicle that sell every year.",
           "takeaway": "In 2002 you used discounts to hide a product problem.",
@@ -177,7 +207,7 @@
         },
         {
           "id": "build",
-          "label": "Make more lines like Bionicle: new stories, always built from LEGO parts.",
+          "label": "Make more lines like Bionicle, always built from bricks, even if growth is slower.",
           "grade": "great",
           "effect": {
             "profit": 5,
@@ -186,7 +216,7 @@
           },
           "next": "scene2004",
           "media": "img:lg_d2_build",
-          "outcome": "Our estimate: lines like Bionicle give kids a reason to buy every year, not just in film years. DUPLO keeps its place with small children, and parents keep trusting the name.",
+          "outcome": "Kids love building the new heroes and following their stories, and DUPLO keeps selling to parents who know it. Growth is slow, but every new line sells more bricks.",
           "why": "You found something that worked and did more of it, without leaving the brick behind.",
           "takeaway": "In 2002 you built new ideas on top of your strongest asset.",
           "traits": {
@@ -207,22 +237,28 @@
           "when": {
             "flags": ["expand", "galidor"]
           },
-          "text": "It is 2004. In 2003 LEGO lost about 1.4 billion kroner before tax, the biggest loss in its history. The company is almost out of cash and owes nearly $1 billion. Some sets have parts that cost more to make than the whole box sells for, and nobody knows which products make money. The owner family puts 800 million kroner of its own money in, and a new CEO takes over. That CEO is you."
+          "text": "Then the money runs out. In 2003 LEGO loses about 1.4 billion kroner before tax, its biggest loss so far, and it owes nearly a billion dollars. In 2004 the owner family puts in 800 million kroner of its own money, steps back, and makes you the new chief executive."
         },
         {
           "when": {
             "flags": ["galidor"]
           },
-          "text": "Our estimate: it is 2004. Explore and Galidor have flopped, and money is running out. The board brings in a new CEO to save the company. That CEO is you."
+          "text": "By 2003 Explore and Galidor have turned into big losses, and cash is running low. In 2004 the owner family puts in its own money, steps back, and makes you the new chief executive."
+        },
+        {
+          "when": {
+            "flags": ["expand"]
+          },
+          "text": "By 2003 all those parks, games and products cost more than they earn, and cash is running low. In 2004 the owner family steps back and makes you the new chief executive, with orders to fix it."
         },
         {
           "when": {
             "maxFuture": 49
           },
-          "text": "Our estimate: it is 2004. Sales have been weak for years, and money is tight. The board wants a new plan, and it wants it from you."
+          "text": "By 2003 LEGO is losing money fast, and cash is running low. In 2004 the owner family steps back and makes you the new chief executive, with one job: stop the losses."
         },
         {
-          "text": "Our estimate: it is 2004. LEGO is in better shape than many toy makers, but costs are high. The board wants a plan for the next ten years."
+          "text": "LEGO is in better shape than many toy makers, but costs keep rising, and nobody can say which of its thousands of products make money. In 2004 the owner family steps back and makes you the new chief executive."
         }
       ],
       "next": "d3"
@@ -231,25 +267,25 @@
       "id": "d3",
       "type": "decision",
       "year": "2004",
-      "title": "Stop the bleeding",
+      "title": "What do you keep?",
       "media": "img:lg_d3",
       "setup": [
         {
           "when": {
-            "flags": ["expand", "galidor"]
+            "flags": ["expand"]
           },
-          "text": "LEGO owns four LEGOLAND parks, a video game company and a huge range of products. You need cash fast, and you need to stop the losses."
+          "text": "LEGO owns four LEGOLAND parks, a video game company and a huge range of products. Some sets have parts that cost more to make than the whole box sells for. You need cash, fast."
         },
         {
-          "text": "Our estimate: LEGO owns LEGOLAND parks, a video game team and many products it does not need. Costs are too high for the money coming in."
+          "text": "LEGO owns LEGOLAND parks, a video game company and thousands of products. Some make money while others quietly lose it, and now you have to choose what to keep."
         }
       ],
       "question": "Where do you start?",
-      "advisor": "Ask one thing about every business: does it help kids build with LEGO bricks?",
+      "advisor": "Selling a business brings cash quickly, but you can only sell it once. Cutting jobs hurts too, and the best people may leave first.",
       "options": [
         {
           "id": "borrow",
-          "label": "Borrow more and keep everything. The next big film will bring sales back.",
+          "label": "Take a big loan and keep every business, so you can fix each one without a fire sale.",
           "grade": "bad",
           "effect": {
             "profit": 5,
@@ -259,7 +295,7 @@
           },
           "next": "d4",
           "media": "img:lg_d3_borrow",
-          "outcome": "Our estimate: the bank lends you money, but the interest piles up. The parks and the games team keep eating cash, and the film you were waiting for does not come in time.",
+          "outcome": "The banks lend, and you buy some time. But the parks, the games and the extra products keep losing money, so the debt grows every month.",
           "why": "Borrowing to keep a broken business going only makes the hole deeper.",
           "better": "Sell what others can run better, close what loses money, and spend your cash on the brick.",
           "takeaway": "In 2004 you borrowed time instead of fixing the problem.",
@@ -271,7 +307,7 @@
         },
         {
           "id": "core",
-          "label": "Sell the LEGOLAND parks, close the game company, bring back DUPLO and focus on the brick.",
+          "label": "Sell the parks, close the games company and put the brick first, making LEGO much smaller.",
           "grade": "great",
           "real": true,
           "effect": {
@@ -286,10 +322,10 @@
               "when": {
                 "flags": ["expand", "galidor"]
               },
-              "text": "In 2004 LEGO cut about 1,000 jobs and closed its video game company. Some of its staff set up a new firm that published LEGO games made by an outside studio. Their LEGO Star Wars game came out in 2005 and sold 3.3 million copies by March 2006. DUPLO came back in 2004. In 2005 LEGO sold its four LEGOLAND parks to Merlin Entertainments, owned by Blackstone, for €375 million, and took a 30% stake in Merlin."
+              "text": "In 2004 you cut about 1,000 jobs, close the games company and bring DUPLO back. In 2005 you sell four LEGOLAND parks to Merlin Entertainments for €375 million and take a share in Merlin. Some of your old games staff start their own firm, and their LEGO Star Wars game is a big hit."
             },
             {
-              "text": "Our estimate: you sell the parks to a theme park company and keep a share. You close your game team and let a partner make LEGO games. The cash gives you room to fix the brick business."
+              "text": "You sell the parks, close the games company and let outside studios make LEGO games. LEGO is smaller now, but every business you kept is about the brick."
             }
           ],
           "why": "You let go of businesses that did not need LEGO to own them, raised cash, and put all your effort back into the brick.",
@@ -302,7 +338,7 @@
         },
         {
           "id": "trim",
-          "label": "Cut jobs and costs everywhere, but keep the parks and the games.",
+          "label": "Cut jobs and costs everywhere, but keep the parks and games in case they recover later.",
           "grade": "ok",
           "effect": {
             "profit": 5,
@@ -311,7 +347,7 @@
           },
           "next": "d4",
           "media": "img:lg_d3_trim",
-          "outcome": "Our estimate: costs fall for a while, but the parks still need big money and the games still lose it. LEGO is smaller, but not more focused.",
+          "outcome": "Costs come down, but the parks and the games still lose money, and the cuts make your best designers nervous. The losses shrink, but they don't stop.",
           "why": "Cutting a little from everything feels fair, but it keeps the parts that drain you.",
           "better": "Sell what others can run better, like theme parks, and let studios make LEGO games. Spend your cash on the brick.",
           "takeaway": "In 2004 you cut costs but kept the businesses that caused them.",
@@ -329,13 +365,23 @@
       "year": "2005",
       "title": "Too many pieces",
       "media": "img:lg_d4",
-      "setup": "LEGO makes about 13,000 different pieces. Every new piece costs money to design, make, store and ship, and many are used in only a few sets.",
+      "setup": [
+        {
+          "when": {
+            "flags": ["borrow"]
+          },
+          "text": "The debt keeps growing. Meanwhile, LEGO makes about 13,000 different pieces, and every one costs money to design, make, store and ship."
+        },
+        {
+          "text": "LEGO makes about 13,000 different pieces. Every one costs money to design, make, store and ship."
+        }
+      ],
       "question": "What do you do with all these pieces?",
-      "advisor": "A good LEGO piece is one you can use in a hundred models, not one.",
+      "advisor": "Fewer pieces would lower costs. But our designers say new shapes help make each new set feel fresh.",
       "options": [
         {
           "id": "cut",
-          "label": "Cut the number of pieces by about half. Every new piece must earn its place.",
+          "label": "Cut the pieces by about half, even though designers will have far fewer shapes.",
           "grade": "great",
           "real": true,
           "effect": {
@@ -343,19 +389,9 @@
             "future": 15,
             "flags": ["cut"]
           },
-          "next": "d5",
+          "next": "s2005",
           "media": "img:lg_d4_cut",
-          "outcome": [
-            {
-              "when": {
-                "flags": ["expand", "galidor", "core"]
-              },
-              "text": "LEGO cut the number of different pieces it made from about 13,000 to about 6,000–6,500 over several years, and stopped making toys that did not sell. It put profit first and growth second. In 2005 LEGO made a profit of 505 million kroner, after losing 1.93 billion kroner in 2004. Sales grew 12% to 7.05 billion kroner, led by Bionicle, DUPLO, LEGO City and LEGO Star Wars."
-            },
-            {
-              "text": "Our estimate: with about half as many pieces, sets cost less to make and are easier to keep in stock. Designers get more creative inside clear limits, and profit starts to come back."
-            }
-          ],
+          "outcome": "Over the next few years you cut the number of pieces by about half, and you stop making toys that don't sell. From now on, profit comes before growth.",
           "why": "Fewer pieces meant lower costs everywhere, from the factory to the warehouse, and the old pieces could still build almost anything.",
           "takeaway": "In 2005 you cut the complexity that was quietly eating your profit.",
           "traits": {
@@ -366,7 +402,7 @@
         },
         {
           "id": "keep",
-          "label": "Keep every piece. Designers need freedom to make new things.",
+          "label": "Keep every piece, so designers can keep making each new set feel different.",
           "grade": "bad",
           "effect": {
             "profit": -10,
@@ -374,9 +410,9 @@
             "trust": -1,
             "flags": ["keep"]
           },
-          "next": "d5",
+          "next": "s2005",
           "media": "img:lg_d4_keep",
-          "outcome": "Our estimate: designers stay happy, but costs stay high. Warehouses fill with pieces few sets need, and many boxes still lose money.",
+          "outcome": "Designers keep inventing, and the sets look great. But the factories and warehouses fill with pieces that hardly anyone uses, and costs keep climbing.",
           "why": "Freedom without limits made LEGO expensive to run. Every extra piece had a cost that nobody was counting.",
           "better": "Cut the list of pieces and make each new one prove it will be used in many sets.",
           "takeaway": "In 2005 you kept the hidden costs that had nearly sunk LEGO.",
@@ -388,18 +424,18 @@
         },
         {
           "id": "fewer_sets",
-          "label": "Make fewer sets, but keep all the pieces in case you need them.",
+          "label": "Make fewer sets, but keep all the pieces in case designers need them later.",
           "grade": "ok",
           "effect": {
             "profit": 5,
             "future": 5,
             "flags": ["fewer_sets"]
           },
-          "next": "d5",
+          "next": "s2005",
           "media": "img:lg_d4_fewer",
-          "outcome": "Our estimate: shops get a cleaner range, but the factory still has to handle thousands of pieces. Costs fall a little, not a lot.",
+          "outcome": "The shelves look tidier and some costs fall. But the factories still make thousands of rare pieces, and the hidden costs stay.",
           "why": "It fixed what customers see, but not the costs hidden in the factory.",
-          "better": "Cut the pieces too, not just the sets. That is where most of the cost hides.",
+          "better": "Cut the pieces as well as the sets, because that is where most of the cost hides.",
           "takeaway": "In 2005 you tidied the shelf but not the factory.",
           "traits": {
             "horizon": 0,
@@ -409,19 +445,55 @@
         }
       ]
     },
+    "s2005": {
+      "id": "s2005",
+      "type": "scene",
+      "year": "2005",
+      "media": "img:lg_2005",
+      "text": [
+        {
+          "when": {
+            "flags": ["expand", "galidor", "core", "cut"]
+          },
+          "text": "And it starts to work. In 2005 LEGO makes a profit again, after a loss of nearly 2 billion kroner the year before. Sales grow too, led by Bionicle, DUPLO, LEGO City and LEGO Star Wars."
+        },
+        {
+          "when": {
+            "flags": ["core", "cut"]
+          },
+          "text": "And it starts to work. LEGO is making money again, and sales grow, led by sets that are all about the brick."
+        },
+        {
+          "when": {
+            "flags": ["borrow"]
+          },
+          "text": "By 2005 the debt is crushing, and the banks want a real plan to make money, not more promises."
+        },
+        {
+          "when": {
+            "flags": ["keep"]
+          },
+          "text": "Costs keep climbing because every new set needs pieces that few other sets use. Cash is still tight."
+        },
+        {
+          "text": "LEGO is steadier now, and the losses are shrinking. But your bricks still cost too much to make."
+        }
+      ],
+      "next": "d5"
+    },
     "d5": {
       "id": "d5",
       "type": "decision",
       "year": "2006",
       "title": "Who makes the bricks?",
       "media": "img:lg_d5",
-      "setup": "LEGO is closing a factory in Switzerland and wants to make more bricks in countries where costs are lower. A big contract manufacturer called Flextronics offers to make many of your bricks for you.",
+      "setup": "LEGO is closing a factory in Switzerland and wants to make more bricks where costs are lower. Flextronics, a big company that makes products for other brands, offers to make many of your bricks for you.",
       "question": "How do you make bricks for less?",
-      "advisor": "Your bricks must fit together perfectly, every time. Whoever makes them must care about that as much as you do.",
+      "advisor": "Flextronics makes things for some of the biggest brands in the world. But Flextronics has never made LEGO bricks before.",
       "options": [
         {
           "id": "keep_old",
-          "label": "Keep all your old factories as they are. Only LEGO can make LEGO.",
+          "label": "Keep your old factories as they are, accepting higher costs so you keep full control.",
           "grade": "bad",
           "effect": {
             "profit": -15,
@@ -430,7 +502,7 @@
           },
           "next": "ending_route",
           "media": "img:lg_d5_keep",
-          "outcome": "Our estimate: quality stays perfect, but your costs stay far above other toy makers'. Each box earns less, and there is little money left for new ideas.",
+          "outcome": "Quality stays perfect, but your costs stay higher than your rivals', and every year the gap gets harder to close.",
           "why": "Pride in how you make things is good. But refusing to change where and how you make them leaves you too expensive.",
           "better": "Move making to cheaper places, but in factories you own and run yourself.",
           "takeaway": "In 2006 you protected old factories instead of the company.",
@@ -442,7 +514,7 @@
         },
         {
           "id": "outsource",
-          "label": "Hand much of your brick making to Flextronics to save money.",
+          "label": "Hand much of your brick making to Flextronics for faster savings, but give up control.",
           "grade": "ok",
           "real": true,
           "effect": {
@@ -452,7 +524,17 @@
           },
           "next": "ending_route",
           "media": "img:lg_d5_outsource",
-          "outcome": "From 2006 LEGO moved a large part of its making, especially DUPLO, to Flextronics plants in Hungary, the Czech Republic and Mexico. There were problems from the start. Parts ran short and LEGO could not make enough to meet demand; Flextronics could not even make enough DUPLO flowers. In 2008 LEGO ended the deal and took the work back. In 2009 it opened its own factories in Hungary and Mexico.",
+          "outcome": [
+            {
+              "when": {
+                "flags": ["expand", "galidor", "core", "cut"]
+              },
+              "text": "From 2006 Flextronics makes a large part of your bricks, especially DUPLO, in Hungary, the Czech Republic and Mexico. Trouble starts at once: parts run short, and Flextronics can't even make enough DUPLO flowers. In 2008 you end the deal, and in 2009 you open your own factories in Hungary and Mexico."
+            },
+            {
+              "text": "Flextronics starts making many of your bricks, but trouble starts at once. Parts run short and shops wait for sets, and within two years you take the work back."
+            }
+          ],
           "why": "Cutting costs was right. But making perfect bricks was a core skill, and LEGO learned it could not hand that to someone else.",
           "better": "Move making to cheaper places, but in your own factories, run by your own people.",
           "takeaway": "In 2006 you outsourced a core skill, and had to take it back.",
@@ -464,7 +546,7 @@
         },
         {
           "id": "own_cheap",
-          "label": "Run your own factories in cheaper countries, close to your buyers.",
+          "label": "Build your own factories in cheaper countries, accepting more time and cost up front.",
           "grade": "great",
           "effect": {
             "profit": 5,
@@ -473,7 +555,7 @@
           },
           "next": "ending_route",
           "media": "img:lg_d5_own",
-          "outcome": "Our estimate: it takes longer and costs more at first, but you keep control of quality, and shops never run short of your sets.",
+          "outcome": "Your new factories take time and money to build. But your own people run them, the bricks fit perfectly, and costs fall year after year.",
           "why": "You cut costs without giving away the skill that makes LEGO special.",
           "takeaway": "In 2006 you lowered costs but kept your core skill in your own hands.",
           "traits": {
@@ -516,10 +598,10 @@
           "when": {
             "flags": ["expand", "galidor", "core", "cut", "outsource"]
           },
-          "text": "LEGO kept growing. In the first half of 2014 its sales were more than three times what they were in the first half of 2008. The LEGO Movie came out in 2014 and earned about $470 million around the world, and that year LEGO passed Mattel, the maker of Barbie, in half-year sales. By 2015 LEGO made more profit than any other toy company. A company that almost ran out of cash in 2003 was now one of the strongest in its industry."
+          "text": "LEGO keeps growing. In the first half of 2014 its sales are more than three times what they were in the first half of 2008. The LEGO Movie is a worldwide hit, and LEGO passes Mattel, the maker of Barbie, in half-year sales. By 2015 it makes more profit than any other toy company."
         },
         {
-          "text": "Our estimate: you kept LEGO close to the brick and fixed problems early. LEGO grows year after year and becomes one of the most loved toy companies in the world."
+          "text": "You brought LEGO back to the brick, and it paid off. Within ten years LEGO is one of the strongest toy companies in the world, and kids are still building."
         }
       ],
       "bonus": 15
@@ -530,7 +612,17 @@
       "tier": "survivor",
       "title": "Still building",
       "media": "img:lg_survivor",
-      "text": "Our estimate: LEGO survives and makes money again, but it is smaller and slower than it could have been. Other toy makers take the lead.",
+      "text": [
+        {
+          "when": {
+            "flags": ["borrow"]
+          },
+          "text": "LEGO survives, but the debt hangs over it for years. It still makes good sets, but rivals win many of the kids who moved to screens."
+        },
+        {
+          "text": "LEGO survives as a smaller, more careful company. It still makes good sets, but rivals win many of the kids who moved to screens, and LEGO never quite gets its old shine back."
+        }
+      ],
       "bonus": 5
     },
     "collapse": {
@@ -539,7 +631,7 @@
       "tier": "collapse",
       "title": "The brick breaks",
       "media": "img:lg_collapse",
-      "text": "Our estimate: the losses never stop. The owner family has to sell LEGO to a bigger toy company, and the brick becomes just one brand among many.",
+      "text": "The losses never stop. To pay its debts, the owner family has to sell LEGO to a bigger toy company, and the brick becomes just one brand among many.",
       "bonus": 0
     },
     "fired": {
@@ -548,12 +640,12 @@
       "tier": "fired",
       "title": "The family lets you go",
       "media": "img:lg_fired",
-      "text": "Our estimate: three costly calls. The owner family loses trust in you and asks someone else to save LEGO.",
+      "text": "The owner family has seen enough. After three costly calls, it gives your job to someone else.",
       "bonus": 0
     }
   },
   "realEnding": "legend",
-  "realHistory": "From the late 1990s LEGO grew far beyond the brick: theme parks, video games, clothes, electronics and toys like Explore and Galidor. In 2003 it lost about 1.4 billion kroner before tax, and it was almost out of cash. A new CEO took over in 2004. LEGO closed its game company, sold its four LEGOLAND parks for €375 million, brought back DUPLO and cut its pieces from about 13,000 to about 6,000–6,500 over several years. It made a profit again in 2005. A plan to let another company make its bricks failed, and LEGO took the work back in 2008. By 2015 it made more profit than any other toy company.",
+  "realHistory": "In the late 1990s and early 2000s LEGO grew far beyond the brick, into theme parks, video games, clothes, electronics and toys like Explore and Galidor. In 2003 it lost about 1.4 billion kroner before tax, and it was almost out of cash. A new chief executive took over in 2004. LEGO closed its games company, sold four LEGOLAND parks for €375 million, brought back DUPLO and, over several years, cut its range of pieces by about half. It made a profit again in 2005. A plan to let another company make its bricks failed, and LEGO took the work back in 2008. By 2015 it made more profit than any other toy company.",
   "sources": [
     {
       "label": "The Lego Group (Wikipedia)",
@@ -586,6 +678,26 @@
     {
       "label": "Lego towers over Mattel (City AM, 2014)",
       "url": "https://cityam.com/?p=534512"
+    },
+    {
+      "label": "Frozen ice castle helps Lego to best year ever (The Local DK, 2016)",
+      "url": "https://www.thelocal.dk/20160301/frozen-ice-castle-helps-lego-to-best-year-ever"
+    },
+    {
+      "label": "Lego: another brick in the wall (London Business School, 2003)",
+      "url": "https://www.london.edu/think/lego-another-brick-in-the-wall"
+    },
+    {
+      "label": "The first LEGOLAND park (LEGO Group history)",
+      "url": "https://lego.com/en-in/history/articles/e-the-first-legoland-park"
+    },
+    {
+      "label": "Lego Star Wars: The Video Game (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Lego_Star_Wars:_The_Video_Game"
+    },
+    {
+      "label": "Galidor (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Galidor"
     }
   ],
   "credits": "Research brief and full source list: content/hotseats/lego-turnaround/research.md."

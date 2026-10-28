@@ -2,7 +2,7 @@
   "id": "kodak",
   "company": "Kodak",
   "title": "The camera with no film",
-  "hook": "You invented the digital camera. Can you survive it?",
+  "hook": "Your own engineer has built a camera with no film. Film is how you make your money. What do you do?",
   "role": "You run Kodak, 1975 to 2012",
   "years": "1975–2012",
   "cover": "img:c2_prototype",
@@ -31,7 +31,7 @@
       "type": "scene",
       "year": "1975",
       "media": "vid:film26",
-      "text": "It's 1975 and you run Kodak, the biggest name in photography. You sell the film, the chemicals and the paper. Every holiday snap in America makes you money.",
+      "text": "Rochester, New York, 1975. You run Kodak, and about 9 in every 10 rolls of film sold in America are yours. You earn from every holiday photo: from the film, the chemicals and the paper it is printed on. Your job is to keep it that way.",
       "next": "lab"
     },
     "lab": {
@@ -39,7 +39,7 @@
       "type": "scene",
       "year": "1975",
       "media": "img:c2_prototype",
-      "text": "In December 1975, a 25-year-old Kodak engineer named Steve Sasson finishes a strange machine: an 8-pound box that takes a 100 by 100 pixel, black-and-white picture in 23 seconds and saves it to a cassette tape. You need a TV to see it. There is no film anywhere.",
+      "text": "In December 1975, an engineer in your lab, Steve Sasson, finishes a strange box. It weighs 8 pounds and takes 23 seconds to save one blurry black-and-white picture onto a cassette tape. You need a TV to see the picture, and there is no film anywhere inside it.",
       "next": "d1"
     },
     "d1": {
@@ -48,13 +48,13 @@
       "year": "1975",
       "title": "The camera with no film",
       "media": "img:c2_prototype",
-      "setup": "It's slow, ugly and blurry. But if it ever gets good, nobody will need your film.",
+      "setup": "Today the camera is slow and blurry, and nobody would buy it. But if it keeps getting better, one day people will not need film, and film is where most of your money comes from.",
       "question": "What do you do with the digital camera?",
-      "advisor": "The film division is nervous. Whatever you pick, they'll be watching.",
+      "advisor": "Film pays every salary in this building. But whoever learns this first may own photography one day.",
       "options": [
         {
           "id": "shelve",
-          "label": "Lock it in the lab. Film pays the bills, and this isn't ready.",
+          "label": "Patent it and keep it in the lab. Film pays the bills, and this isn't ready.",
           "grade": "bad",
           "real": true,
           "effect": {
@@ -65,10 +65,10 @@
           },
           "next": "sony1981",
           "media": "img:c2_shelf",
-          "outcome": "Kodak patents the camera, but the executives who see it are not convinced. Sasson later recalled them doubting that anyone would want to look at their pictures on a television. No digital camera goes on sale.",
-          "why": "Protecting your best business feels safe. But a new technology that looks worse at first can still replace you, and every year you wait, someone else learns it first.",
-          "better": "Give digital to a small, separate team that's allowed to compete with film, and fund it from film profits.",
-          "takeaway": "In 1975 you protected film instead of learning digital. Big companies rarely lose to better products; they lose to products they dismissed.",
+          "outcome": "Kodak patents the camera, but the managers who see it aren't convinced. Its inventor later remembers them doubting that anyone would want to look at their pictures on a TV. No digital camera goes on sale.",
+          "why": "Protecting your best business felt safe. But a new technology that looks worse at first can still replace you, and every year you wait, someone else learns it first.",
+          "better": "Give digital a small team of its own that is allowed to compete with film, and pay for it from film profits.",
+          "takeaway": "In 1975 you protected film instead of learning digital.",
           "traits": {
             "horizon": -1,
             "risk": -1,
@@ -77,7 +77,7 @@
         },
         {
           "id": "unit",
-          "label": "Set up a small, separate digital team that's allowed to compete with film.",
+          "label": "Start small: a few engineers, kept apart from film and free to compete with it.",
           "grade": "great",
           "effect": {
             "profit": -5,
@@ -86,9 +86,9 @@
           },
           "next": "sony1981",
           "media": "img:c2_unit",
-          "outcome": "You give Sasson twenty engineers, a separate building and one rule: don't ask the film division for permission. Film keeps paying the bills while the team learns sensors, storage and screens.",
-          "why": "You kept the cash machine running while buying time to learn the next one. A separate team can't be strangled by the business it's meant to replace.",
-          "takeaway": "In 1975 you funded digital in a separate team. Protect the core, but give the future its own room to grow.",
+          "outcome": "You give the inventor a small team and a building away from the film offices. Film keeps paying the bills, while the team quietly learns about sensors, memory and screens.",
+          "why": "You kept the money machine running while you learned how the next one might work. A separate team has room to grow without being held back by the business it may one day replace.",
+          "takeaway": "In 1975 you gave digital its own room to grow, paid for by film.",
           "traits": {
             "horizon": 1,
             "risk": 1,
@@ -97,7 +97,7 @@
         },
         {
           "id": "rush",
-          "label": "Launch it now and beat everyone to digital.",
+          "label": "Go big: put it on sale soon and be first, even though it's slow and costly to make.",
           "grade": "ok",
           "effect": {
             "profit": -15,
@@ -106,10 +106,10 @@
           },
           "next": "sony1981",
           "media": "img:c2_rush",
-          "outcome": "You rush a camera into stores. It's bulky, slow and needs a television to view anything. Almost nobody buys it, and the loss shows up in your next annual report.",
-          "why": "Right idea, wrong year. In 1975 there were no home computers and no screens worth viewing photos on. Being first is useless if customers can't use what you sell.",
-          "better": "Keep developing it in a separate team, and launch when screens and storage are ready.",
-          "takeaway": "In 1975 you were right about digital but too early. Timing is part of the decision, not a detail.",
+          "outcome": "You rush a camera into stores. It is bulky and slow, and you need a TV to see anything. Almost nobody buys it, and the loss shows up in your next yearly report.",
+          "why": "The idea was right, but the market was not ready. In 1975 almost nobody had a screen worth looking at photos on, so being first did little if customers could not use what you sold.",
+          "better": "Keep building it in a separate team, and launch when screens and memory are ready.",
+          "takeaway": "In 1975 you were right about digital, but far too early.",
           "traits": {
             "horizon": 1,
             "risk": 1,
@@ -128,16 +128,16 @@
           "when": {
             "flags": ["shelved"]
           },
-          "text": "August 1981. Sony announces the Mavica, an electronic camera that records pictures on a small magnetic disk instead of film. It is not digital yet, but it needs no film, and it is on the front pages with Sony's name on it. You can still fix this."
+          "text": "August 1981. Sony shows the Mavica, a camera that saves pictures on a small magnetic disk instead of film. It isn't digital yet, but it needs no film, and it carries Sony's name, not yours."
         },
         {
           "when": {
             "flags": ["unit"]
           },
-          "text": "August 1981. Sony announces the Mavica, an electronic camera that records pictures on a magnetic disk instead of film. Retailers panic. Your digital team isn't surprised; they've been building something similar for six years."
+          "text": "August 1981. Sony shows the Mavica, a camera that saves pictures on a small magnetic disk instead of film. Your own digital team isn't surprised, because they have been working on the same idea for six years."
         },
         {
-          "text": "August 1981. Sony announces the Mavica, an electronic camera that records pictures on a magnetic disk instead of film. Your early camera flopped, but the world just caught up with the idea."
+          "text": "August 1981. Sony shows the Mavica, a camera that saves pictures on a small magnetic disk instead of film. Your own early camera flopped, but now Sony is making the same idea look exciting."
         }
       ],
       "next": "d2"
@@ -148,33 +148,13 @@
       "year": "1981",
       "title": "Sony's filmless camera",
       "media": "vid:comp7",
-      "setup": [
-        {
-          "when": {
-            "maxTrust": 2
-          },
-          "text": "The board is uneasy about your last call. A big retailer asks what Sony's camera means for film. Investors want an answer this week."
-        },
-        {
-          "text": "A big retailer asks what Sony's camera means for film. Investors want an answer this week."
-        }
-      ],
+      "setup": "One of your biggest photo-printing customers calls to ask whether they should be worried. Your investors want an answer too, and film still brings in most of your money.",
       "question": "How do you respond to Sony?",
-      "advisor": [
-        {
-          "when": {
-            "maxTrust": 2
-          },
-          "text": "Careful. One more bad call and the board starts asking questions about you."
-        },
-        {
-          "text": "Film still makes most of our money. But this time the world is watching."
-        }
-      ],
+      "advisor": "If we move too fast, we may hurt film. If we move too slowly, we may lose time we cannot get back.",
       "options": [
         {
           "id": "dismiss",
-          "label": "Tell investors it's a toy. Film pictures are still far better.",
+          "label": "Reassure customers and investors: film is far sharper, and Sony's camera isn't even digital.",
           "grade": "bad",
           "effect": {
             "profit": 5,
@@ -184,10 +164,10 @@
           },
           "next": "web2001",
           "media": "vid:photo43",
-          "outcome": "The stock holds steady and the camera counters keep selling film. Inside Kodak, the message is clear: digital is not a career move. Your best engineers start taking calls from Japan.",
-          "why": "Early versions of a disruptive product are always worse. Comparing today's quality hides the real question: how fast is it improving?",
-          "better": "Accept that digital is coming and start shifting money and people toward it while film is still strong.",
-          "takeaway": "In 1981 you judged digital by today's quality instead of its speed of improvement.",
+          "outcome": "Investors relax, and film keeps selling. But inside Kodak, everyone hears the message that digital is not where careers are made, and your best young engineers start looking at other jobs.",
+          "why": "Early versions of a new technology are often worse. Comparing today's quality can hide the bigger question: how quickly is it getting better?",
+          "better": "Accept that digital is coming, and start moving money and people toward it while film is still strong.",
+          "takeaway": "In 1981 you judged digital by how good it was, not by how fast it was improving.",
           "traits": {
             "horizon": -1,
             "risk": -1,
@@ -196,7 +176,7 @@
         },
         {
           "id": "study",
-          "label": "Commission a study: how many years until digital beats film?",
+          "label": "Order a careful study first: how many years before this beats film? It will take months.",
           "grade": "ok",
           "real": true,
           "effect": {
@@ -205,10 +185,20 @@
           },
           "next": "web2001",
           "media": "img:c1_license",
-          "outcome": "Your market-intelligence chief, Vince Barabba, reports back: digital could replace film, but Kodak has roughly ten years to prepare. Kodak does little to prepare.",
-          "why": "The study was right about the threat. The mistake was treating 'ten years' as permission to wait. A deadline is only useful if you start moving before it.",
-          "better": "Use the ten-year window to move money and talent into digital now, not in year nine.",
-          "takeaway": "In 1981 you saw the threat clearly but treated the time window as comfort instead of a deadline.",
+          "outcome": [
+            {
+              "when": {
+                "flags": ["unit"]
+              },
+              "text": "Your head of market research reports back that digital could replace film, but Kodak has about ten years to get ready. Your digital team keeps working, but you keep its budget small, so it moves slowly."
+            },
+            {
+              "text": "Your head of market research reports back that digital could replace film, but Kodak has about ten years to get ready. Kodak does very little with those years."
+            }
+          ],
+          "why": "The study was right about the danger. The mistake was treating ten years as permission to wait, because a deadline only helps if you start moving long before it.",
+          "better": "Use the ten years to move money and people into digital now, not in year nine.",
+          "takeaway": "In 1981 you saw the danger clearly, but treated the time you had as comfort, not a deadline.",
           "traits": {
             "horizon": 0,
             "risk": -1,
@@ -217,7 +207,7 @@
         },
         {
           "id": "shift",
-          "label": "Start moving film profits into digital imaging, starting now.",
+          "label": "Start moving film profits into digital now. Profits will fall, and investors will complain.",
           "grade": "great",
           "effect": {
             "profit": -10,
@@ -231,14 +221,14 @@
               "when": {
                 "flags": ["shelved"]
               },
-              "text": "You pull the 1975 prototype out of the cupboard and put its inventor in charge. It's six years late, but Kodak still has the money, the patents and the brand to catch up."
+              "text": "You take the 1975 camera out of the cupboard and put its inventor in charge. You are six years late, but Kodak still has the money, the patents and the name to catch up."
             },
             {
-              "text": "You announce that a growing share of film profits will fund digital imaging every year. Wall Street grumbles about lower margins. Your engineers stop job hunting."
+              "text": "You announce that a bigger share of film profits will pay for digital every year. Investors grumble about lower profits, but your engineers stop looking for other jobs."
             }
           ],
-          "why": "You used the cash from the old business to pay for the new one while you still could. That's the move most incumbents make too late.",
-          "takeaway": "In 1981 you used today's profits to pay for tomorrow's business, before you were forced to.",
+          "why": "You used money from the old business to pay for the new one while you still could, which is the move most leading companies make too late.",
+          "takeaway": "In 1981 you used today's profits to pay for tomorrow's business.",
           "traits": {
             "horizon": 1,
             "risk": 1,
@@ -255,18 +245,24 @@
       "text": [
         {
           "when": {
-            "minFuture": 55
+            "flags": ["shifted"]
           },
-          "text": "It's 2001. Your digital cameras are among the best sellers in America, and people are starting to put their photos online. Kodak has just bought Ofoto, a website where people upload pictures."
+          "text": "It is 2001, twenty years after you began paying for digital out of film profits. Kodak cameras are among the best sellers in America, and people are starting to put their photos online. You have just bought Ofoto, a website where people upload their pictures."
         },
         {
           "when": {
-            "minFuture": 30
+            "flags": ["dismissed"]
           },
-          "text": "It's 2001. Digital cameras are finally taking off and Kodak is selling them, but film is still where the money is. You've just bought Ofoto, a website where people upload pictures."
+          "text": "It is 2001. For twenty years Kodak called digital a toy, and now digital cameras are selling fast while film sales start to fall. Kodak is racing to catch up, and you have just bought Ofoto, a website where people upload their pictures."
         },
         {
-          "text": "It's 2001. Kodak's new EasyShare digital cameras have made it number two in the US, but film still earns most of the money. You've just bought Ofoto, a website where people upload pictures."
+          "when": {
+            "flags": ["unit"]
+          },
+          "text": "It is 2001. The small digital team you started in 1975 is now a real business, and Kodak cameras sell well. But film still earns most of your money, and film sales have started to fall. You have just bought Ofoto, a website where people upload their pictures."
+        },
+        {
+          "text": "It is 2001. Twenty years on, digital cameras are finally selling, and your EasyShare cameras have made Kodak number two in the US. But film still earns most of your money, and film sales have started to fall. You have just bought Ofoto, a website where people upload their pictures."
         }
       ],
       "next": "d3"
@@ -277,23 +273,13 @@
       "year": "2001",
       "title": "The photo website",
       "media": "img:c3_web",
-      "setup": "Millions of people will soon put their photos online. But Kodak still earns its money from prints, paper and chemicals.",
+      "setup": "Soon millions of people will keep their photos online. But Kodak earns its money when photos are printed, on Kodak paper, with Kodak chemicals.",
       "question": "What is Ofoto for?",
-      "advisor": [
-        {
-          "when": {
-            "maxTrust": 1
-          },
-          "text": "This is your last warning from the board. Get this one wrong and they'll find a new CEO."
-        },
-        {
-          "text": "Every photo that stays on a screen is a print we never sell. But maybe that's the point."
-        }
-      ],
+      "advisor": "Prints pay us today. Sharing might pay us one day. Nobody can tell us which one matters more.",
       "options": [
         {
           "id": "prints",
-          "label": "Use it to sell prints. People upload, then order copies from us.",
+          "label": "Use it to sell prints. People upload photos, then order copies from you.",
           "grade": "bad",
           "real": true,
           "effect": {
@@ -304,10 +290,10 @@
           },
           "next": "last2006",
           "media": "img:c3_prints",
-          "outcome": "Renamed Kodak Gallery, the site grows to over 60 million users. But free accounts must keep buying prints or risk losing their photos.",
-          "why": "You built the website around your old revenue instead of what customers wanted to do. The customer's job had changed from printing memories to sharing them.",
-          "better": "Make it a free place to share photos with friends, and earn from the audience instead of paper.",
-          "takeaway": "In 2001 you built for your old revenue instead of the customer's new habit.",
+          "outcome": "Renamed Kodak Gallery, the site grows until more than 60 million people use it. But people must keep buying from Kodak to keep their accounts, or their photos can be deleted.",
+          "why": "You built the website around your old way of earning instead of the new way people wanted to use photos. People were moving away from printing memories and toward sharing them.",
+          "better": "Make it a free place to share photos with friends, and earn from the people who use it, not from paper.",
+          "takeaway": "In 2001 you built for your old income instead of your customers' new habit.",
           "traits": {
             "horizon": -1,
             "risk": -1,
@@ -316,7 +302,7 @@
         },
         {
           "id": "network",
-          "label": "Make it a free place to share photos with friends. Earn from the network.",
+          "label": "Make it free and easy to share photos with friends, and work out how to earn later.",
           "grade": "great",
           "effect": {
             "profit": -5,
@@ -325,9 +311,9 @@
           },
           "next": "last2006",
           "media": "img:c3_share",
-          "outcome": "Uploads are free, albums are easy to share, and friends comment on each other's photos. Within a few years, Kodak owns the place where families keep their pictures, just as phones start getting cameras.",
-          "why": "You followed the customer's new habit, sharing, even though it hurt print sales. Owning the audience is worth more than owning the paper.",
-          "takeaway": "In 2001 you followed the customer's new habit instead of your old revenue.",
+          "outcome": "Uploads are free, albums are easy to share, and friends comment on each other's photos. Within a few years, Kodak owns the place where families keep their pictures, just as phones start taking good ones.",
+          "why": "You followed your customers' new habit, sharing, even though it hurt print sales. Owning the place people visit every day is worth more than owning the paper.",
+          "takeaway": "In 2001 you followed your customers' new habit instead of your old income.",
           "traits": {
             "horizon": 1,
             "risk": 1,
@@ -336,7 +322,7 @@
         },
         {
           "id": "cameras",
-          "label": "Shut it down. Put everything into selling digital cameras.",
+          "label": "Close the website and put everything into making the best digital cameras.",
           "grade": "ok",
           "effect": {
             "profit": 5,
@@ -345,10 +331,10 @@
           },
           "next": "last2006",
           "media": "img:c3_cameras",
-          "outcome": "Kodak cameras fly off the shelves and the brand looks modern again. But every competitor is selling cameras too, and prices fall every year.",
-          "why": "Cameras were a real business, but a crowded one with thin margins. You gave up the part of digital that customers come back to every day.",
-          "better": "Keep the website and make it about sharing. That's where people would spend their time.",
-          "takeaway": "In 2001 you chose hardware sales over owning where people's photos live.",
+          "outcome": "Kodak cameras fly off the shelves, and the name looks modern again. But every rival is selling cameras too, and prices fall every year.",
+          "why": "Cameras were a real business, but a crowded one with thin profits. You gave up the part of digital that people come back to every day.",
+          "better": "Keep the website and make it about sharing, because that is where people would spend their time.",
+          "takeaway": "In 2001 you chose selling cameras over owning the place where people's photos live.",
           "traits": {
             "horizon": 0,
             "risk": 0,
@@ -367,16 +353,22 @@
           "when": {
             "minFuture": 60
           },
-          "text": "It's 2007. Film sales are collapsing across the industry, but your digital businesses are growing fast enough to carry the company. You have a strong hand. Don't waste it."
+          "text": "It is 2007. Film is falling fast across the industry, but your digital businesses are growing fast enough to carry Kodak. You still have a strong hand, so the next choice matters."
         },
         {
           "when": {
-            "minFuture": 30
+            "flags": ["network"]
           },
-          "text": "It's 2007. Film sales are collapsing. Your digital business is real but not yet big enough to replace what film used to earn. This is your last big decision."
+          "text": "It is 2007. Film is falling fast, but millions of families keep their photos on your free website, so the Kodak name is part of their lives online. Now you need a business that earns real money."
         },
         {
-          "text": "It's 2007. Film sales are falling fast. This is your last chance to save the company."
+          "when": {
+            "flags": ["hardware"]
+          },
+          "text": "It is 2007. Film is falling fast, camera prices drop every year, and phones take better pictures each year. Your camera business is busy, but it barely earns anything."
+        },
+        {
+          "text": "It is 2007. Film is falling fast. Kodak has closed factories and cut thousands of jobs, and your photo website earns money mainly when people buy prints. Film is not coming back."
         }
       ],
       "next": "d4"
@@ -387,13 +379,13 @@
       "year": "2007",
       "title": "The last chance",
       "media": "vid:photo54",
-      "setup": "You have patents, chemistry expertise, factories and a famous name. Film won't come back.",
+      "setup": "You still have skilled chemists, valuable patents, factories and one of the best-known names in the world. But you can afford one big bet, and only one.",
       "question": "Where do you bet the company's future?",
-      "advisor": "Whatever we pick, we can only afford to do it properly once.",
+      "advisor": "Our name still sells. The question is whether people still want the things it sells.",
       "options": [
         {
           "id": "camera_war",
-          "label": "Fight to be the number one digital camera maker.",
+          "label": "Become the leading digital camera maker. Your name sells, though prices keep falling.",
           "grade": "bad",
           "effect": {
             "profit": -10,
@@ -403,10 +395,10 @@
           },
           "next": "ending_route",
           "media": "img:c3_cameras",
-          "outcome": "You win shelf space, then lose money on every price cut. Within a few years, the phone in everyone's pocket takes good enough pictures, and the standalone camera market starts to shrink.",
-          "why": "You chose a market where prices only go down and a bigger threat, the phone, was already arriving.",
-          "better": "Use what Kodak is best at, chemistry and materials, to enter new growing markets.",
-          "takeaway": "In 2007 you fought for a market that was about to be eaten by phones.",
+          "outcome": "You win shelf space, then lose money on every price cut. Within a few years, the phone in everyone's pocket takes good enough pictures, and the camera market starts to shrink.",
+          "why": "You picked a market where prices only go down, while a bigger threat, the phone, was already arriving.",
+          "better": "Use what Kodak is best at, chemistry and materials, to enter new markets that are growing.",
+          "takeaway": "In 2007 you fought for a market that phones were about to swallow.",
           "traits": {
             "horizon": -1,
             "risk": 1,
@@ -415,7 +407,7 @@
         },
         {
           "id": "inkjet",
-          "label": "Bet on home inkjet printers with cheaper ink.",
+          "label": "Sell cheap-ink home photo printers. It keeps your printing know-how and your people at work.",
           "grade": "bad",
           "real": true,
           "effect": {
@@ -426,10 +418,10 @@
           },
           "next": "ending_route",
           "media": "img:c3_prints",
-          "outcome": "In February 2007 Kodak unveiled EasyShare all-in-one printers, claiming its ink could cut the cost of printing a photo by up to half. They went on sale in March. The printers never became the big new business Kodak needed.",
-          "why": "Cheaper ink was a smart pitch for a shrinking habit. You bet on people printing photos at home just as they started keeping them on screens.",
-          "better": "Use Kodak's chemistry and materials know-how to enter new growing markets, as Fujifilm did.",
-          "takeaway": "In 2007 you bet on a shrinking habit, home printing, instead of a growing market.",
+          "outcome": "In February 2007 Kodak shows its new EasyShare printers, with ink it says cuts the cost of a photo print by up to half. They go on sale in March, but they never become the big new business Kodak needs.",
+          "why": "Cheaper ink was a clever offer for a shrinking habit. You bet on people printing photos at home just as they started keeping them on screens.",
+          "better": "Use Kodak's know-how in chemistry and materials to enter new markets that are growing, as Fujifilm did.",
+          "takeaway": "In 2007 you bet on home printing, a habit that was fading.",
           "traits": {
             "horizon": -1,
             "risk": 0,
@@ -438,7 +430,7 @@
         },
         {
           "id": "reinvent",
-          "label": "Use your chemistry know-how to enter new markets, like healthcare and materials.",
+          "label": "Cut film hard and move your chemists into healthcare and materials. Thousands of film jobs go.",
           "grade": "great",
           "effect": {
             "profit": -5,
@@ -447,9 +439,9 @@
           },
           "next": "ending_route",
           "media": "img:c2_unit",
-          "outcome": "You cut costs hard in film, then point your chemists at medical imaging, specialty films and materials. It's painful and slow, but new businesses start replacing what film used to earn. Fujifilm made a similar move and is still thriving.",
-          "why": "You asked what Kodak was really good at, chemistry and materials, instead of what it used to sell. Skills travel to new markets; products don't.",
-          "takeaway": "In 2007 you redefined Kodak by what it was good at, not what it used to sell.",
+          "outcome": "You cut costs hard in film, then send your chemists into medical imaging, special films and materials. It is slow and painful, but new businesses start to replace what film used to earn.",
+          "why": "You asked what Kodak was really good at, chemistry and materials, instead of what it used to sell. Your rival Fujifilm made the same kind of move and survived, because skills can travel to new markets even when products can't.",
+          "takeaway": "In 2007 you defined Kodak by what it was good at, not by what it used to sell.",
           "traits": {
             "horizon": 1,
             "risk": 1,
@@ -486,7 +478,17 @@
       "title": "Kodak, still on top",
       "media": "img:cover",
       "bonus": 15,
-      "text": "By 2012, Kodak is a digital imaging and materials company. Film is a small, profitable corner of the business. Business schools teach your story as the incumbent that disrupted itself."
+      "text": [
+        {
+          "when": {
+            "flags": ["network"]
+          },
+          "text": "By 2012, Kodak is a materials and imaging company, and its photo-sharing site is where millions of families keep their pictures. Film is a small corner of the business. You changed Kodak before anyone else could."
+        },
+        {
+          "text": "By 2012, Kodak is a digital imaging and materials company, and film is a small, profitable corner of the business. You changed Kodak before anyone else could."
+        }
+      ]
     },
     "survivor": {
       "id": "survivor",
@@ -495,7 +497,17 @@
       "title": "Smaller, but alive",
       "media": "img:c3_share",
       "bonus": 5,
-      "text": "Kodak shrinks a lot, but it never goes bankrupt. You fixed enough, late enough, to keep the lights on. With a few earlier calls, it could have led the digital age."
+      "text": [
+        {
+          "when": {
+            "flags": ["network"]
+          },
+          "text": "Kodak is much smaller, but it never goes bankrupt. Your photo site keeps the name in people's lives while new businesses slowly take film's place. A few earlier moves could have made Kodak a leader of the digital age."
+        },
+        {
+          "text": "Kodak is much smaller, but it never goes bankrupt. You fixed enough, late enough, to keep the lights on. A few earlier moves could have made Kodak a leader of the digital age."
+        }
+      ]
     },
     "collapse": {
       "id": "collapse",
@@ -504,7 +516,23 @@
       "title": "Bankrupt in 2012",
       "media": "img:c3_end",
       "bonus": 0,
-      "text": "On January 19, 2012, Kodak files for bankruptcy. That April, Facebook buys Instagram, a photo-sharing app with 13 employees, for one billion dollars. The company that invented the digital camera lost the digital age."
+      "text": [
+        {
+          "when": {
+            "flags": ["shelved", "studied", "prints", "inkjet"]
+          },
+          "text": "On January 19, 2012, Kodak files for bankruptcy. That April, Facebook buys Instagram, a photo-sharing app with 13 employees, for one billion dollars. The company that invented the digital camera lost the digital age."
+        },
+        {
+          "when": {
+            "flags": ["camera_war"]
+          },
+          "text": "Phones swallow the camera market, and the price war leaves Kodak with no money for anything new. Film fades, and Kodak goes bankrupt, beaten by the digital age it helped to start."
+        },
+        {
+          "text": "Film fades, and nothing you built is big enough to take its place. Kodak runs out of money and goes bankrupt. The company that invented the digital camera is beaten by the digital age."
+        }
+      ]
     },
     "fired": {
       "id": "fired",
@@ -513,7 +541,7 @@
       "title": "The board fires you",
       "media": "img:c3_end",
       "bonus": 0,
-      "text": "Three bad calls. The board loses faith and replaces you. Your successor inherits a company that's falling behind, and the clock is still ticking."
+      "text": "The board has seen enough. After three costly calls, it gives your job to someone else, who takes over a company that is falling behind, with the clock still ticking."
     }
   },
   "realEnding": "collapse",
@@ -558,6 +586,22 @@
     {
       "label": "Why Fujifilm survived the digital apocalypse that killed Kodak (Fstoppers)",
       "url": "https://fstoppers.com/business/why-fujifilm-survived-digital-apocalypse-killed-kodak-904196"
+    },
+    {
+      "label": "Leap or void: Kodak and Fuji (Columbia CaseWorks)",
+      "url": "https://caseworks.business.columbia.edu/caseworks/leap-void-how-digital-disruption-broke-kodak-and-transformed-fuji"
+    },
+    {
+      "label": "Kodak digital: strategic fork (Stratrix)",
+      "url": "https://www.stratrix.com/strategic-forks/kodak-digital"
+    },
+    {
+      "label": "Facebook buys Instagram (Al Jazeera, 2012)",
+      "url": "https://www.aljazeera.com/economy/2012/4/10/facebook-updates-status-with-instagram-deal"
+    },
+    {
+      "label": "Kodak emerges from bankruptcy (IndustryWeek, 2013)",
+      "url": "https://www.industryweek.com/technology/kodak-emerges-bankruptcy-tech-focus"
     }
   ],
   "credits": "Archive footage: Moving Image Archive (public domain: Prelinger Archives, National Bureau of Standards). Alternate-history outcomes are informed estimates, not history."
