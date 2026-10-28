@@ -65,7 +65,10 @@ Coca-Cola changed its 99-year-old recipe on April 23, 1985, after tests with nea
 - Protest leader: Gay Mullins, Old Cola Drinkers of America [5][6].
 
 ## Archive footage
-- movingimagearchive.com: the site's search runs inside the page and could not be queried by tool; none found.
+- movingimagearchive.com (searched through its API, 2026-10-28). Both clips are US federal government films, so public domain:
+  - `nc_d1_price`: a supermarket aisle from "Inside/Outside: The Story of Food and Fitness" (1983), https://www.movingimagearchive.com/sources/inside-outside-the-story-of-food-and-fitness-d8406b79, at 16:24.
+  - `nc_d3_ads`: TV sets in an electronics shop from "To Your Credit" (1985), https://www.movingimagearchive.com/sources/to-your-credit-e7532adc, at 2:22.
+  - No brand logos are shown in either clip.
 - archive.org (Prelinger and public-domain movies): searched "coca-cola", "soda", "soft drink", "bottling".
   - "[Coca-Cola Bottling Plant, Arabia/North Africa]" (Prelinger, undated): https://archive.org/details/coca_cola_arabic — bottling-line footage, wrong place and era, and shows the brand. Not recommended.
   - Old Coca-Cola TV commercials (1955, 1961) marked public domain: https://archive.org/details/Zarbon_Eats_Little_Children, https://archive.org/details/1961ClassicTelevisionCommercialCoca-colawithNelsons — full of logos; the brand is a trademark, so unusable under our no-logo rule.

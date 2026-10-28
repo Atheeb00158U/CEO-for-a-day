@@ -1,5 +1,5 @@
 # Fact-check: new-coke
-checked-sha256: 2883ade0e602bdc8fd3b5a5eb6bece5491aadca6241c431c406d4610130872d2
+checked-sha256: d63af8c3507cc705ffcaca84e9bbfb4a537d5b7b36fd087881feebbdf905cd6b
 Checked: 2026-10-27 · by: independent fact-check agent
 
 ## Sources opened
@@ -93,3 +93,6 @@ Optional: say "supporters" instead of "members" for the protest group; add "in N
 ## Fixes applied (2026-10-27)
 - Every open claim above was fixed in hotseat.json as noted on its line.
 - Wording: the protest group "signed up 100,000 supporters" (not members) [1]; the 2009 label change was in North America [6].
+
+## Media update (2026-10-28)
+- Only media refs (nc_d1_price, nc_d3_ads now play archive clips) and the credits line changed. No story text changed, so the claims above stand. Re-stamped.

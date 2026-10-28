@@ -85,6 +85,8 @@ Kaira farmers struck for 15 days in 1946 and won the right to sell milk through 
 
 ## Archive footage
 - archive.org: "A Story of Co-operation" (1957, Government of India Films Division, director Mohan Wadhwani): https://archive.org/details/dli.MoI.films.001769 — the Kaira co-operative and the Anand dairy. No licence is marked on the item; Indian government works enter the public domain 60 years after publication, so 1957 should be clear, but confirm before use.
+  - **Used (2026-10-28, approved by Atheeb).** Public domain in India (government work, 60 years from 1957). Caveat: the US may treat it as copyrighted until about 2052 (URAA restoration of foreign works). The small Films Division watermark is blurred out.
+  - Clips: `am_intro` 0:51 (town gate and village lane); `am_d1` 9:53 (farmers, then a meeting voting by show of hands); `am_1948` 2:20 (women bringing milk to the collection counter); `am_d2` 1:33 (buffaloes in the water); `am_d2_plant` 8:01 (milk cans, taps and the Anand station sign); `am_1955` 9:20 (the dairy plant). All filmed around 1957, so they stand in for 1945–55 scenes.
 - archive.org: "Remembering Dr Verghese Kurien" (2021): https://archive.org/details/third_202312 — recent; not public domain; do not use.
 - archive.org Prelinger: "Better Milk" (US, undated) — off-theme (American dairy).
 - movingimagearchive.com: searched "india", "milk" and "dairy"; the search page returned no results to our fetcher; none found.

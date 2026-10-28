@@ -97,7 +97,7 @@
             "flags": ["price"]
           },
           "next": "d2",
-          "media": "img:nc_d1_price",
+          "media": "vid:nc_d1_price",
           "outcome": "Our estimate: Pepsi cuts its prices too. Both of you earn less on every bottle, and shoppers start to think of cola as a cheap drink. Your share barely moves.",
           "why": "A price war hurts both sides, and the stronger brand loses the most. It also tells fans your drink is worth less.",
           "better": "Protect your price. Give people new reasons to choose Coke, like new drinks and fresh ads.",
@@ -216,7 +216,7 @@
             "flags": ["ads"]
           },
           "next": "d4",
-          "media": "img:nc_d3_ads",
+          "media": "vid:nc_d3_ads",
           "outcome": "Our estimate: the ads are everywhere, but they cannot change how people feel. Some new buyers try the drink. Your old fans feel you are not listening.",
           "why": "Ads can tell people about a product. They cannot make people stop missing something they loved.",
           "better": "Admit the mistake fast. Bring the old recipe back and say sorry.",
@@ -561,5 +561,5 @@
       "url": "https://en.wikipedia.org/wiki/New_Coke"
     }
   ],
-  "credits": "Research brief and full source list: content/hotseats/new-coke/research.md. Images are AI illustrations."
+  "credits": "Archive footage: Inside/Outside: The Story of Food and Fitness (1983) and To Your Credit (1985), US government films via the Moving Image Archive (public domain). Other images are AI illustrations. Alternate-history outcomes are informed estimates, not history. Research brief and full source list: content/hotseats/new-coke/research.md."
 }

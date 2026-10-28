@@ -1,5 +1,5 @@
 # Fact-check: amul-one-brand
-checked-sha256: 5354386707faa80ac3bfcbc47d9c1bdbc1dc251c6b65d3f2bd3267adc905b3d1
+checked-sha256: 006ac978768b9666b76b2e5308290b85645531d0ec236f07e81742056613192f
 Checked: 2026-10-27 · by: independent fact-check agent
 
 ## Sources opened
@@ -120,3 +120,6 @@ Most important fixes:
 - Every open claim above was fixed in hotseat.json as noted on its line.
 - Hedged: the "world first" spray-dryer is now attributed to Amul (its own pages are the only source); the factory opening is dated to 1955 without a day, since sources give 31 Oct 1955 and 1956.
 - realHistory now separates the 1965 founding of NDDB from the 1970 start of Operation Flood.
+
+## Media update (2026-10-28)
+- Only media refs (am_intro, am_d1, am_1948, am_d2, am_d2_plant, am_1955 now play archive clips) and the credits line changed. No story text changed, so the claims above stand. Re-stamped.

@@ -30,7 +30,7 @@
       "id": "intro",
       "type": "scene",
       "year": "1945",
-      "media": "img:am_intro",
+      "media": "vid:am_intro",
       "text": "It is 1945, in Kaira district, Gujarat. Your village farmers keep buffaloes, and most families have only one or two litres of milk to sell each day. The government of Bombay has started the Bombay Milk Scheme. Milk travels 427 km from Anand to Bombay. A private dairy, Polson, holds the contract. But no one has fixed the price paid to farmers. The milk contractors pay whatever they like.",
       "next": "d1"
     },
@@ -39,7 +39,7 @@
       "type": "decision",
       "year": "1946",
       "title": "Who sets the price?",
-      "media": "img:am_d1",
+      "media": "vid:am_d1",
       "setup": "The government makes money from the scheme. Polson keeps a good margin. The contractors take the biggest cut. Farmers get what is left. Milk spoils fast, so they must sell at whatever price they are offered. The freedom leader Sardar Patel has given your farmers advice: build your own co-operative, with your own plant. If the government says no, stop selling milk, even if it hurts for a while.",
       "question": "How do you fight for a fair price?",
       "advisor": "Milk spoils in hours. Whoever owns the plant decides the price.",
@@ -114,7 +114,7 @@
       "id": "scene1948",
       "type": "scene",
       "year": "1948",
-      "media": "img:am_1948",
+      "media": "vid:am_1948",
       "text": [
         {
           "when": {
@@ -133,7 +133,7 @@
       "type": "decision",
       "year": "1953",
       "title": "Too much milk in winter",
-      "media": "img:am_d2",
+      "media": "vid:am_d2",
       "setup": "It is 1953. In winter, buffaloes give about two and a half times more milk than in summer. Bombay cannot take all of it. Your farmers are selling the extra milk cheap to middlemen again. And experts around the world say buffalo milk has too much fat to turn into milk powder.",
       "question": "What do you do with the extra winter milk?",
       "advisor": "The buffalo does not take a holiday. Your farmers cannot either.",
@@ -192,7 +192,7 @@
             "flags": ["plant"]
           },
           "next": "scene1955",
-          "media": "img:am_d2_plant",
+          "media": "vid:am_d2_plant",
           "outcome": "The government of India helped the Union get money from UNICEF and help from New Zealand, with technical aid from the FAO. A Rs 50 lakh factory for milk powder and butter was planned. The President of India laid its foundation stone on 15 November 1954. In 1955 a dairy engineer at Anand installed a spray-dryer for buffalo milk, which Amul describes as the first in the world. Experts had said buffalo milk could not be dried. In 1955 the Prime Minister opened the factory. Now the Union could take farmers' milk all year round.",
           "why": "You turned the problem into a product. Milk that went bad in hours became butter and powder that could keep and travel.",
           "takeaway": "In 1955 you built the plant the experts said could not work, and turned extra milk into products that keep.",
@@ -208,7 +208,7 @@
       "id": "scene1955",
       "type": "scene",
       "year": "1955",
-      "media": "img:am_1955",
+      "media": "vid:am_1955",
       "text": [
         {
           "when": {
@@ -588,5 +588,5 @@
       "url": "https://en.wikipedia.org/wiki/Manthan"
     }
   ],
-  "credits": "Research brief and full source list: content/hotseats/amul-one-brand/research.md. Images are AI illustrations."
+  "credits": "Archive footage: A Story of Co-operation (1957), Films Division, Government of India, via the Internet Archive (public domain in India). Other images are AI illustrations. Alternate-history outcomes are informed estimates, not history. Research brief and full source list: content/hotseats/amul-one-brand/research.md."
 }
