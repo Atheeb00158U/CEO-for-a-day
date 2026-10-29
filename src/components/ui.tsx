@@ -1,6 +1,7 @@
 "use client";
 
 import type { Media } from "@/lib/hotseat-types";
+import { useGame } from "@/lib/store";
 
 export { Icon } from "./icons";
 
@@ -48,12 +49,14 @@ export function MediaView({
   kenBurns?: boolean;
 }) {
   const [kind, name] = media.split(":");
+  const still = useGame().s.settings.dataSaver;
   return (
     <div className={`relative overflow-hidden bg-surface-2 ${wavy ? "wavy" : "rounded-3xl"} ${className}`}>
-      {kind === "vid" ? (
+      {kind === "vid" && !still ? (
         <video
           key={name}
           src={`/media/${name}.mp4`}
+          poster={`/media/${name}.jpg`}
           autoPlay
           muted
           loop
@@ -65,7 +68,7 @@ export function MediaView({
         // eslint-disable-next-line @next/next/no-img-element
         <img
           key={name}
-          src={`/media/${name}.webp`}
+          src={`/media/${name}.${kind === "vid" ? "jpg" : "webp"}`}
           alt=""
           className={`develop absolute inset-0 size-full object-cover ${kenBurns ? "kb" : ""}`}
         />

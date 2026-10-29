@@ -1,6 +1,7 @@
 // Prepares media for a Hot Seat and writes it into content/hotseats/<id>/media/.
 //   npm run media -- <id> <files…>
-// Images (jpg, png, webp, …) → <name>.webp, 1080 px wide at most. Clips (mp4, mov, …) → <name>.mp4: ≤ 9 s, no audio, H.264.
+// Images (jpg, png, webp, …) → <name>.webp, 1080 px wide at most. Clips (mp4, mov, …) → <name>.mp4: ≤ 9 s, no audio, H.264,
+// plus <name>.jpg, its first frame: the poster while it loads and the still that data saver shows instead.
 // Refer to the result as "img:<name>" or "vid:<name>" in hotseat.json. Restart `npm run dev` to see new files.
 import { execFileSync } from "node:child_process";
 import { existsSync, statSync } from "node:fs";
@@ -55,7 +56,8 @@ for (const file of files) {
       "+faststart",
       dest,
     ]);
-    console.log(`vid:${name}  ${kb(file)} → ${kb(dest)}`);
+    execFileSync("ffmpeg", ["-y", "-loglevel", "error", "-i", dest, "-frames:v", "1", "-q:v", "5", join(out, `${name}.jpg`)]);
+    console.log(`vid:${name}  ${kb(file)} → ${kb(dest)} + still`);
   } else {
     console.error(`Skipped ${file}: not an image or clip`);
     process.exitCode = 1;

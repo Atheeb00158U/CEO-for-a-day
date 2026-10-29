@@ -46,7 +46,8 @@ export function Player({ hotSeatId, onExit, onNotes }: { hotSeatId: string; onEx
   const finished = useRef(false); // a double tap on "See your results" must not pay out twice
 
   useEffect(() => () => stopVoice(), []);
-  useEffect(() => saveForOffline(hs), [hs]);
+  const dataSaver = game.s.settings.dataSaver;
+  useEffect(() => void (!dataSaver && saveForOffline(hs)), [hs, dataSaver]); // data saver loads each picture only when seen
 
   // A lost heart lands after the verdict and meter sounds (see RevealView and Meters).
   const trustBefore = useRef(run.trust);

@@ -172,6 +172,9 @@ export function checkHotSeat(dir: string, audioDir = AUDIO_DIR): CheckResult {
   const onDisk = new Set(existsSync(mediaDir) ? readdirSync(mediaDir).filter((f) => [".webp", ".mp4"].includes(extname(f))) : []);
   const used = mediaFiles(hs);
   for (const f of used) if (!onDisk.has(f)) soft(`media/${f} is missing`);
+  for (const f of used)
+    if (f.endsWith(".mp4") && !existsSync(join(mediaDir, f.replace(/mp4$/, "jpg"))))
+      soft(`media/${f.replace(/mp4$/, "jpg")} (the clip's still for data saver) is missing; run npm run media on the clip`);
   for (const f of onDisk) if (!used.has(f)) warnings.push(`media/${f} is not used`);
   for (const l of voiceLines([hs]))
     // Missing audio is only a warning: the app falls back to the browser's voice, and narration is recorded

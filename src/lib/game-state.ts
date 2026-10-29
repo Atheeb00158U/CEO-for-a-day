@@ -54,7 +54,7 @@ export interface GameState {
   quests: { day: string; decisions: number; great: number; xp: number; claimed: string[] };
   badges: string[];
   traits: Record<TraitKey, number>;
-  settings: { voice: boolean; sfx: boolean; lang: "en" | "hi" | "ta" | "bn" };
+  settings: { voice: boolean; sfx: boolean; dataSaver: boolean; lang: "en" | "hi" | "ta" | "bn" };
   /** Today's Daily Call, saved the moment it's locked in so closing the app can't buy a second try. */
   daily: { day: string; id: string; optionId: string; grade: Grade; xp: number } | null;
   /** Takeaways from past Daily Calls, newest first (last 60). */
@@ -103,7 +103,7 @@ export function fresh(): GameState {
     quests: { day: today(), decisions: 0, great: 0, xp: 0, claimed: [] },
     badges: [],
     traits: { horizon: 0, risk: 0, disrupt: 0 },
-    settings: { voice: true, sfx: true, lang: "en" },
+    settings: { voice: true, sfx: true, dataSaver: false, lang: "en" },
     daily: null,
     dailyLog: [],
   };
