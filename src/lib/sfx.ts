@@ -63,10 +63,9 @@ export function setSfxOn(v: boolean) {
 function load() {
   if (loading || typeof window === "undefined" || !("AudioContext" in window)) return;
   ctx = new AudioContext();
-  // Browsers start audio suspended until a tap; resume on the first one.
+  // Browsers start audio suspended until a tap; resume on taps until it runs. iPhone counts touchend and click as a tap, not pointerdown.
   const wake = () => ctx?.state === "suspended" && ctx.resume();
-  window.addEventListener("pointerdown", wake, { capture: true });
-  window.addEventListener("keydown", wake, { capture: true });
+  for (const e of ["pointerdown", "touchend", "click", "keydown"]) window.addEventListener(e, wake, { capture: true });
   loading = Promise.all(
     SFX.map((n) =>
       fetch(`/sfx/${n}.mp3`)

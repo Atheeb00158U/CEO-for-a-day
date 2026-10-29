@@ -21,6 +21,24 @@ let wait: ReturnType<typeof setTimeout> | undefined;
 /** Bumped on every stop, so callbacks from a stopped line (ended, error, cancelled speech) do nothing. */
 let gen = 0;
 
+// Phones (iPhones most strictly) only let sound start from a tap, and narration starts a moment after one. Playing
+// silence on the shared audio element and an empty line of browser speech during the first tap unlocks both for
+// the rest of the visit. touchend and click count as a tap on iPhone; pointerdown does not.
+if (typeof window !== "undefined") {
+  const unlock = () => {
+    window.removeEventListener("touchend", unlock, true);
+    window.removeEventListener("click", unlock, true);
+    audio = audio ?? new Audio();
+    if (!audio.src) {
+      audio.src = "/silence.mp3";
+      audio.play().catch(() => {});
+    }
+    if ("speechSynthesis" in window) window.speechSynthesis.speak(new SpeechSynthesisUtterance(""));
+  };
+  window.addEventListener("touchend", unlock, true);
+  window.addEventListener("click", unlock, true);
+}
+
 export function stopVoice() {
   gen++;
   clearTimeout(wait);

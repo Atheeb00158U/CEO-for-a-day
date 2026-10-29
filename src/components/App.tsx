@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useSyncExternalStore } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { playSfx } from "@/lib/sfx";
 import { GameProvider, today, useGame } from "@/lib/store";
 import { Icon, Pill } from "./ui";
@@ -65,6 +65,7 @@ function Shell() {
   const [tab, setTab] = useState<Tab>("home");
   const [playing, setPlaying] = useState<string | null>(null);
   const [playingDaily, setPlayingDaily] = useState(false);
+  const mainRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const fromHash = () => {
@@ -84,7 +85,7 @@ function Shell() {
     } catch {
       /* sandboxed */
     }
-    window.scrollTo(0, 0);
+    mainRef.current?.scrollTo(0, 0);
   };
 
   const { ready } = useGame();
@@ -115,21 +116,20 @@ function Shell() {
     );
 
   return (
-    <div className="mx-auto flex min-h-dvh max-w-[480px] flex-col">
+    // The page itself never scrolls, only <main>: iPhone browsers misplace bars pinned to a scrolling page,
+    // leaving a gap below the tab bar.
+    <div className="mx-auto flex h-dvh max-w-[480px] flex-col">
       <TopBar onShop={() => go("shop")} />
       <InstallSheet />
-      <main className="flex-1 px-4 pb-28">
+      <main ref={mainRef} className="flex-1 overflow-y-auto overscroll-contain px-4 pb-6">
         {tab === "home" && <HomeTab onPlay={setPlaying} onDaily={() => setPlayingDaily(true)} onShop={() => go("shop")} />}
         {tab === "league" && <LeagueTab onPlay={() => go("home")} />}
         {tab === "notes" && <NotesTab onPlay={() => go("home")} />}
         {tab === "shop" && <ShopTab />}
         {tab === "profile" && <ProfileTab />}
       </main>
-      <nav
-        className="fixed inset-x-0 bottom-0 z-20 border-t-2 border-line bg-bg/95 backdrop-blur"
-        style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
-      >
-        <div className="mx-auto flex max-w-[480px] justify-around px-2 py-2">
+      <nav className="shrink-0 border-t-2 border-line bg-bg" style={{ paddingBottom: "env(safe-area-inset-bottom)" }}>
+        <div className="flex justify-around px-2 py-2">
           {TABS.map((t) => {
             const I = Icon[t.icon];
             const on = t.id === tab;
@@ -157,10 +157,7 @@ function TopBar({ onShop }: { onShop: () => void }) {
   const playedToday = s.lastActiveDay === today();
   const mins = Math.max(0, Math.ceil((s.boosterUntil - Date.now()) / 60000));
   return (
-    <header
-      className="sticky top-0 z-10 flex items-center gap-2 bg-bg/95 px-4 pb-2 backdrop-blur"
-      style={{ paddingTop: "max(12px, env(safe-area-inset-top))" }}
-    >
+    <header className="flex shrink-0 items-center gap-2 bg-bg px-4 pb-2" style={{ paddingTop: "max(12px, env(safe-area-inset-top))" }}>
       <div className="mr-auto flex items-center gap-2">
         <Logo size={40} />
         <span className="text-[15px] font-black leading-none">
