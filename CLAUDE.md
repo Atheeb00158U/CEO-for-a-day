@@ -48,6 +48,9 @@ Follow `docs/AUTHORING.md` for every Hot Seat and Daily Call: research brief →
 ## The build plan
 Follow `docs/BUILD-PLAN.md` phase by phase and tick items off as you finish them. `HANDOFF.md` has the kickoff instructions.
 
+## Welcome screens
+- A new player (no `onboarding.done` in the save) sees `Onboarding`: three questions, then the first two calls of `TRIAL` (`catalog.ts`). In production the trial needs the Hot Seat published; `npm run dev` also allows its draft. Anyone who skips or has played before goes straight to Home.
+
 ## Installable app
 - The game is **online only** (Atheeb's call): no offline caching. A "No internet" screen covers the game while the connection is down. `public/sw.js` only removes the offline worker an early version installed; don't register a worker again without asking.
 - `src/lib/pwa.ts` and `InstallSheet` handle "add to home screen".

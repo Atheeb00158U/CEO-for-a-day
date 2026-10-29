@@ -112,6 +112,8 @@ Hot Seats should be data files, not TypeScript.
 - [ ] Performance budget: first load under 200 KB of JS, LCP under 2.5 s on a mid-range Android phone over 4G, and no layout shift.
 - [ ] **Done when** the app installs from the Play Store internal testing track and a full Hot Seat plays in the installed app.
 
+- [x] Welcome screens for a new player (`Onboarding`): three questions that change the game (minutes a day set the daily decisions quest; the chosen focus puts matching Hot Seats first on Home; what you do now shapes one line of the style card), then the first two calls of the trial Hot Seat (`TRIAL` in `catalog.ts`, Kingfisher Airlines), a style card built only from those calls, and "Carry on" into the rest of the run. "Skip, just play" on every screen. *A lean take on Empirio's quiz funnel: no fake loading screen, no made-up profile. Production shows it once Kingfisher is published.*
+
 ## Phase 6: Retention and growth (2–3 days)
 - [ ] Streak reminder push notifications at the user's chosen time.
 - [ ] Optional WhatsApp reminders via the Business API. Needs opt-in and an approved template. *Decision:* provider.

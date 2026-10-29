@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { applyDaily, fresh, rollover, touchStreak, weekId, type GameState } from "./game-state";
+import { applyDaily, decisionGoal, fresh, rollover, touchStreak, weekId, type GameState } from "./game-state";
 import type { DailyCall } from "./hotseat-types";
 import { DEMOTE, leagueRows, PROMOTE } from "./league";
 
@@ -115,5 +115,13 @@ describe("applyDaily", () => {
     expect(boosted.daily?.xp).toBe(20);
     const tomorrow = new Date(2026, 9, 28, 9);
     expect(applyDaily(boosted, call, "b", tomorrow).daily?.day).toBe("2026-10-28");
+  });
+});
+
+describe("welcome screens", () => {
+  it("start unanswered, and minutes a day set the decisions quest", () => {
+    expect(fresh().onboarding).toEqual({ done: false });
+    expect(decisionGoal()).toBe(3);
+    expect([5, 10, 15].map((m) => decisionGoal(m as 5 | 10 | 15))).toEqual([3, 6, 9]);
   });
 });

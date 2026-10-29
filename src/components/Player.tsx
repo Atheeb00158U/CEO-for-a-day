@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { HOT_SEATS } from "@/content/catalog";
+import { HOT_SEATS, TRIAL } from "@/content/catalog";
 import {
   buildDebrief,
   callsPerRun,
@@ -26,6 +26,7 @@ type Phase =
   | { kind: "decision"; node: DecisionNode }
   | { kind: "reveal"; node: DecisionNode; option: Option; before: RunState }
   | { kind: "ending"; node: EndingNode }
+  | { kind: "checkpoint" }
   | { kind: "debrief"; node: EndingNode; record: RunRecord };
 
 const VERDICT = {
@@ -34,8 +35,24 @@ const VERDICT = {
   bad: { title: "Costly call", color: "var(--color-red)", bg: "bg-[#2d0f0f]", btn: "red", points: "−1 board trust" },
 } as const;
 
-export function Player({ hotSeatId, onExit, onNotes }: { hotSeatId: string; onExit: () => void; onNotes: () => void }) {
-  const hs = HOT_SEATS[hotSeatId] as HotSeat;
+/** A pause after the first few calls, used by the welcome screens. The run carries on from where it stopped. */
+export interface Checkpoint {
+  after: number;
+  render: (run: RunState, hs: HotSeat, onContinue: () => void) => React.ReactNode;
+}
+
+export function Player({
+  hotSeatId,
+  onExit,
+  onNotes,
+  checkpoint,
+}: {
+  hotSeatId: string;
+  onExit: () => void;
+  onNotes: () => void;
+  checkpoint?: Checkpoint;
+}) {
+  const hs = (HOT_SEATS[hotSeatId] ?? (TRIAL?.id === hotSeatId ? TRIAL : undefined)) as HotSeat;
   const game = useGame();
   const [run, setRun] = useState<RunState>(() => startRun(hs));
   const [phase, setPhase] = useState<Phase>(() => toPhase(hs, startRun(hs)));
@@ -43,6 +60,7 @@ export function Player({ hotSeatId, onExit, onNotes }: { hotSeatId: string; onEx
   const [badgesBefore, setBadgesBefore] = useState(game.s.badges);
   const totalDecisions = useMemo(() => callsPerRun(hs), [hs]);
   const finished = useRef(false); // a double tap on "See your results" must not pay out twice
+  const paused = useRef(false);
 
   useEffect(() => () => stopVoice(), []);
 
@@ -89,6 +107,8 @@ export function Player({ hotSeatId, onExit, onNotes }: { hotSeatId: string; onEx
 
   const decisionsDone = run.picks.length;
   const progress = phase.kind === "debrief" || phase.kind === "ending" ? 100 : (decisionsDone / totalDecisions) * 100;
+
+  if (phase.kind === "checkpoint" && checkpoint) return checkpoint.render(run, hs, () => setPhase(toPhase(hs, run)));
 
   if (phase.kind === "debrief") {
     return (
@@ -180,7 +200,11 @@ export function Player({ hotSeatId, onExit, onNotes }: { hotSeatId: string; onEx
           onNext={() => {
             // Counted here, not at "Lock it in", so a Hindsight redo never counts the undone pick.
             game.recordDecision(phase.option.grade);
-            setPhase(toPhase(hs, run));
+            if (checkpoint && !paused.current && run.picks.length >= checkpoint.after) {
+              paused.current = true;
+              stopVoice();
+              setPhase({ kind: "checkpoint" });
+            } else setPhase(toPhase(hs, run));
           }}
         />
       )}

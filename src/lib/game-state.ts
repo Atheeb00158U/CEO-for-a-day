@@ -59,7 +59,22 @@ export interface GameState {
   daily: { day: string; id: string; optionId: string; grade: Grade; xp: number } | null;
   /** Takeaways from past Daily Calls, newest first (last 60). */
   dailyLog: DailyNote[];
+  /** First-visit answers. `done` once the player finishes or skips the welcome screens. */
+  onboarding: Onboarding;
 }
+
+export type Doing = "job" | "starting" | "running" | "student" | "curious";
+export type Focus = "scratch" | "rival" | "money" | "change";
+export interface Onboarding {
+  done: boolean;
+  doing?: Doing;
+  focus?: Focus;
+  /** Minutes a day the player wants to play. Sets the daily decisions quest. */
+  minutes?: 5 | 10 | 15;
+}
+
+/** Decisions a day for the "Make N decisions" quest: about one decision a minute and a half. */
+export const decisionGoal = (minutes: Onboarding["minutes"] = 5) => ({ 5: 3, 10: 6, 15: 9 })[minutes];
 
 export interface DailyNote {
   day: string;
@@ -106,6 +121,7 @@ export function fresh(): GameState {
     settings: { voice: true, sfx: true, dataSaver: false, lang: "en" },
     daily: null,
     dailyLog: [],
+    onboarding: { done: false },
   };
 }
 

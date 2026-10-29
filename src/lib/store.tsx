@@ -3,17 +3,31 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import type { DailyCall, Grade, TraitKey } from "./hotseat-types";
 import { setSfxOn } from "./sfx";
-import { applyDaily, ECONOMY, fresh, rollover, touchStreak, type GameState, type RunRecord } from "./game-state";
+import {
+  applyDaily,
+  decisionGoal,
+  ECONOMY,
+  fresh,
+  rollover,
+  touchStreak,
+  type GameState,
+  type Onboarding,
+  type RunRecord,
+} from "./game-state";
 
 export { BADGES, ECONOMY, LEAGUES, today, type GameState, type RunRecord } from "./game-state";
 
 const KEY = "cfad.v1";
 
-export const QUESTS = [
-  { id: "decisions", label: "Make 3 decisions", goal: 3, reward: 15, read: (q: GameState["quests"]) => q.decisions },
-  { id: "great", label: "Make 2 great calls", goal: 2, reward: 25, read: (q: GameState["quests"]) => q.great },
-  { id: "xp", label: "Earn 60 XP", goal: 60, reward: 30, read: (q: GameState["quests"]) => q.xp },
-];
+/** Today's quests. The decisions goal follows the minutes a day the player picked at the start. */
+export const questsFor = (s: GameState) => {
+  const n = decisionGoal(s.onboarding.minutes);
+  return [
+    { id: "decisions", label: `Make ${n} decisions`, goal: n, reward: 15, read: (q: GameState["quests"]) => q.decisions },
+    { id: "great", label: "Make 2 great calls", goal: 2, reward: 25, read: (q: GameState["quests"]) => q.great },
+    { id: "xp", label: "Earn 60 XP", goal: 60, reward: 30, read: (q: GameState["quests"]) => q.xp },
+  ];
+};
 
 interface Ctx {
   s: GameState;
@@ -33,6 +47,7 @@ interface Ctx {
   playDaily: (call: DailyCall, optionId: string) => void;
   setSetting: <K extends keyof GameState["settings"]>(k: K, v: GameState["settings"][K]) => void;
   setName: (n: string) => void;
+  setOnboarding: (o: Partial<Onboarding>) => void;
   reset: () => void;
 }
 
@@ -49,7 +64,9 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
       if (raw) {
         const saved = JSON.parse(raw);
         // Merge settings one level down too, so a save from before a setting existed gets its default.
-        setS(rollover({ ...fresh(), ...saved, settings: { ...fresh().settings, ...saved.settings } }));
+        // Saves from before the welcome screens: anyone who has already played skips them.
+        const onboarding = saved.onboarding ?? { done: !!saved.lastActiveDay || !!saved.runs?.length };
+        setS(rollover({ ...fresh(), ...saved, settings: { ...fresh().settings, ...saved.settings }, onboarding }));
       } else setS((x) => rollover(x));
     } catch {
       /* private mode or blocked storage: play without saving */
@@ -135,7 +152,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
   };
 
   const claimQuest = (id: string) => {
-    const q = QUESTS.find((x) => x.id === id);
+    const q = questsFor(s).find((x) => x.id === id);
     if (!q) return;
     setS((x) =>
       x.quests.claimed.includes(id) || q.read(x.quests) < q.goal
@@ -158,6 +175,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
       playDaily: (call, optionId) => setS((x) => applyDaily(x, call, optionId)),
       setSetting: (k, v) => setS((x) => ({ ...x, settings: { ...x.settings, [k]: v } })),
       setName: (n) => setS((x) => ({ ...x, name: n.slice(0, 20) || "You" })),
+      setOnboarding: (o) => setS((x) => ({ ...x, onboarding: { ...x.onboarding, ...o } })),
       reset: () => setS(fresh()),
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps

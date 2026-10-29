@@ -1,14 +1,14 @@
 "use client";
 
 import { useMemo } from "react";
-import { CATALOG, HOT_SEATS, todaysCall } from "@/content/catalog";
-import { callsPerRun, playerOrder } from "@/lib/engine";
-import { QUESTS, today, useGame } from "@/lib/store";
+import { CATALOG, HOT_SEATS, homeOrder, todaysCall } from "@/content/catalog";
+import { callsPerRun } from "@/lib/engine";
+import { questsFor, today, useGame } from "@/lib/store";
 import { Bar, Card, Icon, MediaView } from "./ui";
 
 export function HomeTab({ onPlay, onDaily, onShop }: { onPlay: (id: string) => void; onDaily: () => void; onShop: () => void }) {
   const { s, boosterActive, activateBooster } = useGame();
-  const order = useMemo(() => playerOrder(CATALOG, s.seed), [s.seed]);
+  const order = useMemo(() => homeOrder(CATALOG, s.seed, s.onboarding.focus), [s.seed, s.onboarding.focus]);
   const current = order.find((c) => c.available && s.best[c.id] === undefined) ?? order.find((c) => c.available)!;
   const hs = HOT_SEATS[current.id];
   const playedToday = s.lastActiveDay === today();
@@ -144,7 +144,7 @@ export function HomeTab({ onPlay, onDaily, onShop }: { onPlay: (id: string) => v
           </button>
         </div>
         <div className="flex flex-col gap-3">
-          {QUESTS.map((q) => {
+          {questsFor(s).map((q) => {
             const v = Math.min(q.goal, q.read(s.quests));
             return (
               <div key={q.id} className="flex items-center gap-3">

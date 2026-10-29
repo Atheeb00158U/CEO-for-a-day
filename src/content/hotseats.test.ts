@@ -124,3 +124,17 @@ describe("factcheck.md", () => {
     expect(setup("open", (h) => `checked-sha256: ${h}\n- [unsupported] X\n- [contradicted] Y\n`)).toMatch(/2 unsupported or contradicted/);
   });
 });
+
+describe("Home order", () => {
+  it("puts the trial first, then the player's focus, and keeps every entry", async () => {
+    const { CATALOG, homeOrder } = await import("./catalog");
+    const order = homeOrder(CATALOG, "seed1", "change").map((c) => c.id);
+    expect([...order].sort()).toEqual(CATALOG.map((c) => c.id).sort());
+    const kodak = order.indexOf("kodak");
+    expect(
+      order
+        .filter((id) => !["kingfisher-airlines", "kodak", "blockbuster", "netflix", "intel-quits-memory"].includes(id))
+        .every((id) => order.indexOf(id) > kodak),
+    ).toBe(true);
+  });
+});

@@ -13,6 +13,7 @@ import { ProfileTab } from "./ProfileTab";
 import { Player } from "./Player";
 import { DailyPlayer } from "./DailyPlayer";
 import { InstallSheet } from "./InstallSheet";
+import { Onboarding } from "./Onboarding";
 import { todaysCall } from "@/content/catalog";
 
 export type Tab = "home" | "league" | "notes" | "shop" | "profile";
@@ -88,7 +89,7 @@ function Shell() {
     mainRef.current?.scrollTo(0, 0);
   };
 
-  const { ready } = useGame();
+  const { ready, s } = useGame();
   if (!ready) {
     return (
       <div className="grid min-h-dvh place-items-center">
@@ -99,6 +100,8 @@ function Shell() {
       </div>
     );
   }
+
+  if (!s.onboarding.done) return <Onboarding onDone={() => go("home")} />;
 
   const daily = playingDaily ? todaysCall(today()) : undefined;
   if (daily) return <DailyPlayer call={daily} onExit={() => setPlayingDaily(false)} />;

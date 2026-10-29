@@ -1,4 +1,5 @@
-import { dailyFor } from "@/lib/engine";
+import { dailyFor, playerOrder } from "@/lib/engine";
+import type { Focus } from "@/lib/game-state";
 import type { CatalogEntry, DailyCall, DailyPool, HotSeat } from "@/lib/hotseat-types";
 
 /** Every content/hotseats/<id>/hotseat.json, found at build time. Validated by `npm run hotseat:check` and the tests, not here. */
@@ -75,6 +76,32 @@ export const CATALOG: CatalogEntry[] = [
     .map((hs) => entry(hs, false)),
   ...COMING_SOON.filter((c) => !found[`/content/hotseats/${c.id}/hotseat.json`]),
 ];
+
+/**
+ * The Hot Seat a new player tries on the welcome screens (its first two calls), and the first one on Home after.
+ * Production uses it only once it's published; `npm run dev` also allows the draft, to test the welcome screens early.
+ */
+const TRIAL_ID = "kingfisher-airlines";
+const trialDraft = found[`/content/hotseats/${TRIAL_ID}/hotseat.json`];
+export const TRIAL: HotSeat | undefined = HOT_SEATS[TRIAL_ID] ?? (process.env.NODE_ENV !== "production" ? trialDraft : undefined);
+
+/** Hot Seats that fit what the player said they want to get better at. Ids that don't exist yet are skipped. */
+const FOCUS: Record<Focus, string[]> = {
+  scratch: ["amul-one-brand", "indigo-one-plane-type", "maruti-800"],
+  rival: ["new-coke", "nokia", "apple-1997-comeback", "tanishq-karatmeter"],
+  money: ["kingfisher-airlines", "harshad-mehta", "lego-turnaround"],
+  change: ["kodak", "blockbuster", "netflix", "intel-quits-memory"],
+};
+
+/** Home's order: the trial first, then Hot Seats for the player's focus, then their seeded order. */
+export function homeOrder(items: CatalogEntry[], seed: string, focus?: Focus): CatalogEntry[] {
+  const first = [TRIAL_ID, ...(focus ? FOCUS[focus] : [])];
+  const rank = (c: CatalogEntry) => (first.includes(c.id) ? first.indexOf(c.id) : first.length);
+  return playerOrder(items, seed)
+    .map((c, i) => ({ c, i }))
+    .sort((a, b) => rank(a.c) - rank(b.c) || a.i - b.i)
+    .map(({ c }) => c);
+}
 
 const dailyFile = import.meta.glob<DailyPool>("/content/daily/daily.json", { eager: true, import: "default" });
 /** The Daily Call pool, in schedule order (empty until content/daily/daily.json exists). */

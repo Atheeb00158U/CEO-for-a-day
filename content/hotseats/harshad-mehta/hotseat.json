@@ -1,0 +1,682 @@
+{
+  "id": "harshad-mehta",
+  "company": "Harshad Mehta",
+  "title": "The Big Bull",
+  "hook": "Harshad Mehta rode the market to the top in 1992. Then the banks wanted their money back.",
+  "role": "You are a Bombay stockbroker, 1990 to 1993",
+  "years": "1990–1993",
+  "cover": "img:hm_cover",
+  "emblem": "img:hm_emblem",
+  "draft": true,
+  "complexity": 4,
+  "minutes": 7,
+  "start": "intro",
+  "startMeters": {
+    "profit": 40,
+    "future": 50
+  },
+  "startTrust": 3,
+  "meters": {
+    "profit": {
+      "label": "Money",
+      "hint": "Money you have in hand"
+    },
+    "future": {
+      "label": "Standing",
+      "hint": "How much banks and the market believe in you"
+    }
+  },
+  "nodes": {
+    "intro": {
+      "id": "intro",
+      "type": "scene",
+      "year": "1990",
+      "media": "img:hm_intro",
+      "text": "Bombay, 1990. You started at an insurance company, then learned the share market while working for other brokers. Now you have your own firm and a seat on the Bombay Stock Exchange. You want to become the biggest name on Dalal Street.",
+      "next": "s_goal"
+    },
+    "s_goal": {
+      "id": "s_goal",
+      "type": "scene",
+      "year": "1990",
+      "media": "img:hm_goal",
+      "text": "To buy big, you need money. Borrowing in the share market costs 35 to 40% a year. Between banks, money costs about half that, and you're one of only a dozen brokers who arrange deals for banks too.",
+      "next": "d1"
+    },
+    "d1": {
+      "id": "d1",
+      "type": "decision",
+      "year": "1990",
+      "title": "Where does the money come from?",
+      "media": "img:hm_d1",
+      "setup": "Banks lend to each other for a couple of weeks by selling bonds, then buying them back at a slightly higher price. Brokers like you arrange these deals. Often the bonds never move, and the seller simply hands over a receipt.",
+      "question": "How will you pay for your growth?",
+      "advisor": "The banks want profits, and they trust you. Plenty of deals already pass through brokers' accounts, and nobody checks for a few days.",
+      "options": [
+        {
+          "id": "own",
+          "label": "Grow with your own and your clients' money, and pay high market rates when you need to borrow.",
+          "grade": "ok",
+          "effect": {
+            "profit": 0,
+            "future": 5,
+            "flags": ["clean"]
+          },
+          "next": "d2",
+          "media": "img:hm_d1_own",
+          "outcome": "You grow slowly. Other brokers buy bigger and faster, so some clients leave for them. But every rupee you use is yours or your clients', and you sleep well.",
+          "why": "It was safe, but at 35 to 40% a year your borrowing cost so much that you could barely grow.",
+          "better": "Earn steady fees by setting up bank deals the proper way, and use them to grow.",
+          "takeaway": "In 1990 you grew slowly and safely, paying a high price for money.",
+          "traits": {
+            "horizon": 0,
+            "risk": -1,
+            "disrupt": 0
+          }
+        },
+        {
+          "id": "proper",
+          "label": "Arrange bank deals the proper way, with bonds and cheques going straight between banks, and take your fee.",
+          "grade": "great",
+          "effect": {
+            "profit": 5,
+            "future": 15,
+            "flags": ["clean"]
+          },
+          "next": "d2",
+          "media": "img:hm_d1_proper",
+          "outcome": "Your fees are small but steady, and banks like how clean your deals are. More banks come to you, and your firm grows with money you've really earned.",
+          "why": "Small, honest fees built trust, and trust brought more business than any shortcut could.",
+          "takeaway": "In 1990 you built your firm on clean fees and the banks' trust.",
+          "traits": {
+            "horizon": 1,
+            "risk": -1,
+            "disrupt": 0
+          }
+        },
+        {
+          "id": "shortcut",
+          "label": "Ask banks to send deal cheques through your firm, then use that money on shares until each deal closes.",
+          "grade": "bad",
+          "real": true,
+          "effect": {
+            "profit": 20,
+            "future": -10,
+            "trust": -1,
+            "flags": ["shortcut"]
+          },
+          "next": "d2",
+          "media": "img:hm_d1_shortcut",
+          "outcome": "Some banks agree, because some deals already work this way. Their cheques land in your account, and for days or weeks you can use the money. Later an RBI committee will trace ₹1,439 crore of bank money to you and say there was nothing to secure it.",
+          "why": "The money was never yours. It came cheap, but the moment a bank asked for it back, you'd have to find it fast.",
+          "better": "Set up bank deals the proper way, take your fee, and grow on money you've earned.",
+          "takeaway": "In 1990 you built your firm on money that wasn't yours.",
+          "traits": {
+            "horizon": -1,
+            "risk": 1,
+            "disrupt": 1
+          }
+        }
+      ]
+    },
+    "d2": {
+      "id": "d2",
+      "type": "decision",
+      "year": "1992",
+      "title": "The bull run",
+      "media": "img:hm_d2",
+      "setup": [
+        {
+          "when": {
+            "flags": ["shortcut"]
+          },
+          "text": "Early 1992. The Sensex has doubled from about 1,000 and keeps climbing. With bank money in your account, you buy big and argue that old companies like ACC are worth far more: as much as it would cost to build them again. The papers call you the Big Bull."
+        },
+        {
+          "text": "Early 1992. The Sensex has doubled from about 1,000 and keeps climbing. Brokers who buy big with borrowed money are getting rich fast, and the papers are full of them."
+        }
+      ],
+      "question": "The market keeps rising. What do you do?",
+      "advisor": "Everyone's making money. If we slow down now, we may have to watch others get rich.",
+      "options": [
+        {
+          "id": "spread",
+          "label": "Slow down and spread your money across many shares, instead of putting so much into a few favourites.",
+          "grade": "ok",
+          "effect": {
+            "profit": 0,
+            "future": 5,
+            "flags": ["spread"]
+          },
+          "next": [
+            {
+              "when": {
+                "flags": ["shortcut"]
+              },
+              "to": "d3"
+            },
+            {
+              "to": "d3_clean"
+            }
+          ],
+          "media": "img:hm_d2_spread",
+          "outcome": "Your gains are smaller than the big names', but no single share can sink you. Your money is still almost all in the market, though.",
+          "why": "Spreading out cut your risk from any one share, but not your risk from the whole market falling.",
+          "better": "Take some money off the table and pay back what you borrowed while prices are high.",
+          "takeaway": "In 1992 you spread your money out, but kept almost all of it in the market.",
+          "traits": {
+            "horizon": 0,
+            "risk": -1,
+            "disrupt": 0
+          }
+        },
+        {
+          "id": "ride",
+          "label": "Keep buying ACC and your other favourites, while telling the market why you think prices should rise.",
+          "grade": "ok",
+          "real": true,
+          "effect": {
+            "profit": 20,
+            "future": -10,
+            "flags": ["rode"]
+          },
+          "next": [
+            {
+              "when": {
+                "flags": ["shortcut"]
+              },
+              "to": "d3"
+            },
+            {
+              "to": "d3_clean"
+            }
+          ],
+          "media": "img:hm_d2_ride",
+          "outcome": [
+            {
+              "when": {
+                "flags": ["shortcut"]
+              },
+              "text": "ACC shares climb from a few hundred rupees to around ₹9,000, and by March 1992 the Sensex is near 4,500. You're the most famous broker in India. But most of your wealth is in shares, and the bank money has to go back on short deadlines."
+            },
+            {
+              "text": "Your favourites keep climbing and you become one of the market's big names. But nearly all your money is now in a few shares, and no market climbs forever."
+            }
+          ],
+          "why": "Riding the rally made you rich on paper, but selling that much would have pushed prices down, and the money had to go back.",
+          "better": "Sell part of your shares while prices are high, and pay back what you borrowed.",
+          "takeaway": "In 1992 you kept riding the rally with money you'd have to repay.",
+          "traits": {
+            "horizon": -1,
+            "risk": 1,
+            "disrupt": 0
+          }
+        },
+        {
+          "id": "sell_some",
+          "label": "Sell some shares, pay back what you borrowed, and keep the rest, even if prices later go higher.",
+          "grade": "great",
+          "effect": {
+            "profit": 10,
+            "future": 10,
+            "flags": ["paid_back"]
+          },
+          "next": [
+            {
+              "when": {
+                "flags": ["shortcut"]
+              },
+              "to": "d3"
+            },
+            {
+              "to": "d3_clean"
+            }
+          ],
+          "media": "img:hm_d2_sell",
+          "outcome": "Prices keep rising after you sell, and other brokers laugh at you for leaving money on the table. But your debts are paid, and the money you made is now real money.",
+          "why": "Locking in gains felt timid in a rally, but it turned paper wealth into cash before the market turned.",
+          "takeaway": "In 1992 you took money off the table and paid your debts.",
+          "traits": {
+            "horizon": 1,
+            "risk": -1,
+            "disrupt": 0
+          }
+        }
+      ]
+    },
+    "d3": {
+      "id": "d3",
+      "type": "decision",
+      "year": "1992",
+      "title": "SBI wants its money",
+      "media": "img:hm_d3",
+      "setup": "April 1992. The RBI asks the State Bank of India to count its bonds. SBI finds a big gap, and it says ₹649 crore is due from you. It wants the bonds or the money, and it wants them now.",
+      "question": "How do you pay SBI?",
+      "advisor": "If we sell now, people may think we're in trouble and prices could fall. There are other banks.",
+      "options": [
+        {
+          "id": "sell_tell",
+          "label": "Sell shares, even at a loss, to pay SBI, and give the bank the full picture of your deals.",
+          "grade": "great",
+          "effect": {
+            "profit": -20,
+            "future": 15,
+            "flags": ["came_clean"]
+          },
+          "next": "d4",
+          "media": "img:hm_d3_sell",
+          "outcome": "Your selling knocks prices down, and you lose a fortune in a week. SBI gets most of its money back, and the truth comes out from you, not from a newspaper.",
+          "why": "Paying with real money, even at a loss, stopped the hole from growing and gave you some trust to stand on.",
+          "takeaway": "In April 1992 you sold at a loss and told the truth.",
+          "traits": {
+            "horizon": 1,
+            "risk": -1,
+            "disrupt": 0
+          }
+        },
+        {
+          "id": "ask_time",
+          "label": "Tell SBI you cannot pay it all yet, and ask for time while you slowly sell your shares.",
+          "grade": "ok",
+          "effect": {
+            "profit": -5,
+            "future": -5,
+            "flags": ["asked_time"]
+          },
+          "next": "d4",
+          "media": "img:hm_d3_time",
+          "outcome": "SBI gives you a few weeks, but the story leaks. Other banks start checking their own deals with you, and the market starts to wobble.",
+          "why": "Asking for time was honest about the gap, but slow selling let the panic run ahead of you.",
+          "better": "Sell fast, even at a loss, and tell the bank the whole truth before anyone else does.",
+          "takeaway": "In April 1992 you asked for time, and the story got there first.",
+          "traits": {
+            "horizon": 0,
+            "risk": 0,
+            "disrupt": 0
+          }
+        },
+        {
+          "id": "nhb",
+          "label": "Raise money from another bank through another quick bond deal, then use it to pay SBI.",
+          "grade": "bad",
+          "real": true,
+          "effect": {
+            "profit": 0,
+            "future": -20,
+            "trust": -1,
+            "flags": ["nhb"]
+          },
+          "next": "d4",
+          "media": "img:hm_d3_nhb",
+          "outcome": "Between 13 and 24 April you pay SBI ₹622 crore. Later reports say the money came from the National Housing Bank, raised the same way, leaving it with over ₹1,200 crore at risk. On 23 April a newspaper reports that a broker has been dipping into the banks, and shares start to crash.",
+          "why": "You paid one hole by digging a bigger one. The moment anyone looked, both holes showed.",
+          "better": "Sell shares, even at a loss, and tell the bank the truth before anyone else does.",
+          "takeaway": "In April 1992 you covered one bank's gap with another bank's money.",
+          "traits": {
+            "horizon": -1,
+            "risk": 1,
+            "disrupt": 0
+          }
+        }
+      ]
+    },
+    "d3_clean": {
+      "id": "d3_clean",
+      "type": "decision",
+      "year": "1992",
+      "title": "The top of the market",
+      "media": "img:hm_d3c",
+      "setup": "April 1992. The Sensex is near 4,500. Word spreads that some brokers may have been using bank money to buy shares. If the reports are true, prices could crash.",
+      "question": "What do you do with your shares?",
+      "advisor": "Rumours come and go. If we sell on gossip, we might sell at the bottom of a dip.",
+      "options": [
+        {
+          "id": "buy_more",
+          "label": "Buy more while others react to the rumours, accepting the risk that prices may fall further.",
+          "grade": "bad",
+          "effect": {
+            "profit": -15,
+            "future": -15,
+            "trust": -1,
+            "flags": ["bought_dip"]
+          },
+          "next": "ending_route",
+          "media": "img:hm_d3c_buy",
+          "outcome": "The rumours are true. Shares fall over 40% in under two months, and the ones you bought keep falling. Your money is trapped in a market nobody trusts.",
+          "why": "Buying into a crash only works if the crash has ended. This one had barely begun.",
+          "better": "Sell most of your shares while prices are high, and wait in cash until the truth is out.",
+          "takeaway": "In 1992 you bought into a crash that was only starting.",
+          "traits": {
+            "horizon": -1,
+            "risk": 1,
+            "disrupt": 0
+          }
+        },
+        {
+          "id": "sell_down",
+          "label": "Sell most of your shares now, while prices are high, and wait in cash, even if you miss more gains.",
+          "grade": "great",
+          "effect": {
+            "profit": 15,
+            "future": 10,
+            "flags": ["cashed_out"]
+          },
+          "next": "ending_route",
+          "media": "img:hm_d3c_sell",
+          "outcome": "You sell near the top. Weeks later the scam breaks and shares fall over 40% in under two months. Your clients' money is safe, and you can buy again when prices are cheap.",
+          "why": "Selling on a warning felt nervous, but you only had to be right once to save almost everything.",
+          "takeaway": "In 1992 you sold near the top and kept your clients safe.",
+          "traits": {
+            "horizon": 1,
+            "risk": -1,
+            "disrupt": 0
+          }
+        },
+        {
+          "id": "hold",
+          "label": "Hold your shares and accept the fall, trusting good companies to recover after the market settles.",
+          "grade": "ok",
+          "effect": {
+            "profit": -5,
+            "future": 0,
+            "flags": ["held"]
+          },
+          "next": "ending_route",
+          "media": "img:hm_d3c_hold",
+          "outcome": "The crash comes and your shares fall hard. It takes years for prices to come back, but your companies survive, and so do you.",
+          "why": "Holding good companies saved you in the end, but you sat through years of pain you could have dodged.",
+          "better": "Sell most of your shares while prices are high, and buy back after the crash.",
+          "takeaway": "In 1992 you held through the crash and waited years to recover.",
+          "traits": {
+            "horizon": 1,
+            "risk": 0,
+            "disrupt": 0
+          }
+        }
+      ]
+    },
+    "d4": {
+      "id": "d4",
+      "type": "decision",
+      "year": "1992",
+      "title": "The net closes",
+      "media": "img:hm_d4",
+      "setup": "June 1992. A new law sets up a special court for the scam, and a custodian can now seize the property of anyone named, for deals going back to April 1991. Your name is on the list. Shares that passed through you are now 'tainted', and nobody will buy them.",
+      "question": "How do you face the investigation?",
+      "advisor": "If we admit anything, they may take everything. Our shares are worth more than we owe, if only we're allowed to sell them.",
+      "options": [
+        {
+          "id": "fight",
+          "label": "Say you can repay everyone if you're allowed to trade again, while fighting every case in court.",
+          "grade": "ok",
+          "real": true,
+          "effect": {
+            "profit": 0,
+            "future": -10,
+            "flags": ["fought"]
+          },
+          "next": "d5",
+          "media": "img:hm_d4_fight",
+          "outcome": "You say you can clear every rupee you owe if you're allowed to trade. Nobody lets you. You spend 100 days in jail before you get bail, and you face 72 criminal charges and over 600 civil suits.",
+          "why": "Fighting every case kept your hopes alive, but it also kept the banks waiting and the courts against you.",
+          "better": "Hand over your records and help sell your shares to repay the banks.",
+          "takeaway": "In 1992 you fought every case instead of helping repay the banks.",
+          "traits": {
+            "horizon": -1,
+            "risk": 1,
+            "disrupt": 0
+          }
+        },
+        {
+          "id": "hide",
+          "label": "Say nothing for now, keep your money close, and wait for the pressure to pass.",
+          "grade": "bad",
+          "effect": {
+            "profit": 5,
+            "future": -20,
+            "trust": -1,
+            "flags": ["hid"]
+          },
+          "next": "d5",
+          "media": "img:hm_d4_hide",
+          "outcome": "Your silence looks like guilt. Investigators dig anyway, and now every judge treats your word with suspicion.",
+          "why": "Hiding money made a bad case worse and made sure no one would believe you again.",
+          "better": "Hand over your records and help sell your shares to repay the banks.",
+          "takeaway": "In 1992 you hid what you could, and lost what trust was left.",
+          "traits": {
+            "horizon": -1,
+            "risk": 1,
+            "disrupt": -1
+          }
+        },
+        {
+          "id": "cooperate",
+          "label": "Admit what happened, hand over your records, and help sell the shares so the banks can be repaid.",
+          "grade": "great",
+          "effect": {
+            "profit": -20,
+            "future": 20,
+            "flags": ["cooperated"]
+          },
+          "next": "ending_route",
+          "media": "img:hm_d4_coop",
+          "outcome": "It costs you almost everything you own. But the banks get much of their money back faster, and the courts see someone who helped clean up the mess.",
+          "why": "Owning up early cost you your fortune but saved what could still be saved, including your name.",
+          "takeaway": "In 1992 you owned up and helped repay the banks.",
+          "traits": {
+            "horizon": 1,
+            "risk": -1,
+            "disrupt": 0
+          }
+        }
+      ]
+    },
+    "d5": {
+      "id": "d5",
+      "type": "decision",
+      "year": "1993",
+      "title": "The suitcase",
+      "media": "img:hm_d5",
+      "setup": "June 1993. You're out on bail, with cases piling up and a committee of Parliament asking questions. You now make a claim that could shake the whole country: you say you paid money to the very top of the government.",
+      "question": "What do you do with your story?",
+      "advisor": "If the public believes us, the pressure could shift. This may be our strongest move.",
+      "options": [
+        {
+          "id": "committee",
+          "label": "Tell the committee of Parliament in private, give it any proof you have, and let it judge the claim.",
+          "grade": "ok",
+          "effect": {
+            "profit": 0,
+            "future": 0,
+            "flags": ["told_jpc"]
+          },
+          "next": "ending_route",
+          "media": "img:hm_d5_committee",
+          "outcome": "The committee hears you behind closed doors. Without strong proof the story goes nowhere, but you haven't turned the whole country against you.",
+          "why": "Going through proper channels was wise, but a claim without proof was never going to help your cases.",
+          "better": "Stay quiet and fight your own cases on the facts.",
+          "takeaway": "In 1993 you took your claim to the committee instead of the press.",
+          "traits": {
+            "horizon": 0,
+            "risk": 0,
+            "disrupt": 0
+          }
+        },
+        {
+          "id": "quiet",
+          "label": "Keep the claim private and fight your own cases one by one, using good lawyers.",
+          "grade": "great",
+          "effect": {
+            "profit": -5,
+            "future": 10,
+            "flags": ["stayed_quiet"]
+          },
+          "next": "ending_route",
+          "media": "img:hm_d5_quiet",
+          "outcome": "Your cases drag on for years, but you keep your head down and your lawyers busy. Some cases fall away, and slowly the papers move on to other stories.",
+          "why": "Staying quiet kept the focus on facts you could fight, not on a claim you couldn't prove.",
+          "takeaway": "In 1993 you kept quiet and fought your cases on the facts.",
+          "traits": {
+            "horizon": 1,
+            "risk": -1,
+            "disrupt": 0
+          }
+        },
+        {
+          "id": "public",
+          "label": "Go public, tell the press you paid the Prime Minister, and show how the cash would fit in a suitcase.",
+          "grade": "bad",
+          "real": true,
+          "effect": {
+            "profit": 0,
+            "future": -15,
+            "trust": -1,
+            "flags": ["went_public"]
+          },
+          "next": "ending_route",
+          "media": "img:hm_d5_public",
+          "outcome": "On 16 June 1993 you claim you paid the Prime Minister ₹1 crore. On 28 June you show the press how that much cash would fit in a suitcase. The Prime Minister says the claim is false. A first inquiry finds no evidence, and no case is ever filed. Your own cases go on.",
+          "why": "The claim made headlines but no proof, and it turned powerful people against you while your own cases stayed open.",
+          "better": "Stay quiet and fight your own cases on the facts.",
+          "takeaway": "In 1993 you made a huge public claim you couldn't prove.",
+          "traits": {
+            "horizon": -1,
+            "risk": 1,
+            "disrupt": 0
+          }
+        }
+      ]
+    },
+    "ending_route": {
+      "id": "ending_route",
+      "type": "route",
+      "routes": [
+        {
+          "when": {
+            "notFlags": ["shortcut"],
+            "minFuture": 70
+          },
+          "to": "legend"
+        },
+        {
+          "when": {
+            "minFuture": 40
+          },
+          "to": "survivor"
+        },
+        {
+          "to": "collapse"
+        }
+      ]
+    },
+    "legend": {
+      "id": "legend",
+      "type": "ending",
+      "tier": "legend",
+      "title": "The quiet giant",
+      "media": "img:hm_legend",
+      "bonus": 15,
+      "text": "Years later you're one of Dalal Street's most trusted brokers. You never became the Big Bull. But when the market crashed in 1992, you were still standing, and your clients still had their money."
+    },
+    "survivor": {
+      "id": "survivor",
+      "type": "ending",
+      "tier": "survivor",
+      "title": "Still standing",
+      "media": "img:hm_survivor",
+      "bonus": 5,
+      "text": [
+        {
+          "when": {
+            "flags": ["shortcut"]
+          },
+          "text": "You lose your firm and most of your money. But the banks get much of theirs back, and you face the courts having told the truth. In time you start again, smaller and wiser."
+        },
+        {
+          "text": "The crash hurts, but you get through it. You're not the biggest name on Dalal Street, but you're still in business, and people still trust you."
+        }
+      ]
+    },
+    "collapse": {
+      "id": "collapse",
+      "type": "ending",
+      "tier": "collapse",
+      "title": "The fall of the Big Bull",
+      "media": "img:hm_collapse",
+      "bonus": 0,
+      "text": [
+        {
+          "when": {
+            "flags": ["shortcut"]
+          },
+          "text": "In 1999 a special court convicts you of misusing Maruti Udyog's money and gives you five years in prison. On 31 December 2001 you die in custody, aged 47, with many cases still open. In 2003 the Supreme Court upholds your conviction."
+        },
+        {
+          "text": "The crash takes almost everything. Your money is gone, your clients have left, and it will take you years to rebuild your name."
+        }
+      ]
+    },
+    "fired": {
+      "id": "fired",
+      "type": "ending",
+      "tier": "fired",
+      "title": "Shown the door",
+      "media": "img:hm_fired",
+      "bonus": 0,
+      "text": "One bad call too many. Banks stop dealing with you, your partners walk away, and the exchange shuts you out."
+    }
+  },
+  "realEnding": "collapse",
+  "realHistory": "Harshad Mehta, a Bombay stockbroker, was called the Big Bull in 1991–92 as the Sensex rose from about 1,000 to about 4,500. An RBI committee later put the banks' total exposure in the scam at ₹3,542 crore, and traced ₹1,439 crore of unsecured bank money to him. In April 1992 SBI found a gap and said ₹649 crore was due from him; he paid back ₹622 crore, and later reports say that money came from the National Housing Bank, raised the same way. After a newspaper report on 23 April 1992, the market crashed. In 1993 he claimed he had paid the Prime Minister ₹1 crore. The Prime Minister denied it, and an inquiry found no evidence. In 1999 a special court convicted him in the Maruti Udyog case. He died in custody on 31 December 2001, aged 47, and the Supreme Court upheld the conviction in 2003. After the scam, India moved to trading shares on screens: the NSE started in 1994 and the BSE followed in 1995.",
+  "sources": [
+    {
+      "label": "Securities Scam: Genesis, Mechanics and Impact (Barua and Varma, IIM Ahmedabad, 1992)",
+      "url": "https://www.iima.ac.in/sites/default/files/rnpfiles/1992-09-01jrvarma.pdf"
+    },
+    {
+      "label": "Development of Repos Market in India, chapter 3 (Reserve Bank of India, 1999)",
+      "url": "https://www.rbi.org.in/Scripts/PublicationsView.aspx?id=835"
+    },
+    {
+      "label": "Ram Narain Popli vs CBI (Supreme Court of India, 2003)",
+      "url": "https://indiankanoon.org/doc/1611623/"
+    },
+    {
+      "label": "Supreme Court admits Harshad Mehta's appeal (The Tribune, 1999)",
+      "url": "https://www.tribuneindia.com/1999/99nov02/nation.htm"
+    },
+    {
+      "label": "Indians Gripped by Tale of High-Level Corruption (Christian Science Monitor, 1993)",
+      "url": "https://www.csmonitor.com/1993/0708/08072.html"
+    },
+    {
+      "label": "The Dead-end (Outlook)",
+      "url": "https://www.outlookindia.com/national/the-dead-end-news-201602"
+    },
+    {
+      "label": "Year 1992 round up (Business Today)",
+      "url": "https://www.businesstoday.in/magazine/focus/story/year-1992-round-up-20965-2011-01-03"
+    },
+    {
+      "label": "Big Bull Harshad Mehta pays dues 9 years after death (Business Today, 2011)",
+      "url": "https://www.businesstoday.in/latest/corporate/story/big-bull-harshad-mehta-pays-dues-9-years-after-death-18830-2011-03-17"
+    },
+    {
+      "label": "How Harshad Mehta got caught (The Himalayan Times, 2008)",
+      "url": "https://thehimalayantimes.com/business/how-harshad-mehta-got-caught"
+    },
+    {
+      "label": "SEBI: Policies and Programmes",
+      "url": "https://www.sebi.gov.in/sebi_data/commondocs/pt01_h.html"
+    },
+    {
+      "label": "Harshad Shantilal Mehta vs Custodian (Supreme Court of India, 1998)",
+      "url": "https://api.sci.gov.in/jonew/judis/13203.pdf"
+    },
+    {
+      "label": "Suman L. Shah vs The Custodian (Supreme Court of India, 2024)",
+      "url": "https://api.sci.gov.in/supremecourt/2011/15323/15323_2011_3_1502_51147_Judgement_05-Mar-2024.pdf"
+    }
+  ],
+  "credits": "Research brief and full source list: content/hotseats/harshad-mehta/research.md."
+}

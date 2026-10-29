@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ECONOMY, QUESTS, useGame } from "@/lib/store";
+import { ECONOMY, questsFor, useGame } from "@/lib/store";
 import { Bar, Card, Icon } from "./ui";
 
 export function ShopTab() {
@@ -46,7 +46,7 @@ export function ShopTab() {
       <Card>
         <h2 className="mb-3 text-[19px] font-black">Daily quests</h2>
         <div className="flex flex-col gap-4">
-          {QUESTS.map((q) => {
+          {questsFor(s).map((q) => {
             const v = Math.min(q.goal, q.read(s.quests));
             const claimed = s.quests.claimed.includes(q.id);
             const ready = v >= q.goal && !claimed;
