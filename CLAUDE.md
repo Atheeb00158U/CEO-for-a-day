@@ -38,7 +38,7 @@ Follow `docs/AUTHORING.md` for every Hot Seat and Daily Call: research brief →
 
 ## Hot Seat content
 - Each Hot Seat is `content/hotseats/<id>/hotseat.json` (+ `media/`), checked by the Zod schema in `src/lib/hotseat-schema.ts`, which must match `hotseat-types.ts` exactly (a type check fails the build otherwise).
-- `draft: true` hides a Hot Seat from the production game and turns missing media and audio into warnings. Its JSON is still bundled (every Hot Seat is, through `import.meta.glob`), so don't commit anything secret in a draft; the Phase 5 switch to lazy loading can drop drafts from the bundle.
+- `draft: true` shows a Hot Seat as "Coming soon" on the map (dev and production alike; `/admin` still shows it in full) and turns missing media and audio into warnings. Its JSON is still bundled (every Hot Seat is, through `import.meta.glob`), so don't commit anything secret in a draft; the Phase 5 switch to lazy loading can drop drafts from the bundle.
 - Media names must be unique across Hot Seats (they share `public/media/`).
 - Files that Node runs directly (`engine.ts`, `hotseat-schema.ts`, `hotseat-check.ts`, `voice-lines.ts`, `content-files.ts`) use `import type` for types and relative `.ts` imports, no `@/` paths.
 

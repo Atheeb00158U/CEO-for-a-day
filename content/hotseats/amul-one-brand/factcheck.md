@@ -1,5 +1,5 @@
 # Fact-check: amul-one-brand
-checked-sha256: a46a9c5f108d5b26432c2f0ee0483951d2d00113b092653aedd73d0f768a66c1
+checked-sha256: 2375eb50d6ff943b51f26bea827f63509474bbf3de9f7e2ab8588577319d8845
 Checked: 2026-10-28 · by: independent fact-check agent (fresh context)
 
 ## Sources opened
@@ -65,3 +65,4 @@ Checked: 2026-10-28 · by: independent fact-check agent (fresh context)
 
 ## Changes after this check (2026-10-28)
 - Reworded costly labels (d1 beg, d2 holiday, d3 national/empire, d5 price_war) and the d3 advisor so no option is wrong for ethical reasons. No real-path facts changed. Checked by the author.
+- 2026-10-29: only `draft` changed to `false` to publish it; no story text changed. Re-stamped.

@@ -1,5 +1,5 @@
 # Fact-check: indigo-one-plane-type
-checked-sha256: 4443de5ce605b0efc9f65fbb469be4a9cd96c5190293328d50ae209cac6ef837
+checked-sha256: 885391dbb8c2d206658c0f80cb62ff13ffa5a9c0e17ccd843163d4f5f4c46108
 Checked: 2026-10-28 · by: independent fact-check agent (fresh context)
 
 ## Sources opened
@@ -65,3 +65,4 @@ Checked: 2026-10-28 · by: independent fact-check agent (fresh context)
 ## Changes after this check (2026-10-28)
 - d5 real outcome now says "Airbus calls it the largest single order for its passenger jets" (checker's suggestion).
 - Rewrote all 15 option labels and the d2/d4 advisor lines so costly options read as strategies and no label leans. Outcomes and real-path facts unchanged; labels carry no new facts. Checked by the author.
+- 2026-10-29: only `draft` changed to `false` to publish it; no story text changed. Re-stamped.

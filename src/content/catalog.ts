@@ -5,14 +5,25 @@ import type { CatalogEntry, DailyCall, DailyPool, HotSeat } from "@/lib/hotseat-
 const found = import.meta.glob<HotSeat>("/content/hotseats/*/hotseat.json", { eager: true, import: "default" });
 
 // shortcut: every Hot Seat ships in the main bundle; switch to lazy glob imports when the Phase 5 performance budget needs it.
-/** Playable Hot Seats. Drafts only show in `npm run dev`. */
+/** Playable Hot Seats. Drafts show on the map as "coming soon" (in dev too, so testing matches what players see); /admin shows them in full. */
 export const HOT_SEATS: Record<string, HotSeat> = Object.fromEntries(
   Object.values(found)
-    .filter((hs) => !hs.draft || process.env.NODE_ENV !== "production")
+    .filter((hs) => !hs.draft)
     .map((hs) => [hs.id, hs]),
 );
 
-/** Shown on the map as "coming soon" until a Hot Seat with the same id exists. */
+const entry = (hs: HotSeat, available: boolean): CatalogEntry => ({
+  id: hs.id,
+  company: hs.company,
+  title: hs.title,
+  hook: hs.hook,
+  cover: available ? hs.cover : undefined,
+  emblem: hs.emblem,
+  complexity: hs.complexity,
+  available,
+});
+
+/** Shown on the map as "coming soon" until a Hot Seat (even a draft) with the same id exists. */
 const COMING_SOON: CatalogEntry[] = [
   {
     id: "blockbuster",
@@ -58,17 +69,11 @@ const COMING_SOON: CatalogEntry[] = [
 
 /** Everything shown on the map. */
 export const CATALOG: CatalogEntry[] = [
-  ...Object.values(HOT_SEATS).map((hs) => ({
-    id: hs.id,
-    company: hs.company,
-    title: hs.title,
-    hook: hs.hook,
-    cover: hs.cover,
-    emblem: hs.emblem,
-    complexity: hs.complexity,
-    available: true,
-  })),
-  ...COMING_SOON.filter((c) => !HOT_SEATS[c.id]),
+  ...Object.values(HOT_SEATS).map((hs) => entry(hs, true)),
+  ...Object.values(found)
+    .filter((hs) => hs.draft)
+    .map((hs) => entry(hs, false)),
+  ...COMING_SOON.filter((c) => !found[`/content/hotseats/${c.id}/hotseat.json`]),
 ];
 
 const dailyFile = import.meta.glob<DailyPool>("/content/daily/daily.json", { eager: true, import: "default" });

@@ -7,7 +7,7 @@
   "years": "2005–2012",
   "cover": "img:ig_cover",
   "emblem": "img:ig_emblem",
-  "draft": true,
+  "draft": false,
   "complexity": 3,
   "minutes": 7,
   "start": "intro",
