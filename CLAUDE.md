@@ -48,6 +48,10 @@ Follow `docs/AUTHORING.md` for every Hot Seat and Daily Call: research brief →
 ## The build plan
 Follow `docs/BUILD-PLAN.md` phase by phase and tick items off as you finish them. `HANDOFF.md` has the kickoff instructions.
 
+## Installable app
+- `public/sw.js` (hand-written, scope `/app`, production only) keeps the app and played media for offline play; it never touches `/admin`. Change the cache names in it when its caching rules change.
+- `src/lib/pwa.ts` and `InstallSheet` handle "add to home screen".
+
 ## Known gaps
 See `docs/LAUNCH-CHECKLIST.md`.
 - Leagues are simulated on the device; there's no backend yet.

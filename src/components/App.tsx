@@ -12,6 +12,8 @@ import { ShopTab } from "./ShopTab";
 import { ProfileTab } from "./ProfileTab";
 import { Player } from "./Player";
 import { DailyPlayer } from "./DailyPlayer";
+import { InstallSheet } from "./InstallSheet";
+import { registerServiceWorker } from "@/lib/pwa";
 import { todaysCall } from "@/content/catalog";
 
 export type Tab = "home" | "league" | "notes" | "shop" | "profile";
@@ -35,6 +37,8 @@ function Shell() {
   const [tab, setTab] = useState<Tab>("home");
   const [playing, setPlaying] = useState<string | null>(null);
   const [playingDaily, setPlayingDaily] = useState(false);
+
+  useEffect(registerServiceWorker, []);
 
   useEffect(() => {
     const fromHash = () => {
@@ -87,6 +91,7 @@ function Shell() {
   return (
     <div className="mx-auto flex min-h-dvh max-w-[480px] flex-col">
       <TopBar onShop={() => go("shop")} />
+      <InstallSheet />
       <main className="flex-1 px-4 pb-28">
         {tab === "home" && <HomeTab onPlay={setPlaying} onDaily={() => setPlayingDaily(true)} onShop={() => go("shop")} />}
         {tab === "league" && <LeagueTab onPlay={() => go("home")} />}
