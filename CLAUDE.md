@@ -59,3 +59,4 @@ Follow `docs/BUILD-PLAN.md` phase by phase and tick items off as you finish them
 See `docs/LAUNCH-CHECKLIST.md`.
 - Leagues are simulated on the device; there's no backend yet.
 - State is saved in localStorage only.
+- No notifications yet: this is a proof of concept with no server. When a backend lands, build streak reminder push from the plan in `docs/BUILD-PLAN.md` Phase 6, and remind Atheeb it's ready to build.

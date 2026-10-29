@@ -33,7 +33,7 @@ A Hot Seat takes 5–8 minutes. That's too long to protect a daily streak. Add a
 - **Performance on cheap Android phones:** keep images and clips small, and add a data-saver mode that skips video.
 
 ## 7. Retention and growth
-- **Notifications:** streak reminders via push. WhatsApp reminders work well in India, but need opt-in and an approved template.
+- **Notifications:** streak reminders via push. Not built: they need the backend first (plan in BUILD-PLAN Phase 6). WhatsApp reminders work well in India, but need opt-in and an approved template.
 - **Share cards:** for example "I beat Kodak's real CEO, 92/100", made for WhatsApp and Instagram stories.
 - **Friend duels:** two players take the same Hot Seat and compare scores.
 - **Streak wager:** bet coins on keeping a 7-day streak. Duolingo reported its wager test raised Day-7 retention by 14%.

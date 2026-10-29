@@ -115,7 +115,13 @@ Hot Seats should be data files, not TypeScript.
 - [x] Welcome screens for a new player (`Onboarding`): three questions that change the game (minutes a day set the daily decisions quest; the chosen focus puts matching Hot Seats first on Home; what you do now shapes one line of the style card), then the first two calls of the trial Hot Seat (`TRIAL` in `catalog.ts`, Kingfisher Airlines), a style card built only from those calls, and "Carry on" into the rest of the run. "Skip, just play" on every screen. *A lean take on Empirio's quiz funnel: no fake loading screen, no made-up profile. Production shows it once Kingfisher is published.*
 
 ## Phase 6: Retention and growth (2–3 days)
-- [ ] Streak reminder push notifications at the user's chosen time.
+- [ ] Streak reminder push notifications at the user's chosen time. *Waits for the Phase 3 backend (Atheeb, 2026-10-29: the app is a proof of concept with no server, so nothing is built yet).* Web Push needs:
+  - a notification-only service worker. It handles `push` and `notificationclick` and caches nothing, so the game stays online only. Ask Atheeb before registering it.
+  - a database table of push subscriptions, each with the player's last play day and chosen time;
+  - a daily scheduled job (for example Vercel Cron) that sends a reminder to anyone who hasn't played today, signed with VAPID keys kept in environment variables;
+  - a permission prompt after the welcome style card or the first streak day, never when the app first opens.
+
+  Android browsers get notifications even without installing. iPhones (iOS 16.4 and later) get them only from the Home Screen app, after a tap to allow them. Planned messages: streak at risk, today's call is ready, and league results once leagues are real.
 - [ ] Optional WhatsApp reminders via the Business API. Needs opt-in and an approved template. *Decision:* provider.
 - [ ] Shareable result cards (an OG image per run): "I beat Kodak's real CEO: 92/100". Sized for WhatsApp and Instagram stories.
 - [ ] Referral codes with coin rewards.
