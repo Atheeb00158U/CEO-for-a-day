@@ -1,8 +1,9 @@
 "use client";
 
-import { SFX } from "./sfx";
-
-/** Installing the app: the service worker (public/sw.js) and the "add to home screen" prompt. */
+/**
+ * The "add to home screen" prompt. The game is online only, so there is no offline service worker
+ * (public/sw.js only removes the one an earlier version installed).
+ */
 
 type InstallEvent = Event & { prompt: () => Promise<void>; userChoice: Promise<{ outcome: "accepted" | "dismissed" }> };
 
@@ -26,16 +27,6 @@ if (typeof window !== "undefined") {
 export function onInstallChange(f: () => void) {
   listeners.add(f);
   return () => void listeners.delete(f);
-}
-
-export function registerServiceWorker() {
-  // Not in dev: a cached page there hides every code change.
-  if (process.env.NODE_ENV !== "production" || !("serviceWorker" in navigator)) return;
-  navigator.serviceWorker
-    .register("/sw.js", { scope: "/app" })
-    .then(() => navigator.serviceWorker.ready)
-    .then((reg) => reg.active?.postMessage({ save: SFX.map((n) => `/sfx/${n}.mp3`) }))
-    .catch(() => {});
 }
 
 /**
@@ -86,19 +77,5 @@ export function snoozeInstall() {
     localStorage.setItem(DISMISSED, String(Date.now()));
   } catch {
     /* private mode: it just asks again next time */
-  }
-}
-
-/**
- * Fetches every picture and clip in a Hot Seat through the service worker, which keeps them, so any path plays
- * offline later. Narration isn't fetched ahead (a full tree is many megabytes): lines played are kept, and offline
- * the rest fall back to the browser voice.
- */
-export function saveForOffline(content: object) {
-  if (!navigator.serviceWorker?.controller) return;
-  const refs = new Set(JSON.stringify(content).match(/"(img|vid):[^"]+"/g));
-  for (const r of refs) {
-    const [kind, name] = r.slice(1, -1).split(":");
-    fetch(`/media/${name}.${kind === "vid" ? "mp4" : "webp"}`).catch(() => {});
   }
 }

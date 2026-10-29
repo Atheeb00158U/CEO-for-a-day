@@ -16,7 +16,6 @@ import {
 } from "@/lib/engine";
 import type { DecisionNode, EndingNode, Grade, HotSeat, Media, Option, SceneNode } from "@/lib/hotseat-types";
 import { useGame, type RunRecord } from "@/lib/store";
-import { saveForOffline } from "@/lib/pwa";
 import { playSfx } from "@/lib/sfx";
 import { ADVISOR, NARRATOR, speak, stopVoice } from "@/lib/voice";
 import { Bar, Caption, Icon, MediaView } from "./ui";
@@ -46,8 +45,6 @@ export function Player({ hotSeatId, onExit, onNotes }: { hotSeatId: string; onEx
   const finished = useRef(false); // a double tap on "See your results" must not pay out twice
 
   useEffect(() => () => stopVoice(), []);
-  const dataSaver = game.s.settings.dataSaver;
-  useEffect(() => void (!dataSaver && saveForOffline(hs)), [hs, dataSaver]); // data saver loads each picture only when seen
 
   // A lost heart lands after the verdict and meter sounds (see RevealView and Meters).
   const trustBefore = useRef(run.trust);

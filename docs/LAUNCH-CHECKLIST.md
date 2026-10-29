@@ -29,7 +29,7 @@ A Hot Seat takes 5–8 minutes. That's too long to protect a daily streak. Add a
 - **Voice:** narration is made with OmniVoice. Its code is Apache 2.0, but the model weights are CC-BY-NC (non-commercial). Atheeb has chosen to use it; confirm the licence position before charging. OmniVoice also covers Hindi, Tamil and Bengali.
 
 ## 6. Distribution
-- Make the app installable from the browser (a PWA, with offline caching of media), then wrap it for the Play Store with a Trusted Web Activity or Capacitor. Do iOS later.
+- Make the app installable from the browser (a PWA; online only, no offline play), then wrap it for the Play Store with a Trusted Web Activity or Capacitor. Do iOS later.
 - **Performance on cheap Android phones:** keep images and clips small, and add a data-saver mode that skips video.
 
 ## 7. Retention and growth

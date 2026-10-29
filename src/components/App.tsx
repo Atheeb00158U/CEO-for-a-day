@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import { playSfx } from "@/lib/sfx";
 import { GameProvider, today, useGame } from "@/lib/store";
 import { Icon, Pill } from "./ui";
@@ -13,7 +13,6 @@ import { ProfileTab } from "./ProfileTab";
 import { Player } from "./Player";
 import { DailyPlayer } from "./DailyPlayer";
 import { InstallSheet } from "./InstallSheet";
-import { registerServiceWorker } from "@/lib/pwa";
 import { todaysCall } from "@/content/catalog";
 
 export type Tab = "home" | "league" | "notes" | "shop" | "profile";
@@ -29,7 +28,36 @@ export function App() {
   return (
     <GameProvider>
       <Shell />
+      <OfflineCover />
     </GameProvider>
+  );
+}
+
+const onConnection = (f: () => void) => {
+  window.addEventListener("online", f);
+  window.addEventListener("offline", f);
+  return () => {
+    window.removeEventListener("online", f);
+    window.removeEventListener("offline", f);
+  };
+};
+
+/** The game is online only. This covers the screen without closing anything, so play carries on when the connection is back. */
+function OfflineCover() {
+  const online = useSyncExternalStore(
+    onConnection,
+    () => navigator.onLine,
+    () => true,
+  );
+  if (online) return null;
+  return (
+    <div role="alert" className="fixed inset-0 z-[60] grid place-items-center bg-bg px-8 text-center">
+      <div className="flex flex-col items-center gap-3">
+        <Logo size={96} />
+        <p className="text-[24px] font-black">No internet</p>
+        <p className="text-[17px] font-bold text-muted">Connect to the internet to play. You’ll carry on from here.</p>
+      </div>
+    </div>
   );
 }
 
@@ -37,8 +65,6 @@ function Shell() {
   const [tab, setTab] = useState<Tab>("home");
   const [playing, setPlaying] = useState<string | null>(null);
   const [playingDaily, setPlayingDaily] = useState(false);
-
-  useEffect(registerServiceWorker, []);
 
   useEffect(() => {
     const fromHash = () => {

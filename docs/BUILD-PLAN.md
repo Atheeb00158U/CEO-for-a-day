@@ -105,12 +105,12 @@ Hot Seats should be data files, not TypeScript.
 *Note from Phase 1: the PWA's `scope` and `start_url` are `/app`, and the service worker must never cache `/admin` or 401 responses.*
 - [ ] Make it a PWA:
   - [x] Manifest and icons. *Scope and start URL are `/app`.*
-  - [x] A service worker that caches the app shell and each played Hot Seat's media. *`public/sw.js`, registered only in production. Starting a Hot Seat saves all its pictures and clips; narration is saved as it plays, and offline the rest uses the phone's voice. Tested offline in Chrome: the app reloads, and every Kodak picture and clip loads.*
+  - [x] ~~A service worker that caches the app shell and each played Hot Seat's media.~~ *Dropped 2026-10-29: Atheeb wants the game online only. A "No internet" screen covers the game when the connection drops, and play carries on when it's back. An offline worker was live for about an hour that morning; `public/sw.js` now only deletes what it saved and unregisters itself.*
   - [x] An install popup on phones (`InstallSheet`): one tap where Chrome allows it, short steps on iPhone and other browsers, and "open in browser" inside Instagram or Facebook. It waits 3 days after "Not now".
-  - [x] A data-saver setting that swaps video for stills. *Profile → Data saver. `npm run media` saves each clip's first frame as `<name>.jpg` (also the video's poster), and `hotseat:check` asks for it. Data saver also stops a Hot Seat saving all its pictures up front.*
+  - [x] A data-saver setting that swaps video for stills. *Profile → Data saver. `npm run media` saves each clip's first frame as `<name>.jpg` (also the video's poster), and `hotseat:check` asks for it.*
 - [ ] Android: wrap with **Capacitor** (or a Trusted Web Activity). Add push notifications through FCM. Prepare the Play Store listing. *Decision:* the developer account is Atheeb's.
 - [ ] Performance budget: first load under 200 KB of JS, LCP under 2.5 s on a mid-range Android phone over 4G, and no layout shift.
-- [ ] **Done when** the app installs from the Play Store internal testing track and a full Hot Seat plays offline after one online play.
+- [ ] **Done when** the app installs from the Play Store internal testing track and a full Hot Seat plays in the installed app.
 
 ## Phase 6: Retention and growth (2–3 days)
 - [ ] Streak reminder push notifications at the user's chosen time.

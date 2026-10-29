@@ -49,7 +49,7 @@ Follow `docs/AUTHORING.md` for every Hot Seat and Daily Call: research brief →
 Follow `docs/BUILD-PLAN.md` phase by phase and tick items off as you finish them. `HANDOFF.md` has the kickoff instructions.
 
 ## Installable app
-- `public/sw.js` (hand-written, scope `/app`, production only) keeps the app and played media for offline play; it never touches `/admin`. Change the cache names in it when its caching rules change.
+- The game is **online only** (Atheeb's call): no offline caching. A "No internet" screen covers the game while the connection is down. `public/sw.js` only removes the offline worker an early version installed; don't register a worker again without asking.
 - `src/lib/pwa.ts` and `InstallSheet` handle "add to home screen".
 
 ## Known gaps

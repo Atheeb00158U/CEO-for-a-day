@@ -117,7 +117,7 @@ export function ProfileTab() {
         <label className="flex items-center justify-between gap-3 font-extrabold">
           <span>
             Data saver
-            <span className="block text-[14px] font-bold text-muted">Show pictures, not video. Load each one only when you see it.</span>
+            <span className="block text-[14px] font-bold text-muted">Show pictures, not video.</span>
           </span>
           <input
             type="checkbox"

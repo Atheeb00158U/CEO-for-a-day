@@ -61,7 +61,7 @@ export function InstallSheet() {
           <div>
             <SheetTitle className="text-[20px] font-black leading-tight">Get the app</SheetTitle>
             <SheetDescription className="mt-1 text-[15px] font-bold text-muted">
-              Add it to your home screen and open it in one tap. Hot Seats you’ve played work without internet.
+              Add it to your home screen and open it in one tap.
             </SheetDescription>
           </div>
         </div>
