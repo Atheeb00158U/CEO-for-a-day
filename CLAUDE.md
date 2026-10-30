@@ -52,6 +52,7 @@ Follow `docs/AUTHORING.md` for every Hot Seat and Daily Call: research brief →
 - **No answers on the phone.** Hot Seat and Daily Call JSON is read only on the server (`src/lib/server/content.ts`). The phone sends its picks to `/api/play`, which replays them (`src/lib/play.ts`) and returns the next screens plus the verdict on the last pick. `/api/daily` and `/api/daily/lock` do the same for the Daily Call. Never import `server/content.ts` or `content-files.ts` from client code; `npm run check-bundle` (in CI, after the build) fails if any option's `why` or `takeaway` text reaches the browser. Narration ids are worked out on the phone (`lineId` in `voice.ts`), so `voice-lines.json` is never bundled.
 - Railway runs plain `next start` (not `output: "standalone"`), so `content/` is on disk at runtime.
 - Media names must be unique across Hot Seats (they share `public/media/`).
+- `madeUp: true` marks a made-up story (only kirana-year, approved by Atheeb): the app shows `MADE_UP_LABEL` (on the map card, first screen and verdict sheet) and never "Real history", "Our estimate" or a real-history panel. It may leave out `realHistory`, may mark no option real, and needs a stamped `realism.md` (same format as `factcheck.md`) instead of a fact-check; every `sources` URL must be in its `research.md`.
 - Files that Node runs directly (`engine.ts`, `hotseat-schema.ts`, `hotseat-check.ts`, `voice-lines.ts`, `content-files.ts`) use `import type` for types and relative `.ts` imports, no `@/` paths.
 
 ## UI
@@ -62,6 +63,7 @@ Follow `docs/BUILD-PLAN.md` phase by phase and tick items off as you finish them
 
 ## Welcome screens
 - A new player (no `onboarding.done` in the save) sees `Onboarding`: three questions, then the first two calls of the trial (`TRIAL_ID` in `catalog.ts`). In production the trial needs the Hot Seat published; `npm run dev` also allows its draft. Anyone who skips or has played before goes straight to Home.
+- With the course on and `kirana-year` in place (`COURSE_TRIAL_ID`), the three questions are followed by Unit 1's first lesson, then kirana-year's first two calls. Until its hotseat.json exists, onboarding is as above.
 
 ## Installable app
 - The game is **online only** (Atheeb's call): no offline caching. A "No internet" screen covers the game while the connection is down. `public/sw.js` only removes the offline worker an early version installed; don't register a worker again without asking.

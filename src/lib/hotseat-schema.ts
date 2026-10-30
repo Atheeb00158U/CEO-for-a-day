@@ -76,7 +76,8 @@ export const HotSeatSchema = z.strictObject({
   meters: z.record(Meter, z.strictObject({ label: z.string(), hint: z.string() })),
   nodes: z.record(z.string(), Node),
   realEnding: Tier,
-  realHistory: z.string(),
+  realHistory: z.string().optional(),
+  madeUp: z.boolean().optional(),
   sources: z.array(z.strictObject({ label: z.string(), url: z.string() })),
   credits: z.string(),
 });

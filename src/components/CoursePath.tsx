@@ -103,7 +103,7 @@ export function CoursePath({
                     sway={SWAY[n++ % SWAY.length]}
                     state={hs.available ? g.state : "locked"}
                     size="lg"
-                    label={`Hot Seat · ${hs.company}`}
+                    label={`Hot Seat · ${hs.company}${hs.madeUp ? " (made-up story)" : ""}`}
                     sub={
                       !hs.available
                         ? "Coming soon"

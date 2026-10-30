@@ -49,6 +49,10 @@ Then run `npm run hotseat:check` and `npm run voices` again.
 `npm run hotseat:check -- <id>` must show no errors. A draft may only warn about missing media and audio (and about the fact-check, until step 4). Look at the whole tree at `/admin/<id>`.
 
 ### 4. Fact-check → `content/hotseats/<id>/factcheck.md`
+*A made-up story (`madeUp: true`, only kirana-year) has no company to check. It gets a realism check note,
+`realism.md`, in the same format and stamp: a fresh agent checks that the numbers and habits sit inside what
+`research.md`'s sources say. Every `sources` URL must appear in `research.md`; `hotseat:check` enforces both.*
+
 A **fresh** agent, given only `hotseat.json` and the sources, checks every factual claim on the real path, plus `realHistory`, opening the sources itself. It also checks that alternate options don't state invented events as fact. The report looks like this:
 
 ```

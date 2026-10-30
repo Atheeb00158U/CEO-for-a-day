@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
-import { homeOrder } from "@/content/catalog";
+import { homeOrder, MADE_UP_LABEL } from "@/content/catalog";
 import { useContent } from "@/lib/content-client";
 import type { DailyQuestion } from "@/lib/hotseat-types";
 import { questsFor, today, useGame } from "@/lib/store";
@@ -85,6 +85,7 @@ export function HomeTab({
             </p>
             <h2 className="mt-1 text-[28px] font-black leading-tight text-balance">{hs.title}</h2>
             <p className="mt-1 text-[16px] font-bold text-muted">{hs.hook}</p>
+            {hs.madeUp && <p className="mt-1 text-[13px] font-black tracking-wider text-purple uppercase">{MADE_UP_LABEL}</p>}
             <p className="mt-2 text-[14px] font-bold text-muted">
               {hs.calls} big calls · {hs.minutes} min · {best !== undefined ? `Your best: ${best}` : "Narrated"}
             </p>
@@ -160,7 +161,7 @@ export function HomeTab({
                   >
                     {c.company}
                     <span className="block text-[12px] font-bold text-muted">
-                      {c.available ? (done ? `Best ${s.best[c.id]}` : "Ready") : "Coming soon"}
+                      {c.available ? (done ? `Best ${s.best[c.id]}` : c.madeUp ? "Made-up story" : "Ready") : "Coming soon"}
                     </span>
                   </span>
                 </button>

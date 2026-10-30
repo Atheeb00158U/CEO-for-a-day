@@ -57,7 +57,9 @@ export interface HotSeatMeta {
   startTrust: number;
   meters: Record<MeterKey, { label: string; hint: string }>;
   calls: number;
-  realHistory: string;
+  realHistory?: string;
+  /** A made-up story: no real-history tags or panel. */
+  madeUp?: boolean;
   sources: { label: string; url: string }[];
   credits: string;
 }
@@ -94,6 +96,7 @@ export const metaOf = (hs: HotSeat): HotSeatMeta => ({
   meters: hs.meters,
   calls: callsPerRun(hs),
   realHistory: hs.realHistory,
+  madeUp: hs.madeUp,
   sources: hs.sources,
   credits: hs.credits,
 });
@@ -173,7 +176,7 @@ export function play(hs: HotSeat, picks: Pick[]): PlayView {
       lines: d.lines,
       patterns: d.patterns,
       recovered: d.recovered,
-      beatHistory: TIER_RANK[stop.tier] > TIER_RANK[hs.realEnding],
+      beatHistory: !hs.madeUp && TIER_RANK[stop.tier] > TIER_RANK[hs.realEnding],
       traits: view.traits,
     };
   }

@@ -165,6 +165,95 @@ describe("hotseat:check catches broken Hot Seats", () => {
   });
 });
 
+describe("a made-up Hot Seat", () => {
+  const tmp = mkdtempSync(join(tmpdir(), "madeup-"));
+  afterAll(() => rmSync(tmp, { recursive: true, force: true }));
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- fixtures are deliberately edited JSON
+  type Json = any;
+  /** Kodak turned into a made-up story in <tmp>/<name>: no real options, no realHistory, a research brief and a realism note. */
+  const fixture = (name: string, edit: (hs: Json) => void = () => {}, files: { research?: boolean; realism?: boolean } = {}) => {
+    const dir = join(tmp, name);
+    mkdirSync(dir);
+    cpSync(join(HOTSEATS_DIR, "kodak", "media"), join(dir, "media"), { recursive: true });
+    const hs = { ...JSON.parse(readFileSync(join(HOTSEATS_DIR, "kodak", "hotseat.json"), "utf8")), id: name, madeUp: true };
+    delete hs.realHistory;
+    for (const n of Object.values(hs.nodes) as Json[]) if (n.type === "decision") for (const o of n.options) delete o.real;
+    const brief = hs.sources.map((x: Json) => `- ${x.url}`).join("\n");
+    edit(hs);
+    const json = JSON.stringify(hs);
+    writeFileSync(join(dir, "hotseat.json"), json);
+    if (files.research !== false) writeFileSync(join(dir, "research.md"), brief);
+    if (files.realism !== false)
+      writeFileSync(
+        join(dir, "realism.md"),
+        `checked-sha256: ${createHash("sha256").update(json).digest("hex")}\n- [supported] Feels true\n`,
+      );
+    return checkHotSeat(dir).errors.join("\n");
+  };
+
+  it("passes with a realism note instead of a fact-check, and needs no realHistory", () => {
+    expect(fixture("ok")).toBe("");
+  });
+
+  it("asks for realism.md, not factcheck.md", () => {
+    const errors = fixture("no-note", undefined, { realism: false });
+    expect(errors).toMatch(/no realism.md yet; a made-up story needs a realism check note/);
+    expect(errors).not.toMatch(/factcheck/);
+  });
+
+  it("needs every source in research.md", () => {
+    expect(fixture("stray", (hs) => hs.sources.push({ label: "x", url: "https://example.com/not-read" }))).toMatch(
+      /source https:\/\/example.com\/not-read is not in research.md/,
+    );
+    expect(fixture("no-brief", undefined, { research: false })).toMatch(/needs research.md/);
+  });
+
+  it("may not mark an option real", () => {
+    expect(fixture("real", (hs) => (hs.nodes.d1.options[0].real = true))).toMatch(/d1: a made-up story has no real company/);
+  });
+
+  it("is the only kind that may leave out realHistory", () => {
+    const dir = join(tmp, "real-company");
+    mkdirSync(dir);
+    const hs = { ...JSON.parse(readFileSync(join(HOTSEATS_DIR, "kodak", "hotseat.json"), "utf8")), id: "real-company" };
+    delete hs.realHistory;
+    writeFileSync(join(dir, "hotseat.json"), JSON.stringify(hs));
+    expect(checkHotSeat(dir).errors.join("\n")).toMatch(/realHistory is missing/);
+  });
+
+  it("never beats history, and tells the screens it is made up", async () => {
+    const { play } = await import("@/lib/play");
+    const hs = { ...JSON.parse(readFileSync(join(HOTSEATS_DIR, "kodak", "hotseat.json"), "utf8")), madeUp: true };
+    for (const n of Object.values(hs.nodes) as Json[]) if (n.type === "decision") for (const o of n.options) delete o.real;
+    const picks: { nodeId: string; optionId: string }[] = [];
+    let v = play(hs, picks);
+    while (!v.result) {
+      const d = v.screens.at(-1)!;
+      if (d.kind !== "decision") throw new Error("expected a decision");
+      picks.push({ nodeId: d.id, optionId: d.options[0].id });
+      v = play(hs, picks);
+    }
+    expect(v.meta.madeUp).toBe(true);
+    expect(v.result.beatHistory).toBe(false);
+    expect(v.reveal?.realChoice).toBeUndefined();
+  });
+});
+
+describe("the welcome screens' trial", () => {
+  const hs = (id: string) => ({ ...JSON.parse(readFileSync(join(HOTSEATS_DIR, "kodak", "hotseat.json"), "utf8")), id });
+  const trialWith = async (ids: string[], nodeEnv: "development" | "production") =>
+    (await import("@/lib/server/content")).trial(nodeEnv, (id) => (ids.includes(id) ? hs(id) : undefined))?.id;
+
+  it("is kirana-year with the course on, once it exists", async () => {
+    expect(await trialWith(["kirana-year", "kingfisher-airlines"], "development")).toBe("kirana-year");
+  });
+
+  it("falls back to Kingfisher until kirana-year exists, and while the course is off", async () => {
+    expect(await trialWith(["kingfisher-airlines"], "development")).toBe("kingfisher-airlines");
+    expect(await trialWith(["kirana-year", "kingfisher-airlines"], "production")).toBe("kingfisher-airlines");
+  });
+});
+
 describe("factcheck.md", () => {
   const tmp = mkdtempSync(join(tmpdir(), "factcheck-"));
   afterAll(() => rmSync(tmp, { recursive: true, force: true }));

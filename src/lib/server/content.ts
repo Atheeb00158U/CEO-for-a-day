@@ -8,7 +8,7 @@ import type { Card, CourseOutline, Lesson, Module } from "../course-types";
 import type { CatalogEntry, DailyAnswer, DailyCall, DailyPool, DailyQuestion, HotSeat } from "../hotseat-types";
 import { testOutLesson } from "../lesson-play.ts";
 import type { Pick } from "../play.ts";
-import { TRIAL_ID } from "../../content/catalog";
+import { COURSE_TRIAL_ID, TRIAL_ID } from "../../content/catalog";
 
 /** Drafts are playable only in `npm run dev`. The environment is passed in so tests can check production. */
 export const canServe = (hs: { draft?: boolean }, nodeEnv = process.env.NODE_ENV) => !hs.draft || nodeEnv === "development";
@@ -49,6 +49,7 @@ const entry = (hs: HotSeat, available: boolean): CatalogEntry => ({
   emblem: hs.emblem,
   complexity: hs.complexity,
   available,
+  ...(hs.madeUp ? { madeUp: true } : {}),
 });
 
 /** Shown on the map as "coming soon" until a Hot Seat (even a draft) with the same id exists. */
@@ -108,10 +109,16 @@ export function catalog(): CatalogEntry[] {
   ];
 }
 
-/** The trial's card, when the trial can be played here (production needs it published). */
-export function trial(nodeEnv = process.env.NODE_ENV): CatalogEntry | undefined {
-  const hs = servableHotSeat(TRIAL_ID, nodeEnv);
-  return hs && entry(hs, true);
+/**
+ * The trial's card, when the trial can be played here (production needs it published). With the course on, the
+ * made-up kirana-year once it exists (after lesson 1); otherwise, and until then, TRIAL_ID as before.
+ */
+export function trial(
+  nodeEnv = process.env.NODE_ENV,
+  servable: (id: string) => HotSeat | undefined = (id) => servableHotSeat(id, nodeEnv),
+): CatalogEntry | undefined {
+  const hs = (courseOn(nodeEnv) && servable(COURSE_TRIAL_ID)) || servable(TRIAL_ID);
+  return hs ? entry(hs, true) : undefined;
 }
 
 const dailyPool = () => cached<DailyPool>("daily", readDailyPool);

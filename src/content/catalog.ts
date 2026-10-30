@@ -7,6 +7,15 @@ import type { CatalogEntry } from "@/lib/hotseat-types";
 /** The Hot Seat a new player tries on the welcome screens (its first two calls), and the first one on Home after. */
 export const TRIAL_ID = "kingfisher-airlines";
 
+/**
+ * With the course on, a new player's first Hot Seat after lesson 1 is this made-up one (its first two calls), once
+ * its hotseat.json exists. Until then the welcome screens use TRIAL_ID as before.
+ */
+export const COURSE_TRIAL_ID = "kirana-year";
+
+/** The label every made-up Hot Seat carries: on its map card, its first screen and every verdict sheet. */
+export const MADE_UP_LABEL = "Made-up story, based on many real kiranas.";
+
 /** Hot Seats that fit what the player said they want to get better at. Ids that don't exist yet are skipped. */
 const FOCUS: Record<Focus, string[]> = {
   scratch: ["amul-one-brand", "indigo-one-plane-type", "maruti-800"],
