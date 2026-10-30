@@ -7,7 +7,7 @@ Read `HOT-SEAT-DESIGN.md` first for how a Hot Seat plays.
 ## The house rules
 - **Real history is sourced.** Every fact on the real path (dates, numbers, names, events) must be backed by a source someone actually opened.
 - **Alternate history is an estimate.** Options the company didn't take are written as plausible stories, never as facts about the real company. The app badges every off-path screen "Our estimate", so the text itself never says so.
-- **No quotes from real people**, no logos, no real faces in images.
+- **No quotes from real people**, and no logos in images. Real faces are allowed in archive footage and credited film stills (Atheeb's call, 30 Oct 2026), but never put a face next to a line about a real person it isn't.
 - **Avoid** companies in active litigation, and stories that turn on a living person's private life. When unsure, flag it for Atheeb.
 - **Simple English.** Short words, short sentences. Many players have basic English.
 - Never write "case study". A story is a **Hot Seat**; a one-minute story is a **Daily Call**.
@@ -21,7 +21,7 @@ A research agent (or a person) searches the web and writes:
 - **Decision points**: the 4–6 real CEO-level calls. Each has the situation, three realistic options (including what the company did), what it did and what happened next.
 - **What really happened**: the ending.
 - **People by role.** Names are allowed here only; never quotes.
-- **Archive footage**: search movingimagearchive.com (and archive.org's Moving Image Archive) for public-domain clips first. List what you find with links, or "none found".
+- **Archive footage**: search movingimagearchive.com for public-domain clips first, then the other archives in step 5. List what you find with links, or "none found".
 - **Risks**: litigation, living people, thin sources.
 - **Open questions**: facts that couldn't be confirmed.
 
@@ -70,13 +70,20 @@ shasum -a 256 content/hotseats/<id>/hotseat.json
 
 `hotseat:check` errors on a published Hot Seat whose report is missing, stamped for another version of the file, or still has open claims. **Any edit to `hotseat.json` means checking the changes and stamping again.**
 
-### 5. Media → `content/hotseats/<id>/image_prompts.json`
-- Use the archive clips from step 1 first: download, then run `npm run media -- <id> <files…>`.
-- For every other media name in `hotseat.json`, write one prompt in `image_prompts.json` (`{ "<name>": "<prompt>" }`).
-  - **Period-correct:** the year, the place and the technology of the time. For example, no flat screens before about 2000, and Indian settings where the story is Indian.
-  - **No people's faces, no logos, no readable brand names.**
-- Images are generated on Atheeb's Mac, then added with `npm run media`.
-- Media names must be unique across all Hot Seats.
+### 5. Media → `content/hotseats/<id>/media.md`
+Find every image and clip in these four archives. Don't AI-generate images any more (Atheeb's call, 30 Oct 2026).
+
+| Archive | What it has | How we may use it |
+|---|---|---|
+| Moving Image Archive (movingimagearchive.com) | Public-domain film and video, 1900s–2000s | The main source. Free to publish. |
+| FILMGRAB (film-grab.com) | Film stills by film, director and cinematographer | Only when a line refers to a specific film. Copyrighted: a small, credited insert, flagged to Atheeb. |
+| Frame Set (frameset.app) | Stills from films, ads and music videos | Reference only (a shot idea, lighting, colour), unless the image is licensed. |
+| Fashion Gone Rogue (fashiongonerogue.com) | Fashion editorials, magazine covers, celebrity shoots | Fashion, lifestyle and celebrity moments. Reference only, unless it's a credited insert. |
+
+- In `media.md`, list each media name from `hotseat.json` with its source page link, the archive, and whether it's public domain or a credited insert. Write "not found" when nothing fits, and flag it to Atheeb.
+- **Period-correct:** the year, the place and the technology of the time, and Indian settings where the story is Indian.
+- **No logos or readable brand names** (crop them out). Every credited insert is flagged to Atheeb before publishing.
+- Download, then add with `npm run media -- <id> <files…>`. Media names must be unique across all Hot Seats.
 
 ### 6. Review and publish
 Atheeb reviews the story in `/admin/<id>` and plays it in `npm run dev`. Then:

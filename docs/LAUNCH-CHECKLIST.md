@@ -9,7 +9,8 @@ A Hot Seat takes 5–8 minutes. That's too long to protect a daily streak. Add a
 - **Volume:** about 20 Hot Seats at launch, then 1–2 a week. Write Indian cases early (for example Maggi 2015, Jio, Nokia in India, Kingfisher, Paytm). That audience wants stories it recognises.
 - **Fact-checking and legal review for every Hot Seat.** Real companies and living people are involved. Avoid companies in active litigation, never put invented words in real people's mouths, and use no logos.
 - **Authoring tool:** a simple editor that writes the Hot Seat JSON, runs the validator, and shows the tree map. Writers shouldn't edit TypeScript.
-- **Images:** a fixed art style, generated per Hot Seat with Z-Image Turbo, with a reviewer catching anachronisms (the first batch already had two).
+- **Images:** from the four archives in `AUTHORING.md` step 5, with a reviewer catching anachronisms. The AI images already in the app stay until replaced.
+- **Copyright check before charging money:** film stills (FILMGRAB) and fashion shoots used as credited inserts are still someone else's copyright. Credit alone doesn't make them safe in a paid app; get a lawyer's view or a licence, or swap them for public-domain footage.
 
 ## 3. Accounts and backend
 - ~~Phone-number OTP sign-in~~ Google sign-in, with guest play first (done 2026-10-30). Phone OTP can come later; it needs an SMS provider and DLT registration.

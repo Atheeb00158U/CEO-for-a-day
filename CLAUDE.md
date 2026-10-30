@@ -13,7 +13,7 @@ UI components: use shadcn/ui, restyled to this look. Add gluestack-ui only if we
 - **Trees are fully pre-mapped.** There are no live LLM calls during play. Personalised takeaways are assembled from authored lines; richer per-path debriefs can be pre-generated at build time.
 - **Choice feedback:** every choice shows what happened (as story), why it was good or bad, and, for ok/bad choices, what would have worked. Alternate-history outcomes are labelled as estimates.
 - **Board trust (3 hearts):** losing them all before the last decision ends the run (the "fired" ending). Players can fix mistakes until it's too late.
-- **Media sources:** archive footage from movingimagearchive.com (public domain). Other images are generated with Z-Image Turbo via mflux on the owner's Mac (`~/Documents/case-game/get_assets.sh`). Narration uses OmniVoice (the engine in Atheeb's VoiceStudio app): the narrator is Atheeb's cloned voice and the advisor a designed voice (female, middle-aged, Indian accent), both cloned from `scripts/voices/`.
+- **Media sources:** no more AI-generated images. Find every image in four archives: movingimagearchive.com (public domain, the main source), film-grab.com (copyrighted film stills: small credited inserts only, flagged to Atheeb), frameset.app (reference only unless licensed) and fashiongonerogue.com (reference only unless a credited insert). Rules and the per-Hot Seat `media.md` are in `docs/AUTHORING.md` step 5. Images already in the app were made with Z-Image Turbo and stay until replaced. Narration uses OmniVoice (the engine in Atheeb's VoiceStudio app): the narrator is Atheeb's cloned voice and the advisor a designed voice (female, middle-aged, Indian accent), both cloned from `scripts/voices/`.
 - **Pricing plan (not built):** ₹599/week, ₹1,499/month, or ₹999/month billed yearly.
 
 ## Routes
@@ -30,7 +30,7 @@ UI components: use shadcn/ui, restyled to this look. Add gluestack-ui only if we
 - `python scripts/make-sfx.py`: rebuild the sound effects in `public/sfx/` (needs earshot + ffmpeg; sources, licences and mix levels in `docs/SOUNDS.md`)
 
 ## Writing stories
-Follow `docs/AUTHORING.md` for every Hot Seat and Daily Call: research brief → draft → check → fresh-context fact-check (stamped `factcheck.md`) → image prompts → Atheeb's review. A published story needs a `factcheck.md` stamped for its exact file, with no open claims. Missing narration is only a warning (the app falls back to the browser's voice).
+Follow `docs/AUTHORING.md` for every Hot Seat and Daily Call: research brief → draft → check → fresh-context fact-check (stamped `factcheck.md`) → media from the archives (`media.md`) → Atheeb's review. A published story needs a `factcheck.md` stamped for its exact file, with no open claims. Missing narration is only a warning (the app falls back to the browser's voice).
 
 ## Daily Call
 - One decision, about a minute, shown above the Hot Seat on Home. Content is `content/daily/daily.json`; its order is the schedule (day N after `startDay` plays call N). Only append.
