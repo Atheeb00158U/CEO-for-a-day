@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
-import type { DailyCall, Grade, TraitKey } from "./hotseat-types";
+import type { DailyCall, DailyOption, Grade, TraitKey } from "./hotseat-types";
 import { setSfxOn } from "./sfx";
 import {
   applyDaily,
@@ -44,7 +44,7 @@ interface Ctx {
   spendHindsight: () => boolean;
   claimQuest: (id: string) => void;
   /** Lock in today's Daily Call. Does nothing if today's call was already played. */
-  playDaily: (call: DailyCall, optionId: string) => void;
+  playDaily: (call: Pick<DailyCall, "id" | "company" | "title">, option: DailyOption) => void;
   setSetting: <K extends keyof GameState["settings"]>(k: K, v: GameState["settings"][K]) => void;
   setName: (n: string) => void;
   setOnboarding: (o: Partial<Onboarding>) => void;
@@ -172,7 +172,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
       activateBooster,
       spendHindsight,
       claimQuest,
-      playDaily: (call, optionId) => setS((x) => applyDaily(x, call, optionId)),
+      playDaily: (call, option) => setS((x) => applyDaily(x, call, option)),
       setSetting: (k, v) => setS((x) => ({ ...x, settings: { ...x.settings, [k]: v } })),
       setName: (n) => setS((x) => ({ ...x, name: n.slice(0, 20) || "You" })),
       setOnboarding: (o) => setS((x) => ({ ...x, onboarding: { ...x.onboarding, ...o } })),

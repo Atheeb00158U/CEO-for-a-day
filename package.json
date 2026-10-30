@@ -19,7 +19,8 @@
     "hotseat:tree": "node scripts/hotseat.mjs tree",
     "media": "node scripts/media.mjs",
     "narrate": "npm run -s voices && \"${VOICESTUDIO_PYTHON:-$HOME/Library/Application Support/VoiceStudio/runtime/project/.venv/bin/python}\" scripts/narrate.py voice-lines.json public/audio",
-    "debriefs": "node scripts/debriefs.mjs"
+    "debriefs": "node scripts/debriefs.mjs",
+    "check-bundle": "node scripts/check-bundle.mjs"
   },
   "dependencies": {
     "class-variance-authority": "0.7.1",

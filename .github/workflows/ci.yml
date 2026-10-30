@@ -20,3 +20,5 @@ jobs:
       # Runs through Node against src/lib/*.ts directly, so it also checks TypeScript stripping still works.
       - run: npm run hotseat:check
       - run: npm run build
+      # No answer may reach the browser: the phone gets each verdict from /api/play only after a pick.
+      - run: node scripts/check-bundle.mjs

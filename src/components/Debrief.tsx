@@ -1,15 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { buildDebrief, reviewedDebrief, type Debriefs, type RunState } from "@/lib/engine";
-import type { EndingNode, HotSeat } from "@/lib/hotseat-types";
+import type { PlayResponse } from "@/lib/content-client";
+import type { Result } from "@/lib/play";
 import { BADGES, ECONOMY, useGame, type RunRecord } from "@/lib/store";
 import { playSfx } from "@/lib/sfx";
 import { stopVoice } from "@/lib/voice";
 import { Card, Icon } from "./ui";
-
-// Loaded only when a debrief opens, as its own chunk.
-const DEBRIEFS = import.meta.glob<Debriefs>("/content/hotseats/*/debriefs.json", { import: "default" });
 
 const GRADE = {
   great: { c: "var(--color-green)", t: "Great" },
@@ -18,18 +15,19 @@ const GRADE = {
 } as const;
 
 export function Debrief({
-  hs,
-  run,
-  ending,
+  view,
+  result,
+  endingTitle,
   record,
   badgesBefore,
   onExit,
   onNotes,
   onReplay,
 }: {
-  hs: HotSeat;
-  run: RunState;
-  ending: EndingNode;
+  /** The server's last step: the trust left, what really happened and any pre-written debrief. */
+  view: PlayResponse;
+  result: Result;
+  endingTitle: string;
   record: RunRecord;
   /** Badges the player had when this run started; only newer ones are shown. */
   badgesBefore: string[];
@@ -38,13 +36,8 @@ export function Debrief({
   onReplay: () => void;
 }) {
   const { s } = useGame();
-  const d = buildDebrief(hs, run);
-  const [written, setWritten] = useState<string>();
-  useEffect(() => {
-    DEBRIEFS[`/content/hotseats/${hs.id}/debriefs.json`]?.()
-      .then((all) => setWritten(reviewedDebrief(all, run.picks)))
-      .catch(() => {}); // offline or missing: the assembled takeaways below still show
-  }, [hs.id, run.picks]);
+  const { meta, written } = view;
+  const d = result;
   const [shown, setShown] = useState(0);
   const boosted = record.xp > ECONOMY.completionXp + record.score;
   const ring = 2 * Math.PI * 52;
@@ -65,8 +58,8 @@ export function Debrief({
       style={{ paddingTop: "max(20px, env(safe-area-inset-top))" }}
     >
       <div className="flex flex-col items-center text-center">
-        <p className="text-[13px] font-black uppercase tracking-[.14em] text-brand">Hot Seat complete · {hs.company}</p>
-        <h1 className="mt-1 text-[30px] font-black leading-tight">{ending.title}</h1>
+        <p className="text-[13px] font-black uppercase tracking-[.14em] text-brand">Hot Seat complete · {meta.company}</p>
+        <h1 className="mt-1 text-[30px] font-black leading-tight">{endingTitle}</h1>
         <div className="relative mt-4 size-[140px]">
           <svg viewBox="0 0 120 120" className="size-full -rotate-90" aria-hidden="true">
             <circle cx="60" cy="60" r="52" fill="none" stroke="var(--color-surface-2)" strokeWidth="12" />
@@ -102,7 +95,7 @@ export function Debrief({
         <Stat icon={<Icon.coin className="size-6" />} value={`+${ECONOMY.completionCoins}`} label="Coins" color="var(--color-gold)" />
         <Stat
           icon={<Icon.heart className="size-6" />}
-          value={`${run.trust}/${hs.startTrust}`}
+          value={`${view.trust}/${meta.startTrust}`}
           label="Board trust"
           color="var(--color-red)"
         />
@@ -118,7 +111,7 @@ export function Debrief({
                 <p className="text-[15px] font-extrabold leading-snug">{l.choice}</p>
                 <p className="mt-1 flex flex-wrap gap-1.5 text-[11px] font-black uppercase tracking-wider">
                   <span style={{ color: GRADE[l.grade].c }}>{GRADE[l.grade].t}</span>
-                  {l.real && <span className="text-muted">· What {hs.company} did</span>}
+                  {l.real && <span className="text-muted">· What {meta.company} did</span>}
                 </p>
               </div>
             </li>
@@ -146,11 +139,11 @@ export function Debrief({
 
       <Card>
         <h2 className="text-[19px] font-black">What really happened</h2>
-        <p className="mt-2 text-[15px] font-bold leading-snug text-muted">{hs.realHistory}</p>
+        <p className="mt-2 text-[15px] font-bold leading-snug text-muted">{meta.realHistory}</p>
         <details className="mt-3 text-[13px] font-bold text-muted">
           <summary className="cursor-pointer font-black text-brand">Sources</summary>
           <ul className="mt-2 flex flex-col gap-1.5">
-            {hs.sources.map((x) => (
+            {meta.sources.map((x) => (
               <li key={x.url}>
                 <a className="underline" href={x.url} target="_blank" rel="noopener noreferrer">
                   {x.label}
@@ -158,7 +151,7 @@ export function Debrief({
               </li>
             ))}
           </ul>
-          <p className="mt-2">{hs.credits}</p>
+          <p className="mt-2">{meta.credits}</p>
         </details>
       </Card>
 

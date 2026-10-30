@@ -1,4 +1,4 @@
-// Reads Hot Seat folders from disk, for Node scripts and the hotseat CLI (the app uses import.meta.glob in catalog.ts).
+// Reads Hot Seat folders from disk, for the server (src/lib/server/content.ts), Node scripts and the hotseat CLI.
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import type { DailyPool, HotSeat } from "./hotseat-types";

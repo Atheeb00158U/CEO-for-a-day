@@ -1,13 +1,19 @@
 "use client";
 
-import lines from "../../voice-lines.json";
-
 /**
  * Narration. Pre-generated audio (public/audio/<id>.mp3) is used when it exists;
  * otherwise the browser's built-in speech voice reads the line, so nothing is ever silent.
+ * The id is worked out here, the same way src/lib/voice-lines.ts does: sha1(voice + "|" + text), first 12 hex
+ * characters. No list of lines ships to the phone, because that list would hold every answer.
  */
-const byText = new Map<string, string>();
-for (const l of lines as { id: string; voice: string; text: string }[]) byText.set(l.voice + "|" + l.text, l.id);
+export async function lineId(voice: string, text: string): Promise<string | undefined> {
+  if (typeof crypto === "undefined" || !crypto.subtle) return undefined; // not https: use the browser voice
+  const hash = await crypto.subtle.digest("SHA-1", new TextEncoder().encode(voice + "|" + text));
+  return [...new Uint8Array(hash)]
+    .map((b) => b.toString(16).padStart(2, "0"))
+    .join("")
+    .slice(0, 12);
+}
 
 import { ADVISOR, NARRATOR } from "./engine";
 import { sfxQuietIn } from "./sfx";
@@ -69,13 +75,21 @@ function start(text: string, voice: string, progress?: (p: number) => void, onEn
     return;
   }
   onProgress = progress ?? null;
-  const id = byText.get(voice + "|" + text);
   const g = gen;
-  const done = () => {
-    if (g !== gen) return;
-    onProgress?.(1);
-    onEnd?.();
-  };
+  lineId(voice, text).then(
+    (id) => g === gen && play(id, text, voice, done(g, onEnd)),
+    () => g === gen && speakBrowser(text, voice, done(g, onEnd)),
+  );
+}
+
+const done = (g: number, onEnd?: () => void) => () => {
+  if (g !== gen) return;
+  onProgress?.(1);
+  onEnd?.();
+};
+
+function play(id: string | undefined, text: string, voice: string, done: () => void) {
+  const g = gen;
   const fallback = () => g === gen && speakBrowser(text, voice, done);
   if (!id) return fallback();
   audio = audio ?? new Audio();

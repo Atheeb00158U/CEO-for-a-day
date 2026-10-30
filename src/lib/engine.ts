@@ -170,13 +170,13 @@ export function buildDebrief(hs: HotSeat, s: RunState) {
 }
 
 /** Key for a path's pre-written debrief in debriefs.json, e.g. "d1:shelve>d2:study". */
-export const debriefKey = (picks: Choice[]) => picks.map((p) => `${p.nodeId}:${p.optionId}`).join(">");
+export const debriefKey = (picks: Pick<Choice, "nodeId" | "optionId">[]) => picks.map((p) => `${p.nodeId}:${p.optionId}`).join(">");
 
 /** content/hotseats/<id>/debriefs.json: drafts from `npm run debriefs`, shown only once a person sets reviewed to true. */
 export type Debriefs = Record<string, { text: string; reviewed: boolean }>;
 
 /** The reviewed debrief for this path, or undefined (then the app shows the assembled one). */
-export function reviewedDebrief(debriefs: Debriefs | undefined, picks: Choice[]): string | undefined {
+export function reviewedDebrief(debriefs: Debriefs | undefined, picks: Pick<Choice, "nodeId" | "optionId">[]): string | undefined {
   const entry = debriefs?.[debriefKey(picks)];
   return entry?.reviewed ? entry.text : undefined;
 }

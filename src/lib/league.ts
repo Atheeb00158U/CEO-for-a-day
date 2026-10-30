@@ -72,7 +72,7 @@ export function leagueRows(opts: {
 }): LeagueRow[] {
   const r = rng(opts.seed + opts.weekId + opts.tier);
   const now = opts.now ?? new Date();
-  const weekStart = new Date(opts.weekId + "T00:00:00");
+  const weekStart = new Date(opts.weekId + "T00:00:00+05:30"); // weeks start at midnight IST
   const progress = Math.min(1, Math.max(0.05, (now.getTime() - weekStart.getTime()) / (7 * 864e5)));
   const pool = [...NAMES].sort(() => r() - 0.5);
   const scale = 1 + opts.tier * 0.6;
@@ -85,6 +85,6 @@ export function leagueRows(opts: {
 }
 
 export function daysLeft(weekId: string) {
-  const end = new Date(weekId + "T00:00:00").getTime() + 7 * 864e5;
+  const end = new Date(weekId + "T00:00:00+05:30").getTime() + 7 * 864e5;
   return Math.max(0, Math.ceil((end - Date.now()) / 864e5));
 }

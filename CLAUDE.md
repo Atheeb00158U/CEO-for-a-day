@@ -34,11 +34,13 @@ Follow `docs/AUTHORING.md` for every Hot Seat and Daily Call: research brief →
 
 ## Daily Call
 - One decision, about a minute, shown above the Hot Seat on Home. Content is `content/daily/daily.json`; its order is the schedule (day N after `startDay` plays call N). Only append.
-- It uses the same local date as the streak. The answer is saved at "Lock it in" (`applyDaily`): one play a day, no Hindsight, 15/10/5 XP.
+- It uses the India date (IST), like the streak, quests and league weeks (`today()` in `game-state.ts`). The answer is saved at "Lock it in" (`applyDaily`): one play a day, no Hindsight, 15/10/5 XP.
 
 ## Hot Seat content
 - Each Hot Seat is `content/hotseats/<id>/hotseat.json` (+ `media/`), checked by the Zod schema in `src/lib/hotseat-schema.ts`, which must match `hotseat-types.ts` exactly (a type check fails the build otherwise).
-- `draft: true` shows a Hot Seat as "Coming soon" on the map (dev and production alike; `/admin` still shows it in full) and turns missing media and audio into warnings. Its JSON is still bundled (every Hot Seat is, through `import.meta.glob`), so don't commit anything secret in a draft; the Phase 5 switch to lazy loading can drop drafts from the bundle.
+- `draft: true` shows a Hot Seat as "Coming soon" on the map (dev and production alike; `/admin` still shows it in full) and turns missing media and audio into warnings. Outside `npm run dev` the server won't play a draft.
+- **No answers on the phone.** Hot Seat and Daily Call JSON is read only on the server (`src/lib/server/content.ts`). The phone sends its picks to `/api/play`, which replays them (`src/lib/play.ts`) and returns the next screens plus the verdict on the last pick. `/api/daily` and `/api/daily/lock` do the same for the Daily Call. Never import `server/content.ts` or `content-files.ts` from client code; `npm run check-bundle` (in CI, after the build) fails if any option's `why` or `takeaway` text reaches the browser. Narration ids are worked out on the phone (`lineId` in `voice.ts`), so `voice-lines.json` is never bundled.
+- Railway runs plain `next start` (not `output: "standalone"`), so `content/` is on disk at runtime.
 - Media names must be unique across Hot Seats (they share `public/media/`).
 - Files that Node runs directly (`engine.ts`, `hotseat-schema.ts`, `hotseat-check.ts`, `voice-lines.ts`, `content-files.ts`) use `import type` for types and relative `.ts` imports, no `@/` paths.
 
@@ -49,7 +51,7 @@ Follow `docs/AUTHORING.md` for every Hot Seat and Daily Call: research brief →
 Follow `docs/BUILD-PLAN.md` phase by phase and tick items off as you finish them. `HANDOFF.md` has the kickoff instructions.
 
 ## Welcome screens
-- A new player (no `onboarding.done` in the save) sees `Onboarding`: three questions, then the first two calls of `TRIAL` (`catalog.ts`). In production the trial needs the Hot Seat published; `npm run dev` also allows its draft. Anyone who skips or has played before goes straight to Home.
+- A new player (no `onboarding.done` in the save) sees `Onboarding`: three questions, then the first two calls of the trial (`TRIAL_ID` in `catalog.ts`). In production the trial needs the Hot Seat published; `npm run dev` also allows its draft. Anyone who skips or has played before goes straight to Home.
 
 ## Installable app
 - The game is **online only** (Atheeb's call): no offline caching. A "No internet" screen covers the game while the connection is down. `public/sw.js` only removes the offline worker an early version installed; don't register a worker again without asking.

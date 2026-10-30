@@ -1,4 +1,4 @@
-import type { DailyCall, Grade, TraitKey } from "./hotseat-types";
+import type { DailyCall, DailyOption, Grade, TraitKey } from "./hotseat-types";
 import { DEMOTE, leagueRows, PROMOTE } from "./league.ts";
 
 /* ------------------------------------------------------------------ */
@@ -87,14 +87,20 @@ export interface DailyNote {
   better?: string;
 }
 
-export const today = (d = new Date()) =>
-  `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+// One clock for everyone: the date in India. Streaks, quests, the Daily Call and league weeks all turn over at
+// midnight IST, on the phone and on the server alike, wherever the player is.
+const IST_DATE = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Kolkata", year: "numeric", month: "2-digit", day: "2-digit" });
+/** "YYYY-MM-DD" in India. */
+export const today = (d = new Date()) => IST_DATE.format(d);
+/** The Monday (IST) that starts this league week, as "YYYY-MM-DD". */
 export const weekId = (d = new Date()) => {
-  const t = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+  const t = new Date(today(d) + "T00:00:00Z");
   const day = (t.getUTCDay() + 6) % 7; // Monday = 0
   t.setUTCDate(t.getUTCDate() - day);
   return t.toISOString().slice(0, 10);
 };
+/** The moment an IST date starts. */
+export const istMidnight = (day: string) => new Date(day + "T00:00:00+05:30");
 export const dayDiff = (a: string, b: string) => Math.round((new Date(b).getTime() - new Date(a).getTime()) / 864e5);
 
 export function fresh(): GameState {
@@ -176,11 +182,14 @@ export const dailyXp = (grade: Grade, boosted: boolean) => ECONOMY.dailyXp[grade
  * Lock in today's Daily Call: one play per day. Counts as a decision for the streak and quests, pays dailyXp,
  * and saves the takeaway. A second play the same day returns the state unchanged.
  */
-export function applyDaily(s: GameState, call: DailyCall, optionId: string, now = new Date()): GameState {
+export function applyDaily(
+  s: GameState,
+  call: Pick<DailyCall, "id" | "company" | "title">,
+  option: DailyOption,
+  now = new Date(),
+): GameState {
   const day = today(now);
   if (s.daily?.day === day) return s;
-  const option = call.options.find((o) => o.id === optionId);
-  if (!option) return s;
   const xp = dailyXp(option.grade, s.boosterUntil > now.getTime());
   const x = touchStreak(rollover(s, now), now);
   const note: DailyNote = {
@@ -203,7 +212,7 @@ export function applyDaily(s: GameState, call: DailyCall, optionId: string, now 
       great: x.quests.great + (option.grade === "great" ? 1 : 0),
       xp: x.quests.xp + xp,
     },
-    daily: { day, id: call.id, optionId, grade: option.grade, xp },
+    daily: { day, id: call.id, optionId: option.id, grade: option.grade, xp },
     dailyLog: [note, ...x.dailyLog].slice(0, 60),
   };
 }

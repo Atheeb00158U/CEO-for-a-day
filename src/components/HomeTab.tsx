@@ -1,18 +1,30 @@
 "use client";
 
 import { useMemo } from "react";
-import { CATALOG, HOT_SEATS, homeOrder, todaysCall } from "@/content/catalog";
-import { callsPerRun } from "@/lib/engine";
+import { homeOrder } from "@/content/catalog";
+import { useContent } from "@/lib/content-client";
+import type { DailyQuestion } from "@/lib/hotseat-types";
 import { questsFor, today, useGame } from "@/lib/store";
 import { Bar, Card, Icon, MediaView } from "./ui";
 
-export function HomeTab({ onPlay, onDaily, onShop }: { onPlay: (id: string) => void; onDaily: () => void; onShop: () => void }) {
+export function HomeTab({
+  daily: call,
+  onPlay,
+  onDaily,
+  onShop,
+}: {
+  /** Today's Daily Call, once loaded. */
+  daily?: DailyQuestion | null;
+  onPlay: (id: string) => void;
+  onDaily: () => void;
+  onShop: () => void;
+}) {
   const { s, boosterActive, activateBooster } = useGame();
-  const order = useMemo(() => homeOrder(CATALOG, s.seed, s.onboarding.focus), [s.seed, s.onboarding.focus]);
+  const { catalog } = useContent();
+  const order = useMemo(() => homeOrder(catalog, s.seed, s.onboarding.focus), [catalog, s.seed, s.onboarding.focus]);
   const current = order.find((c) => c.available && s.best[c.id] === undefined) ?? order.find((c) => c.available)!;
-  const hs = HOT_SEATS[current.id];
+  const hs = current;
   const playedToday = s.lastActiveDay === today();
-  const call = todaysCall(today());
   const dailyDone = call && s.daily?.day === today() && s.daily.id === call.id ? s.daily : null;
   const best = s.best[current.id];
 
@@ -52,7 +64,7 @@ export function HomeTab({ onPlay, onDaily, onShop }: { onPlay: (id: string) => v
 
       {/* Current Hot Seat */}
       <section className="-mx-4">
-        <MediaView media={hs.cover} wavy className="aspect-[16/9] w-full" />
+        {hs.cover && <MediaView media={hs.cover} wavy className="aspect-[16/9] w-full" />}
         <div className="px-4 pt-4 text-center">
           <p className="text-[13px] font-black uppercase tracking-[.14em] text-brand">
             Hot Seat · {hs.company} · {hs.years}
@@ -60,7 +72,7 @@ export function HomeTab({ onPlay, onDaily, onShop }: { onPlay: (id: string) => v
           <h2 className="mt-1 text-[28px] font-black leading-tight text-balance">{hs.title}</h2>
           <p className="mt-1 text-[16px] font-bold text-muted">{hs.hook}</p>
           <p className="mt-2 text-[14px] font-bold text-muted">
-            {callsPerRun(hs)} big calls · {hs.minutes} min · {best !== undefined ? `Your best: ${best}` : "Narrated"}
+            {hs.calls} big calls · {hs.minutes} min · {best !== undefined ? `Your best: ${best}` : "Narrated"}
           </p>
           <div className="mx-auto mt-4 max-w-[360px]">
             <button type="button" className="btn3d green" onClick={() => onPlay(hs.id)}>

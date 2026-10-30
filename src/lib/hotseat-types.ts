@@ -128,10 +128,27 @@ export interface CatalogEntry {
   company: string;
   title: string;
   hook: string;
+  /** Set for Hot Seats that exist (not for "coming soon" placeholders). */
+  years?: string;
+  minutes?: number;
+  calls?: number;
   cover?: Media;
   emblem?: Media;
   complexity: 1 | 2 | 3 | 4 | 5;
   available: boolean;
+}
+
+/** A Daily Call as the phone sees it before locking in: no grades or outcomes. */
+export type DailyQuestion = Pick<DailyCall, "id" | "company" | "year" | "title" | "media" | "setup" | "question" | "advisor"> & {
+  options: { id: string; label: string }[];
+};
+
+/** What locking in a Daily Call reveals. */
+export interface DailyAnswer {
+  option: DailyOption;
+  realChoice?: { company: string; label: string };
+  realHistory: string;
+  sources: { label: string; url: string }[];
 }
 
 /** One option in a Daily Call: like a Hot Seat option, without meters, routing or media. */

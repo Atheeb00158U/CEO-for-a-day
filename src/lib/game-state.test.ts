@@ -94,9 +94,10 @@ describe("applyDaily", () => {
     realHistory: "They matched the price.",
     sources: [{ label: "S", url: "https://example.com" }],
   };
+  const opt = (id: string) => call.options.find((o) => o.id === id)!;
 
   it("pays XP, counts the decision, extends the streak and saves the takeaway", () => {
-    const s = applyDaily(base({ streak: 2, lastActiveDay: "2026-10-26" }), call, "b", now);
+    const s = applyDaily(base({ streak: 2, lastActiveDay: "2026-10-26" }), call, opt("b"), now);
     expect(s.daily).toEqual({ day: "2026-10-27", id: "acme-2001", optionId: "b", grade: "great", xp: 15 });
     expect(s.streak).toBe(3);
     expect(s.quests).toMatchObject({ decisions: 1, great: 1, xp: 15 });
@@ -105,16 +106,16 @@ describe("applyDaily", () => {
   });
 
   it("only counts once a day, so a replay pays nothing and can't change the answer", () => {
-    const once = applyDaily(base({}), call, "a", now);
-    expect(applyDaily(once, call, "b", now)).toBe(once);
+    const once = applyDaily(base({}), call, opt("a"), now);
+    expect(applyDaily(once, call, opt("b"), now)).toBe(once);
     expect(once.daily?.grade).toBe("bad");
   });
 
   it("doubles XP while a booster runs, and opens again the next day", () => {
-    const boosted = applyDaily(base({ boosterUntil: now.getTime() + 60_000 }), call, "c", now);
+    const boosted = applyDaily(base({ boosterUntil: now.getTime() + 60_000 }), call, opt("c"), now);
     expect(boosted.daily?.xp).toBe(20);
     const tomorrow = new Date(2026, 9, 28, 9);
-    expect(applyDaily(boosted, call, "b", tomorrow).daily?.day).toBe("2026-10-28");
+    expect(applyDaily(boosted, call, opt("b"), tomorrow).daily?.day).toBe("2026-10-28");
   });
 });
 

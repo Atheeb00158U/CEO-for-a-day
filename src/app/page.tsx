@@ -1,7 +1,7 @@
 // The public website. A server component: only the card fields below reach the browser, never the Hot Seat answers.
 import type { Metadata } from "next";
 import Link from "next/link";
-import { CATALOG } from "@/content/catalog";
+import { catalog } from "@/lib/server/content";
 import { Icon } from "@/components/icons";
 import { Logo } from "@/components/Logo";
 import { LegacyHashRedirect } from "@/components/LegacyHashRedirect";
@@ -36,7 +36,7 @@ function PlayButton({ children = "Play free", className = "" }: { children?: Rea
 }
 
 export default function Home() {
-  const cards = CATALOG.map(({ id, company, title, hook, cover, available }) => ({ id, company, title, hook, cover, available }));
+  const cards = catalog().map(({ id, company, title, hook, cover, available }) => ({ id, company, title, hook, cover, available }));
   const featured = cards.find((c) => c.available && c.cover);
 
   return (

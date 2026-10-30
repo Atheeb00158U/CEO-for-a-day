@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { TRIAL } from "@/content/catalog";
-import { callsPerRun, traitTotals, type RunState } from "@/lib/engine";
+import { useContent } from "@/lib/content-client";
 import type { Doing, Focus, Onboarding as Answers } from "@/lib/game-state";
-import type { HotSeat } from "@/lib/hotseat-types";
+import type { CatalogEntry } from "@/lib/hotseat-types";
+import type { PlayView } from "@/lib/play";
 import { install, installWay, onInstallChange, type InstallWay } from "@/lib/pwa";
 import { playSfx } from "@/lib/sfx";
 import { useGame } from "@/lib/store";
@@ -53,6 +53,7 @@ type Step = "hook" | "doing" | "focus" | "minutes" | "trial" | "play";
  */
 export function Onboarding({ onDone }: { onDone: () => void }) {
   const { s, setOnboarding } = useGame();
+  const { trial } = useContent();
   const [step, setStep] = useState<Step>("hook");
   const finish = () => {
     setOnboarding({ done: true });
@@ -64,18 +65,17 @@ export function Onboarding({ onDone }: { onDone: () => void }) {
     setStep(next);
   };
 
-  if (step === "play" && TRIAL)
+  if (step === "play" && trial)
     return (
       <Player
-        hotSeatId={TRIAL.id}
+        hotSeatId={trial.id}
         onExit={finish}
         onNotes={finish}
         checkpoint={{
           after: TRIAL_CALLS,
-          render: (run, hs, onContinue) => (
+          render: (view, onContinue) => (
             <StyleCard
-              run={run}
-              hs={hs}
+              view={view}
               doing={s.onboarding.doing}
               // Not marked done yet: that would close these screens and the run with them. Leaving the run does it.
               onContinue={onContinue}
@@ -125,14 +125,14 @@ export function Onboarding({ onDone }: { onDone: () => void }) {
           hint="This sets your daily goal. You can play more."
           items={MINUTES}
           onPick={(id) => {
-            if (TRIAL) return answer({ minutes: id }, "trial");
+            if (trial) return answer({ minutes: id }, "trial");
             setOnboarding({ minutes: id });
             finish();
           }}
         />
       )}
 
-      {step === "trial" && TRIAL && <TrialIntro hs={TRIAL} onStart={() => setStep("play")} />}
+      {step === "trial" && trial && <TrialIntro hs={trial} onStart={() => setStep("play")} />}
     </div>
   );
 }
@@ -164,11 +164,11 @@ function Choices<T extends string | number>({
   );
 }
 
-function TrialIntro({ hs, onStart }: { hs: HotSeat; onStart: () => void }) {
+function TrialIntro({ hs, onStart }: { hs: CatalogEntry; onStart: () => void }) {
   return (
     <div className="flex flex-1 flex-col gap-4 pt-4">
       <p className="text-[13px] font-black tracking-[.14em] text-brand uppercase">Your first Hot Seat</p>
-      <MediaView media={hs.cover} className="aspect-[16/9] w-full" />
+      {hs.cover && <MediaView media={hs.cover} className="aspect-[16/9] w-full" />}
       <p className="text-[13px] font-black tracking-[.14em] text-muted uppercase">
         {hs.company} · {hs.years}
       </p>
@@ -185,19 +185,7 @@ function TrialIntro({ hs, onStart }: { hs: HotSeat; onStart: () => void }) {
 }
 
 /** The player's style from the trial calls they just made. Built from their picks, nothing else. */
-function StyleCard({
-  run,
-  hs,
-  doing,
-  onContinue,
-  onHome,
-}: {
-  run: RunState;
-  hs: HotSeat;
-  doing?: Doing;
-  onContinue: () => void;
-  onHome: () => void;
-}) {
+function StyleCard({ view, doing, onContinue, onHome }: { view: PlayView; doing?: Doing; onContinue: () => void; onHome: () => void }) {
   const [way, setWay] = useState<InstallWay>(null);
   useEffect(() => {
     const update = () => setWay(installWay());
@@ -206,25 +194,26 @@ function StyleCard({
   }, []);
   useEffect(() => playSfx("legend"), []);
 
-  const matched = run.picks.filter((p) => p.real).length;
-  const great = run.picks.filter((p) => p.grade === "great").length;
-  const t = traitTotals(hs, run);
+  const { picks, meta } = view;
+  const matched = picks.filter((p) => p.real).length;
+  const great = picks.filter((p) => p.grade === "great").length;
+  const t = view.traits;
   const lines = [
     t.risk > 0 ? "You take big bets." : t.risk < 0 ? "You play it safe." : null,
     t.horizon > 0 ? "You think about the long run." : t.horizon < 0 ? "You go for money now." : null,
     t.disrupt > 0 ? "You're happy to change what works." : t.disrupt < 0 ? "You protect what already works." : null,
   ].filter(Boolean);
-  const left = callsPerRun(hs) - run.picks.length;
+  const left = meta.calls - picks.length;
 
   return (
     <div className="mx-auto flex min-h-dvh max-w-[480px] flex-col gap-4 px-4 pt-8 pb-6">
       <p className="text-[13px] font-black tracking-[.14em] text-brand uppercase">Your CEO style so far</p>
       <h1 className="-mt-2 text-[28px] leading-tight font-black">
-        {great === run.picks.length ? "Sharp start" : great ? "Good instincts, one slip" : "Bold, but costly"}
+        {great === picks.length ? "Sharp start" : great ? "Good instincts, one slip" : "Bold, but costly"}
       </h1>
       <Card className="flex flex-col gap-2">
         <p className="text-[17px] font-extrabold">
-          You picked what {hs.company} really did in {matched} of {run.picks.length} calls.
+          You picked what {meta.company} really did in {matched} of {picks.length} calls.
         </p>
         {lines.map((l) => (
           <p key={l} className="text-[17px] font-bold">

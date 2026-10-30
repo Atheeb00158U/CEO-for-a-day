@@ -127,7 +127,8 @@ describe("factcheck.md", () => {
 
 describe("Home order", () => {
   it("puts the trial first, then the player's focus, and keeps every entry", async () => {
-    const { CATALOG, homeOrder } = await import("./catalog");
+    const { homeOrder } = await import("./catalog");
+    const CATALOG = (await import("@/lib/server/content")).catalog();
     const order = homeOrder(CATALOG, "seed1", "change").map((c) => c.id);
     expect([...order].sort()).toEqual(CATALOG.map((c) => c.id).sort());
     const kodak = order.indexOf("kodak");

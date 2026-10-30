@@ -1,6 +1,6 @@
 "use client";
 
-import { HOT_SEATS } from "@/content/catalog";
+import { useContent } from "@/lib/content-client";
 import { useGame } from "@/lib/store";
 import { Card, Icon, MediaView } from "./ui";
 
@@ -8,6 +8,7 @@ const GRADE_COLOR = { great: "var(--color-green)", ok: "var(--color-gold)", bad:
 
 export function NotesTab({ onPlay }: { onPlay: () => void }) {
   const { s } = useGame();
+  const { catalog } = useContent();
   // Latest run per Hot Seat
   const latest = Object.values(Object.fromEntries([...s.runs].reverse().map((r) => [r.hotSeatId, r])));
 
@@ -28,11 +29,12 @@ export function NotesTab({ onPlay }: { onPlay: () => void }) {
         </Card>
       )}
       {latest.map((r) => {
-        const hs = HOT_SEATS[r.hotSeatId];
+        const hs = catalog.find((c) => c.id === r.hotSeatId);
+        if (!hs) return null; // no longer published
         return (
           <Card key={r.hotSeatId} className="flex flex-col gap-3">
             <div className="flex items-center gap-3">
-              <MediaView media={hs.cover} className="size-16 shrink-0 !rounded-2xl" kenBurns={false} />
+              {hs.cover && <MediaView media={hs.cover} className="size-16 shrink-0 !rounded-2xl" kenBurns={false} />}
               <div className="min-w-0">
                 <p className="text-[12px] font-black uppercase tracking-[.12em] text-brand">
                   {hs.company} · score {r.score}

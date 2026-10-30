@@ -1,33 +1,19 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { HOT_SEATS, TRIAL } from "@/content/catalog";
-import {
-  buildDebrief,
-  callsPerRun,
-  choose,
-  spokenWhy,
-  resolveNode,
-  resolveText,
-  score,
-  startRun,
-  traitTotals,
-  type RunState,
-} from "@/lib/engine";
-import type { DecisionNode, EndingNode, Grade, HotSeat, Media, Option, SceneNode } from "@/lib/hotseat-types";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { fetchStep, type PlayResponse } from "@/lib/content-client";
+import { spokenWhy } from "@/lib/engine";
+import type { Grade, Media } from "@/lib/hotseat-types";
+import type { Pick, PlayView, Screen } from "@/lib/play";
 import { useGame, type RunRecord } from "@/lib/store";
 import { playSfx } from "@/lib/sfx";
 import { ADVISOR, NARRATOR, speak, stopVoice } from "@/lib/voice";
 import { Bar, Caption, Icon, MediaView } from "./ui";
+import { Logo } from "./Logo";
 import { Debrief } from "./Debrief";
 
 type Phase =
-  | { kind: "scene"; node: SceneNode }
-  | { kind: "decision"; node: DecisionNode }
-  | { kind: "reveal"; node: DecisionNode; option: Option; before: RunState }
-  | { kind: "ending"; node: EndingNode }
-  | { kind: "checkpoint" }
-  | { kind: "debrief"; node: EndingNode; record: RunRecord };
+  { kind: "screen"; i: number } | { kind: "reveal" } | { kind: "checkpoint" } | { kind: "debrief"; record: RunRecord; endingTitle: string };
 
 const VERDICT = {
   great: { title: "Great call!", color: "var(--color-green)", bg: "bg-[#0f2a10]", btn: "green", points: "+25 CEO points" },
@@ -38,9 +24,13 @@ const VERDICT = {
 /** A pause after the first few calls, used by the welcome screens. The run carries on from where it stopped. */
 export interface Checkpoint {
   after: number;
-  render: (run: RunState, hs: HotSeat, onContinue: () => void) => React.ReactNode;
+  render: (view: PlayView, onContinue: () => void) => React.ReactNode;
 }
 
+/**
+ * Plays a Hot Seat. The phone holds only the picks; each step (and its verdict) comes from the server, which
+ * replays the picks through the engine. So no answer is on the phone before the player picks it.
+ */
 export function Player({
   hotSeatId,
   onExit,
@@ -52,85 +42,104 @@ export function Player({
   onNotes: () => void;
   checkpoint?: Checkpoint;
 }) {
-  const hs = (HOT_SEATS[hotSeatId] ?? (TRIAL?.id === hotSeatId ? TRIAL : undefined)) as HotSeat;
   const game = useGame();
-  const [run, setRun] = useState<RunState>(() => startRun(hs));
-  const [phase, setPhase] = useState<Phase>(() => toPhase(hs, startRun(hs)));
+  const [picks, setPicks] = useState<Pick[]>([]);
+  const [view, setView] = useState<PlayResponse>();
+  const before = useRef<PlayResponse>(undefined); // the step before the last pick, for Hindsight
+  const [phase, setPhase] = useState<Phase>({ kind: "screen", i: 0 });
+  const [busy, setBusy] = useState(false);
+  const [failed, setFailed] = useState<Pick[] | null>(null); // the request to retry
   const [usedHindsight, setUsedHindsight] = useState(false);
   const [badgesBefore, setBadgesBefore] = useState(game.s.badges);
-  const totalDecisions = useMemo(() => callsPerRun(hs), [hs]);
   const finished = useRef(false); // a double tap on "See your results" must not pay out twice
   const paused = useRef(false);
 
-  useEffect(() => () => stopVoice(), []);
+  const load = useCallback(
+    (next: Pick[]) => {
+      setBusy(true);
+      setFailed(null);
+      fetchStep(hotSeatId, next)
+        .then((v) => {
+          if (next.length) before.current = view;
+          setPicks(next);
+          setView(v);
+          setPhase(next.length ? { kind: "reveal" } : { kind: "screen", i: 0 });
+        })
+        .catch(() => setFailed(next))
+        .finally(() => setBusy(false));
+    },
+    [hotSeatId, view],
+  );
+
+  useEffect(() => {
+    load([]);
+    return () => stopVoice();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [hotSeatId]);
 
   // A lost heart lands after the verdict and meter sounds (see RevealView and Meters).
-  const trustBefore = useRef(run.trust);
+  const trust = view?.trust;
+  const trustBefore = useRef(trust);
   useEffect(() => {
-    if (run.trust < trustBefore.current) playSfx("heart", 800);
-    trustBefore.current = run.trust;
-  }, [run.trust]);
+    if (trust !== undefined && trustBefore.current !== undefined && trust < trustBefore.current) playSfx("heart", 800);
+    trustBefore.current = trust;
+  }, [trust]);
 
-  const advance = (state: RunState, nextId: string) => {
-    const s2 = { ...state, nodeId: nextId };
-    setRun(s2);
-    setPhase(toPhase(hs, s2));
-  };
+  if (!view) return <Loading failed={!!failed} onRetry={() => load(failed ?? [])} onExit={onExit} />;
 
-  const onChoose = (node: DecisionNode, opt: Option) => {
-    const next = choose(hs, run, node, opt);
-    setPhase({ kind: "reveal", node, option: opt, before: run });
-    setRun(next);
-  };
+  const { meta } = view;
+  const screen = phase.kind === "screen" ? view.screens[phase.i] : undefined;
 
   const onHindsight = () => {
-    if (phase.kind !== "reveal" || usedHindsight || !game.spendHindsight()) return;
+    if (phase.kind !== "reveal" || usedHindsight || !before.current || !game.spendHindsight()) return;
     setUsedHindsight(true);
-    setRun(phase.before);
-    setPhase({ kind: "decision", node: phase.node });
+    const prev = before.current;
+    setPicks(picks.slice(0, -1));
+    setView(prev);
+    setPhase({ kind: "screen", i: prev.screens.length - 1 }); // the same decision again
   };
 
-  const finish = (node: EndingNode) => {
-    if (finished.current) return;
+  const finish = (title: string) => {
+    const r = view.result;
+    if (finished.current || !r) return;
     finished.current = true;
-    const d = buildDebrief(hs, run);
-    const sc = score(hs, run, node);
-    const realEnding = hs.realEnding;
-    const tierRank = { fired: 0, collapse: 1, survivor: 2, legend: 3 } as const;
     const rec = game.finishRun(
-      { hotSeatId: hs.id, score: sc, endingId: node.id, endingTier: node.tier, notes: d.lines, patterns: d.patterns },
-      traitTotals(hs, run),
-      { recovered: d.recovered, beatHistory: tierRank[node.tier] > tierRank[realEnding] },
+      { hotSeatId: meta.id, score: r.score, endingId: r.endingId, endingTier: r.endingTier, notes: r.lines, patterns: r.patterns },
+      r.traits,
+      { recovered: r.recovered, beatHistory: r.beatHistory },
     );
-    setPhase({ kind: "debrief", node, record: rec });
+    setPhase({ kind: "debrief", record: rec, endingTitle: title });
   };
 
-  const decisionsDone = run.picks.length;
-  const progress = phase.kind === "debrief" || phase.kind === "ending" ? 100 : (decisionsDone / totalDecisions) * 100;
+  const decisionsDone = view.picks.length;
+  const atEnd = phase.kind === "debrief" || screen?.kind === "ending";
+  const progress = atEnd ? 100 : (decisionsDone / meta.calls) * 100;
 
-  if (phase.kind === "checkpoint" && checkpoint) return checkpoint.render(run, hs, () => setPhase(toPhase(hs, run)));
+  if (phase.kind === "checkpoint" && checkpoint) return checkpoint.render(view, () => setPhase({ kind: "screen", i: 0 }));
 
-  if (phase.kind === "debrief") {
+  if (phase.kind === "debrief" && view.result) {
     return (
       <Debrief
-        hs={hs}
-        run={run}
-        ending={phase.node}
+        view={view}
+        result={view.result}
+        endingTitle={phase.endingTitle}
         record={phase.record}
         badgesBefore={badgesBefore}
         onExit={onExit}
         onNotes={onNotes}
         onReplay={() => {
-          const r = startRun(hs);
-          setRun(r);
           setUsedHindsight(false);
           setBadgesBefore(game.s.badges);
           finished.current = false;
-          setPhase(toPhase(hs, r));
+          before.current = undefined;
+          setView(undefined);
+          load([]);
         }}
       />
     );
   }
+
+  const reveal = phase.kind === "reveal" ? view.reveal : undefined;
 
   return (
     <div className="mx-auto flex min-h-dvh max-w-[480px] flex-col px-4" style={{ paddingTop: "max(12px, env(safe-area-inset-top))" }}>
@@ -150,83 +159,105 @@ export function Player({
         <div className="flex-1">
           <Bar value={progress} color="var(--color-green)" h="h-4" />
         </div>
-        <div className="flex items-center gap-0.5" aria-label={`${run.trust} board trust left`}>
-          {Array.from({ length: hs.startTrust }, (_, i) =>
-            i < run.trust ? <Icon.heart key={i} className="size-6" /> : <Icon.heartOff key={i} className="size-6" />,
+        <div className="flex items-center gap-0.5" aria-label={`${view.trust} board trust left`}>
+          {Array.from({ length: meta.startTrust }, (_, i) =>
+            i < view.trust ? <Icon.heart key={i} className="size-6" /> : <Icon.heartOff key={i} className="size-6" />,
           )}
         </div>
       </div>
-      <Meters hs={hs} run={run} />
+      <Meters view={view} />
 
-      {phase.kind === "scene" && (
-        <SceneView key={phase.node.id} hs={hs} run={run} node={phase.node} onNext={() => advance(run, phase.node.next)} />
+      {failed && (
+        <div role="alert" className="mb-3 flex items-center justify-between gap-3 rounded-2xl bg-red/15 px-3 py-2">
+          <p className="text-[14px] font-extrabold text-red">That didn&apos;t go through.</p>
+          <button type="button" className="text-[14px] font-black text-brand uppercase" onClick={() => load(failed)}>
+            Try again
+          </button>
+        </div>
       )}
-      {phase.kind === "decision" && (
-        <DecisionView
-          key={phase.node.id + (usedHindsight ? "h" : "")}
-          year={phase.node.year}
-          media={phase.node.media}
-          setup={resolveText(phase.node.setup, run)}
-          question={phase.node.question}
-          advisor={resolveText(phase.node.advisor, run)}
-          estimate={!run.onRealPath}
-          warning={run.trust === 1 ? "Board warning: one more costly call and you're out." : undefined}
-          options={phase.node.options}
-          onChoose={(id) =>
-            onChoose(
-              phase.node,
-              phase.node.options.find((o) => o.id === id)!,
-            )
-          }
+
+      {screen?.kind === "scene" && (
+        <SceneView
+          key={screen.id}
+          view={view}
+          node={screen}
+          onNext={() => setPhase({ kind: "screen", i: (phase as { i: number }).i + 1 })}
         />
       )}
-      {phase.kind === "reveal" && (
+      {screen?.kind === "decision" && (
+        <DecisionView
+          key={screen.id + (usedHindsight ? "h" : "")}
+          year={screen.year}
+          media={screen.media}
+          setup={screen.setup}
+          question={screen.question}
+          advisor={screen.advisor}
+          estimate={!view.onRealPath}
+          warning={view.trust === 1 ? "Board warning: one more costly call and you're out." : undefined}
+          options={screen.options}
+          busy={busy}
+          onChoose={(id) => !busy && load([...picks, { nodeId: screen.id, optionId: id }])}
+        />
+      )}
+      {reveal && (
         <RevealView
-          key={phase.node.id + phase.option.id}
-          year={phase.node.year}
-          media={phase.option.media}
-          real={run.onRealPath}
-          outcome={resolveText(phase.option.outcome, run)}
-          grade={phase.option.grade}
-          why={phase.option.why}
-          better={phase.option.better}
-          pointsLabel={VERDICT[phase.option.grade].points}
-          realChoice={realChoiceFor(hs, phase.node, phase.option)}
+          key={reveal.nodeId + reveal.optionId}
+          year={reveal.year}
+          media={reveal.media}
+          real={view.onRealPath}
+          outcome={reveal.outcome}
+          grade={reveal.grade}
+          why={reveal.why}
+          better={reveal.better}
+          pointsLabel={VERDICT[reveal.grade].points}
+          realChoice={reveal.realChoice}
           hindsight={
-            !usedHindsight && game.s.hindsights > 0 && phase.option.grade !== "great"
+            !usedHindsight && game.s.hindsights > 0 && reveal.grade !== "great"
               ? { left: game.s.hindsights, onUse: onHindsight }
               : undefined
           }
           onNext={() => {
             // Counted here, not at "Lock it in", so a Hindsight redo never counts the undone pick.
-            game.recordDecision(phase.option.grade);
-            if (checkpoint && !paused.current && run.picks.length >= checkpoint.after) {
+            game.recordDecision(reveal.grade);
+            if (checkpoint && !paused.current && view.picks.length >= checkpoint.after) {
               paused.current = true;
               stopVoice();
               setPhase({ kind: "checkpoint" });
-            } else setPhase(toPhase(hs, run));
+            } else setPhase({ kind: "screen", i: 0 });
           }}
         />
       )}
-      {phase.kind === "ending" && <EndingView key={phase.node.id} run={run} node={phase.node} onNext={() => finish(phase.node)} />}
+      {screen?.kind === "ending" && <EndingView key={screen.id} view={view} node={screen} onNext={() => finish(screen.title)} />}
     </div>
   );
 }
 
-function realChoiceFor(hs: HotSeat, node: DecisionNode, option: Option) {
-  const real = node.options.find((o) => o.real);
-  return !option.real && real ? { company: hs.company, label: real.label } : undefined;
+function Loading({ failed, onRetry, onExit }: { failed: boolean; onRetry: () => void; onExit: () => void }) {
+  return (
+    <div className="grid min-h-dvh place-items-center px-8 text-center">
+      <div className="flex flex-col items-center gap-3">
+        <Logo size={96} className={failed ? "" : "pop"} />
+        {failed ? (
+          <>
+            <p className="text-[20px] font-black">Couldn&apos;t load this Hot Seat</p>
+            <button type="button" className="btn3d green" onClick={onRetry}>
+              Try again
+            </button>
+            <button type="button" className="text-[15px] font-extrabold text-muted uppercase" onClick={onExit}>
+              Go back
+            </button>
+          </>
+        ) : (
+          <p className="text-[18px] font-black text-muted">Loading…</p>
+        )}
+      </div>
+    </div>
+  );
 }
 
-function toPhase(hs: HotSeat, s: RunState): Phase {
-  const n = resolveNode(hs, s, s.nodeId);
-  if (n.type === "scene") return { kind: "scene", node: n };
-  if (n.type === "decision") return { kind: "decision", node: n };
-  if (n.type === "ending") return { kind: "ending", node: n };
-  throw new Error("router node should have been resolved");
-}
-
-function Meters({ hs, run }: { hs: HotSeat; run: RunState }) {
+function Meters({ view }: { view: PlayView }) {
+  const run = view;
+  const hs = view.meta;
   const prev = useRef(run.meters);
   const [delta, setDelta] = useState<{ profit: number; future: number }>({ profit: 0, future: 0 });
   useEffect(() => {
@@ -324,9 +355,10 @@ function YearChip({ year, real }: { year?: string; real?: boolean }) {
   );
 }
 
-function SceneView({ run, node, onNext }: { hs: HotSeat; run: RunState; node: SceneNode; onNext: () => void }) {
+function SceneView({ view, node, onNext }: { view: PlayView; node: Extract<Screen, { kind: "scene" }>; onNext: () => void }) {
   const { s } = useGame();
-  const text = resolveText(node.text, run);
+  const { text } = node;
+  const run = view;
   const { prog, replay } = useNarration([{ text }], s.settings.voice);
   return (
     <div className="flex flex-1 flex-col gap-4">
@@ -365,6 +397,7 @@ export function DecisionView({
   warning,
   estimate,
   options,
+  busy,
   onChoose,
 }: {
   year: string;
@@ -376,6 +409,8 @@ export function DecisionView({
   /** The player has left the real path, so this situation is our estimate. */
   estimate?: boolean;
   options: ChoiceItem[];
+  /** Waiting for the server's verdict: the lock button stays down. */
+  busy?: boolean;
   onChoose: (optionId: string) => void;
 }) {
   const { s } = useGame();
@@ -432,9 +467,9 @@ export function DecisionView({
         <button
           type="button"
           className="btn3d green"
-          disabled={!sel}
+          disabled={!sel || busy}
           onClick={() => {
-            if (!sel) return;
+            if (!sel || busy) return;
             playSfx("lock");
             onChoose(sel);
           }}
@@ -547,9 +582,10 @@ export function RevealView({
   );
 }
 
-function EndingView({ run, node, onNext }: { run: RunState; node: EndingNode; onNext: () => void }) {
+function EndingView({ view, node, onNext }: { view: PlayView; node: Extract<Screen, { kind: "ending" }>; onNext: () => void }) {
   const { s } = useGame();
-  const text = resolveText(node.text, run);
+  const { text } = node;
+  const run = view;
   useEffect(() => playSfx(node.tier === "legend" || node.tier === "survivor" ? "legend" : "lose"), [node.tier]);
   const { prog } = useNarration([{ text }], s.settings.voice);
   const color = { legend: "var(--color-gold)", survivor: "var(--color-blue)", collapse: "var(--color-red)", fired: "var(--color-red)" }[

@@ -14,7 +14,7 @@ import { Player } from "./Player";
 import { DailyPlayer } from "./DailyPlayer";
 import { InstallSheet } from "./InstallSheet";
 import { Onboarding } from "./Onboarding";
-import { todaysCall } from "@/content/catalog";
+import { ContentProvider, useDaily, type Content } from "@/lib/content-client";
 
 export type Tab = "home" | "league" | "notes" | "shop" | "profile";
 const TABS: { id: Tab; label: string; icon: keyof typeof Icon }[] = [
@@ -25,12 +25,14 @@ const TABS: { id: Tab; label: string; icon: keyof typeof Icon }[] = [
   { id: "profile", label: "Profile", icon: "navProfile" },
 ];
 
-export function App() {
+export function App({ content }: { content: Content }) {
   return (
-    <GameProvider>
-      <Shell />
-      <OfflineCover />
-    </GameProvider>
+    <ContentProvider value={content}>
+      <GameProvider>
+        <Shell />
+        <OfflineCover />
+      </GameProvider>
+    </ContentProvider>
   );
 }
 
@@ -90,6 +92,7 @@ function Shell() {
   };
 
   const { ready, s } = useGame();
+  const daily = useDaily();
   if (!ready) {
     return (
       <div className="grid min-h-dvh place-items-center">
@@ -103,8 +106,7 @@ function Shell() {
 
   if (!s.onboarding.done) return <Onboarding onDone={() => go("home")} />;
 
-  const daily = playingDaily ? todaysCall(today()) : undefined;
-  if (daily) return <DailyPlayer call={daily} onExit={() => setPlayingDaily(false)} />;
+  if (playingDaily && daily?.call) return <DailyPlayer call={daily.call} onExit={() => setPlayingDaily(false)} />;
 
   if (playing)
     return (
@@ -125,7 +127,9 @@ function Shell() {
       <TopBar onShop={() => go("shop")} />
       <InstallSheet />
       <main ref={mainRef} className="flex-1 overflow-y-auto overscroll-contain px-4 pb-6">
-        {tab === "home" && <HomeTab onPlay={setPlaying} onDaily={() => setPlayingDaily(true)} onShop={() => go("shop")} />}
+        {tab === "home" && (
+          <HomeTab daily={daily?.call} onPlay={setPlaying} onDaily={() => setPlayingDaily(true)} onShop={() => go("shop")} />
+        )}
         {tab === "league" && <LeagueTab onPlay={() => go("home")} />}
         {tab === "notes" && <NotesTab onPlay={() => go("home")} />}
         {tab === "shop" && <ShopTab />}
