@@ -7,6 +7,8 @@ import { memoryDb, type LeagueRow } from "./db";
 import {
   buy,
   claimQuest,
+  FILL_TO,
+  leagueBoard,
   finishRun,
   GameError,
   IMPORT_CAPS,
@@ -197,5 +199,26 @@ describe("leagues", () => {
     const cohorts = db.leagues.map((l) => l.cohort);
     expect(cohorts.filter((c) => c === 1)).toHaveLength(30);
     expect(cohorts.filter((c) => c === 2)).toHaveLength(1);
+  });
+
+  it("shows the player's group, topped up with practice rivals while it is small", async () => {
+    const db = memoryDb();
+    const week = new Date("2026-10-28T06:30:00Z");
+    expect((await leagueBoard(db, U, week)).joined).toBe(false);
+    await finishRun(db, U, kodak, { runKey: "run-iiiiiiii", picks: path(kodak), hindsightUsed: false }, week);
+    const other = "2f6c1e0a-5b7d-4c3e-9a1f-0d2b3c4e5f60";
+    await update(db, other, (s) => ({ ...s, name: "Asha" }), week);
+    await db.addLeagueXp("2026-10-26", other, 0, 5);
+    const b = await leagueBoard(db, U, week);
+    expect(b.joined).toBe(true);
+    expect(b.rows).toHaveLength(FILL_TO);
+    expect(
+      b.rows
+        .filter((r) => !r.bot)
+        .map((r) => r.name)
+        .sort(),
+    ).toEqual(["Asha", "You"]);
+    expect(b.rows.find((r) => r.you)?.xp).toBeGreaterThan(0);
+    expect(b.rows.some((r) => r.id === other)).toBe(false); // other players' ids aren't shown in full
   });
 });

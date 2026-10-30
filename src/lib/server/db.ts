@@ -72,6 +72,8 @@ export interface Db {
   /** The player's most recent league row before `weekId`. */
   lastLeague(userId: string, beforeWeekId: string): Promise<LeagueRow | null>;
   cohort(weekId: string, cohort: number): Promise<LeagueRow[]>;
+  /** Each player's in-game name, by id. */
+  names(userIds: string[]): Promise<Record<string, string>>;
   savePush(row: PushRow): Promise<void>;
   deletePush(endpoint: string): Promise<void>;
   pushesAt(hour: number): Promise<PushRow[]>;
@@ -150,6 +152,9 @@ export function memoryDb(): Db & { profiles: Map<string, Profile>; runs: RunRow[
     },
     async cohort(weekId, cohort) {
       return clone(leagues.filter((l) => l.weekId === weekId && l.cohort === cohort));
+    },
+    async names(ids) {
+      return Object.fromEntries(ids.filter((id) => profiles.has(id)).map((id) => [id, profiles.get(id)!.state.name]));
     },
     async savePush(row) {
       pushes.set(row.endpoint, clone(row));
@@ -319,6 +324,11 @@ export function supabaseDb(sb = supabaseAdmin()): Db {
     },
     async cohort(weekId, cohort) {
       return list(await sb.from("league_members").select("*").eq("week_id", weekId).eq("cohort", cohort)).map(leagueOf);
+    },
+    async names(ids) {
+      if (!ids.length) return {};
+      const rows = list<{ id: string; name: string }>(await sb.from("profiles").select("id, name:state->>name").in("id", ids));
+      return Object.fromEntries(rows.map((r) => [r.id, r.name]));
     },
     async savePush(row) {
       must(

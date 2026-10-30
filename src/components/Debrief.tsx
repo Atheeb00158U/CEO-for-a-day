@@ -6,6 +6,7 @@ import type { Result } from "@/lib/play";
 import { BADGES, ECONOMY, useGame, type RunRecord } from "@/lib/store";
 import { playSfx } from "@/lib/sfx";
 import { stopVoice } from "@/lib/voice";
+import { ReminderCard } from "./ReminderCard";
 import { SignInCard } from "./SignInCard";
 import { Card, Icon } from "./ui";
 
@@ -165,6 +166,8 @@ export function Debrief({
           ))}
         </div>
       )}
+
+      <ReminderCard compact />
 
       <SignInCard title="Keep this result" text="Sign in with Google to save your score, streak and notes, and join a weekly league." />
 

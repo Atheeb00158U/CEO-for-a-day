@@ -19,6 +19,7 @@ import {
   type RunRecord,
 } from "../game-state.ts";
 import type { DailyCall, DailyOption, HotSeat } from "../hotseat-types";
+import { leagueRows } from "../league.ts";
 import { play, PlayError, type Pick } from "../play.ts";
 import type { Db, LeagueRow, Profile, SavedState } from "./db.ts";
 
@@ -323,4 +324,53 @@ function pickSettings(x: Partial<GameState["settings"]>): Partial<GameState["set
   const out: Partial<GameState["settings"]> = {};
   for (const k of ["voice", "sfx", "dataSaver"] as const) if (typeof x[k] === "boolean") out[k] = x[k];
   return out;
+}
+
+/* ------------------------------------------------------------------ */
+/* The League tab.                                                     */
+/* ------------------------------------------------------------------ */
+/** Below this many real players, the board is filled with practice rivals (shown, never ranked). */
+export const FILL_TO = 10;
+
+export interface LeagueBoard {
+  tier: number;
+  weekId: string;
+  /** False until the player earns XP this week (that's when they join a group). */
+  joined: boolean;
+  rows: { id: string; name: string; xp: number; you?: boolean; bot?: boolean }[];
+  /** How players move up this week: the top `count` real players, if they have at least `minXp`. */
+  promote: { count: number; minXp: number };
+  /** How many real players move down (bottom of a full group), or 0 when only players with no XP do. */
+  demote: number;
+}
+
+/** This week's board: the player's group, real players ranked by XP, topped up with practice rivals while small. */
+export async function leagueBoard(db: Db, userId: string, now = new Date()): Promise<LeagueBoard> {
+  const week = weekId(now);
+  const { tier, row } = await leagueTier(db, userId, now);
+  const real = row ? await db.cohort(week, row.cohort) : [];
+  const names = await db.names(real.map((r) => r.userId));
+  const rows: LeagueBoard["rows"] = real.map((r) => ({
+    id: r.userId === userId ? "you" : r.userId.slice(0, 8),
+    name: names[r.userId] && names[r.userId] !== "You" ? names[r.userId] : "Player",
+    xp: r.weeklyXp,
+    ...(r.userId === userId ? { you: true, name: names[r.userId] ?? "You" } : {}),
+  }));
+  if (row && real.length < FILL_TO) {
+    const bots = leagueRows({ seed: `${week}-${row.cohort}`, weekId: week, tier, yourXp: 0, yourName: "", now })
+      .filter((b) => !b.you)
+      .slice(0, FILL_TO - real.length)
+      .map((b) => ({ id: b.id, name: b.name, xp: b.xp, bot: true }));
+    rows.push(...bots);
+  }
+  rows.sort((a, b) => b.xp - a.xp || (a.you ? -1 : b.you ? 1 : 0));
+  const full = real.length >= LEAGUE_FULL;
+  return {
+    tier,
+    weekId: week,
+    joined: !!row,
+    rows,
+    promote: full ? { count: MOVE, minXp: 1 } : { count: Math.max(1, Math.floor(real.length * 0.2)), minXp: 100 * (tier + 1) },
+    demote: full ? MOVE : 0,
+  };
 }

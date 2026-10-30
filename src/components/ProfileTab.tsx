@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { BADGES, LEAGUES, useGame } from "@/lib/store";
+import { ReminderCard } from "./ReminderCard";
 import { SignInCard } from "./SignInCard";
 import { Card, Icon } from "./ui";
 
@@ -150,6 +151,8 @@ export function ProfileTab() {
         </div>
         {!account && <ResetButton onReset={reset} />}
       </Card>
+
+      <ReminderCard />
 
       {account && <AccountCard email={account.email} />}
     </div>

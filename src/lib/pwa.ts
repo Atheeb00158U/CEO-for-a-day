@@ -2,7 +2,7 @@
 
 /**
  * The "add to home screen" prompt. The game is online only, so there is no offline service worker
- * (public/sw.js only removes the one an earlier version installed).
+ * (public/sw.js only shows streak reminders; see src/lib/push.ts).
  */
 
 type InstallEvent = Event & { prompt: () => Promise<void>; userChoice: Promise<{ outcome: "accepted" | "dismissed" }> };
