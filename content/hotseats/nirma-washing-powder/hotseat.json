@@ -2,7 +2,7 @@
   "id": "nirma-washing-powder",
   "company": "Nirma",
   "title": "A quarter of the price",
-  "hook": "Most homes wash with soap bars, because powder costs too much. You can make it cheap. How cheap can you sell it?",
+  "hook": "Most homes wash with soap bars because powder costs too much. You can make powder cheaper. How low can you price it?",
   "role": "You make and sell a washing powder, 1969 to the 1990s",
   "years": "1969–1990s",
   "cover": "img:nr_cover",
@@ -22,7 +22,7 @@
       "type": "scene",
       "year": "1969",
       "media": "img:nr_intro",
-      "text": "Gujarat, 1969. You are a 24-year-old chemist in a government lab, and at home, after work, you have made a yellow washing powder that cleans well. Most families, though, still wash their clothes with soap bars, because powder costs too much. With a job, a bicycle and a small room, can you get your powder into ordinary homes?",
+      "text": "Gujarat, 1969. You are a 24-year-old chemist in a government lab. After work, at home, you have made a yellow washing powder that cleans well. But most families still use soap bars because powder costs too much. With a job, a bicycle and a small room, can you get your powder into ordinary homes?",
       "next": "d1"
     },
     "d1": {
@@ -31,9 +31,9 @@
       "year": "1969",
       "title": "Set the price",
       "media": "img:nr_d1",
-      "setup": "Because you buy simple materials nearby and mix the powder yourself, your costs are low. Now the packet needs a price. The big brand, Surf, costs about ₹13 a kilo and sells to well-off homes in the cities, while everyone else buys soap bars and counts every paisa.",
+      "setup": "You buy simple materials nearby and mix the powder yourself, so your costs are low. Now you need to set the packet's price. The big brand, Surf, costs about ₹13 a kilo and sells to well-off homes in the cities. Everyone else buys soap bars and counts every paisa.",
       "question": "What price do you put on a kilo?",
-      "advisor": "A low price brings many buyers, but you keep very little from each kilo. A high price looks like quality, but will a soap-bar home ever pay it?",
+      "advisor": "A low price may bring more buyers, but you earn less on each kilo. A high price gives you more per kilo, but fewer homes may be able to pay.",
       "options": [
         {
           "id": "near",
@@ -42,9 +42,9 @@
           "effect": { "profit": 5, "future": -10, "trust": -1, "flags": ["near"] },
           "next": "d2",
           "media": "img:nr_d1_near",
-          "outcome": "Shopkeepers ask why they should stock an unknown powder at Surf's price. The few homes that can pay ₹12 stay with the brand they know. You sell a few packets a week, and most of your powder sits in the room.",
-          "why": "Remember: a thin margin works only with high sales and low costs. Your low cost was your edge, and a high price threw it away. You fought Surf where Surf was strongest.",
-          "better": "Price near what soap-bar homes already pay, about a quarter of Surf, and win by selling a lot.",
+          "outcome": "Shopkeepers ask why they should stock an unknown powder at Surf's price. The few homes that can pay ₹12 stay with the brand they know. You sell only a few packets a week, while most of your powder stays in the room.",
+          "why": "Remember: a thin margin works only with high sales and low costs. Your low cost was your advantage, but the high price did not use it. You were competing where Surf was strongest.",
+          "better": "Price it near what soap-bar homes already pay, about a quarter of Surf, and earn through much higher sales.",
           "takeaway": "In 1969 you priced like the big brand. A low cost only helps you if your price uses it.",
           "traits": { "horizon": -1, "risk": -1, "disrupt": -1 }
         },
@@ -56,21 +56,21 @@
           "next": "d2",
           "media": "img:nr_d1_under",
           "outcome": "A few Surf buyers switch to save money, and you earn well on each packet. But ₹9 is still too much for soap-bar homes, so your sales grow slowly.",
-          "why": "Remember: sales are not profit, but profit needs sales. A good margin on a few packets is still a small business. The big market was the soap-bar homes, not Surf's buyers.",
-          "better": "Go all the way down to about a quarter of Surf's price, so soap-bar homes can switch, and make it up by selling much more.",
-          "takeaway": "In 1969 you took a safe middle price. A good margin on few sales still adds up to little.",
+          "why": "Remember: sales are not profit, but profit still needs sales. A good margin on only a few packets makes a small business. The bigger market was soap-bar homes, not Surf's buyers.",
+          "better": "Go down to about a quarter of Surf's price, so soap-bar homes can switch, and make up the smaller margin by selling much more.",
+          "takeaway": "In 1969 you chose a safe middle price. A good margin on a few sales still adds up to little.",
           "traits": { "horizon": 0, "risk": 0, "disrupt": 0 }
         },
         {
           "id": "quarter",
-          "label": "Price it at ₹3.50 a kilo, about a quarter of Surf. Soap-bar homes can buy it, but you keep very little per kilo.",
+          "label": "Price it at ₹3.50 a kilo, about a quarter of Surf. Many soap-bar homes can pay, but you earn little per kilo.",
           "grade": "great",
           "real": true,
           "effect": { "profit": 0, "future": 15, "flags": ["quarter"] },
           "next": "d2",
           "media": "img:nr_d1_quarter",
-          "outcome": "At ₹3.50 a kilo your powder costs about the same as a soap bar, and it washes far better. After work you cycle from door to door, selling 15 to 20 packets a day with a money-back promise. In Ahmedabad, word starts to spread.",
-          "why": "Remember: a thin margin works only with high sales and low costs. Your costs were tiny, so even a tiny price left a little on each kilo, and now millions of soap-bar homes could buy.",
+          "outcome": "At ₹3.50 a kilo, your powder costs about the same as a soap bar and washes far better. After work, you cycle from door to door and sell 15 to 20 packets a day with a money-back promise. In Ahmedabad, word starts to spread.",
+          "why": "Remember: a thin margin works only with high sales and low costs. Your costs were tiny, so even this low price left a little on each kilo. Now millions of soap-bar homes could afford to buy.",
           "takeaway": "In 1969 you priced for the many, not the few. A thin margin works when costs are low and sales are high.",
           "traits": { "horizon": 1, "risk": 1, "disrupt": 1 }
         }
@@ -85,51 +85,51 @@
       "setup": [
         {
           "when": { "flags": ["quarter"] },
-          "text": "Orders grow one street at a time. You still mix and pack every kilo at home, in a room ten feet by ten, and you still go to your government job each day. A small factory could make far more, but its rent and wages must be paid every month, sales or no sales."
+          "text": "Orders grow one street at a time. You still mix and pack every kilo at home in a room ten feet by ten, then go to your government job each day. A small factory could make far more, but its rent and wages would have to be paid every month, whether sales come or not."
         },
         {
-          "text": "Sales are slow, but you believe they will pick up. You still mix and pack every kilo at home, in a room ten feet by ten, and you still go to your government job each day. A small factory could make far more, but its rent and wages must be paid every month, sales or no sales."
+          "text": "Sales are slow, but you believe they can grow. You still mix and pack every kilo at home in a room ten feet by ten, then go to your government job each day. A small factory could make far more, but its rent and wages would have to be paid every month, whether sales come or not."
         }
       ],
       "question": "How will you make more powder?",
-      "advisor": "Your room can't make much more than it does now. But a factory's rent comes every month, whether you sell ten packets or ten thousand.",
+      "advisor": "Your room limits how much you can make. A factory gives you more space, but its rent comes every month whether you sell ten packets or ten thousand.",
       "options": [
         {
           "id": "home",
-          "label": "Keep your job. Make it at home and sell after office, even though you can only make a little.",
+          "label": "Keep your job. Make the powder at home and sell after office, even if you can only make a little.",
           "grade": "great",
           "real": true,
           "effect": { "profit": 5, "future": 15, "flags": ["home"] },
           "next": "s1972",
           "media": "img:nr_d2_home",
-          "outcome": "For about three years you work two jobs. Your salary pays the bills at home, and every packet you sell adds to the business. Around 1972, with orders growing, you leave the government job and work on your powder full time.",
-          "why": "Remember: break-even is the sales that pay your fixed costs. With almost no rent or wages, even a few packets a day covered your costs. You grew only as fast as your buyers did.",
+          "outcome": "For about three years, you work two jobs. Your salary pays the bills at home, while every packet you sell adds to the business. Around 1972, with orders growing, you leave the government job and work on your powder full time.",
+          "why": "Remember: break-even is the sales needed to pay your fixed costs. With almost no rent or wages, even a few packets a day could cover your costs. Your costs grew only when your buyers did.",
           "takeaway": "In 1969 you kept your costs tiny until the buyers came. Low fixed costs mean you break even sooner.",
           "traits": { "horizon": 1, "risk": -1, "disrupt": 0 }
         },
         {
           "id": "factory",
-          "label": "Quit your job and rent a small factory now, so you are ready when demand comes.",
+          "label": "Quit your job and rent a small factory now. You can make far more, but the monthly bills start at once.",
           "grade": "bad",
           "effect": { "profit": -15, "future": -10, "trust": -1, "flags": ["factory"] },
           "next": "s1972",
           "media": "img:nr_d2_factory",
-          "outcome": "The factory can make ten times what your room could. But the rent, the wages and the power bill come every month, and sales haven't caught up. Within months your savings are nearly gone, and there is no salary to fall back on.",
-          "why": "Remember: break-even is the sales that pay your fixed costs. Rent and wages are fixed costs. They came before the buyers did, so every month ended in a loss.",
-          "better": "Keep costs tiny until sales prove the demand. Move to a factory when your orders are bigger than your room.",
+          "outcome": "The factory can make ten times what your room could, but rent, wages and the power bill come every month while sales are still catching up. Within months, your savings are nearly gone, and you have no salary to fall back on.",
+          "why": "Remember: break-even is the sales needed to pay your fixed costs. Rent and wages are fixed costs. They arrived before enough buyers did, so each month ended in a loss.",
+          "better": "Keep costs tiny until sales prove the demand. Move to a factory when your orders become bigger than your room can handle.",
           "takeaway": "In 1969 you built a factory before the buyers came. Early fixed costs raise the sales you need just to break even.",
           "traits": { "horizon": 1, "risk": 1, "disrupt": 0 }
         },
         {
           "id": "maker",
-          "label": "Pay a local maker to mix and pack it under your name. No rent, but he takes a cut of every kilo.",
+          "label": "Pay a local maker to mix and pack it for you. You avoid rent, but he takes a cut from every kilo.",
           "grade": "ok",
           "effect": { "profit": -5, "future": 5, "flags": ["maker"] },
           "next": "s1972",
           "media": "img:nr_d2_maker",
-          "outcome": "You pay no rent, and you can sell far more than your room could make. But the maker charges for every kilo, and at your price there is almost nothing left. The more you sell, the more he earns, while you earn very little.",
-          "why": "Remember: fixed costs stay the same, but variable costs grow with every sale. The maker's charge was a cost on every kilo, and with a thin margin, that cost ate most of your profit.",
-          "better": "While you are small, make it yourself at almost no cost, so each kilo keeps its small profit.",
+          "outcome": "You pay no rent, and you can sell far more than your room could make. But the maker charges you for every kilo, and at your low price, almost nothing is left. As sales grow, he earns more while you earn very little.",
+          "why": "Remember: fixed costs stay the same, but variable costs rise with every sale. The maker's charge was added to every kilo. With such a thin margin, that cost took most of your profit.",
+          "better": "While the business is small, make it yourself at almost no cost so each kilo keeps its small profit.",
           "takeaway": "In 1969 you paid someone for every kilo. With a thin margin, a cost on every sale eats your profit.",
           "traits": { "horizon": 0, "risk": 0, "disrupt": 0 }
         }
@@ -143,14 +143,14 @@
       "text": [
         {
           "when": { "flags": ["home"] },
-          "text": "With the business now your full-time work, you skip the usual chain of middlemen: one line of distributors takes your packets straight to the shops. You go to small towns, not the rich areas where Surf is strong. Plain plastic pouches keep costs low, and from 1975 a catchy radio jingle sings your powder's name."
+          "text": "The business is now your full-time work. You skip the usual chain of middlemen, using one line of distributors to take your packets straight to shops. You focus on small towns instead of the rich areas where Surf is strong. Plain plastic pouches keep costs low, and from 1975 a catchy radio jingle sings your powder's name."
         },
         {
           "when": { "flags": ["factory"] },
-          "text": "You hang on, and slowly the factory starts to fill its hours. Distributors take your packets to shops in small towns, where Surf is weak, and from 1975 a catchy radio jingle sings your powder's name. But the early losses still hang over you."
+          "text": "You hang on, and the factory slowly starts to fill its hours. Distributors take your packets to shops in small towns where Surf is weak, and from 1975 a catchy radio jingle sings your powder's name. But the early losses still weigh on the business."
         },
         {
-          "text": "The maker keeps the packets coming. Distributors take them to shops in small towns, where Surf is weak, and from 1975 a catchy radio jingle sings your powder's name. Sales grow, but each kilo still leaves you very little."
+          "text": "The maker keeps your packets coming. Distributors take them to shops in small towns where Surf is weak, and from 1975 a catchy radio jingle sings your powder's name. Sales grow, but each kilo still leaves you very little."
         }
       ],
       "next": "d3"
@@ -161,9 +161,9 @@
       "year": "1970s–80s",
       "title": "The shops won't pay",
       "media": "img:nr_d3",
-      "setup": "Your powder now sits in shops across many towns, but the shopkeepers want credit. They take your stock and sell it, then pay you late, or not at all. Suddenly the cash coming in drops, and you still have to pay cash for raw materials.",
+      "setup": "Your powder is now in shops across many towns, but shopkeepers want credit. They take your stock, sell it and then pay you late, or not at all. Cash coming in suddenly drops, while you still need cash to buy raw materials.",
       "question": "What do you do about the money the shops owe you?",
-      "advisor": "The shops are where the buyers are. Upset them, and they'll push other brands. But every rupee they owe us is a rupee we can't spend.",
+      "advisor": "The shops bring us buyers, so losing them would hurt. But every rupee they owe us is cash we cannot use today.",
       "options": [
         {
           "id": "credit",
@@ -172,35 +172,35 @@
           "effect": { "profit": -10, "future": -10, "trust": -1, "flags": ["credit"] },
           "next": "s1985",
           "media": "img:nr_d3_credit",
-          "outcome": "The shops stay happy and keep ordering, but the money they owe piles higher every month. Your books show a profit, yet there is no cash for raw materials. Soon you can't make enough powder to fill the orders.",
-          "why": "Remember: udhaar is a loan you give, and profit on paper can still leave the cash box empty. You were lending to every shop, with no limit and no due date.",
-          "better": "Treat credit like a loan: set limits and due dates, or ask for cash, even if some shops grumble.",
+          "outcome": "The shops stay happy and keep ordering, but what they owe you grows every month. Your books show a profit, yet you do not have enough cash for raw materials. Soon, you cannot make enough powder to fill the orders.",
+          "why": "Remember: udhaar is a loan you give. A business can show a profit on paper while its cash box is empty. You were lending to every shop without a limit or due date.",
+          "better": "Treat credit like a loan. Set limits and due dates, or ask for cash, even if some shops grumble.",
           "takeaway": "In the 1970s you let every shop pay late. Udhaar is a loan you give, so manage it like one.",
           "traits": { "horizon": -1, "risk": -1, "disrupt": -1 }
         },
         {
           "id": "pull",
-          "label": "Take most of your stock back from the shops. Keep your ads running, and sell again only for cash.",
+          "label": "Take most of your stock back. Keep the ads running, then sell again only when shops pay cash.",
           "grade": "great",
           "real": true,
           "effect": { "profit": 5, "future": 15, "flags": ["pull"] },
           "next": "s1985",
           "media": "img:nr_d3_pull",
-          "outcome": "You pull more than nine in ten packets out of the market, while your ads keep playing. For about a month, buyers ask for your powder and can't find it. Then the shopkeepers come to you, and this time they pay cash upfront.",
-          "why": "Remember: udhaar is a loan you give, so manage it like one. Your ads had built the demand, and buyers asking for your powder gave you the power to say: cash first.",
+          "outcome": "You pull more than nine in ten packets out of the market while your ads keep playing. For about a month, buyers ask for your powder but cannot find it. Then the shopkeepers come to you, and this time they pay cash upfront.",
+          "why": "Remember: udhaar is a loan you give, so manage it like one. Your ads had already built demand. When buyers kept asking for your powder, you had the power to ask for cash first.",
           "takeaway": "In the 1970s you took back your stock and asked for cash. When buyers want your product, you can set the terms.",
           "traits": { "horizon": 1, "risk": 1, "disrupt": 1 }
         },
         {
           "id": "loan",
-          "label": "Borrow from a bank to cover the gap, and wait for the shops to pay you back.",
+          "label": "Borrow from a bank to cover the cash gap. Keep supplying shops while you wait for them to pay.",
           "grade": "ok",
           "effect": { "profit": -5, "future": 5, "flags": ["loan"] },
           "next": "s1985",
           "media": "img:nr_d3_loan",
-          "outcome": "The loan keeps the raw materials coming. But the shops still pay late, and now you pay the bank interest every month as well. You are lending to the shops with money you borrowed.",
-          "why": "Remember: profit on paper can still leave the cash box empty. The loan filled the gap, but it didn't fix the late payments, and you paid interest so the shops could have free credit.",
-          "better": "Fix the cause first: make the shops pay cash, or by a fixed date, before you borrow.",
+          "outcome": "The loan keeps raw materials coming, but the shops still pay late. Now you also pay the bank interest every month, so you are lending to the shops with money you borrowed.",
+          "why": "Remember: profit on paper can still leave the cash box empty. The loan covered the gap for a while, but it did not fix the late payments. You were paying interest while the shops kept free credit.",
+          "better": "Fix the cause first. Make the shops pay cash, or by a fixed date, before you borrow.",
           "takeaway": "In the 1970s you borrowed to cover the shops' udhaar. A loan can fill a cash gap, but it doesn't close it.",
           "traits": { "horizon": 0, "risk": 0, "disrupt": 0 }
         }
@@ -214,14 +214,14 @@
       "text": [
         {
           "when": { "flags": ["pull", "quarter"], "minFuture": 50 },
-          "text": "In 1982 your first TV ad goes on air, and the jingle becomes famous. In 1985 your powder passes Surf as India's best-selling detergent, and by 1988 more than half the market is yours. Surf's maker, Hindustan Lever, is slow to reply, but in the end it brings out a cheap powder of its own."
+          "text": "In 1982 your first TV ad goes on air, and the jingle becomes famous. In 1985 your powder passes Surf as India's best-selling detergent, and by 1988 more than half the market is yours. Surf's maker, Hindustan Lever, is slow to reply. In the end, it brings out a cheap powder of its own."
         },
         {
           "when": { "flags": ["pull"] },
           "text": "In 1982 your first TV ad goes on air, and the jingle becomes famous. With cash coming in at last, your powder catches up with Surf in many towns. Then Surf's maker, Hindustan Lever, brings out a cheap powder of its own."
         },
         {
-          "text": "In 1982 your first TV ad goes on air, and people like the jingle. But cash stays tight, and you can't always fill the orders the ads bring in. Surf's maker, Hindustan Lever, sees the gap and brings out a cheap powder of its own."
+          "text": "In 1982 your first TV ad goes on air, and people like the jingle. But cash stays tight, so you cannot always fill the orders that the ads bring in. Surf's maker, Hindustan Lever, sees the gap and brings out a cheap powder of its own."
         }
       ],
       "next": "d4"
@@ -235,14 +235,14 @@
       "setup": [
         {
           "when": { "minFuture": 50 },
-          "text": "It is the mid-1990s. Your powder leads the market, but Hindustan Lever spends many times more on ads than you do. You still buy your main chemicals from other companies, so every kilo you sell carries their price and their profit."
+          "text": "It is the mid-1990s. Your powder leads the market, but Hindustan Lever spends many times more on ads than you do. You still buy your main chemicals from other companies, so every kilo includes their price and their profit."
         },
         {
-          "text": "It is the mid-1990s. Your powder is a known name, but Hindustan Lever spends many times more on ads than you do. You still buy your main chemicals from other companies, so every kilo you sell carries their price and their profit."
+          "text": "It is the mid-1990s. Your powder is a known name, but Hindustan Lever spends many times more on ads than you do. You still buy your main chemicals from other companies, so every kilo includes their price and their profit."
         }
       ],
       "question": "How do you keep your price the lowest?",
-      "advisor": "Our own chemical plants would cost more than a thousand crore rupees, far more than we've ever spent. But while we buy from others, their prices decide ours.",
+      "advisor": "Building our own chemical plants would cost more than a thousand crore rupees, far more than we've ever spent. Buying from others costs less now, but their prices affect ours.",
       "options": [
         {
           "id": "build",
@@ -252,8 +252,8 @@
           "effect": { "profit": -10, "future": 15, "flags": ["build"] },
           "next": "ending_route",
           "media": "img:nr_d4_build",
-          "outcome": "You build a plant near Vadodara to make LAB, the main cleaning chemical in your powder, and plan a giant soda ash plant near Bhavnagar. Once both are running, you expect each kilo of powder to cost about a quarter less again.",
-          "why": "Remember: fixed costs stay the same, but variable costs grow with sales. A plant is a huge fixed cost, but you sold so much powder that it made every kilo cheaper.",
+          "outcome": "You build a plant near Vadodara to make LAB, the main cleaning chemical in your powder, and plan a giant soda ash plant near Bhavnagar. Once both are running, you expect the cost of each kilo of powder to fall by about a quarter again.",
+          "why": "Remember: fixed costs stay the same, while variable costs rise with sales. A plant is a huge fixed cost, but you sold so much powder that spreading that cost across many kilos made each kilo cheaper.",
           "takeaway": "In the 1990s you spent big once to make every kilo cheaper. At high volume, a fixed cost can cut the cost of each sale.",
           "traits": { "horizon": 1, "risk": 1, "disrupt": 1 }
         },
@@ -264,23 +264,23 @@
           "effect": { "profit": -10, "future": -10, "trust": -1, "flags": ["ads"] },
           "next": "ending_route",
           "media": "img:nr_d4_ads",
-          "outcome": "Your ads get bigger and louder, but Hindustan Lever can always spend more. Your chemical bill still grows with every kilo you sell, and your price lead shrinks. Shoppers begin to see two similar powders at similar prices.",
+          "outcome": "Your ads get bigger and louder, but Hindustan Lever can always spend more. Your chemical bill still grows with every kilo you sell, and your price lead becomes smaller. Shoppers begin to see two similar powders at similar prices.",
           "why": "Remember: fixed costs stay the same, but variable costs grow with sales. Ads did nothing to the cost of each kilo. Your real edge was low cost, and you spent it on a fight your rival was built to win.",
-          "better": "Spend once on your own plants, so every kilo you sell costs less for good.",
+          "better": "Spend once on your own plants so every kilo you sell costs less for good.",
           "takeaway": "In the 1990s you fought a rich rival with ads. Your edge was low cost, so protect that first.",
           "traits": { "horizon": -1, "risk": 1, "disrupt": -1 }
         },
         {
           "id": "contract",
-          "label": "Sign long deals with chemical makers at a fixed price. You spend nothing big, but they keep their profit.",
+          "label": "Sign long deals with chemical makers at a fixed price. There is no big plant cost, but they keep their profit.",
           "grade": "ok",
           "effect": { "profit": 5, "future": 5, "flags": ["contract"] },
           "next": "ending_route",
           "media": "img:nr_d4_contract",
-          "outcome": "The deals hold your costs steady for a few years, and you spend nothing on plants. But when the deals end, the sellers raise their prices, and every kilo you sell still pays for their profit.",
-          "why": "Remember: fixed costs stay the same, but variable costs grow with sales. A fixed price helped for a while, but the chemicals were still a cost on every kilo, paid to someone else.",
-          "better": "With sales this big, make the chemicals yourself. One big cost now makes every kilo cheaper.",
-          "takeaway": "In the 1990s you locked in a price instead of owning the source. A good deal is not the same as a lower cost.",
+          "outcome": "The deals keep your costs steady for a few years, and you spend nothing on plants. But when the deals end, the sellers raise their prices. Every kilo you sell still includes their profit.",
+          "why": "Remember: fixed costs stay the same, while variable costs rise with sales. The fixed price helped for a while, but the chemicals were still a cost on every kilo you bought from someone else.",
+          "better": "With sales this big, make the chemicals yourself. One large cost now can make every kilo cheaper.",
+          "takeaway": "In the 1990s you locked in a price instead of owning the source. A fixed price is not the same as a lower cost.",
           "traits": { "horizon": 0, "risk": -1, "disrupt": 0 }
         }
       ]
@@ -299,10 +299,10 @@
       "text": [
         {
           "when": { "flags": ["quarter", "home", "pull", "build"] },
-          "text": "From a small room at home, you built India's best-selling washing powder. It passed Surf in 1985, and in the 1990s you began making your own chemicals to keep it cheap. You showed that millions of soap-bar homes would buy powder, if only the price was right."
+          "text": "From a small room at home, you built India's best-selling washing powder. It passed Surf in 1985, and in the 1990s you began making your own chemicals to keep costs low. You showed that millions of soap-bar homes would buy powder if the price was right."
         },
         {
-          "text": "You took a few different turns, but you kept your price low and your costs lower still. Your powder becomes a name that almost every home in India knows."
+          "text": "You took a few different turns, but you kept your price low and your costs lower still. Now your powder is a name that almost every home in India knows."
         }
       ],
       "bonus": 15
@@ -322,7 +322,7 @@
       "tier": "collapse",
       "title": "Off the shelves",
       "media": "img:nr_collapse",
-      "text": "Your costs grow faster than your sales, and cash keeps running short. Bigger brands with cheap powders take your place on the shelves, and slowly your packets disappear from the shops.",
+      "text": "Your costs grow faster than your sales, and cash keeps running short. Bigger brands with cheap powders take your place on the shelves. Slowly, your packets disappear from the shops.",
       "bonus": 0
     },
     "fired": {
@@ -331,7 +331,7 @@
       "tier": "fired",
       "title": "Back to a day job",
       "media": "img:nr_fired",
-      "text": "After three costly calls, the money runs out. Your distributors no longer trust you to deliver and the bank won't lend again, so you close the business and go back to working for someone else.",
+      "text": "After three costly calls, the money runs out. Your distributors no longer trust you to deliver, and the bank won't lend again. You close the business and go back to working for someone else.",
       "bonus": 0
     }
   },

@@ -22,7 +22,7 @@
       "type": "scene",
       "year": "2000",
       "media": "img:re_intro",
-      "text": "Chennai, 2000. Royal Enfield makes the Bullet, a heavy old motorcycle with a deep thump. Eicher, a group best known for its tractors, has owned it for a few years. Today it sells fewer than 2,000 bikes a month, about a third of what its factory can make, and it loses a lot of money.",
+      "text": "Chennai, 2000. Royal Enfield makes the Bullet, a heavy old motorcycle with a deep thump. Eicher, a group best known for tractors, has owned it for a few years. It now sells fewer than 2,000 bikes a month, about a third of what the factory can make, and loses a lot of money.",
       "next": "d1"
     },
     "d1": {
@@ -31,47 +31,47 @@
       "year": "2000",
       "title": "Sell, shut or fix?",
       "media": "img:re_d1",
-      "setup": "You are 26, an engineer who joined Eicher a year ago, and the board is weighing whether to close Royal Enfield or sell it. Owners complain of oil leaks and engines that seize, and to most young people the Bullet is a bike for an older uncle.",
+      "setup": "You are 26, an engineer who joined Eicher a year ago. The board is deciding whether to close Royal Enfield or sell it. Owners complain about oil leaks and engines that seize, while most young people see the Bullet as a bike for an older uncle.",
       "question": "What do you tell the board?",
-      "advisor": "Selling gets some money back, and closing stops the losses today. Fixing it means more losses first, and nobody knows yet how deep the trouble goes.",
+      "advisor": "Selling gets some money back, while closing stops the losses today. Fixing it means taking more losses first, and nobody knows yet how deep the trouble goes.",
       "options": [
         {
           "id": "sell",
-          "label": "Sell it while the name still has value, and put the money into Eicher's trucks and tractors.",
+          "label": "Sell it while the name has value, and put the money into Eicher's trucks and tractors.",
           "grade": "ok",
           "effect": { "profit": 5, "future": 0, "flags": ["sell"] },
           "next": "d2",
           "media": "img:re_d1_sell",
           "outcome": "The board looks for a buyer, but nobody wants to pay much for a factory that loses money. Months pass with no deal, so in the end the board asks you to run it anyway, and the problems have grown while everyone waited.",
-          "why": "You judged the business by its losses, not by what was causing them. A loss is a sign, not the problem. Remember: name the real problem before you decide.",
-          "better": "Ask for time to find out why the bikes fail and why buyers left, then fix that.",
+          "why": "You judged the business by its losses instead of asking what caused them. A loss is a sign, not the problem. Remember: name the real problem before you decide.",
+          "better": "Ask for time to learn why the bikes fail and why buyers left, then fix those problems.",
           "takeaway": "In 2000 you tried to sell before you knew what was wrong. Find the cause before you give up on a business.",
           "traits": { "horizon": -1, "risk": -1, "disrupt": 0 }
         },
         {
           "id": "fix",
-          "label": "Ask for a chance to fix it, even though the losses will go on for a while.",
+          "label": "Ask for a chance to fix it, even if the losses continue for a while.",
           "grade": "great",
           "real": true,
           "effect": { "profit": -5, "future": 15, "flags": ["fix"] },
           "next": "d2",
           "media": "img:re_d1_fix",
-          "outcome": "The board gives you the chance, since things can hardly get worse. You move to Chennai. At first you think a new design will stop the losses, but soon you see the trouble goes deeper: quality, dealers, cash, workers, and no heads of engineering or marketing.",
-          "why": "Falling sales were the sign. The cause was a bike that broke down and a company that wasn't listening, and you can only fix a cause once you have named it. Remember: strategy starts by naming the real problem.",
-          "takeaway": "In 2000 you asked for time to find what was really wrong. A loss is a sign; the cause is what you fix.",
+          "outcome": "The board gives you the chance, since things can hardly get worse. You move to Chennai. At first you think a new design will stop the losses, but soon you see the trouble goes deeper: quality, dealers, cash, workers, and no one in charge of engineering or marketing.",
+          "why": "Falling sales were only the sign. The real problems were bikes that broke down and a company that wasn't listening. You can only fix a problem once you know what it is. Remember: strategy starts by naming the real problem.",
+          "takeaway": "In 2000 you asked for time to find what was really wrong. A loss is a sign. The cause is what you fix.",
           "traits": { "horizon": 1, "risk": 1, "disrupt": 1 }
         },
         {
           "id": "shut",
-          "label": "Close it and stop the losses, so the money goes to Eicher's stronger businesses.",
+          "label": "Close it and stop the losses, then put the money into Eicher's stronger businesses.",
           "grade": "bad",
           "effect": { "profit": 0, "future": -10, "trust": -1, "flags": ["shut"] },
           "next": "d2",
           "media": "img:re_d1_shut",
           "outcome": "Closing a factory takes time, because workers, dealers and spare parts all have to be settled. While it drags on, loyal riders protest and the board starts to doubt the plan, so it tells you to keep the bikes running for now.",
-          "why": "You saw losses and reached for the exit without asking why loyal riders still loved the bike. Remember: name the real problem before you decide.",
-          "better": "Ask for time to find out what is really broken. A loved brand with fixable faults is worth saving.",
-          "takeaway": "In 2000 you tried to close a business you hadn't understood. Losses tell you something is wrong, not what.",
+          "why": "You saw the losses and chose the exit without asking why loyal riders still loved the bike. Remember: name the real problem before you decide.",
+          "better": "Ask for time to find what is really broken. A loved brand with faults you can fix may still be worth saving.",
+          "takeaway": "In 2000 you tried to close a business you hadn't understood. Losses tell you something is wrong, not what is wrong.",
           "traits": { "horizon": -1, "risk": -1, "disrupt": -1 }
         }
       ]
@@ -92,32 +92,32 @@
         }
       ],
       "question": "Where do you put your money and time first?",
-      "advisor": "A new model would get people talking, and a price cut would fill the showrooms by next month. Fixing leaks and packing is slow, and nobody sees it.",
+      "advisor": "A new model could get people talking, while a price cut could fill the showrooms by next month. Fixing leaks and packing is slow work that few buyers will notice.",
       "options": [
         {
           "id": "discount",
-          "label": "Cut the price to clear the stock and bring buyers back through the door.",
+          "label": "Cut the price to clear stock and bring more buyers through the door.",
           "grade": "bad",
           "effect": { "profit": -5, "future": -10, "trust": -1, "flags": ["discount"] },
           "next": "d3",
           "media": "img:re_d2_discount",
-          "outcome": "Sales rise for a few months. Then the leaks and breakdowns come back to the dealers, now on cheaper bikes. Buyers start to see the Bullet as a cheap old bike, and the money you needed for repairs is gone.",
-          "why": "The discount sold more faulty bikes and made the brand look cheap, so it worked against the fix. Remember: every action must support the same plan.",
+          "outcome": "Sales rise for a few months. Then the leaks and breakdowns return to the dealers, now on cheaper bikes. Buyers start to see the Bullet as a cheap old bike, and the money you needed for repairs is gone.",
+          "why": "The discount sold more faulty bikes and made the brand look cheap. It worked against the real fix. Remember: every action must support the same plan.",
           "better": "Fix the leaks and the packing and answer the dealers first, and keep the price where it is.",
-          "takeaway": "In 2000 you cut the price on a bike that kept breaking. A discount can't fix a faulty product.",
+          "takeaway": "In 2000 you cut the price on a bike that kept breaking. A discount cannot fix a faulty product.",
           "traits": { "horizon": -1, "risk": 0, "disrupt": -1 }
         },
         {
           "id": "model",
-          "label": "Launch a new model fast, to show buyers that Royal Enfield is back.",
+          "label": "Launch a new model quickly and show buyers that Royal Enfield is back.",
           "grade": "ok",
           "effect": { "profit": 0, "future": 5, "flags": ["model"] },
           "next": "d3",
           "media": "img:re_d2_model",
-          "outcome": "The new bike gets attention, but it comes out of the same factory, with the same leaks, and it reaches dealers with the same scratches. Early buyers complain, and word spreads.",
-          "why": "A new model built on a broken base only spreads the problem further. Remember: name the real problem, then make every step fix it.",
-          "better": "Fix the basics first, then launch new models on bikes that no longer break.",
-          "takeaway": "In 2000 you launched something new before fixing the old faults. New paint doesn't fix a leak.",
+          "outcome": "The new bike gets attention, but it comes from the same factory with the same leaks and reaches dealers with the same scratches. Early buyers complain, and word spreads.",
+          "why": "A new model built on the same broken base only spreads the problem. Remember: name the real problem, then make every step fix it.",
+          "better": "Fix the basics first, then launch new models once the bikes stop breaking.",
+          "takeaway": "In 2000 you launched something new before fixing the old faults. New paint does not fix a leak.",
           "traits": { "horizon": 0, "risk": 1, "disrupt": 1 }
         },
         {
@@ -128,7 +128,7 @@
           "effect": { "profit": 5, "future": 20, "flags": ["basics"] },
           "next": "d3",
           "media": "img:re_d2_basics",
-          "outcome": "You swap the straw packing for Styrofoam, so bikes stop reaching dealers damaged. A new team answers the dealers when they call, and your engineers go after the oil leaks. None of it makes the news, but dealers slowly start to trust you again.",
+          "outcome": "You swap the straw packing for Styrofoam, so bikes stop reaching dealers damaged. A new team answers dealers when they call, and your engineers work on the oil leaks. None of it makes the news, but dealers slowly start to trust you again.",
           "why": "You fixed the real problem, bikes that broke and a company that didn't listen, before spending on anything new. Remember: every action must support the same plan.",
           "takeaway": "In 2000 you fixed the basics before anything else. Dull fixes come before shiny launches.",
           "traits": { "horizon": 1, "risk": 0, "disrupt": 0 }
@@ -144,52 +144,52 @@
       "setup": [
         {
           "when": { "flags": ["discount"] },
-          "text": "It is 2002, and the price cut has worn off. Your loyal riders love the Bullet's old look and deep thump, but young buyers pick cheaper, fuel-saving bikes from the big makers, and now they see the Bullet as a cheap old bike as well as an uncle's one."
+          "text": "It is 2002, and the price cut has worn off. Loyal riders still love the Bullet's old look and deep thump, but young buyers choose cheaper, fuel-saving bikes from the big makers. Now they also see the Bullet as a cheap old bike for an older uncle."
         },
         {
-          "text": "It is 2002. Your loyal riders love the Bullet's old look and deep thump, but young buyers pick cheaper, fuel-saving bikes from the big makers. To many of them, the Bullet is still a bike for an older uncle."
+          "text": "It is 2002. Loyal riders still love the Bullet's old look and deep thump, but young buyers choose cheaper, fuel-saving bikes from the big makers. To many of them, the Bullet is still a bike for an older uncle."
         }
       ],
       "question": "Who do you build your next bikes for?",
-      "advisor": "The young buyers are where the numbers are. But the loyal riders are the only ones who stayed with us.",
+      "advisor": "Young buyers are where the big numbers are. But the loyal riders are the only people who stayed with us.",
       "options": [
         {
           "id": "commuter",
-          "label": "Build a light, cheap bike that saves fuel, and fight the big makers for young buyers.",
+          "label": "Build a light, cheap, fuel-saving bike and fight the big makers for young buyers.",
           "grade": "bad",
           "effect": { "profit": -10, "future": -10, "trust": -1, "flags": ["commuter"] },
           "next": "scene2004",
           "media": "img:re_d3_commuter",
-          "outcome": "Your new bike is cheaper than a Bullet, but it still costs more than the big makers' bikes and uses more fuel. Young buyers don't switch, and loyal riders say it isn't a real Enfield.",
-          "why": "You chose to play where the big makers were strongest, with nothing special to win on. Remember: choose where to play and how to win, together.",
-          "better": "Keep what makes the bike special, the look and the thump, and make it easier to own for a wider, younger crowd.",
-          "takeaway": "In 2002 you fought the giants on their own ground. Pick a place where your strengths can win.",
+          "outcome": "Your new bike is cheaper than a Bullet, but it still costs more than the big makers' bikes and uses more fuel. Young buyers do not switch, while loyal riders say it is not a real Enfield.",
+          "why": "You chose to compete where the big makers were strongest, without anything special to help you win. Remember: choose where to play and how to win, together.",
+          "better": "Keep what makes the bike special, the look and the thump, while making it easier to own for a wider, younger crowd.",
+          "takeaway": "In 2002 you fought the giants on their own ground. Choose a place where your strengths can win.",
           "traits": { "horizon": 0, "risk": 1, "disrupt": -1 }
         },
         {
           "id": "cruiser",
-          "label": "Keep the look and thump, but make bikes easier to ride, and open stores that feel modern.",
+          "label": "Keep the look and thump, make the bikes easier to ride, and open modern stores.",
           "grade": "great",
           "real": true,
           "effect": { "profit": 5, "future": 15, "flags": ["cruiser"] },
           "next": "scene2004",
           "media": "img:re_d3_cruiser",
-          "outcome": "At Auto Expo 2002 you unveil the Thunderbird, a cruiser with five gears and the gear shift on the left, meant for more than tough men. In Adyar, Chennai, your first company store sells the Thunderbird and the Electra, and young riders start to find the brand cool.",
-          "why": "You chose who to win, a wider and younger crowd, and how to win them: the same thump, made easier to ride and nicer to buy. Remember: choose where to play and how to win, together.",
-          "takeaway": "In 2002 you kept what made the bike special and widened who it was for. Where you play and how you win go together.",
+          "outcome": "At Auto Expo 2002 you unveil the Thunderbird, a cruiser with five gears and the gear shift on the left, meant for more riders, not just tough men. In Adyar, Chennai, your first company store sells the Thunderbird and the Electra. Young riders start to find the brand cool.",
+          "why": "You chose who to win, a wider and younger crowd, and how to win them: keep the same thump, but make the bike easier to ride and nicer to buy. Remember: choose where to play and how to win, together.",
+          "takeaway": "In 2002 you kept what made the bike special and widened who it was for. Where you play and how you win must work together.",
           "traits": { "horizon": 1, "risk": 1, "disrupt": 1 }
         },
         {
           "id": "loyal",
-          "label": "Keep making the classic Bullet, just better, for the riders who never left.",
+          "label": "Keep making the classic Bullet, but improve it for the riders who never left.",
           "grade": "ok",
           "effect": { "profit": 5, "future": 5, "flags": ["loyal"] },
           "next": "scene2004",
           "media": "img:re_d3_loyal",
-          "outcome": "Your loyal riders are happy, and the bikes break down less. But those riders are getting older, and few young people join them. Sales stop falling, but they don't grow.",
+          "outcome": "Your loyal riders are happy, and the bikes break down less. But those riders are getting older, and few young people join them. Sales stop falling, but they do not grow.",
           "why": "You knew who loved the bike, but you gave no one new a reason to try it. Remember: choose where to play and how to win, together.",
-          "better": "Keep the look and the thump, but make the bike easier to ride and the stores nicer, so younger riders join in.",
-          "takeaway": "In 2002 you served only the riders you had. A brand that adds no new fans slowly grows old.",
+          "better": "Keep the look and thump, but make the bike easier to ride and the stores nicer so younger riders join in.",
+          "takeaway": "In 2002 you served only the riders you already had. A brand that adds no new fans slowly grows old.",
           "traits": { "horizon": -1, "risk": -1, "disrupt": 0 }
         }
       ]
@@ -202,14 +202,14 @@
       "text": [
         {
           "when": { "flags": ["fix", "basics", "cruiser"] },
-          "text": "By about 2004 the fall has stopped, and Royal Enfield sells about 25,000 bikes a year. In January 2004 the board makes you chief operating officer of the whole Eicher group, and your job is now much bigger than one bike."
+          "text": "By about 2004, the fall has stopped and Royal Enfield sells about 25,000 bikes a year. In January 2004 the board makes you chief operating officer of the whole Eicher group. Your job is now much bigger than one bike."
         },
         {
           "when": { "minFuture": 40 },
-          "text": "By 2004 Royal Enfield's sales have stopped falling, though they are not growing fast. The board makes you chief operating officer of the whole Eicher group, and your job is now much bigger than one bike."
+          "text": "By 2004, Royal Enfield's sales have stopped falling, though they are not growing fast. The board makes you chief operating officer of the whole Eicher group. Your job is now much bigger than one bike."
         },
         {
-          "text": "By 2004 Royal Enfield is still losing ground, but the board gives you one more chance and makes you chief operating officer of the whole Eicher group. Now the bikes must compete with every other business for money."
+          "text": "By 2004, Royal Enfield is still losing ground, but the board gives you one more chance and makes you chief operating officer of the whole Eicher group. Now the bikes must compete with every other business for money."
         }
       ],
       "next": "d4"
@@ -220,47 +220,47 @@
       "year": "2005",
       "title": "Fifteen businesses or two?",
       "media": "img:re_d4",
-      "setup": "Eicher now runs 15 businesses, from tractors and trucks to garments, shoes and food, and many of them are weak. Tractors are what Eicher is best known for. Every manager wants money for their own business, and there isn't enough for all of them.",
+      "setup": "Eicher now runs 15 businesses, from tractors and trucks to garments, shoes and food, and many are weak. Tractors are what Eicher is best known for. Every manager wants money for their business, but there is not enough for all of them.",
       "question": "What does Eicher keep?",
-      "advisor": "Selling tractors would be like selling Eicher's own name. And every business we sell takes good people with it.",
+      "advisor": "Selling tractors would feel like selling Eicher's own name. And every business we sell could take good people with it.",
       "options": [
         {
           "id": "two",
-          "label": "Sell 13 businesses, tractors too, and keep only trucks and motorcycles.",
+          "label": "Sell 13 businesses, including tractors, and keep only trucks and motorcycles.",
           "grade": "great",
           "real": true,
           "effect": { "profit": 5, "future": 15, "flags": ["two"] },
           "next": "d5",
           "media": "img:re_d4_two",
-          "outcome": "In 2005 you decide to sell 13 of the 15 businesses, with a six-month plan made with a consulting firm. Tractors and engines go to TAFE, and some senior managers leave with the tractor business. What is left gets all your money and attention.",
-          "why": "It hurt, but a small team can't fix 15 businesses at once. Choosing two meant the bikes finally got the money they needed. Remember: strategy is choosing what not to do.",
-          "takeaway": "In 2005 you sold the famous tractors to focus on two businesses. Strategy is choosing what not to do.",
+          "outcome": "In 2005 you decide to sell 13 of the 15 businesses, using a six-month plan made with a consulting firm. Tractors and engines go to TAFE, and some senior managers leave with the tractor business. The two businesses left get all your money and attention.",
+          "why": "The choice hurt, but a small team cannot fix 15 businesses at once. Choosing two meant the bikes finally got the money they needed. Remember: strategy is choosing what not to do.",
+          "takeaway": "In 2005 you sold the famous tractors to focus on two businesses. Strategy means choosing what not to do.",
           "traits": { "horizon": 1, "risk": 1, "disrupt": 1 }
         },
         {
           "id": "three",
-          "label": "Keep tractors, trucks and bikes, and sell only the small businesses.",
+          "label": "Keep tractors, trucks and bikes, and sell the smaller businesses.",
           "grade": "ok",
           "effect": { "profit": 5, "future": 5, "flags": ["three"] },
           "next": "d5",
           "media": "img:re_d4_three",
-          "outcome": "The small businesses go, and the tractor business stays strong. But tractors, trucks and bikes all want money for new factories, and Royal Enfield gets only a share of it.",
-          "why": "Cutting the small businesses helped, but three big ones still split your money and attention. Remember: strategy is choosing what not to do.",
+          "outcome": "The small businesses go, and the tractor business stays strong. But tractors, trucks and bikes all need money for new factories, so Royal Enfield gets only a share.",
+          "why": "Selling the small businesses helped, but three big businesses still split your money and attention. Remember: strategy is choosing what not to do.",
           "better": "Keep only the two businesses with the best future, even if that means selling the famous one.",
-          "takeaway": "In 2005 you cut the easy things and kept the famous one. The hard cuts are the ones that free you.",
+          "takeaway": "In 2005 you cut the easy things and kept the famous one. The hardest cuts can free the most money and attention.",
           "traits": { "horizon": 0, "risk": 0, "disrupt": 0 }
         },
         {
           "id": "keepall",
-          "label": "Keep all 15 and fix them one by one. Every one has loyal staff and customers.",
+          "label": "Keep all 15 and fix them one by one, because each has loyal staff and customers.",
           "grade": "bad",
           "effect": { "profit": 0, "future": -10, "trust": -1, "flags": ["keepall"] },
           "next": "d5",
           "media": "img:re_d4_keepall",
-          "outcome": "You spread your managers across 15 fixes. Each one moves a little, none moves much, and the bike business waits its turn for money.",
-          "why": "Being loyal to every business meant none of them got enough. Remember: strategy is choosing what not to do.",
-          "better": "Sell most of the businesses, even well-loved ones, and put everything into the two with the best future.",
-          "takeaway": "In 2005 you kept everything. Trying to fix it all at once means fixing nothing well.",
+          "outcome": "You spread your managers across 15 businesses. Each one improves a little, none improves much, and the bike business waits for its turn to get money.",
+          "why": "Being loyal to every business meant none got enough money or attention. Remember: strategy is choosing what not to do.",
+          "better": "Sell most of the businesses, even the well-loved ones, and focus on the two with the best future.",
+          "takeaway": "In 2005 you kept everything. Trying to fix everything at once means fixing nothing well.",
           "traits": { "horizon": -1, "risk": -1, "disrupt": -1 }
         }
       ]
@@ -274,51 +274,51 @@
       "setup": [
         {
           "when": { "flags": ["two"] },
-          "text": "It is 2008, and Eicher's trucks have gone into a joint venture with Volvo. Royal Enfield's sales are rising, but the old engine still breaks too often. Your engineers have a new engine ready, with fewer parts and more power, but the factory is small."
+          "text": "It is 2008, and Eicher's trucks have gone into a joint venture with Volvo. Royal Enfield's sales are rising, but the old engine still breaks too often. Your engineers have a new engine ready with fewer parts and more power, but the factory is small."
         },
         {
-          "text": "It is 2008. Royal Enfield's sales are rising slowly, but the old engine still breaks too often. Your engineers have a new engine ready, with fewer parts and more power, but the factory is small and money is tight."
+          "text": "It is 2008. Royal Enfield's sales are rising slowly, but the old engine still breaks too often. Your engineers have a new engine ready with fewer parts and more power, but the factory is small and money is tight."
         }
       ],
       "question": "What do you do with the new engine?",
-      "advisor": "Buyers are finally coming back. If we change the engine now, we'll run short of bikes just when they want them.",
+      "advisor": "Buyers are finally coming back. If we change the engine now, we may run short of bikes just when people want them.",
       "options": [
         {
           "id": "push",
-          "label": "Keep selling the old engine while buyers are keen, and bring in the new one slowly.",
+          "label": "Keep selling the old engine while demand is strong, and bring in the new one slowly.",
           "grade": "bad",
           "effect": { "profit": 10, "future": -10, "trust": -1, "flags": ["push"] },
           "next": "ending_route",
           "media": "img:re_d5_push",
-          "outcome": "Sales rise for a while, but more bikes means more breakdowns, and the old complaints come back at the dealers. By the time the new engine arrives, the brand looks old again.",
-          "why": "Growing on an engine you knew was weak only spread the old problem further. Remember: grow big only once the small version works.",
+          "outcome": "Sales rise for a while, but more bikes mean more breakdowns, and the old complaints return to the dealers. By the time the new engine arrives, the brand looks old again.",
+          "why": "Growing with an engine you knew was weak only made the old problem bigger. Remember: grow big only once the small version works.",
           "better": "Move every model to the new engine first, even if bikes run short for a while, then grow.",
-          "takeaway": "In 2008 you grew on a weak engine. Growth makes a hidden fault bigger.",
+          "takeaway": "In 2008 you grew with a weak engine. Growth makes a hidden fault bigger.",
           "traits": { "horizon": -1, "risk": 1, "disrupt": -1 }
         },
         {
           "id": "factory",
-          "label": "Build a big new factory first, then change the engine once you have room.",
+          "label": "Build a big new factory first, then change the engine once there is more room.",
           "grade": "ok",
           "effect": { "profit": -10, "future": 5, "flags": ["factory"] },
           "next": "ending_route",
           "media": "img:re_d5_factory",
-          "outcome": "The new factory takes years and a lot of money. Meanwhile the old engine keeps breaking, and the big factory waits for a bike good enough to fill it.",
-          "why": "You built room to grow before the product was ready to grow. Remember: grow big only once the small version works.",
-          "better": "Fix the engine first, so the bikes are worth waiting for, then build the factory to meet the demand.",
-          "takeaway": "In 2008 you built the factory before the engine. Fix the product, then grow the plant.",
+          "outcome": "The new factory takes years and a lot of money. Meanwhile, the old engine keeps breaking, and the big factory waits for a bike good enough to fill it.",
+          "why": "You built room to grow before the product was ready. Remember: grow big only once the small version works.",
+          "better": "Fix the engine first so the bikes are worth waiting for, then build the factory to meet demand.",
+          "takeaway": "In 2008 you built the factory before fixing the engine. Fix the product, then grow the plant.",
           "traits": { "horizon": 1, "risk": 1, "disrupt": 0 }
         },
         {
           "id": "engine",
-          "label": "Move every model to the new engine, even though bikes will run short for a year.",
+          "label": "Move every model to the new engine, even if bikes run short for a year.",
           "grade": "great",
           "real": true,
           "effect": { "profit": 0, "future": 15, "flags": ["engine"] },
           "next": "ending_route",
           "media": "img:re_d5_engine",
           "outcome": "In 2009 the new engine comes out on the Classic, and in 2010 every model moves to it. Sales reach about 50,000 bikes a year, all the factory can make, and buyers wait six months or more for one.",
-          "why": "You made the bike right before making more of it, so the new buyers got a bike that didn't let them down. Remember: grow big only once the small version works.",
+          "why": "You made the bike right before making more of it, so new buyers got a bike that did not let them down. Remember: grow big only once the small version works.",
           "takeaway": "In 2009 you fixed the engine before chasing growth. Make it right, then make more.",
           "traits": { "horizon": 1, "risk": 0, "disrupt": 1 }
         }
@@ -341,7 +341,7 @@
           "text": "Buyers now wait months for a Royal Enfield. Eicher plans for 100,000 bikes in 2012, and in 2013 a second factory opens at Oragadam, near Chennai. The bike business the board nearly closed in 2000 now needs a second factory to keep up."
         },
         {
-          "text": "You took a different road, but the bikes stopped breaking and young riders came. Royal Enfield grows into a brand people will wait months to buy."
+          "text": "You took a different road, but the bikes stopped breaking and young riders came. Royal Enfield grows into a brand that people will wait months to buy."
         }
       ],
       "bonus": 15
@@ -352,7 +352,7 @@
       "tier": "survivor",
       "title": "A small, loved bike",
       "media": "img:re_survivor",
-      "text": "Royal Enfield lives on. The loyal riders stay, and sales grow a little each year, but it remains a small, special bike that most young buyers pass by.",
+      "text": "Royal Enfield lives on. Loyal riders stay, and sales grow a little each year, but it remains a small, special bike that most young buyers pass by.",
       "bonus": 5
     },
     "collapse": {
@@ -361,7 +361,7 @@
       "tier": "collapse",
       "title": "The thump fades",
       "media": "img:re_collapse",
-      "text": "Sales never come back. A few years later Eicher sells the bike business for very little, and the Bullet's thump slowly fades from Indian roads.",
+      "text": "Sales never come back. A few years later, Eicher sells the bike business for very little, and the Bullet's thump slowly fades from Indian roads.",
       "bonus": 0
     },
     "fired": {
@@ -370,12 +370,12 @@
       "tier": "fired",
       "title": "The board takes the keys",
       "media": "img:re_fired",
-      "text": "After three costly calls, Eicher's board loses faith in you and hands the bike business to someone else.",
+      "text": "After three costly calls, Eicher's board loses faith in you and gives the bike business to someone else.",
       "bonus": 0
     }
   },
   "realEnding": "legend",
-  "realHistory": "In 2000 Royal Enfield sold fewer than 2,000 bikes a month, and Eicher's board was weighing whether to close or sell it. Siddhartha Lal, a 26-year-old engineer, was given the chance to fix it. He fixed the packing, the oil leaks and dealer service, and in 2002 launched the Thunderbird cruiser, with the gear shift on the left, to widen who the bikes were for. By about 2004 the fall had stopped at about 25,000 bikes a year. In 2005 Eicher decided to sell 13 of its 15 businesses, tractors included, to focus on motorcycles and trucks. A new engine came out on the Classic in 2009 and reached every model in 2010. Sales hit the factory's limit of about 50,000 a year, with long waits, and a second factory opened at Oragadam in 2013.",
+  "realHistory": "In 2000 Royal Enfield sold fewer than 2,000 bikes a month, and Eicher's board was weighing whether to close or sell it. Siddhartha Lal, a 26-year-old engineer, was given the chance to fix it. He fixed the packing, oil leaks and dealer service, and in 2002 launched the Thunderbird cruiser, with the gear shift on the left, to widen who the bikes were for. By about 2004 the fall had stopped at about 25,000 bikes a year. In 2005 Eicher decided to sell 13 of its 15 businesses, tractors included, to focus on motorcycles and trucks. A new engine came out on the Classic in 2009 and reached every model in 2010. Sales hit the factory's limit of about 50,000 a year, with long waits, and a second factory opened at Oragadam in 2013.",
   "sources": [
     {
       "label": "Siddhartha Lal: an Indian powerhouse on two wheels (Outlook Business)",
