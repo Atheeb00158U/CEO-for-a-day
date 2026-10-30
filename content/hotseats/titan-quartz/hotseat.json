@@ -30,7 +30,7 @@
       "type": "scene",
       "year": "1984",
       "media": "img:ti_intro2",
-      "text": "Watches are so hard to get that many buyers order one and wait for months, while the rich buy smuggled foreign watches. A French firm, France Ebauches, will teach your team, and a factory is going up at Hosur. Your job is to make the watches India wants before anyone else does.",
+      "text": "Watches are so hard to get that many buyers order one and wait for months, while others buy smuggled foreign watches. A French firm, France Ebauches, will teach your team, and a factory is going up at Hosur. Your job is to make the watches India wants before anyone else does.",
       "next": "d1"
     },
     "d1": {
@@ -93,14 +93,14 @@
       "setup": [
         {
           "when": { "flags": ["mech"] },
-          "text": "It is early 1987, and your first range is ready: five collections of mechanical watches, from plain steel to gold-plated. They look better than HMT's but work the same way. HMT's watches are seen as plain, useful tools, while people with money still buy smuggled foreign ones."
+          "text": "It is early 1987, and your first range is ready: five collections of mechanical watches, from plain steel to gold-plated. They look better than HMT's but work the same way. HMT's watches are seen as plain, useful tools, while smuggled foreign watches still sell."
         },
         {
           "when": { "flags": ["mix"] },
-          "text": "It is early 1987, and your first range is ready: five collections, some mechanical and some quartz, with fewer quartz watches than you hoped for. HMT's watches are seen as plain, useful tools, while people with money still buy smuggled foreign ones."
+          "text": "It is early 1987, and your first range is ready: five collections, some mechanical and some quartz, with fewer quartz watches than you hoped for. HMT's watches are seen as plain, useful tools, while smuggled foreign watches still sell."
         },
         {
-          "text": "It is early 1987, and your first range is ready: five collections, from steel to gold-plated dials with leather straps. HMT's watches are seen as plain, useful tools, while people with money still buy smuggled foreign ones."
+          "text": "It is early 1987, and your first range is ready: five collections, from steel to gold-plated dials with leather straps. HMT's watches are seen as plain, useful tools, while smuggled foreign watches still sell."
         }
       ],
       "question": "How do you price your first watches?",

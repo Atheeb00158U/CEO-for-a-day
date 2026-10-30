@@ -251,7 +251,7 @@
           },
           "next": "august",
           "media": "img:ky_d3_keep",
-          "outcome": "In late July, the rain finally comes hard. For ten days, people line up for umbrellas, and the corner is empty by August. Next year, you will buy half in May and half when the clouds come.",
+          "outcome": "In mid-July, the rain finally comes hard. For ten days, people line up for umbrellas, and the corner is empty by August. Next year, you will buy half in May and half when the clouds come.",
           "why": "The plan made sense, but the weather went against you. Remember: judge the thinking, not the luck.",
           "takeaway": "In July you kept a good plan after one bad result. Judge the thinking, not the luck.",
           "traits": {
@@ -419,7 +419,7 @@
           "when": {
             "flags": ["fund_kept"]
           },
-          "text": "From Navratri to Diwali, the shop never stops. Sweets, dry fruit and puja items keep selling. Your shelves stay full, and it is your best festival in years. Then, in December, a new board goes up two streets away. It is a store that delivers in ten minutes."
+          "text": "From Navratri to Diwali, the shop never stops. Sweets, snacks and puja items keep selling. Your shelves stay full, and it is your best festival in years. Then, in December, a new board goes up two streets away. It is a store that delivers in ten minutes."
         },
         {
           "when": {
@@ -450,7 +450,7 @@
           "when": {
             "flags": ["udhaar_limit"]
           },
-          "text": "By January, the new store has thousands more items than you, and its delivery is free, for now. Some families now order part of their shopping on its app, and Sundays at your shop are quiet. Your udhaar families still come, though. The app gives no credit."
+          "text": "By January, the new store has thousands more items than you, and its delivery is free, for now. Some families now order part of their shopping on its app, and Sundays at your shop are quiet. Your udhaar families still come, though. You know them, and they pay you on the first Sunday."
         },
         {
           "text": "By January, the new store has thousands more items than you, and its delivery is free, for now. Some families now order part of their shopping on its app, and Sundays at your shop are quiet."
@@ -666,6 +666,18 @@
     {
       "label": "46% of quick-commerce buyers reduced buying from kirana shops (Outlook Business, 2024)",
       "url": "https://www.outlookbusiness.com/news/46-quick-commerce-buyers-reduced-buying-from-kirana-shops"
+    },
+    {
+      "label": "42% of kiranas started using other payment apps: Kirana Club survey (Entrepreneur India, 2024)",
+      "url": "https://india.entrepreneur.com/?p=13516"
+    },
+    {
+      "label": "Rains hit businesses in Hyderabad; traders complain of low numbers (Siasat, 2023)",
+      "url": "https://www.siasat.com/rains-hit-businesses-in-hyderabad-traders-complain-of-low-numbers-2690696/amp/"
+    },
+    {
+      "label": "Monsoon keeps its date with MP (The Week / PTI, 2025)",
+      "url": "https://www.theweek.in/wire-updates/national/2025/06/16/bes9-mp-monsoon-arrival.html"
     }
   ],
   "credits": "A made-up story based on many real kiranas. Asha, her family, her shop and Kesarganj are invented. The sources support the setting of the story, including margins, udhaar, rain, festivals and apps, not the events. Research brief: content/hotseats/kirana-year/research.md."

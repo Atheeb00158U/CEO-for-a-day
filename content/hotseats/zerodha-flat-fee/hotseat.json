@@ -48,7 +48,7 @@
       "year": "2010",
       "title": "How will you charge?",
       "media": "img:zd_d1",
-      "setup": "Big brokers charge a share of every trade. A big order pays them far more than a small one, and most of their income comes from these fees. To survive, you must get people to leave brokers they know for a name they have never heard of.",
+      "setup": "Big brokers charge a share of every trade. A big order pays them far more than a small one. To survive, you must get people to leave brokers they know for a name they have never heard of.",
       "question": "How do you price your service?",
       "advisor": "A new kind of price may be hard to explain, and the big brokers could copy it. A small discount on the usual price is easier to sell.",
       "options": [
@@ -128,7 +128,7 @@
           "when": {
             "flags": ["flat"]
           },
-          "text": "By 2012 you have more than 30,000 clients without ever paying for an ad, because happy clients tell their friends about the low price. Your team has grown to about 85 people, and you are now building your own trading software."
+          "text": "It is 2012, and you have never paid for an ad. Happy clients tell their friends about the low price, and you are now building your own trading software. Within just over three years of opening, you will have more than 30,000 clients and a team of about 85."
         },
         {
           "when": {
@@ -164,7 +164,7 @@
           },
           "next": "d3",
           "media": "img:zd_d2_share",
-          "outcome": "Soon more than 4,000 clients are bringing in others through your partner scheme, and each earns a part of your fee. Friends trust friends more than ads. The rules stay unclear, though, and in 2018 you stop sharing fees because no rule clearly allows it.",
+          "outcome": "Within about a year, more than 4,000 clients are bringing in others through your partner scheme, and each earns a part of your fee. Friends trust friends more than ads. The rules stay unclear, though, and in 2018 you stop sharing fees because no rule clearly allows it.",
           "why": "People join what their friends and colleagues already use. Paying over time rewarded clients who brought people who stayed. Remember: people follow what others like them do.",
           "takeaway": "In 2012 you let happy clients bring friends. People trust a friend's advice more than any ad.",
           "traits": {
@@ -229,10 +229,10 @@
           "when": {
             "flags": ["share"]
           },
-          "text": "It is 2014, and friends keep bringing friends. But most Indians still don't invest in shares at all; one count puts active investors at about a million. Big brokers have famous names and run TV ads. To keep growing, you need to reach people who have never invested before."
+          "text": "It is 2014, and friends keep bringing friends. But most Indians still don't invest in shares at all; one count puts active investors at about a million. Big brokers have famous names. To keep growing, you need to reach people who have never invested before."
         },
         {
-          "text": "It is 2014, and your growth has slowed. Most Indians still don't invest in shares at all; one count puts active investors at about a million. Big brokers have famous names and run TV ads. To keep growing, you need to reach people who have never invested before."
+          "text": "It is 2014, and your growth has slowed. Most Indians still don't invest in shares at all; one count puts active investors at about a million. Big brokers have famous names. To keep growing, you need to reach people who have never invested before."
         }
       ],
       "question": "How do you reach new people?",
@@ -314,7 +314,7 @@
           "when": {
             "flags": ["flat", "lessons"]
           },
-          "text": "By 2015 your clients are doubling about every year, and you make a healthy profit. Elsewhere in India, startups are raising huge sums from investors and spending them on ads and discounts. Investors are starting to notice a fast-growing broker that already makes money."
+          "text": "By 2015 your clients are doubling about every year, and you make a healthy profit. Elsewhere in India, startups are raising huge sums from investors and spending them on ads and discounts. A fast-growing broker that already makes money could easily raise outside money."
         },
         {
           "when": {
@@ -446,7 +446,7 @@
           "when": {
             "flags": ["flat", "share", "lessons", "bootstrap"]
           },
-          "text": "In January 2019 Zerodha becomes India's biggest broker by active clients, ahead of giants with famous names and big ad budgets. It has still never taken investor money. Over the years, the old brokers cut their own prices to keep up."
+          "text": "By early 2019 Zerodha is India's biggest broker by active clients, ahead of giants with famous names. It has still never taken money from venture investors. Over the years, the old brokers cut some of their prices to keep up."
         },
         {
           "text": "You took a different road in some places, but your low price and happy clients carried you forward. Zerodha grows into one of India's biggest brokers."
@@ -503,7 +503,7 @@
     }
   },
   "realEnding": "legend",
-  "realHistory": "Zerodha went live on 15 August 2010 with a price of never more than ₹20 an order. It grew without paid ads, through word of mouth and a scheme that shared fees with clients who brought friends, and from November 2014 through free Varsity lessons. It made a profit early and never took investor money. In December 2015 it stopped charging for buying shares to hold. In January 2019 it became India's biggest broker by active clients. Trading is risky: SEBI found that 93% of individual futures and options traders lost money between 2021–22 and 2023–24.",
+  "realHistory": "Zerodha went live on 15 August 2010 with a price of never more than ₹20 an order. It grew without paid ads, through word of mouth and a scheme that shared fees with clients who brought friends, and from November 2014 through free Varsity lessons. It made a profit in its second year and never took venture capital. In December 2015 it stopped charging for buying shares to hold. By early 2019 it was India's biggest broker by active clients. Trading is risky: SEBI found that 93% of individual futures and options traders lost money between 2021–22 and 2023–24.",
   "sources": [
     {
       "label": "Zerodha (Wikipedia)",

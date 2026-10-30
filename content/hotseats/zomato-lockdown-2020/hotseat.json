@@ -89,7 +89,7 @@
         },
         {
           "id": "voluntary",
-          "label": "Ask staff to take pay cuts by choice, and set up funds for riders and daily wage workers.",
+          "label": "Ask staff to take pay cuts by choice, and give to funds for riders and daily wage workers.",
           "grade": "great",
           "real": true,
           "effect": {
@@ -99,7 +99,7 @@
           },
           "next": "d2",
           "media": "img:zl_d1_voluntary",
-          "outcome": "On the first day of the lockdown, you announce that hundreds of staff have taken deep pay cuts by choice, to help fund riders' lost earnings and meals for daily wage workers. Orders keep falling, though, and in the last week of March sales drop by four-fifths.",
+          "outcome": "On the first day of the lockdown, you announce that hundreds of staff have taken deep pay cuts by choice. You also give to a fund for riders' lost earnings and to a drive that feeds daily wage workers. Orders keep falling, though, and in the last week of March sales drop by four-fifths.",
           "why": "A quick first step beats a perfect plan later. You saved cash fast and helped the people hit hardest, while you learned how deep the fall would go. Remember: in a crisis, decide fast.",
           "takeaway": "In March 2020 you moved in days, with steps you could build on.",
           "traits": {
@@ -121,16 +121,16 @@
           "when": {
             "flags": ["wait"]
           },
-          "text": "It is early April, and cash is draining fast. Food orders are down 70%, to under a million a day, and not even one restaurant in five is open. Your riders have little to deliver, but families stuck at home still need groceries."
+          "text": "It is early April, and cash is draining fast. Food orders are down 70%, to under a million a day, and no more than one restaurant in five is open. Your riders have little to deliver, but families stuck at home still need groceries."
         },
         {
           "when": {
             "flags": ["earlycut"]
           },
-          "text": "It is early April. Your team is smaller after the March cuts. Food orders are down 70%, to under a million a day, and not even one restaurant in five is open. Your riders have little to deliver, but families stuck at home still need groceries."
+          "text": "It is early April. Your team is smaller after the March cuts. Food orders are down 70%, to under a million a day, and no more than one restaurant in five is open. Your riders have little to deliver, but families stuck at home still need groceries."
         },
         {
-          "text": "It is early April. Food orders are down 70%, to under a million a day, and not even one restaurant in five is open. Your riders have little to deliver, but families stuck at home still need groceries."
+          "text": "It is early April. Food orders are down 70%, to under a million a day, and no more than one restaurant in five is open. Your riders have little to deliver, but families stuck at home still need groceries."
         }
       ],
       "question": "What do your riders do now?",
@@ -159,7 +159,7 @@
         },
         {
           "id": "grocery_test",
-          "label": "Start grocery delivery with partner stores in many cities, knowing you may stop soon.",
+          "label": "Start grocery delivery with partner stores in many cities, in a way you can stop fast.",
           "grade": "great",
           "real": true,
           "effect": {
@@ -170,7 +170,7 @@
           "next": "d3",
           "media": "img:zl_d2_grocery",
           "outcome": "By 8 April you deliver groceries in more than 80 cities, working with partners such as Grofers. By mid-May, grocery delivery is in 185 cities.",
-          "why": "Partners held the stock, so the test was quick to start and cheap to stop if it failed. Remember: test small before you bet big.",
+          "why": "Working with partners made the test quick to start and cheap to stop if it failed. Remember: test small before you bet big.",
           "takeaway": "In April 2020 you ran a fast test you could stop at any time.",
           "traits": {
             "horizon": 1,
@@ -213,16 +213,16 @@
           "when": {
             "flags": ["earlycut"]
           },
-          "text": "It is mid-May, seven weeks into the lockdown. Orders are still under a million a day, down from nearly three million. Your March cuts were made in a rush, but now you know more. You expect the restaurant business to shrink by a quarter or more within a year."
+          "text": "It is mid-May, seven weeks into the lockdown. Orders are still under a million a day, down from nearly three million. Your March cuts were made in a rush, but now you know more. You expect a quarter or more of restaurants to close within a year."
         },
         {
           "when": {
             "flags": ["wait"]
           },
-          "text": "It is mid-May, seven weeks into the lockdown, and you haven't cut anything yet. Orders are still under a million a day, down from nearly three million. You expect the restaurant business to shrink by a quarter or more within a year."
+          "text": "It is mid-May, seven weeks into the lockdown, and you haven't cut anything yet. Orders are still under a million a day, down from nearly three million. You expect a quarter or more of restaurants to close within a year."
         },
         {
-          "text": "It is mid-May, seven weeks into the lockdown. Orders are still under a million a day, down from nearly three million. You expect the restaurant business to shrink by a quarter or more within a year. You still have cash, but you want to keep it in case things get worse."
+          "text": "It is mid-May, seven weeks into the lockdown. Orders are still under a million a day, down from nearly three million. You expect a quarter or more of restaurants to close within a year. You still have plenty of cash, but things could get worse."
         }
       ],
       "question": "How do you bring costs down?",
@@ -457,10 +457,10 @@
               "when": {
                 "flags": ["voluntary"]
               },
-              "text": "From June, everyone takes a temporary cut: small for lower salaries, up to half for the highest. Anyone who already gave up that much is not cut again, and each cut earns double in staff shares. You hope it will last about six months."
+              "text": "From June, everyone takes a temporary cut: small for lower salaries, up to half for the highest. Anyone who already gave up that much is not cut again, and each cut earns double in staff shares. You say you expect it to end in about six months."
             },
             {
-              "text": "From June, the cut is reshaped: small for lower salaries, up to half for the highest. Each cut earns double in staff shares, and you hope it will last about six months."
+              "text": "From June, the cut is reshaped: small for lower salaries, up to half for the highest. Each cut earns double in staff shares, and you say you expect it to end in about six months."
             }
           ],
           "why": "Those who earn most carried most of the cut, and the shares gave everyone a stake in the comeback. Remember: when cash is short, protect the lowest pay first.",
@@ -550,7 +550,7 @@
           "when": {
             "flags": ["voluntary", "grocery_test", "deepcut", "kind", "sliding"]
           },
-          "text": "By July, food delivery is back to 60% of normal, and you lose less than a million dollars a month. From July, everyone is back on full pay. A year later, in July 2021, Zomato lists on the stock market. On the first day, its shares close about two-thirds above the issue price."
+          "text": "By July, food delivery is back to 60% of normal, and you lose less than a million dollars a month. All staff are back on full pay. A year later, in July 2021, Zomato lists on the stock market. On the first day, its shares close about two-thirds above the issue price."
         },
         {
           "text": "Orders climb back through the summer. You come out of the lockdown smaller, but your people still trust you, and the ones who stayed are still with you. Within a year, the company is growing again."
@@ -603,7 +603,7 @@
     }
   },
   "realEnding": "legend",
-  "realHistory": "India's lockdown began on 25 March 2020, and in its last week of March Zomato's food sales fell by four-fifths. Hundreds of staff took pay cuts by choice, and the company set up funds for riders and daily wage workers. By 8 April it delivered groceries in more than 80 cities, but pulled back once restaurants reopened in June. On 15 May it let go about one in eight staff, more than 500 people, with half pay for six months, health cover and job help. It cut everyone else's pay on a sliding scale from June. By July food delivery was back to 60% of normal, the monthly cash burn was under a million dollars, and all salaries were restored. In July 2021 Zomato listed on the stock market, and its shares closed the first day about two-thirds above the issue price.",
+  "realHistory": "India's lockdown began on 25 March 2020, and in its last week of March Zomato's food sales fell by four-fifths. Hundreds of staff took pay cuts by choice, and the company gave to funds for riders and daily wage workers. By 8 April it delivered groceries in more than 80 cities, but pulled back once restaurants reopened in June. On 15 May it let go about one in eight staff, more than 500 people, with half pay for six months, health cover and job help. It cut everyone else's pay on a sliding scale from June. By July food delivery was back to 60% of normal, the monthly cash burn was under a million dollars, and all salaries were restored. In July 2021 Zomato listed on the stock market, and its shares closed the first day about two-thirds above the issue price.",
   "sources": [
     {
       "label": "A more focused Zomato (Zomato blog, 15 May 2020)",
@@ -644,6 +644,10 @@
     {
       "label": "Zomato listing live updates (Business Today, 23 Jul 2021)",
       "url": "https://www.businesstoday.in/markets/stocks/story/zomato-listing-live-updates-share-price-ends-at-rs-126-302144-2021-07-23"
+    },
+    {
+      "label": "COVID-19 lockdown in India (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/COVID-19_lockdown_in_India"
     }
   ],
   "credits": "Alternate-history outcomes are informed estimates, not history. Research brief and full source list: content/hotseats/zomato-lockdown-2020/research.md."

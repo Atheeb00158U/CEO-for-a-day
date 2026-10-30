@@ -175,7 +175,7 @@
           "outcome": "The shops stay happy and keep ordering, but what they owe you grows every month. Your books show a profit, yet you do not have enough cash for raw materials. Soon, you cannot make enough powder to fill the orders.",
           "why": "Remember: udhaar is a loan you give. A business can show a profit on paper while its cash box is empty. You were lending to every shop without a limit or due date.",
           "better": "Treat credit like a loan. Set limits and due dates, or ask for cash, even if some shops grumble.",
-          "takeaway": "In the 1970s you let every shop pay late. Udhaar is a loan you give, so manage it like one.",
+          "takeaway": "When shops paid late, you kept giving credit. Udhaar is a loan you give, so manage it like one.",
           "traits": { "horizon": -1, "risk": -1, "disrupt": -1 }
         },
         {
@@ -188,7 +188,7 @@
           "media": "img:nr_d3_pull",
           "outcome": "You pull more than nine in ten packets out of the market while your ads keep playing. For about a month, buyers ask for your powder but cannot find it. Then the shopkeepers come to you, and this time they pay cash upfront.",
           "why": "Remember: udhaar is a loan you give, so manage it like one. Your ads had already built demand. When buyers kept asking for your powder, you had the power to ask for cash first.",
-          "takeaway": "In the 1970s you took back your stock and asked for cash. When buyers want your product, you can set the terms.",
+          "takeaway": "When shops paid late, you took back your stock and asked for cash. When buyers want your product, you can set the terms.",
           "traits": { "horizon": 1, "risk": 1, "disrupt": 1 }
         },
         {
@@ -201,7 +201,7 @@
           "outcome": "The loan keeps raw materials coming, but the shops still pay late. Now you also pay the bank interest every month, so you are lending to the shops with money you borrowed.",
           "why": "Remember: profit on paper can still leave the cash box empty. The loan covered the gap for a while, but it did not fix the late payments. You were paying interest while the shops kept free credit.",
           "better": "Fix the cause first. Make the shops pay cash, or by a fixed date, before you borrow.",
-          "takeaway": "In the 1970s you borrowed to cover the shops' udhaar. A loan can fill a cash gap, but it doesn't close it.",
+          "takeaway": "When shops paid late, you borrowed to cover their udhaar. A loan can fill a cash gap, but it doesn't close it.",
           "traits": { "horizon": 0, "risk": 0, "disrupt": 0 }
         }
       ]
@@ -242,11 +242,11 @@
         }
       ],
       "question": "How do you keep your price the lowest?",
-      "advisor": "Building our own chemical plants would cost more than a thousand crore rupees, far more than we've ever spent. Buying from others costs less now, but their prices affect ours.",
+      "advisor": "Building our own chemical plants would cost more than a thousand crore rupees. Buying from others costs less now, but their prices affect ours.",
       "options": [
         {
           "id": "build",
-          "label": "Build your own chemical plants. It will cost more than you've ever spent, and take years to pay off.",
+          "label": "Build your own chemical plants. It costs a huge sum now and will take years to pay off.",
           "grade": "great",
           "real": true,
           "effect": { "profit": -10, "future": 15, "flags": ["build"] },

@@ -31,7 +31,7 @@
       "type": "scene",
       "year": "2012",
       "media": "img:pb_intro",
-      "text": "You and three partners run a small drinks company. Students love your energy drink, Tzinga. It sells for ₹25 while the market leader charges ₹95. But money is tight, and what you and a few backers have put in must last until you find a real hit.",
+      "text": "You and three partners run a small drinks company. Your energy drink, Tzinga, sells for ₹25 while the market leader charges ₹95. But money is tight, and what you and a few backers have put in must last until you find a real hit.",
       "next": "idea"
     },
     "idea": {
@@ -39,7 +39,7 @@
       "type": "scene",
       "year": "2012",
       "media": "img:pb_idea",
-      "text": "One day, a partner brings home-made aam panna, the raw mango drink, to the office. A guest loves it and looks for it in the shops, but can't find it anywhere. No shop sells aam panna, jaljeera or the other drinks you all grew up with.",
+      "text": "One partner's mother makes aam panna, the raw mango drink, and he often brings it to work. When the team wants more, it looks in the shops, but can't find it anywhere. No shop sells aam panna, jaljeera or the other drinks you all grew up with.",
       "next": "d1"
     },
     "d1": {
@@ -86,7 +86,7 @@
           },
           "next": "d2",
           "media": "img:pb_d1_panna",
-          "outcome": "You start working on drinks from Indian homes, beginning with aam panna and jaljeera, with no fizz, no preservatives and no added colours. You call the range Paper Boat, after the boats children float in the monsoon rain.",
+          "outcome": "You start working on drinks from Indian homes, like aam panna and jaljeera, with no fizz, no preservatives and no added colours. You call the range Paper Boat, after the boats children float in the monsoon rain.",
           "why": "People already wanted these drinks but could not buy them anywhere. That gap was your chance. Remember: sell what people already struggle to find.",
           "takeaway": "In 2012 you bottled drinks people loved but couldn't buy. The best ideas fill a gap people already feel.",
           "traits": {
@@ -156,7 +156,7 @@
           },
           "next": "d3",
           "media": "img:pb_d2_pouch",
-          "outcome": "You choose a 250 ml stand-up pouch made to look like paper. It costs less than a carton and is lighter to carry, so you keep more from every sale. On the shelf, it also looks like nothing else.",
+          "outcome": "You choose a 250 ml stand-up pouch made to look like paper. It costs less than a carton, so you keep more from every sale. On the shelf, it also looks like nothing else.",
           "why": "You pay for the pack on every drink you sell. A cheaper, lighter pack left you more money from each sale, and it stood out too. Remember: know what you make on every single item.",
           "takeaway": "In 2013 you chose a pack that cost less and stood out. Small savings on every item add up.",
           "traits": {
@@ -275,7 +275,7 @@
           },
           "next": "d4",
           "media": "img:pb_d3_story",
-          "outcome": "Each pack tells a tiny childhood story, like climbing mango trees, and hides a small message at the bottom for anyone who looks. Other packs carry playful lines. Your drink now has a voice of its own.",
+          "outcome": "Each pack tells a tiny childhood story, like climbing mango trees, and hides a small joke at the bottom for anyone who looks. Your drink now has a voice of its own.",
           "why": "The pack was your only ad, so you made it worth reading. A warm voice helped people feel they knew you. Remember: give your brand a voice people enjoy.",
           "takeaway": "In 2013 you gave every pack a story. A voice people enjoy turns a pack into an ad.",
           "traits": {
@@ -514,7 +514,7 @@
           "when": {
             "flags": ["panna", "pouch", "story", "try", "memories"]
           },
-          "text": "By 2015 Paper Boat makes up about 90% of your company's sales, and yearly sales reach about ₹25 crore. A drink that began as one partner's home-made aam panna is now sold in shops, on flights and in office canteens across India's big cities."
+          "text": "By 2015 Paper Boat makes up about 90% of your company's sales, and yearly sales reach about ₹24 crore. A drink that began as one partner's home-made aam panna is now sold in shops, on flights and in office canteens across India's big cities."
         },
         {
           "text": "You took a few detours, but you found a drink people missed and gave it a voice they loved. Paper Boat grows into one of India's best-loved new drink brands."
@@ -561,7 +561,7 @@
     }
   },
   "realEnding": "legend",
-  "realHistory": "Hector Beverages sold a cheap energy drink, Tzinga. Its founders saw that old Indian drinks like aam panna were not sold in any shop. They quietly tested Paper Boat in 500 stores in February 2013, with no ads, and launched it in Delhi and Bengaluru that August in paper-look pouches that cost less than cartons. Each pack told a small childhood story, and the brand's line was 'Drinks and Memories'. For about two years it ran no TV or print ads, and people found it in shops, on flights and in office canteens. By 2015 Paper Boat was about 90% of the company's sales, yearly sales were about ₹25 crore, and investors put in about ₹180 crore.",
+  "realHistory": "Hector Beverages sold a cheap energy drink, Tzinga. Its founders saw that old Indian drinks like aam panna were not sold in any shop. They quietly tested Paper Boat in 500 stores in February 2013, with no ads, and launched it in Delhi and Bengaluru that August in paper-look pouches that cost less than cartons. Each pack told a small childhood story, and the brand's line was 'Drinks and Memories'. For about two years it ran no TV or print ads, and people found it in shops, on flights and in office canteens. By 2015 Paper Boat was about 90% of the company's sales, yearly sales were about ₹24 crore, and investors put in about ₹180 crore.",
   "sources": [
     {
       "label": "Bottled nostalgia (Outlook Business, June 2015)",
@@ -598,6 +598,10 @@
     {
       "label": "How Paper Boat rowed against the tide (The Hindu BusinessLine via Third Eyesight, 2016)",
       "url": "https://www.thirdeyesight.in/?p=3062"
+    },
+    {
+      "label": "Paper Boat: selling nostalgia (Knowledge at Wharton)",
+      "url": "https://knowledge.wharton.upenn.edu/?p=16519"
     }
   ],
   "credits": "Alternate-history outcomes are informed estimates, not history. Research brief and full source list: content/hotseats/paper-boat/research.md."

@@ -2,7 +2,7 @@
   "id": "tata-nano",
   "company": "Tata Motors",
   "title": "The one-lakh car",
-  "hook": "You built a car for families who ride scooters in the rain. Now you have to make them want it.",
+  "hook": "You built a car for families who squeeze onto one scooter. Now you have to make them want it.",
   "role": "You run the Nano project at Tata Motors, 2008 to 2010",
   "years": "2008–2010",
   "cover": "img:tn_cover",
@@ -31,7 +31,7 @@
       "type": "scene",
       "year": "2008",
       "media": "img:tn_intro",
-      "text": "Years ago, your chairman, Ratan Tata, saw a family of four riding one scooter in the rain. Since then, he has wanted to build them a car: safe, dry in any weather and cheap enough to own. That car is now your job.",
+      "text": "Years ago, your chairman, Ratan Tata, kept seeing families of four or five on one scooter, often on slippery roads in the dark. Since then, he has wanted to build them a car: safe and cheap enough to own. That car is now your job.",
       "next": "goal"
     },
     "goal": {
@@ -128,10 +128,10 @@
           "when": {
             "flags": ["cheapest"]
           },
-          "text": "In October 2008, after protests stopped work at the new plant in Singur, West Bengal, Tata moves the Nano plant to Sanand in Gujarat. The sale date slips by months. Then, on 23 March 2009, the world's cheapest car is finally launched in Mumbai."
+          "text": "In October 2008, after protests over the land for its new plant at Singur, West Bengal, Tata pulls out and moves the Nano plant to Sanand in Gujarat. The launch is delayed. Then, on 23 March 2009, the world's cheapest car is finally launched in Mumbai."
         },
         {
-          "text": "In October 2008, after protests stopped work at the new plant in Singur, West Bengal, Tata moves the Nano plant to Sanand in Gujarat. The sale date slips by months. Then, on 23 March 2009, the Nano is finally launched in Mumbai."
+          "text": "In October 2008, after protests over the land for its new plant at Singur, West Bengal, Tata pulls out and moves the Nano plant to Sanand in Gujarat. The launch is delayed. Then, on 23 March 2009, the Nano is finally launched in Mumbai."
         }
       ],
       "next": "d2"
@@ -222,16 +222,16 @@
           "when": {
             "flags": ["cap"]
           },
-          "text": "In June 2010 the Gujarat plant opens, built to make 2.5 lakh cars a year, and your second round of bookings starts to fill. But another problem has been growing: steel and rubber now cost far more than they did in 2008."
+          "text": "In June 2010 the Gujarat plant opens, built to make 2.5 lakh cars a year, and your second round of bookings starts to fill. But another problem has been growing: the cost of materials like steel and rubber has shot up."
         },
         {
           "when": {
             "flags": ["raise"]
           },
-          "text": "In June 2010 the Gujarat plant opens, built to make 2.5 lakh cars a year. The anger over your price rise has faded a little. But another problem has been growing: steel and rubber now cost far more than they did in 2008."
+          "text": "In June 2010 the Gujarat plant opens, built to make 2.5 lakh cars a year. The anger over your price rise has faded a little. But another problem has been growing: the cost of materials like steel and rubber has shot up."
         },
         {
-          "text": "In June 2010 the Gujarat plant opens, built to make 2.5 lakh cars a year, so at last you can start clearing the queue. But another problem has been growing: steel and rubber now cost far more than they did in 2008."
+          "text": "In June 2010 the Gujarat plant opens, built to make 2.5 lakh cars a year, so at last you can start clearing the queue. But another problem has been growing: the cost of materials like steel and rubber has shot up."
         }
       ],
       "next": "d3"
@@ -301,7 +301,7 @@
               "when": {
                 "flags": ["draw"]
               },
-              "text": "In July 2010 the price goes up 3 to 4% for new buyers because steel and rubber cost more, while the first 1 lakh buyers keep the old price, as promised. In November, new bookings go up again, by about ₹9,000. The one-lakh car is gone."
+              "text": "In July 2010 the price goes up 3 to 4% for new buyers because costs have risen sharply, while the first 1 lakh buyers keep the old price, as promised. In November, new bookings go up again, by about ₹9,000. The one-lakh car is gone."
             },
             {
               "text": "You raise the price a little for new bookings, then a little more a few months later, while your first buyers keep what they paid. Some people grumble, but most understand that steel costs more for everyone."
@@ -478,7 +478,7 @@
           "when": {
             "flags": ["family", "cap"]
           },
-          "text": "Families who once rode scooters in the rain now drive their Nanos to weddings and work. The Gujarat plant runs close to full, and across India, 'Nano' becomes the word for a family's first car."
+          "text": "Families who once squeezed onto one scooter now drive their Nanos to weddings and work. The Gujarat plant runs close to full, and across India, 'Nano' becomes the word for a family's first car."
         },
         {
           "text": "You made a few wrong turns, but you kept the families you built it for at the centre. The Nano becomes a car people are proud to park outside their homes, and the Gujarat plant stays busy."
@@ -547,7 +547,7 @@
     }
   },
   "realEnding": "collapse",
-  "realHistory": "The Nano was unveiled in New Delhi on 10 January 2008 at ₹1 lakh, and the world called it the cheapest car. After protests stopped work at Singur, its plant moved to Sanand in Gujarat. In April 2009 over 2 lakh people booked it, and a draw picked the first 1 lakh buyers. Prices rose twice in 2010, while the first buyers kept the old price. After a few cars caught fire, sales fell to 509 in November 2010, and Tata gave a free four-year warranty and safety upgrades. Its best year was about 75,000 cars, far below the 2.5 lakh plan. In 2013 Ratan Tata called the 'cheapest car' label a mistake, and production stopped in 2018.",
+  "realHistory": "The Nano was unveiled in New Delhi on 10 January 2008 at ₹1 lakh, and the world called it the cheapest car. After protests over the land for its plant at Singur, West Bengal, Tata moved the plant to Sanand in Gujarat. In April 2009 over 2 lakh people booked it, and a draw picked the first 1 lakh buyers. Prices rose twice in 2010, while the first buyers kept the old price. After a few cars caught fire, sales fell to 509 in November 2010, and Tata gave a free four-year warranty and safety upgrades. Its best year was about 75,000 cars, far below the 2.5 lakh plan. In 2013 Ratan Tata called the 'cheapest car' label a mistake, and production stopped in 2018.",
   "sources": [
     {
       "label": "Tata Nano (Wikipedia)",
@@ -592,6 +592,18 @@
     {
       "label": "Singur Tata Nano controversy (Wikipedia)",
       "url": "https://en.wikipedia.org/wiki/Singur_Tata_Nano_controversy"
+    },
+    {
+      "label": "Safety first: Ratan Tata reveals origins of the Nano (Cornell Chronicle, 2011)",
+      "url": "https://www.news.cornell.edu/stories/2011/03/safety-first-ratan-tata-reveals-origins-nano"
+    },
+    {
+      "label": "Tata Nano: why Ratan Tata's dream was a half success (Outlook Business)",
+      "url": "https://www.outlookbusiness.com/amp/story/corporate/tata-nano-why-ratan-tatas-dream-of-affordable-car-for-masses-was-a-half-success"
+    },
+    {
+      "label": "Tata admits mistakes with Nano (IndustryWeek)",
+      "url": "https://www.industryweek.com/leadership/companies-executives/article/21946293/tata-admits-mistakes-with-nano"
     }
   ],
   "credits": "Alternate-history outcomes are informed estimates, not history. Research brief and full source list: content/hotseats/tata-nano/research.md."

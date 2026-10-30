@@ -31,7 +31,7 @@
       "type": "scene",
       "year": "2016",
       "media": "img:sd_intro",
-      "text": "It is February 2016, and you run Snapdeal, one of India's biggest shopping websites. Investors have just valued your company at $6.5 billion. But you spend far more than you earn: last year you lost about ₹3,300 crore on revenue of about ₹1,450 crore.",
+      "text": "It is February 2016, and you run Snapdeal, one of India's biggest shopping websites. Investors have just valued your company at $6.5 billion. But you spend far more than you earn: in the year to March 2016, you lose about ₹3,300 crore on revenue of about ₹1,450 crore.",
       "next": "goal"
     },
     "goal": {
@@ -48,7 +48,7 @@
       "year": "2016",
       "title": "Discounts that lose money",
       "media": "img:sd_d1",
-      "setup": "Big discounts and ads bring in buyers, but you lose money on many orders. Your staff bill has also more than tripled in a year. Every month you match your rivals' discounts, more cash leaves the bank.",
+      "setup": "Big discounts and ads bring in buyers, but they burn a lot of cash. Your staff bill has also more than tripled in a year. Every month you match your rivals' discounts, more cash leaves the bank.",
       "question": "What do you do about the discounts?",
       "advisor": "Shoppers here follow the lowest price. If we pull back, everyone will see our sales fall. If we keep going, our cash falls instead.",
       "options": [
@@ -153,7 +153,7 @@
           "when": {
             "flags": ["cut_discounts"]
           },
-          "text": "It is February 2017. News reports say you have $210 to $240 million left, enough for eight to ten months. Your sales reports look better than your bank balance. In late 2015 you had to write off ₹500 crore that others owed you but never paid."
+          "text": "It is February 2017. News reports say you have about $210 to $240 million left, enough for eight to ten months. Your sales reports look better than your bank balance. In late 2015 you had to write off ₹500 crore that others owed you but never paid."
         },
         {
           "text": "It is February 2017. The heavy spending of 2016 has eaten through your cash, and it may last only a few more months. Your sales reports look better than your bank balance. In late 2015 you had to write off ₹500 crore that others owed you but never paid."
@@ -249,10 +249,10 @@
           "when": {
             "flags": ["spend"]
           },
-          "text": "Your push for growth has failed and the cash is now very low, so you must cut fast. You have already trimmed delivery, hosting and office costs. That leaves the big ones: a large staff, the payments app FreeCharge, and your own delivery company."
+          "text": "Your push for growth has failed and the cash is now very low, so you must cut fast. You have already trimmed delivery, data hosting and other fixed costs. That leaves the big ones: a large staff, the payments app FreeCharge, and your own delivery company."
         },
         {
-          "text": "Your spending must fall fast. You have already cut delivery, hosting and office costs. That leaves the big costs: a large staff, the payments app FreeCharge, which you bought for about ₹2,400 crore, and your own delivery company."
+          "text": "Your spending must fall fast. You have already cut delivery, data hosting and other fixed costs. That leaves the big costs: a large staff, the payments app FreeCharge, which you bought for about ₹2,400 crore, and your own delivery company."
         }
       ],
       "question": "How do you cut?",
@@ -290,7 +290,7 @@
           },
           "next": "s_may",
           "media": "img:sd_d3_rounds",
-          "outcome": "About 600 people lose their jobs across Snapdeal, FreeCharge and the delivery company, and both founders give up their salaries. FreeCharge and the delivery arm stay for now. In April the founders hold at least five town halls to steady the staff, but some senior people leave.",
+          "outcome": "About 600 people lose their jobs across Snapdeal, FreeCharge and the delivery company, and both founders give up their salaries. FreeCharge and the delivery arm stay for now. By early April the founders have held at least five town halls to steady the staff. Several senior people have already left.",
           "why": "Cutting was right, but doing it in rounds kept everyone waiting for the next one. Remember: one deep cut is kinder than many small ones. Snapdeal did have to cut again: after July, reports said up to about 1,000 of its last 1,200 staff could go.",
           "better": "Decide the company's new size once. Sell what isn't core and make one deep cut, with fair pay for those who leave.",
           "takeaway": "In 2017 you cut in rounds. Each new round brings fresh fear, so one clear, deep cut is kinder.",

@@ -331,7 +331,7 @@
           "text": "It is 2005. Your sales team has grown to thousands of young people, paid mostly by commission. But in many towns, your name now means a badly fitted machine, so doors close faster than before."
         },
         {
-          "text": "It is 2005. Your sales team has grown to about 5,300 people, most in their mid-twenties. Each person gets three weeks of training: how to dress, how to show the machine, and how to close a sale. Most of their pay is commission, and after six months or 60 sales, they earn a motorbike."
+          "text": "It is 2005. Your sales team has grown to about 5,300 people, 26 years old on average. Each person gets three weeks of training: how to dress, how to show the machine, and how to close a sale. Most of their pay is commission, and after six months or 60 sales, they earn a motorbike."
         }
       ],
       "next": "d4"
@@ -347,10 +347,10 @@
           "when": {
             "flags": ["compare"]
           },
-          "text": "It is 2012. Your share of purifier sales has slipped from three in four to about six in ten. Rivals sell cheaper machines in shops. More families now live in gated buildings, where guards stop your salespeople at the gate. About 7,500 of your people still knock on doors."
+          "text": "It is 2012. Your share of purifier sales has slipped from three in four to about six in ten. Rivals sell their purifiers in shops. More families now live in gated buildings, where knocking on doors works less well. About 7,500 of your people still knock on doors."
         },
         {
-          "text": "It is 2012. Rivals sell cheaper machines in shops, and your share of purifier sales is slipping. More families now live in gated buildings, where guards stop your salespeople at the gate. Your large door-to-door team costs more every year."
+          "text": "It is 2012. Rivals sell their purifiers in shops, and your share of purifier sales is slipping. More families now live in gated buildings, where knocking on doors works less well. Your large door-to-door team costs more every year."
         }
       ],
       "question": "How do you sell from now on?",
@@ -463,7 +463,7 @@
           "when": {
             "flags": ["homes", "compare", "service", "online"]
           },
-          "text": "For about 25 years, your salespeople built a name India trusted for clean water. Then cheaper rivals in shops took ground. New owners since 2021 also sell through shops and online, and by 2025 sales at the door are about a quarter of the total."
+          "text": "For about 25 years, your salespeople built a name India trusted for clean water. Then rivals took ground, and they were easier to find in shops. New owners since 2022 also sell through shops and online, and by 2025 sales at the door are about a quarter of the total."
         },
         {
           "when": {
@@ -503,7 +503,7 @@
     }
   },
   "realEnding": "survivor",
-  "realHistory": "Eureka Forbes began in 1982 as a joint company of the Tata group's Forbes & Company and Sweden's Electrolux. It sold its Euroclean vacuum cleaners in homes, not shops, and in the 1980s added Aquaguard, India's first water purifier. From one Bombay office with 20 salespeople in 1987, its door-to-door team grew to more than 8,000 by 2014. It talked many families out of boiling water, and Aquaguard held three in four purifier sales in 2004–05. A company plumber fitted each machine, technicians came back to service it, and service became a big, steady income. Then gated buildings, cheaper rivals and shops ate into its lead: its share fell to about six in ten by 2012. Under new owners since 2021, it sells through shops and online too; by 2025 direct sales were about a quarter of the total.",
+  "realHistory": "Eureka Forbes began in 1982 as a joint company of the Tata group's Forbes & Company and Sweden's Electrolux. It sold its Euroclean vacuum cleaners in homes, not shops, and in the 1980s added Aquaguard, India's first water purifier. From one Bombay office with 20 salespeople in 1987, its door-to-door team grew to more than 8,000 by 2014. It talked many families out of boiling water, and Aquaguard held three in four purifier sales in 2004–05. A company plumber fitted each machine, technicians came back to service it, and service became a big, steady income. Then rivals came in, and gated buildings made knocking on doors harder: its share fell to about six in ten by 2012. Under new owners since 2022, it sells through shops and online too; by 2025 direct sales were about a quarter of the total.",
   "sources": [
     {
       "label": "Eureka Forbes (Wikipedia)",
@@ -528,6 +528,10 @@
     {
       "label": "Eureka Forbes: Har ghar 'saaf' rahta hai (Prabhat's Newsletter, 2026)",
       "url": "https://prabhat.substack.com/p/eureka-forbes"
+    },
+    {
+      "label": "Eureka Forbes: Purifiers to profit (Investing Stoics, 2024)",
+      "url": "https://www.investingstoics.com/post/eureka-forbes-purifiers-to-profit"
     }
   ],
   "credits": "Alternate-history outcomes are informed estimates, not history. The selling-cost sum in 2012 uses made-up round numbers. Research brief and full source list: content/hotseats/eureka-forbes-door-to-door/research.md."
