@@ -2,6 +2,9 @@
 // pure rules the phone uses for guests (src/lib/game-state.ts). Nothing the phone sends is trusted beyond ids:
 // scores come from replaying the picks (src/lib/play.ts), prices and rewards from ECONOMY, time from the server.
 import {
+  applyLesson,
+  applyReview,
+  applyTestOut,
   applyBooster,
   applyBuy,
   applyClaim,
@@ -13,6 +16,8 @@ import {
   rollover,
   today,
   weekId,
+  withDefaults,
+  type CardReview,
   type DailyNote,
   type Finish,
   type GameState,
@@ -20,7 +25,10 @@ import {
 } from "../game-state.ts";
 import type { DailyCall, DailyOption, HotSeat } from "../hotseat-types";
 import { leagueRows } from "../league.ts";
+import type { Lesson } from "../course-types";
+import { lessonPlay, type Answer, type LessonResult } from "../lesson-play.ts";
 import { play, PlayError, type Pick } from "../play.ts";
+import type { CardState } from "../srs.ts";
 import type { Db, LeagueRow, Profile, SavedState } from "./db.ts";
 
 /** A request the rules refuse: not enough coins, nothing to claim, a run that can't be finished. */
@@ -123,8 +131,7 @@ export async function load(db: Db, userId: string, now = new Date()): Promise<Sy
   const [runs, daily, league] = await Promise.all([db.listRuns(userId, 50), db.listDaily(userId, 60), leagueTier(db, userId, now)]);
   const state = rollover(
     {
-      ...fresh(),
-      ...p.state,
+      ...withDefaults(p.state),
       runs: runs.map(noteOf),
       dailyLog: daily.map((d) => d.note),
       league: { tier: league.tier, weekId: weekId(now), weeklyXp: league.row?.weeklyXp ?? 0 },
@@ -239,6 +246,89 @@ export async function lockDaily(
   return { ...(await load(db, userId, now)), gained: after.daily.xp };
 }
 
+/**
+ * Finish a lesson, or a module's test-out quiz (`testOut` lists the module's lessons). The server replays the answers,
+ * so accuracy can't be forged, and `playKey` makes a retry or double tap pay once.
+ */
+export async function finishLesson(
+  db: Db,
+  userId: string,
+  lesson: Lesson,
+  req: { playKey: string; answers: Answer[]; testOut?: string[] },
+  now = new Date(),
+): Promise<Synced & { result: LessonResult; gained: number }> {
+  if (!/^[A-Za-z0-9_-]{8,64}$/.test(req.playKey)) throw new GameError("bad play key");
+  const result = lessonPlay(lesson, req.answers, { retry: !req.testOut }).result;
+  if (!result) throw new PlayError("this lesson isn't finished");
+  const finish = { lessonId: lesson.id, accuracy: result.accuracy, cardIds: result.cardIds, mistakes: result.mistakes };
+  const change = (s: GameState) =>
+    req.testOut
+      ? { state: applyTestOut(s, { lessonIds: req.testOut, accuracy: result.accuracy, cardIds: result.cardIds }, now), xp: 0 }
+      : applyLesson(s, finish, now);
+  const before = await load(db, userId, now);
+  const { xp } = change(before.state);
+  // The play row goes in first: its key is what makes a retry a no-op.
+  const fresh = await db.insertLessonPlay({
+    userId,
+    playKey: req.playKey,
+    lessonId: lesson.id,
+    answers: req.answers,
+    accuracy: result.accuracy,
+    xp,
+  });
+  if (!fresh) return { ...before, result, gained: 0 };
+  let gained = 0;
+  const synced = await update(
+    db,
+    userId,
+    (s) => {
+      const r = change(s);
+      gained = r.xp;
+      return r.state;
+    },
+    now,
+  );
+  if (gained) await db.addLeagueXp(weekId(now), userId, synced.state.league.tier, gained);
+  return { ...(await load(db, userId, now)), result, gained };
+}
+
+/**
+ * Save a flashcard session in one write. `answers` holds each card's right option (from the content), so the phone
+ * can't mark itself right; applyReview skips cards already reviewed today, so sending the same session twice pays once.
+ */
+export async function reviewCards(
+  db: Db,
+  userId: string,
+  reviews: CardReview[],
+  answers: Record<string, number>,
+  now = new Date(),
+): Promise<Synced & { gained: number; counted: number }> {
+  let gained = 0;
+  let counted = 0;
+  const synced = await update(
+    db,
+    userId,
+    (s) => {
+      const r = applyReview(s, reviews, answers, now);
+      gained = r.xp;
+      counted = r.counted;
+      return r.state;
+    },
+    now,
+  );
+  if (gained) await db.addLeagueXp(weekId(now), userId, synced.state.league.tier, gained);
+  return { ...(gained ? await load(db, userId, now) : synced), gained, counted };
+}
+
+/** Checks a request body is a list of card answers. */
+export function parseReviews(x: unknown): CardReview[] {
+  if (!Array.isArray(x) || x.length > 50) throw new PlayError("bad reviews");
+  return x.map((r) => {
+    if (!r || typeof r.cardId !== "string" || !Number.isInteger(r.pick) || typeof r.ms !== "number") throw new PlayError("bad review");
+    return { cardId: r.cardId, pick: r.pick, ms: Math.max(0, Math.min(600_000, r.ms)) };
+  });
+}
+
 export const buy = async (db: Db, userId: string, item: string, now = new Date()) => {
   if (!(item in ECONOMY.prices)) throw new GameError("no such item");
   return update(db, userId, (s) => applyBuy(s, item as keyof typeof ECONOMY.prices), now);
@@ -275,7 +365,42 @@ export function updateProfile(db: Db, userId: string, patch: Record<string, unkn
 /* ------------------------------------------------------------------ */
 /* Bringing a guest's progress into a new account.                     */
 /* ------------------------------------------------------------------ */
-export const IMPORT_CAPS = { xp: 2000, coins: 1000, streak: 7, items: 5 };
+export const IMPORT_CAPS = { xp: 2000, coins: 1000, streak: 7, items: 5, lessons: 200 };
+
+const DAY = /^\d{4}-\d{2}-\d{2}$/;
+
+/**
+ * A guest's finished lessons and card schedules, cleaned: only ids the course has, best scores 0–100, cards only
+ * for imported lessons, and sane schedules (due at most 90 days ahead). Exported for tests.
+ */
+export function importCourse(
+  g: Partial<GameState>,
+  known: { lessons: Set<string>; cardLesson: Map<string, string> },
+  now = new Date(),
+): { lessons: GameState["lessons"]; cards: GameState["cards"] } {
+  const lessons: Record<string, number> = {};
+  for (const [k, v] of Object.entries(g.lessons && typeof g.lessons === "object" ? g.lessons : {}).slice(0, IMPORT_CAPS.lessons))
+    if (known.lessons.has(k)) lessons[k] = num(v, 100);
+  const cards: Record<string, CardState> = {};
+  const latest = new Date(now.getTime() + 90 * 864e5).toISOString().slice(0, 10);
+  for (const [id, c] of Object.entries(g.cards && typeof g.cards === "object" ? g.cards : {})) {
+    const lesson = known.cardLesson.get(id);
+    if (!lesson || lessons[lesson] === undefined || !Array.isArray(c) || c.length !== 6) continue;
+    const [due, st, df, reps, lapses, last] = c;
+    if (typeof due !== "string" || !DAY.test(due) || due > latest || typeof last !== "string" || (last && !DAY.test(last))) continue;
+    if (![st, df, reps, lapses].every((x) => typeof x === "number" && Number.isFinite(x))) continue;
+    const r = num(reps, 1000);
+    cards[id] = [
+      due,
+      r ? Math.max(0.01, Math.min(365, st)) : 0,
+      r ? Math.max(1, Math.min(10, df)) : 0,
+      r,
+      Math.min(num(lapses, 1000), r),
+      r ? last : "",
+    ];
+  }
+  return { lessons, cards };
+}
 
 const num = (x: unknown, max: number) => (typeof x === "number" && Number.isFinite(x) ? Math.max(0, Math.min(max, Math.floor(x))) : 0);
 
@@ -283,7 +408,13 @@ const num = (x: unknown, max: number) => (typeof x === "number" && Number.isFini
  * Copy a guest save in, once per account and only into an account with no runs yet. The guest save lives on the
  * phone and could have been edited, so every number is capped, and imported XP never counts toward a league week.
  */
-export async function importGuest(db: Db, userId: string, save: unknown, now = new Date()): Promise<Synced> {
+export async function importGuest(
+  db: Db,
+  userId: string,
+  save: unknown,
+  now = new Date(),
+  known: { lessons: Set<string>; cardLesson: Map<string, string> } = { lessons: new Set(), cardLesson: new Map() },
+): Promise<Synced> {
   const p = await profileOf(db, userId);
   if (p.imported || (await db.countRuns(userId)) > 0 || !save || typeof save !== "object") return load(db, userId, now);
   const g = save as Partial<GameState>;
@@ -299,6 +430,7 @@ export async function importGuest(db: Db, userId: string, save: unknown, now = n
         for (const k of ["horizon", "risk", "disrupt"] as const)
           traits[k] = Math.max(-50, Math.min(50, Math.round(Number(g.traits?.[k]) || 0)));
         const streak = num(g.streak, IMPORT_CAPS.streak);
+        const course = importCourse(g, known, now);
         return {
           ...s,
           name: typeof g.name === "string" ? g.name.trim().slice(0, 20) || s.name : s.name,
@@ -316,6 +448,13 @@ export async function importGuest(db: Db, userId: string, save: unknown, now = n
           traits,
           settings: { ...s.settings, ...(g.settings && typeof g.settings === "object" ? pickSettings(g.settings) : {}) },
           onboarding: g.onboarding?.done ? { ...s.onboarding, done: true } : s.onboarding,
+          lessons: Object.fromEntries(
+            [...new Set([...Object.keys(course.lessons), ...Object.keys(s.lessons)])].map((k) => [
+              k,
+              Math.max(course.lessons[k] ?? 0, s.lessons[k] ?? 0),
+            ]),
+          ),
+          cards: { ...course.cards, ...s.cards },
         };
       },
       now,

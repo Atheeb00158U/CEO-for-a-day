@@ -33,6 +33,14 @@ UI components: use shadcn/ui, restyled to this look. Add gluestack-ui only if we
 ## Writing stories
 Follow `docs/AUTHORING.md` for every Hot Seat and Daily Call: research brief → draft → check → fresh-context fact-check (stamped `factcheck.md`) → media from the archives (`media.md`) → Atheeb's review. A published story needs a `factcheck.md` stamped for its exact file, with no open claims. Missing narration is only a warning (the app falls back to the browser's voice).
 
+## Lessons and flashcards (built, hidden)
+- **Switch:** `courseOn()` in `src/lib/server/content.ts`: on in `npm run dev` and tests, **off in production** until real lessons exist. Off, `/app` gets no outline (Home and Notes look as before) and `/api/lesson`, `/api/cards` answer 404.
+- Content: `content/course/course.json` (units → modules → lesson ids + Hot Seat `gates`) and `content/course/lessons/<id>.json`, checked by `src/lib/course-schema.ts` (must match `course-types.ts`) and `course-check.ts` inside `npm run hotseat:check`. The three `sample-*` lessons are test fixtures (draft), not course copy. Card ids are review-schedule keys: never rename or reuse one.
+- Exercise kinds: explain, choice (with `guess` for "guess first"), gap (word bank), order, sort (two buckets), scenario. Not built yet: slider, match pairs.
+- **No answers on the phone**, like Hot Seats: `/api/lesson` replays the answers (`src/lib/lesson-play.ts`) and returns the verdict plus the next screens; missed exercises come back once at the end. `/api/lesson/finish` pays once per `playKey` (`lesson_plays` table). A module's test-out is the same replay over one exercise per lesson (`testOut: <module id>`), no XP, pass at 80%.
+- Rules (pure, in `game-state.ts`, shared by phone and server): `applyLesson`, `applyTestOut`, `applyReview`, `cardsToday`. Flashcards use FSRS (`ts-fsrs`, `src/lib/srs.ts`) by whole IST days; "Daily 10": at most 10 a session, 20 a day, 5 new. Review XP is capped at 10 a day; lesson replays pay for 5 a day.
+- Old saves: always load through `withDefaults()` (deep merge), on the phone and the server.
+
 ## Daily Call
 - **Suspended (30 Oct 2026, Atheeb):** no new Daily Calls; the focus is modules and Hot Seats. The course map (`docs/CURRICULUM.md`) doesn't rely on them.
 - One decision, about a minute, shown above the Hot Seat on Home. Content is `content/daily/daily.json`; its order is the schedule (day N after `startDay` plays call N). Only append.

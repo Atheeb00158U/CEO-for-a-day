@@ -37,6 +37,16 @@ export interface DailyRow {
   note: DailyNote;
 }
 
+export interface LessonPlayRow {
+  userId: string;
+  playKey: string;
+  /** A lesson id, or `test-<module id>` for a test-out quiz. */
+  lessonId: string;
+  answers: unknown;
+  accuracy: number;
+  xp: number;
+}
+
 export interface LeagueRow {
   weekId: string;
   userId: string;
@@ -62,6 +72,8 @@ export interface Db {
   insertRun(row: RunRow): Promise<boolean>;
   listRuns(userId: string, limit: number): Promise<RunRow[]>;
   countRuns(userId: string, hotSeatId?: string): Promise<number>;
+  /** Returns false if this user already has a lesson play with the same playKey. */
+  insertLessonPlay(row: LessonPlayRow): Promise<boolean>;
   /** Returns false if the user already played a Daily Call that day. */
   insertDaily(row: DailyRow): Promise<boolean>;
   getDaily(userId: string, day: string): Promise<DailyRow | null>;
@@ -89,9 +101,10 @@ export interface Db {
 /* ------------------------------------------------------------------ */
 /* In memory, for tests.                                               */
 /* ------------------------------------------------------------------ */
-export function memoryDb(): Db & { profiles: Map<string, Profile>; runs: RunRow[]; leagues: LeagueRow[] } {
+export function memoryDb(): Db & { profiles: Map<string, Profile>; runs: RunRow[]; lessonPlays: LessonPlayRow[]; leagues: LeagueRow[] } {
   const profiles = new Map<string, Profile>();
   const runs: RunRow[] = [];
+  const lessonPlays: LessonPlayRow[] = [];
   const daily: DailyRow[] = [];
   const leagues: LeagueRow[] = [];
   const pushes = new Map<string, PushRow>();
@@ -100,6 +113,7 @@ export function memoryDb(): Db & { profiles: Map<string, Profile>; runs: RunRow[
   return {
     profiles,
     runs,
+    lessonPlays,
     leagues,
     async getProfile(id) {
       const p = profiles.get(id);
@@ -124,6 +138,11 @@ export function memoryDb(): Db & { profiles: Map<string, Profile>; runs: RunRow[
     },
     async countRuns(id, hotSeatId) {
       return runs.filter((r) => r.userId === id && (!hotSeatId || r.hotSeatId === hotSeatId)).length;
+    },
+    async insertLessonPlay(row) {
+      if (lessonPlays.some((r) => r.userId === row.userId && r.playKey === row.playKey)) return false;
+      lessonPlays.unshift(clone(row));
+      return true;
     },
     async insertDaily(row) {
       if (daily.some((d) => d.userId === row.userId && d.day === row.day)) return false;
@@ -186,7 +205,7 @@ export function memoryDb(): Db & { profiles: Map<string, Profile>; runs: RunRow[
     },
     async deleteUser(id) {
       profiles.delete(id);
-      for (const list of [runs, daily, leagues] as { userId: string }[][])
+      for (const list of [runs, lessonPlays, daily, leagues] as { userId: string }[][])
         for (let i = list.length - 1; i >= 0; i--) if (list[i].userId === id) list.splice(i, 1);
       for (const [k, p] of pushes) if (p.userId === id) pushes.delete(k);
     },
@@ -299,6 +318,19 @@ export function supabaseDb(sb = supabaseAdmin()): Db {
       const { count, error } = await q;
       if (error) throw new Error(error.message);
       return count ?? 0;
+    },
+    async insertLessonPlay(row) {
+      const { error } = await sb.from("lesson_plays").insert({
+        user_id: row.userId,
+        play_key: row.playKey,
+        lesson_id: row.lessonId,
+        answers: row.answers,
+        accuracy: row.accuracy,
+        xp: row.xp,
+      });
+      if (duplicate(error)) return false;
+      if (error) throw new Error(error.message);
+      return true;
     },
     async insertDaily(row) {
       const { error } = await sb.from("daily_plays").insert({

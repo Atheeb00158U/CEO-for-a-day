@@ -2,11 +2,15 @@
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { api, signInWithGoogle, signOut, supabase } from "./auth";
-import type { Synced } from "./content-client";
+import type { LessonTarget, Synced } from "./content-client";
+import type { Answer, LessonResult } from "./lesson-play";
 import type { DailyCall, DailyOption, Grade } from "./hotseat-types";
 import type { Pick as PlayPick, Result } from "./play";
 import { setSfxOn } from "./sfx";
 import {
+  applyLesson,
+  applyReview,
+  applyTestOut,
   applyBooster,
   applyBuy,
   applyClaim,
@@ -17,12 +21,14 @@ import {
   ECONOMY,
   fresh,
   rollover,
+  withDefaults,
+  type CardReview,
   type GameState,
   type Onboarding,
   type RunRecord,
 } from "./game-state";
 
-export { BADGES, ECONOMY, LEAGUES, questsFor, today, type GameState, type RunRecord } from "./game-state";
+export { BADGES, cardsToday, ECONOMY, LEAGUES, questsFor, today, type GameState, type RunRecord } from "./game-state";
 
 /** The guest save. A signed-in player's progress lives on the server, never here. */
 const KEY = "cfad.v1";
@@ -37,6 +43,17 @@ export interface FinishedRun {
   runKey: string;
 }
 
+/** A finished lesson or test-out quiz, as the LessonPlayer hands it over. */
+export interface FinishedLesson {
+  target: LessonTarget;
+  answers: Answer[];
+  result: LessonResult;
+  /** Random per play, so a retry or double tap pays once. */
+  playKey: string;
+  /** A test-out: the module's lesson ids. */
+  testOut?: string[];
+}
+
 interface Ctx {
   s: GameState;
   ready: boolean;
@@ -47,6 +64,10 @@ interface Ctx {
   boosterActive: boolean;
   recordDecision: (grade: Grade) => void;
   finishRun: (run: FinishedRun) => Promise<RunRecord>;
+  /** Save a finished lesson; resolves to the XP it paid. */
+  finishLesson: (l: FinishedLesson) => Promise<number>;
+  /** Save a flashcard session in one go; resolves to the XP it paid. `answers` is each card's right option. */
+  reviewCards: (reviews: CardReview[], answers: Record<string, number>) => Promise<number>;
   buy: (item: keyof typeof ECONOMY.prices) => Promise<boolean>;
   activateBooster: () => Promise<boolean>;
   spendHindsight: () => boolean;
@@ -73,10 +94,10 @@ function readGuest(): GameState | null {
     const raw = localStorage.getItem(KEY);
     if (!raw) return null;
     const saved = JSON.parse(raw);
-    // Merge settings one level down too, so a save from before a setting existed gets its default.
+    // Fill every field an older save lacks, at every depth (withDefaults), so new settings and counters get defaults.
     // Saves from before the welcome screens: anyone who has already played skips them.
     const onboarding = saved.onboarding ?? { done: !!saved.lastActiveDay || !!saved.runs?.length };
-    return { ...fresh(), ...saved, settings: { ...fresh().settings, ...saved.settings }, onboarding };
+    return withDefaults({ ...saved, onboarding });
   } catch {
     return null; // private mode or blocked storage: play without saving
   }
@@ -206,6 +227,37 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
     return record;
   };
 
+  const finishLesson: Ctx["finishLesson"] = async (l) => {
+    if (signedIn) {
+      const x = await api<Synced & { gained: number }>("/api/lesson/finish", {
+        body: { ...l.target, playKey: l.playKey, answers: l.answers },
+      });
+      sync(x);
+      return x.gained;
+    }
+    const r = l.result;
+    const x = rollover(s);
+    if (l.testOut) {
+      setS(applyTestOut(x, { lessonIds: l.testOut, accuracy: r.accuracy, cardIds: r.cardIds }));
+      return 0;
+    }
+    const lessonId = "lessonId" in l.target ? l.target.lessonId : "";
+    const { state, xp } = applyLesson(x, { lessonId, accuracy: r.accuracy, cardIds: r.cardIds, mistakes: r.mistakes });
+    setS(state);
+    return xp;
+  };
+
+  const reviewCards: Ctx["reviewCards"] = async (reviews, answers) => {
+    if (signedIn) {
+      const x = await api<Synced & { gained: number }>("/api/cards/review", { body: { reviews } });
+      sync(x);
+      return x.gained;
+    }
+    const { state, xp } = applyReview(rollover(s), reviews, answers);
+    setS(state);
+    return xp;
+  };
+
   /** A guest's change, applied here; false when the rules refuse it. */
   const local = (next: GameState | null) => {
     if (!next) return false;
@@ -222,6 +274,8 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
       boosterActive,
       recordDecision,
       finishRun,
+      finishLesson,
+      reviewCards,
       buy: async (item) => (signedIn ? send("/api/shop/buy", { item }) : local(applyBuy(s, item))),
       activateBooster: async () => (signedIn ? send("/api/booster") : local(applyBooster(s))),
       // Signed in, Hindsight is charged when the run is finished; this only updates the count shown meanwhile.

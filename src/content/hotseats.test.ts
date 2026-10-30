@@ -3,7 +3,8 @@ import { cpSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } f
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterAll, describe, expect, it } from "vitest";
-import { DAILY_DIR, HOTSEATS_DIR, hotSeatIds } from "@/lib/content-files";
+import { COURSE_DIR, DAILY_DIR, HOTSEATS_DIR, hotSeatIds } from "@/lib/content-files";
+import { checkCourse } from "@/lib/course-check";
 import { checkDailyPool, checkHotSeat, factcheckProblems, mediaCollisions } from "@/lib/hotseat-check";
 import { createHash } from "node:crypto";
 import { today } from "@/lib/game-state";
@@ -18,7 +19,75 @@ describe.each(hotSeatIds())("Hot Seat %s", (id) => {
 });
 
 it("has no media names shared between Hot Seats", () => {
-  expect(mediaCollisions([...hotSeatIds().map((id) => join(HOTSEATS_DIR, id)), DAILY_DIR])).toEqual([]);
+  expect(mediaCollisions([...hotSeatIds().map((id) => join(HOTSEATS_DIR, id)), DAILY_DIR, COURSE_DIR])).toEqual([]);
+});
+
+it("has a valid course", () => {
+  expect(checkCourse(COURSE_DIR, hotSeatIds()).errors).toEqual([]);
+});
+
+describe("the course check catches broken lessons", () => {
+  const tmp = mkdtempSync(join(tmpdir(), "course-"));
+  afterAll(() => rmSync(tmp, { recursive: true, force: true }));
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- fixtures are deliberately broken JSON
+  type Json = any;
+  /** A copy of content/course in <tmp>/<name>, changed by `edit`. Returns the errors. */
+  const fixture = (name: string, edit: (course: Json, lessons: Record<string, Json>) => void) => {
+    const dir = join(tmp, name);
+    cpSync(COURSE_DIR, dir, { recursive: true });
+    const course = JSON.parse(readFileSync(join(dir, "course.json"), "utf8"));
+    const lessons: Record<string, Json> = {};
+    for (const id of ["sample-sales-not-profit", "sample-margin", "sample-fixed-variable"])
+      lessons[id] = JSON.parse(readFileSync(join(dir, "lessons", `${id}.json`), "utf8"));
+    edit(course, lessons);
+    writeFileSync(join(dir, "course.json"), JSON.stringify(course));
+    for (const [id, l] of Object.entries(lessons)) writeFileSync(join(dir, "lessons", `${id}.json`), JSON.stringify(l));
+    return checkCourse(dir, hotSeatIds()).errors.join("\n");
+  };
+
+  it("rejects unknown keys and wrong answers", () => {
+    const errors = fixture("answers", (_, l) => {
+      l["sample-margin"].screens[2].answr = "b";
+      l["sample-fixed-variable"].screens[3].answer = "z";
+    });
+    expect(errors).toMatch(/Unrecognized key: "answr"/);
+    expect(errors).toMatch(/sample-fixed-variable\/slow: answer "z" is not one of its options/);
+  });
+
+  it("checks gaps, scenarios and cards", () => {
+    const errors = fixture("kinds", (_, l) => {
+      l["sample-fixed-variable"].screens[4].answer = ["fixed"];
+      l["sample-sales-not-profit"].screens[6].options[1].better = undefined;
+      l["sample-margin"].cards[1].id = "sample-margin-1";
+    });
+    expect(errors).toMatch(/2 blanks \(___\) but 1 answers/);
+    expect(errors).toMatch(/mini\/b: an ok option needs "better"/);
+    expect(errors).toMatch(/card id "sample-margin-1" is in both/);
+  });
+
+  it("checks the path: missing lessons, unknown gates, a Hot Seat in two modules", () => {
+    const errors = fixture("path", (c) => {
+      c.units[0].modules[1].lessons.push("nowhere");
+      c.units[0].modules[1].gates = ["amul-one-brand", "not-a-hot-seat"];
+    });
+    expect(errors).toMatch(/Hot Seat "amul-one-brand" already closes another module/);
+    expect(errors).toMatch(/gate "not-a-hot-seat" is not a Hot Seat/);
+    expect(errors).not.toMatch(/nowhere/); // a draft unit only warns
+    const published = fixture("published", (c) => {
+      c.units[0].draft = false;
+      c.units[0].modules[1].lessons.push("nowhere");
+    });
+    expect(published).toMatch(/lesson "nowhere" has no lessons\/nowhere.json/);
+  });
+
+  it("needs a hook first and 3 scored exercises", () => {
+    const errors = fixture("shape", (_, l) => {
+      const [, rule, sum, sort] = l["sample-margin"].screens;
+      l["sample-margin"].screens = [sum, rule, sort];
+    });
+    expect(errors).toMatch(/sample-margin: the first screen must be "explain"/);
+    expect(errors).toMatch(/needs at least 3 scored exercises/);
+  });
 });
 
 it("has valid Daily Calls", () => {

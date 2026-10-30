@@ -6,7 +6,7 @@ import { DEMOTE, leagueRows, PROMOTE } from "./league";
 const now = new Date(2026, 9, 27, 12); // Tue 27 Oct 2026, local time
 const base = (patch: Partial<GameState>): GameState => ({
   ...fresh(),
-  quests: { day: "2026-10-27", decisions: 0, great: 0, xp: 0, claimed: [] },
+  quests: { ...fresh().quests, day: "2026-10-27" },
   league: { tier: 2, weekId: weekId(now), weeklyXp: 0 },
   ...patch,
 });
@@ -38,8 +38,23 @@ describe("streaks", () => {
 
 describe("daily quests", () => {
   it("reset on a new day", () => {
-    const s = rollover(base({ quests: { day: "2026-10-26", decisions: 3, great: 2, xp: 60, claimed: ["xp"] } }), now);
-    expect(s.quests).toEqual({ day: "2026-10-27", decisions: 0, great: 0, xp: 0, claimed: [] });
+    const s = rollover(
+      base({
+        quests: { day: "2026-10-26", decisions: 3, great: 2, xp: 60, claimed: ["xp"], lessons: 2, replays: 1, reviews: 9, newCards: 4 },
+      }),
+      now,
+    );
+    expect(s.quests).toEqual({
+      day: "2026-10-27",
+      decisions: 0,
+      great: 0,
+      xp: 0,
+      claimed: [],
+      lessons: 0,
+      replays: 0,
+      reviews: 0,
+      newCards: 0,
+    });
   });
 });
 

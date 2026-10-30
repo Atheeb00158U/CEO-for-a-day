@@ -1,11 +1,12 @@
 // Hot Seat CLI.
 //   npm run hotseat:new -- <id>       scaffold content/hotseats/<id>/ from content/templates/hotseat.json (as a draft)
-//   npm run hotseat:check [-- <id>]   check one Hot Seat, or all of them
+//   npm run hotseat:check [-- <id>]   check one Hot Seat, or all of them (plus the Daily Calls and the course)
 //   npm run hotseat:tree -- <id>      write content/hotseats/<id>/tree.mmd (a Mermaid map of the tree)
 import { execFileSync } from "node:child_process";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import { DAILY_DIR, HOTSEATS_DIR, hotSeatIds, readHotSeat } from "../src/lib/content-files.ts";
+import { COURSE_DIR, DAILY_DIR, HOTSEATS_DIR, hotSeatIds, readHotSeat } from "../src/lib/content-files.ts";
+import { checkCourse } from "../src/lib/course-check.ts";
 import { checkDailyPool, checkHotSeat, mediaCollisions } from "../src/lib/hotseat-check.ts";
 import { today } from "../src/lib/game-state.ts";
 
@@ -33,7 +34,14 @@ function check(ids) {
     for (const w of daily.warnings) console.log(`  warning: ${w}`);
   }
   failed ||= daily.errors.length > 0;
-  const clashes = mediaCollisions([...hotSeatIds().map((x) => join(HOTSEATS_DIR, x)), DAILY_DIR]);
+  const course = checkCourse(COURSE_DIR, hotSeatIds());
+  if (course.lessons || course.errors.length) {
+    console.log(`\n${course.errors.length ? "✗" : "✓"} course (${course.lessons} lessons)`);
+    for (const e of course.errors) console.log(`  error: ${e}`);
+    for (const w of course.warnings) console.log(`  warning: ${w}`);
+  }
+  failed ||= course.errors.length > 0;
+  const clashes = mediaCollisions([...hotSeatIds().map((x) => join(HOTSEATS_DIR, x)), DAILY_DIR, COURSE_DIR]);
   for (const c of clashes) console.log(`error: ${c}`);
   return failed || clashes.length > 0;
 }

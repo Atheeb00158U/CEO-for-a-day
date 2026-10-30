@@ -5,6 +5,7 @@ import { homeOrder } from "@/content/catalog";
 import { useContent } from "@/lib/content-client";
 import type { DailyQuestion } from "@/lib/hotseat-types";
 import { questsFor, today, useGame } from "@/lib/store";
+import { CoursePath } from "./CoursePath";
 import { Bar, Card, Icon, MediaView } from "./ui";
 
 export function HomeTab({
@@ -12,21 +13,29 @@ export function HomeTab({
   onPlay,
   onDaily,
   onShop,
+  onLesson,
+  onTestOut,
+  onPractice,
 }: {
   /** Today's Daily Call, once loaded. */
   daily?: DailyQuestion | null;
   onPlay: (id: string) => void;
   onDaily: () => void;
   onShop: () => void;
+  onLesson: (lessonId: string) => void;
+  onTestOut: (moduleId: string, lessonIds: string[]) => void;
+  onPractice: (title: string, lessonIds: string[]) => void;
 }) {
   const { s, boosterActive, activateBooster } = useGame();
-  const { catalog } = useContent();
+  const { catalog, course } = useContent();
   const order = useMemo(() => homeOrder(catalog, s.seed, s.onboarding.focus), [catalog, s.seed, s.onboarding.focus]);
   const current = order.find((c) => c.available && s.best[c.id] === undefined) ?? order.find((c) => c.available)!;
   const hs = current;
   const playedToday = s.lastActiveDay === today();
   const dailyDone = call && s.daily?.day === today() && s.daily.id === call.id ? s.daily : null;
   const best = s.best[current.id];
+  // With the course on, Hot Seats that gate a module sit on the path; the rest stay in a grid below it.
+  const gated = new Set(course?.units.flatMap((u) => u.modules.flatMap((m) => m.gates)) ?? []);
 
   return (
     <div className="flex flex-col gap-5 pt-2">
@@ -62,25 +71,31 @@ export function HomeTab({
         </button>
       )}
 
+      {course && (
+        <CoursePath outline={course} catalog={catalog} onLesson={onLesson} onTestOut={onTestOut} onPractice={onPractice} onPlay={onPlay} />
+      )}
+
       {/* Current Hot Seat */}
-      <section className="-mx-4">
-        {hs.cover && <MediaView media={hs.cover} wavy className="aspect-[16/9] w-full" />}
-        <div className="px-4 pt-4 text-center">
-          <p className="text-[13px] font-black uppercase tracking-[.14em] text-brand">
-            Hot Seat · {hs.company} · {hs.years}
-          </p>
-          <h2 className="mt-1 text-[28px] font-black leading-tight text-balance">{hs.title}</h2>
-          <p className="mt-1 text-[16px] font-bold text-muted">{hs.hook}</p>
-          <p className="mt-2 text-[14px] font-bold text-muted">
-            {hs.calls} big calls · {hs.minutes} min · {best !== undefined ? `Your best: ${best}` : "Narrated"}
-          </p>
-          <div className="mx-auto mt-4 max-w-[360px]">
-            <button type="button" className="btn3d green" onClick={() => onPlay(hs.id)}>
-              {best !== undefined ? "Play again" : "Take the hot seat"}
-            </button>
+      {!course && (
+        <section className="-mx-4">
+          {hs.cover && <MediaView media={hs.cover} wavy className="aspect-[16/9] w-full" />}
+          <div className="px-4 pt-4 text-center">
+            <p className="text-[13px] font-black uppercase tracking-[.14em] text-brand">
+              Hot Seat · {hs.company} · {hs.years}
+            </p>
+            <h2 className="mt-1 text-[28px] font-black leading-tight text-balance">{hs.title}</h2>
+            <p className="mt-1 text-[16px] font-bold text-muted">{hs.hook}</p>
+            <p className="mt-2 text-[14px] font-bold text-muted">
+              {hs.calls} big calls · {hs.minutes} min · {best !== undefined ? `Your best: ${best}` : "Narrated"}
+            </p>
+            <div className="mx-auto mt-4 max-w-[360px]">
+              <button type="button" className="btn3d green" onClick={() => onPlay(hs.id)}>
+                {best !== undefined ? "Play again" : "Take the hot seat"}
+              </button>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Booster */}
       {!boosterActive && s.boosters > 0 && (
@@ -100,49 +115,57 @@ export function HomeTab({
 
       {/* Path */}
       <section>
-        <h3 className="mb-3 text-[13px] font-black uppercase tracking-[.14em] text-muted">Your hot seats</h3>
+        <h3 className="mb-3 text-[13px] font-black uppercase tracking-[.14em] text-muted">
+          {course ? "More hot seats" : "Your hot seats"}
+        </h3>
         <div className="grid grid-cols-3 gap-x-2 gap-y-5">
-          {order.map((c) => {
-            const done = s.best[c.id] !== undefined;
-            const isCurrent = c.id === current.id;
-            return (
-              <button
-                key={c.id}
-                type="button"
-                disabled={!c.available}
-                onClick={() => c.available && onPlay(c.id)}
-                className="flex flex-col items-center gap-2 text-center disabled:cursor-default"
-              >
-                <span
-                  className={`node-ring relative grid size-[84px] place-items-center rounded-full ${done ? "bg-[#2a1f0d] text-brand" : isCurrent ? "bg-brand text-[#1a1206]" : "bg-surface-2 text-[#4a5863]"}`}
+          {order
+            .filter((c) => !gated.has(c.id))
+            .map((c) => {
+              const done = s.best[c.id] !== undefined;
+              const isCurrent = !course && c.id === current.id;
+              return (
+                <button
+                  key={c.id}
+                  type="button"
+                  disabled={!c.available}
+                  onClick={() => c.available && onPlay(c.id)}
+                  className="flex flex-col items-center gap-2 text-center disabled:cursor-default"
                 >
-                  {isCurrent && <span className="absolute -inset-[7px] rounded-full border-[5px] border-brand/30 border-t-brand" />}
-                  {c.emblem ? (
-                    <MediaView media={c.emblem} kenBurns={false} className={`!absolute inset-0 !rounded-full ${isCurrent ? "bob" : ""}`} />
-                  ) : done ? (
-                    <Icon.check />
-                  ) : c.available ? (
-                    <Icon.play />
-                  ) : (
-                    <Icon.lock />
-                  )}
-                  {done && c.emblem && (
-                    <span className="absolute -right-1 -bottom-1 grid size-8 place-items-center rounded-full border-[3px] border-bg bg-brand text-[#1a1206]">
-                      <Icon.check className="size-4" />
-                    </span>
-                  )}
-                </span>
-                <span
-                  className={`text-[14px] font-extrabold leading-tight ${isCurrent ? "text-brand" : c.available ? "text-ink" : "text-muted"}`}
-                >
-                  {c.company}
-                  <span className="block text-[12px] font-bold text-muted">
-                    {c.available ? (done ? `Best ${s.best[c.id]}` : "Ready") : "Coming soon"}
+                  <span
+                    className={`node-ring relative grid size-[84px] place-items-center rounded-full ${done ? "bg-[#2a1f0d] text-brand" : isCurrent ? "bg-brand text-[#1a1206]" : "bg-surface-2 text-[#4a5863]"}`}
+                  >
+                    {isCurrent && <span className="absolute -inset-[7px] rounded-full border-[5px] border-brand/30 border-t-brand" />}
+                    {c.emblem ? (
+                      <MediaView
+                        media={c.emblem}
+                        kenBurns={false}
+                        className={`!absolute inset-0 !rounded-full ${isCurrent ? "bob" : ""}`}
+                      />
+                    ) : done ? (
+                      <Icon.check />
+                    ) : c.available ? (
+                      <Icon.play />
+                    ) : (
+                      <Icon.lock />
+                    )}
+                    {done && c.emblem && (
+                      <span className="absolute -right-1 -bottom-1 grid size-8 place-items-center rounded-full border-[3px] border-bg bg-brand text-[#1a1206]">
+                        <Icon.check className="size-4" />
+                      </span>
+                    )}
                   </span>
-                </span>
-              </button>
-            );
-          })}
+                  <span
+                    className={`text-[14px] font-extrabold leading-tight ${isCurrent ? "text-brand" : c.available ? "text-ink" : "text-muted"}`}
+                  >
+                    {c.company}
+                    <span className="block text-[12px] font-bold text-muted">
+                      {c.available ? (done ? `Best ${s.best[c.id]}` : "Ready") : "Coming soon"}
+                    </span>
+                  </span>
+                </button>
+              );
+            })}
         </div>
         <p className="mt-4 text-center text-[13px] font-bold text-muted">Your order is unique to you. New hot seats drop every week.</p>
       </section>

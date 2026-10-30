@@ -1,0 +1,109 @@
+{
+  "id": "sample-sales-not-profit",
+  "title": "Sales are not profit",
+  "principle": "Sales are not profit. Profit is what's left.",
+  "minutes": 3,
+  "draft": true,
+  "screens": [
+    { "kind": "explain", "id": "hook", "text": "Meena sold ₹2 lakh of sarees at the Diwali mela. She came home with almost nothing." },
+    {
+      "kind": "choice",
+      "id": "guess",
+      "guess": true,
+      "prompt": "Why did Meena make so little?",
+      "options": [
+        { "id": "a", "label": "Her costs ate most of the sales" },
+        { "id": "b", "label": "She sold too few sarees" },
+        { "id": "c", "label": "The mela took her money" }
+      ],
+      "answer": "a",
+      "why": "She spent ₹1.9 lakh on stock, the stall and travel. Only ₹10,000 was left."
+    },
+    {
+      "kind": "explain",
+      "id": "rule",
+      "title": "The rule",
+      "text": "Sales are the money that comes in. Profit is what is left after you pay every cost."
+    },
+    {
+      "kind": "choice",
+      "id": "sum",
+      "prompt": "Sales ₹500. Costs ₹350. What is the profit?",
+      "options": [
+        { "id": "a", "label": "₹500" },
+        { "id": "b", "label": "₹850" },
+        { "id": "c", "label": "₹150" }
+      ],
+      "answer": "c",
+      "why": "₹500 in, ₹350 out. ₹150 is left.",
+      "wrong": { "a": "₹500 is the sales. You still have to pay the costs.", "b": "Costs come off the sales. They don't add to it." }
+    },
+    {
+      "kind": "gap",
+      "id": "fill",
+      "text": "Profit is what is ___ after you pay every ___.",
+      "bank": ["left", "sold", "cost", "price"],
+      "answer": ["left", "cost"],
+      "why": "Profit is what stays with you once every cost is paid."
+    },
+    {
+      "kind": "choice",
+      "id": "who",
+      "prompt": "Ravi says: \"I sold ₹1 lakh this month, so I made ₹1 lakh.\" Is he right?",
+      "options": [
+        { "id": "a", "label": "Yes, sales are what you make" },
+        { "id": "b", "label": "No, he must take off his costs" }
+      ],
+      "answer": "b",
+      "why": "₹1 lakh is his sales. His profit is that minus rent, stock and wages."
+    },
+    {
+      "kind": "scenario",
+      "id": "mini",
+      "setup": "You run a tea stall. A bigger stall nearby sells twice as many cups as you.",
+      "question": "Your friend says you should copy them. What do you ask first?",
+      "options": [
+        {
+          "id": "a",
+          "label": "How much do they keep from each cup?",
+          "grade": "great",
+          "outcome": "You learn they sell cheap and keep ₹1 a cup. You keep ₹4. You stay as you are.",
+          "why": "Big sales mean nothing until you know the costs."
+        },
+        {
+          "id": "b",
+          "label": "Where do they buy their cups?",
+          "grade": "ok",
+          "outcome": "You find a cheaper cup supplier, but you still don't know if they make money.",
+          "why": "Cheaper cups help a little, but you skipped the big question.",
+          "better": "First ask how much they keep from each cup."
+        },
+        {
+          "id": "c",
+          "label": "Nothing. Just cut your price to match",
+          "grade": "bad",
+          "outcome": "You sell more cups and make less money than before.",
+          "why": "You copied their sales, not their profit.",
+          "better": "Find out what they keep from each cup before you change anything."
+        }
+      ]
+    }
+  ],
+  "summary": ["Sales are the money that comes in.", "Profit is what is left after every cost."],
+  "cards": [
+    {
+      "id": "sample-snp-1",
+      "front": "A stall sells ₹10,000 in a day and spends ₹9,000. What is its profit?",
+      "options": ["₹10,000", "₹1,000", "₹19,000"],
+      "answer": 1,
+      "back": "₹1,000. Sales minus costs."
+    },
+    {
+      "id": "sample-snp-2",
+      "front": "\"We sold a lot, so we made a lot.\" True?",
+      "options": ["True", "Not always"],
+      "answer": 1,
+      "back": "Not always. High sales with high costs can leave nothing."
+    }
+  ]
+}

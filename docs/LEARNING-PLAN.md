@@ -107,6 +107,9 @@ so it ships in waves: Units 1–2 first (about 20 lessons), then two units at a 
 1. **Foundations, no UI** (can ship hidden): the deep-merge fix, course format and checks, `/api/lesson`,
    saved progress, `lesson_plays`.
 2. **The player sees it:** lesson player, the new Home path, Notes with Cards and the Mistake journal.
+   *Steps 1 and 2 are built (30 Oct 2026), hidden behind `courseOn()` until real lessons exist; see CLAUDE.md
+   "Lessons and flashcards". Not built yet: onboarding hand-off to lesson 1, lesson quests, narration of the hook
+   and takeaway, slider and match-pairs exercises, Hot Seat → lesson links, test-out by playing a gate early.*
 3. **Content wave 1:** Units 1–2 lessons and cards; existing Hot Seats' "why" text names the lessons.
 4. **Video pilot stage 1**, once its story is chosen (separate from the app code until it's approved).
 5. **New Indian Hot Seats:** Nirma, Flipkart COD, Chik, Tata Nano, Royal Enfield (normal `AUTHORING.md`).

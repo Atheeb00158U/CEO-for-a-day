@@ -12,9 +12,11 @@ import { ShopTab } from "./ShopTab";
 import { ProfileTab } from "./ProfileTab";
 import { Player } from "./Player";
 import { DailyPlayer } from "./DailyPlayer";
+import { LessonPlayer } from "./LessonPlayer";
+import { ReviewSession } from "./ReviewSession";
 import { InstallSheet } from "./InstallSheet";
 import { Onboarding } from "./Onboarding";
-import { ContentProvider, useDaily, type Content } from "@/lib/content-client";
+import { ContentProvider, useDaily, type Content, type LessonTarget } from "@/lib/content-client";
 
 export type Tab = "home" | "league" | "notes" | "shop" | "profile";
 const TABS: { id: Tab; label: string; icon: keyof typeof Icon }[] = [
@@ -68,6 +70,8 @@ function Shell() {
   const [tab, setTab] = useState<Tab>("home");
   const [playing, setPlaying] = useState<string | null>(null);
   const [playingDaily, setPlayingDaily] = useState(false);
+  const [lesson, setLesson] = useState<{ target: LessonTarget; testOut?: string[] } | null>(null);
+  const [reviewing, setReviewing] = useState<{ title: string; lessonIds?: string[] } | null>(null);
   const mainRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -106,6 +110,13 @@ function Shell() {
 
   if (!s.onboarding.done) return <Onboarding onDone={() => go("home")} />;
 
+  if (lesson)
+    return (
+      <LessonPlayer key={JSON.stringify(lesson.target)} target={lesson.target} testOut={lesson.testOut} onExit={() => setLesson(null)} />
+    );
+
+  if (reviewing) return <ReviewSession title={reviewing.title} lessonIds={reviewing.lessonIds} onExit={() => setReviewing(null)} />;
+
   if (playingDaily && daily?.call) return <DailyPlayer call={daily.call} onExit={() => setPlayingDaily(false)} />;
 
   if (playing)
@@ -128,10 +139,24 @@ function Shell() {
       <InstallSheet />
       <main ref={mainRef} className="flex-1 overflow-y-auto overscroll-contain px-4 pb-6">
         {tab === "home" && (
-          <HomeTab daily={daily?.call} onPlay={setPlaying} onDaily={() => setPlayingDaily(true)} onShop={() => go("shop")} />
+          <HomeTab
+            daily={daily?.call}
+            onPlay={setPlaying}
+            onDaily={() => setPlayingDaily(true)}
+            onShop={() => go("shop")}
+            onLesson={(lessonId) => setLesson({ target: { lessonId } })}
+            onTestOut={(moduleId, lessonIds) => setLesson({ target: { testOut: moduleId }, testOut: lessonIds })}
+            onPractice={(title, lessonIds) => setReviewing({ title, lessonIds })}
+          />
         )}
         {tab === "league" && <LeagueTab onPlay={() => go("home")} />}
-        {tab === "notes" && <NotesTab onPlay={() => go("home")} />}
+        {tab === "notes" && (
+          <NotesTab
+            onPlay={() => go("home")}
+            onReview={() => setReviewing({ title: "Today's cards" })}
+            onLesson={(lessonId) => setLesson({ target: { lessonId } })}
+          />
+        )}
         {tab === "shop" && <ShopTab />}
         {tab === "profile" && <ProfileTab />}
       </main>

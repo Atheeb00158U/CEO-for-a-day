@@ -1,0 +1,77 @@
+{
+  "id": "sample-margin",
+  "title": "Know your margin",
+  "principle": "Know your margin on every item you sell.",
+  "minutes": 3,
+  "draft": true,
+  "screens": [
+    { "kind": "explain", "id": "hook", "text": "Raju sells biscuits and loose namkeen. Both sell well. Only one pays his rent." },
+    {
+      "kind": "explain",
+      "id": "rule",
+      "title": "Margin",
+      "text": "Margin is what you keep from one sale: the price minus what the item cost you."
+    },
+    {
+      "kind": "choice",
+      "id": "sum",
+      "prompt": "A biscuit pack costs Raju ₹9. He sells it for ₹10. What is his margin?",
+      "options": [
+        { "id": "a", "label": "₹10" },
+        { "id": "b", "label": "₹1" },
+        { "id": "c", "label": "₹19" }
+      ],
+      "answer": "b",
+      "why": "₹10 price minus ₹9 cost leaves ₹1 a pack."
+    },
+    {
+      "kind": "sort",
+      "id": "buckets",
+      "prompt": "Sort Raju's items by margin.",
+      "buckets": ["Low margin (₹1–2)", "High margin (₹4+)"],
+      "items": [
+        { "text": "Biscuit pack", "bucket": 0 },
+        { "text": "Loose namkeen", "bucket": 1 },
+        { "text": "Cold drink", "bucket": 0 },
+        { "text": "Home-made pickle", "bucket": 1 }
+      ],
+      "why": "Branded packs earn little. Loose and home-made items earn more."
+    },
+    {
+      "kind": "choice",
+      "id": "shelf",
+      "prompt": "Which item should get the front shelf?",
+      "options": [
+        { "id": "a", "label": "Biscuits, because they sell fast" },
+        { "id": "b", "label": "Namkeen, because it earns more each sale" },
+        { "id": "c", "label": "Whatever came in last" }
+      ],
+      "answer": "b",
+      "why": "The front shelf sells the most. Give it to what earns the most."
+    },
+    {
+      "kind": "order",
+      "id": "steps",
+      "prompt": "Put Raju's steps in order.",
+      "steps": ["Write down what each item costs", "Take it off the price", "See which items earn the most", "Give those the best shelf"],
+      "why": "First the cost, then the margin, then the shelf."
+    }
+  ],
+  "summary": ["Margin is price minus cost, for one sale.", "Give your best space to high-margin items."],
+  "cards": [
+    {
+      "id": "sample-margin-1",
+      "front": "Chai costs you ₹8 a cup. You sell it for ₹10. Your margin?",
+      "options": ["₹2", "₹10", "₹18"],
+      "answer": 0,
+      "back": "₹2 a cup: price minus cost."
+    },
+    {
+      "id": "sample-margin-2",
+      "front": "One item sells fast at ₹1 margin. One sells slower at ₹5. Which gets the front shelf?",
+      "options": ["The fast one", "The ₹5 one"],
+      "answer": 1,
+      "back": "Usually the ₹5 one: each sale earns five times more."
+    }
+  ]
+}

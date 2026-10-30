@@ -1,0 +1,26 @@
+{
+  "units": [
+    {
+      "id": "sample-unit",
+      "title": "Sample: make money, keep money",
+      "goal": "Test unit for the lesson player. Not real course copy.",
+      "draft": true,
+      "modules": [
+        {
+          "id": "sample-profit",
+          "title": "Profit",
+          "goal": "See how much you really keep from each sale.",
+          "lessons": ["sample-sales-not-profit", "sample-margin"],
+          "gates": ["amul-one-brand"]
+        },
+        {
+          "id": "sample-costs",
+          "title": "Costs",
+          "goal": "Know which costs grow with sales.",
+          "lessons": ["sample-fixed-variable"],
+          "gates": []
+        }
+      ]
+    }
+  ]
+}

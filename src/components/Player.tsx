@@ -512,7 +512,7 @@ export function RevealView({
   year: string;
   media?: Media;
   /** Real history, or our estimate of what would have happened. */
-  real: boolean;
+  real?: boolean;
   outcome: string;
   grade: Grade;
   why: string;
@@ -543,52 +543,80 @@ export function RevealView({
       )}
       {extra}
 
-      <div className={`sheet fixed inset-x-0 bottom-0 z-30 ${v.bg}`} style={{ paddingBottom: "max(16px, env(safe-area-inset-bottom))" }}>
-        <div className="mx-auto flex max-w-[480px] flex-col gap-2 px-4 pt-4">
-          <div className="flex items-center justify-between">
-            <h3 className="text-[24px] font-black" style={{ color: v.color }}>
-              {v.title}
-            </h3>
+      <VerdictSheet
+        grade={grade}
+        title={v.title}
+        pointsLabel={pointsLabel}
+        lines={[
+          { label: grade === "great" ? "Why it worked: " : "Why it hurt: ", text: why },
+          ...(better ? [{ label: "What would have worked: ", text: better }] : []),
+        ]}
+        hindsight={hindsight}
+        onNext={onNext}
+      />
+    </div>
+  );
+}
+
+/** The green, gold or red bottom sheet after a pick: a title, a few labelled lines and Continue. Lessons use it too. */
+export function VerdictSheet({
+  grade,
+  title,
+  pointsLabel,
+  lines,
+  hindsight,
+  onNext,
+}: {
+  grade: Grade;
+  title: string;
+  pointsLabel?: string;
+  lines: { label: string; text: string }[];
+  hindsight?: { left: number; onUse: () => void };
+  onNext: () => void;
+}) {
+  const v = VERDICT[grade];
+  return (
+    <div className={`sheet fixed inset-x-0 bottom-0 z-30 ${v.bg}`} style={{ paddingBottom: "max(16px, env(safe-area-inset-bottom))" }}>
+      <div className="mx-auto flex max-w-[480px] flex-col gap-2 px-4 pt-4">
+        <div className="flex items-center justify-between">
+          <h3 className="text-[24px] font-black" style={{ color: v.color }}>
+            {title}
+          </h3>
+          {pointsLabel && (
             <span className="text-[14px] font-black" style={{ color: v.color }}>
               {pointsLabel}
             </span>
-          </div>
-          <p className="text-[15px] font-bold leading-snug">
-            <span className="font-black" style={{ color: v.color }}>
-              {grade === "great" ? "Why it worked: " : "Why it hurt: "}
-            </span>
-            {why}
-          </p>
-          {better && (
-            <p className="text-[15px] font-bold leading-snug">
-              <span className="font-black" style={{ color: v.color }}>
-                What would have worked:{" "}
-              </span>
-              {better}
-            </p>
           )}
-          <div className="mt-2 flex gap-3">
-            {hindsight && (
-              <button
-                type="button"
-                className="btn3d ghost !w-auto shrink-0 !px-3 !text-[13px]"
-                onClick={hindsight.onUse}
-                aria-label={`Use Hindsight to redo this call. ${hindsight.left} left`}
-              >
-                <Icon.rewind className="size-5" /> Redo ({hindsight.left})
-              </button>
-            )}
+        </div>
+        {lines.map((l) => (
+          <p key={l.label} className="text-[15px] font-bold leading-snug">
+            <span className="font-black" style={{ color: v.color }}>
+              {l.label}
+            </span>
+            {l.text}
+          </p>
+        ))}
+        <div className="mt-2 flex gap-3">
+          {hindsight && (
             <button
               type="button"
-              className={`btn3d ${v.btn}`}
-              onClick={() => {
-                playSfx("next");
-                onNext();
-              }}
+              className="btn3d ghost !w-auto shrink-0 !px-3 !text-[13px]"
+              onClick={hindsight.onUse}
+              aria-label={`Use Hindsight to redo this call. ${hindsight.left} left`}
             >
-              Continue
+              <Icon.rewind className="size-5" /> Redo ({hindsight.left})
             </button>
-          </div>
+          )}
+          <button
+            type="button"
+            className={`btn3d ${v.btn}`}
+            onClick={() => {
+              playSfx("next");
+              onNext();
+            }}
+          >
+            Continue
+          </button>
         </div>
       </div>
     </div>
