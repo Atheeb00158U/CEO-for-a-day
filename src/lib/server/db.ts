@@ -79,6 +79,10 @@ export interface Db {
   pushesAt(hour: number): Promise<PushRow[]>;
   /** Every subscription, or one player's. */
   pushes(userId?: string): Promise<PushRow[]>;
+  /** Record a notification as sent. False if this kind already went to this player that day. */
+  logNotice(userId: string, kind: string, day: string): Promise<boolean>;
+  /** How many notifications a player got that day. */
+  noticesOn(userId: string, day: string): Promise<number>;
   deleteUser(userId: string): Promise<void>;
 }
 
@@ -91,6 +95,7 @@ export function memoryDb(): Db & { profiles: Map<string, Profile>; runs: RunRow[
   const daily: DailyRow[] = [];
   const leagues: LeagueRow[] = [];
   const pushes = new Map<string, PushRow>();
+  const notices = new Set<string>();
   const clone = <T>(x: T): T => structuredClone(x);
   return {
     profiles,
@@ -169,6 +174,15 @@ export function memoryDb(): Db & { profiles: Map<string, Profile>; runs: RunRow[
     },
     async pushes(userId) {
       return clone([...pushes.values()].filter((p) => !userId || p.userId === userId));
+    },
+    async logNotice(id, kind, day) {
+      const k = `${id}|${day}|${kind}`;
+      if (notices.has(k)) return false;
+      notices.add(k);
+      return true;
+    },
+    async noticesOn(id, day) {
+      return [...notices].filter((k) => k.startsWith(`${id}|${day}|`)).length;
     },
     async deleteUser(id) {
       profiles.delete(id);
@@ -352,6 +366,21 @@ export function supabaseDb(sb = supabaseAdmin()): Db {
       let q = sb.from("push_subscriptions").select("*");
       if (userId) q = q.eq("user_id", userId);
       return list(await q).map(pushOf);
+    },
+    async logNotice(id, kind, day) {
+      const { error } = await sb.from("notifications_sent").insert({ user_id: id, kind, day });
+      if (duplicate(error)) return false;
+      if (error) throw new Error(error.message);
+      return true;
+    },
+    async noticesOn(id, day) {
+      const { count, error } = await sb
+        .from("notifications_sent")
+        .select("kind", { count: "exact", head: true })
+        .eq("user_id", id)
+        .eq("day", day);
+      if (error) throw new Error(error.message);
+      return count ?? 0;
     },
     async deleteUser(id) {
       // Every table cascades from auth.users, so deleting the user removes all their rows.

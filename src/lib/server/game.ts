@@ -169,7 +169,7 @@ export async function finishRun(
   hs: HotSeat,
   req: { runKey: string; picks: Pick[]; hindsightUsed: boolean },
   now = new Date(),
-): Promise<Synced & { record: RunRecord }> {
+): Promise<Synced & { record: RunRecord; gained: number }> {
   if (!/^[A-Za-z0-9_-]{8,64}$/.test(req.runKey)) throw new GameError("bad run key");
   const view = play(hs, req.picks);
   const r = view.result;
@@ -196,7 +196,7 @@ export async function finishRun(
     notes: record.notes,
     patterns: record.patterns,
   });
-  if (!fresh) return { ...(await load(db, userId, now)), record };
+  if (!fresh) return { ...(await load(db, userId, now)), record, gained: 0 };
   const synced = await update(
     db,
     userId,
@@ -207,15 +207,22 @@ export async function finishRun(
     now,
   );
   await db.addLeagueXp(weekId(now), userId, synced.state.league.tier, record.xp);
-  return { ...(await load(db, userId, now)), record };
+  return { ...(await load(db, userId, now)), record, gained: record.xp };
 }
 
 /** Lock in today's Daily Call. The (player, day) key allows one a day; a second lock returns the first answer's state. */
-export async function lockDaily(db: Db, userId: string, call: DailyCall, option: DailyOption, now = new Date()): Promise<Synced> {
+/** `gained` is the league XP this call added (0 when today's was already played). */
+export async function lockDaily(
+  db: Db,
+  userId: string,
+  call: DailyCall,
+  option: DailyOption,
+  now = new Date(),
+): Promise<Synced & { gained: number }> {
   const day = today(now);
   const before = await load(db, userId, now);
   const after = applyDaily(before.state, call, option, now);
-  if (after === before.state || !after.daily) return before; // already played today
+  if (after === before.state || !after.daily) return { ...before, gained: 0 }; // already played today
   const note: DailyNote = after.dailyLog[0];
   const fresh = await db.insertDaily({
     userId,
@@ -226,10 +233,10 @@ export async function lockDaily(db: Db, userId: string, call: DailyCall, option:
     xp: after.daily.xp,
     note,
   });
-  if (!fresh) return load(db, userId, now);
+  if (!fresh) return { ...(await load(db, userId, now)), gained: 0 };
   const synced = await update(db, userId, (s) => applyDaily(s, call, option, now), now);
   await db.addLeagueXp(weekId(now), userId, synced.state.league.tier, after.daily.xp);
-  return load(db, userId, now);
+  return { ...(await load(db, userId, now)), gained: after.daily.xp };
 }
 
 export const buy = async (db: Db, userId: string, item: string, now = new Date()) => {

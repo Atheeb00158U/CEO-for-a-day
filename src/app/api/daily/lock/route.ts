@@ -4,6 +4,7 @@ import { today } from "@/lib/game-state";
 import { answerOf, todaysCall } from "@/lib/server/content";
 import { lockDaily } from "@/lib/server/game";
 import { ipOf, json, limited, signedIn } from "@/lib/server/http";
+import { notifyOvertaken } from "@/lib/server/reminders";
 
 export async function POST(request: Request) {
   const body = await request.json().catch(() => null);
@@ -17,7 +18,8 @@ export async function POST(request: Request) {
     request,
     "daily",
     async (db, userId) => {
-      const synced = await lockDaily(db, userId, call, answer.option);
+      const { gained, ...synced } = await lockDaily(db, userId, call, answer.option);
+      if (gained) void notifyOvertaken(db, userId, synced.state.league.weeklyXp - gained).catch(() => {});
       // A second lock today keeps the first answer: reveal that one.
       const first = synced.state.daily?.optionId === answer.option.id ? answer : answerOf(call, synced.state.daily?.optionId ?? "");
       return { ...first, synced };
