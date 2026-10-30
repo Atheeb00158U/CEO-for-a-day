@@ -357,10 +357,14 @@ export async function leagueBoard(db: Db, userId: string, now = new Date()): Pro
     ...(r.userId === userId ? { you: true, name: names[r.userId] ?? "You" } : {}),
   }));
   if (row && real.length < FILL_TO) {
-    const bots = leagueRows({ seed: `${week}-${row.cohort}`, weekId: week, tier, yourXp: 0, yourName: "", now })
+    // Practice rivals sit around the player's own level (the best at about 1.5× their XP), so the board feels
+    // winnable from day one. Their spread comes from the seeded rows, so it stays steady through the week.
+    const seeded = leagueRows({ seed: `${week}-${row.cohort}`, weekId: week, tier, yourXp: 0, yourName: "", now })
       .filter((b) => !b.you)
-      .slice(0, FILL_TO - real.length)
-      .map((b) => ({ id: b.id, name: b.name, xp: b.xp, bot: true }));
+      .slice(0, FILL_TO - real.length);
+    const top = Math.max(1, ...seeded.map((b) => b.xp));
+    const level = Math.max(40, row.weeklyXp) * 1.5;
+    const bots = seeded.map((b) => ({ id: b.id, name: b.name, xp: Math.round((b.xp / top) * level), bot: true }));
     rows.push(...bots);
   }
   rows.sort((a, b) => b.xp - a.xp || (a.you ? -1 : b.you ? 1 : 0));

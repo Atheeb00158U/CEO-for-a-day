@@ -34,10 +34,15 @@ export function LeagueTab({ onPlay }: { onPlay: () => void }) {
 
   return (
     <div className="flex flex-col gap-4 pt-2">
-      <div className="-mx-4 flex items-end justify-center gap-4 overflow-hidden px-4">
-        {LEAGUES.map((name, i) => (
-          <LeagueBadge key={name} tier={i} active={i === tier} locked={i > tier} size={i === tier ? 104 : 56} />
-        )).slice(Math.max(0, tier - 1), tier + 3)}
+      {/* The league before, this one in the middle, and the next one. An empty slot keeps this one centred. */}
+      <div className="flex items-end justify-center gap-5">
+        {[tier - 1, tier, tier + 1].map((i) =>
+          i >= 0 && i < LEAGUES.length ? (
+            <LeagueBadge key={i} tier={i} active={i === tier} locked={i > tier} size={i === tier ? 112 : 60} />
+          ) : (
+            <span key={i} className="w-[60px] shrink-0" aria-hidden="true" />
+          ),
+        )}
       </div>
       <div className="text-center">
         <h1 className="text-[28px] font-black" style={{ color }}>
@@ -80,36 +85,35 @@ export function LeagueTab({ onPlay }: { onPlay: () => void }) {
             <span>Player</span>
             <span>XP this week</span>
           </div>
-          <ol className="flex flex-col overflow-hidden rounded-3xl">
-            {board.rows.map((r) => {
+          <ol className="flex flex-col gap-2">
+            {board.rows.map((r, i) => {
               const place = r.bot ? -1 : real.indexOf(r);
               const zoneTop = place >= 0 && place < board.promote.count && r.xp >= board.promote.minXp;
               const zoneBottom = place >= 0 && board.demote > 0 && place >= real.length - board.demote;
               return (
-                <li key={r.id}>
-                  <div
-                    className={`flex items-center gap-3 px-4 py-3 ${r.you ? "relative z-[1] -mx-0.5 rounded-2xl border-2 border-red/80 bg-[#2a1214]" : zoneTop ? "bg-[#0f2116]" : "bg-surface"} ${!r.you ? "border-b border-bg" : ""} ${r.bot ? "opacity-60" : ""}`}
+                <li
+                  key={r.id}
+                  className={`flex items-center gap-3 rounded-2xl border-2 px-3 py-2.5 ${r.you ? "border-brand bg-brand/10" : zoneTop ? "border-transparent bg-[#0f2116]" : "border-transparent bg-surface"}`}
+                >
+                  <span
+                    className={`w-6 shrink-0 text-center text-[16px] font-black tabular-nums ${zoneTop ? "text-green" : zoneBottom ? "text-red" : "text-muted"}`}
                   >
-                    <span
-                      className={`w-7 text-center text-[17px] font-black tabular-nums ${zoneTop ? "text-green" : zoneBottom ? "text-red" : "text-muted"}`}
-                    >
-                      {r.bot ? "·" : place + 1}
-                    </span>
-                    <span
-                      className="grid size-10 shrink-0 place-items-center rounded-full text-[16px] font-black text-[#0b1015]"
-                      style={{ background: colorOf(r.id) }}
-                    >
-                      {r.name[0]?.toUpperCase()}
-                    </span>
-                    <span className="flex-1 truncate text-[17px] font-extrabold">
-                      {r.you ? `${r.name} (you)` : r.name}
-                      {r.bot && <span className="ml-1 text-[12px] font-black text-muted uppercase">practice</span>}
-                    </span>
-                    <span className="flex items-center gap-1 text-[17px] font-black tabular-nums">
-                      <Icon.bolt className="size-5" />
-                      {r.xp}
-                    </span>
-                  </div>
+                    {i + 1}
+                  </span>
+                  <span
+                    className={`grid size-10 shrink-0 place-items-center rounded-full text-[16px] font-black text-[#0b1015] ${r.bot ? "opacity-60" : ""}`}
+                    style={{ background: colorOf(r.id) }}
+                  >
+                    {r.name[0]?.toUpperCase()}
+                  </span>
+                  <span className={`min-w-0 flex-1 truncate text-[17px] font-extrabold ${r.bot ? "text-muted" : ""}`}>
+                    {r.you ? `${r.name} (you)` : r.name}
+                    {r.bot && <span className="ml-1.5 text-[11px] font-black tracking-wider uppercase">practice</span>}
+                  </span>
+                  <span className="flex shrink-0 items-center gap-1 text-[17px] font-black tabular-nums">
+                    <Icon.bolt className="size-5" />
+                    {r.xp}
+                  </span>
                 </li>
               );
             })}
@@ -133,17 +137,24 @@ export function LeagueTab({ onPlay }: { onPlay: () => void }) {
 /** A league's badge (public/league/<tier>.webp). Leagues above the player's are greyed out. */
 function LeagueBadge({ tier, active, locked, size }: { tier: number; active: boolean; locked: boolean; size: number }) {
   return (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img
-      src={`/league/${tier}.webp`}
-      alt={active ? `${LEAGUES[tier]} league badge` : ""}
-      width={size}
-      height={size}
-      className="shrink-0"
-      style={{
-        opacity: locked ? 0.35 : 1,
-        filter: locked ? "grayscale(1)" : active ? `drop-shadow(0 6px 14px ${TIER_COLORS[tier]}66)` : undefined,
-      }}
-    />
+    <span className="relative grid shrink-0 place-items-center" style={{ width: size, height: size }}>
+      {/* A soft round glow behind this week's league. */}
+      {active && (
+        <span
+          aria-hidden="true"
+          className="absolute -inset-6 rounded-full"
+          style={{ background: `radial-gradient(circle, ${TIER_COLORS[tier]}55 0%, ${TIER_COLORS[tier]}00 65%)` }}
+        />
+      )}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={`/league/${tier}.webp`}
+        alt={active ? `${LEAGUES[tier]} league badge` : ""}
+        width={size}
+        height={size}
+        className="relative"
+        style={{ opacity: locked ? 0.35 : 1, filter: locked ? "grayscale(1)" : undefined }}
+      />
+    </span>
   );
 }
