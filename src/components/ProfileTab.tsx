@@ -1,6 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import { BADGES, LEAGUES, useGame } from "@/lib/store";
+import { SignInCard } from "./SignInCard";
 import { Card, Icon } from "./ui";
 
 const TRAITS = [
@@ -16,7 +18,7 @@ const LANGS = [
 ] as const;
 
 export function ProfileTab() {
-  const { s, setSetting, setName, reset } = useGame();
+  const { s, setSetting, setName, reset, account } = useGame();
   const decisions = s.runs.reduce((a, r) => a + r.notes.length, 0) || 1;
   return (
     <div className="flex flex-col gap-5 pt-2">
@@ -30,6 +32,7 @@ export function ProfileTab() {
           </label>
           <input
             id="name"
+            key={s.name}
             defaultValue={s.name}
             onBlur={(e) => setName(e.target.value)}
             className="w-full bg-transparent text-[26px] font-black outline-none focus:underline"
@@ -37,6 +40,8 @@ export function ProfileTab() {
           <p className="font-bold text-muted">{LEAGUES[s.league.tier]} league</p>
         </div>
       </div>
+
+      <SignInCard />
 
       <div className="grid grid-cols-2 gap-3">
         <Stat icon={<Icon.flame className="size-7" />} value={s.streak} label="Day streak" />
@@ -143,9 +148,43 @@ export function ProfileTab() {
             ))}
           </div>
         </div>
-        <ResetButton onReset={reset} />
+        {!account && <ResetButton onReset={reset} />}
       </Card>
+
+      {account && <AccountCard email={account.email} />}
     </div>
+  );
+}
+
+function AccountCard({ email }: { email?: string }) {
+  const { signOut, deleteAccount } = useGame();
+  const [state, setState] = useState<"idle" | "busy" | "failed">("idle");
+  return (
+    <Card className="flex flex-col gap-3">
+      <h2 className="text-[19px] font-black">Account</h2>
+      <p className="font-bold text-muted">Signed in{email ? ` as ${email}` : ""}. Your progress is saved on any phone.</p>
+      <button type="button" className="btn3d ghost !text-[14px]" onClick={() => void signOut()}>
+        Sign out
+      </button>
+      <details>
+        <summary className="cursor-pointer text-[14px] font-extrabold text-red">Delete my account</summary>
+        <p className="my-2 text-[14px] font-bold text-muted">
+          This deletes your account and everything saved with it: XP, streak, notes and league. It can&apos;t be undone.
+        </p>
+        <button
+          type="button"
+          className="btn3d red !text-[14px]"
+          disabled={state === "busy"}
+          onClick={() => {
+            setState("busy");
+            deleteAccount().catch(() => setState("failed"));
+          }}
+        >
+          Yes, delete everything
+        </button>
+        {state === "failed" && <p className="mt-2 text-[14px] font-bold text-red">That didn&apos;t work. Try again.</p>}
+      </details>
+    </Card>
   );
 }
 

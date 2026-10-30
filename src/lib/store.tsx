@@ -1,185 +1,258 @@
 "use client";
 
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
-import type { DailyCall, DailyOption, Grade, TraitKey } from "./hotseat-types";
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
+import { api, signInWithGoogle, signOut, supabase } from "./auth";
+import type { Synced } from "./content-client";
+import type { DailyCall, DailyOption, Grade } from "./hotseat-types";
+import type { Pick as PlayPick, Result } from "./play";
 import { setSfxOn } from "./sfx";
 import {
+  applyBooster,
+  applyBuy,
+  applyClaim,
   applyDaily,
-  decisionGoal,
+  applyDecision,
+  applyFinish,
+  applyHindsight,
   ECONOMY,
   fresh,
   rollover,
-  touchStreak,
   type GameState,
   type Onboarding,
   type RunRecord,
 } from "./game-state";
 
-export { BADGES, ECONOMY, LEAGUES, today, type GameState, type RunRecord } from "./game-state";
+export { BADGES, ECONOMY, LEAGUES, questsFor, today, type GameState, type RunRecord } from "./game-state";
 
+/** The guest save. A signed-in player's progress lives on the server, never here. */
 const KEY = "cfad.v1";
 
-/** Today's quests. The decisions goal follows the minutes a day the player picked at the start. */
-export const questsFor = (s: GameState) => {
-  const n = decisionGoal(s.onboarding.minutes);
-  return [
-    { id: "decisions", label: `Make ${n} decisions`, goal: n, reward: 15, read: (q: GameState["quests"]) => q.decisions },
-    { id: "great", label: "Make 2 great calls", goal: 2, reward: 25, read: (q: GameState["quests"]) => q.great },
-    { id: "xp", label: "Earn 60 XP", goal: 60, reward: 30, read: (q: GameState["quests"]) => q.xp },
-  ];
-};
+/** A finished run, as the Player hands it over. */
+export interface FinishedRun {
+  hotSeatId: string;
+  picks: PlayPick[];
+  result: Result;
+  hindsightUsed: boolean;
+  /** Random per run, so a retry or double tap pays once. */
+  runKey: string;
+}
 
 interface Ctx {
   s: GameState;
   ready: boolean;
+  /** Signed in with Google (progress saved on the server). */
+  account: { email?: string } | null;
+  /** Sign-in is set up on this server. */
+  canSignIn: boolean;
   boosterActive: boolean;
   recordDecision: (grade: Grade) => void;
-  finishRun: (
-    r: Omit<RunRecord, "xp" | "at">,
-    traits: Record<TraitKey, number>,
-    flags: { recovered: boolean; beatHistory: boolean },
-  ) => RunRecord;
-  buy: (item: keyof typeof ECONOMY.prices) => boolean;
-  activateBooster: () => boolean;
+  finishRun: (run: FinishedRun) => Promise<RunRecord>;
+  buy: (item: keyof typeof ECONOMY.prices) => Promise<boolean>;
+  activateBooster: () => Promise<boolean>;
   spendHindsight: () => boolean;
-  claimQuest: (id: string) => void;
-  /** Lock in today's Daily Call. Does nothing if today's call was already played. */
+  claimQuest: (id: string) => Promise<void>;
+  /** Lock in today's Daily Call as a guest. Does nothing if today's call was already played. */
   playDaily: (call: Pick<DailyCall, "id" | "company" | "title">, option: DailyOption) => void;
+  /** Take the server's reply to any signed-in action. */
+  sync: (x: Synced) => void;
   setSetting: <K extends keyof GameState["settings"]>(k: K, v: GameState["settings"][K]) => void;
   setName: (n: string) => void;
   setOnboarding: (o: Partial<Onboarding>) => void;
+  signIn: () => void;
+  signOut: () => Promise<void>;
+  deleteAccount: () => Promise<void>;
   reset: () => void;
 }
 
 const GameCtx = createContext<Ctx | null>(null);
 
+const hasProgress = (x: Partial<GameState> | null) => !!x && (!!x.lastActiveDay || !!x.runs?.length || (x.xp ?? 0) > 0);
+
+function readGuest(): GameState | null {
+  try {
+    const raw = localStorage.getItem(KEY);
+    if (!raw) return null;
+    const saved = JSON.parse(raw);
+    // Merge settings one level down too, so a save from before a setting existed gets its default.
+    // Saves from before the welcome screens: anyone who has already played skips them.
+    const onboarding = saved.onboarding ?? { done: !!saved.lastActiveDay || !!saved.runs?.length };
+    return { ...fresh(), ...saved, settings: { ...fresh().settings, ...saved.settings }, onboarding };
+  } catch {
+    return null; // private mode or blocked storage: play without saving
+  }
+}
+
 export function GameProvider({ children }: { children: React.ReactNode }) {
   const [s, setS] = useState<GameState>(fresh);
   const [ready, setReady] = useState(false);
+  const [account, setAccount] = useState<{ email?: string } | null>(null);
+  const version = useRef(-1);
   const [, tick] = useState(0);
+  const signedIn = account !== null;
+
+  /** Take the server's state unless the phone already has a newer one (replies can arrive out of order). */
+  const sync = useCallback((x: Synced) => {
+    if (x.version < version.current) return;
+    version.current = x.version;
+    setS(x.state);
+  }, []);
 
   useEffect(() => {
-    try {
-      const raw = localStorage.getItem(KEY);
-      if (raw) {
-        const saved = JSON.parse(raw);
-        // Merge settings one level down too, so a save from before a setting existed gets its default.
-        // Saves from before the welcome screens: anyone who has already played skips them.
-        const onboarding = saved.onboarding ?? { done: !!saved.lastActiveDay || !!saved.runs?.length };
-        setS(rollover({ ...fresh(), ...saved, settings: { ...fresh().settings, ...saved.settings }, onboarding }));
-      } else setS((x) => rollover(x));
-    } catch {
-      /* private mode or blocked storage: play without saving */
-    }
-    setReady(true);
     const id = setInterval(() => tick((n) => n + 1), 30_000); // refresh booster countdown
     return () => clearInterval(id);
   }, []);
 
   useEffect(() => {
+    const guest = readGuest();
+    const sb = supabase();
+    const asGuest = () => {
+      version.current = -1;
+      setAccount(null);
+      setS(rollover(guest ?? fresh()));
+      setReady(true);
+    };
+    const asUser = async (email?: string) => {
+      try {
+        // A guest who signs in brings their progress along, once. The server caps it and skips it for an account
+        // that has already played.
+        const local = readGuest();
+        const x = hasProgress(local) ? await api<Synced>("/api/import", { body: { save: local } }) : await api<Synced>("/api/state");
+        try {
+          localStorage.removeItem(KEY);
+        } catch {
+          /* ignore */
+        }
+        // The welcome screens they just went through as a guest count for the account too.
+        if (local?.onboarding?.done && !x.state.onboarding.done) x.state.onboarding = { ...x.state.onboarding, ...local.onboarding };
+        setAccount({ email });
+        version.current = -1;
+        sync(x);
+      } catch {
+        asGuest(); // server unreachable: play as a guest for now
+        return;
+      }
+      setReady(true);
+    };
+    if (!sb) asGuest();
+    else {
+      sb.auth.getSession().then(({ data }) => (data.session ? asUser(data.session.user.email) : asGuest()));
+      const { data } = sb.auth.onAuthStateChange((event, session) => {
+        if (event === "SIGNED_IN" && session) setTimeout(() => asUser(session.user.email), 0);
+        if (event === "SIGNED_OUT") {
+          version.current = -1;
+          setAccount(null);
+          setS(fresh());
+        }
+      });
+      return () => data.subscription.unsubscribe();
+    }
+  }, [sync]);
+
+  useEffect(() => {
     // `ready` is state, not a ref: in the render that loads the save, it's still false here, so the blank
-    // starting state is never written over the player's progress.
-    if (!ready) return;
+    // starting state is never written over the player's progress. Signed-in progress is never stored here.
+    if (!ready || signedIn) return;
     try {
       localStorage.setItem(KEY, JSON.stringify(s));
     } catch {
       /* ignore */
     }
-  }, [s, ready]);
+  }, [s, ready, signedIn]);
 
   useEffect(() => setSfxOn(s.settings.sfx), [s.settings.sfx]);
 
   const boosterActive = s.boosterUntil > Date.now();
 
-  const recordDecision = useCallback((grade: Grade) => {
-    setS((x) => {
-      const y = touchStreak(rollover(x));
-      return { ...y, quests: { ...y.quests, decisions: y.quests.decisions + 1, great: y.quests.great + (grade === "great" ? 1 : 0) } };
+  /** Send a signed-in change to the server and take its reply; false if it was refused. */
+  const send = async (url: string, body: unknown = {}) => {
+    try {
+      sync(await api<Synced>(url, { body }));
+      return true;
+    } catch {
+      return false;
+    }
+  };
+
+  const recordDecision = useCallback(
+    (grade: Grade) => {
+      // Signed in, the server counts decisions when the Hot Seat is finished (from the replayed picks).
+      if (!signedIn) setS((x) => applyDecision(rollover(x), grade));
+    },
+    [signedIn],
+  );
+
+  const finishRun: Ctx["finishRun"] = async (run) => {
+    const r = run.result;
+    if (signedIn) {
+      const x = await api<Synced & { record: RunRecord }>("/api/run/finish", {
+        body: { runKey: run.runKey, hotSeatId: run.hotSeatId, picks: run.picks, hindsightUsed: run.hindsightUsed },
+      });
+      sync(x);
+      return x.record;
+    }
+    const { state, record } = applyFinish(s, {
+      run: {
+        hotSeatId: run.hotSeatId,
+        score: r.score,
+        endingId: r.endingId,
+        endingTier: r.endingTier,
+        notes: r.lines,
+        patterns: r.patterns,
+      },
+      traits: r.traits,
+      flags: { recovered: r.recovered, beatHistory: r.beatHistory },
     });
-  }, []);
-
-  const finishRun: Ctx["finishRun"] = (r, traits, flags) => {
-    const mult = s.boosterUntil > Date.now() ? 2 : 1;
-    const xp = (ECONOMY.completionXp + r.score) * mult;
-    const rec: RunRecord = { ...r, xp, at: Date.now() };
-    setS((x) => {
-      const badges = new Set(x.badges);
-      badges.add("first_seat");
-      if (flags.recovered) badges.add("turnaround");
-      if (r.score >= 95) badges.add("perfect");
-      if (flags.beatHistory) badges.add("beat_history");
-      if (r.endingTier === "fired") badges.add("fired");
-      const t = { ...x.traits };
-      (Object.keys(traits) as TraitKey[]).forEach((k) => (t[k] += traits[k]));
-      return {
-        ...x,
-        xp: x.xp + xp,
-        coins: x.coins + ECONOMY.completionCoins,
-        league: { ...x.league, weeklyXp: x.league.weeklyXp + xp },
-        runs: [rec, ...x.runs].slice(0, 50),
-        best: { ...x.best, [r.hotSeatId]: Math.max(x.best[r.hotSeatId] ?? 0, r.score) },
-        quests: { ...x.quests, xp: x.quests.xp + xp },
-        badges: [...badges],
-        traits: t,
-      };
-    });
-    return rec;
+    setS(state);
+    return record;
   };
 
-  const buy: Ctx["buy"] = (item) => {
-    const price = ECONOMY.prices[item];
-    if (s.coins < price) return false;
-    setS((x) => ({
-      ...x,
-      coins: x.coins - price,
-      freezes: x.freezes + (item === "freeze" ? 1 : 0),
-      boosters: x.boosters + (item === "booster" ? 1 : 0),
-      hindsights: x.hindsights + (item === "hindsight" ? 1 : 0),
-    }));
+  /** A guest's change, applied here; false when the rules refuse it. */
+  const local = (next: GameState | null) => {
+    if (!next) return false;
+    setS(next);
     return true;
-  };
-
-  const activateBooster = () => {
-    if (s.boosters < 1) return false;
-    setS((x) => ({ ...x, boosters: x.boosters - 1, boosterUntil: Math.max(Date.now(), x.boosterUntil) + ECONOMY.boosterMinutes * 60_000 }));
-    return true;
-  };
-
-  const spendHindsight = () => {
-    if (s.hindsights < 1) return false;
-    setS((x) => ({ ...x, hindsights: x.hindsights - 1 }));
-    return true;
-  };
-
-  const claimQuest = (id: string) => {
-    const q = questsFor(s).find((x) => x.id === id);
-    if (!q) return;
-    setS((x) =>
-      x.quests.claimed.includes(id) || q.read(x.quests) < q.goal
-        ? x
-        : { ...x, coins: x.coins + q.reward, quests: { ...x.quests, claimed: [...x.quests.claimed, id] } },
-    );
   };
 
   const value = useMemo<Ctx>(
     () => ({
       s,
       ready,
+      account,
+      canSignIn: !!supabase(),
       boosterActive,
       recordDecision,
       finishRun,
-      buy,
-      activateBooster,
-      spendHindsight,
-      claimQuest,
+      buy: async (item) => (signedIn ? send("/api/shop/buy", { item }) : local(applyBuy(s, item))),
+      activateBooster: async () => (signedIn ? send("/api/booster") : local(applyBooster(s))),
+      // Signed in, Hindsight is charged when the run is finished; this only updates the count shown meanwhile.
+      spendHindsight: () => local(applyHindsight(s)),
+      claimQuest: async (id) => void (signedIn ? await send("/api/quest/claim", { id }) : local(applyClaim(s, id))),
       playDaily: (call, option) => setS((x) => applyDaily(x, call, option)),
-      setSetting: (k, v) => setS((x) => ({ ...x, settings: { ...x.settings, [k]: v } })),
-      setName: (n) => setS((x) => ({ ...x, name: n.slice(0, 20) || "You" })),
-      setOnboarding: (o) => setS((x) => ({ ...x, onboarding: { ...x.onboarding, ...o } })),
-      reset: () => setS(fresh()),
+      sync,
+      setSetting: (k, v) => {
+        setS((x) => ({ ...x, settings: { ...x.settings, [k]: v } }));
+        if (signedIn) void send("/api/profile", { settings: { [k]: v } });
+      },
+      setName: (n) => {
+        setS((x) => ({ ...x, name: n.trim().slice(0, 20) || "You" }));
+        if (signedIn) void send("/api/profile", { name: n });
+      },
+      setOnboarding: (o) => {
+        setS((x) => ({ ...x, onboarding: { ...x.onboarding, ...o } }));
+        if (signedIn) void send("/api/profile", { onboarding: o });
+      },
+      signIn: () => void signInWithGoogle(),
+      signOut: async () => {
+        await signOut();
+      },
+      deleteAccount: async () => {
+        await api("/api/account", { method: "DELETE" });
+        await signOut();
+      },
+      reset: () => !signedIn && setS(fresh()),
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [s, ready, boosterActive],
+    [s, ready, account, boosterActive],
   );
   return <GameCtx.Provider value={value}>{children}</GameCtx.Provider>;
 }

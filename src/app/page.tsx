@@ -185,6 +185,14 @@ export default function Home() {
           <p className="font-black text-ink">CEO For A Day</p>
           <p>Education, not business advice. Real stories use public sources. Other outcomes are estimates.</p>
           <p>Archive footage from the Moving Image Archive (public domain).</p>
+          <p className="flex gap-4">
+            <Link className="underline" href="/privacy">
+              Privacy
+            </Link>
+            <Link className="underline" href="/terms">
+              Terms
+            </Link>
+          </p>
         </div>
       </footer>
     </div>

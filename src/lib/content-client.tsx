@@ -3,6 +3,8 @@
 // What the phone knows about content: the map's cards (handed down by the /app page) and calls to the server
 // for each step of play. Answers only ever arrive after the player has picked.
 import { createContext, useContext, useEffect, useState } from "react";
+import { api } from "./auth";
+import type { GameState } from "./game-state";
 import type { CatalogEntry, DailyAnswer, DailyQuestion } from "./hotseat-types";
 import type { Pick, PlayView } from "./play";
 
@@ -16,17 +18,19 @@ const ContentCtx = createContext<Content>({ catalog: [] });
 export const ContentProvider = ContentCtx.Provider;
 export const useContent = () => useContext(ContentCtx);
 
+/** A signed-in player's progress as the server returned it. */
+export interface Synced {
+  state: GameState;
+  version: number;
+}
+
 /** The step after `picks`. `written` is a reviewed, pre-written debrief for the path, when one exists. */
 export type PlayResponse = PlayView & { written?: string };
 
-async function post<T>(url: string, body: unknown): Promise<T> {
-  const r = await fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
-  if (!r.ok) throw new Error(`${url} ${r.status}`);
-  return r.json();
-}
-
-export const fetchStep = (hotSeatId: string, picks: Pick[]) => post<PlayResponse>("/api/play", { hotSeatId, picks });
-export const lockDaily = (id: string, optionId: string) => post<DailyAnswer>("/api/daily/lock", { id, optionId });
+export const fetchStep = (hotSeatId: string, picks: Pick[]) => api<PlayResponse>("/api/play", { body: { hotSeatId, picks } });
+/** Signed in, the reply also carries the saved progress (`synced`). */
+export const lockDaily = (id: string, optionId: string) =>
+  api<DailyAnswer & { synced?: Synced }>("/api/daily/lock", { body: { id, optionId } });
 
 /** Today's Daily Call, without its answers. `undefined` while loading, `null` when there isn't one. */
 export function useDaily(): { day: string; call: DailyQuestion | null } | undefined {

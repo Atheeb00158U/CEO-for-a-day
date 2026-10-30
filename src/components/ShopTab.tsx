@@ -103,7 +103,7 @@ export function ShopTab() {
                 type="button"
                 className="btn3d gold !w-auto !px-3 !py-2 !text-[13px]"
                 disabled={s.coins < ECONOMY.prices[it.id]}
-                onClick={() => flash(buy(it.id) ? `${it.name} added` : "Not enough coins")}
+                onClick={async () => flash((await buy(it.id)) ? `${it.name} added` : "Not enough coins")}
               >
                 <Icon.coin className="size-4" />
                 {ECONOMY.prices[it.id]}

@@ -6,6 +6,7 @@ import type { Result } from "@/lib/play";
 import { BADGES, ECONOMY, useGame, type RunRecord } from "@/lib/store";
 import { playSfx } from "@/lib/sfx";
 import { stopVoice } from "@/lib/voice";
+import { SignInCard } from "./SignInCard";
 import { Card, Icon } from "./ui";
 
 const GRADE = {
@@ -164,6 +165,8 @@ export function Debrief({
           ))}
         </div>
       )}
+
+      <SignInCard title="Keep this result" text="Sign in with Google to save your score, streak and notes, and join a weekly league." />
 
       <div className="flex flex-col gap-3 pt-2">
         <button type="button" className="btn3d green" onClick={onExit}>

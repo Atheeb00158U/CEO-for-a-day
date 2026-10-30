@@ -131,8 +131,11 @@ export function fresh(): GameState {
   };
 }
 
-/** Roll daily/weekly state forward: streak freezes, quest reset, league week. */
-export function rollover(s: GameState, now = new Date()): GameState {
+/**
+ * Roll daily/weekly state forward: streak freezes, quest reset, league week.
+ * Signed-in players' leagues are settled on the server instead (`settleLeague: false`).
+ */
+export function rollover(s: GameState, now = new Date(), { settleLeague = true } = {}): GameState {
   const t = today(now);
   const next = { ...s };
   if (next.quests.day !== t) next.quests = { day: t, decisions: 0, great: 0, xp: 0, claimed: [] };
@@ -146,7 +149,7 @@ export function rollover(s: GameState, now = new Date()): GameState {
       } else next.streak = 0;
     }
   }
-  if (next.league.weekId !== weekId(now)) {
+  if (settleLeague && next.league.weekId !== weekId(now)) {
     // Settle last week: top players move up a league, bottom players move down.
     const rows = leagueRows({
       seed: next.seed,
@@ -215,4 +218,95 @@ export function applyDaily(
     daily: { day, id: call.id, optionId: option.id, grade: option.grade, xp },
     dailyLog: [note, ...x.dailyLog].slice(0, 60),
   };
+}
+
+/* ------------------------------------------------------------------ */
+/* Rewards and spending. Pure, so the phone (guests) and the server     */
+/* (signed-in players) run the same rules.                               */
+/* ------------------------------------------------------------------ */
+
+/** Today's quests. The decisions goal follows the minutes a day the player picked at the start. */
+export const questsFor = (s: Pick<GameState, "onboarding">) => {
+  const n = decisionGoal(s.onboarding.minutes);
+  return [
+    { id: "decisions", label: `Make ${n} decisions`, goal: n, reward: 15, read: (q: GameState["quests"]) => q.decisions },
+    { id: "great", label: "Make 2 great calls", goal: 2, reward: 25, read: (q: GameState["quests"]) => q.great },
+    { id: "xp", label: "Earn 60 XP", goal: 60, reward: 30, read: (q: GameState["quests"]) => q.xp },
+  ];
+};
+
+/** Count one decision toward the streak and today's quests. */
+export function applyDecision(x: GameState, grade: Grade, now = new Date()): GameState {
+  const y = touchStreak(x, now);
+  return { ...y, quests: { ...y.quests, decisions: y.quests.decisions + 1, great: y.quests.great + (grade === "great" ? 1 : 0) } };
+}
+
+/** XP for a finished Hot Seat. Only the first finish of each pays the score, so replays can't farm league XP. */
+export const finishXp = (score: number, firstTime: boolean, boosted: boolean) =>
+  (ECONOMY.completionXp + (firstTime ? score : 0)) * (boosted ? 2 : 1);
+
+export interface Finish {
+  run: Omit<RunRecord, "xp" | "at">;
+  traits: Record<TraitKey, number>;
+  flags: { recovered: boolean; beatHistory: boolean };
+  /** Each pick's grade, to count toward quests (the server counts at the finish; guests count as they play). */
+  grades?: Grade[];
+}
+
+/** Pay out a finished Hot Seat: XP, coins, badges, traits and best score. Returns the new state and the record. */
+export function applyFinish(s: GameState, f: Finish, now = new Date()): { state: GameState; record: RunRecord } {
+  const firstTime = s.best[f.run.hotSeatId] === undefined;
+  const xp = finishXp(f.run.score, firstTime, s.boosterUntil > now.getTime());
+  const record: RunRecord = { ...f.run, xp, at: now.getTime() };
+  let x = s;
+  for (const g of f.grades ?? []) x = applyDecision(x, g, now);
+  const badges = new Set(x.badges);
+  badges.add("first_seat");
+  if (f.flags.recovered) badges.add("turnaround");
+  if (f.run.score >= 95) badges.add("perfect");
+  if (f.flags.beatHistory) badges.add("beat_history");
+  if (f.run.endingTier === "fired") badges.add("fired");
+  const t = { ...x.traits };
+  (Object.keys(f.traits) as TraitKey[]).forEach((k) => (t[k] += f.traits[k]));
+  const state: GameState = {
+    ...x,
+    xp: x.xp + xp,
+    coins: x.coins + ECONOMY.completionCoins,
+    league: { ...x.league, weeklyXp: x.league.weeklyXp + xp },
+    runs: [record, ...x.runs].slice(0, 50),
+    best: { ...x.best, [f.run.hotSeatId]: Math.max(x.best[f.run.hotSeatId] ?? 0, f.run.score) },
+    quests: { ...x.quests, xp: x.quests.xp + xp },
+    badges: [...badges],
+    traits: t,
+  };
+  return { state, record };
+}
+
+/** Buy from the shop. Returns null when the player can't afford it. */
+export function applyBuy(s: GameState, item: keyof typeof ECONOMY.prices): GameState | null {
+  const price = ECONOMY.prices[item];
+  if (!(item in ECONOMY.prices) || s.coins < price) return null;
+  return {
+    ...s,
+    coins: s.coins - price,
+    freezes: s.freezes + (item === "freeze" ? 1 : 0),
+    boosters: s.boosters + (item === "booster" ? 1 : 0),
+    hindsights: s.hindsights + (item === "hindsight" ? 1 : 0),
+  };
+}
+
+/** Start a double-XP booster now (or extend a running one). Null when the player has none. */
+export function applyBooster(s: GameState, now = Date.now()): GameState | null {
+  if (s.boosters < 1) return null;
+  return { ...s, boosters: s.boosters - 1, boosterUntil: Math.max(now, s.boosterUntil) + ECONOMY.boosterMinutes * 60_000 };
+}
+
+/** Spend one Hindsight. Null when the player has none. */
+export const applyHindsight = (s: GameState): GameState | null => (s.hindsights < 1 ? null : { ...s, hindsights: s.hindsights - 1 });
+
+/** Claim a finished quest's coins, once a day. Null when it isn't done or was already claimed. */
+export function applyClaim(s: GameState, id: string): GameState | null {
+  const q = questsFor(s).find((x) => x.id === id);
+  if (!q || s.quests.claimed.includes(id) || q.read(s.quests) < q.goal) return null;
+  return { ...s, coins: s.coins + q.reward, quests: { ...s.quests, claimed: [...s.quests.claimed, id] } };
 }

@@ -52,6 +52,8 @@ export function Player({
   const [usedHindsight, setUsedHindsight] = useState(false);
   const [badgesBefore, setBadgesBefore] = useState(game.s.badges);
   const finished = useRef(false); // a double tap on "See your results" must not pay out twice
+  const runKey = useRef(newRunKey());
+  const [saveFailed, setSaveFailed] = useState(false);
   const paused = useRef(false);
 
   const load = useCallback(
@@ -103,12 +105,14 @@ export function Player({
     const r = view.result;
     if (finished.current || !r) return;
     finished.current = true;
-    const rec = game.finishRun(
-      { hotSeatId: meta.id, score: r.score, endingId: r.endingId, endingTier: r.endingTier, notes: r.lines, patterns: r.patterns },
-      r.traits,
-      { recovered: r.recovered, beatHistory: r.beatHistory },
-    );
-    setPhase({ kind: "debrief", record: rec, endingTitle: title });
+    setSaveFailed(false);
+    game
+      .finishRun({ hotSeatId: meta.id, picks, result: r, hindsightUsed: usedHindsight, runKey: runKey.current })
+      .then((record) => setPhase({ kind: "debrief", record, endingTitle: title }))
+      .catch(() => {
+        finished.current = false; // same run key, so trying again can't pay twice
+        setSaveFailed(true);
+      });
   };
 
   const decisionsDone = view.picks.length;
@@ -131,6 +135,7 @@ export function Player({
           setUsedHindsight(false);
           setBadgesBefore(game.s.badges);
           finished.current = false;
+          runKey.current = newRunKey();
           before.current = undefined;
           setView(undefined);
           load([]);
@@ -167,6 +172,11 @@ export function Player({
       </div>
       <Meters view={view} />
 
+      {saveFailed && (
+        <p role="alert" className="mb-3 rounded-2xl bg-red/15 px-3 py-2 text-[14px] font-extrabold text-red">
+          Your result didn&apos;t save. Check your connection and tap &quot;See your results&quot; again.
+        </p>
+      )}
       {failed && (
         <div role="alert" className="mb-3 flex items-center justify-between gap-3 rounded-2xl bg-red/15 px-3 py-2">
           <p className="text-[14px] font-extrabold text-red">That didn&apos;t go through.</p>
@@ -231,6 +241,9 @@ export function Player({
     </div>
   );
 }
+
+const newRunKey = () =>
+  typeof crypto !== "undefined" && crypto.randomUUID ? crypto.randomUUID() : `run-${Date.now()}-${Math.random().toString(36).slice(2)}`;
 
 function Loading({ failed, onRetry, onExit }: { failed: boolean; onRetry: () => void; onExit: () => void }) {
   return (

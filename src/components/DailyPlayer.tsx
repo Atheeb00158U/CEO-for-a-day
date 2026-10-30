@@ -26,10 +26,10 @@ export function DailyPlayer({ call, onExit }: { call: DailyQuestion; onExit: () 
     setFailed(false);
     lockDaily(call.id, optionId)
       .then((a) => {
-        if (first) {
-          game.playDaily(call, a.option);
-          playSfx("coins", 1000); // the XP, after the verdict sound
-        }
+        if (a.synced)
+          game.sync(a.synced); // signed in: the server saved it
+        else if (first) game.playDaily(call, a.option);
+        if (first) playSfx("coins", 1000); // the XP, after the verdict sound
         setAnswer(a);
       })
       .catch(() => setFailed(true))
