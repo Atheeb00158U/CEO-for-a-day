@@ -32,6 +32,9 @@ Cash and customers come before frameworks. Rumelt, Playing to Win, 7 Powers and 
 player has met the problem each one solves. "Judge the thinking, not the luck" is taught in Unit 1 and used
 everywhere, since our feedback already works that way.
 
+**The full course map is `docs/CURRICULUM.md`** (13 units, 34 modules, 138 lessons, 24 Hot Seat gates; reviewed
+by a fresh-context agent and revised). It supersedes the table above and the list below.
+
 **Content gap:** 9 of our 15 Hot Seats are Western, 5 are about disruption, and all are big companies. The
 next five Hot Seats should be Indian and fill Units 1–4: **Nirma vs Surf, Flipkart cash on delivery, Chik's
 ₹1 sachet, Tata Nano, Royal Enfield 2000.** Eleven more are listed in the research.
