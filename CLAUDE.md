@@ -65,6 +65,7 @@ Follow `docs/BUILD-PLAN.md` phase by phase and tick items off as you finish them
 - **Leagues** (`leagueBoard`): groups of up to 30 per tier, joined on the first XP of the week (`add_league_xp`), settled when the player next looks (no weekly job). Small groups are topped up with practice rivals that never count for moving up. Badges are `public/league/<tier>.webp`.
 - **Reminders**: `public/sw.js` only shows notifications (no caching; the game stays online only). Supabase `pg_cron` calls `/api/cron/remind` at the start of each IST hour with the `cron_secret` from Vault.
 - A guest's save is imported once on sign-in, with every number capped (`importGuest`).
+- Sign-in uses Google's own button (`renderGoogleButton` in `src/lib/auth.ts`, then `signInWithIdToken` with a nonce), so Google's page names ceoforaday.in. Without `NEXT_PUBLIC_GOOGLE_CLIENT_ID`, or if Google's script fails to load, it falls back to Supabase's redirect. An app added to an iPhone's Home Screen can't see Safari's Google accounts, so the first sign-in there always asks for the email (an iOS rule).
 
 ## Known gaps
 See `docs/LAUNCH-CHECKLIST.md`.
