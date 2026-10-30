@@ -96,7 +96,7 @@ is gate 21 of 24.
 | Code | The rule | Everyday example (made up) | Source | Exercise |
 |---|---|---|---|---|
 | 1.2.1 | Profit on paper can still leave the cash box empty. | Sunil's wholesale buyer pays in 90 days, but his cloth supplier wants cash today. | *Financial Intelligence* ◇ | Spot the mistake (a ledger) |
-| 1.2.2 | Udhaar is a loan you give. Manage it like one. | Regulars owe Raju ₹80,000. He sets a limit and a collection day. | IIMB study on kirana working capital (repository.iimb.ac.in) ◇ | Who's right? |
+| 1.2.2 | Udhaar is a loan you give. Manage it like one. | A tailor's regulars owe him ₹30,000. He sets a limit and a collection day. | IIMB study on kirana working capital (repository.iimb.ac.in) ◇ | Who's right? |
 | 1.2.3 | Stock on the shelf is cash you can't spend. | A shoe shop still has school shoes in 12 sizes in May. | *Financial Intelligence* (working capital) ◇ | Pick the best move |
 | 1.2.4 | Keep shop money and home money apart. | A cousin's wedding gift paid from the till leaves no cash for Monday's stock. | *Profit First* (Mike Michalowicz) ◇ | Sort into buckets |
 | 1.2.5 | Keep a cash buffer, and know how many months it lasts. | ₹60,000 saved, ₹20,000 short in each monsoon month: three months of safety. | *Profit First* ◇; Paul Graham, "Default Alive or Default Dead?" (2015) ◇ | Quick sum |
@@ -115,7 +115,7 @@ is gate 21 of 24.
 
 | Code | The rule | Everyday example (made up) | Source | Exercise |
 |---|---|---|---|---|
-| 1.3.1 | Judge the thinking, not the luck. | Raju stocked umbrellas and the rain came late. The bet was still sound. | *Thinking in Bets* (Annie Duke), "resulting" (sachinrekhi.com) ✓ | True or false, then why |
+| 1.3.1 | Judge the thinking, not the luck. | A juice stall stocked up for a heatwave that came a week late. The bet was still sound. | *Thinking in Bets* (Annie Duke), "resulting" (sachinrekhi.com) ✓ | True or false, then why |
 | 1.3.2 | Test small before you bet big. | Try home delivery in one lane for a month before the whole area. | *The Lean Startup* (Eric Ries) ◇ | Drag to order |
 | 1.3.3 | Track a few numbers each week. Let them decide, not hope. | Every Sunday Lata counts meals sold, meals wasted and cash in hand. | *The Lean Startup*, "innovation accounting" ◇ | Spot the mistake |
 | 1.3.4 | Money already spent is gone. Decide on what comes next. | A ₹40,000 juicer sits unused. Keeping it "because we paid for it" won't bring the money back. | Sunk cost, *Thinking, Fast and Slow* (Kahneman) ◇ | True or false, then why |
@@ -162,7 +162,7 @@ is gate 21 of 24.
 - **NEW: `redbus-first-tickets` "No ticket home for Diwali".** redBus's founders, about 2005–2007.
   - d1 After failing to get a bus ticket home: what to build first → 2.1.1
   - d2 How to learn: ask bus operators how they sell seats today, or show them your website → 2.1.2 (+2.1.3)
-  - d3 Operators love the idea: build anyway, or wait until some promise you seats → 2.1.4
+  - d3 No operator will sign up: keep pushing software, or sell seats like a travel agent → 2.1.4 (the brief: operators were doubtful, not keen; the start was one city, two operators)
   - d4 Where to start: one busy route, or all of India → 2.2.1
   - Tests: 2.1.1–2.1.4, 2.2.1. Quiz only: 2.2.2–2.2.5.
   - Complexity 2 · Indian: yes · small, founder · Facts: ◇ needs a full research brief.
@@ -246,7 +246,7 @@ is gate 21 of 24.
 - **NEW: `paper-boat` "Drinks and memories".** Hector Beverages, 2013–2015.
   - d1 Keep pushing the cheap energy drink, or bottle aam panna → 2.1.1
   - d2 Pack: cartons, or cheaper pouches → 1.1.2
-  - d3 Getting people to try: free tastings, or ads → 4.2.1 ◇
+  - d3 Getting people to try it before advertising (stores, flights, canteens, refunds to shops) → 4.2.1
   - d4 What the brand says: health and ingredients, or childhood memories → 4.3.2 ◇
   - d5 Voice: plain labels, or a short story on every pack → 4.3.3 ◇
   - Tests: 4.2.1, 4.3.2, 4.3.3. Quiz only: 4.2.2–4.2.4, 4.3.1.
