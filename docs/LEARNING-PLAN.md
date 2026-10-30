@@ -72,9 +72,10 @@ next five Hot Seats should be Indian and fill Units 1–4: **Nirma vs Surf, Flip
 Try **one** Hot Seat as a continuous MMH-style video (archive footage cut on every phrase, word-by-word
 captions, documents with highlighter). The video stops at each decision, the frame blurs and the options
 slide up from the bottom.
-- **Pilot: Kodak.** The archive has real Kodak footage (Rochester factory films, darkroom and lab reels,
+- **Pilot story: to be chosen after the curriculum** (Atheeb ruled out Kodak as over-familiar). Research
+  notes: the archive has real Kodak footage (Rochester factory films, darkroom and lab reels,
   1990s offices). Indian stories got almost no Indian footage in 35 searches, so Amul and Maruti would look
-  random. Kodak is published, so the video can be compared with the same story as it is today.
+  random. Intel was the runner-up.
 - **One short video per screen the game already shows:** 39 clips, about 10 minutes in all; one play
   watches about 4 minutes. The engine doesn't change. Hearts, meters, "Our estimate" and the verdict stay
   as app overlays.
@@ -98,16 +99,21 @@ runs in the in-app browser under your own sign-in; I don't sign in for you. 122 
 so it ships in waves: Units 1–2 first (about 20 lessons), then two units at a time.
 
 ## Order of work
+0. **Plan the curriculum in full:** every unit and module, its lessons, and the Hot Seats each module needs
+   (existing or to write; a module can have several). Then plan the Hot Seats.
 1. **Foundations, no UI** (can ship hidden): the deep-merge fix, course format and checks, `/api/lesson`,
    saved progress, `lesson_plays`.
 2. **The player sees it:** lesson player, the new Home path, Notes with Cards and the Mistake journal.
 3. **Content wave 1:** Units 1–2 lessons and cards; existing Hot Seats' "why" text names the lessons.
-4. **Video pilot stage 1** (runs alongside 1–3; separate from the app code until it's approved).
+4. **Video pilot stage 1**, once its story is chosen (separate from the app code until it's approved).
 5. **New Indian Hot Seats:** Nirma, Flipkart COD, Chik, Tata Nano, Royal Enfield (normal `AUTHORING.md`).
 6. Content waves 2+ and the rest of the Notes tools.
 
 ## Atheeb's decisions (30 Oct 2026)
-1. **Video pilot: Kodak.**
+1. **Video pilot: not Kodak** (too familiar a story). Which Hot Seat gets the video is decided after the
+   curriculum and the Hot Seat list are planned.
+5. **Curriculum first, then Hot Seats.** Plan the full course before choosing or writing more Hot Seats.
+   **A module can have more than one Hot Seat to clear.**
 2. **Unit 1 gets a composite story** ("a kirana's year"), clearly labelled as made up, not a real company.
    It's the only exception to the real-companies rule.
 3. **Path:** lessons unlock in order; a short "test out" lets a confident player skip a unit.
