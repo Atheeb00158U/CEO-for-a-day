@@ -904,6 +904,12 @@ gate's main call. See open questions.
 3. **Royal Enfield is a new Unit 10 gate** (11 new Hot Seats, 25 gates in all).
 4. **Cadbury 2003 is Maggi's backup** while Maggi and Kingfisher stay on legal hold; 9.3 runs gateless meanwhile.
 
+Later answers (31 Oct 2026), after the research briefs:
+- **Images** for stories with no archive footage come from ChatGPT in the browser (see `AUTHORING.md` step 5).
+- **Snapdeal:** the real staff cuts (several rounds) are graded "ok"; the why explains that one deep cut works better (7.2.2).
+- **Zerodha:** kept, with care: find more independent sources before drafting, keep it on pricing and growth, and say plainly that trading is risky.
+- **Eureka Forbes:** kept with its four well-sourced decisions; "which homes first" (5.1.1) is taught in lessons only.
+
 Taken as defaults unless Atheeb says otherwise: the kirana story is the onboarding taster; Nokia is optional
 practice and Titan quartz the Unit 12 gate; the title-decision placement rule stands; Airbnb 2020 is the
 fallback if Zomato's facts are thin; the course stays hidden until kirana, Nirma and redBus are written;
