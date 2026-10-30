@@ -151,6 +151,7 @@ names on packs. Expect "not found" for some; flag to Atheeb.
 - **Copy passes, path reads and a fresh-context review** still apply, even with no fact-check.
 
 ## Open questions for Atheeb
+0. **Once the `madeUp` flag exists** (another session is adding it), change `hotseat.json`: set `madeUp: true`; drop the `real: true` on every decision (for now it sits on each great option only because `hotseat:check` demands one real option per decision on the real path); revisit `realEnding` (now `legend`, matching those placeholder real options) and `realHistory` (now a short "this is made up" note); remove "This is a made-up story, based on many real kiranas." from the `intro` text and "(made up)" from `company` and `role` if the app shows the label itself; replace the fact-check with the realism check.
 1. **₹4 or ₹3?** Lesson 1.1.2 says loose namkeen earns ₹4 on ₹10 (40%). Source [1] puts loose goods at mid teens to 30%. This brief uses ₹3; should the lesson change to match?
 2. **Five calls or six?** CURRICULUM lists six (wedding and monsoon buffer separate). This brief folds them into one (d4). OK to update CURRICULUM?
 3. **GST:** should the intro mention GST at all? A shop under ₹40 lakh selling only goods needs no registration [5], but not if it sells tobacco or pan masala [5], which many kiranas do. Is the composition limit (₹1.5 crore, 1%) [4] still current after the Sept 2025 GST changes? Not confirmed; the flyer is undated. Simplest: leave GST out.

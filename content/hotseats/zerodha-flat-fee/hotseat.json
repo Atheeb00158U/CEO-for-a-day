@@ -1,0 +1,542 @@
+{
+  "id": "zerodha-flat-fee",
+  "company": "Zerodha",
+  "title": "₹20 a trade",
+  "hook": "The big brokers take a cut of every trade. You have no famous name and no ad budget. How do you win?",
+  "role": "You run Zerodha, 2010 to 2016",
+  "years": "2010–2016",
+  "cover": "img:zd_cover",
+  "draft": true,
+  "complexity": 2,
+  "minutes": 6,
+  "start": "intro",
+  "startMeters": {
+    "profit": 30,
+    "future": 20
+  },
+  "startTrust": 3,
+  "meters": {
+    "profit": {
+      "label": "Profit",
+      "hint": "Money the business makes today"
+    },
+    "future": {
+      "label": "Growth",
+      "hint": "How fast Zerodha is growing, on its own terms"
+    }
+  },
+  "nodes": {
+    "intro": {
+      "id": "intro",
+      "type": "scene",
+      "year": "2010",
+      "media": "img:zd_intro",
+      "text": "For six years you have worked as a small agent for a big share broker. Now, in 2010, you and your brother are starting a broker of your own, with a handful of people and about ₹2 crore of your savings and a friend's money. You have no famous name and no ad budget.",
+      "next": "warning"
+    },
+    "warning": {
+      "id": "warning",
+      "type": "scene",
+      "year": "2010",
+      "media": "img:zd_warning",
+      "text": "First, a plain warning: trading shares is risky, and many people who trade lose money. Years later, India's market regulator found that about nine in ten people who traded futures and options lost money. This story is about pricing and growing a business, not about trading.",
+      "next": "d1"
+    },
+    "d1": {
+      "id": "d1",
+      "type": "decision",
+      "year": "2010",
+      "title": "How will you charge?",
+      "media": "img:zd_d1",
+      "setup": "Big brokers charge a share of every trade, so a big order pays them far more than a small one, and most of their income comes from these fees. To survive, you must get people to leave brokers they know for a name they have never heard of.",
+      "question": "How do you price your service?",
+      "advisor": "A new kind of price is hard to explain, and the big brokers might just copy it. A small discount on the usual price is easy to sell.",
+      "options": [
+        {
+          "id": "percent",
+          "label": "Charge a share of each trade like everyone else, but a little lower than they do.",
+          "grade": "bad",
+          "effect": {
+            "profit": 5,
+            "future": -10,
+            "trust": -1,
+            "flags": ["percent"]
+          },
+          "next": "s2012",
+          "media": "img:zd_d1_percent",
+          "outcome": "Some customers come for the lower rate. But the big brokers cut their rates a little too, and they have famous names. You are just one more small broker, and growth is slow.",
+          "why": "A small discount on the same model was easy for big rivals to match. Remember: pick a model the leader can't copy without hurting itself.",
+          "better": "Charge a small flat fee per order. To copy it, the big brokers would have to give up much of their own income.",
+          "takeaway": "In 2010 you copied the leaders and charged a bit less. A rival can match a small discount in a day.",
+          "traits": {
+            "horizon": -1,
+            "risk": -1,
+            "disrupt": -1
+          }
+        },
+        {
+          "id": "monthly",
+          "label": "Charge a fixed monthly fee for any number of trades, whatever their size.",
+          "grade": "ok",
+          "effect": {
+            "profit": -5,
+            "future": 5,
+            "flags": ["monthly"]
+          },
+          "next": "s2012",
+          "media": "img:zd_d1_monthly",
+          "outcome": "People who trade every day sign up, and they cost you the most to serve. People who invest once a month find the fee too steep, so most of them stay away.",
+          "why": "It was simple, but it suited only the busiest customers, and your costs grew with them. Remember: pick a model the leader can't copy without hurting itself, and make it fair for most customers.",
+          "better": "Charge a small flat fee on each order, so small and big customers both pay a fair price.",
+          "takeaway": "In 2010 you chose one monthly fee for everyone. A price that suits only your busiest customers leaves most people out.",
+          "traits": {
+            "horizon": 0,
+            "risk": 1,
+            "disrupt": 1
+          }
+        },
+        {
+          "id": "flat",
+          "label": "Charge at most ₹20 an order, however big the trade, even though each order earns very little.",
+          "grade": "great",
+          "real": true,
+          "effect": {
+            "profit": 5,
+            "future": 15,
+            "flags": ["flat"]
+          },
+          "next": "s2012",
+          "media": "img:zd_d1_flat",
+          "outcome": "On 15 August 2010 you open with a simple price: never more than ₹20 an order, whatever its size. In 15 months you have about 7,000 clients, and within two years you are making a profit.",
+          "why": "Big brokers lived on a share of each trade. To match ₹20, they would have to give up much of their own income, so they cut prices only slowly, over years. Remember: pick a model the leader can't copy without hurting itself.",
+          "takeaway": "In 2010 you charged a flat ₹20. Pick a price the big players can't copy without hurting themselves.",
+          "traits": {
+            "horizon": 1,
+            "risk": 1,
+            "disrupt": 1
+          }
+        }
+      ]
+    },
+    "s2012": {
+      "id": "s2012",
+      "type": "scene",
+      "year": "2012",
+      "media": "img:zd_2012",
+      "text": [
+        {
+          "when": {
+            "flags": ["flat"]
+          },
+          "text": "By 2012 you have more than 30,000 clients without ever paying for an ad, because happy clients tell their friends about the low price. Your team has grown to about 85 people, and you are now building your own trading software."
+        },
+        {
+          "when": {
+            "flags": ["monthly"]
+          },
+          "text": "By 2012 you have a loyal group of busy traders, but few ordinary investors. Your clients like you, though, and some tell their friends. You want to turn that into real growth."
+        },
+        {
+          "text": "By 2012 you have a few thousand clients. Your price is no longer special, but the people who did join like your service, and some tell their friends."
+        }
+      ],
+      "next": "d2"
+    },
+    "d2": {
+      "id": "d2",
+      "type": "decision",
+      "year": "2012",
+      "title": "Let clients bring friends?",
+      "media": "img:zd_d2",
+      "setup": "Word of mouth is working, but slowly, and you still spend nothing on ads. Your happiest clients could do far more of your selling for you, if you gave them a reason to.",
+      "question": "How do you reward clients who bring friends?",
+      "advisor": "A cash bonus is quick and easy to understand. Sharing our fees pays out slowly, and the rules on it are not clear.",
+      "options": [
+        {
+          "id": "share",
+          "label": "Share part of your fee with clients for as long as their friends stay, though it pays out slowly.",
+          "grade": "great",
+          "real": true,
+          "effect": {
+            "profit": -5,
+            "future": 15,
+            "flags": ["share"]
+          },
+          "next": "d3",
+          "media": "img:zd_d2_share",
+          "outcome": "Soon more than 4,000 clients are bringing in others through your partner scheme, and each earns a part of your fee. Friends trust friends more than ads. The rules stay unclear, though, and in 2018 you stop sharing fees because no rule clearly allows it.",
+          "why": "People join what their friends and colleagues already use. Paying over time rewarded clients who brought people who stayed. Remember: people follow what others like them do.",
+          "takeaway": "In 2012 you let happy clients bring friends. People trust a friend's advice more than any ad.",
+          "traits": {
+            "horizon": 1,
+            "risk": 0,
+            "disrupt": 0
+          }
+        },
+        {
+          "id": "bonus",
+          "label": "Pay a one-time cash bonus for every new account, however little the friend uses it.",
+          "grade": "ok",
+          "effect": {
+            "profit": -10,
+            "future": 5,
+            "flags": ["bonus"]
+          },
+          "next": "d3",
+          "media": "img:zd_d2_bonus",
+          "outcome": "Sign-ups jump. But many accounts are opened just for the bonus and never used, and some people learn to game it. You are paying for names, not for happy clients.",
+          "why": "Paying for sign-ups bought accounts, not trust. Remember: people follow what others like them do, so reward real friends who bring people who stay.",
+          "better": "Reward clients over time, for as long as the friends they bring stay with you.",
+          "takeaway": "In 2012 you paid for sign-ups. A bonus for each new name brings names, not loyal customers.",
+          "traits": {
+            "horizon": -1,
+            "risk": 0,
+            "disrupt": 0
+          }
+        },
+        {
+          "id": "nothing",
+          "label": "Give no reward, so every recommendation stays honest and no rule is put at risk.",
+          "grade": "bad",
+          "effect": {
+            "profit": 5,
+            "future": -10,
+            "trust": -1,
+            "flags": ["no_reward"]
+          },
+          "next": "d3",
+          "media": "img:zd_d2_nothing",
+          "outcome": "Your clients still recommend you, but only now and then. Growth stays slow, while new rivals copy your idea and spend money to get noticed.",
+          "why": "You had happy clients but gave them no push to talk. Remember: people follow what others like them do, so make it easy to bring friends.",
+          "better": "Reward clients who bring friends, in a way that grows with how long those friends stay.",
+          "takeaway": "In 2012 you waited for word of mouth. Happy customers sell best when you make it easy for them.",
+          "traits": {
+            "horizon": 0,
+            "risk": -1,
+            "disrupt": 0
+          }
+        }
+      ]
+    },
+    "d3": {
+      "id": "d3",
+      "type": "decision",
+      "year": "2014",
+      "title": "Ads or free lessons?",
+      "media": "img:zd_d3",
+      "setup": [
+        {
+          "when": {
+            "flags": ["share"]
+          },
+          "text": "It is 2014, and friends keep bringing friends. But most Indians still don't invest in shares at all; one count puts active investors at about a million. The big brokers have famous names and run TV ads. To grow, you need people who have never invested before."
+        },
+        {
+          "text": "It is 2014, and your growth has slowed. Most Indians still don't invest in shares at all; one count puts active investors at about a million. The big brokers have famous names and run TV ads. To grow, you need people who have never invested before."
+        }
+      ],
+      "question": "How do you reach new people?",
+      "advisor": "TV ads would make our name known fast. Lessons take years to pay off, and people may learn from us and then open an account somewhere else.",
+      "options": [
+        {
+          "id": "tv",
+          "label": "Spend big on TV and newspaper ads, to make your name as well known as theirs.",
+          "grade": "bad",
+          "effect": {
+            "profit": -15,
+            "future": -5,
+            "trust": -1,
+            "flags": ["ads"]
+          },
+          "next": "s2015",
+          "media": "img:zd_d3_tv",
+          "outcome": "Your name gets known, but the ads cost a lot, and many people who come don't understand what they are buying. Your profit shrinks, and you start to need outside money.",
+          "why": "Ads bought attention, not trust, and they ate the profits that paid for growth. Remember: happy customers and free teaching can beat paid ads.",
+          "better": "Teach for free and let happy clients spread the word. It costs less and builds trust.",
+          "takeaway": "In 2014 you paid for ads. With a low price, ads eat the profit that should pay for growth.",
+          "traits": {
+            "horizon": -1,
+            "risk": 1,
+            "disrupt": 0
+          }
+        },
+        {
+          "id": "lessons",
+          "label": "Give away free, simple lessons on investing, with no sign-up, even if rivals' clients use them.",
+          "grade": "great",
+          "real": true,
+          "effect": {
+            "profit": 0,
+            "future": 15,
+            "flags": ["lessons"]
+          },
+          "next": "s2015",
+          "media": "img:zd_d3_lessons",
+          "outcome": "In November 2014 you launch Varsity, free lessons on the stock market, with two modules at first. Anyone can read them without signing up and ask questions under each chapter. You still spend nothing on ads.",
+          "why": "Free teaching built trust with people who had never invested, and it cost far less than ads. Remember: happy customers and free teaching can beat paid ads, and people want to give back to those who give first.",
+          "takeaway": "In 2014 you taught for free. Give first: people remember who helped them before they paid a rupee.",
+          "traits": {
+            "horizon": 1,
+            "risk": 0,
+            "disrupt": 1
+          }
+        },
+        {
+          "id": "agents",
+          "label": "Build a sales team and partners in many cities, the way the older brokers do.",
+          "grade": "ok",
+          "effect": {
+            "profit": -10,
+            "future": 5,
+            "flags": ["agents"]
+          },
+          "next": "s2015",
+          "media": "img:zd_d3_agents",
+          "outcome": "Agents bring in clients in new towns, but each agent wants a cut, and your low price leaves little to share. Your costs rise faster than your income.",
+          "why": "It worked for brokers with high fees. With a ₹20 price, a costly sales network ate your margin. Remember: happy customers and free teaching can beat paid ads.",
+          "better": "Keep costs low: teach for free, and let happy clients bring their friends.",
+          "takeaway": "In 2014 you hired a sales army. A low-price business needs low-cost ways to find customers.",
+          "traits": {
+            "horizon": 0,
+            "risk": 0,
+            "disrupt": -1
+          }
+        }
+      ]
+    },
+    "s2015": {
+      "id": "s2015",
+      "type": "scene",
+      "year": "2015",
+      "media": "img:zd_2015",
+      "text": [
+        {
+          "when": {
+            "flags": ["flat", "lessons"]
+          },
+          "text": "By 2015 your clients are doubling about every year, and you make a healthy profit. Elsewhere in India, startups are raising huge sums from investors and spending them on ads and discounts. Investors are starting to notice a fast-growing broker that already makes money."
+        },
+        {
+          "when": {
+            "flags": ["ads"]
+          },
+          "text": "It is 2015. Your ads made your name known, but your profit is thin. Startups across India are raising huge sums from investors, and some of those investors are now asking about you."
+        },
+        {
+          "text": "It is 2015. You are growing, though not as fast as you hoped, and you still make a profit. Startups across India are raising huge sums from investors, and some of those investors are now asking about you."
+        }
+      ],
+      "next": "d4"
+    },
+    "d4": {
+      "id": "d4",
+      "type": "decision",
+      "year": "2015",
+      "title": "Take investor money?",
+      "media": "img:zd_d4",
+      "setup": "You could use money to hire, build better apps and reach more people. Investors offer it fast, but they want big returns and a say in how you run things. Or you could keep paying for growth from your own profits, slower but on your own terms.",
+      "question": "How do you pay for the next stage of growth?",
+      "advisor": "With investor money we could grow much faster and hire ahead. But investors want big returns, and they'll want them soon.",
+      "options": [
+        {
+          "id": "vc",
+          "label": "Take venture money to grow faster, even though investors will want quick returns.",
+          "grade": "ok",
+          "effect": {
+            "profit": 5,
+            "future": 0,
+            "flags": ["vc"]
+          },
+          "next": "ending_route",
+          "media": "img:zd_d4_vc",
+          "outcome": "The money lets you hire and spend fast. But your investors want bigger numbers every quarter, and the pressure grows to push customers to trade more. That is bad for them, and bad for your name.",
+          "why": "You didn't need the money: customers were already paying for your growth. Remember: grow on customers' money for as long as you can.",
+          "better": "Grow from your own profits and stay free to put customers first.",
+          "takeaway": "In 2015 you took money you didn't need. Outside money brings outside pressure.",
+          "traits": {
+            "horizon": 0,
+            "risk": 1,
+            "disrupt": 0
+          }
+        },
+        {
+          "id": "bootstrap",
+          "label": "Grow only from your own profits, even if funded rivals grow faster than you.",
+          "grade": "great",
+          "real": true,
+          "effect": {
+            "profit": 10,
+            "future": 15,
+            "flags": ["bootstrap"]
+          },
+          "next": "ending_route",
+          "media": "img:zd_d4_bootstrap",
+          "outcome": [
+            {
+              "when": {
+                "flags": ["flat", "lessons"]
+              },
+              "text": "You turn down outside money and grow from your own profits. In December 2015 you even stop charging for buying shares to hold, and you say no investor money paid for it. About 90,000 new users come. By December 2016 you have more than 1.9 lakh clients."
+            },
+            {
+              "text": "You turn down outside money and grow from your own profits. It is slower, but every rupee you spend comes from customers who chose you, and nobody else tells you how to run things."
+            }
+          ],
+          "why": "Your customers' fees already paid for growth, so outside money would only have added pressure. Remember: grow on customers' money for as long as you can.",
+          "takeaway": "In 2015 you grew on your own profits. When customers pay for your growth, you answer only to them.",
+          "traits": {
+            "horizon": 1,
+            "risk": -1,
+            "disrupt": 0
+          }
+        },
+        {
+          "id": "bank",
+          "label": "Sell a big stake to a bank, in return for its branches and its millions of customers.",
+          "grade": "bad",
+          "effect": {
+            "profit": 5,
+            "future": -15,
+            "trust": -1,
+            "flags": ["bank"]
+          },
+          "next": "ending_route",
+          "media": "img:zd_d4_bank",
+          "outcome": "The bank's customers arrive, but so do its rules and its old ways. Within a year your low price is under review, because it eats into the bank's own broking fees.",
+          "why": "You handed control to the very kind of rival your price was built to beat. Remember: grow on customers' money, and keep control while you can.",
+          "better": "Fund growth from your own profits and keep control.",
+          "takeaway": "In 2015 you sold a stake to an old-style rival. Don't hand your business to the people it was built to beat.",
+          "traits": {
+            "horizon": -1,
+            "risk": -1,
+            "disrupt": -1
+          }
+        }
+      ]
+    },
+    "ending_route": {
+      "id": "ending_route",
+      "type": "route",
+      "routes": [
+        {
+          "when": {
+            "minFuture": 70
+          },
+          "to": "legend"
+        },
+        {
+          "when": {
+            "minFuture": 40
+          },
+          "to": "survivor"
+        },
+        {
+          "to": "collapse"
+        }
+      ]
+    },
+    "legend": {
+      "id": "legend",
+      "type": "ending",
+      "tier": "legend",
+      "title": "The biggest broker in India",
+      "media": "img:zd_legend",
+      "text": [
+        {
+          "when": {
+            "flags": ["flat", "share", "lessons", "bootstrap"]
+          },
+          "text": "In January 2019 Zerodha becomes India's biggest broker by active clients, ahead of giants with famous names and big ad budgets. It has still never taken investor money. Over the years, the old brokers cut their own prices to keep up."
+        },
+        {
+          "text": "You took a different road in places, but your low price and happy clients carried you. Zerodha grows into one of India's biggest brokers, on your own terms."
+        }
+      ],
+      "bonus": 15
+    },
+    "survivor": {
+      "id": "survivor",
+      "type": "ending",
+      "tier": "survivor",
+      "title": "A good, small broker",
+      "media": "img:zd_survivor",
+      "text": [
+        {
+          "when": {
+            "flags": ["vc"]
+          },
+          "text": "Zerodha grows, but your investors keep pushing for faster numbers. It becomes a well-known broker, yet you spend more time on their targets than on your customers."
+        },
+        {
+          "text": "Zerodha becomes a profitable broker with loyal clients. But it never breaks away from the pack, and the big brokers keep most of the market."
+        }
+      ],
+      "bonus": 5
+    },
+    "collapse": {
+      "id": "collapse",
+      "type": "ending",
+      "tier": "collapse",
+      "title": "Swallowed by the giants",
+      "media": "img:zd_collapse",
+      "text": [
+        {
+          "when": {
+            "flags": ["bank"]
+          },
+          "text": "The bank slowly folds Zerodha into its own broking arm. Your low price disappears, and so does the name."
+        },
+        {
+          "text": "Your price is matched, your costs climb, and growth stalls. In the end you sell Zerodha to a bigger broker, and its name disappears."
+        }
+      ],
+      "bonus": 0
+    },
+    "fired": {
+      "id": "fired",
+      "type": "ending",
+      "tier": "fired",
+      "title": "You step aside",
+      "media": "img:zd_fired",
+      "text": "After three costly calls, your partners and your early backers lose faith in your plan. You step aside, and someone else takes over as CEO.",
+      "bonus": 0
+    }
+  },
+  "realEnding": "legend",
+  "realHistory": "Zerodha went live on 15 August 2010 with a price of never more than ₹20 an order. It grew without paid ads, through word of mouth and a scheme that shared fees with clients who brought friends, and from November 2014 through free Varsity lessons. It made a profit early and never took investor money. In December 2015 it stopped charging for buying shares to hold. In January 2019 it became India's biggest broker by active clients. Trading is risky: SEBI found that 93% of individual futures and options traders lost money between 2021–22 and 2023–24.",
+  "sources": [
+    {
+      "label": "Zerodha (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Zerodha"
+    },
+    {
+      "label": "Our story till now (Zerodha Z-Connect, 2012)",
+      "url": "https://zerodha.com/z-connect/general/our-story-till-now"
+    },
+    {
+      "label": "Zerodha startup story (Inc42, 14 Dec 2016)",
+      "url": "https://inc42.com/startups/zerodha-startup/"
+    },
+    {
+      "label": "Broking Industry Update: The Rise of Discount Brokers (HDFC Securities, 19 Mar 2019)",
+      "url": "https://www.hdfcsec.com/hsl.docs/Broking%20-%20Update%20-%20Mar19%20-%20HDFC%20sec-201903191711243793044.pdf"
+    },
+    {
+      "label": "How this brokerage company managed to keep the cost low (Entrepreneur India, 1 Mar 2017)",
+      "url": "https://india.entrepreneur.com/?p=69915"
+    },
+    {
+      "label": "Introducing Varsity (Zerodha Z-Connect, 5 Nov 2014)",
+      "url": "https://zerodha.com/z-connect/queries/stock-and-fo-queries/introducing-varsity"
+    },
+    {
+      "label": "Zerodha going zero brokerage (Zerodha Z-Connect, 30 Nov 2015)",
+      "url": "https://zerodha.com/z-connect/general/zerodha-going-zero-brokerage"
+    },
+    {
+      "label": "Updated SEBI study: 93% of individual traders incurred losses in equity F&O, FY22–FY24 (SEBI, 23 Sep 2024)",
+      "url": "https://www.sebi.gov.in/media-and-notifications/press-releases/sep-2024/updated-sebi-study-reveals-93-of-individual-traders-incurred-losses-in-equity-fando-between-fy22-and-fy24-aggregate-losses-exceed-1-8-lakh-crores-over-three-years_86906.html"
+    }
+  ],
+  "credits": "Alternate-history outcomes are informed estimates, not history. Research brief and full source list: content/hotseats/zerodha-flat-fee/research.md."
+}

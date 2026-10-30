@@ -1,0 +1,598 @@
+{
+  "id": "tata-nano",
+  "company": "Tata Motors",
+  "title": "The one-lakh car",
+  "hook": "You built a car for families who ride scooters in the rain. Now make them want it.",
+  "role": "You run the Nano project at Tata Motors, 2008 to 2010",
+  "years": "2008–2010",
+  "cover": "img:tn_cover",
+  "draft": true,
+  "complexity": 3,
+  "minutes": 6,
+  "start": "intro",
+  "startMeters": {
+    "profit": 40,
+    "future": 35
+  },
+  "startTrust": 3,
+  "meters": {
+    "profit": {
+      "label": "Profit",
+      "hint": "The money the Nano makes, or loses, on each car"
+    },
+    "future": {
+      "label": "Image",
+      "hint": "How much families trust the Nano and want to be seen in one"
+    }
+  },
+  "nodes": {
+    "intro": {
+      "id": "intro",
+      "type": "scene",
+      "year": "2008",
+      "media": "img:tn_intro",
+      "text": "Years ago, your chairman, Ratan Tata, saw a family of four on one scooter in the rain. He has wanted to build them a car ever since: safe, dry in any weather, and cheap enough for them to own. That car is now your job.",
+      "next": "goal"
+    },
+    "goal": {
+      "id": "goal",
+      "type": "scene",
+      "year": "2008",
+      "media": "img:tn_goal",
+      "text": "It is called the Nano. It has four seats and a price of ₹1 lakh at the factory gate, and the basic model has no AC, no radio and no power steering. The plan is to sell 2.5 lakh cars a year. In a few days, the whole world will see it.",
+      "next": "d1"
+    },
+    "d1": {
+      "id": "d1",
+      "type": "decision",
+      "year": "2008",
+      "title": "What will it be known for?",
+      "media": "img:tn_d1",
+      "setup": "On 10 January you unveil the Nano at the Auto Expo in New Delhi, and every TV channel will be there. It will be the cheapest car in the world, and your sales team says the price will sell it by itself. But the people you built it for have never owned a car.",
+      "question": "What is the one message you want people to take home?",
+      "advisor": "One number, ₹1 lakh, will put us on every front page in the world. Nothing else we say will travel that far.",
+      "options": [
+        {
+          "id": "value",
+          "label": "Sell it as a real car that's cheap to run, and use the low price as the proof.",
+          "grade": "ok",
+          "effect": {
+            "profit": 5,
+            "future": 5,
+            "flags": ["value"]
+          },
+          "next": "launch",
+          "media": "img:tn_d1_value",
+          "outcome": "Your ads talk about mileage, low running costs and four real seats. The message is clear and honest, but the price is still what people repeat at tea stalls, and 'cheap' sticks in their minds more than 'smart'.",
+          "why": "Value beats 'cheapest', because Indian buyers want good value, not just a low price. But you still talked about money, not about how it feels to own a car. Remember: feelings count as much as features.",
+          "better": "Lead with the family and the pride of a first car, and then show the value.",
+          "takeaway": "In 2008 you sold the Nano on value. That helps, but buyers also want to feel proud of what they own.",
+          "traits": {
+            "horizon": 0,
+            "risk": 0,
+            "disrupt": 0
+          }
+        },
+        {
+          "id": "cheapest",
+          "label": "Make the ₹1 lakh price the headline. The world's cheapest car is a story no one can ignore.",
+          "grade": "bad",
+          "real": true,
+          "effect": {
+            "profit": 10,
+            "future": -15,
+            "trust": -1,
+            "flags": ["cheapest"]
+          },
+          "next": "launch",
+          "media": "img:tn_d1_cheap",
+          "outcome": "On 10 January 2008 the Nano is unveiled at the Auto Expo in New Delhi. Tata calls it the People's Car, but the ₹1 lakh price is the headline. The press calls it the world's cheapest car, and soon your own people are calling it that too.",
+          "why": "The price got the Nano noticed everywhere, but it also became the car's name, and nobody wants the neighbours to see them in 'the cheapest car'. Remember: feelings count as much as features.",
+          "better": "Sell it as a safe, proud first car for a family, a step up from the scooter, and let the price be a happy surprise.",
+          "takeaway": "In 2008 you made the price the headline. People also buy what a product says about them.",
+          "traits": {
+            "horizon": -1,
+            "risk": 0,
+            "disrupt": 0
+          }
+        },
+        {
+          "id": "family",
+          "label": "Show a family of four, safe and dry in the rain. Sell their first car, and say less about price.",
+          "grade": "great",
+          "effect": {
+            "profit": 0,
+            "future": 20,
+            "flags": ["family"]
+          },
+          "next": "launch",
+          "media": "img:tn_d1_family",
+          "outcome": "On the big screen at the Auto Expo, a family steps off a wet scooter and into a Nano, and the price comes up only at the end. The papers still print ₹1 lakh, but the picture people remember is a proud family in its first car.",
+          "why": "You sold the step up, not the discount. A family pays for pride as well as for wheels. Remember: feelings count as much as features, and Indian buyers want good value, not just the lowest price.",
+          "takeaway": "In 2008 you sold the Nano as a proud first car. People buy a feeling, not just a price.",
+          "traits": {
+            "horizon": 1,
+            "risk": 0,
+            "disrupt": 1
+          }
+        }
+      ]
+    },
+    "launch": {
+      "id": "launch",
+      "type": "scene",
+      "year": "2009",
+      "media": "img:tn_launch",
+      "text": [
+        {
+          "when": {
+            "flags": ["cheapest"]
+          },
+          "text": "In October 2008, after protests stopped work at the new plant in Singur, West Bengal, Tata moves the Nano plant to Sanand in Gujarat. The sale date slips by months. Then, on 23 March 2009, the world's cheapest car is finally launched in Mumbai."
+        },
+        {
+          "text": "In October 2008, after protests stopped work at the new plant in Singur, West Bengal, Tata moves the Nano plant to Sanand in Gujarat. The sale date slips by months. Then, on 23 March 2009, the Nano is finally launched in Mumbai."
+        }
+      ],
+      "next": "d2"
+    },
+    "d2": {
+      "id": "d2",
+      "type": "decision",
+      "year": "2009",
+      "title": "More buyers than cars",
+      "media": "img:tn_d2",
+      "setup": "Bookings open in April, and you expect a flood. But the Gujarat plant is about a year away, and until then your only working plant can make about 50,000 Nanos a year. You have also promised your first buyers the launch price.",
+      "question": "How do you handle the rush?",
+      "advisor": "Every booking brings cash in today. Turning buyers away feels like throwing money in the river.",
+      "options": [
+        {
+          "id": "cap",
+          "label": "Take only as many bookings as you can build in a year, and open a new round, at a new price, later.",
+          "grade": "great",
+          "effect": {
+            "profit": 0,
+            "future": 10,
+            "flags": ["cap"]
+          },
+          "next": "y2010",
+          "media": "img:tn_d2_cap",
+          "outcome": "Bookings close within days, and many people are angry that they missed out. But every buyer gets a car within months, and soon happy owners are showing them off in every town. A second round, at a higher price, waits for the Gujarat plant.",
+          "why": "When far more people want your product than you can make, the queue is a warning, not a prize. A short wait that you keep beats a long one that turns sour. Remember: a long queue means the price is too low or supply is too small.",
+          "takeaway": "In 2009 you took only the orders you could fill. A promise you can keep beats a crowd you can't serve.",
+          "traits": {
+            "horizon": 1,
+            "risk": -1,
+            "disrupt": 0
+          }
+        },
+        {
+          "id": "draw",
+          "label": "Take every booking, then pick the first 1 lakh buyers in a lucky draw. The rest wait their turn.",
+          "grade": "ok",
+          "real": true,
+          "effect": {
+            "profit": 5,
+            "future": -5,
+            "flags": ["draw"]
+          },
+          "next": "y2010",
+          "media": "img:tn_d2_draw",
+          "outcome": "In just over two weeks, more than 2 lakh people book a Nano, and nearly ₹2,500 crore comes in. In June a draw picks 1 lakh buyers, and deliveries begin in July. But a year later, only about 45,000 cars have reached their owners.",
+          "why": "The draw was fair, and it kept your promise. But 2 lakh orders for a plant that makes 50,000 a year meant years of waiting, and buyers who wait start to doubt. Remember: a long queue means the price is too low or supply is too small.",
+          "better": "Take only the orders you can fill soon, and open a new round, at a new price, when the second plant is ready.",
+          "takeaway": "In 2009 you took far more orders than you could fill. A long wait turns excited buyers into doubters.",
+          "traits": {
+            "horizon": 0,
+            "risk": 1,
+            "disrupt": 0
+          }
+        },
+        {
+          "id": "raise",
+          "label": "Raise the launch price a little before bookings open, so the queue fits what you can build.",
+          "grade": "bad",
+          "effect": {
+            "profit": 10,
+            "future": -10,
+            "trust": -1,
+            "flags": ["raise"]
+          },
+          "next": "y2010",
+          "media": "img:tn_d2_raise",
+          "outcome": "The queue is shorter, but the news is about one thing only: the Nano no longer costs what you promised. People who trusted that promise feel cheated, and many families who could only just afford the car walk away.",
+          "why": "Charging more can shorten a queue, but not by breaking a promise in public. Remember: raise prices slowly, give warning, and keep your word to the people who trusted it.",
+          "better": "Keep the promised price for the first buyers, take only the orders you can fill, and charge more in later rounds.",
+          "takeaway": "In 2009 you broke a price promise to shorten the queue. Lost trust costs more than the money you gain.",
+          "traits": {
+            "horizon": -1,
+            "risk": 0,
+            "disrupt": 0
+          }
+        }
+      ]
+    },
+    "y2010": {
+      "id": "y2010",
+      "type": "scene",
+      "year": "2010",
+      "media": "img:tn_2010",
+      "text": [
+        {
+          "when": {
+            "flags": ["cap"]
+          },
+          "text": "In June 2010 the Gujarat plant opens, built to make 2.5 lakh cars a year, and your second round of bookings starts to fill. But a new problem has crept up on you: steel and rubber now cost far more than they did in 2008."
+        },
+        {
+          "when": {
+            "flags": ["raise"]
+          },
+          "text": "In June 2010 the Gujarat plant opens, built to make 2.5 lakh cars a year. The anger over your price rise has faded a little. But a new problem has crept up on you: steel and rubber now cost far more than they did in 2008."
+        },
+        {
+          "text": "In June 2010 the Gujarat plant opens, built to make 2.5 lakh cars a year, so at last you can start clearing the queue. But a new problem has crept up on you: steel and rubber now cost far more than they did in 2008."
+        }
+      ],
+      "next": "d3"
+    },
+    "d3": {
+      "id": "d3",
+      "type": "decision",
+      "year": "2010",
+      "title": "Costs go up",
+      "media": "img:tn_d3",
+      "setup": [
+        {
+          "when": {
+            "flags": ["draw"]
+          },
+          "text": "Every Nano now costs you more to build. Your chairman promised India a ₹1 lakh car and wants to keep that promise. The first 1 lakh buyers were told they would pay the old price, and many of them are still waiting for their cars."
+        },
+        {
+          "when": {
+            "flags": ["raise"]
+          },
+          "text": "Every Nano now costs you more to build. You have already raised the price once, and buyers have not forgotten. Your chairman still wants the Nano to stay the car that families can afford."
+        },
+        {
+          "text": "Every Nano now costs you more to build. Your chairman promised India a ₹1 lakh car and wants to keep that promise. Your first buyers already have their cars at the price you promised them."
+        }
+      ],
+      "question": "What do you do about the price?",
+      "advisor": "The ₹1 lakh price is the one thing everyone knows about us. If we touch it, we lose that.",
+      "options": [
+        {
+          "id": "hold",
+          "label": "Keep the old price for everyone. A promise is a promise, even if each car now loses money.",
+          "grade": "bad",
+          "effect": {
+            "profit": -15,
+            "future": -10,
+            "trust": -1,
+            "flags": ["hold"]
+          },
+          "next": "d4",
+          "media": "img:tn_d3_hold",
+          "outcome": "Buyers cheer, but now every Nano you build loses money. To save cash you squeeze your suppliers and put off upgrades, and the board starts asking how long you can afford your own best-known car.",
+          "why": "Keeping your word to your first buyers was right, but stretching that promise to everyone, for ever, while costs rose was not. Remember: raise prices slowly, and give warning.",
+          "better": "Keep the old price for the buyers you promised it to, and raise it for new buyers in small, clear steps.",
+          "takeaway": "In 2010 you held a price your costs couldn't support. A promise that bleeds money can't last.",
+          "traits": {
+            "horizon": -1,
+            "risk": 1,
+            "disrupt": 0
+          }
+        },
+        {
+          "id": "steps",
+          "label": "Keep the old price for the buyers you promised it to, and raise it for new buyers in small steps.",
+          "grade": "great",
+          "real": true,
+          "effect": {
+            "profit": 10,
+            "future": 5,
+            "flags": ["steps"]
+          },
+          "next": "d4",
+          "media": "img:tn_d3_steps",
+          "outcome": [
+            {
+              "when": {
+                "flags": ["draw"]
+              },
+              "text": "In July 2010 the price goes up 3 to 4% for new buyers, because steel and rubber cost more, while the first 1 lakh buyers keep the old price, as promised. In November, new bookings go up again, by about ₹9,000. The one-lakh car is gone."
+            },
+            {
+              "text": "You raise the price a little for new bookings, and a little more a few months later, while your first buyers keep what they paid. Some people grumble, but most understand that steel costs more for everyone."
+            }
+          ],
+          "why": "You kept your word to the people you gave it to, and passed rising costs on gently. Remember: raise prices slowly, and give warning.",
+          "takeaway": "In 2010 you kept your promise to early buyers and raised the price for new ones in small steps.",
+          "traits": {
+            "horizon": 1,
+            "risk": 0,
+            "disrupt": 0
+          }
+        },
+        {
+          "id": "jump",
+          "label": "Raise the price once, by a big amount, for new buyers, and fix your costs in one go.",
+          "grade": "ok",
+          "effect": {
+            "profit": 10,
+            "future": -5,
+            "flags": ["jump"]
+          },
+          "next": "d4",
+          "media": "img:tn_d3_jump",
+          "outcome": "New buyers wake up to a much higher price. Your costs are covered, but the papers call it the end of the one-lakh car, and many families who were saving up for a Nano give up.",
+          "why": "Raising the price was right, because costs had gone up. But one big jump shocks buyers, while small steps are easier to accept. Remember: raise prices slowly, and give warning.",
+          "better": "Keep the old price for the buyers you promised it to, and raise it for new ones in small, announced steps.",
+          "takeaway": "In 2010 you raised the price in one big jump. Small steps keep more buyers with you.",
+          "traits": {
+            "horizon": 0,
+            "risk": 1,
+            "disrupt": 0
+          }
+        }
+      ]
+    },
+    "d4": {
+      "id": "d4",
+      "type": "decision",
+      "year": "2010",
+      "title": "Sales fall",
+      "media": "img:tn_d4",
+      "setup": [
+        {
+          "when": {
+            "flags": ["cheapest", "draw", "steps"]
+          },
+          "text": "December 2010. Only 509 Nanos were sold in November, the lowest since launch and the fourth fall in a row; you had planned on 25,000 a month. A few Nanos have caught fire, and buyers find it hard to get loans. Families who want to look well-off choose costlier cars over 'the cheapest car'."
+        },
+        {
+          "when": {
+            "flags": ["cheapest"]
+          },
+          "text": "December 2010. Sales have fallen month after month, down to a few hundred cars. A few Nanos have caught fire, and buyers find it hard to get loans. Families who want to look well-off choose costlier cars over 'the cheapest car'."
+        },
+        {
+          "when": {
+            "flags": ["hold"]
+          },
+          "text": "December 2010. Every Nano still loses money, and now sales are falling too. A few Nanos have caught fire, and buyers find it hard to get loans. Each month, fewer families walk into the showrooms."
+        },
+        {
+          "text": "December 2010. A few Nanos have caught fire, and buyers find it hard to get loans. Most owners still like their cars, but this autumn sales have dropped sharply, and fewer families walk into the showrooms each month."
+        }
+      ],
+      "question": "How do you win buyers back?",
+      "advisor": "Cars are piling up at the dealers. A big price cut would clear them in weeks.",
+      "options": [
+        {
+          "id": "discount",
+          "label": "Cut the price and offer cheap loans. A big deal will bring buyers back fast.",
+          "grade": "bad",
+          "effect": {
+            "profit": -10,
+            "future": -15,
+            "trust": -1,
+            "flags": ["discount"]
+          },
+          "next": "ending_route",
+          "media": "img:tn_d4_discount",
+          "outcome": "The showrooms are busy for a few weeks. Then the fires are back in the news, and the price cut only confirms what buyers feared: even Tata thinks the Nano is worth less. Sales sink again, and you have less money than before.",
+          "why": "Buyers were worried about safety and about how the car made them look, not about the price. A discount fixed neither, and it made the car look even cheaper. Remember: discounts can hide a product problem, but they don't fix it.",
+          "better": "Fix the real worry first, with a long free warranty and safety upgrades, and then add better features.",
+          "takeaway": "In 2010 you cut the price to fix a trust problem. A discount can make a product look cheaper still.",
+          "traits": {
+            "horizon": -1,
+            "risk": 0,
+            "disrupt": 0
+          }
+        },
+        {
+          "id": "stop",
+          "label": "Stop making the Nano, and use the Gujarat plant for bigger cars that earn more per car.",
+          "grade": "ok",
+          "effect": {
+            "profit": 5,
+            "future": -5,
+            "flags": ["stop"]
+          },
+          "next": "ending_route",
+          "media": "img:tn_d4_stop",
+          "outcome": "The plant stays busy, and the losses stop. But families who trusted the Nano feel let down, and rival carmakers are happy to win the small-car buyers you leave behind.",
+          "why": "It cut your losses, but you gave up before you fixed the problem. Buyers were worried about safety and image, and both can be fixed. Remember: when sales fall, find and fix the real problem first.",
+          "better": "Find out why buyers stayed away and fix that: a long warranty, safety upgrades, then better features.",
+          "takeaway": "In 2010 you dropped a product that could have been fixed.",
+          "traits": {
+            "horizon": -1,
+            "risk": -1,
+            "disrupt": 0
+          }
+        },
+        {
+          "id": "fix",
+          "label": "Give every owner a free four-year warranty and safety upgrades, then add features over time.",
+          "grade": "great",
+          "real": true,
+          "effect": {
+            "profit": -10,
+            "future": 10,
+            "flags": ["fix"]
+          },
+          "next": "ending_route",
+          "media": "img:tn_d4_fix",
+          "outcome": [
+            {
+              "when": {
+                "flags": ["cheapest"]
+              },
+              "text": "In December you give every Nano, old and new, a free four-year warranty and free safety upgrades. Sales climb again, and the year to March 2012 is the Nano's best ever, at about 75,000 cars. But that is far below the 2.5 lakh a year you planned."
+            },
+            {
+              "text": "You give every Nano, old and new, a free four-year warranty and free safety upgrades. It costs you a lot, but worried buyers start to come back, and owners tell their friends the car is safe."
+            }
+          ],
+          "why": "Buyers were worried about safety, so you fixed that first, at your own cost, instead of cutting the price. Remember: discounts can hide a product problem, but they don't fix it.",
+          "takeaway": "In 2010 you fixed the real worry, safety, instead of slashing the price.",
+          "traits": {
+            "horizon": 1,
+            "risk": 0,
+            "disrupt": 1
+          }
+        }
+      ]
+    },
+    "ending_route": {
+      "id": "ending_route",
+      "type": "route",
+      "routes": [
+        {
+          "when": {
+            "minFuture": 70
+          },
+          "to": "legend"
+        },
+        {
+          "when": {
+            "minFuture": 40
+          },
+          "to": "survivor"
+        },
+        {
+          "to": "collapse"
+        }
+      ]
+    },
+    "legend": {
+      "id": "legend",
+      "type": "ending",
+      "tier": "legend",
+      "title": "India's first family car",
+      "media": "img:tn_legend",
+      "text": [
+        {
+          "when": {
+            "flags": ["family", "cap"]
+          },
+          "text": "Families who once rode scooters in the rain now drive their Nanos to weddings and to work. The Gujarat plant runs close to full, and across India, 'Nano' becomes the word for a family's first car."
+        },
+        {
+          "text": "You made a few wrong turns, but you kept the families you built it for at the centre. The Nano becomes a car people are proud to park outside their homes, and the Gujarat plant stays busy."
+        }
+      ],
+      "bonus": 15
+    },
+    "survivor": {
+      "id": "survivor",
+      "type": "ending",
+      "tier": "survivor",
+      "title": "A small car with a small following",
+      "media": "img:tn_survivor",
+      "text": [
+        {
+          "when": {
+            "flags": ["stop"]
+          },
+          "text": "You stop the Nano while some families still love it. The Gujarat plant earns well making bigger cars, but the dream of a car for scooter families ends early, and rivals take the buyers you left behind."
+        },
+        {
+          "when": {
+            "flags": ["cheapest"]
+          },
+          "text": "Your fixes win back many buyers, but the 'cheapest car' tag never quite goes away. The Nano sells steadily for years, though far below the 2.5 lakh a year you planned."
+        },
+        {
+          "text": "The Nano finds loyal owners who love it, but never the crowds you planned for. It sells steadily for years, and the Gujarat plant never runs anywhere near full."
+        }
+      ],
+      "bonus": 5
+    },
+    "collapse": {
+      "id": "collapse",
+      "type": "ending",
+      "tier": "collapse",
+      "title": "The car no one wanted to be seen in",
+      "media": "img:tn_collapse",
+      "text": [
+        {
+          "when": {
+            "flags": ["cheapest", "fix"]
+          },
+          "text": "Over the next years the Nano gets power steering, a CNG version and an automatic gearbox. But one relaunch pushes low monthly payments, which makes it look even cheaper. In 2013 Ratan Tata calls the 'cheapest car' label a mistake. By 2015 the Gujarat plant runs at about 15% of what it can make, and in 2018 the Nano is stopped."
+        },
+        {
+          "when": {
+            "flags": ["discount"]
+          },
+          "text": "The price cuts never bring the crowds back. Each car loses more money than the last, the Gujarat plant sits mostly empty, and a few years later the Nano is quietly stopped."
+        },
+        {
+          "text": "Sales never recover. The Nano stays on sale for a few more years, but the Gujarat plant sits mostly empty, and the dream of a car for every scooter family slowly fades."
+        }
+      ],
+      "bonus": 0
+    },
+    "fired": {
+      "id": "fired",
+      "type": "ending",
+      "tier": "fired",
+      "title": "The board takes the wheel",
+      "media": "img:tn_fired",
+      "text": "After three costly calls, the board loses faith in you and hands the Nano project to someone else.",
+      "bonus": 0
+    }
+  },
+  "realEnding": "collapse",
+  "realHistory": "The Nano was unveiled in New Delhi on 10 January 2008 at ₹1 lakh, and the world called it the cheapest car. After protests stopped work at Singur, its plant moved to Sanand in Gujarat. In April 2009 over 2 lakh people booked it, and a draw picked the first 1 lakh buyers. Prices rose twice in 2010, with the first buyers kept at the old price. After a few cars caught fire, sales fell to 509 in November 2010, and Tata gave a free four-year warranty and safety upgrades. Its best year was about 75,000 cars, far below the 2.5 lakh plan. In 2013 Ratan Tata called the 'cheapest car' label a mistake, and production stopped in 2018.",
+  "sources": [
+    {
+      "label": "Tata Nano (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Tata_Nano"
+    },
+    {
+      "label": "World's cheapest car debuts in India (History.com)",
+      "url": "https://www.history.com/this-day-in-history/worlds-cheapest-car-debuts-in-india"
+    },
+    {
+      "label": "Nano gets 2.03 lakh bookings (Autocar Professional, 2009)",
+      "url": "https://www.autocarpro.in/news-national/nano-203-lakh-bookings-425"
+    },
+    {
+      "label": "Names of first lucky Nano buyers announced (CarTrade, 2009)",
+      "url": "https://www.cartrade.com/news/names-of-first-lucky-nano-buyers-announced-by-tata-motors-111178.html"
+    },
+    {
+      "label": "Price hike for world's cheapest car (IndustryWeek, July 2010)",
+      "url": "https://www.industryweek.com/leadership/companies-executives/article/21939891/price-hike-for-worlds-cheapest-car"
+    },
+    {
+      "label": "Tatas shed ₹1 lakh price tag and up Nano price (Business Today, Oct 2010)",
+      "url": "https://www.businesstoday.in/auto/story/tatas-shed-rs-1-lakh-price-tag-and-up-nano-price-15396-2010-10-30"
+    },
+    {
+      "label": "Tata Nano gets 'Happiness Guarantee' to boost sales (IndustryWeek, Dec 2010)",
+      "url": "https://www.industryweek.com/leadership/companies-executives/article/21944331/tata-nano-gets-happiness-guarantee-to-boost-sales"
+    },
+    {
+      "label": "Tata Motors inaugurates new plant for Nano (Autocar Professional, 2010)",
+      "url": "https://www.autocarpro.in/news-national/tata-motors-inaugurates-plant-nano-2035"
+    },
+    {
+      "label": "India's Ratan Tata sees brighter future for upmarket Nano (Reuters via The Peninsula, 2013)",
+      "url": "https://thepeninsulaqatar.com/article/30/11/2013/india-s-ratan-tata-sees-brighter-future-for-upmarket-nano"
+    },
+    {
+      "label": "Will the GenX Nano erase Tata's 'cheapest car' stigma? (The Truth About Cars, 2015)",
+      "url": "https://www.thetruthaboutcars.com/2015/05/will-genx-nano-erase-tatas-cheapest-car-stigma/"
+    },
+    {
+      "label": "Singur Tata Nano controversy (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Singur_Tata_Nano_controversy"
+    }
+  ],
+  "credits": "Alternate-history outcomes are informed estimates, not history. Research brief and full source list: content/hotseats/tata-nano/research.md."
+}

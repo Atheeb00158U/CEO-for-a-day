@@ -1,0 +1,650 @@
+{
+  "id": "zomato-lockdown-2020",
+  "company": "Zomato",
+  "title": "Orders stop overnight",
+  "hook": "A lockdown shuts the restaurants, and your orders fall by four-fifths in a week. Who do you protect?",
+  "role": "You run Zomato, March to July 2020",
+  "years": "2020",
+  "cover": "img:zl_cover",
+  "draft": true,
+  "complexity": 3,
+  "minutes": 7,
+  "start": "intro",
+  "startMeters": {
+    "profit": 50,
+    "future": 20
+  },
+  "startTrust": 3,
+  "meters": {
+    "profit": {
+      "label": "Cash",
+      "hint": "Money in the bank to last out the lockdown"
+    },
+    "future": {
+      "label": "Comeback",
+      "hint": "How ready your people and your company are for when orders return"
+    }
+  },
+  "nodes": {
+    "intro": {
+      "id": "intro",
+      "type": "scene",
+      "year": "2020",
+      "media": "img:zl_intro",
+      "text": "March 2020. You run Zomato, a food delivery app with about 4,000 staff. In January you bought Uber Eats' business in India and raised $150 million. Then, on the evening of 24 March, India announces a 21-day lockdown from the next day. Your job: keep the company alive, and keep your people.",
+      "next": "d1"
+    },
+    "d1": {
+      "id": "d1",
+      "type": "decision",
+      "year": "2020",
+      "title": "Orders fall off a cliff",
+      "media": "img:zl_d1",
+      "setup": "Overnight, most restaurants close and your riders face trouble on the roads, so orders drop day after day. Nobody knows if the lockdown will last three weeks or three months. You have money in the bank from January, but no idea how long it must last.",
+      "question": "What do you do in the first days?",
+      "advisor": "We have just raised money. Moving too fast could mean cuts we regret. But every day we wait, cash goes out and very little comes in.",
+      "options": [
+        {
+          "id": "wait",
+          "label": "Change nothing for now. The bank balance is healthy, and the lockdown may end in three weeks.",
+          "grade": "bad",
+          "effect": {
+            "profit": -10,
+            "future": -10,
+            "trust": -1,
+            "flags": ["wait"]
+          },
+          "next": "d2",
+          "media": "img:zl_d1_wait",
+          "outcome": "For three weeks, nothing changes inside the company. Outside, orders collapse. Cash pours out on salaries, offices and rent, and when you finally act, you have less room to be generous.",
+          "why": "Waiting felt calm, but in a crisis every week of doing nothing burns cash you will need later. Remember: in a crisis, decide fast.",
+          "better": "Move in the first days with steps you can build on: pay cuts people choose, and help for riders, while you learn how bad it is.",
+          "takeaway": "In March 2020 you waited. In a crisis, a quick first step beats a perfect plan later.",
+          "traits": {
+            "horizon": -1,
+            "risk": -1,
+            "disrupt": -1
+          }
+        },
+        {
+          "id": "earlycut",
+          "label": "Cut a big share of jobs this week, before the cash in the bank starts draining away.",
+          "grade": "ok",
+          "effect": {
+            "profit": 10,
+            "future": 0,
+            "flags": ["earlycut"]
+          },
+          "next": "d2",
+          "media": "img:zl_d1_earlycut",
+          "outcome": "Hundreds lose their jobs in the first week. You save cash, but you cut before you knew how bad things would get. Some teams you will need later are gone, and the people who stay fear they're next.",
+          "why": "Moving fast was right, but you made your biggest cut before you knew the size of the problem. Remember: in a crisis, decide fast, but start with steps you can build on.",
+          "better": "Move in the first days with steps you can build on: pay cuts people choose, and help for riders, while you learn how bad it is.",
+          "takeaway": "In March 2020 you cut deep before you knew how deep the fall was.",
+          "traits": {
+            "horizon": 0,
+            "risk": 1,
+            "disrupt": 0
+          }
+        },
+        {
+          "id": "voluntary",
+          "label": "Ask staff to take pay cuts by choice now, and set up funds for riders and daily wage workers.",
+          "grade": "great",
+          "real": true,
+          "effect": {
+            "profit": 5,
+            "future": 15,
+            "flags": ["voluntary"]
+          },
+          "next": "d2",
+          "media": "img:zl_d1_voluntary",
+          "outcome": "On the first day of the lockdown, you announce that hundreds of staff have taken deep pay cuts by choice, to help fund riders' lost earnings and meals for daily wage workers. Orders keep falling, though, and in the last week of March sales drop by four-fifths.",
+          "why": "A quick first step beats a perfect plan later. You saved cash fast and helped the people hit hardest, while you learned how deep the fall would go. Remember: in a crisis, decide fast.",
+          "takeaway": "In March 2020 you moved in days, with steps you could build on.",
+          "traits": {
+            "horizon": 1,
+            "risk": 0,
+            "disrupt": 0
+          }
+        }
+      ]
+    },
+    "d2": {
+      "id": "d2",
+      "type": "decision",
+      "year": "2020",
+      "title": "Riders with nothing to carry",
+      "media": "img:zl_d2",
+      "setup": [
+        {
+          "when": {
+            "flags": ["wait"]
+          },
+          "text": "It is early April, and cash is draining fast. Food orders are down 70%, to under a million a day, and not even one restaurant in five is open. Your riders have little to deliver, but families stuck at home still need groceries."
+        },
+        {
+          "when": {
+            "flags": ["earlycut"]
+          },
+          "text": "It is early April. Your team is smaller after the March cuts. Food orders are down 70%, to under a million a day, and not even one restaurant in five is open. Your riders have little to deliver, but families stuck at home still need groceries."
+        },
+        {
+          "text": "It is early April. Food orders are down 70%, to under a million a day, and not even one restaurant in five is open. Your riders have little to deliver, but families stuck at home still need groceries."
+        }
+      ],
+      "question": "What do your riders do now?",
+      "advisor": "We know food, not groceries. A new business in the middle of a crisis could eat the very cash we're trying to save.",
+      "options": [
+        {
+          "id": "foodonly",
+          "label": "Stay with food. Help restaurants get through this, and be ready on the day they reopen.",
+          "grade": "ok",
+          "effect": {
+            "profit": 5,
+            "future": 0,
+            "flags": ["foodonly"]
+          },
+          "next": "d3",
+          "media": "img:zl_d2_foodonly",
+          "outcome": "Your team helps restaurants plan for reopening, and you save cash. But your riders sit idle for weeks, and rivals who started grocery delivery win new customers while you wait.",
+          "why": "Staying focused saved cash, but you missed a cheap chance to learn while your riders were idle. Remember: test small before you bet big.",
+          "better": "Test grocery delivery fast with partner stores that hold the stock, so you can stop at little cost.",
+          "takeaway": "In April 2020 you skipped a cheap test. Small tests are how you learn in a crisis.",
+          "traits": {
+            "horizon": 0,
+            "risk": -1,
+            "disrupt": -1
+          }
+        },
+        {
+          "id": "grocery_test",
+          "label": "Start grocery delivery fast with partner stores in many cities, knowing you may stop soon.",
+          "grade": "great",
+          "real": true,
+          "effect": {
+            "profit": 0,
+            "future": 15,
+            "flags": ["grocery_test"]
+          },
+          "next": "d3",
+          "media": "img:zl_d2_grocery",
+          "outcome": "By 8 April you deliver groceries in more than 80 cities, working with partners such as Grofers. By mid-May, grocery delivery is in 185 cities.",
+          "why": "Partners held the stock, so the test was quick to start and cheap to stop if it failed. Remember: test small before you bet big.",
+          "takeaway": "In April 2020 you ran a fast test you could stop at any time.",
+          "traits": {
+            "horizon": 1,
+            "risk": 1,
+            "disrupt": 1
+          }
+        },
+        {
+          "id": "grocery_all",
+          "label": "Go all in on groceries, with your own warehouses, your own stock and a new brand.",
+          "grade": "bad",
+          "effect": {
+            "profit": -15,
+            "future": -10,
+            "trust": -1,
+            "flags": ["grocery_all"]
+          },
+          "next": "d3",
+          "media": "img:zl_d2_warehouse",
+          "outcome": "You lease warehouses and buy stock fast. Orders come, but running stores is a new and costly craft. Cash you meant to save goes into shelves, staff and stock.",
+          "why": "You bet big before you knew it would work. Remember: test small before you bet big, and keep the bet cheap to stop.",
+          "better": "Test grocery delivery fast with partner stores that hold the stock, so you can stop at little cost.",
+          "takeaway": "In April 2020 you bet big on an untested idea in the middle of a crisis.",
+          "traits": {
+            "horizon": 0,
+            "risk": 1,
+            "disrupt": 1
+          }
+        }
+      ]
+    },
+    "d3": {
+      "id": "d3",
+      "type": "decision",
+      "year": "2020",
+      "title": "One cut or many?",
+      "media": "img:zl_d3",
+      "setup": [
+        {
+          "when": {
+            "flags": ["earlycut"]
+          },
+          "text": "It is mid-May, seven weeks into the lockdown. Orders are still under a million a day, down from nearly three million. Your March cuts were made in a rush, and now you know more. You expect the restaurant business to shrink by a quarter or more within a year."
+        },
+        {
+          "when": {
+            "flags": ["wait"]
+          },
+          "text": "It is mid-May, seven weeks into the lockdown, and you haven't cut anything yet. Orders are still under a million a day, down from nearly three million. You expect the restaurant business to shrink by a quarter or more within a year."
+        },
+        {
+          "text": "It is mid-May, seven weeks into the lockdown. Orders are still under a million a day, down from nearly three million. You expect the restaurant business to shrink by a quarter or more within a year. You still have cash, but you want to keep it in case things get worse."
+        }
+      ],
+      "question": "How do you bring costs down?",
+      "advisor": "People are scared. Small steps, month by month, would give everyone hope. But nobody can plan their life while they wait for the next list.",
+      "options": [
+        {
+          "id": "deepcut",
+          "label": "Make one big cut now: about one in eight jobs, and fewer offices, though hundreds lose work at once.",
+          "grade": "great",
+          "real": true,
+          "effect": {
+            "profit": 10,
+            "future": 15,
+            "flags": ["deepcut"]
+          },
+          "next": "d4",
+          "media": "img:zl_d3_deep",
+          "outcome": "On 15 May you send one note to all staff. About one in eight, more than 500 people, will have no work. Some teams will now work from home for good. Everyone else hears within six hours that their job is safe.",
+          "why": "The people who left could plan their next step, and the people who stayed knew they were safe. Remember: one deep cut is kinder than many small ones.",
+          "takeaway": "In May 2020 you made one clear cut, all at once, so everyone knew where they stood.",
+          "traits": {
+            "horizon": 1,
+            "risk": 1,
+            "disrupt": 0
+          }
+        },
+        {
+          "id": "trim",
+          "label": "Trim a few roles each month and watch the numbers, even if it drags on for months.",
+          "grade": "bad",
+          "effect": {
+            "profit": -5,
+            "future": -10,
+            "trust": -1,
+            "flags": ["trim"]
+          },
+          "next": "d4",
+          "media": "img:zl_d3_trim",
+          "outcome": "Each month brings a new, short list. Nobody knows if they're next, so good people quietly look for other jobs, and work slows down. By summer you have cut as many jobs as one big cut would have, with far more fear.",
+          "why": "Small cuts felt gentler, but they kept everyone afraid for months. Remember: one deep cut is kinder than many small ones.",
+          "better": "Make one clear cut, all at once, so the people who stay know they're safe and the people who go can plan.",
+          "takeaway": "In May 2020 you cut a little at a time, and kept everyone afraid.",
+          "traits": {
+            "horizon": -1,
+            "risk": -1,
+            "disrupt": 0
+          }
+        },
+        {
+          "id": "nojobcut",
+          "label": "Cut no jobs, and ask everyone to take a much deeper pay cut until the orders return.",
+          "grade": "ok",
+          "effect": {
+            "profit": 5,
+            "future": 0,
+            "flags": ["nojobcut"]
+          },
+          "next": "d4",
+          "media": "img:zl_d3_nojobcut",
+          "outcome": "Everyone keeps a job, but pay falls hard for all. Some of your best people leave for firms that pay in full, and you keep paying teams who have little to do.",
+          "why": "You shared the pain, but kept paying for work that no longer existed, and lost good people anyway. Remember: one clear, deep cut is kinder than months of slow pain.",
+          "better": "Make one clear cut, all at once, so the people who stay know they're safe and the people who go can plan.",
+          "takeaway": "In May 2020 you saved every job by cutting everyone's pay, and lost good people anyway.",
+          "traits": {
+            "horizon": 0,
+            "risk": -1,
+            "disrupt": 0
+          }
+        }
+      ]
+    },
+    "d4": {
+      "id": "d4",
+      "type": "decision",
+      "year": "2020",
+      "title": "How you say goodbye",
+      "media": "img:zl_d4",
+      "setup": [
+        {
+          "when": {
+            "flags": ["nojobcut"]
+          },
+          "text": "Two weeks on, the sums still don't work. Some teams have almost nothing to do, and pay cuts alone can't cover them. You must let about one in eight people go after all. Some came through agencies, whose contracts promise only 15 days' notice."
+        },
+        {
+          "when": {
+            "flags": ["trim"]
+          },
+          "text": "This month's list is the biggest yet: hundreds of people. Some came through agencies, whose contracts promise only 15 days' notice. Cash is still tight, and you must decide how to tell them."
+        },
+        {
+          "when": {
+            "flags": ["earlycut"]
+          },
+          "text": "Hundreds more people are losing their jobs, on top of your March cuts, because there isn't enough work. Some came through agencies, whose contracts promise only 15 days' notice. And cash is still tight."
+        },
+        {
+          "text": "More than 500 people are losing their jobs, not because they did badly, but because there isn't enough work. Some came through agencies, whose contracts promise only 15 days' notice. And cash is still tight."
+        }
+      ],
+      "question": "How do you let them go?",
+      "advisor": "Every rupee we give to people who are leaving is a rupee we can't use to protect the jobs of those who stay.",
+      "options": [
+        {
+          "id": "email",
+          "label": "Send a short, clear email and pay the notice the contracts promise. It's quick, and it saves cash.",
+          "grade": "bad",
+          "effect": {
+            "profit": 5,
+            "future": -10,
+            "trust": -1,
+            "flags": ["email"]
+          },
+          "next": "d5",
+          "media": "img:zl_d4_email",
+          "outcome": "The email goes out in minutes. People learn they've lost their jobs from a few lines of text. Their posts spread online, and the people who stay start to wonder how they would be treated.",
+          "why": "Quick and cheap, but cold. Remember: when you have to let people go, do it kindly. Everyone who stays is watching how you treat the people who leave.",
+          "better": "Tell them yourself, and give them time: months of pay, health cover and help finding a new job.",
+          "takeaway": "In May 2020 you let people go by email. How you treat those who leave tells those who stay what you are.",
+          "traits": {
+            "horizon": -1,
+            "risk": 0,
+            "disrupt": 0
+          }
+        },
+        {
+          "id": "groupcall",
+          "label": "Tell them in group video calls, and give everyone one month's pay to tide them over.",
+          "grade": "ok",
+          "effect": {
+            "profit": 0,
+            "future": 5,
+            "flags": ["groupcall"]
+          },
+          "next": "d5",
+          "media": "img:zl_d4_groupcall",
+          "outcome": "The calls are short and crowded, and a month's pay doesn't last long in a lockdown. People are hurt, but at least a person told them.",
+          "why": "Telling people face to face was right, but one month's pay left them on their own just when jobs were hardest to find. Remember: let people go kindly, with real support.",
+          "better": "Tell them yourself, and give them time: months of pay, health cover and help finding a new job.",
+          "takeaway": "In May 2020 you told people face to face, but gave them little time to land.",
+          "traits": {
+            "horizon": 0,
+            "risk": 0,
+            "disrupt": 0
+          }
+        },
+        {
+          "id": "kind",
+          "label": "Leaders call them on video. Give half pay for six months, health cover and job help, though it costs a lot.",
+          "grade": "great",
+          "real": true,
+          "effect": {
+            "profit": -5,
+            "future": 15,
+            "flags": ["kind"]
+          },
+          "next": "d5",
+          "media": "img:zl_d4_kind",
+          "outcome": "Within 24 hours, each person gets a video call invite from the leaders. They get half their salary for six months, or until they find a job. Health cover goes on, their shares keep vesting, a team helps them find work, and they keep their laptops. Agency staff get two months' pay, not 15 days.",
+          "why": "These were not bad hires; there just wasn't enough work. Treating them well cost money, but it showed everyone who stayed what kind of company this is. Remember: when you have to let people go, do it early and kindly.",
+          "takeaway": "In May 2020 you let people go kindly, with time, money and help.",
+          "traits": {
+            "horizon": 1,
+            "risk": 0,
+            "disrupt": 0
+          }
+        }
+      ]
+    },
+    "d5": {
+      "id": "d5",
+      "type": "decision",
+      "year": "2020",
+      "title": "Who takes the pay cut?",
+      "media": "img:zl_d5",
+      "setup": [
+        {
+          "when": {
+            "flags": ["nojobcut"]
+          },
+          "text": "Your pay cut for everyone is already in place, and the lowest-paid are struggling to pay rent. From June you can reshape it. You must decide who gives up what."
+        },
+        {
+          "when": {
+            "flags": ["voluntary"]
+          },
+          "text": "Many staff have already given up pay by choice, some all of it for six months. It still isn't enough to reach your savings goal. From June you need a pay cut, and you must decide who gives up what."
+        },
+        {
+          "text": "You still need to save on pay from June. Your staff earn very different salaries, from support teams to senior leaders. You must decide who gives up what."
+        }
+      ],
+      "question": "How do you share the pay cut?",
+      "advisor": "The simplest rule is the same cut for everyone. Nobody can call it unfair if we all lose the same share.",
+      "options": [
+        {
+          "id": "flat",
+          "label": "One flat cut for everyone, say a fifth of their pay. The same rule for all, simple and fair.",
+          "grade": "bad",
+          "effect": {
+            "profit": 10,
+            "future": -10,
+            "trust": -1,
+            "flags": ["flat"]
+          },
+          "next": "june",
+          "media": "img:zl_d5_flat",
+          "outcome": "A support worker loses a fifth of a small salary and struggles with rent. A senior leader loses a fifth and barely notices. The lowest-paid start leaving first.",
+          "why": "Equal isn't fair when salaries are so different. Remember: when cash is short, protect the lowest pay first.",
+          "better": "Cut on a sliding scale: little for low salaries, the most for the highest, with something back if things recover.",
+          "takeaway": "In June 2020 you cut everyone's pay the same, and hurt the lowest-paid most.",
+          "traits": {
+            "horizon": -1,
+            "risk": 0,
+            "disrupt": 0
+          }
+        },
+        {
+          "id": "sliding",
+          "label": "A sliding cut: small for low salaries, up to half for the highest, with extra shares in return.",
+          "grade": "great",
+          "real": true,
+          "effect": {
+            "profit": 5,
+            "future": 15,
+            "flags": ["sliding"]
+          },
+          "next": "june",
+          "media": "img:zl_d5_sliding",
+          "outcome": [
+            {
+              "when": {
+                "flags": ["voluntary"]
+              },
+              "text": "From June, everyone takes a temporary cut: small for lower salaries, up to half for the highest. Anyone who already gave up that much is not cut again, and each cut earns double in staff shares. You hope it will last about six months."
+            },
+            {
+              "text": "From June, the cut is reshaped: small for lower salaries, up to half for the highest. Each cut earns double in staff shares, and you hope it will last about six months."
+            }
+          ],
+          "why": "Those who earn most carried most of the cut, and the shares gave everyone a stake in the comeback. Remember: when cash is short, protect the lowest pay first.",
+          "takeaway": "In June 2020 you shared the pay cut so the lowest-paid were hurt least.",
+          "traits": {
+            "horizon": 1,
+            "risk": 0,
+            "disrupt": 0
+          }
+        },
+        {
+          "id": "morejobs",
+          "label": "No pay cuts at all. Let more people go instead, so those who stay keep their full pay.",
+          "grade": "ok",
+          "effect": {
+            "profit": 10,
+            "future": 0,
+            "flags": ["morejobs"]
+          },
+          "next": "june",
+          "media": "img:zl_d5_morejobs",
+          "outcome": "Another group loses their jobs. Pay stays whole for the people who remain, but teams are stretched thin, and when orders return you will have to hire and train again.",
+          "why": "Full pay helped those who stayed, but more families lost their income, and you will pay to rehire later. Remember: when cash is short, protect people's pay, starting with the lowest.",
+          "better": "Cut on a sliding scale: little for low salaries, the most for the highest, with something back if things recover.",
+          "takeaway": "In June 2020 you cut more jobs to avoid pay cuts.",
+          "traits": {
+            "horizon": 0,
+            "risk": 0,
+            "disrupt": 0
+          }
+        }
+      ]
+    },
+    "june": {
+      "id": "june",
+      "type": "scene",
+      "year": "2020",
+      "media": "img:zl_june",
+      "text": [
+        {
+          "when": {
+            "flags": ["grocery_test"]
+          },
+          "text": "On 8 June, restaurants may open again, and food orders begin to climb. You say you will scale grocery back and focus on food. Soon you pull back from grocery altogether."
+        },
+        {
+          "when": {
+            "flags": ["grocery_all"]
+          },
+          "text": "On 8 June, restaurants may open again, and food orders begin to climb. But your new grocery warehouses are costly and half empty, and closing them will take months."
+        },
+        {
+          "text": "On 8 June, restaurants may open again, and food orders begin to climb. Your riders are back on food from the first day."
+        }
+      ],
+      "next": "ending_route"
+    },
+    "ending_route": {
+      "id": "ending_route",
+      "type": "route",
+      "routes": [
+        {
+          "when": {
+            "minFuture": 70
+          },
+          "to": "legend"
+        },
+        {
+          "when": {
+            "minFuture": 40
+          },
+          "to": "survivor"
+        },
+        {
+          "to": "collapse"
+        }
+      ]
+    },
+    "legend": {
+      "id": "legend",
+      "type": "ending",
+      "tier": "legend",
+      "title": "Back on its feet",
+      "media": "img:zl_legend",
+      "text": [
+        {
+          "when": {
+            "flags": ["voluntary", "grocery_test", "deepcut", "kind", "sliding"]
+          },
+          "text": "By July, food delivery is back to 60% of normal, and you lose less than a million dollars a month. From July, everyone is back on full pay. A year later, in July 2021, Zomato lists on the stock market, and on the first day its shares close about two-thirds above the issue price."
+        },
+        {
+          "text": "Orders climb back through the summer. You come out of the lockdown smaller, but your people still trust you, and the ones who stayed are still with you. Within a year, the company is growing again."
+        }
+      ],
+      "bonus": 15
+    },
+    "survivor": {
+      "id": "survivor",
+      "type": "ending",
+      "tier": "survivor",
+      "title": "Bruised, but alive",
+      "media": "img:zl_survivor",
+      "text": [
+        {
+          "when": {
+            "flags": ["email"]
+          },
+          "text": "Orders return, and the company survives. But people remember the cold email, and for years good people think twice before they join you."
+        },
+        {
+          "when": {
+            "flags": ["flat"]
+          },
+          "text": "Orders return, and the company survives. But many of your lowest-paid staff left during the flat cut, and you spend months hiring and training their replacements."
+        },
+        {
+          "text": "Orders come back, and the company survives. But you lost good people, cash and trust along the way, and rivals use the time to pull ahead."
+        }
+      ],
+      "bonus": 5
+    },
+    "collapse": {
+      "id": "collapse",
+      "type": "ending",
+      "tier": "collapse",
+      "title": "Too little, too late",
+      "media": "img:zl_collapse",
+      "text": "By the time orders return, your cash is thin and your best people are gone. Rivals take the lead in city after city, and your company has to look for a buyer to survive.",
+      "bonus": 0
+    },
+    "fired": {
+      "id": "fired",
+      "type": "ending",
+      "tier": "fired",
+      "title": "The board steps in",
+      "media": "img:zl_fired",
+      "text": "After three costly calls, your board and investors lose faith in you. They bring in a new chief to lead the company through the crisis.",
+      "bonus": 0
+    }
+  },
+  "realEnding": "legend",
+  "realHistory": "India's lockdown began on 25 March 2020, and in its last week of March Zomato's food sales fell by four-fifths. Hundreds of staff took pay cuts by choice, and the company set up funds for riders and daily wage workers. By 8 April it delivered groceries in more than 80 cities, but it pulled back once restaurants reopened in June. On 15 May it let go about one in eight staff, more than 500 people, with half pay for six months, health cover and job help, and cut everyone else's pay on a sliding scale from June. By July food delivery was back to 60% of normal, the monthly cash burn was under a million dollars, and all salaries were restored. In July 2021 Zomato listed on the stock market, and its shares closed the first day about two-thirds above the issue price.",
+  "sources": [
+    {
+      "label": "A more focused Zomato (Zomato blog, 15 May 2020)",
+      "url": "https://www.zomato.com/blog/focused"
+    },
+    {
+      "label": "Indian food delivery startup Zomato cuts 13% of workforce (TechCrunch, 15 May 2020)",
+      "url": "https://techcrunch.com/2020/05/15/indian-food-delivery-startup-zomato-cuts-13-of-workforce"
+    },
+    {
+      "label": "Zomato lays off 13% of workforce, cuts pay for others (MediaNama, 15 May 2020)",
+      "url": "https://www.medianama.com/2020/05/223-zomato-layoffs-paycuts-covid/"
+    },
+    {
+      "label": "Hundreds of Zomato employees have taken deep voluntary salary cuts (The News Minute, 26 Mar 2020)",
+      "url": "https://www.thenewsminute.com/news/hundreds-zomato-employees-have-taken-deep-voluntary-salary-cuts-ceo-121168"
+    },
+    {
+      "label": "Covid19 impact: Orders on Zomato, Swiggy go down by 70% (Deccan Chronicle, 5 Apr 2020)",
+      "url": "https://deccanchronicle.com/business/companies/050420/covid19-impact-orders-on-zomato-swiggy-go-down-by-70.html"
+    },
+    {
+      "label": "Zomato begins grocery and essentials delivery across 80 Indian cities (Sentinel Assam / IANS, 8 Apr 2020)",
+      "url": "https://sentinelassam.com/business/zomato-begins-grocery-and-essentials-delivery-across-80-indian-cities"
+    },
+    {
+      "label": "Zomato to move focus away from grocery to food delivery as restaurants reopen (The News Minute, 7 Jun 2020)",
+      "url": "https://www.thenewsminute.com/atom/zomato-move-focus-away-grocery-food-delivery-restaurants-reopen-126058"
+    },
+    {
+      "label": "Zomato reinstates salaries (Business Today, 11 Jul 2020)",
+      "url": "https://www.businesstoday.in/amp/latest/corporate/story/coronavirus-impact-zomato-restores-salaries-aims-to-make-complete-recovery-in-3-6-months-263784-2020-07-11"
+    },
+    {
+      "label": "Zomato ends grocery delivery pilot (MediaNama, 13 Sep 2021)",
+      "url": "https://www.medianama.com/2021/09/223-zomato-ends-grocery-delivery-pilot/"
+    },
+    {
+      "label": "Zomato listing live updates (Business Today, 23 Jul 2021)",
+      "url": "https://www.businesstoday.in/markets/stocks/story/zomato-listing-live-updates-share-price-ends-at-rs-126-302144-2021-07-23"
+    }
+  ],
+  "credits": "Alternate-history outcomes are informed estimates, not history. Research brief and full source list: content/hotseats/zomato-lockdown-2020/research.md."
+}

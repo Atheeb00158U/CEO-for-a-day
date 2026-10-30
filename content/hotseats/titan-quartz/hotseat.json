@@ -1,0 +1,447 @@
+{
+  "id": "titan-quartz",
+  "company": "Titan",
+  "title": "Quartz only",
+  "hook": "India winds its watches and waits months to buy one. Can a new company change what India wears on its wrist?",
+  "role": "You run Titan, a new watch company, 1984 to 1993",
+  "years": "1984–1993",
+  "cover": "img:ti_cover",
+  "draft": true,
+  "complexity": 2,
+  "minutes": 7,
+  "start": "intro",
+  "startMeters": { "profit": 30, "future": 25 },
+  "startTrust": 3,
+  "meters": {
+    "profit": { "label": "Sales", "hint": "Money your watches bring in today" },
+    "future": { "label": "Lead", "hint": "How far ahead of the old watchmakers you are" }
+  },
+  "nodes": {
+    "intro": {
+      "id": "intro",
+      "type": "scene",
+      "year": "1984",
+      "media": "img:ti_intro",
+      "text": "Bangalore, 1984. The Tata group and Tamil Nadu's development body have just set up a watch company, and you run it from a small room in a hotel. India makes only about 1.5 million watches a year, and HMT, the state-owned maker, makes about a million of them.",
+      "next": "intro2"
+    },
+    "intro2": {
+      "id": "intro2",
+      "type": "scene",
+      "year": "1984",
+      "media": "img:ti_intro2",
+      "text": "Watches are so hard to get that many buyers order one and wait for months, while the rich buy smuggled foreign watches. A French firm, France Ebauches, will teach your team, and a factory is going up at Hosur. Your job is to make the watches India wants before anyone else does.",
+      "next": "d1"
+    },
+    "d1": {
+      "id": "d1",
+      "type": "decision",
+      "year": "1985",
+      "title": "Which kind of watch?",
+      "media": "img:ti_d1",
+      "setup": "It is 1985, and a new rule lets you choose your own mix of watches. Almost every watch in India is mechanical: you wind it, and it ticks for years. Quartz watches run on a battery and keep better time. HMT tried quartz in the 1970s, but those watches cost more and sold poorly.",
+      "question": "What will your factory make?",
+      "advisor": "Mechanical is what India knows and trusts. Quartz is new and keeps changing, but it has already failed here once.",
+      "options": [
+        {
+          "id": "mech",
+          "label": "Make mechanical watches first, like HMT, and add quartz once buyers ask for it.",
+          "grade": "bad",
+          "effect": { "profit": 5, "future": -10, "trust": -1, "flags": ["mech"] },
+          "next": "d2",
+          "media": "img:ti_d1_mech",
+          "outcome": "Your first watches tick well, but they look and work much like HMT's, so shops ask why anyone should pay more for a new name. Your team gets good at the old craft and stays slow at the new one.",
+          "why": "You built for the market of today, not for where watches were going. Quartz was getting better fast, and mechanical was not. Remember: judge a new thing by how fast it improves, not by how it sells today.",
+          "better": "Make only quartz watches, so your whole factory learns the new way while HMT stays with the old one.",
+          "takeaway": "In 1985 you followed the leader into mechanical watches. A new company wins by building for where the market is going.",
+          "traits": { "horizon": -1, "risk": -1, "disrupt": -1 }
+        },
+        {
+          "id": "quartz",
+          "label": "Make only quartz watches, a bet on the kind of watch that already failed in India once.",
+          "grade": "great",
+          "real": true,
+          "effect": { "profit": -5, "future": 20, "flags": ["quartz"] },
+          "next": "d2",
+          "media": "img:ti_d1_quartz",
+          "outcome": "You choose quartz only. With France Ebauches teaching your team, watchmaking starts at Hosur in 1986. The very first batch has a problem, though: a watch given to J.R.D. Tata, the group's chairman, does not work, and your team goes back to the bench.",
+          "why": "Quartz kept better time, and the technology was moving fast. HMT judged it by its poor sales in the 1970s and stayed with the old way. Remember: judge a new thing by how fast it improves.",
+          "takeaway": "In 1985 you bet everything on quartz. A new thing that sells badly today can still be the future if it keeps getting better.",
+          "traits": { "horizon": 1, "risk": 1, "disrupt": 1 }
+        },
+        {
+          "id": "mix",
+          "label": "Make both, some mechanical and some quartz, so one wrong bet can't sink you.",
+          "grade": "ok",
+          "effect": { "profit": 0, "future": 10, "flags": ["mix"] },
+          "next": "d2",
+          "media": "img:ti_d1_mix",
+          "outcome": "You split the factory in two. Each line is small, so each one costs more to run, and your team has to learn two crafts at once. The quartz watches come out later than you planned.",
+          "why": "Spreading the risk felt safe, but it split a small company's money and skills in half. Remember: judge a new thing by how fast it improves, and back it fully once you believe in it.",
+          "better": "Put everything into quartz, so the whole team masters the new way faster than anyone else.",
+          "takeaway": "In 1985 you hedged between old and new. A small company that splits itself in two is slow at both.",
+          "traits": { "horizon": 0, "risk": -1, "disrupt": 0 }
+        }
+      ]
+    },
+    "d2": {
+      "id": "d2",
+      "type": "decision",
+      "year": "1987",
+      "title": "Price the first watches",
+      "media": "img:ti_d2",
+      "setup": [
+        {
+          "when": { "flags": ["mech"] },
+          "text": "It is early 1987, and your first range is ready: five collections of mechanical watches, from plain steel to gold-plated. They look nicer than HMT's but work the same way. HMT's watches are seen as plain, useful tools, and people with money still buy smuggled foreign ones."
+        },
+        {
+          "when": { "flags": ["mix"] },
+          "text": "It is early 1987, and your first range is ready: five collections, mostly mechanical, with fewer quartz watches than you hoped. HMT's watches are seen as plain, useful tools, and people with money still buy smuggled foreign ones."
+        },
+        {
+          "text": "It is early 1987, and your first range is ready: five collections, from steel to gold-plated dials with leather straps. HMT's watches are seen as plain, useful tools, and people with money still buy smuggled foreign ones."
+        }
+      ],
+      "question": "How do you price your first watches?",
+      "advisor": "Near HMT's prices we sell lots, but we may never earn back what the factory cost. Near the foreign watches, only a few people can buy.",
+      "options": [
+        {
+          "id": "low",
+          "label": "Price close to HMT, so almost any family can afford one and sales grow fast.",
+          "grade": "bad",
+          "effect": { "profit": -10, "future": -5, "trust": -1, "flags": ["low"] },
+          "next": "d3",
+          "media": "img:ti_d2_low",
+          "outcome": "Shops sell your watches quickly, but each one earns you very little. Buyers start to see Titan as just another cheap watch, and the money for ads and new designs runs short.",
+          "why": "The low price told buyers your watch was ordinary, and it left no money to build the brand. Remember: price from what the buyer values, not only from your cost or your rival's price.",
+          "better": "Price as a special Indian brand: above HMT, but still within reach of a family on a salary.",
+          "takeaway": "In 1987 you priced like the old leader. A low price can make a better product look ordinary.",
+          "traits": { "horizon": -1, "risk": -1, "disrupt": 0 }
+        },
+        {
+          "id": "high",
+          "label": "Price close to foreign watches, so Titan feels as special as an import.",
+          "grade": "ok",
+          "effect": { "profit": 0, "future": 5, "flags": ["high"] },
+          "next": "d3",
+          "media": "img:ti_d2_high",
+          "outcome": "A few rich buyers try your watches. But most people who want a smart watch can't pay that much, and many rich buyers still prefer a foreign name.",
+          "why": "A high price works only when buyers already believe in the name, and a new Indian brand hadn't earned that yet. Remember: price from what the buyer values.",
+          "better": "Price as a special Indian brand that a middle-class family can still save up for.",
+          "takeaway": "In 1987 you priced like an import. A new name can't charge for status it hasn't earned yet.",
+          "traits": { "horizon": 0, "risk": 1, "disrupt": 0 }
+        },
+        {
+          "id": "premium",
+          "label": "Price as a special Indian brand: well above HMT, but still in reach of a family on a salary.",
+          "grade": "great",
+          "real": true,
+          "effect": { "profit": 10, "future": 15, "flags": ["premium"] },
+          "next": "d3",
+          "media": "img:ti_d2_premium",
+          "outcome": "Your five collections go on sale at about Rs 350 to 900. That is more than people pay for a plain tool, but far less than a smuggled foreign watch, because your aim is a well-designed watch that ordinary Indians can afford.",
+          "why": "You priced from what buyers would value: a smart watch they could be proud of, at a price a salaried family could save for. Remember: price from what the buyer values, not only from your cost.",
+          "takeaway": "In 1987 you priced Titan above the old leader but within reach. The right price says what your product is worth.",
+          "traits": { "horizon": 1, "risk": 0, "disrupt": 1 }
+        }
+      ]
+    },
+    "d3": {
+      "id": "d3",
+      "type": "decision",
+      "year": "1987",
+      "title": "What do your ads say?",
+      "media": "img:ti_d3",
+      "setup": [
+        {
+          "when": { "flags": ["low"] },
+          "text": "Your cheap watches are selling, but buyers see them as ordinary, and there is little money left for ads. HMT has long stood for tough watches that last for years. Most Indians have never thought of a watch as something stylish."
+        },
+        {
+          "text": "Your watches are in the shops, and now people need to hear about them. HMT has long stood for tough watches that last for years. Most Indians have never thought of a watch as something stylish."
+        }
+      ],
+      "question": "What do your ads say about Titan?",
+      "advisor": "Buyers trust a tough watch, and they love a good deal. Style is new here, and they may not care about it at all.",
+      "options": [
+        {
+          "id": "style",
+          "label": "Sell the look: show each watch big and close up, with its price, and no film stars.",
+          "grade": "great",
+          "real": true,
+          "effect": { "profit": 5, "future": 10, "flags": ["style"] },
+          "next": "d4",
+          "media": "img:ti_d3_style",
+          "outcome": "Your half-page newspaper ads look like a catalogue, with big, true-to-life pictures of the watches and their prices and nothing else. On TV, the ads play a tune by Mozart. Slowly, a watch starts to look like something to show off and give as a gift.",
+          "why": "HMT already owned toughness. You gave buyers a new reason to want a watch: how it looks on your wrist. Remember: sell what you stand for, not just the specs.",
+          "takeaway": "In 1987 you sold style, not toughness. People buy what a brand stands for, not only what it does.",
+          "traits": { "horizon": 1, "risk": 1, "disrupt": 1 }
+        },
+        {
+          "id": "lifetime",
+          "label": "Promise toughness: a watch that lasts a lifetime, like the ones India already trusts.",
+          "grade": "bad",
+          "effect": { "profit": 0, "future": -10, "trust": -1, "flags": ["lifetime"] },
+          "next": "d4",
+          "media": "img:ti_d3_lifetime",
+          "outcome": "Your ads promise a watch that lasts, but HMT has said that for years, and buyers believe HMT more. So the ads only make people ask why they should switch to a new name.",
+          "why": "You fought HMT on its own ground and gave buyers no new reason to pick you. Remember: sell what you stand for, not just the specs.",
+          "better": "Sell something HMT can't: style and design, a watch to show off and give as a gift.",
+          "takeaway": "In 1987 you copied the leader's promise. A new brand needs a reason of its own.",
+          "traits": { "horizon": -1, "risk": -1, "disrupt": -1 }
+        },
+        {
+          "id": "value",
+          "label": "Promise value: more watch for your money, with the features listed at every price.",
+          "grade": "ok",
+          "effect": { "profit": 5, "future": 5, "flags": ["value"] },
+          "next": "d4",
+          "media": "img:ti_d3_value",
+          "outcome": "People read the ads and agree the watches are good value. But the ads look like everyone else's, and a week later few people remember the name.",
+          "why": "A list of features tells people what the watch does. It doesn't make them want it. Remember: sell what you stand for, not just the specs.",
+          "better": "Sell the look: big pictures of the watches, so buyers see something to be proud of.",
+          "takeaway": "In 1987 you sold features. Features inform people, but they rarely make them want something.",
+          "traits": { "horizon": 0, "risk": 0, "disrupt": 0 }
+        }
+      ]
+    },
+    "d4": {
+      "id": "d4",
+      "type": "decision",
+      "year": "1987",
+      "title": "How will buyers find you?",
+      "media": "img:ti_d4",
+      "setup": "Until now, buying a watch often meant placing an order and waiting for months. Watches reach the shops through set distributors, but Titan is a new name with no shops of its own.",
+      "question": "How do you get your watches to buyers?",
+      "advisor": "The distributors can put us in thousands of shops by next month. Doing it ourselves will be slow, and it will cost us.",
+      "options": [
+        {
+          "id": "own",
+          "label": "Sell only in your own showrooms in the big cities, so you control every shop.",
+          "grade": "ok",
+          "effect": { "profit": -5, "future": 5, "flags": ["own"] },
+          "next": "scene1989",
+          "media": "img:ti_d4_own",
+          "outcome": "Your showrooms look smart, and the staff know every watch. But you can open only a few each year, so in most towns people still can't find a Titan.",
+          "why": "You built the right kind of shop, but too few of them. Remember: build your selling around how buyers now want to shop, and reach them where they already go.",
+          "better": "Sell straight to shop owners you choose, train their salesmen, and open your own showroom as well.",
+          "takeaway": "In 1987 you sold only in your own showrooms. Control is good, but buyers have to be able to find you.",
+          "traits": { "horizon": 1, "risk": 0, "disrupt": 1 }
+        },
+        {
+          "id": "direct",
+          "label": "Skip the distributors: pick shop owners, train their salesmen, and open a showroom.",
+          "grade": "great",
+          "real": true,
+          "effect": { "profit": 5, "future": 15, "flags": ["direct"] },
+          "next": "scene1989",
+          "media": "img:ti_d4_direct",
+          "outcome": [
+            {
+              "when": { "flags": ["style"] },
+              "text": "You sell straight to shop owners and train salesmen to explain the watches. On 23 December 1987, your first showroom opens at Safina Plaza in Bengaluru, and people come holding pictures cut out of your ads. You sell 17 watches that day and 313 that month."
+            },
+            {
+              "text": "You sell straight to shop owners and train salesmen to explain the watches. In December 1987 your first showroom opens in Bengaluru, but sales start slowly, because few people know yet what your watches stand for."
+            }
+          ],
+          "why": "Buyers were used to waiting for a plain watch. Titan let them walk in, see a range and choose today, with someone to explain it. Remember: build your selling around how buyers now want to shop, not how sellers always have.",
+          "takeaway": "In 1987 you built a new way to sell a new kind of watch. A new product often needs a new road to the buyer.",
+          "traits": { "horizon": 1, "risk": 1, "disrupt": 1 }
+        },
+        {
+          "id": "dist",
+          "label": "Hand your watches to the big distributors, who already supply watch shops all over India.",
+          "grade": "bad",
+          "effect": { "profit": 10, "future": -10, "trust": -1, "flags": ["dist"] },
+          "next": "scene1989",
+          "media": "img:ti_d4_dist",
+          "outcome": "Your watches reach many shops fast, but they sit in a drawer next to HMT's, and the shop staff can't say why yours are worth more. Sales start well, then slow down.",
+          "why": "The old chain was built to sell the old watches. A new kind of watch needed sellers who could show it off and explain it. Remember: build your selling around how buyers now want to shop.",
+          "better": "Sell straight to shop owners you choose, train their salesmen, and open a showroom of your own.",
+          "takeaway": "In 1987 you sold a new watch the old way. The old road to the buyer was built for the old product.",
+          "traits": { "horizon": -1, "risk": -1, "disrupt": -1 }
+        }
+      ]
+    },
+    "scene1989": {
+      "id": "scene1989",
+      "type": "scene",
+      "year": "1989",
+      "media": "img:ti_1989",
+      "text": [
+        {
+          "when": { "flags": ["quartz"], "minFuture": 70 },
+          "text": "In its first year, Titan becomes India's leading maker of quartz watches with hands. In March 1988 J.R.D. Tata opens the Hosur factory, and on 10 April 1989 it makes its millionth watch. The gold-plated Classique is your best-seller, while HMT still makes mostly mechanical watches."
+        },
+        {
+          "when": { "flags": ["quartz"] },
+          "text": "It is 1989. In March 1988 J.R.D. Tata opened the Hosur factory, and your quartz watches are selling, but more slowly than you hoped. HMT still makes mostly mechanical watches, so the quartz market is yours to lose."
+        },
+        {
+          "when": { "flags": ["mix"] },
+          "text": "It is 1989. The Hosur factory now makes more quartz watches, and that half of your range sells best. Your mechanical line still struggles against HMT, and you wish you had moved faster."
+        },
+        {
+          "text": "It is 1989. Buyers in the cities now ask for quartz watches, and your factory is still mostly mechanical. You start moving Hosur over to quartz, years behind where you could have been."
+        }
+      ],
+      "next": "d5"
+    },
+    "d5": {
+      "id": "d5",
+      "type": "decision",
+      "year": "1993",
+      "title": "Take on the world?",
+      "media": "img:ti_d5",
+      "setup": [
+        {
+          "when": { "minFuture": 60 },
+          "text": "It is 1993. Titan is India's leading maker of quartz watches, and it has sold some watches abroad since 1991. Now you want a name around the world. Europe is home to the Swiss, the most famous watchmakers of all."
+        },
+        {
+          "text": "It is 1993. Titan is still finding its feet at home, but it has sold some watches abroad since 1991, and the board wants a name around the world. Europe is home to the Swiss, the most famous watchmakers of all."
+        }
+      ],
+      "question": "Where do you take Titan next?",
+      "advisor": "Europe is the biggest prize, and the hardest. Nearer markets are smaller, and nobody will write about them.",
+      "options": [
+        {
+          "id": "swiss",
+          "label": "Buy a small Swiss watch brand, so you start in Europe with a famous name.",
+          "grade": "bad",
+          "effect": { "profit": -10, "future": -10, "trust": -1, "flags": ["swiss"] },
+          "next": "ending_route",
+          "media": "img:ti_d5_swiss",
+          "outcome": "The deal costs a lot, and the Swiss brand turns out to be small for a reason. Your managers fly back and forth to fix it, and the business at home gets less of their time.",
+          "why": "You paid for someone else's name instead of growing from your own strength. Remember: choose who you serve first, and start where you are strong.",
+          "better": "Grow first where buyers are close to the ones you know, like the Gulf and Asia, and take on Europe later.",
+          "takeaway": "In 1993 you bought a foreign name. You can buy a brand, but not the strength behind it.",
+          "traits": { "horizon": -1, "risk": 1, "disrupt": 0 }
+        },
+        {
+          "id": "europe",
+          "label": "Go into Europe yourself and take on the Swiss in their own market.",
+          "grade": "ok",
+          "real": true,
+          "effect": { "profit": -5, "future": 0, "flags": ["europe"] },
+          "next": "ending_route",
+          "media": "img:ti_d5_europe",
+          "outcome": "In 1993 Titan goes into Europe. The shops there want strict delivery dates and top quality on every watch, and Titan struggles to keep up. In time it pulls back and focuses on India, the Middle East and the Far East.",
+          "why": "Europe was the hardest watch market in the world, and Titan was still young. A smaller, nearer step would have taught it more for less. Remember: choose who you serve first.",
+          "better": "Grow first in the Gulf and Asia, where buyers are nearer and more like your buyers at home. Take on Europe later, from strength.",
+          "takeaway": "In 1993 you went straight for the hardest market. The biggest prize is rarely the best first step.",
+          "traits": { "horizon": 1, "risk": 1, "disrupt": 0 }
+        },
+        {
+          "id": "near",
+          "label": "Grow in the Gulf and Asia first. It's a smaller step, and nobody will call it bold.",
+          "grade": "great",
+          "effect": { "profit": 10, "future": 10, "flags": ["near"] },
+          "next": "ending_route",
+          "media": "img:ti_d5_near",
+          "outcome": "Your watches sell in the Gulf and across Asia, where many buyers already know the name from home. These shops are easier to serve, and the money comes back to pay for new designs at Hosur.",
+          "why": "You grew where your strengths already worked, and learned how to sell abroad before facing the Swiss. Remember: choose who you serve first.",
+          "takeaway": "In 1993 you took the smaller, nearer step abroad. Win the buyers closest to you before you chase the biggest prize.",
+          "traits": { "horizon": 1, "risk": 0, "disrupt": 0 }
+        }
+      ]
+    },
+    "ending_route": {
+      "id": "ending_route",
+      "type": "route",
+      "routes": [{ "when": { "minFuture": 70 }, "to": "legend" }, { "when": { "minFuture": 40 }, "to": "survivor" }, { "to": "collapse" }]
+    },
+    "legend": {
+      "id": "legend",
+      "type": "ending",
+      "tier": "legend",
+      "title": "Time is on your side",
+      "media": "img:ti_legend",
+      "text": [
+        {
+          "when": { "flags": ["quartz", "premium", "style", "direct"] },
+          "text": "By 2012, Titan sells more than 60 of every 100 watches in India's organised watch market. HMT turned to quartz only in the early 1990s, too late, and its watch business shut in 2016. Your bet on quartz changed what India wears on its wrist."
+        },
+        {
+          "text": "You took a different road, but Titan still becomes the watch India is proud to wear. The old makers are slow to follow you into quartz, and by the time they do, the shoppers have already chosen your name."
+        }
+      ],
+      "bonus": 15
+    },
+    "survivor": {
+      "id": "survivor",
+      "type": "ending",
+      "tier": "survivor",
+      "title": "A good watch, a smaller name",
+      "media": "img:ti_survivor",
+      "text": [
+        {
+          "when": { "flags": ["mech"] },
+          "text": "Titan survives, but it spent its early years making the same kind of watch as HMT. It sells well in some cities, while others take the lead in quartz."
+        },
+        {
+          "text": "Titan survives and sells well in some cities, but it never quite becomes the name everyone wants. HMT and newer brands share the rest of the market."
+        }
+      ],
+      "bonus": 5
+    },
+    "collapse": {
+      "id": "collapse",
+      "type": "ending",
+      "tier": "collapse",
+      "title": "Back to the drawing board",
+      "media": "img:ti_collapse",
+      "text": "Your watches never find their buyers. The Hosur factory runs half empty, and the Tata group starts to ask whether watches were a mistake.",
+      "bonus": 0
+    },
+    "fired": {
+      "id": "fired",
+      "type": "ending",
+      "tier": "fired",
+      "title": "The board picks a new boss",
+      "media": "img:ti_fired",
+      "text": "After three costly calls, the Tata group and its Tamil Nadu partner lose faith in you and pick someone else to run Titan.",
+      "bonus": 0
+    }
+  },
+  "realEnding": "legend",
+  "realHistory": "Titan was set up in 1984 by the Tata group and TIDCO, Tamil Nadu's development body, after years of fighting rules that kept watchmaking for the state and small firms. When a 1985 rule let it choose, it made only quartz watches, while HMT stayed mostly mechanical. Its first five collections came out in 1987 at about Rs 350 to 900, with ads that showed the watches up close with their prices. It sold directly to shop owners, trained salesmen, and opened its own showroom in Bengaluru in December 1987. It made its millionth watch in April 1989. In 1993 it went into Europe, where it struggled, so in time it pulled back to India, the Middle East and the Far East. HMT turned to quartz only in the early 1990s and kept losing ground. By 2012 Titan held over 60% of India's organised watch market, and HMT's watch unit shut in 2016.",
+  "sources": [
+    {
+      "label": "The timekeeper (Business Today, 2012)",
+      "url": "https://www.businesstoday.in/magazine/cover-story/story/best-ceos-tata-group-titan-industries-bhaskar-bhat-28990-2012-01-12"
+    },
+    {
+      "label": "A Titan of transformation (Tata.com, 2023)",
+      "url": "https://tata.com/newsroom/business/titan-company-india-75-years-independence"
+    },
+    { "label": "JRD and the making of Titan (Tata.com heritage)", "url": "https://www.tata.com/newsroom/heritage/jrd-titan-xerxes" },
+    { "label": "Xerxes Desai and Titan (Tata.com heritage)", "url": "https://www.tata.com/newsroom/heritage/xerxes-desai-titan" },
+    { "label": "40 years of Titan (Tata.com)", "url": "https://www.tata.com/newsroom/business/40-years-titan-company" },
+    {
+      "label": "Made in India watch: Titan history (The Better India, 2021)",
+      "url": "https://thebetterindia.com/260436/made-in-india-watch-titan-history-xerxes-desai-hosur-tamil-nadu"
+    },
+    {
+      "label": "Titan forty years celebration (The Hour Markers)",
+      "url": "https://www.thehourmarkers.com/articles/titan-forty-years-celebration"
+    },
+    {
+      "label": "When a timely idea and Tamil Nadu helped with the birth of Titan (The Federal)",
+      "url": "https://thefederal.com/business/when-a-timely-idea-and-tamil-nadu-helped-with-the-birth-of-titan"
+    },
+    { "label": "Time is Money: the story of Titan (Penguin India)", "url": "https://www.penguin.co.in/time-is-money-the-story-of-titan/" },
+    {
+      "label": "Profile: Titan (Europa Star)",
+      "url": "https://www.europastar.com/magazine/features/1000469592-special-market-focus-india-profile-titan-44-the.html"
+    },
+    {
+      "label": "HMT Watches: the rise and fall (WatchesBySJX, 2016)",
+      "url": "https://watchesbysjx.com/2016/07/hmt-watches-the-rise-and-fall-of-indias-watchmaking-titan.html"
+    },
+    { "label": "Crafting timeless success: the Titan story (StartupTalky)", "url": "https://startuptalky.com/titan-company-success-story/" }
+  ],
+  "credits": "Alternate-history outcomes are informed estimates, not history. Research brief and full source list: content/hotseats/titan-quartz/research.md."
+}

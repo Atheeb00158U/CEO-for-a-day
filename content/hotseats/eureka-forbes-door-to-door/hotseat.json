@@ -1,0 +1,534 @@
+{
+  "id": "eureka-forbes-door-to-door",
+  "company": "Eureka Forbes",
+  "title": "A filter at every door",
+  "hook": "Nobody in India has used your machine before. How do you get them to buy one?",
+  "role": "You run Eureka Forbes, 1982 to 2012",
+  "years": "1982–2012",
+  "cover": "img:ef_cover",
+  "draft": true,
+  "complexity": 2,
+  "minutes": 6,
+  "start": "intro",
+  "startMeters": {
+    "profit": 30,
+    "future": 15
+  },
+  "startTrust": 3,
+  "meters": {
+    "profit": {
+      "label": "Cash",
+      "hint": "Money the business makes today"
+    },
+    "future": {
+      "label": "Trust",
+      "hint": "How many homes know your name and keep coming back"
+    }
+  },
+  "nodes": {
+    "intro": {
+      "id": "intro",
+      "type": "scene",
+      "year": "1982",
+      "media": "img:ef_intro",
+      "text": "Bombay, 1982. The Tata group's Forbes company and Sweden's Electrolux start a new company together, and you run it. Your first product is the Euroclean vacuum cleaner. Most Indian homes have never seen one; they sweep with a broom. Your job is to make families want it, and trust your name, before the money runs out.",
+      "next": "d1"
+    },
+    "d1": {
+      "id": "d1",
+      "type": "decision",
+      "year": "1982",
+      "title": "Shop shelf or living room?",
+      "media": "img:ef_d1",
+      "setup": "Shops already sell India's fans and radios, and dealers can reach many towns at once. But your machine is new, and most shoppers have never seen one at work. You have a small team and not much money.",
+      "question": "How do you sell your first machine?",
+      "advisor": "Shops reach thousands of buyers at once, and dealers pay for their own space. Sending people into homes is slow, and every visit costs us.",
+      "options": [
+        {
+          "id": "shops",
+          "label": "Sell through appliance shops in every big city, with newspaper ads to bring buyers in.",
+          "grade": "bad",
+          "effect": {
+            "profit": 5,
+            "future": -10,
+            "trust": -1,
+            "flags": ["shops"]
+          },
+          "next": "s1988",
+          "media": "img:ef_d1_shops",
+          "outcome": "Dealers put your box on a shelf beside the fans. Shoppers look at it, but few know why they need it, and dealers don't take the time to explain. Most boxes sit there for months.",
+          "why": "A product people have never used won't sell from a shelf. Someone has to ask how the family cleans today, and then show the answer. Remember: ask questions first, then listen.",
+          "better": "Send salespeople into homes. Let them ask how the family cleans, then show the machine working right there.",
+          "takeaway": "In 1982 you put a new product on a shelf. People buy what they have seen work.",
+          "traits": {
+            "horizon": -1,
+            "risk": -1,
+            "disrupt": -1
+          }
+        },
+        {
+          "id": "homes",
+          "label": "Send young salespeople into homes to show the machine working, one family at a time.",
+          "grade": "great",
+          "real": true,
+          "effect": {
+            "profit": -5,
+            "future": 15,
+            "flags": ["homes"]
+          },
+          "next": "s1988",
+          "media": "img:ef_d1_homes",
+          "outcome": "You open no shops. Instead, your salespeople carry the machine into homes and switch it on there. It is slow, hard work, and by 1987 you still have just one office in Bombay and 20 salespeople. The company is struggling.",
+          "why": "A new kind of product must be shown, not shelved. In a home, a salesperson can ask how the family cleans, listen to the answer, and then show the machine on their own floor. Remember: ask questions first, then listen more than you talk.",
+          "takeaway": "In 1982 you took your machine into homes. A new product sells when people see it work for them.",
+          "traits": {
+            "horizon": 1,
+            "risk": 1,
+            "disrupt": 1
+          }
+        },
+        {
+          "id": "showroom",
+          "label": "Open a few showrooms in big cities with live demos, and let the buyers come to you.",
+          "grade": "ok",
+          "effect": {
+            "profit": -5,
+            "future": 5,
+            "flags": ["showroom"]
+          },
+          "next": "s1988",
+          "media": "img:ef_d1_showroom",
+          "outcome": "The people who walk in like the demo, but not many walk in, because most families won't make a trip to see a machine they don't know they need.",
+          "why": "Showing the machine was right, but you waited for buyers to come to you. People rarely go looking for something they've never heard of. Remember: go to the buyer, ask questions first, then show.",
+          "better": "Take the demo into people's homes, where you can ask how they clean and show the answer on their own floor.",
+          "takeaway": "In 1982 you waited for buyers to visit. Go to them instead.",
+          "traits": {
+            "horizon": 0,
+            "risk": 0,
+            "disrupt": 0
+          }
+        }
+      ]
+    },
+    "s1988": {
+      "id": "s1988",
+      "type": "scene",
+      "year": "1988",
+      "media": "img:ef_1988",
+      "text": [
+        {
+          "when": {
+            "flags": ["shops"]
+          },
+          "text": "It is the late 1980s. Your vacuum cleaners still sit in shops, and sales are thin. You add a second product, Aquaguard, a water purifier for the kitchen. This time you hire salespeople to take it into homes."
+        },
+        {
+          "when": {
+            "flags": ["showroom"]
+          },
+          "text": "It is the late 1980s. Your showrooms get a few visitors a day. You add a second product, Aquaguard, a water purifier for the kitchen, and you start sending salespeople out to people's homes."
+        },
+        {
+          "text": "It is the late 1980s, and your salespeople have a second machine to carry: Aquaguard, a water purifier for the kitchen. It is a new kind of product in India, and very few homes have one."
+        }
+      ],
+      "next": "d2"
+    },
+    "d2": {
+      "id": "d2",
+      "type": "decision",
+      "year": "1988",
+      "title": "\"We boil water for free\"",
+      "media": "img:ef_d2",
+      "setup": "In home after home, families say the same thing. Boiling water costs almost nothing, so why pay a lot for a machine? Your purifier is costly for most families, and your salespeople are tired of hearing no.",
+      "question": "How do you answer \"too costly\"?",
+      "advisor": "They have a point. Boiling is nearly free. If we can't match free, we should at least get much closer to it.",
+      "options": [
+        {
+          "id": "compare",
+          "label": "Keep the price. Show what boiling really costs in fuel and time, and what one illness costs.",
+          "grade": "great",
+          "real": true,
+          "effect": {
+            "profit": 10,
+            "future": 15,
+            "flags": ["compare"]
+          },
+          "next": "d3",
+          "media": "img:ef_d2_compare",
+          "outcome": "You keep the price and make your case, home by home. Over the years, you talk many Indian families out of boiling their tap water and into buying Aquaguard. By 2004, three of every four water purifiers sold in India are yours.",
+          "why": "Boiling looks free, but it isn't: it costs fuel and time every day, and an illness costs far more. Remember: when they say \"too costly\", ask \"compared to what?\"",
+          "takeaway": "In the 1980s you answered \"too costly\" by showing what boiling really costs.",
+          "traits": {
+            "horizon": 1,
+            "risk": 1,
+            "disrupt": 1
+          }
+        },
+        {
+          "id": "emi",
+          "label": "Keep the price, but let families pay a small sum each month, so it feels much lighter.",
+          "grade": "ok",
+          "effect": {
+            "profit": 5,
+            "future": 5,
+            "flags": ["emi"]
+          },
+          "next": "d3",
+          "media": "img:ef_d2_emi",
+          "outcome": "More families sign up, because the monthly sum looks small. But many still wonder why they pay at all when boiling works, and some stop paying halfway. Chasing them eats your team's time.",
+          "why": "Easy payments help people who already want the machine. They don't answer the real doubt: why pay when boiling is free? Remember: when they say \"too costly\", ask \"compared to what?\"",
+          "better": "Keep the price, and show what boiling really costs in fuel, time and doctor's bills. Then your price looks fair.",
+          "takeaway": "In the 1980s you made the price easier to pay, but didn't show why it was worth it.",
+          "traits": {
+            "horizon": 0,
+            "risk": 0,
+            "disrupt": 0
+          }
+        },
+        {
+          "id": "pricecut",
+          "label": "Cut the price by a third so more families can say yes, even if you earn less on each sale.",
+          "grade": "bad",
+          "effect": {
+            "profit": -10,
+            "future": -10,
+            "trust": -1,
+            "flags": ["pricecut"]
+          },
+          "next": "d3",
+          "media": "img:ef_d2_pricecut",
+          "outcome": "More families buy, but each sale now barely covers your salesperson's pay. And buyers still compare your machine with boiling, which is free, so many still say no.",
+          "why": "You can't beat free on price. Even a cheaper machine costs more than boiling, and now each sale earns you less. Remember: when they say \"too costly\", ask \"compared to what?\"",
+          "better": "Keep the price, and show what boiling really costs in fuel, time and doctor's bills. Then your price looks fair.",
+          "takeaway": "In the 1980s you tried to beat free on price. Show the value instead.",
+          "traits": {
+            "horizon": -1,
+            "risk": 0,
+            "disrupt": -1
+          }
+        }
+      ]
+    },
+    "d3": {
+      "id": "d3",
+      "type": "decision",
+      "year": "1995",
+      "title": "After the sale",
+      "media": "img:ef_d3",
+      "setup": [
+        {
+          "when": {
+            "flags": ["pricecut"]
+          },
+          "text": "It is the 1990s. Thousands of homes now own your purifier, but your price cut leaves little money in each sale. Every machine must be fitted to a tap, and its filter wears out. Your salespeople are paid mostly for new sales, so they want the next door."
+        },
+        {
+          "when": {
+            "flags": ["emi"]
+          },
+          "text": "It is the 1990s. Thousands of homes now own your purifier, and your team spends hours collecting monthly payments. Every machine must be fitted to a tap, and its filter wears out. Your salespeople are paid mostly for new sales, so they want the next door."
+        },
+        {
+          "text": "It is the 1990s, and thousands of homes now own your purifier. Every machine must be fitted to a tap, and its filter wears out. Your salespeople are paid mostly for new sales, so once a machine is sold, they want to move on to the next door."
+        }
+      ],
+      "question": "What happens after a machine is sold?",
+      "advisor": "Every hour spent on old customers is an hour not spent finding new ones. And new sales are what pay our people.",
+      "options": [
+        {
+          "id": "nextdoor",
+          "label": "Keep salespeople on new sales, and let local mechanics fit and repair the machines.",
+          "grade": "bad",
+          "effect": {
+            "profit": 10,
+            "future": -10,
+            "trust": -1,
+            "flags": ["nextdoor"]
+          },
+          "next": "s2005",
+          "media": "img:ef_d3_nextdoor",
+          "outcome": "Sales keep coming. But local mechanics fit machines badly and put in cheap filters. When the water tastes odd, families blame your name, and they tell their neighbours.",
+          "why": "The sale is not the end. A family that trusts your service buys filters, repairs and the next machine from you. Remember: a customer is worth the margin on all their future buys.",
+          "better": "Fit every machine yourself, send technicians back regularly, and sell yearly service plans.",
+          "takeaway": "In the 1990s you walked away after the sale, and left your name in a stranger's hands.",
+          "traits": {
+            "horizon": -1,
+            "risk": 0,
+            "disrupt": -1
+          }
+        },
+        {
+          "id": "paidvisit",
+          "label": "Fix machines only when owners call, and charge a fee for each visit you make.",
+          "grade": "ok",
+          "effect": {
+            "profit": 5,
+            "future": 5,
+            "flags": ["paidvisit"]
+          },
+          "next": "s2005",
+          "media": "img:ef_d3_paidvisit",
+          "outcome": "You earn a little on each call. But most owners only call once the machine has failed, and by then some have gone back to boiling. Few buy a second machine from you.",
+          "why": "Waiting for the call means you only turn up when something has gone wrong. Regular visits keep the machine working and the family buying. Remember: a customer is worth the margin on all their future buys.",
+          "better": "Fit every machine yourself, send technicians back regularly, and sell yearly service plans.",
+          "takeaway": "In the 1990s you waited for customers to call. Regular care keeps them buying.",
+          "traits": {
+            "horizon": 0,
+            "risk": 0,
+            "disrupt": 0
+          }
+        },
+        {
+          "id": "service",
+          "label": "Fit every machine yourself and send technicians back regularly, though it needs many more staff.",
+          "grade": "great",
+          "real": true,
+          "effect": {
+            "profit": -5,
+            "future": 15,
+            "flags": ["service"]
+          },
+          "next": "s2005",
+          "media": "img:ef_d3_service",
+          "outcome": [
+            {
+              "when": {
+                "flags": ["compare"]
+              },
+              "text": "A company plumber fits every purifier, and your technicians come back to service it. You open labs to test water and sell yearly service plans. By 2012, close to 9 million Indian homes are your customers."
+            },
+            {
+              "text": "A company plumber fits every purifier, and your technicians come back to service it. You sell yearly service plans too. Families who trust your service start buying filters and plans from you, year after year."
+            }
+          ],
+          "why": "A machine sold once can earn for years through filters and service. Remember: a customer is worth the margin on everything they buy from you, not just the first sale.",
+          "takeaway": "In the 1990s you looked after every machine you sold, and the families kept buying.",
+          "traits": {
+            "horizon": 1,
+            "risk": 0,
+            "disrupt": 1
+          }
+        }
+      ]
+    },
+    "s2005": {
+      "id": "s2005",
+      "type": "scene",
+      "year": "2005",
+      "media": "img:ef_2005",
+      "text": [
+        {
+          "when": {
+            "flags": ["pricecut"]
+          },
+          "text": "It is 2005. Your sales team has grown to thousands of young people, trained to show the machine and close a sale. Most of their pay is commission. Since your price cut, each sale pays them less, and many good sellers leave."
+        },
+        {
+          "when": {
+            "flags": ["nextdoor"]
+          },
+          "text": "It is 2005. Your sales team has grown to thousands of young people, paid mostly by commission. But in many towns your name now means a badly fitted machine, and doors close faster than before."
+        },
+        {
+          "text": "It is 2005. Your sales team has grown to about 5,300 people, most in their mid-twenties. Each one gets three weeks of training: how to dress, how to show the machine, how to close a sale. Most of their pay is commission, and after six months or 60 sales, they earn a motorbike."
+        }
+      ],
+      "next": "d4"
+    },
+    "d4": {
+      "id": "d4",
+      "type": "decision",
+      "year": "2012",
+      "title": "What does one sale cost?",
+      "media": "img:ef_d4",
+      "setup": [
+        {
+          "when": {
+            "flags": ["compare"]
+          },
+          "text": "It is 2012. Your share of purifier sales has slipped from three in four to about six in ten. Rivals sell cheaper machines in shops. More families now live in gated buildings, where a guard stops your salesperson at the gate. About 7,500 of your people still knock on doors."
+        },
+        {
+          "text": "It is 2012. Rivals sell cheaper machines in shops, and your share of purifier sales is slipping. More families now live in gated buildings, where a guard stops your salesperson at the gate. Your big door-to-door team costs more every year."
+        }
+      ],
+      "question": "How do you sell from now on?",
+      "advisor": "A rough sum, with made-up round numbers: if one salesperson costs us ₹20,000 a month and sells ten machines, that's ₹2,000 of selling cost in every sale. But those home visits are why families trust us.",
+      "options": [
+        {
+          "id": "morereps",
+          "label": "Hire thousands more salespeople and knock on more doors, to win back your share.",
+          "grade": "bad",
+          "effect": {
+            "profit": -10,
+            "future": -10,
+            "trust": -1,
+            "flags": ["morereps"]
+          },
+          "next": "ending_route",
+          "media": "img:ef_d4_morereps",
+          "outcome": "Your pay bill jumps, but guards keep many of your new salespeople at the gate. Each extra sale costs more than the last, and the money left over keeps shrinking.",
+          "why": "More knocks only help if each sale earns more than it cost to win. Remember: each customer must earn you more than you spent to win them.",
+          "better": "Work out what one sale costs in each channel. Keep home demos where they pay, and put simpler models in shops.",
+          "takeaway": "In 2012 you hired more sellers without doing the sums. Each customer must earn more than they cost.",
+          "traits": {
+            "horizon": -1,
+            "risk": 1,
+            "disrupt": -1
+          }
+        },
+        {
+          "id": "sums",
+          "label": "Do the sums on each sale. Put simpler models in shops, even if your sellers feel let down.",
+          "grade": "great",
+          "effect": {
+            "profit": 5,
+            "future": 20,
+            "flags": ["sums"]
+          },
+          "next": "ending_route",
+          "media": "img:ef_d4_sums",
+          "outcome": "Your sums show that a home visit pays off for costly machines, but not for basic ones. You put simple models in shops and keep demos for the rest. Your sales team shrinks, and some loyal sellers leave angry, but each sale now costs you less.",
+          "why": "Remember: know what it costs to win one customer. The way that made you famous isn't always the cheapest way to reach the next buyer.",
+          "takeaway": "In 2012 you did the sums on every sale, and changed how you sold even though it hurt.",
+          "traits": {
+            "horizon": 1,
+            "risk": 1,
+            "disrupt": 1
+          }
+        },
+        {
+          "id": "online",
+          "label": "Keep the door-to-door team as your core, and use online ads to get families to ask for a demo.",
+          "grade": "ok",
+          "real": true,
+          "effect": {
+            "profit": 0,
+            "future": 5,
+            "flags": ["online"]
+          },
+          "next": "ending_route",
+          "media": "img:ef_d4_online",
+          "outcome": "You say you will not break up your sales force: it is the core of the company. Online ads now bring in requests for demos. In 2014 you still have more than 8,000 salespeople, while rivals keep selling in shops.",
+          "why": "A demo that a family asked for is easier to close, so online ads were a smart fix. But every sale still paid for a home visit, and buyers who shop in stores never met you. Remember: know what it costs to win one customer.",
+          "better": "Work out what one sale costs in each channel. Keep home demos where they pay, and put simpler models in shops.",
+          "takeaway": "In 2012 you kept your famous sales team at the centre. Check what each sale costs, even in the way that made you famous.",
+          "traits": {
+            "horizon": 0,
+            "risk": 0,
+            "disrupt": 0
+          }
+        }
+      ]
+    },
+    "ending_route": {
+      "id": "ending_route",
+      "type": "route",
+      "routes": [
+        {
+          "when": {
+            "minFuture": 70
+          },
+          "to": "legend"
+        },
+        {
+          "when": {
+            "minFuture": 35
+          },
+          "to": "survivor"
+        },
+        {
+          "to": "collapse"
+        }
+      ]
+    },
+    "legend": {
+      "id": "legend",
+      "type": "ending",
+      "tier": "legend",
+      "title": "A name every home trusts",
+      "media": "img:ef_legend",
+      "text": "You keep the home visits that made your name, and sell simpler machines in shops. Each sale now earns more than it costs. Families who first met your salesperson at the door now buy your filters in shops and online, and your name stays the word India uses for a water purifier.",
+      "bonus": 15
+    },
+    "survivor": {
+      "id": "survivor",
+      "type": "ending",
+      "tier": "survivor",
+      "title": "Strong, then squeezed",
+      "media": "img:ef_survivor",
+      "text": [
+        {
+          "when": {
+            "flags": ["homes", "compare", "service", "online"]
+          },
+          "text": "For about 25 years, your salespeople built a name India trusted for clean water. Then cheaper rivals in shops took ground. New owners since 2021 sell through shops and online too, and by 2025 sales at the door are about a quarter of the total."
+        },
+        {
+          "when": {
+            "flags": ["morereps"]
+          },
+          "text": "Your big sales team keeps the brand alive, but each sale costs more every year. Rivals in shops sell cheaper machines, and slowly your lead slips away."
+        },
+        {
+          "when": {
+            "flags": ["sums"]
+          },
+          "text": "You fixed how you sell in the end, but earlier mistakes cost you years. Your brand survives, and rivals in shops keep much of the lead you could have had."
+        },
+        {
+          "text": "You built a brand many families know, but not every sale earned its keep. Rivals in shops catch up, and your lead slowly slips away."
+        }
+      ],
+      "bonus": 5
+    },
+    "collapse": {
+      "id": "collapse",
+      "type": "ending",
+      "tier": "collapse",
+      "title": "Lost at the door",
+      "media": "img:ef_collapse",
+      "text": "Families never come to trust your name. Rivals with cheaper machines in shops win the homes you knocked on, and your company shrinks to a small player.",
+      "bonus": 0
+    },
+    "fired": {
+      "id": "fired",
+      "type": "ending",
+      "tier": "fired",
+      "title": "The owners lose faith",
+      "media": "img:ef_fired",
+      "text": "After three costly calls, the owners lose faith in you and bring in a new chief to run the company.",
+      "bonus": 0
+    }
+  },
+  "realEnding": "survivor",
+  "realHistory": "Eureka Forbes began in 1982 as a joint company of the Tata group's Forbes & Company and Sweden's Electrolux. It sold its Euroclean vacuum cleaners in homes, not shops, and in the 1980s added Aquaguard, India's first water purifier. From one Bombay office with 20 salespeople in 1987, its door-to-door team grew to more than 8,000 by 2014. It talked many families out of boiling water, and Aquaguard held three in four purifier sales in 2004–05. A company plumber fitted each machine and technicians came back to service it, and service became a big, steady income. Then gated buildings, cheaper rivals and shops ate into its lead: its share fell to about six in ten by 2012. Under new owners since 2021, it sells through shops and online too; by 2025 direct sales were about a quarter of the total.",
+  "sources": [
+    {
+      "label": "Eureka Forbes (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Eureka_Forbes"
+    },
+    {
+      "label": "Moving beyond Direct Selling, Eureka Forbes Embraces Digital Customer Service (Knowledge at Wharton, 2012)",
+      "url": "https://knowledge.wharton.upenn.edu/article/moving-beyond-direct-selling-eureka-forbes-embraces-digital-customer-service/"
+    },
+    {
+      "label": "Every Salesman a King (Forbes, 2005)",
+      "url": "https://www.forbes.com/global/2005/1003/018A/"
+    },
+    {
+      "label": "In still waters (Business Today, 2014, via Third Eyesight)",
+      "url": "https://www.thirdeyesight.in/2014/09/"
+    },
+    {
+      "label": "Spotlighting Eureka Forbes (Marcellus Investment Managers)",
+      "url": "https://marcellus.in/newsletter/little-champs/spotlighting-eureka-forbes/"
+    },
+    {
+      "label": "Eureka Forbes: Har ghar 'saaf' rahta hai (Prabhat's Newsletter, 2026)",
+      "url": "https://prabhat.substack.com/p/eureka-forbes"
+    }
+  ],
+  "credits": "Alternate-history outcomes are informed estimates, not history. The selling-cost sum in 2012 uses made-up round numbers. Research brief and full source list: content/hotseats/eureka-forbes-door-to-door/research.md."
+}

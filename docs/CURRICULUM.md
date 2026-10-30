@@ -83,7 +83,7 @@ is gate 21 of 24.
 | Code | The rule | Everyday example (made up) | Source | Exercise |
 |---|---|---|---|---|
 | 1.1.1 | Sales are not profit. Profit is what's left. | Meena sold ₹2 lakh of sarees at the Diwali mela but spent ₹1.9 lakh on stock, stall and travel. | *Financial Intelligence for Entrepreneurs* (Berman & Knight) ◇ | Quick sum |
-| 1.1.2 | Know your margin on every item you sell. | A ₹10 biscuit pack earns Raju's kirana ₹1; loose namkeen earns ₹4. Which gets the front shelf? | same ◇ | Sort into buckets |
+| 1.1.2 | Know your margin on every item you sell. | A ₹10 pen earns a stationery shop ₹1; a ₹10 notebook earns ₹3. Which goes by the till? | same ◇ | Sort into buckets |
 | 1.1.3 | Fixed costs stay the same. Variable costs grow with sales. | Rent is fixed. Paper bags and delivery petrol grow with every order. | same ◇ | Sort into buckets |
 | 1.1.4 | Break-even is the sales that pay your fixed costs. | Lata's tiffin service needs 60 meals a day just to pay rent and the cook. | Cost-volume-profit analysis, any cost-accounting text ◇ | Slider sim |
 | 1.1.5 | A thin margin works only with high sales and low costs. | Ravi's chai stall keeps ₹3 a cup. At 400 cups a day he does well; at 50 he can't pay rent. | same ◇ | Slider sim |

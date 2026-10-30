@@ -1,0 +1,672 @@
+{
+  "id": "kirana-year",
+  "company": "Kulkarni General Stores (made up)",
+  "title": "A kirana's year",
+  "hook": "Your father's corner shop is yours for one year. Pay every bill and keep the regulars, or lose the shop.",
+  "role": "You run your family's kirana for one year (a made-up story)",
+  "years": "One year, April to March",
+  "cover": "img:ky_cover",
+  "emblem": "img:ky_emblem",
+  "draft": true,
+  "complexity": 1,
+  "minutes": 6,
+  "start": "intro",
+  "startMeters": {
+    "profit": 40,
+    "future": 35
+  },
+  "startTrust": 3,
+  "meters": {
+    "profit": {
+      "label": "Cash box",
+      "hint": "The money the shop has in hand today"
+    },
+    "future": {
+      "label": "Regulars",
+      "hint": "How loyal and steady your customers are"
+    }
+  },
+  "nodes": {
+    "intro": {
+      "id": "intro",
+      "type": "scene",
+      "year": "April",
+      "media": "img:ky_intro",
+      "text": "This is a made-up story, based on many real kiranas. You are Asha, 27. For 30 years your father, Baba, ran Kulkarni General Stores on a busy lane in Kesarganj, a town in Madhya Pradesh. His knees are bad now, so this April he hands the shop to you.",
+      "next": "keys"
+    },
+    "keys": {
+      "id": "keys",
+      "type": "scene",
+      "year": "April",
+      "media": "img:ky_keys",
+      "text": "Baba gives you the keys, the udhaar notebook and ₹60,000 saved for bad months. \"One year,\" he says. \"Pay every bill, keep this money and keep our regulars, or we rent the shop to the phone shop next door.\" On day one you sell ₹10,000 of goods, but most of it goes back to the wholesaler.",
+      "next": "d1"
+    },
+    "d1": {
+      "id": "d1",
+      "type": "decision",
+      "year": "April",
+      "title": "The front shelf",
+      "media": "img:ky_d1",
+      "setup": "The shelf by the counter is the best spot in the shop, because every customer sees it. A biscuit salesman offers a free rack for his ₹10 packs, and each pack earns you ₹1. The namkeen you weigh and pack yourself sells at ₹10 a bag too, and each bag earns ₹3.",
+      "question": "What goes on the front shelf?",
+      "advisor": "A crowd at the counter brings people back tomorrow. But the box has to fill today as well.",
+      "options": [
+        {
+          "id": "cheap",
+          "label": "Put the cheapest deals up front to pull in crowds, even if they earn you almost nothing.",
+          "grade": "bad",
+          "effect": {
+            "profit": -5,
+            "future": -10,
+            "trust": -1,
+            "flags": ["shelf_cheap"]
+          },
+          "next": "d2",
+          "media": "img:ky_d1_cheap",
+          "outcome": "The shop fills up and you are busy from morning to night. But each deal leaves you almost nothing. At month-end you count the box: more work, more bills, and about the same money as before.",
+          "why": "A full shop is not a full cash box. Remember: sales are not profit. Profit is what's left.",
+          "better": "Give the front shelf to the items that earn the most, and keep the cheap deals further in.",
+          "takeaway": "In April you chased crowds with cheap deals. Sales are not profit; profit is what's left.",
+          "traits": {
+            "horizon": -1,
+            "risk": 0,
+            "disrupt": 0
+          }
+        },
+        {
+          "id": "namkeen",
+          "label": "Put your own namkeen up front. It earns ₹3 a bag, but it sells more slowly than biscuits.",
+          "grade": "great",
+          "real": true,
+          "effect": {
+            "profit": 10,
+            "future": 10,
+            "flags": ["shelf_margin"]
+          },
+          "next": "d2",
+          "media": "img:ky_d1_namkeen",
+          "outcome": "Sales hardly change, but every bag of namkeen leaves ₹3 in the box, and the box fills faster than it did in Baba's time. The regulars like it fresh, and some buy a bag every evening.",
+          "why": "You looked at what each item earns, not only how fast it sells. Remember: know your margin on every item.",
+          "takeaway": "In April you gave the best shelf to what earns the most. Know your margin on every item.",
+          "traits": {
+            "horizon": 1,
+            "risk": 0,
+            "disrupt": 0
+          }
+        },
+        {
+          "id": "rack",
+          "label": "Take the salesman's free rack. The biscuits fly off the shelf, but each pack earns you only ₹1.",
+          "grade": "ok",
+          "effect": {
+            "profit": 5,
+            "future": 5,
+            "flags": ["shelf_fast"]
+          },
+          "next": "d2",
+          "media": "img:ky_d1_rack",
+          "outcome": "The counter is busy and sales jump. But when you count up, you keep only a little more than before, and the new rack has pushed your own namkeen to the back.",
+          "why": "Fast sellers bring people in, but each one leaves little behind. Remember: know your margin on every item.",
+          "better": "Keep the fast biscuits close by, and give the front shelf to the items that earn the most.",
+          "takeaway": "In April you chose speed over margin. A fast seller that earns ₹1 still earns only ₹1.",
+          "traits": {
+            "horizon": 0,
+            "risk": 0,
+            "disrupt": 0
+          }
+        }
+      ]
+    },
+    "d2": {
+      "id": "d2",
+      "type": "decision",
+      "year": "May",
+      "title": "Write it in the book",
+      "media": "img:ky_d2",
+      "setup": [
+        {
+          "when": {
+            "flags": ["shelf_margin"]
+          },
+          "text": "It is May, and the namkeen is selling. But Baba's udhaar notebook is full: small amounts from the same families, all \"paid at month-end\". ₹40,000 is now owed to the shop, and the wholesaler wants his money within two weeks. Today three regulars ask for more."
+        },
+        {
+          "when": {
+            "flags": ["shelf_fast"]
+          },
+          "text": "It is May, and the biscuit rack keeps the counter busy. But Baba's udhaar notebook is full: small amounts from the same families, all \"paid at month-end\". ₹40,000 is now owed to the shop, and the wholesaler wants his money within two weeks. Today three regulars ask for more."
+        },
+        {
+          "text": "It is May, and the shop is busy, but the box is thin. Baba's udhaar notebook is full: small amounts from the same families, all \"paid at month-end\". ₹40,000 is now owed to the shop, and the wholesaler wants his money within two weeks. Today three regulars ask for more."
+        }
+      ],
+      "question": "What do you do about udhaar?",
+      "advisor": "These families have shopped here for years. But the wholesaler does not take promises.",
+      "options": [
+        {
+          "id": "open",
+          "label": "Keep giving udhaar to every regular, like Baba did. They are loyal, and they always pay in the end.",
+          "grade": "bad",
+          "effect": {
+            "profit": -15,
+            "future": -5,
+            "trust": -1,
+            "flags": ["udhaar_open"]
+          },
+          "next": "june",
+          "media": "img:ky_d2_open",
+          "outcome": "By June, ₹60,000 is owed to you. The wholesaler waits, then waits again, and then he says: cash first from now on. To pay him, you take ₹20,000 out of Baba's fund.",
+          "why": "A loan with no limit and no date keeps growing until it hurts. Remember: udhaar is a loan you give. Manage it like one.",
+          "better": "Give each family a limit and one day a month to pay, and write every amount down.",
+          "takeaway": "In May you said yes to everyone. Udhaar is a loan you give; manage it like one.",
+          "traits": {
+            "horizon": -1,
+            "risk": -1,
+            "disrupt": 0
+          }
+        },
+        {
+          "id": "stop",
+          "label": "Stop udhaar for everyone. Cash or QR only, even if a few regulars go to the next shop.",
+          "grade": "ok",
+          "effect": {
+            "profit": 10,
+            "future": 0,
+            "flags": ["udhaar_stop"]
+          },
+          "next": "june",
+          "media": "img:ky_d2_stop",
+          "outcome": "Cash comes in, and you pay the wholesaler on time. But two good families, who always paid, start shopping at the store down the lane.",
+          "why": "Credit is one reason people choose a kirana. Cutting it off for everyone lost the good payers too. Remember: udhaar is a loan you give. Manage it like one.",
+          "better": "Keep udhaar for the families who pay, with a limit and a fixed day.",
+          "takeaway": "In May you stopped all udhaar. A loan with rules beats no loan at all.",
+          "traits": {
+            "horizon": 0,
+            "risk": -1,
+            "disrupt": 0
+          }
+        },
+        {
+          "id": "limit",
+          "label": "Give each family a limit and one day a month to pay, even if some regulars feel insulted.",
+          "grade": "great",
+          "real": true,
+          "effect": {
+            "profit": 5,
+            "future": 10,
+            "flags": ["udhaar_limit"]
+          },
+          "next": "june",
+          "media": "img:ky_d2_limit",
+          "outcome": "A few people grumble, but on the first Sunday of June most families come in to clear their page. The book gets thinner, and you pay the wholesaler on time.",
+          "why": "You treated udhaar like a loan, with a limit, a due date and a written record. Remember: udhaar is a loan you give. Manage it like one.",
+          "takeaway": "In May you gave udhaar a limit and a day. Udhaar is a loan you give; manage it like one.",
+          "traits": {
+            "horizon": 1,
+            "risk": 0,
+            "disrupt": 0
+          }
+        }
+      ]
+    },
+    "june": {
+      "id": "june",
+      "type": "scene",
+      "year": "June",
+      "media": "img:ky_june",
+      "text": [
+        {
+          "when": {
+            "flags": ["udhaar_open"]
+          },
+          "text": "Every May, Baba bought umbrellas and raincoats before the rain came. You did the same, even with the cash box thin. ₹25,000 of rain stock is piled in the corner. But June ends, and the sky stays hot and dry. The rain is late this year."
+        },
+        {
+          "text": "Every May, Baba bought umbrellas and raincoats before the rain came. You did the same, and ₹25,000 of rain stock is piled in the corner. But June ends, and the sky stays hot and dry. The rain is late this year."
+        }
+      ],
+      "next": "d3"
+    },
+    "d3": {
+      "id": "d3",
+      "type": "decision",
+      "year": "July",
+      "title": "The late rain",
+      "media": "img:ky_d3",
+      "setup": "Early July comes, and the umbrellas and raincoats still sit in the corner. Baba's old notes show that in most years they were gone by mid-July. This year there is still no rain. Baba looks at the pile and shakes his head. \"Never again,\" he says.",
+      "question": "What do you do with the rain stock?",
+      "advisor": "I bought them the same way for twenty years. This is the first time it went this wrong.",
+      "options": [
+        {
+          "id": "keep",
+          "label": "Keep the stock and Baba's way of buying, and split next year's order in two. The money stays stuck for now.",
+          "grade": "great",
+          "real": true,
+          "effect": {
+            "profit": 5,
+            "future": 10,
+            "flags": ["rain_keep"]
+          },
+          "next": "august",
+          "media": "img:ky_d3_keep",
+          "outcome": "In late July the rain comes hard at last. For ten days people line up for umbrellas, and the corner is empty by August. Next year you will buy half in May and half when the clouds come.",
+          "why": "The plan was sound; the weather was bad luck. Remember: judge the thinking, not the luck.",
+          "takeaway": "In July you kept a good plan after one bad result. Judge the thinking, not the luck.",
+          "traits": {
+            "horizon": 1,
+            "risk": 0,
+            "disrupt": 0
+          }
+        },
+        {
+          "id": "sold",
+          "label": "Sell it all to a trader at cost today, and stop stocking rainwear. The bet failed, so drop it.",
+          "grade": "bad",
+          "effect": {
+            "profit": -10,
+            "future": -10,
+            "trust": -1,
+            "flags": ["rain_sold"]
+          },
+          "next": "august",
+          "media": "img:ky_d3_sold",
+          "outcome": "A trader takes the whole pile at cost, and you earn nothing on it. A week later the rain comes hard, and your regulars buy their umbrellas in the market.",
+          "why": "One bad result doesn't make a bad plan, and the money was already spent. Remember: judge the thinking, not the luck.",
+          "better": "Check whether the plan was sound before you drop it. Here it was, so keep it and split the order.",
+          "takeaway": "In July you dropped a good plan after one bad result. Judge the thinking, not the luck.",
+          "traits": {
+            "horizon": -1,
+            "risk": -1,
+            "disrupt": 0
+          }
+        },
+        {
+          "id": "return",
+          "label": "Send it back to the wholesaler at a small loss. From now on, buy only after the rain starts.",
+          "grade": "ok",
+          "effect": {
+            "profit": -5,
+            "future": 5,
+            "flags": ["rain_return"]
+          },
+          "next": "august",
+          "media": "img:ky_d3_return",
+          "outcome": "Your cash is safe today. But when the rain comes, you have nothing to sell. And next year you will be buying just when every shop in town wants the same stock.",
+          "why": "Waiting until you are sure feels safe, but it costs you the best days. Remember: judge the thinking, not the luck.",
+          "better": "Keep the method and split the order: half early, half when the clouds come.",
+          "takeaway": "In July you chose to wait until you were sure. Judge the thinking, not the luck.",
+          "traits": {
+            "horizon": 0,
+            "risk": -1,
+            "disrupt": 0
+          }
+        }
+      ]
+    },
+    "august": {
+      "id": "august",
+      "type": "scene",
+      "year": "August",
+      "media": "img:ky_august",
+      "text": [
+        {
+          "when": {
+            "flags": ["rain_keep"]
+          },
+          "text": "Your umbrellas are long gone. Now the rain won't stop. People stay at home and shops close early, so your sales dip a little. Still, people need rice and oil. In September you must buy extra stock for Diwali, the busiest weeks of the year."
+        },
+        {
+          "text": "Now the rain won't stop, and you have no umbrellas to sell. People stay at home and shops close early, so your sales dip a little. Still, people need rice and oil. In September you must buy extra stock for Diwali, the busiest weeks of the year."
+        }
+      ],
+      "next": "d4"
+    },
+    "d4": {
+      "id": "d4",
+      "type": "decision",
+      "year": "August",
+      "title": "The wedding money",
+      "media": "img:ky_d4",
+      "setup": [
+        {
+          "when": {
+            "flags": ["udhaar_open"]
+          },
+          "text": "Then the family calls a meeting. Your cousin's wedding is fixed for November, and they ask for ₹50,000 \"from the shop money\". Baba's fund is down to ₹40,000, after you used some of it to pay the wholesaler."
+        },
+        {
+          "text": "Then the family calls a meeting. Your cousin's wedding is fixed for November, and they ask for ₹50,000 \"from the shop money\". Baba's fund still holds ₹60,000, enough to carry the shop through about three slow months."
+        }
+      ],
+      "question": "Where does the wedding money come from?",
+      "advisor": "Family is family. But the shop is what feeds the family.",
+      "options": [
+        {
+          "id": "fund",
+          "label": "Give the ₹50,000 from the shop's money. Family comes first, and Diwali sales will fill the box again.",
+          "grade": "bad",
+          "effect": {
+            "profit": -15,
+            "future": -10,
+            "trust": -1,
+            "flags": ["fund_spent"]
+          },
+          "next": "december",
+          "media": "img:ky_d4_fund",
+          "outcome": "The wedding is lovely. But in September you can't pay for full Diwali stock, and in the best weeks of the year your shelves are half empty. People find their sweets and puja items across the road.",
+          "why": "Shop money paid for a home cost, and the shop paid the price. Remember: keep shop money and home money apart.",
+          "better": "Pay yourself a fixed wage, and give to the wedding from that and from home savings.",
+          "takeaway": "In August the till paid for the wedding. Keep shop money and home money apart.",
+          "traits": {
+            "horizon": -1,
+            "risk": 0,
+            "disrupt": 0
+          }
+        },
+        {
+          "id": "loan",
+          "label": "Give it from the fund, then take a short loan to buy Diwali stock. The festival rush will pay it back.",
+          "grade": "ok",
+          "effect": {
+            "profit": -5,
+            "future": 5,
+            "flags": ["fund_loan"]
+          },
+          "next": "december",
+          "media": "img:ky_d4_loan",
+          "outcome": "Diwali sells well. But the interest eats a big part of the extra profit, and when the slow months come back there is no fund to lean on.",
+          "why": "The fund was there to carry the shop through bad months, not to pay for a wedding. Remember: keep a cash buffer, and know how long it lasts.",
+          "better": "Keep the fund whole, and find the wedding money at home.",
+          "takeaway": "In August you spent the buffer and borrowed. Keep a cash buffer, and know how long it lasts.",
+          "traits": {
+            "horizon": 0,
+            "risk": 1,
+            "disrupt": 0
+          }
+        },
+        {
+          "id": "apart",
+          "label": "Keep the shop's money for the shop. Pay yourself a fixed wage, and give from that and home savings, even if the family is hurt.",
+          "grade": "great",
+          "real": true,
+          "effect": {
+            "profit": 10,
+            "future": 10,
+            "flags": ["fund_kept"]
+          },
+          "next": "december",
+          "media": "img:ky_d4_apart",
+          "outcome": "The family is upset for a week, but you give what you can from your own wage and savings. In September you buy full Diwali stock, and the fund is still there for the slow months.",
+          "why": "Shop money and home money stayed apart, so the fund could still carry the shop. Remember: keep shop money and home money apart.",
+          "takeaway": "In August you kept the shop's money for the shop. Keep shop money and home money apart.",
+          "traits": {
+            "horizon": 1,
+            "risk": 0,
+            "disrupt": 0
+          }
+        }
+      ]
+    },
+    "december": {
+      "id": "december",
+      "type": "scene",
+      "year": "December",
+      "media": "img:ky_diwali",
+      "text": [
+        {
+          "when": {
+            "flags": ["fund_kept"]
+          },
+          "text": "From Navratri to Diwali, the shop never stops: sweets, dry fruit, puja items. Your shelves stay full, and it is your best festival in years. Then, in December, a new board goes up two streets away. It is a store that delivers in ten minutes."
+        },
+        {
+          "when": {
+            "flags": ["fund_loan"]
+          },
+          "text": "From Navratri to Diwali, the shop never stops, and every week a slice of the takings goes to the loan. Then, in December, a new board goes up two streets away. It is a store that delivers in ten minutes."
+        },
+        {
+          "text": "Diwali comes, and your thin shelves can't keep up. The shop across the road is packed. Then, in December, a new board goes up two streets away. It is a store that delivers in ten minutes."
+        }
+      ],
+      "next": "d5"
+    },
+    "d5": {
+      "id": "d5",
+      "type": "decision",
+      "year": "January",
+      "title": "The 10-minute app",
+      "media": "img:ky_d5",
+      "setup": [
+        {
+          "when": {
+            "flags": ["udhaar_stop"]
+          },
+          "text": "By January, the new store has thousands more items than you, and its delivery is free, for now. Some families now order part of their shopping on its app. The two families who left you in May are among them, and your Sundays are quiet."
+        },
+        {
+          "when": {
+            "flags": ["udhaar_limit"]
+          },
+          "text": "By January, the new store has thousands more items than you, and its delivery is free, for now. Some families now order part of their shopping on its app, and your Sundays are quiet. Your udhaar families still come, though. The app gives no credit."
+        },
+        {
+          "text": "By January, the new store has thousands more items than you, and its delivery is free, for now. Some families now order part of their shopping on its app, and your Sundays are quiet."
+        }
+      ],
+      "question": "How do you answer the app?",
+      "advisor": "Big shops came before, and we are still here. But I never saw anything this fast.",
+      "options": [
+        {
+          "id": "wait",
+          "label": "Do nothing new. Your regulars know you, and free delivery like that can't last for ever.",
+          "grade": "bad",
+          "effect": {
+            "profit": 0,
+            "future": -15,
+            "trust": -1,
+            "flags": ["app_wait"]
+          },
+          "next": "ending_route",
+          "media": "img:ky_d5_wait",
+          "outcome": "The app keeps its offers far longer than you hoped. Month by month, the young families stop coming in, and you only notice when the shop feels empty.",
+          "why": "Hoping is not a plan. You tried nothing, so you learned nothing. Remember: test small before you bet big.",
+          "better": "Try a small answer first, count what happens, then decide.",
+          "takeaway": "In January you waited for the app to go away. Test small before you bet big.",
+          "traits": {
+            "horizon": -1,
+            "risk": -1,
+            "disrupt": -1
+          }
+        },
+        {
+          "id": "test",
+          "label": "Try free WhatsApp delivery in your own lane for one month, and count the orders. It is tiny next to the app.",
+          "grade": "great",
+          "real": true,
+          "effect": {
+            "profit": 5,
+            "future": 10,
+            "flags": ["app_test"]
+          },
+          "next": "ending_route",
+          "media": "img:ky_d5_test",
+          "outcome": "Your nephew delivers on his cycle after school. Forty orders come in the first month, many from families who had drifted away, so you add two more lanes.",
+          "why": "You tested a small idea at a small cost, and let the numbers decide. Remember: test small before you bet big.",
+          "takeaway": "In January you tried delivery in one lane first. Test small before you bet big.",
+          "traits": {
+            "horizon": 1,
+            "risk": 0,
+            "disrupt": 1
+          }
+        },
+        {
+          "id": "allin",
+          "label": "Go all in: buy a scooter, hire a delivery boy and put leaflets across town, at app prices.",
+          "grade": "ok",
+          "effect": {
+            "profit": -10,
+            "future": 5,
+            "flags": ["app_allin"]
+          },
+          "next": "ending_route",
+          "media": "img:ky_d5_allin",
+          "outcome": "Orders come in from all over town. But at app prices you lose money on most of them, and the scooter loan has to be paid every month.",
+          "why": "You bet big before you knew what worked, and that money could not go anywhere else. Remember: test small before you bet big.",
+          "better": "Start with one lane and a cycle, and grow only what works.",
+          "takeaway": "In January you bet big before you tested. Test small before you bet big.",
+          "traits": {
+            "horizon": 0,
+            "risk": 1,
+            "disrupt": 1
+          }
+        }
+      ]
+    },
+    "ending_route": {
+      "id": "ending_route",
+      "type": "route",
+      "routes": [
+        {
+          "when": {
+            "minFuture": 70
+          },
+          "to": "legend"
+        },
+        {
+          "when": {
+            "minFuture": 40
+          },
+          "to": "survivor"
+        },
+        {
+          "to": "collapse"
+        }
+      ]
+    },
+    "legend": {
+      "id": "legend",
+      "type": "ending",
+      "tier": "legend",
+      "title": "Your name on the board",
+      "media": "img:ky_legend",
+      "text": [
+        {
+          "when": {
+            "flags": ["app_test", "fund_kept"],
+            "notFlags": ["udhaar_open"]
+          },
+          "text": "By 31 March, every wholesaler bill is paid, the fund is bigger than it was in April, and your nephew now delivers to three lanes. Baba has a new board painted for the shop, with your name on it."
+        },
+        {
+          "when": {
+            "flags": ["app_test"]
+          },
+          "text": "By 31 March, every wholesaler bill is paid, the regulars still come in every day, and your nephew now delivers to three lanes. Baba has a new board painted for the shop, with your name on it."
+        },
+        {
+          "when": {
+            "flags": ["fund_loan"]
+          },
+          "text": "By 31 March, the Diwali loan is cleared, every wholesaler bill is paid, and the regulars still come in every day. Baba has a new board painted for the shop, with your name on it."
+        },
+        {
+          "text": "By 31 March, every wholesaler bill is paid, the fund is safe, and the regulars still come in every day. Baba has a new board painted for the shop, with your name on it."
+        }
+      ],
+      "bonus": 15
+    },
+    "survivor": {
+      "id": "survivor",
+      "type": "ending",
+      "tier": "survivor",
+      "title": "One more year",
+      "media": "img:ky_survivor",
+      "text": [
+        {
+          "when": {
+            "flags": ["app_wait"]
+          },
+          "text": "On 31 March the shop is still open and the bills are paid, but many young families now shop on the app, and Sundays stay quiet. Baba looks at the books for a long time. \"One more year,\" he says."
+        },
+        {
+          "when": {
+            "flags": ["fund_kept"]
+          },
+          "text": "On 31 March the shop is still open, the bills are paid and the fund is still there. But some families have slipped away. Baba looks at the books for a long time. \"One more year,\" he says."
+        },
+        {
+          "text": "On 31 March the shop is still open and the bills are paid, but the fund is thin and some families have slipped away. Baba looks at the books for a long time. \"One more year,\" he says."
+        }
+      ],
+      "bonus": 5
+    },
+    "collapse": {
+      "id": "collapse",
+      "type": "ending",
+      "tier": "collapse",
+      "title": "Half a shop",
+      "media": "img:ky_collapse",
+      "text": [
+        {
+          "when": {
+            "flags": ["fund_kept"]
+          },
+          "text": "When March ends, the fund is still there, but too many regulars have gone, and the shop can't pay its way on the rest. The family rents half the shop to the phone shop next door, and you sell from the half that is left."
+        },
+        {
+          "text": "When March ends, the wholesaler wants cash before he delivers, the fund is gone and half the shelves are empty. The family rents half the shop to the phone shop next door, and you sell from the half that is left."
+        }
+      ],
+      "bonus": 0
+    },
+    "fired": {
+      "id": "fired",
+      "type": "ending",
+      "tier": "fired",
+      "title": "Baba takes the keys",
+      "media": "img:ky_fired",
+      "text": "Baba has watched three costly calls. Before the year is out, he asks for the keys back. \"Not this year, beta,\" he says, and he goes back behind the counter himself.",
+      "bonus": 0
+    }
+  },
+  "realEnding": "legend",
+  "realHistory": "This story is made up. Asha, her shop and the town of Kesarganj are invented. They are built from what many real kiranas face: small margins, udhaar, rain that comes late, the Diwali rush and new delivery apps. It is not about any real shop or person.",
+  "sources": [
+    {
+      "label": "Kirana store profit margin in India: category-wise (Accountune, 2026)",
+      "url": "https://accountune.com/kirana-store-profit-margin"
+    },
+    {
+      "label": "Digitizing the Corner Shop: India Spotlight (Flourish Ventures, 2022)",
+      "url": "https://flourishventures.com/research/digitizing-the-corner-shop/india-spotlight/"
+    },
+    {
+      "label": "Khata app for kirana stores (OkCredit)",
+      "url": "https://okcredit.in/khata-app-for-kirana-store"
+    },
+    {
+      "label": "Monsoon reaches Kerala, earliest since 2009 (The Week / PTI, 2025)",
+      "url": "https://www.theweek.in/wire-updates/national/2025/05/24/del8-imd-monsoon.html"
+    },
+    {
+      "label": "Rainwear sales pick up as the monsoon returns to Delhi (Down To Earth, 2026)",
+      "url": "https://www.downtoearth.org.in/amp/story/climate-change/rainwear-sales-pick-up-as-the-monsoon-returns-to-delhi"
+    },
+    {
+      "label": "CAIT press release on the festive season (3 Oct 2025)",
+      "url": "https://cait.in//images/press-release/pdf_1761807952.pdf"
+    },
+    {
+      "label": "Quick commerce finds its footing beyond metros: Emkay report (Franchise India, 2025)",
+      "url": "https://www.franchiseindia.com/index.php/insights/en/news/quick-commerce-finds-its-footing-beyond-metros-emkay-report.56959"
+    },
+    {
+      "label": "46% of quick-commerce buyers reduced buying from kirana shops (Outlook Business, 2024)",
+      "url": "https://www.outlookbusiness.com/news/46-quick-commerce-buyers-reduced-buying-from-kirana-shops"
+    }
+  ],
+  "credits": "A made-up story, based on many real kiranas. Asha, her family, her shop and Kesarganj are invented; the sources back the feel of the story (margins, udhaar, rain, festivals, apps), not events. Research brief: content/hotseats/kirana-year/research.md."
+}

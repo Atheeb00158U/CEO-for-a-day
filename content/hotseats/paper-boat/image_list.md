@@ -1,0 +1,31 @@
+# Image list: paper-boat
+India, 2012–2015. No logos or readable brand names (use plain or blank packs), no real person's likeness.
+
+- pb_cover: a paper boat floating in a monsoon puddle next to a paper-look drink pouch.
+- pb_intro: a small, cramped drinks-company office in north India, 2012, cans of an energy drink on a desk, four partners at work.
+- pb_idea: a steel tumbler of pale green aam panna on an office table, a guest smiling as he tastes it.
+- pb_d1: a whiteboard split in two: energy drink cans on one side, raw mangoes and spices on the other.
+- pb_d1_tzinga: students at a college canteen with energy drink cans, a big rival ad on a wall (no text).
+- pb_d1_juice: a crowded supermarket aisle full of juice cartons with no readable labels.
+- pb_d1_panna: a kitchen bench with raw mangoes, roasted cumin, mint and jaljeera in glasses.
+- pb_d2: three plain packs side by side on a table: a carton, a clear plastic bottle and a stand-up pouch.
+- pb_d2_pouch: a stand-up drink pouch that looks like brown paper, standing on a shop shelf.
+- pb_d2_carton: neat drink cartons on a shelf with a high price tag (digits unreadable).
+- pb_d2_bottle: clear plastic bottles of a pale drink lost among cola bottles in a fridge.
+- pb_d3: a designer's desk with blank pouch mock-ups and sketches of childhood scenes.
+- pb_d3_plain: a plain pouch with a simple, unreadable label.
+- pb_d3_star: a glamorous film-set photo shoot with a pouch on a stand (no identifiable face).
+- pb_d3_story: a hand-drawn sketch of children climbing a mango tree printed on a paper-look pouch.
+- pb_d4: a small corner shop (kirana) in an Indian city, a shopkeeper shrugging at a new pouch.
+- pb_d4_try: a flight attendant handing a pouch to a passenger, and office workers at a canteen counter.
+- pb_d4_tv: a family watching a TV ad in a living room, 2013.
+- pb_d4_cheap: a shop shelf with a "price cut" sign (unreadable) next to colas.
+- pb_2014: a post box in an office canteen with postcards stacked beside it.
+- pb_d5: a creative team around a storyboard of childhood summer scenes.
+- pb_d5_health: an ad storyboard of fresh fruit and ingredient lists (text unreadable).
+- pb_d5_memories: a nostalgic scene of children playing in the rain with paper boats, warm light.
+- pb_d5_price: a shopper comparing a pouch and a cola bottle, frowning at the prices.
+- pb_legend: pouches on shop shelves, an airline trolley and an office canteen counter, all full.
+- pb_survivor: a small shop shelf with a few pouches and two happy regular customers.
+- pb_collapse: a closed small factory gate on a rainy day, a soggy paper boat in the gutter.
+- pb_fired: an empty chair in a small meeting room, investors' papers left on the table.

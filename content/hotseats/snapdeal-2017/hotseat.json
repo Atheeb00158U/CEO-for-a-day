@@ -1,0 +1,580 @@
+{
+  "id": "snapdeal-2017",
+  "company": "Snapdeal",
+  "title": "Months of cash left",
+  "hook": "Your company is worth billions on paper, but the cash in the bank is running out. What do you cut first?",
+  "role": "You run Snapdeal, 2016 to 2017",
+  "years": "2016–2017",
+  "cover": "img:sd_cover",
+  "draft": true,
+  "complexity": 3,
+  "minutes": 6,
+  "start": "intro",
+  "startMeters": {
+    "profit": 30,
+    "future": 20
+  },
+  "startTrust": 3,
+  "meters": {
+    "profit": {
+      "label": "Cash",
+      "hint": "How long the money in the bank will last"
+    },
+    "future": {
+      "label": "Future",
+      "hint": "How ready Snapdeal is to stand on its own"
+    }
+  },
+  "nodes": {
+    "intro": {
+      "id": "intro",
+      "type": "scene",
+      "year": "2016",
+      "media": "img:sd_intro",
+      "text": "It is February 2016, and you run Snapdeal, one of India's biggest shopping websites. Investors have just valued your company at $6.5 billion, but you spend far more than you earn: last year you lost about ₹3,300 crore on revenue of about ₹1,450 crore.",
+      "next": "goal"
+    },
+    "goal": {
+      "id": "goal",
+      "type": "scene",
+      "year": "2016",
+      "media": "img:sd_goal",
+      "text": "Flipkart and Amazon are far bigger than you. By one bank's count, they get about seven of every ten rupees spent on India's big shopping sites, and you get about one. Your job is to make Snapdeal pay its own way before the cash runs out.",
+      "next": "d1"
+    },
+    "d1": {
+      "id": "d1",
+      "type": "decision",
+      "year": "2016",
+      "title": "Discounts that lose money",
+      "media": "img:sd_d1",
+      "setup": "Big discounts and ads bring in buyers, but on many orders you lose money. Your staff bill has also more than tripled in a year. Every month you match your rivals' discounts, more cash goes out the door.",
+      "question": "What do you do about the discounts?",
+      "advisor": "Shoppers here follow the lowest price. If we pull back, everyone will see our sales fall. If we keep going, our cash falls instead.",
+      "options": [
+        {
+          "id": "match",
+          "label": "Keep matching your rivals' discounts, so you stay in the race while the market grows.",
+          "grade": "bad",
+          "effect": {
+            "profit": -15,
+            "future": -10,
+            "trust": -1,
+            "flags": ["match"]
+          },
+          "next": "s2016",
+          "media": "img:sd_d1_match",
+          "outcome": "Buyers stay, and your sales look strong. But every big sale costs you money, and your rivals have deeper pockets. By the end of the year your loss is bigger and your cash is lower.",
+          "why": "Each order lost money, so more orders only meant bigger losses. Remember: each customer must earn you more than they cost.",
+          "better": "Cut the discounts that lose money and accept smaller sales. A smaller business that earns on each order can pay its own way.",
+          "takeaway": "In 2016 you kept paying people to shop. More orders that each lose money just means you lose money faster.",
+          "traits": {
+            "horizon": -1,
+            "risk": 0,
+            "disrupt": 0
+          }
+        },
+        {
+          "id": "cut",
+          "label": "Cut discounts and ad spending, and accept that your sales will fall in public.",
+          "grade": "great",
+          "real": true,
+          "effect": {
+            "profit": 10,
+            "future": 15,
+            "flags": ["cut_discounts"]
+          },
+          "next": "s2016",
+          "media": "img:sd_d1_cut",
+          "outcome": "You tell the world you now care about revenue, not the total value of goods sold. In 2016 your sales fall more than any big rival's. It hurts, but over nine months your operating results improve by about 40%.",
+          "why": "A sale that loses money is not worth having. Fewer but healthier sales gave you a business that could one day pay for itself. Remember: each customer must earn you more than they cost.",
+          "takeaway": "In 2016 you cut the discounts that lost money. A smaller business that earns on each order beats a big one that doesn't.",
+          "traits": {
+            "horizon": 1,
+            "risk": 0,
+            "disrupt": 0
+          }
+        },
+        {
+          "id": "raise",
+          "label": "Raise a big new round and keep spending, until one of your rivals gives up first.",
+          "grade": "ok",
+          "effect": {
+            "profit": 10,
+            "future": 0,
+            "flags": ["raised"]
+          },
+          "next": "s2016",
+          "media": "img:sd_d1_raise",
+          "outcome": "Investors put in more money, but they take a bigger piece of the company. The cash buys you time, yet each order still loses money, so the new money starts to drain away too.",
+          "why": "New money hid the problem for a while, but it didn't fix it. Remember: each customer must earn you more than they cost.",
+          "better": "First stop losing money on each order. Then raise money, if you still need it.",
+          "takeaway": "In 2016 you raised money to keep spending. Cash buys time, but it can't fix a business that loses money on every sale.",
+          "traits": {
+            "horizon": 0,
+            "risk": 1,
+            "disrupt": 0
+          }
+        }
+      ]
+    },
+    "s2016": {
+      "id": "s2016",
+      "type": "scene",
+      "year": "2016",
+      "media": "img:sd_2016",
+      "text": [
+        {
+          "when": {
+            "flags": ["cut_discounts"]
+          },
+          "text": "Through 2016 your sales shrink and you run a leaner shop, but the world outside is turning cold. In November your biggest investor, SoftBank, marks down what its Snapdeal shares are worth, and in December reported talks to sell Snapdeal to Alibaba fall apart."
+        },
+        {
+          "when": {
+            "flags": ["raised"]
+          },
+          "text": "The new money gives you room to breathe, but your old investors now own less, and the losses go on. Then the world outside turns cold. SoftBank, your biggest investor, marks down its Snapdeal shares, and talks to sell to Alibaba fall apart."
+        },
+        {
+          "text": "Through 2016 your sales stay high, but so do your losses, and your cash shrinks fast. Then the world outside turns cold. SoftBank, your biggest investor, marks down its Snapdeal shares, and talks to sell to Alibaba fall apart."
+        }
+      ],
+      "next": "d2"
+    },
+    "d2": {
+      "id": "d2",
+      "type": "decision",
+      "year": "2017",
+      "title": "How long can you last?",
+      "media": "img:sd_d2",
+      "setup": [
+        {
+          "when": {
+            "flags": ["cut_discounts"]
+          },
+          "text": "It is February 2017. News reports say you have $210 to $240 million left, enough for eight to ten months. Your sales reports look better than your bank balance. In late 2015 you had to write off ₹500 crore that others owed you and never paid."
+        },
+        {
+          "text": "It is February 2017. The heavy spending of 2016 has eaten your cash, and it may last only a few more months. Your sales reports look better than your bank balance. In late 2015 you had to write off ₹500 crore that others owed you and never paid."
+        }
+      ],
+      "question": "How do you plan the next year?",
+      "advisor": "Investors still want a growth story. Selling shares at a lower price would hurt everyone's pride, and deep cuts would hurt our staff. Every plan costs something.",
+      "options": [
+        {
+          "id": "spend",
+          "label": "Push for growth: spend to win buyers back, and look for money only when you need it.",
+          "grade": "bad",
+          "effect": {
+            "profit": -15,
+            "future": -10,
+            "trust": -1,
+            "flags": ["spend"]
+          },
+          "next": "d3",
+          "media": "img:sd_d2_spend",
+          "outcome": "Your ads and offers bring some buyers back, but the bank balance falls every week. By the time you go looking for money, investors can see you are desperate, and they offer a low price.",
+          "why": "You watched sales and ignored the cash. Remember: check profit, cash and debts together, and know how many months your cash will last.",
+          "better": "Put profit, cash and what you owe side by side. Then cut monthly spending until the cash lasts long enough to reach a profit.",
+          "takeaway": "In 2017 you chased sales while the cash ran down. Growth means little if the bank balance hits zero first.",
+          "traits": {
+            "horizon": -1,
+            "risk": 1,
+            "disrupt": 0
+          }
+        },
+        {
+          "id": "downround",
+          "label": "Raise new money now at a lower price, and give investors a much bigger share.",
+          "grade": "ok",
+          "effect": {
+            "profit": 15,
+            "future": 0,
+            "flags": ["downround"]
+          },
+          "next": "d3",
+          "media": "img:sd_d2_downround",
+          "outcome": "Investors agree, but at a far lower price than a year ago, so staff shares lose value and your old investors are angry. You have more cash now, but each month still costs too much.",
+          "why": "Fresh cash helped, but it cost you a big part of the company and did nothing about the monthly loss. Remember: know how many months your cash will last, and fix the spending first.",
+          "better": "Cut monthly spending until your cash can last until you make a profit. Raise money only if you still must.",
+          "takeaway": "In 2017 you sold shares cheaply to buy time. New money doesn't help much while the old leak is still open.",
+          "traits": {
+            "horizon": 0,
+            "risk": 0,
+            "disrupt": 0
+          }
+        },
+        {
+          "id": "runway",
+          "label": "Put profit, cash and debts on one page, then cut spending hard, even though it will hurt.",
+          "grade": "great",
+          "real": true,
+          "effect": {
+            "profit": 10,
+            "future": 15,
+            "flags": ["runway"]
+          },
+          "next": "d3",
+          "media": "img:sd_d2_runway",
+          "outcome": [
+            {
+              "when": {
+                "flags": ["cut_discounts"]
+              },
+              "text": "You tell the world you will make a profit within two years, without new money unless you buy another company. Then the cuts begin. Even so, your cash falls from ₹356 crore in March to ₹222 crore by September."
+            },
+            {
+              "text": "You put the numbers on one page at last, and they are frightening. You tell your team the cuts start now, and you set one goal: reach a profit within two years, using only the cash you have."
+            }
+          ],
+          "why": "You saw the real danger: not the loss on paper, but the day the cash runs out. Remember: check profit, cash and debts together, and know how many months your cash will last.",
+          "takeaway": "In 2017 you counted your months of cash and cut to fit them. Profit on paper doesn't pay salaries; cash does.",
+          "traits": {
+            "horizon": 1,
+            "risk": -1,
+            "disrupt": 0
+          }
+        }
+      ]
+    },
+    "d3": {
+      "id": "d3",
+      "type": "decision",
+      "year": "2017",
+      "title": "One deep cut, or slow trims?",
+      "media": "img:sd_d3",
+      "setup": [
+        {
+          "when": {
+            "flags": ["spend"]
+          },
+          "text": "Your push for growth has failed and the cash is now very low, so you must cut, and fast. You have already trimmed delivery, hosting and office costs, which leaves the big ones: a large staff, the payments app FreeCharge, and your own delivery company."
+        },
+        {
+          "text": "Your spending must fall fast. You have already cut delivery, hosting and office costs, so only the big costs are left: a large staff, the payments app FreeCharge, which you bought for about ₹2,400 crore, and your own delivery company."
+        }
+      ],
+      "question": "How do you cut?",
+      "advisor": "Every cut hurts real people. Some say cut a little now and see how it goes. Others say people can't work while they wait for the next round.",
+      "options": [
+        {
+          "id": "deep",
+          "label": "Make one deep cut now: sell what isn't core, and shrink the team once to the size you need.",
+          "grade": "great",
+          "effect": {
+            "profit": 15,
+            "future": 15,
+            "flags": ["deep_cut"]
+          },
+          "next": "s_may",
+          "media": "img:sd_d3_deep",
+          "outcome": "It is a hard week. You sell FreeCharge and the delivery company, close side projects, and let most of the staff go in one round, with fair pay to leave. The people who stay know the cuts are over, and they get back to work.",
+          "why": "One clear cut let people grieve once and then move on. Remember: one deep cut is kinder than many small ones.",
+          "takeaway": "In 2017 you made one deep cut. People can face hard news once; it's waiting for the next round that breaks them.",
+          "traits": {
+            "horizon": 1,
+            "risk": 1,
+            "disrupt": 1
+          }
+        },
+        {
+          "id": "rounds",
+          "label": "Cut in rounds: about 600 jobs now, the founders take no pay, and decide the rest later.",
+          "grade": "ok",
+          "real": true,
+          "effect": {
+            "profit": 5,
+            "future": 5,
+            "flags": ["rounds"]
+          },
+          "next": "s_may",
+          "media": "img:sd_d3_rounds",
+          "outcome": "About 600 people lose their jobs across Snapdeal, FreeCharge and the delivery company, and both founders give up their salaries. FreeCharge and the delivery arm stay for now. In April the founders hold at least five town halls to steady the staff, but some senior people leave.",
+          "why": "Cutting was right, but cutting in rounds kept everyone waiting for the next one. Remember: one deep cut is kinder than many small ones. Snapdeal did have to cut again: after July, reports said up to about 1,000 of its last 1,200 staff could go.",
+          "better": "Decide the company's new size once. Sell what isn't core and make one deep cut, with fair pay for those who leave.",
+          "takeaway": "In 2017 you cut in rounds. Each new round brings fresh fear, so one clear, deep cut is kinder.",
+          "traits": {
+            "horizon": 0,
+            "risk": 0,
+            "disrupt": 0
+          }
+        },
+        {
+          "id": "keep",
+          "label": "Keep every job: stop hiring, and cut everyone's salary a little, so no one is let go.",
+          "grade": "bad",
+          "effect": {
+            "profit": -10,
+            "future": -10,
+            "trust": -1,
+            "flags": ["no_layoffs"]
+          },
+          "next": "s_may",
+          "media": "img:sd_d3_keep",
+          "outcome": "Your staff are grateful at first, but the savings are small, your best people leave for better pay, and the company is still too big for its sales. Months later the cash is lower, and the cuts you avoided must now be bigger.",
+          "why": "It felt kind, but small savings couldn't close a huge gap, and your best people left first. Remember: one deep cut is kinder than many small ones.",
+          "better": "Choose the size the company can afford, and make one deep cut now, with fair pay for those who leave.",
+          "takeaway": "In 2017 you kept every job and cut a little from everyone. A kind plan that can't close the gap only delays a harder one.",
+          "traits": {
+            "horizon": -1,
+            "risk": -1,
+            "disrupt": -1
+          }
+        }
+      ]
+    },
+    "s_may": {
+      "id": "s_may",
+      "type": "scene",
+      "year": "2017",
+      "media": "img:sd_may",
+      "text": [
+        {
+          "when": {
+            "flags": ["deep_cut"]
+          },
+          "text": "Your smaller company now spends far less each month. But in May 2017 SoftBank marks its Snapdeal shares down by about $1 billion. Then Flipkart, your old rival, offers to buy you."
+        },
+        {
+          "when": {
+            "flags": ["no_layoffs"]
+          },
+          "text": "Your cash is running low, and the staff know it. In May 2017 SoftBank marks its Snapdeal shares down by about $1 billion. Then Flipkart, your old rival, offers to buy you."
+        },
+        {
+          "text": "In May 2017 SoftBank marks its Snapdeal shares down by about $1 billion. An early investor and the two founders put in ₹113 crore to keep things going. Then Flipkart, your old rival, offers to buy you."
+        }
+      ],
+      "next": "d4"
+    },
+    "d4": {
+      "id": "d4",
+      "type": "decision",
+      "year": "2017",
+      "title": "Flipkart wants to buy you",
+      "media": "img:sd_d4",
+      "setup": [
+        {
+          "when": {
+            "flags": ["deep_cut"]
+          },
+          "text": "Reports say Flipkart's offer rises from about $700 million to about $850 million, far below the $6.5 billion you were worth a year ago. SoftBank wants the deal, and your other investors argue over the price. Your company is small now, but it spends far less."
+        },
+        {
+          "text": "Reports say Flipkart's offer rises from about $700 million to about $850 million, far below the $6.5 billion you were worth a year ago. SoftBank wants the deal, and your other investors argue over the price. Meanwhile, a bank offers ₹385 crore for FreeCharge."
+        }
+      ],
+      "question": "Do you sell to Flipkart?",
+      "advisor": "Selling keeps jobs safe for now, and our biggest investor wants it. But once we sell, Snapdeal's future is Flipkart's choice, not ours.",
+      "options": [
+        {
+          "id": "hold",
+          "label": "Keep talking and hold out for a better price, without cutting any more for now.",
+          "grade": "bad",
+          "effect": {
+            "profit": -10,
+            "future": -10,
+            "trust": -1,
+            "flags": ["held_out"]
+          },
+          "next": "ending_route",
+          "media": "img:sd_d4_hold",
+          "outcome": "The talks drag on for months. Flipkart loses interest, your staff lose heart, and the cash keeps falling. In the end you have neither the deal nor a plan of your own.",
+          "why": "Waiting was a choice too, and it cost cash you didn't have. Remember: give up control only if you can't survive alone, and decide fast either way.",
+          "better": "Decide whether you can survive alone. If you can, sell what isn't core and shrink to a business that pays its way.",
+          "takeaway": "In 2017 you held out for a better price. While you wait, the clock and the cash keep running.",
+          "traits": {
+            "horizon": -1,
+            "risk": 1,
+            "disrupt": 0
+          }
+        },
+        {
+          "id": "alone",
+          "label": "Say no to Flipkart. Sell what isn't core, and shrink to a lean shop on your own.",
+          "grade": "great",
+          "real": true,
+          "effect": {
+            "profit": 10,
+            "future": 10,
+            "flags": ["alone"]
+          },
+          "next": "ending_route",
+          "media": "img:sd_d4_alone",
+          "outcome": [
+            {
+              "when": {
+                "flags": ["rounds"]
+              },
+              "text": "On 31 July 2017 you end all talks and announce Snapdeal 2.0. You sell FreeCharge to Axis Bank for ₹385 crore, a fraction of what you paid. In January 2018 you sell the delivery company for ₹35 crore. A smaller Snapdeal begins."
+            },
+            {
+              "when": {
+                "flags": ["deep_cut"]
+              },
+              "text": "You say no to Flipkart. You've already sold the side businesses, so you can put everything into one thing: a lean shopping site that tries to pay its own way."
+            },
+            {
+              "text": "You say no to Flipkart, and you sell FreeCharge and the delivery company for far less than you paid. With so little cash left, the next year is a fight to stay alive."
+            }
+          ],
+          "why": "You could still survive on your own, so there was no need to hand over control. Remember: give up control only if you can't survive alone.",
+          "takeaway": "In 2017 you turned down a rescue you didn't need. Give up control only when you can't survive without help.",
+          "traits": {
+            "horizon": 1,
+            "risk": 1,
+            "disrupt": 1
+          }
+        },
+        {
+          "id": "sell",
+          "label": "Take Flipkart's offer, so staff and buyers are safe, and give up control of Snapdeal.",
+          "grade": "ok",
+          "effect": {
+            "profit": 10,
+            "future": 0,
+            "flags": ["sold"]
+          },
+          "next": "ending_route",
+          "media": "img:sd_d4_sell",
+          "outcome": "Snapdeal becomes part of Flipkart. Many jobs are safe for now, but your brand slowly fades inside the bigger company, and your investors get back far less than they put in.",
+          "why": "Selling felt safe, but you gave away a company that could still stand on its own. Remember: give up control only if you can't survive alone.",
+          "better": "If your cash can last until you make a profit, stay on your own: sell what isn't core and shrink.",
+          "takeaway": "In 2017 you sold to your rival. Selling is right when you can't survive alone; you still could.",
+          "traits": {
+            "horizon": 0,
+            "risk": -1,
+            "disrupt": 0
+          }
+        }
+      ]
+    },
+    "ending_route": {
+      "id": "ending_route",
+      "type": "route",
+      "routes": [
+        {
+          "when": {
+            "minFuture": 70
+          },
+          "to": "legend"
+        },
+        {
+          "when": {
+            "minFuture": 40
+          },
+          "to": "survivor"
+        },
+        {
+          "to": "collapse"
+        }
+      ]
+    },
+    "legend": {
+      "id": "legend",
+      "type": "ending",
+      "tier": "legend",
+      "title": "Small, lean and in charge",
+      "media": "img:sd_legend",
+      "text": "You cut early and you cut once. Snapdeal is much smaller than Flipkart and Amazon, but it soon pays its own way. Your staff trust the plan, and investors start to call again, this time on your terms.",
+      "bonus": 15
+    },
+    "survivor": {
+      "id": "survivor",
+      "type": "ending",
+      "tier": "survivor",
+      "title": "Smaller, but alive",
+      "media": "img:sd_survivor",
+      "text": [
+        {
+          "when": {
+            "flags": ["cut_discounts", "runway", "rounds", "alone"]
+          },
+          "text": "Snapdeal 2.0 is far smaller than its rivals. In June 2018 it brings in more cash than it spends for one month. Its yearly loss falls from ₹4,647 crore to ₹186 crore by 2019. It survives by serving shoppers who care most about price."
+        },
+        {
+          "when": {
+            "flags": ["sold"]
+          },
+          "text": "Snapdeal lives on inside Flipkart for a while. Many of your staff keep their jobs, but the company you built is now someone else's to run, and its name slowly fades."
+        },
+        {
+          "text": "Snapdeal survives, though it is smaller and slower than before. It takes years to make up for the cash you lost, but it is still standing, and still yours."
+        }
+      ],
+      "bonus": 5
+    },
+    "collapse": {
+      "id": "collapse",
+      "type": "ending",
+      "tier": "collapse",
+      "title": "The cash runs out",
+      "media": "img:sd_collapse",
+      "text": [
+        {
+          "when": {
+            "flags": ["sold"]
+          },
+          "text": "With so little cash left, you have to take whatever Flipkart offers. Your investors lose most of what they put in, and Snapdeal's name soon disappears."
+        },
+        {
+          "when": {
+            "flags": ["alone"]
+          },
+          "text": "You stay on your own, but the early losses left too little cash to wait for a profit. Snapdeal shrinks to a tiny site, and most of your staff lose their jobs in the end anyway."
+        },
+        {
+          "text": "The cash runs out before the profits arrive. You sell what is left for very little, and most of your staff lose their jobs in the end anyway."
+        }
+      ],
+      "bonus": 0
+    },
+    "fired": {
+      "id": "fired",
+      "type": "ending",
+      "tier": "fired",
+      "title": "The board replaces you",
+      "media": "img:sd_fired",
+      "text": "After three costly calls, your investors lose faith in you. The board brings in someone else to save what is left of Snapdeal.",
+      "bonus": 0
+    }
+  },
+  "realEnding": "survivor",
+  "realHistory": "Snapdeal reached a $6.5 billion valuation in February 2016, but it was losing money fast and fell far behind Flipkart and Amazon. It cut discounts and costs, and in 2017 it cut about 600 jobs while its founders took no salary. More cuts came later. In July 2017 it turned down Flipkart, sold FreeCharge for ₹385 crore and became a smaller 'Snapdeal 2.0'. It brought in more cash than it spent in June 2018, and its yearly loss fell from ₹4,647 crore in 2016–17 to ₹186 crore in 2018–19.",
+  "sources": [
+    {
+      "label": "Snapdeal (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Snapdeal"
+    },
+    {
+      "label": "Snapdeal to remain independent, ends merger talks with Flipkart (Business Today, 31 Jul 2017)",
+      "url": "https://www.businesstoday.in/latest/corporate/story/snapdeal-flipkart-merger-talks-with-softbank-85036-2017-07-31"
+    },
+    {
+      "label": "Snapdeal goes on cost cutting spree: 600 employees to be laid off (Inc42, 22 Feb 2017)",
+      "url": "https://inc42.com/buzz/snapdeal-fires-600"
+    },
+    {
+      "label": "Deal or Ordeal? (Outlook Business, 4 Apr 2018)",
+      "url": "https://www.outlookbusiness.com/the-big-story/lead-story/deal-or-ordeal-4280"
+    },
+    {
+      "label": "India's Snapdeal to lay off 500-600 as it battles Flipkart and Amazon (TechCrunch, 22 Feb 2017)",
+      "url": "https://techcrunch.com/2017/02/22/indias-snapdeal-to-lay-off-500-600-as-it-battles-flipkart-and-amazon"
+    },
+    {
+      "label": "SoftBank-backed Snapdeal predicts profits in 2 years (The Daily Star / Reuters, 6 Feb 2017)",
+      "url": "https://www.thedailystar.net/business/softbank-backed-indian-e-tailer-snapdeal-predicts-profits-2yrs-1357048"
+    },
+    {
+      "label": "Snapdeal pares FY19 losses by 70% to Rs 186 crore (Business Today, 17 Jul 2019)",
+      "url": "https://www.businesstoday.in/latest/corporate/story/snapdeal-fy19-losses-trim-revenue-up-indian-e-commerce-major-kunal-bahl-213813-2019-07-17"
+    },
+    {
+      "label": "Snapdeal is finally cash flow positive (OfficeChai, 25 Jul 2018)",
+      "url": "https://officechai.com/stories/snapdeal-cash-flow-positive/"
+    }
+  ],
+  "credits": "Alternate-history outcomes are informed estimates, not history. Research brief and full source list: content/hotseats/snapdeal-2017/research.md."
+}

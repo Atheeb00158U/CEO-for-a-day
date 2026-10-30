@@ -1,0 +1,31 @@
+# Images: titan-quartz
+All images: period-correct India, no logos or readable brand names on dials or signs, no real person's likeness.
+
+- ti_cover: close-up of a slim gold-plated analogue wristwatch with a leather strap on a man's wrist, warm 1980s Indian office light.
+- ti_intro: a small 1984 hotel room in Bangalore turned into an office: desk, files, typewriter, rotary phone, ceiling fan.
+- ti_intro2: a factory going up on open land at Hosur, Tamil Nadu, mid-1980s; workers, scaffolding, red earth.
+- ti_d1: side by side on a table, an open mechanical watch movement full of gears and a small quartz movement with a battery, 1985.
+- ti_d1_mech: Indian workers at benches assembling mechanical watches with tweezers and eyepieces, 1986.
+- ti_d1_quartz: young Indian technicians in white coats and caps on a clean quartz watch assembly line, Hosur, 1986.
+- ti_d1_mix: a factory floor split by a partition, mechanical benches on one side and quartz benches on the other, 1986.
+- ti_d2: five rows of new analogue watches on a velvet tray (steel, steel-and-gold, gold-plated dials with leather straps), 1987.
+- ti_d2_low: a crowded bazaar watch stall with cheap watches piled in a glass case, 1987.
+- ti_d2_high: an empty, hushed luxury shop counter with a single watch under a spotlight, 1987.
+- ti_d2_premium: a middle-class Indian couple at a shop counter looking at a gold-plated watch, price tag face down, 1987.
+- ti_d3: an ad-agency table with a newspaper page layout, paste-up tools and photo prints of watches, 1987.
+- ti_d3_style: a half-page newspaper ad with big, true-to-life pictures of watches and prices only (text unreadable), 1987.
+- ti_d3_lifetime: a newspaper ad showing a sturdy watch next to a hammer and an old grandfather clock, text unreadable, 1987.
+- ti_d3_value: a crowded newspaper ad with a table of features and small watch pictures, text unreadable, 1987.
+- ti_d4: a narrow old watch shop in Bangalore with a wooden counter and watches in a drawer, 1987.
+- ti_d4_own: a smart, modern watch showroom with glass cases and trained staff, few customers, 1987.
+- ti_d4_direct: a crowd outside a new watch showroom in Bengaluru, people holding newspaper cut-outs of watches, December 1987 (no signage).
+- ti_d4_dist: a distributor's godown with cartons of watches being loaded onto a tempo, 1987.
+- ti_1989: a factory celebration at Hosur, workers gathered around a tray of finished watches with garlands, 1989.
+- ti_d5: a world map on a boardroom wall with pins in Europe and the Gulf, 1993.
+- ti_d5_swiss: a quiet old watch workshop in a Swiss town with alpine roofs outside the window, 1993.
+- ti_d5_europe: an Indian sales manager with a sample case outside a European department store in the rain, 1993.
+- ti_d5_near: a busy watch shop in a Gulf souk, 1993, buyers looking at analogue watches.
+- ti_legend: many Indian wrists of all ages wearing stylish analogue watches, a family function, 1990s.
+- ti_survivor: a modest watch counter in a city shop with a few customers, 1990s.
+- ti_collapse: a half-empty factory floor with covered machines and few workers, early 1990s.
+- ti_fired: an empty boardroom chair at the head of a long table, files closed, 1990s.

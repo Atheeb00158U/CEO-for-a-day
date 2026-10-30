@@ -1,0 +1,361 @@
+{
+  "id": "redbus-first-tickets",
+  "company": "redBus",
+  "title": "No ticket home for Diwali",
+  "hook": "Hundreds of buses leave the city every night, and nobody can tell you which one has a seat. Can you fix it?",
+  "role": "You start redBus with your friends, 2005 to 2007",
+  "years": "2005–2007",
+  "cover": "img:rb_cover",
+  "draft": true,
+  "complexity": 2,
+  "minutes": 5,
+  "start": "intro",
+  "startMeters": { "profit": 30, "future": 25 },
+  "startTrust": 3,
+  "meters": {
+    "profit": { "label": "Money", "hint": "Cash you have left to keep going" },
+    "future": { "label": "Customers", "hint": "How many travellers and bus owners count on you" }
+  },
+  "nodes": {
+    "intro": {
+      "id": "intro",
+      "type": "scene",
+      "year": "2005",
+      "media": "img:rb_intro",
+      "text": "Bengaluru, October 2005. You are 24, an engineer at a big chip company, and you want to go home for Diwali. The trains are full, flights cost too much, and the travel agents have no bus seats left, so you spend Diwali alone in the city.",
+      "next": "intro2"
+    },
+    "intro2": {
+      "id": "intro2",
+      "type": "scene",
+      "year": "2005",
+      "media": "img:rb_intro2",
+      "text": "It keeps bothering you. Many private buses leave the city every night, but nobody could tell you which one had a free seat. Each agent only knows the seats of his own few bus operators, and there is no single list, as there is for trains. You and your flatmates decide to fix it.",
+      "next": "d1"
+    },
+    "d1": {
+      "id": "d1",
+      "type": "decision",
+      "year": "2005",
+      "title": "What to build first",
+      "media": "img:rb_d1",
+      "setup": "Two kinds of people could use your help. Travellers can't see which buses have seats. Bus operators sell through walk-in buyers and agents, and some seats still leave empty. You have your weekends, a few friends who can code, and your savings.",
+      "question": "What do you build first?",
+      "advisor": "Operators own the seats, and they have money to pay you. Travellers feel the pain, but there are lakhs of them, and they are hard to reach.",
+      "options": [
+        {
+          "id": "list",
+          "label": "A free website that lists every bus, route and time. Travellers can plan, but they still book at the counter.",
+          "grade": "bad",
+          "effect": { "profit": -10, "future": -10, "trust": -1, "flags": ["list"] },
+          "next": "d2",
+          "media": "img:rb_d1_list",
+          "outcome": "Your friends spend their weekends collecting routes, and travellers like the list. But it can't hold a seat for anyone, and it earns nothing. On a festival night, people find the buses full, just as before.",
+          "why": "Remember: sell what people already struggle with. Travellers could find a bus. What they couldn't do was get a seat on it, so a list showed the problem but didn't fix it.",
+          "better": "Let travellers book a real seat, and earn a small cut of every ticket.",
+          "takeaway": "In 2005 you built a list. Find the exact thing people struggle with, and fix that.",
+          "traits": { "horizon": 0, "risk": -1, "disrupt": 0 }
+        },
+        {
+          "id": "booking",
+          "label": "A site where travellers book real seats, and you sell them like an agent. First, operators must trust you.",
+          "grade": "great",
+          "effect": { "profit": -5, "future": 15, "flags": ["booking"] },
+          "next": "d2",
+          "media": "img:rb_d1_booking",
+          "outcome": "It is the hardest thing to start, because operators must trust you with their seats. But everyone who failed to get home for Diwali is a possible buyer, and every seat you sell earns you a small cut.",
+          "why": "Remember: sell what people already struggle with. Travellers struggled to get a seat, and you chose to build the thing that gets them one.",
+          "takeaway": "In 2005 you built for the person with the problem: the traveller who needed a seat.",
+          "traits": { "horizon": 1, "risk": 1, "disrupt": 1 }
+        },
+        {
+          "id": "software",
+          "label": "Booking software that bus operators buy to manage their seats. They can pay, but they must change how they work.",
+          "grade": "ok",
+          "real": true,
+          "effect": { "profit": -5, "future": 5, "flags": ["software"] },
+          "next": "d2",
+          "media": "img:rb_d1_software",
+          "outcome": "You start on a list of bus routes, but within two months you switch to software for bus operators. There are seven of you now: three friends build the software, and four collect data on bus routes.",
+          "why": "Remember: sell what people already struggle with. The traveller felt the pain, not the operator. Operators were selling seats their own way, and they didn't see a problem to fix.",
+          "better": "Build for the person with the problem: let travellers book real seats, and sell those seats yourself first.",
+          "takeaway": "In 2005 you built for the bus operators, but the pain belonged to the traveller.",
+          "traits": { "horizon": 1, "risk": 0, "disrupt": 0 }
+        }
+      ]
+    },
+    "d2": {
+      "id": "d2",
+      "type": "decision",
+      "year": "2005",
+      "title": "Learn the business",
+      "media": "img:rb_d2",
+      "setup": "You know buses only from the passenger's side, so your picture of the business is a guess: you think about 5 buses leave Bengaluru for Hyderabad each evening. Before you go further, you want to know how bus seats are really sold, and how many there are.",
+      "question": "How do you find out?",
+      "advisor": "Asking people is quick. Counting is slow and dull. And we can't afford to spend months on the wrong thing.",
+      "options": [
+        {
+          "id": "show",
+          "label": "Show bus operators your plan and ask if they would use it. It's quick, but they may just be polite.",
+          "grade": "ok",
+          "effect": { "profit": 0, "future": 5, "flags": ["show"] },
+          "next": "s2006",
+          "media": "img:rb_d2_show",
+          "outcome": "The operators listen and nod, and a few say it sounds useful. You leave with kind words but no facts: how many seats they sell, who buys them, or how many go empty.",
+          "why": "Remember: ask about their life, not your idea. 'Would you use it?' gets polite answers. 'How did you sell seats last week?' gets facts.",
+          "better": "Ask operators and agents how they sell seats today, and go and count what really runs.",
+          "takeaway": "In 2005 you asked people about your idea. Ask about their life instead, and you get facts, not politeness.",
+          "traits": { "horizon": 0, "risk": 0, "disrupt": 0 }
+        },
+        {
+          "id": "survey",
+          "label": "Put an online survey out asking travellers if they would book bus tickets online. It's fast, but answers are guesses.",
+          "grade": "bad",
+          "effect": { "profit": -5, "future": -10, "trust": -1, "flags": ["survey"] },
+          "next": "s2006",
+          "media": "img:rb_d2_survey",
+          "outcome": "Hundreds of people say yes, they would book online, and you feel sure. But the survey tells you nothing about how many buses run, who owns the seats, or how people really bought their last ticket.",
+          "why": "Remember: ask what people did, not what they would do. Saying yes to 'would you?' costs nothing. What people did last month tells you the truth.",
+          "better": "Go and count: which buses run, how many seats they have, and how people bought tickets last time.",
+          "takeaway": "In 2005 you asked what people would do. What they already did is the better guide.",
+          "traits": { "horizon": -1, "risk": 0, "disrupt": 0 }
+        },
+        {
+          "id": "count",
+          "label": "Go and count. Spend your weekends finding out which buses really run and how many seats they have. It's slow and dull.",
+          "grade": "great",
+          "real": true,
+          "effect": { "profit": 0, "future": 15, "flags": ["count"] },
+          "next": "s2006",
+          "media": "img:rb_d2_count",
+          "outcome": "Every weekend your friends collect data on bus routes, more than 300 of them, and the numbers surprise you. About 50 buses leave for Hyderabad each evening, not 5. There are ten times more buses than you thought.",
+          "why": "Remember: ask what people did, not what they would do. Counting real buses showed you what really happens: ten times more buses than you had guessed.",
+          "takeaway": "In 2005 you counted what was real instead of guessing. Facts about what people do beat opinions.",
+          "traits": { "horizon": 1, "risk": -1, "disrupt": 0 }
+        }
+      ]
+    },
+    "s2006": {
+      "id": "s2006",
+      "type": "scene",
+      "year": "2006",
+      "media": "img:rb_2006",
+      "text": [
+        {
+          "when": { "flags": ["software"] },
+          "text": "You take your software to 20 bus operators. They listen, but none of them signs up, and many doubt that anyone will ever book a bus online. One by one, most of your flatmates lose interest. Only three of you are left."
+        },
+        {
+          "when": { "flags": ["booking"] },
+          "text": "You ask 20 bus operators to let you sell their seats online. They listen, but none of them signs up, and many doubt that anyone will ever book a bus online. One by one, most of your flatmates lose interest. Only three of you are left."
+        },
+        {
+          "text": "Your list is useful, but it earns nothing, so you ask 20 bus operators to pay to be on it. None of them signs up, and many doubt that anyone will ever book a bus online. One by one, most of your flatmates lose interest. Only three of you are left."
+        }
+      ],
+      "next": "d3"
+    },
+    "d3": {
+      "id": "d3",
+      "type": "decision",
+      "year": "2006",
+      "title": "Nobody signs",
+      "media": "img:rb_d3",
+      "setup": "In February 2006 your plan wins a contest run by TiE Bangalore, a club that helps new founders. The prize is time with experienced mentors, not money, and you still have no customers: twenty operators heard you out, and not one said yes.",
+      "question": "What do you do next?",
+      "advisor": "There are three of us and a little money left. Whatever we try next has to win over operators, and fast.",
+      "options": [
+        {
+          "id": "seats",
+          "label": "Stop pitching. Get a few seats from two operators and sell them yourself, like an agent, even if it's slow.",
+          "grade": "great",
+          "real": true,
+          "effect": { "profit": 5, "future": 15, "flags": ["seats"] },
+          "next": "d4",
+          "media": "img:rb_d3_seats",
+          "outcome": [
+            {
+              "when": { "flags": ["software"] },
+              "text": "A mentor tells you to stop selling software and sell bus seats like a travel agent, to prove you can sell. Two operators agree to give you a few seats, and you will earn a small margin on each ticket."
+            },
+            {
+              "text": "You stop pitching and ask for a few seats instead. Two operators agree to try. If you can sell their seats, you earn a small cut on each one, and you have proof to show the rest."
+            }
+          ],
+          "why": "Remember: praise is not proof. Money or a firm promise is. Operators would believe seats you had sold, not a pitch.",
+          "takeaway": "In 2006 you stopped pitching and started selling. Real sales convince people when pitches don't.",
+          "traits": { "horizon": 1, "risk": 1, "disrupt": 1 }
+        },
+        {
+          "id": "improve",
+          "label": "Keep improving the product, then go back to the same operators when it's ready to impress them.",
+          "grade": "bad",
+          "effect": { "profit": -10, "future": -10, "trust": -1, "flags": ["improve"] },
+          "next": "d4",
+          "media": "img:rb_d3_improve",
+          "outcome": "You spend months adding features. The product gets better, but the operators' answer stays the same: they still don't believe travellers will book a bus online. Your savings shrink, and nobody has paid you a rupee.",
+          "why": "Remember: praise is not proof. Money or a firm promise is. A better pitch didn't answer the operators' real doubt, which was whether anyone would buy.",
+          "better": "Prove that people will buy: sell a few real seats yourself, then show the operators the money.",
+          "takeaway": "In 2006 you polished the product instead of proving demand. Only real sales answer the doubt 'will anyone buy?'",
+          "traits": { "horizon": 0, "risk": -1, "disrupt": -1 }
+        },
+        {
+          "id": "free",
+          "label": "Offer it to operators free for a year, so the first ones have nothing to lose by trying.",
+          "grade": "ok",
+          "effect": { "profit": -5, "future": 5, "flags": ["free"] },
+          "next": "d4",
+          "media": "img:rb_d3_free",
+          "outcome": "A few operators sign up because it costs them nothing. But they hardly use it, and you earn nothing. When you ask them to pay a year later, most of them say no.",
+          "why": "Remember: praise is not proof. Money or a firm promise is. A free sign-up costs the operator nothing, so it tells you nothing about what he values.",
+          "better": "Sell real seats to real travellers. Money changing hands is the proof operators believe.",
+          "takeaway": "In 2006 you gave it away to get a yes. A free yes is not proof that anyone will pay.",
+          "traits": { "horizon": 0, "risk": 0, "disrupt": 0 }
+        }
+      ]
+    },
+    "d4": {
+      "id": "d4",
+      "type": "decision",
+      "year": "2006",
+      "title": "Where to start",
+      "media": "img:rb_d4",
+      "setup": [
+        {
+          "when": { "flags": ["seats"] },
+          "text": "It is mid-2006. Two operators have agreed to give you a few seats, and setting up card payments with a bank takes about a month. There are three of you, with your savings, and you must choose where to go live."
+        },
+        {
+          "text": "It is mid-2006. A few operators are willing to try you, but you have only a handful of seats to sell. There are three of you, with your savings, and you must choose where to go live."
+        }
+      ],
+      "question": "Where do you start?",
+      "advisor": "A big launch gets noticed, and a small one can look like a hobby. But three people can only be in so many places at once.",
+      "options": [
+        {
+          "id": "cities",
+          "label": "Launch in five big cities at once, so the site looks big from day one, even with few seats in each.",
+          "grade": "bad",
+          "effect": { "profit": -10, "future": -10, "trust": -1, "flags": ["cities"] },
+          "next": "ending_route",
+          "media": "img:rb_d4_cities",
+          "outcome": "The launch makes noise, but each city has only a handful of seats. Travellers search, find nothing, and don't come back. Three of you can't deliver tickets or chase operators in five cities, and your money runs low.",
+          "why": "Remember: you can't serve everyone, so choose who you serve first. Spread across five cities, you served nobody well.",
+          "better": "Start in one city with a couple of routes. Make it work there, then grow.",
+          "takeaway": "In 2006 you launched everywhere at once. Win one place first, then the next.",
+          "traits": { "horizon": -1, "risk": 1, "disrupt": 0 }
+        },
+        {
+          "id": "blr",
+          "label": "Start in Bengaluru with the few seats you have. Make it work there, even if the site looks tiny.",
+          "grade": "great",
+          "real": true,
+          "effect": { "profit": 5, "future": 15, "flags": ["blr"] },
+          "next": "ending_route",
+          "media": "img:rb_d4_blr",
+          "outcome": [
+            {
+              "when": { "flags": ["seats"] },
+              "text": "In August 2006 the three of you quit your jobs, put in your savings, and make your flat the office. The site goes live with two operators on two routes. On 22 August you sell your first ticket, Bengaluru to Tirupati, and in the first month you sell 10 seats."
+            },
+            {
+              "text": "The three of you quit your jobs, put in your savings, and make your flat the office. The site goes live in Bengaluru with a few routes. Sales start slowly, a few seats at a time, but each one teaches you something."
+            }
+          ],
+          "why": "Remember: you can't serve everyone, so choose who you serve first. One city let three people learn fast, keep every promise, and grow from there.",
+          "takeaway": "In 2006 you started in one city with a few routes. A small start you can serve well beats a big one you can't.",
+          "traits": { "horizon": 1, "risk": -1, "disrupt": 0 }
+        },
+        {
+          "id": "wait",
+          "label": "Wait until 50 operators are on board, so travellers always find a seat, even if that takes a year.",
+          "grade": "ok",
+          "effect": { "profit": -5, "future": 0, "flags": ["wait"] },
+          "next": "ending_route",
+          "media": "img:rb_d4_wait",
+          "outcome": "You keep pitching for months. Operators still want proof before they join, and you have none to show. By the time you are ready, your savings are thin, and a rival may have started first.",
+          "why": "Remember: you can't serve everyone, so choose who you serve first. Waiting for everyone meant serving no one, and the proof operators wanted could only come from sales.",
+          "better": "Go live now in one city with the seats you have, and let early sales win you the next operators.",
+          "takeaway": "In 2006 you waited to be big before you started. Start small now, and let early sales bring the rest.",
+          "traits": { "horizon": 0, "risk": -1, "disrupt": 0 }
+        }
+      ]
+    },
+    "ending_route": {
+      "id": "ending_route",
+      "type": "route",
+      "routes": [{ "when": { "minFuture": 70 }, "to": "legend" }, { "when": { "minFuture": 40 }, "to": "survivor" }, { "to": "collapse" }]
+    },
+    "legend": {
+      "id": "legend",
+      "type": "ending",
+      "tier": "legend",
+      "title": "A seat home for everyone",
+      "media": "img:rb_legend",
+      "text": [
+        {
+          "when": { "flags": ["software", "count", "seats", "blr"] },
+          "text": "You hand out cards outside offices, take bookings by phone, and deliver tickets yourselves. By January 2007 Bengaluru pays for itself, and you open in Hyderabad, then Chennai, Mumbai and Delhi. In December 2007 you sell 15,000 tickets in a single month."
+        },
+        {
+          "text": "You took a slightly different road, but you sold real seats to real travellers and grew one city at a time. Before long, booking a bus seat online is normal across India."
+        }
+      ],
+      "bonus": 15
+    },
+    "survivor": {
+      "id": "survivor",
+      "type": "ending",
+      "tier": "survivor",
+      "title": "A small site that works",
+      "media": "img:rb_survivor",
+      "text": "Your site sells tickets and pays its way in a few cities. But you lost months on things that didn't help travellers get a seat, and a faster rival takes the big cities first.",
+      "bonus": 5
+    },
+    "collapse": {
+      "id": "collapse",
+      "type": "ending",
+      "tier": "collapse",
+      "title": "Back to the counter",
+      "media": "img:rb_collapse",
+      "text": "Months pass, and nobody pays for what you built. Your savings run out, your friends go back to full-time jobs, and the site goes quiet. Getting a bus seat home at Diwali stays as hard as before.",
+      "bonus": 0
+    },
+    "fired": {
+      "id": "fired",
+      "type": "ending",
+      "tier": "fired",
+      "title": "Back to the day job",
+      "media": "img:rb_fired",
+      "text": "After three costly calls the money is gone and your co-founders lose faith, so you shut the site and go back to a full-time job.",
+      "bonus": 0
+    }
+  },
+  "realEnding": "legend",
+  "realHistory": "In October 2005 a young engineer in Bengaluru couldn't get home for Diwali because no one could find him a bus seat. With friends he first planned a list of routes, then built software for bus operators, which none of them bought. After a TiE Bangalore contest in 2006, a mentor told them to sell seats like a travel agent instead. In August 2006 three of them quit their jobs and went live in Bengaluru with two operators and a handful of seats; the first ticket went to Tirupati. They delivered tickets by hand. Bengaluru paid for itself by January 2007, and four more cities opened that year. By December 2007 redBus sold 15,000 tickets a month, and in 2013 it was sold to Ibibo.",
+  "sources": [
+    {
+      "label": "redBus: Moving India's transportation industry in a new direction (Knowledge at Wharton, 2010)",
+      "url": "https://knowledge.wharton.upenn.edu/article/redbus-moving-indias-transportation-industry-in-a-new-direction/"
+    },
+    { "label": "All aboard (Outlook Business, 2012)", "url": "https://www.outlookbusiness.com/enterprise/big-idea/all-aboard-449" },
+    {
+      "label": "Virtual ride, real success (Business Today, 2008)",
+      "url": "https://www.businesstoday.in/magazine/new-business/story/virtual-ride-real-success-127259-2008-07-24"
+    },
+    {
+      "label": "My business: ticket to ride on India's buses (BBC World Service interview, via Inventus Capital, 2012)",
+      "url": "https://www.inventuscap.com/post/my-business-ticket-to-ride-on-india-s-buses"
+    },
+    {
+      "label": "We were new to business and learnt as we ran: Phanindra Sama (Deccan Chronicle, 2018)",
+      "url": "https://www.deccanchronicle.com/business/in-other-news/250518/we-were-new-to-business-and-learnt-as-we-ran-phanindra-sama.html"
+    },
+    {
+      "label": "Yes, you can build a web company in India. Here's how (TechCrunch, 2010)",
+      "url": "https://techcrunch.com/2010/03/24/yes-you-can-build-a-web-company-in-india-here’s-how"
+    },
+    { "label": "redBus (Wikipedia)", "url": "https://en.wikipedia.org/wiki/RedBus" }
+  ],
+  "credits": "Alternate-history outcomes are informed estimates, not history. Research brief and full source list: content/hotseats/redbus-first-tickets/research.md."
+}
