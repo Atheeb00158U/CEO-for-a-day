@@ -57,8 +57,14 @@ Follow `docs/BUILD-PLAN.md` phase by phase and tick items off as you finish them
 - The game is **online only** (Atheeb's call): no offline caching. A "No internet" screen covers the game while the connection is down. `public/sw.js` only removes the offline worker an early version installed; don't register a worker again without asking.
 - `src/lib/pwa.ts` and `InstallSheet` handle "add to home screen".
 
+## Server (Railway) and database (Supabase, Mumbai)
+- Hosting is Railway at `ceoforaday.in`, deployed from GitHub; the database and Google sign-in are the Supabase project `vctghvtustlxjugpgvqz` (Mumbai). Env vars are listed in `.env.example`.
+- **Guests** play on the phone (localStorage `cfad.v1`), as before. **Signed-in players'** progress lives only on the server: `store.tsx` calls the API routes and takes the state they return (each reply carries a `version`; older replies are ignored).
+- **The server is the referee** (`src/lib/server/game.ts`): rewards use the same pure rules as guests (`applyFinish`, `applyBuy`, … in `game-state.ts`). Finishing a Hot Seat replays the picks; a run key pays once; a replay pays only `completionXp`; Hindsight is charged at the finish; the Daily Call is one a day by database key. Saves use a version check and retry (supabase-js can't lock rows).
+- Storage goes through the `Db` interface (`src/lib/server/db.ts`): `memoryDb()` in tests, `supabaseDb()` in the app. Every table has RLS on and no policies: only the server's secret key can touch them. Migrations are in `supabase/migrations/` (apply them with the Supabase MCP, then run `get_advisors`).
+- **Leagues** (`leagueBoard`): groups of up to 30 per tier, joined on the first XP of the week (`add_league_xp`), settled when the player next looks (no weekly job). Small groups are topped up with practice rivals that never count for moving up. Badges are `public/league/<tier>.webp`.
+- **Reminders**: `public/sw.js` only shows notifications (no caching; the game stays online only). Supabase `pg_cron` calls `/api/cron/remind` at the start of each IST hour with the `cron_secret` from Vault.
+- A guest's save is imported once on sign-in, with every number capped (`importGuest`).
+
 ## Known gaps
 See `docs/LAUNCH-CHECKLIST.md`.
-- Leagues are simulated on the device; there's no backend yet.
-- State is saved in localStorage only.
-- No notifications yet: this is a proof of concept with no server. When a backend lands, build streak reminder push from the plan in `docs/BUILD-PLAN.md` Phase 6, and remind Atheeb it's ready to build.

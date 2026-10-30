@@ -36,7 +36,7 @@ export function LeagueTab({ onPlay }: { onPlay: () => void }) {
     <div className="flex flex-col gap-4 pt-2">
       <div className="-mx-4 flex items-end justify-center gap-4 overflow-hidden px-4">
         {LEAGUES.map((name, i) => (
-          <Shield key={name} color={TIER_COLORS[i]} active={i === tier} locked={i > tier} size={i === tier ? 92 : 52} />
+          <LeagueBadge key={name} tier={i} active={i === tier} locked={i > tier} size={i === tier ? 104 : 56} />
         )).slice(Math.max(0, tier - 1), tier + 3)}
       </div>
       <div className="text-center">
@@ -130,18 +130,20 @@ export function LeagueTab({ onPlay }: { onPlay: () => void }) {
   );
 }
 
-function Shield({ color, active, locked, size }: { color: string; active: boolean; locked: boolean; size: number }) {
+/** A league's badge (public/league/<tier>.webp). Leagues above the player's are greyed out. */
+function LeagueBadge({ tier, active, locked, size }: { tier: number; active: boolean; locked: boolean; size: number }) {
   return (
-    <svg
-      viewBox="0 0 64 72"
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={`/league/${tier}.webp`}
+      alt={active ? `${LEAGUES[tier]} league badge` : ""}
       width={size}
-      height={size * 1.12}
-      aria-hidden="true"
-      style={{ opacity: locked ? 0.35 : 1, filter: active ? `drop-shadow(0 6px 14px ${color}66)` : undefined }}
-    >
-      <path d="M32 3 58 13v20c0 17-11 29-26 36C17 62 6 50 6 33V13z" fill={locked ? "#3a4650" : color} />
-      <path d="M32 10 51 17v16c0 12-8 22-19 27-11-5-19-15-19-27V17z" fill="rgba(255,255,255,.22)" />
-      <path d="M32 20 40 38H24z" fill={locked ? "#2b3640" : "rgba(255,255,255,.75)"} />
-    </svg>
+      height={size}
+      className="shrink-0"
+      style={{
+        opacity: locked ? 0.35 : 1,
+        filter: locked ? "grayscale(1)" : active ? `drop-shadow(0 6px 14px ${TIER_COLORS[tier]}66)` : undefined,
+      }}
+    />
   );
 }

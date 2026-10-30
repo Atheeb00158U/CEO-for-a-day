@@ -63,9 +63,9 @@ Hot Seats should be data files, not TypeScript.
 - [ ] Added: `docs/HOTSEAT-ROADMAP.md`, about 110 candidates for Atheeb to cut to 100.
 
 ## Phase 3: Backend, accounts and real leagues (3–5 days)
-- [ ] **Blocking, before the first public deploy:** every Hot Seat, draft and future Daily Call is bundled into `/app` today. Load each Hot Seat lazily, leave drafts out at build time, and serve only today's Daily Call. Move streaks, quests and the Daily Call to server-side IST together.
-*Decision:* the default proposal is **Supabase** (Postgres, Auth, Storage) plus Next.js route handlers on **Vercel**. Confirm with Atheeb before you start.
-- [ ] Data model:
+- [x] **Blocking, before the first public deploy:** every Hot Seat, draft and future Daily Call is bundled into `/app` today. Load each Hot Seat lazily, leave drafts out at build time, and serve only today's Daily Call. Move streaks, quests and the Daily Call to server-side IST together.
+*Decided 2026-10-30:* **Supabase** (Mumbai) for the database and Google sign-in, plus Next.js route handlers on **Railway** (`ceoforaday.in`). *Done:* no Hot Seat or Daily Call reaches the phone; `/api/play` replays the picks and returns one step at a time, and CI fails if any answer is in the browser bundle.
+- [x] Data model (`supabase/migrations/`): `profiles` holds the saved state as one JSON document with a version; `runs`, `daily_plays`, `league_members` and `push_subscriptions` have their own tables. Streaks, inventory, quests, badges and notes live in the profile state or are read from `runs`. Entitlements come with Phase 4.
   - [ ] `profiles`
   - [ ] `runs` (hot_seat_id, path, score, xp, ending, created_at)
   - [ ] `streaks`
@@ -75,17 +75,17 @@ Hot Seats should be data files, not TypeScript.
   - [ ] `badges`
   - [ ] `notes` (derived from runs)
   - [ ] `entitlements`
-- [ ] Auth:
-  - [ ] Phone-number OTP. *Decision:* the SMS provider, such as MSG91 or Twilio. Indian sender IDs need DLT registration.
-  - [ ] Guest mode first; prompt sign-in after the first debrief.
-  - [ ] Merge guest progress from localStorage on sign-in.
-- [ ] **Anti-cheat:** the client submits only the list of choices (the path). The server replays that path through the same `engine.ts` to compute score, XP and the ending, and it rejects impossible paths. It also checks booster time on the server side.
-- [ ] Leagues:
-  - [ ] Weekly cohorts of about 30 players in the same tier.
-  - [ ] A scheduled job settles each week on Monday 00:00 IST (top 5 move up, bottom 5 move down).
-  - [ ] Replace the simulated `league.ts` rows with real ones, keeping simulated fill-ins only while a cohort is small.
-- [ ] Streaks use the IST day boundary computed on the server. Freezes apply automatically.
-- [ ] Notes and the decision profile are read from the server, so they work across devices.
+- [x] Auth:
+  - [ ] ~~Phone-number OTP~~ *Atheeb chose Google sign-in only (2026-10-30). Phone OTP can come later; it needs an SMS provider and DLT registration.*
+  - [x] Guest mode first; prompt sign-in after the first debrief.
+  - [x] Merge guest progress from localStorage on sign-in (once, every number capped).
+- [x] **Anti-cheat:** the client submits only the list of choices (the path). The server replays that path through the same `engine.ts` to compute score, XP and the ending, and it rejects impossible paths. It also checks booster time on the server side.
+- [x] Leagues:
+  - [x] Weekly cohorts of up to 30 players in the same tier.
+  - [x] ~~A scheduled job~~ Each week settles when the player next looks, from the frozen standings (top 5 up and bottom 5 down in a full group; small groups have their own rule).
+  - [x] Replace the simulated `league.ts` rows with real ones, keeping simulated fill-ins only while a cohort is small.
+- [x] Streaks use the IST day boundary computed on the server. Freezes apply automatically.
+- [x] Notes and the decision profile are read from the server, so they work across devices.
 - [ ] **Done when** two test accounts on different devices see each other in a league, and a tampered score is rejected.
 
 ## Phase 4: Payments and the paywall (2–4 days)
@@ -115,7 +115,7 @@ Hot Seats should be data files, not TypeScript.
 - [x] Welcome screens for a new player (`Onboarding`): three questions that change the game (minutes a day set the daily decisions quest; the chosen focus puts matching Hot Seats first on Home; what you do now shapes one line of the style card), then the first two calls of the trial Hot Seat (`TRIAL` in `catalog.ts`, Kingfisher Airlines), a style card built only from those calls, and "Carry on" into the rest of the run. "Skip, just play" on every screen. *A lean take on Empirio's quiz funnel: no fake loading screen, no made-up profile. Production shows it once Kingfisher is published.*
 
 ## Phase 6: Retention and growth (2–3 days)
-- [ ] Streak reminder push notifications at the user's chosen time. *Waits for the Phase 3 backend (Atheeb, 2026-10-29: the app is a proof of concept with no server, so nothing is built yet).* Web Push needs:
+- [x] Streak reminder push notifications at the user's chosen time. *Built 2026-10-30, as planned below.* Web Push needs:
   - a notification-only service worker. It handles `push` and `notificationclick` and caches nothing, so the game stays online only. Ask Atheeb before registering it.
   - a database table of push subscriptions, each with the player's last play day and chosen time;
   - a daily scheduled job (for example Vercel Cron) that sends a reminder to anyone who hasn't played today, signed with VAPID keys kept in environment variables;
