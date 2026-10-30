@@ -34,6 +34,7 @@ UI components: use shadcn/ui, restyled to this look. Add gluestack-ui only if we
 Follow `docs/AUTHORING.md` for every Hot Seat and Daily Call: research brief → draft → check → fresh-context fact-check (stamped `factcheck.md`) → media from the archives (`media.md`) → Atheeb's review. A published story needs a `factcheck.md` stamped for its exact file, with no open claims. Missing narration is only a warning (the app falls back to the browser's voice).
 
 ## Daily Call
+- **Suspended (30 Oct 2026, Atheeb):** no new Daily Calls; the focus is modules and Hot Seats. The course map (`docs/CURRICULUM.md`) doesn't rely on them.
 - One decision, about a minute, shown above the Hot Seat on Home. Content is `content/daily/daily.json`; its order is the schedule (day N after `startDay` plays call N). Only append.
 - It uses the India date (IST), like the streak, quests and league weeks (`today()` in `game-state.ts`). The answer is saved at "Lock it in" (`applyDaily`): one play a day, no Hindsight, 15/10/5 XP.
 

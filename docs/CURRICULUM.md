@@ -29,7 +29,7 @@ Hot Seat and 1 existing Hot Seat as optional practice.
 - **A gate** is a Hot Seat at the end of a module. The next module unlocks when the gate is finished (any
   score, even "fired"). Atheeb said a module *can* have several gates, not that it must have one, and the plan
   says a Hot Seat about every two modules. So **one gate can close two modules**; it sits after the second.
-  Some modules have **no gate**: they end with the unit's Practice node and are practised by Daily Calls.
+  Some modules have **no gate**: they end with the unit's Practice node (Daily Calls are suspended for now).
   Each module below says which.
 - **Where a Hot Seat goes:** the first module where most of its decisions' main lessons have been taught,
   **and** its title decision has been taught too. The second half matters for Tanishq, New Coke, Netflix and
@@ -518,6 +518,12 @@ Mehta does not test these.
   - d4 What does Apple stand for? → 4.3.2
   - d5 A computer for everyone → 2.2.2
   - Tests: 10.1.2. Quiz only: 10.1.1, 10.1.3, 10.1.4.
+- **NEW `royal-enfield-revival` "Sell it or fix it?"** (complexity 2, Indian, a small loss-making unit). Added
+  at Atheeb's request so Unit 10 has an Indian gate.
+  - Siddhartha Lal at Eicher, about 2000: the bike unit is losing money. Working decisions ◇: sell or fix
+    (10.1.1 name the real problem); drop the other businesses to focus (10.1.2); who to build for and how
+    (10.1.3); fix quality before growth (10.1.4).
+  - Facts: ◇ needs a full research brief and fact-check.
 
 #### Module 10.2: Position and focus
 **Goal:** stand for one thing, and grow from it.
@@ -721,7 +727,7 @@ Gate number = order on the path.
 | maruti-800 | 2 | 6.2 (closes 6.1–6.2) | 9 | yes | big | |
 | amul-one-brand | 2 | 8.1 | 11 | yes | small (co-op) | published |
 | kingfisher-airlines | 3 | 9.3 | 13 | yes | big | **legal hold**; trial role retired |
-| harshad-mehta | 4 | 9.5 | 14 | yes | small (one broker) | d5 needs sign-off |
+| harshad-mehta | 4 | 9.5 | 14 | yes | small (one broker) | d5 kept as is (Atheeb) |
 | apple-1997-comeback | 3 | 10.1 | 15 | no | big | |
 | lego-turnaround | 3 | 10.2 | 16 | no | big | moved from 6.1 |
 | indigo-one-plane-type | 3 | 11.1 | 17 | yes | small (startup) | published |
@@ -746,6 +752,7 @@ Gate number = order on the path.
 | snapdeal-2017 | Snapdeal, 2016–17 | 9.2 (closes 9.1–9.2) | 12 | 3 | yes | big | ◇ |
 | zerodha-flat-fee | Zerodha, 2010–16 | 11.1 | 18 | 2 | yes | small | ◇ (some ✓) |
 | titan-quartz | Titan, 1984–90 | 12.1 | 19 | 2 | yes | small (new venture) | ◇ (key fact ✓ in Daily Call) |
+| royal-enfield-revival | Eicher / Royal Enfield, about 2000 | 10.1 | – | 2 | yes | small (one unit) | ◇ |
 | *cadbury-worms-2003 (backup)* | Cadbury India, 2003 | 13.1 | – | 2 | yes | big | ◇ (key fact ✓ in Daily Call) |
 
 "Small" means small or founder-stage when the story happens.
@@ -767,8 +774,7 @@ Gate number = order on the path.
 
 flipkart-cash-on-delivery (4.1), chik-shampoo-sachet (3.1; the family's Velvette sold sachets first, so never
 imply Ranganathan invented them), meesho-resellers (5.2), infosys-early-years (7.1), zoho-no-investors (9.2),
-hul-wheel (8.2; Wheel launched about 1987), parle-sells-thums-up (8.3), royal-enfield-revival (10.1),
-dmart-slow-and-owned (10.3), ola-vs-uber (11.2), tata-tea-tetley (13.2). Byju's only with Atheeb's say-so
+hul-wheel (8.2; Wheel launched about 1987), parle-sells-thums-up (8.3), dmart-slow-and-owned (10.3), ola-vs-uber (11.2), tata-tea-tetley (13.2). Byju's only with Atheeb's say-so
 (live legal fights).
 
 ---
@@ -786,17 +792,16 @@ dmart-slow-and-owned (10.3), ola-vs-uber (11.2), tata-tea-tetley (13.2). Byju's 
 | 7 People | zomato | 1 | 0 | 0 | 1 |
 | 8 Rivals and deals | amul | 1 | 0 | 1 | 0 |
 | 9 Money and rules | snapdeal, kingfisher, harshad | 3 | 0 | 1 | 2 |
-| 10 Strategy | apple, lego | 0 | 2 | 0 | 2 |
+| 10 Strategy | apple, royal-enfield, lego | 1 | 2 | 1 | 2 |
 | 11 Keeping rivals out | indigo, zerodha | 2 | 0 | 2 | 0 |
 | 12 World changes | titan, netflix, kodak, blockbuster, intel | 1 | 4 | 2 | 3 |
 | 13 Crises and bets | maggi | 1 | 0 | 0 | 1 |
-| **Total** | **24** | **17** | **7** | **10** | **14** |
+| **Total** | **25** | **18** | **7** | **11** | **14** |
 
 - Today 9 of 15 Hot Seats are Western (60%). On the new path, 7 of 24 gates are (29%).
 - All 10 new gates are Indian; 6 of them are small or founder-stage (Nirma, kirana, redBus, Paper Boat,
   Zerodha, Titan).
-- **Weak spots:** Unit 10 is all Western (Apple, LEGO); Royal Enfield, a post-launch candidate, would fix
-  that. Unit 12 is still mostly Western. Big companies outnumber small ones overall because most of the
+- **Weak spots:** Unit 12 is still mostly Western. Big companies outnumber small ones overall because most of the
   existing 15 are big.
 
 ---
@@ -817,11 +822,12 @@ dmart-slow-and-owned (10.3), ola-vs-uber (11.2), tata-tea-tetley (13.2). Byju's 
 | 8 | snapdeal-2017 | Gate 12; cash and control in an Indian startup. |
 | 9 | zerodha-flat-fee | Gate 18; counter-positioning from the challenger's seat. |
 | 10 | titan-quartz | Gate 19; the Indian story Unit 12 needs. |
-| 11 | cadbury-worms-2003 | Backup for Maggi. Write only if the legal hold stays. |
+| 11 | royal-enfield-revival | Unit 10's Indian gate (Atheeb's call). Full research brief needed. |
+| 12 | cadbury-worms-2003 | Backup for Maggi. Write only if the legal hold stays. |
 
 Units 1–2 (content wave 1) need items 1–3 plus no existing Hot Seat, so wave 1 doesn't wait on any drafts.
 
-### Daily Calls
+### Daily Calls (suspended for now; kept for later)
 
 **The 14 we have, mapped to lessons** (run each after its lesson is taught):
 flipkart-cod-2010 → 4.1.1 (+1.2.1) · nirma-1969 → 1.1.5 · chik-sachet-1983 → 3.1.4 · paper-boat-2013 → 2.1.1 ·
@@ -889,22 +895,17 @@ gate's main call. See open questions.
    first", runway (into 1.2.5), "admit mistakes" (into 7.2.4), "buy a small rival while it's cheap", and the
    three report definitions (now three action rules).
 
-### Open questions for Atheeb
+### Atheeb's decisions (30 Oct 2026)
 
-1. **Kirana taster.** Onboarding plays the made-up kirana story's first two calls right after lesson 1.1.1,
-   and its full run is the Module 1.3 gate. OK?
-2. **Spoiler Daily Calls.** nirma-1969, paper-boat-2013, zerodha-bootstrap, titan-quartz-1987 and
-   cadbury-2003 give away a gate's main call. Retire them, or run each only after its Hot Seat is played?
-3. **Legal holds.** Kingfisher (9.3) and Maggi (13.1) are both on hold. Cadbury is Maggi's backup; 9.3 runs
-   gateless meanwhile. Agree?
-4. **Harshad d5** (the bribe claim against a Prime Minister who has since died): keep, soften, or cut?
-5. **Nokia out, Titan in** as a Unit 12 gate. Or would you rather drop Blockbuster?
-6. **Unit 10 is all Western.** Promote Royal Enfield from the post-launch list?
-7. **The title-decision rule** moves Tanishq, New Coke, Netflix and Intel later than a plain count. Agree?
-8. **Zomato 2020 or Airbnb 2020** for the People gate, if Zomato's facts are thin.
-9. **Interim path.** Only Amul, IndiGo and Kodak are published. The course can open once kirana, Nirma and
-   redBus are written; until then, keep it hidden?
-10. **Struggling founders.** Offer Module 9.3 (Stay alive) early as a side lesson for players who say
-    "struggling" in onboarding?
-11. **Video pilot.** Not Kodak. New Coke (gate 7, seen early) or Intel (the research's runner-up) look like
-    the best fits for archive footage ◇.
+1. **Daily Calls are suspended entirely** for now: the focus is modules and Hot Seats. Gateless modules are
+   practised by their unit's Practice node (mini-scenarios), not Daily Calls. The Daily Call mappings in §5
+   are kept for if they return; spoiler calls get sorted out then.
+2. **Harshad d5 stays as it is.**
+3. **Royal Enfield is a new Unit 10 gate** (11 new Hot Seats, 25 gates in all).
+4. **Cadbury 2003 is Maggi's backup** while Maggi and Kingfisher stay on legal hold; 9.3 runs gateless meanwhile.
+
+Taken as defaults unless Atheeb says otherwise: the kirana story is the onboarding taster; Nokia is optional
+practice and Titan quartz the Unit 12 gate; the title-decision placement rule stands; Airbnb 2020 is the
+fallback if Zomato's facts are thin; the course stays hidden until kirana, Nirma and redBus are written;
+"struggling" players are offered Module 9.3 early; the video pilot story is chosen after the Hot Seats are
+planned.
