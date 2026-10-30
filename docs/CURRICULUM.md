@@ -455,8 +455,9 @@ tested later by Apple, Maruti and Intel.
 | 9.3.3 | Don't fill one hole by digging another. | A new loan to repay an old one turns small debts into collapse. | ◇ | Spot the mistake |
 
 **Gate:**
-- **`kingfisher-airlines`** (complexity 3, Indian, big) · **on legal hold** like Maggi (the founder's cases are
-  still live). No lesson relies on it; if the hold stays, Module 9.3 runs gateless with the Practice node.
+- **`kingfisher-airlines`** (complexity 3, Indian, big) · **kept** (Atheeb, 31 Oct 2026: it was one of India's
+  biggest business stories). The founder's cases are still live, so every claim stays sourced and neutral, and
+  his court status is re-checked just before publishing.
   - d1 What kind of airline? → 6.1.2 (+10.2.1)
   - d2 Buy the rival? → 13.2.2 (taught later)
   - d3 Fly abroad now? → 9.2.4
@@ -726,7 +727,7 @@ Gate number = order on the path.
 | new-coke | 2 | 4.3 | 7 | no | big | moved from 2.2 |
 | maruti-800 | 2 | 6.2 (closes 6.1–6.2) | 9 | yes | big | |
 | amul-one-brand | 2 | 8.1 | 11 | yes | small (co-op) | published |
-| kingfisher-airlines | 3 | 9.3 | 13 | yes | big | **legal hold**; trial role retired |
+| kingfisher-airlines | 3 | 9.3 | 13 | yes | big | kept; re-check court status before publishing; trial role retired |
 | harshad-mehta | 4 | 9.5 | 14 | yes | small (one broker) | d5 kept as is (Atheeb) |
 | apple-1997-comeback | 3 | 10.1 | 15 | no | big | |
 | lego-turnaround | 3 | 10.2 | 16 | no | big | moved from 6.1 |
@@ -768,7 +769,6 @@ Gate number = order on the path.
 | 10.3 | Practice node + Daily Calls (DMart later) |
 | 11.2 | Practice node + Daily Calls (Ola later) |
 | 13.2 | Practice node + `tata-tetley-2000` Daily Call |
-| 9.3 | Gateless while Kingfisher is on legal hold |
 
 ### Post-launch candidates (not needed for the course)
 
@@ -902,7 +902,8 @@ gate's main call. See open questions.
    are kept for if they return; spoiler calls get sorted out then.
 2. **Harshad d5 stays as it is.**
 3. **Royal Enfield is a new Unit 10 gate** (11 new Hot Seats, 25 gates in all).
-4. **Cadbury 2003 is Maggi's backup** while Maggi and Kingfisher stay on legal hold; 9.3 runs gateless meanwhile.
+4. **Cadbury 2003 is Maggi's backup** while Maggi stays on legal hold. **Kingfisher is kept** (31 Oct 2026) as the 9.3 gate.
+5. **More legendary businesses are welcome** (31 Oct 2026): the more famous stories players know, the better.
 
 Later answers (31 Oct 2026), after the research briefs:
 - **Images** for stories with no archive footage come from ChatGPT in the browser (see `AUTHORING.md` step 5).
