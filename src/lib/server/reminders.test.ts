@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { fresh } from "../game-state";
 import { memoryDb } from "./db";
-import { istHour, reminderFor, sendReminders, type Send } from "./reminders";
+import { broadcast, istHour, reminderFor, sendReminders, type Send } from "./reminders";
 
 const now = new Date("2026-10-30T13:30:00Z"); // 19:00 IST on 30 Oct
 
@@ -45,5 +45,16 @@ describe("streak reminders", () => {
     expect(sent).toEqual(["a", "d"]);
     expect(tally).toMatchObject({ due: 3, sent: 1, skipped: 1, gone: 1 });
     expect((await db.pushesAt(19)).map((p) => p.userId)).toEqual(["a", "b"]);
+  });
+
+  it("sends a manual message to everyone, or to one player only", async () => {
+    const db = memoryDb();
+    for (const id of ["a", "b"])
+      await db.savePush({ endpoint: `https://push.example/${id}`, userId: id, keys: { p256dh: "k", auth: "a" }, remindHour: 9 });
+    const sent: string[] = [];
+    const send: Send = async (row) => (sent.push(row.userId), "sent");
+    expect(await broadcast(db, { title: "New", body: "Hot Seat" }, undefined, send)).toMatchObject({ phones: 2, sent: 2 });
+    expect(await broadcast(db, { title: "Hi", body: "You" }, "b", send)).toMatchObject({ phones: 1, sent: 1 });
+    expect(sent).toEqual(["a", "b", "b"]);
   });
 });

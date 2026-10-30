@@ -62,3 +62,15 @@ export async function sendReminders(db: Db, send: Send = webPush, now = new Date
   }
   return tally;
 }
+
+/** Send one message now to every subscribed phone, or to one player's phones. For the admin page. */
+export async function broadcast(db: Db, msg: { title: string; body: string }, userId?: string, send: Send = webPush) {
+  const rows = await db.pushes(userId);
+  const tally = { phones: rows.length, sent: 0, gone: 0, failed: 0 };
+  for (const row of rows) {
+    const r = await send(row, msg);
+    if (r === "gone") await db.deletePush(row.endpoint);
+    tally[r]++;
+  }
+  return tally;
+}

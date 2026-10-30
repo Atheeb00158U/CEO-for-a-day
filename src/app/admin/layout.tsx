@@ -14,7 +14,10 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             <span className="text-[15px] font-black">CEO For A Day</span>
           </Link>
           <span className="rounded-lg bg-purple/15 px-2 py-1 text-[11px] font-black tracking-wider text-purple uppercase">Admin</span>
-          <Link href="/app" className="ml-auto text-[13px] font-black tracking-wide text-muted uppercase hover:text-ink">
+          <Link href="/admin/notify" className="ml-auto text-[13px] font-black tracking-wide text-muted uppercase hover:text-ink">
+            Notifications
+          </Link>
+          <Link href="/app" className="text-[13px] font-black tracking-wide text-muted uppercase hover:text-ink">
             Open the game →
           </Link>
         </div>

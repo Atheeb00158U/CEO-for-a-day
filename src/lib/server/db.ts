@@ -77,6 +77,8 @@ export interface Db {
   savePush(row: PushRow): Promise<void>;
   deletePush(endpoint: string): Promise<void>;
   pushesAt(hour: number): Promise<PushRow[]>;
+  /** Every subscription, or one player's. */
+  pushes(userId?: string): Promise<PushRow[]>;
   deleteUser(userId: string): Promise<void>;
 }
 
@@ -164,6 +166,9 @@ export function memoryDb(): Db & { profiles: Map<string, Profile>; runs: RunRow[
     },
     async pushesAt(hour) {
       return clone([...pushes.values()].filter((p) => p.remindHour === hour));
+    },
+    async pushes(userId) {
+      return clone([...pushes.values()].filter((p) => !userId || p.userId === userId));
     },
     async deleteUser(id) {
       profiles.delete(id);
@@ -342,6 +347,11 @@ export function supabaseDb(sb = supabaseAdmin()): Db {
     },
     async pushesAt(hour) {
       return list(await sb.from("push_subscriptions").select("*").eq("remind_hour", hour)).map(pushOf);
+    },
+    async pushes(userId) {
+      let q = sb.from("push_subscriptions").select("*");
+      if (userId) q = q.eq("user_id", userId);
+      return list(await q).map(pushOf);
     },
     async deleteUser(id) {
       // Every table cascades from auth.users, so deleting the user removes all their rows.
