@@ -82,6 +82,7 @@ Find every image and clip in these four archives. Don't AI-generate images any m
 
 - In `media.md`, list each media name from `hotseat.json` with its source page link, the archive, and whether it's public domain or a credited insert. Write "not found" when nothing fits, and flag it to Atheeb.
 - **Period-correct:** the year, the place and the technology of the time, and Indian settings where the story is Indian.
+- **When no archive fits** (most Indian stories: the archives hold almost no Indian footage, and Films Division films stay copyrighted for 60 years), generate the image with **ChatGPT in the browser** on Atheeb's own sign-in (Atheeb's call, 31 Oct 2026). Period-correct Indian scenes, no logos or readable brand names, and never a real person's likeness. Mark each one "generated" in `media.md`.
 - **No logos or readable brand names** (crop them out). Every credited insert is flagged to Atheeb before publishing.
 - Download, then add with `npm run media -- <id> <files…>`. Media names must be unique across all Hot Seats.
 

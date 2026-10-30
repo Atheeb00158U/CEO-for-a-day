@@ -96,7 +96,7 @@ is gate 21 of 24.
 | Code | The rule | Everyday example (made up) | Source | Exercise |
 |---|---|---|---|---|
 | 1.2.1 | Profit on paper can still leave the cash box empty. | Sunil's wholesale buyer pays in 90 days, but his cloth supplier wants cash today. | *Financial Intelligence* ◇ | Spot the mistake (a ledger) |
-| 1.2.2 | Udhaar is a loan you give. Manage it like one. | Regulars owe Raju ₹80,000. He sets a limit and a collection day. | IIMB study on kirana working capital (repository.iimb.ac.in) ◇ | Who's right? |
+| 1.2.2 | Udhaar is a loan you give. Manage it like one. | A tailor's regulars owe him ₹30,000. He sets a limit and a collection day. | IIMB study on kirana working capital (repository.iimb.ac.in) ◇ | Who's right? |
 | 1.2.3 | Stock on the shelf is cash you can't spend. | A shoe shop still has school shoes in 12 sizes in May. | *Financial Intelligence* (working capital) ◇ | Pick the best move |
 | 1.2.4 | Keep shop money and home money apart. | A cousin's wedding gift paid from the till leaves no cash for Monday's stock. | *Profit First* (Mike Michalowicz) ◇ | Sort into buckets |
 | 1.2.5 | Keep a cash buffer, and know how many months it lasts. | ₹60,000 saved, ₹20,000 short in each monsoon month: three months of safety. | *Profit First* ◇; Paul Graham, "Default Alive or Default Dead?" (2015) ◇ | Quick sum |
@@ -115,7 +115,7 @@ is gate 21 of 24.
 
 | Code | The rule | Everyday example (made up) | Source | Exercise |
 |---|---|---|---|---|
-| 1.3.1 | Judge the thinking, not the luck. | Raju stocked umbrellas and the rain came late. The bet was still sound. | *Thinking in Bets* (Annie Duke), "resulting" (sachinrekhi.com) ✓ | True or false, then why |
+| 1.3.1 | Judge the thinking, not the luck. | A juice stall stocked up for a heatwave that came a week late. The bet was still sound. | *Thinking in Bets* (Annie Duke), "resulting" (sachinrekhi.com) ✓ | True or false, then why |
 | 1.3.2 | Test small before you bet big. | Try home delivery in one lane for a month before the whole area. | *The Lean Startup* (Eric Ries) ◇ | Drag to order |
 | 1.3.3 | Track a few numbers each week. Let them decide, not hope. | Every Sunday Lata counts meals sold, meals wasted and cash in hand. | *The Lean Startup*, "innovation accounting" ◇ | Spot the mistake |
 | 1.3.4 | Money already spent is gone. Decide on what comes next. | A ₹40,000 juicer sits unused. Keeping it "because we paid for it" won't bring the money back. | Sunk cost, *Thinking, Fast and Slow* (Kahneman) ◇ | True or false, then why |
@@ -162,7 +162,7 @@ is gate 21 of 24.
 - **NEW: `redbus-first-tickets` "No ticket home for Diwali".** redBus's founders, about 2005–2007.
   - d1 After failing to get a bus ticket home: what to build first → 2.1.1
   - d2 How to learn: ask bus operators how they sell seats today, or show them your website → 2.1.2 (+2.1.3)
-  - d3 Operators love the idea: build anyway, or wait until some promise you seats → 2.1.4
+  - d3 No operator will sign up: keep pushing software, or sell seats like a travel agent → 2.1.4 (the brief: operators were doubtful, not keen; the start was one city, two operators)
   - d4 Where to start: one busy route, or all of India → 2.2.1
   - Tests: 2.1.1–2.1.4, 2.2.1. Quiz only: 2.2.2–2.2.5.
   - Complexity 2 · Indian: yes · small, founder · Facts: ◇ needs a full research brief.
@@ -246,7 +246,7 @@ is gate 21 of 24.
 - **NEW: `paper-boat` "Drinks and memories".** Hector Beverages, 2013–2015.
   - d1 Keep pushing the cheap energy drink, or bottle aam panna → 2.1.1
   - d2 Pack: cartons, or cheaper pouches → 1.1.2
-  - d3 Getting people to try: free tastings, or ads → 4.2.1 ◇
+  - d3 Getting people to try it before advertising (stores, flights, canteens, refunds to shops) → 4.2.1
   - d4 What the brand says: health and ingredients, or childhood memories → 4.3.2 ◇
   - d5 Voice: plain labels, or a short story on every pack → 4.3.3 ◇
   - Tests: 4.2.1, 4.3.2, 4.3.3. Quiz only: 4.2.2–4.2.4, 4.3.1.
@@ -455,8 +455,9 @@ tested later by Apple, Maruti and Intel.
 | 9.3.3 | Don't fill one hole by digging another. | A new loan to repay an old one turns small debts into collapse. | ◇ | Spot the mistake |
 
 **Gate:**
-- **`kingfisher-airlines`** (complexity 3, Indian, big) · **on legal hold** like Maggi (the founder's cases are
-  still live). No lesson relies on it; if the hold stays, Module 9.3 runs gateless with the Practice node.
+- **`kingfisher-airlines`** (complexity 3, Indian, big) · **kept** (Atheeb, 31 Oct 2026: it was one of India's
+  biggest business stories). The founder's cases are still live, so every claim stays sourced and neutral, and
+  his court status is re-checked just before publishing.
   - d1 What kind of airline? → 6.1.2 (+10.2.1)
   - d2 Buy the rival? → 13.2.2 (taught later)
   - d3 Fly abroad now? → 9.2.4
@@ -726,7 +727,7 @@ Gate number = order on the path.
 | new-coke | 2 | 4.3 | 7 | no | big | moved from 2.2 |
 | maruti-800 | 2 | 6.2 (closes 6.1–6.2) | 9 | yes | big | |
 | amul-one-brand | 2 | 8.1 | 11 | yes | small (co-op) | published |
-| kingfisher-airlines | 3 | 9.3 | 13 | yes | big | **legal hold**; trial role retired |
+| kingfisher-airlines | 3 | 9.3 | 13 | yes | big | kept; re-check court status before publishing; trial role retired |
 | harshad-mehta | 4 | 9.5 | 14 | yes | small (one broker) | d5 kept as is (Atheeb) |
 | apple-1997-comeback | 3 | 10.1 | 15 | no | big | |
 | lego-turnaround | 3 | 10.2 | 16 | no | big | moved from 6.1 |
@@ -768,7 +769,6 @@ Gate number = order on the path.
 | 10.3 | Practice node + Daily Calls (DMart later) |
 | 11.2 | Practice node + Daily Calls (Ola later) |
 | 13.2 | Practice node + `tata-tetley-2000` Daily Call |
-| 9.3 | Gateless while Kingfisher is on legal hold |
 
 ### Post-launch candidates (not needed for the course)
 
@@ -902,7 +902,14 @@ gate's main call. See open questions.
    are kept for if they return; spoiler calls get sorted out then.
 2. **Harshad d5 stays as it is.**
 3. **Royal Enfield is a new Unit 10 gate** (11 new Hot Seats, 25 gates in all).
-4. **Cadbury 2003 is Maggi's backup** while Maggi and Kingfisher stay on legal hold; 9.3 runs gateless meanwhile.
+4. **Cadbury 2003 is Maggi's backup** while Maggi stays on legal hold. **Kingfisher is kept** (31 Oct 2026) as the 9.3 gate.
+5. **More legendary businesses are welcome** (31 Oct 2026): the more famous stories players know, the better.
+
+Later answers (31 Oct 2026), after the research briefs:
+- **Images** for stories with no archive footage come from ChatGPT in the browser (see `AUTHORING.md` step 5).
+- **Snapdeal:** the real staff cuts (several rounds) are graded "ok"; the why explains that one deep cut works better (7.2.2).
+- **Zerodha:** kept, with care: find more independent sources before drafting, keep it on pricing and growth, and say plainly that trading is risky.
+- **Eureka Forbes:** kept with its four well-sourced decisions; "which homes first" (5.1.1) is taught in lessons only.
 
 Taken as defaults unless Atheeb says otherwise: the kirana story is the onboarding taster; Nokia is optional
 practice and Titan quartz the Unit 12 gate; the title-decision placement rule stands; Airbnb 2020 is the
