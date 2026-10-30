@@ -36,12 +36,12 @@ export function reminderFor(
   if (!state.lastActiveDay || state.lastActiveDay === t) return null;
   const gap = dayDiff(state.lastActiveDay, t);
   if (gap === 1 && state.streak > 0)
-    return { kind: "streak", title: `Your ${state.streak}-day streak ends tonight`, body: "One quick call keeps it alive." };
+    return { kind: "streak", title: `Your ${state.streak}-day streak ends tonight`, body: "Play a Hot Seat today to keep it." };
   if (gap === 2)
     return {
       kind: "winback2",
       title: state.streak > 1 ? "Your streak has ended" : "Your next call is waiting",
-      body: "Start a new streak today. One decision, one minute.",
+      body: "Start a new streak today with one Hot Seat.",
     };
   if (gap === 4)
     return { kind: "winback4", title: "A Hot Seat is waiting for you", body: "Can you beat what the real CEO did? About five minutes." };
@@ -49,7 +49,7 @@ export function reminderFor(
     return {
       kind: "winback7",
       title: "Still thinking like a CEO?",
-      body: "Your notes and your league are waiting. One call gets you back in.",
+      body: "Your notes and your league are waiting. One Hot Seat gets you back in.",
     };
   return null; // other days of a break, or away for over a week: leave them alone
 }
@@ -192,7 +192,7 @@ export async function notifyOvertaken(db: Db, userId: string, beforeXp: number, 
       {
         kind: "overtaken",
         title: `${who} just passed you`,
-        body: `in the ${LEAGUES[me.tier]} league. Win your place back with one quick call.`,
+        body: `in the ${LEAGUES[me.tier]} league. Win your place back with one Hot Seat.`,
       },
       send,
       now,

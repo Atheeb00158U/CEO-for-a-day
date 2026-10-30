@@ -114,8 +114,15 @@ export function trial(nodeEnv = process.env.NODE_ENV): CatalogEntry | undefined 
 
 const dailyPool = () => cached<DailyPool>("daily", readDailyPool);
 
-/** Today's Daily Call. Undefined when there is none, or outside dev when today's call is still a draft (never a stand-in). */
+/**
+ * Daily Calls are suspended (Atheeb, 30 Oct 2026) while the course is built. Off, there is no call today: Home
+ * hides the card, /api/daily/lock refuses, and the 9 am teaser isn't sent. Set to true to bring them back.
+ */
+export const DAILY_CALLS_ON = false;
+
+/** Today's Daily Call. Undefined when suspended, when there is none, or outside dev when today's call is still a draft. */
 export function todaysCall(day: string, nodeEnv = process.env.NODE_ENV): DailyCall | undefined {
+  if (!DAILY_CALLS_ON) return undefined;
   const call = dailyFor(day, dailyPool());
   return call && canServe(call, nodeEnv) ? call : undefined;
 }

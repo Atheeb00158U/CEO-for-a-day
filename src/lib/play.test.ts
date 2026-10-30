@@ -4,7 +4,7 @@ import { score, startRun, choose, resolveNode } from "./engine";
 import { today, weekId } from "./game-state";
 import type { DecisionNode, HotSeat } from "./hotseat-types";
 import { parsePicks, play, PlayError, type Pick } from "./play";
-import { canServe, servableHotSeat } from "./server/content";
+import { canServe, DAILY_CALLS_ON, servableHotSeat, todaysCall } from "./server/content";
 
 const kodak = readHotSeat("kodak");
 
@@ -90,6 +90,10 @@ describe("serving content", () => {
     expect(canServe({}, "production")).toBe(true);
     expect(servableHotSeat("kingfisher-airlines", "production")).toBeUndefined(); // a draft today
     expect(servableHotSeat("kodak", "production")?.id).toBe("kodak");
+  });
+
+  it("serves no Daily Call while they're suspended", () => {
+    if (!DAILY_CALLS_ON) expect(todaysCall(today(), "development")).toBeUndefined();
   });
 
   it("refuses ids that aren't a plain folder name", () => {
