@@ -30,7 +30,8 @@ export function lessonProblems(l: Lesson, mediaDir: string): { errors: string[];
     }
     switch (s.kind) {
       case "explain":
-        if (words(s.text) > 25) warnings.push(`${at(s)}: ${words(s.text)} words; a teaching screen has at most 25`);
+        // A teacher talking to one student needs room for a full thought (Atheeb, 31 Oct 2026): about 20 seconds spoken.
+        if (words(s.text) > 50) warnings.push(`${at(s)}: ${words(s.text)} words; a teaching screen has at most 50`);
         break;
       case "choice": {
         const opts = s.options.map((o) => o.id);

@@ -40,7 +40,8 @@ next five Hot Seats should be Indian and fill Units 1–4: **Nirma vs Surf, Flip
 ₹1 sachet, Tata Nano, Royal Enfield 2000.** Eleven more are listed in the research.
 
 ## How it works for the player (from `research/learning-design.md`)
-- **A lesson** teaches one rule in 3–5 minutes, over 8–12 screens. At most 25 words on a teaching screen,
+- **A lesson** teaches one rule in 3–5 minutes, over 8–12 screens. Written as a teacher talking to one student ("I" and "you", a reaction to every answer, each screen
+  leading to the next; Atheeb, 31 Oct 2026), at most 50 words on a teaching screen,
   and at least two thirds of the screens are things to do. Order: a hook story, a guess first, the rule, a
   worked example, a half-done example, 3–4 practice screens (one mixes in an older lesson), a mini-scenario,
   then a takeaway card that becomes a flashcard.

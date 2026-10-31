@@ -1,6 +1,6 @@
 {
   "id": "u1-cash-runs-out",
-  "title": "Profit on paper, empty bank",
+  "title": "How long can you last?",
   "principle": "Businesses die when cash runs out, not when profit does.",
   "minutes": 5,
   "draft": true,
@@ -9,154 +9,102 @@
       "kind": "explain",
       "id": "hook",
       "media": "img:ls_jet_grounded",
-      "text": "Jet Airways once flew more than 120 planes. On 17 April 2019 it ran its last flight, with no cash left for fuel."
+      "text": "Let me start with a story. In December 2018, Jet Airways had 119 planes flying across India. Four months later, not one of them could take off. Before I tell you why, have a guess."
     },
     {
       "kind": "choice",
       "id": "guess",
       "guess": true,
-      "prompt": "What can stop a big airline in a single day?",
+      "prompt": "What do you think grounded an airline that big?",
       "options": [
         {
           "id": "a",
-          "label": "Its customers all leave at once"
+          "label": "A crash or a scandal"
         },
         {
           "id": "b",
-          "label": "It can't pay this week's bills"
+          "label": "A rival cut its fares"
         },
         {
           "id": "c",
-          "label": "A rival cuts its fares"
-        }
-      ],
-      "answer": "b",
-      "why": "Banks said no to ₹400 crore of emergency money. Without it, Jet couldn't pay for fuel. Pilots had gone four months without pay."
-    },
-    {
-      "kind": "explain",
-      "id": "rule",
-      "title": "Three different numbers",
-      "text": "Sales are all the money that comes in. Profit is what's left after costs. Cash is what you hold today. Only cash pays bills."
-    },
-    {
-      "kind": "explain",
-      "id": "sunil",
-      "title": "Sunil's uniforms",
-      "text": "Sunil sews school uniforms. Each week he spends ₹30,000 and bills ₹45,000, so he makes ₹15,000 profit. But the school chain pays after 90 days."
-    },
-    {
-      "kind": "choice",
-      "id": "which-week",
-      "prompt": "Sunil starts with ₹1,20,000 in the bank. In which week does it run out?",
-      "options": [
-        {
-          "id": "a",
-          "label": "Week 13, when the first payment is due"
-        },
-        {
-          "id": "b",
-          "label": "Never. He makes ₹15,000 profit a week"
-        },
-        {
-          "id": "c",
-          "label": "Week 5"
+          "label": "It ran out of cash"
         }
       ],
       "answer": "c",
-      "why": "₹1,20,000 ÷ ₹30,000 = 4 weeks of bills. The first payment comes after 90 days, about week 13. He is empty from week 5.",
-      "wrong": {
-        "a": "Week 13 is when money starts coming in. His bills start in week 1.",
-        "b": "The profit is real, but it's on paper. The cash leaves every week and comes back 90 days later."
-      }
+      "why": "It simply ran out of cash. Most people guess something dramatic, but the real reason was ordinary: Jet couldn't pay for fuel, and its pilots hadn't been paid for months."
+    },
+    {
+      "kind": "explain",
+      "id": "burn",
+      "title": "The slow leak",
+      "text": "Now you know what happened, but how does a huge airline actually run out of cash? Month after month, more money went out than came in. Fuel, salaries and plane rent all had to be paid, the ticket money wasn't enough, and so Jet's pile of cash kept shrinking."
+    },
+    {
+      "kind": "explain",
+      "id": "runway",
+      "title": "Your runway",
+      "text": "Think of the cash in a bank as petrol in a tank, and a monthly loss as a leak in that tank. The one number I want you to know is how many months are left before the tank runs dry. That number is your runway."
     },
     {
       "kind": "choice",
-      "id": "how-short",
-      "prompt": "To keep paying until the school pays in week 13, how much more cash does Sunil need?",
+      "id": "try-it",
+      "prompt": "Let's try one. A business has ₹30 lakh in the bank and loses ₹5 lakh every month. How long is its runway?",
       "options": [
         {
           "id": "a",
-          "label": "₹2,70,000"
+          "label": "5 months"
         },
         {
           "id": "b",
-          "label": "₹3,90,000"
+          "label": "6 months"
         },
         {
           "id": "c",
-          "label": "₹45,000"
-        }
-      ],
-      "answer": "a",
-      "why": "13 weeks × ₹30,000 = ₹3,90,000 of bills. He has ₹1,20,000, so he is ₹2,70,000 short. And his books say he is 'making' ₹15,000 a week.",
-      "wrong": {
-        "b": "That's all 13 weeks of bills. He already has ₹1,20,000 of it.",
-        "c": "That's one week's billing. He needs to cover 13 weeks of costs first."
-      }
-    },
-    {
-      "kind": "choice",
-      "id": "fix",
-      "prompt": "Which change helps Sunil most?",
-      "options": [
-        {
-          "id": "a",
-          "label": "Raise his price by 10%"
-        },
-        {
-          "id": "b",
-          "label": "Get paid in 30 days, not 90"
-        },
-        {
-          "id": "c",
-          "label": "Take on a second school chain"
+          "label": "30 months"
         }
       ],
       "answer": "b",
-      "why": "At 30 days, money starts coming in around week 5, so his ₹1,20,000 nearly covers the wait. A higher price changes the profit, not the timing.",
+      "why": "Exactly. ₹30 lakh divided by ₹5 lakh is 6 months, and that's the whole runway sum: the cash you have, divided by the cash you lose each month. If nothing changes, this owner has six months to fix the business or find more money.",
       "wrong": {
-        "a": "More profit, but it still arrives in week 13. He's still empty in week 5.",
-        "c": "A second chain doubles his weekly bills while he waits. He'd run dry in about half the time."
+        "a": "Close. Let me show you the sum: ₹30 lakh divided by ₹5 lakh is 6, so if nothing changes, the cash lasts 6 months.",
+        "c": "Not quite. ₹30 lakh is the cash you have, not the number of months. Divide it by the ₹5 lakh lost each month, and you get 6 months."
       }
     },
     {
-      "kind": "sort",
-      "id": "cash-or-not",
-      "prompt": "Sunil owes ₹20,000 in wages on Saturday. What can he pay them with?",
-      "buckets": ["Can use now", "Can't use yet"],
-      "items": [
+      "kind": "choice",
+      "id": "banks",
+      "prompt": "Jet's cash was running low, so it asked its banks for ₹400 crore. Why might a bank still say no?",
+      "options": [
         {
-          "text": "₹8,000 by UPI this morning",
-          "bucket": 0
+          "id": "a",
+          "label": "Banks never lend to airlines"
         },
         {
-          "text": "A ₹50,000 order confirmed on WhatsApp",
-          "bucket": 1
+          "id": "b",
+          "label": "The losses hadn't stopped, so the loan would burn too"
         },
         {
-          "text": "A ₹30,000 bill the buyer pays in 60 days",
-          "bucket": 1
-        },
-        {
-          "text": "₹12,000 in the current account",
-          "bucket": 0
-        },
-        {
-          "text": "₹20,000 of cloth on the rack",
-          "bucket": 1
-        },
-        {
-          "text": "A GST refund 'coming soon'",
-          "bucket": 1
+          "id": "c",
+          "label": "₹400 crore was too small to matter"
         }
       ],
-      "why": "Orders, unpaid bills, stock and refunds can all be worth money. None of them pays the wages on Saturday."
+      "answer": "b",
+      "why": "Exactly. ₹400 crore could buy Jet more time, but it wouldn't fix the leak, and with the losses still running, the new money would vanish too. The banks said no, and on 17 April 2019 Jet flew its last flight.",
+      "wrong": {
+        "a": "Banks do lend to airlines. But think like the lender for a moment: what happens after I hand you the money? If the business keeps losing cash, my loan disappears with it.",
+        "c": "₹400 crore could pay for a lot of fuel and wages. The bigger question was what came after, because if Jet kept losing cash, the new money would only buy a little time."
+      }
+    },
+    {
+      "kind": "explain",
+      "id": "home",
+      "title": "Now it's your business",
+      "text": "Let's see if you can spot a leak yourself. Imagine you run a small gym with ₹3 lakh in the bank. Each month ₹1.5 lakh goes out, but your members also pay you ₹1 lakh. Before you answer, think about what's really leaking."
     },
     {
       "kind": "choice",
-      "id": "runway",
-      "prompt": "Pooja's gym has ₹3,00,000 in the bank. Each month ₹1,50,000 goes out and ₹1,00,000 comes in. How many months can she last?",
+      "id": "gym-runway",
+      "prompt": "So, how long is your runway?",
       "options": [
         {
           "id": "a",
@@ -172,56 +120,114 @@
         }
       ],
       "answer": "c",
-      "why": "She loses ₹1,50,000 − ₹1,00,000 = ₹50,000 a month. ₹3,00,000 ÷ ₹50,000 = 6 months. That number is her runway. Count her own fixed wage in the ₹1,50,000, too.",
+      "why": "Well done. ₹1.5 lakh goes out, but ₹1 lakh comes back in, so your cash only shrinks by ₹50,000 a month. That means ₹3 lakh gives you 6 months of runway.",
       "wrong": {
-        "a": "That divides by everything going out. Money still comes in each month, so count only the gap.",
-        "b": "Check the gap: ₹1,50,000 out, ₹1,00,000 in. She loses ₹50,000 a month."
+        "a": "I see what you did: ₹3 lakh divided by ₹1.5 lakh. But your members still pay you ₹1 lakh, so your real monthly loss is only ₹50,000, and your runway is 6 months.",
+        "b": "You're close, but find the gap first. ₹1.5 lakh out minus ₹1 lakh in leaves a loss of ₹50,000 a month, and ₹3 lakh divided by ₹50,000 gives you 6 months."
       }
     },
     {
-      "kind": "scenario",
-      "id": "big-order",
-      "setup": "A second school chain offers Sunil ₹90,000 of work a week. It would cost him ₹60,000 a week. It also pays after 90 days.",
-      "question": "That's ₹30,000 more profit a week. What do you do?",
+      "kind": "choice",
+      "id": "longer",
+      "prompt": "Now I want you to stretch that runway. Which of these gives you the most time?",
       "options": [
         {
           "id": "a",
-          "label": "Say yes. It triples the business",
-          "grade": "bad",
-          "outcome": "His weekly bills jump to ₹90,000. His ₹1,20,000 is gone before week 2 ends. He can't buy cloth for either school.",
-          "why": "Growth eats cash first and pays it back later. Bigger orders on long credit empty the bank faster.",
-          "better": "Take it only if the money comes sooner, like an advance or 30-day terms."
+          "label": "Cut ₹25,000 of monthly costs"
         },
         {
           "id": "b",
-          "label": "Yes, with 40% up front and 30-day terms",
+          "label": "Put ₹50,000 more into the bank, once"
+        },
+        {
+          "id": "c",
+          "label": "Sign 10 new members at ₹1,000 a month"
+        }
+      ],
+      "answer": "a",
+      "why": "Exactly. Your monthly loss falls from ₹50,000 to ₹25,000, so the same ₹3 lakh now lasts 12 months. Notice that you didn't add any petrol. You made the leak smaller, so every rupee already in the tank goes further.",
+      "wrong": {
+        "b": "That does help, since ₹3.5 lakh divided by ₹50,000 gives you 7 months. But next month the same leak carries on. Cutting ₹25,000 of costs shrinks the leak every month and gives you 12.",
+        "c": "That's useful too. Ten members bring in ₹10,000 more, so your loss falls to ₹40,000 and you get about 7½ months. Cutting ₹25,000 of costs shrinks the loss further and gives you 12."
+      }
+    },
+    {
+      "kind": "sort",
+      "id": "can-pay",
+      "prompt": "Your trainers' ₹20,000 is due on Saturday. Which of these count as cash you can use towards it?",
+      "buckets": ["Can pay now", "Can't pay yet"],
+      "items": [
+        {
+          "text": "₹8,000 by UPI this morning",
+          "bucket": 0
+        },
+        {
+          "text": "A company promising 20 memberships next month",
+          "bucket": 1
+        },
+        {
+          "text": "₹30,000 a member owes you, due in 60 days",
+          "bucket": 1
+        },
+        {
+          "text": "₹12,000 in your current account",
+          "bucket": 0
+        },
+        {
+          "text": "New machines worth ₹2 lakh",
+          "bucket": 1
+        },
+        {
+          "text": "A GST refund 'coming soon'",
+          "bucket": 1
+        }
+      ],
+      "why": "Exactly. The ₹8,000 by UPI and the ₹12,000 in your account make the ₹20,000 you need. The other things may be worth money someday, but you can't spend them this Saturday, and runway only counts cash you can use."
+    },
+    {
+      "kind": "scenario",
+      "id": "big-deal",
+      "setup": "Then a big chance arrives. A local company wants memberships for 40 staff, worth ₹40,000 a month. But you'd need ₹1.5 lakh of new machines first, and the company usually pays only after three months.",
+      "question": "You have 6 months of runway. How do you chase this deal without risking the gym?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Say yes and buy the machines today",
+          "grade": "bad",
+          "outcome": "Your bank falls from ₹3 lakh to ₹1.5 lakh overnight, and your old ₹50,000 loss carries on each month. By the time the company's first payment is due, that ₹1.5 lakh is gone.",
+          "why": "The deal makes money later, but the cash leaves much earlier, and that's the trap. Before saying yes to a big order, ask what happens to your bank balance before the customer pays.",
+          "better": "Ask for the first three months in advance, or rent the machines."
+        },
+        {
+          "id": "b",
+          "label": "Say yes, if they pay three months up front",
           "grade": "great",
-          "outcome": "The ₹36,000 advance each week pays more than half the new costs. Money starts coming back in a month, not three.",
-          "why": "He checked when the cash comes in, as well as the profit. Same order, but now he can survive it."
+          "outcome": "They pay ₹1.2 lakh up front, which is three months of fees, so the machines take only ₹30,000 of your own cash. After that, ₹40,000 a month comes in, and your monthly gap shrinks from ₹50,000 to ₹10,000.",
+          "why": "Well played. You changed when the cash arrives, not what the deal is worth, so the advance paid for the machines instead of your ₹3 lakh."
         },
         {
           "id": "c",
           "label": "Say no. It's too risky",
           "grade": "ok",
-          "outcome": "Sunil stays safe, but he turns away ₹30,000 a week without asking for better terms.",
-          "why": "Safe, but he never tried to fix the timing.",
-          "better": "Ask for an advance and shorter terms before saying no."
+          "outcome": "You keep your ₹3 lakh, but the ₹50,000 monthly loss carries on, your runway stays at 6 months, and the company takes the deal to another gym.",
+          "why": "That's safer than spending blindly, but there was a better move: change the payment terms before giving up the deal.",
+          "better": "Ask for an advance before you say no."
         }
       ]
     },
     {
       "kind": "gap",
       "id": "fill",
-      "text": "A profitable business can still shut if ___ hits zero before ___ pay.",
-      "bank": ["cash", "customers", "profit", "suppliers"],
-      "answer": ["cash", "customers"],
-      "why": "Profit says the business works. Only cash keeps it open. Jet had 119 planes at the end of 2018. Four months later it had no cash for fuel."
+      "text": "A business doesn't shut when its profit runs out. It shuts when its ___ runs out, and the months it has left are its ___.",
+      "bank": ["cash", "runway", "profit", "sales"],
+      "answer": ["cash", "runway"],
+      "why": "Exactly. In April 2019, Jet still had its planes and its loyal flyers, but none of that could pay for that day's fuel and wages. When usable cash hits zero, a business can stop while it still owns valuable things, and that's why I want you watching your runway."
     }
   ],
   "summary": [
-    "Sales come in, profit is what's left, cash is what you hold today.",
-    "Long credit and fast growth can empty a profitable business.",
-    "Runway = cash ÷ the monthly gap between money out and money in."
+    "Your runway is how many months your cash lasts: cash in the bank ÷ monthly loss.",
+    "Count only the gap between money out and money in.",
+    "Fixing the leak beats topping up the tank, and every big deal should be checked against your runway."
   ],
   "cards": [
     {

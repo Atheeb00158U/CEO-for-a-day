@@ -65,7 +65,7 @@ Confidence labels: **[src]** = stated in a linked source; **[obs]** = widely obs
 ### Shape [rec]
 - **One principle per lesson.** Title is the principle in ≤6 words ("Price for value, not cost").
 - **8–12 screens, 3–5 minutes.** Teaching screens ≤ 1/3 of the lesson; at least 2/3 are things the player does.
-- **≤ 25 words per teaching screen**, one picture, one bold key line. Sentences ≤ 12 words. Words a 12-year-old knows; business terms (margin, cash flow) introduced once, with a picture, then reused.
+- **≤ 50 words per teaching screen** (was 25; raised 31 Oct 2026 so a teacher can talk, not list facts), one picture, one bold key line. Sentences ≤ 12 words. Words a 12-year-old knows; business terms (margin, cash flow) introduced once, with a picture, then reused.
 - **Same order every time**, so the player's brain spends effort on the idea, not the format.
 
 ### Screen order (10-screen example: "Margin")

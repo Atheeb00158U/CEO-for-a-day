@@ -170,7 +170,7 @@ export function LessonPlayer({ target, testOut, onExit }: { target: LessonTarget
               reveal.guess ? (reveal.right ? "Good guess. Here's the answer" : "Good guess!") : reveal.correct ? "Correct!" : "Not quite"
             }
             pointsLabel={!reveal.correct && !reveal.retry && !testOut ? "You'll see it again" : undefined}
-            lines={[...(reveal.right ? [{ label: "Answer: ", text: reveal.right }] : []), { label: "Why: ", text: reveal.why }]}
+            lines={[...(reveal.right ? [{ label: "Answer: ", text: reveal.right }] : []), { label: "", text: reveal.why }]}
             onNext={() => advance(0)}
           />
         </>
@@ -187,7 +187,11 @@ function ExplainView({ screen, onNext }: { screen: Extract<LessonScreen, { kind:
     <div className="flex flex-1 flex-col gap-4">
       {screen.media && <MediaView media={screen.media} className="aspect-[4/3] w-full" />}
       {screen.title && <p className="text-[13px] font-black tracking-[.12em] text-brand uppercase">{screen.title}</p>}
-      <Caption text={screen.text} progress={prog(0)} className="text-[22px] leading-snug font-bold" />
+      <Caption
+        text={screen.text}
+        progress={prog(0)}
+        className={`${screen.text.split(/\s+/).length > 30 ? "text-[19px]" : "text-[22px]"} leading-snug font-bold`}
+      />
       {s.settings.voice && <VoiceButton onClick={replay} />}
       <div className="mt-auto pt-4 pb-6">
         <button
