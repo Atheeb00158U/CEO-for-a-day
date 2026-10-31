@@ -154,7 +154,7 @@
     {
       "kind": "choice",
       "id": "cut-one",
-      "prompt": "Each order costs ₹180 for the shirt, ₹150 in ads and ₹70 shipping. Cutting which one by 20% saves you most?",
+      "prompt": "Imagine you have a magic wand. You can make one cost 20% cheaper: the ₹180 shirt, ₹150 ads or ₹70 shipping. Which do you pick?",
       "options": [
         {
           "id": "a",
@@ -170,10 +170,10 @@
         }
       ],
       "answer": "a",
-      "why": "Exactly. 20% of the ₹180 shirt is ₹36, against ₹30 off the ads and ₹14 off shipping. Most sellers fight with the courier first, but a better deal from your maker is worth more.",
+      "why": "Yes, the shirt. 20% of ₹180 is ₹36, more than the ads (₹30) or shipping (₹14). In real life there's no wand, so start with your biggest cost: ask your shirt maker for a better price before you fight the courier.",
       "wrong": {
-        "b": "Close, because ads are a big cost. But 20% of ₹150 is ₹30, while 20% of the ₹180 shirt is ₹36.",
-        "c": "The courier is the first cost most people try to cut, but 20% of ₹70 is only ₹14. Go for the biggest cost: 20% of the ₹180 shirt saves ₹36."
+        "b": "Close, ads are a big cost too. But 20% of ₹150 is ₹30, and 20% of the ₹180 shirt is ₹36. The bigger the cost, the more the same cut saves you.",
+        "c": "Many sellers think of shipping first, because the courier bill is easy to see. But 20% of ₹70 is only ₹14. The same cut on the ₹180 shirt saves ₹36."
       }
     },
     {

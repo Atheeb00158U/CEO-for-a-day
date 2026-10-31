@@ -9905,9 +9905,9 @@
   "text": "I see what you did: 5 × ₹74. But only four orders were delivered, and they leave ₹296, while the refused parcel cost ₹305. Together, that's −₹9."
  },
  {
-  "id": "44ebbfad908b",
+  "id": "b789c4f4da3d",
   "voice": "narrator",
-  "text": "Each order costs ₹180 for the shirt, ₹150 in ads and ₹70 shipping. Cutting which one by 20% saves you most?"
+  "text": "Imagine you have a magic wand. You can make one cost 20% cheaper: the ₹180 shirt, ₹150 ads or ₹70 shipping. Which do you pick?"
  },
  {
   "id": "407a95453527",
@@ -9925,19 +9925,19 @@
   "text": "The shipping"
  },
  {
-  "id": "653bd6e6bdfd",
+  "id": "609e6afb0459",
   "voice": "narrator",
-  "text": "Exactly. 20% of the ₹180 shirt is ₹36, against ₹30 off the ads and ₹14 off shipping. Most sellers fight with the courier first, but a better deal from your maker is worth more."
+  "text": "Yes, the shirt. 20% of ₹180 is ₹36, more than the ads (₹30) or shipping (₹14). In real life there's no wand, so start with your biggest cost: ask your shirt maker for a better price before you fight the courier."
  },
  {
-  "id": "0e3b25adf44a",
+  "id": "3b3637c5fd78",
   "voice": "narrator",
-  "text": "Close, because ads are a big cost. But 20% of ₹150 is ₹30, while 20% of the ₹180 shirt is ₹36."
+  "text": "Close, ads are a big cost too. But 20% of ₹150 is ₹30, and 20% of the ₹180 shirt is ₹36. The bigger the cost, the more the same cut saves you."
  },
  {
-  "id": "aa699901325f",
+  "id": "a00a17fc9349",
   "voice": "narrator",
-  "text": "The courier is the first cost most people try to cut, but 20% of ₹70 is only ₹14. Go for the biggest cost: 20% of the ₹180 shirt saves ₹36."
+  "text": "Many sellers think of shipping first, because the courier bill is easy to see. But 20% of ₹70 is only ₹14. The same cut on the ₹180 shirt saves ₹36."
  },
  {
   "id": "8cb8a1dca4bb",
