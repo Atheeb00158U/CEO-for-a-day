@@ -1,0 +1,162 @@
+{
+  "id": "u1-know-your-margin",
+  "title": "Know your margin",
+  "principle": "Know your margin on every item you sell.",
+  "minutes": 4,
+  "draft": true,
+  "screens": [
+    {
+      "kind": "explain",
+      "id": "hook",
+      "media": "img:ls_stationery_shop",
+      "text": "Suresh runs a stationery shop near a school. A pen and a notebook both sell for ₹10, but they don't earn him the same."
+    },
+    {
+      "kind": "choice",
+      "id": "guess",
+      "guess": true,
+      "prompt": "Which earns Suresh more: a ₹10 pen or a ₹10 notebook?",
+      "options": [
+        { "id": "a", "label": "The pen" },
+        { "id": "b", "label": "The notebook" },
+        { "id": "c", "label": "The same, both are ₹10" }
+      ],
+      "answer": "b",
+      "why": "The pen costs him ₹9, so he keeps ₹1. The notebook costs him ₹7, so he keeps ₹3."
+    },
+    {
+      "kind": "explain",
+      "id": "rule",
+      "title": "Margin",
+      "text": "Margin is what you keep from one sale: the price minus what the item cost you. Know it for every item."
+    },
+    {
+      "kind": "explain",
+      "id": "worked",
+      "title": "The notebook",
+      "text": "Price: ₹10. Suresh paid: ₹7. Margin: ₹10 − ₹7 = ₹3 on every notebook he sells."
+    },
+    {
+      "kind": "choice",
+      "id": "faded",
+      "prompt": "A geometry box sells for ₹60. It costs Suresh ₹45. What is his margin?",
+      "options": [
+        { "id": "a", "label": "₹15" },
+        { "id": "b", "label": "₹60" },
+        { "id": "c", "label": "₹105" }
+      ],
+      "answer": "a",
+      "why": "₹60 − ₹45 = ₹15 on each box.",
+      "wrong": {
+        "b": "₹60 is the price. Take off what the box cost him.",
+        "c": "The cost comes off the price. Don't add it."
+      }
+    },
+    {
+      "kind": "sort",
+      "id": "buckets",
+      "prompt": "Sort Suresh's items by margin.",
+      "buckets": ["₹1–2 a sale", "₹10 or more a sale"],
+      "items": [
+        { "text": "Pen: sells ₹10, costs ₹9", "bucket": 0 },
+        { "text": "Eraser: sells ₹5, costs ₹4", "bucket": 0 },
+        { "text": "Geometry box: sells ₹60, costs ₹45", "bucket": 1 },
+        { "text": "School bag: sells ₹400, costs ₹320", "bucket": 1 },
+        { "text": "Glue stick: sells ₹20, costs ₹18", "bucket": 0 }
+      ],
+      "why": "Pen ₹1, eraser ₹1, glue ₹2. Box ₹15, bag ₹80. The price alone does not tell you the margin."
+    },
+    {
+      "kind": "choice",
+      "id": "count",
+      "prompt": "Today Suresh sold 30 pens (₹1 margin) and 10 notebooks (₹3 margin). Which earned more?",
+      "options": [
+        { "id": "a", "label": "The pens" },
+        { "id": "b", "label": "The notebooks" },
+        { "id": "c", "label": "Both earned ₹30" }
+      ],
+      "answer": "c",
+      "why": "30 × ₹1 = ₹30. 10 × ₹3 = ₹30. Margin times the number sold gives what you keep.",
+      "wrong": {
+        "a": "30 pens at ₹1 each is ₹30. Now work out the notebooks.",
+        "b": "10 notebooks at ₹3 each is ₹30. Now work out the pens."
+      }
+    },
+    {
+      "kind": "choice",
+      "id": "mix",
+      "prompt": "This month Suresh's shop sold ₹90,000. Stock, rent and his helper cost ₹78,000. What is his profit?",
+      "options": [
+        { "id": "a", "label": "₹90,000" },
+        { "id": "b", "label": "₹12,000" },
+        { "id": "c", "label": "₹1,68,000" }
+      ],
+      "answer": "b",
+      "why": "Profit is sales minus every cost: ₹90,000 − ₹78,000 = ₹12,000.",
+      "wrong": {
+        "a": "₹90,000 is his sales. Profit is what is left after costs.",
+        "c": "Costs come off the sales. They don't add to it."
+      }
+    },
+    {
+      "kind": "gap",
+      "id": "fill",
+      "text": "Margin is the ___ minus the ___ of one item.",
+      "bank": ["price", "cost", "rent", "sales"],
+      "answer": ["price", "cost"],
+      "why": "Price minus cost, for one item. Rent and total sales come into profit, not margin."
+    },
+    {
+      "kind": "scenario",
+      "id": "mini",
+      "setup": "You run a small mobile shop. Your ₹150 phone covers cost you ₹90. A supplier offers a new ₹300 earphone.",
+      "question": "Before you order a box of them, what do you check first?",
+      "options": [
+        {
+          "id": "a",
+          "label": "How fast earphones sell",
+          "grade": "ok",
+          "outcome": "They sell fast. But you still don't know what each one leaves you.",
+          "why": "Speed matters, but you skipped the margin.",
+          "better": "Also check price minus cost for each one."
+        },
+        {
+          "id": "b",
+          "label": "Nothing. A ₹300 item must earn well",
+          "grade": "bad",
+          "outcome": "You fill a shelf with them. Later you find each one leaves only ₹30.",
+          "why": "A high price does not mean a high margin.",
+          "better": "Work out price minus cost before you order."
+        },
+        {
+          "id": "c",
+          "label": "What it costs me, so I know my margin",
+          "grade": "great",
+          "outcome": "It costs ₹270, so you keep ₹30. Each cover keeps you ₹60. You order only a few earphones.",
+          "why": "You knew the margin before you spent money on stock."
+        }
+      ]
+    }
+  ],
+  "summary": [
+    "Margin is price minus cost, for one item.",
+    "A high price does not mean a high margin.",
+    "What you keep = margin × number sold."
+  ],
+  "cards": [
+    {
+      "id": "u1-margin-1",
+      "front": "You sell a lunch box for ₹120. It costs you ₹90. What is your margin?",
+      "options": ["₹30", "₹120", "₹210"],
+      "answer": 0,
+      "back": "₹30: price minus cost."
+    },
+    {
+      "id": "u1-margin-2",
+      "front": "Which has the bigger margin: a ₹500 item or a ₹50 item?",
+      "options": ["The ₹500 one", "You can't tell from the price"],
+      "answer": 1,
+      "back": "You can't tell. You need what each one cost you."
+    }
+  ]
+}

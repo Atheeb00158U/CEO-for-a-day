@@ -1,24 +1,17 @@
 {
   "units": [
     {
-      "id": "sample-unit",
-      "title": "Sample: make money, keep money",
-      "goal": "Test unit for the lesson player. Not real course copy.",
+      "id": "u1-make-money",
+      "title": "Make money, keep money",
+      "goal": "Know what you really keep, and keep enough cash to run the shop.",
       "draft": true,
       "modules": [
         {
-          "id": "sample-profit",
+          "id": "u1-profit",
           "title": "Profit",
           "goal": "See how much you really keep from each sale.",
-          "lessons": ["sample-sales-not-profit", "sample-margin"],
-          "gates": ["amul-one-brand"]
-        },
-        {
-          "id": "sample-costs",
-          "title": "Costs",
-          "goal": "Know which costs grow with sales.",
-          "lessons": ["sample-fixed-variable"],
-          "gates": []
+          "lessons": ["u1-sales-not-profit", "u1-know-your-margin", "u1-fixed-and-variable", "u1-break-even", "u1-thin-margins"],
+          "gates": ["kirana-year"]
         }
       ]
     }

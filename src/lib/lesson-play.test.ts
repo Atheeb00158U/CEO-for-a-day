@@ -1,4 +1,9 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
+
+// A fixed sample course, so edits to the real content/course can't break these tests.
+vi.hoisted(() => {
+  process.env.CFAD_COURSE_DIR = `${process.cwd()}/src/lib/__fixtures__/course`;
+});
 import { readCourse, readLesson } from "./content-files";
 import type { Lesson } from "./course-types";
 import { lessonPlay, parseAnswers, testOutLesson, type Answer, type LessonScreen } from "./lesson-play";

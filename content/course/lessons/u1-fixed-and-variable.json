@@ -1,0 +1,163 @@
+{
+  "id": "u1-fixed-and-variable",
+  "title": "Fixed and variable costs",
+  "principle": "Fixed costs stay the same. Variable costs grow with sales.",
+  "minutes": 4,
+  "draft": true,
+  "screens": [
+    {
+      "kind": "explain",
+      "id": "hook",
+      "media": "img:ls_cake_shop",
+      "text": "Farida's cake shop had a quiet month. Orders fell by half, but the rent bill did not."
+    },
+    {
+      "kind": "choice",
+      "id": "guess",
+      "guess": true,
+      "prompt": "Orders fell by half. Which cost fell by half too?",
+      "options": [
+        { "id": "a", "label": "Shop rent" },
+        { "id": "b", "label": "Cake boxes" },
+        { "id": "c", "label": "Her helper's monthly pay" }
+      ],
+      "answer": "b",
+      "why": "She buys one box for each cake. Rent and her helper's pay stay the same, busy or not."
+    },
+    {
+      "kind": "explain",
+      "id": "rule",
+      "title": "Two kinds of cost",
+      "text": "Fixed costs stay the same each month, like rent. Variable costs grow with every sale, like boxes and delivery petrol."
+    },
+    {
+      "kind": "explain",
+      "id": "worked",
+      "title": "One more cake",
+      "text": "One more cake means more flour, one more box and more petrol. It does not mean more rent. Rent is fixed."
+    },
+    {
+      "kind": "choice",
+      "id": "faded",
+      "prompt": "Farida pays her helper ₹12,000 a month, busy or not. What kind of cost is that?",
+      "options": [
+        { "id": "a", "label": "Variable" },
+        { "id": "b", "label": "Fixed" }
+      ],
+      "answer": "b",
+      "why": "It stays ₹12,000 however many cakes she sells. So it is fixed.",
+      "wrong": { "a": "It does not change with the number of cakes. Variable costs do." }
+    },
+    {
+      "kind": "sort",
+      "id": "buckets",
+      "prompt": "Sort Farida's costs.",
+      "buckets": ["Fixed", "Variable"],
+      "items": [
+        { "text": "Shop rent", "bucket": 0 },
+        { "text": "Flour and sugar", "bucket": 1 },
+        { "text": "Cake boxes", "bucket": 1 },
+        { "text": "Helper's monthly pay", "bucket": 0 },
+        { "text": "Delivery petrol", "bucket": 1 },
+        { "text": "Oven loan payment", "bucket": 0 }
+      ],
+      "why": "Rent, monthly pay and the loan stay the same. Flour, boxes and petrol grow with every order."
+    },
+    {
+      "kind": "choice",
+      "id": "sum",
+      "prompt": "Flour, cream and a box cost Farida ₹100 a cake. What do they cost for 50 cakes?",
+      "options": [
+        { "id": "a", "label": "₹100" },
+        { "id": "b", "label": "₹500" },
+        { "id": "c", "label": "₹5,000" }
+      ],
+      "answer": "c",
+      "why": "Variable costs grow with sales: 50 × ₹100 = ₹5,000.",
+      "wrong": {
+        "a": "₹100 is for one cake. She made 50.",
+        "b": "Check the sum again: 50 × ₹100."
+      }
+    },
+    {
+      "kind": "choice",
+      "id": "mix",
+      "prompt": "A cake sells for ₹300. Its flour, cream and box cost ₹100. What is the margin on one cake?",
+      "options": [
+        { "id": "a", "label": "₹200" },
+        { "id": "b", "label": "₹300" },
+        { "id": "c", "label": "₹400" }
+      ],
+      "answer": "a",
+      "why": "Margin is price minus the cost of that one item: ₹300 − ₹100 = ₹200.",
+      "wrong": {
+        "b": "₹300 is the price. Take off what the cake cost.",
+        "c": "The cost comes off the price. Don't add it."
+      }
+    },
+    {
+      "kind": "choice",
+      "id": "zero",
+      "prompt": "True or false: if Farida sells no cakes this month, she has no costs.",
+      "options": [
+        { "id": "a", "label": "True, no cakes means no costs" },
+        { "id": "b", "label": "False, fixed costs still have to be paid" }
+      ],
+      "answer": "b",
+      "why": "Rent, pay and the loan are due every month, even with zero sales.",
+      "wrong": { "a": "Only variable costs drop to zero. Rent still has to be paid." }
+    },
+    {
+      "kind": "scenario",
+      "id": "mini",
+      "setup": "Farida sells 200 cakes a month at ₹300, so she takes in ₹60,000. Each cake costs ₹100 to make. Rent and pay cost ₹22,000. She keeps ₹18,000.",
+      "question": "Next month she expects only 100 cakes. What should she plan for?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Costs halve too, so profit halves to ₹9,000",
+          "grade": "bad",
+          "outcome": "She plans on ₹9,000. She ends the month with a ₹2,000 loss.",
+          "why": "Rent and pay did not halve. Only flour, cream and boxes did.",
+          "better": "Split the costs: fixed ones stay, variable ones fall."
+        },
+        {
+          "id": "b",
+          "label": "Cut her flour order in half, and stop there",
+          "grade": "ok",
+          "outcome": "Flour costs fall. But the month still ends in a loss she did not see coming.",
+          "why": "She fixed the variable cost and forgot the fixed ones.",
+          "better": "Also plan for rent and pay, which stay the same."
+        },
+        {
+          "id": "c",
+          "label": "Rent and pay stay the same, so check for a loss",
+          "grade": "great",
+          "outcome": "She sees a ₹2,000 loss coming and sets money aside for it this month.",
+          "why": "100 cakes bring ₹30,000. Making them costs ₹10,000. ₹22,000 of rent and pay leaves her ₹2,000 short."
+        }
+      ]
+    }
+  ],
+  "summary": [
+    "Fixed costs stay the same each month, like rent.",
+    "Variable costs grow with every sale, like boxes.",
+    "When sales fall, fixed costs don't."
+  ],
+  "cards": [
+    {
+      "id": "u1-fv-1",
+      "front": "Your shop rent is ₹15,000 a month. Fixed or variable?",
+      "options": ["Fixed", "Variable"],
+      "answer": 0,
+      "back": "Fixed: it is the same however much you sell."
+    },
+    {
+      "id": "u1-fv-2",
+      "front": "Paper bags for each order. Fixed or variable?",
+      "options": ["Fixed", "Variable"],
+      "answer": 1,
+      "back": "Variable: more orders, more bags."
+    }
+  ]
+}

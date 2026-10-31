@@ -24,7 +24,8 @@ export const readDailyPool = (): DailyPool =>
     ? JSON.parse(readFileSync(join(DAILY_DIR, "daily.json"), "utf8"))
     : { startDay: "2026-01-01", calls: [] };
 
-export const COURSE_DIR = join(process.cwd(), "content/course");
+// CFAD_COURSE_DIR points the tests at their own small course (src/lib/__fixtures__/course).
+export const COURSE_DIR = process.env.CFAD_COURSE_DIR ?? join(process.cwd(), "content/course");
 
 /** content/course/course.json, or an empty course before it exists. Unvalidated; see checkCourse. */
 export const readCourse = (): Course =>

@@ -1,5 +1,10 @@
 // Lessons and flashcards on the server: the replay pays once, reviews are graded here, guest imports are capped.
 import { afterEach, describe, expect, it, vi } from "vitest";
+
+// A fixed sample course, so edits to the real content/course can't break these tests.
+vi.hoisted(() => {
+  process.env.CFAD_COURSE_DIR = `${process.cwd()}/src/lib/__fixtures__/course`;
+});
 import { readCourse, readLesson } from "../content-files";
 import type { Lesson } from "../course-types";
 import { ECONOMY, fresh } from "../game-state";

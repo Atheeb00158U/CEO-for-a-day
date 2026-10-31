@@ -31,10 +31,10 @@ describe("the course check catches broken lessons", () => {
   afterAll(() => rmSync(tmp, { recursive: true, force: true }));
   // eslint-disable-next-line @typescript-eslint/no-explicit-any -- fixtures are deliberately broken JSON
   type Json = any;
-  /** A copy of content/course in <tmp>/<name>, changed by `edit`. Returns the errors. */
+  /** A copy of the test course (src/lib/__fixtures__/course) in <tmp>/<name>, changed by `edit`. Returns the errors. */
   const fixture = (name: string, edit: (course: Json, lessons: Record<string, Json>) => void) => {
     const dir = join(tmp, name);
-    cpSync(COURSE_DIR, dir, { recursive: true });
+    cpSync(join(process.cwd(), "src/lib/__fixtures__/course"), dir, { recursive: true });
     const course = JSON.parse(readFileSync(join(dir, "course.json"), "utf8"));
     const lessons: Record<string, Json> = {};
     for (const id of ["sample-sales-not-profit", "sample-margin", "sample-fixed-variable"])
