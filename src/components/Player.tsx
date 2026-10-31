@@ -11,6 +11,7 @@ import { ADVISOR, NARRATOR, speak, stopVoice } from "@/lib/voice";
 import { Bar, Caption, Icon, MediaView } from "./ui";
 import { Logo } from "./Logo";
 import { Debrief } from "./Debrief";
+import { MADE_UP_LABEL } from "@/content/catalog";
 
 type Phase =
   { kind: "screen"; i: number } | { kind: "reveal" } | { kind: "checkpoint" } | { kind: "debrief"; record: RunRecord; endingTitle: string };
@@ -90,6 +91,7 @@ export function Player({
   if (!view) return <Loading failed={!!failed} onRetry={() => load(failed ?? [])} onExit={onExit} />;
 
   const { meta } = view;
+  const madeUp = !!meta.madeUp;
   const screen = phase.kind === "screen" ? view.screens[phase.i] : undefined;
 
   const onHindsight = () => {
@@ -202,7 +204,8 @@ export function Player({
           setup={screen.setup}
           question={screen.question}
           advisor={screen.advisor}
-          estimate={!view.onRealPath}
+          estimate={!madeUp && !view.onRealPath}
+          madeUp={madeUp}
           warning={view.trust === 1 ? "Board warning: one more costly call and you're out." : undefined}
           options={screen.options}
           busy={busy}
@@ -214,7 +217,8 @@ export function Player({
           key={reveal.nodeId + reveal.optionId}
           year={reveal.year}
           media={reveal.media}
-          real={view.onRealPath}
+          real={madeUp ? undefined : view.onRealPath}
+          madeUp={madeUp}
           outcome={reveal.outcome}
           grade={reveal.grade}
           why={reveal.why}
@@ -353,15 +357,20 @@ function VoiceButton({ onClick }: { onClick: () => void }) {
   );
 }
 
-function YearChip({ year, real }: { year?: string; real?: boolean }) {
+function YearChip({ year, real, madeUp }: { year?: string; real?: boolean; madeUp?: boolean }) {
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex flex-wrap items-center gap-2">
       {year && <span className="rounded-lg bg-surface-2 px-2 py-1 text-[13px] font-black tabular-nums text-ink">{year}</span>}
       {real !== undefined && (
         <span
           className={`rounded-lg px-2 py-1 text-[11px] font-black uppercase tracking-wider ${real ? "bg-ink text-bg" : "border-2 border-dashed border-muted text-muted"}`}
         >
           {real ? "Real history" : "Our estimate"}
+        </span>
+      )}
+      {madeUp && (
+        <span className="rounded-lg border-2 border-dashed border-purple px-2 py-1 text-[11px] font-black tracking-wider text-purple uppercase">
+          {MADE_UP_LABEL}
         </span>
       )}
     </div>
@@ -376,7 +385,7 @@ function SceneView({ view, node, onNext }: { view: PlayView; node: Extract<Scree
   return (
     <div className="flex flex-1 flex-col gap-4">
       <MediaView media={node.media} className="aspect-[4/3] w-full" />
-      <YearChip year={node.year} real={run.picks.length ? run.onRealPath : undefined} />
+      <YearChip year={node.year} real={run.picks.length && !run.meta.madeUp ? run.onRealPath : undefined} madeUp={run.meta.madeUp} />
       <Caption text={text} progress={prog(0)} className="text-[21px] font-bold leading-snug" />
       {s.settings.voice && <VoiceButton onClick={replay} />}
       <div className="mt-auto pb-6 pt-4">
@@ -409,6 +418,7 @@ export function DecisionView({
   advisor,
   warning,
   estimate,
+  madeUp,
   options,
   busy,
   onChoose,
@@ -421,6 +431,8 @@ export function DecisionView({
   warning?: string;
   /** The player has left the real path, so this situation is our estimate. */
   estimate?: boolean;
+  /** A made-up story: labelled as such, never "Real history" or "Our estimate". */
+  madeUp?: boolean;
   options: ChoiceItem[];
   /** Waiting for the server's verdict: the lock button stays down. */
   busy?: boolean;
@@ -440,7 +452,7 @@ export function DecisionView({
       <div className="flex items-center gap-3">
         {media && <MediaView media={media} className="size-20 shrink-0 !rounded-2xl" kenBurns={false} />}
         <div className="min-w-0">
-          <YearChip year={year} real={estimate ? false : undefined} />
+          <YearChip year={year} real={estimate ? false : undefined} madeUp={madeUp} />
           <p className="mt-1 text-[13px] font-black uppercase tracking-[.12em] text-brand">Your call</p>
         </div>
       </div>
@@ -507,12 +519,13 @@ export function RevealView({
   realChoice,
   extra,
   hindsight,
+  madeUp,
   onNext,
 }: {
   year: string;
   media?: Media;
   /** Real history, or our estimate of what would have happened. */
-  real: boolean;
+  real?: boolean;
   outcome: string;
   grade: Grade;
   why: string;
@@ -522,6 +535,7 @@ export function RevealView({
   realChoice?: { company: string; label: string };
   extra?: React.ReactNode;
   hindsight?: { left: number; onUse: () => void };
+  madeUp?: boolean;
   onNext: () => void;
 }) {
   const { s } = useGame();
@@ -531,7 +545,7 @@ export function RevealView({
   return (
     <div className="flex flex-1 flex-col gap-4 pb-[300px]">
       {media && <MediaView media={media} className="aspect-[16/9] w-full" />}
-      <YearChip year={year} real={real} />
+      <YearChip year={year} real={real} madeUp={madeUp} />
       <p className="text-[13px] font-black uppercase tracking-[.12em] text-muted">What happened</p>
       <Caption text={outcome} progress={prog(0)} className="-mt-2 text-[20px] font-bold leading-snug" />
       {s.settings.voice && <VoiceButton onClick={replay} />}
@@ -543,52 +557,85 @@ export function RevealView({
       )}
       {extra}
 
-      <div className={`sheet fixed inset-x-0 bottom-0 z-30 ${v.bg}`} style={{ paddingBottom: "max(16px, env(safe-area-inset-bottom))" }}>
-        <div className="mx-auto flex max-w-[480px] flex-col gap-2 px-4 pt-4">
-          <div className="flex items-center justify-between">
-            <h3 className="text-[24px] font-black" style={{ color: v.color }}>
-              {v.title}
-            </h3>
+      <VerdictSheet
+        grade={grade}
+        title={v.title}
+        pointsLabel={pointsLabel}
+        lines={[
+          { label: grade === "great" ? "Why it worked: " : "Why it hurt: ", text: why },
+          ...(better ? [{ label: "What would have worked: ", text: better }] : []),
+        ]}
+        hindsight={hindsight}
+        note={madeUp ? MADE_UP_LABEL : undefined}
+        onNext={onNext}
+      />
+    </div>
+  );
+}
+
+/** The green, gold or red bottom sheet after a pick: a title, a few labelled lines and Continue. Lessons use it too. */
+export function VerdictSheet({
+  grade,
+  title,
+  pointsLabel,
+  lines,
+  hindsight,
+  note,
+  onNext,
+}: {
+  grade: Grade;
+  title: string;
+  pointsLabel?: string;
+  lines: { label: string; text: string }[];
+  hindsight?: { left: number; onUse: () => void };
+  /** A small line under the verdict, like the made-up story label. */
+  note?: string;
+  onNext: () => void;
+}) {
+  const v = VERDICT[grade];
+  return (
+    <div className={`sheet fixed inset-x-0 bottom-0 z-30 ${v.bg}`} style={{ paddingBottom: "max(16px, env(safe-area-inset-bottom))" }}>
+      <div className="mx-auto flex max-w-[480px] flex-col gap-2 px-4 pt-4">
+        <div className="flex items-center justify-between">
+          <h3 className="text-[24px] font-black" style={{ color: v.color }}>
+            {title}
+          </h3>
+          {pointsLabel && (
             <span className="text-[14px] font-black" style={{ color: v.color }}>
               {pointsLabel}
             </span>
-          </div>
-          <p className="text-[15px] font-bold leading-snug">
-            <span className="font-black" style={{ color: v.color }}>
-              {grade === "great" ? "Why it worked: " : "Why it hurt: "}
-            </span>
-            {why}
-          </p>
-          {better && (
-            <p className="text-[15px] font-bold leading-snug">
-              <span className="font-black" style={{ color: v.color }}>
-                What would have worked:{" "}
-              </span>
-              {better}
-            </p>
           )}
-          <div className="mt-2 flex gap-3">
-            {hindsight && (
-              <button
-                type="button"
-                className="btn3d ghost !w-auto shrink-0 !px-3 !text-[13px]"
-                onClick={hindsight.onUse}
-                aria-label={`Use Hindsight to redo this call. ${hindsight.left} left`}
-              >
-                <Icon.rewind className="size-5" /> Redo ({hindsight.left})
-              </button>
-            )}
+        </div>
+        {lines.map((l) => (
+          <p key={l.label} className="text-[15px] font-bold leading-snug">
+            <span className="font-black" style={{ color: v.color }}>
+              {l.label}
+            </span>
+            {l.text}
+          </p>
+        ))}
+        {note && <p className="text-[12px] font-black tracking-wider text-muted uppercase">{note}</p>}
+        <div className="mt-2 flex gap-3">
+          {hindsight && (
             <button
               type="button"
-              className={`btn3d ${v.btn}`}
-              onClick={() => {
-                playSfx("next");
-                onNext();
-              }}
+              className="btn3d ghost !w-auto shrink-0 !px-3 !text-[13px]"
+              onClick={hindsight.onUse}
+              aria-label={`Use Hindsight to redo this call. ${hindsight.left} left`}
             >
-              Continue
+              <Icon.rewind className="size-5" /> Redo ({hindsight.left})
             </button>
-          </div>
+          )}
+          <button
+            type="button"
+            className={`btn3d ${v.btn}`}
+            onClick={() => {
+              playSfx("next");
+              onNext();
+            }}
+          >
+            Continue
+          </button>
         </div>
       </div>
     </div>
@@ -607,7 +654,7 @@ function EndingView({ view, node, onNext }: { view: PlayView; node: Extract<Scre
   return (
     <div className="flex flex-1 flex-col gap-4">
       <MediaView media={node.media} className="aspect-[4/3] w-full" />
-      {!run.onRealPath && <YearChip real={false} />}
+      {run.meta.madeUp ? <YearChip madeUp /> : !run.onRealPath && <YearChip real={false} />}
       <p className="text-[13px] font-black uppercase tracking-[.14em]" style={{ color }}>
         {node.tier === "fired" ? "Game over" : "The end"}
       </p>

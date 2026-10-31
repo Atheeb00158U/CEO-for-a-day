@@ -86,7 +86,8 @@ body {
   transform: translateY(4px);
   box-shadow: 0 1px 0 var(--edge);
 }
-.btn3d:disabled {
+/* [class] lifts this above the colour classes below, so a disabled green button greys out too. */
+.btn3d[class]:disabled {
   --face: var(--color-surface-2);
   --edge: #10161c;
   --text: var(--color-muted);
@@ -148,7 +149,8 @@ body {
   box-shadow: 0 2px 0 var(--color-line);
 }
 .tile[aria-pressed="true"],
-.tile[aria-checked="true"] {
+.tile[aria-checked="true"],
+.tile[aria-selected="true"] {
   border-color: var(--color-brand);
   box-shadow: 0 4px 0 var(--color-brand-dark);
   background: #2a1f0d;

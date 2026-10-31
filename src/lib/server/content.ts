@@ -1,12 +1,14 @@
-// Hot Seats and Daily Calls, read from content/ on the server. Nothing here may be imported by client code:
+// Hot Seats, Daily Calls and the course, read from content/ on the server. Nothing here may be imported by client code:
 // these objects hold every answer. The phone gets only what src/lib/play.ts and the API routes hand out.
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { callsPerRun, dailyFor, reviewedDebrief, type Debriefs } from "../engine.ts";
-import { HOTSEATS_DIR, hotSeatIds, readDailyPool, readHotSeat } from "../content-files.ts";
+import { HOTSEATS_DIR, hotSeatIds, lessonFileIds, readCourse, readDailyPool, readHotSeat, readLesson } from "../content-files.ts";
+import type { Card, CourseOutline, Lesson, Module } from "../course-types";
 import type { CatalogEntry, DailyAnswer, DailyCall, DailyPool, DailyQuestion, HotSeat } from "../hotseat-types";
+import { testOutLesson } from "../lesson-play.ts";
 import type { Pick } from "../play.ts";
-import { TRIAL_ID } from "../../content/catalog";
+import { COURSE_TRIAL_ID, TRIAL_ID } from "../../content/catalog";
 
 /** Drafts are playable only in `npm run dev`. The environment is passed in so tests can check production. */
 export const canServe = (hs: { draft?: boolean }, nodeEnv = process.env.NODE_ENV) => !hs.draft || nodeEnv === "development";
@@ -47,6 +49,7 @@ const entry = (hs: HotSeat, available: boolean): CatalogEntry => ({
   emblem: hs.emblem,
   complexity: hs.complexity,
   available,
+  ...(hs.madeUp ? { madeUp: true } : {}),
 });
 
 /** Shown on the map as "coming soon" until a Hot Seat (even a draft) with the same id exists. */
@@ -106,10 +109,16 @@ export function catalog(): CatalogEntry[] {
   ];
 }
 
-/** The trial's card, when the trial can be played here (production needs it published). */
-export function trial(nodeEnv = process.env.NODE_ENV): CatalogEntry | undefined {
-  const hs = servableHotSeat(TRIAL_ID, nodeEnv);
-  return hs && entry(hs, true);
+/**
+ * The trial's card, when the trial can be played here (production needs it published). With the course on, the
+ * made-up kirana-year once it exists (after lesson 1); otherwise, and until then, TRIAL_ID as before.
+ */
+export function trial(
+  nodeEnv = process.env.NODE_ENV,
+  servable: (id: string) => HotSeat | undefined = (id) => servableHotSeat(id, nodeEnv),
+): CatalogEntry | undefined {
+  const hs = (courseOn(nodeEnv) && servable(COURSE_TRIAL_ID)) || servable(TRIAL_ID);
+  return hs ? entry(hs, true) : undefined;
 }
 
 const dailyPool = () => cached<DailyPool>("daily", readDailyPool);
@@ -151,4 +160,93 @@ export function answerOf(c: DailyCall, optionId: string): DailyAnswer | undefine
     realHistory: c.realHistory,
     sources: c.sources,
   };
+}
+
+/* ------------------------------------------------------------------ */
+/* The course: lessons, flashcards and the Home path.                  */
+/* ------------------------------------------------------------------ */
+
+/**
+ * The course is hidden from players until real lessons exist: on in `npm run dev` (and tests), off in production.
+ * Off, the /app page gets no outline (Home and Notes look as they did) and the lesson and card routes answer 404.
+ * Make this always true once Unit 1's lessons are published.
+ */
+export const courseOn = (nodeEnv = process.env.NODE_ENV) => nodeEnv !== "production";
+
+const course = () => cached("course", readCourse);
+const lessonsById = () => cached("lessons", () => new Map(lessonFileIds().map((id) => [id, readLesson(id)])));
+
+/** A lesson the player may play, or undefined (course off, unknown id, or a draft outside dev). */
+export function servableLesson(id: string, nodeEnv = process.env.NODE_ENV): Lesson | undefined {
+  if (!courseOn(nodeEnv) || !/^[a-z0-9-]{1,60}$/.test(id)) return undefined;
+  const l = lessonsById().get(id);
+  return l && canServe(l, nodeEnv) ? l : undefined;
+}
+
+/** The units and modules players may see, with only the lessons they may play. */
+function servableUnits(nodeEnv: typeof process.env.NODE_ENV) {
+  return course()
+    .units.filter((u) => canServe(u, nodeEnv))
+    .map((u) => ({
+      ...u,
+      modules: u.modules
+        .map((m) => ({ ...m, lessons: m.lessons.map((id) => servableLesson(id, nodeEnv)).filter((l): l is Lesson => !!l) }))
+        .filter((m) => m.lessons.length > 0),
+    }))
+    .filter((u) => u.modules.length > 0);
+}
+
+/** The Home path, without screens or answers. Undefined while the course is off. */
+export function courseOutline(nodeEnv = process.env.NODE_ENV): CourseOutline | undefined {
+  if (!courseOn(nodeEnv)) return undefined;
+  return {
+    units: servableUnits(nodeEnv).map((u) => ({
+      id: u.id,
+      title: u.title,
+      goal: u.goal,
+      modules: u.modules.map((m) => ({
+        id: m.id,
+        title: m.title,
+        goal: m.goal,
+        lessons: m.lessons.map((l) => ({
+          id: l.id,
+          title: l.title,
+          principle: l.principle,
+          minutes: l.minutes,
+          exercises: l.screens.filter((s) => s.kind !== "explain").length,
+        })),
+        gates: m.gates,
+      })),
+    })),
+  };
+}
+
+/** A module the player may test out of, with its playable lessons. */
+export function servableModule(id: string, nodeEnv = process.env.NODE_ENV): { module: Module; lessons: Lesson[] } | undefined {
+  if (!courseOn(nodeEnv) || !/^[a-z0-9-]{1,60}$/.test(id)) return undefined;
+  for (const u of servableUnits(nodeEnv))
+    for (const m of u.modules) if (m.id === id) return { module: { ...m, lessons: m.lessons.map((l) => l.id) }, lessons: m.lessons };
+  return undefined;
+}
+
+/** Every lesson id in the course, drafts included: what a guest's imported progress may name. */
+export const courseLessonIds = () => new Set(lessonsById().keys());
+
+/** The flashcards of these lessons. Card answers aren't secret: they're study material, shown after each tap. */
+export function cardsOf(lessonIds: string[], nodeEnv = process.env.NODE_ENV): (Card & { lessonId: string })[] {
+  return lessonIds.flatMap((id) => (servableLesson(id, nodeEnv)?.cards ?? []).map((c) => ({ ...c, lessonId: id })));
+}
+
+/** Which lesson each card id belongs to, across the whole course. */
+export const cardLessons = () =>
+  cached("cardLessons", () => new Map([...lessonsById().values()].flatMap((l) => l.cards.map((c) => [c.id, l.id] as const))));
+
+/** The lesson a request names: `lessonId`, or `testOut` (a module id) for that module's test-out quiz. */
+export function lessonOf(body: { lessonId?: unknown; testOut?: unknown } | null, nodeEnv = process.env.NODE_ENV) {
+  if (typeof body?.testOut === "string") {
+    const m = servableModule(body.testOut, nodeEnv);
+    return m && { lesson: testOutLesson(m.module, m.lessons), testOut: m.module.lessons };
+  }
+  const lesson = typeof body?.lessonId === "string" ? servableLesson(body.lessonId, nodeEnv) : undefined;
+  return lesson && { lesson, testOut: undefined };
 }

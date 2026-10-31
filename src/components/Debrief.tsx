@@ -6,6 +6,7 @@ import type { Result } from "@/lib/play";
 import { BADGES, ECONOMY, useGame, type RunRecord } from "@/lib/store";
 import { playSfx } from "@/lib/sfx";
 import { stopVoice } from "@/lib/voice";
+import { MADE_UP_LABEL } from "@/content/catalog";
 import { ReminderCard } from "./ReminderCard";
 import { SignInCard } from "./SignInCard";
 import { Card, Icon } from "./ui";
@@ -140,8 +141,14 @@ export function Debrief({
       </Card>
 
       <Card>
-        <h2 className="text-[19px] font-black">What really happened</h2>
-        <p className="mt-2 text-[15px] font-bold leading-snug text-muted">{meta.realHistory}</p>
+        {meta.madeUp ? (
+          <h2 className="text-[19px] font-black">{MADE_UP_LABEL}</h2>
+        ) : (
+          <>
+            <h2 className="text-[19px] font-black">What really happened</h2>
+            <p className="mt-2 text-[15px] font-bold leading-snug text-muted">{meta.realHistory}</p>
+          </>
+        )}
         <details className="mt-3 text-[13px] font-bold text-muted">
           <summary className="cursor-pointer font-black text-brand">Sources</summary>
           <ul className="mt-2 flex flex-col gap-1.5">

@@ -117,8 +117,14 @@ export interface HotSeat {
   nodes: Record<string, HotSeatNode>;
   /** The ending tier the real company reached, used for the "Beat history" badge. */
   realEnding: EndingNode["tier"];
-  /** What actually happened, shown on the debrief. */
-  realHistory: string;
+  /** What actually happened, shown on the debrief. Required unless `madeUp`. */
+  realHistory?: string;
+  /**
+   * A made-up story (a composite, like kirana-year), not a real company: the app labels it as made up and shows no
+   * "Real history"/"Our estimate" tags and no real-history panel. No option may be marked real, and hotseat:check asks
+   * for a realism.md note instead of factcheck.md.
+   */
+  madeUp?: boolean;
   sources: { label: string; url: string }[];
   credits: string;
 }
@@ -136,6 +142,7 @@ export interface CatalogEntry {
   emblem?: Media;
   complexity: 1 | 2 | 3 | 4 | 5;
   available: boolean;
+  madeUp?: boolean;
 }
 
 /** A Daily Call as the phone sees it before locking in: no grades or outcomes. */

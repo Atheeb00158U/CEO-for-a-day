@@ -11,6 +11,8 @@ import { useGame } from "@/lib/store";
 import { Player } from "./Player";
 import { Bar, Card, MediaView } from "./ui";
 import { Logo } from "./Logo";
+import { COURSE_TRIAL_ID, MADE_UP_LABEL } from "@/content/catalog";
+import { LessonPlayer } from "./LessonPlayer";
 
 /** Calls a new player makes in the trial before the style card. */
 const TRIAL_CALLS = 2;
@@ -45,7 +47,7 @@ const FOR_YOU: Record<Doing, string> = {
   curious: "Every Hot Seat adds to it. Your full style is on your Profile.",
 };
 
-type Step = "hook" | "doing" | "focus" | "minutes" | "trial" | "play";
+type Step = "hook" | "doing" | "focus" | "minutes" | "lesson" | "trial" | "play";
 
 /**
  * The welcome screens for a new player: three quick questions that change the game, then the first calls of the
@@ -53,7 +55,9 @@ type Step = "hook" | "doing" | "focus" | "minutes" | "trial" | "play";
  */
 export function Onboarding({ onDone }: { onDone: () => void }) {
   const { s, setOnboarding } = useGame();
-  const { trial } = useContent();
+  const { trial, course } = useContent();
+  // With the course on and the kirana Hot Seat in place: Unit 1's first lesson, then the trial's first calls.
+  const firstLesson = trial?.id === COURSE_TRIAL_ID ? course?.units[0]?.modules[0]?.lessons[0]?.id : undefined;
   const [step, setStep] = useState<Step>("hook");
   const finish = () => {
     setOnboarding({ done: true });
@@ -64,6 +68,8 @@ export function Onboarding({ onDone }: { onDone: () => void }) {
     setOnboarding(patch);
     setStep(next);
   };
+
+  if (step === "lesson" && firstLesson) return <LessonPlayer target={{ lessonId: firstLesson }} onExit={() => setStep("trial")} />;
 
   if (step === "play" && trial)
     return (
@@ -125,7 +131,7 @@ export function Onboarding({ onDone }: { onDone: () => void }) {
           hint="This sets your daily goal. You can play more."
           items={MINUTES}
           onPick={(id) => {
-            if (trial) return answer({ minutes: id }, "trial");
+            if (trial) return answer({ minutes: id }, firstLesson ? "lesson" : "trial");
             setOnboarding({ minutes: id });
             finish();
           }}
@@ -174,6 +180,7 @@ function TrialIntro({ hs, onStart }: { hs: CatalogEntry; onStart: () => void }) 
       </p>
       <h1 className="-mt-2 text-[28px] leading-tight font-black text-balance">{hs.title}</h1>
       <p className="text-[18px] font-bold">{hs.hook}</p>
+      {hs.madeUp && <p className="text-[13px] font-black tracking-wider text-purple uppercase">{MADE_UP_LABEL}</p>}
       <p className="text-[15px] font-bold text-muted">Try the first {TRIAL_CALLS} calls. About two minutes.</p>
       <div className="mt-auto pb-6">
         <button type="button" className="btn3d green" onClick={onStart}>
@@ -212,9 +219,15 @@ function StyleCard({ view, doing, onContinue, onHome }: { view: PlayView; doing?
         {great === picks.length ? "Sharp start" : great ? "Good instincts, one slip" : "Bold, but costly"}
       </h1>
       <Card className="flex flex-col gap-2">
-        <p className="text-[17px] font-extrabold">
-          You picked what {meta.company} really did in {matched} of {picks.length} calls.
-        </p>
+        {meta.madeUp ? (
+          <p className="text-[17px] font-extrabold">
+            {great} of {picks.length} calls were great calls.
+          </p>
+        ) : (
+          <p className="text-[17px] font-extrabold">
+            You picked what {meta.company} really did in {matched} of {picks.length} calls.
+          </p>
+        )}
         {lines.map((l) => (
           <p key={l} className="text-[17px] font-bold">
             {l}

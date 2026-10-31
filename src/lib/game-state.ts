@@ -1,5 +1,6 @@
 import type { DailyCall, DailyOption, Grade, TraitKey } from "./hotseat-types";
 import { DEMOTE, leagueRows, PROMOTE } from "./league.ts";
+import { newCard, ratingOf, recall, review, type CardState } from "./srs.ts";
 
 /* ------------------------------------------------------------------ */
 /* Economy. Tune these in one place.                                   */
@@ -11,6 +12,10 @@ export const ECONOMY = {
   prices: { freeze: 200, booster: 150, hindsight: 100 },
   starter: { coins: 120, freezes: 1, hindsights: 1, boosters: 1 },
   dailyXp: { great: 15, ok: 10, bad: 5 } satisfies Record<Grade, number>,
+  /** A lesson pays `xp` plus up to `firstTryBonus` for first-try accuracy the first time; a replay pays `replayXp`, a few a day. */
+  lesson: { xp: 10, firstTryBonus: 5, coins: 5, replayXp: 5, replaysPaid: 5 },
+  /** Flashcards: 1 XP a card up to `xpCap` a day. "Daily 10": at most `perDay` reviews a day, `newPerDay` of them new. */
+  review: { xp: 1, xpCap: 10, session: 10, perDay: 20, newPerDay: 5, streakMin: 3 },
 };
 
 export const LEAGUES = ["Intern", "Manager", "Director", "VP", "CEO", "Tycoon"] as const;
@@ -51,7 +56,7 @@ export interface GameState {
   league: { tier: number; weekId: string; weeklyXp: number };
   runs: RunRecord[];
   best: Record<string, number>;
-  quests: { day: string; decisions: number; great: number; xp: number; claimed: string[] };
+  quests: Quests;
   badges: string[];
   traits: Record<TraitKey, number>;
   settings: { voice: boolean; sfx: boolean; dataSaver: boolean; lang: "en" | "hi" | "ta" | "bn" };
@@ -61,6 +66,37 @@ export interface GameState {
   dailyLog: DailyNote[];
   /** First-visit answers. `done` once the player finishes or skips the welcome screens. */
   onboarding: Onboarding;
+  /** Best first-try accuracy (0–100) per finished lesson. Presence means done (a test-out counts). */
+  lessons: Record<string, number>;
+  /** The review schedule of every flashcard the player has unlocked, by card id. */
+  cards: Record<string, CardState>;
+  /** Lesson answers the player got wrong the first time, newest first (last 40). */
+  mistakes: LessonMistake[];
+}
+
+/** Today's counters (IST): quests read them, and the lesson and review caps use them. */
+export interface Quests {
+  day: string;
+  decisions: number;
+  great: number;
+  xp: number;
+  claimed: string[];
+  /** Lessons finished today, and how many of them were replays. */
+  lessons: number;
+  replays: number;
+  /** Flashcards reviewed today, and how many of them were new. */
+  reviews: number;
+  newCards: number;
+}
+
+export interface LessonMistake {
+  lessonId: string;
+  screenId: string;
+  prompt: string;
+  picked: string;
+  right: string;
+  why: string;
+  day: string;
 }
 
 export type Doing = "job" | "starting" | "running" | "student" | "curious";
@@ -103,6 +139,18 @@ export const weekId = (d = new Date()) => {
 export const istMidnight = (day: string) => new Date(day + "T00:00:00+05:30");
 export const dayDiff = (a: string, b: string) => Math.round((new Date(b).getTime() - new Date(a).getTime()) / 864e5);
 
+const freshQuests = (day: string): Quests => ({
+  day,
+  decisions: 0,
+  great: 0,
+  xp: 0,
+  claimed: [],
+  lessons: 0,
+  replays: 0,
+  reviews: 0,
+  newCards: 0,
+});
+
 export function fresh(): GameState {
   const seed = Math.random().toString(36).slice(2, 10);
   return {
@@ -121,15 +169,32 @@ export function fresh(): GameState {
     league: { tier: 0, weekId: weekId(), weeklyXp: 0 },
     runs: [],
     best: {},
-    quests: { day: today(), decisions: 0, great: 0, xp: 0, claimed: [] },
+    quests: freshQuests(today()),
     badges: [],
     traits: { horizon: 0, risk: 0, disrupt: 0 },
     settings: { voice: true, sfx: true, dataSaver: false, lang: "en" },
     daily: null,
     dailyLog: [],
     onboarding: { done: false },
+    lessons: {},
+    cards: {},
+    mistakes: [],
   };
 }
+
+const isPlain = (x: unknown): x is Record<string, unknown> => !!x && typeof x === "object" && !Array.isArray(x);
+function merge(base: unknown, saved: unknown): unknown {
+  if (!isPlain(base) || !isPlain(saved)) return saved === undefined ? base : saved;
+  const out: Record<string, unknown> = { ...base };
+  for (const [k, v] of Object.entries(saved)) out[k] = merge(base[k], v);
+  return out;
+}
+
+/**
+ * A save from any older version, with every field it lacks filled from `fresh()` at every depth (a save from before
+ * `quests.lessons` existed gets 0, not undefined). Arrays and values in the save are kept as they are.
+ */
+export const withDefaults = (saved: Partial<GameState>): GameState => merge(fresh(), saved) as GameState;
 
 /**
  * Roll daily/weekly state forward: streak freezes, quest reset, league week.
@@ -138,7 +203,7 @@ export function fresh(): GameState {
 export function rollover(s: GameState, now = new Date(), { settleLeague = true } = {}): GameState {
   const t = today(now);
   const next = { ...s };
-  if (next.quests.day !== t) next.quests = { day: t, decisions: 0, great: 0, xp: 0, claimed: [] };
+  if (next.quests.day !== t) next.quests = freshQuests(t);
   if (next.lastActiveDay && next.streak > 0) {
     const gap = dayDiff(next.lastActiveDay, t);
     if (gap > 1) {
@@ -309,4 +374,145 @@ export function applyClaim(s: GameState, id: string): GameState | null {
   const q = questsFor(s).find((x) => x.id === id);
   if (!q || s.quests.claimed.includes(id) || q.read(s.quests) < q.goal) return null;
   return { ...s, coins: s.coins + q.reward, quests: { ...s.quests, claimed: [...s.quests.claimed, id] } };
+}
+
+/* ------------------------------------------------------------------ */
+/* Lessons and flashcards. Pure too: guests run these on the phone,     */
+/* signed-in players on the server (src/lib/server/game.ts).             */
+/* ------------------------------------------------------------------ */
+
+/** A finished lesson, as the server's replay (src/lib/lesson-play.ts) worked it out. */
+export interface LessonFinish {
+  lessonId: string;
+  /** First-try accuracy, 0–100. */
+  accuracy: number;
+  /** The lesson's flashcards: finishing it adds them to the deck. */
+  cardIds: string[];
+  mistakes: Omit<LessonMistake, "day">[];
+}
+
+const L = ECONOMY.lesson;
+const R = ECONOMY.review;
+
+/** XP for a lesson: the full amount the first time, a little for a few replays a day, then nothing. */
+export const lessonXp = (accuracy: number, firstTime: boolean, replaysToday: number, boosted: boolean) =>
+  (firstTime
+    ? L.xp + Math.round((Math.max(0, Math.min(100, accuracy)) / 100) * L.firstTryBonus)
+    : replaysToday < L.replaysPaid
+      ? L.replayXp
+      : 0) * (boosted ? 2 : 1);
+
+/** New cards join the deck due today. Cards already in it keep their schedule. */
+const unlock = (cards: GameState["cards"], ids: string[], day: string) => {
+  const out = { ...cards };
+  for (const id of ids) out[id] ??= newCard(day);
+  return out;
+};
+
+/** Pay out a finished lesson: XP, coins the first time, best accuracy, its cards, and its mistakes for the journal. */
+export function applyLesson(s: GameState, f: LessonFinish, now = new Date()): { state: GameState; xp: number } {
+  const day = today(now);
+  const firstTime = s.lessons[f.lessonId] === undefined;
+  const xp = lessonXp(f.accuracy, firstTime, s.quests.replays, s.boosterUntil > now.getTime());
+  const x = touchStreak(s, now);
+  const fixed = new Set(f.mistakes.map((m) => `${m.lessonId}/${m.screenId}`));
+  const mistakes = [
+    ...f.mistakes.map((m) => ({ ...m, day })),
+    ...x.mistakes.filter((m) => !fixed.has(`${m.lessonId}/${m.screenId}`)),
+  ].slice(0, 40);
+  const state: GameState = {
+    ...x,
+    xp: x.xp + xp,
+    coins: x.coins + (firstTime ? L.coins : 0),
+    league: { ...x.league, weeklyXp: x.league.weeklyXp + xp },
+    lessons: { ...x.lessons, [f.lessonId]: Math.max(x.lessons[f.lessonId] ?? 0, Math.round(f.accuracy)) },
+    cards: unlock(x.cards, f.cardIds, day),
+    mistakes,
+    quests: { ...x.quests, lessons: x.quests.lessons + 1, replays: x.quests.replays + (firstTime ? 0 : 1), xp: x.quests.xp + xp },
+  };
+  return { state, xp };
+}
+
+/** The score a test-out quiz needs to pass a module's lessons. */
+export const TEST_OUT_PASS = 80;
+
+/**
+ * A passed test-out: the module's lessons count as done (at the quiz's accuracy) and their cards join the deck.
+ * It skips ahead, so it pays no XP. Lessons already done keep their best. A failed quiz changes nothing.
+ */
+export function applyTestOut(s: GameState, t: { lessonIds: string[]; accuracy: number; cardIds: string[] }, now = new Date()): GameState {
+  if (t.accuracy < TEST_OUT_PASS) return s;
+  const x = touchStreak(s, now);
+  const lessons = { ...x.lessons };
+  for (const id of t.lessonIds) lessons[id] ??= Math.round(t.accuracy);
+  return { ...x, lessons, cards: unlock(x.cards, t.cardIds, today(now)) };
+}
+
+/**
+ * Today's cards ("Daily 10"): the ones the player is most likely to have forgotten first, then new ones. Never the
+ * whole backlog: at most `review.session`, within today's `perDay` and `newPerDay`. With `pool` (a Practice node),
+ * only those cards, due or not.
+ */
+export function cardsToday(s: GameState, now = new Date(), pool?: string[]): string[] {
+  const day = today(now);
+  const size = Math.max(0, Math.min(R.session, R.perDay - s.quests.reviews));
+  const ids = (pool ?? Object.keys(s.cards)).filter((id) => s.cards[id] && s.cards[id][5] !== day);
+  const old = ids
+    .filter((id) => s.cards[id][3] > 0 && (pool || s.cards[id][0] <= day))
+    .map((id) => ({ id, r: recall(s.cards[id], day) }))
+    .sort((a, b) => a.r - b.r)
+    .map((c) => c.id);
+  const fresh = ids.filter((id) => s.cards[id][3] === 0).slice(0, Math.max(0, R.newPerDay - s.quests.newCards));
+  return [...old, ...fresh].slice(0, size);
+}
+
+/** One flashcard answer: the option tapped (its index) and how long it took. */
+export interface CardReview {
+  cardId: string;
+  pick: number;
+  ms: number;
+}
+
+/**
+ * Grade a review session and reschedule its cards. `answers` is each card's right option, from the content. Cards
+ * the player hasn't unlocked, cards already reviewed today and anything past today's limits are skipped, so a retry
+ * pays nothing twice. Pays 1 XP a card up to the daily cap; 3 or more cards keep the streak.
+ */
+export function applyReview(
+  s: GameState,
+  reviews: CardReview[],
+  answers: Record<string, number>,
+  now = new Date(),
+): { state: GameState; xp: number; counted: number } {
+  const day = today(now);
+  const cards = { ...s.cards };
+  let left = R.perDay - s.quests.reviews;
+  let newLeft = R.newPerDay - s.quests.newCards;
+  let n = 0;
+  let nNew = 0;
+  for (const r of reviews.slice(0, 50)) {
+    const c = cards[r.cardId];
+    if (!c || c[5] === day || answers[r.cardId] === undefined || left <= 0) continue;
+    const isNew = c[3] === 0;
+    if (isNew && newLeft <= 0) continue;
+    cards[r.cardId] = review(c, ratingOf(r.pick === answers[r.cardId], r.ms), day);
+    left--;
+    n++;
+    if (isNew) {
+      newLeft--;
+      nNew++;
+    }
+  }
+  if (!n) return { state: s, xp: 0, counted: 0 };
+  const paidToday = Math.min(R.xpCap, s.quests.reviews * R.xp);
+  const xp = Math.min(n * R.xp, R.xpCap - paidToday) * (s.boosterUntil > now.getTime() ? 2 : 1);
+  const x = n >= R.streakMin ? touchStreak(s, now) : s;
+  const state: GameState = {
+    ...x,
+    xp: x.xp + xp,
+    league: { ...x.league, weeklyXp: x.league.weeklyXp + xp },
+    cards,
+    quests: { ...x.quests, reviews: x.quests.reviews + n, newCards: x.quests.newCards + nNew, xp: x.quests.xp + xp },
+  };
+  return { state, xp, counted: n };
 }

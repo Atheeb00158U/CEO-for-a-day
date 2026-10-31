@@ -33,6 +33,14 @@ UI components: use shadcn/ui, restyled to this look. Add gluestack-ui only if we
 ## Writing stories
 Follow `docs/AUTHORING.md` for every Hot Seat and Daily Call: research brief → draft → check → fresh-context fact-check (stamped `factcheck.md`) → media from the archives (`media.md`) → Atheeb's review. A published story needs a `factcheck.md` stamped for its exact file, with no open claims. Missing narration is only a warning (the app falls back to the browser's voice).
 
+## Lessons and flashcards (built, hidden)
+- **Switch:** `courseOn()` in `src/lib/server/content.ts`: on in `npm run dev` and tests, **off in production** until real lessons exist. Off, `/app` gets no outline (Home and Notes look as before) and `/api/lesson`, `/api/cards` answer 404.
+- Content: `content/course/course.json` (units → modules → lesson ids + Hot Seat `gates`) and `content/course/lessons/<id>.json`, checked by `src/lib/course-schema.ts` (must match `course-types.ts`) and `course-check.ts` inside `npm run hotseat:check`. The three `sample-*` lessons are test fixtures (draft), not course copy. Card ids are review-schedule keys: never rename or reuse one.
+- Exercise kinds: explain, choice (with `guess` for "guess first"), gap (word bank), order, sort (two buckets), scenario. Not built yet: slider, match pairs.
+- **No answers on the phone**, like Hot Seats: `/api/lesson` replays the answers (`src/lib/lesson-play.ts`) and returns the verdict plus the next screens; missed exercises come back once at the end. `/api/lesson/finish` pays once per `playKey` (`lesson_plays` table). A module's test-out is the same replay over one exercise per lesson (`testOut: <module id>`), no XP, pass at 80%.
+- Rules (pure, in `game-state.ts`, shared by phone and server): `applyLesson`, `applyTestOut`, `applyReview`, `cardsToday`. Flashcards use FSRS (`ts-fsrs`, `src/lib/srs.ts`) by whole IST days; "Daily 10": at most 10 a session, 20 a day, 5 new. Review XP is capped at 10 a day; lesson replays pay for 5 a day.
+- Old saves: always load through `withDefaults()` (deep merge), on the phone and the server.
+
 ## Daily Call
 - **Suspended (30 Oct 2026, Atheeb):** no new Daily Calls; the focus is modules and Hot Seats. The course map (`docs/CURRICULUM.md`) doesn't rely on them.
 - One decision, about a minute, shown above the Hot Seat on Home. Content is `content/daily/daily.json`; its order is the schedule (day N after `startDay` plays call N). Only append.
@@ -44,6 +52,7 @@ Follow `docs/AUTHORING.md` for every Hot Seat and Daily Call: research brief →
 - **No answers on the phone.** Hot Seat and Daily Call JSON is read only on the server (`src/lib/server/content.ts`). The phone sends its picks to `/api/play`, which replays them (`src/lib/play.ts`) and returns the next screens plus the verdict on the last pick. `/api/daily` and `/api/daily/lock` do the same for the Daily Call. Never import `server/content.ts` or `content-files.ts` from client code; `npm run check-bundle` (in CI, after the build) fails if any option's `why` or `takeaway` text reaches the browser. Narration ids are worked out on the phone (`lineId` in `voice.ts`), so `voice-lines.json` is never bundled.
 - Railway runs plain `next start` (not `output: "standalone"`), so `content/` is on disk at runtime.
 - Media names must be unique across Hot Seats (they share `public/media/`).
+- `madeUp: true` marks a made-up story (only kirana-year, approved by Atheeb): the app shows `MADE_UP_LABEL` (on the map card, first screen and verdict sheet) and never "Real history", "Our estimate" or a real-history panel. It may leave out `realHistory`, may mark no option real, and needs a stamped `realism.md` (same format as `factcheck.md`) instead of a fact-check; every `sources` URL must be in its `research.md`.
 - Files that Node runs directly (`engine.ts`, `hotseat-schema.ts`, `hotseat-check.ts`, `voice-lines.ts`, `content-files.ts`) use `import type` for types and relative `.ts` imports, no `@/` paths.
 
 ## UI
@@ -54,6 +63,7 @@ Follow `docs/BUILD-PLAN.md` phase by phase and tick items off as you finish them
 
 ## Welcome screens
 - A new player (no `onboarding.done` in the save) sees `Onboarding`: three questions, then the first two calls of the trial (`TRIAL_ID` in `catalog.ts`). In production the trial needs the Hot Seat published; `npm run dev` also allows its draft. Anyone who skips or has played before goes straight to Home.
+- With the course on and `kirana-year` in place (`COURSE_TRIAL_ID`), the three questions are followed by Unit 1's first lesson, then kirana-year's first two calls. Until its hotseat.json exists, onboarding is as above.
 
 ## Installable app
 - The game is **online only** (Atheeb's call): no offline caching. A "No internet" screen covers the game while the connection is down. `public/sw.js` only removes the offline worker an early version installed; don't register a worker again without asking.

@@ -5,13 +5,17 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { api } from "./auth";
 import type { GameState } from "./game-state";
+import type { Card, CourseOutline } from "./course-types";
 import type { CatalogEntry, DailyAnswer, DailyQuestion } from "./hotseat-types";
+import type { Answer, LessonView } from "./lesson-play";
 import type { Pick, PlayView } from "./play";
 
 export interface Content {
   catalog: CatalogEntry[];
   /** The welcome screens' trial, when it can be played here. */
   trial?: CatalogEntry;
+  /** The course path. Missing while the course is switched off (production, for now). */
+  course?: CourseOutline;
 }
 
 const ContentCtx = createContext<Content>({ catalog: [] });
@@ -28,6 +32,14 @@ export interface Synced {
 export type PlayResponse = PlayView & { written?: string };
 
 export const fetchStep = (hotSeatId: string, picks: Pick[]) => api<PlayResponse>("/api/play", { body: { hotSeatId, picks } });
+/** What to play: a lesson, or a module's test-out quiz. */
+export type LessonTarget = { lessonId: string } | { testOut: string };
+export const fetchLessonStep = (target: LessonTarget, answers: Answer[]) =>
+  api<LessonView>("/api/lesson", { body: { ...target, answers } });
+/** Flashcards of these lessons, each with its lesson id. */
+export const fetchCards = (lessonIds: string[]) =>
+  api<{ cards: (Card & { lessonId: string })[] }>("/api/cards", { body: { lessonIds } }).then((r) => r.cards);
+
 /** Signed in, the reply also carries the saved progress (`synced`). */
 export const lockDaily = (id: string, optionId: string) =>
   api<DailyAnswer & { synced?: Synced }>("/api/daily/lock", { body: { id, optionId } });

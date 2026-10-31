@@ -1,0 +1,79 @@
+{
+  "id": "sample-fixed-variable",
+  "title": "Fixed and variable costs",
+  "principle": "Fixed costs stay the same. Variable costs grow with sales.",
+  "minutes": 3,
+  "draft": true,
+  "screens": [
+    { "kind": "explain", "id": "hook", "text": "Lata's tiffin service had a slow month. The rent bill came anyway." },
+    {
+      "kind": "explain",
+      "id": "rule",
+      "title": "Two kinds of cost",
+      "text": "Fixed costs stay the same each month, like rent. Variable costs grow with each order, like rice."
+    },
+    {
+      "kind": "sort",
+      "id": "buckets",
+      "prompt": "Sort Lata's costs.",
+      "buckets": ["Fixed", "Variable"],
+      "items": [
+        { "text": "Kitchen rent", "bucket": 0 },
+        { "text": "Rice and dal", "bucket": 1 },
+        { "text": "Tiffin boxes", "bucket": 1 },
+        { "text": "Cook's monthly pay", "bucket": 0 },
+        { "text": "Delivery petrol", "bucket": 1 }
+      ],
+      "why": "Rent and a monthly wage stay the same. Food, boxes and petrol grow with orders."
+    },
+    {
+      "kind": "choice",
+      "id": "slow",
+      "prompt": "Orders halve. Which cost does not go down?",
+      "options": [
+        { "id": "a", "label": "Rice" },
+        { "id": "b", "label": "Petrol" },
+        { "id": "c", "label": "Rent" }
+      ],
+      "answer": "c",
+      "why": "Rent is fixed. It stays the same however many tiffins you send."
+    },
+    {
+      "kind": "gap",
+      "id": "fill",
+      "text": "A ___ cost stays the same. A ___ cost grows with sales.",
+      "bank": ["fixed", "variable", "high", "low"],
+      "answer": ["fixed", "variable"],
+      "why": "Fixed stays the same; variable grows with every order."
+    },
+    {
+      "kind": "choice",
+      "id": "mix",
+      "prompt": "A tiffin sells for ₹80. Food and box cost ₹50. What is the margin on one tiffin?",
+      "options": [
+        { "id": "a", "label": "₹30" },
+        { "id": "b", "label": "₹80" },
+        { "id": "c", "label": "₹130" }
+      ],
+      "answer": "a",
+      "why": "Margin is price minus the cost of that one sale: ₹80 − ₹50 = ₹30."
+    }
+  ],
+  "summary": ["Fixed costs stay the same each month.", "Variable costs grow with every order."],
+  "cards": [
+    {
+      "id": "sample-fv-1",
+      "front": "Your shop rent is ₹15,000 a month. Fixed or variable?",
+      "options": ["Fixed", "Variable"],
+      "answer": 0,
+      "back": "Fixed: it is the same however much you sell."
+    },
+    {
+      "id": "sample-fv-2",
+      "front": "Paper bags for each order. Fixed or variable?",
+      "options": ["Fixed", "Variable"],
+      "answer": 1,
+      "back": "Variable: more orders, more bags."
+    }
+  ]
+}
