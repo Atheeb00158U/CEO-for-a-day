@@ -9,91 +9,125 @@
       "kind": "explain",
       "id": "hook",
       "media": "img:ls_last_over",
-      "text": "2007 T20 World Cup final. Pakistan need 13 off the last over. Dhoni gives the ball to Joginder Sharma, who has played seven matches."
+      "text": "Let me start with a cricket story. It's the 2007 T20 World Cup final against Pakistan. Pakistan need 13 runs off the last over, with one wicket left. Harbhajan, the obvious choice, was hit for three sixes in his last over, so Dhoni throws the ball to Joginder Sharma."
     },
     {
       "kind": "choice",
       "id": "guess",
       "guess": true,
-      "prompt": "Misbah had hit Harbhajan for three sixes in his last over. Was Joginder a good call?",
+      "prompt": "Joginder had played only a handful of games for India. Before I tell you what happened, what do you make of Dhoni's call?",
       "options": [
         {
           "id": "a",
-          "label": "Yes, from what Dhoni knew"
+          "label": "A sensible choice, given his options"
         },
         {
           "id": "b",
-          "label": "Only if it works"
+          "label": "Can't tell until we see the result"
         },
         {
           "id": "c",
-          "label": "No, it was a wild gamble"
+          "label": "A wild gamble"
         }
       ],
       "answer": "a",
-      "why": "After a wide, a miss and a six, Misbah tried a scoop. It went straight to Sreesanth, and India won by five runs. The call became famous."
+      "why": "Here's what happened. The first ball was a wide, the second a swing and a miss, and the third a full toss that Misbah hit for six. Then, with six needed off four balls, Misbah tried a scoop, and Sreesanth caught it. India won by five runs, and the call became famous."
+    },
+    {
+      "kind": "choice",
+      "id": "if-four",
+      "prompt": "Now imagine Misbah's scoop had gone for four, and Pakistan had won. Would that make Dhoni's call any worse?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Yes, because Pakistan won"
+        },
+        {
+          "id": "b",
+          "label": "No, it's the same call"
+        },
+        {
+          "id": "c",
+          "label": "A little worse"
+        }
+      ],
+      "answer": "b",
+      "why": "Exactly. Dhoni chose before the over began, and he knew the same things in both stories. Only where one ball landed has changed. The papers would have called it a blunder, but they'd have been judging the luck, not the thinking.",
+      "wrong": {
+        "a": "I see what you did: you judged the call by the final score. But Dhoni chose before the over began, and nothing he knew then had changed. Only where one ball landed was different.",
+        "c": "I can see why you'd meet in the middle. But luck can't make a choice a little worse after it's made. Dhoni knew the same things either way, so it was the same call."
+      }
     },
     {
       "kind": "explain",
       "id": "rule",
       "title": "Resulting",
-      "text": "Annie Duke, a poker player, calls it 'resulting': judging a call by how it turned out. Good calls can lose. Bad ones can win."
+      "text": "Calling it a blunder would have been a trap. Think of two students: one copies and gets full marks, while another truly understands but slips once. Marks alone won't tell you who chose better. The poker player Annie Duke calls this trap resulting: judging a decision only by what happened."
     },
     {
-      "kind": "choice",
-      "id": "if-four",
-      "prompt": "Same over, but the scoop clears fine leg for four. Pakistan win. Dhoni's call was…",
-      "options": [
+      "kind": "sort",
+      "id": "knew-then",
+      "prompt": "Let's go back to that final. To judge Dhoni fairly, which of these did he know when he chose?",
+      "buckets": ["Knew when he chose", "Only known later"],
+      "items": [
         {
-          "id": "a",
-          "label": "A clear mistake"
+          "text": "Harbhajan had gone for three sixes",
+          "bucket": 0
         },
         {
-          "id": "b",
-          "label": "Just as sound as before"
+          "text": "The first ball would be a wide",
+          "bucket": 1
+        },
+        {
+          "text": "Joginder had closed out the semi-final",
+          "bucket": 0
+        },
+        {
+          "text": "Misbah would try a scoop",
+          "bucket": 1
+        },
+        {
+          "text": "India would win by five runs",
+          "bucket": 1
         }
       ],
-      "answer": "b",
-      "why": "He knew the same things before the ball. Only the luck changed. The papers would have said 'blunder', and they'd have been resulting.",
-      "wrong": {
-        "a": "What did Dhoni know before the ball? Nothing changed but where the ball went."
-      }
+      "why": "Exactly. Start with what Dhoni knew when he chose. The wide, the scoop and the final score all came later. They tell you what happened, but they can't change how good his thinking was."
     },
     {
       "kind": "explain",
-      "id": "boxes",
-      "title": "Four boxes",
-      "text": "Four boxes: good or bad call, with good or bad luck. After a big decision, ask which box you're in. Fix the call, not luck."
+      "id": "home",
+      "title": "Now it's your business",
+      "text": "Let's see if you can catch resulting yourself. Imagine you run a lunch tiffin service for offices. Every week you make calls like Dhoni's: which client to take, which cook to hire, which fair to spend money on. Some of your good calls will still go wrong."
     },
     {
       "kind": "choice",
       "id": "fair",
-      "prompt": "A ₹50,000 fair stall wins Neha's coaching centre a ₹4 lakh school deal 1 time in 4. Average gain per fair?",
+      "prompt": "Let's try one. A fair stall costs ₹10,000, and 1 time in 4 it wins an order that leaves you ₹60,000. What's one fair worth?",
       "options": [
         {
           "id": "a",
-          "label": "₹3,50,000"
+          "label": "₹50,000"
         },
         {
           "id": "b",
-          "label": "A loss of ₹50,000"
+          "label": "₹5,000"
         },
         {
           "id": "c",
-          "label": "₹50,000"
+          "label": "A loss of ₹10,000"
         }
       ],
-      "answer": "c",
-      "why": "¼ × ₹4,00,000 = ₹1,00,000 on average. Take off the ₹50,000 stall: ₹50,000 gained per fair, on average. It's a good bet.",
+      "answer": "b",
+      "why": "Well done. Spread the ₹60,000 win across four fairs and that's ₹15,000 a fair on average. Each fair costs ₹10,000, so you're left with ₹5,000 a fair. It's a good bet, even though most fairs bring no order.",
       "wrong": {
-        "a": "That's what a winning fair brings. She wins only 1 in 4.",
-        "b": "That's a losing fair. On average, the wins pay for the misses and more."
+        "a": "I see what you did: ₹60,000 minus the ₹10,000 stall. But you win that ₹60,000 only 1 time in 4. Spread it across four fairs, that's ₹15,000 each, then take off the ₹10,000: ₹5,000.",
+        "c": "That's what one losing fair costs, and you're right that most fairs lose. But the wins pay for the misses and more: ₹60,000 ÷ 4 is ₹15,000 a fair on average, and minus ₹10,000, that leaves ₹5,000."
       }
     },
     {
       "kind": "choice",
       "id": "two-misses",
-      "prompt": "At 1 win in 4, how often will Neha leave with nothing two fairs in a row?",
+      "prompt": "Here's where resulting bites. You miss 3 fairs in 4. How often will you go to two fairs in a row and win nothing?",
       "options": [
         {
           "id": "a",
@@ -101,118 +135,102 @@
         },
         {
           "id": "b",
-          "label": "About 56 times in 100"
+          "label": "About 25 times in 100"
         },
         {
           "id": "c",
-          "label": "About 25 times in 100"
+          "label": "About 56 times in 100"
         }
       ],
-      "answer": "b",
-      "why": "She misses 3 times in 4. Two misses in a row: ¾ × ¾ = 9/16, about 56 in 100, so it happens more often than not. A good bet can look bad for months.",
+      "answer": "c",
+      "why": "Exactly. ¾ × ¾ is 9/16, about 56 times in 100, so two empty fairs in a row are more likely than not. If you judged the bet after those two, you'd drop something that earns you ₹5,000 a fair on average.",
       "wrong": {
-        "a": "That's two wins in a row: ¼ × ¼. Misses are the common case.",
-        "c": "Missing once is ¾. Twice in a row is ¾ × ¾ = 9/16."
+        "a": "That's the chance of two wins in a row: ¼ × ¼ = 1/16, about 6 in 100. Misses are the common case: ¾ × ¾ = 9/16, about 56 in 100.",
+        "b": "I see what you did: you used one fair's chance of winning, 1 in 4. Missing once is ¾, and missing twice in a row is ¾ × ¾ = 9/16, about 56 times in 100."
       }
     },
     {
       "kind": "choice",
       "id": "lucky-hire",
-      "prompt": "Dev hired a cashier without checking anything. Sales then had their best month ever. What should Dev do next time?",
+      "prompt": "Now the other way round. You hired a cook without a trial day, and that month was your best ever. What's the lesson?",
       "options": [
         {
           "id": "a",
-          "label": "Keep this cashier, but check the next hire"
+          "label": "Keep the cook, but give the next one a trial"
         },
         {
           "id": "b",
-          "label": "Hire the same quick way. It worked"
+          "label": "Skip trials from now on. It worked"
+        },
+        {
+          "id": "c",
+          "label": "The cook earned you that whole month"
         }
       ],
       "answer": "a",
-      "why": "Nothing Dev knew made it a good call. The good month might be Diwali, or luck. A good result doesn't make a careless method good.",
+      "why": "Right. The good month doesn't prove that skipping the trial was smart, because the cook might have helped, or a festival, or a big new client. Keep the cook if they're good, but don't let one lucky month teach you a careless way to hire.",
       "wrong": {
-        "b": "That's resulting. The sales say nothing about how he hired. Next time, check references."
+        "b": "I see what you did: the month went well, so the method must be fine. That's resulting the other way round. You skipped the check and got lucky, so give the next cook a trial day.",
+        "c": "Maybe, but a festival or a new office client could explain that month too. You can't tell from the result alone, so keep the cook if they're good, and give the next one a trial day."
       }
-    },
-    {
-      "kind": "sort",
-      "id": "knew-then",
-      "prompt": "Mohan picked a new supplier. Which did he know then, and which only later?",
-      "buckets": ["Knew when choosing", "Only known later"],
-      "items": [
-        {
-          "text": "On time for 3 other shops for years",
-          "bucket": 0
-        },
-        {
-          "text": "Its truck broke down on the highway",
-          "bucket": 1
-        },
-        {
-          "text": "Price ₹2 a kilo below the others",
-          "bucket": 0
-        },
-        {
-          "text": "A strike shut its factory for a week",
-          "bucket": 1
-        },
-        {
-          "text": "Samples passed his quality check",
-          "bucket": 0
-        }
-      ],
-      "why": "Judge Mohan on the left side only. The breakdown and the strike are luck. He can plan for them, but they don't make the choice wrong."
     },
     {
       "kind": "order",
       "id": "review",
-      "prompt": "Put the steps of a fair decision review in order.",
+      "prompt": "When a big call goes wrong, here's how to review it fairly. Put the steps in order.",
       "steps": [
         "Write down what you knew then",
-        "Write what you chose, and why",
+        "Write down what you chose, and why",
         "Look at what happened",
-        "Ask: was it the thinking, or luck?",
+        "Ask: was it the thinking, or the luck?",
         "Change your method only if the thinking was wrong"
       ],
-      "why": "Look at the result last, so it can't colour how you judge the thinking."
+      "why": "Well done. You rebuild the decision as it looked at the time before you let the result in, and only then ask what it teaches you. That's how we judged Dhoni: what he knew first, the scoop afterwards."
     },
     {
       "kind": "scenario",
-      "id": "tempo",
-      "setup": "Ravi's tempo service checked three references on a new client. Months later the client went bust, owing him ₹60,000. His partner says: 'No more new clients. Ever.'",
-      "question": "What do you do?",
+      "id": "bust-client",
+      "setup": "Then one of your calls goes wrong. Before taking a new office client, you checked carefully: three good references and five years in business. Two months later it shuts down, owing you ₹36,000, and your partner says, 'No more new clients. Ever.'",
+      "question": "Was it a bad call, and what do you do now?",
       "options": [
         {
           "id": "a",
-          "label": "Agree. Old clients only from now",
+          "label": "Agree. Only old clients from now on",
           "grade": "bad",
-          "outcome": "Ravi is safe for a year. Then two old clients move away, and he has no new ones to replace them.",
-          "why": "One bad result made him drop a sound method.",
-          "better": "Keep checking new clients, and cap how much each can owe."
+          "outcome": "You're safe for a while. Then two old offices move away, and with no new clients coming in, your kitchen runs half empty.",
+          "why": "One bad result made you drop a sound method. That's resulting, and it shuts the door on every good client who came after.",
+          "better": "Keep checking new clients, and ask them for the first month in advance."
         },
         {
           "id": "b",
-          "label": "Keep the checks, and cap what new clients owe",
+          "label": "Keep the checks, and ask new clients for a month's advance",
           "grade": "great",
-          "outcome": "Ravi keeps winning new clients. No new client can owe more than ₹20,000, so the next bad one hurts a third as much.",
-          "why": "The checks were sound; the loss was partly luck. He kept the method and fixed what he could learn from."
+          "outcome": "New offices keep signing up. Each one pays its first month up front, so if one shuts down, you lose far less.",
+          "why": "Well played. One failed client doesn't prove your checks were bad, so you keep them. But the loss did show you a risk you can shrink: how much you're owed before a new client pays."
         },
         {
           "id": "c",
           "label": "Ignore it. Bad luck happens",
           "grade": "ok",
-          "outcome": "Ravi carries on as before. The next bust client could owe him just as much.",
-          "why": "Right that it was mostly luck, but he learned nothing he could use.",
-          "better": "Ask what he could control next time, like how much one client can owe."
+          "outcome": "You carry on exactly as before, so the next client who shuts down can leave you ₹36,000 short again.",
+          "why": "You may be right that nobody could have seen the shutdown coming. But bad luck doesn't mean there's nothing to learn, and this loss showed you one thing you control: when new clients pay you.",
+          "better": "Ask new clients for the first month in advance."
         }
       ]
+    },
+    {
+      "kind": "gap",
+      "id": "fill",
+      "text": "Caught or four, Dhoni's call was the same. Judge a call by what you ___ then, not by the ___.",
+      "bank": ["knew", "result", "hoped", "effort"],
+      "answer": ["knew", "result"],
+      "why": "Exactly. Dhoni had to choose with what he knew then, and whether Misbah's scoop was caught or went for four couldn't change that choice afterwards. Judge your own calls the same way: first ask what you knew, then ask what the result can teach you."
     }
   ],
   "summary": [
     "Judge a decision by what you knew when you made it.",
-    "A good bet can lose many times in a row. Don't drop it after one miss.",
-    "Learn from the thinking, not from the luck."
+    "A good bet can lose many times in a row, so don't drop it after one miss.",
+    "Don't let the result rewrite the old call, but use it to fix what you can next time."
   ],
   "cards": [
     {

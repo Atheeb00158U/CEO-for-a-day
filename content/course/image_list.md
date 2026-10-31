@@ -12,4 +12,4 @@ text or signs, no real person's likeness.
 | `ls_grocery_rider` | u1-hidden-costs | A delivery rider at night under a streetlight in an Indian city, two plain paper grocery bags on his scooter, checking a phone; no app or brand marks. |
 | `ls_cane_farmer` | u1-frozen-cash | A farmer in his 40s in western UP standing by a bullock cart piled with cut sugarcane outside a mill gate, waiting, late-afternoon light. |
 | `ls_last_over` | u1-judge-the-call | A packed cricket stadium at night seen from the stands, a lone bowler at the top of his run-up holding the ball, faces not visible, no team logos or kit text. |
-| `ls_book_parcels` | u1-test-small | A small two-bedroom flat in Bengaluru, 2007: stacks of books and brown-paper parcels on the floor, an old desktop computer on a table. |
+| `ls_batter_packets` | u1-test-small | A tiny kitchen room in Bengaluru, 2006: two wet grinders, rows of plain clear plastic pouches of white idli batter on a steel table, a young man sealing a pouch. No logos or printed brand names. |
