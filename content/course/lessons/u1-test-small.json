@@ -33,7 +33,7 @@
       "kind": "explain",
       "id": "rule",
       "title": "Write 'yes' down first",
-      "text": "Test small. Before you start, write the number that means 'yes', and the date you'll check. Then let the number decide, not hope."
+      "text": "Test small. Before you start, write the number that means 'yes' and the date you'll check. These are your pre-set success criteria."
     },
     {
       "kind": "choice",
@@ -224,7 +224,7 @@
       "text": "Write the ___ that means yes ___ the test starts.",
       "bank": ["number", "before", "after", "hope"],
       "answer": ["number", "before"],
-      "why": "Decide the line first. After the test, it's too easy to move it."
+      "why": "That's why they're called pre-set success criteria. After the test, it's too easy to move the line."
     }
   ],
   "summary": [
@@ -235,10 +235,10 @@
   "cards": [
     {
       "id": "m11-test-1",
-      "front": "Your test hit 8 against a yes number of 12. What now?",
+      "front": "Your pre-set success criteria said 12. The test hit 8. What now?",
       "options": ["Go ahead, it's close", "Change something and test again", "Lower the line to 8"],
       "answer": 1,
-      "back": "The line was set for a reason. Change the offer, not the line."
+      "back": "Pre-set success criteria are set before the test for a reason. Change the offer, not the line."
     },
     {
       "id": "m11-test-2",

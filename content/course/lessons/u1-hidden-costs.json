@@ -33,7 +33,7 @@
       "kind": "explain",
       "id": "rule",
       "title": "What one sale really leaves",
-      "text": "Margin is what one sale leaves you. So ask: what did this order leave after every cost it caused? Delivery, fees, ads and returns count."
+      "text": "Contribution margin is what one order leaves after every cost it caused. Delivery, fees, ads and returns count, not just stock."
     },
     {
       "kind": "explain",
@@ -60,7 +60,7 @@
         }
       ],
       "answer": "b",
-      "why": "₹319 − ₹70 − ₹15 − ₹10 − ₹150 = ₹74. The ads alone cost almost half her margin.",
+      "why": "₹319 − ₹70 − ₹15 − ₹10 − ₹150 = ₹74. That's her real contribution margin. The ads alone cost almost half of the ₹319.",
       "wrong": {
         "a": "You left out one cost. Take off all four: ₹70, ₹15, ₹10 and ₹150.",
         "c": "That's price minus the shirt. The other costs come with every order too."
@@ -221,10 +221,10 @@
   "cards": [
     {
       "id": "m11-hidden-1",
-      "front": "Price ₹600, stock ₹300, delivery ₹80, ads ₹200. What's left per order?",
+      "front": "Price ₹600, stock ₹300, delivery ₹80, ads ₹200. What's the contribution margin per order?",
       "options": ["₹300", "₹20", "₹220"],
       "answer": 1,
-      "back": "₹600 − ₹300 − ₹80 − ₹200 = ₹20."
+      "back": "₹600 − ₹300 − ₹80 − ₹200 = ₹20. Every cost an order causes comes off."
     },
     {
       "id": "m11-hidden-2",

@@ -33,7 +33,7 @@
       "kind": "explain",
       "id": "rule",
       "title": "Frozen cash",
-      "text": "Money owed to you is a loan you give, with no interest. Stock on the shelf is cash frozen in boxes. Both need a limit."
+      "text": "Money owed to you and stock freeze cash. The days from paying for stock to getting paid is your cash conversion cycle. Keep it short."
     },
     {
       "kind": "explain",
@@ -110,7 +110,7 @@
         }
       ],
       "answer": "b",
-      "why": "12% of ₹6,00,000 = ₹72,000 a year. Shorter credit is the cheapest loan she'll ever get.",
+      "why": "12% of ₹6,00,000 = ₹72,000 a year. A shorter cash conversion cycle is the cheapest loan she'll ever get.",
       "wrong": {
         "a": "Check the zeros: 12% of ₹6,00,000 is ₹72,000.",
         "c": "That's 12% of the full ₹12 lakh. Only ₹6 lakh comes free."
@@ -239,10 +239,10 @@
   "cards": [
     {
       "id": "m11-frozen-1",
-      "front": "You sell ₹10,000 a day. Customers pay in 45 days. How much is out with them?",
-      "options": ["₹45,000", "₹4,50,000", "₹10,000"],
+      "front": "What do you call the days from paying for stock to getting paid by customers?",
+      "options": ["Runway", "Cash conversion cycle", "Margin"],
       "answer": 1,
-      "back": "₹10,000 × 45 = ₹4,50,000."
+      "back": "The cash conversion cycle. Sell ₹10,000 a day with 45 days of credit, and ₹10,000 × 45 = ₹4,50,000 is stuck."
     },
     {
       "id": "m11-frozen-2",
