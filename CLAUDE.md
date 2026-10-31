@@ -42,6 +42,7 @@ Follow `docs/AUTHORING.md` for every Hot Seat and Daily Call: research brief →
 - **No answers on the phone**, like Hot Seats: `/api/lesson` replays the answers (`src/lib/lesson-play.ts`) and returns the verdict plus the next screens; missed exercises come back once at the end. `/api/lesson/finish` pays once per `playKey` (`lesson_plays` table). A module's test-out is the same replay over one exercise per lesson (`testOut: <module id>`), no XP, pass at 80%.
 - Rules (pure, in `game-state.ts`, shared by phone and server): `applyLesson`, `applyTestOut`, `applyReview`, `cardsToday`. Flashcards use FSRS (`ts-fsrs`, `src/lib/srs.ts`) by whole IST days; "Daily 10": at most 10 a session, 20 a day, 5 new. Review XP is capped at 10 a day; lesson replays pay for 5 a day.
 - Old saves: always load through `withDefaults()` (deep merge), on the phone and the server.
+- **Narration:** every lesson is read aloud like a Hot Seat. `src/lib/lesson-voice.ts` says what each screen speaks (teaching text, question, a choice's options, a gap with "blank"; scenarios through DecisionView/RevealView), shared by the player and `voice-lines.ts`, so `npm run voices` / `npm run narrate` cover lessons too. Feedback lines are only spoken (and their ids only worked out) after the server's verdict. The voice mute applies; missing audio falls back to the browser's voice.
 
 ## Daily Call
 - **Suspended (30 Oct 2026, Atheeb):** no new Daily Calls; the focus is modules and Hot Seats. The course map (`docs/CURRICULUM.md`) doesn't rely on them.

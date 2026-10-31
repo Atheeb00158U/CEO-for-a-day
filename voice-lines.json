@@ -9103,5 +9103,350 @@
   "id": "36908ea41cbc",
   "voice": "narrator",
   "text": "A realistic promise is easy to keep, but it gives customers no new reason to choose you. What would have worked: Test a faster option quietly, and only promise it when the numbers work."
+ },
+ {
+  "id": "1edb2065dfdc",
+  "voice": "narrator",
+  "text": "Lata's tiffin service had a slow month. The rent bill came anyway."
+ },
+ {
+  "id": "1caf5b8454bb",
+  "voice": "narrator",
+  "text": "Fixed costs stay the same each month, like rent. Variable costs grow with each order, like rice."
+ },
+ {
+  "id": "ea8fb7f3c792",
+  "voice": "narrator",
+  "text": "Sort Lata's costs."
+ },
+ {
+  "id": "8d17d301f238",
+  "voice": "narrator",
+  "text": "Rent and a monthly wage stay the same. Food, boxes and petrol grow with orders."
+ },
+ {
+  "id": "66ecb017d065",
+  "voice": "narrator",
+  "text": "Orders halve. Which cost does not go down?"
+ },
+ {
+  "id": "ae545ee6a81c",
+  "voice": "narrator",
+  "text": "Rice"
+ },
+ {
+  "id": "b96671f98f5d",
+  "voice": "narrator",
+  "text": "Petrol"
+ },
+ {
+  "id": "a2188d3f290c",
+  "voice": "narrator",
+  "text": "Rent"
+ },
+ {
+  "id": "da17950d8f36",
+  "voice": "narrator",
+  "text": "Rent is fixed. It stays the same however many tiffins you send."
+ },
+ {
+  "id": "77390b348c8c",
+  "voice": "narrator",
+  "text": "A blank cost stays the same. A blank cost grows with sales."
+ },
+ {
+  "id": "2ef4f3cd7928",
+  "voice": "narrator",
+  "text": "Fixed stays the same; variable grows with every order."
+ },
+ {
+  "id": "4170de73ab5f",
+  "voice": "narrator",
+  "text": "A tiffin sells for ₹80. Food and box cost ₹50. What is the margin on one tiffin?"
+ },
+ {
+  "id": "f14355f9424f",
+  "voice": "narrator",
+  "text": "₹30"
+ },
+ {
+  "id": "acae6cef0935",
+  "voice": "narrator",
+  "text": "₹80"
+ },
+ {
+  "id": "77b8c7774b38",
+  "voice": "narrator",
+  "text": "₹130"
+ },
+ {
+  "id": "715f620cb88e",
+  "voice": "narrator",
+  "text": "Margin is price minus the cost of that one sale: ₹80 − ₹50 = ₹30."
+ },
+ {
+  "id": "ce2ba8b3744d",
+  "voice": "narrator",
+  "text": "Fixed costs stay the same. Variable costs grow with sales."
+ },
+ {
+  "id": "9fdafec0f72f",
+  "voice": "narrator",
+  "text": "Fixed costs stay the same each month."
+ },
+ {
+  "id": "56a857c1ccf7",
+  "voice": "narrator",
+  "text": "Variable costs grow with every order."
+ },
+ {
+  "id": "434d3e1f54d9",
+  "voice": "narrator",
+  "text": "Raju sells biscuits and loose namkeen. Both sell well. Only one pays his rent."
+ },
+ {
+  "id": "dc96297a1445",
+  "voice": "narrator",
+  "text": "Margin is what you keep from one sale: the price minus what the item cost you."
+ },
+ {
+  "id": "21d95403f2fe",
+  "voice": "narrator",
+  "text": "A biscuit pack costs Raju ₹9. He sells it for ₹10. What is his margin?"
+ },
+ {
+  "id": "0c1e499b7175",
+  "voice": "narrator",
+  "text": "₹10"
+ },
+ {
+  "id": "913e8d836c09",
+  "voice": "narrator",
+  "text": "₹1"
+ },
+ {
+  "id": "126b3b2e58fd",
+  "voice": "narrator",
+  "text": "₹19"
+ },
+ {
+  "id": "1229be092329",
+  "voice": "narrator",
+  "text": "₹10 price minus ₹9 cost leaves ₹1 a pack."
+ },
+ {
+  "id": "7681ebe3d34e",
+  "voice": "narrator",
+  "text": "Sort Raju's items by margin."
+ },
+ {
+  "id": "ddc69d40e68c",
+  "voice": "narrator",
+  "text": "Branded packs earn little. Loose and home-made items earn more."
+ },
+ {
+  "id": "e0f357813bab",
+  "voice": "narrator",
+  "text": "Which item should get the front shelf?"
+ },
+ {
+  "id": "6058021a0f09",
+  "voice": "narrator",
+  "text": "Biscuits, because they sell fast"
+ },
+ {
+  "id": "196ca14f1621",
+  "voice": "narrator",
+  "text": "Namkeen, because it earns more each sale"
+ },
+ {
+  "id": "f5275fd3b2ec",
+  "voice": "narrator",
+  "text": "Whatever came in last"
+ },
+ {
+  "id": "8b574253de7f",
+  "voice": "narrator",
+  "text": "The front shelf sells the most. Give it to what earns the most."
+ },
+ {
+  "id": "1664ac981c82",
+  "voice": "narrator",
+  "text": "Put Raju's steps in order."
+ },
+ {
+  "id": "9b61068a0b7c",
+  "voice": "narrator",
+  "text": "First the cost, then the margin, then the shelf."
+ },
+ {
+  "id": "181dca6eaec8",
+  "voice": "narrator",
+  "text": "Know your margin on every item you sell."
+ },
+ {
+  "id": "810ad7ac188c",
+  "voice": "narrator",
+  "text": "Margin is price minus cost, for one sale."
+ },
+ {
+  "id": "db3bea370efb",
+  "voice": "narrator",
+  "text": "Give your best space to high-margin items."
+ },
+ {
+  "id": "05de3d0eb1f9",
+  "voice": "narrator",
+  "text": "Meena sold ₹2 lakh of sarees at the Diwali mela. She came home with almost nothing."
+ },
+ {
+  "id": "925731e24f7a",
+  "voice": "narrator",
+  "text": "Why did Meena make so little?"
+ },
+ {
+  "id": "3cce18f5169d",
+  "voice": "narrator",
+  "text": "Her costs ate most of the sales"
+ },
+ {
+  "id": "1d460a82fb38",
+  "voice": "narrator",
+  "text": "She sold too few sarees"
+ },
+ {
+  "id": "1d139785ebe0",
+  "voice": "narrator",
+  "text": "The mela took her money"
+ },
+ {
+  "id": "b89e0c8ca7b2",
+  "voice": "narrator",
+  "text": "She spent ₹1.9 lakh on stock, the stall and travel. Only ₹10,000 was left."
+ },
+ {
+  "id": "2cd79402cab7",
+  "voice": "narrator",
+  "text": "Sales are the money that comes in. Profit is what is left after you pay every cost."
+ },
+ {
+  "id": "33849d8df504",
+  "voice": "narrator",
+  "text": "Sales ₹500. Costs ₹350. What is the profit?"
+ },
+ {
+  "id": "13f96c135164",
+  "voice": "narrator",
+  "text": "₹500"
+ },
+ {
+  "id": "578424b662dd",
+  "voice": "narrator",
+  "text": "₹850"
+ },
+ {
+  "id": "91055cd354f0",
+  "voice": "narrator",
+  "text": "₹150"
+ },
+ {
+  "id": "c9e69b1793d0",
+  "voice": "narrator",
+  "text": "₹500 in, ₹350 out. ₹150 is left."
+ },
+ {
+  "id": "0dab1fbffbb3",
+  "voice": "narrator",
+  "text": "₹500 is the sales. You still have to pay the costs."
+ },
+ {
+  "id": "98887f32610d",
+  "voice": "narrator",
+  "text": "Costs come off the sales. They don't add to it."
+ },
+ {
+  "id": "7a6f9aaa737c",
+  "voice": "narrator",
+  "text": "Profit is what is blank after you pay every blank."
+ },
+ {
+  "id": "8242f883bd9d",
+  "voice": "narrator",
+  "text": "Profit is what stays with you once every cost is paid."
+ },
+ {
+  "id": "76954f86c06b",
+  "voice": "narrator",
+  "text": "Ravi says: \"I sold ₹1 lakh this month, so I made ₹1 lakh.\" Is he right?"
+ },
+ {
+  "id": "d38788f0e4dc",
+  "voice": "narrator",
+  "text": "Yes, sales are what you make"
+ },
+ {
+  "id": "bb5a32c438ec",
+  "voice": "narrator",
+  "text": "No, he must take off his costs"
+ },
+ {
+  "id": "a9127f14316e",
+  "voice": "narrator",
+  "text": "₹1 lakh is his sales. His profit is that minus rent, stock and wages."
+ },
+ {
+  "id": "9016524134aa",
+  "voice": "narrator",
+  "text": "You run a tea stall. A bigger stall nearby sells twice as many cups as you."
+ },
+ {
+  "id": "43e4ea788ce7",
+  "voice": "narrator",
+  "text": "Your friend says you should copy them. What do you ask first?"
+ },
+ {
+  "id": "558cf1badf34",
+  "voice": "narrator",
+  "text": "You learn they sell cheap and keep ₹1 a cup. You keep ₹4. You stay as you are."
+ },
+ {
+  "id": "d8cf9926727b",
+  "voice": "narrator",
+  "text": "Big sales mean nothing until you know the costs."
+ },
+ {
+  "id": "da70cbaca556",
+  "voice": "narrator",
+  "text": "You find a cheaper cup supplier, but you still don't know if they make money."
+ },
+ {
+  "id": "bec68c1d8866",
+  "voice": "narrator",
+  "text": "Cheaper cups help a little, but you skipped the big question. What would have worked: First ask how much they keep from each cup."
+ },
+ {
+  "id": "c6a9a46059f9",
+  "voice": "narrator",
+  "text": "You sell more cups and make less money than before."
+ },
+ {
+  "id": "3125c9edfe14",
+  "voice": "narrator",
+  "text": "You copied their sales, not their profit. What would have worked: Find out what they keep from each cup before you change anything."
+ },
+ {
+  "id": "9c469caf8a74",
+  "voice": "narrator",
+  "text": "Sales are not profit. Profit is what's left."
+ },
+ {
+  "id": "4c2b9810fed6",
+  "voice": "narrator",
+  "text": "Sales are the money that comes in."
+ },
+ {
+  "id": "72916289cfc2",
+  "voice": "narrator",
+  "text": "Profit is what is left after every cost."
  }
 ]
