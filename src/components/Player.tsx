@@ -311,7 +311,7 @@ function Meters({ view }: { view: PlayView }) {
   );
 }
 
-function useNarration(lines: { text: string; voice?: string }[], enabled: boolean) {
+export function useNarration(lines: { text: string; voice?: string }[], enabled: boolean) {
   const [idx, setIdx] = useState(0);
   const [p, setP] = useState(0);
   const key = lines.map((l) => l.text).join("|");
@@ -345,7 +345,7 @@ function useNarration(lines: { text: string; voice?: string }[], enabled: boolea
   return { prog, replay: play };
 }
 
-function VoiceButton({ onClick }: { onClick: () => void }) {
+export function VoiceButton({ onClick }: { onClick: () => void }) {
   return (
     <button
       type="button"

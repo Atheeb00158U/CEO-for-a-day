@@ -6,12 +6,16 @@ import { TEST_OUT_PASS } from "@/lib/game-state";
 import type { Answer, LessonScreen, LessonView } from "@/lib/lesson-play";
 import { useGame } from "@/lib/store";
 import { playSfx } from "@/lib/sfx";
-import { stopVoice } from "@/lib/voice";
-import { DecisionView, RevealView, VerdictSheet } from "./Player";
+import { askLines, takeawayLines, type Said } from "@/lib/lesson-voice";
+import { ADVISOR, NARRATOR, stopVoice } from "@/lib/voice";
+import { DecisionView, RevealView, useNarration, VerdictSheet, VoiceButton } from "./Player";
 import { Logo } from "./Logo";
-import { Bar, Card, Icon, MediaView, Pill } from "./ui";
+import { Bar, Caption, Card, Icon, MediaView, Pill } from "./ui";
 
 type Exercise = Exclude<LessonScreen, { kind: "explain" }>;
+
+/** Lines for useNarration: pre-made audio when it exists, else the browser's voice (src/lib/voice.ts). */
+const voiced = (lines: Said[]) => lines.map((l) => ({ text: l.text, voice: l.advisor ? ADVISOR : NARRATOR }));
 type Phase = { kind: "screen"; i: number } | { kind: "reveal"; shown: Exercise; value: Answer["value"] } | { kind: "done"; xp: number };
 
 /**
@@ -110,7 +114,15 @@ export function LessonPlayer({ target, testOut, onExit }: { target: LessonTarget
   return (
     <div className="mx-auto flex min-h-dvh max-w-[480px] flex-col px-4" style={{ paddingTop: "max(12px, env(safe-area-inset-top))" }}>
       <div className="flex items-center gap-3 py-2">
-        <button type="button" onClick={onExit} aria-label="Leave lesson" className="text-muted">
+        <button
+          type="button"
+          onClick={() => {
+            stopVoice();
+            onExit();
+          }}
+          aria-label="Leave lesson"
+          className="text-muted"
+        >
           <Icon.close />
         </button>
         <div className="flex-1">
@@ -131,25 +143,7 @@ export function LessonPlayer({ target, testOut, onExit }: { target: LessonTarget
         </div>
       )}
 
-      {screen?.kind === "explain" && (
-        <div key={screen.id} className="flex flex-1 flex-col gap-4">
-          {screen.media && <MediaView media={screen.media} className="aspect-[4/3] w-full" />}
-          {screen.title && <p className="text-[13px] font-black tracking-[.12em] text-brand uppercase">{screen.title}</p>}
-          <p className="text-[22px] leading-snug font-bold">{screen.text}</p>
-          <div className="mt-auto pt-4 pb-6">
-            <button
-              type="button"
-              className="btn3d"
-              onClick={() => {
-                playSfx("next");
-                advance((phase as { i: number }).i + 1);
-              }}
-            >
-              Continue
-            </button>
-          </div>
-        </div>
-      )}
+      {screen?.kind === "explain" && <ExplainView key={screen.id} screen={screen} onNext={() => advance((phase as { i: number }).i + 1)} />}
       {screen && screen.kind !== "explain" && (
         <ExerciseView key={`${screen.id}${screen.retry ? "r" : ""}`} shown={screen} busy={busy} onCheck={check} />
       )}
@@ -169,7 +163,8 @@ export function LessonPlayer({ target, testOut, onExit }: { target: LessonTarget
       {reveal && phase.kind === "reveal" && phase.shown.kind !== "scenario" && (
         <>
           <ExerciseView shown={phase.shown} busy locked={phase.value} onCheck={() => {}} />
-          <VerdictSheet
+          <LessonVerdict
+            why={reveal.why}
             grade={reveal.guess ? "ok" : reveal.correct ? "great" : "bad"}
             title={
               reveal.guess ? (reveal.right ? "Good guess. Here's the answer" : "Good guess!") : reveal.correct ? "Correct!" : "Not quite"
@@ -182,6 +177,39 @@ export function LessonPlayer({ target, testOut, onExit }: { target: LessonTarget
       )}
     </div>
   );
+}
+
+/** A teaching screen, read aloud with its words lighting up as they're spoken. */
+function ExplainView({ screen, onNext }: { screen: Extract<LessonScreen, { kind: "explain" }>; onNext: () => void }) {
+  const { s } = useGame();
+  const { prog, replay } = useNarration(voiced(askLines(screen)), s.settings.voice);
+  return (
+    <div className="flex flex-1 flex-col gap-4">
+      {screen.media && <MediaView media={screen.media} className="aspect-[4/3] w-full" />}
+      {screen.title && <p className="text-[13px] font-black tracking-[.12em] text-brand uppercase">{screen.title}</p>}
+      <Caption text={screen.text} progress={prog(0)} className="text-[22px] leading-snug font-bold" />
+      {s.settings.voice && <VoiceButton onClick={replay} />}
+      <div className="mt-auto pt-4 pb-6">
+        <button
+          type="button"
+          className="btn3d"
+          onClick={() => {
+            playSfx("next");
+            onNext();
+          }}
+        >
+          Continue
+        </button>
+      </div>
+    </div>
+  );
+}
+
+/** The verdict sheet, with its "why" read aloud. The why only reaches the phone after the answer, so does its audio id. */
+function LessonVerdict({ why, ...sheet }: { why: string } & React.ComponentProps<typeof VerdictSheet>) {
+  const { s } = useGame();
+  useNarration([{ text: why }], s.settings.voice);
+  return <VerdictSheet {...sheet} />;
 }
 
 const newPlayKey = () =>
@@ -199,6 +227,10 @@ function ExerciseView({
   locked?: Answer["value"];
   onCheck: (shown: Exercise, value: Answer["value"]) => void;
 }) {
+  const { s } = useGame();
+  // Scenarios are read by DecisionView. An answered exercise under the verdict sheet stays quiet.
+  const speaks = s.settings.voice && locked === undefined && shown.kind !== "scenario";
+  const { replay } = useNarration(voiced(askLines(shown)), speaks);
   if (shown.kind === "scenario")
     return (
       <DecisionView
@@ -214,7 +246,12 @@ function ExerciseView({
     );
   return (
     <div className={`flex flex-1 flex-col gap-4 ${locked !== undefined ? "pb-[260px]" : ""}`}>
-      {shown.retry && <p className="text-[13px] font-black tracking-[.12em] text-gold uppercase">Try this one again</p>}
+      {(shown.retry || speaks) && (
+        <div className="flex items-center justify-between gap-3">
+          {shown.retry ? <p className="text-[13px] font-black tracking-[.12em] text-gold uppercase">Try this one again</p> : <span />}
+          {speaks && <VoiceButton onClick={replay} />}
+        </div>
+      )}
       {shown.kind === "choice" && (
         <Choice shown={shown} locked={locked as string | undefined} busy={busy} onCheck={(v) => onCheck(shown, v)} />
       )}
@@ -406,6 +443,8 @@ function Sort({ shown, locked, busy, onCheck }: Props<"sort", string[]>) {
 function LessonEnd({ view, xp, testOut, onExit }: { view: LessonView; xp: number; testOut: boolean; onExit: () => void }) {
   const r = view.result!;
   const passed = r.accuracy >= TEST_OUT_PASS;
+  const { s } = useGame();
+  useNarration(voiced(takeawayLines(r)), s.settings.voice && !testOut);
   useEffect(() => playSfx(testOut && !passed ? "lose" : "legend"), [testOut, passed]);
   return (
     <div className="mx-auto flex min-h-dvh max-w-[480px] flex-col gap-4 px-4 pt-10 pb-6">
