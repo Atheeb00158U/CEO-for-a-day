@@ -5,7 +5,8 @@ import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { CourseSchema, LessonSchema } from "./course-schema.ts";
 import type { Course, Lesson, Screen } from "./course-types";
-import type { CheckResult } from "./hotseat-check.ts";
+import { AUDIO_DIR, type CheckResult } from "./hotseat-check.ts";
+import { voiceLines } from "./voice-lines.ts";
 
 const words = (t: string) => t.split(/\s+/).filter(Boolean).length;
 const zodErrors = (file: string, issues: { path: PropertyKey[]; message: string }[]) =>
@@ -80,7 +81,7 @@ export function lessonProblems(l: Lesson, mediaDir: string): { errors: string[];
 }
 
 /** Checks the whole course folder. `hotSeats` are the ids that exist, for the gates. */
-export function checkCourse(dir: string, hotSeats: string[]): CheckResult & { lessons: number } {
+export function checkCourse(dir: string, hotSeats: string[], audioDir = AUDIO_DIR): CheckResult & { lessons: number } {
   const errors: string[] = [];
   const warnings: string[] = [];
   const file = join(dir, "course.json");
@@ -138,6 +139,9 @@ export function checkCourse(dir: string, hotSeats: string[]): CheckResult & { le
     const r = lessonProblems(l, join(dir, "media"));
     errors.push(...r.errors);
     warnings.push(...r.warnings);
+    // Missing narration is only a warning: the player falls back to the browser's voice.
+    const silent = voiceLines([], [], [l]).filter((v) => !existsSync(join(audioDir, `${v.id}.mp3`))).length;
+    if (silent) warnings.push(`${l.id}: ${silent} lines have no audio yet; run npm run narrate`);
     for (const c of l.cards) {
       if (cardOwner.has(c.id)) errors.push(`card id "${c.id}" is in both ${cardOwner.get(c.id)} and ${l.id}; card ids are never reused`);
       cardOwner.set(c.id, l.id);
