@@ -98,13 +98,13 @@
     {
       "kind": "explain",
       "id": "home",
-      "title": "Now it's your business",
-      "text": "Let's see if you can spot a leak yourself. Imagine you run a small gym with ₹3 lakh in the bank. Each month ₹1.5 lakh goes out, but your members also pay you ₹1 lakh. Before you answer, think about what's really leaking."
+      "title": "From their story to yours",
+      "text": "Jet's story has crores and planes, but the same leak quietly closes small shops every day, and most owners never see it coming. So let's shrink it to your size. Say you've opened a small gym, and let's find out how long your money would last."
     },
     {
       "kind": "choice",
       "id": "gym-runway",
-      "prompt": "So, how long is your runway?",
+      "prompt": "Your gym has ₹3 lakh in the bank. ₹1.5 lakh goes out each month, and members pay you ₹1 lakh. What's your runway?",
       "options": [
         {
           "id": "a",
@@ -129,7 +129,7 @@
     {
       "kind": "choice",
       "id": "longer",
-      "prompt": "Now I want you to stretch that runway. Which of these gives you the most time?",
+      "prompt": "Your gym has ₹3 lakh and loses ₹50,000 a month. Which of these stretches your runway the most?",
       "options": [
         {
           "id": "a",
@@ -154,8 +154,8 @@
     {
       "kind": "sort",
       "id": "can-pay",
-      "prompt": "Your trainers' ₹20,000 is due on Saturday. Which of these count as cash you can use towards it?",
-      "buckets": ["Can pay now", "Can't pay yet"],
+      "prompt": "Your trainers' ₹20,000 is due on Saturday. I'll show you six things. For each one, tell me: can you spend it today?",
+      "buckets": ["Yes, I can spend it", "Not yet"],
       "items": [
         {
           "text": "₹8,000 by UPI this morning",

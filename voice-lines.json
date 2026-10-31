@@ -9215,14 +9215,14 @@
   "text": "₹400 crore could pay for a lot of fuel and wages. The bigger question was what came after, because if Jet kept losing cash, the new money would only buy a little time."
  },
  {
-  "id": "d1cb6dc99254",
+  "id": "d28ac93e897a",
   "voice": "narrator",
-  "text": "Let's see if you can spot a leak yourself. Imagine you run a small gym with ₹3 lakh in the bank. Each month ₹1.5 lakh goes out, but your members also pay you ₹1 lakh. Before you answer, think about what's really leaking."
+  "text": "Jet's story has crores and planes, but the same leak quietly closes small shops every day, and most owners never see it coming. So let's shrink it to your size. Say you've opened a small gym, and let's find out how long your money would last."
  },
  {
-  "id": "323c4134e9b3",
+  "id": "47e0a3c79dba",
   "voice": "narrator",
-  "text": "So, how long is your runway?"
+  "text": "Your gym has ₹3 lakh in the bank. ₹1.5 lakh goes out each month, and members pay you ₹1 lakh. What's your runway?"
  },
  {
   "id": "be5f494cde56",
@@ -9250,9 +9250,9 @@
   "text": "You're close, but find the gap first. ₹1.5 lakh out minus ₹1 lakh in leaves a loss of ₹50,000 a month, and ₹3 lakh divided by ₹50,000 gives you 6 months."
  },
  {
-  "id": "842cbb444dab",
+  "id": "72380fc10f1e",
   "voice": "narrator",
-  "text": "Now I want you to stretch that runway. Which of these gives you the most time?"
+  "text": "Your gym has ₹3 lakh and loses ₹50,000 a month. Which of these stretches your runway the most?"
  },
  {
   "id": "e980236e7638",
@@ -9285,9 +9285,39 @@
   "text": "That's useful too. Ten members bring in ₹10,000 more, so your loss falls to ₹40,000 and you get about 7½ months. Cutting ₹25,000 of costs shrinks the loss further and gives you 12."
  },
  {
-  "id": "f504e50e3488",
+  "id": "6d187c1642af",
   "voice": "narrator",
-  "text": "Your trainers' ₹20,000 is due on Saturday. Which of these count as cash you can use towards it?"
+  "text": "Your trainers' ₹20,000 is due on Saturday. I'll show you six things. For each one, tell me: can you spend it today?"
+ },
+ {
+  "id": "2171ef002181",
+  "voice": "narrator",
+  "text": "₹8,000 by UPI this morning"
+ },
+ {
+  "id": "0fec0c63c577",
+  "voice": "narrator",
+  "text": "A company promising 20 memberships next month"
+ },
+ {
+  "id": "13d196eb701b",
+  "voice": "narrator",
+  "text": "₹30,000 a member owes you, due in 60 days"
+ },
+ {
+  "id": "6cd284357d2f",
+  "voice": "narrator",
+  "text": "₹12,000 in your current account"
+ },
+ {
+  "id": "93a10542fa5d",
+  "voice": "narrator",
+  "text": "New machines worth ₹2 lakh"
+ },
+ {
+  "id": "e315aca723e7",
+  "voice": "narrator",
+  "text": "A GST refund 'coming soon'"
  },
  {
   "id": "effbfedad754",
@@ -9475,14 +9505,14 @@
   "text": "The money was coming, but late money still costs something. While he waited, his loan kept charging interest and the bank sent him a notice."
  },
  {
-  "id": "d49f32028068",
+  "id": "5007eab3cafb",
   "voice": "narrator",
-  "text": "Let's see if you can find your own stuck cash. Imagine you run a small printing press. Offices order letterheads and visiting cards from you worth ₹20,000 a day, and they pay you 60 days later. Before you answer, think about how many days of sales are sitting with them."
+  "text": "You don't have to grow cane to get stuck like Piyush. Any business that sells on credit is lending its money to customers, often without noticing. So let's look at yours. Say you run a small printing press that sells letterheads and visiting cards to offices."
  },
  {
-  "id": "2da9764abc81",
+  "id": "a4fb437010e8",
   "voice": "narrator",
-  "text": "So how much of your money are those offices holding at any time?"
+  "text": "Offices order ₹20,000 of printing from you every day and pay 60 days later. How much of your money are they holding?"
  },
  {
   "id": "972558766d85",
@@ -9515,9 +9545,9 @@
   "text": "That's 30 days of bills. Your offices take 60, so ₹20,000 × 60 = ₹12 lakh is out."
  },
  {
-  "id": "06cd4743027f",
+  "id": "b19c26c0eaa3",
   "voice": "narrator",
-  "text": "Now you ask new customers to pay in 30 days instead of 60. How much cash comes home?"
+  "text": "Offices order ₹20,000 a day. If new customers pay in 30 days instead of 60, how much cash comes home?"
  },
  {
   "id": "821d0cd93e7e",
@@ -9575,9 +9605,44 @@
   "text": "I see what you did: you took off one day's ₹10,000. But 8 days of paper is 8 × ₹10,000 = ₹80,000, so ₹3,20,000 comes free."
  },
  {
-  "id": "1375cca4fa73",
+  "id": "240834fe05ce",
   "voice": "narrator",
-  "text": "Here's a quick check. Does each move free cash or freeze it?"
+  "text": "I'll show you seven moves for your press. For each one, tell me: does it bring cash home sooner, or keep it away longer?"
+ },
+ {
+  "id": "d842a5faf307",
+  "voice": "narrator",
+  "text": "Ask 30% up front on big orders"
+ },
+ {
+  "id": "a122c03e7b3f",
+  "voice": "narrator",
+  "text": "Buy 3 months of paper for a bulk discount"
+ },
+ {
+  "id": "ea45a504b2ee",
+  "voice": "narrator",
+  "text": "Give a new client 90 days to pay"
+ },
+ {
+  "id": "7ab23e7419c4",
+  "voice": "narrator",
+  "text": "Sell old stock at cost"
+ },
+ {
+  "id": "48e9cfcc058d",
+  "voice": "narrator",
+  "text": "Get 30 days to pay your paper supplier"
+ },
+ {
+  "id": "b8f6b74dc8b0",
+  "voice": "narrator",
+  "text": "Keep every paper type in every colour"
+ },
+ {
+  "id": "f5080a757ea0",
+  "voice": "narrator",
+  "text": "Offer 2% off for payment in 7 days"
  },
  {
   "id": "f36b348c3813",
@@ -9765,14 +9830,14 @@
   "text": "Nothing changes for a single order: it still loses ₹10. More orders just add up more losses, so the loss doubles."
  },
  {
-  "id": "ac2a95db5827",
+  "id": "2c1b2ce8e5e1",
   "voice": "narrator",
-  "text": "Let's see if you can spot the holes yourself. Imagine you sell your own T-shirts on Instagram at ₹499 each. A shirt costs you ₹180 to make, so it looks like you keep ₹319 an order. Before you believe that, think about what else every order costs you."
+  "text": "PepperTap's mistake isn't only a big-startup problem. Small sellers make it every day, because the price on the tag looks like profit. So let's put you in their shoes. Say you sell your own T-shirts on Instagram, and let's work out what one order really leaves you."
  },
  {
-  "id": "76a4dedc3f6c",
+  "id": "8a30a1752c5f",
   "voice": "narrator",
-  "text": "Each order also costs ₹70 shipping, ₹15 packing, a ₹10 payment fee and ₹150 in ads. What's your real contribution margin?"
+  "text": "Your ₹499 shirt costs ₹180 to make. Each order also costs ₹70 shipping, ₹15 packing, a ₹10 fee and ₹150 in ads. What's left?"
  },
  {
   "id": "068d82238161",
@@ -9805,9 +9870,9 @@
   "text": "That's price minus the shirt, which is where most sellers stop. But every order also brings shipping, packing, a fee and ads, and after those you keep ₹74."
  },
  {
-  "id": "c7b544839e6e",
+  "id": "62465e004040",
   "voice": "narrator",
-  "text": "One in five cash-on-delivery buyers refuses the parcel. It earns nothing but costs ₹305 in ads, packing and two-way shipping. What do five orders leave?"
+  "text": "A delivered order leaves you ₹74. One buyer in five refuses the parcel, which costs you ₹305. What do five orders leave?"
  },
  {
   "id": "0e4b66b77005",
@@ -9840,9 +9905,9 @@
   "text": "I see what you did: 5 × ₹74. But only four orders were delivered, and they leave ₹296, while the refused parcel cost ₹305. Together, that's −₹9."
  },
  {
-  "id": "4f7e1882576d",
+  "id": "44ebbfad908b",
   "voice": "narrator",
-  "text": "Back to a prepaid order. If you could cut one cost by 20%, which cut saves you the most?"
+  "text": "Each order costs ₹180 for the shirt, ₹150 in ads and ₹70 shipping. Cutting which one by 20% saves you most?"
  },
  {
   "id": "407a95453527",
@@ -10050,9 +10115,34 @@
   "text": "Calling it a blunder would have been a trap. Think of two students: one copies and gets full marks, while another truly understands but slips once. Marks alone won't tell you who chose better. The poker player Annie Duke calls this trap resulting: judging a decision only by what happened."
  },
  {
-  "id": "79e9dca024f7",
+  "id": "d02070f3d05e",
   "voice": "narrator",
-  "text": "Let's go back to that final. To judge Dhoni fairly, which of these did he know when he chose?"
+  "text": "Let's go back to that final. I'll show you five things. For each one, tell me: did Dhoni know it when he chose?"
+ },
+ {
+  "id": "5050cbbc4198",
+  "voice": "narrator",
+  "text": "Harbhajan had gone for three sixes"
+ },
+ {
+  "id": "84e10081aa3e",
+  "voice": "narrator",
+  "text": "The first ball would be a wide"
+ },
+ {
+  "id": "d6bcd852118e",
+  "voice": "narrator",
+  "text": "Joginder had closed out the semi-final"
+ },
+ {
+  "id": "19c03cbf9106",
+  "voice": "narrator",
+  "text": "Misbah would try a scoop"
+ },
+ {
+  "id": "2398834bf88f",
+  "voice": "narrator",
+  "text": "India would win by five runs"
  },
  {
   "id": "1d29c32a91e1",
@@ -10060,9 +10150,9 @@
   "text": "Exactly. Start with what Dhoni knew when he chose. The wide, the scoop and the final score all came later. They tell you what happened, but they can't change how good his thinking was."
  },
  {
-  "id": "08b21b1f8bbd",
+  "id": "dfa78e8bf3f0",
   "voice": "narrator",
-  "text": "Let's see if you can catch resulting yourself. Imagine you run a lunch tiffin service for offices. Every week you make calls like Dhoni's: which client to take, which cook to hire, which fair to spend money on. Some of your good calls will still go wrong."
+  "text": "Dhoni made one big call in front of millions. You'll make dozens of smaller ones, and some good calls will still go wrong. The danger is learning the wrong lesson from them. So say you run a lunch tiffin service for offices, and let's test your judgement."
  },
  {
   "id": "421eefaefaec",
@@ -10100,9 +10190,9 @@
   "text": "That's what one losing fair costs, and you're right that most fairs lose. But the wins pay for the misses and more: ₹60,000 ÷ 4 is ₹15,000 a fair on average, and minus ₹10,000, that leaves ₹5,000."
  },
  {
-  "id": "170c802e6d94",
+  "id": "ae8bfab2aaf1",
   "voice": "narrator",
-  "text": "Here's where resulting bites. You miss 3 fairs in 4. How often will you go to two fairs in a row and win nothing?"
+  "text": "Here's where resulting bites. A fair wins only 1 time in 4. How often will two fairs in a row both win nothing?"
  },
  {
   "id": "f1de379ae614",
@@ -10355,14 +10445,14 @@
   "text": "Stores don't mind either way. The point is for you: packets sent go up whenever you push them, but packets sold only go up when people really want them."
  },
  {
-  "id": "ae02a74cbd76",
+  "id": "972a1d40ad98",
   "voice": "narrator",
-  "text": "Let's see if you can set the goalposts yourself. Imagine you make homemade pickles and dream of your own shop. Before signing for one, you test with a stall at a Sunday market. The stall costs ₹6,000 a month, and each jar you sell leaves you ₹50."
+  "text": "iD tested with a handful of stores before betting big, and you can do exactly the same with your own idea. Say you make homemade pickles and dream of opening a shop. Before you sign a lease, you take a stall at a Sunday market to test it."
  },
  {
-  "id": "d703452884bb",
+  "id": "9200ab725664",
   "voice": "narrator",
-  "text": "Let's try one. The market runs 4 Sundays a month. How many jars each Sunday just pays for the stall?"
+  "text": "The stall costs ₹6,000 a month, and each jar leaves you ₹50. With 4 Sundays a month, how many jars a Sunday pay the stall?"
  },
  {
   "id": "172967c8487e",
@@ -10395,9 +10485,9 @@
   "text": "Not quite. ₹6,000 ÷ ₹50 = 120 jars a month, and split over 4 Sundays, that's 30 jars each Sunday."
  },
  {
-  "id": "a100eec675e3",
+  "id": "874499e0a02e",
   "voice": "narrator",
-  "text": "The shop only makes sense if the stall leaves you ₹4,000 a month after rent. Which yes line should you write first?"
+  "text": "Each jar leaves ₹50 and the stall costs ₹6,000. The shop only makes sense if you clear ₹4,000 after rent. Which yes line?"
  },
  {
   "id": "66cc0e0b70d9",
@@ -10430,9 +10520,9 @@
   "text": "You're right that the line must sit above 30, but how far above? Your ₹4,000 goal answers that: ₹10,000 ÷ ₹50 is 200 jars a month, or 50 each Sunday, by week 8."
  },
  {
-  "id": "8c57f070b6ad",
+  "id": "90c45573e658",
   "voice": "narrator",
-  "text": "By week 8 you're selling 42 jars each Sunday. A friend says, '42 is close to 50. Open the shop!' What do you say?"
+  "text": "Your yes line was 50 jars a Sunday by week 8. You're selling 42. A friend says, 'Close enough, open the shop!' Your reply?"
  },
  {
   "id": "5d41e3ea2b3f",
@@ -10500,9 +10590,39 @@
   "text": "0.4% would be just ₹1,200. The test is ₹12,000, which is 4% of ₹3 lakh."
  },
  {
-  "id": "f7132b7fbac0",
+  "id": "f2410c42d073",
   "voice": "narrator",
-  "text": "Which of these are small tests for your pickles, and which are big bets?"
+  "text": "I'll show you six moves for your pickles. For each one, tell me: is it a small test, or a big bet?"
+ },
+ {
+  "id": "f5172c316d1a",
+  "voice": "narrator",
+  "text": "Sell a new lime flavour at one Sunday stall"
+ },
+ {
+  "id": "dc66a43cb8c2",
+  "voice": "narrator",
+  "text": "Sign a 3-year lease on a shop"
+ },
+ {
+  "id": "28ca375dd4c1",
+  "voice": "narrator",
+  "text": "Take 20 pre-orders with advance paid"
+ },
+ {
+  "id": "3810e6c4f460",
+  "voice": "narrator",
+  "text": "Buy 500 kg of limes for the new flavour"
+ },
+ {
+  "id": "41d54b5aab79",
+  "voice": "narrator",
+  "text": "Supply one office canteen for a month"
+ },
+ {
+  "id": "d7ccef7b59f6",
+  "voice": "narrator",
+  "text": "Print 5,000 labels with a shop address"
  },
  {
   "id": "dcbe34aa86a3",

@@ -8,7 +8,7 @@ import { useGame } from "@/lib/store";
 import { playSfx } from "@/lib/sfx";
 import { askLines, takeawayLines, type Said } from "@/lib/lesson-voice";
 import { ADVISOR, NARRATOR, stopVoice } from "@/lib/voice";
-import { DecisionView, RevealView, useNarration, VerdictSheet, VoiceButton } from "./Player";
+import { DecisionView, RevealView, useHeard, useNarration, VerdictSheet, VoiceButton } from "./Player";
 import { Logo } from "./Logo";
 import { Bar, Caption, Card, Icon, MediaView, Pill } from "./ui";
 
@@ -30,6 +30,8 @@ export function LessonPlayer({ target, testOut, onExit }: { target: LessonTarget
   const [busy, setBusy] = useState(false);
   const [failed, setFailed] = useState<{ answers: Answer[]; shown?: Exercise; value?: Answer["value"] } | null>(null);
   const [saveFailed, setSaveFailed] = useState(false);
+  // The teaching screen just read, so a question after it can offer "Read again" (Atheeb, 31 Oct 2026).
+  const [context, setContext] = useState<Extract<LessonScreen, { kind: "explain" }>>();
   const playKey = useRef(newPlayKey());
   const finished = useRef(false); // a double tap at the end must not pay twice
 
@@ -143,13 +145,29 @@ export function LessonPlayer({ target, testOut, onExit }: { target: LessonTarget
         </div>
       )}
 
-      {screen?.kind === "explain" && <ExplainView key={screen.id} screen={screen} onNext={() => advance((phase as { i: number }).i + 1)} />}
+      {screen?.kind === "explain" && (
+        <ExplainView
+          key={screen.id}
+          screen={screen}
+          onNext={() => {
+            setContext(screen);
+            advance((phase as { i: number }).i + 1);
+          }}
+        />
+      )}
       {screen && screen.kind !== "explain" && (
-        <ExerciseView key={`${screen.id}${screen.retry ? "r" : ""}`} shown={screen} busy={busy} onCheck={check} />
+        <ExerciseView
+          key={`${screen.id}${screen.retry ? "r" : ""}`}
+          shown={screen}
+          busy={busy}
+          context={screen.retry ? undefined : context}
+          onCheck={check}
+        />
       )}
 
       {reveal && phase.kind === "reveal" && phase.shown.kind === "scenario" && (
         <RevealView
+          choice={phase.shown.options.find((o) => o.id === phase.value)?.label}
           year={phase.shown.year ?? ""}
           media={phase.shown.media}
           outcome={reveal.outcome ?? ""}
@@ -212,8 +230,8 @@ function ExplainView({ screen, onNext }: { screen: Extract<LessonScreen, { kind:
 /** The verdict sheet, with its "why" read aloud. The why only reaches the phone after the answer, so does its audio id. */
 function LessonVerdict({ why, ...sheet }: { why: string } & React.ComponentProps<typeof VerdictSheet>) {
   const { s } = useGame();
-  useNarration([{ text: why }], s.settings.voice);
-  return <VerdictSheet {...sheet} />;
+  const { prog } = useNarration([{ text: why }], s.settings.voice);
+  return <VerdictSheet {...sheet} ready={useHeard(prog(0), why, s.settings.voice)} />;
 }
 
 const newPlayKey = () =>
@@ -224,16 +242,21 @@ function ExerciseView({
   shown,
   busy,
   locked,
+  context,
   onCheck,
 }: {
   shown: Exercise;
   busy: boolean;
   locked?: Answer["value"];
+  /** The teaching screen before this question, offered again on "Read again". */
+  context?: Extract<LessonScreen, { kind: "explain" }>;
   onCheck: (shown: Exercise, value: Answer["value"]) => void;
 }) {
   const { s } = useGame();
-  // Scenarios are read by DecisionView. An answered exercise under the verdict sheet stays quiet.
-  const speaks = s.settings.voice && locked === undefined && shown.kind !== "scenario";
+  const [rereading, setRereading] = useState(false);
+  // Scenarios are read by DecisionView, a sort card by card by Sort. An answered exercise under the verdict sheet
+  // stays quiet, and so does the question while its teaching screen is open again.
+  const speaks = s.settings.voice && locked === undefined && shown.kind !== "scenario" && shown.kind !== "sort" && !rereading;
   const { replay } = useNarration(voiced(askLines(shown)), speaks);
   if (shown.kind === "scenario")
     return (
@@ -250,12 +273,29 @@ function ExerciseView({
     );
   return (
     <div className={`flex flex-1 flex-col gap-4 ${locked !== undefined ? "pb-[260px]" : ""}`}>
-      {(shown.retry || speaks) && (
+      {(shown.retry || speaks || (context && locked === undefined)) && (
         <div className="flex items-center justify-between gap-3">
-          {shown.retry ? <p className="text-[13px] font-black tracking-[.12em] text-gold uppercase">Try this one again</p> : <span />}
+          {shown.retry ? (
+            <p className="text-[13px] font-black tracking-[.12em] text-gold uppercase">Try this one again</p>
+          ) : context && locked === undefined ? (
+            <button
+              type="button"
+              className="flex items-center gap-1.5 rounded-full border-2 border-line px-3 py-1 text-[13px] font-black tracking-[.08em] text-muted uppercase"
+              onClick={() => {
+                playSfx("select");
+                setRereading(true);
+              }}
+            >
+              <Icon.rewind />
+              Read again
+            </button>
+          ) : (
+            <span />
+          )}
           {speaks && <VoiceButton onClick={replay} />}
         </div>
       )}
+      {rereading && context && <ReadAgain screen={context} onClose={() => setRereading(false)} />}
       {shown.kind === "choice" && (
         <Choice shown={shown} locked={locked as string | undefined} busy={busy} onCheck={(v) => onCheck(shown, v)} />
       )}
@@ -264,7 +304,7 @@ function ExerciseView({
         <Order shown={shown} locked={locked as string[] | undefined} busy={busy} onCheck={(v) => onCheck(shown, v)} />
       )}
       {shown.kind === "sort" && (
-        <Sort shown={shown} locked={locked as string[] | undefined} busy={busy} onCheck={(v) => onCheck(shown, v)} />
+        <Sort shown={shown} locked={locked as string[] | undefined} busy={busy} quiet={rereading} onCheck={(v) => onCheck(shown, v)} />
       )}
     </div>
   );
@@ -408,38 +448,106 @@ function Order({ shown, locked, busy, onCheck }: Props<"order", string[]>) {
   );
 }
 
-/** Sort into two buckets: each item has a button for each bucket. */
-function Sort({ shown, locked, busy, onCheck }: Props<"sort", string[]>) {
+/**
+ * Sort into two buckets, one card at a time: the question stays at the top, each item is read out and answered
+ * with one tap, then the player sees every answer and can tap one to change it before Check (Atheeb, 31 Oct 2026:
+ * six items with two buttons each read like a form).
+ */
+function Sort({ shown, locked, busy, quiet, onCheck }: Props<"sort", string[]> & { quiet?: boolean }) {
+  const { s } = useGame();
   const [put, setPut] = useState<(string | null)[]>(locked ?? shown.items.map(() => null));
+  const [cur, setCur] = useState(locked ? shown.items.length : 0);
+  const done = cur >= shown.items.length;
+  // The first card is read after the question; later cards on their own.
+  const lines = done ? [] : cur === 0 ? [shown.prompt, shown.items[0]] : [shown.items[cur]];
+  const { replay } = useNarration(voiced(lines.map((text) => ({ text }))), s.settings.voice && !locked && !quiet && !done);
+  const pick = (k: number) => {
+    playSfx("select");
+    const next = put.map((x, j) => (j === cur ? String(k) : x));
+    setPut(next);
+    // After a change from the list, go back to the list; otherwise on to the next unanswered card.
+    const gap = next.findIndex((x) => x === null);
+    setCur(gap === -1 ? shown.items.length : gap);
+  };
   return (
     <>
-      <h2 className="text-[24px] leading-tight font-black text-balance">{shown.prompt}</h2>
-      <div className="flex flex-col gap-3">
-        {shown.items.map((item, i) => (
-          <div key={item} className="rounded-2xl border-2 border-line bg-surface p-3">
-            <p className="text-[17px] font-extrabold">{item}</p>
-            <div className="mt-2 grid grid-cols-2 gap-2">
-              {shown.buckets.map((b, k) => (
-                <button
-                  key={b}
-                  type="button"
-                  aria-pressed={put[i] === String(k)}
-                  disabled={!!locked}
-                  className="tile !px-2 !py-2 text-center !text-[14px]"
-                  onClick={() => {
-                    playSfx("select");
-                    setPut((p) => p.map((x, j) => (j === i ? String(k) : x)));
-                  }}
-                >
-                  {b}
-                </button>
-              ))}
-            </div>
-          </div>
-        ))}
+      <div className="flex items-start justify-between gap-3">
+        <h2 className="text-[21px] leading-tight font-black text-balance">{shown.prompt}</h2>
+        {!locked && !done && s.settings.voice && <VoiceButton onClick={replay} />}
       </div>
-      <CheckButton ready={put.every((x) => x !== null)} busy={busy} hidden={!!locked} onClick={() => onCheck(put as string[])} />
+      {!done ? (
+        <div className="flex flex-1 flex-col gap-4">
+          <p className="text-[13px] font-black tracking-[.12em] text-muted uppercase">
+            {cur + 1} of {shown.items.length}
+          </p>
+          <div key={cur} className="pop grid min-h-[140px] place-items-center rounded-3xl border-2 border-line bg-surface p-5 text-center">
+            <p className="text-[22px] leading-snug font-black">{shown.items[cur]}</p>
+          </div>
+          <div className="mt-auto grid gap-3 pb-6">
+            {shown.buckets.map((b, k) => (
+              <button key={b} type="button" className={`btn3d ${k === 1 ? "ghost" : ""}`} disabled={busy} onClick={() => pick(k)}>
+                {b}
+              </button>
+            ))}
+          </div>
+        </div>
+      ) : (
+        <>
+          {!locked && <p className="text-[14px] font-bold text-muted">Tap any answer to change it.</p>}
+          <div className="flex flex-col gap-2">
+            {shown.items.map((item, i) => (
+              <button
+                key={item}
+                type="button"
+                disabled={!!locked}
+                className="flex items-center justify-between gap-3 rounded-2xl border-2 border-line bg-surface px-3 py-2.5 text-left"
+                onClick={() => setCur(i)}
+              >
+                <span className="text-[15px] font-extrabold">{item}</span>
+                <span className="shrink-0 rounded-full bg-brand/15 px-2.5 py-1 text-[12px] font-black text-brand">
+                  {shown.buckets[Number(put[i])]}
+                </span>
+              </button>
+            ))}
+          </div>
+          <CheckButton ready={put.every((x) => x !== null)} busy={busy} hidden={!!locked} onClick={() => onCheck(put as string[])} />
+        </>
+      )}
     </>
+  );
+}
+
+/** "Read again": the teaching screen before a question, in a sheet over it, read aloud once more. */
+function ReadAgain({ screen, onClose }: { screen: Extract<LessonScreen, { kind: "explain" }>; onClose: () => void }) {
+  const { s } = useGame();
+  const { prog } = useNarration(voiced(askLines(screen)), s.settings.voice);
+  return (
+    <div
+      className="fixed inset-0 z-40 flex items-end bg-black/60"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Read again"
+      onClick={onClose}
+    >
+      <div
+        className="mx-auto flex max-h-[85dvh] w-full max-w-[480px] flex-col gap-3 overflow-y-auto rounded-t-3xl bg-bg px-4 pt-5 pb-6"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {screen.media && <MediaView media={screen.media} className="aspect-[16/9] w-full" kenBurns={false} />}
+        {screen.title && <p className="text-[13px] font-black tracking-[.12em] text-brand uppercase">{screen.title}</p>}
+        <Caption text={screen.text} progress={prog(0)} className="text-[19px] leading-snug font-bold" />
+        <button
+          type="button"
+          className="btn3d mt-2"
+          onClick={() => {
+            stopVoice();
+            onClose();
+          }}
+        >
+          Back to the question
+        </button>
+      </div>
+    </div>
   );
 }
 

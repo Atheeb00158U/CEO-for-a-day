@@ -27,6 +27,8 @@ export type Screen =
 export interface Reveal {
   nodeId: string;
   optionId: string;
+  /** The player's own pick, shown above what happened so they know whose path they're on. */
+  label: string;
   year: string;
   media: Media;
   outcome: string;
@@ -146,6 +148,7 @@ export function play(hs: HotSeat, picks: Pick[]): PlayView {
     reveal = {
       nodeId: stop.id,
       optionId: option.id,
+      label: option.label,
       year: stop.year,
       media: option.media,
       outcome: resolveText(option.outcome, s),

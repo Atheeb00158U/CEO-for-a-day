@@ -92,13 +92,13 @@
     {
       "kind": "explain",
       "id": "home",
-      "title": "Now it's your business",
-      "text": "Let's see if you can set the goalposts yourself. Imagine you make homemade pickles and dream of your own shop. Before signing for one, you test with a stall at a Sunday market. The stall costs ₹6,000 a month, and each jar you sell leaves you ₹50."
+      "title": "From their story to yours",
+      "text": "iD tested with a handful of stores before betting big, and you can do exactly the same with your own idea. Say you make homemade pickles and dream of opening a shop. Before you sign a lease, you take a stall at a Sunday market to test it."
     },
     {
       "kind": "choice",
       "id": "cost-line",
-      "prompt": "Let's try one. The market runs 4 Sundays a month. How many jars each Sunday just pays for the stall?",
+      "prompt": "The stall costs ₹6,000 a month, and each jar leaves you ₹50. With 4 Sundays a month, how many jars a Sunday pay the stall?",
       "options": [
         {
           "id": "a",
@@ -123,7 +123,7 @@
     {
       "kind": "choice",
       "id": "yes-line",
-      "prompt": "The shop only makes sense if the stall leaves you ₹4,000 a month after rent. Which yes line should you write first?",
+      "prompt": "Each jar leaves ₹50 and the stall costs ₹6,000. The shop only makes sense if you clear ₹4,000 after rent. Which yes line?",
       "options": [
         {
           "id": "a",
@@ -148,7 +148,7 @@
     {
       "kind": "choice",
       "id": "close-enough",
-      "prompt": "By week 8 you're selling 42 jars each Sunday. A friend says, '42 is close to 50. Open the shop!' What do you say?",
+      "prompt": "Your yes line was 50 jars a Sunday by week 8. You're selling 42. A friend says, 'Close enough, open the shop!' Your reply?",
       "options": [
         {
           "id": "a",
@@ -198,8 +198,8 @@
     {
       "kind": "sort",
       "id": "test-or-bet",
-      "prompt": "Which of these are small tests for your pickles, and which are big bets?",
-      "buckets": ["Small test", "Big bet"],
+      "prompt": "I'll show you six moves for your pickles. For each one, tell me: is it a small test, or a big bet?",
+      "buckets": ["A small test", "A big bet"],
       "items": [
         {
           "text": "Sell a new lime flavour at one Sunday stall",

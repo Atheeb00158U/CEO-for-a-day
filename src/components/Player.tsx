@@ -215,6 +215,7 @@ export function Player({
       {reveal && (
         <RevealView
           key={reveal.nodeId + reveal.optionId}
+          choice={reveal.label}
           year={reveal.year}
           media={reveal.media}
           real={madeUp ? undefined : view.onRealPath}
@@ -508,6 +509,7 @@ export function DecisionView({
 
 /** What happened, then the verdict sheet. Plain values in, so Hot Seats and Daily Calls share it. */
 export function RevealView({
+  choice,
   year,
   media,
   real,
@@ -526,6 +528,8 @@ export function RevealView({
   media?: Media;
   /** Real history, or our estimate of what would have happened. */
   real?: boolean;
+  /** The option the player picked: "You chose …" heads the reveal, so the path feels like theirs. */
+  choice?: string;
   outcome: string;
   grade: Grade;
   why: string;
@@ -542,11 +546,18 @@ export function RevealView({
   const v = VERDICT[grade];
   useEffect(() => playSfx(grade, 120), [grade]);
   const { prog, replay } = useNarration([{ text: outcome }, { text: spokenWhy({ why, better }) }], s.settings.voice);
+  const heard = useHeard(prog(1), [outcome, why, better ?? ""].join(" "), s.settings.voice);
   return (
     <div className="flex flex-1 flex-col gap-4 pb-[300px]">
       {media && <MediaView media={media} className="aspect-[16/9] w-full" />}
       <YearChip year={year} real={real} madeUp={madeUp} />
-      <p className="text-[13px] font-black uppercase tracking-[.12em] text-muted">What happened</p>
+      {choice && (
+        <div className="rounded-2xl border-2 border-line bg-surface px-3 py-2">
+          <p className="text-[11px] font-black uppercase tracking-wider text-muted">You chose</p>
+          <p className="text-[16px] font-extrabold">{choice}</p>
+        </div>
+      )}
+      <p className="text-[13px] font-black uppercase tracking-[.12em] text-muted">{choice ? "Where your choice led" : "What happened"}</p>
       <Caption text={outcome} progress={prog(0)} className="-mt-2 text-[20px] font-bold leading-snug" />
       {s.settings.voice && <VoiceButton onClick={replay} />}
       {realChoice && (
@@ -563,13 +574,41 @@ export function RevealView({
         pointsLabel={pointsLabel}
         lines={[
           { label: grade === "great" ? "Why it worked: " : "Why it hurt: ", text: why },
-          ...(better ? [{ label: "What would have worked: ", text: better }] : []),
+          ...(better ? [{ label: "The road you didn't take: ", text: better }] : []),
         ]}
+        ready={heard}
         hindsight={hindsight}
         note={madeUp ? MADE_UP_LABEL : undefined}
         onNext={onNext}
       />
     </div>
+  );
+}
+
+/**
+ * True once a reveal has been heard: when its last line finishes playing, or, with the voice off, after roughly the
+ * time it takes to read (Atheeb, 31 Oct 2026: a live Continue got tapped before anyone read what happened).
+ */
+export function useHeard(lastLineProgress: number, text: string, voice: boolean) {
+  const [timeUp, setTimeUp] = useState(false);
+  useEffect(() => {
+    setTimeUp(false);
+    if (voice) return;
+    const ms = Math.min(6000, 1000 + text.split(/\s+/).length * 120);
+    const t = setTimeout(() => setTimeUp(true), ms);
+    return () => clearTimeout(t);
+  }, [text, voice]);
+  return voice ? lastLineProgress >= 1 : timeUp;
+}
+
+/** Three pulsing dots, in place of Continue while the verdict is still being read. */
+function Dots() {
+  return (
+    <span className="inline-flex items-center gap-1.5" aria-hidden>
+      {[0, 1, 2].map((i) => (
+        <span key={i} className="size-2.5 animate-pulse rounded-full bg-current" style={{ animationDelay: `${i * 200}ms` }} />
+      ))}
+    </span>
   );
 }
 
@@ -581,6 +620,7 @@ export function VerdictSheet({
   lines,
   hindsight,
   note,
+  ready = true,
   onNext,
 }: {
   grade: Grade;
@@ -590,6 +630,8 @@ export function VerdictSheet({
   hindsight?: { left: number; onUse: () => void };
   /** A small line under the verdict, like the made-up story label. */
   note?: string;
+  /** False while the verdict is still being read out: Continue waits, so nobody skips what happened. */
+  ready?: boolean;
   onNext: () => void;
 }) {
   const v = VERDICT[grade];
@@ -629,12 +671,14 @@ export function VerdictSheet({
           <button
             type="button"
             className={`btn3d ${v.btn}`}
+            disabled={!ready}
+            aria-label={ready ? "Continue" : "Still reading out what happened"}
             onClick={() => {
               playSfx("next");
               onNext();
             }}
           >
-            Continue
+            {ready ? "Continue" : <Dots />}
           </button>
         </div>
       </div>

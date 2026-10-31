@@ -98,13 +98,13 @@
     {
       "kind": "explain",
       "id": "home",
-      "title": "Now it's your business",
-      "text": "Let's see if you can find your own stuck cash. Imagine you run a small printing press. Offices order letterheads and visiting cards from you worth ₹20,000 a day, and they pay you 60 days later. Before you answer, think about how many days of sales are sitting with them."
+      "title": "From their story to yours",
+      "text": "You don't have to grow cane to get stuck like Piyush. Any business that sells on credit is lending its money to customers, often without noticing. So let's look at yours. Say you run a small printing press that sells letterheads and visiting cards to offices."
     },
     {
       "kind": "choice",
       "id": "press",
-      "prompt": "So how much of your money are those offices holding at any time?",
+      "prompt": "Offices order ₹20,000 of printing from you every day and pay 60 days later. How much of your money are they holding?",
       "options": [
         {
           "id": "a",
@@ -129,7 +129,7 @@
     {
       "kind": "choice",
       "id": "press-30",
-      "prompt": "Now you ask new customers to pay in 30 days instead of 60. How much cash comes home?",
+      "prompt": "Offices order ₹20,000 a day. If new customers pay in 30 days instead of 60, how much cash comes home?",
       "options": [
         {
           "id": "a",
@@ -179,8 +179,8 @@
     {
       "kind": "sort",
       "id": "frees",
-      "prompt": "Here's a quick check. Does each move free cash or freeze it?",
-      "buckets": ["Frees cash", "Freezes cash"],
+      "prompt": "I'll show you seven moves for your press. For each one, tell me: does it bring cash home sooner, or keep it away longer?",
+      "buckets": ["Brings cash home", "Keeps it away"],
       "items": [
         {
           "text": "Ask 30% up front on big orders",

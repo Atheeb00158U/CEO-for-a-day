@@ -67,8 +67,8 @@
     {
       "kind": "sort",
       "id": "knew-then",
-      "prompt": "Let's go back to that final. To judge Dhoni fairly, which of these did he know when he chose?",
-      "buckets": ["Knew when he chose", "Only known later"],
+      "prompt": "Let's go back to that final. I'll show you five things. For each one, tell me: did Dhoni know it when he chose?",
+      "buckets": ["Yes, he knew it", "No, it came later"],
       "items": [
         {
           "text": "Harbhajan had gone for three sixes",
@@ -96,8 +96,8 @@
     {
       "kind": "explain",
       "id": "home",
-      "title": "Now it's your business",
-      "text": "Let's see if you can catch resulting yourself. Imagine you run a lunch tiffin service for offices. Every week you make calls like Dhoni's: which client to take, which cook to hire, which fair to spend money on. Some of your good calls will still go wrong."
+      "title": "From their story to yours",
+      "text": "Dhoni made one big call in front of millions. You'll make dozens of smaller ones, and some good calls will still go wrong. The danger is learning the wrong lesson from them. So say you run a lunch tiffin service for offices, and let's test your judgement."
     },
     {
       "kind": "choice",
@@ -127,7 +127,7 @@
     {
       "kind": "choice",
       "id": "two-misses",
-      "prompt": "Here's where resulting bites. You miss 3 fairs in 4. How often will you go to two fairs in a row and win nothing?",
+      "prompt": "Here's where resulting bites. A fair wins only 1 time in 4. How often will two fairs in a row both win nothing?",
       "options": [
         {
           "id": "a",

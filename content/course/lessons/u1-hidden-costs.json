@@ -98,13 +98,13 @@
     {
       "kind": "explain",
       "id": "home",
-      "title": "Now it's your business",
-      "text": "Let's see if you can spot the holes yourself. Imagine you sell your own T-shirts on Instagram at ₹499 each. A shirt costs you ₹180 to make, so it looks like you keep ₹319 an order. Before you believe that, think about what else every order costs you."
+      "title": "From their story to yours",
+      "text": "PepperTap's mistake isn't only a big-startup problem. Small sellers make it every day, because the price on the tag looks like profit. So let's put you in their shoes. Say you sell your own T-shirts on Instagram, and let's work out what one order really leaves you."
     },
     {
       "kind": "choice",
       "id": "shirt-keep",
-      "prompt": "Each order also costs ₹70 shipping, ₹15 packing, a ₹10 payment fee and ₹150 in ads. What's your real contribution margin?",
+      "prompt": "Your ₹499 shirt costs ₹180 to make. Each order also costs ₹70 shipping, ₹15 packing, a ₹10 fee and ₹150 in ads. What's left?",
       "options": [
         {
           "id": "a",
@@ -129,7 +129,7 @@
     {
       "kind": "choice",
       "id": "refused",
-      "prompt": "One in five cash-on-delivery buyers refuses the parcel. It earns nothing but costs ₹305 in ads, packing and two-way shipping. What do five orders leave?",
+      "prompt": "A delivered order leaves you ₹74. One buyer in five refuses the parcel, which costs you ₹305. What do five orders leave?",
       "options": [
         {
           "id": "a",
@@ -154,7 +154,7 @@
     {
       "kind": "choice",
       "id": "cut-one",
-      "prompt": "Back to a prepaid order. If you could cut one cost by 20%, which cut saves you the most?",
+      "prompt": "Each order costs ₹180 for the shirt, ₹150 in ads and ₹70 shipping. Cutting which one by 20% saves you most?",
       "options": [
         {
           "id": "a",

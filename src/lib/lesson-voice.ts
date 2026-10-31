@@ -25,8 +25,10 @@ export function askLines(s: Screen | LessonScreen): Said[] {
     case "gap":
       return [{ text: spokenGap(s.text) }];
     case "order":
-    case "sort":
       return [{ text: s.prompt }];
+    case "sort":
+      // Shown one card at a time, and each card is read out (LessonPlayer's Sort).
+      return [{ text: s.prompt }, ...s.items.map((i) => ({ text: typeof i === "string" ? i : i.text }))];
     case "scenario":
       return [{ text: s.setup }, { text: s.question }, ...(s.advisor ? [{ text: s.advisor, advisor: true }] : [])];
   }
