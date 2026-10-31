@@ -22,7 +22,10 @@ describe("voice lines", () => {
 });
 
 describe("lesson voice lines", () => {
-  const lesson = readLesson("sample-sales-not-profit");
+  // The test course's lesson, so edits to the real course can't break this.
+  const lesson: Lesson = JSON.parse(
+    readFileSync(new URL("./__fixtures__/course/lessons/sample-sales-not-profit.json", import.meta.url), "utf8"),
+  );
   const ids = new Set(voiceLines([], [], [lesson]).map((l) => l.id));
   const has = (text: string, voice = NARRATOR) => ids.has(nodeLineId(voice, text));
 
