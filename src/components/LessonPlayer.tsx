@@ -183,12 +183,25 @@ export function LessonPlayer({ target, testOut, onExit }: { target: LessonTarget
           <ExerciseView shown={phase.shown} busy locked={phase.value} onCheck={() => {}} />
           <LessonVerdict
             why={reveal.why}
+            cheer={reveal.cheer}
             grade={reveal.guess ? "ok" : reveal.correct ? "great" : "bad"}
             title={
-              reveal.guess ? (reveal.right ? "Good guess. Here's the answer" : "Good guess!") : reveal.correct ? "Correct!" : "Not quite"
+              reveal.guess
+                ? reveal.right
+                  ? "Good guess. Here's the answer"
+                  : "Good guess!"
+                : reveal.cheer
+                  ? "Got it this time!"
+                  : reveal.correct
+                    ? "Correct!"
+                    : "Not quite"
             }
             pointsLabel={!reveal.correct && !reveal.retry && !testOut ? "You'll see it again" : undefined}
-            lines={[...(reveal.right ? [{ label: "Answer: ", text: reveal.right }] : []), { label: "", text: reveal.why }]}
+            lines={[
+              ...(reveal.right ? [{ label: "Answer: ", text: reveal.right }] : []),
+              ...(reveal.cheer ? [{ label: "", text: reveal.cheer }] : []),
+              { label: reveal.cheer ? " " : "", text: reveal.why },
+            ]}
             onNext={() => advance(0)}
           />
         </>
@@ -228,10 +241,11 @@ function ExplainView({ screen, onNext }: { screen: Extract<LessonScreen, { kind:
 }
 
 /** The verdict sheet, with its "why" read aloud. The why only reaches the phone after the answer, so does its audio id. */
-function LessonVerdict({ why, ...sheet }: { why: string } & React.ComponentProps<typeof VerdictSheet>) {
+function LessonVerdict({ why, cheer, ...sheet }: { why: string; cheer?: string } & React.ComponentProps<typeof VerdictSheet>) {
   const { s } = useGame();
-  const { prog } = useNarration([{ text: why }], s.settings.voice);
-  return <VerdictSheet {...sheet} ready={useHeard(prog(0), why, s.settings.voice)} />;
+  const said = cheer ? [{ text: cheer }, { text: why }] : [{ text: why }];
+  const { prog } = useNarration(said, s.settings.voice);
+  return <VerdictSheet {...sheet} ready={useHeard(prog(said.length - 1), said.map((l) => l.text).join(" "), s.settings.voice)} />;
 }
 
 const newPlayKey = () =>

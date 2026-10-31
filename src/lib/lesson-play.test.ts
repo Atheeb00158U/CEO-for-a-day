@@ -7,6 +7,7 @@ vi.hoisted(() => {
 import { readCourse, readLesson } from "./content-files";
 import type { Lesson } from "./course-types";
 import { lessonPlay, parseAnswers, testOutLesson, type Answer, type LessonScreen } from "./lesson-play";
+import { GOT_IT } from "./lesson-voice";
 import { PlayError } from "./play";
 
 const snp = readLesson("sample-sales-not-profit");
@@ -80,6 +81,13 @@ describe("lesson replay", () => {
     expect(view.result!.mistakes).toEqual([expect.objectContaining({ lessonId: fv.id, screenId: "slow", right: "Rent", picked: "Rice" })]);
     expect(view.progress).toEqual({ done: 5, total: 5 });
     expect(view.reveal).toMatchObject({ screenId: "slow", correct: true, retry: true });
+  });
+
+  it("praises a right second try and gives the rule, instead of repeating the first explanation", () => {
+    const { view } = playThrough(fv, ["slow"]);
+    expect(view.reveal).toMatchObject({ cheer: GOT_IT, why: fv.principle });
+    const first = playThrough(fv).view;
+    expect(first.reveal?.cheer).toBeUndefined();
   });
 
   it("doesn't bring a missed exercise back twice", () => {

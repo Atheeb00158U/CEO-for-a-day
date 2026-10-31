@@ -5,6 +5,7 @@
 import type { Lesson, Module, Option, Screen } from "./course-types";
 import type { LessonMistake } from "./game-state";
 import type { Grade, Media } from "./hotseat-types";
+import { GOT_IT } from "./lesson-voice.ts";
 import { PlayError } from "./play.ts";
 
 export interface Answer {
@@ -37,6 +38,8 @@ export interface LessonReveal {
   outcome?: string;
   better?: string;
   retry: boolean;
+  /** Said before `why` when a missed exercise is now right: the long explanation was already heard once. */
+  cheer?: string;
 }
 
 export interface LessonResult {
@@ -227,11 +230,15 @@ export function lessonPlay(lesson: Lesson, answers: Answer[], { retry = true } =
         if (retry) seq.push({ screen: step.screen, retry: true });
       }
     }
+    // Right on the second try: a teacher doesn't repeat the whole explanation, just praises and gives the rule
+    // (Atheeb, 31 Oct 2026). Scenarios keep their story outcome.
+    const gotIt = step.retry && g.correct && step.screen.kind !== "scenario";
     reveal = {
       screenId: step.screen.id,
       correct: g.correct,
       guess: g.guess,
-      why: g.why,
+      why: gotIt ? lesson.principle : g.why,
+      cheer: gotIt ? GOT_IT : undefined,
       right: g.right,
       grade: "grade" in g ? g.grade : undefined,
       outcome: "outcome" in g ? g.outcome : undefined,

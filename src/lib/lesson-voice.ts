@@ -9,6 +9,9 @@ export interface Said {
   advisor?: boolean;
 }
 
+/** The praise before the rule when a missed exercise comes back right (lesson-play.ts). */
+export const GOT_IT = "There you go, you've got it now. Here's the rule to keep:";
+
 /** A gap sentence as read aloud: each ___ is said as "blank". */
 export const spokenGap = (text: string) => text.replaceAll("___", "blank");
 

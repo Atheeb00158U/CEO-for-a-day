@@ -5,7 +5,7 @@ import { createHash } from "node:crypto";
 import { ADVISOR, NARRATOR, spokenWhy } from "./engine.ts";
 import type { Lesson } from "./course-types";
 import type { DailyCall, HotSeat, Text } from "./hotseat-types";
-import { askLines, takeawayLines } from "./lesson-voice.ts";
+import { askLines, GOT_IT, takeawayLines } from "./lesson-voice.ts";
 
 export interface VoiceLine {
   id: string;
@@ -63,5 +63,6 @@ export function voiceLines(hotSeats: HotSeat[], daily: DailyCall[] = [], lessons
     }
     for (const x of takeawayLines(l)) add(x.text);
   }
+  if (lessons.length) add(GOT_IT);
   return [...lines.values()];
 }
