@@ -154,7 +154,7 @@
     {
       "kind": "choice",
       "id": "stock-days",
-      "prompt": "You keep ₹4 lakh of paper and use ₹10,000 a day. If you keep just 8 days of it, how much cash do you get back?",
+      "prompt": "You keep ₹4 lakh of paper and use ₹10,000 a day. Keep just 8 days of it. How much cash do you get back?",
       "options": [
         {
           "id": "a",
