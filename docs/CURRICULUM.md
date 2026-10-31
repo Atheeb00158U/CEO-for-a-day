@@ -1,11 +1,13 @@
 # CEO For A Day: the course map
 
 Status: **draft for Atheeb's review**, revised 1 Nov 2026 after Atheeb played the first lesson ("no basic
-lessons"; see his decisions at the end). It builds on `docs/LEARNING-PLAN.md` (approved) and
+lessons"), then again for his 31 Oct decision (every lesson teaches a named concept; sales psychology in full).
+See his decisions at the end. It builds on `docs/LEARNING-PLAN.md` (approved) and
 `docs/research/curriculum.md` (the first syllabus). Where this file and the research draft disagree, this file
 wins.
 
-**Totals:** 13 units, 29 modules, 109 lessons (down from 138), 25 Hot Seat gates (14 we have and 11 new ones),
+**Totals:** 13 units, 31 modules, 120 lessons (138 → 109 in the "no basic lessons" cut, then +11 for sales
+psychology), 25 Hot Seat gates (14 we have and 11 new ones),
 plus 1 backup Hot Seat and 1 existing Hot Seat as optional practice.
 
 ---
@@ -22,6 +24,13 @@ plus 1 backup Hot Seat and 1 existing Hot Seat as optional practice.
   costs are, "keep shop and home money apart", "tax is a cost") is said in one or two conversational lines
   inside a harder lesson: "Sales are all the money that comes in; profit is what's left." Each module lists
   its asides under **Folded in**, with the lesson and the line.
+- **A named concept in every lesson (Atheeb, 31 Oct 2026).** Each lesson teaches one idea players have never
+  heard of, or have heard of but never really learned: cash conversion cycle, contribution margin, BATNA,
+  anchoring, Goodhart's law. The **Concept** column names it, and the lesson says that name out loud, so the
+  player can look it up and sound smart using it. A rule that reads like common sense gets a sharper rule or
+  is merged away.
+- **Ethics line.** Persuasion lessons (3.3, 4.1.3, 4.2, 5.3) end on the same line: use on others only what
+  you'd accept being used on you. No fake scarcity, fake "was" prices or fake reviews.
 - **Real examples are welcome.** A lesson may open with a famous real Indian company or well-known incident,
   with facts from a source we opened, as long as that company is **not a Hot Seat gate** (so no lesson gives
   away a gate's answer). Practice questions can still use made-up shops.
@@ -53,9 +62,9 @@ plus 1 backup Hot Seat and 1 existing Hot Seat as optional practice.
 |---|---|---|---|
 | 1 | Make money, keep money | 8 | The things that kill businesses that look fine: cash running out, hidden costs, money stuck in stock and udhaar, and fixed costs taken on too early. "Judge the thinking, not the luck" is here because every Hot Seat's feedback works that way. |
 | 2 | Customers first | 7 | Find a real problem and the right buyer before pricing anything. |
-| 3 | Price and offer | 7 | Price comes straight after knowing what the customer values. |
-| 4 | Trust and brand | 7 | In India, trust is often the product. |
-| 5 | Getting customers | 8 | Selling step by step, channels, and what one customer is worth. |
+| 3 | Price and offer | 12 | Price comes straight after knowing what the customer values, then how buyers' minds really judge a price (anchors, decoys, frames, loss aversion). |
+| 4 | Trust and brand | 8 | In India, trust is often the product. Cialdini's reciprocity, social proof, commitment and scarcity sit here. |
+| 5 | Getting customers | 13 | Selling step by step, channels, what one customer is worth, and the conversation skills that close (Voss, reactance, status quo bias). |
 | 6 | Running the business | 6 | Once there are sales: keep it simple, get good suppliers. |
 | 7 | People | 9 | Hiring, handing over, family partners, letting people go, leading in bad times. |
 | 8 | Rivals, partners and deals | 12 | Who holds power, cheaper rivals, thinking one move ahead, and negotiation. |
@@ -93,13 +102,13 @@ shops.
 #### Module 1.1: Where the money goes
 **Goal:** see why busy, "profitable" shops still run out of money.
 
-| Code | The rule | Opens with (real case) | Practice example (made up) | Source | Exercise |
-|---|---|---|---|---|---|
-| 1.1.1 | Businesses die when cash runs out, not when profit does. | Jet Airways, one of India's biggest airlines, stopped flying in April 2019, weeks after it ran short of cash for fuel and leases ◇. | Sunil's books show ₹40,000 profit in March, but his buyer pays in 90 days and the cloth mill wants cash today. How many weeks until the box is empty? | *Financial Intelligence for Entrepreneurs* (Berman & Knight) ◇; Paul Graham, "Default Alive or Default Dead?" (2015) ◇ | Spot the mistake (a ledger), then quick sum |
-| 1.1.2 | Price minus stock cost isn't profit. Count every hidden cost. | PepperTap, a funded grocery-delivery app, shut in 2016: delivery and discounts cost more than many orders earned ◇. | A ₹400 home-delivery order keeps ₹60 after stock. Take off ₹35 delivery, ₹8 packing, ₹12 spoilt stock: ₹5 left. | Unit economics (YC Startup School) ◇; contribution margin, any cost-accounting text ◇ | Quick sum |
-| 1.1.3 | Stock and udhaar are cash you can't spend. Give both limits. | India now makes big buyers pay small suppliers within 45 days (Income Tax s.43B(h), from FY 2023-24), because so much small-business money was stuck in late payments ◇. | A tailor's regulars owe ₹30,000 and ₹50,000 of cloth sits unsold. He sets a limit and a collection day. | IIMB study on kirana working capital (repository.iimb.ac.in) ◇; MSMED Act 2006 ◇; Income Tax Act s.43B(h) ◇ | Pick the best move |
-| 1.1.4 | Judge a call by what you knew then, not the result. | Dhoni gave Joginder Sharma the last over of the 2007 T20 World Cup final. It worked and was praised. Would the same call be "stupid" if it had failed ◇? | A juice stall stocked up for a heatwave that came a week late. The bet was still sound. | *Thinking in Bets* (Annie Duke), "resulting" (sachinrekhi.com) ✓ | True or false, then why |
-| 1.1.5 | Test small first, and decide beforehand what result means yes. | Flipkart sold only books when it began in 2007, before it added other goods ◇. | Try home delivery in one lane for a month. "Yes" means 15 orders a week. | *The Lean Startup* (Eric Ries), including "innovation accounting" ◇ | Drag to order |
+| Code | Concept | The rule | Opens with (real case) | Practice example (made up) | Source | Exercise |
+|---|---|---|---|---|---|---|
+| 1.1.1 | **Cash runway** (default alive or dead) | Businesses die when cash runs out, not when profit does. | Jet Airways, one of India's biggest airlines, stopped flying in April 2019, weeks after it ran short of cash for fuel and leases ◇. | Sunil's books show ₹40,000 profit in March, but his buyer pays in 90 days and the cloth mill wants cash today. How many weeks until the box is empty? | *Financial Intelligence for Entrepreneurs* (Berman & Knight) ◇; Paul Graham, "Default Alive or Default Dead?" (2015) ◇ | Spot the mistake (a ledger), then quick sum |
+| 1.1.2 | **Contribution margin** (unit economics) | Price minus stock cost isn't profit. Count every hidden cost. | PepperTap, a funded grocery-delivery app, shut in 2016: delivery and discounts cost more than many orders earned ◇. | A ₹400 home-delivery order keeps ₹60 after stock. Take off ₹35 delivery, ₹8 packing, ₹12 spoilt stock: ₹5 left. | Unit economics (YC Startup School) ◇; contribution margin, any cost-accounting text ◇ | Quick sum |
+| 1.1.3 | **Cash conversion cycle** (working capital) | Stock and udhaar are cash you can't spend. Give both limits. | India now makes big buyers pay small suppliers within 45 days (Income Tax s.43B(h), from FY 2023-24), because so much small-business money was stuck in late payments ◇. | A tailor's regulars owe ₹30,000 and ₹50,000 of cloth sits unsold. He sets a limit and a collection day. | IIMB study on kirana working capital (repository.iimb.ac.in) ◇; MSMED Act 2006 ◇; Income Tax Act s.43B(h) ◇ | Pick the best move |
+| 1.1.4 | **Resulting** (outcome bias) | Judge a call by what you knew then, not the result. | Dhoni gave Joginder Sharma the last over of the 2007 T20 World Cup final. It worked and was praised. Would the same call be "stupid" if it had failed ◇? | A juice stall stocked up for a heatwave that came a week late. The bet was still sound. | *Thinking in Bets* (Annie Duke), "resulting" (sachinrekhi.com) ✓ | True or false, then why |
+| 1.1.5 | **Pre-set success criteria** (a test as a cheap real option) | Test small first, and decide beforehand what result means yes. | Flipkart sold only books when it began in 2007, before it added other goods ◇. | Try home delivery in one lane for a month. "Yes" means 15 orders a week. | *The Lean Startup* (Eric Ries), including "innovation accounting" ◇ | Drag to order |
 
 **Folded in:**
 - 1.1.1: "Sales are all the money that comes in. Profit is what's left after costs. Cash is what's in the box
@@ -112,6 +121,8 @@ shops.
   week." (old 1.1.2)
 - 1.1.3: "Udhaar is a loan you give, with no interest." (old 1.2.2)
 - 1.1.5: "Every Sunday, count the two or three numbers that decide. Let them decide, not hope." (old 1.3.3)
+- 1.1.5: "Goodhart's law: once a number becomes the target, people game it. Pick numbers that are hard to fake."
+- 1.1.5: "A small test is a cheap option: you can stop, or go big once it works." (real options)
 
 **Gate:**
 - **NEW: `kirana-year` "A kirana's year".** A **made-up** story, clearly labelled ("based on many real
@@ -127,11 +138,11 @@ shops.
 #### Module 1.2: What your costs decide
 **Goal:** set up costs so you survive the slow start and win the long run.
 
-| Code | The rule | Opens with (real case) | Practice example (made up) | Source | Exercise |
-|---|---|---|---|---|---|
-| 1.2.1 | Keep fixed costs tiny until sales prove the demand. | Lijjat Papad began in 1959 with seven women, ₹80 borrowed and a Mumbai rooftop ◇. | Lata's tiffin service: at ₹15,000 rent she needs 60 meals a day to break even; from her home kitchen, 20. | Cost-volume-profit analysis, any cost-accounting text ◇ | Slider sim |
-| 1.2.2 | Half the margin needs twice the sales. Can you get them? | Parle-G has sold for a few rupees a pack for decades and earns on huge volume ◇. | Ravi keeps ₹3 a cup of chai. Cut to ₹2 to beat the stall opposite, and he needs 150 more cups a day for the same profit. | Cost-volume-profit analysis ◇ | Quick sum |
-| 1.2.3 | Ignore money already spent. Count what else you could do. | The government put years of money into Air India before selling it in 2021 ◇. | A ₹40,000 juicer sits unused, and three hours at the counter are three hours not finding bulk buyers. | Sunk cost, *Thinking, Fast and Slow* (Kahneman) ◇; opportunity cost, any economics primer ◇ | True or false, then why |
+| Code | Concept | The rule | Opens with (real case) | Practice example (made up) | Source | Exercise |
+|---|---|---|---|---|---|---|
+| 1.2.1 | **Operating leverage** | Keep fixed costs tiny until sales prove the demand. | Lijjat Papad began in 1959 with seven women, ₹80 borrowed and a Mumbai rooftop ◇. | Lata's tiffin service: at ₹15,000 rent she needs 60 meals a day to break even; from her home kitchen, 20. | Cost-volume-profit analysis, any cost-accounting text ◇ | Slider sim |
+| 1.2.2 | **Cost-volume-profit** (the price-cut trap) | Half the margin needs twice the sales. Can you get them? | Parle-G has sold for a few rupees a pack for decades and earns on huge volume ◇. | Ravi keeps ₹3 a cup of chai. Cut to ₹2 to beat the stall opposite, and he needs 150 more cups a day for the same profit. | Cost-volume-profit analysis ◇ | Quick sum |
+| 1.2.3 | **Sunk cost fallacy** and **opportunity cost** | Ignore money already spent. Count what else you could do. | The government put years of money into Air India before selling it in 2021 ◇. | A ₹40,000 juicer sits unused, and three hours at the counter are three hours not finding bulk buyers. | Sunk cost, *Thinking, Fast and Slow* (Kahneman) ◇; opportunity cost, any economics primer ◇ | True or false, then why |
 
 **Folded in:**
 - 1.2.1: "Fixed costs stay the same every month, like rent. Variable costs grow with each sale, like bags and
@@ -155,11 +166,11 @@ shops.
 #### Module 2.1: Find a real problem
 **Goal:** find a problem people will pay to fix.
 
-| Code | The rule | Everyday example (made up) | Source | Exercise |
-|---|---|---|---|---|
-| 2.1.1 | Sell what people already struggle with, not what you love. | Priya loves fusion cakes, but her colony wants eggless birthday cakes on time. | YC Startup School 2018 curriculum ✓ | Pick the best move |
-| 2.1.2 | Ask what they did last time, never "would you buy?" | "What did you spend on tuition last month?" beats "Would you pay for my tuition app?" | *The Mom Test* (Rob Fitzpatrick), rules 1 and 2 (Shortform summary) ✓ | Spot the mistake |
-| 2.1.3 | Praise is not proof. Money or a firm promise is. | Ten friends say "great idea", and none of them pays an advance. | *The Mom Test* ("compliments are not data") ✓ | True or false, then why |
+| Code | Concept | The rule | Everyday example (made up) | Source | Exercise |
+|---|---|---|---|---|---|
+| 2.1.1 | **Workaround test** (hair-on-fire problem) | If nobody has a workaround, the pain isn't big enough. | Priya loves fusion cakes, but colony mothers already drive 6 km for eggless birthday cakes. That drive is the demand. | YC Startup School 2018 curriculum ✓; "hair on fire" problems (YC) ◇ | Pick the best move |
+| 2.1.2 | **The Mom Test** | Ask what they did last time, never "would you buy?" | "What did you spend on tuition last month?" beats "Would you pay for my tuition app?" | *The Mom Test* (Rob Fitzpatrick), rules 1 and 2 (Shortform summary) ✓ | Spot the mistake |
+| 2.1.3 | **Commitment currency** (time, reputation, money) | Praise is not proof. Money or a firm promise is. | Ten friends say "great idea", and none of them pays an advance. | *The Mom Test* ("compliments are not data") ✓ | True or false, then why |
 
 **Folded in:** 2.1.2: "Talk about their life, not your idea." (old 2.1.2, merged with old 2.1.3)
 
@@ -168,12 +179,12 @@ shops.
 #### Module 2.2: Who buys, and why
 **Goal:** pick your first customers and learn what they really want.
 
-| Code | The rule | Everyday example (made up) | Source | Exercise |
-|---|---|---|---|---|
-| 2.2.1 | You can't serve everyone. Choose who you serve first. | A gym for working women at 6 am, not "a gym for everybody". | *Crossing the Chasm* (Geoffrey Moore), "beachhead" ◇ | Pick the best move |
-| 2.2.2 | Build for the biggest real need, not the loudest buyer. | One hotel wants fancy cakes; 200 homes want plain cakes every week. | Jobs to be done, *Competing Against Luck* (Christensen) ◇ | Who's right? |
-| 2.2.3 | Change the product, not the buyer's mind. | Your town likes sweeter pickles. Make them sweeter; don't lecture. | YC, "make something people want" ✓ | True or false, then why |
-| 2.2.4 | People pay for a result and a feeling, not a product. | Parents buy "my child passes Class 10"; nobody wants guests to see "the cheapest sofa". | *Competing Against Luck* ◇; emotional and social jobs ◇ | Mini-scenario |
+| Code | Concept | The rule | Everyday example (made up) | Source | Exercise |
+|---|---|---|---|---|---|
+| 2.2.1 | **Beachhead market** | You can't serve everyone. Choose who you serve first. | A gym for working women at 6 am, not "a gym for everybody". | *Crossing the Chasm* (Geoffrey Moore), "beachhead" ◇ | Pick the best move |
+| 2.2.2 | **Selection bias** (the loudest-customer trap) | Loud buyers aren't the market. Count how many share the need. | One hotel wants fancy cakes; 200 homes want plain cakes every week. | Selection bias, any statistics primer ◇; *Competing Against Luck* (Christensen) ◇ | Who's right? |
+| 2.2.3 | **Gourville's 9× effect** (status quo bias, design side) | New must beat old about nine times over, or fit old habits. | Your town likes sweeter pickles. Make them sweeter; a talk on "healthy sour" won't beat a habit. | John Gourville, "Eager Sellers and Stony Buyers" (HBR, 2006) ◇; YC, "make something people want" ✓ | True or false, then why |
+| 2.2.4 | **Jobs to be Done** (functional, emotional, social jobs) | People pay for a result and a feeling, not a product. | Parents buy "my child passes Class 10"; nobody wants guests to see "the cheapest sofa". | *Competing Against Luck* ◇; emotional and social jobs ◇ | Mini-scenario |
 
 **Folded in:** 2.2.4 merges old 2.2.4 (a result) and 2.2.5 (feelings).
 
@@ -191,12 +202,12 @@ shops.
 #### Module 3.1: Set a price
 **Goal:** price from what it's worth to the buyer.
 
-| Code | The rule | Everyday example (made up) | Source | Exercise |
-|---|---|---|---|---|
-| 3.1.1 | Price from the buyer's value: faster and surer is worth more. | "Curtains fitted in 2 hours or your money back" beats a cheaper one-week job; same-day AC repair is worth more in May. | *Confessions of the Pricing Man* (Hermann Simon) ◇; *$100M Offers* (Alex Hormozi), value equation ◇ | Which price? |
-| 3.1.2 | Indian buyers pay for lasting value, not just the lowest price. | They pay ₹50 more for a cooker that lasts ten years. | *The Fortune at the Bottom of the Pyramid* (C.K. Prahalad) ◇ | Which price? |
-| 3.1.3 | Price per use, not per kilo, decides who can buy. | A ₹10 pouch of pickle sells to families who can't buy the ₹120 jar, at a higher price per gram. | Prahalad ◇ | Pick the best move |
-| 3.1.4 | A cheap first item pays only if buyers come back. | A ₹49 first haircut fills the chairs; it loses money unless one in three returns at ₹200. | Loss leader, any retail text ◇ | Quick sum |
+| Code | Concept | The rule | Everyday example (made up) | Source | Exercise |
+|---|---|---|---|---|---|
+| 3.1.1 | **Value-based pricing** (economic value to the customer) | Price from the buyer's value: faster and surer is worth more. | "Curtains fitted in 2 hours or your money back" beats a cheaper one-week job; same-day AC repair is worth more in May. | *Confessions of the Pricing Man* (Hermann Simon) ◇; *$100M Offers* (Alex Hormozi), value equation ◇ | Which price? |
+| 3.1.2 | **Total cost of ownership** | Show cost per year of use; cheap and short-lived costs more. | A ₹2,400 cooker that lasts ten years is ₹240 a year; a ₹1,500 one that lasts three is ₹500. | *The Fortune at the Bottom of the Pyramid* (C.K. Prahalad) ◇; total cost of ownership ◇ | Which price? |
+| 3.1.3 | **Sachet economics** (price per use) | Price per use, not per kilo, decides who can buy. | A ₹10 pouch of pickle sells to families who can't buy the ₹120 jar, at a higher price per gram. | Prahalad ◇ | Pick the best move |
+| 3.1.4 | **Loss leader** and payback | A cheap first item pays only if buyers come back. | A ₹49 first haircut fills the chairs; it loses money unless one in three returns at ₹200. | Loss leader, any retail text ◇ | Quick sum |
 
 **Folded in:** 3.1.1: "Your cost sets the floor, not the price." (old 3.1.1, merged with old 3.1.2)
 
@@ -205,11 +216,11 @@ shops.
 #### Module 3.2: Change a price
 **Goal:** change prices without losing trust or profit.
 
-| Code | The rule | Everyday example (made up) | Source | Exercise |
-|---|---|---|---|---|
-| 3.2.1 | Discounts don't fix a weak product, and they cheapen a good one. | Monthly sales and your sweets still don't sell; a "50% off" sign on handloom says it was never worth full price. | Simon ◇ | Spot the mistake |
-| 3.2.2 | Raise prices in small, warned steps; honour what early buyers were promised. | Tell tuition parents in March, not on fee day, and keep this year's batch at the old fee. | Simon ◇ | Who's right? |
-| 3.2.3 | A long queue means price too low or supply too small. | Your bakery sells out by 10 am every day. Bake more, or charge more? | Basic supply and demand ◇ | Pick the best move |
+| Code | Concept | The rule | Everyday example (made up) | Source | Exercise |
+|---|---|---|---|---|---|
+| 3.2.1 | **Price-quality inference** (a discount is a signal) | Discounts don't fix a weak product, and they cheapen a good one. | Monthly sales and your sweets still don't sell; a "50% off" sign on handloom says it was never worth full price. | Simon ◇ | Spot the mistake |
+| 3.2.2 | **Dual entitlement** (price fairness) | Raise prices in small, warned steps; honour what early buyers were promised. | Tell tuition parents in March, not on fee day, and keep this year's batch at the old fee. | Simon ◇; Kahneman, Knetsch & Thaler, "Fairness as a Constraint on Profit Seeking" (1986), the snow-shovel survey ◇ | Who's right? |
+| 3.2.3 | **Shortage signal** (below the market-clearing price) | A long queue means price too low or supply too small. | Your bakery sells out by 10 am every day. Bake more, or charge more? | Basic supply and demand ◇ | Pick the best move |
 
 **Gate (closes 3.1 and 3.2):**
 - **NEW: `tata-nano` "The one-lakh car".** Tata Motors, 2008–2011.
@@ -220,18 +231,79 @@ shops.
   - Tests: 3.1.2, 3.2.1–3.2.3 (and 2.2.4). Quiz only: 3.1.1, 3.1.3, 3.1.4.
   - Complexity 3 · Indian: yes · big · Facts: research brief in `tata-nano/`. ✓ in `curriculum.md`: about 2 lakh bookings, sales far below the 2.5 lakh a year target, Ratan Tata later calling the "cheapest" label a mistake.
 
+#### Module 3.3: How buyers really judge a price
+**Goal:** see the tricks on every price tag, and use them honestly.
+
+The hook (from a reel Atheeb shared): every one of these is being used on you right now, on price tags and at
+checkout, and nobody teaches it. Each lesson names the effect, shows the study or real case behind it, how it
+is used on the player as a buyer, how to use it honestly as a seller, and where it backfires. **Ethics line,
+said in every lesson of 3.3, 4.2.5 and 5.3:** use on others only what you'd accept being used on you. No fake
+"was" prices, no fake scarcity, no fake reviews.
+
+| Code | Concept | The rule | Opens with (real case or study) | Practice example (made up) | Source | Exercise |
+|---|---|---|---|---|---|---|
+| 3.3.1 | **Anchoring** | The first number they see sets what every price feels like. | Tversky and Kahneman spun a rigged wheel, then asked what share of UN members are African. People who saw 65 guessed 45%; people who saw 10 guessed 25% ✓. | A saree shop shows a ₹12,000 silk first, and the ₹4,500 one now feels fair. A sale page says "MRP ₹2,999, now ₹1,199": was ₹2,999 ever real? | Tversky & Kahneman, "Judgment under Uncertainty" (*Science*, 1974) (en.wikipedia.org/wiki/Anchoring_effect) ✓ | Which price? |
+| 3.3.2 | **Decoy effect** (asymmetric dominance) | A clearly worse third option makes the one beside it sell. | Dan Ariely's Economist test: web $59, print $125, print + web $125. With the useless print-only option, 84% chose print + web; without it, 32% did ✓. | A cinema sells popcorn at ₹180 small, ₹290 medium, ₹320 large. Which is the decoy, and what does it sell? Then set three honest tuition plans. | Ariely, *Predictably Irrational* (2008) (en.wikipedia.org/wiki/Decoy_effect) ✓; Huber, Payne & Puto (1982) ◇ | Pick the best move |
+| 3.3.3 | **Framing** (gain frame vs loss frame) | The same fact sells differently as a gain or a loss. | Tversky and Kahneman's "disease" problem: "200 of 600 saved" won 72% support; the same plan worded "400 die" lost to a gamble, 22% to 78% ✓. Beef labelled "75% lean" was judged better than "25% fat" ✓. | A solar installer can say "save ₹1,800 a month" or "you lose ₹1,800 every month you wait". Which suits a first-time buyer, and which a buyer who keeps delaying? A gym: "₹25 a day" or "₹9,000 a year"? | Tversky & Kahneman, "The Framing of Decisions and the Psychology of Choice" (*Science*, 1981) (en.wikipedia.org/wiki/Framing_effect_(psychology)) ✓; Irwin Levin (1987), *Bulletin of the Psychonomic Society* (iro.uiowa.edu) ✓; Gourville, "pennies-a-day" (1998) ◇ | Who's right? |
+| 3.3.4 | **Loss aversion** | A loss hurts about twice as much as an equal gain pleases. | Offer a coin flip: tails you lose ₹100, heads you win ₹150. Most people refuse. Tversky and Kahneman measured losses weighing about 2.25 times as much as gains (1992) ✓. | A tailor's "free alteration if you book by Friday" vs "₹200 fee after Friday": same money, which fills Friday? Then: how big must a win be before a buyer risks ₹500? | Tversky & Kahneman, cumulative prospect theory (1992) (ryanoconnellfinance.com; *Judgment and Decision Making* 2012, dlab.sauder.ubc.ca) ✓; *Thinking, Fast and Slow* ◇ | Quick sum |
+| 3.3.5 | **Endowment effect** | Once it feels theirs, giving it back feels like a loss. | Kahneman, Knetsch and Thaler gave half a class coffee mugs. Owners asked about twice what non-owners would pay for the same mug (1990) ✓. Lenskart sends frames home to try before you buy ✓. | A furniture shop offers a 7-day home trial on sofas. Plan it so most families keep the sofa, and a return is truly easy. | Kahneman, Knetsch & Thaler, "Experimental Tests of the Endowment Effect" (1990) (web.mit.edu PDF; pages.uoregon.edu) ✓; Lenskart home try-on (indiaai.gov.in; markhub24.com) ✓ | Mini-scenario |
+
+**Depth:**
+- **3.3.1 Anchoring.** *Used on you:* struck-out MRPs, "was ₹2,999", the first number in a bargain. *Honestly:*
+  show your best option first, so the others are judged against real work; open a negotiation with a number
+  you can defend. *Backfires:* a "was" price nobody ever paid is misleading; once a buyer spots one fake
+  anchor, they distrust every price you show.
+- **3.3.2 Decoy.** *Used on you:* the medium popcorn, a "Pro" phone with one feature less than "Pro Max" for
+  nearly the same price. *Honestly:* the decoy must be a real option you'd happily sell; use it to make your
+  best-value plan easy to see. *Backfires:* a decoy nobody would ever choose looks like a trick; too many
+  options make people buy nothing (choice overload, Iyengar & Lepper's jam study, 2000 ◇).
+- **3.3.3 Framing.** *Used on you:* "90% fat-free", "only ₹33 a day" insurance, "don't miss out". *Honestly:* a
+  gain frame helps people try something new; a loss frame helps people act on a cost they really are paying
+  now (Rothman & Salovey, 1997 ◇). *Backfires:* a loss frame on something small sounds like fear-selling and
+  makes people push back (reactance, 5.3.4); a per-day price on a yearly lock-in feels like a trick when the
+  bill comes.
+- **3.3.4 Loss aversion.** *Used on you:* "free delivery above ₹499" makes you add a ₹60 item to avoid "losing"
+  ₹40; "your cart is about to expire". *Honestly:* take the risk off the buyer (4.1.1) so trying feels like no
+  loss; tell them what the problem already costs (5.1.2). It is also why a price rise hurts more than an equal
+  cut pleases (3.2.2). *Backfires:* the ratio isn't fixed; studies find from below 1 to well above 2 ✓, so
+  don't promise a number. Constant "you'll lose" pitches feel like threats.
+- **3.3.5 Endowment effect.** *Used on you:* free trials, test drives, "build your own car" pages, a free first
+  month that renews itself. *Honestly:* a real trial, an easy return, a reminder before any charge. The same
+  effect makes founders overvalue their own product (2.2.3). *Backfires:* a hard-to-cancel trial is a
+  "subscription trap", a banned dark pattern in India (CCPA, 2023) ✓; the effect also shrinks in some lab
+  repeats (Plott & Zeiler, 2005 ◇), so it helps a good product and can't save a bad one.
+
+**Folded in:** 3.3.1: "When a buyer says 'too costly', they are comparing with an anchor. Change the anchor."
+(taught as a sales move in 5.1.3)
+
+**Gate: none yet.** Tata Nano closes 3.1 and 3.2 before this module; 3.3 is practised by the unit's Practice
+node and its test-out quiz. **Candidate gates** (new Hot Seat decisions to write later, no story picked): set
+three plan prices for a launch (decoy, 3.3.2); word a festival-sale offer as a gain or a loss (3.3.3); pick
+the opening price in a big order (anchoring, 3.3.1); design a free trial and its cancel button (endowment,
+3.3.5, and 4.2.5's honest scarcity). Indian stories worth researching for it: a big festival sale day, or a
+telecom free-trial launch ◇.
+
 ### Unit 4: Trust and brand
 
 #### Module 4.1: Trust
 **Goal:** make it safe for a stranger to buy from you.
 
-| Code | The rule | Everyday example (made up) | Source | Exercise |
-|---|---|---|---|---|
-| 4.1.1 | Take the risk off the buyer. | "Pay after the first week of tuition, only if your child likes it." | *$100M Offers*, risk reversal ◇ | Pick the best move |
-| 4.1.2 | Let buyers check your promise for themselves. | A dairy shop lets buyers test the milk's fat in front of them. | Proof over claims, *Influence* (Cialdini) ◇ | Who's right? |
-| 4.1.3 | Give first: a real free taste makes people want to pay back. | A sweet shop hands out full pieces, not crumbs, and the tasters buy a box. | *Influence* (Robert Cialdini), reciprocity (ricklindquist.com notes) ✓ | Pick the best move |
+| Code | Concept | The rule | Everyday example (made up) | Source | Exercise |
+|---|---|---|---|---|---|
+| 4.1.1 | **Risk reversal** | Take the risk off the buyer. | "Pay after the first week of tuition, only if your child likes it." | *$100M Offers*, risk reversal ◇ | Pick the best move |
+| 4.1.2 | **Costly signalling** (verifiable claims) | Let buyers check your promise for themselves. | A dairy shop lets buyers test the milk's fat in front of them. | Proof over claims, *Influence* (Cialdini) ◇ | Who's right? |
+| 4.1.3 | **Reciprocity** (Cialdini) | A real gift, given first, makes people want to give back. | A sweet shop hands out full pieces, not crumbs, and the tasters buy a box. | *Influence* (Robert Cialdini), reciprocity (ricklindquist.com notes) ✓; Strohmetz, Rind, Fisher & Lynn, "Sweetening the Till" (2002) (ecommons.cornell.edu) ✓; Dennis Regan's Coke study (1971) ◇ | Pick the best move |
 
 **Folded in:** 4.1.1: "Keep the promise when it costs you. That's when people remember." (old 4.1.3)
+
+**Depth (4.1.3, reciprocity):**
+- **Opens with:** a waiter who left chocolates with the bill got bigger tips; how much depended on how many
+  and how they were given (Strohmetz et al., 2002) ✓. Name the effect: **reciprocity**.
+- **Used on you:** free samples at the mall, a "free gift" with a bigger order, the shopkeeper's chai before
+  the saree bargaining starts.
+- **Use it honestly:** a real, useful gift with no strings (a full sweet, a free first lesson). Give first,
+  ask later.
+- **Backfires:** a gift with a hook feels like a bribe and kills trust; a tiny gift ("crumbs") reads as cheap.
 
 **Gate:**
 - **`tanishq-karatmeter`** (complexity 2, Indian, big)
@@ -245,17 +317,39 @@ shops.
 #### Module 4.2: Why people pick you
 **Goal:** be the name people remember, trust and choose, honestly.
 
-| Code | The rule | Everyday example (made up) | Source | Exercise |
-|---|---|---|---|---|
-| 4.2.1 | People follow what others like them do. | "500 families in this colony order from us." | Cialdini, social proof ✓ | Fill the gap |
-| 4.2.2 | A small yes leads to a bigger yes. | A ₹99 trial yoga class before the ₹4,999 course. | Cialdini, commitment ✓ | Drag to order |
-| 4.2.3 | People pick brands they remember. A voice they enjoy helps. | Good ghee with no name loses to a name people know; a sweet shop's funny chalkboard line gets talked about. | *How Brands Grow* (Byron Sharp), mental availability ◇; brand voice ◇ | True or false, then why |
-| 4.2.4 | Sell what you stand for, not just specs. | "Pure, like home" beats "99.7% fat content". | *Start with Why* (Simon Sinek) ◇ | Who's right? |
+| Code | Concept | The rule | Everyday example (made up) | Source | Exercise |
+|---|---|---|---|---|---|
+| 4.2.1 | **Social proof** (descriptive norms) | People copy people like them. Show real, specific, similar buyers. | "212 families in Anna Nagar order from us" beats "thousands love us". | Cialdini, social proof ✓; Goldstein, Cialdini & Griskevicius, "A Room with a Viewpoint" (2008) (sparq.stanford.edu) ✓; Cialdini's Petrified Forest signs (apa.org) ✓ | Fill the gap |
+| 4.2.2 | **Commitment and consistency** (foot-in-the-door) | A small yes first makes the big yes feel consistent. | A ₹99 trial yoga class, where she writes her own goal, before the ₹4,999 course. | Cialdini, commitment ✓; Freedman & Fraser, "Compliance Without Pressure" (1966) (en.wikipedia.org/wiki/Foot-in-the-door_technique) ✓ | Drag to order |
+| 4.2.3 | **Mental availability** (distinctive brand assets) | People pick brands they remember. A voice they enjoy helps. | Good ghee with no name loses to a name people know; a sweet shop's funny chalkboard line gets talked about. | *How Brands Grow* (Byron Sharp), mental availability ◇; brand voice ◇ | True or false, then why |
+| 4.2.4 | **Means–end laddering** (features → benefits → values) | Sell what you stand for, not just specs. | "Pure, like home" beats "99.7% fat content". | Reynolds & Gutman, "Advertising Is Image Management" (1984), laddering ◇; *Start with Why* (Simon Sinek) ◇ | Who's right? |
+| 4.2.5 | **Scarcity** | Scarce things feel more valuable. Only claim scarcity that is true. | A home baker can make 40 Diwali hampers: "only 40, orders close Friday" (true) vs "only 3 left!" every day (false). | OnePlus One India launch by invite (androidpolice.com, gsmarena.com, 2014) ✓; Worchel, Lee & Adewole, cookie-jar study (1975) ◇; CCPA Dark Patterns Guidelines 2023, "false urgency" (jsalaw.com) ✓ | True or false, then why |
 
 **Folded in:**
-- 4.2.1: "Never fake it. A false 'only 2 left' timer is a banned dark pattern in India." (old 4.2.4; CCPA
-  guidelines on dark patterns, 2023 ◇)
+- 4.2.1: "Never fake it. Fake or paid reviews mislead buyers, and India has a standard against them." (old
+  4.2.4; BIS IS 19000:2022 on online reviews ◇). The false "only 2 left" timer now sits in 4.2.5.
 - 4.2.3 merges old 4.3.1 (be remembered) and 4.3.3 (brand voice). Old Module 4.3 is folded into 4.2.
+- 4.2.2 (follow-up): "After 'let me think', agree one small next step and a date. People keep promises they
+  said out loud." (used again in 5.3.5)
+
+**Depth (the three Cialdini lessons and scarcity):**
+- **4.2.1 Social proof.** *Opens with:* in a hotel, a card saying most guests reuse their towels beat an
+  environment card, and "guests who stayed in this room" did best (Goldstein, Cialdini & Griskevicius, 2008) ✓.
+  *Used on you:* "bestseller" tags, star counts, "1,200 bought this week". *Honestly:* real numbers from buyers
+  like this one (same colony, same trade). *Backfires:* Cialdini's Petrified Forest sign, "many visitors have
+  taken wood", made theft go up, because it said "everyone does it" ✓. Never write "most people don't pay on
+  time" on a reminder.
+- **4.2.2 Commitment and consistency.** *Opens with:* in Freedman and Fraser's 1966 study, homeowners who first
+  agreed to a small "be a safe driver" sign were far likelier (76% vs 17%) to accept a big ugly "Drive
+  Carefully" board ✓. *Used on you:* "just answer three questions", a ₹1 first month, a free account before the
+  paid plan. *Honestly:* the small step must be useful by itself, and the buyer chooses the big step.
+  *Backfires:* later studies find a smaller lift than the famous one ✓; a small step that traps people
+  ("you've already started, don't waste it") turns into a sunk-cost guilt trip (1.2.3).
+- **4.2.5 Scarcity.** *Opens with:* in December 2014 the OnePlus One went on sale in India only on Amazon, and
+  only with an invite; buyers hunted for invites ✓. *Used on you:* "only 2 rooms left, 30 people looking",
+  countdown timers, limited "drops". *Honestly:* real limits said plainly: batch size, a closing date, seats in
+  a class. *Backfires:* false urgency is one of 13 dark patterns banned by India's consumer authority (CCPA,
+  30 Nov 2023) ✓; invites that are too hard send buyers to rivals (OnePlus buyers complained at the time) ✓.
 
 **Gates (both close 4.2):**
 - **NEW: `paper-boat` "Drinks and memories".** Hector Beverages, 2012–2015.
@@ -264,7 +358,7 @@ shops.
   - d3 What does the pack say: plain, a star's face, or a story on every pack → 4.2.3
   - d4 Getting people to try it: ads, a price cut, or tasting first → 4.1.3
   - d5 What do you stand for: price, a memory, or a memory plus a clean recipe → 4.2.4 (+2.2.4)
-  - Tests: 4.2.3, 4.2.4 (and 4.1.3). Quiz only: 4.2.1, 4.2.2.
+  - Tests: 4.2.3, 4.2.4 (and 4.1.3). Quiz only: 4.2.1, 4.2.2, 4.2.5.
   - Complexity 2 · Indian: yes · small, founder · Facts: research brief in `paper-boat/` (d1 and the 2015 sales share ✓ in the `paper-boat-2013` Daily Call).
 - **`new-coke`** (complexity 2, Western, big). Its title call is about brand, and its d2 shows what happens
   when you change the product the buyer already loves.
@@ -280,12 +374,12 @@ shops.
 #### Module 5.1: Selling, step by step
 **Goal:** turn a conversation into a sale.
 
-| Code | The rule | Everyday example (made up) | Source | Exercise |
-|---|---|---|---|---|
-| 5.1.1 | Sell to the person who needs it, can pay, and decides. | The owner signs the cheques, not the shop helper. | BANT qualifying (IBM) ◇ | Sort into buckets |
-| 5.1.2 | Find their problem first, then show it solving that problem. | Ask how they store drinking water, then test their tap water in front of them. | *SPIN Selling* (Neil Rackham) ◇ | Who's right? |
-| 5.1.3 | When they say "too costly", ask "compared to what?" | They compare your ₹1,200 haircut with the ₹150 salon. Show the difference. | Objection handling, *SPIN Selling* ◇ | Pick the best move |
-| 5.1.4 | Ask for the order. A "no" today often means "not yet". | "Shall I deliver on Monday or Tuesday?"; the caterer who calls back after Diwali gets the wedding. | *SPIN Selling* ◇; general sales practice ◇ | Drag to order |
+| Code | Concept | The rule | Everyday example (made up) | Source | Exercise |
+|---|---|---|---|---|---|
+| 5.1.1 | **BANT qualification** | Sell to the person who needs it, can pay, and decides. | The owner signs the cheques, not the shop helper. | BANT qualifying (IBM) ◇ | Sort into buckets |
+| 5.1.2 | **SPIN implication questions** | Ask what the problem costs them before you show the fix. | Ask how often the family falls sick and what the doctor costs, then test their tap water in front of them. | *SPIN Selling* (Neil Rackham) ◇ | Who's right? |
+| 5.1.3 | **Reference price** (re-anchoring, see 3.3.1) | When they say "too costly", ask "compared to what?" | They compare your ₹1,200 haircut with the ₹150 salon. Show the difference. | Objection handling, *SPIN Selling* ◇ | Pick the best move |
+| 5.1.4 | **Alternative-choice close** | Ask for the order. A "no" today often means "not yet". | "Shall I deliver on Monday or Tuesday?"; the caterer who calls back after Diwali gets the wedding. | *SPIN Selling* ◇; general sales practice ◇ | Drag to order |
 
 **Folded in:** 5.1.2: "Listen more than you talk." (old 5.1.2's second half). 5.1.4 merges old 5.1.4 and
 5.1.5.
@@ -295,12 +389,12 @@ shops.
 #### Module 5.2: Channels and customer maths
 **Goal:** know where customers come from and what each one is worth.
 
-| Code | The rule | Everyday example (made up) | Source | Exercise |
-|---|---|---|---|---|
-| 5.2.1 | Find one channel that works, and master it first. | WhatsApp groups bring Lata's tiffin orders, so she skips the hoardings. | *Traction* (Weinberg & Mares), Bullseye ◇ | Sort into buckets |
-| 5.2.2 | Happy customers and free teaching can beat paid ads. | A tutor's free YouTube lessons fill his paid batch. | Word of mouth, *Traction* ◇ | True or false, then why |
-| 5.2.3 | A customer is worth the margin on all their future buys. | A family spends ₹500 a week at a 10% margin: about ₹2,600 a year. | Customer lifetime value ◇ | Quick sum |
-| 5.2.4 | Each customer must earn more margin than winning them cost. | ₹300 of ads for a buyer who brings ₹100 of margin, once, loses money. | Unit economics (YC Startup School) ◇; a16z, "16 startup metrics" ◇ | Slider sim |
+| Code | Concept | The rule | Everyday example (made up) | Source | Exercise |
+|---|---|---|---|---|---|
+| 5.2.1 | **Bullseye framework** | Find one channel that works, and master it first. | WhatsApp groups bring Lata's tiffin orders, so she skips the hoardings. | *Traction* (Weinberg & Mares), Bullseye ◇ | Sort into buckets |
+| 5.2.2 | **Growth loops** (word of mouth, K-factor) | A loop where buyers bring buyers beats paying for each one. | A tutor's free YouTube lessons fill his paid batch, and each parent brings a cousin. | Word of mouth, *Traction* ◇; growth loops (Reforge) ◇ | True or false, then why |
+| 5.2.3 | **Customer lifetime value (LTV)** | A customer is worth the margin on all their future buys. | A family spends ₹500 a week at a 10% margin: about ₹2,600 a year. | Customer lifetime value ◇ | Quick sum |
+| 5.2.4 | **LTV:CAC** and payback | Each customer must earn more margin than winning them cost. | ₹300 of ads for a buyer who brings ₹100 of margin, once, loses money. | Unit economics (YC Startup School) ◇; a16z, "16 startup metrics" ◇ | Slider sim |
 
 **Folded in:** 5.2.4: "What one customer costs to win is your spend divided by the customers it brought:
 ₹6,000 for 20 is ₹300 each." (old 5.2.3)
@@ -314,16 +408,59 @@ shops.
   - Tests: 5.1.2, 5.1.3, 5.2.3, 5.2.4 (+5.1.4). Quiz only: 5.1.1, 5.2.1, 5.2.2.
   - Complexity 2 · Indian: yes · mid-size, new venture · Facts: research brief in `eureka-forbes-door-to-door/`.
 
+#### Module 5.3: Conversations that close
+**Goal:** calm a worried buyer, keep them talking, and get past "let me think".
+
+Same shape as 3.3: the named idea, the study or case, how it's used on you, how to use it honestly, and where
+it backfires. Same ethics line: use on others only what you'd accept being used on you.
+
+| Code | Concept | The rule | Opens with (real case or study) | Practice example (made up) | Source | Exercise |
+|---|---|---|---|---|---|---|
+| 5.3.1 | **Tactical empathy** (the accusation audit) | Say their worst thoughts about you before they do. | Chris Voss, once the FBI's lead international kidnapping negotiator, teaches that empathy means understanding the other side, not agreeing with it ✓. | A new caterer meets a family let down last year: "You probably think we'll be late and the food will be cold, like last time." | Voss & Raz, *Never Split the Difference* (2016) (shortform.com; masterclass.com) ✓ | Who's right? |
+| 5.3.2 | **Labeling** | Name their feeling out loud: "It sounds like…" calms it. | At UCLA, Matthew Lieberman's brain scans showed that putting a feeling into words lowered activity in the amygdala, the brain's alarm (2007) ✓. | A shop owner says, "Your price is too high. I've been cheated before." Pick: "It sounds like you've been burnt before" or "Our price is fair, sir." | Lieberman et al., "Putting Feelings into Words" (*Psychological Science*, 2007) (pubmed.ncbi.nlm.nih.gov/17576282) ✓; Voss ✓ | Pick the best move |
+| 5.3.3 | **Mirroring** | Repeat their last few words as a question; they'll explain more. | A Dutch waitress who repeated orders word for word got bigger tips than when she didn't (van Baaren, 2003) ✓. Negotiators who mirrored were likelier to reach a deal (Maddux, Mullen & Galinsky, 2008) ✓. | Supplier: "We can't do that price this season." You: "This season?" He explains the rate rises in March, and you book now. | van Baaren et al., "Mimicry for Money" (2003) (stafforini.com) ✓; Maddux et al., "Chameleons Bake Bigger Pies" (2008) (ssoar.info) ✓ | Drag to order |
+| 5.3.4 | **Reactance** | Push hard and people push back. Leave them free to say no. | Jack Brehm's reactance theory (1966): when people feel their freedom is threatened, they want the opposite ◇. Adding "but you are free to refuse" raised yes rates across many studies (Carpenter, 2013) ✓, though a 2020 recheck found the effect small in the best studies ✓. | Two insurance agents: one says "You must sign today"; the other says "Take it home. It's your call." Who gets more renewals next year? | Brehm (1966) ◇; Carpenter, "But You Are Free" meta-analysis (2013) (drum.lib.umd.edu) ✓; Fillon et al. (2020) (open.lnu.se, *Metapsychology*) ✓ | True or false, then why |
+| 5.3.5 | **Status quo bias** (the cost of doing nothing) | Your real rival is "do nothing". Show what waiting costs. | Samuelson and Zeckhauser (1988) found an option became far more popular just by being called the current one, and real staff stayed in old health plans ✓. Countries where organ donation is the default record far higher consent than opt-in ones (Johnson & Goldstein, 2003) ✓. | A shop owner says "let me think" about your billing app. Work out what hand billing costs him a month (2 hours a day, plus errors), then make switching the easy default: you move his data for free. | Samuelson & Zeckhauser, "Status Quo Bias in Decision Making" (1988) (scholar.harvard.edu) ✓; Johnson & Goldstein, "Do Defaults Save Lives?" (2003) (thedecisionlab.com) ✓; Dixon & McKenna, *The JOLT Effect* (2022) ◇ | Quick sum |
+
+**Depth:**
+- **5.3.1 Tactical empathy.** *Used on you:* the salesman who "admits" a small flaw so you trust the rest.
+  *Honestly:* name the real worries you can answer, then answer them. *Backfires:* listing fears you can't fix
+  only confirms them; a memorised script sounds false.
+- **5.3.2 Labeling.** *Used on you:* the call-centre "I understand your frustration". *Honestly:* label, then
+  stop talking and let them answer. *Backfires:* "I know how you feel" sounds fake; naming the wrong feeling
+  ("you seem angry") can make it worse; never use a label to work on someone's grief or fear.
+- **5.3.3 Mirroring.** *Used on you:* a seller who echoes your words feels like "one of us". *Honestly:* use it
+  to learn what they need, not to fake friendship. *Backfires:* copying someone's accent or gestures in an
+  obvious way feels like mockery ◇.
+- **5.3.4 Reactance.** *Used on you:* "this offer is not for everyone", banned or "members-only" things feeling
+  more desirable. *Honestly:* give a real choice and a real way out. *Backfires:* hard closes and nagging (a
+  dark pattern in CCPA's list ✓) create it; saying "your choice" and then pushing again is worse than not
+  saying it.
+- **5.3.5 Status quo bias.** *Used on you:* plans that renew themselves, pre-ticked add-ons, the bank account
+  you never move. *Honestly:* make switching easy and the default good for the buyer; after "let me think",
+  agree one small next step and a date (commitment, 4.2.2). *Backfires:* a pre-ticked box that adds a product
+  is "basket sneaking", banned in India (CCPA, 2023) ✓; and the same bias protects your rivals' customers, so
+  "new and better" is never enough (2.2.3).
+
+**Folded in:** 5.3.1: "Tactical empathy isn't agreeing or being soft. It is showing you understand." (links to
+8.3.3, interests vs positions)
+
+**Gate: none yet.** Eureka Forbes closes 5.1 and 5.2 before this module; 5.3 is practised by the unit's
+Practice node and its test-out quiz. **Candidate gates** (new Hot Seat decisions to write later, no story
+picked): a big buyer says "too costly" and goes quiet (labeling, mirroring); a family who were cheated before
+(accusation audit); a buyer who says "let me think" for the third time (cost of doing nothing); a hard close
+that pushes a buyer away (reactance).
+
 ### Unit 6: Running the business
 
 #### Module 6.1: Keep it simple
 **Goal:** cut the mess that eats your time and money.
 
-| Code | The rule | Everyday example (made up) | Source | Exercise |
-|---|---|---|---|---|
-| 6.1.1 | Every extra variety adds hidden costs. | 40 menu items mean 40 kinds of stock, waste and training. | *Profit from the Core* (Chris Zook) ◇ | Spot the mistake |
-| 6.1.2 | One standard way of working cuts cost and errors. | All three delivery bikes are the same model: one mechanic, one set of spares. | Standard work, Toyota Production System ◇; *The Checklist Manifesto* (Gawande) ◇ | Match pairs |
-| 6.1.3 | Own your core skill. Rent or outsource the rest. | Lease the delivery van and outsource the packing; keep the recipe. | Prahalad & Hamel, "The Core Competence of the Corporation" (HBR, 1990) ◇ | Sort into buckets |
+| Code | Concept | The rule | Everyday example (made up) | Source | Exercise |
+|---|---|---|---|---|---|
+| 6.1.1 | **Complexity cost** (SKU proliferation) | Every extra variety adds hidden costs. | 40 menu items mean 40 kinds of stock, waste and training. | *Profit from the Core* (Chris Zook) ◇ | Spot the mistake |
+| 6.1.2 | **Standard work** | One standard way of working cuts cost and errors. | All three delivery bikes are the same model: one mechanic, one set of spares. | Standard work, Toyota Production System ◇; *The Checklist Manifesto* (Gawande) ◇ | Match pairs |
+| 6.1.3 | **Core competence** | Own your core skill. Rent or outsource the rest. | Lease the delivery van and outsource the packing; keep the recipe. | Prahalad & Hamel, "The Core Competence of the Corporation" (HBR, 1990) ◇ | Sort into buckets |
 
 **Folded in:** 6.1.2: "Write the standard way on one page, so anyone can open the shop." (old 6.1.3)
 
@@ -332,11 +469,13 @@ shops.
 #### Module 6.2: Suppliers, quality and speed
 **Goal:** get good parts, on time, without losing control.
 
-| Code | The rule | Everyday example (made up) | Source | Exercise |
-|---|---|---|---|---|
-| 6.2.1 | Pick a few strong suppliers on quality, and push them. | Two reliable fabric mills, not twelve cheap ones. | Deming's 14 points (point 4) ◇ | Who's right? |
-| 6.2.2 | On time with a plan beats perfect and late. | Open for the wedding season with bought-in parts; make them yourself within a year. | ◇ (project management basics) | Pick the best move |
-| 6.2.3 | Tough buyers make you better. Seek them out. | A big hotel order forces your bakery to fix its hygiene. | Porter, *The Competitive Advantage of Nations* ◇ | True or false, then why |
+| Code | Concept | The rule | Everyday example (made up) | Source | Exercise |
+|---|---|---|---|---|---|
+| 6.2.1 | **Single sourcing** (Deming's point 4) | Pick a few strong suppliers on quality, and push them. | Two reliable fabric mills, not twelve cheap ones. | Deming's 14 points (point 4) ◇ | Who's right? |
+| 6.2.2 | **Critical path** (and Hofstadter's law) | Find the critical path; buy in whatever would make you late. | Open for the wedding season with bought-in parts; make them yourself within a year. | Critical path method, any project-management text ◇; Hofstadter's law (*Gödel, Escher, Bach*) ◇ | Pick the best move |
+| 6.2.3 | **Demanding home buyers** (Porter's diamond) | Tough buyers make you better. Seek them out. | A big hotel order forces your bakery to fix its hygiene. | Porter, *The Competitive Advantage of Nations* ◇ | True or false, then why |
+
+**Folded in:** 6.2.2: "Hofstadter's law: it always takes longer than you expect, even when you expect that."
 
 **Gate (closes 6.1 and 6.2):**
 - **`maruti-800`** (complexity 2, Indian, big)
@@ -353,12 +492,12 @@ shops.
 #### Module 7.1: Build a team
 **Goal:** build a team that can run things without you.
 
-| Code | The rule | Everyday example (made up) | Source | Exercise |
-|---|---|---|---|---|
-| 7.1.1 | If it needs you for everything, you own a job. | The shop shuts whenever you go to a family wedding. | Rajiv Talreja (rajivtalreja.com/about) ✓; *The E-Myth Revisited* ◇ | True or false, then why |
-| 7.1.2 | Hire for care, then test with a small paid task. | The helper who counts stock without being told; a cook makes one paid trial lunch first. | *Who* (Geoff Smart & Randy Street) ◇ | Pick the best move |
-| 7.1.3 | Hand over results, not just tasks. | "Keep the stockroom full" beats "order 10 boxes of soap". | *High Output Management* (Andy Grove) ◇ | Spot the mistake |
-| 7.1.4 | Family and partners need written roles and an exit plan. | Two brothers, one shop, no agreement: a fight in the next generation. | Partnership deed, Indian Partnership Act 1932 ◇ | Mini-scenario |
+| Code | Concept | The rule | Everyday example (made up) | Source | Exercise |
+|---|---|---|---|---|---|
+| 7.1.1 | **Technician's trap** (E-Myth) | If it needs you for everything, you own a job. | The shop shuts whenever you go to a family wedding. | Rajiv Talreja (rajivtalreja.com/about) ✓; *The E-Myth Revisited* ◇ | True or false, then why |
+| 7.1.2 | **Work-sample test** | Hire for care, then test with a small paid task. | The helper who counts stock without being told; a cook makes one paid trial lunch first. | *Who* (Geoff Smart & Randy Street) ◇; Schmidt & Hunter (1998) meta-analysis of hiring methods ◇ | Pick the best move |
+| 7.1.3 | **Managerial leverage** (delegate outputs) | Hand over results, not just tasks. | "Keep the stockroom full" beats "order 10 boxes of soap". | *High Output Management* (Andy Grove) ◇ | Spot the mistake |
+| 7.1.4 | **Buy-sell (shotgun) clause** | Write roles, shares and a buy-out price before anyone fights. | Two brothers, one shop, no agreement: a fight in the next generation. | Partnership deed, Indian Partnership Act 1932 ◇ | Mini-scenario |
 
 **Folded in:**
 - 7.1.2 merges old 7.1.2 (hire for care) and 7.1.3 (paid trial).
@@ -370,13 +509,13 @@ shops.
 #### Module 7.2: When it gets hard
 **Goal:** lead people well through bad news.
 
-| Code | The rule | Everyday example (made up) | Source | Exercise |
-|---|---|---|---|---|
-| 7.2.1 | Let the wrong hire go early, and kindly. | A rude salesman loses you regulars every week. | *The Hard Thing About Hard Things* (Ben Horowitz) ◇ | Who's right? |
-| 7.2.2 | One deep cut is kinder than many small ones. | One clear plan, not twelve months of fear. | Horowitz ◇ | True or false, then why |
-| 7.2.3 | Cut the owner's pay first; protect the lowest-paid most. | Cut your own drawings before the helpers' wages. | ◇ (general practice) | Pick the best move |
-| 7.2.4 | Admit a mistake or warning early and openly. Then fix it. | The new recipe tastes wrong. Say so, and bring back the old one. | Horowitz ◇; crisis communication basics ◇ | Mini-scenario |
-| 7.2.5 | In a crisis, decide fast. In calm times, build agreement. | Fire in the godown: you give orders, not a meeting. | Horowitz, "peacetime CEO / wartime CEO" (feld.com) ◇ | Sort into buckets |
+| Code | Concept | The rule | Everyday example (made up) | Source | Exercise |
+|---|---|---|---|---|---|
+| 7.2.1 | **The keeper test** | Let the wrong hire go early, and kindly. | A rude salesman loses you regulars every week. Would you fight to keep him? If not, let him go. | *The Hard Thing About Hard Things* (Ben Horowitz) ◇; the keeper test, *No Rules Rules* (Hastings & Meyer) ◇ | Who's right? |
+| 7.2.2 | **Layoff survivor syndrome** | One deep cut is kinder than many small ones. | One clear plan, not twelve months of fear. | Horowitz ◇; Joel Brockner on layoff survivors ◇ | True or false, then why |
+| 7.2.3 | **Procedural justice** (shared sacrifice) | Cut the owner's pay first; protect the lowest-paid most. | Cut your own drawings before the helpers' wages. | ◇ (general practice) | Pick the best move |
+| 7.2.4 | **Service recovery paradox** | Admit a mistake or warning early and openly. Then fix it. | The new recipe tastes wrong. Say so, and bring back the old one. | Horowitz ◇; McCollough & Bharadwaj (1992), service recovery paradox ◇ | Mini-scenario |
+| 7.2.5 | **Wartime vs peacetime CEO** | In a crisis, decide fast. In calm times, build agreement. | Fire in the godown: you give orders, not a meeting. | Horowitz, "peacetime CEO / wartime CEO" (feld.com) ◇ | Sort into buckets |
 
 **Gate (closes 7.1 and 7.2):**
 - **NEW: `zomato-lockdown-2020` "Orders stop overnight".** Zomato, March–June 2020.
@@ -393,12 +532,12 @@ shops.
 #### Module 8.1: Who holds the power
 **Goal:** see who can squeeze your profit, and fight back.
 
-| Code | The rule | Everyday example (made up) | Source | Exercise |
-|---|---|---|---|---|
-| 8.1.1 | Know who can squeeze your profit, not just your rivals. | A station chai stall: buyers bargain, milk suppliers raise prices, new stalls open, cold drinks tempt. | Porter, "The Five Competitive Forces That Shape Strategy" (HBR, 2008) ◇ | Sort into buckets |
-| 8.1.2 | Alone, small sellers are weak. Together, they are strong. | Ten weavers buy yarn together and get the mill's best price. | Co-operative model ◇ | Pick the best move |
-| 8.1.3 | Know your walk-away option. Without one, you can't bargain. | One client is 70% of your sales, so he sets your price. Decide the most rent you'll pay before you meet the landlord. | *Getting to Yes* (Fisher & Ury), BATNA ◇ | Who's right? |
-| 8.1.4 | Beware a supplier who could become your rival. | Your food brand sells only through one delivery app, which now runs its own kitchens. | *7 Powers* (Hamilton Helmer) ◇ | True or false, then why |
+| Code | Concept | The rule | Everyday example (made up) | Source | Exercise |
+|---|---|---|---|---|---|
+| 8.1.1 | **Porter's five forces** | Know who can squeeze your profit, not just your rivals. | A station chai stall: buyers bargain, milk suppliers raise prices, new stalls open, cold drinks tempt. | Porter, "The Five Competitive Forces That Shape Strategy" (HBR, 2008) ◇ | Sort into buckets |
+| 8.1.2 | **Countervailing power** (pooled bargaining) | Alone, small sellers are weak. Together, they are strong. | Ten weavers buy yarn together and get the mill's best price. | Co-operative model ◇ | Pick the best move |
+| 8.1.3 | **BATNA** | Know your walk-away option. Without one, you can't bargain. | One client is 70% of your sales, so he sets your price. Decide the most rent you'll pay before you meet the landlord. | *Getting to Yes* (Fisher & Ury), BATNA ◇ | Who's right? |
+| 8.1.4 | **Platform risk** (forward integration) | Beware a supplier who could become your rival. | Your food brand sells only through one delivery app, which now runs its own kitchens. | *7 Powers* (Hamilton Helmer) ◇ | True or false, then why |
 
 **Folded in:** 8.1.3 merges old 8.1.3 (can't walk away) and 8.3.3 (walk-away point).
 
@@ -414,12 +553,12 @@ shops.
 #### Module 8.2: When someone undercuts you
 **Goal:** answer a cheaper rival without ruining yourself.
 
-| Code | The rule | Everyday example (made up) | Source | Exercise |
-|---|---|---|---|---|
-| 8.2.1 | Match a price cut only if your costs are truly lower. | A new shop is 10% cheaper because it pays no rent. Can your costs fall 10%? If not, win on service. | Porter, generic strategies and cost leadership ◇ | Pick the best move |
-| 8.2.2 | A second, cheaper brand can guard your main one. | A ₹99 thali counter keeps your ₹250 thali from price cuts. | Mark Ritson, "Should You Launch a Fighter Brand?" (HBR, 2009) ◇ | Who's right? |
-| 8.2.3 | A rich rival is burning cash? Survive, don't copy. | A funded app gives free delivery. Keep your regulars; don't match it. | ◇ | Mini-scenario |
-| 8.2.4 | Before you move, ask how your rival will answer. | You cut your price, and the shop opposite cuts too. What did you win? | *Thinking Strategically* (Dixit & Nalebuff) ◇ | Who's right? |
+| Code | Concept | The rule | Everyday example (made up) | Source | Exercise |
+|---|---|---|---|---|---|
+| 8.2.1 | **Cost leadership** | Match a price cut only if your costs are truly lower. | A new shop is 10% cheaper because it pays no rent. Can your costs fall 10%? If not, win on service. | Porter, generic strategies and cost leadership ◇ | Pick the best move |
+| 8.2.2 | **Fighter brand** | A second, cheaper brand can guard your main one. | A ₹99 thali counter keeps your ₹250 thali from price cuts. | Mark Ritson, "Should You Launch a Fighter Brand?" (HBR, 2009) ◇ | Who's right? |
+| 8.2.3 | **War of attrition** | A rich rival is burning cash? Survive, don't copy. | A funded app gives free delivery. Keep your regulars; don't match it. | ◇ | Mini-scenario |
+| 8.2.4 | **Look forward, reason back** (game theory) | Before you move, ask how your rival will answer. | You cut your price, and the shop opposite cuts too. What did you win? | *Thinking Strategically* (Dixit & Nalebuff) ◇ | Who's right? |
 
 **Folded in:** 8.2.1 merges old 8.2.1 (price wars) and 8.2.2 (low price needs low costs).
 
@@ -428,12 +567,12 @@ shops.
 #### Module 8.3: Partners and deals
 **Goal:** pick partners well and get fair deals.
 
-| Code | The rule | Everyday example (made up) | Source | Exercise |
-|---|---|---|---|---|
-| 8.3.1 | Sometimes peace with a rival saves your customers. | Two rival tailors share one embroidery machine. | *Co-opetition* (Brandenburger & Nalebuff) ◇ | Pick the best move |
-| 8.3.2 | Pick the hungry partner over the famous one. | A small supplier who needs you will try harder. | ◇ (partner selection) | Who's right? |
-| 8.3.3 | Find what they really need, not just what they say. | The landlord wants a safe tenant more than a higher rent. | *Getting to Yes*, interests not positions ◇ | Mini-scenario |
-| 8.3.4 | Never give something for nothing. Trade. | "I'll pay ₹500 more if you add free delivery." | *Never Split the Difference* (Chris Voss) ◇ | Who's right? |
+| Code | Concept | The rule | Everyday example (made up) | Source | Exercise |
+|---|---|---|---|---|---|
+| 8.3.1 | **Co-opetition** | Sometimes peace with a rival saves your customers. | Two rival tailors share one embroidery machine. | *Co-opetition* (Brandenburger & Nalebuff) ◇ | Pick the best move |
+| 8.3.2 | **Power-dependence** (who needs whom more) | Pick the hungry partner over the famous one. | A small supplier who needs you will try harder. | Richard Emerson, "Power-Dependence Relations" (1962) ◇ | Who's right? |
+| 8.3.3 | **Interests vs positions** | Find what they really need, not just what they say. | The landlord wants a safe tenant more than a higher rent. (Saying their side out loud is tactical empathy, 5.3.1.) | *Getting to Yes*, interests not positions ◇ | Mini-scenario |
+| 8.3.4 | **Logrolling** (conditional trades) | Never give something for nothing. Trade. | "I'll pay ₹500 more if you add free delivery." | *Getting to Yes* ◇; logrolling, Howard Raiffa, *The Art and Science of Negotiation* ◇ | Who's right? |
 
 **Gate: none.** Practised by the Practice node and new negotiation Daily Calls (§5). 8.3.1 and 8.3.2 are
 tested later by Apple, Maruti and Intel.
@@ -443,13 +582,13 @@ tested later by Apple, Maruti and Intel.
 #### Module 9.1: Read the numbers, raise the money
 **Goal:** spot money trouble early, and choose the right money at the right price.
 
-| Code | The rule | Everyday example (made up) | Source | Exercise |
-|---|---|---|---|---|
-| 9.1.1 | Read profit, cash and debt together. One alone can lie. | Sales and profit are up, but the bank balance is down and the loan is up. | *Financial Intelligence* ◇ | Spot the mistake |
-| 9.1.2 | Every rupee you raise has a price: interest or control. | A bank loan costs 14% a year; an investor takes 20% of your company. | *Venture Deals* (Feld & Mendelson) ◇ | Match pairs |
-| 9.1.3 | Grow on customers' money for as long as you can. | Advance orders paid for Lata's second oven. | *The Customer-Funded Business* (John Mullins) ◇ | Who's right? |
-| 9.1.4 | Borrow only against sure cash, and from the cheapest lender first. | Not a branch loan on hopeful sales; and a Mudra loan, an overdraft limit or TReDS before the moneylender. | PMMY (mudra.org.in) ◇; CGTMSE ◇; RBI TReDS ◇; bank OD/CC limits ◇ | Sort into buckets |
-| 9.1.5 | Give up control only if you can't survive alone. | Take the investor if the shop will shut otherwise, not just to grow faster. | ◇ | Mini-scenario |
+| Code | Concept | The rule | Everyday example (made up) | Source | Exercise |
+|---|---|---|---|---|---|
+| 9.1.1 | **Three statements together** (P&L, cash flow, balance sheet) | Read profit, cash and debt together. One alone can lie. | Sales and profit are up, but the bank balance is down and the loan is up. | *Financial Intelligence* ◇ | Spot the mistake |
+| 9.1.2 | **Cost of capital** (debt vs dilution) | Every rupee you raise has a price: interest or control. | A bank loan costs 14% a year; an investor takes 20% of your company. | *Venture Deals* (Feld & Mendelson) ◇ | Match pairs |
+| 9.1.3 | **Customer-funded growth** (negative working capital) | Grow on customers' money for as long as you can. | Advance orders paid for Lata's second oven. | *The Customer-Funded Business* (John Mullins) ◇ | Who's right? |
+| 9.1.4 | **Pecking order** of finance | Borrow only against sure cash, and from the cheapest lender first. | Not a branch loan on hopeful sales; and a Mudra loan, an overdraft limit or TReDS before the moneylender. | Myers & Majluf (1984), pecking order ◇; PMMY (mudra.org.in) ◇; CGTMSE ◇; RBI TReDS ◇; bank OD/CC limits ◇ | Sort into buckets |
+| 9.1.5 | **Dilution and control rights** | Give up control only if you can't survive alone. | Take the investor if the shop will shut otherwise, not just to grow faster. | ◇ | Mini-scenario |
 
 **Folded in:**
 - 9.1.1: "Profit up but cash down? Look at stock and udhaar first." (old 9.1.2; the idea is taught in 1.1.3)
@@ -470,11 +609,11 @@ tested later by Apple, Maruti and Intel.
 #### Module 9.2: Stay alive
 **Goal:** get through a bad year without making it worse.
 
-| Code | The rule | Everyday example (made up) | Source | Exercise |
-|---|---|---|---|---|
-| 9.2.1 | In a slump, shrink fast and early. | Close the weak outlet now, not after six more losing months. | ◇ (turnaround basics) | Pick the best move |
-| 9.2.2 | Cut the past. Keep funding the future. | Close the old product line, but keep the website budget. | ◇ | Sort into buckets |
-| 9.2.3 | Don't fill one hole by digging another. | A new loan to repay an old one turns small debts into collapse. | ◇ | Spot the mistake |
+| Code | Concept | The rule | Everyday example (made up) | Source | Exercise |
+|---|---|---|---|---|---|
+| 9.2.1 | **Escalation of commitment** | In a slump, cut early. Waiting is escalation of commitment. | Close the weak outlet now, not after six more losing months "to win it back". | Barry Staw (1976), escalation of commitment ◇ | Pick the best move |
+| 9.2.2 | **Cut costs, keep investing** (recession winners) | Cut the past. Keep funding the future. | Close the old product line, but keep the website budget. | Gulati, Nohria & Wohlgezogen, "Roaring Out of Recession" (HBR, 2010) ◇ | Sort into buckets |
+| 9.2.3 | **Evergreening** (the debt spiral) | Don't fill one hole by digging another. | A new loan to repay an old one turns small debts into collapse. Banks call it evergreening. | RBI on evergreening of loans ◇ | Spot the mistake |
 
 **Gate:**
 - **`kingfisher-airlines`** (complexity 3, Indian, big) · **kept** (Atheeb, 31 Oct 2026: it was one of India's
@@ -491,12 +630,12 @@ tested later by Apple, Maruti and Intel.
 #### Module 9.3: Set up right, stay clean
 **Goal:** set up so the law protects you, and never let a shortcut ruin you.
 
-| Code | The rule | Everyday example (made up) | Source | Exercise |
-|---|---|---|---|---|
-| 9.3.1 | Pick a business form that keeps your home safe. | As a sole owner or partner, a big debt can reach your house; an LLP or private limited company limits that. | LLP Act 2008 ◇; Companies Act 2013 ◇ | Match pairs |
-| 9.3.2 | Never use money that isn't yours for your bets. | Customer advances are not your trading money. | Barua & Varma, IIM Ahmedabad working paper (1992) ✓ | Pick the best move |
-| 9.3.3 | Never say in public what you can't prove. | Accusing a rival on WhatsApp can bring a defamation case. | Bharatiya Nyaya Sanhita 2023, s.356 (criminal defamation) ◇; civil defamation ◇ | Who's right? |
-| 9.3.4 | Answer a bribe hint by asking for the rule in writing. | An inspector hints at "chai-pani". Ask which rule, in writing, and note the date. | Prevention of Corruption Act 1988 (2018 amendment) ◇ | Mini-scenario |
+| Code | Concept | The rule | Everyday example (made up) | Source | Exercise |
+|---|---|---|---|---|---|
+| 9.3.1 | **Limited liability** | Pick a business form that keeps your home safe. | As a sole owner or partner, a big debt can reach your house; an LLP or private limited company limits that. | LLP Act 2008 ◇; Companies Act 2013 ◇ | Match pairs |
+| 9.3.2 | **Fiduciary duty** (no mixing of funds) | Never use money that isn't yours for your bets. | Customer advances are not your trading money. | Barua & Varma, IIM Ahmedabad working paper (1992) ✓ | Pick the best move |
+| 9.3.3 | **Defamation** (truth is the defence) | Never say in public what you can't prove. | Accusing a rival on WhatsApp can bring a defamation case. | Bharatiya Nyaya Sanhita 2023, s.356 (criminal defamation) ◇; civil defamation ◇ | Who's right? |
+| 9.3.4 | **Paper trail** (the bribe defence) | Answer a bribe hint by asking for the rule in writing. | An inspector hints at "chai-pani". Ask which rule, in writing, and note the date. | Prevention of Corruption Act 1988 (2018 amendment) ◇ | Mini-scenario |
 
 **Folded in:** 9.3.1: "Register before you open: Shops and Establishments, and FSSAI if you sell food."
 (old 9.4.2; state Shops and Establishments Acts ◇, FSSAI rules ◇)
@@ -516,13 +655,13 @@ tested later by Apple, Maruti and Intel.
 #### Module 10.1: What strategy is
 **Goal:** turn a big problem into a clear plan.
 
-| Code | The rule | Everyday example (made up) | Source | Exercise |
-|---|---|---|---|---|
-| 10.1.1 | Strategy starts by naming the real problem. | "Sales are down" is a sign. "Our area now buys online" is the problem. | *Good Strategy Bad Strategy* (Rumelt), diagnosis (CustomerThink) ✓ | Pick the best move |
-| 10.1.2 | Strategy is choosing what not to do. | No catering, no franchise: just one café, done very well. | *Playing to Win* (Lafley & Martin) (Farnam Street) ✓ | Sort into buckets |
-| 10.1.3 | Choose where to play and how to win, together. | Small-town parents (where); English tuition taught in Tamil at half the city price (how). | *Playing to Win* ✓ | Match pairs |
-| 10.1.4 | Every action must support the same plan. | High prices and dirty tables don't fit together. | Rumelt, coherent action ✓ | Spot the mistake |
-| 10.1.5 | Grow big only once the small version works. | Open a second shop after the first makes steady profit. | Marc Andreessen, "The only thing that matters" (2007) ◇ | Pick the best move |
+| Code | Concept | The rule | Everyday example (made up) | Source | Exercise |
+|---|---|---|---|---|---|
+| 10.1.1 | **Diagnosis** (Rumelt's kernel) | Strategy starts by naming the real problem. | "Sales are down" is a sign. "Our area now buys online" is the problem. | *Good Strategy Bad Strategy* (Rumelt), diagnosis (CustomerThink) ✓ | Pick the best move |
+| 10.1.2 | **Trade-offs** (strategy as choosing what not to do) | Strategy is choosing what not to do. | No catering, no franchise: just one café, done very well. | *Playing to Win* (Lafley & Martin) (Farnam Street) ✓ | Sort into buckets |
+| 10.1.3 | **Where to play / how to win** | Choose where to play and how to win, together. | Small-town parents (where); English tuition taught in Tamil at half the city price (how). | *Playing to Win* ✓ | Match pairs |
+| 10.1.4 | **Coherent action** (strategic fit) | Every action must support the same plan. | High prices and dirty tables don't fit together. | Rumelt, coherent action ✓ | Spot the mistake |
+| 10.1.5 | **Premature scaling** | Grow big only once the small version works. | Open a second shop after the first makes steady profit. | Marc Andreessen, "The only thing that matters" (2007) ◇; Startup Genome report on premature scaling (2011) ◇ | Pick the best move |
 
 **Folded in:** 10.1.5: "Growth eats cash first: more stock and more udhaar before any profit comes." (old
 10.3.3; the idea is taught in 1.1.3)
@@ -548,12 +687,12 @@ tested later by Apple, Maruti and Intel.
 #### Module 10.2: Position, focus and systems
 **Goal:** stand for one thing, and grow from it without breaking.
 
-| Code | The rule | Everyday example (made up) | Source | Exercise |
-|---|---|---|---|---|
-| 10.2.1 | Don't copy rivals' costly extras. Give a new reason. | Skip the AC and the long menu; promise lunch in 10 minutes. | *Blue Ocean Strategy* (Kim & Mauborgne) ◇ | Pick the best move |
-| 10.2.2 | Grow through your core, not away from it. | A sweet shop adds gift boxes before it opens a restaurant. | *Profit from the Core* (Zook) ◇ | Who's right? |
-| 10.2.3 | Let others run the side businesses they run better. | A bakery hands its café corner to a tea-stall owner and sticks to baking. | Zook ◇ | True or false, then why |
-| 10.2.4 | Build systems before you grow big. | Fixed recipes and stock rules before the third outlet. | *The E-Myth Revisited* ◇ | Drag to order |
+| Code | Concept | The rule | Everyday example (made up) | Source | Exercise |
+|---|---|---|---|---|---|
+| 10.2.1 | **Blue ocean** (eliminate-reduce-raise-create) | Don't copy rivals' costly extras. Give a new reason. | Skip the AC and the long menu; promise lunch in 10 minutes. | *Blue Ocean Strategy* (Kim & Mauborgne) ◇ | Pick the best move |
+| 10.2.2 | **Adjacency** (growth from the core) | Grow through your core, not away from it. | A sweet shop adds gift boxes before it opens a restaurant. | *Profit from the Core* (Zook) ◇ | Who's right? |
+| 10.2.3 | **Comparative advantage** | Let others run the side businesses they run better. | A bakery hands its café corner to a tea-stall owner and sticks to baking. | Zook ◇; comparative advantage (David Ricardo) ◇ | True or false, then why |
+| 10.2.4 | **Franchise prototype** (E-Myth) | Build systems before you grow big. | Fixed recipes and stock rules before the third outlet. | *The E-Myth Revisited* ◇ | Drag to order |
 
 Old Module 10.3 is folded in: its "grow once the small version works" is 10.1.5, its "systems" is 10.2.4.
 
@@ -571,12 +710,12 @@ Old Module 10.3 is folded in: its "grow once the small version works" is 10.1.5,
 #### Module 11.1: Cost and supply edges
 **Goal:** build an edge rivals can't copy quickly.
 
-| Code | The rule | Everyday example (made up) | Source | Exercise |
-|---|---|---|---|---|
-| 11.1.1 | Much bigger volume means a lower cost per piece. | A wholesaler buying 100 tonnes gets a price a 1-tonne buyer never will. | *7 Powers*, scale (Elegant Hack summary) ✓ | Quick sum |
-| 11.1.2 | Build a way of working rivals can't copy. | A tailor's fitting system gets every blouse right the first time. | *7 Powers*, process power ✓ | Match pairs |
-| 11.1.3 | Own something others can't get. | The only licence, the best corner, the one key part. | *7 Powers*, cornered resource ✓ | Pick the best move |
-| 11.1.4 | Pick a model the leader can't copy without hurting itself. | A flat-fee tutor next to coaching centres that charge per subject. | *7 Powers*, counter-positioning ✓ | Who's right? |
+| Code | Concept | The rule | Everyday example (made up) | Source | Exercise |
+|---|---|---|---|---|---|
+| 11.1.1 | **Scale economies** | Much bigger volume means a lower cost per piece. | A wholesaler buying 100 tonnes gets a price a 1-tonne buyer never will. | *7 Powers*, scale (Elegant Hack summary) ✓ | Quick sum |
+| 11.1.2 | **Process power** | Build a way of working rivals can't copy. | A tailor's fitting system gets every blouse right the first time. | *7 Powers*, process power ✓ | Match pairs |
+| 11.1.3 | **Cornered resource** | Own something others can't get. | The only licence, the best corner, the one key part. | *7 Powers*, cornered resource ✓ | Pick the best move |
+| 11.1.4 | **Counter-positioning** | Pick a model the leader can't copy without hurting itself. | A flat-fee tutor next to coaching centres that charge per subject. | *7 Powers*, counter-positioning ✓ | Who's right? |
 
 **Gates:**
 - **`indigo-one-plane-type`** (complexity 3, Indian, startup)
@@ -596,13 +735,13 @@ Old Module 10.3 is folded in: its "grow once the small version works" is 10.1.5,
 #### Module 11.2: Customer edges
 **Goal:** make customers want to stay, and pay.
 
-| Code | The rule | Everyday example (made up) | Source | Exercise |
-|---|---|---|---|---|
-| 11.2.1 | Trust built over years lets you charge more. | Families pay extra at the jeweller their grandparents trusted. | *7 Powers*, branding ✓ | True or false, then why |
-| 11.2.2 | One strong shared brand beats many weak ones. | Twenty village bakeries selling under one town name. | ◇ (umbrella brands) | Pick the best move |
-| 11.2.3 | When leaving you is a hassle, customers stay. | Your billing app holds all their GST records. | *7 Powers*, switching costs ✓ | Sort into buckets |
-| 11.2.4 | More buyers bring more sellers, and more sellers bring buyers. | A food app: more diners bring more restaurants, which bring more diners. | *7 Powers*, network economies ✓ | Slider sim |
-| 11.2.5 | The real test: can you raise prices and keep buyers? | Your rate goes up ₹10 and the regulars still come. | Warren Buffett on pricing power (FCIC interview, 2010) ◇ | Who's right? |
+| Code | Concept | The rule | Everyday example (made up) | Source | Exercise |
+|---|---|---|---|---|---|
+| 11.2.1 | **Branding power** | Trust built over years lets you charge more. | Families pay extra at the jeweller their grandparents trusted. | *7 Powers*, branding ✓ | True or false, then why |
+| 11.2.2 | **Umbrella branding** | One strong shared brand beats many weak ones. | Twenty village bakeries selling under one town name. | ◇ (umbrella brands) | Pick the best move |
+| 11.2.3 | **Switching costs** | When leaving you is a hassle, customers stay. | Your billing app holds all their GST records. | *7 Powers*, switching costs ✓ | Sort into buckets |
+| 11.2.4 | **Network effects** (two-sided, chicken and egg) | More buyers bring more sellers, and more sellers bring buyers. | A food app: more diners bring more restaurants, which bring more diners. | *7 Powers*, network economies ✓ | Slider sim |
+| 11.2.5 | **Pricing power** | The real test: can you raise prices and keep buyers? | Your rate goes up ₹10 and the regulars still come. | Warren Buffett on pricing power (FCIC interview, 2010) ◇ | Who's right? |
 
 **Gate: none.** Practice node and Daily Calls. (Ola is a post-launch candidate for this module.)
 
@@ -611,11 +750,11 @@ Old Module 10.3 is folded in: its "grow once the small version works" is 10.1.5,
 #### Module 12.1: See it coming
 **Goal:** spot the change that could kill your business.
 
-| Code | The rule | Everyday example (made up) | Source | Exercise |
-|---|---|---|---|---|
-| 12.1.1 | Judge new things by how fast they improve. | Phone cameras started poor, then emptied the town's photo studio. | *The Innovator's Dilemma* (Christensen) ◇ | Slider sim |
-| 12.1.2 | The thing that kills you often looks small and silly. | "Who will buy clothes without touching them?" | Christensen ◇ | True or false, then why |
-| 12.1.3 | Follow customers' new habits, even if old income suffers. | Customers now order on WhatsApp instead of walking in. | Christensen ◇ | Pick the best move |
+| Code | Concept | The rule | Everyday example (made up) | Source | Exercise |
+|---|---|---|---|---|---|
+| 12.1.1 | **Disruptive innovation** (improvement curves) | Judge new things by how fast they improve. | Phone cameras started poor, then emptied the town's photo studio. | *The Innovator's Dilemma* (Christensen) ◇ | Slider sim |
+| 12.1.2 | **The toy test** | The thing that kills you often looks small and silly. | "Who will buy clothes without touching them?" | Christensen ◇; Chris Dixon, "The next big thing will start out looking like a toy" (2010) ◇ | True or false, then why |
+| 12.1.3 | **Leading vs lagging indicators** | Watch where new customers go, not where old revenue comes from. | Old regulars still walk in, but every new customer orders on WhatsApp. | Christensen ◇; leading vs lagging indicators ◇ | Pick the best move |
 
 **Gates:**
 - **NEW: `titan-quartz` "Quartz only".** Titan, 1984–1993 (Tata and TIDCO's new watch company). Gives Unit 12 an Indian story, told from the attacker's seat.
@@ -638,11 +777,11 @@ Old Module 10.3 is folded in: its "grow once the small version works" is 10.1.5,
 #### Module 12.2: Move before you must
 **Goal:** build the new business before the old one dies.
 
-| Code | The rule | Everyday example (made up) | Source | Exercise |
-|---|---|---|---|---|
-| 12.2.1 | Give the new business its own team, money and freedom. | Your online store shouldn't need the shop manager's OK. | Christensen ◇ | Pick the best move |
-| 12.2.2 | Never slow the new business to protect the old. | Don't price the app high "so the shop doesn't suffer". | Christensen ◇ | Spot the mistake |
-| 12.2.3 | Use what you already have as a weapon. | Your shops become pickup points for online orders. | ◇ | Mini-scenario |
+| Code | Concept | The rule | Everyday example (made up) | Source | Exercise |
+|---|---|---|---|---|---|
+| 12.2.1 | **Autonomous unit** (the innovator's dilemma) | Give the new business its own team, money and freedom. | Your online store shouldn't need the shop manager's OK. | Christensen ◇ | Pick the best move |
+| 12.2.2 | **Self-cannibalisation** | Never slow the new business to protect the old. | Don't price the app high "so the shop doesn't suffer". | Christensen ◇ | Spot the mistake |
+| 12.2.3 | **Complementary assets** | Use what you already have as a weapon. | Your shops become pickup points for online orders. | David Teece, "Profiting from Technological Innovation" (1986), complementary assets ◇ | Mini-scenario |
 
 **Gates:**
 - **`kodak`** (complexity 2, Western, big)
@@ -663,11 +802,11 @@ Old Module 10.3 is folded in: its "grow once the small version works" is 10.1.5,
 #### Module 12.3: Letting go
 **Goal:** know when to leave, and what to keep.
 
-| Code | The rule | Everyday example (made up) | Source | Exercise |
-|---|---|---|---|---|
-| 12.3.1 | Leave a losing business, even the famous one you started. | A family closes its famous, loss-making restaurant to save its catering business. | *Only the Paranoid Survive* (Andy Grove) ◇ | Who's right? |
-| 12.3.2 | Know what you are good at, not just what you sell. | A printing press becomes a design-and-print studio. | Core competence (Prahalad & Hamel) ◇ | Match pairs |
-| 12.3.3 | Join the winning platform when yours can't catch up. | Sell on a big online marketplace instead of building your own site. | ◇ | Pick the best move |
+| Code | Concept | The rule | Everyday example (made up) | Source | Exercise |
+|---|---|---|---|---|---|
+| 12.3.1 | **Strategic inflection point** | Leave a losing business, even the famous one you started. | A family closes its famous, loss-making restaurant to save its catering business. | *Only the Paranoid Survive* (Andy Grove) ◇ | Who's right? |
+| 12.3.2 | **Marketing myopia** | Define your business by the need you meet, not the product. | A printing press becomes a design-and-print studio. | Theodore Levitt, "Marketing Myopia" (HBR, 1960) ◇ | Match pairs |
+| 12.3.3 | **Market tipping** (winner takes most) | Join the winning platform when yours can't catch up. | Sell on a big online marketplace instead of building your own site. | Network effects and tipping, *7 Powers* ✓ | Pick the best move |
 
 **Folded in:** 12.3.1 merges old 12.3.1 (leave a losing business) and 12.3.3 (let go of the famous part).
 
@@ -689,11 +828,11 @@ Old Module 10.3 is folded in: its "grow once the small version works" is 10.1.5,
 #### Module 13.1: Crisis
 **Goal:** protect people and trust when things go wrong.
 
-| Code | The rule | Everyday example (made up) | Source | Exercise |
-|---|---|---|---|---|
-| 13.1.1 | Protect people first, then defend your product. | Pull the batch first; argue about the lab report later. | Crisis management basics ◇ | Who's right? |
-| 13.1.2 | Fight through proper channels, not in public. | Appeal to the court, not through angry ads. | ◇ | True or false, then why |
-| 13.1.3 | Come back only after you've proved it's fixed. | Relaunch after the retests pass, and make the return a celebration. | ◇ | Drag to order |
+| Code | Concept | The rule | Everyday example (made up) | Source | Exercise |
+|---|---|---|---|---|---|
+| 13.1.1 | **Precautionary recall** (the Tylenol rule) | Protect people first, then defend your product. | Pull the batch first; argue about the lab report later. | Johnson & Johnson's Tylenol recall (1982) ◇ | Who's right? |
+| 13.1.2 | **Streisand effect** | Fight in court, not in public; public fights spread the charge. | Appeal to the court, not through angry ads that repeat the charge to new people. | Streisand effect ◇ | True or false, then why |
+| 13.1.3 | **Third-party verification** | Come back only after you've proved it's fixed. | Relaunch after an outside lab's retests pass, and make the return a celebration. | ◇ (crisis recovery) | Drag to order |
 
 **Gate:**
 - **`maggi`** (complexity 2, Indian, big) · **on legal hold** until Atheeb checks the open cases (`BUILD-PLAN.md`)
@@ -714,13 +853,15 @@ Old Module 10.3 is folded in: its "grow once the small version works" is 10.1.5,
 #### Module 13.2: Big bets
 **Goal:** make big bets you can survive and run.
 
-| Code | The rule | Everyday example (made up) | Source | Exercise |
-|---|---|---|---|---|
-| 13.2.1 | Size every bet so a loss won't kill you. | Put 20% of your savings into the second shop, not 100%. | *Thinking in Bets* ✓ | Slider sim |
-| 13.2.2 | Buy only what you can run and afford, never while struggling. | Raju buys three more kiranas in a year and can't watch any of them; two sick shops make a sicker one. | Post-merger integration basics ◇ | Spot the mistake |
-| 13.2.3 | Strong cash in a downturn lets you take what others drop. | In a slump, the shop with savings rents the best corner cheaply. | ◇ | Who's right? |
+| Code | Concept | The rule | Everyday example (made up) | Source | Exercise |
+|---|---|---|---|---|---|
+| 13.2.1 | **Risk of ruin** (bet sizing) | Size every bet so a loss won't kill you. | Put 20% of your savings into the second shop, not 100%. | *Thinking in Bets* ✓; Kelly criterion ◇ | Slider sim |
+| 13.2.2 | **Winner's curse** and **base rates** | Buy only what you can run and afford, never while struggling. | Raju buys three more kiranas in a year and can't watch any of them; two sick shops make a sicker one. | Winner's curse (Thaler, *The Winner's Curse*) ◇; base rates and the outside view (Kahneman) ◇ | Spot the mistake |
+| 13.2.3 | **Counter-cyclical buying** (dry powder) | Strong cash in a downturn lets you take what others drop. | In a slump, the shop with savings rents the best corner cheaply. | ◇ | Who's right? |
 
 **Folded in:** 13.2.2 merges old 13.2.2 (don't buy a rival while struggling) and 13.2.3 (a deal must fit).
+13.2.1: "Survivorship bias: you hear about the bets that won, not the shops that shut." 13.2.2: "Start from
+the base rate: most acquisitions disappoint. Then ask why yours is different." 
 
 **Gate: none.** Practised by the Practice node, the `tata-tetley-2000` Daily Call (13.2.2) and the late
 decisions of IndiGo (d4, d5), Kingfisher (d2) and Harshad (d2). The Tetley call's real answer was a big
@@ -778,6 +919,8 @@ the Hot Seat's folder (with a `factcheck.md`); a story ships only once that fact
 | Module | How it's checked |
 |---|---|
 | 2.1, 3.1, 5.1, 6.1, 7.1 | Closed by a shared gate after the next module; lessons that gate doesn't test go to the test-out quiz and the Practice node |
+| 3.3 | Practice node + test-out quiz; candidate gate decisions listed in the module (pricing psychology) |
+| 5.3 | Practice node + test-out quiz; candidate gate decisions listed in the module (sales conversations) |
 | 8.2 | Practice node + `hul-wheel` Daily Call |
 | 8.3 | Practice node + new negotiation Daily Calls |
 | 11.2 | Practice node + Daily Calls (Ola later) |
@@ -874,8 +1017,15 @@ gate's main call. See open questions.
 
 ## 6. Self-check
 
-- [x] **Lesson count: 109** (down from 138). Units: 8, 7, 7, 7, 8, 6, 9, 12, 12, 9, 9, 9, 6.
-- [x] **29 modules, each with 3–5 lessons**; one rule each; every rule 12 words or fewer (checked by script).
+- [x] **Lesson count: 120** (138 → 109 → 120). Units: 8, 7, 12, 8, 13, 6, 9, 12, 12, 9, 9, 9, 6.
+- [x] **31 modules, each with 3–5 lessons**; one rule each; every rule 12 words or fewer (checked by script).
+- [x] **Every lesson names a concept** (the Concept column), and no two lessons share a main concept.
+- [x] **All 16 sales-psychology ideas are taught by name:** anchoring 3.3.1, decoy pricing 3.3.2, framing and
+  gain vs loss framing 3.3.3, loss aversion 3.3.4, endowment effect 3.3.5, reciprocity 4.1.3, social proof
+  4.2.1, commitment and consistency 4.2.2, scarcity 4.2.5, tactical empathy 5.3.1, labeling 5.3.2, mirroring
+  5.3.3, reactance 5.3.4, status quo bias 5.3.5 (design side in 2.2.3).
+- [x] **New modules 3.3 and 5.3 change no gate.** They sit after the Nano and Eureka Forbes gates, so every
+  gate's "taught before" check and the 25-gate balance table are unchanged.
 - [x] **No lesson teaches a basic as its own rule.** Every cut basic is a one-line aside in a named lesson
   (each module's **Folded in** list, and the table below).
 - [x] **Every Unit 1 lesson opens with a real Indian case** (Jet Airways, PepperTap, the 45-day payment rule,
@@ -895,7 +1045,26 @@ gate's main call. See open questions.
   small-business credit (9.1.4), hiring and firing (7.1, 7.2.1), sales (5.1), channels (5.2.1–5.2.2), pricing
   power (11.2.5), unit economics (1.1.2, 5.2.4), growing big (10.1.5, 10.2.4), decisions under uncertainty
   (1.1.4, 13.2.1), sunk and opportunity cost (1.2.3), legal form and liability (9.3.1), bribes and honesty
-  (9.3).
+  (9.3), sales psychology (3.3, 4.1.3, 4.2.1, 4.2.2, 4.2.5, 5.3).
+
+### What changed in the 31 Oct revision (named concepts, sales psychology)
+
+1. **New Module 3.3 "How buyers really judge a price"** (5 lessons: anchoring, decoy, framing, loss aversion,
+   endowment) and **new Module 5.3 "Conversations that close"** (5 lessons: tactical empathy, labeling,
+   mirroring, reactance, status quo bias). Both are gateless for now, with candidate gate decisions listed.
+2. **New lesson 4.2.5 Scarcity** (honest scarcity; the "only 2 left" aside moved here from 4.2.1).
+3. **Deepened** 4.1.3 reciprocity, 4.2.1 social proof and 4.2.2 commitment: they now name the effect and the
+   study (Strohmetz's mints, Goldstein's hotel towels, Freedman and Fraser's sign), with "used on you /
+   honestly / backfires" notes.
+4. **Concept column** added to every table: all 109 earlier lessons now name their concept. **Rules
+   rewritten** in 15 where the old rule read like common sense or the concept needed it (2.1.1, 2.2.2, 2.2.3,
+   3.1.2, 4.1.3, 4.2.1, 4.2.2, 5.1.2, 5.2.2, 6.2.2, 7.1.4, 9.2.1, 12.1.3, 12.3.2, 13.1.2), and sources or
+   examples sharpened in about 20 more. No lesson was merged away: each had a real concept once named.
+   Concept asides added: Goodhart's law and real options (1.1.5), Hofstadter's law (6.2.2), survivorship bias
+   (13.2.1), base rates (13.2.2).
+5. **Duplicates removed by concept:** 12.1.3 is now leading indicators (cannibalisation stays in 12.2.2), and
+   12.3.2 is marketing myopia (core competence stays in 6.1.3).
+6. Codes, gate decision maps and placement are unchanged; only Paper Boat's quiz list gains 4.2.5.
 
 ### What changed in the 1 Nov revision (no basic lessons)
 
@@ -1012,3 +1181,11 @@ practice and Titan quartz the Unit 12 gate; the title-decision placement rule st
 fallback if Zomato's facts are thin; the course stays hidden until kirana, Nirma and redBus are written;
 "struggling" players are offered Module 9.2 early; the video pilot story is chosen after the Hot Seats are
 planned.
+
+### Atheeb's decision (31 Oct 2026): every lesson teaches a named concept people haven't really learned; sales psychology covered in full
+
+Prompted by a reel listing 16 sales-psychology ideas ("every one of these is being used on you right now…
+nobody teaches you"). Every lesson must teach something players have never heard of, or heard of but never
+really learned, never what people generally know, and name it. All 16 ideas are now taught by name (see the
+self-check), each with the study or case behind it, how it's used on the player, how to use it honestly, and
+where it backfires, under one ethics line: use on others only what you'd accept used on you.
