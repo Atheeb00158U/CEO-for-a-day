@@ -1,0 +1,263 @@
+{
+  "id": "u1-cash-runs-out",
+  "title": "Profit on paper, empty bank",
+  "principle": "Businesses die when cash runs out, not when profit does.",
+  "minutes": 5,
+  "draft": true,
+  "screens": [
+    {
+      "kind": "explain",
+      "id": "hook",
+      "media": "img:ls_jet_grounded",
+      "text": "Jet Airways once flew more than 120 planes. On 17 April 2019 it ran its last flight, with no cash left for fuel."
+    },
+    {
+      "kind": "choice",
+      "id": "guess",
+      "guess": true,
+      "prompt": "What can stop a big airline in a single day?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Its customers all leave at once"
+        },
+        {
+          "id": "b",
+          "label": "It can't pay this week's bills"
+        },
+        {
+          "id": "c",
+          "label": "A rival cuts its fares"
+        }
+      ],
+      "answer": "b",
+      "why": "Banks said no to ₹400 crore of emergency money. Without it, Jet couldn't pay for fuel. Pilots had gone four months without pay."
+    },
+    {
+      "kind": "explain",
+      "id": "rule",
+      "title": "Three different numbers",
+      "text": "Sales are all the money that comes in. Profit is what's left after costs. Cash is what you hold today. Only cash pays bills."
+    },
+    {
+      "kind": "explain",
+      "id": "sunil",
+      "title": "Sunil's uniforms",
+      "text": "Sunil sews school uniforms. Each week he spends ₹30,000 and bills ₹45,000, so he makes ₹15,000 profit. But the school chain pays after 90 days."
+    },
+    {
+      "kind": "choice",
+      "id": "which-week",
+      "prompt": "Sunil starts with ₹1,20,000 in the bank. In which week does it run out?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Week 13, when the first payment is due"
+        },
+        {
+          "id": "b",
+          "label": "Never. He makes ₹15,000 profit a week"
+        },
+        {
+          "id": "c",
+          "label": "Week 5"
+        }
+      ],
+      "answer": "c",
+      "why": "₹1,20,000 ÷ ₹30,000 = 4 weeks of bills. The first payment comes after 90 days, about week 13. He is empty from week 5.",
+      "wrong": {
+        "a": "Week 13 is when money starts coming in. His bills start in week 1.",
+        "b": "The profit is real, but it's on paper. The cash leaves every week and comes back 90 days later."
+      }
+    },
+    {
+      "kind": "choice",
+      "id": "how-short",
+      "prompt": "To keep paying until the school pays in week 13, how much more cash does Sunil need?",
+      "options": [
+        {
+          "id": "a",
+          "label": "₹2,70,000"
+        },
+        {
+          "id": "b",
+          "label": "₹3,90,000"
+        },
+        {
+          "id": "c",
+          "label": "₹45,000"
+        }
+      ],
+      "answer": "a",
+      "why": "13 weeks × ₹30,000 = ₹3,90,000 of bills. He has ₹1,20,000, so he is ₹2,70,000 short. And his books say he is 'making' ₹15,000 a week.",
+      "wrong": {
+        "b": "That's all 13 weeks of bills. He already has ₹1,20,000 of it.",
+        "c": "That's one week's billing. He needs to cover 13 weeks of costs first."
+      }
+    },
+    {
+      "kind": "choice",
+      "id": "fix",
+      "prompt": "Which change helps Sunil most?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Raise his price by 10%"
+        },
+        {
+          "id": "b",
+          "label": "Get paid in 30 days, not 90"
+        },
+        {
+          "id": "c",
+          "label": "Take on a second school chain"
+        }
+      ],
+      "answer": "b",
+      "why": "At 30 days, money starts coming in around week 5, so his ₹1,20,000 nearly covers the wait. A higher price changes the profit, not the timing.",
+      "wrong": {
+        "a": "More profit, but it still arrives in week 13. He's still empty in week 5.",
+        "c": "A second chain doubles his weekly bills while he waits. He'd run dry in about half the time."
+      }
+    },
+    {
+      "kind": "sort",
+      "id": "cash-or-not",
+      "prompt": "Sunil owes ₹20,000 in wages on Saturday. What can he pay them with?",
+      "buckets": ["Can use now", "Can't use yet"],
+      "items": [
+        {
+          "text": "₹8,000 by UPI this morning",
+          "bucket": 0
+        },
+        {
+          "text": "A ₹50,000 order confirmed on WhatsApp",
+          "bucket": 1
+        },
+        {
+          "text": "A ₹30,000 bill the buyer pays in 60 days",
+          "bucket": 1
+        },
+        {
+          "text": "₹12,000 in the current account",
+          "bucket": 0
+        },
+        {
+          "text": "₹20,000 of cloth on the rack",
+          "bucket": 1
+        },
+        {
+          "text": "A GST refund 'coming soon'",
+          "bucket": 1
+        }
+      ],
+      "why": "Orders, unpaid bills, stock and refunds can all be worth money. None of them pays the wages on Saturday."
+    },
+    {
+      "kind": "choice",
+      "id": "runway",
+      "prompt": "Pooja's gym has ₹3,00,000 in the bank. Each month ₹1,50,000 goes out and ₹1,00,000 comes in. How many months can she last?",
+      "options": [
+        {
+          "id": "a",
+          "label": "2 months"
+        },
+        {
+          "id": "b",
+          "label": "3 months"
+        },
+        {
+          "id": "c",
+          "label": "6 months"
+        }
+      ],
+      "answer": "c",
+      "why": "She loses ₹1,50,000 − ₹1,00,000 = ₹50,000 a month. ₹3,00,000 ÷ ₹50,000 = 6 months. That number is her runway. Count her own fixed wage in the ₹1,50,000, too.",
+      "wrong": {
+        "a": "That divides by everything going out. Money still comes in each month, so count only the gap.",
+        "b": "Check the gap: ₹1,50,000 out, ₹1,00,000 in. She loses ₹50,000 a month."
+      }
+    },
+    {
+      "kind": "scenario",
+      "id": "big-order",
+      "setup": "A second school chain offers Sunil ₹90,000 of work a week. It would cost him ₹60,000 a week. It also pays after 90 days.",
+      "question": "That's ₹30,000 more profit a week. What do you do?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Say yes. It triples the business",
+          "grade": "bad",
+          "outcome": "His weekly bills jump to ₹90,000. His ₹1,20,000 is gone before week 2 ends. He can't buy cloth for either school.",
+          "why": "Growth eats cash first and pays it back later. Bigger orders on long credit empty the bank faster.",
+          "better": "Take it only if the money comes sooner, like an advance or 30-day terms."
+        },
+        {
+          "id": "b",
+          "label": "Yes, with 40% up front and 30-day terms",
+          "grade": "great",
+          "outcome": "The ₹36,000 advance each week pays more than half the new costs. Money starts coming back in a month, not three.",
+          "why": "He checked when the cash comes in, as well as the profit. Same order, but now he can survive it."
+        },
+        {
+          "id": "c",
+          "label": "Say no. It's too risky",
+          "grade": "ok",
+          "outcome": "Sunil stays safe, but he turns away ₹30,000 a week without asking for better terms.",
+          "why": "Safe, but he never tried to fix the timing.",
+          "better": "Ask for an advance and shorter terms before saying no."
+        }
+      ]
+    },
+    {
+      "kind": "gap",
+      "id": "fill",
+      "text": "A profitable business can still shut if ___ hits zero before ___ pay.",
+      "bank": ["cash", "customers", "profit", "suppliers"],
+      "answer": ["cash", "customers"],
+      "why": "Profit says the business works. Only cash keeps it open. Jet had 119 planes at the end of 2018. Four months later it had no cash for fuel."
+    }
+  ],
+  "summary": [
+    "Sales come in, profit is what's left, cash is what you hold today.",
+    "Long credit and fast growth can empty a profitable business.",
+    "Runway = cash ÷ the monthly gap between money out and money in."
+  ],
+  "cards": [
+    {
+      "id": "m11-cash-1",
+      "front": "You make ₹20,000 profit a month, but buyers pay in 90 days. What should you watch most?",
+      "options": ["Profit", "Cash in the bank each week", "Sales"],
+      "answer": 1,
+      "back": "Cash. Profit that arrives in 90 days can't pay this week's bills."
+    },
+    {
+      "id": "m11-cash-2",
+      "front": "₹2,40,000 in the bank. You lose ₹40,000 a month. How long can you last?",
+      "options": ["6 months", "4 months", "10 months"],
+      "answer": 0,
+      "back": "₹2,40,000 ÷ ₹40,000 = 6 months of runway."
+    },
+    {
+      "id": "m11-cash-3",
+      "front": "A big new order pays in 90 days. What makes it safe?",
+      "options": ["A bigger price", "An advance and shorter terms"],
+      "answer": 1,
+      "back": "Bring the cash closer. Growth on long credit empties the bank."
+    }
+  ],
+  "sources": [
+    {
+      "label": "India's Jet Airways suspends all operations (Gulf Times / Reuters, 17 Apr 2019)",
+      "url": "https://www.gulf-times.com/story/629035/indias-jet-airways-suspends-all-operations-statement/amp"
+    },
+    {
+      "label": "India's Jet Airways suspending operations, no money to fly (AP, 17 Apr 2019)",
+      "url": "https://www.thegardenisland.com/2019/04/17/news/indias-jet-airways-suspending-operations-no-money-to-fly/"
+    },
+    {
+      "label": "Default Alive or Default Dead? (Paul Graham, Oct 2015)",
+      "url": "http://paulgraham.com/aord.html"
+    }
+  ]
+}

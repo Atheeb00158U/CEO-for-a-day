@@ -1,0 +1,265 @@
+{
+  "id": "u1-frozen-cash",
+  "title": "Cash frozen in credit and stock",
+  "principle": "Stock and credit are cash you can't spend. Limit both.",
+  "minutes": 5,
+  "draft": true,
+  "screens": [
+    {
+      "kind": "explain",
+      "id": "hook",
+      "media": "img:ls_cane_farmer",
+      "text": "September 2019: UP's sugar mills owed cane farmers ₹6,480 crore. The rule says pay in 14 days. Piyush had waited four months for ₹80,000."
+    },
+    {
+      "kind": "choice",
+      "id": "guess",
+      "guess": true,
+      "prompt": "Piyush sold his cane. What does he really have?",
+      "options": [
+        {
+          "id": "a",
+          "label": "₹80,000 he can spend"
+        },
+        {
+          "id": "b",
+          "label": "A promise, and bills that won't wait"
+        }
+      ],
+      "answer": "b",
+      "why": "He owed more than ₹1 lakh on a bank loan, and the bank sent him a notice. He stopped growing cane on his 30 acres."
+    },
+    {
+      "kind": "explain",
+      "id": "rule",
+      "title": "Frozen cash",
+      "text": "Money owed to you is a loan you give, with no interest. Stock on the shelf is cash frozen in boxes. Both need a limit."
+    },
+    {
+      "kind": "explain",
+      "id": "formula",
+      "title": "A quick way to see it",
+      "text": "Each extra day of credit traps one more day of sales. Cash stuck = sales a day × days to pay. Stock works alike."
+    },
+    {
+      "kind": "choice",
+      "id": "press",
+      "prompt": "Farah's printing press bills offices ₹20,000 a day. They pay after 60 days. How much of her money is with customers?",
+      "options": [
+        {
+          "id": "a",
+          "label": "₹1,20,000"
+        },
+        {
+          "id": "b",
+          "label": "₹6,00,000"
+        },
+        {
+          "id": "c",
+          "label": "₹12,00,000"
+        }
+      ],
+      "answer": "c",
+      "why": "₹20,000 × 60 days = ₹12,00,000. That's ₹12 lakh she has earned and can't use.",
+      "wrong": {
+        "a": "Check the zeros: ₹20,000 × 60 = ₹12,00,000.",
+        "b": "That's 30 days. Her customers take 60."
+      }
+    },
+    {
+      "kind": "choice",
+      "id": "press-30",
+      "prompt": "Farah gets new bills paid in 30 days instead of 60. How much cash comes free?",
+      "options": [
+        {
+          "id": "a",
+          "label": "₹6,00,000"
+        },
+        {
+          "id": "b",
+          "label": "₹30,000"
+        },
+        {
+          "id": "c",
+          "label": "₹12,00,000"
+        }
+      ],
+      "answer": "a",
+      "why": "30 days × ₹20,000 = ₹6,00,000 still out. Before, it was ₹12,00,000. Half comes back to her.",
+      "wrong": {
+        "b": "Multiply sales per day by the days: ₹20,000 × 30.",
+        "c": "Not all of it. Customers still take 30 days, so ₹6 lakh stays out."
+      }
+    },
+    {
+      "kind": "choice",
+      "id": "interest",
+      "prompt": "A bank would charge 12% a year to lend Farah that ₹6 lakh. What do faster payments save her each year?",
+      "options": [
+        {
+          "id": "a",
+          "label": "₹7,200"
+        },
+        {
+          "id": "b",
+          "label": "₹72,000"
+        },
+        {
+          "id": "c",
+          "label": "₹1,44,000"
+        }
+      ],
+      "answer": "b",
+      "why": "12% of ₹6,00,000 = ₹72,000 a year. Shorter credit is the cheapest loan she'll ever get.",
+      "wrong": {
+        "a": "Check the zeros: 12% of ₹6,00,000 is ₹72,000.",
+        "c": "That's 12% of the full ₹12 lakh. Only ₹6 lakh comes free."
+      }
+    },
+    {
+      "kind": "choice",
+      "id": "stock-days",
+      "prompt": "Amit's phone accessory store holds ₹8 lakh of stock. He sells ₹40,000 of it a day. Keeping 8 days' stock frees how much?",
+      "options": [
+        {
+          "id": "a",
+          "label": "₹3,20,000"
+        },
+        {
+          "id": "b",
+          "label": "₹4,80,000"
+        },
+        {
+          "id": "c",
+          "label": "₹7,60,000"
+        }
+      ],
+      "answer": "b",
+      "why": "Now he holds ₹8,00,000 ÷ ₹40,000 = 20 days of stock. 8 days needs ₹3,20,000. ₹8,00,000 − ₹3,20,000 = ₹4,80,000 freed.",
+      "wrong": {
+        "a": "That's what 8 days of stock costs. Take it away from the ₹8 lakh he holds now.",
+        "c": "8 days is 8 × ₹40,000 = ₹3,20,000, not ₹40,000."
+      }
+    },
+    {
+      "kind": "sort",
+      "id": "frees",
+      "prompt": "Does it free cash or freeze it?",
+      "buckets": ["Frees cash", "Freezes cash"],
+      "items": [
+        {
+          "text": "Ask 30% up front on big orders",
+          "bucket": 0
+        },
+        {
+          "text": "Buy 3 months of stock for a bulk discount",
+          "bucket": 1
+        },
+        {
+          "text": "Give a new client 90 days to pay",
+          "bucket": 1
+        },
+        {
+          "text": "Sell slow stock at cost",
+          "bucket": 0
+        },
+        {
+          "text": "Keep every size in every colour",
+          "bucket": 1
+        },
+        {
+          "text": "Offer 2% off for payment in 7 days",
+          "bucket": 0
+        }
+      ],
+      "why": "Advances, quick payment and clearing slow stock bring cash home. Long credit and big stock piles lock it away."
+    },
+    {
+      "kind": "choice",
+      "id": "law",
+      "prompt": "You're a small registered maker. A big company wants 90 days to pay. What do you ask for?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Accept 90 days. Big clients set the rules"
+        },
+        {
+          "id": "b",
+          "label": "Ask for cash before delivery"
+        },
+        {
+          "id": "c",
+          "label": "45 days at most, written in the contract"
+        }
+      ],
+      "answer": "c",
+      "why": "Since April 2024, a buyer that pays a small registered maker after 45 days can't claim that cost against tax until it pays. Use it.",
+      "wrong": {
+        "a": "The law is on your side. A buyer who pays after 45 days loses a tax benefit.",
+        "b": "Fine if they agree, but most won't. 45 days in writing is a fair ask the law backs."
+      }
+    },
+    {
+      "kind": "scenario",
+      "id": "hotel",
+      "setup": "Imran makes steel furniture. A hotel group orders ₹10 lakh of beds, paying in 120 days. The steel and wages cost ₹7 lakh now. Imran has ₹4 lakh.",
+      "question": "What do you do?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Take it. Borrow the ₹3 lakh gap",
+          "grade": "bad",
+          "outcome": "He borrows ₹3 lakh and waits four months to be paid. A small supplier chases him, and his other orders slow down for lack of steel.",
+          "why": "₹7 lakh of his money sat with one client for four months.",
+          "better": "Ask for an advance and shorter terms first."
+        },
+        {
+          "id": "b",
+          "label": "Take it with 40% up front, rest in 45 days",
+          "grade": "great",
+          "outcome": "The ₹4 lakh advance plus his ₹4 lakh covers the ₹7 lakh of costs. The other ₹6 lakh comes in 45 days, not 120.",
+          "why": "He limited how much of his cash the client could hold, and for how long."
+        },
+        {
+          "id": "c",
+          "label": "Turn it down. Too big for him",
+          "grade": "ok",
+          "outcome": "Imran stays safe but loses ₹3 lakh of profit he could have earned on better terms.",
+          "why": "The order was fine. The terms were the problem.",
+          "better": "Change the terms before you walk away."
+        }
+      ]
+    }
+  ],
+  "summary": [
+    "Money owed to you is an interest-free loan you give.",
+    "Cash stuck = sales per day × days customers take to pay.",
+    "Every day you cut from credit or stock frees cash, and saves interest."
+  ],
+  "cards": [
+    {
+      "id": "m11-frozen-1",
+      "front": "You sell ₹10,000 a day. Customers pay in 45 days. How much is out with them?",
+      "options": ["₹45,000", "₹4,50,000", "₹10,000"],
+      "answer": 1,
+      "back": "₹10,000 × 45 = ₹4,50,000."
+    },
+    {
+      "id": "m11-frozen-2",
+      "front": "A big buyer wants 90 days. You're a small registered maker. Ask for:",
+      "options": ["45 days at most, in writing", "Whatever they say"],
+      "answer": 0,
+      "back": "Buyers who pay small makers after 45 days lose a tax deduction until they pay."
+    }
+  ],
+  "sources": [
+    {
+      "label": "Sugarcane farmers in UP protest as they didn't get their dues (Gaon Connection, 13 Sep 2019)",
+      "url": "https://www.gaonconnection.com/read/sugarcane-farmers-in-uttar-pradesh-protest-as-they-didnt-get-their-dues-46219"
+    },
+    {
+      "label": "Section 43B(h) of the Income Tax Act: MSME payments (ClearTax)",
+      "url": "https://cleartax.in/s/section-43bh-of-income-tax-act"
+    }
+  ]
+}

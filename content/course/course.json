@@ -3,14 +3,14 @@
     {
       "id": "u1-make-money",
       "title": "Make money, keep money",
-      "goal": "Know what you really keep, and keep enough cash to run the shop.",
+      "goal": "Know what you really keep, and keep enough cash to run the business.",
       "draft": true,
       "modules": [
         {
-          "id": "u1-profit",
-          "title": "Profit",
-          "goal": "See how much you really keep from each sale.",
-          "lessons": ["u1-sales-not-profit", "u1-know-your-margin", "u1-fixed-and-variable", "u1-break-even", "u1-thin-margins"],
+          "id": "u1-where-money-goes",
+          "title": "Where the money goes",
+          "goal": "See why busy, profitable businesses still run out of money.",
+          "lessons": ["u1-cash-runs-out", "u1-hidden-costs", "u1-frozen-cash", "u1-judge-the-call", "u1-test-small"],
           "gates": ["kirana-year"]
         }
       ]

@@ -1,0 +1,261 @@
+{
+  "id": "u1-test-small",
+  "title": "Test small, decide 'yes' first",
+  "principle": "Test small first, and decide beforehand what result means yes.",
+  "minutes": 5,
+  "draft": true,
+  "screens": [
+    {
+      "kind": "explain",
+      "id": "hook",
+      "media": "img:ls_book_parcels",
+      "text": "In October 2007, two former Amazon staff started Flipkart in Bengaluru, selling only books. In its first year, it made 20 shipments."
+    },
+    {
+      "kind": "choice",
+      "id": "guess",
+      "guess": true,
+      "prompt": "Why would Flipkart start with books alone, not everything?",
+      "options": [
+        {
+          "id": "a",
+          "label": "To learn cheaply before betting big"
+        },
+        {
+          "id": "b",
+          "label": "They only liked books"
+        }
+      ],
+      "answer": "a",
+      "why": "One small range let them learn orders, delivery and buyers. They handed out bookmarks outside a Bengaluru bookshop. Phones and electronics came only in 2010."
+    },
+    {
+      "kind": "explain",
+      "id": "rule",
+      "title": "Write 'yes' down first",
+      "text": "Test small. Before you start, write the number that means 'yes', and the date you'll check. Then let the number decide, not hope."
+    },
+    {
+      "kind": "choice",
+      "id": "good-yes",
+      "prompt": "Which 'yes' line tells you a new lunch service can really work?",
+      "options": [
+        {
+          "id": "a",
+          "label": "120 enquiries in 4 weeks"
+        },
+        {
+          "id": "b",
+          "label": "120 paid lunches in 4 weeks"
+        },
+        {
+          "id": "c",
+          "label": "120 paid lunches in 4 weeks, ₹40 left on each"
+        }
+      ],
+      "answer": "c",
+      "why": "Enquiries are weaker than payments, and payments with no margin can still lose money. A number, a date and money: you can't argue with it later.",
+      "wrong": {
+        "a": "Asking costs people nothing. Count what they pay for.",
+        "b": "Better, but 120 lunches that each lose ₹5 is still a loss. Add what each one leaves."
+      }
+    },
+    {
+      "kind": "explain",
+      "id": "sana",
+      "title": "Sana's cake stall",
+      "text": "Sana wants a cake stall at an office park. It costs ₹15,000 a month, and each cake box leaves her ₹60."
+    },
+    {
+      "kind": "choice",
+      "id": "sana-yes",
+      "prompt": "The park is open 25 days a month. How many boxes a day just covers the stall?",
+      "options": [
+        {
+          "id": "a",
+          "label": "250"
+        },
+        {
+          "id": "b",
+          "label": "10"
+        },
+        {
+          "id": "c",
+          "label": "25"
+        }
+      ],
+      "answer": "b",
+      "why": "₹15,000 ÷ ₹60 = 250 boxes a month. 250 ÷ 25 days = 10 a day. So her 'yes' must be above 10, or she works for free.",
+      "wrong": {
+        "a": "That's a month. Split it over 25 days.",
+        "c": "Work it out: ₹15,000 ÷ ₹60 = 250 a month, then ÷ 25 days."
+      }
+    },
+    {
+      "kind": "choice",
+      "id": "close-enough",
+      "prompt": "Sana tests for four weeks and sells 7 a day. Her friend says, 'Close to 10. Go!' What do you say?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Go. 7 is close"
+        },
+        {
+          "id": "b",
+          "label": "Change the offer and test again"
+        },
+        {
+          "id": "c",
+          "label": "Move the yes line to 7"
+        }
+      ],
+      "answer": "b",
+      "why": "At 7 a day she's 3 boxes short. 3 × ₹60 × 25 days = ₹4,500 lost every month. Try a new price or spot, then test again.",
+      "wrong": {
+        "a": "7 against 10 means 3 × ₹60 × 25 = ₹4,500 lost a month.",
+        "c": "Moving the line after the test is how hope wins. The sum didn't change."
+      }
+    },
+    {
+      "kind": "choice",
+      "id": "test-cost",
+      "prompt": "A second salon costs ₹12 lakh. Neeta tests first: one rented chair in a gym, ₹8,000 a month for 3 months. What share is that?",
+      "options": [
+        {
+          "id": "a",
+          "label": "2%"
+        },
+        {
+          "id": "b",
+          "label": "20%"
+        },
+        {
+          "id": "c",
+          "label": "0.2%"
+        }
+      ],
+      "answer": "a",
+      "why": "3 × ₹8,000 = ₹24,000. ₹24,000 ÷ ₹12,00,000 = 2%. She risks 2 rupees to learn before she risks 100.",
+      "wrong": {
+        "b": "₹24,000 is much smaller than that. 20% would be ₹2,40,000.",
+        "c": "0.2% would be just ₹2,400. The test is ₹24,000."
+      }
+    },
+    {
+      "kind": "sort",
+      "id": "test-or-bet",
+      "prompt": "Small test or big bet?",
+      "buckets": ["Small test", "Big bet"],
+      "items": [
+        {
+          "text": "Sell 50 kurtas on Instagram first",
+          "bucket": 0
+        },
+        {
+          "text": "Sign a 3-year shop lease",
+          "bucket": 1
+        },
+        {
+          "text": "Take 30 pre-orders with advance paid",
+          "bucket": 0
+        },
+        {
+          "text": "Buy a ₹6 lakh van",
+          "bucket": 1
+        },
+        {
+          "text": "Cook 20 plates for one office lunch",
+          "bucket": 0
+        },
+        {
+          "text": "Print 10,000 menus",
+          "bucket": 1
+        }
+      ],
+      "why": "A test is cheap and quick to undo, while a bet locks your money in. Do the tests first, and let them earn you the bet."
+    },
+    {
+      "kind": "order",
+      "id": "steps",
+      "prompt": "Put a good test in order.",
+      "steps": [
+        "Pick one small, cheap version",
+        "Write the yes number and the date",
+        "Run it",
+        "Count on the date",
+        "Grow, change or stop"
+      ],
+      "why": "The yes number comes before the test. Every Sunday, count the two or three numbers that decide. Let them decide, not hope."
+    },
+    {
+      "kind": "scenario",
+      "id": "gym",
+      "setup": "Pooja wants a 6 am women-only batch at her gym. A full new floor would cost ₹5 lakh. Some members say they'd 'surely join'.",
+      "question": "What do you do?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Build the floor. Members asked for it",
+          "grade": "bad",
+          "outcome": "The floor opens, but only eight women come in the first month. ₹5 lakh is now in walls and mats.",
+          "why": "Saying 'I'd join' is free. She bet big on words, not payments.",
+          "better": "Run one paid batch first, with a yes number."
+        },
+        {
+          "id": "b",
+          "label": "One 6 am batch for 6 weeks. Yes = 20 paid",
+          "grade": "great",
+          "outcome": "By week 6, 23 women have paid. Now the floor is a bet with proof behind it.",
+          "why": "She tested cheaply in the space she had, and wrote the yes number first."
+        },
+        {
+          "id": "c",
+          "label": "Do a members' survey first",
+          "grade": "ok",
+          "outcome": "70% tick 'yes'. She still doesn't know who will pay at 6 am.",
+          "why": "A survey costs little, but it measures words.",
+          "better": "Ask for payment. That is the real test."
+        }
+      ]
+    },
+    {
+      "kind": "gap",
+      "id": "fill",
+      "text": "Write the ___ that means yes ___ the test starts.",
+      "bank": ["number", "before", "after", "hope"],
+      "answer": ["number", "before"],
+      "why": "Decide the line first. After the test, it's too easy to move it."
+    }
+  ],
+  "summary": [
+    "Start with a small, cheap version of the idea.",
+    "Write the yes number and the date before you start.",
+    "Don't move the line after the test. Change the offer and test again."
+  ],
+  "cards": [
+    {
+      "id": "m11-test-1",
+      "front": "Your test hit 8 against a yes number of 12. What now?",
+      "options": ["Go ahead, it's close", "Change something and test again", "Lower the line to 8"],
+      "answer": 1,
+      "back": "The line was set for a reason. Change the offer, not the line."
+    },
+    {
+      "id": "m11-test-2",
+      "front": "Stall rent ₹9,000 a month. Each sale leaves ₹30. Open 30 days. Sales a day to break even?",
+      "options": ["10", "30", "300"],
+      "answer": 0,
+      "back": "₹9,000 ÷ ₹30 = 300 a month. 300 ÷ 30 days = 10 a day."
+    }
+  ],
+  "sources": [
+    {
+      "label": "Flipkart (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Flipkart"
+    },
+    {
+      "label": "How two IITians built Flipkart, from bookmarks outside bookstores (Business Today, 9 May 2018)",
+      "url": "https://www.businesstoday.in/amp/latest/economy-politics/story/flipkart-walmart-deal-how-two-iitians-created-usd-20-billion-company-distributing-bookmarks-outside-bookstores-107420-2018-05-09"
+    }
+  ]
+}

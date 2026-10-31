@@ -1,0 +1,251 @@
+{
+  "id": "u1-hidden-costs",
+  "title": "The costs you don't see",
+  "principle": "Price minus stock cost isn't profit. Count every hidden cost.",
+  "minutes": 5,
+  "draft": true,
+  "screens": [
+    {
+      "kind": "explain",
+      "id": "hook",
+      "media": "img:ls_grocery_rider",
+      "text": "PepperTap delivered groceries in two hours across Indian cities and raised over $50 million. In April 2016, it shut grocery delivery down."
+    },
+    {
+      "kind": "choice",
+      "id": "guess",
+      "guess": true,
+      "prompt": "By late 2015 it said it handled 20,000 orders a day. Why didn't more orders save it?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Customers stopped ordering"
+        },
+        {
+          "id": "b",
+          "label": "Each order cost more than it earned"
+        }
+      ],
+      "answer": "b",
+      "why": "Its CEO said the cash burned on every order kept rising. Big discounts, and keeping two-hour delivery ready even on slow days, cost more than orders brought in."
+    },
+    {
+      "kind": "explain",
+      "id": "rule",
+      "title": "What one sale really leaves",
+      "text": "Margin is what one sale leaves you. So ask: what did this order leave after every cost it caused? Delivery, fees, ads and returns count."
+    },
+    {
+      "kind": "explain",
+      "id": "riya",
+      "title": "Riya's T-shirts",
+      "text": "Riya sells T-shirts online at ₹499. Each shirt costs her ₹180. She thinks she keeps ₹319 an order."
+    },
+    {
+      "kind": "choice",
+      "id": "riya-keep",
+      "prompt": "Each order also costs ₹70 shipping, ₹15 packing, ₹10 payment fee and ₹150 in ads. What does Riya really keep?",
+      "options": [
+        {
+          "id": "a",
+          "label": "₹144"
+        },
+        {
+          "id": "b",
+          "label": "₹74"
+        },
+        {
+          "id": "c",
+          "label": "₹319"
+        }
+      ],
+      "answer": "b",
+      "why": "₹319 − ₹70 − ₹15 − ₹10 − ₹150 = ₹74. The ads alone cost almost half her margin.",
+      "wrong": {
+        "a": "You left out one cost. Take off all four: ₹70, ₹15, ₹10 and ₹150.",
+        "c": "That's price minus the shirt. The other costs come with every order too."
+      }
+    },
+    {
+      "kind": "choice",
+      "id": "riya-returns",
+      "prompt": "1 in 5 cash-on-delivery orders is refused at the door. That one wasted ₹150 ads, ₹15 packing, ₹140 shipping both ways. Profit on 5 orders?",
+      "options": [
+        {
+          "id": "a",
+          "label": "₹370"
+        },
+        {
+          "id": "b",
+          "label": "₹296"
+        },
+        {
+          "id": "c",
+          "label": "−₹9, a loss"
+        }
+      ],
+      "answer": "c",
+      "why": "4 good orders × ₹74 = ₹296. The refused one cost ₹150 + ₹15 + ₹140 = ₹305. ₹296 − ₹305 = −₹9. She works hard and loses money.",
+      "wrong": {
+        "a": "That's 5 × ₹74. But the refused order earned nothing and still cost money.",
+        "b": "That's the 4 good orders. Now take off what the refused one cost."
+      }
+    },
+    {
+      "kind": "order",
+      "id": "biggest",
+      "prompt": "Put Riya's costs per order from biggest to smallest.",
+      "steps": ["The shirt, ₹180", "Ads, ₹150", "Shipping, ₹70", "Packing, ₹15", "Payment fee, ₹10"],
+      "why": "The ad nearly matches the shirt. Online, the cost of finding a buyer is often the biggest cost after stock, and the easiest to forget."
+    },
+    {
+      "kind": "choice",
+      "id": "cut-one",
+      "prompt": "Riya can cut one cost by 20%. Which cut saves her most per order?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Ads"
+        },
+        {
+          "id": "b",
+          "label": "Shipping"
+        },
+        {
+          "id": "c",
+          "label": "The shirt"
+        }
+      ],
+      "answer": "c",
+      "why": "20% of ₹180 = ₹36. 20% of ₹150 ads = ₹30. 20% of ₹70 shipping = ₹14. A better supplier price beats a cheaper courier.",
+      "wrong": {
+        "a": "Close. 20% of ₹150 is ₹30, but 20% of the ₹180 shirt is ₹36.",
+        "b": "20% of ₹70 is only ₹14. Go for the biggest cost."
+      }
+    },
+    {
+      "kind": "choice",
+      "id": "biryani",
+      "prompt": "A cloud kitchen sells biryani at ₹300 on a food app. Food costs ₹110, the app takes 25%, packing is ₹20. What's left?",
+      "options": [
+        {
+          "id": "a",
+          "label": "₹95"
+        },
+        {
+          "id": "b",
+          "label": "₹170"
+        },
+        {
+          "id": "c",
+          "label": "₹115"
+        }
+      ],
+      "answer": "a",
+      "why": "25% of ₹300 = ₹75. ₹300 − ₹110 − ₹75 − ₹20 = ₹95. And that's before rent, gas and the cook's wage.",
+      "wrong": {
+        "b": "That's only price minus food and packing. The app's 25% is ₹75 more.",
+        "c": "Check the app's cut: 25% of ₹300 is ₹75, not ₹55."
+      }
+    },
+    {
+      "kind": "choice",
+      "id": "per-day",
+      "prompt": "Dal khichdi leaves ₹20 and sells 30 a day. Paneer bowls leave ₹45 and sell 18 a day. Which earns more per day?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Khichdi. It sells more"
+        },
+        {
+          "id": "b",
+          "label": "Paneer bowls"
+        },
+        {
+          "id": "c",
+          "label": "They earn the same"
+        }
+      ],
+      "answer": "b",
+      "why": "Khichdi: 30 × ₹20 = ₹600. Paneer: 18 × ₹45 = ₹810. A fast seller can earn less than a slow one. Count rupees per day, not plates.",
+      "wrong": {
+        "a": "More plates, but fewer rupees: 30 × ₹20 = ₹600 against 18 × ₹45 = ₹810.",
+        "c": "Work out each: ₹600 and ₹810."
+      }
+    },
+    {
+      "kind": "scenario",
+      "id": "promoted",
+      "setup": "The app offers to 'promote' the biryani for 10% more commission. It promises 40% more orders: 140 a day instead of 100.",
+      "question": "Each biryani leaves ₹95 now. Do you join?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Yes. 40 more orders a day is big",
+          "grade": "bad",
+          "outcome": "10% of ₹300 is ₹30 more per order. 140 × ₹65 = ₹9,100 a day, against 100 × ₹95 = ₹9,500. You cook 40 more meals to earn ₹400 less.",
+          "why": "You counted orders, not what each order leaves.",
+          "better": "Work out what's left per order at the new commission before you sign."
+        },
+        {
+          "id": "b",
+          "label": "Do the per-order sum first",
+          "grade": "great",
+          "outcome": "You see ₹9,100 against ₹9,500. You offer to try it only if the extra cut is 5%: 140 × ₹80 = ₹11,200.",
+          "why": "Every extra cost comes off each order. The sum shows when more sales mean less money."
+        },
+        {
+          "id": "c",
+          "label": "Leave the app for good",
+          "grade": "ok",
+          "outcome": "You stop paying 25%, but your 100 orders a day drop to 20 walk-ins.",
+          "why": "The app's cut is a cost, but it also brings the orders.",
+          "better": "Price the deal per order, then decide."
+        }
+      ]
+    },
+    {
+      "kind": "gap",
+      "id": "fill",
+      "text": "Count every cost that comes with ___ order, not just the ___.",
+      "bank": ["each", "stock", "rent", "first"],
+      "answer": ["each", "stock"],
+      "why": "Shipping, ads, fees, packing and returns ride along with every order. Price minus stock is only the start."
+    }
+  ],
+  "summary": [
+    "Price minus stock is only the start. Take off every cost that comes with each order.",
+    "Returns, ads and app cuts can turn a 'good' sale into a loss.",
+    "A fast seller can earn less than a slow one. Count rupees per day."
+  ],
+  "cards": [
+    {
+      "id": "m11-hidden-1",
+      "front": "Price ₹600, stock ₹300, delivery ₹80, ads ₹200. What's left per order?",
+      "options": ["₹300", "₹20", "₹220"],
+      "answer": 1,
+      "back": "₹600 − ₹300 − ₹80 − ₹200 = ₹20."
+    },
+    {
+      "id": "m11-hidden-2",
+      "front": "Item A leaves ₹5 and sells 100 a day. Item B leaves ₹12 and sells 50. Which earns more a day?",
+      "options": ["A", "B"],
+      "answer": 1,
+      "back": "B: ₹600 a day. A: ₹500. Count rupees, not units."
+    }
+  ],
+  "sources": [
+    {
+      "label": "PepperTap shuts grocery delivery to focus on logistics (TechCrunch, Apr 2016)",
+      "url": "https://techcrunch.com/?p=1312170"
+    },
+    {
+      "label": "PepperTap shuts down grocery delivery (MediaNama, 25 Apr 2016)",
+      "url": "https://www.medianama.com/2016/04/223-peppertap-shutdown-logistics/"
+    },
+    {
+      "label": "PepperTap shares the reasons for its shutdown (OfficeChai)",
+      "url": "https://officechai.com/stories/peppertap-shares-the-reasons-for-its-shutdown-in-brutally-honest-blogpost/"
+    }
+  ]
+}

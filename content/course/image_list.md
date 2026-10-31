@@ -1,15 +1,15 @@
 # Lesson images
 
 Hook pictures for the lessons, one per lesson. Each goes in `content/course/media/<id>.webp`.
-Style for all: photoreal, India today, warm natural light, portrait 3:4. No logos, no brand names, no readable
+Style for all: photoreal, India, warm natural light, portrait 3:4. No logos, no brand names, no readable
 text or signs, no real person's likeness.
 
-## Module 1.1: Profit
+## Module 1.1: Where the money goes
 
 | Image id | Lesson | Picture |
 |---|---|---|
-| `ls_saree_mela` | u1-sales-not-profit | A woman in her 30s at a busy Diwali mela stall, folded silk sarees stacked high, diyas and string lights, evening crowd. |
-| `ls_stationery_shop` | u1-know-your-margin | A small stationery shop near a school: a man behind the counter, pens in jars and stacks of notebooks, school kids in uniform outside. |
-| `ls_cake_shop` | u1-fixed-and-variable | A small neighbourhood cake shop, quiet afternoon: a woman in an apron by an empty glass counter, a few plain cake boxes stacked behind her. |
-| `ls_tiffin_kitchen` | u1-break-even | A small home kitchen at dawn: a woman packing steel tiffin boxes in rows, a cook stirring a big pot behind her. |
-| `ls_chai_stall` | u1-thin-margins | A busy roadside chai stall by a bus stand at morning rush: a man pouring tea into small glasses, a crowd of commuters holding cups. |
+| `ls_jet_grounded` | u1-cash-runs-out | A plain white passenger jet parked alone at an Indian airport stand at dusk, no airline livery or markings, engine covers on, an empty fuel truck spot beside it. |
+| `ls_grocery_rider` | u1-hidden-costs | A delivery rider at night under a streetlight in an Indian city, two plain paper grocery bags on his scooter, checking a phone; no app or brand marks. |
+| `ls_cane_farmer` | u1-frozen-cash | A farmer in his 40s in western UP standing by a bullock cart piled with cut sugarcane outside a mill gate, waiting, late-afternoon light. |
+| `ls_last_over` | u1-judge-the-call | A packed cricket stadium at night seen from the stands, a lone bowler at the top of his run-up holding the ball, faces not visible, no team logos or kit text. |
+| `ls_book_parcels` | u1-test-small | A small two-bedroom flat in Bengaluru, 2007: stacks of books and brown-paper parcels on the floor, an old desktop computer on a table. |

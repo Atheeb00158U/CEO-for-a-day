@@ -9105,1138 +9105,1313 @@
   "text": "A realistic promise is easy to keep, but it gives customers no new reason to choose you. What would have worked: Test a faster option quietly, and only promise it when the numbers work."
  },
  {
-  "id": "99238b1e772c",
+  "id": "c4d3e4b93e95",
   "voice": "narrator",
-  "text": "Lata sends out 50 tiffins a day. Her customers love the food, but every month she still loses money."
+  "text": "Jet Airways once flew more than 120 planes. On 17 April 2019 it ran its last flight, with no cash left for fuel."
  },
  {
-  "id": "d3bf0256fce2",
+  "id": "ec83414d5baa",
   "voice": "narrator",
-  "text": "Each tiffin leaves Lata ₹30. Rent and her cook cost ₹1,800 a day. How many tiffins pay for that?"
+  "text": "What can stop a big airline in a single day?"
  },
  {
-  "id": "391aefab2bd4",
+  "id": "ad943dadbac2",
   "voice": "narrator",
-  "text": "50"
+  "text": "Its customers all leave at once"
  },
  {
-  "id": "6f7e2c3ce0b0",
+  "id": "feddfeae0335",
   "voice": "narrator",
-  "text": "60"
+  "text": "It can't pay this week's bills"
  },
  {
-  "id": "a76be1d921a5",
+  "id": "e9dedd26a8ad",
   "voice": "narrator",
-  "text": "100"
+  "text": "A rival cuts its fares"
  },
  {
-  "id": "f04ed0630d87",
+  "id": "868eeed03ac7",
   "voice": "narrator",
-  "text": "60 tiffins × ₹30 = ₹1,800. At 50 a day she falls short."
+  "text": "Banks said no to ₹400 crore of emergency money. Without it, Jet couldn't pay for fuel. Pilots had gone four months without pay."
  },
  {
-  "id": "7b98409dd924",
+  "id": "ca82d177e876",
   "voice": "narrator",
-  "text": "Break-even is the number of sales that pays your fixed costs. Below it, you lose money. Above it, you make a profit."
+  "text": "Sales are all the money that comes in. Profit is what's left after costs. Cash is what you hold today. Only cash pays bills."
  },
  {
-  "id": "0a27700b8e28",
+  "id": "7041a855c0bb",
   "voice": "narrator",
-  "text": "Fixed costs ÷ margin on one sale = break-even. For Lata: ₹1,800 ÷ ₹30 = 60 tiffins a day."
+  "text": "Sunil sews school uniforms. Each week he spends ₹30,000 and bills ₹45,000, so he makes ₹15,000 profit. But the school chain pays after 90 days."
  },
  {
-  "id": "48ee5c80f29f",
+  "id": "b49b32815cc6",
   "voice": "narrator",
-  "text": "Lata's rent goes up. Now her fixed costs are ₹2,100 a day. Each tiffin still leaves ₹30. What is her new break-even?"
+  "text": "Sunil starts with ₹1,20,000 in the bank. In which week does it run out?"
  },
  {
-  "id": "bb0d3c35db83",
+  "id": "bc8f69ed80af",
   "voice": "narrator",
-  "text": "60 tiffins"
+  "text": "Week 13, when the first payment is due"
  },
  {
-  "id": "ebd01c64b2db",
+  "id": "aa4d43bd2613",
   "voice": "narrator",
-  "text": "2,100 tiffins"
+  "text": "Never. He makes ₹15,000 profit a week"
  },
  {
-  "id": "b5a442006192",
+  "id": "360b4c9b4b08",
   "voice": "narrator",
-  "text": "70 tiffins"
+  "text": "Week 5"
  },
  {
-  "id": "0586d2518c93",
+  "id": "5262f01d91a4",
   "voice": "narrator",
-  "text": "₹2,100 ÷ ₹30 = 70. Higher fixed costs push break-even up."
+  "text": "₹1,20,000 ÷ ₹30,000 = 4 weeks of bills. The first payment comes after 90 days, about week 13. He is empty from week 5."
  },
  {
-  "id": "18498835a29c",
+  "id": "f58ddedfa308",
   "voice": "narrator",
-  "text": "60 was the old number. Divide the new ₹2,100 by ₹30."
+  "text": "Week 13 is when money starts coming in. His bills start in week 1."
  },
  {
-  "id": "37b86fca976b",
+  "id": "48233d280946",
   "voice": "narrator",
-  "text": "₹2,100 is the cost in rupees. Divide it by the ₹30 margin."
+  "text": "The profit is real, but it's on paper. The cash leaves every week and comes back 90 days later."
  },
  {
-  "id": "19c8eab3ee96",
+  "id": "acd270ebc974",
   "voice": "narrator",
-  "text": "Fixed costs are ₹1,800 a day. Lata sells 50 tiffins at ₹30 margin. What happens?"
+  "text": "To keep paying until the school pays in week 13, how much more cash does Sunil need?"
  },
  {
-  "id": "3a71a4e7c340",
+  "id": "ca54a78a20f4",
   "voice": "narrator",
-  "text": "She loses ₹300 a day"
+  "text": "₹2,70,000"
  },
  {
-  "id": "07d04f89b29d",
+  "id": "2de6f7f69644",
   "voice": "narrator",
-  "text": "She makes ₹1,500 a day"
+  "text": "₹3,90,000"
  },
  {
-  "id": "f623995ea46a",
+  "id": "5d146e5eb8d0",
   "voice": "narrator",
-  "text": "She breaks even"
+  "text": "₹45,000"
  },
  {
-  "id": "d5a80dfef675",
+  "id": "1ee42ffe721b",
   "voice": "narrator",
-  "text": "50 × ₹30 = ₹1,500. That is ₹300 short of ₹1,800."
+  "text": "13 weeks × ₹30,000 = ₹3,90,000 of bills. He has ₹1,20,000, so he is ₹2,70,000 short. And his books say he is 'making' ₹15,000 a week."
  },
  {
-  "id": "037c682fa1fc",
+  "id": "ec595d7d2f60",
   "voice": "narrator",
-  "text": "₹1,500 is her margin. Rent and the cook still take ₹1,800."
+  "text": "That's all 13 weeks of bills. He already has ₹1,20,000 of it."
  },
  {
-  "id": "ddb7a9bd8d5d",
+  "id": "1a5ade7e4426",
   "voice": "narrator",
-  "text": "Break-even is 60 tiffins. She sold 50."
+  "text": "That's one week's billing. He needs to cover 13 weeks of costs first."
  },
  {
-  "id": "6273590b4129",
+  "id": "8dbb226bcca8",
   "voice": "narrator",
-  "text": "Which of Lata's costs goes into her break-even sum as a fixed cost?"
+  "text": "Which change helps Sunil most?"
  },
  {
-  "id": "4818a3c56ab5",
+  "id": "e43e48fb1548",
   "voice": "narrator",
-  "text": "Rice for each tiffin"
+  "text": "Raise his price by 10%"
  },
  {
-  "id": "56613f7a00e9",
+  "id": "55facc7bdbfa",
   "voice": "narrator",
-  "text": "The cook's monthly pay"
+  "text": "Get paid in 30 days, not 90"
  },
  {
-  "id": "1e8b8b1903ad",
+  "id": "5026c6d083a2",
   "voice": "narrator",
-  "text": "A steel box for each tiffin"
+  "text": "Take on a second school chain"
  },
  {
-  "id": "d30c95d37f5c",
+  "id": "871686783404",
   "voice": "narrator",
-  "text": "The cook is paid the same, busy or not. Rice and boxes are counted in the margin on each tiffin."
+  "text": "At 30 days, money starts coming in around week 5, so his ₹1,20,000 nearly covers the wait. A higher price changes the profit, not the timing."
  },
  {
-  "id": "c399d6ada7c8",
+  "id": "aad6c7686a89",
   "voice": "narrator",
-  "text": "Rice grows with each tiffin. It is a variable cost."
+  "text": "More profit, but it still arrives in week 13. He's still empty in week 5."
  },
  {
-  "id": "7c88671cb7c7",
+  "id": "78f0a34197c6",
   "voice": "narrator",
-  "text": "Boxes grow with each tiffin. They are a variable cost."
+  "text": "A second chain doubles his weekly bills while he waits. He'd run dry in about half the time."
  },
  {
-  "id": "6269a28e716d",
+  "id": "b7c5f54d1dd5",
   "voice": "narrator",
-  "text": "Lata raises her price by ₹10. Each tiffin now leaves ₹40. Fixed costs stay ₹1,800. Her new break-even?"
+  "text": "Sunil owes ₹20,000 in wages on Saturday. What can he pay them with?"
  },
  {
-  "id": "d8c45a1262f8",
+  "id": "ee4b8a454ae5",
   "voice": "narrator",
-  "text": "40 tiffins"
+  "text": "Orders, unpaid bills, stock and refunds can all be worth money. None of them pays the wages on Saturday."
  },
  {
-  "id": "2c54ca2884fe",
+  "id": "74f0c236aaeb",
   "voice": "narrator",
-  "text": "45 tiffins"
+  "text": "Pooja's gym has ₹3,00,000 in the bank. Each month ₹1,50,000 goes out and ₹1,00,000 comes in. How many months can she last?"
  },
  {
-  "id": "ce7054b2d9da",
+  "id": "be5f494cde56",
   "voice": "narrator",
-  "text": "₹1,800 ÷ ₹40 = 45. A bigger margin means fewer sales to break even."
+  "text": "2 months"
  },
  {
-  "id": "2ee28ec6de45",
+  "id": "fc52cdded0ae",
   "voice": "narrator",
-  "text": "Divide ₹1,800 by ₹40."
+  "text": "3 months"
  },
  {
-  "id": "51dee6f2e40f",
+  "id": "b00659e030b4",
   "voice": "narrator",
-  "text": "60 was with a ₹30 margin. The margin is now ₹40."
+  "text": "6 months"
  },
  {
-  "id": "3314e8577028",
+  "id": "448946357384",
   "voice": "narrator",
-  "text": "Put the steps to find break-even in order."
+  "text": "She loses ₹1,50,000 − ₹1,00,000 = ₹50,000 a month. ₹3,00,000 ÷ ₹50,000 = 6 months. That number is her runway. Count her own fixed wage in the ₹1,50,000, too."
  },
  {
-  "id": "1a5005e9b4f0",
+  "id": "afd422706226",
   "voice": "narrator",
-  "text": "List the fixed costs, then add them. Divide by the margin. Last, compare with your real sales."
+  "text": "That divides by everything going out. Money still comes in each month, so count only the gap."
  },
  {
-  "id": "0f6feac612b6",
+  "id": "11cae13ac119",
   "voice": "narrator",
-  "text": "Your friend wants to open a juice stall. Rent and a helper will cost ₹1,200 a day. Each glass leaves ₹20. He hopes to sell 40 glasses a day."
+  "text": "Check the gap: ₹1,50,000 out, ₹1,00,000 in. She loses ₹50,000 a month."
  },
  {
-  "id": "03b190a34bf9",
+  "id": "ddbc1ead8de7",
   "voice": "narrator",
-  "text": "He asks what you think. What do you say?"
+  "text": "A second school chain offers Sunil ₹90,000 of work a week. It would cost him ₹60,000 a week. It also pays after 90 days."
  },
  {
-  "id": "f21ee16b4df1",
+  "id": "b401cb9d397c",
   "voice": "narrator",
-  "text": "He opens. He thinks he makes ₹800 a day. Really he loses ₹400 a day."
+  "text": "That's ₹30,000 more profit a week. What do you do?"
  },
  {
-  "id": "0c8059624172",
+  "id": "b411e8e61fe4",
   "voice": "narrator",
-  "text": "₹800 is his margin. Rent and the helper still take ₹1,200. What would have worked: Take fixed costs off first: he needs 60 glasses to break even."
+  "text": "His weekly bills jump to ₹90,000. His ₹1,20,000 is gone before week 2 ends. He can't buy cloth for either school."
  },
  {
-  "id": "6812655e634e",
+  "id": "7686d9d25232",
   "voice": "narrator",
-  "text": "He sells 40 a day and loses ₹400 a day before he sees why."
+  "text": "Growth eats cash first and pays it back later. Bigger orders on long credit empty the bank faster. What would have worked: Take it only if the money comes sooner, like an advance or 30-day terms."
  },
  {
-  "id": "8bb32ba34cc6",
+  "id": "05b67a124610",
   "voice": "narrator",
-  "text": "Trying is good, but a two-minute sum would have shown the gap. What would have worked: Work out break-even first: ₹1,200 ÷ ₹20 = 60 glasses."
+  "text": "The ₹36,000 advance each week pays more than half the new costs. Money starts coming back in a month, not three."
  },
  {
-  "id": "3c1604fdf576",
+  "id": "e14dae703e3e",
   "voice": "narrator",
-  "text": "He watches the spot for three days and counts buyers. Then he opens, knowing his target."
+  "text": "He checked when the cash comes in, as well as the profit. Same order, but now he can survive it."
  },
  {
-  "id": "ac4e5c14b0fc",
+  "id": "6a36d1c347cc",
   "voice": "narrator",
-  "text": "₹1,200 ÷ ₹20 = 60. At 40 a day he would lose ₹400 a day."
+  "text": "Sunil stays safe, but he turns away ₹30,000 a week without asking for better terms."
  },
  {
-  "id": "85b1f1e0665f",
+  "id": "d80bff8ee443",
   "voice": "narrator",
-  "text": "Break-even is the sales you need to pay your fixed costs."
+  "text": "Safe, but he never tried to fix the timing. What would have worked: Ask for an advance and shorter terms before saying no."
  },
  {
-  "id": "a42ea0aa323c",
+  "id": "0ffeef6c38d6",
   "voice": "narrator",
-  "text": "Break-even = fixed costs ÷ margin on one sale."
+  "text": "A profitable business can still shut if blank hits zero before blank pay."
  },
  {
-  "id": "478a4e210023",
+  "id": "7c0c2f8186d4",
   "voice": "narrator",
-  "text": "Below break-even you lose money. Above it you profit."
+  "text": "Profit says the business works. Only cash keeps it open. Jet had 119 planes at the end of 2018. Four months later it had no cash for fuel."
  },
  {
-  "id": "c1a835c5232f",
+  "id": "a402e507c300",
   "voice": "narrator",
-  "text": "Higher fixed costs push break-even up."
+  "text": "Businesses die when cash runs out, not when profit does."
  },
  {
-  "id": "e143d52a32a3",
+  "id": "d851ac40e079",
   "voice": "narrator",
-  "text": "Farida's cake shop had a quiet month. Orders fell by half, but the rent bill did not."
+  "text": "Sales come in, profit is what's left, cash is what you hold today."
  },
  {
-  "id": "9f700b41301c",
+  "id": "fba11bb05148",
   "voice": "narrator",
-  "text": "Orders fell by half. Which cost fell by half too?"
+  "text": "Long credit and fast growth can empty a profitable business."
  },
  {
-  "id": "c22ee4a508e9",
+  "id": "518801aee56f",
   "voice": "narrator",
-  "text": "Shop rent"
+  "text": "Runway = cash ÷ the monthly gap between money out and money in."
  },
  {
-  "id": "73379e13af57",
+  "id": "3894c107a9a8",
   "voice": "narrator",
-  "text": "Cake boxes"
+  "text": "September 2019: UP's sugar mills owed cane farmers ₹6,480 crore. The rule says pay in 14 days. Piyush had waited four months for ₹80,000."
  },
  {
-  "id": "71565126980e",
+  "id": "51bf3177d93a",
   "voice": "narrator",
-  "text": "Her helper's monthly pay"
+  "text": "Piyush sold his cane. What does he really have?"
  },
  {
-  "id": "aa2c981e65d5",
+  "id": "f6fb2425f35a",
   "voice": "narrator",
-  "text": "She buys one box for each cake. Rent and her helper's pay stay the same, busy or not."
+  "text": "₹80,000 he can spend"
  },
  {
-  "id": "395696985d23",
+  "id": "a52de0dd49b5",
   "voice": "narrator",
-  "text": "Fixed costs stay the same each month, like rent. Variable costs grow with every sale, like boxes and delivery petrol."
+  "text": "A promise, and bills that won't wait"
  },
  {
-  "id": "ecdee6a1b26b",
+  "id": "a3e458b4dda9",
   "voice": "narrator",
-  "text": "One more cake means more flour, one more box and more petrol. It does not mean more rent. Rent is fixed."
+  "text": "He owed more than ₹1 lakh on a bank loan, and the bank sent him a notice. He stopped growing cane on his 30 acres."
  },
  {
-  "id": "78c55ac89a22",
+  "id": "b373a68c46d9",
   "voice": "narrator",
-  "text": "Farida pays her helper ₹12,000 a month, busy or not. What kind of cost is that?"
+  "text": "Money owed to you is a loan you give, with no interest. Stock on the shelf is cash frozen in boxes. Both need a limit."
  },
  {
-  "id": "7a9202674538",
+  "id": "bfc416924f67",
   "voice": "narrator",
-  "text": "Variable"
+  "text": "Each extra day of credit traps one more day of sales. Cash stuck = sales a day × days to pay. Stock works alike."
  },
  {
-  "id": "4711b0d94d9c",
+  "id": "1dedd87403a6",
   "voice": "narrator",
-  "text": "Fixed"
+  "text": "Farah's printing press bills offices ₹20,000 a day. They pay after 60 days. How much of her money is with customers?"
  },
  {
-  "id": "30711de33ce3",
+  "id": "972558766d85",
   "voice": "narrator",
-  "text": "It stays ₹12,000 however many cakes she sells. So it is fixed."
+  "text": "₹1,20,000"
  },
  {
-  "id": "e935b31ba0ca",
+  "id": "dc4aff189def",
   "voice": "narrator",
-  "text": "It does not change with the number of cakes. Variable costs do."
+  "text": "₹6,00,000"
  },
  {
-  "id": "1565ee8888aa",
+  "id": "e9791c395855",
   "voice": "narrator",
-  "text": "Sort Farida's costs."
+  "text": "₹12,00,000"
  },
  {
-  "id": "bfb2e8b55073",
+  "id": "0b09179aef3c",
   "voice": "narrator",
-  "text": "Rent, monthly pay and the loan stay the same. Flour, boxes and petrol grow with every order."
+  "text": "₹20,000 × 60 days = ₹12,00,000. That's ₹12 lakh she has earned and can't use."
  },
  {
-  "id": "564fc05c2629",
+  "id": "033b3ed30ff2",
   "voice": "narrator",
-  "text": "Flour, cream and a box cost Farida ₹100 a cake. What do they cost for 50 cakes?"
+  "text": "Check the zeros: ₹20,000 × 60 = ₹12,00,000."
  },
  {
-  "id": "136cb61cb1dd",
+  "id": "0fc0df1ef77a",
   "voice": "narrator",
-  "text": "₹100"
+  "text": "That's 30 days. Her customers take 60."
  },
  {
-  "id": "13f96c135164",
+  "id": "94b4de300810",
   "voice": "narrator",
-  "text": "₹500"
+  "text": "Farah gets new bills paid in 30 days instead of 60. How much cash comes free?"
  },
  {
-  "id": "01039658f86f",
+  "id": "821d0cd93e7e",
   "voice": "narrator",
-  "text": "₹5,000"
+  "text": "₹30,000"
  },
  {
-  "id": "39dd18013094",
+  "id": "401c1b9de38e",
   "voice": "narrator",
-  "text": "Variable costs grow with sales: 50 × ₹100 = ₹5,000."
+  "text": "30 days × ₹20,000 = ₹6,00,000 still out. Before, it was ₹12,00,000. Half comes back to her."
  },
  {
-  "id": "720f6cb94eb9",
+  "id": "5f3f36ce84fa",
   "voice": "narrator",
-  "text": "₹100 is for one cake. She made 50."
+  "text": "Multiply sales per day by the days: ₹20,000 × 30."
  },
  {
-  "id": "a5b501737b8e",
+  "id": "21ce109d6637",
   "voice": "narrator",
-  "text": "Check the sum again: 50 × ₹100."
+  "text": "Not all of it. Customers still take 30 days, so ₹6 lakh stays out."
  },
  {
-  "id": "015cf216bedd",
+  "id": "c6ba2d71de46",
   "voice": "narrator",
-  "text": "A cake sells for ₹300. Its flour, cream and box cost ₹100. What is the margin on one cake?"
+  "text": "A bank would charge 12% a year to lend Farah that ₹6 lakh. What do faster payments save her each year?"
  },
  {
-  "id": "de04e3f499bc",
+  "id": "06defacd1282",
   "voice": "narrator",
-  "text": "₹200"
+  "text": "₹7,200"
  },
  {
-  "id": "fa8c01d0bc61",
+  "id": "30073f0ff9bd",
   "voice": "narrator",
-  "text": "₹300"
+  "text": "₹72,000"
  },
  {
-  "id": "9a9feb4b3c28",
+  "id": "b08f844710f8",
   "voice": "narrator",
-  "text": "₹400"
+  "text": "₹1,44,000"
  },
  {
-  "id": "894243ab1e2a",
+  "id": "40d974210b2f",
   "voice": "narrator",
-  "text": "Margin is price minus the cost of that one item: ₹300 − ₹100 = ₹200."
+  "text": "12% of ₹6,00,000 = ₹72,000 a year. Shorter credit is the cheapest loan she'll ever get."
  },
  {
-  "id": "16c3575e2c92",
+  "id": "90ad3efd91fe",
   "voice": "narrator",
-  "text": "₹300 is the price. Take off what the cake cost."
+  "text": "Check the zeros: 12% of ₹6,00,000 is ₹72,000."
  },
  {
-  "id": "bcb29afa3991",
+  "id": "9ccb335ac890",
   "voice": "narrator",
-  "text": "The cost comes off the price. Don't add it."
+  "text": "That's 12% of the full ₹12 lakh. Only ₹6 lakh comes free."
  },
  {
-  "id": "1b9f8286518f",
+  "id": "91ff3d996998",
   "voice": "narrator",
-  "text": "True or false: if Farida sells no cakes this month, she has no costs."
+  "text": "Amit's phone accessory store holds ₹8 lakh of stock. He sells ₹40,000 of it a day. Keeping 8 days' stock frees how much?"
  },
  {
-  "id": "fb48f38867b1",
+  "id": "200c659c6226",
   "voice": "narrator",
-  "text": "True, no cakes means no costs"
+  "text": "₹3,20,000"
  },
  {
-  "id": "3c3bebe0acc6",
+  "id": "4c6996c99167",
   "voice": "narrator",
-  "text": "False, fixed costs still have to be paid"
+  "text": "₹4,80,000"
  },
  {
-  "id": "feb93b3065ae",
+  "id": "c42dac7ca3e7",
   "voice": "narrator",
-  "text": "Rent, pay and the loan are due every month, even with zero sales."
+  "text": "₹7,60,000"
  },
  {
-  "id": "ceb2d78860e1",
+  "id": "58e03c3c526e",
   "voice": "narrator",
-  "text": "Only variable costs drop to zero. Rent still has to be paid."
+  "text": "Now he holds ₹8,00,000 ÷ ₹40,000 = 20 days of stock. 8 days needs ₹3,20,000. ₹8,00,000 − ₹3,20,000 = ₹4,80,000 freed."
  },
  {
-  "id": "5975606af1ed",
+  "id": "bcaca0d6289b",
   "voice": "narrator",
-  "text": "Farida sells 200 cakes a month at ₹300, so she takes in ₹60,000. Each cake costs ₹100 to make. Rent and pay cost ₹22,000. She keeps ₹18,000."
+  "text": "That's what 8 days of stock costs. Take it away from the ₹8 lakh he holds now."
  },
  {
-  "id": "7d18b8b3ec45",
+  "id": "00133e0df83c",
   "voice": "narrator",
-  "text": "Next month she expects only 100 cakes. What should she plan for?"
+  "text": "8 days is 8 × ₹40,000 = ₹3,20,000, not ₹40,000."
  },
  {
-  "id": "e353e29e3a7b",
+  "id": "6ddb3f5541b6",
   "voice": "narrator",
-  "text": "She plans on ₹9,000. She ends the month with a ₹2,000 loss."
+  "text": "Does it free cash or freeze it?"
  },
  {
-  "id": "92240b12f6ad",
+  "id": "562a0cb1751e",
   "voice": "narrator",
-  "text": "Rent and pay did not halve. Only flour, cream and boxes did. What would have worked: Split the costs: fixed ones stay, variable ones fall."
+  "text": "Advances, quick payment and clearing slow stock bring cash home. Long credit and big stock piles lock it away."
  },
  {
-  "id": "688db54903b3",
+  "id": "4323bd6d56b7",
   "voice": "narrator",
-  "text": "Flour costs fall. But the month still ends in a loss she did not see coming."
+  "text": "You're a small registered maker. A big company wants 90 days to pay. What do you ask for?"
  },
  {
-  "id": "9641c9f52411",
+  "id": "0076ad1149df",
   "voice": "narrator",
-  "text": "She fixed the variable cost and forgot the fixed ones. What would have worked: Also plan for rent and pay, which stay the same."
+  "text": "Accept 90 days. Big clients set the rules"
  },
  {
-  "id": "84d3225050f3",
+  "id": "3b25ede2ffe4",
   "voice": "narrator",
-  "text": "She sees a ₹2,000 loss coming and sets money aside for it this month."
+  "text": "Ask for cash before delivery"
  },
  {
-  "id": "edf2ff85899f",
+  "id": "dbc7158b58dc",
   "voice": "narrator",
-  "text": "100 cakes bring ₹30,000. Making them costs ₹10,000. ₹22,000 of rent and pay leaves her ₹2,000 short."
+  "text": "45 days at most, written in the contract"
  },
  {
-  "id": "ce2ba8b3744d",
+  "id": "07d54f0b39a8",
   "voice": "narrator",
-  "text": "Fixed costs stay the same. Variable costs grow with sales."
+  "text": "Since April 2024, a buyer that pays a small registered maker after 45 days can't claim that cost against tax until it pays. Use it."
  },
  {
-  "id": "3d8e75cbf1c6",
+  "id": "c3ce481bf726",
   "voice": "narrator",
-  "text": "Fixed costs stay the same each month, like rent."
+  "text": "The law is on your side. A buyer who pays after 45 days loses a tax benefit."
  },
  {
-  "id": "20d45c767876",
+  "id": "a365e04583e0",
   "voice": "narrator",
-  "text": "Variable costs grow with every sale, like boxes."
+  "text": "Fine if they agree, but most won't. 45 days in writing is a fair ask the law backs."
  },
  {
-  "id": "795d4faa5070",
+  "id": "ab68b642e119",
   "voice": "narrator",
-  "text": "When sales fall, fixed costs don't."
+  "text": "Imran makes steel furniture. A hotel group orders ₹10 lakh of beds, paying in 120 days. The steel and wages cost ₹7 lakh now. Imran has ₹4 lakh."
  },
  {
-  "id": "e3292b01e068",
+  "id": "7c0369f2bf9f",
   "voice": "narrator",
-  "text": "Suresh runs a stationery shop near a school. A pen and a notebook both sell for ₹10, but they don't earn him the same."
+  "text": "He borrows ₹3 lakh and waits four months to be paid. A small supplier chases him, and his other orders slow down for lack of steel."
  },
  {
-  "id": "7bf93b62cdda",
+  "id": "240a3c7477ca",
   "voice": "narrator",
-  "text": "Which earns Suresh more: a ₹10 pen or a ₹10 notebook?"
+  "text": "₹7 lakh of his money sat with one client for four months. What would have worked: Ask for an advance and shorter terms first."
  },
  {
-  "id": "1d6ce80d434b",
+  "id": "b9928682c862",
   "voice": "narrator",
-  "text": "The pen"
+  "text": "The ₹4 lakh advance plus his ₹4 lakh covers the ₹7 lakh of costs. The other ₹6 lakh comes in 45 days, not 120."
  },
  {
-  "id": "125a427d43e1",
+  "id": "ffa7552bcd22",
   "voice": "narrator",
-  "text": "The notebook"
+  "text": "He limited how much of his cash the client could hold, and for how long."
  },
  {
-  "id": "fdd37bd36600",
+  "id": "164a646b880c",
   "voice": "narrator",
-  "text": "The same, both are ₹10"
+  "text": "Imran stays safe but loses ₹3 lakh of profit he could have earned on better terms."
  },
  {
-  "id": "d6db023893e9",
+  "id": "0b20c8c38290",
   "voice": "narrator",
-  "text": "The pen costs him ₹9, so he keeps ₹1. The notebook costs him ₹7, so he keeps ₹3."
+  "text": "The order was fine. The terms were the problem. What would have worked: Change the terms before you walk away."
  },
  {
-  "id": "abfe8456eb0e",
+  "id": "6c4de790d373",
   "voice": "narrator",
-  "text": "Margin is what you keep from one sale: the price minus what the item cost you. Know it for every item."
+  "text": "Stock and credit are cash you can't spend. Limit both."
  },
  {
-  "id": "79b4e84ff332",
+  "id": "dfd8ffa19652",
   "voice": "narrator",
-  "text": "Price: ₹10. Suresh paid: ₹7. Margin: ₹10 − ₹7 = ₹3 on every notebook he sells."
+  "text": "Money owed to you is an interest-free loan you give."
  },
  {
-  "id": "9701c82c354a",
+  "id": "f3d9d21303a7",
   "voice": "narrator",
-  "text": "A geometry box sells for ₹60. It costs Suresh ₹45. What is his margin?"
+  "text": "Cash stuck = sales per day × days customers take to pay."
  },
  {
-  "id": "a1bae1e1b968",
+  "id": "6c881b7ae3b7",
   "voice": "narrator",
-  "text": "₹15"
+  "text": "Every day you cut from credit or stock frees cash, and saves interest."
  },
  {
-  "id": "2c6f384f1b30",
+  "id": "1c12c38866d4",
   "voice": "narrator",
-  "text": "₹60"
+  "text": "PepperTap delivered groceries in two hours across Indian cities and raised over $50 million. In April 2016, it shut grocery delivery down."
  },
  {
-  "id": "b08944d37ee3",
+  "id": "c4d282ce8266",
   "voice": "narrator",
-  "text": "₹105"
+  "text": "By late 2015 it said it handled 20,000 orders a day. Why didn't more orders save it?"
  },
  {
-  "id": "b5988db85315",
+  "id": "3f397b3dfb62",
   "voice": "narrator",
-  "text": "₹60 − ₹45 = ₹15 on each box."
+  "text": "Customers stopped ordering"
  },
  {
-  "id": "d0ecb8cb75d0",
+  "id": "cee0d57b2199",
   "voice": "narrator",
-  "text": "₹60 is the price. Take off what the box cost him."
+  "text": "Each order cost more than it earned"
  },
  {
-  "id": "d393565fb766",
+  "id": "82b33e3f9099",
   "voice": "narrator",
-  "text": "Sort Suresh's items by margin."
+  "text": "Its CEO said the cash burned on every order kept rising. Big discounts, and keeping two-hour delivery ready even on slow days, cost more than orders brought in."
  },
  {
-  "id": "4edb867882ef",
+  "id": "e9d6296f1726",
   "voice": "narrator",
-  "text": "Pen ₹1, eraser ₹1, glue ₹2. Box ₹15, bag ₹80. The price alone does not tell you the margin."
+  "text": "Margin is what one sale leaves you. So ask: what did this order leave after every cost it caused? Delivery, fees, ads and returns count."
  },
  {
-  "id": "5b0e2e2b8bad",
+  "id": "8558a8e95a47",
   "voice": "narrator",
-  "text": "Today Suresh sold 30 pens (₹1 margin) and 10 notebooks (₹3 margin). Which earned more?"
+  "text": "Riya sells T-shirts online at ₹499. Each shirt costs her ₹180. She thinks she keeps ₹319 an order."
  },
  {
-  "id": "8de0599e2b34",
+  "id": "71665b30a402",
   "voice": "narrator",
-  "text": "The pens"
+  "text": "Each order also costs ₹70 shipping, ₹15 packing, ₹10 payment fee and ₹150 in ads. What does Riya really keep?"
  },
  {
-  "id": "670688cbad0c",
+  "id": "e8068c5efefe",
   "voice": "narrator",
-  "text": "The notebooks"
+  "text": "₹144"
  },
  {
-  "id": "9e92c13d7fd9",
+  "id": "8ba69b598b7f",
   "voice": "narrator",
-  "text": "Both earned ₹30"
+  "text": "₹74"
  },
  {
-  "id": "c427386ad36b",
+  "id": "de57f114d24f",
   "voice": "narrator",
-  "text": "30 × ₹1 = ₹30. 10 × ₹3 = ₹30. Margin times the number sold gives what you keep."
+  "text": "₹319"
  },
  {
-  "id": "bf447ca2ccb0",
+  "id": "22289b378e4d",
   "voice": "narrator",
-  "text": "30 pens at ₹1 each is ₹30. Now work out the notebooks."
+  "text": "₹319 − ₹70 − ₹15 − ₹10 − ₹150 = ₹74. The ads alone cost almost half her margin."
  },
  {
-  "id": "0066db9e6fc7",
+  "id": "a325ebc03b58",
   "voice": "narrator",
-  "text": "10 notebooks at ₹3 each is ₹30. Now work out the pens."
+  "text": "You left out one cost. Take off all four: ₹70, ₹15, ₹10 and ₹150."
  },
  {
-  "id": "ff50ab2c276e",
+  "id": "01585eeea514",
   "voice": "narrator",
-  "text": "This month Suresh's shop sold ₹90,000. Stock, rent and his helper cost ₹78,000. What is his profit?"
+  "text": "That's price minus the shirt. The other costs come with every order too."
  },
  {
-  "id": "5ec4a6768246",
+  "id": "2850a385d383",
   "voice": "narrator",
-  "text": "₹90,000"
+  "text": "1 in 5 cash-on-delivery orders is refused at the door. That one wasted ₹150 ads, ₹15 packing, ₹140 shipping both ways. Profit on 5 orders?"
  },
  {
-  "id": "724f678e5dec",
+  "id": "3d16c96dda0b",
   "voice": "narrator",
-  "text": "₹12,000"
+  "text": "₹370"
  },
  {
-  "id": "06a4b00f332b",
+  "id": "74050b9b9a54",
   "voice": "narrator",
-  "text": "₹1,68,000"
+  "text": "₹296"
  },
  {
-  "id": "0bf68cadced5",
+  "id": "0e4b66b77005",
   "voice": "narrator",
-  "text": "Profit is sales minus every cost: ₹90,000 − ₹78,000 = ₹12,000."
+  "text": "−₹9, a loss"
  },
  {
-  "id": "c181e61b9373",
+  "id": "9b51d2fd7942",
   "voice": "narrator",
-  "text": "₹90,000 is his sales. Profit is what is left after costs."
+  "text": "4 good orders × ₹74 = ₹296. The refused one cost ₹150 + ₹15 + ₹140 = ₹305. ₹296 − ₹305 = −₹9. She works hard and loses money."
  },
  {
-  "id": "98887f32610d",
+  "id": "57fc1821d0e3",
   "voice": "narrator",
-  "text": "Costs come off the sales. They don't add to it."
+  "text": "That's 5 × ₹74. But the refused order earned nothing and still cost money."
  },
  {
-  "id": "d48add8455ca",
+  "id": "5f02de8813fd",
   "voice": "narrator",
-  "text": "Margin is the blank minus the blank of one item."
+  "text": "That's the 4 good orders. Now take off what the refused one cost."
  },
  {
-  "id": "62dac6a3446d",
+  "id": "5305857f8d5e",
   "voice": "narrator",
-  "text": "Price minus cost, for one item. Rent and total sales come into profit, not margin."
+  "text": "Put Riya's costs per order from biggest to smallest."
  },
  {
-  "id": "ba806e310c41",
+  "id": "176ee26961cf",
   "voice": "narrator",
-  "text": "You run a small mobile shop. Your ₹150 phone covers cost you ₹90. A supplier offers a new ₹300 earphone."
+  "text": "The ad nearly matches the shirt. Online, the cost of finding a buyer is often the biggest cost after stock, and the easiest to forget."
  },
  {
-  "id": "ccd2af0c2b89",
+  "id": "14c3c23b3730",
   "voice": "narrator",
-  "text": "Before you order a box of them, what do you check first?"
+  "text": "Riya can cut one cost by 20%. Which cut saves her most per order?"
  },
  {
-  "id": "2d122708b528",
+  "id": "ec45a58b8d75",
   "voice": "narrator",
-  "text": "They sell fast. But you still don't know what each one leaves you."
+  "text": "Ads"
  },
  {
-  "id": "afd5340d73df",
+  "id": "b4dd3ebea2ea",
   "voice": "narrator",
-  "text": "Speed matters, but you skipped the margin. What would have worked: Also check price minus cost for each one."
+  "text": "Shipping"
  },
  {
-  "id": "a5c0dbd93b5a",
+  "id": "407a95453527",
   "voice": "narrator",
-  "text": "You fill a shelf with them. Later you find each one leaves only ₹30."
+  "text": "The shirt"
  },
  {
-  "id": "47294d0e90f7",
+  "id": "6538e1a5ed4b",
   "voice": "narrator",
-  "text": "A high price does not mean a high margin. What would have worked: Work out price minus cost before you order."
+  "text": "20% of ₹180 = ₹36. 20% of ₹150 ads = ₹30. 20% of ₹70 shipping = ₹14. A better supplier price beats a cheaper courier."
  },
  {
-  "id": "3bcb1333e182",
+  "id": "fc93b9383c72",
   "voice": "narrator",
-  "text": "It costs ₹270, so you keep ₹30. Each cover keeps you ₹60. You order only a few earphones."
+  "text": "Close. 20% of ₹150 is ₹30, but 20% of the ₹180 shirt is ₹36."
  },
  {
-  "id": "9add2de9c09c",
+  "id": "42336b853210",
   "voice": "narrator",
-  "text": "You knew the margin before you spent money on stock."
+  "text": "20% of ₹70 is only ₹14. Go for the biggest cost."
  },
  {
-  "id": "181dca6eaec8",
+  "id": "15efdefaaf92",
   "voice": "narrator",
-  "text": "Know your margin on every item you sell."
+  "text": "A cloud kitchen sells biryani at ₹300 on a food app. Food costs ₹110, the app takes 25%, packing is ₹20. What's left?"
  },
  {
-  "id": "7808048e3a9f",
+  "id": "a5e65c3e6ec0",
   "voice": "narrator",
-  "text": "Margin is price minus cost, for one item."
+  "text": "₹95"
  },
  {
-  "id": "2a0699299940",
+  "id": "e4161f82902e",
   "voice": "narrator",
-  "text": "A high price does not mean a high margin."
+  "text": "₹170"
  },
  {
-  "id": "8e042720b25a",
+  "id": "65b44f548b9f",
   "voice": "narrator",
-  "text": "What you keep = margin × number sold."
+  "text": "₹115"
  },
  {
-  "id": "70cf8da656b3",
+  "id": "d4b0d46eced3",
   "voice": "narrator",
-  "text": "Meena sold ₹2 lakh of sarees at the Diwali mela. Her family cheered. Then she counted what was left."
+  "text": "25% of ₹300 = ₹75. ₹300 − ₹110 − ₹75 − ₹20 = ₹95. And that's before rent, gas and the cook's wage."
  },
  {
-  "id": "11fe1007ee85",
+  "id": "041674751806",
   "voice": "narrator",
-  "text": "How much did Meena really make?"
+  "text": "That's only price minus food and packing. The app's 25% is ₹75 more."
  },
  {
-  "id": "e33ce9306adb",
+  "id": "5dd0fa539be0",
   "voice": "narrator",
-  "text": "₹2 lakh, all the money she took in"
+  "text": "Check the app's cut: 25% of ₹300 is ₹75, not ₹55."
  },
  {
-  "id": "e658b13568d1",
+  "id": "d15b05c2696f",
   "voice": "narrator",
-  "text": "₹2 lakh, minus all she spent"
+  "text": "Dal khichdi leaves ₹20 and sells 30 a day. Paneer bowls leave ₹45 and sell 18 a day. Which earns more per day?"
  },
  {
-  "id": "d112d88485f0",
+  "id": "4d77f0651ce3",
   "voice": "narrator",
-  "text": "She spent ₹1.9 lakh on sarees, the stall and travel. Only ₹10,000 was left."
+  "text": "Khichdi. It sells more"
  },
  {
-  "id": "27254286c1dc",
+  "id": "e553430b8897",
   "voice": "narrator",
-  "text": "Sales are all the money that comes in. Profit is what is left after you pay every cost."
+  "text": "Paneer bowls"
  },
  {
-  "id": "ce0b03a87d41",
+  "id": "d131c0711926",
   "voice": "narrator",
-  "text": "Sales: ₹2,00,000. Costs for sarees, stall and travel: ₹1,90,000. Profit: ₹2,00,000 − ₹1,90,000 = ₹10,000."
+  "text": "They earn the same"
  },
  {
-  "id": "4bf5a5912b87",
+  "id": "b1372826db64",
   "voice": "narrator",
-  "text": "Next year Meena sells ₹2 lakh again, but her costs fall to ₹1.6 lakh. What is her profit?"
+  "text": "Khichdi: 30 × ₹20 = ₹600. Paneer: 18 × ₹45 = ₹810. A fast seller can earn less than a slow one. Count rupees per day, not plates."
  },
  {
-  "id": "98a5b15d70d6",
+  "id": "87307aced86c",
   "voice": "narrator",
-  "text": "₹40,000"
+  "text": "More plates, but fewer rupees: 30 × ₹20 = ₹600 against 18 × ₹45 = ₹810."
  },
  {
-  "id": "fffbc376b2b3",
+  "id": "12b657c51e45",
   "voice": "narrator",
-  "text": "₹1.6 lakh"
+  "text": "Work out each: ₹600 and ₹810."
  },
  {
-  "id": "13e5ff13d8ee",
+  "id": "1493d095dd55",
   "voice": "narrator",
-  "text": "₹3.6 lakh"
+  "text": "The app offers to 'promote' the biryani for 10% more commission. It promises 40% more orders: 140 a day instead of 100."
  },
  {
-  "id": "953a17308912",
+  "id": "d15e0e60a8ad",
   "voice": "narrator",
-  "text": "₹2,00,000 − ₹1,60,000 = ₹40,000. Same sales, four times the profit."
+  "text": "Each biryani leaves ₹95 now. Do you join?"
  },
  {
-  "id": "342405190a41",
+  "id": "132eebfbd035",
   "voice": "narrator",
-  "text": "₹1.6 lakh is her costs. Take them away from her sales."
+  "text": "10% of ₹300 is ₹30 more per order. 140 × ₹65 = ₹9,100 a day, against 100 × ₹95 = ₹9,500. You cook 40 more meals to earn ₹400 less."
  },
  {
-  "id": "502795b25b9f",
+  "id": "d5c983f2a3e7",
   "voice": "narrator",
-  "text": "Costs come off the sales. You don't add them."
+  "text": "You counted orders, not what each order leaves. What would have worked: Work out what's left per order at the new commission before you sign."
  },
  {
-  "id": "830e1d6c3c9a",
+  "id": "bcd0cbd8c7a2",
   "voice": "narrator",
-  "text": "Money in or money out? Sort Meena's list."
+  "text": "You see ₹9,100 against ₹9,500. You offer to try it only if the extra cut is 5%: 140 × ₹80 = ₹11,200."
  },
  {
-  "id": "30f07e93de77",
+  "id": "5100a0c483b4",
   "voice": "narrator",
-  "text": "Money from buyers is sales. Rent, travel and stock are costs, and they come off before profit."
+  "text": "Every extra cost comes off each order. The sum shows when more sales mean less money."
  },
  {
-  "id": "e0d441d5a143",
+  "id": "635f18548a0a",
   "voice": "narrator",
-  "text": "Arjun's phone repair shop takes in ₹60,000 this month. Rent, parts and his helper cost ₹45,000. What is his profit?"
+  "text": "You stop paying 25%, but your 100 orders a day drop to 20 walk-ins."
  },
  {
-  "id": "29eae8dab99f",
+  "id": "074b6a37b570",
   "voice": "narrator",
-  "text": "₹1,05,000"
+  "text": "The app's cut is a cost, but it also brings the orders. What would have worked: Price the deal per order, then decide."
  },
  {
-  "id": "03b13b816c13",
+  "id": "cdb79a3c4aad",
   "voice": "narrator",
-  "text": "₹60,000"
+  "text": "Count every cost that comes with blank order, not just the blank."
  },
  {
-  "id": "0897ea2c14c5",
+  "id": "decda661c864",
   "voice": "narrator",
-  "text": "₹15,000"
+  "text": "Shipping, ads, fees, packing and returns ride along with every order. Price minus stock is only the start."
  },
  {
-  "id": "467a83a8e2ec",
+  "id": "e220222d9951",
   "voice": "narrator",
-  "text": "₹60,000 in, ₹45,000 out. ₹15,000 is left."
+  "text": "Price minus stock cost isn't profit. Count every hidden cost."
  },
  {
-  "id": "f17caeee4164",
+  "id": "32013cab5673",
   "voice": "narrator",
-  "text": "That adds the costs. Costs come off the sales."
+  "text": "Price minus stock is only the start. Take off every cost that comes with each order."
  },
  {
-  "id": "191e2f349edb",
+  "id": "6015b75701b4",
   "voice": "narrator",
-  "text": "₹60,000 is his sales. He still has to pay his costs."
+  "text": "Returns, ads and app cuts can turn a 'good' sale into a loss."
  },
  {
-  "id": "5d683f0abf2c",
+  "id": "68fbb3b2f7b5",
   "voice": "narrator",
-  "text": "Sales are the money that comes blank. Profit is what is blank after every cost."
+  "text": "A fast seller can earn less than a slow one. Count rupees per day."
  },
  {
-  "id": "1e95c3cebde0",
+  "id": "cf7791966f1b",
   "voice": "narrator",
-  "text": "Sales come in. Profit is what stays with you once every cost is paid."
+  "text": "2007 T20 World Cup final. Pakistan need 13 off the last over. Dhoni gives the ball to Joginder Sharma, who has played seven matches."
  },
  {
-  "id": "34aed19a050e",
+  "id": "b495a4d81980",
   "voice": "narrator",
-  "text": "Asha's stall sold ₹50,000 and kept ₹5,000. Bina's sold ₹30,000 and kept ₹9,000. Who did better?"
+  "text": "Misbah had hit Harbhajan for three sixes in his last over. Was Joginder a good call?"
  },
  {
-  "id": "6d0650136393",
+  "id": "f95bce41a703",
   "voice": "narrator",
-  "text": "Asha, she sold more"
+  "text": "Yes, from what Dhoni knew"
  },
  {
-  "id": "a9414f57ccac",
+  "id": "f0168ee01503",
   "voice": "narrator",
-  "text": "Bina, she kept more"
+  "text": "Only if it works"
  },
  {
-  "id": "e7d675c895be",
+  "id": "368efae0a746",
   "voice": "narrator",
-  "text": "Bina took home ₹9,000. Asha took home ₹5,000. What you keep is what counts."
+  "text": "No, it was a wild gamble"
  },
  {
-  "id": "643ae9a6b296",
+  "id": "dded55dc9a2d",
   "voice": "narrator",
-  "text": "Asha sold more, but she kept less. Look at what is left."
+  "text": "After a wide, a miss and a six, Misbah tried a scoop. It went straight to Sreesanth, and India won by five runs. The call became famous."
  },
  {
-  "id": "111071e6444d",
+  "id": "b68f261b956d",
   "voice": "narrator",
-  "text": "You make candles at home. Each one costs you ₹19 in wax, wick and jar. A shop wants 1,000 candles at ₹20 each."
+  "text": "Annie Duke, a poker player, calls it 'resulting': judging a call by how it turned out. Good calls can lose. Bad ones can win."
  },
  {
-  "id": "c2c0cc6648d8",
+  "id": "b3cad8b7f368",
   "voice": "narrator",
-  "text": "That is a ₹20,000 order. What do you do?"
+  "text": "Same over, but the scoop clears fine leg for four. Pakistan win. Dhoni's call was…"
  },
  {
-  "id": "3b3cfffb1828",
+  "id": "246c4e201433",
   "voice": "narrator",
-  "text": "You work for a month. After wax, wicks and jars, only ₹1,000 is left."
+  "text": "A clear mistake"
  },
  {
-  "id": "bb3d9971f05f",
+  "id": "5445f8c84666",
   "voice": "narrator",
-  "text": "You looked at the sales, not the profit. What would have worked: Take off your costs before you say yes."
+  "text": "Just as sound as before"
  },
  {
-  "id": "abcf2d02f403",
+  "id": "828f6ad0a756",
   "voice": "narrator",
-  "text": "You see you would keep only ₹1 a candle. You ask the shop for ₹24 a candle instead."
+  "text": "He knew the same things before the ball. Only the luck changed. The papers would have said 'blunder', and they'd have been resulting."
  },
  {
-  "id": "9226ddd2f008",
+  "id": "81e3b5b8ac1a",
   "voice": "narrator",
-  "text": "₹20,000 of sales is only ₹1,000 of profit. The sum showed you that."
+  "text": "What did Dhoni know before the ball? Nothing changed but where the ball went."
  },
  {
-  "id": "ab091e27fe9d",
+  "id": "d896b636ea56",
   "voice": "narrator",
-  "text": "You lose the order without checking it. A better price could have made it worth it."
+  "text": "Four boxes: good or bad call, with good or bad luck. After a big decision, ask which box you're in. Fix the call, not luck."
  },
  {
-  "id": "4a01a264dea3",
+  "id": "da5b934e96f5",
   "voice": "narrator",
-  "text": "Saying no was safe, but you did not do the sum. What would have worked: Do the sum first: sales minus costs."
+  "text": "A ₹50,000 fair stall wins Neha's coaching centre a ₹4 lakh school deal 1 time in 4. Average gain per fair?"
  },
  {
-  "id": "9c469caf8a74",
+  "id": "fc6217843458",
   "voice": "narrator",
-  "text": "Sales are not profit. Profit is what's left."
+  "text": "₹3,50,000"
  },
  {
-  "id": "2d205681e620",
+  "id": "d2662163829d",
   "voice": "narrator",
-  "text": "Sales are all the money that comes in."
+  "text": "A loss of ₹50,000"
  },
  {
-  "id": "60b99b21f363",
+  "id": "e57d0648d1d0",
   "voice": "narrator",
-  "text": "Profit is what is left after you pay every cost."
+  "text": "₹50,000"
  },
  {
-  "id": "1f1e5c226a25",
+  "id": "2ade29d28674",
   "voice": "narrator",
-  "text": "Ravi keeps just ₹3 a cup at his chai stall and does well. His cousin keeps ₹3 a cup too, and is going broke."
+  "text": "¼ × ₹4,00,000 = ₹1,00,000 on average. Take off the ₹50,000 stall: ₹50,000 gained per fair, on average. It's a good bet."
  },
  {
-  "id": "ace8130e5b42",
+  "id": "455a40020ea9",
   "voice": "narrator",
-  "text": "What is the big difference between the two stalls?"
+  "text": "That's what a winning fair brings. She wins only 1 in 4."
  },
  {
-  "id": "59bcddc2f907",
+  "id": "debaa7737937",
   "voice": "narrator",
-  "text": "Ravi's chai tastes better"
+  "text": "That's a losing fair. On average, the wins pay for the misses and more."
  },
  {
-  "id": "889b92af57d4",
+  "id": "a188b475300a",
   "voice": "narrator",
-  "text": "Ravi sells many more cups"
+  "text": "At 1 win in 4, how often will Neha leave with nothing two fairs in a row?"
  },
  {
-  "id": "9dc6a4a69361",
+  "id": "f1de379ae614",
   "voice": "narrator",
-  "text": "Ravi charges more"
+  "text": "About 6 times in 100"
  },
  {
-  "id": "5a2a16f4e93f",
+  "id": "53052b662fc8",
   "voice": "narrator",
-  "text": "Ravi sells 400 cups a day at the bus stand. His cousin sells 50 in a quiet lane."
+  "text": "About 56 times in 100"
  },
  {
-  "id": "b82e16f42ebc",
+  "id": "add022251be5",
   "voice": "narrator",
-  "text": "A thin margin means you keep a little from each sale. It works only if you sell a lot and keep costs low."
+  "text": "About 25 times in 100"
  },
  {
-  "id": "3eed5347f4be",
+  "id": "668ae331e286",
   "voice": "narrator",
-  "text": "400 cups × ₹3 = ₹1,200. Rent and his helper cost ₹600 a day. Ravi keeps ₹600 a day."
+  "text": "She misses 3 times in 4. Two misses in a row: ¾ × ¾ = 9/16, about 56 in 100, so it happens more often than not. A good bet can look bad for months."
  },
  {
-  "id": "ab3173b4a60f",
+  "id": "007d16f2d46a",
   "voice": "narrator",
-  "text": "His cousin sells 50 cups × ₹3 = ₹150 a day. His rent and helper also cost ₹600. What happens?"
+  "text": "That's two wins in a row: ¼ × ¼. Misses are the common case."
  },
  {
-  "id": "e4c2f53b2ef0",
+  "id": "c6f0731794aa",
   "voice": "narrator",
-  "text": "He keeps ₹150 a day"
+  "text": "Missing once is ¾. Twice in a row is ¾ × ¾ = 9/16."
  },
  {
-  "id": "83d5541fe3de",
+  "id": "45c83ecf4d06",
   "voice": "narrator",
-  "text": "He breaks even"
+  "text": "Dev hired a cashier without checking anything. Sales then had their best month ever. What should Dev do next time?"
  },
  {
-  "id": "40fefab7b169",
+  "id": "7c875e5095e7",
   "voice": "narrator",
-  "text": "He loses ₹450 a day"
+  "text": "Keep this cashier, but check the next hire"
  },
  {
-  "id": "f72302c42745",
+  "id": "65bdb798683d",
   "voice": "narrator",
-  "text": "₹150 in margin, ₹600 in fixed costs. He is ₹450 short every day."
+  "text": "Hire the same quick way. It worked"
  },
  {
-  "id": "cda97962245e",
+  "id": "a3adfacf540a",
   "voice": "narrator",
-  "text": "₹150 is his margin. Rent and his helper still cost ₹600."
+  "text": "Nothing Dev knew made it a good call. The good month might be Diwali, or luck. A good result doesn't make a careless method good."
  },
  {
-  "id": "224ce6625f0d",
+  "id": "e5d41eb2bb9e",
   "voice": "narrator",
-  "text": "He needs 200 cups to break even. He sells 50."
+  "text": "That's resulting. The sales say nothing about how he hired. Next time, check references."
  },
  {
-  "id": "87041e0e5356",
+  "id": "662108a875e4",
   "voice": "narrator",
-  "text": "Rent and helper cost ₹600 a day. Each cup leaves ₹3. How many cups to break even?"
+  "text": "Mohan picked a new supplier. Which did he know then, and which only later?"
  },
  {
-  "id": "aba73a114753",
+  "id": "52da083321fa",
   "voice": "narrator",
-  "text": "200 cups"
+  "text": "Judge Mohan on the left side only. The breakdown and the strike are luck. He can plan for them, but they don't make the choice wrong."
  },
  {
-  "id": "0f46c3ff5e1a",
+  "id": "fcb1b9fe5279",
   "voice": "narrator",
-  "text": "600 cups"
+  "text": "Put the steps of a fair decision review in order."
  },
  {
-  "id": "c9811e7f8a80",
+  "id": "df801572c727",
   "voice": "narrator",
-  "text": "1,800 cups"
+  "text": "Look at the result last, so it can't colour how you judge the thinking."
  },
  {
-  "id": "14ef40c74fca",
+  "id": "ea8a08ac5e98",
   "voice": "narrator",
-  "text": "Fixed costs ÷ margin: ₹600 ÷ ₹3 = 200 cups a day."
+  "text": "Ravi's tempo service checked three references on a new client. Months later the client went bust, owing him ₹60,000. His partner says: 'No more new clients. Ever.'"
  },
  {
-  "id": "0a35de535f80",
+  "id": "d2bc07985d38",
   "voice": "narrator",
-  "text": "600 is the cost in rupees. Divide it by the ₹3 margin."
+  "text": "Ravi is safe for a year. Then two old clients move away, and he has no new ones to replace them."
  },
  {
-  "id": "90fb773ba1aa",
+  "id": "32a5f7cb8ddb",
   "voice": "narrator",
-  "text": "Divide the costs by the margin. Don't multiply."
+  "text": "One bad result made him drop a sound method. What would have worked: Keep checking new clients, and cap how much each can owe."
  },
  {
-  "id": "3a2ba6cd9b37",
+  "id": "95679dfeaa56",
   "voice": "narrator",
-  "text": "Does each thing help or hurt a stall that keeps ₹3 a cup?"
+  "text": "Ravi keeps winning new clients. No new client can owe more than ₹20,000, so the next bad one hurts a third as much."
  },
  {
-  "id": "1cd6f0df901e",
+  "id": "c468c9965f05",
   "voice": "narrator",
-  "text": "With ₹3 a cup, you need many buyers and low costs. Anything that adds cost or cuts buyers hurts."
+  "text": "The checks were sound; the loss was partly luck. He kept the method and fixed what he could learn from."
  },
  {
-  "id": "3c1446a08b0f",
+  "id": "ebd13e867d16",
   "voice": "narrator",
-  "text": "Milk gets dearer. Ravi now keeps ₹2 a cup, not ₹3. He still sells 400 cups. What is his daily profit now?"
+  "text": "Ravi carries on as before. The next bust client could owe him just as much."
  },
  {
-  "id": "5c468407350d",
+  "id": "9813348baf98",
   "voice": "narrator",
-  "text": "₹600"
+  "text": "Right that it was mostly luck, but he learned nothing he could use. What would have worked: Ask what he could control next time, like how much one client can owe."
  },
  {
-  "id": "b4a42fff9522",
+  "id": "b41480c3c7c0",
   "voice": "narrator",
-  "text": "₹800"
+  "text": "Judge a call by what you knew then, not the result."
  },
  {
-  "id": "21e1edf54c1f",
+  "id": "c7d9223af54d",
   "voice": "narrator",
-  "text": "400 × ₹2 = ₹800, minus ₹600 of rent and helper = ₹200. Losing ₹1 a cup cut his profit by two thirds."
+  "text": "Judge a decision by what you knew when you made it."
  },
  {
-  "id": "ac47dfdc8a94",
+  "id": "740c6e825485",
   "voice": "narrator",
-  "text": "₹600 was his profit at ₹3 a cup. Work it out at ₹2."
+  "text": "A good bet can lose many times in a row. Don't drop it after one miss."
  },
  {
-  "id": "63cb7e40ec0d",
+  "id": "c388e2072004",
   "voice": "narrator",
-  "text": "₹800 is his margin. Take off the ₹600 of rent and helper."
+  "text": "Learn from the thinking, not from the luck."
  },
  {
-  "id": "b13674398a8d",
+  "id": "35a3304ef244",
   "voice": "narrator",
-  "text": "True or false: a thin margin is always bad."
+  "text": "In October 2007, two former Amazon staff started Flipkart in Bengaluru, selling only books. In its first year, it made 20 shipments."
  },
  {
-  "id": "96f7fea3af9b",
+  "id": "9fbcbaf85b76",
   "voice": "narrator",
-  "text": "False, it works with big sales and low costs"
+  "text": "Why would Flipkart start with books alone, not everything?"
  },
  {
-  "id": "58205c300dfb",
+  "id": "ce44ee140c07",
   "voice": "narrator",
-  "text": "True, you should always keep a lot from each sale"
+  "text": "To learn cheaply before betting big"
  },
  {
-  "id": "3a1aaaf3ea4c",
+  "id": "712352dec11c",
   "voice": "narrator",
-  "text": "Ravi keeps ₹3 a cup and does well. It works because he sells 400 cups and keeps his costs low."
+  "text": "They only liked books"
  },
  {
-  "id": "39d0e4ffbb4b",
+  "id": "693476318396",
   "voice": "narrator",
-  "text": "Ravi keeps only ₹3 a cup and still does well. What matters is how many he sells and what it costs him."
+  "text": "One small range let them learn orders, delivery and buyers. They handed out bookmarks outside a Bengaluru bookshop. Phones and electronics came only in 2010."
  },
  {
-  "id": "c55e909c0e0f",
+  "id": "0cbc550db917",
   "voice": "narrator",
-  "text": "Ravi sells 400 cups a day and keeps ₹3 a cup. His rent and helper cost ₹600 a day. In a bigger shop with seats and a fan, rent and helper would cost ₹1,200 a day."
+  "text": "Test small. Before you start, write the number that means 'yes', and the date you'll check. Then let the number decide, not hope."
  },
  {
-  "id": "b7a2969ea87a",
+  "id": "fdf89390abb3",
   "voice": "narrator",
-  "text": "Should Ravi move?"
+  "text": "Which 'yes' line tells you a new lunch service can really work?"
  },
  {
-  "id": "1404d966be4e",
+  "id": "47e732a17360",
   "voice": "narrator",
-  "text": "Sales rise to 450 cups. After the higher costs, he keeps ₹150 a day, not ₹600."
+  "text": "120 enquiries in 4 weeks"
  },
  {
-  "id": "1f8f6f1272f0",
+  "id": "9f31d17ec09f",
   "voice": "narrator",
-  "text": "450 × ₹3 = ₹1,350. Take off ₹1,200 and only ₹150 is left. What would have worked: Do the sum first. At ₹3 a cup, a big new cost needs many more cups."
+  "text": "120 paid lunches in 4 weeks"
  },
  {
-  "id": "218819c6d949",
+  "id": "b8082565de28",
   "voice": "narrator",
-  "text": "Some buyers walk to the cheaper stall next door. His profit is now a guess."
+  "text": "120 paid lunches in 4 weeks, ₹40 left on each"
  },
  {
-  "id": "ddbc024e7026",
+  "id": "03ec0ded8ad2",
   "voice": "narrator",
-  "text": "A higher price might help, but he moved without doing the sum. What would have worked: Work out first how many cups the new shop needs to pay for itself."
+  "text": "Enquiries are weaker than payments, and payments with no margin can still lose money. A number, a date and money: you can't argue with it later."
  },
  {
-  "id": "1bcc9e6c4077",
+  "id": "de4f62c2510c",
   "voice": "narrator",
-  "text": "He sees he would need 400 cups just to break even. He stays where he is."
+  "text": "Asking costs people nothing. Count what they pay for."
  },
  {
-  "id": "9801a14ad569",
+  "id": "ecf449493ae9",
   "voice": "narrator",
-  "text": "₹1,200 ÷ ₹3 = 400 cups. The higher costs would eat all of his ₹600 profit."
+  "text": "Better, but 120 lunches that each lose ₹5 is still a loss. Add what each one leaves."
  },
  {
-  "id": "feee1de04485",
+  "id": "35d5fbd441bc",
   "voice": "narrator",
-  "text": "A thin margin works only with high sales and low costs."
+  "text": "Sana wants a cake stall at an office park. It costs ₹15,000 a month, and each cake box leaves her ₹60."
  },
  {
-  "id": "a39172ed5acc",
+  "id": "96db9a26347b",
   "voice": "narrator",
-  "text": "A thin margin means you keep a little from each sale."
+  "text": "The park is open 25 days a month. How many boxes a day just covers the stall?"
  },
  {
-  "id": "0499671c18ee",
+  "id": "b89d3dc267d6",
   "voice": "narrator",
-  "text": "It works only with many sales and low costs."
+  "text": "250"
  },
  {
-  "id": "651ea1a516de",
+  "id": "00d62785d454",
   "voice": "narrator",
-  "text": "With thin margins, small cost changes hit profit hard."
+  "text": "10"
+ },
+ {
+  "id": "22fb638b8d72",
+  "voice": "narrator",
+  "text": "25"
+ },
+ {
+  "id": "598a8af154be",
+  "voice": "narrator",
+  "text": "₹15,000 ÷ ₹60 = 250 boxes a month. 250 ÷ 25 days = 10 a day. So her 'yes' must be above 10, or she works for free."
+ },
+ {
+  "id": "a5bd3b7ed772",
+  "voice": "narrator",
+  "text": "That's a month. Split it over 25 days."
+ },
+ {
+  "id": "b80ae8313f0c",
+  "voice": "narrator",
+  "text": "Work it out: ₹15,000 ÷ ₹60 = 250 a month, then ÷ 25 days."
+ },
+ {
+  "id": "5d291232611c",
+  "voice": "narrator",
+  "text": "Sana tests for four weeks and sells 7 a day. Her friend says, 'Close to 10. Go!' What do you say?"
+ },
+ {
+  "id": "efd6cc7d3ec1",
+  "voice": "narrator",
+  "text": "Go. 7 is close"
+ },
+ {
+  "id": "e38228b789fa",
+  "voice": "narrator",
+  "text": "Change the offer and test again"
+ },
+ {
+  "id": "fcb10deb6d8f",
+  "voice": "narrator",
+  "text": "Move the yes line to 7"
+ },
+ {
+  "id": "39aff35afd30",
+  "voice": "narrator",
+  "text": "At 7 a day she's 3 boxes short. 3 × ₹60 × 25 days = ₹4,500 lost every month. Try a new price or spot, then test again."
+ },
+ {
+  "id": "9879b1b15dba",
+  "voice": "narrator",
+  "text": "7 against 10 means 3 × ₹60 × 25 = ₹4,500 lost a month."
+ },
+ {
+  "id": "2c94fed77c46",
+  "voice": "narrator",
+  "text": "Moving the line after the test is how hope wins. The sum didn't change."
+ },
+ {
+  "id": "d18fbd4844f0",
+  "voice": "narrator",
+  "text": "A second salon costs ₹12 lakh. Neeta tests first: one rented chair in a gym, ₹8,000 a month for 3 months. What share is that?"
+ },
+ {
+  "id": "f0b94355f566",
+  "voice": "narrator",
+  "text": "2%"
+ },
+ {
+  "id": "edf17471fc58",
+  "voice": "narrator",
+  "text": "20%"
+ },
+ {
+  "id": "875ade831fc3",
+  "voice": "narrator",
+  "text": "0.2%"
+ },
+ {
+  "id": "a8b93c849cfc",
+  "voice": "narrator",
+  "text": "3 × ₹8,000 = ₹24,000. ₹24,000 ÷ ₹12,00,000 = 2%. She risks 2 rupees to learn before she risks 100."
+ },
+ {
+  "id": "3278ef403f73",
+  "voice": "narrator",
+  "text": "₹24,000 is much smaller than that. 20% would be ₹2,40,000."
+ },
+ {
+  "id": "588e479504b2",
+  "voice": "narrator",
+  "text": "0.2% would be just ₹2,400. The test is ₹24,000."
+ },
+ {
+  "id": "87e67a6fb119",
+  "voice": "narrator",
+  "text": "Small test or big bet?"
+ },
+ {
+  "id": "8033e370bb57",
+  "voice": "narrator",
+  "text": "A test is cheap and quick to undo, while a bet locks your money in. Do the tests first, and let them earn you the bet."
+ },
+ {
+  "id": "e6ff9fd5eb24",
+  "voice": "narrator",
+  "text": "Put a good test in order."
+ },
+ {
+  "id": "d3c2cba0dd2c",
+  "voice": "narrator",
+  "text": "The yes number comes before the test. Every Sunday, count the two or three numbers that decide. Let them decide, not hope."
+ },
+ {
+  "id": "f3064b70ca0a",
+  "voice": "narrator",
+  "text": "Pooja wants a 6 am women-only batch at her gym. A full new floor would cost ₹5 lakh. Some members say they'd 'surely join'."
+ },
+ {
+  "id": "0a3ea316a929",
+  "voice": "narrator",
+  "text": "The floor opens, but only eight women come in the first month. ₹5 lakh is now in walls and mats."
+ },
+ {
+  "id": "bd202d6309eb",
+  "voice": "narrator",
+  "text": "Saying 'I'd join' is free. She bet big on words, not payments. What would have worked: Run one paid batch first, with a yes number."
+ },
+ {
+  "id": "12946f076b97",
+  "voice": "narrator",
+  "text": "By week 6, 23 women have paid. Now the floor is a bet with proof behind it."
+ },
+ {
+  "id": "ed0535056f15",
+  "voice": "narrator",
+  "text": "She tested cheaply in the space she had, and wrote the yes number first."
+ },
+ {
+  "id": "1430108bba93",
+  "voice": "narrator",
+  "text": "70% tick 'yes'. She still doesn't know who will pay at 6 am."
+ },
+ {
+  "id": "3ad5feed9036",
+  "voice": "narrator",
+  "text": "A survey costs little, but it measures words. What would have worked: Ask for payment. That is the real test."
+ },
+ {
+  "id": "ce0d3430c083",
+  "voice": "narrator",
+  "text": "Write the blank that means yes blank the test starts."
+ },
+ {
+  "id": "e99b6112b80a",
+  "voice": "narrator",
+  "text": "Decide the line first. After the test, it's too easy to move it."
+ },
+ {
+  "id": "02eb37f2d117",
+  "voice": "narrator",
+  "text": "Test small first, and decide beforehand what result means yes."
+ },
+ {
+  "id": "ff0102e91f65",
+  "voice": "narrator",
+  "text": "Start with a small, cheap version of the idea."
+ },
+ {
+  "id": "be8380f69439",
+  "voice": "narrator",
+  "text": "Write the yes number and the date before you start."
+ },
+ {
+  "id": "2e363fa8fb4f",
+  "voice": "narrator",
+  "text": "Don't move the line after the test. Change the offer and test again."
  }
 ]

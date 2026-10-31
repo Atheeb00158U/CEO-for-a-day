@@ -1,0 +1,247 @@
+{
+  "id": "u1-judge-the-call",
+  "title": "Judge the call, not the luck",
+  "principle": "Judge a call by what you knew then, not the result.",
+  "minutes": 5,
+  "draft": true,
+  "screens": [
+    {
+      "kind": "explain",
+      "id": "hook",
+      "media": "img:ls_last_over",
+      "text": "2007 T20 World Cup final. Pakistan need 13 off the last over. Dhoni gives the ball to Joginder Sharma, who has played seven matches."
+    },
+    {
+      "kind": "choice",
+      "id": "guess",
+      "guess": true,
+      "prompt": "Misbah had hit Harbhajan for three sixes in his last over. Was Joginder a good call?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Yes, from what Dhoni knew"
+        },
+        {
+          "id": "b",
+          "label": "Only if it works"
+        },
+        {
+          "id": "c",
+          "label": "No, it was a wild gamble"
+        }
+      ],
+      "answer": "a",
+      "why": "After a wide, a miss and a six, Misbah tried a scoop. It went straight to Sreesanth, and India won by five runs. The call became famous."
+    },
+    {
+      "kind": "explain",
+      "id": "rule",
+      "title": "Resulting",
+      "text": "Annie Duke, a poker player, calls it 'resulting': judging a call by how it turned out. Good calls can lose. Bad ones can win."
+    },
+    {
+      "kind": "choice",
+      "id": "if-four",
+      "prompt": "Same over, but the scoop clears fine leg for four. Pakistan win. Dhoni's call was…",
+      "options": [
+        {
+          "id": "a",
+          "label": "A clear mistake"
+        },
+        {
+          "id": "b",
+          "label": "Just as sound as before"
+        }
+      ],
+      "answer": "b",
+      "why": "He knew the same things before the ball. Only the luck changed. The papers would have said 'blunder', and they'd have been resulting.",
+      "wrong": {
+        "a": "What did Dhoni know before the ball? Nothing changed but where the ball went."
+      }
+    },
+    {
+      "kind": "explain",
+      "id": "boxes",
+      "title": "Four boxes",
+      "text": "Four boxes: good or bad call, with good or bad luck. After a big decision, ask which box you're in. Fix the call, not luck."
+    },
+    {
+      "kind": "choice",
+      "id": "fair",
+      "prompt": "A ₹50,000 fair stall wins Neha's coaching centre a ₹4 lakh school deal 1 time in 4. Average gain per fair?",
+      "options": [
+        {
+          "id": "a",
+          "label": "₹3,50,000"
+        },
+        {
+          "id": "b",
+          "label": "A loss of ₹50,000"
+        },
+        {
+          "id": "c",
+          "label": "₹50,000"
+        }
+      ],
+      "answer": "c",
+      "why": "¼ × ₹4,00,000 = ₹1,00,000 on average. Take off the ₹50,000 stall: ₹50,000 gained per fair, on average. It's a good bet.",
+      "wrong": {
+        "a": "That's what a winning fair brings. She wins only 1 in 4.",
+        "b": "That's a losing fair. On average, the wins pay for the misses and more."
+      }
+    },
+    {
+      "kind": "choice",
+      "id": "two-misses",
+      "prompt": "At 1 win in 4, how often will Neha leave with nothing two fairs in a row?",
+      "options": [
+        {
+          "id": "a",
+          "label": "About 6 times in 100"
+        },
+        {
+          "id": "b",
+          "label": "About 56 times in 100"
+        },
+        {
+          "id": "c",
+          "label": "About 25 times in 100"
+        }
+      ],
+      "answer": "b",
+      "why": "She misses 3 times in 4. Two misses in a row: ¾ × ¾ = 9/16, about 56 in 100, so it happens more often than not. A good bet can look bad for months.",
+      "wrong": {
+        "a": "That's two wins in a row: ¼ × ¼. Misses are the common case.",
+        "c": "Missing once is ¾. Twice in a row is ¾ × ¾ = 9/16."
+      }
+    },
+    {
+      "kind": "choice",
+      "id": "lucky-hire",
+      "prompt": "Dev hired a cashier without checking anything. Sales then had their best month ever. What should Dev do next time?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Keep this cashier, but check the next hire"
+        },
+        {
+          "id": "b",
+          "label": "Hire the same quick way. It worked"
+        }
+      ],
+      "answer": "a",
+      "why": "Nothing Dev knew made it a good call. The good month might be Diwali, or luck. A good result doesn't make a careless method good.",
+      "wrong": {
+        "b": "That's resulting. The sales say nothing about how he hired. Next time, check references."
+      }
+    },
+    {
+      "kind": "sort",
+      "id": "knew-then",
+      "prompt": "Mohan picked a new supplier. Which did he know then, and which only later?",
+      "buckets": ["Knew when choosing", "Only known later"],
+      "items": [
+        {
+          "text": "On time for 3 other shops for years",
+          "bucket": 0
+        },
+        {
+          "text": "Its truck broke down on the highway",
+          "bucket": 1
+        },
+        {
+          "text": "Price ₹2 a kilo below the others",
+          "bucket": 0
+        },
+        {
+          "text": "A strike shut its factory for a week",
+          "bucket": 1
+        },
+        {
+          "text": "Samples passed his quality check",
+          "bucket": 0
+        }
+      ],
+      "why": "Judge Mohan on the left side only. The breakdown and the strike are luck. He can plan for them, but they don't make the choice wrong."
+    },
+    {
+      "kind": "order",
+      "id": "review",
+      "prompt": "Put the steps of a fair decision review in order.",
+      "steps": [
+        "Write down what you knew then",
+        "Write what you chose, and why",
+        "Look at what happened",
+        "Ask: was it the thinking, or luck?",
+        "Change your method only if the thinking was wrong"
+      ],
+      "why": "Look at the result last, so it can't colour how you judge the thinking."
+    },
+    {
+      "kind": "scenario",
+      "id": "tempo",
+      "setup": "Ravi's tempo service checked three references on a new client. Months later the client went bust, owing him ₹60,000. His partner says: 'No more new clients. Ever.'",
+      "question": "What do you do?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Agree. Old clients only from now",
+          "grade": "bad",
+          "outcome": "Ravi is safe for a year. Then two old clients move away, and he has no new ones to replace them.",
+          "why": "One bad result made him drop a sound method.",
+          "better": "Keep checking new clients, and cap how much each can owe."
+        },
+        {
+          "id": "b",
+          "label": "Keep the checks, and cap what new clients owe",
+          "grade": "great",
+          "outcome": "Ravi keeps winning new clients. No new client can owe more than ₹20,000, so the next bad one hurts a third as much.",
+          "why": "The checks were sound; the loss was partly luck. He kept the method and fixed what he could learn from."
+        },
+        {
+          "id": "c",
+          "label": "Ignore it. Bad luck happens",
+          "grade": "ok",
+          "outcome": "Ravi carries on as before. The next bust client could owe him just as much.",
+          "why": "Right that it was mostly luck, but he learned nothing he could use.",
+          "better": "Ask what he could control next time, like how much one client can owe."
+        }
+      ]
+    }
+  ],
+  "summary": [
+    "Judge a decision by what you knew when you made it.",
+    "A good bet can lose many times in a row. Don't drop it after one miss.",
+    "Learn from the thinking, not from the luck."
+  ],
+  "cards": [
+    {
+      "id": "m11-judge-1",
+      "front": "You checked everything, and the deal still failed. Was it a bad decision?",
+      "options": ["Yes, it failed", "Not if the thinking was sound"],
+      "answer": 1,
+      "back": "Judge what you knew then. A good call can have a bad result."
+    },
+    {
+      "id": "m11-judge-2",
+      "front": "A bet wins 1 time in 4. How often do you lose twice in a row?",
+      "options": ["About 56 in 100", "About 6 in 100", "About 25 in 100"],
+      "answer": 0,
+      "back": "¾ × ¾ = 9/16. Losing streaks are normal on good bets."
+    }
+  ],
+  "sources": [
+    {
+      "label": "The greatest T20 finals: India vs Pakistan, 2007 (The Cricket Monthly)",
+      "url": "https://www.thecricketmonthly.com/story/1477912/the-greatest-t20-finals---india-vs-pakistan--t20-world-cup-final--2007"
+    },
+    {
+      "label": "Joginder Sharma (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Joginder_Sharma"
+    },
+    {
+      "label": "Thinking in Bets by Annie Duke: notes (Sachin Rekhi)",
+      "url": "https://www.sachinrekhi.com/thinking-in-bets-annie-duke"
+    }
+  ]
+}
