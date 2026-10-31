@@ -1,6 +1,6 @@
 {
   "id": "u1-test-small",
-  "title": "Set the goalposts first",
+  "title": "Set the target first",
   "principle": "Test small first, and decide beforehand what result means yes.",
   "minutes": 5,
   "draft": true,
@@ -8,7 +8,7 @@
     {
       "kind": "explain",
       "id": "hook",
-      "text": "Let me tell you a story about idli batter. In 2006, PC Musthafa and his cousins started iD in Bengaluru with ₹50,000 and one small room. They put 100 packets into 20 stores, and before going further, they gave themselves a target and a deadline: six months.",
+      "text": "Let me tell you a story about idli batter. In 2006, PC Musthafa and his cousins started iD in Bengaluru with ₹50,000 and one small room. They put 100 packets into 20 stores. They gave themselves six months to reach their target.",
       "media": "img:ls_batter_packets"
     },
     {
@@ -31,7 +31,7 @@
         }
       ],
       "answer": "c",
-      "why": "About 90. Musthafa said 90 of every 100 packets used to come back, so they sold fewer than 10 a day. They were nowhere near their target, and six months came and went."
+      "why": "About 90. Musthafa said 90 of every 100 packets used to come back, so they sold fewer than 10 a day. They were far from their target. After six months, they still had not reached it."
     },
     {
       "kind": "choice",
@@ -40,7 +40,7 @@
       "options": [
         {
           "id": "a",
-          "label": "Kept the target and fixed the batter"
+          "label": "Kept the target and improved the batter"
         },
         {
           "id": "b",
@@ -52,22 +52,22 @@
         }
       ],
       "answer": "a",
-      "why": "Exactly. They didn't move the target or pretend they'd made the date. They kept working until they reached it, three months late, and Musthafa says getting the batter right took about nine months. Later, iD was in 1,000 stores across Bengaluru.",
+      "why": "Exactly. They did not lower the target or change the deadline. They kept working until they reached the target, three months late. Musthafa says getting the batter right took about nine months. Later, iD was in 1,000 stores across Bengaluru.",
       "wrong": {
-        "b": "I see the thinking: lower the bar, and you've passed. But a target you move after the test can't tell you anything. They kept theirs and reached it three months late.",
-        "c": "That's betting big before the idea has passed its test. With 90 of every 100 packets coming back, a factory would only make more packets to come back. They stayed small and fixed the batter first."
+        "b": "I see the thinking: lower the target, and now you have passed. But then the target cannot tell you if the idea worked. They kept their target and reached it three months late.",
+        "c": "That means spending a lot before the idea has worked. With 90 of every 100 packets coming back, a factory would only make more unsold packets. They stayed small and fixed the batter first."
       }
     },
     {
       "kind": "explain",
       "id": "rule",
-      "title": "Set the goalposts first",
-      "text": "Think of football. If you move the goalposts after the kick, any shot can be a goal, and the score means nothing. iD set its target before it knew how sales would go. That's called pre-set success criteria: the yes number and the check date, written down first."
+      "title": "Set the target first",
+      "text": "Decide what success means before you start the test. iD chose its target before it knew how sales would go. This is called pre-set success criteria: the number that means yes, and the date you will check it, written down first."
     },
     {
       "kind": "choice",
       "id": "hard-to-fake",
-      "prompt": "Musthafa counted packets sold, not packets sent to stores. Why does that matter so much?",
+      "prompt": "Musthafa counted packets sold, not packets sent to stores. Why was that important?",
       "options": [
         {
           "id": "a",
@@ -83,22 +83,22 @@
         }
       ],
       "answer": "c",
-      "why": "Exactly. You can push 100 packets into stores any day you like, but you can't make shoppers buy them. Pick a yes number that's hard to fake, and the test can't flatter you.",
+      "why": "Exactly. You can send 100 packets to stores whenever you want, but you cannot make shoppers buy them. Choose a yes number that only real customers can help you reach.",
       "wrong": {
-        "a": "They are easier to count, but they're also easy to fake. You could push 100 packets out tomorrow and 'pass'. Sales are decided by buyers, so they tell the truth.",
-        "b": "Stores don't mind either way. The point is for you: packets sent go up whenever you push them, but packets sold only go up when people really want them."
+        "a": "They are easier to count, but that does not prove customers want them. You could send 100 packets tomorrow and say you passed. Packets sold show what buyers actually chose.",
+        "b": "Stores do not decide this. Packets sent go up when you send more. Packets sold only go up when customers buy them."
       }
     },
     {
       "kind": "explain",
       "id": "home",
-      "title": "From their story to yours",
-      "text": "iD tested with a handful of stores before betting big, and you can do exactly the same with your own idea. Say you make homemade pickles and dream of opening a shop. Before you sign a lease, you take a stall at a Sunday market to test it."
+      "title": "Now try it with your idea",
+      "text": "iD started with a few stores before spending much more. You can do the same. Imagine you make homemade pickles and want to open a shop. Before renting a shop, you test your pickles at a Sunday market stall."
     },
     {
       "kind": "choice",
       "id": "cost-line",
-      "prompt": "The stall costs ₹6,000 a month, and each jar leaves you ₹50. With 4 Sundays a month, how many jars a Sunday pay the stall?",
+      "prompt": "The stall costs ₹6,000 a month. You earn ₹50 per jar. There are 4 Sundays. How many jars each Sunday pay for the stall?",
       "options": [
         {
           "id": "a",
@@ -114,7 +114,7 @@
         }
       ],
       "answer": "a",
-      "why": "Well done. ₹6,000 ÷ ₹50 is 120 jars a month, and 120 ÷ 4 Sundays is 30. So 30 jars only pays the stall. Your yes number has to sit above it, or you're working for free.",
+      "why": "Well done. ₹6,000 ÷ ₹50 is 120 jars a month. 120 ÷ 4 Sundays is 30. So 30 jars only pays for the stall. Your yes number must be higher if you also want to earn money.",
       "wrong": {
         "b": "I see what you did: ₹6,000 ÷ ₹50 = 120. But that's for the whole month, and there are 4 Sundays, so it's 30 jars each Sunday.",
         "c": "Not quite. ₹6,000 ÷ ₹50 = 120 jars a month, and split over 4 Sundays, that's 30 jars each Sunday."
@@ -123,7 +123,7 @@
     {
       "kind": "choice",
       "id": "yes-line",
-      "prompt": "Each jar leaves ₹50 and the stall costs ₹6,000. The shop only makes sense if you clear ₹4,000 after rent. Which yes line?",
+      "prompt": "Each jar leaves ₹50. Rent is ₹6,000 a month. You want ₹4,000 left after rent. What sales goal should you test?",
       "options": [
         {
           "id": "a",
@@ -139,16 +139,16 @@
         }
       ],
       "answer": "b",
-      "why": "Exactly. You need ₹6,000 for rent plus ₹4,000 left over, which is ₹10,000. At ₹50 a jar that's 200 jars a month, or 50 each Sunday. Now your number has a reason, it counts jars sold, and it has a date.",
+      "why": "Exactly. You need ₹6,000 for rent plus ₹4,000 left over. That is ₹10,000. At ₹50 a jar, that is 200 jars a month, or 50 each Sunday. Now you have a clear number and a date.",
       "wrong": {
         "a": "Tasting is free, so lots of people will do it. But your goal is ₹4,000 left after rent, and only paid jars get you there: 50 of them each Sunday.",
-        "c": "You're right that the line must sit above 30, but how far above? Your ₹4,000 goal answers that: ₹10,000 ÷ ₹50 is 200 jars a month, or 50 each Sunday, by week 8."
+        "c": "You are right that it must be above 30. But how much above? Your ₹4,000 goal gives the answer: ₹10,000 ÷ ₹50 is 200 jars a month, or 50 each Sunday, by week 8."
       }
     },
     {
       "kind": "choice",
       "id": "close-enough",
-      "prompt": "Your yes line was 50 jars a Sunday by week 8. You're selling 42. A friend says, 'Close enough, open the shop!' Your reply?",
+      "prompt": "Your goal was 50 jars each Sunday by week 8. You sell 42. A friend says, \"Open the shop anyway.\" What do you say?",
       "options": [
         {
           "id": "a",
@@ -156,7 +156,7 @@
         },
         {
           "id": "b",
-          "label": "Move the yes line to 42"
+          "label": "Change the goal to 42"
         },
         {
           "id": "c",
@@ -164,16 +164,16 @@
         }
       ],
       "answer": "c",
-      "why": "Exactly. At 42 jars you make 42 × ₹50 × 4 = ₹8,400 a month, which leaves ₹2,400 after rent. That's decent, but you decided ₹4,000 was the bar for a shop. Change one thing, like a new flavour or a better spot, and test again, just as iD kept fixing its batter.",
+      "why": "Exactly. At 42 jars, you make 42 × ₹50 × 4 = ₹8,400 a month. After rent, ₹2,400 is left. But you decided you need ₹4,000. Change one thing, such as the flavour or stall location, and test again, like iD fixed its batter.",
       "wrong": {
-        "a": "I see why 42 feels close. But it leaves ₹2,400 after rent, and you decided before the test that a shop needs ₹4,000. Don't let 'close' change the rule after you've seen the result.",
-        "b": "That's moving the goalposts after the kick. This round missed, but that doesn't mean the idea is dead; it means you haven't earned the big bet yet. Change one thing and test again."
+        "a": "I see why 42 feels close. But it leaves ₹2,400 after rent. Before the test, you decided the shop needs ₹4,000 left. Do not change that rule after seeing the result.",
+        "b": "You decided on 50 before the test. Changing it to 42 after seeing the result would make the test unfair. Change one thing and test again."
       }
     },
     {
       "kind": "choice",
       "id": "test-cost",
-      "prompt": "A shop would cost ₹3 lakh to set up. Your stall test costs ₹6,000 a month for 2 months. What share is that?",
+      "prompt": "A shop costs ₹3 lakh to set up. The stall costs ₹6,000 a month for 2 months. What percent of ₹3 lakh is that?",
       "options": [
         {
           "id": "a",
@@ -189,7 +189,7 @@
         }
       ],
       "answer": "b",
-      "why": "Exactly. 2 × ₹6,000 is ₹12,000, and ₹12,000 out of ₹3,00,000 is 4%, so you risk ₹4 to learn whether to risk ₹100. That's why a small test is a cheap option: you can stop, change course, or go big once it works.",
+      "why": "Exactly. 2 × ₹6,000 is ₹12,000. ₹12,000 out of ₹3,00,000 is 4%. So you spend ₹4 on the test for every ₹100 the shop would cost. A small test lets you learn before spending much more.",
       "wrong": {
         "a": "40% would be ₹1,20,000. The test is only ₹12,000, which is 4% of ₹3 lakh.",
         "c": "0.4% would be just ₹1,200. The test is ₹12,000, which is 4% of ₹3 lakh."
@@ -198,7 +198,7 @@
     {
       "kind": "sort",
       "id": "test-or-bet",
-      "prompt": "I'll show you six moves for your pickles. For each one, tell me: is it a small test, or a big bet?",
+      "prompt": "I will show you six things you could do for your pickle business. For each one, choose: small test or big bet?",
       "buckets": ["A small test", "A big bet"],
       "items": [
         {
@@ -226,7 +226,7 @@
           "bucket": 1
         }
       ],
-      "why": "Exactly. A test is cheap and easy to stop, while a bet locks your money in. Do the tests first, and let them earn you the bet."
+      "why": "Exactly. A small test costs less and is easy to stop. A big bet uses much more money and is harder to stop. Test first. Spend more only after the test works."
     },
     {
       "kind": "order",
@@ -236,18 +236,18 @@
         "Pick one small, cheap version",
         "Write the yes number and the date",
         "Run it, and count your numbers every Sunday",
-        "Check against the yes number on the date",
+        "On that date, compare the result with the yes number",
         "Grow, change or stop"
       ],
-      "why": "Well done. Because the yes number comes before the test, and you count every Sunday along the way, the numbers get to decide, not hope."
+      "why": "Well done. You choose the yes number before the test. Then you count every Sunday. On the check date, compare the result with your number."
     },
     {
       "kind": "gap",
       "id": "fill",
-      "text": "iD missed its date but never moved its target. Write the ___ that means yes ___ the test starts.",
+      "text": "Always, ___ you start a test, write down the ___ that means yes.",
       "bank": ["number", "before", "after", "hope"],
-      "answer": ["number", "before"],
-      "why": "Exactly. iD missed its date but never moved its target; it changed the batter instead. That's what pre-set success criteria do for you: they keep the test honest when hope wants to move the line."
+      "answer": ["before", "number"],
+      "why": "Exactly. iD missed its date but did not change its target. It changed the batter instead. Pre-set success criteria help you judge the test by the result, not by what you hoped would happen."
     }
   ],
   "summary": [

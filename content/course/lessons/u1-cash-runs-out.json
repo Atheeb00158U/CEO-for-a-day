@@ -9,13 +9,13 @@
       "kind": "explain",
       "id": "hook",
       "media": "img:ls_jet_grounded",
-      "text": "Let me start with a story. In December 2018, Jet Airways had 119 planes flying across India. Four months later, not one of them could take off. Before I tell you why, have a guess."
+      "text": "Let me start with a story. In December 2018, Jet Airways had 119 planes flying across India. Four months later, none of them could fly. Before I tell you why, have a guess."
     },
     {
       "kind": "choice",
       "id": "guess",
       "guess": true,
-      "prompt": "What do you think grounded an airline that big?",
+      "prompt": "What do you think stopped such a big airline from flying?",
       "options": [
         {
           "id": "a",
@@ -31,13 +31,13 @@
         }
       ],
       "answer": "c",
-      "why": "It simply ran out of cash. Most people guess something dramatic, but the real reason was ordinary: Jet couldn't pay for fuel, and its pilots hadn't been paid for months."
+      "why": "It ran out of cash. Most people expect a big reason, but the problem was simple: Jet could not pay for fuel, and its pilots had not been paid for months."
     },
     {
       "kind": "explain",
       "id": "burn",
-      "title": "The slow leak",
-      "text": "Now you know what happened, but how does a huge airline actually run out of cash? Month after month, more money went out than came in. Fuel, salaries and plane rent all had to be paid, the ticket money wasn't enough, and so Jet's pile of cash kept shrinking."
+      "title": "Cash going down",
+      "text": "So how did such a big airline run out of cash? Each month, more money went out than came in. Jet had to pay for fuel, salaries and plane rent. Ticket money was not enough, so the cash in its bank kept going down."
     },
     {
       "kind": "explain",
@@ -64,7 +64,7 @@
         }
       ],
       "answer": "b",
-      "why": "Exactly. ₹30 lakh divided by ₹5 lakh is 6 months, and that's the whole runway sum: the cash you have, divided by the cash you lose each month. If nothing changes, this owner has six months to fix the business or find more money.",
+      "why": "Exactly. ₹30 lakh divided by ₹5 lakh is 6 months. That is the runway sum: cash in the bank divided by cash lost each month. If nothing changes, this owner has 6 months to fix the business or get more money.",
       "wrong": {
         "a": "Close. Let me show you the sum: ₹30 lakh divided by ₹5 lakh is 6, so if nothing changes, the cash lasts 6 months.",
         "c": "Not quite. ₹30 lakh is the cash you have, not the number of months. Divide it by the ₹5 lakh lost each month, and you get 6 months."
@@ -81,7 +81,7 @@
         },
         {
           "id": "b",
-          "label": "The losses hadn't stopped, so the loan would burn too"
+          "label": "The losses hadn't stopped, so the loan would also run out"
         },
         {
           "id": "c",
@@ -89,17 +89,17 @@
         }
       ],
       "answer": "b",
-      "why": "Exactly. ₹400 crore could buy Jet more time, but it wouldn't fix the leak, and with the losses still running, the new money would vanish too. The banks said no, and on 17 April 2019 Jet flew its last flight.",
+      "why": "Exactly. ₹400 crore could give Jet more time, but it would not stop the losses. If Jet kept losing cash, this new money would also run out. The banks said no, and on 17 April 2019 Jet flew its last flight.",
       "wrong": {
-        "a": "Banks do lend to airlines. But think like the lender for a moment: what happens after I hand you the money? If the business keeps losing cash, my loan disappears with it.",
-        "c": "₹400 crore could pay for a lot of fuel and wages. The bigger question was what came after, because if Jet kept losing cash, the new money would only buy a little time."
+        "a": "Banks do lend to airlines. But think like the bank. If I lend you money and your business keeps losing cash, how will you pay me back?",
+        "c": "₹400 crore could pay for a lot of fuel and wages. But if Jet kept losing cash, the new money would only help for some time."
       }
     },
     {
       "kind": "explain",
       "id": "home",
-      "title": "From their story to yours",
-      "text": "Jet's story has crores and planes, but the same leak quietly closes small shops every day, and most owners never see it coming. So let's shrink it to your size. Say you've opened a small gym, and let's find out how long your money would last."
+      "title": "Now look at your business",
+      "text": "Jet had planes and crores of rupees, but the same problem can close a small shop too. So let us use a smaller example. Imagine you have opened a small gym. Let us see how long your cash will last."
     },
     {
       "kind": "choice",
@@ -129,7 +129,7 @@
     {
       "kind": "choice",
       "id": "longer",
-      "prompt": "Your gym has ₹3 lakh and loses ₹50,000 a month. Which of these stretches your runway the most?",
+      "prompt": "Your gym has ₹3 lakh and loses ₹50,000 a month. Which choice gives you the most runway?",
       "options": [
         {
           "id": "a",
@@ -145,10 +145,10 @@
         }
       ],
       "answer": "a",
-      "why": "Exactly. Your monthly loss falls from ₹50,000 to ₹25,000, so the same ₹3 lakh now lasts 12 months. Notice that you didn't add any petrol. You made the leak smaller, so every rupee already in the tank goes further.",
+      "why": "Exactly. Your monthly loss falls from ₹50,000 to ₹25,000, so the same ₹3 lakh now lasts 12 months. You did not add more cash. You reduced the monthly loss, so the cash you already have lasts longer.",
       "wrong": {
-        "b": "That does help, since ₹3.5 lakh divided by ₹50,000 gives you 7 months. But next month the same leak carries on. Cutting ₹25,000 of costs shrinks the leak every month and gives you 12.",
-        "c": "That's useful too. Ten members bring in ₹10,000 more, so your loss falls to ₹40,000 and you get about 7½ months. Cutting ₹25,000 of costs shrinks the loss further and gives you 12."
+        "b": "That helps. ₹3.5 lakh divided by ₹50,000 gives you 7 months. But you still lose ₹50,000 every month. Cutting ₹25,000 of costs lowers the loss every month and gives you 12 months.",
+        "c": "That helps too. Ten members bring in ₹10,000 more, so your loss falls to ₹40,000. That gives you about 7½ months. Cutting ₹25,000 of costs lowers the loss more and gives you 12 months."
       }
     },
     {
@@ -162,11 +162,11 @@
           "bucket": 0
         },
         {
-          "text": "A company promising 20 memberships next month",
+          "text": "A company says it will buy 20 memberships next month",
           "bucket": 1
         },
         {
-          "text": "₹30,000 a member owes you, due in 60 days",
+          "text": "₹30,000 a member must pay you in 60 days",
           "bucket": 1
         },
         {
@@ -178,39 +178,39 @@
           "bucket": 1
         },
         {
-          "text": "A GST refund 'coming soon'",
+          "text": "A GST refund you expect soon",
           "bucket": 1
         }
       ],
-      "why": "Exactly. The ₹8,000 by UPI and the ₹12,000 in your account make the ₹20,000 you need. The other things may be worth money someday, but you can't spend them this Saturday, and runway only counts cash you can use."
+      "why": "Exactly. The ₹8,000 by UPI and the ₹12,000 in your account make the ₹20,000 you need. The other things may bring money later, but you cannot spend that money this Saturday. Runway counts only cash you can use now."
     },
     {
       "kind": "scenario",
       "id": "big-deal",
-      "setup": "Then a big chance arrives. A local company wants memberships for 40 staff, worth ₹40,000 a month. But you'd need ₹1.5 lakh of new machines first, and the company usually pays only after three months.",
-      "question": "You have 6 months of runway. How do you chase this deal without risking the gym?",
+      "setup": "A local company offers you a big deal. It wants memberships for 40 staff, worth ₹40,000 a month. But you must first buy ₹1.5 lakh of new machines. The company usually pays only after three months.",
+      "question": "You have 6 months of runway. What can you do to take this deal without putting the gym at risk?",
       "options": [
         {
           "id": "a",
           "label": "Say yes and buy the machines today",
           "grade": "bad",
-          "outcome": "Your bank falls from ₹3 lakh to ₹1.5 lakh overnight, and your old ₹50,000 loss carries on each month. By the time the company's first payment is due, that ₹1.5 lakh is gone.",
-          "why": "The deal makes money later, but the cash leaves much earlier, and that's the trap. Before saying yes to a big order, ask what happens to your bank balance before the customer pays.",
+          "outcome": "Your bank falls from ₹3 lakh to ₹1.5 lakh at once. You still lose ₹50,000 each month. After three months, when the company's first payment is due, that ₹1.5 lakh is gone.",
+          "why": "The deal brings money later, but you must pay much earlier. Before saying yes to a big order, check how much cash will be left before the customer pays.",
           "better": "Ask for the first three months in advance, or rent the machines."
         },
         {
           "id": "b",
           "label": "Say yes, if they pay three months up front",
           "grade": "great",
-          "outcome": "They pay ₹1.2 lakh up front, which is three months of fees, so the machines take only ₹30,000 of your own cash. After that, ₹40,000 a month comes in, and your monthly gap shrinks from ₹50,000 to ₹10,000.",
-          "why": "Well played. You changed when the cash arrives, not what the deal is worth, so the advance paid for the machines instead of your ₹3 lakh."
+          "outcome": "They pay ₹1.2 lakh first. That is three months of fees. So you use only ₹30,000 of your own cash for the machines. After that, ₹40,000 comes in each month, and your monthly loss falls from ₹50,000 to ₹10,000.",
+          "why": "Exactly. You changed when the customer pays. The deal is still worth the same amount. But now the advance pays for most of the machines instead of using your ₹3 lakh."
         },
         {
           "id": "c",
           "label": "Say no. It's too risky",
           "grade": "ok",
           "outcome": "You keep your ₹3 lakh, but the ₹50,000 monthly loss carries on, your runway stays at 6 months, and the company takes the deal to another gym.",
-          "why": "That's safer than spending blindly, but there was a better move: change the payment terms before giving up the deal.",
+          "why": "That is safer than spending without checking. But there was a better choice: ask the company to pay earlier before you give up the deal.",
           "better": "Ask for an advance before you say no."
         }
       ]
@@ -221,7 +221,7 @@
       "text": "A business doesn't shut when its profit runs out. It shuts when its ___ runs out, and the months it has left are its ___.",
       "bank": ["cash", "runway", "profit", "sales"],
       "answer": ["cash", "runway"],
-      "why": "Exactly. In April 2019, Jet still had its planes and its loyal flyers, but none of that could pay for that day's fuel and wages. When usable cash hits zero, a business can stop while it still owns valuable things, and that's why I want you watching your runway."
+      "why": "Exactly. In April 2019, Jet still had planes and loyal customers. But those things could not pay for fuel and wages that day. When usable cash becomes zero, a business can stop even if it still owns valuable things. That is why I want you to watch your runway."
     }
   ],
   "summary": [

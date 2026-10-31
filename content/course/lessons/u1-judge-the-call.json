@@ -9,17 +9,17 @@
       "kind": "explain",
       "id": "hook",
       "media": "img:ls_last_over",
-      "text": "Let me start with a cricket story. It's the 2007 T20 World Cup final against Pakistan. Pakistan need 13 runs off the last over, with one wicket left. Harbhajan, the obvious choice, was hit for three sixes in his last over, so Dhoni throws the ball to Joginder Sharma."
+      "text": "Let me start with a cricket story. It's the 2007 T20 World Cup final against Pakistan. Pakistan need 13 runs from the last over, with one wicket left. Harbhajan was the usual choice, but he gave away three sixes in his last over. So Dhoni picks Joginder Sharma."
     },
     {
       "kind": "choice",
       "id": "guess",
       "guess": true,
-      "prompt": "Joginder had played only a handful of games for India. Before I tell you what happened, what do you make of Dhoni's call?",
+      "prompt": "Joginder had played very few games for India. Before I tell you what happened, do you think Dhoni made a good choice?",
       "options": [
         {
           "id": "a",
-          "label": "A sensible choice, given his options"
+          "label": "A sensible choice with the options he had"
         },
         {
           "id": "b",
@@ -27,11 +27,11 @@
         },
         {
           "id": "c",
-          "label": "A wild gamble"
+          "label": "A very risky choice"
         }
       ],
       "answer": "a",
-      "why": "Here's what happened. The first ball was a wide, the second a swing and a miss, and the third a full toss that Misbah hit for six. Then, with six needed off four balls, Misbah tried a scoop, and Sreesanth caught it. India won by five runs, and the call became famous."
+      "why": "Here's what happened. The first ball was a wide. Misbah missed the next ball, then hit a full toss for six. With six needed from four balls, Misbah tried a scoop shot. Sreesanth caught it. India won by five runs, and Dhoni's choice became famous."
     },
     {
       "kind": "choice",
@@ -52,17 +52,17 @@
         }
       ],
       "answer": "b",
-      "why": "Exactly. Dhoni chose before the over began, and he knew the same things in both stories. Only where one ball landed has changed. The papers would have called it a blunder, but they'd have been judging the luck, not the thinking.",
+      "why": "Exactly. Dhoni chose before the over began, and he knew the same things in both stories. Only the result of one ball changed. Newspapers would have called it a bad choice, but they would be judging the result, not Dhoni's thinking.",
       "wrong": {
         "a": "I see what you did: you judged the call by the final score. But Dhoni chose before the over began, and nothing he knew then had changed. Only where one ball landed was different.",
-        "c": "I can see why you'd meet in the middle. But luck can't make a choice a little worse after it's made. Dhoni knew the same things either way, so it was the same call."
+        "c": "I can see why you chose the middle answer. But luck cannot make a choice worse after it is made. Dhoni knew the same things either way, so it was the same choice."
       }
     },
     {
       "kind": "explain",
       "id": "rule",
       "title": "Resulting",
-      "text": "Calling it a blunder would have been a trap. Think of two students: one copies and gets full marks, while another truly understands but slips once. Marks alone won't tell you who chose better. The poker player Annie Duke calls this trap resulting: judging a decision only by what happened."
+      "text": "Calling it a bad choice would be a mistake. Imagine two students. One copies and gets full marks. Another understands but makes one mistake. Marks alone do not show who made the better choice. Poker player Annie Duke calls this mistake resulting: judging a decision only by what happened."
     },
     {
       "kind": "sort",
@@ -79,7 +79,7 @@
           "bucket": 1
         },
         {
-          "text": "Joginder had closed out the semi-final",
+          "text": "Joginder had bowled the last over in the semi-final",
           "bucket": 0
         },
         {
@@ -97,12 +97,12 @@
       "kind": "explain",
       "id": "home",
       "title": "From their story to yours",
-      "text": "Dhoni made one big call in front of millions. You'll make dozens of smaller ones, and some good calls will still go wrong. The danger is learning the wrong lesson from them. So say you run a lunch tiffin service for offices, and let's test your judgement."
+      "text": "Dhoni made one big choice in front of millions. You will make many smaller choices, and some good ones will still go wrong. You must not learn the wrong lesson from them. Imagine you run a lunch tiffin service for offices. Let's test your judgement."
     },
     {
       "kind": "choice",
       "id": "fair",
-      "prompt": "Let's try one. A fair stall costs ₹10,000, and 1 time in 4 it wins an order that leaves you ₹60,000. What's one fair worth?",
+      "prompt": "A fair stall costs ₹10,000. 1 time in 4, you get an order that leaves you ₹60,000. On average, what do you make per fair?",
       "options": [
         {
           "id": "a",
@@ -118,35 +118,35 @@
         }
       ],
       "answer": "b",
-      "why": "Well done. Spread the ₹60,000 win across four fairs and that's ₹15,000 a fair on average. Each fair costs ₹10,000, so you're left with ₹5,000 a fair. It's a good bet, even though most fairs bring no order.",
+      "why": "Well done. ₹60,000 spread across four fairs is ₹15,000 per fair on average. Each fair costs ₹10,000, so you make ₹5,000 per fair on average. It is a good choice even though most fairs bring no order.",
       "wrong": {
         "a": "I see what you did: ₹60,000 minus the ₹10,000 stall. But you win that ₹60,000 only 1 time in 4. Spread it across four fairs, that's ₹15,000 each, then take off the ₹10,000: ₹5,000.",
-        "c": "That's what one losing fair costs, and you're right that most fairs lose. But the wins pay for the misses and more: ₹60,000 ÷ 4 is ₹15,000 a fair on average, and minus ₹10,000, that leaves ₹5,000."
+        "c": "That's what you lose at one fair with no order, and most fairs will have no order. But ₹60,000 ÷ 4 is ₹15,000 per fair on average. Take away ₹10,000, and you get ₹5,000."
       }
     },
     {
       "kind": "choice",
       "id": "two-misses",
-      "prompt": "Here's where resulting bites. A fair wins only 1 time in 4. How often will two fairs in a row both win nothing?",
+      "prompt": "You go to two fairs and get no order at either. Your partner says, \"Fairs don't work. Let's stop.\" What do you say?",
       "options": [
         {
           "id": "a",
-          "label": "About 6 times in 100"
-        },
-        {
-          "id": "b",
-          "label": "About 25 times in 100"
+          "label": "Agree. Two empty fairs prove it"
         },
         {
           "id": "c",
-          "label": "About 56 times in 100"
+          "label": "Try a bigger, costlier fair next"
+        },
+        {
+          "id": "b",
+          "label": "Not yet. Two empty fairs are normal"
         }
       ],
-      "answer": "c",
-      "why": "Exactly. ¾ × ¾ is 9/16, about 56 times in 100, so two empty fairs in a row are more likely than not. If you judged the bet after those two, you'd drop something that earns you ₹5,000 a fair on average.",
+      "answer": "b",
+      "why": "Exactly. A fair gets an order only 1 time in 4, so most fairs bring nothing, and two empty fairs in a row happen more often than not. Judge the fairs after many tries, not two. Over time, each fair still makes you ₹5,000 on average.",
       "wrong": {
-        "a": "That's the chance of two wins in a row: ¼ × ¼ = 1/16, about 6 in 100. Misses are the common case: ¾ × ¾ = 9/16, about 56 in 100.",
-        "b": "I see what you did: you used one fair's chance of winning, 1 in 4. Missing once is ¾, and missing twice in a row is ¾ × ¾ = 9/16, about 56 times in 100."
+        "a": "I see why: two empty fairs feel like proof. But a fair gets an order only 1 time in 4, so two empty fairs in a row happen more often than not. Judge it after many fairs, not two.",
+        "c": "That changes the bet before you know if it works. A fair gets an order only 1 time in 4, so two empty fairs are normal. Keep going, and judge it after many fairs."
       }
     },
     {
@@ -185,7 +185,7 @@
         "Ask: was it the thinking, or the luck?",
         "Change your method only if the thinking was wrong"
       ],
-      "why": "Well done. You rebuild the decision as it looked at the time before you let the result in, and only then ask what it teaches you. That's how we judged Dhoni: what he knew first, the scoop afterwards."
+      "why": "Well done. First, look at the decision using only what you knew at that time. Then look at the result and ask what it teaches you. We did the same with Dhoni: first what he knew, then what happened."
     },
     {
       "kind": "scenario",
@@ -198,7 +198,7 @@
           "label": "Agree. Only old clients from now on",
           "grade": "bad",
           "outcome": "You're safe for a while. Then two old offices move away, and with no new clients coming in, your kitchen runs half empty.",
-          "why": "One bad result made you drop a sound method. That's resulting, and it shuts the door on every good client who came after.",
+          "why": "One bad result made you stop using a good method. That's resulting. You would also stop taking good new clients.",
           "better": "Keep checking new clients, and ask them for the first month in advance."
         },
         {
@@ -206,14 +206,14 @@
           "label": "Keep the checks, and ask new clients for a month's advance",
           "grade": "great",
           "outcome": "New offices keep signing up. Each one pays its first month up front, so if one shuts down, you lose far less.",
-          "why": "Well played. One failed client doesn't prove your checks were bad, so you keep them. But the loss did show you a risk you can shrink: how much you're owed before a new client pays."
+          "why": "Well played. One failed client doesn't prove your checks were bad, so you keep them. But the loss showed one risk you can reduce: how much a new client can owe you before paying."
         },
         {
           "id": "c",
           "label": "Ignore it. Bad luck happens",
           "grade": "ok",
-          "outcome": "You carry on exactly as before, so the next client who shuts down can leave you ₹36,000 short again.",
-          "why": "You may be right that nobody could have seen the shutdown coming. But bad luck doesn't mean there's nothing to learn, and this loss showed you one thing you control: when new clients pay you.",
+          "outcome": "You continue exactly as before, so the next client who shuts down can leave you ₹36,000 short again.",
+          "why": "You may be right that nobody could have known the client would shut down. But you can still learn from the loss. It showed one thing you can control: when new clients pay you.",
           "better": "Ask new clients for the first month in advance."
         }
       ]
@@ -221,7 +221,7 @@
     {
       "kind": "gap",
       "id": "fill",
-      "text": "Caught or four, Dhoni's call was the same. Judge a call by what you ___ then, not by the ___.",
+      "text": "Win or lose, Dhoni's call was the same. Judge a call by what you ___ then, not by the ___.",
       "bank": ["knew", "result", "hoped", "effort"],
       "answer": ["knew", "result"],
       "why": "Exactly. Dhoni had to choose with what he knew then, and whether Misbah's scoop was caught or went for four couldn't change that choice afterwards. Judge your own calls the same way: first ask what you knew, then ask what the result can teach you."

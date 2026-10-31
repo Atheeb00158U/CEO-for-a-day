@@ -23,7 +23,7 @@
         },
         {
           "id": "b",
-          "label": "A bigger rival took its buyers"
+          "label": "A bigger company took its customers"
         },
         {
           "id": "c",
@@ -31,24 +31,24 @@
         }
       ],
       "answer": "c",
-      "why": "It was each order. People did order, thousands of times a day, but the founder later wrote that the cash burnt on every single order kept rising. So every new order made the loss bigger, not smaller."
+      "why": "It was each order. Thousands of people ordered. But the founder later wrote that they lost more and more money on each order. So more orders meant a bigger loss."
     },
     {
       "kind": "explain",
       "id": "leak",
-      "title": "The costs that ride along",
-      "text": "Now you know what happened, but how can an order lose money when the customer pays for every packet? The groceries were only one cost. Every order also carried a discount and a rider's trip, so let's look at what one order really left behind."
+      "title": "The costs that come with each order",
+      "text": "Now you know what happened. But how can an order lose money when the customer pays? The groceries were only one cost. Each order also had a discount and delivery cost. So let's see what one order really leaves you."
     },
     {
       "kind": "explain",
       "id": "margin",
-      "title": "What one order leaves",
-      "text": "Think of each order as a bucket of water you carry home. The price fills it, and every cost that order brings, like stock, delivery, a discount or packing, is a hole. What reaches home is called the contribution margin, and rent and salaries still come out of it."
+      "title": "What you keep from one order",
+      "text": "Start with the money from one order. Then remove every cost caused by that order, like stock, delivery, discounts and packing. The money left is called the contribution margin. You still need this money to pay costs like rent and salaries."
     },
     {
       "kind": "choice",
       "id": "try-it",
-      "prompt": "Let's try one. An app sells ₹500 of groceries and keeps ₹80 after paying the shop. Delivery costs ₹50, the discount ₹40. What's left?",
+      "prompt": "An app sells ₹500 of groceries. After paying the shop, it keeps ₹80. Delivery costs ₹50, and the buyer gets ₹40 off. What's left?",
       "options": [
         {
           "id": "a",
@@ -64,7 +64,7 @@
         }
       ],
       "answer": "c",
-      "why": "Exactly. ₹80 minus ₹50 for delivery and ₹40 for the discount leaves −₹10, so this order loses ₹10. A ₹500 bill looks healthy, but the contribution margin tells you the truth.",
+      "why": "Exactly. ₹80 minus ₹50 for delivery and ₹40 for the discount leaves −₹10. So this order loses ₹10. The customer paid ₹500, but you still lost money on the order.",
       "wrong": {
         "a": "I see what you did: ₹80 is what's left after the shop is paid. But delivery and the discount come out of that same ₹80, and together they cost ₹90, so the order loses ₹10.",
         "b": "You took off delivery, and ₹80 − ₹50 is ₹30. The ₹40 discount comes out of that too, which leaves −₹10, a loss."
@@ -77,7 +77,7 @@
       "options": [
         {
           "id": "a",
-          "label": "The loss shrinks, because the app is bigger"
+          "label": "The loss gets smaller because the app is bigger"
         },
         {
           "id": "b",
@@ -85,11 +85,11 @@
         },
         {
           "id": "c",
-          "label": "It breaks even"
+          "label": "No profit and no loss"
         }
       ],
       "answer": "b",
-      "why": "Right. At ₹10 lost per order, 20,000 orders lose ₹2 lakh a day, and 40,000 orders lose ₹4 lakh. Growing a losing order only grows the loss, so before you chase more orders, make sure each one leaves something behind.",
+      "why": "Right. At ₹10 lost per order, 20,000 orders lose ₹2 lakh a day, and 40,000 orders lose ₹4 lakh. More losing orders mean a bigger loss. So first make sure each order leaves you some money.",
       "wrong": {
         "a": "I see why you'd think that, because big businesses often get cheaper costs. But here each order still loses ₹10, so twice the orders means twice the loss.",
         "c": "Nothing changes for a single order: it still loses ₹10. More orders just add up more losses, so the loss doubles."
@@ -99,7 +99,7 @@
       "kind": "explain",
       "id": "home",
       "title": "From their story to yours",
-      "text": "PepperTap's mistake isn't only a big-startup problem. Small sellers make it every day, because the price on the tag looks like profit. So let's put you in their shoes. Say you sell your own T-shirts on Instagram, and let's work out what one order really leaves you."
+      "text": "PepperTap's problem can happen in a small business too. A high selling price can make a sale look profitable. But you must count all its costs. Imagine you sell your own T-shirts on Instagram. Let's see what one order leaves you."
     },
     {
       "kind": "choice",
@@ -120,16 +120,16 @@
         }
       ],
       "answer": "b",
-      "why": "Well done. ₹319 minus ₹70, ₹15, ₹10 and ₹150 leaves ₹74. Notice that the ads alone ate almost half of what you thought you kept, and you'd never see that on the price tag.",
+      "why": "Well done. ₹319 minus ₹70, ₹15, ₹10 and ₹150 leaves ₹74. The ads cost almost half of the ₹319 you had left after making the shirt. You would not know this just by looking at the selling price.",
       "wrong": {
-        "a": "I see what you did: you took off shipping, packing and the fee. But you also paid ₹150 in ads to find this buyer, so that comes off too, and you're left with ₹74.",
-        "c": "That's price minus the shirt, which is where most sellers stop. But every order also brings shipping, packing, a fee and ads, and after those you keep ₹74."
+        "a": "I see what you did: you removed shipping, packing and the fee. But you also spent ₹150 on ads to get this buyer. Remove that too, and you are left with ₹74.",
+        "c": "That's the price minus the cost of making the shirt. But you must also remove shipping, packing, the fee and ads. After all these costs, you keep ₹74."
       }
     },
     {
       "kind": "choice",
       "id": "refused",
-      "prompt": "A delivered order leaves you ₹74. One buyer in five refuses the parcel, which costs you ₹305. What do five orders leave?",
+      "prompt": "Of 5 orders, 4 arrive and leave you ₹74 each. 1 buyer refuses the parcel, and that costs you ₹305. What do all 5 leave?",
       "options": [
         {
           "id": "a",
@@ -145,7 +145,7 @@
         }
       ],
       "answer": "a",
-      "why": "That's it. The four delivered orders leave 4 × ₹74 = ₹296, but the refused one cost ₹305, so together the five leave −₹9. A sale that looks good on its own can turn into a loss once failed orders count, which is why so many sellers ask buyers to pay first.",
+      "why": "That's it. The four delivered orders leave 4 × ₹74 = ₹296. The refused order costs ₹305. So the five orders together leave −₹9. This is why many sellers ask buyers to pay before delivery.",
       "wrong": {
         "b": "You counted the four delivered orders correctly: they leave ₹296. But the refused parcel didn't just earn nothing; it cost ₹305, so the five orders together leave −₹9.",
         "c": "I see what you did: 5 × ₹74. But only four orders were delivered, and they leave ₹296, while the refused parcel cost ₹305. Together, that's −₹9."
@@ -170,10 +170,10 @@
         }
       ],
       "answer": "a",
-      "why": "Yes, the shirt. 20% of ₹180 is ₹36, more than the ads (₹30) or shipping (₹14). In real life there's no wand, so start with your biggest cost: ask your shirt maker for a better price before you fight the courier.",
+      "why": "Yes, the shirt. 20% of ₹180 is ₹36, more than the ads (₹30) or shipping (₹14). In real life, start with your biggest cost. Ask your shirt maker for a lower price before trying to reduce shipping.",
       "wrong": {
-        "b": "Close, ads are a big cost too. But 20% of ₹150 is ₹30, and 20% of the ₹180 shirt is ₹36. The bigger the cost, the more the same cut saves you.",
-        "c": "Many sellers think of shipping first, because the courier bill is easy to see. But 20% of ₹70 is only ₹14. The same cut on the ₹180 shirt saves ₹36."
+        "b": "Close. Ads are a big cost too. But 20% of ₹150 is ₹30, while 20% of the ₹180 shirt is ₹36. Cutting 20% from the bigger cost saves more money.",
+        "c": "You may choose shipping because you see that bill often. But 20% of ₹70 is only ₹14. Cutting 20% from the ₹180 shirt saves ₹36."
       }
     },
     {
@@ -195,9 +195,9 @@
         }
       ],
       "answer": "c",
-      "why": "Well done. The plain shirt earns 15 × ₹74 = ₹1,110 a week, while the printed one earns 10 × ₹130 = ₹1,300. A fast seller can earn less than a slow one, so count rupees per week, not shirts.",
+      "why": "Well done. The plain shirt earns 15 × ₹74 = ₹1,110 a week. The printed one earns 10 × ₹130 = ₹1,300. Selling more shirts does not always mean earning more money. Count the money each product leaves per week.",
       "wrong": {
-        "a": "I see why: more shirts feels like more money. But 15 × ₹74 is ₹1,110, while 10 × ₹130 is ₹1,300, so the slower shirt earns more.",
+        "a": "I see why: selling more shirts can look better. But 15 × ₹74 is ₹1,110, while 10 × ₹130 is ₹1,300. So the printed shirt earns more.",
         "b": "Work out each one: 15 × ₹74 = ₹1,110 and 10 × ₹130 = ₹1,300. The printed shirt earns ₹190 more a week."
       }
     },
@@ -205,40 +205,40 @@
       "kind": "scenario",
       "id": "reseller",
       "setup": "Then a shop owner from Surat calls. She wants 100 of your shirts a month at ₹350 each. She'll collect them herself, so there's no shipping, no ads and no refused parcels, and you'd only pack them, at ₹15 a shirt.",
-      "question": "₹350 is far below your ₹499 price. What do you do?",
+      "question": "₹350 is much less than your ₹499 price. Should you take this order?",
       "options": [
         {
           "id": "a",
           "label": "Say no. I'd lose ₹149 a shirt",
           "grade": "bad",
-          "outcome": "She buys from another maker. You keep selling online at ₹499, where a good order leaves you ₹74, and the ₹15,500 a month her order would have left you goes to someone else.",
-          "why": "You compared prices, not what each sale leaves. ₹350 − ₹180 − ₹15 = ₹155, which is double what a ₹499 online order leaves you.",
+          "outcome": "She buys from another maker. You keep selling online at ₹499, where one delivered order leaves you ₹74. Her order would have left you ₹15,500 a month, but you lose that order.",
+          "why": "You compared the two selling prices. But you should compare what each sale leaves you. ₹350 − ₹180 − ₹15 = ₹155. That is more than double the ₹74 an online order leaves.",
           "better": "Work out what each shirt leaves before you say no."
         },
         {
           "id": "b",
-          "label": "Work out what each shirt leaves, then decide",
+          "label": "Say yes. With no shipping or ads, it pays",
           "grade": "great",
           "outcome": "₹350 minus the ₹180 shirt and ₹15 packing leaves ₹155 a shirt, more than double the ₹74 an online order leaves. You say yes, and 100 shirts leave you ₹15,500 a month.",
-          "why": "Well played. A lower price with fewer holes in the bucket can leave you more than a high price with many."
+          "why": "Well done. A lower selling price can leave you more money when that sale has fewer costs."
         },
         {
           "id": "c",
           "label": "Say yes only if she pays ₹499",
           "grade": "ok",
           "outcome": "She says no and stops replying. A week later you agree to ₹350 after all, but she has already given half the order to another maker, so 50 shirts leave you ₹7,750 a month.",
-          "why": "You pushed on the price when the margin was already good, and that cost you half the order.",
-          "better": "Count the margin first, so you know when a price is already good."
+          "why": "You asked for a higher price even though ₹350 already left you a good amount. Because of that, you lost half the order.",
+          "better": "First work out what each sale leaves you. Then you will know if the price is good."
         }
       ]
     },
     {
       "kind": "gap",
       "id": "fill",
-      "text": "Price minus stock isn't profit. What one ___ leaves after every cost it causes is its contribution ___.",
+      "text": "Price minus stock cost is not profit. What one ___ leaves after every cost it causes is its contribution ___.",
       "bank": ["order", "margin", "month", "price"],
       "answer": ["order", "margin"],
-      "why": "Exactly. PepperTap had 20,000 orders a day, but more orders can't rescue an order that loses money. What each sale leaves is what pays your rent and wages, so before you chase more sales, I want you to check that one sale leaves you something."
+      "why": "Exactly. PepperTap had 20,000 orders a day. But more orders cannot fix an order that loses money. The money each sale leaves helps pay rent and wages. So before you try to get more sales, check that each sale leaves you some money."
     }
   ],
   "summary": [
