@@ -57,7 +57,9 @@ next five Hot Seats should be Indian and fill Units 1–4: **Nirma vs Surf, Flip
   uses FSRS (`ts-fsrs`): fewer reviews than older systems for the same memory, and it copes with missed days.
 - **XP, streaks, quests, leagues** carry on. A 2-minute review keeps the streak. Lesson and review XP are
   capped in leagues so nobody wins by farming cards.
-- **Narration:** only the hook and the takeaway are spoken, with a mute that stays off once set.
+- **Narration (Atheeb, 1 Nov 2026):** every lesson is narrated and shown as text, like Hot Seats: each teaching
+  screen, question and feedback line has pre-made audio (narrator and advisor voices), with a mute that stays
+  off once set. The text is always on screen, so players can read instead.
 
 ## How it fits the code (from `research/code-fit.md`)
 - Content: `content/course/course.json` (units in order, each with lessons and Hot Seats) and
