@@ -4,8 +4,8 @@ Lesson hook images, prepared like `npm run media` does (webp, 1080 px wide at mo
 
 | Media | Lesson | Source | What it shows |
 |---|---|---|---|
-| ls_jet_grounded | u1-cash-runs-out | to generate (ChatGPT) | A plain, unmarked jet parked alone at dusk. |
-| ls_grocery_rider | u1-hidden-costs | to generate (ChatGPT) | A night delivery rider with plain grocery bags. |
-| ls_cane_farmer | u1-frozen-cash | to generate (ChatGPT) | A cane farmer waiting with his cart outside a mill gate. |
-| ls_last_over | u1-judge-the-call | to generate (ChatGPT) | A bowler at the top of his run-up in a packed night stadium. |
-| ls_book_parcels | u1-test-small | to generate (ChatGPT) | Books and brown-paper parcels in a small 2007 flat. |
+| ls_jet_grounded | u1-cash-runs-out | generated (ChatGPT, 2026-10-31) | A plain white jet with no livery parked alone at an Indian airport at sunset, engine covers on. |
+| ls_grocery_rider | u1-hidden-costs | generated (ChatGPT, 2026-10-31) | A helmeted rider on his scooter under a streetlight at night, checking his phone, two paper grocery bags on the seat (2016). |
+| ls_cane_farmer | u1-frozen-cash | generated (ChatGPT, 2026-10-31) | A farmer in kurta and dhoti leaning on his bullock cart of cane in a line of carts outside a mill gate, late-afternoon light (2019). |
+| ls_last_over | u1-judge-the-call | generated (ChatGPT, 2026-10-31) | A packed floodlit stadium at dusk seen from the stands; a small, faceless bowler walks back to his mark (2007). |
+| ls_book_parcels | u1-test-small | generated (ChatGPT, 2026-10-31) | Stacks of books and string-tied brown-paper parcels on the floor of a sunny flat, a beige CRT computer on the desk (2007). |
