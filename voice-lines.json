@@ -9365,44 +9365,124 @@
   "text": "Fixing the leak beats topping up the tank, and every big deal should be checked against your runway."
  },
  {
-  "id": "3894c107a9a8",
+  "id": "007c7c4ee33e",
   "voice": "narrator",
-  "text": "September 2019: UP's sugar mills owed cane farmers ₹6,480 crore. The rule says pay in 14 days. Piyush had waited four months for ₹80,000."
+  "text": "Let me start with a story from Uttar Pradesh. A cane farmer, Piyush Kumar, sold his crop to a sugar mill, and by May 2019 the mill owed him ₹80,000. The law says a mill paying after 14 days must add interest, yet by September he still hadn't been paid."
  },
  {
-  "id": "51bf3177d93a",
+  "id": "be870c4f0047",
   "voice": "narrator",
-  "text": "Piyush sold his cane. What does he really have?"
+  "text": "He had sold his whole crop. What do you think four months of waiting did to him?"
  },
  {
-  "id": "f6fb2425f35a",
+  "id": "160644d71297",
   "voice": "narrator",
-  "text": "₹80,000 he can spend"
+  "text": "Not much. The money was safe"
  },
  {
-  "id": "a52de0dd49b5",
+  "id": "221c8a551f9d",
   "voice": "narrator",
-  "text": "A promise, and bills that won't wait"
+  "text": "He earned interest on it"
  },
  {
-  "id": "a3e458b4dda9",
+  "id": "f9d990781820",
   "voice": "narrator",
-  "text": "He owed more than ₹1 lakh on a bank loan, and the bank sent him a notice. He stopped growing cane on his 30 acres."
+  "text": "His own bills came first"
  },
  {
-  "id": "61ed9e150057",
+  "id": "2b88f8b0d6e5",
   "voice": "narrator",
-  "text": "Money owed to you and stock freeze cash. The days from paying for stock to getting paid is your cash conversion cycle. Keep it short."
+  "text": "His own bills didn't wait. Piyush owed more than ₹1 lakh on a bank loan, and the bank sent him a notice. He had sold his crop and still had nothing to pay with, and he told a reporter he no longer grows cane on his 30 acres."
  },
  {
-  "id": "bfc416924f67",
+  "id": "490c3b748d7d",
   "voice": "narrator",
-  "text": "Each extra day of credit traps one more day of sales. Cash stuck = sales a day × days to pay. Stock works alike."
+  "text": "Now you know what happened, but notice that Piyush had earned his ₹80,000. It just wasn't in his hands while his own bills carried on. He wasn't alone either: in September 2019, UP's mills owed cane farmers ₹6,480 crore for cane they had already grown and sold."
  },
  {
-  "id": "1dedd87403a6",
+  "id": "0c27bfadbf57",
   "voice": "narrator",
-  "text": "Farah's printing press bills offices ₹20,000 a day. They pay after 60 days. How much of her money is with customers?"
+  "text": "Think of your money going on a trip. It leaves when you pay your supplier, waits on your shelf as stock, then waits with a customer who owes you, and finally comes home. Those days away are your cash conversion cycle, and supplier credit makes the trip start later."
+ },
+ {
+  "id": "8cd96781fdf9",
+  "voice": "narrator",
+  "text": "Let's try one. Pay for goods today, sell them 20 days later, get paid 30 days after that. How long is your cash away?"
+ },
+ {
+  "id": "9a0b57508475",
+  "voice": "narrator",
+  "text": "20 days"
+ },
+ {
+  "id": "135b64c3e1ab",
+  "voice": "narrator",
+  "text": "30 days"
+ },
+ {
+  "id": "8052aed7ab62",
+  "voice": "narrator",
+  "text": "50 days"
+ },
+ {
+  "id": "da0b519047c8",
+  "voice": "narrator",
+  "text": "Exactly. Your money spends 20 days on the shelf, then 30 more waiting for the buyer, so 20 + 30 = 50 days away. That's your cash conversion cycle."
+ },
+ {
+  "id": "d0e41eba1de6",
+  "voice": "narrator",
+  "text": "That's only the first stop, the 20 days on the shelf. After the sale, the buyer keeps your money for 30 more days, so it's away for 20 + 30 = 50 days."
+ },
+ {
+  "id": "c44e8659ab7c",
+  "voice": "narrator",
+  "text": "I see what you did: you counted the 30 days the buyer took. But your money had already sat on the shelf for 20 days before that, so the trip is 50 days."
+ },
+ {
+  "id": "249290b4d787",
+  "voice": "narrator",
+  "text": "The mill kept Piyush's money for four months, not 14 days. Who really paid for that wait?"
+ },
+ {
+  "id": "c816494ae02e",
+  "voice": "narrator",
+  "text": "The mill, through interest"
+ },
+ {
+  "id": "d34772a21347",
+  "voice": "narrator",
+  "text": "Piyush, through his own loan"
+ },
+ {
+  "id": "6900d0b26017",
+  "voice": "narrator",
+  "text": "Nobody. The money was coming anyway"
+ },
+ {
+  "id": "b7fb2e0b57e9",
+  "voice": "narrator",
+  "text": "Right. The mill used his ₹80,000 for free, while his own loan kept charging him interest. That's the thing to remember: a customer who pays late is borrowing your money for free, and if you've borrowed to fill the gap, you're the one paying the interest."
+ },
+ {
+  "id": "7ae80bc2f3c0",
+  "voice": "narrator",
+  "text": "That's what the law says should happen, but farmers weren't getting that interest. Meanwhile, Piyush's own loan kept growing, so he paid for the wait."
+ },
+ {
+  "id": "ca5ea34c882d",
+  "voice": "narrator",
+  "text": "The money was coming, but late money still costs something. While he waited, his loan kept charging interest and the bank sent him a notice."
+ },
+ {
+  "id": "d49f32028068",
+  "voice": "narrator",
+  "text": "Let's see if you can find your own stuck cash. Imagine you run a small printing press. Offices order letterheads and visiting cards from you worth ₹20,000 a day, and they pay you 60 days later. Before you answer, think about how many days of sales are sitting with them."
+ },
+ {
+  "id": "2da9764abc81",
+  "voice": "narrator",
+  "text": "So how much of your money are those offices holding at any time?"
  },
  {
   "id": "972558766d85",
@@ -9420,24 +9500,24 @@
   "text": "₹12,00,000"
  },
  {
-  "id": "0b09179aef3c",
+  "id": "5161a188c868",
   "voice": "narrator",
-  "text": "₹20,000 × 60 days = ₹12,00,000. That's ₹12 lakh she has earned and can't use."
+  "text": "Well done. Every day ₹20,000 of new bills joins the pile, and each one stays for 60 days, so ₹20,000 × 60 = ₹12 lakh is always out. That's money you've earned and can't spend."
  },
  {
-  "id": "033b3ed30ff2",
+  "id": "8d5b9d41b455",
   "voice": "narrator",
-  "text": "Check the zeros: ₹20,000 × 60 = ₹12,00,000."
+  "text": "I see what you did: the zeros slipped. ₹20,000 × 60 is ₹12,00,000, which is ₹12 lakh."
  },
  {
-  "id": "0fc0df1ef77a",
+  "id": "49026809ec50",
   "voice": "narrator",
-  "text": "That's 30 days. Her customers take 60."
+  "text": "That's 30 days of bills. Your offices take 60, so ₹20,000 × 60 = ₹12 lakh is out."
  },
  {
-  "id": "94b4de300810",
+  "id": "06cd4743027f",
   "voice": "narrator",
-  "text": "Farah gets new bills paid in 30 days instead of 60. How much cash comes free?"
+  "text": "Now you ask new customers to pay in 30 days instead of 60. How much cash comes home?"
  },
  {
   "id": "821d0cd93e7e",
@@ -9445,59 +9525,29 @@
   "text": "₹30,000"
  },
  {
-  "id": "401c1b9de38e",
+  "id": "9b81d9937452",
   "voice": "narrator",
-  "text": "30 days × ₹20,000 = ₹6,00,000 still out. Before, it was ₹12,00,000. Half comes back to her."
+  "text": "Exactly. At 30 days, ₹20,000 × 30 = ₹6 lakh stays out, so the other ₹6 lakh comes home. If you'd otherwise borrow that ₹6 lakh at 12% a year, you've just saved ₹72,000 a year without selling one more card."
  },
  {
-  "id": "5f3f36ce84fa",
+  "id": "61782264f803",
   "voice": "narrator",
-  "text": "Multiply sales per day by the days: ₹20,000 × 30."
+  "text": "Multiply sales a day by the days: ₹20,000 × 30 = ₹6 lakh still out. Before it was ₹12 lakh, so ₹6 lakh comes home."
  },
  {
-  "id": "21ce109d6637",
+  "id": "87cdd3e76445",
   "voice": "narrator",
-  "text": "Not all of it. Customers still take 30 days, so ₹6 lakh stays out."
+  "text": "Not all of it. Customers still take 30 days, so ₹6 lakh stays out, and the other ₹6 lakh comes home."
  },
  {
-  "id": "c6ba2d71de46",
+  "id": "761144d4b6c8",
   "voice": "narrator",
-  "text": "A bank would charge 12% a year to lend Farah that ₹6 lakh. What do faster payments save her each year?"
+  "text": "You also keep ₹4 lakh of paper and ink, using ₹10,000 a day. Keep just 8 days' worth, and how much cash comes free?"
  },
  {
-  "id": "06defacd1282",
+  "id": "fb3eb2ff9859",
   "voice": "narrator",
-  "text": "₹7,200"
- },
- {
-  "id": "30073f0ff9bd",
-  "voice": "narrator",
-  "text": "₹72,000"
- },
- {
-  "id": "b08f844710f8",
-  "voice": "narrator",
-  "text": "₹1,44,000"
- },
- {
-  "id": "862160d217f4",
-  "voice": "narrator",
-  "text": "12% of ₹6,00,000 = ₹72,000 a year. A shorter cash conversion cycle is the cheapest loan she'll ever get."
- },
- {
-  "id": "90ad3efd91fe",
-  "voice": "narrator",
-  "text": "Check the zeros: 12% of ₹6,00,000 is ₹72,000."
- },
- {
-  "id": "9ccb335ac890",
-  "voice": "narrator",
-  "text": "That's 12% of the full ₹12 lakh. Only ₹6 lakh comes free."
- },
- {
-  "id": "91ff3d996998",
-  "voice": "narrator",
-  "text": "Amit's phone accessory store holds ₹8 lakh of stock. He sells ₹40,000 of it a day. Keeping 8 days' stock frees how much?"
+  "text": "₹80,000"
  },
  {
   "id": "200c659c6226",
@@ -9505,109 +9555,84 @@
   "text": "₹3,20,000"
  },
  {
-  "id": "4c6996c99167",
+  "id": "2de6f7f69644",
   "voice": "narrator",
-  "text": "₹4,80,000"
+  "text": "₹3,90,000"
  },
  {
-  "id": "c42dac7ca3e7",
+  "id": "1a5eb9bc0384",
   "voice": "narrator",
-  "text": "₹7,60,000"
+  "text": "Well done. Right now ₹4 lakh is 40 days of paper. 8 days needs only 8 × ₹10,000 = ₹80,000, so ₹4,00,000 − ₹80,000 = ₹3,20,000 comes free. Stock on your shelf is cash on its trip too."
  },
  {
-  "id": "58e03c3c526e",
+  "id": "3404530dcbb9",
   "voice": "narrator",
-  "text": "Now he holds ₹8,00,000 ÷ ₹40,000 = 20 days of stock. 8 days needs ₹3,20,000. ₹8,00,000 − ₹3,20,000 = ₹4,80,000 freed."
+  "text": "That's what 8 days of paper costs, which is what you'd keep. Take it away from the ₹4 lakh you hold now, and ₹3,20,000 comes free."
  },
  {
-  "id": "bcaca0d6289b",
+  "id": "9d429e958e24",
   "voice": "narrator",
-  "text": "That's what 8 days of stock costs. Take it away from the ₹8 lakh he holds now."
+  "text": "I see what you did: you took off one day's ₹10,000. But 8 days of paper is 8 × ₹10,000 = ₹80,000, so ₹3,20,000 comes free."
  },
  {
-  "id": "00133e0df83c",
+  "id": "1375cca4fa73",
   "voice": "narrator",
-  "text": "8 days is 8 × ₹40,000 = ₹3,20,000, not ₹40,000."
+  "text": "Here's a quick check. Does each move free cash or freeze it?"
  },
  {
-  "id": "6ddb3f5541b6",
+  "id": "f36b348c3813",
   "voice": "narrator",
-  "text": "Does it free cash or freeze it?"
+  "text": "Advances, quick payment, clearing old stock and more time from your supplier all shorten your money's trip. Long credit and big piles of stock make it longer. Notice that some moves have a price, though: the 2% discount frees cash by giving up 2%."
  },
  {
-  "id": "562a0cb1751e",
+  "id": "d2a5cd660546",
   "voice": "narrator",
-  "text": "Advances, quick payment and clearing slow stock bring cash home. Long credit and big stock piles lock it away."
+  "text": "Then a big chance arrives. A hotel group orders ₹10 lakh of menus, brochures and cards, and wants 120 days to pay. Paper and wages cost ₹7 lakh now, and you have ₹4 lakh."
  },
  {
-  "id": "4323bd6d56b7",
+  "id": "3eaf4daf6711",
   "voice": "narrator",
-  "text": "You're a small registered maker. A big company wants 90 days to pay. What do you ask for?"
+  "text": "How do you take this order without freezing all your cash?"
  },
  {
-  "id": "0076ad1149df",
+  "id": "c8a69c5d62ea",
   "voice": "narrator",
-  "text": "Accept 90 days. Big clients set the rules"
+  "text": "You borrow ₹3 lakh and wait four months to be paid. Your paper supplier starts chasing you, and other jobs slow down because you can't buy paper."
  },
  {
-  "id": "3b25ede2ffe4",
+  "id": "e7b57829d27a",
   "voice": "narrator",
-  "text": "Ask for cash before delivery"
+  "text": "₹7 lakh was tied up in one order for four months, and ₹3 lakh of it was borrowed, so like Piyush, you paid interest while a buyer held your money. What would have worked: Ask for an advance and shorter terms first."
  },
  {
-  "id": "dbc7158b58dc",
+  "id": "8e5472d81405",
   "voice": "narrator",
-  "text": "45 days at most, written in the contract"
+  "text": "Their ₹4 lakh advance plus your ₹4 lakh covers the ₹7 lakh of costs, and the other ₹6 lakh arrives in 45 days, not 120."
  },
  {
-  "id": "07d54f0b39a8",
+  "id": "d466785216bc",
   "voice": "narrator",
-  "text": "Since April 2024, a buyer that pays a small registered maker after 45 days can't claim that cost against tax until it pays. Use it."
+  "text": "Well played. You cut both how much cash you put in and how long you waited. If you're a registered micro or small business, the law backs you too: a buyer that pays you after 45 days can't claim that cost against its tax until it pays."
  },
  {
-  "id": "c3ce481bf726",
+  "id": "7fa1fb07a192",
   "voice": "narrator",
-  "text": "The law is on your side. A buyer who pays after 45 days loses a tax benefit."
+  "text": "Your cash stays safe, but you miss the ₹3 lakh profit this order would have left you on better terms."
  },
  {
-  "id": "a365e04583e0",
+  "id": "51f1cea758bb",
   "voice": "narrator",
-  "text": "Fine if they agree, but most won't. 45 days in writing is a fair ask the law backs."
+  "text": "The order was fine. It was the terms that were the problem. What would have worked: Change the terms before you walk away."
  },
  {
-  "id": "ab68b642e119",
+  "id": "d08ab3af33d1",
   "voice": "narrator",
-  "text": "Imran makes steel furniture. A hotel group orders ₹10 lakh of beds, paying in 120 days. The steel and wages cost ₹7 lakh now. Imran has ₹4 lakh."
+  "text": "Money that customers owe you is a blank you give. The days your cash is away are your cash conversion blank."
  },
  {
-  "id": "7c0369f2bf9f",
+  "id": "37695eda0721",
   "voice": "narrator",
-  "text": "He borrows ₹3 lakh and waits four months to be paid. A small supplier chases him, and his other orders slow down for lack of steel."
- },
- {
-  "id": "240a3c7477ca",
-  "voice": "narrator",
-  "text": "₹7 lakh of his money sat with one client for four months. What would have worked: Ask for an advance and shorter terms first."
- },
- {
-  "id": "b9928682c862",
-  "voice": "narrator",
-  "text": "The ₹4 lakh advance plus his ₹4 lakh covers the ₹7 lakh of costs. The other ₹6 lakh comes in 45 days, not 120."
- },
- {
-  "id": "ffa7552bcd22",
-  "voice": "narrator",
-  "text": "He limited how much of his cash the client could hold, and for how long."
- },
- {
-  "id": "164a646b880c",
-  "voice": "narrator",
-  "text": "Imran stays safe but loses ₹3 lakh of profit he could have earned on better terms."
- },
- {
-  "id": "0b20c8c38290",
-  "voice": "narrator",
-  "text": "The order was fine. The terms were the problem. What would have worked: Change the terms before you walk away."
+  "text": "Exactly. Piyush had sold his crop, so on paper he was owed ₹80,000, but while the mill held it, his own loan kept growing. Know how long your money is away, and keep that trip short."
  },
  {
   "id": "6c4de790d373",
@@ -9615,64 +9640,144 @@
   "text": "Stock and credit are cash you can't spend. Limit both."
  },
  {
-  "id": "dfd8ffa19652",
+  "id": "5b0244904528",
   "voice": "narrator",
-  "text": "Money owed to you is an interest-free loan you give."
+  "text": "Your cash conversion cycle is the days your money is away: on your shelf, then with customers, less the time suppliers give you."
  },
  {
-  "id": "f3d9d21303a7",
+  "id": "98d66399d2c2",
   "voice": "narrator",
-  "text": "Cash stuck = sales per day × days customers take to pay."
+  "text": "Cash stuck = sales a day × days customers take to pay. It's a loan you give, with no interest."
  },
  {
-  "id": "6c881b7ae3b7",
+  "id": "237309aa0632",
   "voice": "narrator",
-  "text": "Every day you cut from credit or stock frees cash, and saves interest."
+  "text": "Cut days of credit and days of stock, and cash comes home."
  },
  {
-  "id": "1c12c38866d4",
+  "id": "df20d77e14aa",
   "voice": "narrator",
-  "text": "PepperTap delivered groceries in two hours across Indian cities and raised over $50 million. In April 2016, it shut grocery delivery down."
+  "text": "Let me start with a story. In 2015, an app called PepperTap promised your groceries at home in two hours. By October it handled 20,000 orders a day in 17 cities, and investors had put in more than $50 million. Before I tell you what happened next, have a guess."
  },
  {
-  "id": "c4d282ce8266",
+  "id": "45de27290707",
   "voice": "narrator",
-  "text": "By late 2015 it said it handled 20,000 orders a day. Why didn't more orders save it?"
+  "text": "In April 2016, PepperTap shut its grocery delivery. What do you think went wrong?"
  },
  {
-  "id": "3f397b3dfb62",
+  "id": "e16581ad95f0",
   "voice": "narrator",
-  "text": "Customers stopped ordering"
+  "text": "Not enough people ordered"
  },
  {
-  "id": "cee0d57b2199",
+  "id": "fee3fb94110f",
   "voice": "narrator",
-  "text": "Each order cost more than it earned"
+  "text": "A bigger rival took its buyers"
  },
  {
-  "id": "82b33e3f9099",
+  "id": "6ffb0f39e5e9",
   "voice": "narrator",
-  "text": "Its CEO said the cash burned on every order kept rising. Big discounts, and keeping two-hour delivery ready even on slow days, cost more than orders brought in."
+  "text": "Each order lost money"
  },
  {
-  "id": "6cd79607f258",
+  "id": "e8f6e2d02117",
   "voice": "narrator",
-  "text": "Contribution margin is what one order leaves after every cost it caused. Delivery, fees, ads and returns count, not just stock."
+  "text": "It was each order. People did order, thousands of times a day, but the founder later wrote that the cash burnt on every single order kept rising. So every new order made the loss bigger, not smaller."
  },
  {
-  "id": "8558a8e95a47",
+  "id": "8fcba3a57990",
   "voice": "narrator",
-  "text": "Riya sells T-shirts online at ₹499. Each shirt costs her ₹180. She thinks she keeps ₹319 an order."
+  "text": "Now you know what happened, but how can an order lose money when the customer pays for every packet? The groceries were only one cost. Every order also carried a discount and a rider's trip, so let's look at what one order really left behind."
  },
  {
-  "id": "71665b30a402",
+  "id": "9f9a916cb29b",
   "voice": "narrator",
-  "text": "Each order also costs ₹70 shipping, ₹15 packing, ₹10 payment fee and ₹150 in ads. What does Riya really keep?"
+  "text": "Think of each order as a bucket of water you carry home. The price fills it, and every cost that order brings, like stock, delivery, a discount or packing, is a hole. What reaches home is called the contribution margin, and rent and salaries still come out of it."
  },
  {
-  "id": "e8068c5efefe",
+  "id": "c19988e6b46a",
   "voice": "narrator",
-  "text": "₹144"
+  "text": "Let's try one. An app sells ₹500 of groceries and keeps ₹80 after paying the shop. Delivery costs ₹50, the discount ₹40. What's left?"
+ },
+ {
+  "id": "acae6cef0935",
+  "voice": "narrator",
+  "text": "₹80"
+ },
+ {
+  "id": "f14355f9424f",
+  "voice": "narrator",
+  "text": "₹30"
+ },
+ {
+  "id": "864e27167102",
+  "voice": "narrator",
+  "text": "−₹10, a loss"
+ },
+ {
+  "id": "aff55341753c",
+  "voice": "narrator",
+  "text": "Exactly. ₹80 minus ₹50 for delivery and ₹40 for the discount leaves −₹10, so this order loses ₹10. A ₹500 bill looks healthy, but the contribution margin tells you the truth."
+ },
+ {
+  "id": "7a82f6f015c9",
+  "voice": "narrator",
+  "text": "I see what you did: ₹80 is what's left after the shop is paid. But delivery and the discount come out of that same ₹80, and together they cost ₹90, so the order loses ₹10."
+ },
+ {
+  "id": "9bb0e8099986",
+  "voice": "narrator",
+  "text": "You took off delivery, and ₹80 − ₹50 is ₹30. The ₹40 discount comes out of that too, which leaves −₹10, a loss."
+ },
+ {
+  "id": "bee18cf6c473",
+  "voice": "narrator",
+  "text": "So if every order loses ₹10, what happens when the app doubles its orders?"
+ },
+ {
+  "id": "0766e7cfbe6d",
+  "voice": "narrator",
+  "text": "The loss shrinks, because the app is bigger"
+ },
+ {
+  "id": "d7994a4fa2e2",
+  "voice": "narrator",
+  "text": "The loss doubles too"
+ },
+ {
+  "id": "3bd046c7a892",
+  "voice": "narrator",
+  "text": "It breaks even"
+ },
+ {
+  "id": "962dc24d07e7",
+  "voice": "narrator",
+  "text": "Right. At ₹10 lost per order, 20,000 orders lose ₹2 lakh a day, and 40,000 orders lose ₹4 lakh. Growing a losing order only grows the loss, so before you chase more orders, make sure each one leaves something behind."
+ },
+ {
+  "id": "c76ec4593e08",
+  "voice": "narrator",
+  "text": "I see why you'd think that, because big businesses often get cheaper costs. But here each order still loses ₹10, so twice the orders means twice the loss."
+ },
+ {
+  "id": "0032d647dfa4",
+  "voice": "narrator",
+  "text": "Nothing changes for a single order: it still loses ₹10. More orders just add up more losses, so the loss doubles."
+ },
+ {
+  "id": "ac2a95db5827",
+  "voice": "narrator",
+  "text": "Let's see if you can spot the holes yourself. Imagine you sell your own T-shirts on Instagram at ₹499 each. A shirt costs you ₹180 to make, so it looks like you keep ₹319 an order. Before you believe that, think about what else every order costs you."
+ },
+ {
+  "id": "76a4dedc3f6c",
+  "voice": "narrator",
+  "text": "Each order also costs ₹70 shipping, ₹15 packing, a ₹10 payment fee and ₹150 in ads. What's your real contribution margin?"
+ },
+ {
+  "id": "068d82238161",
+  "voice": "narrator",
+  "text": "₹224"
  },
  {
   "id": "8ba69b598b7f",
@@ -9685,34 +9790,24 @@
   "text": "₹319"
  },
  {
-  "id": "f3dac3994277",
+  "id": "2ae774da3714",
   "voice": "narrator",
-  "text": "₹319 − ₹70 − ₹15 − ₹10 − ₹150 = ₹74. That's her real contribution margin. The ads alone cost almost half of the ₹319."
+  "text": "Well done. ₹319 minus ₹70, ₹15, ₹10 and ₹150 leaves ₹74. Notice that the ads alone ate almost half of what you thought you kept, and you'd never see that on the price tag."
  },
  {
-  "id": "a325ebc03b58",
+  "id": "97052e88b613",
   "voice": "narrator",
-  "text": "You left out one cost. Take off all four: ₹70, ₹15, ₹10 and ₹150."
+  "text": "I see what you did: you took off shipping, packing and the fee. But you also paid ₹150 in ads to find this buyer, so that comes off too, and you're left with ₹74."
  },
  {
-  "id": "01585eeea514",
+  "id": "1cadc7919793",
   "voice": "narrator",
-  "text": "That's price minus the shirt. The other costs come with every order too."
+  "text": "That's price minus the shirt, which is where most sellers stop. But every order also brings shipping, packing, a fee and ads, and after those you keep ₹74."
  },
  {
-  "id": "2850a385d383",
+  "id": "c7b544839e6e",
   "voice": "narrator",
-  "text": "1 in 5 cash-on-delivery orders is refused at the door. That one wasted ₹150 ads, ₹15 packing, ₹140 shipping both ways. Profit on 5 orders?"
- },
- {
-  "id": "3d16c96dda0b",
-  "voice": "narrator",
-  "text": "₹370"
- },
- {
-  "id": "74050b9b9a54",
-  "voice": "narrator",
-  "text": "₹296"
+  "text": "One in five cash-on-delivery buyers refuses the parcel. It earns nothing but costs ₹305 in ads, packing and two-way shipping. What do five orders leave?"
  },
  {
   "id": "0e4b66b77005",
@@ -9720,44 +9815,34 @@
   "text": "−₹9, a loss"
  },
  {
-  "id": "9b51d2fd7942",
+  "id": "74050b9b9a54",
   "voice": "narrator",
-  "text": "4 good orders × ₹74 = ₹296. The refused one cost ₹150 + ₹15 + ₹140 = ₹305. ₹296 − ₹305 = −₹9. She works hard and loses money."
+  "text": "₹296"
  },
  {
-  "id": "57fc1821d0e3",
+  "id": "3d16c96dda0b",
   "voice": "narrator",
-  "text": "That's 5 × ₹74. But the refused order earned nothing and still cost money."
+  "text": "₹370"
  },
  {
-  "id": "5f02de8813fd",
+  "id": "722e56f2e89d",
   "voice": "narrator",
-  "text": "That's the 4 good orders. Now take off what the refused one cost."
+  "text": "That's it. The four delivered orders leave 4 × ₹74 = ₹296, but the refused one cost ₹305, so together the five leave −₹9. A sale that looks good on its own can turn into a loss once failed orders count, which is why so many sellers ask buyers to pay first."
  },
  {
-  "id": "5305857f8d5e",
+  "id": "86227f674abe",
   "voice": "narrator",
-  "text": "Put Riya's costs per order from biggest to smallest."
+  "text": "You counted the four delivered orders correctly: they leave ₹296. But the refused parcel didn't just earn nothing; it cost ₹305, so the five orders together leave −₹9."
  },
  {
-  "id": "176ee26961cf",
+  "id": "737e1503ceff",
   "voice": "narrator",
-  "text": "The ad nearly matches the shirt. Online, the cost of finding a buyer is often the biggest cost after stock, and the easiest to forget."
+  "text": "I see what you did: 5 × ₹74. But only four orders were delivered, and they leave ₹296, while the refused parcel cost ₹305. Together, that's −₹9."
  },
  {
-  "id": "14c3c23b3730",
+  "id": "4f7e1882576d",
   "voice": "narrator",
-  "text": "Riya can cut one cost by 20%. Which cut saves her most per order?"
- },
- {
-  "id": "ec45a58b8d75",
-  "voice": "narrator",
-  "text": "Ads"
- },
- {
-  "id": "b4dd3ebea2ea",
-  "voice": "narrator",
-  "text": "Shipping"
+  "text": "Back to a prepaid order. If you could cut one cost by 20%, which cut saves you the most?"
  },
  {
   "id": "407a95453527",
@@ -9765,69 +9850,39 @@
   "text": "The shirt"
  },
  {
-  "id": "6538e1a5ed4b",
+  "id": "96857896b86d",
   "voice": "narrator",
-  "text": "20% of ₹180 = ₹36. 20% of ₹150 ads = ₹30. 20% of ₹70 shipping = ₹14. A better supplier price beats a cheaper courier."
+  "text": "The ads"
  },
  {
-  "id": "fc93b9383c72",
+  "id": "a7226f81b938",
   "voice": "narrator",
-  "text": "Close. 20% of ₹150 is ₹30, but 20% of the ₹180 shirt is ₹36."
+  "text": "The shipping"
  },
  {
-  "id": "42336b853210",
+  "id": "653bd6e6bdfd",
   "voice": "narrator",
-  "text": "20% of ₹70 is only ₹14. Go for the biggest cost."
+  "text": "Exactly. 20% of the ₹180 shirt is ₹36, against ₹30 off the ads and ₹14 off shipping. Most sellers fight with the courier first, but a better deal from your maker is worth more."
  },
  {
-  "id": "15efdefaaf92",
+  "id": "0e3b25adf44a",
   "voice": "narrator",
-  "text": "A cloud kitchen sells biryani at ₹300 on a food app. Food costs ₹110, the app takes 25%, packing is ₹20. What's left?"
+  "text": "Close, because ads are a big cost. But 20% of ₹150 is ₹30, while 20% of the ₹180 shirt is ₹36."
  },
  {
-  "id": "a5e65c3e6ec0",
+  "id": "aa699901325f",
   "voice": "narrator",
-  "text": "₹95"
+  "text": "The courier is the first cost most people try to cut, but 20% of ₹70 is only ₹14. Go for the biggest cost: 20% of the ₹180 shirt saves ₹36."
  },
  {
-  "id": "e4161f82902e",
+  "id": "8cb8a1dca4bb",
   "voice": "narrator",
-  "text": "₹170"
+  "text": "Your plain shirt leaves ₹74 and sells 15 a week. A printed one leaves ₹130 and sells 10. Which earns you more each week?"
  },
  {
-  "id": "65b44f548b9f",
+  "id": "c89994bc431b",
   "voice": "narrator",
-  "text": "₹115"
- },
- {
-  "id": "d4b0d46eced3",
-  "voice": "narrator",
-  "text": "25% of ₹300 = ₹75. ₹300 − ₹110 − ₹75 − ₹20 = ₹95. And that's before rent, gas and the cook's wage."
- },
- {
-  "id": "041674751806",
-  "voice": "narrator",
-  "text": "That's only price minus food and packing. The app's 25% is ₹75 more."
- },
- {
-  "id": "5dd0fa539be0",
-  "voice": "narrator",
-  "text": "Check the app's cut: 25% of ₹300 is ₹75, not ₹55."
- },
- {
-  "id": "d15b05c2696f",
-  "voice": "narrator",
-  "text": "Dal khichdi leaves ₹20 and sells 30 a day. Paneer bowls leave ₹45 and sell 18 a day. Which earns more per day?"
- },
- {
-  "id": "4d77f0651ce3",
-  "voice": "narrator",
-  "text": "Khichdi. It sells more"
- },
- {
-  "id": "e553430b8897",
-  "voice": "narrator",
-  "text": "Paneer bowls"
+  "text": "The plain one, because it sells more"
  },
  {
   "id": "d131c0711926",
@@ -9835,69 +9890,74 @@
   "text": "They earn the same"
  },
  {
-  "id": "b1372826db64",
+  "id": "b12ed7ae217d",
   "voice": "narrator",
-  "text": "Khichdi: 30 × ₹20 = ₹600. Paneer: 18 × ₹45 = ₹810. A fast seller can earn less than a slow one. Count rupees per day, not plates."
+  "text": "The printed one"
  },
  {
-  "id": "87307aced86c",
+  "id": "c333ddd2f6a3",
   "voice": "narrator",
-  "text": "More plates, but fewer rupees: 30 × ₹20 = ₹600 against 18 × ₹45 = ₹810."
+  "text": "Well done. The plain shirt earns 15 × ₹74 = ₹1,110 a week, while the printed one earns 10 × ₹130 = ₹1,300. A fast seller can earn less than a slow one, so count rupees per week, not shirts."
  },
  {
-  "id": "12b657c51e45",
+  "id": "62cdae65a8fc",
   "voice": "narrator",
-  "text": "Work out each: ₹600 and ₹810."
+  "text": "I see why: more shirts feels like more money. But 15 × ₹74 is ₹1,110, while 10 × ₹130 is ₹1,300, so the slower shirt earns more."
  },
  {
-  "id": "1493d095dd55",
+  "id": "4b00b02c8fc9",
   "voice": "narrator",
-  "text": "The app offers to 'promote' the biryani for 10% more commission. It promises 40% more orders: 140 a day instead of 100."
+  "text": "Work out each one: 15 × ₹74 = ₹1,110 and 10 × ₹130 = ₹1,300. The printed shirt earns ₹190 more a week."
  },
  {
-  "id": "d15e0e60a8ad",
+  "id": "e29cd54a37eb",
   "voice": "narrator",
-  "text": "Each biryani leaves ₹95 now. Do you join?"
+  "text": "Then a shop owner from Surat calls. She wants 100 of your shirts a month at ₹350 each. She'll collect them herself, so there's no shipping, no ads and no refused parcels, and you'd only pack them, at ₹15 a shirt."
  },
  {
-  "id": "132eebfbd035",
+  "id": "e629969c7168",
   "voice": "narrator",
-  "text": "10% of ₹300 is ₹30 more per order. 140 × ₹65 = ₹9,100 a day, against 100 × ₹95 = ₹9,500. You cook 40 more meals to earn ₹400 less."
+  "text": "₹350 is far below your ₹499 price. What do you do?"
  },
  {
-  "id": "d5c983f2a3e7",
+  "id": "bf6207103d5e",
   "voice": "narrator",
-  "text": "You counted orders, not what each order leaves. What would have worked: Work out what's left per order at the new commission before you sign."
+  "text": "She buys from another maker. You keep selling online at ₹499, where a good order leaves you ₹74, and the ₹15,500 a month her order would have left you goes to someone else."
  },
  {
-  "id": "bcd0cbd8c7a2",
+  "id": "43647b02318d",
   "voice": "narrator",
-  "text": "You see ₹9,100 against ₹9,500. You offer to try it only if the extra cut is 5%: 140 × ₹80 = ₹11,200."
+  "text": "You compared prices, not what each sale leaves. ₹350 − ₹180 − ₹15 = ₹155, which is double what a ₹499 online order leaves you. What would have worked: Work out what each shirt leaves before you say no."
  },
  {
-  "id": "5100a0c483b4",
+  "id": "cf032400b048",
   "voice": "narrator",
-  "text": "Every extra cost comes off each order. The sum shows when more sales mean less money."
+  "text": "₹350 minus the ₹180 shirt and ₹15 packing leaves ₹155 a shirt, more than double the ₹74 an online order leaves. You say yes, and 100 shirts leave you ₹15,500 a month."
  },
  {
-  "id": "635f18548a0a",
+  "id": "7e43558c764c",
   "voice": "narrator",
-  "text": "You stop paying 25%, but your 100 orders a day drop to 20 walk-ins."
+  "text": "Well played. A lower price with fewer holes in the bucket can leave you more than a high price with many."
  },
  {
-  "id": "074b6a37b570",
+  "id": "40c61da20cb4",
   "voice": "narrator",
-  "text": "The app's cut is a cost, but it also brings the orders. What would have worked: Price the deal per order, then decide."
+  "text": "She says no and stops replying. A week later you agree to ₹350 after all, but she has already given half the order to another maker, so 50 shirts leave you ₹7,750 a month."
  },
  {
-  "id": "cdb79a3c4aad",
+  "id": "9e2976226269",
   "voice": "narrator",
-  "text": "Count every cost that comes with blank order, not just the blank."
+  "text": "You pushed on the price when the margin was already good, and that cost you half the order. What would have worked: Count the margin first, so you know when a price is already good."
  },
  {
-  "id": "decda661c864",
+  "id": "30fd83a44dc8",
   "voice": "narrator",
-  "text": "Shipping, ads, fees, packing and returns ride along with every order. Price minus stock is only the start."
+  "text": "Price minus stock isn't profit. What one blank leaves after every cost it causes is its contribution blank."
+ },
+ {
+  "id": "a764a666a54d",
+  "voice": "narrator",
+  "text": "Exactly. PepperTap had 20,000 orders a day, but more orders can't rescue an order that loses money. What each sale leaves is what pays your rent and wages, so before you chase more sales, I want you to check that one sale leaves you something."
  },
  {
   "id": "e220222d9951",
@@ -9905,99 +9965,109 @@
   "text": "Price minus stock cost isn't profit. Count every hidden cost."
  },
  {
-  "id": "32013cab5673",
+  "id": "b5fb24bdce39",
   "voice": "narrator",
-  "text": "Price minus stock is only the start. Take off every cost that comes with each order."
+  "text": "Contribution margin is what one order leaves after every cost it causes."
  },
  {
-  "id": "6015b75701b4",
+  "id": "5b64bd6bd071",
   "voice": "narrator",
-  "text": "Returns, ads and app cuts can turn a 'good' sale into a loss."
+  "text": "Ads, delivery, discounts and refused parcels can turn a 'good' sale into a loss."
  },
  {
-  "id": "68fbb3b2f7b5",
+  "id": "672f41980b04",
   "voice": "narrator",
-  "text": "A fast seller can earn less than a slow one. Count rupees per day."
+  "text": "A fast seller can earn less than a slow one. Count rupees per week."
  },
  {
-  "id": "cf7791966f1b",
+  "id": "6adaf936bda6",
   "voice": "narrator",
-  "text": "2007 T20 World Cup final. Pakistan need 13 off the last over. Dhoni gives the ball to Joginder Sharma, who has played seven matches."
+  "text": "Let me start with a cricket story. It's the 2007 T20 World Cup final against Pakistan. Pakistan need 13 runs off the last over, with one wicket left. Harbhajan, the obvious choice, was hit for three sixes in his last over, so Dhoni throws the ball to Joginder Sharma."
  },
  {
-  "id": "b495a4d81980",
+  "id": "7101b67a0591",
   "voice": "narrator",
-  "text": "Misbah had hit Harbhajan for three sixes in his last over. Was Joginder a good call?"
+  "text": "Joginder had played only a handful of games for India. Before I tell you what happened, what do you make of Dhoni's call?"
  },
  {
-  "id": "f95bce41a703",
+  "id": "fcb7fab28c4a",
   "voice": "narrator",
-  "text": "Yes, from what Dhoni knew"
+  "text": "A sensible choice, given his options"
  },
  {
-  "id": "f0168ee01503",
+  "id": "14fb1a12ecc6",
   "voice": "narrator",
-  "text": "Only if it works"
+  "text": "Can't tell until we see the result"
  },
  {
-  "id": "368efae0a746",
+  "id": "5d64afe4e249",
   "voice": "narrator",
-  "text": "No, it was a wild gamble"
+  "text": "A wild gamble"
  },
  {
-  "id": "dded55dc9a2d",
+  "id": "eeef4e1cfb0e",
   "voice": "narrator",
-  "text": "After a wide, a miss and a six, Misbah tried a scoop. It went straight to Sreesanth, and India won by five runs. The call became famous."
+  "text": "Here's what happened. The first ball was a wide, the second a swing and a miss, and the third a full toss that Misbah hit for six. Then, with six needed off four balls, Misbah tried a scoop, and Sreesanth caught it. India won by five runs, and the call became famous."
  },
  {
-  "id": "b68f261b956d",
+  "id": "6828fa3c118b",
   "voice": "narrator",
-  "text": "Annie Duke, a poker player, calls it 'resulting': judging a call by how it turned out. Good calls can lose. Bad ones can win."
+  "text": "Now imagine Misbah's scoop had gone for four, and Pakistan had won. Would that make Dhoni's call any worse?"
  },
  {
-  "id": "b3cad8b7f368",
+  "id": "295518ea22f7",
   "voice": "narrator",
-  "text": "Same over, but the scoop clears fine leg for four. Pakistan win. Dhoni's call was…"
+  "text": "Yes, because Pakistan won"
  },
  {
-  "id": "246c4e201433",
+  "id": "3b7db4c35d2a",
   "voice": "narrator",
-  "text": "A clear mistake"
+  "text": "No, it's the same call"
  },
  {
-  "id": "5445f8c84666",
+  "id": "f2ead9f9c8d4",
   "voice": "narrator",
-  "text": "Just as sound as before"
+  "text": "A little worse"
  },
  {
-  "id": "828f6ad0a756",
+  "id": "e71417339438",
   "voice": "narrator",
-  "text": "He knew the same things before the ball. Only the luck changed. The papers would have said 'blunder', and they'd have been resulting."
+  "text": "Exactly. Dhoni chose before the over began, and he knew the same things in both stories. Only where one ball landed has changed. The papers would have called it a blunder, but they'd have been judging the luck, not the thinking."
  },
  {
-  "id": "81e3b5b8ac1a",
+  "id": "3005e488fd79",
   "voice": "narrator",
-  "text": "What did Dhoni know before the ball? Nothing changed but where the ball went."
+  "text": "I see what you did: you judged the call by the final score. But Dhoni chose before the over began, and nothing he knew then had changed. Only where one ball landed was different."
  },
  {
-  "id": "d896b636ea56",
+  "id": "00a225a037a3",
   "voice": "narrator",
-  "text": "Four boxes: good or bad call, with good or bad luck. After a big decision, ask which box you're in. Fix the call, not luck."
+  "text": "I can see why you'd meet in the middle. But luck can't make a choice a little worse after it's made. Dhoni knew the same things either way, so it was the same call."
  },
  {
-  "id": "da5b934e96f5",
+  "id": "ec32a3c90443",
   "voice": "narrator",
-  "text": "A ₹50,000 fair stall wins Neha's coaching centre a ₹4 lakh school deal 1 time in 4. Average gain per fair?"
+  "text": "The papers would have fallen for a trap. Think of two students: one copies and gets full marks, while another understands it but slips once. The marks alone won't tell you who chose better. Annie Duke, a poker player, calls this trap resulting: judging a decision only by what happened."
  },
  {
-  "id": "fc6217843458",
+  "id": "8e0b4e9da510",
   "voice": "narrator",
-  "text": "₹3,50,000"
+  "text": "Let's go back to Johannesburg. To judge Dhoni fairly, which of these did he know when he chose?"
  },
  {
-  "id": "d2662163829d",
+  "id": "1d29c32a91e1",
   "voice": "narrator",
-  "text": "A loss of ₹50,000"
+  "text": "Exactly. Start with what Dhoni knew when he chose. The wide, the scoop and the final score all came later. They tell you what happened, but they can't change how good his thinking was."
+ },
+ {
+  "id": "08b21b1f8bbd",
+  "voice": "narrator",
+  "text": "Let's see if you can catch resulting yourself. Imagine you run a lunch tiffin service for offices. Every week you make calls like Dhoni's: which client to take, which cook to hire, which fair to spend money on. Some of your good calls will still go wrong."
+ },
+ {
+  "id": "421eefaefaec",
+  "voice": "narrator",
+  "text": "Let's try one. A fair stall costs ₹10,000, and 1 time in 4 it wins an order that leaves you ₹60,000. What's one fair worth?"
  },
  {
   "id": "e57d0648d1d0",
@@ -10005,24 +10075,34 @@
   "text": "₹50,000"
  },
  {
-  "id": "2ade29d28674",
+  "id": "01039658f86f",
   "voice": "narrator",
-  "text": "¼ × ₹4,00,000 = ₹1,00,000 on average. Take off the ₹50,000 stall: ₹50,000 gained per fair, on average. It's a good bet."
+  "text": "₹5,000"
  },
  {
-  "id": "455a40020ea9",
+  "id": "73b8cb2c7cf4",
   "voice": "narrator",
-  "text": "That's what a winning fair brings. She wins only 1 in 4."
+  "text": "A loss of ₹10,000"
  },
  {
-  "id": "debaa7737937",
+  "id": "bb636d6cec3c",
   "voice": "narrator",
-  "text": "That's a losing fair. On average, the wins pay for the misses and more."
+  "text": "Well done. Spread the ₹60,000 win across four fairs and that's ₹15,000 a fair on average. Each fair costs ₹10,000, so you're left with ₹5,000 a fair. It's a good bet, even though most fairs bring no order."
  },
  {
-  "id": "a188b475300a",
+  "id": "4b50bfb9b823",
   "voice": "narrator",
-  "text": "At 1 win in 4, how often will Neha leave with nothing two fairs in a row?"
+  "text": "I see what you did: ₹60,000 minus the ₹10,000 stall. But you win that ₹60,000 only 1 time in 4. Spread it across four fairs, that's ₹15,000 each, then take off the ₹10,000: ₹5,000."
+ },
+ {
+  "id": "81e517be6b0f",
+  "voice": "narrator",
+  "text": "That's what one losing fair costs, and you're right that most fairs lose. But the wins pay for the misses and more: ₹60,000 ÷ 4 is ₹15,000 a fair on average, and minus ₹10,000, that leaves ₹5,000."
+ },
+ {
+  "id": "170c802e6d94",
+  "voice": "narrator",
+  "text": "Here's where resulting bites. You miss 3 fairs in 4. How often will you go to two fairs in a row and win nothing?"
  },
  {
   "id": "f1de379ae614",
@@ -10030,109 +10110,124 @@
   "text": "About 6 times in 100"
  },
  {
-  "id": "53052b662fc8",
-  "voice": "narrator",
-  "text": "About 56 times in 100"
- },
- {
   "id": "add022251be5",
   "voice": "narrator",
   "text": "About 25 times in 100"
  },
  {
-  "id": "668ae331e286",
+  "id": "53052b662fc8",
   "voice": "narrator",
-  "text": "She misses 3 times in 4. Two misses in a row: ¾ × ¾ = 9/16, about 56 in 100, so it happens more often than not. A good bet can look bad for months."
+  "text": "About 56 times in 100"
  },
  {
-  "id": "007d16f2d46a",
+  "id": "c5df77e7ef7a",
   "voice": "narrator",
-  "text": "That's two wins in a row: ¼ × ¼. Misses are the common case."
+  "text": "Exactly. ¾ × ¾ is 9/16, about 56 times in 100, so two empty fairs in a row are more likely than not. If you judged the bet after those two, you'd drop something that earns you ₹5,000 a fair on average."
  },
  {
-  "id": "c6f0731794aa",
+  "id": "7372172041bf",
   "voice": "narrator",
-  "text": "Missing once is ¾. Twice in a row is ¾ × ¾ = 9/16."
+  "text": "That's the chance of two wins in a row: ¼ × ¼ = 1/16, about 6 in 100. Misses are the common case: ¾ × ¾ = 9/16, about 56 in 100."
  },
  {
-  "id": "45c83ecf4d06",
+  "id": "d45ebd0dbcbf",
   "voice": "narrator",
-  "text": "Dev hired a cashier without checking anything. Sales then had their best month ever. What should Dev do next time?"
+  "text": "I see what you did: you used one fair's chance of winning, 1 in 4. Missing once is ¾, and missing twice in a row is ¾ × ¾ = 9/16, about 56 times in 100."
  },
  {
-  "id": "7c875e5095e7",
+  "id": "ac1cd5f2ba59",
   "voice": "narrator",
-  "text": "Keep this cashier, but check the next hire"
+  "text": "Now the other way round. You hired a cook without a trial day, and that month was your best ever. What's the lesson?"
  },
  {
-  "id": "65bdb798683d",
+  "id": "8ebc4ee356a4",
   "voice": "narrator",
-  "text": "Hire the same quick way. It worked"
+  "text": "Keep the cook, but give the next one a trial"
  },
  {
-  "id": "a3adfacf540a",
+  "id": "f640c6001e06",
   "voice": "narrator",
-  "text": "Nothing Dev knew made it a good call. The good month might be Diwali, or luck. A good result doesn't make a careless method good."
+  "text": "Skip trials from now on. It worked"
  },
  {
-  "id": "e5d41eb2bb9e",
+  "id": "801f5a14602c",
   "voice": "narrator",
-  "text": "That's resulting. The sales say nothing about how he hired. Next time, check references."
+  "text": "The cook earned you that whole month"
  },
  {
-  "id": "662108a875e4",
+  "id": "1b46bb386016",
   "voice": "narrator",
-  "text": "Mohan picked a new supplier. Which did he know then, and which only later?"
+  "text": "Right. The good month doesn't prove that skipping the trial was smart, because the cook might have helped, or a festival, or a big new client. Keep the cook if they're good, but don't let one lucky month teach you a careless way to hire."
  },
  {
-  "id": "52da083321fa",
+  "id": "7524f52ff361",
   "voice": "narrator",
-  "text": "Judge Mohan on the left side only. The breakdown and the strike are luck. He can plan for them, but they don't make the choice wrong."
+  "text": "I see what you did: the month went well, so the method must be fine. That's resulting the other way round. You skipped the check and got lucky, so give the next cook a trial day."
  },
  {
-  "id": "fcb1b9fe5279",
+  "id": "a7870a78ee95",
   "voice": "narrator",
-  "text": "Put the steps of a fair decision review in order."
+  "text": "Maybe, but a festival or a new office client could explain that month too. You can't tell from the result alone, so keep the cook if they're good, and give the next one a trial day."
  },
  {
-  "id": "df801572c727",
+  "id": "24e060ff3b7a",
   "voice": "narrator",
-  "text": "Look at the result last, so it can't colour how you judge the thinking."
+  "text": "When a big call goes wrong, here's how to review it fairly. Put the steps in order."
  },
  {
-  "id": "ea8a08ac5e98",
+  "id": "0461c2626ce6",
   "voice": "narrator",
-  "text": "Ravi's tempo service checked three references on a new client. Months later the client went bust, owing him ₹60,000. His partner says: 'No more new clients. Ever.'"
+  "text": "Well done. You rebuild the decision as it looked at the time before you let the result in, and only then ask what it teaches you. That's how we judged Dhoni: what he knew first, the scoop afterwards."
  },
  {
-  "id": "d2bc07985d38",
+  "id": "8a0ee0a80ec8",
   "voice": "narrator",
-  "text": "Ravi is safe for a year. Then two old clients move away, and he has no new ones to replace them."
+  "text": "Then one of your calls goes wrong. Before taking a new office client, you checked carefully: three good references and five years in business. Two months later it shuts down, owing you ₹36,000, and your partner says, 'No more new clients. Ever.'"
  },
  {
-  "id": "32a5f7cb8ddb",
+  "id": "ccf6b6f52c66",
   "voice": "narrator",
-  "text": "One bad result made him drop a sound method. What would have worked: Keep checking new clients, and cap how much each can owe."
+  "text": "Was it a bad call, and what do you do now?"
  },
  {
-  "id": "95679dfeaa56",
+  "id": "4e062c01287c",
   "voice": "narrator",
-  "text": "Ravi keeps winning new clients. No new client can owe more than ₹20,000, so the next bad one hurts a third as much."
+  "text": "You're safe for a while. Then two old offices move away, and with no new clients coming in, your kitchen runs half empty."
  },
  {
-  "id": "c468c9965f05",
+  "id": "aaa9c1fe007e",
   "voice": "narrator",
-  "text": "The checks were sound; the loss was partly luck. He kept the method and fixed what he could learn from."
+  "text": "One bad result made you drop a sound method. That's resulting, and it shuts the door on every good client who came after. What would have worked: Keep checking new clients, and ask them for the first month in advance."
  },
  {
-  "id": "ebd13e867d16",
+  "id": "12ed4161e996",
   "voice": "narrator",
-  "text": "Ravi carries on as before. The next bust client could owe him just as much."
+  "text": "New offices keep signing up. Each one pays its first month up front, so if one shuts down, you lose far less."
  },
  {
-  "id": "9813348baf98",
+  "id": "92f9d63eb9a9",
   "voice": "narrator",
-  "text": "Right that it was mostly luck, but he learned nothing he could use. What would have worked: Ask what he could control next time, like how much one client can owe."
+  "text": "Well played. One failed client doesn't prove your checks were bad, so you keep them. But the loss did show you a risk you can shrink: how much you're owed before a new client pays."
+ },
+ {
+  "id": "12649cbac439",
+  "voice": "narrator",
+  "text": "You carry on exactly as before, so the next client who shuts down can leave you ₹36,000 short again."
+ },
+ {
+  "id": "c95068d8eb97",
+  "voice": "narrator",
+  "text": "You may be right that nobody could have seen the shutdown coming. But bad luck doesn't mean there's nothing to learn, and this loss showed you one thing you control: when new clients pay you. What would have worked: Ask new clients for the first month in advance."
+ },
+ {
+  "id": "a957854f044d",
+  "voice": "narrator",
+  "text": "Caught or four, Dhoni's call was the same. Judge a call by what you blank then, not by the blank."
+ },
+ {
+  "id": "86f2d7ba1dbb",
+  "voice": "narrator",
+  "text": "Exactly. Dhoni had to choose with what he knew then, and whether Misbah's scoop was caught or went for four couldn't change that choice afterwards. Judge your own calls the same way: first ask what you knew, then ask what the result can teach you."
  },
  {
   "id": "b41480c3c7c0",
@@ -10145,199 +10240,274 @@
   "text": "Judge a decision by what you knew when you made it."
  },
  {
-  "id": "740c6e825485",
+  "id": "4343cadb3fb6",
   "voice": "narrator",
-  "text": "A good bet can lose many times in a row. Don't drop it after one miss."
+  "text": "A good bet can lose many times in a row, so don't drop it after one miss."
  },
  {
-  "id": "c388e2072004",
+  "id": "d3b8a9ccc74f",
   "voice": "narrator",
-  "text": "Learn from the thinking, not from the luck."
+  "text": "Don't let the result rewrite the old call, but use it to fix what you can next time."
  },
  {
-  "id": "35a3304ef244",
+  "id": "f7d1855123d8",
   "voice": "narrator",
-  "text": "In October 2007, two former Amazon staff started Flipkart in Bengaluru, selling only books. In its first year, it made 20 shipments."
+  "text": "Let me tell you a story about idli batter. In 2006, PC Musthafa and four cousins started iD in Bengaluru, with ₹50,000 and a tiny room that held two grinders. Before growing, they gave themselves one goal: within six months, sell 100 packets across 20 stores."
  },
  {
-  "id": "9fbcbaf85b76",
+  "id": "3ace3694c510",
   "voice": "narrator",
-  "text": "Why would Flipkart start with books alone, not everything?"
+  "text": "At first, of every 100 packets they sent out, how many do you think came back unsold?"
  },
  {
-  "id": "ce44ee140c07",
+  "id": "f51fe73d23a3",
   "voice": "narrator",
-  "text": "To learn cheaply before betting big"
+  "text": "About 10"
  },
  {
-  "id": "712352dec11c",
+  "id": "6d3625c1f8e7",
   "voice": "narrator",
-  "text": "They only liked books"
+  "text": "About 50"
  },
  {
-  "id": "693476318396",
+  "id": "7ffbfa7929e5",
   "voice": "narrator",
-  "text": "One small range let them learn orders, delivery and buyers. They handed out bookmarks outside a Bengaluru bookshop. Phones and electronics came only in 2010."
+  "text": "About 90"
  },
  {
-  "id": "8e98bc8fe60f",
+  "id": "0c8d04f76213",
   "voice": "narrator",
-  "text": "Test small. Before you start, write the number that means 'yes' and the date you'll check. These are your pre-set success criteria."
+  "text": "About 90. Only around 10 of every 100 packets sold, so they were nowhere near their goal, and it would take nine months of fixing the batter, not six, before they reached it."
  },
  {
-  "id": "fdf89390abb3",
+  "id": "c51e4735187d",
   "voice": "narrator",
-  "text": "Which 'yes' line tells you a new lunch service can really work?"
+  "text": "So the first result was far below the goal. What do you think they did next?"
  },
  {
-  "id": "47e732a17360",
+  "id": "96abe2abf904",
   "voice": "narrator",
-  "text": "120 enquiries in 4 weeks"
+  "text": "Kept the goal and fixed the batter"
  },
  {
-  "id": "9f31d17ec09f",
+  "id": "385409a5263d",
   "voice": "narrator",
-  "text": "120 paid lunches in 4 weeks"
+  "text": "Lowered the goal to 10 packets"
  },
  {
-  "id": "b8082565de28",
+  "id": "bdbf8802ceec",
   "voice": "narrator",
-  "text": "120 paid lunches in 4 weeks, ₹40 left on each"
+  "text": "Rented a big factory to look serious"
  },
  {
-  "id": "03ec0ded8ad2",
+  "id": "68ec17c572bc",
   "voice": "narrator",
-  "text": "Enquiries are weaker than payments, and payments with no margin can still lose money. A number, a date and money: you can't argue with it later."
+  "text": "Exactly. They didn't move the goal; they changed the batter. It took nine months instead of six, but they got there, and by 2010 iD was in 1,000 stores across Bengaluru."
  },
  {
-  "id": "de4f62c2510c",
+  "id": "0b9ada525a09",
   "voice": "narrator",
-  "text": "Asking costs people nothing. Count what they pay for."
+  "text": "I see the thinking: lower the bar, and you've passed. But a goal you move after the test can't tell you anything. They kept 100 and fixed the batter instead."
  },
  {
-  "id": "ecf449493ae9",
+  "id": "3e4473ef20cf",
   "voice": "narrator",
-  "text": "Better, but 120 lunches that each lose ₹5 is still a loss. Add what each one leaves."
+  "text": "That's betting big before the idea has passed its test. With 90 of every 100 packets coming back, a factory would only make more packets to come back. They stayed small and fixed the batter first."
  },
  {
-  "id": "35d5fbd441bc",
+  "id": "efedfc8331fc",
   "voice": "narrator",
-  "text": "Sana wants a cake stall at an office park. It costs ₹15,000 a month, and each cake box leaves her ₹60."
+  "text": "Think of football. If you move the goalposts after the kick, any shot can be a goal, and the score means nothing. iD set its posts before the first packet went out. That's called pre-set success criteria: the yes number and the check date, written down first."
  },
  {
-  "id": "96db9a26347b",
+  "id": "ddd88662c971",
   "voice": "narrator",
-  "text": "The park is open 25 days a month. How many boxes a day just covers the stall?"
+  "text": "iD's goal counted packets sold, not packets sent to stores. Why does that matter?"
  },
  {
-  "id": "b89d3dc267d6",
+  "id": "b0884765569a",
   "voice": "narrator",
-  "text": "250"
+  "text": "Packets sent are easier to count"
  },
  {
-  "id": "00d62785d454",
+  "id": "4aefbd31d4db",
   "voice": "narrator",
-  "text": "10"
+  "text": "Stores prefer it that way"
  },
  {
-  "id": "22fb638b8d72",
+  "id": "4a8ced2ca636",
   "voice": "narrator",
-  "text": "25"
+  "text": "Anyone can send packets; only buyers decide sales"
  },
  {
-  "id": "598a8af154be",
+  "id": "b1415ddce912",
   "voice": "narrator",
-  "text": "₹15,000 ÷ ₹60 = 250 boxes a month. 250 ÷ 25 days = 10 a day. So her 'yes' must be above 10, or she works for free."
+  "text": "Exactly. You can push 100 packets into stores any day you like, but you can't make shoppers buy them. Pick a yes number that's hard to fake, and the test can't flatter you."
  },
  {
-  "id": "a5bd3b7ed772",
+  "id": "de6af963b981",
   "voice": "narrator",
-  "text": "That's a month. Split it over 25 days."
+  "text": "They are easier to count, but they're also easy to fake. You could push 100 packets out tomorrow and 'pass'. Sales are decided by buyers, so they tell the truth."
  },
  {
-  "id": "b80ae8313f0c",
+  "id": "c992d1a651d8",
   "voice": "narrator",
-  "text": "Work it out: ₹15,000 ÷ ₹60 = 250 a month, then ÷ 25 days."
+  "text": "Stores don't mind either way. The point is for you: packets sent go up whenever you push them, but packets sold only go up when people really want them."
  },
  {
-  "id": "5d291232611c",
+  "id": "8f1172117f67",
   "voice": "narrator",
-  "text": "Sana tests for four weeks and sells 7 a day. Her friend says, 'Close to 10. Go!' What do you say?"
+  "text": "Now it's your business. Let's see if you can set the posts yourself. Imagine you make homemade pickles and dream of your own shop. Before signing for one, you test with a stall at a Sunday market. It costs ₹6,000 a month, and each jar leaves you ₹50."
  },
  {
-  "id": "efd6cc7d3ec1",
+  "id": "d703452884bb",
   "voice": "narrator",
-  "text": "Go. 7 is close"
+  "text": "Let's try one. The market runs 4 Sundays a month. How many jars each Sunday just pays for the stall?"
  },
  {
-  "id": "e38228b789fa",
+  "id": "172967c8487e",
   "voice": "narrator",
-  "text": "Change the offer and test again"
+  "text": "30"
  },
  {
-  "id": "fcb10deb6d8f",
+  "id": "c9676b4fcadf",
   "voice": "narrator",
-  "text": "Move the yes line to 7"
+  "text": "120"
  },
  {
-  "id": "39aff35afd30",
+  "id": "e90e91b0dfe5",
   "voice": "narrator",
-  "text": "At 7 a day she's 3 boxes short. 3 × ₹60 × 25 days = ₹4,500 lost every month. Try a new price or spot, then test again."
+  "text": "12"
  },
  {
-  "id": "9879b1b15dba",
+  "id": "7844afe60044",
   "voice": "narrator",
-  "text": "7 against 10 means 3 × ₹60 × 25 = ₹4,500 lost a month."
+  "text": "Well done. ₹6,000 ÷ ₹50 is 120 jars a month, and 120 ÷ 4 Sundays is 30. So 30 jars only pays the stall. Your yes number has to sit above it, or you're working for free."
  },
  {
-  "id": "2c94fed77c46",
+  "id": "fb5dacaa2101",
   "voice": "narrator",
-  "text": "Moving the line after the test is how hope wins. The sum didn't change."
+  "text": "I see what you did: ₹6,000 ÷ ₹50 = 120. But that's for the whole month, and there are 4 Sundays, so it's 30 jars each Sunday."
  },
  {
-  "id": "d18fbd4844f0",
+  "id": "aec61aefbd87",
   "voice": "narrator",
-  "text": "A second salon costs ₹12 lakh. Neeta tests first: one rented chair in a gym, ₹8,000 a month for 3 months. What share is that?"
+  "text": "Not quite. ₹6,000 ÷ ₹50 = 120 jars a month, and split over 4 Sundays, that's 30 jars each Sunday."
  },
  {
-  "id": "f0b94355f566",
+  "id": "9c5eb229f390",
   "voice": "narrator",
-  "text": "2%"
+  "text": "So what should your yes line say? Pick the one you can't argue with later."
  },
  {
-  "id": "edf17471fc58",
+  "id": "66cc0e0b70d9",
   "voice": "narrator",
-  "text": "20%"
+  "text": "Lots of people stop to taste"
  },
  {
-  "id": "875ade831fc3",
+  "id": "2c2b12d4bb3d",
   "voice": "narrator",
-  "text": "0.2%"
+  "text": "50 jars sold each Sunday by week 8"
  },
  {
-  "id": "a8b93c849cfc",
+  "id": "d7eb60678207",
   "voice": "narrator",
-  "text": "3 × ₹8,000 = ₹24,000. ₹24,000 ÷ ₹12,00,000 = 2%. She risks 2 rupees to learn before she risks 100."
+  "text": "Well over 30 jars, soon"
  },
  {
-  "id": "3278ef403f73",
+  "id": "1b43967cd95f",
   "voice": "narrator",
-  "text": "₹24,000 is much smaller than that. 20% would be ₹2,40,000."
+  "text": "Exactly. It sits above your 30-jar cost line, it counts jars sold, not tastes, and it has a date. When week 8 comes, it gives you a plain yes or no."
  },
  {
-  "id": "588e479504b2",
+  "id": "d000d4fe24e4",
   "voice": "narrator",
-  "text": "0.2% would be just ₹2,400. The test is ₹24,000."
+  "text": "Tasting is free, so lots of people will do it. Count what's hard to fake, like iD did: jars people pay for, by a date."
  },
  {
-  "id": "87e67a6fb119",
+  "id": "05c1d743813b",
   "voice": "narrator",
-  "text": "Small test or big bet?"
+  "text": "I see the idea: anything above 30 makes money. But 'well over' and 'soon' can stretch to fit any result. Write one number and one date."
  },
  {
-  "id": "8033e370bb57",
+  "id": "8c57f070b6ad",
   "voice": "narrator",
-  "text": "A test is cheap and quick to undo, while a bet locks your money in. Do the tests first, and let them earn you the bet."
+  "text": "By week 8 you're selling 42 jars each Sunday. A friend says, '42 is close to 50. Open the shop!' What do you say?"
+ },
+ {
+  "id": "5d41e3ea2b3f",
+  "voice": "narrator",
+  "text": "Agree. 42 is close enough"
+ },
+ {
+  "id": "d6fefe521f05",
+  "voice": "narrator",
+  "text": "Move the yes line to 42"
+ },
+ {
+  "id": "8a2d5a177df8",
+  "voice": "narrator",
+  "text": "Not yet. Change one thing and test again"
+ },
+ {
+  "id": "09cc78cddd87",
+  "voice": "narrator",
+  "text": "Exactly. At 42 jars the stall itself pays: 42 × ₹50 × 4 is ₹8,400 a month, ₹2,400 above the rent. But your yes line for the shop was 50. Change one thing, like a new flavour or a better spot, and test again, just as iD fixed its batter."
+ },
+ {
+  "id": "f77a55f422d8",
+  "voice": "narrator",
+  "text": "I see why it feels close. But you wrote 50 before the test for a reason, and 'close enough' is how hope sneaks back in. Change one thing and test again."
+ },
+ {
+  "id": "b12d252f12be",
+  "voice": "narrator",
+  "text": "That's moving the goalposts after the kick. The test hasn't failed; it has told you something to fix. Change one thing and test again."
+ },
+ {
+  "id": "73c15f7eb952",
+  "voice": "narrator",
+  "text": "A shop would cost ₹3 lakh to set up. Your stall test costs ₹6,000 a month for 2 months. What share is that?"
+ },
+ {
+  "id": "4efd86b3fecf",
+  "voice": "narrator",
+  "text": "40%"
+ },
+ {
+  "id": "cb4a9f6cf4d4",
+  "voice": "narrator",
+  "text": "4%"
+ },
+ {
+  "id": "4bf210c4e895",
+  "voice": "narrator",
+  "text": "0.4%"
+ },
+ {
+  "id": "98af17e62bbb",
+  "voice": "narrator",
+  "text": "Exactly. 2 × ₹6,000 is ₹12,000, and ₹12,000 out of ₹3,00,000 is 4%. You risk ₹4 to learn whether to risk ₹100. That's why a small test is a cheap option: you can stop, or go big once it works."
+ },
+ {
+  "id": "45984fbd4f53",
+  "voice": "narrator",
+  "text": "40% would be ₹1,20,000. The test is only ₹12,000, which is 4% of ₹3 lakh."
+ },
+ {
+  "id": "c5d8896319ed",
+  "voice": "narrator",
+  "text": "0.4% would be just ₹1,200. The test is ₹12,000, which is 4% of ₹3 lakh."
+ },
+ {
+  "id": "f7132b7fbac0",
+  "voice": "narrator",
+  "text": "Which of these are small tests for your pickles, and which are big bets?"
+ },
+ {
+  "id": "dcbe34aa86a3",
+  "voice": "narrator",
+  "text": "Exactly. A test is cheap and easy to stop, while a bet locks your money in. Do the tests first, and let them earn you the bet."
  },
  {
   "id": "e6ff9fd5eb24",
@@ -10345,54 +10515,19 @@
   "text": "Put a good test in order."
  },
  {
-  "id": "d3c2cba0dd2c",
+  "id": "dc46d5cf3ab4",
   "voice": "narrator",
-  "text": "The yes number comes before the test. Every Sunday, count the two or three numbers that decide. Let them decide, not hope."
+  "text": "Well done. Because the yes number comes before the test, and you count every Sunday along the way, the numbers get to decide, not hope."
  },
  {
-  "id": "f3064b70ca0a",
+  "id": "5c3585855846",
   "voice": "narrator",
-  "text": "Pooja wants a 6 am women-only batch at her gym. A full new floor would cost ₹5 lakh. Some members say they'd 'surely join'."
+  "text": "iD's goal of 100 packets stayed put through nine hard months. Write the blank that means yes blank the test starts."
  },
  {
-  "id": "0a3ea316a929",
+  "id": "f8997aefc853",
   "voice": "narrator",
-  "text": "The floor opens, but only eight women come in the first month. ₹5 lakh is now in walls and mats."
- },
- {
-  "id": "bd202d6309eb",
-  "voice": "narrator",
-  "text": "Saying 'I'd join' is free. She bet big on words, not payments. What would have worked: Run one paid batch first, with a yes number."
- },
- {
-  "id": "12946f076b97",
-  "voice": "narrator",
-  "text": "By week 6, 23 women have paid. Now the floor is a bet with proof behind it."
- },
- {
-  "id": "ed0535056f15",
-  "voice": "narrator",
-  "text": "She tested cheaply in the space she had, and wrote the yes number first."
- },
- {
-  "id": "1430108bba93",
-  "voice": "narrator",
-  "text": "70% tick 'yes'. She still doesn't know who will pay at 6 am."
- },
- {
-  "id": "3ad5feed9036",
-  "voice": "narrator",
-  "text": "A survey costs little, but it measures words. What would have worked: Ask for payment. That is the real test."
- },
- {
-  "id": "ce0d3430c083",
-  "voice": "narrator",
-  "text": "Write the blank that means yes blank the test starts."
- },
- {
-  "id": "94140cf94e77",
-  "voice": "narrator",
-  "text": "That's why they're called pre-set success criteria. After the test, it's too easy to move the line."
+  "text": "Exactly. iD's goal didn't move when 90 packets came back; the batter changed instead. That's what pre-set success criteria do for you: they keep the test honest when hope wants to move the line."
  },
  {
   "id": "02eb37f2d117",
@@ -10405,9 +10540,9 @@
   "text": "Start with a small, cheap version of the idea."
  },
  {
-  "id": "be8380f69439",
+  "id": "c4bf5fbaa2a1",
   "voice": "narrator",
-  "text": "Write the yes number and the date before you start."
+  "text": "Write the yes number and the date before you start, and pick a number that's hard to fake."
  },
  {
   "id": "2e363fa8fb4f",

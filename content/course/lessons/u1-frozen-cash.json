@@ -1,6 +1,6 @@
 {
   "id": "u1-frozen-cash",
-  "title": "Cash frozen in credit and stock",
+  "title": "Where is your money right now?",
   "principle": "Stock and credit are cash you can't spend. Limit both.",
   "minutes": 5,
   "draft": true,
@@ -9,42 +9,102 @@
       "kind": "explain",
       "id": "hook",
       "media": "img:ls_cane_farmer",
-      "text": "September 2019: UP's sugar mills owed cane farmers ₹6,480 crore. The rule says pay in 14 days. Piyush had waited four months for ₹80,000."
+      "text": "Let me start with a story from Uttar Pradesh. A cane farmer, Piyush Kumar, sold his crop to a sugar mill, and by May 2019 the mill owed him ₹80,000. The law says a mill paying after 14 days must add interest, yet by September he still hadn't been paid."
     },
     {
       "kind": "choice",
       "id": "guess",
       "guess": true,
-      "prompt": "Piyush sold his cane. What does he really have?",
+      "prompt": "He had sold his whole crop. What do you think four months of waiting did to him?",
       "options": [
         {
           "id": "a",
-          "label": "₹80,000 he can spend"
+          "label": "Not much. The money was safe"
         },
         {
           "id": "b",
-          "label": "A promise, and bills that won't wait"
+          "label": "He earned interest on it"
+        },
+        {
+          "id": "c",
+          "label": "His own bills came first"
+        }
+      ],
+      "answer": "c",
+      "why": "His own bills didn't wait. Piyush owed more than ₹1 lakh on a bank loan, and the bank sent him a notice. He had sold his crop and still had nothing to pay with, and he told a reporter he no longer grows cane on his 30 acres."
+    },
+    {
+      "kind": "explain",
+      "id": "stuck",
+      "title": "Yours, but stuck",
+      "text": "Now you know what happened, but notice that Piyush had earned his ₹80,000. It just wasn't in his hands while his own bills carried on. He wasn't alone either: in September 2019, UP's mills owed cane farmers ₹6,480 crore for cane they had already grown and sold."
+    },
+    {
+      "kind": "explain",
+      "id": "cycle",
+      "title": "Your money's trip",
+      "text": "Think of your money going on a trip. It leaves when you pay your supplier, waits on your shelf as stock, then waits with a customer who owes you, and finally comes home. Those days away are your cash conversion cycle, and supplier credit makes the trip start later."
+    },
+    {
+      "kind": "choice",
+      "id": "try-it",
+      "prompt": "Let's try one. Pay for goods today, sell them 20 days later, get paid 30 days after that. How long is your cash away?",
+      "options": [
+        {
+          "id": "a",
+          "label": "20 days"
+        },
+        {
+          "id": "b",
+          "label": "30 days"
+        },
+        {
+          "id": "c",
+          "label": "50 days"
+        }
+      ],
+      "answer": "c",
+      "why": "Exactly. Your money spends 20 days on the shelf, then 30 more waiting for the buyer, so 20 + 30 = 50 days away. That's your cash conversion cycle.",
+      "wrong": {
+        "a": "That's only the first stop, the 20 days on the shelf. After the sale, the buyer keeps your money for 30 more days, so it's away for 20 + 30 = 50 days.",
+        "b": "I see what you did: you counted the 30 days the buyer took. But your money had already sat on the shelf for 20 days before that, so the trip is 50 days."
+      }
+    },
+    {
+      "kind": "choice",
+      "id": "who-pays",
+      "prompt": "The mill kept Piyush's money for four months, not 14 days. Who really paid for that wait?",
+      "options": [
+        {
+          "id": "a",
+          "label": "The mill, through interest"
+        },
+        {
+          "id": "b",
+          "label": "Piyush, through his own loan"
+        },
+        {
+          "id": "c",
+          "label": "Nobody. The money was coming anyway"
         }
       ],
       "answer": "b",
-      "why": "He owed more than ₹1 lakh on a bank loan, and the bank sent him a notice. He stopped growing cane on his 30 acres."
+      "why": "Right. The mill used his ₹80,000 for free, while his own loan kept charging him interest. That's the thing to remember: a customer who pays late is borrowing your money for free, and if you've borrowed to fill the gap, you're the one paying the interest.",
+      "wrong": {
+        "a": "That's what the law says should happen, but farmers weren't getting that interest. Meanwhile, Piyush's own loan kept growing, so he paid for the wait.",
+        "c": "The money was coming, but late money still costs something. While he waited, his loan kept charging interest and the bank sent him a notice."
+      }
     },
     {
       "kind": "explain",
-      "id": "rule",
-      "title": "Frozen cash",
-      "text": "Money owed to you and stock freeze cash. The days from paying for stock to getting paid is your cash conversion cycle. Keep it short."
-    },
-    {
-      "kind": "explain",
-      "id": "formula",
-      "title": "A quick way to see it",
-      "text": "Each extra day of credit traps one more day of sales. Cash stuck = sales a day × days to pay. Stock works alike."
+      "id": "home",
+      "title": "Now it's your business",
+      "text": "Let's see if you can find your own stuck cash. Imagine you run a small printing press. Offices order letterheads and visiting cards from you worth ₹20,000 a day, and they pay you 60 days later. Before you answer, think about how many days of sales are sitting with them."
     },
     {
       "kind": "choice",
       "id": "press",
-      "prompt": "Farah's printing press bills offices ₹20,000 a day. They pay after 60 days. How much of her money is with customers?",
+      "prompt": "So how much of your money are those offices holding at any time?",
       "options": [
         {
           "id": "a",
@@ -60,16 +120,16 @@
         }
       ],
       "answer": "c",
-      "why": "₹20,000 × 60 days = ₹12,00,000. That's ₹12 lakh she has earned and can't use.",
+      "why": "Well done. Every day ₹20,000 of new bills joins the pile, and each one stays for 60 days, so ₹20,000 × 60 = ₹12 lakh is always out. That's money you've earned and can't spend.",
       "wrong": {
-        "a": "Check the zeros: ₹20,000 × 60 = ₹12,00,000.",
-        "b": "That's 30 days. Her customers take 60."
+        "a": "I see what you did: the zeros slipped. ₹20,000 × 60 is ₹12,00,000, which is ₹12 lakh.",
+        "b": "That's 30 days of bills. Your offices take 60, so ₹20,000 × 60 = ₹12 lakh is out."
       }
     },
     {
       "kind": "choice",
       "id": "press-30",
-      "prompt": "Farah gets new bills paid in 30 days instead of 60. How much cash comes free?",
+      "prompt": "Now you ask new customers to pay in 30 days instead of 60. How much cash comes home?",
       "options": [
         {
           "id": "a",
@@ -85,66 +145,41 @@
         }
       ],
       "answer": "a",
-      "why": "30 days × ₹20,000 = ₹6,00,000 still out. Before, it was ₹12,00,000. Half comes back to her.",
+      "why": "Exactly. At 30 days, ₹20,000 × 30 = ₹6 lakh stays out, so the other ₹6 lakh comes home. If you'd otherwise borrow that ₹6 lakh at 12% a year, you've just saved ₹72,000 a year without selling one more card.",
       "wrong": {
-        "b": "Multiply sales per day by the days: ₹20,000 × 30.",
-        "c": "Not all of it. Customers still take 30 days, so ₹6 lakh stays out."
-      }
-    },
-    {
-      "kind": "choice",
-      "id": "interest",
-      "prompt": "A bank would charge 12% a year to lend Farah that ₹6 lakh. What do faster payments save her each year?",
-      "options": [
-        {
-          "id": "a",
-          "label": "₹7,200"
-        },
-        {
-          "id": "b",
-          "label": "₹72,000"
-        },
-        {
-          "id": "c",
-          "label": "₹1,44,000"
-        }
-      ],
-      "answer": "b",
-      "why": "12% of ₹6,00,000 = ₹72,000 a year. A shorter cash conversion cycle is the cheapest loan she'll ever get.",
-      "wrong": {
-        "a": "Check the zeros: 12% of ₹6,00,000 is ₹72,000.",
-        "c": "That's 12% of the full ₹12 lakh. Only ₹6 lakh comes free."
+        "b": "Multiply sales a day by the days: ₹20,000 × 30 = ₹6 lakh still out. Before it was ₹12 lakh, so ₹6 lakh comes home.",
+        "c": "Not all of it. Customers still take 30 days, so ₹6 lakh stays out, and the other ₹6 lakh comes home."
       }
     },
     {
       "kind": "choice",
       "id": "stock-days",
-      "prompt": "Amit's phone accessory store holds ₹8 lakh of stock. He sells ₹40,000 of it a day. Keeping 8 days' stock frees how much?",
+      "prompt": "You also keep ₹4 lakh of paper and ink, using ₹10,000 a day. Keep just 8 days' worth, and how much cash comes free?",
       "options": [
         {
           "id": "a",
-          "label": "₹3,20,000"
+          "label": "₹80,000"
         },
         {
           "id": "b",
-          "label": "₹4,80,000"
+          "label": "₹3,20,000"
         },
         {
           "id": "c",
-          "label": "₹7,60,000"
+          "label": "₹3,90,000"
         }
       ],
       "answer": "b",
-      "why": "Now he holds ₹8,00,000 ÷ ₹40,000 = 20 days of stock. 8 days needs ₹3,20,000. ₹8,00,000 − ₹3,20,000 = ₹4,80,000 freed.",
+      "why": "Well done. Right now ₹4 lakh is 40 days of paper. 8 days needs only 8 × ₹10,000 = ₹80,000, so ₹4,00,000 − ₹80,000 = ₹3,20,000 comes free. Stock on your shelf is cash on its trip too.",
       "wrong": {
-        "a": "That's what 8 days of stock costs. Take it away from the ₹8 lakh he holds now.",
-        "c": "8 days is 8 × ₹40,000 = ₹3,20,000, not ₹40,000."
+        "a": "That's what 8 days of paper costs, which is what you'd keep. Take it away from the ₹4 lakh you hold now, and ₹3,20,000 comes free.",
+        "c": "I see what you did: you took off one day's ₹10,000. But 8 days of paper is 8 × ₹10,000 = ₹80,000, so ₹3,20,000 comes free."
       }
     },
     {
       "kind": "sort",
       "id": "frees",
-      "prompt": "Does it free cash or freeze it?",
+      "prompt": "Here's a quick check. Does each move free cash or freeze it?",
       "buckets": ["Frees cash", "Freezes cash"],
       "items": [
         {
@@ -152,7 +187,7 @@
           "bucket": 0
         },
         {
-          "text": "Buy 3 months of stock for a bulk discount",
+          "text": "Buy 3 months of paper for a bulk discount",
           "bucket": 1
         },
         {
@@ -160,11 +195,15 @@
           "bucket": 1
         },
         {
-          "text": "Sell slow stock at cost",
+          "text": "Sell old stock at cost",
           "bucket": 0
         },
         {
-          "text": "Keep every size in every colour",
+          "text": "Get 30 days to pay your paper supplier",
+          "bucket": 0
+        },
+        {
+          "text": "Keep every paper type in every colour",
           "bucket": 1
         },
         {
@@ -172,69 +211,52 @@
           "bucket": 0
         }
       ],
-      "why": "Advances, quick payment and clearing slow stock bring cash home. Long credit and big stock piles lock it away."
-    },
-    {
-      "kind": "choice",
-      "id": "law",
-      "prompt": "You're a small registered maker. A big company wants 90 days to pay. What do you ask for?",
-      "options": [
-        {
-          "id": "a",
-          "label": "Accept 90 days. Big clients set the rules"
-        },
-        {
-          "id": "b",
-          "label": "Ask for cash before delivery"
-        },
-        {
-          "id": "c",
-          "label": "45 days at most, written in the contract"
-        }
-      ],
-      "answer": "c",
-      "why": "Since April 2024, a buyer that pays a small registered maker after 45 days can't claim that cost against tax until it pays. Use it.",
-      "wrong": {
-        "a": "The law is on your side. A buyer who pays after 45 days loses a tax benefit.",
-        "b": "Fine if they agree, but most won't. 45 days in writing is a fair ask the law backs."
-      }
+      "why": "Advances, quick payment, clearing old stock and more time from your supplier all shorten your money's trip. Long credit and big piles of stock make it longer. Notice that some moves have a price, though: the 2% discount frees cash by giving up 2%."
     },
     {
       "kind": "scenario",
       "id": "hotel",
-      "setup": "Imran makes steel furniture. A hotel group orders ₹10 lakh of beds, paying in 120 days. The steel and wages cost ₹7 lakh now. Imran has ₹4 lakh.",
-      "question": "What do you do?",
+      "setup": "Then a big chance arrives. A hotel group orders ₹10 lakh of menus, brochures and cards, and wants 120 days to pay. Paper and wages cost ₹7 lakh now, and you have ₹4 lakh.",
+      "question": "How do you take this order without freezing all your cash?",
       "options": [
         {
           "id": "a",
-          "label": "Take it. Borrow the ₹3 lakh gap",
+          "label": "Take it, and borrow the ₹3 lakh gap",
           "grade": "bad",
-          "outcome": "He borrows ₹3 lakh and waits four months to be paid. A small supplier chases him, and his other orders slow down for lack of steel.",
-          "why": "₹7 lakh of his money sat with one client for four months.",
+          "outcome": "You borrow ₹3 lakh and wait four months to be paid. Your paper supplier starts chasing you, and other jobs slow down because you can't buy paper.",
+          "why": "₹7 lakh was tied up in one order for four months, and ₹3 lakh of it was borrowed, so like Piyush, you paid interest while a buyer held your money.",
           "better": "Ask for an advance and shorter terms first."
         },
         {
           "id": "b",
           "label": "Take it with 40% up front, rest in 45 days",
           "grade": "great",
-          "outcome": "The ₹4 lakh advance plus his ₹4 lakh covers the ₹7 lakh of costs. The other ₹6 lakh comes in 45 days, not 120.",
-          "why": "He limited how much of his cash the client could hold, and for how long."
+          "outcome": "Their ₹4 lakh advance plus your ₹4 lakh covers the ₹7 lakh of costs, and the other ₹6 lakh arrives in 45 days, not 120.",
+          "why": "Well played. You cut both how much cash you put in and how long you waited. If you're a registered micro or small business, the law backs you too: a buyer that pays you after 45 days can't claim that cost against its tax until it pays."
         },
         {
           "id": "c",
-          "label": "Turn it down. Too big for him",
+          "label": "Turn it down. It's too big for me",
           "grade": "ok",
-          "outcome": "Imran stays safe but loses ₹3 lakh of profit he could have earned on better terms.",
-          "why": "The order was fine. The terms were the problem.",
+          "outcome": "Your cash stays safe, but you miss the ₹3 lakh profit this order would have left you on better terms.",
+          "why": "The order was fine. It was the terms that were the problem.",
           "better": "Change the terms before you walk away."
         }
       ]
+    },
+    {
+      "kind": "gap",
+      "id": "fill",
+      "text": "Money that customers owe you is a ___ you give. The days your cash is away are your cash conversion ___.",
+      "bank": ["loan", "cycle", "gift", "margin"],
+      "answer": ["loan", "cycle"],
+      "why": "Exactly. Piyush had sold his crop, so on paper he was owed ₹80,000, but while the mill held it, his own loan kept growing. Know how long your money is away, and keep that trip short."
     }
   ],
   "summary": [
-    "Money owed to you is an interest-free loan you give.",
-    "Cash stuck = sales per day × days customers take to pay.",
-    "Every day you cut from credit or stock frees cash, and saves interest."
+    "Your cash conversion cycle is the days your money is away: on your shelf, then with customers, less the time suppliers give you.",
+    "Cash stuck = sales a day × days customers take to pay. It's a loan you give, with no interest.",
+    "Cut days of credit and days of stock, and cash comes home."
   ],
   "cards": [
     {

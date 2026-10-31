@@ -1,6 +1,6 @@
 {
   "id": "u1-hidden-costs",
-  "title": "The costs you don't see",
+  "title": "What does one order leave you?",
   "principle": "Price minus stock cost isn't profit. Count every hidden cost.",
   "minutes": 5,
   "draft": true,
@@ -9,46 +9,106 @@
       "kind": "explain",
       "id": "hook",
       "media": "img:ls_grocery_rider",
-      "text": "PepperTap delivered groceries in two hours across Indian cities and raised over $50 million. In April 2016, it shut grocery delivery down."
+      "text": "Let me start with a story. In 2015, an app called PepperTap promised your groceries at home in two hours. By October it handled 20,000 orders a day in 17 cities, and investors had put in more than $50 million. Before I tell you what happened next, have a guess."
     },
     {
       "kind": "choice",
       "id": "guess",
       "guess": true,
-      "prompt": "By late 2015 it said it handled 20,000 orders a day. Why didn't more orders save it?",
+      "prompt": "In April 2016, PepperTap shut its grocery delivery. What do you think went wrong?",
       "options": [
         {
           "id": "a",
-          "label": "Customers stopped ordering"
+          "label": "Not enough people ordered"
         },
         {
           "id": "b",
-          "label": "Each order cost more than it earned"
+          "label": "A bigger rival took its buyers"
+        },
+        {
+          "id": "c",
+          "label": "Each order lost money"
         }
       ],
-      "answer": "b",
-      "why": "Its CEO said the cash burned on every order kept rising. Big discounts, and keeping two-hour delivery ready even on slow days, cost more than orders brought in."
+      "answer": "c",
+      "why": "It was each order. People did order, thousands of times a day, but the founder later wrote that the cash burnt on every single order kept rising. So every new order made the loss bigger, not smaller."
     },
     {
       "kind": "explain",
-      "id": "rule",
-      "title": "What one sale really leaves",
-      "text": "Contribution margin is what one order leaves after every cost it caused. Delivery, fees, ads and returns count, not just stock."
+      "id": "leak",
+      "title": "The costs that ride along",
+      "text": "Now you know what happened, but how can an order lose money when the customer pays for every packet? The groceries were only one cost. Every order also carried a discount and a rider's trip, so let's look at what one order really left behind."
     },
     {
       "kind": "explain",
-      "id": "riya",
-      "title": "Riya's T-shirts",
-      "text": "Riya sells T-shirts online at ₹499. Each shirt costs her ₹180. She thinks she keeps ₹319 an order."
+      "id": "margin",
+      "title": "What one order leaves",
+      "text": "Think of each order as a bucket of water you carry home. The price fills it, and every cost that order brings, like stock, delivery, a discount or packing, is a hole. What reaches home is called the contribution margin, and rent and salaries still come out of it."
     },
     {
       "kind": "choice",
-      "id": "riya-keep",
-      "prompt": "Each order also costs ₹70 shipping, ₹15 packing, ₹10 payment fee and ₹150 in ads. What does Riya really keep?",
+      "id": "try-it",
+      "prompt": "Let's try one. An app sells ₹500 of groceries and keeps ₹80 after paying the shop. Delivery costs ₹50, the discount ₹40. What's left?",
       "options": [
         {
           "id": "a",
-          "label": "₹144"
+          "label": "₹80"
+        },
+        {
+          "id": "b",
+          "label": "₹30"
+        },
+        {
+          "id": "c",
+          "label": "−₹10, a loss"
+        }
+      ],
+      "answer": "c",
+      "why": "Exactly. ₹80 minus ₹50 for delivery and ₹40 for the discount leaves −₹10, so this order loses ₹10. A ₹500 bill looks healthy, but the contribution margin tells you the truth.",
+      "wrong": {
+        "a": "I see what you did: ₹80 is what's left after the shop is paid. But delivery and the discount come out of that same ₹80, and together they cost ₹90, so the order loses ₹10.",
+        "b": "You took off delivery, and ₹80 − ₹50 is ₹30. The ₹40 discount comes out of that too, which leaves −₹10, a loss."
+      }
+    },
+    {
+      "kind": "choice",
+      "id": "more-orders",
+      "prompt": "So if every order loses ₹10, what happens when the app doubles its orders?",
+      "options": [
+        {
+          "id": "a",
+          "label": "The loss shrinks, because the app is bigger"
+        },
+        {
+          "id": "b",
+          "label": "The loss doubles too"
+        },
+        {
+          "id": "c",
+          "label": "It breaks even"
+        }
+      ],
+      "answer": "b",
+      "why": "Right. At ₹10 lost per order, 20,000 orders lose ₹2 lakh a day, and 40,000 orders lose ₹4 lakh. Growing a losing order only grows the loss, so before you chase more orders, make sure each one leaves something behind.",
+      "wrong": {
+        "a": "I see why you'd think that, because big businesses often get cheaper costs. But here each order still loses ₹10, so twice the orders means twice the loss.",
+        "c": "Nothing changes for a single order: it still loses ₹10. More orders just add up more losses, so the loss doubles."
+      }
+    },
+    {
+      "kind": "explain",
+      "id": "home",
+      "title": "Now it's your business",
+      "text": "Let's see if you can spot the holes yourself. Imagine you sell your own T-shirts on Instagram at ₹499 each. A shirt costs you ₹180 to make, so it looks like you keep ₹319 an order. Before you believe that, think about what else every order costs you."
+    },
+    {
+      "kind": "choice",
+      "id": "shirt-keep",
+      "prompt": "Each order also costs ₹70 shipping, ₹15 packing, a ₹10 payment fee and ₹150 in ads. What's your real contribution margin?",
+      "options": [
+        {
+          "id": "a",
+          "label": "₹224"
         },
         {
           "id": "b",
@@ -60,20 +120,20 @@
         }
       ],
       "answer": "b",
-      "why": "₹319 − ₹70 − ₹15 − ₹10 − ₹150 = ₹74. That's her real contribution margin. The ads alone cost almost half of the ₹319.",
+      "why": "Well done. ₹319 minus ₹70, ₹15, ₹10 and ₹150 leaves ₹74. Notice that the ads alone ate almost half of what you thought you kept, and you'd never see that on the price tag.",
       "wrong": {
-        "a": "You left out one cost. Take off all four: ₹70, ₹15, ₹10 and ₹150.",
-        "c": "That's price minus the shirt. The other costs come with every order too."
+        "a": "I see what you did: you took off shipping, packing and the fee. But you also paid ₹150 in ads to find this buyer, so that comes off too, and you're left with ₹74.",
+        "c": "That's price minus the shirt, which is where most sellers stop. But every order also brings shipping, packing, a fee and ads, and after those you keep ₹74."
       }
     },
     {
       "kind": "choice",
-      "id": "riya-returns",
-      "prompt": "1 in 5 cash-on-delivery orders is refused at the door. That one wasted ₹150 ads, ₹15 packing, ₹140 shipping both ways. Profit on 5 orders?",
+      "id": "refused",
+      "prompt": "One in five cash-on-delivery buyers refuses the parcel. It earns nothing but costs ₹305 in ads, packing and two-way shipping. What do five orders leave?",
       "options": [
         {
           "id": "a",
-          "label": "₹370"
+          "label": "−₹9, a loss"
         },
         {
           "id": "b",
@@ -81,142 +141,110 @@
         },
         {
           "id": "c",
-          "label": "−₹9, a loss"
+          "label": "₹370"
         }
       ],
-      "answer": "c",
-      "why": "4 good orders × ₹74 = ₹296. The refused one cost ₹150 + ₹15 + ₹140 = ₹305. ₹296 − ₹305 = −₹9. She works hard and loses money.",
+      "answer": "a",
+      "why": "That's it. The four delivered orders leave 4 × ₹74 = ₹296, but the refused one cost ₹305, so together the five leave −₹9. A sale that looks good on its own can turn into a loss once failed orders count, which is why so many sellers ask buyers to pay first.",
       "wrong": {
-        "a": "That's 5 × ₹74. But the refused order earned nothing and still cost money.",
-        "b": "That's the 4 good orders. Now take off what the refused one cost."
+        "b": "You counted the four delivered orders correctly: they leave ₹296. But the refused parcel didn't just earn nothing; it cost ₹305, so the five orders together leave −₹9.",
+        "c": "I see what you did: 5 × ₹74. But only four orders were delivered, and they leave ₹296, while the refused parcel cost ₹305. Together, that's −₹9."
       }
-    },
-    {
-      "kind": "order",
-      "id": "biggest",
-      "prompt": "Put Riya's costs per order from biggest to smallest.",
-      "steps": ["The shirt, ₹180", "Ads, ₹150", "Shipping, ₹70", "Packing, ₹15", "Payment fee, ₹10"],
-      "why": "The ad nearly matches the shirt. Online, the cost of finding a buyer is often the biggest cost after stock, and the easiest to forget."
     },
     {
       "kind": "choice",
       "id": "cut-one",
-      "prompt": "Riya can cut one cost by 20%. Which cut saves her most per order?",
+      "prompt": "Back to a prepaid order. If you could cut one cost by 20%, which cut saves you the most?",
       "options": [
         {
           "id": "a",
-          "label": "Ads"
-        },
-        {
-          "id": "b",
-          "label": "Shipping"
-        },
-        {
-          "id": "c",
           "label": "The shirt"
-        }
-      ],
-      "answer": "c",
-      "why": "20% of ₹180 = ₹36. 20% of ₹150 ads = ₹30. 20% of ₹70 shipping = ₹14. A better supplier price beats a cheaper courier.",
-      "wrong": {
-        "a": "Close. 20% of ₹150 is ₹30, but 20% of the ₹180 shirt is ₹36.",
-        "b": "20% of ₹70 is only ₹14. Go for the biggest cost."
-      }
-    },
-    {
-      "kind": "choice",
-      "id": "biryani",
-      "prompt": "A cloud kitchen sells biryani at ₹300 on a food app. Food costs ₹110, the app takes 25%, packing is ₹20. What's left?",
-      "options": [
-        {
-          "id": "a",
-          "label": "₹95"
         },
         {
           "id": "b",
-          "label": "₹170"
+          "label": "The ads"
         },
         {
           "id": "c",
-          "label": "₹115"
+          "label": "The shipping"
         }
       ],
       "answer": "a",
-      "why": "25% of ₹300 = ₹75. ₹300 − ₹110 − ₹75 − ₹20 = ₹95. And that's before rent, gas and the cook's wage.",
+      "why": "Exactly. 20% of the ₹180 shirt is ₹36, against ₹30 off the ads and ₹14 off shipping. Most sellers fight with the courier first, but a better deal from your maker is worth more.",
       "wrong": {
-        "b": "That's only price minus food and packing. The app's 25% is ₹75 more.",
-        "c": "Check the app's cut: 25% of ₹300 is ₹75, not ₹55."
+        "b": "Close, because ads are a big cost. But 20% of ₹150 is ₹30, while 20% of the ₹180 shirt is ₹36.",
+        "c": "The courier is the first cost most people try to cut, but 20% of ₹70 is only ₹14. Go for the biggest cost: 20% of the ₹180 shirt saves ₹36."
       }
     },
     {
       "kind": "choice",
-      "id": "per-day",
-      "prompt": "Dal khichdi leaves ₹20 and sells 30 a day. Paneer bowls leave ₹45 and sell 18 a day. Which earns more per day?",
+      "id": "per-week",
+      "prompt": "Your plain shirt leaves ₹74 and sells 15 a week. A printed one leaves ₹130 and sells 10. Which earns you more each week?",
       "options": [
         {
           "id": "a",
-          "label": "Khichdi. It sells more"
+          "label": "The plain one, because it sells more"
         },
         {
           "id": "b",
-          "label": "Paneer bowls"
+          "label": "They earn the same"
         },
         {
           "id": "c",
-          "label": "They earn the same"
+          "label": "The printed one"
         }
       ],
-      "answer": "b",
-      "why": "Khichdi: 30 × ₹20 = ₹600. Paneer: 18 × ₹45 = ₹810. A fast seller can earn less than a slow one. Count rupees per day, not plates.",
+      "answer": "c",
+      "why": "Well done. The plain shirt earns 15 × ₹74 = ₹1,110 a week, while the printed one earns 10 × ₹130 = ₹1,300. A fast seller can earn less than a slow one, so count rupees per week, not shirts.",
       "wrong": {
-        "a": "More plates, but fewer rupees: 30 × ₹20 = ₹600 against 18 × ₹45 = ₹810.",
-        "c": "Work out each: ₹600 and ₹810."
+        "a": "I see why: more shirts feels like more money. But 15 × ₹74 is ₹1,110, while 10 × ₹130 is ₹1,300, so the slower shirt earns more.",
+        "b": "Work out each one: 15 × ₹74 = ₹1,110 and 10 × ₹130 = ₹1,300. The printed shirt earns ₹190 more a week."
       }
     },
     {
       "kind": "scenario",
-      "id": "promoted",
-      "setup": "The app offers to 'promote' the biryani for 10% more commission. It promises 40% more orders: 140 a day instead of 100.",
-      "question": "Each biryani leaves ₹95 now. Do you join?",
+      "id": "reseller",
+      "setup": "Then a shop owner from Surat calls. She wants 100 of your shirts a month at ₹350 each. She'll collect them herself, so there's no shipping, no ads and no refused parcels, and you'd only pack them, at ₹15 a shirt.",
+      "question": "₹350 is far below your ₹499 price. What do you do?",
       "options": [
         {
           "id": "a",
-          "label": "Yes. 40 more orders a day is big",
+          "label": "Say no. I'd lose ₹149 a shirt",
           "grade": "bad",
-          "outcome": "10% of ₹300 is ₹30 more per order. 140 × ₹65 = ₹9,100 a day, against 100 × ₹95 = ₹9,500. You cook 40 more meals to earn ₹400 less.",
-          "why": "You counted orders, not what each order leaves.",
-          "better": "Work out what's left per order at the new commission before you sign."
+          "outcome": "She buys from another maker. You keep selling online at ₹499, where a good order leaves you ₹74, and the ₹15,500 a month her order would have left you goes to someone else.",
+          "why": "You compared prices, not what each sale leaves. ₹350 − ₹180 − ₹15 = ₹155, which is double what a ₹499 online order leaves you.",
+          "better": "Work out what each shirt leaves before you say no."
         },
         {
           "id": "b",
-          "label": "Do the per-order sum first",
+          "label": "Work out what each shirt leaves, then decide",
           "grade": "great",
-          "outcome": "You see ₹9,100 against ₹9,500. You offer to try it only if the extra cut is 5%: 140 × ₹80 = ₹11,200.",
-          "why": "Every extra cost comes off each order. The sum shows when more sales mean less money."
+          "outcome": "₹350 minus the ₹180 shirt and ₹15 packing leaves ₹155 a shirt, more than double the ₹74 an online order leaves. You say yes, and 100 shirts leave you ₹15,500 a month.",
+          "why": "Well played. A lower price with fewer holes in the bucket can leave you more than a high price with many."
         },
         {
           "id": "c",
-          "label": "Leave the app for good",
+          "label": "Say yes only if she pays ₹499",
           "grade": "ok",
-          "outcome": "You stop paying 25%, but your 100 orders a day drop to 20 walk-ins.",
-          "why": "The app's cut is a cost, but it also brings the orders.",
-          "better": "Price the deal per order, then decide."
+          "outcome": "She says no and stops replying. A week later you agree to ₹350 after all, but she has already given half the order to another maker, so 50 shirts leave you ₹7,750 a month.",
+          "why": "You pushed on the price when the margin was already good, and that cost you half the order.",
+          "better": "Count the margin first, so you know when a price is already good."
         }
       ]
     },
     {
       "kind": "gap",
       "id": "fill",
-      "text": "Count every cost that comes with ___ order, not just the ___.",
-      "bank": ["each", "stock", "rent", "first"],
-      "answer": ["each", "stock"],
-      "why": "Shipping, ads, fees, packing and returns ride along with every order. Price minus stock is only the start."
+      "text": "Price minus stock isn't profit. What one ___ leaves after every cost it causes is its contribution ___.",
+      "bank": ["order", "margin", "month", "price"],
+      "answer": ["order", "margin"],
+      "why": "Exactly. PepperTap had 20,000 orders a day, but more orders can't rescue an order that loses money. What each sale leaves is what pays your rent and wages, so before you chase more sales, I want you to check that one sale leaves you something."
     }
   ],
   "summary": [
-    "Price minus stock is only the start. Take off every cost that comes with each order.",
-    "Returns, ads and app cuts can turn a 'good' sale into a loss.",
-    "A fast seller can earn less than a slow one. Count rupees per day."
+    "Contribution margin is what one order leaves after every cost it causes.",
+    "Ads, delivery, discounts and refused parcels can turn a 'good' sale into a loss.",
+    "A fast seller can earn less than a slow one. Count rupees per week."
   ],
   "cards": [
     {
