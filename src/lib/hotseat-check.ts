@@ -186,7 +186,7 @@ export function checkHotSeat(dir: string, audioDir = AUDIO_DIR): CheckResult {
       soft(`media/${f.replace(/mp4$/, "jpg")} (the clip's still for data saver) is missing; run npm run media on the clip`);
   for (const f of onDisk) if (!used.has(f)) warnings.push(`media/${f} is not used`);
   for (const l of voiceLines([hs]))
-    // Missing audio is only a warning: the app falls back to the browser's voice, and narration is recorded
+    // Missing audio is only a warning (the line plays silently), because narration is recorded
     // on Atheeb's Mac in batches, so a text fix (often a fact fix) must never wait for it.
     if (!existsSync(join(audioDir, `${l.id}.mp3`))) warnings.push(`no audio for "${l.text.slice(0, 50)}…" (${l.id}); run npm run narrate`);
 

@@ -14,7 +14,7 @@ import { Bar, Caption, Card, Icon, MediaView, Pill } from "./ui";
 
 type Exercise = Exclude<LessonScreen, { kind: "explain" }>;
 
-/** Lines for useNarration: pre-made audio when it exists, else the browser's voice (src/lib/voice.ts). */
+/** Lines for useNarration: pre-made audio when it exists, else silence (src/lib/voice.ts). */
 const voiced = (lines: Said[]) => lines.map((l) => ({ text: l.text, voice: l.advisor ? ADVISOR : NARRATOR }));
 type Phase = { kind: "screen"; i: number } | { kind: "reveal"; shown: Exercise; value: Answer["value"] } | { kind: "done"; xp: number };
 

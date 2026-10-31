@@ -139,7 +139,7 @@ export function checkCourse(dir: string, hotSeats: string[], audioDir = AUDIO_DI
     const r = lessonProblems(l, join(dir, "media"));
     errors.push(...r.errors);
     warnings.push(...r.warnings);
-    // Missing narration is only a warning: the player falls back to the browser's voice.
+    // Missing narration is only a warning: the line plays silently until it's recorded.
     const silent = voiceLines([], [], [l]).filter((v) => !existsSync(join(audioDir, `${v.id}.mp3`))).length;
     if (silent) warnings.push(`${l.id}: ${silent} lines have no audio yet; run npm run narrate`);
     for (const c of l.cards) {

@@ -2,12 +2,12 @@
 
 /**
  * Narration. Pre-generated audio (public/audio/<id>.mp3) is used when it exists;
- * otherwise the browser's built-in speech voice reads the line, so nothing is ever silent.
+ * a line with no recording yet stays silent (the text is always on screen).
  * The id is worked out here, the same way src/lib/voice-lines.ts does: sha1(voice + "|" + text), first 12 hex
  * characters. No list of lines ships to the phone, because that list would hold every answer.
  */
 export async function lineId(voice: string, text: string): Promise<string | undefined> {
-  if (typeof crypto === "undefined" || !crypto.subtle) return undefined; // not https: use the browser voice
+  if (typeof crypto === "undefined" || !crypto.subtle) return undefined; // not https: no id, so silent
   const hash = await crypto.subtle.digest("SHA-1", new TextEncoder().encode(voice + "|" + text));
   return [...new Uint8Array(hash)]
     .map((b) => b.toString(16).padStart(2, "0"))
@@ -28,7 +28,7 @@ let wait: ReturnType<typeof setTimeout> | undefined;
 let gen = 0;
 
 // Phones (iPhones most strictly) only let sound start from a tap, and narration starts a moment after one. Playing
-// silence on the shared audio element and an empty line of browser speech during the first tap unlocks both for
+// silence on the shared audio element during the first tap unlocks it for
 // the rest of the visit. touchend and click count as a tap on iPhone; pointerdown does not.
 if (typeof window !== "undefined") {
   const unlock = () => {
@@ -39,7 +39,6 @@ if (typeof window !== "undefined") {
       audio.src = "/silence.mp3";
       audio.play().catch(() => {});
     }
-    if ("speechSynthesis" in window) window.speechSynthesis.speak(new SpeechSynthesisUtterance(""));
   };
   window.addEventListener("touchend", unlock, true);
   window.addEventListener("click", unlock, true);
@@ -54,7 +53,6 @@ export function stopVoice() {
     audio.pause();
     audio.removeAttribute("src");
   }
-  if (typeof window !== "undefined" && "speechSynthesis" in window) window.speechSynthesis.cancel();
 }
 
 /**
@@ -78,7 +76,7 @@ function start(text: string, voice: string, progress?: (p: number) => void, onEn
   const g = gen;
   lineId(voice, text).then(
     (id) => g === gen && play(id, text, voice, done(g, onEnd)),
-    () => g === gen && speakBrowser(text, voice, done(g, onEnd)),
+    () => g === gen && done(g, onEnd)(),
   );
 }
 
@@ -90,7 +88,8 @@ const done = (g: number, onEnd?: () => void) => () => {
 
 function play(id: string | undefined, text: string, voice: string, done: () => void) {
   const g = gen;
-  const fallback = () => g === gen && speakBrowser(text, voice, done);
+  // No recording yet: stay silent. A robotic browser voice puts players off more than silence does.
+  const fallback = () => g === gen && done();
   if (!id) return fallback();
   audio = audio ?? new Audio();
   audio.src = `/audio/${id}.mp3`;
@@ -101,22 +100,6 @@ function play(id: string | undefined, text: string, voice: string, done: () => v
     if (audio && !audio.paused) raf = requestAnimationFrame(loop);
   };
   audio.onplay = () => (raf = requestAnimationFrame(loop));
-  // A missing file rejects here too, after onerror has handed over to the browser voice: let that voice finish.
+  // A missing file rejects here too, after onerror has already moved on.
   audio.play().catch((e) => e?.name === "NotAllowedError" && done());
-}
-
-function speakBrowser(text: string, voice: string, done: () => void) {
-  if (typeof window === "undefined" || !("speechSynthesis" in window)) return done();
-  const u = new SpeechSynthesisUtterance(text);
-  const voices = window.speechSynthesis.getVoices();
-  const want = voice === ADVISOR ? /en-GB/i : /en-(US|IN)/i;
-  u.voice = voices.find((v) => want.test(v.lang)) ?? voices.find((v) => /^en/i.test(v.lang)) ?? null;
-  u.rate = 1;
-  const words = text.split(/\s+/).length;
-  u.onboundary = (e) => {
-    if (e.name === "word") onProgress?.(Math.min(1, text.slice(0, e.charIndex).split(/\s+/).length / words));
-  };
-  u.onend = done;
-  u.onerror = done;
-  window.speechSynthesis.speak(u);
 }
