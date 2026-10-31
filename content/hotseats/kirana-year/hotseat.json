@@ -32,7 +32,7 @@
       "type": "scene",
       "year": "April",
       "media": "img:ky_intro",
-      "text": "This is a made-up story based on many real kiranas. You are Asha, 27. For 30 years, your father, Baba, ran Kulkarni General Stores on a busy lane in Kesarganj, a town in Madhya Pradesh. His knees are bad now, so this April he hands the shop to you.",
+      "text": "This is a made-up story based on many real kiranas. You are Asha, 27. For 30 years, your father, Baba, ran Kulkarni General Stores on a busy lane in Imliganj, a town in Madhya Pradesh. His knees are bad now, so this April he hands the shop to you.",
       "next": "keys"
     },
     "keys": {
@@ -633,7 +633,7 @@
     }
   },
   "realEnding": "legend",
-  "realHistory": "This story is made up. Asha, her shop and the town of Kesarganj are invented. They are based on what many real kiranas face: small margins, udhaar, rain that comes late, the Diwali rush and new delivery apps. It is not about any real shop or person.",
+  "realHistory": "This story is made up. Asha, her shop and the town of Imliganj are invented. They are based on what many real kiranas face: small margins, udhaar, rain that comes late, the Diwali rush and new delivery apps. It is not about any real shop or person.",
   "sources": [
     {
       "label": "Kirana store profit margin in India: category-wise (Accountune, 2026)",
@@ -680,5 +680,5 @@
       "url": "https://www.theweek.in/wire-updates/national/2025/06/16/bes9-mp-monsoon-arrival.html"
     }
   ],
-  "credits": "A made-up story based on many real kiranas. Asha, her family, her shop and Kesarganj are invented. The sources support the setting of the story, including margins, udhaar, rain, festivals and apps, not the events. Research brief: content/hotseats/kirana-year/research.md."
+  "credits": "A made-up story based on many real kiranas. Asha, her family, her shop and Imliganj are invented. The sources support the setting of the story, including margins, udhaar, rain, festivals and apps, not the events. Research brief: content/hotseats/kirana-year/research.md."
 }

@@ -1,5 +1,5 @@
 # Fact-check: paper-boat
-checked-sha256: 1cbbaa7e12c00c392ddc963bbb8c3026f35d1a48a4e531746f1e63b7ea155628
+checked-sha256: 61cde4fe8ca1e20d4b859e03df2efff723f418b5a4dee4828f07c958a483b4a7
 Checked: 2026-10-31 · by: Claude (fresh-context fact-check)
 
 ## Sources opened
@@ -27,7 +27,7 @@ Checked: 2026-10-31 · by: Claude (fresh-context fact-check)
 - [supported] February 2013: quietly placed in 500 big stores in four cities, no ads (nodes.d4.options.try.outcome, realHistory) — [1] (test marketing February 2013); [8] ("500 modern retail outlets in four metros", "without any advertising")
 - [supported] Sold so fast the plans were raised (nodes.d4.options.try.outcome) — [8] (revising capacity plans)
 - [supported] August launch in Delhi and Bengaluru (nodes.d4.options.try.outcome, realHistory) — [1]; [3]
-- [supported] On flights and in office canteens (nodes.d4.options.try.outcome, nodes.legend.text, realHistory) — [1], [9] (airlines, IndiGo); [4] "office canteens work well for us"
+- [supported] On flights and in office canteens (nodes.d4.options.try.outcome, nodes.survivor.text[0], realHistory) — [1], [9] (airlines, IndiGo); [4] "office canteens work well for us"
 - [supported] Shops can return unsold packs for a full refund (nodes.d4.options.try.outcome) — [9] "refunded them in full in case of returns"
 - [supported] Through 2014 no TV or print ads; about two years with none (nodes.y2014.text, realHistory) — [6] "no print or TV for at least two years since its launch"; [1] (TV ads launched only in 2015)
 - [supported] Facebook drawings of childhood memories; packs on flights the biggest ad (nodes.y2014.text) — [6]
@@ -38,8 +38,14 @@ Checked: 2026-10-31 · by: Claude (fresh-context fact-check)
 - [supported] 2015 first TV ads written and voiced by a famous poet, set to the Malgudi Days tune (nodes.d5.options.memories.outcome) — [1] (Gulzar wrote and recited them, launched in the past two or three months); [3]; [6]
 - [supported] Sales double in a year (nodes.d5.options.memories.outcome) — [1] (2 million a month a year earlier, "double of that" now)
 - [supported] July 2015 investors put in about ₹180 crore (nodes.d5.options.memories.outcome, realHistory) — [5] "some Rs 180 crore", raised "just last month" (Aug 2015 article)
-- [supported] By 2015 Paper Boat about 90% of company sales (nodes.legend.text, realHistory) — [1]
-- [supported] FIXED: yearly sales about ₹24 crore (nodes.legend.text, realHistory) — [5] "Rs 24 crore in 2014-15" (estimate). Was ₹25 crore; no source gives that figure
+- [supported] By 2015 Paper Boat about 90% of company sales (nodes.survivor.text[0], realHistory) — [1]
+- [supported] FIXED: yearly sales about ₹24 crore (nodes.survivor.text[0], realHistory) — [5] "Rs 24 crore in 2014-15" (estimate). Was ₹25 crore; no source gives that figure
+
+- [supported] Experts doubted that childhood memories would reach young buyers and the South (nodes.d5.options.memories.why, nodes.survivor.text[0]) — [1] (Sahni: "catch the young generation"; kaanji "for a south Indian"). Re-checked 2026-10-31 after the d5 regrade; the survivor line says the doubt remains in 2015, as [1] reports it in June 2015
+- [supported] People loved the ads, and sales grew fast (nodes.d5.options.memories.why) — [1] (sales doubled in a year)
+
+## Real ending (2026-10-31)
+- `realEnding` changed from legend to survivor (Atheeb's call): big sales growth is sourced ([1], [5]), but no source publishes a lasting profit. The real path now lands on the survivor ending (Brand 90; legend needs 95). The real-path facts (about 90% of sales, about ₹24 crore, shops, flights, canteens) moved from the legend text to survivor.text[0], unchanged. d5 "memories" is now graded ok; the new off-path option d5 "both" (memories plus "no preservatives, no colours, no fizz") is the only way past history, and it reaches legend only with every other call great. Legend text is now an alternate outcome with no figures.
 
 ## Off-path options
-- Checked d1 tzinga/juice, d2 carton/bottle, d3 plain/star, d4 tv/cheap, d5 health/price, and the survivor, collapse and fired endings. They describe the player's alternate choices; none states an invented event as fact about Hector Beverages or its founders. The collapse ending ("you sell your recipes to a bigger company") is clearly an alternate outcome. The credits label these as estimates.
+- Checked d1 tzinga/juice, d2 carton/bottle, d3 plain/star, d4 tv/cheap, d5 both/price, the legend text, the survivor fallback lines, and the collapse and fired endings. d5 "both" (new, 2026-10-31) and the legend text describe an alternate outcome (younger buyers and the South try it, sales climb in more places); they name no real figure or event. They describe the player's alternate choices; none states an invented event as fact about Hector Beverages or its founders. The collapse ending ("you sell your recipes to a bigger company") is clearly an alternate outcome. The credits label these as estimates.

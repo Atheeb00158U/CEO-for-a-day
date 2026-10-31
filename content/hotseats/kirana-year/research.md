@@ -44,14 +44,14 @@ to fit inside these ranges.
 ## The person, the goal and the clock
 - **Who:** You are **Asha Kulkarni, 27**. Your father, Baba, ran *Kulkarni General Stores* for 30 years. His knees are bad, so this April he hands you the keys. (All names made up.)
 - **The shop:** one room, about 1,000 items on the shelves [2], a QR code at the counter [6], a fat udhaar notebook. Sales about ₹3 lakh a month; most of it goes back to the wholesaler.
-- **The town:** a busy lane in **Kesarganj**, a made-up mid-sized town in Madhya Pradesh. (Not in a state excluded in [5]. Monsoon usually arrives here in mid to late June: see open question 5.)
+- **The town:** a busy lane in **Imliganj**, a made-up mid-sized town in Madhya Pradesh. (Not in a state excluded in [5]. Monsoon usually arrives here in mid to late June: see open question 5.)
 - **The goal:** by 31 March, every wholesaler bill paid, the ₹60,000 rainy-day fund still in the box, and the regulars still coming.
 - **The clock:** one year, April to March. Baba says: "One year. If the shop can't pay its way, we rent it out to the phone shop next door."
 - **Meters:** *Profit* → **"Cash box"** (money in hand today). *Future* → **"Regulars"** (how loyal and steady your customers are). Endings route by Regulars.
 - **Board trust (3 hearts):** shown as **"Baba's trust"** if the label can change (open question 8). Losing all three means Baba takes back the keys.
 
 Opening scenes (two at most):
-- `intro` (April): *"April, Kesarganj. Your father's kirana is yours now. Baba gives you the keys, the udhaar notebook and ₹60,000 saved for bad months. 'One year,' he says. 'Pay every bill. Keep the regulars. Or we rent the shop out.'"*
+- `intro` (April): *"April, Imliganj. Your father's kirana is yours now. Baba gives you the keys, the udhaar notebook and ₹60,000 saved for bad months. 'One year,' he says. 'Pay every bill. Keep the regulars. Or we rent the shop out.'"*
 - (Optional second scene) the first-day numbers: *"You sell about ₹10,000 a day. But most of it goes back to the wholesaler. What is left for you is small."* This line sets up lesson 1.1.1.
 
 ## Decision points
@@ -157,7 +157,7 @@ names on packs. Expect "not found" for some; flag to Atheeb.
 3. **GST:** should the intro mention GST at all? A shop under ₹40 lakh selling only goods needs no registration [5], but not if it sells tobacco or pan masala [5], which many kiranas do. Is the composition limit (₹1.5 crore, 1%) [4] still current after the Sept 2025 GST changes? Not confirmed; the flyer is undated. Simplest: leave GST out.
 4. **Distributor credit days:** we could only see "7–14 days" (IIMB) and "30 days" (2016) in search summaries. The story says "within two weeks". Fine?
 5. **Monsoon timing for the town:** we have Kerala onset dates [7], not the date for Madhya Pradesh. Need an IMD normal-onset map for MP before "three weeks late" is fixed.
-6. **Owner and place:** Asha Kulkarni in made-up Kesarganj, MP, OK? Or a man, another state, or a real town?
+6. **Owner and place:** Asha Kulkarni in made-up Imliganj, MP, OK? Or a man, another state, or a real town?
 7. **The label wording:** "Made-up story, based on many real kiranas." Where must it show: card, intro, every verdict?
 8. **"Baba's trust" for the hearts:** can the "Board trust" label change per Hot Seat (`Player.tsx`, `Debrief.tsx` hard-code it)?
 9. **Hindsight and "what would have worked"** stay as normal, but there is no "real company" call to compare to. OK to drop that panel only for this Hot Seat?

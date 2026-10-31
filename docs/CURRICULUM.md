@@ -911,6 +911,12 @@ Later answers (31 Oct 2026), after the research briefs:
 - **Zerodha:** kept, with care: find more independent sources before drafting, keep it on pricing and growth, and say plainly that trading is risky.
 - **Eureka Forbes:** kept with its four well-sourced decisions; "which homes first" (5.1.1) is taught in lessons only.
 
+Answers after the drafts (1 Nov 2026):
+- **Kirana:** the made-up town gets a new name that matches no real place.
+- **Paper Boat:** the real ending is "survivor" (lasting profit was never published).
+- **Eureka Forbes:** the real last call stays graded "ok", so its real ending is "survivor".
+- **Titan:** keeps its fifth call (Europe, 1993), with the real choice graded "ok".
+
 Taken as defaults unless Atheeb says otherwise: the kirana story is the onboarding taster; Nokia is optional
 practice and Titan quartz the Unit 12 gate; the title-decision placement rule stands; Airbnb 2020 is the
 fallback if Zomato's facts are thin; the course stays hidden until kirana, Nirma and redBus are written;

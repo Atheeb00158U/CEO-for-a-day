@@ -1,8 +1,8 @@
 # Fact-check: kirana-year
-checked-sha256: b0754175c5f86bb6a7d8ab47eebf99b36cbdad0c2c13ecf31b0b5255ebb07107
+checked-sha256: 5ba34d212d109cbb5c2980fdc6b2d36868216725ee58dd5fc3366b8113a392c2
 Checked: 2026-10-31 · by: Claude (fresh-context fact-check)
 
-Made-up story (Asha, Kulkarni General Stores, Kesarganj). There is no company to check, so this is a realism
+Made-up story (Asha, Kulkarni General Stores, Imliganj). There is no company to check, so this is a realism
 check: every claim about how kiranas, rain, festivals, payments and delivery apps work, checked against sources
 opened on 2026-10-31. Source numbers follow `sources` in hotseat.json:
 [1] Accountune margins · [2] Flourish Ventures · [3] OkCredit · [4] The Week, Kerala onset · [5] Down To Earth,
@@ -40,5 +40,5 @@ Kirana Club · [10] Siasat, Hyderabad rains · [11] The Week, MP onset 2025.
 ## Real shop or person?
 - No GST, UPI-company, brand or quick-commerce company is named in the story text ("the app", "a store that delivers in ten minutes"). Paytm, PhonePe etc. appear only inside source [9].
 - "Kulkarni General Stores": web search found no specific shop with this name. It is a generic name built from a common surname, so a real shop of that name may exist somewhere; the story ties it to a made-up town.
-- "Kesarganj": no town of that name in Madhya Pradesh found. Villages called Kesarganj exist in Hamirpur (UP) and Sabarkantha (Gujarat) per census/village listings, and "Kaisarganj" is a town in Bahraich (UP). None is in MP; low risk, noted for Atheeb.
+- "Imliganj" (renamed from "Kesarganj" on 2026-10-31, Atheeb's call: Kesarganj matched real villages in Hamirpur, UP and Sabarkantha, Gujarat). Checked by web search on 2026-10-31: "Imliganj" village/town; "Imli Ganj"/"Imliganj" Madhya Pradesh census map; "Imliganj" pincode/post office. No place of that name found in census, village-listing, map or PIN-code results. Nearest names are different places (Imlai, Jabalpur; Imligaon, Sultanpur UP; Aliganj, UP/Bihar).
 - Asha Kulkarni, Baba, the cousin, the nephew: no real person is described.

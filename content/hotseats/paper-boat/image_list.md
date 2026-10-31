@@ -22,7 +22,8 @@ India, 2012–2015. No logos or readable brand names (use plain or blank packs),
 - pb_d4_cheap: a shop shelf with a "price cut" sign (unreadable) next to colas.
 - pb_2014: a post box in an office canteen with postcards stacked beside it.
 - pb_d5: a creative team around a storyboard of childhood summer scenes.
-- pb_d5_health: an ad storyboard of fresh fruit and ingredient lists (text unreadable).
+- pb_d5_health: an ad storyboard of fresh fruit and ingredient lists (text unreadable). (No longer used: the health option was replaced by pb_d5_both.)
+- pb_d5_both: an ad storyboard: children floating paper boats in the rain on one panel, a mother making aam panna at home on the next, a plain pouch with a short unreadable line at the end.
 - pb_d5_memories: a nostalgic scene of children playing in the rain with paper boats, warm light.
 - pb_d5_price: a shopper comparing a pouch and a cola bottle, frowning at the prices.
 - pb_legend: pouches on shop shelves, an airline trolley and an office canteen counter, all full.

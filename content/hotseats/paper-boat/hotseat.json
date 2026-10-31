@@ -407,34 +407,33 @@
       "advisor": "Health matters to many buyers. Tell them clearly what's in the drink and what isn't.",
       "options": [
         {
-          "id": "health",
-          "label": "Lead with health: no preservatives, no colours, real fruit. It's true, and people care about it.",
-          "grade": "ok",
+          "id": "both",
+          "label": "Lead with childhood memories, and also say it plainly: no preservatives, no colours, no fizz.",
+          "grade": "great",
           "effect": {
-            "profit": 5,
-            "future": 0,
-            "flags": ["health"]
+            "profit": 10,
+            "future": 15,
+            "flags": ["both"]
           },
           "next": "ending_route",
-          "media": "img:pb_d5_health",
-          "outcome": "The ads are clear and true. But every juice brand says much the same thing, so yours blends in. By the time people reach the shop, they have forgotten which drink it was.",
-          "why": "The health message was true, but your rivals could say much the same thing. Nothing in the ad gave people a feeling to remember. Remember: sell what you stand for, not just what's in the pack.",
-          "better": "Lead with what the brand stands for, childhood and home, and let the natural recipe speak for itself.",
-          "takeaway": "In 2015 you sold the ingredients. Facts are easy to copy; feelings are not.",
+          "media": "img:pb_d5_both",
+          "outcome": "Your ads show childhood summers and drinks made at home, and end on one plain line: nothing artificial inside. People who grew up with these drinks feel the memory. Younger buyers and people in the South get a simple reason to try one. Sales climb in more places, not just the big cities.",
+          "why": "The memory moved people who grew up with these drinks. The plain promise gave everyone else a reason to try. Remember: lead with what you stand for, and give every buyer a reason to try.",
+          "takeaway": "In 2015 you sold a memory and a clean recipe together. A feeling plus a reason reaches more people.",
           "traits": {
-            "horizon": 0,
-            "risk": -1,
-            "disrupt": 0
+            "horizon": 1,
+            "risk": 0,
+            "disrupt": 1
           }
         },
         {
           "id": "memories",
           "label": "Lead with childhood memories, and trust the drink to show it's natural, even if young buyers may not care.",
-          "grade": "great",
+          "grade": "ok",
           "real": true,
           "effect": {
             "profit": 10,
-            "future": 15,
+            "future": 5,
             "flags": ["memories"]
           },
           "next": "ending_route",
@@ -450,13 +449,14 @@
               "text": "Your line is 'Drinks and Memories', and your first TV ads are all about childhood summers and drinks from home. People feel something when they see them, and sales begin to climb."
             }
           ],
-          "why": "You sold a feeling people already had, not a list of what's in the pack. Remember: sell what you stand for, not just what's in the pack.",
-          "takeaway": "In 2015 you sold what you stand for, not just what's inside.",
+          "why": "People loved the ads, and sales grew fast. But experts had warned that childhood memories might not reach young buyers or people in the South. A memory alone gave them little reason to try. Remember: lead with what you stand for, and give every buyer a reason to try.",
+          "takeaway": "In 2015 you sold a memory. It moved people who missed these drinks, but others needed a reason too.",
           "traits": {
             "horizon": 1,
             "risk": 1,
             "disrupt": 1
-          }
+          },
+          "better": "Keep the memories, and add a plain reason anyone can see: no preservatives, no colours, no fizz."
         },
         {
           "id": "price",
@@ -471,8 +471,8 @@
           "next": "ending_route",
           "media": "img:pb_d5_price",
           "outcome": "Shoppers start comparing you with colas. Next to a cola, your drink just looks expensive. The ad makes them think about money, not memories, and sales slow down.",
-          "why": "You asked people to compare prices, and the cola won. Remember: sell what you stand for, not just what it costs.",
-          "better": "Lead with childhood and home, what the brand stands for, so price is not the first thing people see.",
+          "why": "You asked people to compare prices, and the cola won. Remember: lead with what you stand for, and give every buyer a reason to try.",
+          "better": "Lead with childhood and home, and say plainly what's not inside, so price is not the first thing people see.",
           "takeaway": "In 2015 you sold on price. Start a price fight, and the cheaper drink wins.",
           "traits": {
             "horizon": -1,
@@ -488,7 +488,7 @@
       "routes": [
         {
           "when": {
-            "minFuture": 70
+            "minFuture": 95
           },
           "to": "legend"
         },
@@ -509,17 +509,7 @@
       "tier": "legend",
       "title": "A memory in every pack",
       "media": "img:pb_legend",
-      "text": [
-        {
-          "when": {
-            "flags": ["panna", "pouch", "story", "try", "memories"]
-          },
-          "text": "By 2015 Paper Boat makes up about 90% of your company's sales, and yearly sales reach about ₹24 crore. A drink that began as one partner's home-made aam panna is now sold in shops, on flights and in office canteens across India's big cities."
-        },
-        {
-          "text": "You took a few detours, but you found a drink people missed and gave it a voice they loved. Paper Boat grows into one of India's best-loved new drink brands."
-        }
-      ],
+      "text": "Paper Boat becomes most of your company's sales, in shops, on flights and in office canteens. Young buyers and people in the South try it for the clean recipe and stay for the taste. It grows into one of India's best-loved new drink brands.",
       "bonus": 15
     },
     "survivor": {
@@ -529,6 +519,12 @@
       "title": "A small brand with fans",
       "media": "img:pb_survivor",
       "text": [
+        {
+          "when": {
+            "flags": ["panna", "pouch", "story", "try", "memories"]
+          },
+          "text": "By 2015 Paper Boat makes up about 90% of your company's sales, and yearly sales reach about ₹24 crore. It sells in shops, on flights and in office canteens in big cities. But experts still doubt that childhood memories will win over young buyers and the South."
+        },
         {
           "when": {
             "flags": ["tzinga"]
@@ -560,7 +556,7 @@
       "bonus": 0
     }
   },
-  "realEnding": "legend",
+  "realEnding": "survivor",
   "realHistory": "Hector Beverages sold a cheap energy drink, Tzinga. Its founders saw that old Indian drinks like aam panna were not sold in any shop. They quietly tested Paper Boat in 500 stores in February 2013, with no ads, and launched it in Delhi and Bengaluru that August in paper-look pouches that cost less than cartons. Each pack told a small childhood story, and the brand's line was 'Drinks and Memories'. For about two years it ran no TV or print ads, and people found it in shops, on flights and in office canteens. By 2015 Paper Boat was about 90% of the company's sales, yearly sales were about ₹24 crore, and investors put in about ₹180 crore.",
   "sources": [
     {
