@@ -5,6 +5,8 @@ Mobile-first Next.js app (App Router, React 19, Tailwind v4, TypeScript). Dark m
 UI components: use shadcn/ui, restyled to this look. Add gluestack-ui only if we build a native app later.
 
 ## Product decisions from the owner (Atheeb)
+- **Player first (1 Nov 2026):** judge every change by "will a new Indian player enjoy this, keep playing, and pay?" Question earlier decisions, even approved ones, and change them when that test says so; tell Atheeb what changed and why instead of asking.
+- **Free tier (1 Nov 2026):** Module 1 (lessons + the kirana story) plus one famous showcase Hot Seat, Kingfisher, so free players feel the dramatic stories. The paywall comes after players have something to lose (streak, league place, notes). Pricing isn't built yet.
 - **Name:** "CEO For A Day". A single case study is called a **Hot Seat**; never write "case study" in the UI.
 - **Audience:** wannabe and struggling entrepreneurs in India.
   - English first. Hindi, Tamil, Bengali and more come close to launch; don't build i18n yet.
