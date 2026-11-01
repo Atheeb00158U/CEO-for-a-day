@@ -3,7 +3,7 @@
   "title": "How small can you start?",
   "principle": "Keep fixed costs tiny until sales show people want what you sell.",
   "minutes": 5,
-  "draft": true,
+  "draft": false,
   "screens": [
     {
       "kind": "explain",

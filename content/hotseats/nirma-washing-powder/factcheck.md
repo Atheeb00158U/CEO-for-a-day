@@ -1,5 +1,5 @@
 # Fact-check: nirma-washing-powder
-checked-sha256: df197a6bfc7eeb95b8216b35a78d6cdf7d9cddb3e67d7a4be05f7b5f7effd216
+checked-sha256: fa0a9b19478fd9dd4d174c2e1c300d12d2cb586a22aa3e3d19ed2b3a9afa7aa0
 Checked: 2026-11-01 · by: Claude (fresh-context fact-check; re-checked after the plain-English pass)
 
 ## Sources opened

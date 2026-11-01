@@ -6,7 +6,7 @@
   "role": "You make and sell a washing powder, 1969 to the 1990s",
   "years": "1969–1990s",
   "cover": "img:nr_cover",
-  "draft": true,
+  "draft": false,
   "complexity": 1,
   "minutes": 5,
   "start": "intro",

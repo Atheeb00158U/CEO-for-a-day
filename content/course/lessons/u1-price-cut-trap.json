@@ -3,7 +3,7 @@
   "title": "What does a price cut really cost?",
   "principle": "A small price cut can need twice the sales. Can you get them?",
   "minutes": 5,
-  "draft": true,
+  "draft": false,
   "screens": [
     {
       "kind": "explain",

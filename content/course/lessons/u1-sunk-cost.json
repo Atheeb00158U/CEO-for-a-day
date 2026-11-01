@@ -3,7 +3,7 @@
   "title": "Money already spent",
   "principle": "Ignore money already spent. Count what you could do instead.",
   "minutes": 5,
-  "draft": true,
+  "draft": false,
   "screens": [
     {
       "kind": "explain",
