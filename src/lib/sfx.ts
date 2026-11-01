@@ -54,6 +54,10 @@ const buffers = new Map<Sfx, AudioBuffer>();
 let busyUntil = 0;
 /** When each effect last played, so React's doubled dev effects don't play it twice. */
 const lastPlayed = new Map<Sfx, number>();
+/** Effects scheduled but maybe not finished, so leaving the app can cancel them. */
+const live = new Set<AudioBufferSourceNode>();
+/** A sound that can't start within this long is dropped: a late "wrong answer" sound is worse than none. */
+const LATE_MS = 250;
 
 export function setSfxOn(v: boolean) {
   on = v;
@@ -66,6 +70,15 @@ function load() {
   // Browsers start audio suspended until a tap; resume on taps until it runs. iPhone counts touchend and click as a tap, not pointerdown.
   const wake = () => ctx?.state === "suspended" && ctx.resume();
   for (const e of ["pointerdown", "touchend", "click", "keydown"]) window.addEventListener(e, wake, { capture: true });
+  // Leaving the app (home screen, a call, the app switcher) cancels anything still queued, so nothing plays late
+  // on return (Atheeb, 1 Nov 2026: a wrong-answer sound played minutes later, after a volume change and coming back).
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState !== "hidden") return;
+    for (const src of live) src.stop();
+    live.clear();
+    busyUntil = 0;
+    void ctx?.suspend();
+  });
   loading = Promise.all(
     SFX.map((n) =>
       fetch(`/sfx/${n}.mp3`)
@@ -83,14 +96,26 @@ export function playSfx(name: Sfx, delay = 0) {
   const buf = buffers.get(name);
   if (!buf || performance.now() - (lastPlayed.get(name) ?? -1e9) < 60) return;
   lastPlayed.set(name, performance.now());
-  if (ctx.state === "suspended") ctx.resume();
-  const src = ctx.createBufferSource();
-  const g = ctx.createGain();
-  g.gain.value = GAIN[name];
-  src.buffer = buf;
-  src.connect(g).connect(ctx.destination);
-  src.start(ctx.currentTime + delay / 1000);
-  busyUntil = Math.max(busyUntil, performance.now() + delay + buf.duration * 1000);
+  const asked = performance.now();
+  const start = () => {
+    // iPhone pauses Web Audio on interruptions; a sound queued meanwhile would otherwise play whenever it wakes.
+    if (!ctx || ctx.state !== "running" || performance.now() - asked > LATE_MS) return;
+    const src = ctx.createBufferSource();
+    const g = ctx.createGain();
+    g.gain.value = GAIN[name];
+    src.buffer = buf;
+    src.connect(g).connect(ctx.destination);
+    src.onended = () => live.delete(src);
+    live.add(src);
+    src.start(ctx.currentTime + delay / 1000);
+    busyUntil = Math.max(busyUntil, performance.now() + delay + buf.duration * 1000);
+  };
+  if (ctx.state === "running") start();
+  else
+    ctx
+      .resume()
+      .then(start)
+      .catch(() => {});
 }
 
 /** Milliseconds until the effects scheduled so far have finished (0 when quiet). */
