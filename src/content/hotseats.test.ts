@@ -8,6 +8,10 @@ import { checkCourse } from "@/lib/course-check";
 import { checkDailyPool, checkHotSeat, factcheckProblems, mediaCollisions } from "@/lib/hotseat-check";
 import { createHash } from "node:crypto";
 import { today } from "@/lib/game-state";
+import { readdirSync } from "node:fs";
+import { readLesson } from "@/lib/content-files";
+import type { Lesson } from "@/lib/course-types";
+import { lessonPlay, type Answer, type LessonScreen } from "@/lib/lesson-play";
 
 describe.each(hotSeatIds())("Hot Seat %s", (id) => {
   it("passes hotseat:check", () => {
@@ -24,6 +28,45 @@ it("has no media names shared between Hot Seats", () => {
 
 it("has a valid course", () => {
   expect(checkCourse(COURSE_DIR, hotSeatIds()).errors).toEqual([]);
+});
+
+// Every real lesson can be finished through the server replay, and every wrong pick gets its own reply.
+const lessonIds = readdirSync(join(COURSE_DIR, "lessons")).map((f) => f.replace(/\.json$/, ""));
+describe.each(lessonIds)("lesson %s", (id) => {
+  const l: Lesson = readLesson(id);
+  const right = (shown: LessonScreen): Answer["value"] => {
+    const s = l.screens.find((x) => x.id === shown.id)!;
+    if (s.kind === "choice" || s.kind === "gap") return s.answer;
+    if (s.kind === "order") return s.steps;
+    if (s.kind === "scenario") return s.options.find((o) => o.grade === "great")!.id;
+    if (s.kind === "sort" && shown.kind === "sort") return shown.items.map((t) => String(s.items.find((i) => i.text === t)!.bucket));
+    throw new Error("not an exercise");
+  };
+  const wrong = (shown: LessonScreen): Answer["value"] => {
+    const r = right(shown);
+    if (shown.kind === "choice" || shown.kind === "scenario") return shown.options.find((o) => o.id !== r)!.id;
+    if (shown.kind === "sort") return (r as string[]).map((b) => (b === "0" ? "1" : "0"));
+    return [...(r as string[])].reverse();
+  };
+  const play = (miss: boolean) => {
+    const answers: Answer[] = [];
+    const whys: string[] = [];
+    let v = lessonPlay(l, answers);
+    for (let n = 0; !v.result; n++) {
+      if (n > 60) throw new Error("the lesson never ends");
+      const ex = v.screens.at(-1)!;
+      answers.push({ screenId: ex.id, value: miss && !ex.retry ? wrong(ex) : right(ex) });
+      v = lessonPlay(l, answers);
+      if (v.reveal) whys.push(v.reveal.why);
+    }
+    return { result: v.result, whys };
+  };
+  it("plays to 100% with every answer right", () => expect(play(false).result.accuracy).toBe(100));
+  it("replies to every wrong pick", () => {
+    const { result, whys } = play(true);
+    expect(result.right).toBe(0);
+    expect(whys.every(Boolean)).toBe(true);
+  });
 });
 
 describe("the course check catches broken lessons", () => {
@@ -78,6 +121,22 @@ describe("the course check catches broken lessons", () => {
       c.units[0].modules[1].lessons.push("nowhere");
     });
     expect(published).toMatch(/lesson "nowhere" has no lessons\/nowhere.json/);
+  });
+
+  it("holds a published lesson to the question rules (docs/QUESTION-RULES.md)", () => {
+    const errors = fixture("rules", (_, l) => {
+      const m = l["sample-margin"];
+      m.draft = false;
+      m.screens[2].wrong = {};
+      m.screens[2].prompt = "Cut your rent by 20%. What's left on paper?";
+      m.screens[3].prompt = "Sort these.";
+      m.screens[5].prompt = "Order them.";
+    });
+    expect(errors).toMatch(/sample-margin\/\w+\/\w+: a wrong option needs its own reply/);
+    expect(errors).toMatch(/asks for a % change without saying how/);
+    expect(errors).toMatch(/"on paper" is an idiom/);
+    expect(errors).toMatch(/say the task: "I'll show you N things/);
+    expect(errors).toMatch(/say what to do in a full sentence/);
   });
 
   it("needs a hook first and 3 scored exercises", () => {

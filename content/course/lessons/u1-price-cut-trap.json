@@ -1,0 +1,265 @@
+{
+  "id": "u1-price-cut-trap",
+  "title": "What does a price cut really cost?",
+  "principle": "A small price cut can need twice the sales. Can you get them?",
+  "minutes": 5,
+  "draft": true,
+  "screens": [
+    {
+      "kind": "explain",
+      "id": "hook",
+      "media": "img:ls_glucose_biscuits",
+      "text": "Let me start with a biscuit you know. In 1994, a small pack of Parle-G cost ₹4. In 2009, it still cost ₹4, even though its costs had kept rising. Before I tell you how, have a guess."
+    },
+    {
+      "kind": "choice",
+      "id": "guess",
+      "guess": true,
+      "prompt": "Its costs kept going up, but the price stayed at ₹4. What do you think Parle did?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Took less profit on each pack"
+        },
+        {
+          "id": "b",
+          "label": "Used cheaper flour"
+        },
+        {
+          "id": "c",
+          "label": "Made the pack a little lighter"
+        }
+      ],
+      "answer": "c",
+      "why": "It made the pack lighter. In 2008, the pack went from 100 grams to 92.5 grams, and in 2009 to 88 grams. The price stayed at ₹4, so buyers kept buying."
+    },
+    {
+      "kind": "explain",
+      "id": "volume",
+      "title": "Tiny profit, huge sales",
+      "text": "Why not just raise the price? Parle did try once, around 2006. Sales fell sharply, and buyers wrote in to complain, so it quickly went back. Parle-G is very cheap, so it needs huge sales: about 40 crore biscuits a day by 2020."
+    },
+    {
+      "kind": "explain",
+      "id": "cvp",
+      "title": "Price, cost and how many",
+      "text": "Parle's story shows how three numbers work together: price, cost, and how many you sell. This is called cost-volume-profit. Parle didn't dare raise its price. Small shops often make another mistake: they cut the price, and a small cut can take away much of what each sale leaves."
+    },
+    {
+      "kind": "explain",
+      "id": "home",
+      "title": "Now look at your business",
+      "text": "Parle keeps its price very low and makes it work by selling crores of packets. Most small businesses can't sell that many. Imagine you run a chai stall near a bus stand. Your chai sells for ₹10. Milk, tea, sugar and the cup cost ₹6, so each cup leaves you ₹4."
+    },
+    {
+      "kind": "choice",
+      "id": "cut-two",
+      "prompt": "Your chai sells for ₹10 and costs ₹6. Cut the price to ₹8, which is 20% off. What happens to what each cup leaves you?",
+      "options": [
+        {
+          "id": "a",
+          "label": "It falls by 20%"
+        },
+        {
+          "id": "b",
+          "label": "It falls by half"
+        },
+        {
+          "id": "c",
+          "label": "It hardly changes"
+        }
+      ],
+      "answer": "b",
+      "why": "Exactly. Each cup used to leave ₹4: ₹10 minus ₹6. At ₹8, it leaves ₹2. Your price fell by 20%, but what each cup leaves you fell by half.",
+      "wrong": {
+        "a": "That's what most people think. But the whole ₹2 comes out of the ₹4 left after costs. ₹8 − ₹6 leaves ₹2, which is half of ₹4.",
+        "c": "₹2 sounds small. But each cup only left you ₹4 before. Losing ₹2 of that ₹4 means each cup now leaves you half as much."
+      }
+    },
+    {
+      "kind": "choice",
+      "id": "cups-needed",
+      "prompt": "Today, 300 cups a day leave you ₹4 each, so you keep ₹1,200. At ₹8, each cup leaves ₹2. How many cups keep ₹1,200?",
+      "options": [
+        {
+          "id": "a",
+          "label": "360 cups"
+        },
+        {
+          "id": "b",
+          "label": "450 cups"
+        },
+        {
+          "id": "c",
+          "label": "600 cups"
+        }
+      ],
+      "answer": "c",
+      "why": "Right. ₹1,200 divided by ₹2 is 600 cups. Here, a 20% price cut means you must sell twice as many cups just to earn the same.",
+      "wrong": {
+        "a": "I see what you did: 20% off, so 20% more cups. But each cup now leaves half as much, so you need twice as many: ₹1,200 ÷ ₹2 = 600.",
+        "b": "450 is 50% more cups. But each cup now leaves half as much, so you need twice as many: ₹1,200 ÷ ₹2 = 600."
+      }
+    },
+    {
+      "kind": "choice",
+      "id": "can-you",
+      "prompt": "At ₹8, you'd need 600 cups a day to earn the same. Even at full speed, your stall makes about 400. Can ₹8 work?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Yes. Cheaper chai brings more people"
+        },
+        {
+          "id": "b",
+          "label": "No. I can't make 600 cups a day"
+        },
+        {
+          "id": "c",
+          "label": "Yes, if people buy two cups each"
+        }
+      ],
+      "answer": "b",
+      "why": "Right. You'd need 600 cups a day, and your stall makes 400. Before you cut a price, ask two things: will that many more people come, and can I make that much?",
+      "wrong": {
+        "a": "Some new people will come. But you'd need 600 cups a day, and your stall can only make 400.",
+        "c": "Most people want one chai. And even if a few buy two, your stall can only make about 400 cups a day, not 600."
+      }
+    },
+    {
+      "kind": "choice",
+      "id": "raise",
+      "prompt": "Now the other way. You sell 300 cups and keep ₹1,200. At ₹12, each cup leaves ₹6. How many cups keep ₹1,200?",
+      "options": [
+        {
+          "id": "a",
+          "label": "200 cups"
+        },
+        {
+          "id": "b",
+          "label": "250 cups"
+        },
+        {
+          "id": "c",
+          "label": "300 cups"
+        }
+      ],
+      "answer": "a",
+      "why": "Yes. ₹1,200 divided by ₹6 is 200 cups. You could lose 100 of your 300 buyers and still earn the same. But buyers may leave: Parle's buyers cared a lot about each rupee, so its price rise failed.",
+      "wrong": {
+        "b": "₹1,200 ÷ ₹6 is 200, not 250. So you could lose 100 of your 300 buyers and still earn the same.",
+        "c": "300 is what you sell now. At ₹6 a cup, you need only ₹1,200 ÷ ₹6, which is 200 cups."
+      }
+    },
+    {
+      "kind": "sort",
+      "id": "safe-cut",
+      "prompt": "I'll show you six businesses. Each wants to cut its price by 20%. For each one, tell me: could it really sell twice as much?",
+      "buckets": ["Yes, it could", "No, it couldn't"],
+      "items": [
+        {
+          "text": "A barber with one chair, busy all day",
+          "bucket": 1
+        },
+        {
+          "text": "A bakery with spare ovens, near a big new college",
+          "bucket": 0
+        },
+        {
+          "text": "A tailor who already has more orders than he can sew",
+          "bucket": 1
+        },
+        {
+          "text": "A water-can seller with an unused truck, in a growing colony",
+          "bucket": 0
+        },
+        {
+          "text": "A chai stall on a quiet lane",
+          "bucket": 1
+        },
+        {
+          "text": "A print shop with machines idle half the day, near many offices",
+          "bucket": 0
+        }
+      ],
+      "why": "Right. A cut only works if you can sell much more: more buyers who'd come for a lower price, and room to make more for them. A busy barber has no room, and a quiet lane has few buyers."
+    },
+    {
+      "kind": "scenario",
+      "id": "rival",
+      "setup": "One morning, the stall across the road drops its chai to ₹8. By evening, 50 of your 300 regulars have crossed the road. The other 250 stay, because they like your chai. You charge ₹10, and each cup costs ₹6.",
+      "question": "What do you do about your price?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Match him at ₹8",
+          "grade": "bad",
+          "outcome": "All 50 regulars come back, and you sell 300 cups again. But each cup now leaves ₹2, so you keep ₹600 a day instead of ₹1,200. You got the customers back but lost half your money.",
+          "why": "To earn the same at ₹8, you'd need 600 cups a day. You only got back to 300. Matching a price cut can cost much more than losing a few customers.",
+          "better": "Keep ₹10, and let those 50 go. Losing 50 cups costs you ₹200 a day; matching costs ₹600."
+        },
+        {
+          "id": "b",
+          "label": "Keep ₹10, even if some leave",
+          "grade": "great",
+          "outcome": "You sell 250 cups a day, and each still leaves ₹4. You keep ₹1,000 a day. Losing 50 customers cost you ₹200 a day, much less than a price cut would.",
+          "why": "Well done. You did the sum before you reacted: 250 cups at ₹4 beats 300 cups at ₹2. The cut would have halved what every cup leaves you."
+        },
+        {
+          "id": "c",
+          "label": "Cut to ₹9",
+          "grade": "ok",
+          "outcome": "At ₹9, 40 of the 50 come back, and you sell 290 cups. Each cup leaves ₹3, so you keep ₹870 a day. That's better than ₹600, but worse than staying at ₹10.",
+          "why": "A smaller cut costs you less, but it still costs you. At ₹9, you'd need 400 cups a day to earn the same ₹1,200.",
+          "better": "Keep ₹10. 250 cups at ₹4 leaves ₹1,000, more than 290 cups at ₹3."
+        }
+      ]
+    },
+    {
+      "kind": "gap",
+      "id": "fill",
+      "text": "The 20% price cut took ___ of what each cup left you, so you needed ___ cups to earn the same.",
+      "bank": ["half", "twice as many", "a fifth", "20% more"],
+      "answer": ["half", "twice as many"],
+      "why": "Right. At ₹10, each cup left ₹4; at ₹8, only ₹2. The less each sale leaves you, the more a small cut costs you. Before you cut a price, work out how many more you must sell, and ask if you really can."
+    }
+  ],
+  "summary": [
+    "Price, cost and how many you sell work together. This is cost-volume-profit.",
+    "When each sale leaves you little, a small price cut can halve it, so you may need twice the sales.",
+    "Before you cut a price, check if you can really sell that many more."
+  ],
+  "cards": [
+    {
+      "id": "m12-cut-1",
+      "front": "Price ₹50, cost ₹40. You cut the price to ₹45. How much less does each sale leave?",
+      "options": ["10% less", "Half as much", "The same"],
+      "answer": 1,
+      "back": "₹50 − ₹40 = ₹10. ₹45 − ₹40 = ₹5. The price fell 10%, but what each sale leaves fell by half."
+    },
+    {
+      "id": "m12-cut-2",
+      "front": "You sell 100 a day, keeping ₹4 each. A cut leaves ₹2 each. How many sales keep the same money?",
+      "options": ["120", "200", "150"],
+      "answer": 1,
+      "back": "₹400 ÷ ₹2 = 200. Twice the sales, just to earn the same."
+    },
+    {
+      "id": "m12-cut-3",
+      "front": "A rival cuts prices and you lose 1 in 6 customers. Matching would halve what each sale leaves. What's usually safer?",
+      "options": ["Match the price", "Hold your price"],
+      "answer": 1,
+      "back": "Losing 1 in 6 sales costs less than halving every sale."
+    }
+  ],
+  "sources": [
+    {
+      "label": "Price warrior (Business Standard, 4 May 2009)",
+      "url": "https://www.business-standard.com/article/management/price-warrior-109050400068_1.html"
+    },
+    {
+      "label": "Parle-G clocks best sales in 8 decades (Business Today, 9 Jun 2020)",
+      "url": "https://www.businesstoday.in/latest/economy-politics/story/coronavirus-effect-parle-g-clocks-best-sales-in-8-decades-market-share-increases-by-5-percent-260709-2020-06-09"
+    }
+  ]
+}

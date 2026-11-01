@@ -9,6 +9,57 @@ import { AUDIO_DIR, type CheckResult } from "./hotseat-check.ts";
 import { voiceLines } from "./voice-lines.ts";
 
 const words = (t: string) => t.split(/\s+/).filter(Boolean).length;
+
+// docs/QUESTION-RULES.md rule 1: players have basic English, so no idioms. Extend this as new ones turn up.
+const IDIOMS = [
+  "one afternoon",
+  "on paper",
+  "bottom line",
+  "rule of thumb",
+  "in the red",
+  "in the black",
+  "ballpark",
+  "cut corners",
+  "make ends meet",
+  "cash cow",
+  "piece of cake",
+  "in the long run",
+  "at the end of the day",
+  "no-brainer",
+  "square one",
+  "the hard way",
+  "bite the bullet",
+  "deep pockets",
+  "sweet spot",
+  "red flag",
+  "silver bullet",
+  "low-hanging fruit",
+  "bang for your buck",
+  "chicken and egg",
+  "pay through the nose",
+  "drop in the bucket",
+  "break the bank",
+  "tighten your belt",
+  "in a nutshell",
+  "ballgame",
+];
+/** Every line a player reads on a screen. */
+const screenText = (s: Screen): string[] => {
+  switch (s.kind) {
+    case "explain":
+      return [s.text];
+    case "choice":
+      return [s.prompt, s.why, ...s.options.map((o) => o.label), ...Object.values(s.wrong ?? {})];
+    case "gap":
+      return [s.text, s.why];
+    case "order":
+      return [s.prompt, s.why, ...s.steps];
+    case "sort":
+      return [s.prompt, s.why, ...s.items.map((i) => i.text)];
+    case "scenario":
+      return [s.setup, s.question, ...s.options.flatMap((o) => [o.label, o.outcome, o.why, o.better ?? ""])];
+  }
+};
 const zodErrors = (file: string, issues: { path: PropertyKey[]; message: string }[]) =>
   issues.map((i) => `${file}: ${i.path.join(".") || "(root)"}: ${i.message}`);
 
@@ -35,6 +86,15 @@ export function lessonProblems(l: Lesson, mediaDir: string): { errors: string[];
         break;
       case "choice": {
         const opts = s.options.map((o) => o.id);
+        // Rule 5: every wrong pick gets its own reply that shows the working.
+        if (!s.guess)
+          for (const o of opts) if (o !== s.answer && !s.wrong?.[o]) soft(`${at(s)}/${o}: a wrong option needs its own reply in "wrong"`);
+        // Rule 2: an imagined change says it's imagined, or names the real move ("cut the price to ₹8").
+        if (
+          /\b(cut|lower|reduce|raise|cheaper|dearer)\b[^.?]*\d+%|\d+%[^.?]*\b(cut|lower|reduce|raise|cheaper|dearer)\b/i.test(s.prompt) &&
+          !/imagine|wand|offers?\b|\bto ₹/i.test(s.prompt)
+        )
+          soft(`${at(s)}: asks for a % change without saying how; start with "Imagine…" or name the real offer`);
         if (new Set(opts).size !== opts.length) errors.push(`${at(s)}: option ids repeat`);
         if (!opts.includes(s.answer)) errors.push(`${at(s)}: answer "${s.answer}" is not one of its options`);
         for (const k of Object.keys(s.wrong ?? {}))
@@ -50,10 +110,14 @@ export function lessonProblems(l: Lesson, mediaDir: string): { errors: string[];
       }
       case "order":
         if (new Set(s.steps).size !== s.steps.length) errors.push(`${at(s)}: two steps are the same`);
+        // Rule 4: say the task in a full sentence.
+        if (words(s.prompt) < 8) soft(`${at(s)}: say what to do in a full sentence ("Here are five steps, mixed up…")`);
         break;
       case "sort":
         if (new Set(s.items.map((i) => i.text)).size !== s.items.length) errors.push(`${at(s)}: two items are the same`);
         if (!s.items.some((i) => i.bucket === 0) || !s.items.some((i) => i.bucket === 1)) errors.push(`${at(s)}: use both buckets`);
+        // Rule 4: a sort took Atheeb 6–7 minutes until it said "For each one, tell me: …".
+        if (!/for each/i.test(s.prompt)) soft(`${at(s)}: say the task: "I'll show you N things. For each one, tell me: …"`);
         break;
       case "scenario":
         if (new Set(s.options.map((o) => o.id)).size !== 3) errors.push(`${at(s)}: option ids repeat`);
@@ -62,6 +126,8 @@ export function lessonProblems(l: Lesson, mediaDir: string): { errors: string[];
           if (o.grade !== "great" && !o.better) errors.push(`${at(s)}/${o.id}: an ${o.grade} option needs "better"`);
         break;
     }
+    for (const t of screenText(s))
+      for (const i of IDIOMS) if (t.toLowerCase().includes(i)) soft(`${at(s)}: "${i}" is an idiom; say it plainly`);
     const prompt = s.kind === "explain" ? "" : s.kind === "gap" ? s.text : s.kind === "scenario" ? s.question : s.prompt;
     if (words(prompt) > 25) warnings.push(`${at(s)}: the question has ${words(prompt)} words; keep it to 25`);
     if ("options" in s) for (const o of s.options) if (words(o.label) > 12) warnings.push(`${at(s)}/${o.id}: option over 12 words`);

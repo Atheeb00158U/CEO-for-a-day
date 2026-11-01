@@ -231,7 +231,7 @@
     {
       "kind": "order",
       "id": "steps",
-      "prompt": "Put a good test in order.",
+      "prompt": "Here are the five steps of a fair test, mixed up. Drag them into order, first step at the top.",
       "steps": [
         "Pick one small, cheap version",
         "Write the yes number and the date",

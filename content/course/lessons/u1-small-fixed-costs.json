@@ -1,0 +1,294 @@
+{
+  "id": "u1-small-fixed-costs",
+  "title": "How small can you start?",
+  "principle": "Keep fixed costs tiny until sales show people want what you sell.",
+  "minutes": 5,
+  "draft": true,
+  "screens": [
+    {
+      "kind": "explain",
+      "id": "hook",
+      "media": "img:ls_papad_rooftop",
+      "text": "Let me start with a story from Mumbai. On 15 March 1959, seven women met on the terrace of their building in Girgaum. They had borrowed ₹80. Their first day's work was four packets of papad. Today, their company, Lijjat, has about 45,000 members."
+    },
+    {
+      "kind": "choice",
+      "id": "guess",
+      "guess": true,
+      "prompt": "As more women joined, the terrace got too small. What do you think they did?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Rented a factory"
+        },
+        {
+          "id": "b",
+          "label": "Sent dough home with each woman"
+        },
+        {
+          "id": "c",
+          "label": "Stopped taking new members"
+        }
+      ],
+      "answer": "b",
+      "why": "They sent the dough home. Each woman rolled papads in her own kitchen and brought them back to be weighed and packed. Lijjat could grow without paying for a big building first."
+    },
+    {
+      "kind": "explain",
+      "id": "fixed",
+      "title": "Costs that come every month",
+      "text": "Some costs come every month, whether you sell or not, like rent and salaries. These are fixed costs. Costs that come only when you make something, like flour and oil, are variable costs. Lijjat kept its fixed costs tiny, so a slow month was less likely to cause a loss."
+    },
+    {
+      "kind": "explain",
+      "id": "home",
+      "title": "Now look at your business",
+      "text": "Lijjat grew huge, but it started by keeping its costs small, and you can do the same. Imagine you cook biryani at home and take orders on WhatsApp. Each plate sells for ₹200. Rice, meat, spices and the box cost ₹100, so each plate leaves you ₹100."
+    },
+    {
+      "kind": "choice",
+      "id": "break-even",
+      "prompt": "A small rented kitchen costs ₹20,000 a month, gas and bills included. Each plate leaves ₹100. How many plates a month pay for it?",
+      "options": [
+        {
+          "id": "a",
+          "label": "20 plates"
+        },
+        {
+          "id": "b",
+          "label": "200 plates"
+        },
+        {
+          "id": "c",
+          "label": "2,000 plates"
+        }
+      ],
+      "answer": "b",
+      "why": "Exactly. ₹20,000 divided by ₹100 is 200 plates. Until you sell 200 plates a month, the kitchen makes you poorer. This number is your break-even.",
+      "wrong": {
+        "a": "20 plates leave only ₹2,000, because 20 × ₹100 = ₹2,000. You need ₹20,000, so it's 200 plates.",
+        "c": "2,000 plates would leave ₹2 lakh, ten times the rent. 200 × ₹100 = ₹20,000, so 200 plates pay for it."
+      }
+    },
+    {
+      "kind": "choice",
+      "id": "month-one",
+      "prompt": "Your first month: 150 plates, each leaving ₹100. After paying the ₹20,000 kitchen, do you make or lose money, and how much?",
+      "options": [
+        {
+          "id": "a",
+          "label": "You make ₹15,000"
+        },
+        {
+          "id": "b",
+          "label": "You make ₹5,000"
+        },
+        {
+          "id": "c",
+          "label": "You lose ₹5,000"
+        }
+      ],
+      "answer": "c",
+      "why": "Right. 150 plates leave ₹15,000, but the kitchen takes ₹20,000, so you lose ₹5,000. From home, with about ₹3,000 of extra gas and phone bills, the same 150 plates would leave you ₹12,000.",
+      "wrong": {
+        "a": "That's before the kitchen. 150 plates leave ₹15,000, but the kitchen takes ₹20,000, so you lose ₹5,000.",
+        "b": "The gap is ₹5,000, but it goes the wrong way. ₹15,000 comes in and ₹20,000 goes out, so you lose ₹5,000."
+      }
+    },
+    {
+      "kind": "explain",
+      "id": "leverage",
+      "title": "Operating leverage",
+      "text": "Here is the big idea. When most of your costs are fixed, a slow month quickly becomes a loss. But once sales have paid the fixed costs, what each extra plate leaves is profit. This is operating leverage: big fixed costs make bad months worse and good months better."
+    },
+    {
+      "kind": "choice",
+      "id": "helper-slow",
+      "prompt": "A helper can be paid ₹20 for each plate she packs, or ₹6,000 a month. In a slow month of 150 plates, which costs less?",
+      "options": [
+        {
+          "id": "a",
+          "label": "₹6,000 a month"
+        },
+        {
+          "id": "b",
+          "label": "₹20 a plate"
+        },
+        {
+          "id": "c",
+          "label": "They cost the same"
+        }
+      ],
+      "answer": "b",
+      "why": "Yes. 150 plates × ₹20 is ₹3,000, half of the ₹6,000 salary. When sales are slow, a cost that changes with your sales costs you less.",
+      "wrong": {
+        "a": "Work it out: 150 plates × ₹20 is ₹3,000. That's less than the ₹6,000 salary.",
+        "c": "They cost the same only at 300 plates, because 300 × ₹20 = ₹6,000. At 150 plates, paying per plate costs ₹3,000."
+      }
+    },
+    {
+      "kind": "choice",
+      "id": "helper-busy",
+      "prompt": "Same helper: ₹20 a plate, or a fixed ₹6,000 a month. In a busy month of 500 plates, which costs less?",
+      "options": [
+        {
+          "id": "a",
+          "label": "₹20 a plate"
+        },
+        {
+          "id": "b",
+          "label": "They cost the same"
+        },
+        {
+          "id": "c",
+          "label": "The fixed ₹6,000"
+        }
+      ],
+      "answer": "c",
+      "why": "That's it. 500 plates × ₹20 is ₹10,000, but the salary stays ₹6,000. A fixed cost costs more in a slow month and less in a busy one. That's operating leverage at work.",
+      "wrong": {
+        "a": "In a busy month, the fixed salary costs less. 500 × ₹20 is ₹10,000, while the salary stays ₹6,000.",
+        "b": "They're the same only at 300 plates. At 500 plates, paying per plate costs ₹10,000, and the salary stays ₹6,000."
+      }
+    },
+    {
+      "kind": "choice",
+      "id": "when-kitchen",
+      "prompt": "At home you can cook 300 plates at most, keeping ₹27,000 after bills. With the ₹20,000 kitchen, how many plates keep ₹27,000 too?",
+      "options": [
+        {
+          "id": "a",
+          "label": "270 plates"
+        },
+        {
+          "id": "b",
+          "label": "300 plates"
+        },
+        {
+          "id": "c",
+          "label": "470 plates"
+        }
+      ],
+      "answer": "c",
+      "why": "Well done. To keep ₹27,000 after paying ₹20,000 for the kitchen, you need ₹47,000. That's 470 plates. So the kitchen only makes sense when you expect more than 470 plates a month.",
+      "wrong": {
+        "a": "That's ₹27,000 ÷ ₹100, but you forgot the kitchen. You need ₹27,000 plus ₹20,000, which is ₹47,000. That's 470 plates.",
+        "b": "300 plates leave ₹30,000, but the kitchen takes ₹20,000, so only ₹10,000 is left. You need ₹47,000, which is 470 plates."
+      }
+    },
+    {
+      "kind": "sort",
+      "id": "can-stop",
+      "prompt": "Orders might drop one day. I'll show you six costs. For each one, tell me: could you stop paying it next month?",
+      "buckets": ["Yes, I could stop it", "No, I must keep paying"],
+      "items": [
+        {
+          "text": "Rice and meat for each order",
+          "bucket": 0
+        },
+        {
+          "text": "A kitchen on a 3-year lease",
+          "bucket": 1
+        },
+        {
+          "text": "A helper paid for each plate she packs",
+          "bucket": 0
+        },
+        {
+          "text": "A ₹2 lakh oven bought on monthly EMI",
+          "bucket": 1
+        },
+        {
+          "text": "Boxes you buy each week",
+          "bucket": 0
+        },
+        {
+          "text": "A cook you promised a salary for a full year",
+          "bucket": 1
+        }
+      ],
+      "why": "Right. Costs you can stop go down when orders drop. Costs you're stuck with keep coming, even in your worst month. Until your sales are proven, choose costs you can stop."
+    },
+    {
+      "kind": "scenario",
+      "id": "grow",
+      "setup": "Six months later, you sell 300 plates a month from home and turn away about 300 more. You've heard a big biryani chain may open nearby. A kitchen is available: ₹20,000 a month on a 3-year lease, or ₹24,000 with no lease.",
+      "question": "You're turning away orders every week. What do you do?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Take the 3-year lease. It's cheaper",
+          "grade": "ok",
+          "outcome": "You sell 600 plates and keep ₹40,000 a month. Then the biryani chain opens, and your orders fall to 250. The kitchen still costs ₹20,000, so you keep only ₹5,000 a month, and the lease runs for almost three more years.",
+          "why": "The orders were real, so moving made sense. But you knew a chain might open, and a long lease is a cost you can't stop if sales fall.",
+          "better": "Pay a little more for the kitchen with no lease, so you can leave if orders drop."
+        },
+        {
+          "id": "b",
+          "label": "Take the no-lease kitchen, for ₹4,000 more",
+          "grade": "great",
+          "outcome": "You sell 600 plates and keep ₹36,000 a month. Then the biryani chain opens, and your orders fall to 250. You give up the kitchen and go back home, where 250 plates still leave you about ₹22,000.",
+          "why": "Well done. The orders were coming, so it was time to grow. You paid ₹4,000 a month extra so you could leave if orders dropped, and that saved you."
+        },
+        {
+          "id": "c",
+          "label": "Stay home and keep turning orders away",
+          "grade": "ok",
+          "outcome": "You keep about ₹27,000 a month from 300 plates. You are safe, but the customers you turn away start ordering from someone else.",
+          "why": "Being careful was right before you knew people would buy. But you were turning away 300 plates a month, so people clearly wanted it.",
+          "better": "Take a kitchen you can leave, and serve the extra orders."
+        }
+      ]
+    },
+    {
+      "kind": "gap",
+      "id": "fill",
+      "text": "Rent and salaries are ___ costs. Keep them small until your ___ prove people really want what you sell.",
+      "bank": ["fixed", "sales", "variable", "hopes"],
+      "answer": ["fixed", "sales"],
+      "why": "Right. Lijjat sent dough home instead of renting a factory. You cooked at home until the orders came. Big fixed costs are fine once sales have proved the demand, and dangerous before."
+    }
+  ],
+  "summary": [
+    "Fixed costs come every month, whether you sell or not.",
+    "Operating leverage: big fixed costs make bad months worse and good months better.",
+    "Keep fixed costs small until sales show people want what you sell, and prefer costs you can stop."
+  ],
+  "cards": [
+    {
+      "id": "m12-fixed-1",
+      "front": "Rent ₹30,000 a month. Each sale leaves ₹150. How many sales pay the rent?",
+      "options": ["200", "150", "2,000"],
+      "answer": 0,
+      "back": "₹30,000 ÷ ₹150 = 200 sales a month: your break-even."
+    },
+    {
+      "id": "m12-fixed-2",
+      "front": "A helper costs ₹6,000 a month or ₹30 a plate. You sell 150 plates a month. Which is cheaper?",
+      "options": ["₹6,000 a month", "₹30 a plate"],
+      "answer": 1,
+      "back": "150 × ₹30 = ₹4,500, less than ₹6,000. While sales are small, pay per plate."
+    },
+    {
+      "id": "m12-fixed-3",
+      "front": "Big fixed costs make bad months ___ and good months ___.",
+      "options": ["worse, better", "better, worse", "no different"],
+      "answer": 0,
+      "back": "That's operating leverage. In a slow month the fixed cost still comes; in a busy month it stays the same while sales grow."
+    }
+  ],
+  "sources": [
+    {
+      "label": "The beginning (Lijjat Papad)",
+      "url": "https://www.lijjat.com/beginning"
+    },
+    {
+      "label": "Brief information (Lijjat Papad)",
+      "url": "https://www.lijjat.com/brief-information"
+    },
+    {
+      "label": "Shri Mahila Griha Udyog Lijjat Papad (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Shri_Mahila_Griha_Udyog_Lijjat_Papad"
+    }
+  ]
+}

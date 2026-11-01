@@ -5310,14 +5310,14 @@
   "text": "Three costly calls are too many. The board has lost its trust in you, and it asks someone else to win the fans back."
  },
  {
-  "id": "3eabb84d219a",
+  "id": "bbb0313c04af",
   "voice": "narrator",
-  "text": "Gujarat, 1969. You are a 24-year-old chemist in a government lab. After work, at home, you have made a yellow washing powder that cleans well. But most families still use soap bars because powder costs too much. With a job, a bicycle and a small room, can you get your powder into ordinary homes?"
+  "text": "Gujarat, 1969. You are a 24-year-old chemist in a government lab. After work, at home, you make a yellow washing powder that cleans well. But most families still use soap bars because powder costs too much. With a job, a bicycle and a small room, can you get your powder into ordinary homes?"
  },
  {
-  "id": "e84fc9c0be89",
+  "id": "1bfc92d058ce",
   "voice": "narrator",
-  "text": "You buy simple materials nearby and mix the powder yourself, so your costs are low. Now you need to set the packet's price. The big brand, Surf, costs about ₹13 a kilo and sells to well-off homes in the cities. Everyone else buys soap bars and counts every paisa."
+  "text": "You buy simple materials nearby and mix the powder yourself, so your costs are low. Now you need to set a price for each kilo. The big brand, Surf, costs about ₹13 a kilo and sells to richer homes in the cities. Everyone else uses soap bars because they cannot spend much on washing."
  },
  {
   "id": "11402587039a",
@@ -5330,14 +5330,14 @@
   "text": "A low price may bring more buyers, but you earn less on each kilo. A high price gives you more per kilo, but fewer homes may be able to pay."
  },
  {
-  "id": "8563c52567b1",
+  "id": "f82356cb431a",
   "voice": "narrator",
-  "text": "Shopkeepers ask why they should stock an unknown powder at Surf's price. The few homes that can pay ₹12 stay with the brand they know. You sell only a few packets a week, while most of your powder stays in the room."
+  "text": "Shopkeepers ask why they should stock an unknown powder at Surf's price. The few homes that can pay ₹12 stay with the brand they know. You sell only a few packets a week, while most of your powder stays in your room."
  },
  {
-  "id": "1b0c1d866f36",
+  "id": "b8a26436076b",
   "voice": "narrator",
-  "text": "Remember: a thin margin works only with high sales and low costs. Your low cost was your advantage, but the high price did not use it. You were competing where Surf was strongest. What would have worked: Price it near what soap-bar homes already pay, about a quarter of Surf, and earn through much higher sales."
+  "text": "Remember: your low cost was your strength, but the high price did not use it. You fought Surf where it was strongest, and only richer homes could pay. What would have worked: Price it near what soap-bar homes already spend, about a quarter of Surf, and earn by selling much more."
  },
  {
   "id": "1c98b887910f",
@@ -5345,9 +5345,9 @@
   "text": "A few Surf buyers switch to save money, and you earn well on each packet. But ₹9 is still too much for soap-bar homes, so your sales grow slowly."
  },
  {
-  "id": "b5bacaf4e830",
+  "id": "56960a476eb6",
   "voice": "narrator",
-  "text": "Remember: sales are not profit, but profit still needs sales. A good margin on only a few packets makes a small business. The bigger market was soap-bar homes, not Surf's buyers. What would have worked: Go down to about a quarter of Surf's price, so soap-bar homes can switch, and make up the smaller margin by selling much more."
+  "text": "Remember: a good profit on each kilo means little if few people buy. The bigger market was the soap-bar homes, not Surf's buyers. What would have worked: Go down to about a quarter of Surf's price, so soap-bar homes can switch, and earn from selling much more."
  },
  {
   "id": "614bc55962ad",
@@ -5355,29 +5355,29 @@
   "text": "At ₹3.50 a kilo, your powder costs about the same as a soap bar and washes far better. After work, you cycle from door to door and sell 15 to 20 packets a day with a money-back promise. In Ahmedabad, word starts to spread."
  },
  {
-  "id": "b24b7b61bb40",
+  "id": "110977da1b40",
   "voice": "narrator",
-  "text": "Remember: a thin margin works only with high sales and low costs. Your costs were tiny, so even this low price left a little on each kilo. Now millions of soap-bar homes could afford to buy."
+  "text": "Remember: when each kilo leaves you very little, you need low costs and many buyers. Your costs were tiny, so even this low price left a little on each kilo. Now millions of soap-bar homes could afford it."
  },
  {
-  "id": "6ef2e59c1aa9",
+  "id": "c0839513dc7c",
   "voice": "narrator",
-  "text": "Orders grow one street at a time. You still mix and pack every kilo at home in a room ten feet by ten, then go to your government job each day. A small factory could make far more, but its rent and wages would have to be paid every month, whether sales come or not."
+  "text": "Orders grow one street at a time. You still mix and pack every kilo at home in a ten-foot by ten-foot room, then go to your government job each day. A small factory could make far more, but its rent and wages must be paid every month, whether sales come or not."
  },
  {
-  "id": "b3463076c4bf",
+  "id": "154ad2a6a779",
   "voice": "narrator",
-  "text": "Sales are slow, but you believe they can grow. You still mix and pack every kilo at home in a room ten feet by ten, then go to your government job each day. A small factory could make far more, but its rent and wages would have to be paid every month, whether sales come or not."
+  "text": "Sales are slow, but you believe they can grow. You still mix and pack every kilo at home in a ten-foot by ten-foot room, then go to your government job each day. A small factory could make far more, but its rent and wages must be paid every month, whether sales come or not."
  },
  {
-  "id": "5832e0039f00",
+  "id": "dc4f653c6ac2",
   "voice": "narrator",
-  "text": "How will you make more powder?"
+  "text": "Orders are growing slowly. How do you make the powder now?"
  },
  {
-  "id": "dd2e4d2d68d9",
+  "id": "fd1b86f91188",
   "voice": "advisor",
-  "text": "Your room limits how much you can make. A factory gives you more space, but its rent comes every month whether you sell ten packets or ten thousand."
+  "text": "Your room limits how much you can make, but sales are still small. A factory gives you more space, but its rent comes every month whether you sell ten packets or ten thousand."
  },
  {
   "id": "912badbc5f29",
@@ -5390,44 +5390,44 @@
   "text": "Remember: break-even is the sales needed to pay your fixed costs. With almost no rent or wages, even a few packets a day could cover your costs. Your costs grew only when your buyers did."
  },
  {
-  "id": "57182bdf64b5",
+  "id": "e6c95423ae8c",
   "voice": "narrator",
-  "text": "The factory can make ten times what your room could, but rent, wages and the power bill come every month while sales are still catching up. Within months, your savings are nearly gone, and you have no salary to fall back on."
+  "text": "The factory can make ten times what your room could, but rent, wages and the power bill come every month while sales are still growing. Within months, your savings are nearly gone, and you have no salary to fall back on."
  },
  {
-  "id": "05f5714f67ab",
+  "id": "abdcb48db95a",
   "voice": "narrator",
-  "text": "Remember: break-even is the sales needed to pay your fixed costs. Rent and wages are fixed costs. They arrived before enough buyers did, so each month ended in a loss. What would have worked: Keep costs tiny until sales prove the demand. Move to a factory when your orders become bigger than your room can handle."
+  "text": "Remember: break-even is the sales needed to pay your fixed costs. Rent and wages are fixed costs. They arrived before enough buyers did, so each month ended in a loss. What would have worked: Keep costs tiny until sales prove the demand. Move to a factory when your orders are more than your room can handle."
  },
  {
-  "id": "4aea4e2235de",
+  "id": "ff70d7341bd7",
   "voice": "narrator",
-  "text": "You pay no rent, and you can sell far more than your room could make. But the maker charges you for every kilo, and at your low price, almost nothing is left. As sales grow, he earns more while you earn very little."
+  "text": "You pay no rent, and you can sell far more than your room could make. But the maker charges for every kilo, and at your low price, almost nothing is left. As sales grow, he earns more while you earn very little."
  },
  {
-  "id": "c99b78a04546",
+  "id": "73441ebbfdaf",
   "voice": "narrator",
-  "text": "Remember: fixed costs stay the same, but variable costs rise with every sale. The maker's charge was added to every kilo. With such a thin margin, that cost took most of your profit. What would have worked: While the business is small, make it yourself at almost no cost so each kilo keeps its small profit."
+  "text": "Remember: fixed costs stay the same, but variable costs rise with every sale. The maker's charge was added to every kilo. With such a thin margin, that cost took most of what you earned. What would have worked: While sales are small, make it yourself at almost no cost, so each kilo still leaves a little. Bring in a factory once orders outgrow your room."
  },
  {
-  "id": "295ff44f4e61",
+  "id": "738687575df5",
   "voice": "narrator",
-  "text": "The business is now your full-time work. You skip the usual chain of middlemen, using one line of distributors to take your packets straight to shops. You focus on small towns instead of the rich areas where Surf is strong. Plain plastic pouches keep costs low, and from 1975 a catchy radio jingle sings your powder's name."
+  "text": "The business is now your full-time work. Instead of using many traders, your packets go from one distributor straight to the shops. You focus on small towns, not the rich areas where Surf is strong. Plain plastic pouches keep costs low, and from 1975 a catchy radio song sings your powder's name."
  },
  {
-  "id": "cca397badb20",
+  "id": "528ce1abf349",
   "voice": "narrator",
-  "text": "You hang on, and the factory slowly starts to fill its hours. Distributors take your packets to shops in small towns where Surf is weak, and from 1975 a catchy radio jingle sings your powder's name. But the early losses still weigh on the business."
+  "text": "You keep going, and slowly the factory gets enough orders to stay busy. Distributors take your packets to shops in small towns where Surf is weak, and from 1975 a catchy radio song sings your powder's name. But the early losses still hurt the business."
  },
  {
-  "id": "0a470177354d",
+  "id": "9a0df2b5e7c3",
   "voice": "narrator",
-  "text": "The maker keeps your packets coming. Distributors take them to shops in small towns where Surf is weak, and from 1975 a catchy radio jingle sings your powder's name. Sales grow, but each kilo still leaves you very little."
+  "text": "The maker keeps your packets coming. Distributors take them to shops in small towns where Surf is weak, and from 1975 a catchy radio song sings your powder's name. Sales grow, but each kilo still leaves you very little."
  },
  {
-  "id": "ee1b5d76bf5f",
+  "id": "8509a63d2bf6",
   "voice": "narrator",
-  "text": "Your powder is now in shops across many towns, but shopkeepers want credit. They take your stock, sell it and then pay you late, or not at all. Cash coming in suddenly drops, while you still need cash to buy raw materials."
+  "text": "Thanks to your ads, buyers now ask for your powder by name, and it sits in shops across many towns. But shopkeepers want credit, or udhaar. They take your stock, sell it, and then pay late, or not at all. Cash coming in drops, while you still need cash to buy raw materials."
  },
  {
   "id": "13d981e9c40c",
@@ -5435,29 +5435,29 @@
   "text": "What do you do about the money the shops owe you?"
  },
  {
-  "id": "a5dea742c6dc",
+  "id": "df3606bd3787",
   "voice": "advisor",
-  "text": "The shops bring us buyers, so losing them would hurt. But every rupee they owe us is cash we cannot use today."
+  "text": "The shops bring us buyers, so losing them would hurt. But every rupee they owe us is money we cannot use today."
  },
  {
-  "id": "ee1a71a5a9d9",
+  "id": "e1df6e921f43",
   "voice": "narrator",
-  "text": "The shops stay happy and keep ordering, but what they owe you grows every month. Your books show a profit, yet you do not have enough cash for raw materials. Soon, you cannot make enough powder to fill the orders."
+  "text": "The shops stay happy and keep ordering, but what they owe you grows every month. Your books show a profit, yet you do not have enough cash for raw materials. Soon, you cannot make enough powder to fill orders."
  },
  {
-  "id": "849ea5a1ca52",
+  "id": "53392426c8fc",
   "voice": "narrator",
-  "text": "Remember: udhaar is a loan you give. A business can show a profit on paper while its cash box is empty. You were lending to every shop without a limit or due date. What would have worked: Treat credit like a loan. Set limits and due dates, or ask for cash, even if some shops grumble."
+  "text": "Remember: credit, or udhaar, is a loan you give. A business can show a profit in its books while it has no cash. You were lending to every shop with no limit and no pay date. What would have worked: Treat credit like a loan: give each shop a limit and a pay date, or ask for cash."
  },
  {
-  "id": "4e7159cc883c",
+  "id": "d11ba5279db1",
   "voice": "narrator",
-  "text": "You pull more than nine in ten packets out of the market while your ads keep playing. For about a month, buyers ask for your powder but cannot find it. Then the shopkeepers come to you, and this time they pay cash upfront."
+  "text": "You pull more than nine in ten packets out of the market while your ads keep playing. For about a month, buyers ask for your powder but cannot find it. Then the shopkeepers come to you, and this time they pay cash first."
  },
  {
-  "id": "16a2dbc700d9",
+  "id": "20cefeb6059f",
   "voice": "narrator",
-  "text": "Remember: udhaar is a loan you give, so manage it like one. Your ads had already built demand. When buyers kept asking for your powder, you had the power to ask for cash first."
+  "text": "Remember: credit, or udhaar, is a loan you give, so manage it like one. Your ads had already made buyers want your powder. When they kept asking for it, you could ask shops to pay cash first."
  },
  {
   "id": "26ff7fcbf27e",
@@ -5465,14 +5465,14 @@
   "text": "The loan keeps raw materials coming, but the shops still pay late. Now you also pay the bank interest every month, so you are lending to the shops with money you borrowed."
  },
  {
-  "id": "0d7adf658c27",
+  "id": "275646c76148",
   "voice": "narrator",
-  "text": "Remember: profit on paper can still leave the cash box empty. The loan covered the gap for a while, but it did not fix the late payments. You were paying interest while the shops kept free credit. What would have worked: Fix the cause first. Make the shops pay cash, or by a fixed date, before you borrow."
+  "text": "Remember: a business can show a profit in its books while it has no cash. The loan helped for a while, but it did not fix the late payments. You paid the bank interest while the shops paid you nothing extra. What would have worked: Fix the cause first. Make the shops pay cash, or by a fixed date, before you borrow."
  },
  {
-  "id": "18b6aef79b99",
+  "id": "75ae71db9091",
   "voice": "narrator",
-  "text": "In 1982 your first TV ad goes on air, and the jingle becomes famous. In 1985 your powder passes Surf as India's best-selling detergent, and by 1988 more than half the market is yours. Surf's maker, Hindustan Lever, is slow to reply. In the end, it brings out a cheap powder of its own."
+  "text": "In 1982 your first TV ad goes on air, and the jingle becomes famous. In 1985 your powder passes Surf as India's best-selling detergent, and by 1988 more than half the market is yours. Surf's maker, Hindustan Lever, takes years to answer. In the end, it brings out a cheap powder of its own."
  },
  {
   "id": "680c4251e1d1",
@@ -5480,9 +5480,9 @@
   "text": "In 1982 your first TV ad goes on air, and the jingle becomes famous. With cash coming in at last, your powder catches up with Surf in many towns. Then Surf's maker, Hindustan Lever, brings out a cheap powder of its own."
  },
  {
-  "id": "6163c103ff65",
+  "id": "dbeb349adf4d",
   "voice": "narrator",
-  "text": "In 1982 your first TV ad goes on air, and people like the jingle. But cash stays tight, so you cannot always fill the orders that the ads bring in. Surf's maker, Hindustan Lever, sees the gap and brings out a cheap powder of its own."
+  "text": "In 1982 your first TV ad goes on air, and people like the jingle. But cash stays tight, so you cannot always fill the orders that the ads bring in. Surf's maker, Hindustan Lever, sees its chance and brings out a cheap powder of its own."
  },
  {
   "id": "8792638ee81d",
@@ -5500,19 +5500,19 @@
   "text": "How do you keep your price the lowest?"
  },
  {
-  "id": "3e3d7ce1c3e6",
+  "id": "c4df065bd475",
   "voice": "advisor",
-  "text": "Building our own chemical plants would cost more than a thousand crore rupees. Buying from others costs less now, but their prices affect ours."
+  "text": "Building our own chemical plants would cost more than a thousand crore rupees, and we would pay before the plants make anything. Buying from others costs less now, but they decide the prices we pay."
  },
  {
-  "id": "c2dbc109e6f8",
+  "id": "4ddcfd7937e2",
   "voice": "narrator",
-  "text": "You build a plant near Vadodara to make LAB, the main cleaning chemical in your powder, and plan a giant soda ash plant near Bhavnagar. Once both are running, you expect the cost of each kilo of powder to fall by about a quarter again."
+  "text": "You build a plant near Vadodara to make LAB, the main cleaning chemical in your powder, and plan a giant plant for soda ash, another key chemical, near Bhavnagar. Once both are running, you expect each kilo of powder to cost another 25% less to make."
  },
  {
-  "id": "22b3a1b2d23f",
+  "id": "55907562cf87",
   "voice": "narrator",
-  "text": "Remember: fixed costs stay the same, while variable costs rise with sales. A plant is a huge fixed cost, but you sold so much powder that spreading that cost across many kilos made each kilo cheaper."
+  "text": "Remember: a plant is a fixed cost. You pay for it once, however much you sell. Small fixed costs were right when your sales were unproven. Now you sell crores of packets, so the plant makes every kilo cheaper."
  },
  {
   "id": "d5510d442f7d",
@@ -5520,9 +5520,9 @@
   "text": "Your ads get bigger and louder, but Hindustan Lever can always spend more. Your chemical bill still grows with every kilo you sell, and your price lead becomes smaller. Shoppers begin to see two similar powders at similar prices."
  },
  {
-  "id": "0e848805e9fc",
+  "id": "2feeedc5c0b2",
   "voice": "narrator",
-  "text": "Remember: fixed costs stay the same, but variable costs grow with sales. Ads did nothing to the cost of each kilo. Your real edge was low cost, and you spent it on a fight your rival was built to win. What would have worked: Spend once on your own plants so every kilo you sell costs less for good."
+  "text": "Remember: your strength was low cost. Ads did nothing to lower the cost of each kilo, and you spent your money competing with a rival that could spend more. What would have worked: Spend once on your own plants so every kilo you sell stays cheaper."
  },
  {
   "id": "4e7012e2111d",
@@ -5530,9 +5530,9 @@
   "text": "The deals keep your costs steady for a few years, and you spend nothing on plants. But when the deals end, the sellers raise their prices. Every kilo you sell still includes their profit."
  },
  {
-  "id": "312e53a82c06",
+  "id": "e6eaad079c0d",
   "voice": "narrator",
-  "text": "Remember: fixed costs stay the same, while variable costs rise with sales. The fixed price helped for a while, but the chemicals were still a cost on every kilo you bought from someone else. What would have worked: With sales this big, make the chemicals yourself. One large cost now can make every kilo cheaper."
+  "text": "Remember: a locked price is not a lower price. The chemicals still cost you on every kilo, and the sellers still kept their profit. What would have worked: With sales this big, make the chemicals yourself. One large cost now can make every kilo cheaper."
  },
  {
   "id": "7aa3967a33c0",
@@ -5540,9 +5540,9 @@
   "text": "From a small room at home, you built India's best-selling washing powder. It passed Surf in 1985, and in the 1990s you began making your own chemicals to keep costs low. You showed that millions of soap-bar homes would buy powder if the price was right."
  },
  {
-  "id": "d4a669e0b756",
+  "id": "d01b65e178e7",
   "voice": "narrator",
-  "text": "You took a few different turns, but you kept your price low and your costs lower still. Now your powder is a name that almost every home in India knows."
+  "text": "You made a few different choices, but your low costs kept the business strong. Now your powder is a name that almost every home in India knows."
  },
  {
   "id": "1676dc811dfc",
@@ -5555,9 +5555,9 @@
   "text": "Your costs grow faster than your sales, and cash keeps running short. Bigger brands with cheap powders take your place on the shelves. Slowly, your packets disappear from the shops."
  },
  {
-  "id": "acf00830cb8d",
+  "id": "e42eba6f4597",
   "voice": "narrator",
-  "text": "After three costly calls, the money runs out. Your distributors no longer trust you to deliver, and the bank won't lend again. You close the business and go back to working for someone else."
+  "text": "After three costly decisions, the money runs out. Your distributors no longer trust you to deliver, and the bank won't lend again. You close the business and go back to working for someone else."
  },
  {
   "id": "6dff729eef99",
@@ -10010,6 +10010,691 @@
   "text": "Don't let the result rewrite the old call, but use it to fix what you can next time."
  },
  {
+  "id": "751e0e5c9107",
+  "voice": "narrator",
+  "text": "Let me start with a biscuit you know. In 1994, a small pack of Parle-G cost ₹4. In 2009, it still cost ₹4, even though its costs had kept rising. Before I tell you how, have a guess."
+ },
+ {
+  "id": "891e4f955ca2",
+  "voice": "narrator",
+  "text": "Its costs kept going up, but the price stayed at ₹4. What do you think Parle did?"
+ },
+ {
+  "id": "890cb3b89c1a",
+  "voice": "narrator",
+  "text": "It made the pack lighter. In 2008, the pack went from 100 grams to 92.5 grams, and in 2009 to 88 grams. The price stayed at ₹4, so buyers kept buying."
+ },
+ {
+  "id": "8893f2bf13cf",
+  "voice": "narrator",
+  "text": "Why not just raise the price? Parle did try once, around 2006. Sales fell sharply, and buyers wrote in to complain, so it quickly went back. Parle-G is very cheap, so it needs huge sales: about 40 crore biscuits a day by 2020."
+ },
+ {
+  "id": "ee2e799bc47b",
+  "voice": "narrator",
+  "text": "Parle's story shows how three numbers work together: price, cost, and how many you sell. This is called cost-volume-profit. Parle didn't dare raise its price. Small shops often make another mistake: they cut the price, and a small cut can take away much of what each sale leaves."
+ },
+ {
+  "id": "7a11c3c7ff8e",
+  "voice": "narrator",
+  "text": "Parle keeps its price very low and makes it work by selling crores of packets. Most small businesses can't sell that many. Imagine you run a chai stall near a bus stand. Your chai sells for ₹10. Milk, tea, sugar and the cup cost ₹6, so each cup leaves you ₹4."
+ },
+ {
+  "id": "90b137724e9c",
+  "voice": "narrator",
+  "text": "Your chai sells for ₹10 and costs ₹6. Cut the price to ₹8, which is 20% off. What happens to what each cup leaves you?"
+ },
+ {
+  "id": "f59576bb9da2",
+  "voice": "narrator",
+  "text": "Exactly. Each cup used to leave ₹4: ₹10 minus ₹6. At ₹8, it leaves ₹2. Your price fell by 20%, but what each cup leaves you fell by half."
+ },
+ {
+  "id": "de9950242f7c",
+  "voice": "narrator",
+  "text": "That's what most people think. But the whole ₹2 comes out of the ₹4 left after costs. ₹8 − ₹6 leaves ₹2, which is half of ₹4."
+ },
+ {
+  "id": "00f6e40267c2",
+  "voice": "narrator",
+  "text": "₹2 sounds small. But each cup only left you ₹4 before. Losing ₹2 of that ₹4 means each cup now leaves you half as much."
+ },
+ {
+  "id": "a3221cefdab8",
+  "voice": "narrator",
+  "text": "Today, 300 cups a day leave you ₹4 each, so you keep ₹1,200. At ₹8, each cup leaves ₹2. How many cups keep ₹1,200?"
+ },
+ {
+  "id": "3745806cab5b",
+  "voice": "narrator",
+  "text": "Right. ₹1,200 divided by ₹2 is 600 cups. Here, a 20% price cut means you must sell twice as many cups just to earn the same."
+ },
+ {
+  "id": "2373fd8ba942",
+  "voice": "narrator",
+  "text": "I see what you did: 20% off, so 20% more cups. But each cup now leaves half as much, so you need twice as many: ₹1,200 ÷ ₹2 = 600."
+ },
+ {
+  "id": "4c9b9a43da4e",
+  "voice": "narrator",
+  "text": "450 is 50% more cups. But each cup now leaves half as much, so you need twice as many: ₹1,200 ÷ ₹2 = 600."
+ },
+ {
+  "id": "5452e1b8a6a6",
+  "voice": "narrator",
+  "text": "At ₹8, you'd need 600 cups a day to earn the same. Even at full speed, your stall makes about 400. Can ₹8 work?"
+ },
+ {
+  "id": "5ecbae84b177",
+  "voice": "narrator",
+  "text": "Right. You'd need 600 cups a day, and your stall makes 400. Before you cut a price, ask two things: will that many more people come, and can I make that much?"
+ },
+ {
+  "id": "830456f917c4",
+  "voice": "narrator",
+  "text": "Some new people will come. But you'd need 600 cups a day, and your stall can only make 400."
+ },
+ {
+  "id": "d03ddfd0bbad",
+  "voice": "narrator",
+  "text": "Most people want one chai. And even if a few buy two, your stall can only make about 400 cups a day, not 600."
+ },
+ {
+  "id": "5b3bd23f4622",
+  "voice": "narrator",
+  "text": "Now the other way. You sell 300 cups and keep ₹1,200. At ₹12, each cup leaves ₹6. How many cups keep ₹1,200?"
+ },
+ {
+  "id": "5e0662375429",
+  "voice": "narrator",
+  "text": "Yes. ₹1,200 divided by ₹6 is 200 cups. You could lose 100 of your 300 buyers and still earn the same. But buyers may leave: Parle's buyers cared a lot about each rupee, so its price rise failed."
+ },
+ {
+  "id": "9985fee34ed4",
+  "voice": "narrator",
+  "text": "₹1,200 ÷ ₹6 is 200, not 250. So you could lose 100 of your 300 buyers and still earn the same."
+ },
+ {
+  "id": "57ccacdbb6a5",
+  "voice": "narrator",
+  "text": "300 is what you sell now. At ₹6 a cup, you need only ₹1,200 ÷ ₹6, which is 200 cups."
+ },
+ {
+  "id": "524967a96cbc",
+  "voice": "narrator",
+  "text": "I'll show you six businesses. Each wants to cut its price by 20%. For each one, tell me: could it really sell twice as much?"
+ },
+ {
+  "id": "b83b4aaf5216",
+  "voice": "narrator",
+  "text": "A barber with one chair, busy all day"
+ },
+ {
+  "id": "a9611286a1ac",
+  "voice": "narrator",
+  "text": "A bakery with spare ovens, near a big new college"
+ },
+ {
+  "id": "7bd5e42f13d0",
+  "voice": "narrator",
+  "text": "A tailor who already has more orders than he can sew"
+ },
+ {
+  "id": "1bdbcd283a8f",
+  "voice": "narrator",
+  "text": "A water-can seller with an unused truck, in a growing colony"
+ },
+ {
+  "id": "d17e74ea42bc",
+  "voice": "narrator",
+  "text": "A chai stall on a quiet lane"
+ },
+ {
+  "id": "85c86f0cecfa",
+  "voice": "narrator",
+  "text": "A print shop with machines idle half the day, near many offices"
+ },
+ {
+  "id": "e81fff129dd9",
+  "voice": "narrator",
+  "text": "Right. A cut only works if you can sell much more: more buyers who'd come for a lower price, and room to make more for them. A busy barber has no room, and a quiet lane has few buyers."
+ },
+ {
+  "id": "fd99528842bd",
+  "voice": "narrator",
+  "text": "One morning, the stall across the road drops its chai to ₹8. By evening, 50 of your 300 regulars have crossed the road. The other 250 stay, because they like your chai. You charge ₹10, and each cup costs ₹6."
+ },
+ {
+  "id": "8c9d201555a3",
+  "voice": "narrator",
+  "text": "What do you do about your price?"
+ },
+ {
+  "id": "cb11f67fe873",
+  "voice": "narrator",
+  "text": "All 50 regulars come back, and you sell 300 cups again. But each cup now leaves ₹2, so you keep ₹600 a day instead of ₹1,200. You got the customers back but lost half your money."
+ },
+ {
+  "id": "7ad8012bb63c",
+  "voice": "narrator",
+  "text": "To earn the same at ₹8, you'd need 600 cups a day. You only got back to 300. Matching a price cut can cost much more than losing a few customers. What would have worked: Keep ₹10, and let those 50 go. Losing 50 cups costs you ₹200 a day; matching costs ₹600."
+ },
+ {
+  "id": "a18278b6377a",
+  "voice": "narrator",
+  "text": "You sell 250 cups a day, and each still leaves ₹4. You keep ₹1,000 a day. Losing 50 customers cost you ₹200 a day, much less than a price cut would."
+ },
+ {
+  "id": "d835f3a38fd1",
+  "voice": "narrator",
+  "text": "Well done. You did the sum before you reacted: 250 cups at ₹4 beats 300 cups at ₹2. The cut would have halved what every cup leaves you."
+ },
+ {
+  "id": "2a8df4fc8c1c",
+  "voice": "narrator",
+  "text": "At ₹9, 40 of the 50 come back, and you sell 290 cups. Each cup leaves ₹3, so you keep ₹870 a day. That's better than ₹600, but worse than staying at ₹10."
+ },
+ {
+  "id": "fe8e190320e5",
+  "voice": "narrator",
+  "text": "A smaller cut costs you less, but it still costs you. At ₹9, you'd need 400 cups a day to earn the same ₹1,200. What would have worked: Keep ₹10. 250 cups at ₹4 leaves ₹1,000, more than 290 cups at ₹3."
+ },
+ {
+  "id": "d9957a1cbaa6",
+  "voice": "narrator",
+  "text": "The 20% price cut took blank of what each cup left you, so you needed blank cups to earn the same."
+ },
+ {
+  "id": "773771dbeabc",
+  "voice": "narrator",
+  "text": "Right. At ₹10, each cup left ₹4; at ₹8, only ₹2. The less each sale leaves you, the more a small cut costs you. Before you cut a price, work out how many more you must sell, and ask if you really can."
+ },
+ {
+  "id": "505b8eda5611",
+  "voice": "narrator",
+  "text": "A small price cut can need twice the sales. Can you get them?"
+ },
+ {
+  "id": "c8f3c84ba8b9",
+  "voice": "narrator",
+  "text": "Price, cost and how many you sell work together. This is cost-volume-profit."
+ },
+ {
+  "id": "b86365d7e2aa",
+  "voice": "narrator",
+  "text": "When each sale leaves you little, a small price cut can halve it, so you may need twice the sales."
+ },
+ {
+  "id": "916da8493fbf",
+  "voice": "narrator",
+  "text": "Before you cut a price, check if you can really sell that many more."
+ },
+ {
+  "id": "83e6ddbdc812",
+  "voice": "narrator",
+  "text": "Let me start with a story from Mumbai. On 15 March 1959, seven women met on the terrace of their building in Girgaum. They had borrowed ₹80. Their first day's work was four packets of papad. Today, their company, Lijjat, has about 45,000 members."
+ },
+ {
+  "id": "a4947521be2e",
+  "voice": "narrator",
+  "text": "As more women joined, the terrace got too small. What do you think they did?"
+ },
+ {
+  "id": "216ca169956c",
+  "voice": "narrator",
+  "text": "They sent the dough home. Each woman rolled papads in her own kitchen and brought them back to be weighed and packed. Lijjat could grow without paying for a big building first."
+ },
+ {
+  "id": "b8275453fa93",
+  "voice": "narrator",
+  "text": "Some costs come every month, whether you sell or not, like rent and salaries. These are fixed costs. Costs that come only when you make something, like flour and oil, are variable costs. Lijjat kept its fixed costs tiny, so a slow month was less likely to cause a loss."
+ },
+ {
+  "id": "7ffd33ea17e7",
+  "voice": "narrator",
+  "text": "Lijjat grew huge, but it started by keeping its costs small, and you can do the same. Imagine you cook biryani at home and take orders on WhatsApp. Each plate sells for ₹200. Rice, meat, spices and the box cost ₹100, so each plate leaves you ₹100."
+ },
+ {
+  "id": "a8e230b80546",
+  "voice": "narrator",
+  "text": "A small rented kitchen costs ₹20,000 a month, gas and bills included. Each plate leaves ₹100. How many plates a month pay for it?"
+ },
+ {
+  "id": "2fe9f62ec937",
+  "voice": "narrator",
+  "text": "Exactly. ₹20,000 divided by ₹100 is 200 plates. Until you sell 200 plates a month, the kitchen makes you poorer. This number is your break-even."
+ },
+ {
+  "id": "9b3a9d38784c",
+  "voice": "narrator",
+  "text": "20 plates leave only ₹2,000, because 20 × ₹100 = ₹2,000. You need ₹20,000, so it's 200 plates."
+ },
+ {
+  "id": "1304932508bc",
+  "voice": "narrator",
+  "text": "2,000 plates would leave ₹2 lakh, ten times the rent. 200 × ₹100 = ₹20,000, so 200 plates pay for it."
+ },
+ {
+  "id": "4cb53c7adcb0",
+  "voice": "narrator",
+  "text": "Your first month: 150 plates, each leaving ₹100. After paying the ₹20,000 kitchen, do you make or lose money, and how much?"
+ },
+ {
+  "id": "9b0012b9307f",
+  "voice": "narrator",
+  "text": "Right. 150 plates leave ₹15,000, but the kitchen takes ₹20,000, so you lose ₹5,000. From home, with about ₹3,000 of extra gas and phone bills, the same 150 plates would leave you ₹12,000."
+ },
+ {
+  "id": "1109e710a32f",
+  "voice": "narrator",
+  "text": "That's before the kitchen. 150 plates leave ₹15,000, but the kitchen takes ₹20,000, so you lose ₹5,000."
+ },
+ {
+  "id": "537567359409",
+  "voice": "narrator",
+  "text": "The gap is ₹5,000, but it goes the wrong way. ₹15,000 comes in and ₹20,000 goes out, so you lose ₹5,000."
+ },
+ {
+  "id": "91330a89d2b8",
+  "voice": "narrator",
+  "text": "Here is the big idea. When most of your costs are fixed, a slow month quickly becomes a loss. But once sales have paid the fixed costs, what each extra plate leaves is profit. This is operating leverage: big fixed costs make bad months worse and good months better."
+ },
+ {
+  "id": "8d58c41e3c48",
+  "voice": "narrator",
+  "text": "A helper can be paid ₹20 for each plate she packs, or ₹6,000 a month. In a slow month of 150 plates, which costs less?"
+ },
+ {
+  "id": "68a685bc6eba",
+  "voice": "narrator",
+  "text": "Yes. 150 plates × ₹20 is ₹3,000, half of the ₹6,000 salary. When sales are slow, a cost that changes with your sales costs you less."
+ },
+ {
+  "id": "57c11a93b0e3",
+  "voice": "narrator",
+  "text": "Work it out: 150 plates × ₹20 is ₹3,000. That's less than the ₹6,000 salary."
+ },
+ {
+  "id": "da18e6ec2451",
+  "voice": "narrator",
+  "text": "They cost the same only at 300 plates, because 300 × ₹20 = ₹6,000. At 150 plates, paying per plate costs ₹3,000."
+ },
+ {
+  "id": "e79a8ddec715",
+  "voice": "narrator",
+  "text": "Same helper: ₹20 a plate, or a fixed ₹6,000 a month. In a busy month of 500 plates, which costs less?"
+ },
+ {
+  "id": "2a32f406ae52",
+  "voice": "narrator",
+  "text": "That's it. 500 plates × ₹20 is ₹10,000, but the salary stays ₹6,000. A fixed cost costs more in a slow month and less in a busy one. That's operating leverage at work."
+ },
+ {
+  "id": "c4f0e608b824",
+  "voice": "narrator",
+  "text": "In a busy month, the fixed salary costs less. 500 × ₹20 is ₹10,000, while the salary stays ₹6,000."
+ },
+ {
+  "id": "47f42de97585",
+  "voice": "narrator",
+  "text": "They're the same only at 300 plates. At 500 plates, paying per plate costs ₹10,000, and the salary stays ₹6,000."
+ },
+ {
+  "id": "502ca6273c16",
+  "voice": "narrator",
+  "text": "At home you can cook 300 plates at most, keeping ₹27,000 after bills. With the ₹20,000 kitchen, how many plates keep ₹27,000 too?"
+ },
+ {
+  "id": "32096f064ca3",
+  "voice": "narrator",
+  "text": "Well done. To keep ₹27,000 after paying ₹20,000 for the kitchen, you need ₹47,000. That's 470 plates. So the kitchen only makes sense when you expect more than 470 plates a month."
+ },
+ {
+  "id": "7174f8d95494",
+  "voice": "narrator",
+  "text": "That's ₹27,000 ÷ ₹100, but you forgot the kitchen. You need ₹27,000 plus ₹20,000, which is ₹47,000. That's 470 plates."
+ },
+ {
+  "id": "f4508ccd36c4",
+  "voice": "narrator",
+  "text": "300 plates leave ₹30,000, but the kitchen takes ₹20,000, so only ₹10,000 is left. You need ₹47,000, which is 470 plates."
+ },
+ {
+  "id": "1e85c27f129a",
+  "voice": "narrator",
+  "text": "Orders might drop one day. I'll show you six costs. For each one, tell me: could you stop paying it next month?"
+ },
+ {
+  "id": "3962e8026537",
+  "voice": "narrator",
+  "text": "Rice and meat for each order"
+ },
+ {
+  "id": "1f2acdd53e3c",
+  "voice": "narrator",
+  "text": "A kitchen on a 3-year lease"
+ },
+ {
+  "id": "01d2b35ff5e0",
+  "voice": "narrator",
+  "text": "A helper paid for each plate she packs"
+ },
+ {
+  "id": "5ad0a260c734",
+  "voice": "narrator",
+  "text": "A ₹2 lakh oven bought on monthly EMI"
+ },
+ {
+  "id": "5c6f514625a2",
+  "voice": "narrator",
+  "text": "Boxes you buy each week"
+ },
+ {
+  "id": "4dae5b335214",
+  "voice": "narrator",
+  "text": "A cook you promised a salary for a full year"
+ },
+ {
+  "id": "48a19e3f4b3b",
+  "voice": "narrator",
+  "text": "Right. Costs you can stop go down when orders drop. Costs you're stuck with keep coming, even in your worst month. Until your sales are proven, choose costs you can stop."
+ },
+ {
+  "id": "1f89e87f4a1d",
+  "voice": "narrator",
+  "text": "Six months later, you sell 300 plates a month from home and turn away about 300 more. You've heard a big biryani chain may open nearby. A kitchen is available: ₹20,000 a month on a 3-year lease, or ₹24,000 with no lease."
+ },
+ {
+  "id": "cdca18aaf9b1",
+  "voice": "narrator",
+  "text": "You're turning away orders every week. What do you do?"
+ },
+ {
+  "id": "318d8b99c70a",
+  "voice": "narrator",
+  "text": "You sell 600 plates and keep ₹40,000 a month. Then the biryani chain opens, and your orders fall to 250. The kitchen still costs ₹20,000, so you keep only ₹5,000 a month, and the lease runs for almost three more years."
+ },
+ {
+  "id": "39ce0323f97f",
+  "voice": "narrator",
+  "text": "The orders were real, so moving made sense. But you knew a chain might open, and a long lease is a cost you can't stop if sales fall. What would have worked: Pay a little more for the kitchen with no lease, so you can leave if orders drop."
+ },
+ {
+  "id": "14c9736da4bb",
+  "voice": "narrator",
+  "text": "You sell 600 plates and keep ₹36,000 a month. Then the biryani chain opens, and your orders fall to 250. You give up the kitchen and go back home, where 250 plates still leave you about ₹22,000."
+ },
+ {
+  "id": "be900154a510",
+  "voice": "narrator",
+  "text": "Well done. The orders were coming, so it was time to grow. You paid ₹4,000 a month extra so you could leave if orders dropped, and that saved you."
+ },
+ {
+  "id": "a430eb01f764",
+  "voice": "narrator",
+  "text": "You keep about ₹27,000 a month from 300 plates. You are safe, but the customers you turn away start ordering from someone else."
+ },
+ {
+  "id": "7f0724c20472",
+  "voice": "narrator",
+  "text": "Being careful was right before you knew people would buy. But you were turning away 300 plates a month, so people clearly wanted it. What would have worked: Take a kitchen you can leave, and serve the extra orders."
+ },
+ {
+  "id": "815e87ca0f11",
+  "voice": "narrator",
+  "text": "Rent and salaries are blank costs. Keep them small until your blank prove people really want what you sell."
+ },
+ {
+  "id": "15b90ce13676",
+  "voice": "narrator",
+  "text": "Right. Lijjat sent dough home instead of renting a factory. You cooked at home until the orders came. Big fixed costs are fine once sales have proved the demand, and dangerous before."
+ },
+ {
+  "id": "619017ca7f5e",
+  "voice": "narrator",
+  "text": "Keep fixed costs tiny until sales show people want what you sell."
+ },
+ {
+  "id": "010dbe2c8812",
+  "voice": "narrator",
+  "text": "Fixed costs come every month, whether you sell or not."
+ },
+ {
+  "id": "082d3204739a",
+  "voice": "narrator",
+  "text": "Operating leverage: big fixed costs make bad months worse and good months better."
+ },
+ {
+  "id": "dd13ee1b0182",
+  "voice": "narrator",
+  "text": "Keep fixed costs small until sales show people want what you sell, and prefer costs you can stop."
+ },
+ {
+  "id": "d3ad1854ed50",
+  "voice": "narrator",
+  "text": "Let me start with an airline. In 1932, JRD Tata flew a small plane carrying mail from Karachi to Bombay. That was the start of the airline that became Air India. Decades later, the government owned it, and by 2021 it was losing money every day."
+ },
+ {
+  "id": "54887a81e798",
+  "voice": "narrator",
+  "text": "In 2021, how much do you think Air India was costing the government each day?"
+ },
+ {
+  "id": "ae2183f05e16",
+  "voice": "narrator",
+  "text": "About ₹20 crore a day. That's what the government official in charge of the sale said in October 2021, when he explained why the sale had to finish quickly."
+ },
+ {
+  "id": "c7515ce6aa27",
+  "voice": "narrator",
+  "text": "Since 2009, the government had put ₹54,584 crore of cash into Air India. In October 2021, it agreed to sell the airline back to the Tata group. Tata paid ₹2,700 crore in cash and took on ₹15,300 crore of Air India's debts."
+ },
+ {
+  "id": "a1ee351be298",
+  "voice": "narrator",
+  "text": "Some people said: after putting in so much, selling now wastes it. But that money was already gone, whatever happened next. A sunk cost is money already spent that you cannot get back. Spending more because you already spent a lot is the sunk cost fallacy, a common mistake."
+ },
+ {
+  "id": "47c00fbf54c6",
+  "voice": "narrator",
+  "text": "Someone says, \"The government put ₹54,584 crore into Air India. Selling it now wastes all that money.\" What's wrong with this?"
+ },
+ {
+  "id": "aed80bedabe6",
+  "voice": "narrator",
+  "text": "Right. Keeping Air India would not bring back the ₹54,584 crore. It would only add about ₹20 crore of new losses every day. The choice was about the future, not the past."
+ },
+ {
+  "id": "d7cba7874ed5",
+  "voice": "narrator",
+  "text": "It feels that way, but the money was lost before the sale, not because of it. Selling only stopped more losses."
+ },
+ {
+  "id": "de7b89c62d72",
+  "voice": "narrator",
+  "text": "It had lost money for years. Keeping it meant about ₹20 crore of new losses a day, with no sign of the old money coming back."
+ },
+ {
+  "id": "820ea7acdc2e",
+  "voice": "narrator",
+  "text": "Air India had planes and crores of rupees, but a small shop can make the same mistake. Imagine you run a juice stall. Last year, you paid ₹40,000 for a big juicer. It is slow, it breaks often, and you lose fruit every time it does."
+ },
+ {
+  "id": "5264f13c3894",
+  "voice": "narrator",
+  "text": "Your brother says, \"We paid ₹40,000 for the old juicer. Use it until it dies.\" What should decide your choice?"
+ },
+ {
+  "id": "e91c4a5cc3ec",
+  "voice": "narrator",
+  "text": "Yes. Using the old juicer longer won't bring back the ₹40,000. What you can still change is what you spend and save from now on."
+ },
+ {
+  "id": "8499eb7f51fe",
+  "voice": "narrator",
+  "text": "That's the sunk cost fallacy. The ₹40,000 is gone whether you keep the old juicer or not. Only what you spend and save from now on can change."
+ },
+ {
+  "id": "faece2d824d3",
+  "voice": "narrator",
+  "text": "It still runs, but it costs you in repairs and wasted fruit every month. Compare that with what a new one costs and saves."
+ },
+ {
+  "id": "1356064678e3",
+  "voice": "narrator",
+  "text": "A new juicer costs ₹15,000. The old one sells for ₹8,000. The new one saves ₹2,000 a month. How many months to earn it back?"
+ },
+ {
+  "id": "8c3c4704db82",
+  "voice": "narrator",
+  "text": "Well done. You spend ₹15,000 and get ₹8,000 back, so changing juicers costs ₹7,000. At ₹2,000 a month, that's 3½ months. The ₹40,000 you paid last year isn't in the sum at all."
+ },
+ {
+  "id": "eb4906a1660e",
+  "voice": "narrator",
+  "text": "Close. But you also get ₹8,000 for the old juicer. So the switch costs ₹15,000 − ₹8,000 = ₹7,000, and ₹7,000 ÷ ₹2,000 is 3½ months."
+ },
+ {
+  "id": "f7c742d9cd5f",
+  "voice": "narrator",
+  "text": "That's ₹40,000 ÷ ₹2,000, but the ₹40,000 is already spent. The switch costs ₹15,000 − ₹8,000 = ₹7,000, which pays back in 3½ months."
+ },
+ {
+  "id": "4f8bd76b594f",
+  "voice": "narrator",
+  "text": "I'll show you six things about the old juicer. For each one, tell me: should it change your choice today?"
+ },
+ {
+  "id": "5421026d9959",
+  "voice": "narrator",
+  "text": "The ₹40,000 you paid last year"
+ },
+ {
+  "id": "9ed2bf840972",
+  "voice": "narrator",
+  "text": "The ₹8,000 it would sell for today"
+ },
+ {
+  "id": "f326001b7284",
+  "voice": "narrator",
+  "text": "₹2,000 a month lost to repairs and fruit"
+ },
+ {
+  "id": "663a6e8dafe0",
+  "voice": "narrator",
+  "text": "₹2,000 you spent fixing it last month"
+ },
+ {
+  "id": "f6a72ee15329",
+  "voice": "narrator",
+  "text": "The ₹15,000 price of a new one"
+ },
+ {
+  "id": "084256f672a7",
+  "voice": "narrator",
+  "text": "The week you spent choosing it last year"
+ },
+ {
+  "id": "c909b2bc88ae",
+  "voice": "narrator",
+  "text": "That's it. What already happened can't change: the price you paid, old repairs, and time spent choosing. Only what you can still get, spend or save should decide."
+ },
+ {
+  "id": "e7db2eb81913",
+  "voice": "narrator",
+  "text": "There's a second idea. Your stall sells to people walking by, but the gyms nearby buy 50 bottles at a time. Every hour at the counter is an hour you can't spend getting gym orders. The best thing you give up is called the opportunity cost."
+ },
+ {
+  "id": "72ed94ca03e1",
+  "voice": "narrator",
+  "text": "Afternoon counter sales leave you ₹200. Your cousin will run the counter for ₹150. Visiting gyms then would earn ₹400. Who should stand there?"
+ },
+ {
+  "id": "d3a361f4ca7e",
+  "voice": "narrator",
+  "text": "Exactly. With your cousin there, you keep ₹200 − ₹150 = ₹50 from the counter, plus ₹400 from the gyms: ₹450. Standing there yourself gives only ₹200. The ₹400 you give up is the opportunity cost."
+ },
+ {
+  "id": "186b115246d9",
+  "voice": "narrator",
+  "text": "That gets you ₹200. Your cousin costs ₹150, but frees you to earn ₹400 at the gyms, so you end up with ₹450."
+ },
+ {
+  "id": "d4373caa66bf",
+  "voice": "narrator",
+  "text": "That gets you ₹400 from the gyms. Keeping the counter open with your cousin adds ₹50 more, so ₹450 in all."
+ },
+ {
+  "id": "8acd4e1a4072",
+  "voice": "narrator",
+  "text": "You opened a second stall in a mall and spent ₹1.2 lakh on its counter, fridges and signs. You spend your afternoons there. Three months later, it still loses ₹10,000 a month. A smoothie chain offers ₹30,000 for your counter and fridges, if you decide this week."
+ },
+ {
+  "id": "10e5cc1e4d30",
+  "voice": "narrator",
+  "text": "What do you do with the mall stall?"
+ },
+ {
+  "id": "6bb403050880",
+  "voice": "narrator",
+  "text": "You keep the stall open for six more months and lose ₹60,000 more. Then you close it anyway, and the smoothie chain has taken another space."
+ },
+ {
+  "id": "8c4e02ef78a6",
+  "voice": "narrator",
+  "text": "The ₹1.2 lakh was gone either way. Keeping the stall open only added ₹10,000 of new losses every month. What would have worked: Take the ₹30,000 this week, close the stall, and put your afternoons into the gym orders."
+ },
+ {
+  "id": "2960ee054048",
+  "voice": "narrator",
+  "text": "You get ₹30,000 back and stop the ₹10,000 monthly loss. You spend your free afternoons winning gym orders for your first stall."
+ },
+ {
+  "id": "0365033aa8e8",
+  "voice": "narrator",
+  "text": "Well done. You judged the choice by what comes next, not by what you had already spent. And you moved your time to where it earns more."
+ },
+ {
+  "id": "b23a6647e61a",
+  "voice": "narrator",
+  "text": "Shorter hours cut the loss to ₹6,000 a month. After six months, you've lost ₹36,000 more, the crowd still hasn't grown, and the smoothie chain has taken another space."
+ },
+ {
+  "id": "40f09edac4d6",
+  "voice": "narrator",
+  "text": "Cutting the loss was sensible. But the crowd had already had three months to grow, and waiting cost you ₹36,000 plus the ₹30,000 offer. What would have worked: Take the ₹30,000 this week, while the offer stands."
+ },
+ {
+  "id": "e5ff5886f26d",
+  "voice": "narrator",
+  "text": "Money you've already spent is a blank cost. Decide by what comes blank, not by what's gone."
+ },
+ {
+  "id": "b9b78f5b4ea6",
+  "voice": "narrator",
+  "text": "Exactly. The money in Air India, your old juicer and your mall stall were all spent already. Only what comes next can still change, so that's what should decide."
+ },
+ {
+  "id": "837dad8efdb5",
+  "voice": "narrator",
+  "text": "Ignore money already spent. Count what you could do instead."
+ },
+ {
+  "id": "7326ffed1008",
+  "voice": "narrator",
+  "text": "Sunk cost fallacy: spending more because you already spent a lot."
+ },
+ {
+  "id": "3082810c1820",
+  "voice": "narrator",
+  "text": "Money already spent is gone either way. Decide by what comes next."
+ },
+ {
+  "id": "9624c1ca1bb8",
+  "voice": "narrator",
+  "text": "Opportunity cost is the best thing you give up. Your time matters too."
+ },
+ {
   "id": "a2d7d5d4e559",
   "voice": "narrator",
   "text": "Let me tell you a story about idli batter. In 2006, PC Musthafa and his cousins started iD in Bengaluru with ₹50,000 and one small room. They put 100 packets into 20 stores. They gave themselves six months to reach their target."
@@ -10195,9 +10880,9 @@
   "text": "Exactly. A small test costs less and is easy to stop. A big bet uses much more money and is harder to stop. Test first. Spend more only after the test works."
  },
  {
-  "id": "e6ff9fd5eb24",
+  "id": "8d8bb3273102",
   "voice": "narrator",
-  "text": "Put a good test in order."
+  "text": "Here are the five steps of a fair test, mixed up. Drag them into order, first step at the top."
  },
  {
   "id": "a3241deddba3",

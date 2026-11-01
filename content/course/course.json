@@ -12,6 +12,13 @@
           "goal": "See why busy, profitable businesses still run out of money.",
           "lessons": ["u1-cash-runs-out", "u1-hidden-costs", "u1-frozen-cash", "u1-judge-the-call", "u1-test-small"],
           "gates": ["kirana-year"]
+        },
+        {
+          "id": "u1-what-costs-decide",
+          "title": "What your costs decide",
+          "goal": "Set up your costs so a slow start can't sink you.",
+          "lessons": ["u1-small-fixed-costs", "u1-price-cut-trap", "u1-sunk-cost"],
+          "gates": ["nirma-washing-powder"]
         }
       ]
     }

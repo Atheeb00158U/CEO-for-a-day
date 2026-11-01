@@ -1,6 +1,6 @@
 # Fact-check: nirma-washing-powder
-checked-sha256: bcf6cdf8c525c46492339cbcc667191fe3aa976d7a1a4325db0172f809e71c76
-Checked: 2026-10-31 · by: Claude (fresh-context fact-check)
+checked-sha256: df197a6bfc7eeb95b8216b35a78d6cdf7d9cddb3e67d7a4be05f7b5f7effd216
+Checked: 2026-11-01 · by: Claude (fresh-context fact-check; re-checked after the plain-English pass)
 
 ## Sources opened
 1. [Nirma (Wikipedia)](https://en.wikipedia.org/wiki/Nirma)
@@ -31,7 +31,8 @@ Checked: 2026-10-31 · by: Claude (fresh-context fact-check)
 - [supported] One line of distributors straight to shops, skipping middlemen (nodes.s1972.text) — [4] "a single line of distributors who directly supplied the retailers"
 - [supported] Small towns rather than rich areas where Surf was strong (nodes.s1972.text) — [7]
 - [supported] Plain plastic pouches (nodes.s1972.text) — [8] plastic pouches; [6] transparent pouches; [3] minimal polybag packaging
-- [supported] Radio jingle from 1975 (nodes.s1972.text, realHistory) — [6] "first hit radio airwaves in 1975"
+- [supported] A radio song (jingle) from 1975 (nodes.s1972.text, realHistory) — [6] "first hit radio airwaves in 1975"
+- [supported] Ads had made buyers ask for the powder by name (nodes.d3.setup, nodes.d3.options.pull.why) — [3] the TV campaign; [5] a television advertisement; [10] "The ads, however, played on"
 - [supported] Shops wanted credit, paid late or not at all; cash coming in suddenly dropped (nodes.d3.setup) — [3] retailers not paying even when stock sold out; [7] credit and delayed payments; [10] sudden drop in retailer payments
 - [supported] Pulled more than nine in ten packets while ads kept playing (nodes.d3.options.pull.outcome, realHistory) — [10] "withdrew over 90 per cent of his stocks… The ads, however, played on"; [5] 90%
 - [supported] For about a month buyers could not find it; then shops paid cash upfront (nodes.d3.options.pull.outcome) — [5] "For about a month"; [3] retailers ready to pay cash upfront
