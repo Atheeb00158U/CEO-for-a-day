@@ -106,7 +106,7 @@ describe("buildDebrief patterns", () => {
   it("praises a clean run and self-disruption", () => {
     const p = patterns(["unit", "shift", "network", "reinvent"]);
     expect(p).toMatch(/never made a call the board punished/);
-    expect(p).toMatch(/compete with your own best product/);
+    expect(p).toMatch(/shake up your market/);
   });
 
   it("spots a recovery after a costly call", () => {

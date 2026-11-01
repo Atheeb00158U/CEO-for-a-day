@@ -253,7 +253,7 @@
           "next": "ending_route",
           "media": "img:nr_d4_build",
           "outcome": "You build a plant near Vadodara to make LAB, the main cleaning chemical in your powder, and plan a giant plant for soda ash, another key chemical, near Bhavnagar. Once both are running, you expect each kilo of powder to cost another 25% less to make.",
-          "why": "Remember: a plant is a fixed cost. You pay for it once, however much you sell. Small fixed costs were right when your sales were unproven. Now you sell crores of packets, so the plant makes every kilo cheaper.",
+          "why": "Remember: a plant is a fixed cost. It costs the same however much you sell. Small fixed costs were right when your sales were unproven. Now you sell crores of packets, so the plant's cost is shared by all of them, and every kilo gets cheaper.",
           "takeaway": "In the 1990s you spent big once to make every kilo cheaper. At high volume, a fixed cost can cut the cost of each sale.",
           "traits": { "horizon": 1, "risk": 1, "disrupt": 1 }
         },

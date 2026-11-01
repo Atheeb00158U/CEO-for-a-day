@@ -341,6 +341,16 @@ export function useNarration(lines: { text: string; voice?: string }[], enabled:
     play();
     return () => stopVoice();
   }, [play]);
+  // Leaving the app stops the voice (voice.ts). Count the lines as heard, or Continue would wait forever; Replay is there.
+  useEffect(() => {
+    const left = () => {
+      if (document.visibilityState !== "hidden") return;
+      setIdx(lines.length);
+      setP(1);
+    };
+    document.addEventListener("visibilitychange", left);
+    return () => document.removeEventListener("visibilitychange", left);
+  }, [lines.length]);
   /** progress for line n: 1 if done, live value if current, 0 if upcoming */
   const prog = (n: number) => (!enabled ? 1 : n < idx ? 1 : n === idx ? p : 0);
   return { prog, replay: play };

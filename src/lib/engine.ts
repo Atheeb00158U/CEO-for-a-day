@@ -164,7 +164,7 @@ export function buildDebrief(hs: HotSeat, s: RunState) {
       "You leaned toward protecting what already worked. That instinct keeps a business stable, until the market moves without you.",
     );
   if (t.disrupt > 1)
-    patterns.push("You were willing to compete with your own best product. That's the hardest habit for a successful company to keep.");
+    patterns.push("You were ready to shake up your market instead of playing it safe. Few businesses have the nerve to do that.");
   if (s.onRealPath && s.picks.length) patterns.push(`You made the same calls ${hs.company} made, and got the same result.`);
   return { lines, patterns, recovered };
 }
