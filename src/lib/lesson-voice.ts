@@ -16,7 +16,8 @@ export const GOT_IT = "There you go, you've got it now. Here's the rule to keep:
 export const spokenGap = (text: string) => text.replaceAll("___", "blank");
 
 /**
- * The lines read before the player answers: the teaching text, the question and, for a choice, its options.
+ * The lines read before the player answers: the teaching text or the question. Options are never read out (Atheeb,
+ * 1 Nov 2026): players read them, and hearing them slowed every question down.
  * Scenarios are read by DecisionView (setup, question, advisor) and RevealView (outcome, then the why).
  */
 export function askLines(s: Screen | LessonScreen): Said[] {
@@ -24,7 +25,7 @@ export function askLines(s: Screen | LessonScreen): Said[] {
     case "explain":
       return [{ text: s.text }];
     case "choice":
-      return [{ text: s.prompt }, ...s.options.map((o) => ({ text: o.label }))];
+      return [{ text: s.prompt }];
     case "gap":
       return [{ text: spokenGap(s.text) }];
     case "order":

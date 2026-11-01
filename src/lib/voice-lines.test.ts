@@ -29,10 +29,10 @@ describe("lesson voice lines", () => {
   const ids = new Set(voiceLines([], [], [lesson]).map((l) => l.id));
   const has = (text: string, voice = NARRATOR) => ids.has(nodeLineId(voice, text));
 
-  it("cover every screen's text, question and choice options, as the player says them", () => {
+  it("cover every screen's text and question as the player hears them, but never the options", () => {
     for (const s of lesson.screens) for (const x of askLines(s)) expect(has(x.text, x.advisor ? ADVISOR : NARRATOR)).toBe(true);
     expect(has("Sales ₹500. Costs ₹350. What is the profit?")).toBe(true);
-    expect(has("₹150")).toBe(true);
+    expect(has("₹150")).toBe(false); // an option: read on screen, not aloud
     expect(has("Profit is what is blank after you pay every blank.")).toBe(true);
   });
 

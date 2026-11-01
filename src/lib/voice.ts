@@ -42,6 +42,9 @@ if (typeof window !== "undefined") {
   };
   window.addEventListener("touchend", unlock, true);
   window.addEventListener("click", unlock, true);
+  // Leaving the app (home screen, app switcher, another tab) stops the voice: it must never play in the background.
+  document.addEventListener("visibilitychange", () => document.visibilityState === "hidden" && stopVoice());
+  window.addEventListener("pagehide", () => stopVoice());
 }
 
 export function stopVoice() {
