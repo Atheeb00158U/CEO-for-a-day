@@ -3,7 +3,7 @@
   "title": "How long can you last?",
   "principle": "Businesses die when cash runs out, not when profit does.",
   "minutes": 5,
-  "draft": true,
+  "draft": false,
   "screens": [
     {
       "kind": "explain",

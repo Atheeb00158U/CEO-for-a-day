@@ -2,7 +2,7 @@
 import { cpSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { afterAll, describe, expect, it } from "vitest";
+import { afterAll, describe, expect, it, vi } from "vitest";
 import { COURSE_DIR, DAILY_DIR, HOTSEATS_DIR, hotSeatIds } from "@/lib/content-files";
 import { checkCourse } from "@/lib/course-check";
 import { checkDailyPool, checkHotSeat, factcheckProblems, mediaCollisions } from "@/lib/hotseat-check";
@@ -248,9 +248,18 @@ describe("the welcome screens' trial", () => {
     expect(await trialWith(["kirana-year", "kingfisher-airlines"], "development")).toBe("kirana-year");
   });
 
-  it("falls back to Kingfisher until kirana-year exists, and while the course is off", async () => {
+  it("is kirana-year in production too, now the course is live", async () => {
+    expect(await trialWith(["kirana-year", "kingfisher-airlines"], "production")).toBe("kirana-year");
+  });
+
+  it("falls back to Kingfisher until kirana-year exists, and while the course is switched off", async () => {
     expect(await trialWith(["kingfisher-airlines"], "development")).toBe("kingfisher-airlines");
-    expect(await trialWith(["kirana-year", "kingfisher-airlines"], "production")).toBe("kingfisher-airlines");
+    vi.stubEnv("COURSE_OFF", "1");
+    try {
+      expect(await trialWith(["kirana-year", "kingfisher-airlines"], "production")).toBe("kingfisher-airlines");
+    } finally {
+      vi.unstubAllEnvs();
+    }
   });
 });
 

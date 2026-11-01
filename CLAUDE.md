@@ -35,8 +35,8 @@ UI components: use shadcn/ui, restyled to this look. Add gluestack-ui only if we
 ## Writing stories
 Follow `docs/AUTHORING.md` for every Hot Seat and Daily Call: research brief → draft → check → fresh-context fact-check (stamped `factcheck.md`) → media from the archives (`media.md`) → Atheeb's review. A published story needs a `factcheck.md` stamped for its exact file, with no open claims. Missing narration is a warning for drafts; an unrecorded line plays silently (there's no browser-voice fallback: it sounded robotic).
 
-## Lessons and flashcards (built, hidden)
-- **Switch:** `courseOn()` in `src/lib/server/content.ts`: on in `npm run dev` and tests, **off in production** until real lessons exist. Off, `/app` gets no outline (Home and Notes look as before) and `/api/lesson`, `/api/cards` answer 404.
+## Lessons and flashcards (live since 1 Nov 2026)
+- **Switch:** `courseOn()` in `src/lib/server/content.ts`: on everywhere since Unit 1 (Module 1.1 + kirana-year) was published on 1 Nov 2026. Set `COURSE_OFF=1` on Railway to hide it again: `/app` then gets no outline and `/api/lesson`, `/api/cards` answer 404. Draft lessons are only served in `npm run dev`.
 - Content: `content/course/course.json` (units → modules → lesson ids + Hot Seat `gates`) and `content/course/lessons/<id>.json`, checked by `src/lib/course-schema.ts` (must match `course-types.ts`) and `course-check.ts` inside `npm run hotseat:check`. The three `sample-*` lessons are test fixtures (draft), not course copy. Card ids are review-schedule keys: never rename or reuse one.
 - Exercise kinds: explain, choice (with `guess` for "guess first"), gap (word bank), order, sort (two buckets), scenario. Not built yet: slider, match pairs.
 - **No answers on the phone**, like Hot Seats: `/api/lesson` replays the answers (`src/lib/lesson-play.ts`) and returns the verdict plus the next screens; missed exercises come back once at the end. `/api/lesson/finish` pays once per `playKey` (`lesson_plays` table). A module's test-out is the same replay over one exercise per lesson (`testOut: <module id>`), no XP, pass at 80%.

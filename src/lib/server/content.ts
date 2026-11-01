@@ -117,7 +117,7 @@ export function trial(
   nodeEnv = process.env.NODE_ENV,
   servable: (id: string) => HotSeat | undefined = (id) => servableHotSeat(id, nodeEnv),
 ): CatalogEntry | undefined {
-  const hs = (courseOn(nodeEnv) && servable(COURSE_TRIAL_ID)) || servable(TRIAL_ID);
+  const hs = (courseOn() && servable(COURSE_TRIAL_ID)) || servable(TRIAL_ID);
   return hs ? entry(hs, true) : undefined;
 }
 
@@ -167,18 +167,18 @@ export function answerOf(c: DailyCall, optionId: string): DailyAnswer | undefine
 /* ------------------------------------------------------------------ */
 
 /**
- * The course is hidden from players until real lessons exist: on in `npm run dev` (and tests), off in production.
- * Off, the /app page gets no outline (Home and Notes look as they did) and the lesson and card routes answer 404.
- * Make this always true once Unit 1's lessons are published.
+ * The course is live (Unit 1 published 1 Nov 2026). Set COURSE_OFF=1 on Railway to hide it again without a deploy:
+ * then the /app page gets no outline (Home and Notes look as they did) and the lesson and card routes answer 404.
+ * Drafts are still only served in `npm run dev`.
  */
-export const courseOn = (nodeEnv = process.env.NODE_ENV) => nodeEnv !== "production";
+export const courseOn = () => process.env.COURSE_OFF !== "1";
 
 const course = () => cached("course", readCourse);
 const lessonsById = () => cached("lessons", () => new Map(lessonFileIds().map((id) => [id, readLesson(id)])));
 
 /** A lesson the player may play, or undefined (course off, unknown id, or a draft outside dev). */
 export function servableLesson(id: string, nodeEnv = process.env.NODE_ENV): Lesson | undefined {
-  if (!courseOn(nodeEnv) || !/^[a-z0-9-]{1,60}$/.test(id)) return undefined;
+  if (!courseOn() || !/^[a-z0-9-]{1,60}$/.test(id)) return undefined;
   const l = lessonsById().get(id);
   return l && canServe(l, nodeEnv) ? l : undefined;
 }
@@ -198,7 +198,7 @@ function servableUnits(nodeEnv: typeof process.env.NODE_ENV) {
 
 /** The Home path, without screens or answers. Undefined while the course is off. */
 export function courseOutline(nodeEnv = process.env.NODE_ENV): CourseOutline | undefined {
-  if (!courseOn(nodeEnv)) return undefined;
+  if (!courseOn()) return undefined;
   return {
     units: servableUnits(nodeEnv).map((u) => ({
       id: u.id,
@@ -223,7 +223,7 @@ export function courseOutline(nodeEnv = process.env.NODE_ENV): CourseOutline | u
 
 /** A module the player may test out of, with its playable lessons. */
 export function servableModule(id: string, nodeEnv = process.env.NODE_ENV): { module: Module; lessons: Lesson[] } | undefined {
-  if (!courseOn(nodeEnv) || !/^[a-z0-9-]{1,60}$/.test(id)) return undefined;
+  if (!courseOn() || !/^[a-z0-9-]{1,60}$/.test(id)) return undefined;
   for (const u of servableUnits(nodeEnv))
     for (const m of u.modules) if (m.id === id) return { module: { ...m, lessons: m.lessons.map((l) => l.id) }, lessons: m.lessons };
   return undefined;

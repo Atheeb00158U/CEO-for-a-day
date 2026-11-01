@@ -3,7 +3,7 @@
   "title": "What does one order leave you?",
   "principle": "Price minus stock cost isn't profit. Count every hidden cost.",
   "minutes": 5,
-  "draft": true,
+  "draft": false,
   "screens": [
     {
       "kind": "explain",

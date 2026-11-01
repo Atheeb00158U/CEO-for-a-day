@@ -7,7 +7,8 @@
   "years": "One year, April to March",
   "cover": "img:ky_cover",
   "emblem": "img:ky_emblem",
-  "draft": true,
+  "draft": false,
+  "madeUp": true,
   "complexity": 1,
   "minutes": 6,
   "start": "intro",
@@ -79,7 +80,6 @@
           "id": "namkeen",
           "label": "Put your own namkeen up front. It earns ₹3 a bag, though it sells more slowly than the biscuits.",
           "grade": "great",
-          "real": true,
           "effect": {
             "profit": 10,
             "future": 10,
@@ -192,7 +192,6 @@
           "id": "limit",
           "label": "Give each family a limit and one day a month to pay, even if some regulars do not like the change.",
           "grade": "great",
-          "real": true,
           "effect": {
             "profit": 5,
             "future": 10,
@@ -243,7 +242,6 @@
           "id": "keep",
           "label": "Keep the stock and Baba's buying method, but split next year's order in two. Your money stays stuck for now.",
           "grade": "great",
-          "real": true,
           "effect": {
             "profit": 5,
             "future": 10,
@@ -390,7 +388,6 @@
           "id": "apart",
           "label": "Keep the shop's money for the shop. Pay yourself a fixed wage, and give from that and home savings, even if the family is hurt.",
           "grade": "great",
-          "real": true,
           "effect": {
             "profit": 10,
             "future": 10,
@@ -485,7 +482,6 @@
           "id": "test",
           "label": "Try free WhatsApp delivery in your own lane for one month, and count the orders. It is tiny next to the app.",
           "grade": "great",
-          "real": true,
           "effect": {
             "profit": 5,
             "future": 10,

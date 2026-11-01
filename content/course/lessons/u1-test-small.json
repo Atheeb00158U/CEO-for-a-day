@@ -3,7 +3,7 @@
   "title": "Set the target first",
   "principle": "Test small first, and decide beforehand what result means yes.",
   "minutes": 5,
-  "draft": true,
+  "draft": false,
   "screens": [
     {
       "kind": "explain",

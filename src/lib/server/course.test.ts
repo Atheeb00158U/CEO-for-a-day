@@ -39,11 +39,20 @@ function answersFor(l: Lesson, miss: string[] = [], retry = true): Answer[] {
 }
 
 describe("the course switch and content", () => {
-  it("is off in production: no outline, no lessons", () => {
-    expect(courseOutline("production")).toBeUndefined();
+  it("never serves draft lessons in production", () => {
     expect(servableLesson("sample-margin", "production")).toBeUndefined();
     expect(lessonOf({ lessonId: "sample-margin" }, "production")).toBeUndefined();
-    expect(lessonOf({ testOut: "sample-profit" }, "production")).toBeUndefined();
+  });
+
+  it("hides everything when switched off with COURSE_OFF=1", () => {
+    vi.stubEnv("COURSE_OFF", "1");
+    try {
+      expect(courseOutline("development")).toBeUndefined();
+      expect(servableLesson("sample-margin", "development")).toBeUndefined();
+      expect(lessonOf({ testOut: "sample-profit" }, "development")).toBeUndefined();
+    } finally {
+      vi.unstubAllEnvs();
+    }
   });
 
   it("serves draft lessons only in dev, and the outline holds no screens", () => {

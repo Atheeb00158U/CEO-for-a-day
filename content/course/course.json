@@ -4,7 +4,7 @@
       "id": "u1-make-money",
       "title": "Make money, keep money",
       "goal": "Know what you really keep, and keep enough cash to run the business.",
-      "draft": true,
+      "draft": false,
       "modules": [
         {
           "id": "u1-where-money-goes",

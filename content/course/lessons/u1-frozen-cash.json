@@ -3,7 +3,7 @@
   "title": "Where is your money right now?",
   "principle": "Stock and credit are cash you can't spend. Limit both.",
   "minutes": 5,
-  "draft": true,
+  "draft": false,
   "screens": [
     {
       "kind": "explain",

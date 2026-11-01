@@ -3,7 +3,7 @@
   "title": "Judge the call, not the luck",
   "principle": "Judge a call by what you knew then, not the result.",
   "minutes": 5,
-  "draft": true,
+  "draft": false,
   "screens": [
     {
       "kind": "explain",

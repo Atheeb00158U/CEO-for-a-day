@@ -1,5 +1,5 @@
-# Fact-check: kirana-year
-checked-sha256: 5ba34d212d109cbb5c2980fdc6b2d36868216725ee58dd5fc3366b8113a392c2
+# Realism check: kirana-year
+checked-sha256: dd5528abd067ab9be7a883d5dae004e314e6de42a96fa66a54e1574cbd598ce6
 Checked: 2026-10-31 · by: Claude (fresh-context fact-check)
 
 Made-up story (Asha, Kulkarni General Stores, Imliganj). There is no company to check, so this is a realism
@@ -42,3 +42,5 @@ Kirana Club · [10] Siasat, Hyderabad rains · [11] The Week, MP onset 2025.
 - "Kulkarni General Stores": web search found no specific shop with this name. It is a generic name built from a common surname, so a real shop of that name may exist somewhere; the story ties it to a made-up town.
 - "Imliganj" (renamed from "Kesarganj" on 2026-10-31, Atheeb's call: Kesarganj matched real villages in Hamirpur, UP and Sabarkantha, Gujarat). Checked by web search on 2026-10-31: "Imliganj" village/town; "Imli Ganj"/"Imliganj" Madhya Pradesh census map; "Imliganj" pincode/post office. No place of that name found in census, village-listing, map or PIN-code results. Nearest names are different places (Imlai, Jabalpur; Imligaon, Sultanpur UP; Aliganj, UP/Bihar).
 - Asha Kulkarni, Baba, the cousin, the nephew: no real person is described.
+
+Re-stamped 2026-11-01: the only changes to hotseat.json since the check are `draft: true` → `false` (publishing) adding `madeUp: true` (it is the made-up story) and removing the five `real` option flags (a made-up story has no real company). No story text changed.
