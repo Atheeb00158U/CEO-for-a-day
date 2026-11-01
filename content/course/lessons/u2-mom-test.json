@@ -9,7 +9,7 @@
       "kind": "explain",
       "id": "hook",
       "media": "img:ls_whatsapp_boutique",
-      "text": "Let me tell you about two young engineers in Bengaluru. In 2015, Vidit Aatrey and Sanjeev Barnwal built Fashnear, an app that showed clothes from nearby shops. Within three or four months, they could see it wasn't working. Vidit later said they hadn't thought enough about the customer."
+      "text": "Let me tell you about two young engineers in Bengaluru. In 2015, Vidit Aatrey and Sanjeev Barnwal built Fashnear, an app that showed clothes from nearby shops. Within three or four months, they saw it wasn't working. Vidit later said they hadn't thought enough about the customer."
     },
     {
       "kind": "choice",
@@ -31,7 +31,7 @@
         }
       ],
       "answer": "c",
-      "why": "They spent about six months with the shops that used their app, watching what the owners really did. They stopped guessing and started looking."
+      "why": "They spent about six months with the shops that used their app. They watched what the owners really did. They stopped guessing and started looking."
     },
     {
       "kind": "explain",
@@ -43,18 +43,18 @@
       "kind": "explain",
       "id": "mom-test",
       "title": "The Mom Test",
-      "text": "Watching what people do beats asking them. When you can't watch, ask in a way that gets the same truth. A book called The Mom Test explains: ask your mother if your idea is good, and she'll give a kind guess: yes. So ask about real events, not your idea."
+      "text": "Watching what people do is better than asking them. When you can't watch, ask questions that get the same truth. A book called The Mom Test explains: ask your mother if your idea is good, and she'll give a kind guess: yes. So ask about real events, not your idea."
     },
     {
       "kind": "explain",
       "id": "home",
       "title": "Your turn",
-      "text": "Meesho grew huge, but the same test works for your home bakery. You've picked eggless cakes. Before you bake a single cake for sale, you'll talk to ten mothers in your colony."
+      "text": "Meesho grew huge, but the same test works for your home bakery. You've picked eggless cakes. Before you bake even one cake for sale, you'll talk to ten mothers in your colony."
     },
     {
       "kind": "choice",
       "id": "spot-hidden",
-      "prompt": "Which question still asks for a kind guess, even though it sounds like it's about the past?",
+      "prompt": "Which question still asks for a kind guess, even though it sounds like a question about the past?",
       "options": [
         {
           "id": "a",
@@ -62,7 +62,7 @@
         },
         {
           "id": "b",
-          "label": "Last Diwali, would you have liked a home baker?"
+          "label": "Last Diwali, did you wish there was a home baker nearby?"
         },
         {
           "id": "c",
@@ -70,10 +70,10 @@
         }
       ],
       "answer": "b",
-      "why": "Yes. It says \"last Diwali\", but \"would you have liked\" still asks for a feeling about your idea. A kind person will say yes.",
+      "why": "Yes. It says \"last Diwali\", but \"did you wish\" asks about a feeling connected to your idea. A kind person will say yes.",
       "wrong": {
-        "a": "That one asks about a real event: when she last bought a cake. Look again at \"Last Diwali, would you have liked…\": it sounds past, but it asks for a feeling.",
-        "c": "That one gets a real fact: what she paid. The trap is the Diwali question. It mentions the past, but \"would you have liked\" asks for a feeling about your idea."
+        "a": "That asks about a real event: when she last bought a cake. Look again at \"Last Diwali, did you wish…\": it sounds like the past, but asks about a feeling.",
+        "c": "That gives you a real fact: what she paid. The Diwali question is different. It mentions the past, but \"did you wish\" asks about a feeling connected to your idea."
       }
     },
     {
@@ -83,11 +83,11 @@
       "options": [
         {
           "id": "a",
-          "label": "\"Eggless cakes are always so hard to find.\""
+          "label": "\"Eggless cakes are always so hard to find. Every time!\""
         },
         {
           "id": "b",
-          "label": "\"I'd order from you every single month!\""
+          "label": "\"I'd order from you for every birthday, every month!\""
         },
         {
           "id": "c",
@@ -97,7 +97,7 @@
       "answer": "c",
       "why": "Yes. A real price, a real wait, a real birthday. You can plan with that. The other two are feelings and promises.",
       "wrong": {
-        "a": "That's a general feeling. It may be true, but it tells you nothing you can count. Ask her when it was last hard, and what she did.",
+        "a": "That's a general feeling. It may be true, but you can't count it or plan with it. A real past order tells you more.",
         "b": "That's a kind promise about the future. It costs her nothing to say. A real past order tells you more."
       }
     },
@@ -120,16 +120,16 @@
         }
       ],
       "answer": "a",
-      "why": "Yes. Her story of the last time will show you where she went, what she paid and what went wrong. Feelings become facts.",
+      "why": "Yes. Her story about the last time will show you where she went, what she paid and what went wrong. Her story gives you facts.",
       "wrong": {
-        "b": "That jumps to your idea, so she'll be kind and say yes. First get the story of what really happened.",
-        "c": "A score is still a feeling. Ask for the story of the last time instead: it gives you facts."
+        "b": "That asks about your idea, so she may be kind and say yes. First ask what really happened.",
+        "c": "A score is still a feeling. Ask what happened the last time instead. That gives you facts."
       }
     },
     {
       "kind": "choice",
       "id": "real-count",
-      "prompt": "Last year, 3 of ten mothers bought 4 eggless cakes each. Each cake leaves you ₹350. If all 3 switch to you, what's that yearly?",
+      "prompt": "Last year, 3 of ten mothers bought 4 eggless cakes each. Each cake leaves you ₹350. If all 3 buy from you, what's that yearly?",
       "options": [
         {
           "id": "a",
@@ -154,7 +154,7 @@
     {
       "kind": "sort",
       "id": "past-or-guess",
-      "prompt": "I'll show you six questions you could ask a mother. For each one, tell me: will it get a real fact, or a kind guess?",
+      "prompt": "I'll show you six questions you could ask a mother. For each one, tell me: will it get a real fact or a kind guess?",
       "buckets": ["A real fact", "A kind guess"],
       "items": [
         {
@@ -182,20 +182,20 @@
           "bucket": 1
         }
       ],
-      "why": "Questions about real events get facts: what she paid, which bakery, where she went. Questions about your idea or her feelings get kind guesses, even when they mention last year."
+      "why": "Questions about real events give facts: what she paid, which bakery, where she went. Questions about your idea or her feelings give kind guesses, even if they mention last year."
     },
     {
       "kind": "scenario",
       "id": "after-talks",
-      "setup": "You've talked to ten mothers. Three bought eggless cakes last year, mostly by taking an auto to a bakery 6 km away. You have one week before you decide whether to start.",
+      "setup": "You've talked to ten mothers. Three bought eggless cakes last year, mostly by taking an auto to a bakery 6 km away. You have one week before you decide if you should start.",
       "question": "What do you do next?",
       "options": [
         {
           "id": "a",
-          "label": "Visit the three again and hear how their orders went",
+          "label": "Visit the three again and ask how their orders went",
           "grade": "great",
-          "outcome": "All three talk about the auto ride and ordering two days ahead. One says the bakery spelt her daughter's name wrong, and the girl cried at her party. Now you know what to promise: no two-day wait, and the name spelt right.",
-          "why": "You asked the people who already buy about what really happened. Their stories showed you what matters to them."
+          "outcome": "All three confirm the auto ride and add something new: they order two days ahead. One says the bakery spelt her daughter's name wrong, and the girl cried at her party. Now you know what to promise: no two-day wait, and the name spelt right.",
+          "why": "You asked people who already buy about what really happened. Their stories showed you what matters to them."
         },
         {
           "id": "b",
@@ -203,15 +203,15 @@
           "grade": "bad",
           "outcome": "60 people answer and 45 say yes. You start baking and plan for 45 buyers. In the first month, 6 of them order.",
           "why": "The form asks the \"would you\" question to 60 people at once, so you get 60 kind guesses. The 45 yeses cost them nothing.",
-          "better": "Visit the three who already buy, and hear how their orders went."
+          "better": "Visit the three who already buy and ask how their orders went."
         },
         {
           "id": "c",
           "label": "Make a logo and an Instagram page to test interest",
           "grade": "ok",
           "outcome": "The page looks lovely and gets plenty of likes. A month later, you still don't know what buyers want from you.",
-          "why": "A page does no harm, but it teaches you nothing about buyers.",
-          "better": "Visit the three mothers who already buy, and hear how their orders went."
+          "why": "A page does no harm, but it teaches you nothing about what buyers want.",
+          "better": "Visit the three mothers who already buy and ask how their orders went."
         }
       ]
     },
@@ -221,13 +221,13 @@
       "text": "Ask about real things that ___, not about your ___.",
       "bank": ["happened", "idea", "will happen", "price"],
       "answer": ["happened", "idea"],
-      "why": "Exactly. Meesho's founders watched what shops really did, and your best facts came from what mothers really did. Real events beat kind answers."
+      "why": "Exactly. Meesho's founders watched what shops really did, and your best facts came from what mothers really did. Real events are better than kind answers."
     }
   ],
   "summary": [
-    "The Mom Test: people are kind about your idea, so don't ask about it.",
-    "Ask about real things that happened: what they paid, where they went, what went wrong.",
-    "When someone gives you a feeling, ask for the story of the last time."
+    "The Mom Test: people are kind about your idea, so don't ask if they like it.",
+    "Ask about real things that happened: what they paid, where they went and what went wrong.",
+    "When someone tells you a feeling, ask what happened the last time."
   ],
   "cards": [
     {
@@ -235,7 +235,7 @@
       "front": "Which question gets a fact?",
       "options": ["How did you find a tutor last time?", "Would you pay for my tuition app?"],
       "answer": 0,
-      "back": "Ask about last time. \"Would you\" gets a kind guess."
+      "back": "Ask about the last time. \"Would you\" gives you a kind guess."
     },
     {
       "id": "m21-mom-2",
@@ -249,7 +249,7 @@
       "front": "15 of 20 shopkeepers say they'd use your app. 4 paid for a similar tool last year. Which number do you plan with?",
       "options": ["4", "15", "20"],
       "answer": 0,
-      "back": "Plan with what people did, not what they said."
+      "back": "Plan using what people did, not what they said."
     }
   ],
   "sources": [

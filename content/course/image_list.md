@@ -1,7 +1,7 @@
 # Lesson images
 
 Hook pictures for the lessons, one per lesson. Each goes in `content/course/media/<id>.webp`.
-Style for all: photoreal, India, warm natural light, portrait 3:4. No logos, no brand names, no readable
+Style for all: photoreal, India, warm natural light, landscape 4:3 (the lesson screen shows 4:3; the older portrait ones are cropped). No logos, no brand names, no readable
 text or signs, no real person's likeness.
 
 ## Module 1.1: Where the money goes
