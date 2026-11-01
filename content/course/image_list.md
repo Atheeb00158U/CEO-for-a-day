@@ -13,3 +13,11 @@ text or signs, no real person's likeness.
 | `ls_cane_farmer` | u1-frozen-cash | A farmer in his 40s in western UP standing by a bullock cart piled with cut sugarcane outside a mill gate, waiting, late-afternoon light. |
 | `ls_last_over` | u1-judge-the-call | A packed cricket stadium at night seen from the stands, a lone bowler at the top of his run-up holding the ball, faces not visible, no team logos or kit text. |
 | `ls_batter_packets` | u1-test-small | A tiny kitchen room in Bengaluru, 2006: two wet grinders, rows of plain clear plastic pouches of white idli batter on a steel table, a young man sealing a pouch. No logos or printed brand names. |
+
+## Module 2.1: Find a real problem
+
+| Image id | Lesson | Picture |
+|---|---|---|
+| `ls_batter_bag` | u2-workaround-test | A small Bengaluru grocery counter, about 2005: a few plain clear plastic bags of white idli batter, each tied at the top with a rubber band, in a steel tray among loose groceries; a shopkeeper's hand reaching in, no face. No brand names or text. |
+| `ls_whatsapp_boutique` | u2-mom-test | A small women's clothing boutique in Bengaluru, 2015: the owner, a man in his 30s seen from behind or the side, photographs a kurta on a hanger with his phone; racks of bright clothes behind. Phone screen not readable. |
+| `ls_scooter_booking` | u2-praise-not-proof | A row of new, plain electric scooters in pastel colours under bright showroom lights, each with a blank paper tag hanging from the handle; no logos, badges or text. |
