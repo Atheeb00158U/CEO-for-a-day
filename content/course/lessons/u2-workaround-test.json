@@ -79,7 +79,7 @@
     {
       "kind": "choice",
       "id": "delivery-saving",
-      "prompt": "Say 30 families buy 4 eggless cakes a year, each needing a ₹120 auto trip. You deliver for ₹40, same cake price. Families' yearly saving?",
+      "prompt": "30 families buy 4 eggless cakes a year, each with a ₹120 auto trip. You deliver for ₹40, same cake price. What do families save?",
       "options": [
         {
           "id": "a",

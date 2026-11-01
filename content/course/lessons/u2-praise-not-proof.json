@@ -54,7 +54,7 @@
     {
       "kind": "choice",
       "id": "principal",
-      "prompt": "A school principal says, \"Lovely cakes! Bring samples on Monday, and I'll introduce you to our canteen head.\" What has she given you?",
+      "prompt": "Next, a school principal says, \"Lovely cakes! Bring samples on Monday, and I'll introduce you to our canteen head.\" What has she given you?",
       "options": [
         {
           "id": "a",
