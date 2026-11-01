@@ -43,7 +43,13 @@
       "kind": "explain",
       "id": "mom-test",
       "title": "The Mom Test",
-      "text": "Watching what people do beats asking them. When you can't watch, ask in a way that gets the same truth. A book called The Mom Test explains: ask your mother if your idea is good, and she'll say yes to be kind. So ask about real events, not your idea."
+      "text": "Watching what people do beats asking them. When you can't watch, ask in a way that gets the same truth. A book called The Mom Test explains: ask your mother if your idea is good, and she'll give a kind guess: yes. So ask about real events, not your idea."
+    },
+    {
+      "kind": "explain",
+      "id": "home",
+      "title": "Your turn",
+      "text": "Meesho grew huge, but the same test works for your home bakery. You've picked eggless cakes. Before you bake a single cake for sale, you'll talk to ten mothers in your colony."
     },
     {
       "kind": "choice",
@@ -66,15 +72,9 @@
       "answer": "b",
       "why": "Yes. It says \"last Diwali\", but \"would you have liked\" still asks for a feeling about your idea. A kind person will say yes.",
       "wrong": {
-        "a": "That one asks about a real event: when she last bought a cake. The tricky one is \"Last Diwali, would you have liked…\": it sounds past, but it asks for a feeling.",
-        "c": "That one asks for a real fact: what she paid. The tricky one is \"Last Diwali, would you have liked…\": it sounds past, but it asks for a feeling."
+        "a": "That one asks about a real event: when she last bought a cake. Look again at \"Last Diwali, would you have liked…\": it sounds past, but it asks for a feeling.",
+        "c": "That one gets a real fact: what she paid. The trap is the Diwali question. It mentions the past, but \"would you have liked\" asks for a feeling about your idea."
       }
-    },
-    {
-      "kind": "explain",
-      "id": "home",
-      "title": "Your turn",
-      "text": "Meesho grew huge, but the same test works for a home bakery. Imagine you bake eggless cakes at home for your colony. Before you spend on anything, you'll talk to ten mothers who live there."
     },
     {
       "kind": "choice",
@@ -129,7 +129,7 @@
     {
       "kind": "choice",
       "id": "real-count",
-      "prompt": "Last year, 3 of ten mothers bought 4 eggless cakes each. You make ₹350 a cake. If all 3 switch to you, what's that yearly?",
+      "prompt": "Last year, 3 of ten mothers bought 4 eggless cakes each. Each cake leaves you ₹350. If all 3 switch to you, what's that yearly?",
       "options": [
         {
           "id": "a",
@@ -145,7 +145,7 @@
         }
       ],
       "answer": "b",
-      "why": "Right. 3 × 4 = 12 cakes, and 12 × ₹350 = ₹4,200 a year. If you had believed the 7 mothers who said \"I'll surely buy\", you'd have planned for ₹9,800, more than twice as much.",
+      "why": "Right. 3 × 4 = 12 cakes, and 12 × ₹350 = ₹4,200 a year from these ten mothers. Small, but real. To grow, you'll need many more mothers like these three.",
       "wrong": {
         "a": "That's one mother: 4 × ₹350. Three mothers bought: 12 cakes × ₹350 = ₹4,200.",
         "c": "That's as if all ten mothers bought 4 cakes. Only 3 did: 12 cakes × ₹350 = ₹4,200."
@@ -194,14 +194,14 @@
           "id": "a",
           "label": "Visit the three again and hear how their orders went",
           "grade": "great",
-          "outcome": "All three talk about the auto ride and ordering two days ahead. One says the bakery spelt her daughter's name wrong, and the girl cried at her party. Now you know what to offer: delivery, and the name spelt right.",
+          "outcome": "All three talk about the auto ride and ordering two days ahead. One says the bakery spelt her daughter's name wrong, and the girl cried at her party. Now you know what to promise: no two-day wait, and the name spelt right.",
           "why": "You asked the people who already buy about what really happened. Their stories showed you what matters to them."
         },
         {
           "id": "b",
           "label": "Send the whole colony a form: would you buy eggless cakes?",
           "grade": "bad",
-          "outcome": "60 people answer and 45 say yes. You bake 15 cakes for the first weekend and sell 6.",
+          "outcome": "60 people answer and 45 say yes. You start baking and plan for 45 buyers. In the first month, 6 of them order.",
           "why": "The form asks the \"would you\" question to 60 people at once, so you get 60 kind guesses. The 45 yeses cost them nothing.",
           "better": "Visit the three who already buy, and hear how their orders went."
         },

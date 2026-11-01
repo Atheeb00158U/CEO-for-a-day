@@ -49,7 +49,7 @@
       "kind": "explain",
       "id": "home",
       "title": "Now look at your business",
-      "text": "iD grew into a ₹100 crore company, but the same clue works in a colony. Imagine you want to start a food business from home. You have ₹40,000 saved and three ideas, and you can only try one."
+      "text": "iD grew into a ₹100 crore company, but the same clue works in a colony. Imagine you want to start a food business from home. Your colony has about 100 families. You have ₹40,000 saved and three ideas, and you can only try one."
     },
     {
       "kind": "choice",
@@ -66,20 +66,20 @@
         },
         {
           "id": "c",
-          "label": "Home cleaning. An app says demand is growing fast in your city"
+          "label": "Office lunches. An app says tiffin orders are growing in your city"
         }
       ],
       "answer": "a",
       "why": "Yes. The mothers already spend time and auto fare on a clumsy fix. That trouble, in your own colony, is your proof.",
       "wrong": {
         "b": "Telling you to start costs your friends nothing. Nobody is going to any trouble for fusion cakes yet.",
-        "c": "Growth across a city tells you nothing about your street. Nobody near you is doing anything to get home cleaning yet."
+        "c": "Growth across a city tells you nothing about your street. Nobody near you is doing anything to get office lunches yet."
       }
     },
     {
       "kind": "choice",
       "id": "delivery-saving",
-      "prompt": "30 families each buy 4 eggless cakes a year, with a ₹120 auto trip per cake. You deliver for ₹40. What do they save yearly?",
+      "prompt": "Say 30 families each buy 4 eggless cakes a year, with a ₹120 auto trip per cake. You deliver for ₹40. Yearly saving?",
       "options": [
         {
           "id": "a",
@@ -183,7 +183,7 @@
           "id": "b",
           "label": "Put up posters all over the area, then start",
           "grade": "ok",
-          "outcome": "The posters cost ₹3,000. A few strangers call, but most orders still come from colony mothers who heard about you from each other.",
+          "outcome": "The posters cost ₹3,000 and bring 2 orders from strangers, which leave you ₹700. The mothers who already make the 6 km trip haven't heard from you yet.",
           "why": "Posters reach everyone, but your strongest buyers were already known: the mothers making the 6 km trip.",
           "better": "Start with the mothers who already take an auto 6 km for these cakes."
         },
@@ -191,7 +191,7 @@
           "id": "c",
           "label": "Bake at home and deliver in the colony first",
           "grade": "great",
-          "outcome": "Twelve mothers order in the first month. Each cake leaves you ₹350, so you keep ₹4,200, and you pay no rent. Your ₹40,000 is still safe.",
+          "outcome": "You keep your ₹40,000 safe and plan to bake at home. Before you bake a single cake for sale, you'll go and talk to the colony mothers who make the trip.",
           "why": "You went straight to the people already going to trouble, and kept your costs tiny. That's where first orders come from."
         }
       ]

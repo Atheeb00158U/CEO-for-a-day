@@ -49,7 +49,7 @@
       "kind": "explain",
       "id": "home",
       "title": "Now look at your business",
-      "text": "Ola is a big company, but the same ladder works for a home bakery. Imagine you bake eggless cakes for your colony. Ten friends see your cake photos and say, \"Great idea! You should start!\" Diwali is coming, and you're planning your first big week."
+      "text": "Ola is a big company, but the same idea works for your home bakery. Ten friends see your cake photos and say, \"Great idea! You should start!\" Your first Diwali as a home baker is coming, and you're planning your first big week."
     },
     {
       "kind": "choice",
@@ -87,15 +87,15 @@
         },
         {
           "id": "b",
-          "label": "A real order for the canteen"
+          "label": "A firm order for the canteen"
         },
         {
           "id": "c",
-          "label": "A real step: her time, and her word to the canteen head"
+          "label": "Her time and an introduction"
         }
       ],
       "answer": "c",
-      "why": "Yes. She's giving up her Monday time, and using her own good name to introduce you. That costs her something, so it means more than praise.",
+      "why": "Yes. These aren't kind words about your idea: she's promising a meeting and an introduction. That costs her time and her good name, so it means more than praise.",
       "wrong": {
         "a": "No money yet, true. But a meeting and an introduction cost her time and her good name. Praise costs nothing; this doesn't.",
         "b": "Not an order yet: the canteen head hasn't agreed to anything. But the meeting and the introduction are real steps towards one."
@@ -104,19 +104,19 @@
     {
       "kind": "choice",
       "id": "advance-sum",
-      "prompt": "Mothers pay ₹200 advances on ₹700 Diwali cakes that cost you ₹350. If one never picks hers up, and nobody else buys it?",
+      "prompt": "Mothers pay ₹200 advances on ₹700 Diwali cakes that cost you ₹350. If one never collects and nobody else buys it, what do you lose?",
       "options": [
         {
           "id": "a",
-          "label": "Nothing is lost. Her ₹200 covers it"
+          "label": "Nothing. Her ₹200 covers it"
         },
         {
           "id": "b",
-          "label": "You lose ₹150 on that cake"
+          "label": "₹150"
         },
         {
           "id": "c",
-          "label": "You lose ₹350 on that cake"
+          "label": "₹350"
         }
       ],
       "answer": "b",
@@ -162,7 +162,7 @@
     {
       "kind": "scenario",
       "id": "diwali",
-      "setup": "Diwali is three weeks away. 25 friends and neighbours have praised your cakes, but not ordered. 8 other mothers have paid a ₹350 advance. You can bake at most 30 cakes that week. Each costs you ₹350 to make, and you buy ingredients a week ahead.",
+      "setup": "Diwali is three weeks away. 25 friends and neighbours have praised your cakes, but not ordered. 8 other mothers have paid a ₹350 advance. Each cake sells for ₹700 and costs you ₹350 to make. You can bake at most 30 that week, and you buy ingredients a week ahead.",
       "question": "How do you plan your Diwali baking?",
       "options": [
         {
@@ -193,7 +193,7 @@
     {
       "kind": "gap",
       "id": "fill",
-      "text": "A compliment costs ___, so it proves little. A ₹350 advance from a buyer is ___.",
+      "text": "A compliment costs ___, so it proves nothing. A ₹350 advance from a buyer is ___.",
       "bank": ["nothing", "proof", "money", "praise"],
       "answer": ["nothing", "proof"],
       "why": "Exactly. Ola asked for ₹499, then ₹20,000. Your mothers paid ₹350, and the principal gave you her time. What people give up is the proof."
