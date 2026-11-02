@@ -1,0 +1,208 @@
+{
+  "id": "u3-value-price",
+  "title": "What is it worth to them?",
+  "principle": "Price from what it is worth to the buyer. Your cost sets the floor, not the price.",
+  "minutes": 5,
+  "draft": true,
+  "screens": [
+    {
+      "kind": "explain",
+      "id": "hook",
+      "media": "img:ls_tatkal",
+      "text": "Let me tell you about a train ticket. You get a call: a job interview in another city, tomorrow. The normal tickets were sold weeks ago. But in the morning, the day before the train leaves, Indian Railways opens a small group of seats called Tatkal."
+    },
+    {
+      "kind": "explain",
+      "id": "same-seat",
+      "title": "Same train, higher price",
+      "text": "A Tatkal ticket is a normal seat on the same train. But the railway adds an extra charge: 10% of the base fare in second class, and 30% in sleeper and AC, up to a set limit. Railways started Tatkal in 1997, for people who must travel at once."
+    },
+    {
+      "kind": "choice",
+      "id": "guess",
+      "guess": true,
+      "prompt": "Carrying a Tatkal traveller costs the railway about the same as carrying anyone else. So why can it charge more?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Tatkal seats are in better coaches"
+        },
+        {
+          "id": "b",
+          "label": "A trip tomorrow is worth more to you"
+        },
+        {
+          "id": "c",
+          "label": "Selling seats late costs the railway more"
+        }
+      ],
+      "answer": "b",
+      "why": "The seat and the cost of carrying you stay almost the same. What changes is your need: you must travel tomorrow, so that seat is worth much more to you than a seat next month."
+    },
+    {
+      "kind": "explain",
+      "id": "worth",
+      "title": "Worth, not cost",
+      "text": "Many people choose it. In 2019-20, the railway earned ₹1,669 crore from Tatkal tickets. The extra charge follows a fixed rule, the same for everyone in that class. Tatkal doesn't price what it costs to carry you. It prices what a trip tomorrow is worth to you."
+    },
+    {
+      "kind": "explain",
+      "id": "value-pricing",
+      "title": "Value-based pricing",
+      "text": "Hermann Simon, an expert on prices, calls this value-based pricing. Buyers pay for what something is worth to them, not what it cost you. Faster is worth more. A promise they can trust is worth more. Your cost only sets the floor: the lowest price you can take."
+    },
+    {
+      "kind": "explain",
+      "id": "home",
+      "title": "Now look at your business",
+      "text": "The railway is huge, but the same idea works in your home bakery, where you bake cakes for families nearby. It's January of your third year. Your chocolate birthday cake is ₹700, and each one costs you ₹350 to make. Other bakeries need two days to make a cake."
+    },
+    {
+      "kind": "choice",
+      "id": "same-day",
+      "prompt": "Two orders, the same chocolate cake, each costing you ₹350 to make. Which one can you charge more for?",
+      "options": [
+        {
+          "id": "a",
+          "label": "A cake for a big family of 20"
+        },
+        {
+          "id": "b",
+          "label": "A cake needed tonight, that nobody else can make"
+        },
+        {
+          "id": "c",
+          "label": "Neither: same cake, same cost, same price"
+        }
+      ],
+      "answer": "b",
+      "why": "Yes. A cake tonight is worth more to the buyer, like a Tatkal seat, even though it costs you the same ₹350. Speed is worth paying for.",
+      "wrong": {
+        "a": "A big family needs a bigger cake, but this is the same cake. Size of the family doesn't change what one cake is worth. Speed does: a cake tonight is worth more.",
+        "c": "That's pricing from your cost. The cost is the same, but the worth isn't. A cake tonight can save a party, just as a Tatkal seat can save a trip."
+      }
+    },
+    {
+      "kind": "sort",
+      "id": "worth-or-cost",
+      "prompt": "I'll show you six things. For each, tell me: does it make the cake worth more to the mother, or only cost you more?",
+      "buckets": ["Worth more to her", "Only costs you more"],
+      "items": [
+        {
+          "text": "The cake is ready the same day she asks",
+          "bucket": 0
+        },
+        {
+          "text": "You bought flour from a costlier shop, same flour",
+          "bucket": 1
+        },
+        {
+          "text": "Ready by 6 pm, or ₹200 of her money back",
+          "bucket": 0
+        },
+        {
+          "text": "Gas for your oven costs more this month",
+          "bucket": 1
+        },
+        {
+          "text": "Her child's favourite cartoon drawn in icing",
+          "bucket": 0
+        },
+        {
+          "text": "Costly cocoa that tastes the same to her",
+          "bucket": 1
+        }
+      ],
+      "why": "Same-day service, a promise of 6 pm and her child's favourite cartoon make the cake worth more to her. Costlier flour, gas and cocoa raise your cost, but she gets nothing more. If your costs rise a lot, your floor rises. But only the first kind makes the cake worth more."
+    },
+    {
+      "kind": "scenario",
+      "id": "same-day-price",
+      "setup": "It's February. About 6 mothers a month now ask for a cake the same day. Your usual price is ₹700, and each cake costs you ₹350. Several mothers say they'd gladly pay ₹200 or ₹300 more to save a party.",
+      "question": "How do you price same-day cakes?",
+      "options": [
+        {
+          "id": "b",
+          "label": "₹700, the same as any other cake",
+          "grade": "ok",
+          "outcome": "Mothers are very happy. Same-day orders grow to about 10 a month, and some regulars start ordering late on purpose. Your weeks get crowded for the same ₹350 a cake.",
+          "why": "Being kind isn't wrong, but you gave the extra worth for free. Speed is something buyers will pay for.",
+          "better": "A fixed ₹950 same-day price on your menu, ready by 6 pm or ₹200 back."
+        },
+        {
+          "id": "a",
+          "label": "A fixed ₹950 same-day price, on your menu",
+          "grade": "great",
+          "outcome": "Your menu now says: same-day cake ₹950, ready by 6 pm or ₹200 back. Mothers know the price before they call, and about 6 a month still choose it. Each leaves you ₹600, not ₹350: about ₹1,500 more a month.",
+          "why": "The extra pays for something real: making her cake today, and a promise you keep. You priced it openly, the same for everyone. Your cost stayed the floor, not the price."
+        },
+        {
+          "id": "c",
+          "label": "Charge each mother what she seems able to pay",
+          "grade": "bad",
+          "outcome": "You charge one mother ₹1,200 and her neighbour ₹800. They talk. The first mother feels cheated, tells her colony, and two families stop ordering from you.",
+          "why": "Charging more for someone's rush is fair only when the price is open and the same for everyone. Guessing what each person can pay feels like cheating.",
+          "better": "A fixed ₹950 same-day price on your menu, ready by 6 pm or ₹200 back."
+        }
+      ]
+    },
+    {
+      "kind": "gap",
+      "id": "fill",
+      "text": "Price from what the cake is ___ to the buyer. Your cost is only the ___.",
+      "bank": ["worth", "floor", "top", "sold"],
+      "answer": ["worth", "floor"],
+      "why": "Exactly. A Tatkal seat costs the railway about the same, but it is worth more to someone who must travel tomorrow. Your same-day cake works the same way, at one open price."
+    }
+  ],
+  "summary": [
+    "Value-based pricing: price from what it's worth to the buyer, not from your cost.",
+    "Faster and surer are worth more. Charge for them openly, the same for everyone.",
+    "Your cost is the floor: the lowest price you can take, never the price itself."
+  ],
+  "cards": [
+    {
+      "id": "m31-value-1",
+      "front": "It's May, and an AC has broken. One repairman can come today. Another can come next week. Who can charge more?",
+      "options": ["The one who comes today", "The one who comes next week"],
+      "answer": 0,
+      "back": "Faster service is worth more to the buyer, even though the repair costs the same."
+    },
+    {
+      "id": "m31-value-2",
+      "front": "Your cake costs you ₹350 to make. What is that ₹350?",
+      "options": ["The lowest price you can take", "The price you should charge"],
+      "answer": 0,
+      "back": "Cost is the floor, not the price. Price from what it is worth to the buyer."
+    },
+    {
+      "id": "m31-value-3",
+      "front": "Why can the railway charge more for a Tatkal ticket?",
+      "options": ["A trip tomorrow is worth more to you", "Tatkal seats cost more to run"],
+      "answer": 0,
+      "back": "Same train, same kind of seat. The railway prices your need to travel now."
+    }
+  ],
+  "sources": [
+    {
+      "label": "Tatkal scheme in passenger trains (Railway Board circular, 2013, via StaffNews)",
+      "url": "https://www.staffnews.in/2013/10/tatkal-scheme-in-passenger-trains.html"
+    },
+    {
+      "label": "Tatkal refund, cancellation and booking rules (Business Today)",
+      "url": "https://www.businesstoday.in/current/economy-politics/tatkal-refund-cancellation-bookings-rules/story/262521.html"
+    },
+    {
+      "label": "In pandemic-hit 2020-21, Railways earned over Rs 500 cr from tatkal, premium tatkal (EastMojo / PTI, 2 Jan 2022)",
+      "url": "https://eastmojo.com/news/2022/01/02/in-pandemic-hit-2020-21-rlys-earned-over-rs-500-cr-from-tatkal-premium-tatkal/"
+    },
+    {
+      "label": "Confessions of the Pricing Man by Hermann Simon, summary (James Clear)",
+      "url": "https://jamesclear.com/book-summaries/confessions-of-the-pricing-man"
+    },
+    {
+      "label": "Our story (Simon-Kucher, the pricing firm Hermann Simon co-founded)",
+      "url": "https://www.simon-kucher.com/en/who-we-are/our-story"
+    }
+  ]
+}

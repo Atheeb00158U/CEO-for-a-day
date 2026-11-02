@@ -43,6 +43,21 @@
           "gates": ["redbus-first-tickets"]
         }
       ]
+    },
+    {
+      "id": "u3-price-offer",
+      "title": "Price and offer",
+      "goal": "Set prices from what your work is worth, and change them without losing buyers.",
+      "draft": true,
+      "modules": [
+        {
+          "id": "u3-set-price",
+          "title": "Set a price",
+          "goal": "Price from what it's worth to the buyer.",
+          "lessons": ["u3-value-price", "u3-cost-per-year", "u3-small-packs", "u3-loss-leader"],
+          "gates": []
+        }
+      ]
     }
   ]
 }

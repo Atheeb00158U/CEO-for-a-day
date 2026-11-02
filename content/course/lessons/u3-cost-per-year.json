@@ -1,0 +1,201 @@
+{
+  "id": "u3-cost-per-year",
+  "title": "What does it cost per year?",
+  "principle": "Judge a price by what it costs for each year of use, not by the price on the box.",
+  "minutes": 5,
+  "draft": true,
+  "screens": [
+    {
+      "kind": "explain",
+      "id": "hook",
+      "media": "img:ls_led_bulb",
+      "text": "Let me tell you about light bulbs. In 2014, a plain old bulb cost ₹10 to ₹15 in India. An LED bulb gave the same light, but it cost about ₹450 to ₹500. So almost nobody bought it. Fewer than 1 in 100 bulbs sold was an LED."
+    },
+    {
+      "kind": "explain",
+      "id": "per-year",
+      "title": "What the box didn't show",
+      "text": "For 140 hours of light, an LED used 1 unit of electricity. The old bulb used 9 units. The LED also lasted many times longer. Over a year, the cheap bulb cost a family more because of the electricity bill. Most families saw only the price on the box."
+    },
+    {
+      "kind": "explain",
+      "id": "puducherry",
+      "title": "₹10 a month",
+      "text": "In 2014, EESL, a company owned by the government, tried a new plan in Puducherry. A family paid just ₹10 for an LED bulb, the same as an old bulb. They paid the rest through their electricity bill, ₹10 a month."
+    },
+    {
+      "kind": "choice",
+      "id": "guess",
+      "guess": true,
+      "prompt": "Families paid ₹10 for the LED, then ₹10 a month on their electricity bill. Did their bills go up?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Yes, by ₹10 a month"
+        },
+        {
+          "id": "b",
+          "label": "No, the bills went down"
+        },
+        {
+          "id": "c",
+          "label": "Yes, but only for a year"
+        }
+      ],
+      "answer": "b",
+      "why": "The LED saved more on the bill each month than the ₹10 charge, so bills went down. About 2 lakh homes took 6 lakh LED bulbs. Then other states asked for the same plan."
+    },
+    {
+      "kind": "explain",
+      "id": "tco",
+      "title": "Total cost of ownership",
+      "text": "The bulb didn't change. What people saw about its price changed. Business people call this the total cost of ownership: what something really costs over its whole life, including power and repairs. Divide it by the years you use it, and compare. Cheap things often cost more."
+    },
+    {
+      "kind": "explain",
+      "id": "home",
+      "title": "Now look at your business",
+      "text": "EESL sold crores of bulbs, and the same idea matters in your home bakery, where you bake cakes for families nearby. It's March of your third year. Your oven has stopped working, and you must buy a new one this week. You have ₹20,000 saved."
+    },
+    {
+      "kind": "choice",
+      "id": "oven",
+      "prompt": "A ₹6,000 oven lasts about 2 years. A ₹15,000 oven lasts about 6 years. Which one costs less per year?",
+      "options": [
+        {
+          "id": "a",
+          "label": "The ₹6,000 oven"
+        },
+        {
+          "id": "b",
+          "label": "The ₹15,000 oven"
+        },
+        {
+          "id": "c",
+          "label": "They cost the same"
+        }
+      ],
+      "answer": "b",
+      "why": "Right. ₹6,000 ÷ 2 years = ₹3,000 a year. ₹15,000 ÷ 6 years = ₹2,500 a year. The costly oven is cheaper each year, and you still keep ₹5,000 for flour and gas.",
+      "wrong": {
+        "a": "I see why: ₹6,000 is the smaller number. But it lasts only 2 years, so it's ₹6,000 ÷ 2 = ₹3,000 a year. The ₹15,000 oven is ₹15,000 ÷ 6 = ₹2,500 a year.",
+        "c": "Calculate the cost per year. ₹6,000 ÷ 2 = ₹3,000 a year. ₹15,000 ÷ 6 = ₹2,500 a year. The costly one is ₹500 a year cheaper."
+      }
+    },
+    {
+      "kind": "sort",
+      "id": "box-or-year",
+      "prompt": "Oven sellers tell you six things. For each, tell me: does it change the cost per year, or only make you want to buy today?",
+      "buckets": ["Changes cost per year", "Only makes you buy today"],
+      "items": [
+        {
+          "text": "It lasts about 6 years if you bake daily",
+          "bucket": 0
+        },
+        {
+          "text": "Buy now, only 3 left!",
+          "bucket": 1
+        },
+        {
+          "text": "It uses less electricity for each cake",
+          "bucket": 0
+        },
+        {
+          "text": "This offer ends at midnight",
+          "bucket": 1
+        },
+        {
+          "text": "Free repairs for the first 3 years",
+          "bucket": 0
+        },
+        {
+          "text": "Everyone in your area is buying this one",
+          "bucket": 1
+        }
+      ],
+      "why": "How long it lasts, its electricity and its repairs change what it costs you each year. \"Only 3 left\", \"ends at midnight\" and \"everyone is buying\" only make you decide fast."
+    },
+    {
+      "kind": "scenario",
+      "id": "per-guest",
+      "setup": "It's April. Cost per use matters when you sell, too. A mother says, \"The shop on the main road sells a cake for ₹450. Yours is ₹700.\" Her party has 10 guests. Your cake feeds 10. The shop's cake feeds 5.",
+      "question": "What do you say to her?",
+      "options": [
+        {
+          "id": "b",
+          "label": "Bake her a smaller cake for ₹450",
+          "grade": "bad",
+          "outcome": "She orders the ₹450 cake. It feeds about 6, so 4 guests get no piece. She is unhappy, and you earned less too.",
+          "why": "You matched the shop's price by shrinking the cake. But her party needed a cake for 10, and per guest yours was already cheaper.",
+          "better": "Show her the cost for her 10 guests: two of their cakes are ₹900, yours is ₹700."
+        },
+        {
+          "id": "c",
+          "label": "Tell her your cake tastes better",
+          "grade": "ok",
+          "outcome": "She smiles and says she'll think about it. She orders from the shop this time, but she tries yours for Diwali.",
+          "why": "Taste matters, but \"better\" is only your claim against the shop's. A number she can check would have helped more.",
+          "better": "Show her the cost for her 10 guests: two of their cakes are ₹900, yours is ₹700."
+        },
+        {
+          "id": "a",
+          "label": "Show her the cost for each guest",
+          "grade": "great",
+          "outcome": "You tell her: \"For 10 guests, you'd need two of theirs: ₹900. Mine feeds all 10 for ₹700.\" She sees your cake is cheaper for her party, and orders it.",
+          "why": "Like the LED, you showed the real cost of what she gets, not just the price on the box. Per guest, yours is ₹70 and theirs is ₹90."
+        }
+      ]
+    },
+    {
+      "kind": "gap",
+      "id": "fill",
+      "text": "Don't judge by the price on the ___. Judge by what it costs for each ___ of use.",
+      "bank": ["box", "year", "sale", "name"],
+      "answer": ["box", "year"],
+      "why": "Exactly. The LED cost more on the box but less each year. The ₹15,000 oven works the same way."
+    }
+  ],
+  "summary": [
+    "Total cost of ownership: what something really costs over its whole life. Divide it by the years, or the times, you use it.",
+    "Cheap things that break soon, or use more power, often cost more.",
+    "When you sell, show buyers the cost per year or per use, not just the price.",
+    "Buy the cheaper-per-year one only if you still have enough cash to run the business."
+  ],
+  "cards": [
+    {
+      "id": "m31-year-1",
+      "front": "A ₹1,500 cooker lasts 3 years. A ₹2,400 cooker lasts 10 years. Which costs less per year?",
+      "options": ["The ₹2,400 cooker", "The ₹1,500 cooker"],
+      "answer": 0,
+      "back": "₹2,400 ÷ 10 = ₹240 a year. ₹1,500 ÷ 3 = ₹500 a year."
+    },
+    {
+      "id": "m31-year-2",
+      "front": "Why did so few Indian families buy LED bulbs at ₹450 in 2014?",
+      "options": ["They saw only the price on the box", "LEDs gave less light"],
+      "answer": 0,
+      "back": "They saw the price on the box, not how much money the LED saved on the electricity bill each month."
+    },
+    {
+      "id": "m31-year-3",
+      "front": "A buyer says your ₹700 cake is costly. It feeds 10 guests. The shop's ₹450 cake feeds 5. What can you show her?",
+      "options": ["The cost for her guests", "A lower price"],
+      "answer": 0,
+      "back": "Two shop cakes for 10 guests cost ₹900. Yours is ₹700: ₹70 a guest."
+    }
+  ],
+  "sources": [
+    {
+      "label": "UJALA: Unnat Jyoti by Affordable LEDs for All (Government of India booklet, PIB)",
+      "url": "https://static.pib.gov.in/WriteReadData/userfiles/UJALA%20.pdf"
+    },
+    {
+      "label": "Lighting a billion: the UJALA program's impact in India (CLASP)",
+      "url": "https://www.clasp.ngo/report/net-zero-heroes/case-studies/lighting-a-billion-the-ujala-programs-transformational-impact-in-india/"
+    },
+    {
+      "label": "LED bulbs to be available at Rs 10 instead of Rs 400 (Down To Earth, 20 Oct 2014)",
+      "url": "https://www.downtoearth.org.in/amp/story/environment/led-bulbs-to-be-available-at-rs-10-instead-of-rs-400-47011"
+    }
+  ]
+}

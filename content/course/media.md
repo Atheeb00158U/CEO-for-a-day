@@ -16,3 +16,7 @@ Lesson hook images, prepared like `npm run media` does (webp, 1080 px wide at mo
 | ls_tv_meter | u2-loud-few | generated (ChatGPT, 2026-11-02) | A village family on a charpai watching a small CRT TV, a plain grey meter box beside it. |
 | ls_cornflakes | u2-old-habits | generated (ChatGPT, 2026-11-02) | Hot milk poured from a steel pan into a bowl of cornflakes, a blank cereal box beside it (1990s). |
 | ls_meetha | u2-job-to-be-done | generated (ChatGPT, 2026-11-02) | A young man with good news sharing a chocolate bar in a blank wrapper with his parents, mithai on the table. |
+| ls_tatkal | u3-value-price | generated (ChatGPT, 2026-11-02) | Travellers with bags queuing at an old railway booking window under a wall clock near 10; no readable signs. |
+| ls_led_bulb | u3-cost-per-year | generated (ChatGPT, 2026-11-02) | A hand fitting a white LED bulb into a ceiling holder in a modest home, an old yellow bulb on the table below (2014). |
+| ls_sachets | u3-small-packs | generated (ChatGPT, 2026-11-02) | A village shopkeeper tearing a plain sachet off a hanging strip, coins on the counter (1980s). |
+| ls_cafe_deal | u3-loss-leader | generated (ChatGPT, 2026-11-02) | A crowded small café counter, customers holding blank paper coupons, a worker seen from behind (2010). |
