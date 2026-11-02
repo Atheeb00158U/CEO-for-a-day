@@ -121,18 +121,18 @@ const one = (v: Answer["value"], allowed: string[]) => {
   if (typeof v !== "string" || !allowed.includes(v)) throw new PlayError("bad answer");
   return v;
 };
+// Items can be questions or full sentences, so they're split by " / " (not commas) and keep their own end mark.
 const sorted = (buckets: string[], items: { text: string; bucket: number }[], pick: (i: number) => number) =>
   buckets
-    .map(
-      (b, k) =>
-        `${b}: ${
-          items
-            .filter((_, i) => pick(i) === k)
-            .map((x) => x.text)
-            .join(", ") || "none"
-        }`,
-    )
-    .join(". ");
+    .map((b, k) => {
+      const list =
+        items
+          .filter((_, i) => pick(i) === k)
+          .map((x) => x.text)
+          .join(" / ") || "none";
+      return `${b}: ${/[.?!]$/.test(list) ? list : `${list}.`}`;
+    })
+    .join(" ");
 
 /** Grade one answer: right or not, the verdict text, and the player's pick written out for the Mistake journal. */
 function grade(lessonId: string, s: Exclude<Screen, { kind: "explain" }>, value: Answer["value"]) {
