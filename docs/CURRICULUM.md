@@ -184,12 +184,16 @@ that Hot Seat must test a later call, not the WhatsApp pivot.
 #### Module 2.2: Who buys, and why
 **Goal:** pick your first customers and learn what they really want.
 
-| Code | Concept | The rule | Everyday example (made up) | Source | Exercise |
-|---|---|---|---|---|---|
-| 2.2.1 | **Beachhead market** | You can't serve everyone. Choose who you serve first. | A gym for working women at 6 am, not "a gym for everybody". | *Crossing the Chasm* (Geoffrey Moore), "beachhead" ◇ | Pick the best move |
-| 2.2.2 | **Selection bias** (the loudest-customer trap) | Loud buyers aren't the market. Count how many share the need. | One hotel wants fancy cakes; 200 homes want plain cakes every week. | Selection bias, any statistics primer ◇; *Competing Against Luck* (Christensen) ◇ | Who's right? |
-| 2.2.3 | **Gourville's 9× effect** (status quo bias, design side) | New must beat old about nine times over, or fit old habits. | Your town likes sweeter pickles. Make them sweeter; a talk on "healthy sour" won't beat a habit. | John Gourville, "Eager Sellers and Stony Buyers" (HBR, 2006) ◇; YC, "make something people want" ✓ | True or false, then why |
-| 2.2.4 | **Jobs to be Done** (functional, emotional, social jobs) | People pay for a result and a feeling, not a product. | Parents buy "my child passes Class 10"; nobody wants guests to see "the cheapest sofa". | *Competing Against Luck* ◇; emotional and social jobs ◇ | Mini-scenario |
+| Code | Concept | The rule | Opens with (real case) | Practice example (made up) | Source | Exercise |
+|---|---|---|---|---|---|---|
+| 2.2.1 | **Beachhead market** | You can't serve everyone well at the start. Win one group first. | Flipkart (Oct 2007) sold only books, to buyers who already bought books and would pay online; bookmarks outside a Church Street bookshop; phones and electronics in 2010 ✓. | Your bakery picks nearby families wanting eggless birthday cakes (300 families × 3 in 10 × 4 cakes × ₹350 = ₹1,26,000 a year), then grows into the next colonies. | Geoffrey Moore, *Crossing the Chasm* (author's site) ✓ | Pick the best move |
+| 2.2.2 | **Selection bias** (the loudest-customer trap) | The buyers you hear from are not everyone. Count a fair mix. | India's TV ratings: meters only in city homes until BARC counted village homes (Oct 2015, 76 of 153.5 million TV homes); free channel Zee Anmol went from No. 9 in the city-only ratings to No. 3, then No. 2 ✓. | A hotel says "everyone wants designer cakes"; a fair count of 40 families (buyers and not) finds 4 who want one a year. Take 6 hotel cakes a month on free days. | BARC release (23 Oct 2015); afaqs; Catalogue of Bias ✓ | Who's right? |
+| 2.2.3 | **Gourville's 9× effect** (status quo bias, design side) | New must be far better than old, or fit old habits. | Kellogg's India (1994): hot milk made the flakes soggy; the MD said "we expect consumer habits to change"; Kellogg's changed instead (Chocos, Mazza, savoury oats, upma) ✓. | Your ragi cake flops; put less sugar in the usual chocolate cake instead. | Gourville, HBR 2006 (abstract: "nine to one") ✓ | True or false, then why |
+| 2.2.4 | **Jobs to be Done** (functional, emotional, social jobs) | People pay for a result and a feeling. The product is how they get it. | Cadbury Dairy Milk, "Kuch meetha ho jaaye" (2000s): chocolate was "for kids" and eaten alone; sold as the sweet you share at good news (IPA 2012 Gold) ✓. | A cheaper bakery opens; sell the whole job (name-check call, on time, party box) instead of cutting price. | *Competing Against Luck*; HBR Sept 2016 ✓ | Mini-scenario |
+
+**Note (2 Nov 2026):** rules softened from the first plan: 2.2.1 adds "well at the start" (Flipkart now sells everything);
+2.2.2 says count a fair mix (your own buyers are a biased sample too), serve a loud buyer if it pays but plan around the many; the 1936 Literary Digest opener was swapped for India's TV ratings after a test reader found it too far away; 2.2.3 states 9× as Gourville's rough "nine to one",
+not a law; 2.2.4 keeps the product as "how they get it" (a cake with the wrong name still fails).
 
 **Folded in:** 2.2.4 merges old 2.2.4 (a result) and 2.2.5 (feelings).
 

@@ -34,6 +34,13 @@
           "goal": "Find a problem people will pay to fix.",
           "lessons": ["u2-workaround-test", "u2-mom-test", "u2-praise-not-proof"],
           "gates": []
+        },
+        {
+          "id": "u2-who-buys",
+          "title": "Who buys, and why",
+          "goal": "Pick your first customers and learn what they really want.",
+          "lessons": ["u2-beachhead", "u2-loud-few", "u2-old-habits", "u2-job-to-be-done"],
+          "gates": ["redbus-first-tickets"]
         }
       ]
     }

@@ -1,0 +1,227 @@
+{
+  "id": "u2-beachhead",
+  "title": "Who do you serve first?",
+  "principle": "You can't serve everyone well at the start. Win one group first.",
+  "minutes": 5,
+  "draft": false,
+  "screens": [
+    {
+      "kind": "explain",
+      "id": "hook",
+      "media": "img:ls_bookmarks",
+      "text": "Let me tell you how Flipkart began. In October 2007, two young men in Bengaluru opened a shopping website. It sold only books. They didn't try to win every shopper in India. They chose one kind of buyer first."
+    },
+    {
+      "kind": "choice",
+      "id": "guess",
+      "guess": true,
+      "prompt": "Who do you think Flipkart chose to win first?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Every shopper, to get big fast"
+        },
+        {
+          "id": "b",
+          "label": "Students who needed cheap textbooks"
+        },
+        {
+          "id": "c",
+          "label": "Readers who were happy to pay online"
+        }
+      ],
+      "answer": "c",
+      "why": "They chose people who already bought books. A book cost a few hundred rupees, so these buyers didn't mind paying online. The founders even stood outside a Bengaluru bookshop, giving bookmarks to people carrying new books."
+    },
+    {
+      "kind": "explain",
+      "id": "then-grow",
+      "title": "One group, then more",
+      "text": "One founder, Binny Bansal, later said other websites tried to sell almost everything. Flipkart chose one thing, books, and got it right for book buyers first. But books were a small market in India. So in 2010, Flipkart added phones and electronics, for many more buyers."
+    },
+    {
+      "kind": "explain",
+      "id": "beachhead",
+      "title": "Your beachhead",
+      "text": "Startup teachers call this first group a beachhead. An army first wins one small beach. Then it moves further in. A good first group needs you now, is easy to reach, and is small enough to serve really well."
+    },
+    {
+      "kind": "explain",
+      "id": "home",
+      "title": "Now look at your business",
+      "text": "Flipkart grew huge, but the same choice comes to your home bakery. It's January. After Diwali, people across the city have seen your cakes, and orders come from everywhere. You can bake about 20 cakes a week, and you bake alone."
+    },
+    {
+      "kind": "choice",
+      "id": "which-group",
+      "prompt": "You can bake about 20 cakes a week. Which group should you try to win first?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Offices near you wanting party cupcakes"
+        },
+        {
+          "id": "b",
+          "label": "Families near you wanting birthday cakes"
+        },
+        {
+          "id": "c",
+          "label": "Cafés across the city wanting daily cakes"
+        }
+      ],
+      "answer": "b",
+      "why": "Yes. These families need birthday cakes, they live near you, and many already know your cakes. Win them first. Their friends in other colonies can be your next group.",
+      "wrong": {
+        "a": "Offices are near and pay well, but party cupcakes are a new product for you, and one big order could take your whole week. Start with buyers who need what you already bake well.",
+        "c": "Daily café orders sound great, but cafés across the city mean long trips every day. Start with the buyers near you who already need your cakes."
+      }
+    },
+    {
+      "kind": "choice",
+      "id": "big-enough",
+      "prompt": "300 families nearby. 3 in 10 buy 4 cakes a year: about 7 a week. You can bake 20 a week. What does this show?",
+      "options": [
+        {
+          "id": "a",
+          "label": "This group is too small. Skip it"
+        },
+        {
+          "id": "b",
+          "label": "A good start, with room to grow later"
+        },
+        {
+          "id": "c",
+          "label": "You must win all 300 families first"
+        }
+      ],
+      "answer": "b",
+      "why": "Right. 7 cakes a week at ₹350 each is about ₹2,450 a week, from a group you can serve well. You still have room for 13 more, so you can grow into the next group later.",
+      "wrong": {
+        "a": "7 cakes a week is about ₹2,450 a week. That's a good start, and a small group is easier to win. You can grow later.",
+        "c": "You don't need every family. The 3 in 10 who buy eggless cakes are your group. Win them well, then grow into the next group."
+      }
+    },
+    {
+      "kind": "sort",
+      "id": "good-first-group",
+      "prompt": "I'll show you six first groups for different small businesses. For each one, tell me: is it a good group to win first?",
+      "buckets": ["Yes, a good first group", "No, not a good first group"],
+      "items": [
+        {
+          "text": "Working women near your gym who want a class at 6 am",
+          "bucket": 0
+        },
+        {
+          "text": "Big companies that already have a cake supplier they like",
+          "bucket": 1
+        },
+        {
+          "text": "Students in one hostel where no food is open after 10 pm",
+          "bucket": 0
+        },
+        {
+          "text": "Families across the whole city, for any kind of cake",
+          "bucket": 1
+        },
+        {
+          "text": "Shops on one market road that need tea twice a day",
+          "bucket": 0
+        },
+        {
+          "text": "People in another city who liked your Instagram post",
+          "bucket": 1
+        }
+      ],
+      "why": "Good first groups need you now and are easy to reach: women near the gym, the hostel with no late food, shops on one road. Companies with a supplier don't need you. A whole city is too much at first. Likes from far away are only praise."
+    },
+    {
+      "kind": "scenario",
+      "id": "grow-next",
+      "setup": "It's June. Most eggless birthday cakes in your three colonies now come from you, about 6 a week. You can bake about 20 a week, so you have room to grow.",
+      "question": "Where do you grow next?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Offices across the city, where one party order takes a week",
+          "grade": "ok",
+          "outcome": "You win two office orders. Each takes three days of baking, and two birthday cakes are late. One mother complains about it in the colony group.",
+          "why": "Offices can pay well, but they're a new kind of buyer, far away. While trying to win them, you served your first group worse.",
+          "better": "Grow into the colonies next to yours, through your buyers' friends."
+        },
+        {
+          "id": "b",
+          "label": "Families in nearby colonies, through your buyers' friends",
+          "grade": "great",
+          "outcome": "You ask each buyer to tell one friend in a nearby colony. By August you bake about 14 cakes a week, and your first families still get their cakes on time.",
+          "why": "You grew into the group next to your first one. They need the same cake, and your buyers tell them about you."
+        },
+        {
+          "id": "c",
+          "label": "Add bread, cookies and snacks for everyone",
+          "grade": "bad",
+          "outcome": "You spend ₹15,000 on new trays and flour. The bread goes stale, the cookies sell slowly, and birthday cakes start arriving late.",
+          "why": "You tried to serve everyone with new products at once. That divided your small amount of time and money, and your first group suffered.",
+          "better": "Grow into the colonies next to yours, through your buyers' friends."
+        }
+      ]
+    },
+    {
+      "kind": "gap",
+      "id": "fill",
+      "text": "Win ___ group first. Once it trusts you, grow into the ___ group.",
+      "bank": ["one", "next", "every", "cheapest"],
+      "answer": ["one", "next"],
+      "why": "Exactly. Win one group well first. Then grow into the next one, step by step, like your nearby colonies."
+    }
+  ],
+  "summary": [
+    "Beachhead: the first group you choose to win. It needs you now and is easy to reach.",
+    "With little money, serve one group well, not everyone badly.",
+    "Once the first group trusts you, grow into the group next to it."
+  ],
+  "cards": [
+    {
+      "id": "m22-beach-1",
+      "front": "You have little money. Who should you sell to first?",
+      "options": ["One group that needs you now", "Everyone, to get more buyers"],
+      "answer": 0,
+      "back": "Win one group well first. Then grow into the next one."
+    },
+    {
+      "id": "m22-beach-2",
+      "front": "200 nearby families. 1 in 4 buys 2 cakes a year. How many cakes a year?",
+      "options": ["100", "50", "400"],
+      "answer": 0,
+      "back": "200 ÷ 4 = 50 families, and 50 × 2 = 100 cakes."
+    },
+    {
+      "id": "m22-beach-3",
+      "front": "Flipkart began with only books. What did it add in 2010?",
+      "options": ["Phones and electronics", "Groceries"],
+      "answer": 0,
+      "back": "After books, Flipkart moved to a much bigger group of buyers."
+    }
+  ],
+  "sources": [
+    {
+      "label": "How two IITians created a $20 billion company distributing bookmarks outside bookstores (Business Today, 9 May 2018)",
+      "url": "https://www.businesstoday.in/latest/economy-politics/story/flipkart-walmart-deal-how-two-iitians-created-usd-20-billion-company-distributing-bookmarks-outside-bookstores-107420-2018-05-09"
+    },
+    {
+      "label": "Binny Bansal: how I sold Flipkart to Walmart (CNBC Make It, 21 May 2019)",
+      "url": "https://www.cnbc.com/2019/05/21/binny-bansal-how-i-sold-flipkart-to-walmart-for-16-billion.html"
+    },
+    {
+      "label": "Bookseller to billionaire: Binny Bansal interview (YourStory, 12 Apr 2021, archived)",
+      "url": "http://web.archive.org/web/20231202152220/https://yourstory.com/2021/04/flipkart-founder-binny-bansal-interview-x-to-10x"
+    },
+    {
+      "label": "Crossing the Chasm (Geoffrey Moore)",
+      "url": "https://geoffreyamoore.com/book/crossing-the-chasm/"
+    },
+    {
+      "label": "Geoffrey Moore on finding your beachhead (Lenny's Podcast, Jan 2024)",
+      "url": "https://lennysnewsletter.com/p/geoffrey-moore-on-finding-your-beachhead"
+    }
+  ]
+}
