@@ -9,3 +9,6 @@ Lesson hook images, prepared like `npm run media` does (webp, 1080 px wide at mo
 | ls_cane_farmer | u1-frozen-cash | generated (ChatGPT, 2026-10-31) | A farmer in kurta and dhoti leaning on his bullock cart of cane in a line of carts outside a mill gate, late-afternoon light (2019). |
 | ls_last_over | u1-judge-the-call | generated (ChatGPT, 2026-10-31) | A packed floodlit stadium at dusk seen from the stands; a small, faceless bowler walks back to his mark (2007). |
 | ls_batter_packets | u1-test-small | generated (ChatGPT, 2026-10-31) | A young man heat-sealing plain pouches of idli batter on a steel table beside two stone wet grinders in a small, bare kitchen under a tube light (2006). |
+| ls_batter_bag | u2-workaround-test | generated (ChatGPT, 2026-11-02) | A shopkeeper's hand reaching into a steel tray of plain rubber-band bags of idli batter on a Bengaluru grocery counter, about 2005. |
+| ls_whatsapp_boutique | u2-mom-test | generated (ChatGPT, 2026-11-02) | A boutique owner, seen from behind, photographing a yellow kurta with a plain black phone, racks of kurtas behind (2015). |
+| ls_scooter_booking | u2-praise-not-proof | generated (ChatGPT, 2026-11-02) | A row of plain pastel electric scooters with blank paper tags in a showroom; no badges or text (2021). |

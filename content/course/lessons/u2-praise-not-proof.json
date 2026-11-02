@@ -1,0 +1,227 @@
+{
+  "id": "u2-praise-not-proof",
+  "title": "Praise is not proof",
+  "principle": "Praise is not proof. Money or a firm promise is.",
+  "minutes": 5,
+  "draft": false,
+  "screens": [
+    {
+      "kind": "explain",
+      "id": "hook",
+      "media": "img:ls_scooter_booking",
+      "text": "Let me tell you about a scooter. In July 2021, Ola Electric let people book its new electric scooter online. You paid ₹499, and you could get it back if you changed your mind. Ola said it got 1 lakh bookings in the first 24 hours."
+    },
+    {
+      "kind": "choice",
+      "id": "guess",
+      "guess": true,
+      "prompt": "Do you think 1 lakh bookings at ₹499 proved that 1 lakh people would buy the scooter?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Yes. They all paid real money"
+        },
+        {
+          "id": "b",
+          "label": "No. Online bookings mean nothing"
+        },
+        {
+          "id": "c",
+          "label": "Partly. It was a small, safe yes"
+        }
+      ],
+      "answer": "c",
+      "why": "Partly. A ₹499 booking you can get back shows real interest, but it costs almost nothing. The real test comes when people must pay much more."
+    },
+    {
+      "kind": "explain",
+      "id": "ladder",
+      "title": "Asking for more",
+      "text": "In September, the real sale opened. Buyers paid a ₹20,000 advance, which they could get back until the scooter left the factory. Each step asked for more. Ola announced big sales in rupees but didn't say how many scooters were ordered, so we can't tell how many bookers paid more."
+    },
+    {
+      "kind": "explain",
+      "id": "commitment",
+      "title": "Commitment",
+      "text": "The Mom Test book from the last lesson says: look at what people give up for you. A compliment costs nothing, so it proves nothing. Real proof is commitment: their time, their name or their money. The more they give up, the stronger the proof."
+    },
+    {
+      "kind": "explain",
+      "id": "home",
+      "title": "Now look at your business",
+      "text": "Ola is a big company, but the same idea works for your home bakery. You've started baking at home, and your first Diwali as a baker is coming. Your friends see your cake photos and say, \"Lovely! We'll surely order!\""
+    },
+    {
+      "kind": "choice",
+      "id": "principal",
+      "prompt": "Next, a school principal says, \"Lovely cakes! Bring samples on Monday, and I'll introduce you to our canteen head.\" What has she given you?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Just praise, since she hasn't paid"
+        },
+        {
+          "id": "b",
+          "label": "A firm order for the canteen"
+        },
+        {
+          "id": "c",
+          "label": "A meeting, and a word with the canteen head"
+        }
+      ],
+      "answer": "c",
+      "why": "Yes. These aren't just kind words about your idea. She's promising a meeting and an introduction. That costs her time and her good name, so it means more than praise.",
+      "wrong": {
+        "a": "No money yet, true. But a meeting and an introduction cost her time and her good name. Praise costs nothing; this does.",
+        "b": "Not an order yet: the canteen head hasn't agreed to anything. But the meeting and the introduction are real steps towards an order."
+      }
+    },
+    {
+      "kind": "choice",
+      "id": "advance-sum",
+      "prompt": "Mothers pay ₹200 advances on ₹700 Diwali cakes that cost you ₹350. If one never collects and nobody else buys it, what do you lose?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Nothing. Her ₹200 covers it"
+        },
+        {
+          "id": "b",
+          "label": "₹150"
+        },
+        {
+          "id": "c",
+          "label": "₹350"
+        }
+      ],
+      "answer": "b",
+      "why": "Right. You spent ₹350 and keep her ₹200, so you lose ₹150. An advance of ₹350 would cover your full cost. Set your advance to at least what the cake costs you.",
+      "wrong": {
+        "a": "Her ₹200 helps, but the cake cost you ₹350. ₹350 − ₹200 = ₹150 lost. A ₹350 advance would cover it.",
+        "c": "You do keep her ₹200 advance. So the loss is ₹350 − ₹200 = ₹150."
+      }
+    },
+    {
+      "kind": "sort",
+      "id": "proof-or-praise",
+      "prompt": "I'll show you six things people did after seeing your cakes. For each one, tell me: did they give up something real?",
+      "buckets": ["Yes, real commitment", "No, only praise"],
+      "items": [
+        {
+          "text": "Paid a ₹350 advance for a Diwali cake",
+          "bucket": 0
+        },
+        {
+          "text": "Said, \"Your cakes look amazing!\"",
+          "bucket": 1
+        },
+        {
+          "text": "Introduced you to her society secretary",
+          "bucket": 0
+        },
+        {
+          "text": "Commented \"Yummy!\" on your cake post",
+          "bucket": 1
+        },
+        {
+          "text": "Spent Sunday morning helping you take orders at the society gate",
+          "bucket": 0
+        },
+        {
+          "text": "Said she'll \"definitely tell everyone\"",
+          "bucket": 1
+        }
+      ],
+      "why": "Money, a Sunday morning, and an introduction that uses her good name all cost something. Compliments, comments and \"I'll tell everyone\" cost nothing."
+    },
+    {
+      "kind": "scenario",
+      "id": "diwali",
+      "setup": "Diwali is three weeks away. 25 friends and neighbours praised your cakes but did not order. The 3 mothers who already buy eggless cakes, and 5 others, paid a ₹350 advance. Each cake sells for ₹700 and costs ₹350 to make. You can bake 30 at most, and buy ingredients a week ahead.",
+      "question": "How do you plan your Diwali baking?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Bake 30, for the 25 and for walk-in buyers",
+          "grade": "bad",
+          "outcome": "All 8 paid orders are collected, and 6 more people buy at the door. 16 cakes are left over. That's ₹5,600 of ingredients and gas wasted.",
+          "why": "You planned around praise. Only the 8 advances were real, and praise doesn't turn into buyers by itself.",
+          "better": "Message the 25 first: orders need a ₹350 advance by Sunday."
+        },
+        {
+          "id": "b",
+          "label": "Bake 12: the 8 paid orders and 4 spare",
+          "grade": "ok",
+          "outcome": "All 8 orders are collected, 3 spares sell at the door, and 1 is left. Later, two friends who praised you ask why you never told them to order.",
+          "why": "Planning around paid orders kept you safe. But you never asked the 25 to commit, so you may have missed real buyers.",
+          "better": "Message the 25 first: orders need a ₹350 advance by Sunday."
+        },
+        {
+          "id": "c",
+          "label": "Message the 25: orders need ₹350 by Sunday",
+          "grade": "great",
+          "outcome": "Six more pay by Sunday, so you have 14 paid orders. You bake 16. All 14 are collected, and the 2 spares sell at the door.",
+          "why": "You turned praise into a real yes or no before you bought anything. Asking for an advance is a kind way to learn the truth."
+        }
+      ]
+    },
+    {
+      "kind": "gap",
+      "id": "fill",
+      "text": "A compliment costs ___, so it proves nothing. A ₹350 advance from a buyer is ___.",
+      "bank": ["nothing", "proof", "kind", "praise"],
+      "answer": ["nothing", "proof"],
+      "why": "Exactly. Ola asked for ₹499, then ₹20,000. Your mothers paid ₹350, and the principal gave you her time. What people give up is the proof."
+    }
+  ],
+  "summary": [
+    "Commitment means what people give up for you: their time, their name or their money.",
+    "A compliment costs nothing, so it proves nothing.",
+    "Ask for an advance that covers your cost. It turns praise into a real yes or no."
+  ],
+  "cards": [
+    {
+      "id": "m21-proof-1",
+      "front": "Which is real proof that someone wants your product?",
+      "options": ["A ₹500 advance", "\"Wow, I'd buy that!\""],
+      "answer": 0,
+      "back": "Money given up is proof. Praise costs nothing."
+    },
+    {
+      "id": "m21-proof-2",
+      "front": "12 people pay a ₹100 advance on ₹400 orders. How much is still to come?",
+      "options": ["₹3,600", "₹4,800", "₹1,200"],
+      "answer": 0,
+      "back": "Each still owes ₹300, and 12 × ₹300 = ₹3,600."
+    },
+    {
+      "id": "m21-proof-3",
+      "front": "A shop owner introduces you to his supplier. What did he give up?",
+      "options": ["Some of his good name", "Nothing"],
+      "answer": 0,
+      "back": "He used his name to help you. That's a real commitment."
+    }
+  ],
+  "sources": [
+    {
+      "label": "Ola Electric opens bookings for e-scooter at Rs 499 (Autocar Pro, 15 Jul 2021)",
+      "url": "https://autocarpro.in/news-national/ola-electric-opens-bookings-for-escooter-at-rs-499-79608"
+    },
+    {
+      "label": "Ola electric scooter receives 1 lakh reservations on first day (The News Minute / IANS, 17 Jul 2021)",
+      "url": "https://www.thenewsminute.com/money/ola-electric-scooter-receives-1-lakh-reservations-first-day-152507"
+    },
+    {
+      "label": "Ola commences sale of electric scooter S1 (Devdiscourse / PTI, 15 Sep 2021)",
+      "url": "https://www.devdiscourse.com/article/business/1730921-ola-commences-sale-of-electric-scooter-s1"
+    },
+    {
+      "label": "The Mom Test, review (Yevgeniy Brikman)",
+      "url": "https://www.ybrikman.com/blog/2023/03/29/the-mom-test/"
+    },
+    {
+      "label": "The Mom Test primer (Sachin Rekhi)",
+      "url": "https://www.sachinrekhi.com/the-mom-test-rob-fitzpatrick"
+    }
+  ]
+}

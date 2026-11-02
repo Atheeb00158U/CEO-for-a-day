@@ -21,6 +21,21 @@
           "gates": ["nirma-washing-powder"]
         }
       ]
+    },
+    {
+      "id": "u2-customers-first",
+      "title": "Customers first",
+      "goal": "Find a real problem and the right buyer before you build anything.",
+      "draft": false,
+      "modules": [
+        {
+          "id": "u2-real-problem",
+          "title": "Find a real problem",
+          "goal": "Find a problem people will pay to fix.",
+          "lessons": ["u2-workaround-test", "u2-mom-test", "u2-praise-not-proof"],
+          "gates": []
+        }
+      ]
     }
   ]
 }

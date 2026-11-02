@@ -10920,6 +10920,606 @@
   "text": "If you miss, don't move the line. Change the offer and test again."
  },
  {
+  "id": "b0fc5bec172e",
+  "voice": "narrator",
+  "text": "Let me tell you about two young engineers in Bengaluru. In 2015, Vidit Aatrey and Sanjeev Barnwal built Fashnear, an app that showed clothes from nearby shops. Within three or four months, they saw it wasn't working. Vidit later said they hadn't thought enough about the customer."
+ },
+ {
+  "id": "aa863a33fbe1",
+  "voice": "narrator",
+  "text": "After the app failed, what do you think the two founders did next?"
+ },
+ {
+  "id": "dae509fe09f0",
+  "voice": "narrator",
+  "text": "They spent about six months with the shops that used their app. They watched what the owners really did. They stopped guessing and started looking."
+ },
+ {
+  "id": "fbb488f0af26",
+  "voice": "narrator",
+  "text": "One Koramangala boutique owner posted photos of new stock in WhatsApp groups and took orders there. He said 30 to 40% of his sales came that way. His brother's shop got about half its sales that way. So the founders built an app for WhatsApp sellers. It became Meesho."
+ },
+ {
+  "id": "e94367c3f322",
+  "voice": "narrator",
+  "text": "Watching what people do is better than asking them. When you can't watch, ask questions that get the same truth. A book called The Mom Test explains: ask your mother if your idea is good, and she'll give a kind guess: yes. So ask about real events, not your idea."
+ },
+ {
+  "id": "211cb40c41d5",
+  "voice": "narrator",
+  "text": "Meesho grew huge, but the same test works for your home bakery. You've picked eggless cakes. Before you bake even one cake for sale, you'll talk to ten mothers in your colony."
+ },
+ {
+  "id": "1baaa5214505",
+  "voice": "narrator",
+  "text": "Which question still asks for a kind guess, even though it sounds like a question about the past?"
+ },
+ {
+  "id": "52b65c8c8f14",
+  "voice": "narrator",
+  "text": "Yes. It says \"last Diwali\", but \"did you wish\" asks about a feeling connected to your idea. A kind person will say yes."
+ },
+ {
+  "id": "81d0dabfd537",
+  "voice": "narrator",
+  "text": "That asks about a real event: when she last bought a cake. Look again at \"Last Diwali, did you wish…\": it sounds like the past, but asks about a feeling."
+ },
+ {
+  "id": "bc426ed0ccbc",
+  "voice": "narrator",
+  "text": "That gives you a real fact: what she paid. The Diwali question is different. It mentions the past, but \"did you wish\" asks about a feeling connected to your idea."
+ },
+ {
+  "id": "ff7e71d2d0bc",
+  "voice": "narrator",
+  "text": "You ask mothers about cakes. Which answer gives you a real fact you can use?"
+ },
+ {
+  "id": "1e0e05fe5f6c",
+  "voice": "narrator",
+  "text": "Yes. A real price, a real wait, a real birthday. You can plan with that. The other two are feelings and promises."
+ },
+ {
+  "id": "da1cdf3f2981",
+  "voice": "narrator",
+  "text": "That's a general feeling. It may be true, but you can't count it or plan with it. A real past order tells you more."
+ },
+ {
+  "id": "a05bb0f3a2c7",
+  "voice": "narrator",
+  "text": "That's a kind promise about the future. It costs her nothing to say. A real past order tells you more."
+ },
+ {
+  "id": "4378933bd1e9",
+  "voice": "narrator",
+  "text": "A mother says, \"Eggless cakes are always a headache.\" What is your best next question?"
+ },
+ {
+  "id": "cf08586ebf02",
+  "voice": "narrator",
+  "text": "Yes. Her story about the last time will show you where she went, what she paid and what went wrong. Her story gives you facts."
+ },
+ {
+  "id": "1f9f66f27c06",
+  "voice": "narrator",
+  "text": "That asks about your idea, so she may be kind and say yes. First ask what really happened."
+ },
+ {
+  "id": "c243967defec",
+  "voice": "narrator",
+  "text": "A score is still a feeling. Ask what happened the last time instead. That gives you facts."
+ },
+ {
+  "id": "b209e59fe7a2",
+  "voice": "narrator",
+  "text": "Last year, 3 of the 10 mothers bought 4 cakes each. Each cake leaves you ₹350. What would all 3 bring you in a year?"
+ },
+ {
+  "id": "d45b206a6cf8",
+  "voice": "narrator",
+  "text": "Right. 3 × 4 = 12 cakes, and 12 × ₹350 = ₹4,200 a year from these ten mothers. Small, but real. To grow, you'll need many more mothers like these three."
+ },
+ {
+  "id": "dd6afc240941",
+  "voice": "narrator",
+  "text": "That's one mother: 4 × ₹350. Three mothers bought: 12 cakes × ₹350 = ₹4,200."
+ },
+ {
+  "id": "890be845b7c3",
+  "voice": "narrator",
+  "text": "That's as if all ten mothers bought 4 cakes. Only 3 did: 12 cakes × ₹350 = ₹4,200."
+ },
+ {
+  "id": "30da9390886a",
+  "voice": "narrator",
+  "text": "I'll show you six questions you could ask a mother. For each one, tell me: will it get a real fact or a kind guess?"
+ },
+ {
+  "id": "cea675bbeb5a",
+  "voice": "narrator",
+  "text": "What did you pay for Riya's birthday cake?"
+ },
+ {
+  "id": "8d7db64c8b52",
+  "voice": "narrator",
+  "text": "Would you try a cake from me?"
+ },
+ {
+  "id": "04fb2393ffde",
+  "voice": "narrator",
+  "text": "Tell me about the bakery you used for Diwali."
+ },
+ {
+  "id": "eba226e2472a",
+  "voice": "narrator",
+  "text": "Last year, would you have ordered from a home baker?"
+ },
+ {
+  "id": "5f8c40d60455",
+  "voice": "narrator",
+  "text": "Where did you get the cake for your son's party?"
+ },
+ {
+  "id": "c5ae3524038a",
+  "voice": "narrator",
+  "text": "Don't you think home cakes taste better?"
+ },
+ {
+  "id": "3f16b090982d",
+  "voice": "narrator",
+  "text": "Questions about real events give facts: what she paid, which bakery, where she went. Questions about your idea or her feelings give kind guesses, even if they mention last year."
+ },
+ {
+  "id": "6f5ee702da93",
+  "voice": "narrator",
+  "text": "You've talked to ten mothers. Three bought eggless cakes last year, mostly by taking an auto to a bakery 6 km away. You have one week before you decide if you should start."
+ },
+ {
+  "id": "11720bdd18fb",
+  "voice": "narrator",
+  "text": "All three confirm the auto ride and add something new: they order two days ahead. One says the bakery spelt her daughter's name wrong, and the girl cried at her party. Now you know what to promise: no two-day wait, and the name spelt right."
+ },
+ {
+  "id": "ac6a07e8c263",
+  "voice": "narrator",
+  "text": "You asked people who already buy about what really happened. Their stories showed you what matters to them."
+ },
+ {
+  "id": "4c9b763af652",
+  "voice": "narrator",
+  "text": "60 people answer and 45 say yes. You start baking and plan for 45 buyers. In the first month, 6 of them order."
+ },
+ {
+  "id": "db82be707f5f",
+  "voice": "narrator",
+  "text": "The form asks the \"would you\" question to 60 people at once, so you get 60 kind guesses. The 45 yeses cost them nothing. What would have worked: Visit the three who already buy and ask how their orders went."
+ },
+ {
+  "id": "29b15285faa0",
+  "voice": "narrator",
+  "text": "The page looks lovely and gets plenty of likes. A month later, you still don't know what buyers want from you."
+ },
+ {
+  "id": "fa93b4921900",
+  "voice": "narrator",
+  "text": "A page does no harm, but it teaches you nothing about what buyers want. What would have worked: Visit the three mothers who already buy and ask how their orders went."
+ },
+ {
+  "id": "2daf7a6c302e",
+  "voice": "narrator",
+  "text": "Ask about real things that blank, not about your blank."
+ },
+ {
+  "id": "09355b8e0086",
+  "voice": "narrator",
+  "text": "Exactly. Meesho's founders watched what shops really did, and your best facts came from what mothers really did. Real events are better than kind answers."
+ },
+ {
+  "id": "bb4e38575bfd",
+  "voice": "narrator",
+  "text": "Ask what they did last time, never \"would you buy?\""
+ },
+ {
+  "id": "fa14f6dce148",
+  "voice": "narrator",
+  "text": "The Mom Test: people are kind about your idea, so don't ask if they like it."
+ },
+ {
+  "id": "e19c109ef5e6",
+  "voice": "narrator",
+  "text": "Ask about real things that happened: what they paid, where they went and what went wrong."
+ },
+ {
+  "id": "c6a7f80e7d2d",
+  "voice": "narrator",
+  "text": "When someone tells you a feeling, ask what happened the last time."
+ },
+ {
+  "id": "f934e44e45f8",
+  "voice": "narrator",
+  "text": "Let me tell you about a scooter. In July 2021, Ola Electric let people book its new electric scooter online. You paid ₹499, and you could get it back if you changed your mind. Ola said it got 1 lakh bookings in the first 24 hours."
+ },
+ {
+  "id": "e93d5d2052b3",
+  "voice": "narrator",
+  "text": "Do you think 1 lakh bookings at ₹499 proved that 1 lakh people would buy the scooter?"
+ },
+ {
+  "id": "0330afd36e4b",
+  "voice": "narrator",
+  "text": "Partly. A ₹499 booking you can get back shows real interest, but it costs almost nothing. The real test comes when people must pay much more."
+ },
+ {
+  "id": "218739a7bf40",
+  "voice": "narrator",
+  "text": "In September, the real sale opened. Buyers paid a ₹20,000 advance, which they could get back until the scooter left the factory. Each step asked for more. Ola announced big sales in rupees but didn't say how many scooters were ordered, so we can't tell how many bookers paid more."
+ },
+ {
+  "id": "34acb4d4cb7c",
+  "voice": "narrator",
+  "text": "The Mom Test book from the last lesson says: look at what people give up for you. A compliment costs nothing, so it proves nothing. Real proof is commitment: their time, their name or their money. The more they give up, the stronger the proof."
+ },
+ {
+  "id": "7406bd20c2cf",
+  "voice": "narrator",
+  "text": "Ola is a big company, but the same idea works for your home bakery. You've started baking at home, and your first Diwali as a baker is coming. Your friends see your cake photos and say, \"Lovely! We'll surely order!\""
+ },
+ {
+  "id": "9b64a1f7c02f",
+  "voice": "narrator",
+  "text": "Next, a school principal says, \"Lovely cakes! Bring samples on Monday, and I'll introduce you to our canteen head.\" What has she given you?"
+ },
+ {
+  "id": "aa704d7a6220",
+  "voice": "narrator",
+  "text": "Yes. These aren't just kind words about your idea. She's promising a meeting and an introduction. That costs her time and her good name, so it means more than praise."
+ },
+ {
+  "id": "567c7d9957ab",
+  "voice": "narrator",
+  "text": "No money yet, true. But a meeting and an introduction cost her time and her good name. Praise costs nothing; this does."
+ },
+ {
+  "id": "91f03996f614",
+  "voice": "narrator",
+  "text": "Not an order yet: the canteen head hasn't agreed to anything. But the meeting and the introduction are real steps towards an order."
+ },
+ {
+  "id": "ea558fd68caf",
+  "voice": "narrator",
+  "text": "Mothers pay ₹200 advances on ₹700 Diwali cakes that cost you ₹350. If one never collects and nobody else buys it, what do you lose?"
+ },
+ {
+  "id": "03fe8ce269a8",
+  "voice": "narrator",
+  "text": "Right. You spent ₹350 and keep her ₹200, so you lose ₹150. An advance of ₹350 would cover your full cost. Set your advance to at least what the cake costs you."
+ },
+ {
+  "id": "48372bf37916",
+  "voice": "narrator",
+  "text": "Her ₹200 helps, but the cake cost you ₹350. ₹350 − ₹200 = ₹150 lost. A ₹350 advance would cover it."
+ },
+ {
+  "id": "b35a107edd0a",
+  "voice": "narrator",
+  "text": "You do keep her ₹200 advance. So the loss is ₹350 − ₹200 = ₹150."
+ },
+ {
+  "id": "16e5c54eb9ca",
+  "voice": "narrator",
+  "text": "I'll show you six things people did after seeing your cakes. For each one, tell me: did they give up something real?"
+ },
+ {
+  "id": "4609ceba7d1a",
+  "voice": "narrator",
+  "text": "Paid a ₹350 advance for a Diwali cake"
+ },
+ {
+  "id": "cfb221355ba4",
+  "voice": "narrator",
+  "text": "Said, \"Your cakes look amazing!\""
+ },
+ {
+  "id": "1a746b773e02",
+  "voice": "narrator",
+  "text": "Introduced you to her society secretary"
+ },
+ {
+  "id": "d24528d6d1fc",
+  "voice": "narrator",
+  "text": "Commented \"Yummy!\" on your cake post"
+ },
+ {
+  "id": "9f4b589f78f1",
+  "voice": "narrator",
+  "text": "Spent Sunday morning helping you take orders at the society gate"
+ },
+ {
+  "id": "659a84b3711d",
+  "voice": "narrator",
+  "text": "Said she'll \"definitely tell everyone\""
+ },
+ {
+  "id": "7add40ad0e85",
+  "voice": "narrator",
+  "text": "Money, a Sunday morning, and an introduction that uses her good name all cost something. Compliments, comments and \"I'll tell everyone\" cost nothing."
+ },
+ {
+  "id": "8c9f1ebc9b8a",
+  "voice": "narrator",
+  "text": "Diwali is three weeks away. 25 friends and neighbours praised your cakes but did not order. The 3 mothers who already buy eggless cakes, and 5 others, paid a ₹350 advance. Each cake sells for ₹700 and costs ₹350 to make. You can bake 30 at most, and buy ingredients a week ahead."
+ },
+ {
+  "id": "bb85e3d295e3",
+  "voice": "narrator",
+  "text": "How do you plan your Diwali baking?"
+ },
+ {
+  "id": "592641a3e03b",
+  "voice": "narrator",
+  "text": "All 8 paid orders are collected, and 6 more people buy at the door. 16 cakes are left over. That's ₹5,600 of ingredients and gas wasted."
+ },
+ {
+  "id": "076606002589",
+  "voice": "narrator",
+  "text": "You planned around praise. Only the 8 advances were real, and praise doesn't turn into buyers by itself. What would have worked: Message the 25 first: orders need a ₹350 advance by Sunday."
+ },
+ {
+  "id": "4fc7d3fda79c",
+  "voice": "narrator",
+  "text": "All 8 orders are collected, 3 spares sell at the door, and 1 is left. Later, two friends who praised you ask why you never told them to order."
+ },
+ {
+  "id": "3d1347ff0ed7",
+  "voice": "narrator",
+  "text": "Planning around paid orders kept you safe. But you never asked the 25 to commit, so you may have missed real buyers. What would have worked: Message the 25 first: orders need a ₹350 advance by Sunday."
+ },
+ {
+  "id": "f9b43f200590",
+  "voice": "narrator",
+  "text": "Six more pay by Sunday, so you have 14 paid orders. You bake 16. All 14 are collected, and the 2 spares sell at the door."
+ },
+ {
+  "id": "58ce9615d6ce",
+  "voice": "narrator",
+  "text": "You turned praise into a real yes or no before you bought anything. Asking for an advance is a kind way to learn the truth."
+ },
+ {
+  "id": "8abe4be609db",
+  "voice": "narrator",
+  "text": "A compliment costs blank, so it proves nothing. A ₹350 advance from a buyer is blank."
+ },
+ {
+  "id": "5d09c0c01c33",
+  "voice": "narrator",
+  "text": "Exactly. Ola asked for ₹499, then ₹20,000. Your mothers paid ₹350, and the principal gave you her time. What people give up is the proof."
+ },
+ {
+  "id": "ed640fb942f6",
+  "voice": "narrator",
+  "text": "Praise is not proof. Money or a firm promise is."
+ },
+ {
+  "id": "0cf614ba4d87",
+  "voice": "narrator",
+  "text": "Commitment means what people give up for you: their time, their name or their money."
+ },
+ {
+  "id": "987fe28beeb8",
+  "voice": "narrator",
+  "text": "A compliment costs nothing, so it proves nothing."
+ },
+ {
+  "id": "d83745fc96aa",
+  "voice": "narrator",
+  "text": "Ask for an advance that covers your cost. It turns praise into a real yes or no."
+ },
+ {
+  "id": "64065f72cca9",
+  "voice": "narrator",
+  "text": "Let me start in Bengaluru, around 2005. A young man named P.C. Musthafa often visited his cousin's grocery shop. The shop sold idli-dosa batter from a local maker, in a plain plastic bag tied with a rubber band. It had no brand and no maker's name."
+ },
+ {
+  "id": "cd300f10f1f2",
+  "voice": "narrator",
+  "text": "Buyers complained about that batter: the messy bags, the quality and the cleanliness. What do you think happened to sales?"
+ },
+ {
+  "id": "22e1ca4eaeb2",
+  "voice": "narrator",
+  "text": "They stayed the same. One report says there were complaints, but sales didn't fall. People didn't like the bag, but they still wanted ready batter."
+ },
+ {
+  "id": "8270098c9fd5",
+  "voice": "narrator",
+  "text": "Musthafa saw a clue. People complained about the bags, but they kept buying the batter. In 2006, he and four cousins started iD, their own batter brand, in a tiny room next to the shop. By 2015, iD sold about ₹100 crore a year."
+ },
+ {
+  "id": "2dcde2ff61ea",
+  "voice": "narrator",
+  "text": "A workaround is a bad fix people use because nothing better exists. Y Combinator, a well-known startup school in America, calls the worst pain a \"hair on fire\" problem: with your hair on fire, you'd use any fix, even a bad one. A bad fix people pay for proves pain."
+ },
+ {
+  "id": "3afc2857c35b",
+  "voice": "narrator",
+  "text": "iD grew into a ₹100 crore company, but the same clue works in a colony. Imagine you want to start a food business from home. Your colony has about 100 families. You have ₹40,000 saved and three ideas, but you can try only one."
+ },
+ {
+  "id": "d0ea38571291",
+  "voice": "narrator",
+  "text": "Which of your three ideas has the strongest proof that people need it?"
+ },
+ {
+  "id": "361365fc008a",
+  "voice": "narrator",
+  "text": "Yes. The mothers already spend time and auto fare on a bad fix. That trouble, in your own colony, is your proof."
+ },
+ {
+  "id": "ce5c3c5be3c8",
+  "voice": "narrator",
+  "text": "Your friends lose nothing by telling you to start. Nobody is going to any trouble for fusion cakes yet."
+ },
+ {
+  "id": "1985094d2db9",
+  "voice": "narrator",
+  "text": "Growth across a city tells you nothing about your street. Nobody near you is doing anything to get office lunches yet."
+ },
+ {
+  "id": "908a8092d886",
+  "voice": "narrator",
+  "text": "30 families buy 4 eggless cakes a year, each with a ₹120 auto trip. You deliver for ₹40, same cake price. What do families save?"
+ },
+ {
+  "id": "fe2e2896e70f",
+  "voice": "narrator",
+  "text": "Right. 30 × 4 = 120 cakes. Each saves ₹120 − ₹40 = ₹80, and 120 × ₹80 = ₹9,600 a year. That is what your service saves them, in rupees."
+ },
+ {
+  "id": "a773e300f06e",
+  "voice": "narrator",
+  "text": "That is what they spend on autos now: 120 trips × ₹120. But they still pay you ₹40 a cake, so each saves ₹80: 120 × ₹80 = ₹9,600."
+ },
+ {
+  "id": "23dc7595ae27",
+  "voice": "narrator",
+  "text": "That's 120 × ₹40, what they pay you for delivery. The saving is ₹120 − ₹40 = ₹80 a cake: 120 × ₹80 = ₹9,600."
+ },
+ {
+  "id": "fc5c575e3f23",
+  "voice": "narrator",
+  "text": "Sometimes nobody has a fix because none exists yet. That can still be a great problem if people keep looking for a fix again and again. But if there is no fix and nobody looks for one, the pain is probably small. Check before you spend."
+ },
+ {
+  "id": "21a64f0e553b",
+  "voice": "narrator",
+  "text": "Here are three problems in your colony. Which one should you check first?"
+ },
+ {
+  "id": "ebd0af04b6a3",
+  "voice": "narrator",
+  "text": "Yes. Nobody offers pet care, but owners keep looking for help. That shows a real need, even when no fix exists yet."
+ },
+ {
+  "id": "3008b12cf75d",
+  "voice": "narrator",
+  "text": "No shop is open, but has anyone asked for late-night snacks or looked for them? Nothing shows that. The pet owners keep looking for help."
+ },
+ {
+  "id": "bf7ebf933bc9",
+  "voice": "narrator",
+  "text": "Busy tailors mean people already have a fix that works. The pet owners keep looking for help but find none."
+ },
+ {
+  "id": "c11f324d2d5f",
+  "voice": "narrator",
+  "text": "I'll show you six things you may notice. For each one, tell me: are people already going to trouble because of it?"
+ },
+ {
+  "id": "9291ec88ddec",
+  "voice": "narrator",
+  "text": "Parents pay a cousin ₹200 a week to bring tiffin from a cook 3 km away"
+ },
+ {
+  "id": "9dc7460e007c",
+  "voice": "narrator",
+  "text": "Friends say they'd love a gym in the colony"
+ },
+ {
+  "id": "611e9f5eadcf",
+  "voice": "narrator",
+  "text": "Shopkeepers write udhaar in a notebook, but still lose money when they forget who owes them"
+ },
+ {
+  "id": "f9c915c2edec",
+  "voice": "narrator",
+  "text": "Your cake photos get 200 likes"
+ },
+ {
+  "id": "981633dc6103",
+  "voice": "narrator",
+  "text": "Office workers queue 20 minutes every morning at the only breakfast cart nearby"
+ },
+ {
+  "id": "4e5271d89148",
+  "voice": "narrator",
+  "text": "In a survey, most people say they'd try a new snack"
+ },
+ {
+  "id": "fc64411dc33c",
+  "voice": "narrator",
+  "text": "Paying a cousin, using a notebook but still losing money, and waiting in a 20-minute queue are bad fixes people already use. Likes, surveys and \"I'd love it\" cost nothing, so they prove nothing yet."
+ },
+ {
+  "id": "d501315946d8",
+  "voice": "narrator",
+  "text": "You pick eggless cakes. A bakery 6 km away charges ₹700 for a 1 kg cake. You'll charge ₹700 too, plus ₹40 for delivery, which pays for petrol. Each cake costs you ₹350 to make. You have ₹40,000 saved. A neighbour says, \"A shop on the main road, at ₹15,000 a month, would bring walk-in buyers from the whole area.\""
+ },
+ {
+  "id": "d828aea7aa51",
+  "voice": "narrator",
+  "text": "How do you start?"
+ },
+ {
+  "id": "dba74118c1fa",
+  "voice": "narrator",
+  "text": "You rent the shop. In the first month, you sell 20 cakes and make ₹7,000. The rent is ₹15,000, so you lose ₹8,000. At that rate, your ₹40,000 lasts five months."
+ },
+ {
+  "id": "66a4a8ea44a2",
+  "voice": "narrator",
+  "text": "The shop brought 20 orders in a month, but not ₹15,000 more profit. And the mothers' problem was the 6 km trip, not that there was no shop nearby. What would have worked: Bake at home and deliver to the colony mothers first."
+ },
+ {
+  "id": "e380c083b606",
+  "voice": "narrator",
+  "text": "The posters cost ₹3,000 and bring 2 orders from new people, which leave you ₹700. The mothers who already make the 6 km trip have not heard from you yet."
+ },
+ {
+  "id": "e6e6766c878f",
+  "voice": "narrator",
+  "text": "Posters reach everyone, but you already knew your strongest buyers: the mothers making the 6 km trip. What would have worked: Start with the mothers who already take an auto 6 km for these cakes."
+ },
+ {
+  "id": "84f18867acaa",
+  "voice": "narrator",
+  "text": "You keep your ₹40,000 safe and plan to bake at home. Before you bake even one cake for sale, you'll talk to the colony mothers who make the trip."
+ },
+ {
+  "id": "8ceac478cf02",
+  "voice": "narrator",
+  "text": "You went straight to people who already go to trouble for these cakes, and kept your costs tiny. That is where your first orders can come from."
+ },
+ {
+  "id": "dfaf95826559",
+  "voice": "narrator",
+  "text": "Words alone cost blank. A bad fix that people still blank for proves the pain."
+ },
+ {
+  "id": "e63cee48727b",
+  "voice": "narrator",
+  "text": "Right. Likes and \"I'd love it\" cost nothing. The shop's buyers kept paying for messy bags, and your colony mothers pay for autos. That is the proof."
+ },
+ {
+  "id": "85817a0e8205",
+  "voice": "narrator",
+  "text": "A bad fix people already use proves the pain is real."
+ },
+ {
+  "id": "3a2f59cacd3a",
+  "voice": "narrator",
+  "text": "Workaround: a clumsy fix people use because nothing better exists."
+ },
+ {
+  "id": "0f10790eb28c",
+  "voice": "narrator",
+  "text": "If people already pay or go to trouble for a bad fix, the pain is real."
+ },
+ {
+  "id": "258646187fcb",
+  "voice": "narrator",
+  "text": "If nobody uses any fix, ask why before you spend."
+ },
+ {
   "id": "b91a850e07f2",
   "voice": "narrator",
   "text": "There you go, you've got it now. Here's the rule to keep:"

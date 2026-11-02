@@ -110,6 +110,18 @@ describe("lesson replay", () => {
     expect(v.reveal).toMatchObject({ correct: false, right: "₹150", why: "₹500 is the sales. You still have to pay the costs." });
   });
 
+  it("writes a missed sort's answer as one sentence per bucket", () => {
+    const answers: Answer[] = [];
+    let v = lessonPlay(fv, answers);
+    while (v.screens.at(-1)!.kind !== "sort") {
+      answers.push({ screenId: v.screens.at(-1)!.id, value: rightAnswer(fv, v.screens.at(-1)!) });
+      v = lessonPlay(fv, answers);
+    }
+    const sort = v.screens.at(-1)!;
+    v = lessonPlay(fv, [...answers, { screenId: sort.id, value: wrongAnswer(fv, sort) }]);
+    expect(v.reveal!.right).toBe("Fixed: Cook's monthly pay / Kitchen rent. Variable: Delivery petrol / Tiffin boxes / Rice and dal.");
+  });
+
   it("never marks a guess-first screen wrong, and doesn't score it", () => {
     const v = lessonPlay(snp, [{ screenId: "guess", value: "b" }]);
     expect(v.reveal).toMatchObject({ correct: true, guess: true, right: "Her costs ate most of the sales" });

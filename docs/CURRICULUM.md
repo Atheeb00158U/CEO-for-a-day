@@ -166,11 +166,16 @@ shops.
 #### Module 2.1: Find a real problem
 **Goal:** find a problem people will pay to fix.
 
-| Code | Concept | The rule | Everyday example (made up) | Source | Exercise |
-|---|---|---|---|---|---|
-| 2.1.1 | **Workaround test** (hair-on-fire problem) | If nobody has a workaround, the pain isn't big enough. | Priya loves fusion cakes, but colony mothers already drive 6 km for eggless birthday cakes. That drive is the demand. | YC Startup School 2018 curriculum ✓; "hair on fire" problems (YC) ◇ | Pick the best move |
-| 2.1.2 | **The Mom Test** | Ask what they did last time, never "would you buy?" | "What did you spend on tuition last month?" beats "Would you pay for my tuition app?" | *The Mom Test* (Rob Fitzpatrick), rules 1 and 2 (Shortform summary) ✓ | Spot the mistake |
-| 2.1.3 | **Commitment currency** (time, reputation, money) | Praise is not proof. Money or a firm promise is. | Ten friends say "great idea", and none of them pays an advance. | *The Mom Test* ("compliments are not data") ✓ | True or false, then why |
+| Code | Concept | The rule | Opens with (real case) | Practice example (made up) | Source | Exercise |
+|---|---|---|---|---|---|---|
+| 2.1.1 | **Workaround test** (hair-on-fire problem) | A clumsy fix people already put up with proves the pain. | iD Fresh: a Bengaluru kirana sold unbranded batter in rubber-band plastic bags; buyers complained but kept buying, and P.C. Musthafa and four cousins started iD in 2006 ✓. | Your home bakery: colony mothers take an auto 6 km for eggless birthday cakes (30 families × 4 trips × ₹120 = ₹14,400 a year); don't rent a shop. | Michael Seibel, "How to Build an MVP" (YC) ✓; Jared Friedman (YC): "nothing" can also be a good sign ✓ | Pick the best move |
+| 2.1.2 | **The Mom Test** | Ask what they did last time, never "would you buy?" | Meesho: Fashnear (2015) flopped in 3–4 months; the founders watched shops, saw a Koramangala boutique already doing 30–40% of sales on WhatsApp ✓. | Ten colony mothers: 7 say "I'll surely buy", 3 bought last year (12 cakes). Ask about the last birthday cake. | *The Mom Test* (Rob Fitzpatrick), rules via mtlynch.io and Brikman ✓; Vidit Aatrey (Prime VP podcast) ✓ | Spot the mistake |
+| 2.1.3 | **Commitment currency** (time, reputation, money) | Praise is not proof. Money or a firm promise is. | Ola Electric S1 (2021): a refundable ₹499 booking (Ola said 1 lakh in 24 hours), then a ₹20,000 advance, then the full price ✓. No conversion figure is given (no source has one). | Ten friends say "great idea"; 8 mothers pay a ₹200 Diwali advance; ask the 25 who praised you for an advance before buying ingredients. | *The Mom Test* (commitment), via Brikman and Rekhi ✓ | True or false, then why |
+
+**Note (1 Nov 2026):** the old 2.1.1 rule ("If nobody has a workaround, the pain isn't big enough") was too absolute: YC's Jared
+Friedman says "the alternative is literally nothing" can be a great problem. The lesson teaches the safe half and adds: if nobody
+bothers with any fix, ask why before you spend. Meesho's founding story is a post-launch Hot Seat candidate (`meesho-resellers`);
+that Hot Seat must test a later call, not the WhatsApp pivot.
 
 **Folded in:** 2.1.2: "Talk about their life, not your idea." (old 2.1.2, merged with old 2.1.3)
 

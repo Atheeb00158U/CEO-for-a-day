@@ -1,0 +1,266 @@
+{
+  "id": "u2-workaround-test",
+  "title": "Is the problem real?",
+  "principle": "A bad fix people already use proves the pain is real.",
+  "minutes": 5,
+  "draft": false,
+  "screens": [
+    {
+      "kind": "explain",
+      "id": "hook",
+      "media": "img:ls_batter_bag",
+      "text": "Let me start in Bengaluru, around 2005. A young man named P.C. Musthafa often visited his cousin's grocery shop. The shop sold idli-dosa batter from a local maker, in a plain plastic bag tied with a rubber band. It had no brand and no maker's name."
+    },
+    {
+      "kind": "choice",
+      "id": "guess",
+      "guess": true,
+      "prompt": "Buyers complained about that batter: the messy bags, the quality and the cleanliness. What do you think happened to sales?",
+      "options": [
+        {
+          "id": "a",
+          "label": "They fell. People stopped buying it"
+        },
+        {
+          "id": "b",
+          "label": "They stayed the same. People kept buying"
+        },
+        {
+          "id": "c",
+          "label": "Only a few regular buyers stayed"
+        }
+      ],
+      "answer": "b",
+      "why": "They stayed the same. One report says there were complaints, but sales didn't fall. People didn't like the bag, but they still wanted ready batter."
+    },
+    {
+      "kind": "explain",
+      "id": "the-clue",
+      "title": "The clue in the bag",
+      "text": "Musthafa saw a clue. People complained about the bags, but they kept buying the batter. In 2006, he and four cousins started iD, their own batter brand, in a tiny room next to the shop. By 2015, iD sold about ₹100 crore a year."
+    },
+    {
+      "kind": "explain",
+      "id": "workaround",
+      "title": "The workaround test",
+      "text": "A workaround is a bad fix people use because nothing better exists. Y Combinator, a well-known startup school in America, calls the worst pain a \"hair on fire\" problem: with your hair on fire, you'd use any fix, even a bad one. A bad fix people pay for proves pain."
+    },
+    {
+      "kind": "explain",
+      "id": "home",
+      "title": "Now look at your business",
+      "text": "iD grew into a ₹100 crore company, but the same clue works in a colony. Imagine you want to start a food business from home. Your colony has about 100 families. You have ₹40,000 saved and three ideas, but you can try only one."
+    },
+    {
+      "kind": "choice",
+      "id": "which-idea",
+      "prompt": "Which of your three ideas has the strongest proof that people need it?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Eggless cakes. Mothers take an auto 6 km to get them"
+        },
+        {
+          "id": "b",
+          "label": "Fusion cakes. 40 friends at your party told you to start"
+        },
+        {
+          "id": "c",
+          "label": "Office lunches. An app says tiffin orders are rising in your city"
+        }
+      ],
+      "answer": "a",
+      "why": "Yes. The mothers already spend time and auto fare on a bad fix. That trouble, in your own colony, is your proof.",
+      "wrong": {
+        "b": "Your friends lose nothing by telling you to start. Nobody is going to any trouble for fusion cakes yet.",
+        "c": "Growth across a city tells you nothing about your street. Nobody near you is doing anything to get office lunches yet."
+      }
+    },
+    {
+      "kind": "choice",
+      "id": "delivery-saving",
+      "prompt": "30 families buy 4 eggless cakes a year, each with a ₹120 auto trip. You deliver for ₹40, same cake price. What do families save?",
+      "options": [
+        {
+          "id": "a",
+          "label": "₹14,400"
+        },
+        {
+          "id": "b",
+          "label": "₹9,600"
+        },
+        {
+          "id": "c",
+          "label": "₹4,800"
+        }
+      ],
+      "answer": "b",
+      "why": "Right. 30 × 4 = 120 cakes. Each saves ₹120 − ₹40 = ₹80, and 120 × ₹80 = ₹9,600 a year. That is what your service saves them, in rupees.",
+      "wrong": {
+        "a": "That is what they spend on autos now: 120 trips × ₹120. But they still pay you ₹40 a cake, so each saves ₹80: 120 × ₹80 = ₹9,600.",
+        "c": "That's 120 × ₹40, what they pay you for delivery. The saving is ₹120 − ₹40 = ₹80 a cake: 120 × ₹80 = ₹9,600."
+      }
+    },
+    {
+      "kind": "explain",
+      "id": "no-fix",
+      "title": "When nobody has a fix",
+      "text": "Sometimes nobody has a fix because none exists yet. That can still be a great problem if people keep looking for a fix again and again. But if there is no fix and nobody looks for one, the pain is probably small. Check before you spend."
+    },
+    {
+      "kind": "choice",
+      "id": "worth-checking",
+      "prompt": "Here are three problems in your colony. Which one should you check first?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Late-night snacks. No shop is open after 11"
+        },
+        {
+          "id": "b",
+          "label": "Tailoring. Two tailors nearby, both busy"
+        },
+        {
+          "id": "c",
+          "label": "Pet care. Owners keep posting \"Who can feed my cat?\""
+        }
+      ],
+      "answer": "c",
+      "why": "Yes. Nobody offers pet care, but owners keep looking for help. That shows a real need, even when no fix exists yet.",
+      "wrong": {
+        "a": "No shop is open, but has anyone asked for late-night snacks or looked for them? Nothing shows that. The pet owners keep looking for help.",
+        "b": "Busy tailors mean people already have a fix that works. The pet owners keep looking for help but find none."
+      }
+    },
+    {
+      "kind": "sort",
+      "id": "trouble-or-talk",
+      "prompt": "I'll show you six things you may notice. For each one, tell me: are people already going to trouble because of it?",
+      "buckets": ["Yes, real trouble", "No, only talk"],
+      "items": [
+        {
+          "text": "Parents pay a cousin ₹200 a week to bring tiffin from a cook 3 km away",
+          "bucket": 0
+        },
+        {
+          "text": "Friends say they'd love a gym in the colony",
+          "bucket": 1
+        },
+        {
+          "text": "Shopkeepers write udhaar in a notebook, but still lose money when they forget who owes them",
+          "bucket": 0
+        },
+        {
+          "text": "Your cake photos get 200 likes",
+          "bucket": 1
+        },
+        {
+          "text": "Office workers queue 20 minutes every morning at the only breakfast cart nearby",
+          "bucket": 0
+        },
+        {
+          "text": "In a survey, most people say they'd try a new snack",
+          "bucket": 1
+        }
+      ],
+      "why": "Paying a cousin, using a notebook but still losing money, and waiting in a 20-minute queue are bad fixes people already use. Likes, surveys and \"I'd love it\" cost nothing, so they prove nothing yet."
+    },
+    {
+      "kind": "scenario",
+      "id": "first-step",
+      "setup": "You pick eggless cakes. A bakery 6 km away charges ₹700 for a 1 kg cake. You'll charge ₹700 too, plus ₹40 for delivery, which pays for petrol. Each cake costs you ₹350 to make. You have ₹40,000 saved. A neighbour says, \"A shop on the main road, at ₹15,000 a month, would bring walk-in buyers from the whole area.\"",
+      "question": "How do you start?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Rent the shop for walk-in buyers from the whole area",
+          "grade": "bad",
+          "outcome": "You rent the shop. In the first month, you sell 20 cakes and make ₹7,000. The rent is ₹15,000, so you lose ₹8,000. At that rate, your ₹40,000 lasts five months.",
+          "why": "The shop brought 20 orders in a month, but not ₹15,000 more profit. And the mothers' problem was the 6 km trip, not that there was no shop nearby.",
+          "better": "Bake at home and deliver to the colony mothers first."
+        },
+        {
+          "id": "b",
+          "label": "Put up posters all over the area, then start",
+          "grade": "ok",
+          "outcome": "The posters cost ₹3,000 and bring 2 orders from new people, which leave you ₹700. The mothers who already make the 6 km trip have not heard from you yet.",
+          "why": "Posters reach everyone, but you already knew your strongest buyers: the mothers making the 6 km trip.",
+          "better": "Start with the mothers who already take an auto 6 km for these cakes."
+        },
+        {
+          "id": "c",
+          "label": "Bake at home and deliver in the colony first",
+          "grade": "great",
+          "outcome": "You keep your ₹40,000 safe and plan to bake at home. Before you bake even one cake for sale, you'll talk to the colony mothers who make the trip.",
+          "why": "You went straight to people who already go to trouble for these cakes, and kept your costs tiny. That is where your first orders can come from."
+        }
+      ]
+    },
+    {
+      "kind": "gap",
+      "id": "fill",
+      "text": "Words alone cost ___. A bad fix that people still ___ for proves the pain.",
+      "bank": ["nothing", "pay", "a lot", "like"],
+      "answer": ["nothing", "pay"],
+      "why": "Right. Likes and \"I'd love it\" cost nothing. The shop's buyers kept paying for messy bags, and your colony mothers pay for autos. That is the proof."
+    }
+  ],
+  "summary": [
+    "Workaround: a clumsy fix people use because nothing better exists.",
+    "If people already pay or go to trouble for a bad fix, the pain is real.",
+    "If nobody uses any fix, ask why before you spend."
+  ],
+  "cards": [
+    {
+      "id": "m21-work-1",
+      "front": "Which is better proof that people want home tiffin?",
+      "options": ["Families pay ₹200 a week to fetch tiffin from far away", "50 friends like your tiffin post"],
+      "answer": 0,
+      "back": "Paying ₹200 a week is a workaround. Likes cost nothing."
+    },
+    {
+      "id": "m21-work-2",
+      "front": "Nobody in your area does anything about a problem. What should you ask first?",
+      "options": ["Does it hurt enough to bother?", "How fast can I open?"],
+      "answer": 0,
+      "back": "No fix and no complaints often means the pain is small. Check before you spend."
+    },
+    {
+      "id": "m21-work-3",
+      "front": "20 families each make 5 trips a year, at ₹100 a trip. What do they spend on trips?",
+      "options": ["₹10,000", "₹2,000", "₹500"],
+      "answer": 0,
+      "back": "20 × 5 = 100 trips, and 100 × ₹100 = ₹10,000 a year."
+    }
+  ],
+  "sources": [
+    {
+      "label": "Idli, dosa and a ₹100 crore business (Scroll, 13 Feb 2018)",
+      "url": "https://scroll.in/magazine/866941/scroll_in"
+    },
+    {
+      "label": "iD's Magic (Outlook Business, 2017)",
+      "url": "https://www.outlookbusiness.com/magazine/story/ids-magic-3617"
+    },
+    {
+      "label": "From selling 5 paise sweets to an idly-dosa batter empire (The News Minute, 2016)",
+      "url": "https://www.thenewsminute.com/article/selling-5-paise-sweets-kid-running-multi-crore-idly-dosa-batter-empire-51954"
+    },
+    {
+      "label": "P.C. Musthafa, iD Fresh founder (The Better India)",
+      "url": "https://www.thebetterindia.com/88248/pcmusthafa-idfresh-founder/amp/"
+    },
+    {
+      "label": "Michael Seibel, How to Build an MVP (Y Combinator)",
+      "url": "https://www.ycombinator.com/library/Io-how-to-build-an-mvp"
+    },
+    {
+      "label": "Jared Friedman, How to Get and Evaluate Startup Ideas (Y Combinator)",
+      "url": "https://www.ycombinator.com/library/8g-how-to-get-and-evaluate-startup-ideas"
+    },
+    {
+      "label": "Michael Seibel, The Real Product Market Fit (Y Combinator)",
+      "url": "https://www.ycombinator.com/blog/the-real-product-market-fit/"
+    }
+  ]
+}
