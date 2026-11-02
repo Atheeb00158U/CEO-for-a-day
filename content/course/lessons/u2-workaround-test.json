@@ -3,7 +3,7 @@
   "title": "Is the problem real?",
   "principle": "A bad fix people already use proves the pain is real.",
   "minutes": 5,
-  "draft": true,
+  "draft": false,
   "screens": [
     {
       "kind": "explain",

@@ -26,7 +26,7 @@
       "id": "u2-customers-first",
       "title": "Customers first",
       "goal": "Find a real problem and the right buyer before you build anything.",
-      "draft": true,
+      "draft": false,
       "modules": [
         {
           "id": "u2-real-problem",

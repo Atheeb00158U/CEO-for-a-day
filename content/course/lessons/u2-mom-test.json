@@ -3,7 +3,7 @@
   "title": "Ask what they did",
   "principle": "Ask what they did last time, never \"would you buy?\"",
   "minutes": 5,
-  "draft": true,
+  "draft": false,
   "screens": [
     {
       "kind": "explain",
