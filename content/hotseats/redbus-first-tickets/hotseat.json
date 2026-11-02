@@ -6,7 +6,7 @@
   "role": "You start redBus with your friends, 2005 to 2007",
   "years": "2005–2007",
   "cover": "img:rb_cover",
-  "draft": true,
+  "draft": false,
   "complexity": 2,
   "minutes": 5,
   "start": "intro",

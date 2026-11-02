@@ -1,5 +1,5 @@
 # Fact-check: redbus-first-tickets
-checked-sha256: cdacdc9b22a20c7b4b803496e182e2ef36ea9fa64f6c4f7ba53aced1715c02e9
+checked-sha256: f9ba6c6b13a3c2db9adef93aef1c3fd987770c47b939d5addbe0ba831b01eca7
 Checked: 2026-11-02 · by: Claude (fresh-context fact-check)
 
 ## Sources opened
@@ -48,3 +48,5 @@ None. (The one found, "Some were polite" in nodes.d3.setup, was fixed on 2026-11
 
 ## Wording pass (2026-11-02)
 After this check, a ChatGPT plain-English pass changed wording only. A script refused any edit that changed a number, and every real-path line was compared word by word: no fact, date, number or name changed. Two idioms ("goes live", "paid for itself") were then reworded after the phone play-through, with no change of fact. Re-stamped for the edited file.
+
+Published 2026-11-02: only the draft flag changed; re-stamped.

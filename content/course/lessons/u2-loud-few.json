@@ -3,7 +3,7 @@
   "title": "Who aren't you hearing?",
   "principle": "The buyers you hear from are not everyone. Count a fair mix of people.",
   "minutes": 5,
-  "draft": true,
+  "draft": false,
   "screens": [
     {
       "kind": "explain",

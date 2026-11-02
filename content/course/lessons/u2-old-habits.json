@@ -3,7 +3,7 @@
   "title": "Fit the old habit",
   "principle": "New must be far better than old, or fit old habits.",
   "minutes": 5,
-  "draft": true,
+  "draft": false,
   "screens": [
     {
       "kind": "explain",

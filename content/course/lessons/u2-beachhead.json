@@ -3,7 +3,7 @@
   "title": "Who do you serve first?",
   "principle": "You can't serve everyone well at the start. Win one group first.",
   "minutes": 5,
-  "draft": true,
+  "draft": false,
   "screens": [
     {
       "kind": "explain",
