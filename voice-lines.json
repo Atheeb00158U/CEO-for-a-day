@@ -6215,19 +6215,19 @@
   "text": "After three costly calls, your backers lose faith in you. They bring in someone else to run the company."
  },
  {
-  "id": "4c80d4b37e79",
+  "id": "647318229aad",
   "voice": "narrator",
-  "text": "Bengaluru, October 2005. You are 24, an engineer at a big chip company, and you want to go home for Diwali. The trains are full, flights cost too much, and the travel agents have no bus seats left, so you spend Diwali alone in the city."
+  "text": "Bengaluru, October 2005. You are 24, an engineer at a big chip company, and you want to go home for Diwali. The trains are full. Flights cost too much. Travel agents have no bus seats left, so you spend Diwali alone in the city."
  },
  {
-  "id": "86bcfa6afe38",
+  "id": "1f44adf82b6b",
   "voice": "narrator",
-  "text": "It keeps bothering you. Many private buses leave the city every night, but nobody can tell you which one has a free seat. Each agent only knows the seats of a few bus operators, and there is no single list like there is for trains. You and your flatmates decide to fix it."
+  "text": "It keeps bothering you. Many private buses leave the city every night, but nobody can tell you which one has a free seat. Each agent knows seats from only a few bus operators (the bus companies). There is no single list like there is for trains. You and your flatmates decide to fix this."
  },
  {
-  "id": "f3bcea256bbb",
+  "id": "987242b67c17",
   "voice": "narrator",
-  "text": "Two kinds of people could use your help. Travellers can't see which buses have seats. Bus operators sell through walk-in buyers and agents, but some seats still leave empty. You have your weekends, a few friends who can code, and your savings."
+  "text": "Today, travellers phone one agent after another for a seat, or wait at the bus stand and hope. Bus operators sell through walk-in buyers and agents. You have your weekends, a few friends who code, and your savings."
  },
  {
   "id": "9b231ce2e85f",
@@ -6235,44 +6235,49 @@
   "text": "What do you build first?"
  },
  {
-  "id": "0b9e47137310",
+  "id": "fd63d8c8dc93",
   "voice": "advisor",
-  "text": "Operators own the seats and can pay you. Travellers feel the pain, but there are lakhs of them and they are hard to reach."
+  "text": "Operators own the seats and can pay you. Travellers phone one agent after another, but there are lakhs of them, so reaching them is hard."
  },
  {
-  "id": "aeae0344abf6",
+  "id": "35bb41200dbd",
   "voice": "narrator",
-  "text": "Your friends spend their weekends collecting routes, and travellers like the list. But it can't hold a seat for anyone, and it earns nothing. On a festival night, people still find the buses full."
+  "text": "Your friends type the routes they can find, and travellers like the list. But it cannot reserve a seat for anyone, and it earns nothing. On a festival night, people still phone agents and find the buses full."
  },
  {
-  "id": "3eb7ae88af1d",
+  "id": "c8e3d4c1968a",
   "voice": "narrator",
-  "text": "Remember: sell what people already struggle with. Travellers could find a bus, but they couldn't get a seat on it. The list showed the problem without fixing it. What would have worked: Let travellers book a real seat, and earn a small cut of every ticket."
+  "text": "Remember: a bad fix people already use proves the pain. Travellers weren't phoning agents to find a bus. They were phoning to get a seat. A list helps them plan, but not that. What would have worked: Let travellers book a real seat, and earn a small share of every ticket."
  },
  {
-  "id": "34f8b695ba75",
+  "id": "319da2725813",
   "voice": "narrator",
-  "text": "It is the hardest thing to start because operators must trust you with their seats. But everyone who failed to get home for Diwali is a possible buyer, and every seat you sell earns you a small cut."
+  "text": "You build a simple booking page, then look for operators who will trust you with their seats. It is the hardest start. But everyone phoning agents for a festival seat is a possible buyer, and each seat you sell earns you a small share."
  },
  {
-  "id": "732f7bdfef7d",
+  "id": "78affc9cd332",
   "voice": "narrator",
-  "text": "Remember: sell what people already struggle with. Travellers struggled to get a seat, so you chose to build something that gets them one."
+  "text": "Remember: a bad fix people already use proves the pain. Travellers phoned agent after agent for a seat. That trouble was your proof, so you built them a way to get one."
  },
  {
-  "id": "ddb3d7dbf2b1",
+  "id": "1a9b65c559a7",
   "voice": "narrator",
-  "text": "You start on a list of bus routes, but within two months you switch to software for bus operators. There are seven of you now: three friends build the software, and four collect data on bus routes."
+  "text": "You build seat-booking software for bus operators. Within two months there are seven of you: three friends build the software, and four collect data on bus routes."
  },
  {
-  "id": "b4ff2edfe331",
+  "id": "d8c4706788d8",
   "voice": "narrator",
-  "text": "Remember: sell what people already struggle with. The traveller felt the pain, not the operator. Operators already had their own way to sell seats and did not see a problem to fix. What would have worked: Build for the person with the problem. Let travellers book real seats, and sell those seats yourself first."
+  "text": "Remember: a bad fix people already use proves the pain. The travellers were the ones phoning around. Operators weren't looking for a fix, and none of them was going to great trouble over it. What would have worked: Build for the people with the problem. Let travellers book real seats, and sell those seats yourself first."
  },
  {
-  "id": "95d5cc4ba8f9",
+  "id": "e535ffb713c7",
   "voice": "narrator",
-  "text": "You know buses only from the passenger's side, so your picture of the business is still a guess. You think about 5 buses leave Bengaluru for Hyderabad each evening. Before you go further, you want to learn how bus seats are really sold and how many there are."
+  "text": "Your list shows routes, but you are still guessing. You think about 5 buses leave Bengaluru for Hyderabad each evening. Before you go further, you want the facts."
+ },
+ {
+  "id": "1e9222c08554",
+  "voice": "narrator",
+  "text": "Your view of the bus business is still a guess. You think about 5 buses leave Bengaluru for Hyderabad each evening. Before you go further, you want the facts."
  },
  {
   "id": "f1aad9b073df",
@@ -6280,19 +6285,19 @@
   "text": "How do you find out?"
  },
  {
-  "id": "2f1c9973b4fa",
+  "id": "50b446e4665b",
   "voice": "advisor",
-  "text": "Asking people is quick. Counting is slow and dull. But we can't afford to spend months on the wrong thing."
+  "text": "We only have weekends. Whatever we do, it must show us what is really true."
  },
  {
-  "id": "65d80f0cb0b4",
+  "id": "46c2119ffea7",
   "voice": "narrator",
-  "text": "The operators listen and nod, and a few say it sounds useful. You leave with kind words but no facts about how many seats they sell, who buys them, or how many go empty."
+  "text": "Most operators say yes, they wished for that. You leave with kind answers, but still no facts about how many seats they sell, who buys them, or how many go empty."
  },
  {
-  "id": "19868e3c255f",
+  "id": "740165fa57c0",
   "voice": "narrator",
-  "text": "Remember: ask about their life, not your idea. \"Would you use it?\" gets polite answers. \"How did you sell seats last week?\" gets facts. What would have worked: Ask operators and agents how they sell seats today, then go and count what really runs."
+  "text": "Remember: ask what people did, not what they wish. \"Did you wish…?\" sounds like a question about the past, but it asks for a kind guess about your idea. What would have worked: Spend your weekends counting which buses really run, and how many seats each has."
  },
  {
   "id": "8d304409af44",
@@ -6300,154 +6305,169 @@
   "text": "Hundreds of people say yes, they would book online, and you feel sure. But the survey tells you nothing about how many buses run, who owns the seats, or how people bought their last ticket."
  },
  {
-  "id": "e7d03c9f7449",
+  "id": "09310322ad14",
   "voice": "narrator",
-  "text": "Remember: ask what people did, not what they would do. Saying yes to \"would you?\" costs nothing. What people did last month tells you more. What would have worked: Go and count which buses run, how many seats they have, and how people bought tickets last time."
+  "text": "Remember: ask what people did, not what they would do. Saying yes to \"would you?\" costs nothing. What people did last month tells you more. What would have worked: Spend your weekends counting which buses really run, and how many seats each has."
  },
  {
-  "id": "7b588b84692b",
+  "id": "7bd13701dd57",
   "voice": "narrator",
-  "text": "Every weekend your friends collect data on bus routes, more than 300 of them, and the numbers surprise you. About 50 buses leave for Hyderabad each evening, not 5. There are ten times more buses than you thought."
+  "text": "Every weekend your friends collect data on more than 300 bus routes, and the numbers surprise you. About 50 buses leave for Hyderabad each evening, not 5. There are ten times more buses than you thought."
  },
  {
-  "id": "27ec0c6bc19e",
+  "id": "bc3abc84973a",
   "voice": "narrator",
-  "text": "Remember: ask what people did, not what they would do. Counting real buses showed what was actually happening: ten times more buses than you had guessed."
+  "text": "Remember: look at what people really do, not guesses. Counting real buses showed you there were ten times more than you had guessed."
  },
  {
-  "id": "58192bec2dee",
+  "id": "8f54535736b0",
   "voice": "narrator",
-  "text": "You take your software to 20 bus operators. They listen, but none signs up, and many doubt that anyone will ever book a bus online. One by one, most of your flatmates lose interest. Only three of you are left."
+  "text": "You take your software to 20 bus operators. They listen, but none signs up. Many doubt that anyone will ever book a bus online. One by one, most of your flatmates lose interest. Only three of you are left."
  },
  {
-  "id": "62d3122a6dae",
+  "id": "d220034ffe14",
   "voice": "narrator",
-  "text": "You ask 20 bus operators to let you sell their seats online. They listen, but none signs up, and many doubt that anyone will ever book a bus online. One by one, most of your flatmates lose interest. Only three of you are left."
+  "text": "You ask 20 bus operators to let you sell their seats online. They listen, but none signs up. Many doubt that anyone will ever book a bus online. One by one, most of your flatmates lose interest. Only three of you are left."
  },
  {
-  "id": "c2f1bda9c6e5",
+  "id": "60c639dbee98",
   "voice": "narrator",
-  "text": "Your list is useful, but it earns nothing, so you ask 20 bus operators to pay to be on it. None signs up, and many doubt that anyone will ever book a bus online. One by one, most of your flatmates lose interest. Only three of you are left."
+  "text": "Your list is useful, but it earns nothing. So you ask 20 bus operators to pay to be on it. None signs up. Most say walk-ins and agents fill their buses. One by one, most of your flatmates lose interest. Only three of you are left."
  },
  {
-  "id": "7b3315925e1e",
+  "id": "2520c631b56d",
   "voice": "narrator",
-  "text": "In February 2006 your plan wins a contest run by TiE Bangalore, a club that helps new founders. The prize is time with experienced mentors, not money. You still have no customers: twenty operators heard you out, and not one said yes."
+  "text": "In February 2006 your plan wins a contest run by TiE Bangalore, a club that helps new founders. The prize is time with mentors, not money. Twenty operators have listened. Many doubted anyone would book a bus online, and none has signed."
  },
  {
-  "id": "e8bb256d3aea",
+  "id": "e3ffb2f99eb3",
   "voice": "advisor",
-  "text": "There are three of us and a little money left. Whatever we try next has to win over operators fast."
+  "text": "There are three of us, and we have a little money left. What would change the operators' minds?"
  },
  {
-  "id": "0acc08de037b",
+  "id": "a0f0ee2277ed",
   "voice": "narrator",
-  "text": "A mentor tells you to stop selling software and sell bus seats like a travel agent, to prove you can sell. Two operators agree to give you a few seats, and you earn a small margin on each ticket."
+  "text": "You ask two operators for a few seats. A mentor supports the idea: stop selling software, and sell bus seats like a travel agent to prove you can sell. Two operators agree, and you earn a small share on each ticket."
  },
  {
-  "id": "6fc2ac00c0dd",
+  "id": "ec68f6035591",
   "voice": "narrator",
-  "text": "You stop pitching and ask for a few seats instead. Two operators agree to try. If you sell their seats, you earn a small cut on each one and have proof to show the rest."
+  "text": "You stop asking operators for all their seats. You ask two of them for just a few. Both agree to try. For every seat you sell, you earn a small share, and you will have proof to show the rest."
  },
  {
-  "id": "e426bf027346",
+  "id": "5041b9c544ea",
   "voice": "narrator",
-  "text": "Remember: praise is not proof. Money or a firm promise is. Operators would believe seats you had sold more than a pitch."
+  "text": "You ask two operators for a few seats instead of asking for a big promise. Two agree to try. For every seat you sell, you earn a small share, and you will have proof to show the rest."
  },
  {
-  "id": "bb85d0446889",
+  "id": "9aa1400cd10b",
   "voice": "narrator",
-  "text": "You spend months adding features. The product gets better, but the operators' answer stays the same. They still don't believe travellers will book a bus online. Your savings shrink, and nobody has paid you a rupee."
+  "text": "Remember: praise is not proof. Friendly words cost nothing. A few real seats was a small, real yes. Seats you have sold are proof the other operators can believe."
  },
  {
-  "id": "f357681c95e5",
+  "id": "b98cff814f20",
   "voice": "narrator",
-  "text": "Remember: praise is not proof. Money or a firm promise is. A better product did not answer the operators' real doubt: whether anyone would buy. What would have worked: Prove that people will buy. Sell a few real seats yourself, then show the operators the money."
+  "text": "You spend months adding features. The product gets better, but the operators' answer stays the same. They still do not believe travellers will book a bus online. Your savings shrink, and nobody has paid you a rupee."
  },
  {
-  "id": "737455cbce6a",
+  "id": "eda82a4c9469",
   "voice": "narrator",
-  "text": "A few operators sign up because it costs them nothing. But they hardly use it, and you earn nothing. When you ask them to pay a year later, most say no."
+  "text": "Remember: praise is not proof. Money or a firm promise is. A better product did not answer the operators' real question: would anyone buy? What would have worked: Prove that people will buy. Sell a few real seats yourself, then show the operators the money."
  },
  {
-  "id": "6110c80200bd",
+  "id": "f94137bdbb92",
   "voice": "narrator",
-  "text": "Remember: praise is not proof. Money or a firm promise is. A free sign-up costs the operator nothing, so it does not show what he values. What would have worked: Sell real seats to real travellers. Money changing hands is the proof operators believe."
+  "text": "A few operators sign up because it is free. But they hardly use it, and you earn nothing. When you ask some of them to start paying, most say no."
  },
  {
-  "id": "42bdaa6f0817",
+  "id": "d1d5ac1573c6",
   "voice": "narrator",
-  "text": "It is mid-2006. Two operators have agreed to give you a few seats, and setting up card payments with a bank takes about a month. There are three of you with your savings, and you must choose where to go live."
+  "text": "Remember: praise is not proof. A free sign-up is like a friendly yes. The operator gave up nothing, so it does not show what he values. What would have worked: Sell real seats to real travellers. Money paid by real buyers is the proof operators will believe."
  },
  {
-  "id": "4622d96d38a6",
+  "id": "6d631ff809f0",
   "voice": "narrator",
-  "text": "It is mid-2006. A few operators are willing to try you, but you have only a handful of seats to sell. There are three of you with your savings, and you must choose where to go live."
+  "text": "It is mid-2006. Two operators have given you a few seats on two routes, and setting up card payments with a bank takes about a month. There are three of you, with your savings. You must choose where to start."
  },
  {
-  "id": "c74d172cf951",
+  "id": "31de9ae7a51d",
+  "voice": "narrator",
+  "text": "It is mid-2006. No operator has given you seats yet, but two say they will try a few if you open the site. There are three of you, with your savings. You must choose where to start."
+ },
+ {
+  "id": "3c2373f2d2a2",
   "voice": "advisor",
-  "text": "A big launch gets noticed, while a small one can look like a hobby. But three people can only be in so many places at once."
+  "text": "A big launch gets attention, while a small one can look like a hobby. But three people can only do so much."
  },
  {
-  "id": "70d8ea1b26c2",
+  "id": "1c8b265f6403",
   "voice": "narrator",
-  "text": "The launch makes noise, but each city has only a handful of seats. Travellers search, find nothing, and don't come back. Three of you can't deliver tickets or chase operators in five cities, and your money runs low."
+  "text": "The launch gets attention, but each city has only a few seats. Travellers search, find nothing, and do not come back. Three of you cannot deliver tickets or keep asking operators in five cities, and your money runs low."
  },
  {
-  "id": "e62a6029c375",
+  "id": "fecd07cbe63d",
   "voice": "narrator",
-  "text": "Remember: you can't serve everyone, so choose who you serve first. By spreading across five cities, you served nobody well. What would have worked: Start in one city with a couple of routes. Make it work there, then grow."
+  "text": "Remember: you cannot serve everyone, so choose who you serve first. By spreading across five cities, you did not serve any one group well. What would have worked: Start with Bengaluru travellers on a few routes. Serve them well, then grow."
  },
  {
-  "id": "c8e41653e2ce",
+  "id": "1a169531f6d7",
   "voice": "narrator",
-  "text": "In August 2006 the three of you quit your jobs, put in your savings, and make your flat the office. The site goes live with two operators on two routes. On 22 August you sell your first ticket, Bengaluru to Tirupati, and in the first month you sell 10 seats."
+  "text": "In August 2006 the three of you quit your jobs, put in your savings, and make your flat the office. The site opens with two operators on two routes. On 22 August you sell your first ticket, Bengaluru to Tirupati, and in the first month you sell 10 seats."
  },
  {
-  "id": "e70017c36a9e",
+  "id": "16b6e28784b0",
   "voice": "narrator",
-  "text": "The three of you quit your jobs, put in your savings, and make your flat the office. The site goes live in Bengaluru with a few routes. Sales start slowly, a few seats at a time, and each one teaches you something."
+  "text": "The three of you quit your jobs, put in your savings, and make your flat the office. The site opens in Bengaluru with a few routes. Sales start slowly, a few seats at a time, and each one teaches you something."
  },
  {
-  "id": "f06241724806",
+  "id": "e9664d66ebbb",
   "voice": "narrator",
-  "text": "Remember: you can't serve everyone, so choose who you serve first. One city let three people learn fast, keep every promise, and grow from there."
+  "text": "Remember: win one group first. Bengaluru travellers on a few routes let three people learn fast, keep every promise, and grow from there."
  },
  {
-  "id": "b6a96422fff7",
+  "id": "cce00d5e291d",
   "voice": "narrator",
-  "text": "You keep pitching for months. Operators still want proof before they join, and you have none to show. By the time you are ready, your savings are thin, and a rival may have started first."
+  "text": "You quickly add operators and list many routes, so the site looks big. But travellers search route after route and mostly find no seat. A few tickets sell, and many people stop checking."
  },
  {
-  "id": "119276b9734b",
+  "id": "027d7734c217",
   "voice": "narrator",
-  "text": "Remember: you can't serve everyone, so choose who you serve first. Waiting for everyone meant serving no one. The proof operators wanted could only come from sales. What would have worked: Go live now in one city with the seats you have, then let early sales win you the next operators."
+  "text": "Remember: win one group first. Spreading a few seats over many routes meant most travellers found nothing. A few routes, done well, would have won them over. What would have worked: Start with Bengaluru travellers on a few routes. Serve them well, then grow."
  },
  {
-  "id": "88cd375f190f",
+  "id": "8c23f7096aeb",
   "voice": "narrator",
-  "text": "You hand out cards outside offices, take bookings by phone, and deliver tickets yourselves. By January 2007 Bengaluru pays for itself, and you open in Hyderabad, then Chennai, Mumbai and Delhi. In December 2007 you sell 15,000 tickets in a single month."
+  "text": "You hand out cards outside offices, take bookings by phone, and deliver tickets yourselves. By January 2007 Bengaluru earns more than it costs. You open in Hyderabad, then Chennai, Mumbai and Delhi. In December 2007 you sell 15,000 tickets in a single month."
  },
  {
-  "id": "47d6afa59978",
+  "id": "edc85ef56c72",
   "voice": "narrator",
-  "text": "You took a slightly different road, but you sold real seats to real travellers and grew one city at a time. Before long, booking a bus seat online is normal across India."
+  "text": "You hand out cards outside offices, take bookings by phone, and deliver tickets yourselves. Bengaluru starts to earn more than it costs. You open in more cities, one at a time. Booking a bus seat online becomes normal."
  },
  {
-  "id": "1949ea039079",
+  "id": "27802f66ccc4",
   "voice": "narrator",
-  "text": "Your site sells tickets and pays its way in a few cities. But you lost months on things that did not help travellers get a seat, and a faster rival takes the big cities first."
+  "text": "Your site sells tickets and earns enough to continue. But you spread your few seats too thin, so many travellers find nothing, and you grow more slowly than you could have."
  },
  {
-  "id": "289eb9198049",
+  "id": "455c39110fde",
   "voice": "narrator",
-  "text": "Months pass, and nobody pays for what you built. Your savings run out, your friends go back to full-time jobs, and the site goes quiet. Getting a bus seat home at Diwali is still as hard as before."
+  "text": "Your site sells tickets and earns enough to continue. But some of your early choices cost you months, so you grow more slowly than you could have."
  },
  {
-  "id": "1ea25668737e",
+  "id": "206487b262a0",
   "voice": "narrator",
-  "text": "After three costly calls, the money is gone and your co-founders lose faith. You shut the site and go back to a full-time job."
+  "text": "You sell some seats, but too few to pay three people. Your savings run out, and your friends return to full-time jobs. Getting a bus seat home at Diwali is still hard."
+ },
+ {
+  "id": "72dc855e7f6e",
+  "voice": "narrator",
+  "text": "Months pass, and nobody pays for what you built. Your savings run out, and your friends return to full-time jobs. Nobody visits the site any more. Getting a bus seat home at Diwali is still as hard as before."
+ },
+ {
+  "id": "66be9fa038df",
+  "voice": "narrator",
+  "text": "After three costly choices, the money is gone and your co-founders lose faith. You shut the site and return to a full-time job."
  },
  {
   "id": "e9cf70259cea",
@@ -10920,6 +10940,526 @@
   "text": "If you miss, don't move the line. Change the offer and test again."
  },
  {
+  "id": "fe7592e7f777",
+  "voice": "narrator",
+  "text": "Let me tell you how Flipkart began. In October 2007, two young men in Bengaluru opened a shopping website. It sold only books. They didn't try to win every shopper in India. They chose one kind of buyer first."
+ },
+ {
+  "id": "c1cd5a54fbdf",
+  "voice": "narrator",
+  "text": "Who do you think Flipkart chose to win first?"
+ },
+ {
+  "id": "3461bc513b4e",
+  "voice": "narrator",
+  "text": "They chose people who already bought books. A book cost a few hundred rupees, so these buyers didn't mind paying online. The founders even stood outside a Bengaluru bookshop, giving bookmarks to people carrying new books."
+ },
+ {
+  "id": "99ffe406b5d8",
+  "voice": "narrator",
+  "text": "One founder, Binny Bansal, later said other websites tried to sell almost everything. Flipkart chose one thing, books, and got it right for book buyers first. But books were a small market in India. So in 2010, Flipkart added phones and electronics, for many more buyers."
+ },
+ {
+  "id": "0f62d8a823d8",
+  "voice": "narrator",
+  "text": "Startup teachers call this first group a beachhead. An army first wins one small beach. Then it moves further in. A good first group needs you now, is easy to reach, and is small enough to serve really well."
+ },
+ {
+  "id": "d2bbe2423e10",
+  "voice": "narrator",
+  "text": "Flipkart grew huge, but the same choice comes to your home bakery. It's January. After Diwali, people across the city have seen your cakes, and orders come from everywhere. You can bake about 20 cakes a week, and you bake alone."
+ },
+ {
+  "id": "0e2f7a777b16",
+  "voice": "narrator",
+  "text": "You can bake about 20 cakes a week. Which group should you try to win first?"
+ },
+ {
+  "id": "31af2436f979",
+  "voice": "narrator",
+  "text": "Yes. These families need birthday cakes, they live near you, and many already know your cakes. Win them first. Their friends in other colonies can be your next group."
+ },
+ {
+  "id": "b44086cf9391",
+  "voice": "narrator",
+  "text": "Offices are near and pay well, but party cupcakes are a new product for you, and one big order could take your whole week. Start with buyers who need what you already bake well."
+ },
+ {
+  "id": "89e4a333d678",
+  "voice": "narrator",
+  "text": "Daily café orders sound great, but cafés across the city mean long trips every day. Start with the buyers near you who already need your cakes."
+ },
+ {
+  "id": "024534dc2950",
+  "voice": "narrator",
+  "text": "300 families nearby. 3 in 10 buy 4 cakes a year: about 7 a week. You can bake 20 a week. What does this show?"
+ },
+ {
+  "id": "320e1967b19c",
+  "voice": "narrator",
+  "text": "Right. 7 cakes a week at ₹350 each is about ₹2,450 a week, from a group you can serve well. You still have room for 13 more, so you can grow into the next group later."
+ },
+ {
+  "id": "eeb5b184cbe5",
+  "voice": "narrator",
+  "text": "7 cakes a week is about ₹2,450 a week. That's a good start, and a small group is easier to win. You can grow later."
+ },
+ {
+  "id": "09229b09629a",
+  "voice": "narrator",
+  "text": "You don't need every family. The 3 in 10 who buy eggless cakes are your group. Win them well, then grow into the next group."
+ },
+ {
+  "id": "8795f625732b",
+  "voice": "narrator",
+  "text": "I'll show you six first groups for different small businesses. For each one, tell me: is it a good group to win first?"
+ },
+ {
+  "id": "eb7fae6d0288",
+  "voice": "narrator",
+  "text": "Working women near your gym who want a class at 6 am"
+ },
+ {
+  "id": "5e9b9783c1c9",
+  "voice": "narrator",
+  "text": "Big companies that already have a cake supplier they like"
+ },
+ {
+  "id": "e964bfcbc09b",
+  "voice": "narrator",
+  "text": "Students in one hostel where no food is open after 10 pm"
+ },
+ {
+  "id": "d16ea99d735d",
+  "voice": "narrator",
+  "text": "Families across the whole city, for any kind of cake"
+ },
+ {
+  "id": "65d7b4696a49",
+  "voice": "narrator",
+  "text": "Shops on one market road that need tea twice a day"
+ },
+ {
+  "id": "14a2d59fe039",
+  "voice": "narrator",
+  "text": "People in another city who liked your Instagram post"
+ },
+ {
+  "id": "e1dad29e92ce",
+  "voice": "narrator",
+  "text": "Good first groups need you now and are easy to reach: women near the gym, the hostel with no late food, shops on one road. Companies with a supplier don't need you. A whole city is too much at first. Likes from far away are only praise."
+ },
+ {
+  "id": "d7cbe5f7607b",
+  "voice": "narrator",
+  "text": "It's June. Most eggless birthday cakes in your three colonies now come from you, about 6 a week. You can bake about 20 a week, so you have room to grow."
+ },
+ {
+  "id": "bff7f6769815",
+  "voice": "narrator",
+  "text": "Where do you grow next?"
+ },
+ {
+  "id": "4f82bc03aae4",
+  "voice": "narrator",
+  "text": "You win two office orders. Each takes three days of baking, and two birthday cakes are late. One mother complains about it in the colony group."
+ },
+ {
+  "id": "7e08a0f89706",
+  "voice": "narrator",
+  "text": "Offices can pay well, but they're a new kind of buyer, far away. While trying to win them, you served your first group worse. What would have worked: Grow into the colonies next to yours, through your buyers' friends."
+ },
+ {
+  "id": "44ab0fe64e86",
+  "voice": "narrator",
+  "text": "You ask each buyer to tell one friend in a nearby colony. By August you bake about 14 cakes a week, and your first families still get their cakes on time."
+ },
+ {
+  "id": "1430e13a6272",
+  "voice": "narrator",
+  "text": "You grew into the group next to your first one. They need the same cake, and your buyers tell them about you."
+ },
+ {
+  "id": "ffca2a87ae0c",
+  "voice": "narrator",
+  "text": "You spend ₹15,000 on new trays and flour. The bread goes stale, the cookies sell slowly, and birthday cakes start arriving late."
+ },
+ {
+  "id": "4526489f2aa9",
+  "voice": "narrator",
+  "text": "You tried to serve everyone with new products at once. That divided your small amount of time and money, and your first group suffered. What would have worked: Grow into the colonies next to yours, through your buyers' friends."
+ },
+ {
+  "id": "15b76024bc3b",
+  "voice": "narrator",
+  "text": "Win blank group first. Once it trusts you, grow into the blank group."
+ },
+ {
+  "id": "ff684d2faaac",
+  "voice": "narrator",
+  "text": "Exactly. Win one group well first. Then grow into the next one, step by step, like your nearby colonies."
+ },
+ {
+  "id": "49afd0b2c917",
+  "voice": "narrator",
+  "text": "You can't serve everyone well at the start. Win one group first."
+ },
+ {
+  "id": "f2f445bf6868",
+  "voice": "narrator",
+  "text": "Beachhead: the first group you choose to win. It needs you now and is easy to reach."
+ },
+ {
+  "id": "558020bf6d04",
+  "voice": "narrator",
+  "text": "With little money, serve one group well, not everyone badly."
+ },
+ {
+  "id": "81d3499b1e3b",
+  "voice": "narrator",
+  "text": "Once the first group trusts you, grow into the group next to it."
+ },
+ {
+  "id": "0cde6d70c28b",
+  "voice": "narrator",
+  "text": "Let me tell you about a chocolate. In the early 2000s, Cadbury had a problem in India. People saw Dairy Milk as a sweet for children. Parents were telling children to eat fewer sweets, and sales grew much more slowly than before."
+ },
+ {
+  "id": "26285f5bfd1a",
+  "voice": "narrator",
+  "text": "Cadbury wanted grown-ups to buy Dairy Milk too. What do you think it did?"
+ },
+ {
+  "id": "560979138baf",
+  "voice": "narrator",
+  "text": "Its research found that Indians share meetha when something good happens, but eat chocolate alone. So Cadbury sold Dairy Milk as the sweet you share."
+ },
+ {
+  "id": "1cabd04c99ef",
+  "voice": "narrator",
+  "text": "The ads said \"Kuch meetha ho jaaye\": let's have something sweet. Good news, an exam result, a festival: share a Dairy Milk. Its real rival was no longer other chocolate. It was the box of mithai. Its ad agency later reported much faster growth over seven years."
+ },
+ {
+  "id": "a9077daa8238",
+  "voice": "narrator",
+  "text": "Clayton Christensen, a Harvard professor, called this idea the job to be done. People \"hire\" a product to get something done in their life. Each job has three parts: a result, a feeling, and what others will see. If a product does the job well, people hire it again."
+ },
+ {
+  "id": "39badc05ff97",
+  "voice": "narrator",
+  "text": "Cadbury is huge, but the same question matters in your home bakery. A mother orders a cake for her daughter's 7th birthday, and 12 guests are coming. She tells you that last year's cake, from another bakery, came an hour late, after guests had started to leave."
+ },
+ {
+  "id": "a9d1212a6c6c",
+  "voice": "narrator",
+  "text": "Which promise would matter most to this mother?"
+ },
+ {
+  "id": "d3f86ec112d9",
+  "voice": "narrator",
+  "text": "Yes. Her real fear is another spoiled party. Delivery on time protects the result she needs, her daughter's joy, and the party her guests will see."
+ },
+ {
+  "id": "144ebdddfb64",
+  "voice": "narrator",
+  "text": "₹50 is nice, but it doesn't touch her real worry: another late cake and a spoiled party. She's paying for a happy day, not a discount."
+ },
+ {
+  "id": "3e2c16c55bc3",
+  "voice": "narrator",
+  "text": "A free flavour is nice, but her real worry is another late cake. She's paying for a happy day, not more cake."
+ },
+ {
+  "id": "a8e8daed8570",
+  "voice": "narrator",
+  "text": "Here are six things mothers say. For each, tell me: is it what the cake must do, or how she wants to feel or look?"
+ },
+ {
+  "id": "d4de8c0e3435",
+  "voice": "narrator",
+  "text": "I want it delivered before the guests come at 6 pm"
+ },
+ {
+  "id": "66cd11274cc2",
+  "voice": "narrator",
+  "text": "I don't want to worry about anything on the day"
+ },
+ {
+  "id": "de3cb5a4c905",
+  "voice": "narrator",
+  "text": "It has to feed 12 people"
+ },
+ {
+  "id": "484c0fdb8901",
+  "voice": "narrator",
+  "text": "I want my friends to admire the party photos"
+ },
+ {
+  "id": "8e0caa5123ef",
+  "voice": "narrator",
+  "text": "It must not melt in the summer heat"
+ },
+ {
+  "id": "767fa6bd3775",
+  "voice": "narrator",
+  "text": "My mother-in-law must see it isn't a cheap cake"
+ },
+ {
+  "id": "ce4727b347a5",
+  "voice": "narrator",
+  "text": "What the cake must do: arrive before 6 pm, feed 12, not melt. How she wants to feel or look: no worry on the day, friends admiring the photos, respect from her mother-in-law. A good cake does both."
+ },
+ {
+  "id": "6e5c9b781805",
+  "voice": "narrator",
+  "text": "It's December. A new bakery nearby sells chocolate cakes for ₹600, ₹100 less than yours. Each of your cakes leaves you ₹350. A few of your buyers ask about the new bakery."
+ },
+ {
+  "id": "e54829fb25f5",
+  "voice": "narrator",
+  "text": "You keep most buyers, but each cake now leaves you ₹250, not ₹350. A month later, the new bakery cuts to ₹550."
+ },
+ {
+  "id": "60732c341ba3",
+  "voice": "narrator",
+  "text": "Your buyers weren't hiring you because you were cheap. You gave away ₹100 a cake, and the other bakery could cut its price again. What would have worked: Keep ₹700, and promise on-time delivery with the name checked."
+ },
+ {
+  "id": "4e84dfa05287",
+  "voice": "narrator",
+  "text": "You call each mother the day before to check the name and time, and every cake arrives by 5 pm. Most buyers stay at ₹700, and two who tried the new bakery come back to you."
+ },
+ {
+  "id": "a69239fa05a6",
+  "voice": "narrator",
+  "text": "You made the cake do more of the job: on time, the right name, no worry. That's worth more to her than ₹100 off, and it costs you almost nothing."
+ },
+ {
+  "id": "70d158887a56",
+  "voice": "narrator",
+  "text": "Your posts look lovely and get many likes. A few new orders come in, but some of your buyers still try the cheaper bakery."
+ },
+ {
+  "id": "d72babed3575",
+  "voice": "narrator",
+  "text": "Looks matter for what others will see. But you gave mothers nothing new for the birthday itself. What would have worked: Keep ₹700, and promise on-time delivery with the name checked."
+ },
+ {
+  "id": "421e3a566c61",
+  "voice": "narrator",
+  "text": "People don't just buy a product. They blank it to do a blank."
+ },
+ {
+  "id": "498b7325ea2d",
+  "voice": "narrator",
+  "text": "Exactly. Families hired Dairy Milk for a happy moment together. Mothers hire your cake for a happy birthday and a party they're proud of."
+ },
+ {
+  "id": "45f2af7d2979",
+  "voice": "narrator",
+  "text": "People pay for a result and a feeling. The product helps them get it."
+ },
+ {
+  "id": "a72d396d0827",
+  "voice": "narrator",
+  "text": "Job to be done: what a buyer wants to get done, with a result and a feeling."
+ },
+ {
+  "id": "d67105fcaa1e",
+  "voice": "narrator",
+  "text": "Every job has a result, a feeling, and what others will see."
+ },
+ {
+  "id": "4da0ffe3913f",
+  "voice": "narrator",
+  "text": "Sell the whole job, not just the product: the right name, on time, a proud moment."
+ },
+ {
+  "id": "39cb6d6a2c12",
+  "voice": "narrator",
+  "text": "Let me tell you about TV ratings. For many years, India's TV ratings came from small meter boxes in people's homes. The boxes were only in towns and cities. Village homes had none. So when channels asked, \"What does India watch?\", only city homes gave an answer."
+ },
+ {
+  "id": "35e91986e6db",
+  "voice": "narrator",
+  "text": "In October 2015, a new ratings group called BARC counted village homes for the first time. That was a big change. Village homes were about half of all TV homes in India: 7.6 crore out of 15.35 crore."
+ },
+ {
+  "id": "75c657e58a0f",
+  "voice": "narrator",
+  "text": "Zee Anmol, a TV channel, was No. 9 in the city-only count. In BARC's count with villages, in the same weeks, where was it?"
+ },
+ {
+  "id": "0ab7177cc61c",
+  "voice": "narrator",
+  "text": "In BARC's count with villages, it was No. 3 in the first week and No. 2 the next. Its village viewers had always been there. The city-only count never saw them."
+ },
+ {
+  "id": "d0fc609f6faf",
+  "voice": "narrator",
+  "text": "For years, city homes were easy to count, so they looked like all of India. Millions of village viewers were left out of the ratings. TV channels judged what India watched using only the homes they could count."
+ },
+ {
+  "id": "116ba84025af",
+  "voice": "narrator",
+  "text": "This trap is called selection bias. You hear from people who are easy to reach or who speak up, and you think they are everyone. In business, that's the buyers who call, post and complain. The fix is to count a fair mix, including quiet people."
+ },
+ {
+  "id": "dbf9e1b3a944",
+  "voice": "narrator",
+  "text": "TV channels are big, but the same problem can happen in your home bakery. It's August, and your cakes go to families in a few colonies. A hotel manager calls you every day. He wants fancy designer cakes with sugar flowers, and says, \"Everyone wants designer cakes now!\""
+ },
+ {
+  "id": "17495541bcc0",
+  "voice": "narrator",
+  "text": "Before you change your menu, who should you ask about the cakes they bought last year?"
+ },
+ {
+  "id": "88d773c8bf5f",
+  "voice": "narrator",
+  "text": "Yes. Your regular buyers and followers already chose you, and the hotel is one loud voice. A fair mix, including families who don't buy from you, shows you the real picture."
+ },
+ {
+  "id": "730907e7cea3",
+  "voice": "narrator",
+  "text": "Your regular buyers chose you for your usual cakes, so of course that's what they bought. Families who wanted fancy cakes may never have ordered from you. Ask a fair mix."
+ },
+ {
+  "id": "2dc153f98fae",
+  "voice": "narrator",
+  "text": "Your followers already like your cakes enough to follow you. They're not a fair mix of everyone. Ask a fair mix of families, buyers and non-buyers."
+ },
+ {
+  "id": "b3071c84e576",
+  "voice": "narrator",
+  "text": "You ask 40 families, buyers or not, about their last birthday cake. 4 bought a designer cake, 36 a usual one. What does this show?"
+ },
+ {
+  "id": "f3f0dec723db",
+  "voice": "narrator",
+  "text": "Right. About 1 family in 10 bought one. That's a small extra. Your usual cakes stay your main business."
+ },
+ {
+  "id": "b4b8e53fc0a3",
+  "voice": "narrator",
+  "text": "Only 4 of 40 bought one. Switching your menu would serve the few and lose the 36."
+ },
+ {
+  "id": "e56e242bae55",
+  "voice": "narrator",
+  "text": "4 families bought one, so a few people beyond the hotel do want them. Just not many: about 1 in 10."
+ },
+ {
+  "id": "3ec6ce4a70ce",
+  "voice": "narrator",
+  "text": "I'll show you six things you might learn from. For each one, tell me: is it a fair count, or only who you heard?"
+ },
+ {
+  "id": "039f332fc9fa",
+  "voice": "narrator",
+  "text": "You ask 30 families, buyers or not, what cake they last bought"
+ },
+ {
+  "id": "b860f24e3bc5",
+  "voice": "narrator",
+  "text": "A food blogger posts that millet cakes are the future"
+ },
+ {
+  "id": "ee17eec8efa5",
+  "voice": "narrator",
+  "text": "Only your happiest buyers fill in your feedback form"
+ },
+ {
+  "id": "c3ad9afb93fe",
+  "voice": "narrator",
+  "text": "You call every 5th family on the colony list, buyers or not"
+ },
+ {
+  "id": "7ad11610c882",
+  "voice": "narrator",
+  "text": "One angry review says your cakes are too sweet"
+ },
+ {
+  "id": "c9dccde8abdc",
+  "voice": "narrator",
+  "text": "You visit 40 families, buyers or not, and ask about their last cake"
+ },
+ {
+  "id": "bd191ac17d37",
+  "voice": "narrator",
+  "text": "Fair counts ask a mix of buyers and non-buyers about what they really bought. A blogger, one angry review or only your happiest buyers shows only who you heard. Check with a fair count first."
+ },
+ {
+  "id": "bce20303579e",
+  "voice": "narrator",
+  "text": "It's September. Since August, the hotel has ordered about 6 designer cakes a month, on days you're free. Each leaves you ₹1,000. Your fair count found only 4 in 40 families bought one. But the manager says, \"Change your menu!\""
+ },
+ {
+  "id": "dffc697c5ad7",
+  "voice": "narrator",
+  "text": "What do you say to the hotel?"
+ },
+ {
+  "id": "f736f5d8d78b",
+  "voice": "narrator",
+  "text": "You change your menu and photos. Some families think you've become costly, and family orders drop. The hotel still orders about 6 a month."
+ },
+ {
+  "id": "1cf06d03fab8",
+  "voice": "narrator",
+  "text": "You planned your whole business around one loud buyer. Your fair count said only 4 in 40 families bought a designer cake. What would have worked: Keep the hotel's orders, and keep your menu for families."
+ },
+ {
+  "id": "68a8f4ffad72",
+  "voice": "narrator",
+  "text": "Your family orders keep growing slowly. You lose about ₹6,000 a month from days you weren't using."
+ },
+ {
+  "id": "33a490f9e3a0",
+  "voice": "narrator",
+  "text": "Your menu stayed right for the many. But these orders used days you weren't using and paid well, so they didn't hurt your families. What would have worked: Keep the hotel's orders, and keep your menu for families."
+ },
+ {
+  "id": "f606a5e47073",
+  "voice": "narrator",
+  "text": "The hotel keeps ordering, and every family order still goes out on time. Your menu stays the same."
+ },
+ {
+  "id": "7859ec9099bb",
+  "voice": "narrator",
+  "text": "You served the loud buyer when it paid well, and kept planning your business for the many."
+ },
+ {
+  "id": "7a0593851b88",
+  "voice": "narrator",
+  "text": "The people you blank from are not everyone. Count a fair blank."
+ },
+ {
+  "id": "3f5d1943679f",
+  "voice": "narrator",
+  "text": "Exactly. TV ratings heard only from cities until villages were counted. Your fair count of 40 families showed designer cakes are a small extra."
+ },
+ {
+  "id": "0eee98680d19",
+  "voice": "narrator",
+  "text": "The buyers you hear from are not everyone. Count a fair mix of people."
+ },
+ {
+  "id": "7284cf0c0085",
+  "voice": "narrator",
+  "text": "Selection bias: you hear from people who are easy to reach or who speak up, and think they're everyone."
+ },
+ {
+  "id": "a857f97dc1db",
+  "voice": "narrator",
+  "text": "A loud buyer is one buyer. Count a fair mix, including people who don't buy from you."
+ },
+ {
+  "id": "4693798d9fbc",
+  "voice": "narrator",
+  "text": "Serve a loud buyer if it pays, but plan your business around the many."
+ },
+ {
   "id": "b0fc5bec172e",
   "voice": "narrator",
   "text": "Let me tell you about two young engineers in Bengaluru. In 2015, Vidit Aatrey and Sanjeev Barnwal built Fashnear, an app that showed clothes from nearby shops. Within three or four months, they saw it wasn't working. Vidit later said they hadn't thought enough about the customer."
@@ -11133,6 +11673,181 @@
   "id": "c6a7f80e7d2d",
   "voice": "narrator",
   "text": "When someone tells you a feeling, ask what happened the last time."
+ },
+ {
+  "id": "749f4c2e6cd2",
+  "voice": "narrator",
+  "text": "Let me tell you about a breakfast. In September 1994, Kellogg's, the American cereal company, started selling cornflakes in India. In the West, people eat them with cold milk. But most Indian families boil their milk and drink it warm."
+ },
+ {
+  "id": "b53227028f9b",
+  "voice": "narrator",
+  "text": "What do you think happened when Indians poured hot milk on the flakes?"
+ },
+ {
+  "id": "4f343231c5db",
+  "voice": "narrator",
+  "text": "Hot milk made the flakes soft and soggy, and cold milk didn't mix with the sugar. That was one big reason sales fell. The high price was another reason."
+ },
+ {
+  "id": "dbdfca50eb5e",
+  "voice": "narrator",
+  "text": "In 1996, Kellogg's India boss said, \"Over a period of time, we expect consumer habits to change.\" The habits stayed. So Kellogg's changed its products: chocolate Chocos, which some ate as a snack, flavours like mango-elaichi, and later oats like pongal and ready upma."
+ },
+ {
+  "id": "214acab170b6",
+  "voice": "narrator",
+  "text": "Harvard professor John Gourville studied why new things fail. Buyers think what they have is worth more than it is. Makers think the same about their new idea. A maker may rate a new idea about nine times higher than buyers do. New must be far better, or fit habits."
+ },
+ {
+  "id": "5ac953f1d9f3",
+  "voice": "narrator",
+  "text": "Kellogg's is huge, but the same gap shows up in your home bakery. Diwali is over, your second as a baker. You've made a new ragi cake with less sugar. You love it: it's healthier, and you think it tastes good. Your buyers still order chocolate birthday cakes."
+ },
+ {
+  "id": "1606500d78b7",
+  "voice": "narrator",
+  "text": "Your ragi cake costs ₹700, like your chocolate one. 2 buyers try it and like it. Months later, both order chocolate birthday cakes again. Why?"
+ },
+ {
+  "id": "ba2dd21ad169",
+  "voice": "narrator",
+  "text": "Yes. A birthday cake is a habit: chocolate, sweet, the same every year. They liked the taste, but \"a bit healthier\" is a small gain for a big change."
+ },
+ {
+  "id": "4f21bc5a3888",
+  "voice": "narrator",
+  "text": "A new name won't change this. They tried it and liked it. The usual birthday cake is a habit, and \"a bit healthier\" is a small gain."
+ },
+ {
+  "id": "9d410e9b8235",
+  "voice": "narrator",
+  "text": "It costs the same as your chocolate cake, which they still buy. Price isn't the problem here. The habit is."
+ },
+ {
+  "id": "0c66af8b9286",
+  "voice": "narrator",
+  "text": "Your friend runs a phone-repair shop. He wants customers to stop crowding his counter while they wait. Which idea asks them to change the least?"
+ },
+ {
+  "id": "094c62a6f3cd",
+  "voice": "narrator",
+  "text": "Right. Customers still walk in as before. They just take a token and get a message, so they don't crowd the counter."
+ },
+ {
+  "id": "8ac7d6ad1fe6",
+  "voice": "narrator",
+  "text": "An app means customers must download and learn something new just to get a repair. That's a big change for a small benefit."
+ },
+ {
+  "id": "fff3de27e009",
+  "voice": "narrator",
+  "text": "Appointments mean customers must plan before they come, which they never did before. Some will simply choose another shop."
+ },
+ {
+  "id": "03566cbf6e8a",
+  "voice": "narrator",
+  "text": "I'll show you six new ideas. For each one, tell me: does it fit what buyers already do, or ask for a new habit?"
+ },
+ {
+  "id": "11de6412977d",
+  "voice": "narrator",
+  "text": "A chai stall that makes its usual biscuit with less sugar, same taste"
+ },
+ {
+  "id": "93486ca1b554",
+  "voice": "narrator",
+  "text": "A tiffin service where you must order a week ahead on an app"
+ },
+ {
+  "id": "a3511ea17447",
+  "voice": "narrator",
+  "text": "A tailor who takes orders on WhatsApp, where his customers already chat"
+ },
+ {
+  "id": "d6b8e61ba1e7",
+  "voice": "narrator",
+  "text": "A shop that only takes card payments in a cash-only market"
+ },
+ {
+  "id": "a340621858b0",
+  "voice": "narrator",
+  "text": "Ready dosa batter, so families still make fresh dosa at home, just faster"
+ },
+ {
+  "id": "755daf6ad055",
+  "voice": "narrator",
+  "text": "A cereal you eat with cold milk, for families who drink milk hot"
+ },
+ {
+  "id": "98fe350b85d1",
+  "voice": "narrator",
+  "text": "Ideas that fit old habits ask for very little: the same biscuit, the same WhatsApp, the same dosa, just better or easier. Apps, card-only shops and cold milk ask people to change what they do, so the benefit must be huge."
+ },
+ {
+  "id": "0a5a81674eba",
+  "voice": "narrator",
+  "text": "It's November, and you still believe in less sugar. Your buyers order chocolate birthday cakes at ₹700 each, and each leaves you ₹350."
+ },
+ {
+  "id": "ee28d97139c7",
+  "voice": "narrator",
+  "text": "You spend ₹8,000 on free samples. Many mothers say the ragi cake is tasty and healthy. In two months, you sell 5 ragi cakes."
+ },
+ {
+  "id": "6aed76eb9152",
+  "voice": "narrator",
+  "text": "The tastings made people like the cake. But you still asked them to stop buying the birthday cake they always have. What would have worked: Make your usual chocolate cake with less sugar, with the same look and taste."
+ },
+ {
+  "id": "2cc841eb85d9",
+  "voice": "narrator",
+  "text": "You test it on 10 regular buyers and change nothing else. 9 can't tell the difference, and orders don't drop. Two mothers like that their children eat less sugar, and tell their friends. You get 4 new orders a month."
+ },
+ {
+  "id": "7863792dc95f",
+  "voice": "narrator",
+  "text": "You fitted the old habit: the same cake, look and way to order. Buyers got the healthy change without having to change what they do."
+ },
+ {
+  "id": "d7f9d965dc64",
+  "voice": "narrator",
+  "text": "You find 6 buyers through one gym in two months. They like it, but your colony families, most of your orders, still get the same sugary cake."
+ },
+ {
+  "id": "2a83f4ace97f",
+  "voice": "narrator",
+  "text": "Finding people who already eat millets is a smart choice. But it's a small extra group, and most of your buyers still eat as much sugar as before. What would have worked: Make your usual chocolate cake with less sugar, with the same look and taste."
+ },
+ {
+  "id": "2d4ed7ffe49c",
+  "voice": "narrator",
+  "text": "New must be far blank than old, or blank the old habit."
+ },
+ {
+  "id": "74c54a356b7a",
+  "voice": "narrator",
+  "text": "Exactly. Kellogg's waited for habits to change, then had to fit them. Less sugar in the cake your buyers already love fits the habit."
+ },
+ {
+  "id": "849a5a481dce",
+  "voice": "narrator",
+  "text": "New must be far better than old, or fit old habits."
+ },
+ {
+  "id": "6d2a42881ffb",
+  "voice": "narrator",
+  "text": "Buyers value what they have. Makers value their new idea. The gap can be about nine to one."
+ },
+ {
+  "id": "994672c3d286",
+  "voice": "narrator",
+  "text": "Fit the habit: the same product and the same way to buy, just better."
+ },
+ {
+  "id": "8f641d2c8b7f",
+  "voice": "narrator",
+  "text": "Don't try to make people stop a habit. Build your idea into it."
  },
  {
   "id": "f934e44e45f8",
