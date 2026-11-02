@@ -1,0 +1,223 @@
+{
+  "id": "u2-old-habits",
+  "title": "Fit the old habit",
+  "principle": "New must be far better than old, or fit old habits.",
+  "minutes": 5,
+  "draft": true,
+  "screens": [
+    {
+      "kind": "explain",
+      "id": "hook",
+      "media": "img:ls_cornflakes",
+      "text": "Let me tell you about a breakfast. In September 1994, Kellogg's, the American cereal company, started selling cornflakes in India. In the West, people eat them with cold milk. But most Indian families boil their milk and drink it warm."
+    },
+    {
+      "kind": "choice",
+      "id": "guess",
+      "guess": true,
+      "prompt": "What do you think happened when Indians poured hot milk on the flakes?",
+      "options": [
+        {
+          "id": "a",
+          "label": "The flakes stayed crisp, and people loved them"
+        },
+        {
+          "id": "b",
+          "label": "People switched to cold milk for the flakes"
+        },
+        {
+          "id": "c",
+          "label": "The flakes went soft, and many didn't buy again"
+        }
+      ],
+      "answer": "c",
+      "why": "Hot milk made the flakes soft and soggy, and cold milk didn't mix with the sugar. That was one big reason sales fell. The high price was another reason."
+    },
+    {
+      "kind": "explain",
+      "id": "habit-won",
+      "title": "The habit won",
+      "text": "In 1996, Kellogg's India boss said, \"Over a period of time, we expect consumer habits to change.\" The habits stayed. So Kellogg's changed its products: chocolate Chocos, which some ate as a snack, flavours like mango-elaichi, and later oats like pongal and ready upma."
+    },
+    {
+      "kind": "explain",
+      "id": "nine-to-one",
+      "title": "Why new things fail",
+      "text": "Harvard professor John Gourville studied why new things fail. Buyers think what they have is worth more than it is. Makers think the same about their new idea. A maker may rate a new idea about nine times higher than buyers do. New must be far better, or fit habits."
+    },
+    {
+      "kind": "explain",
+      "id": "home",
+      "title": "Now look at your business",
+      "text": "Kellogg's is huge, but the same gap shows up in your home bakery. Diwali is over, your second as a baker. You've made a new ragi cake with less sugar. You love it: it's healthier, and you think it tastes good. Your buyers still order chocolate birthday cakes."
+    },
+    {
+      "kind": "choice",
+      "id": "why-slow",
+      "prompt": "Your ragi cake costs ₹700, like your chocolate one. 2 buyers try it and like it. Months later, both order chocolate birthday cakes again. Why?",
+      "options": [
+        {
+          "id": "a",
+          "label": "It needs a catchier name"
+        },
+        {
+          "id": "b",
+          "label": "They want the birthday cake they always have"
+        },
+        {
+          "id": "c",
+          "label": "₹700 is too much for a ragi cake"
+        }
+      ],
+      "answer": "b",
+      "why": "Yes. A birthday cake is a habit: chocolate, sweet, the same every year. They liked the taste, but \"a bit healthier\" is a small gain for a big change.",
+      "wrong": {
+        "a": "A new name won't change this. They tried it and liked it. The usual birthday cake is a habit, and \"a bit healthier\" is a small gain.",
+        "c": "It costs the same as your chocolate cake, which they still buy. Price isn't the problem here. The habit is."
+      }
+    },
+    {
+      "kind": "choice",
+      "id": "smallest-change",
+      "prompt": "Your friend runs a phone-repair shop. He wants customers to stop crowding his counter while they wait. Which idea asks them to change the least?",
+      "options": [
+        {
+          "id": "a",
+          "label": "A new app to book a repair time"
+        },
+        {
+          "id": "b",
+          "label": "Tokens, and a WhatsApp when it's ready"
+        },
+        {
+          "id": "c",
+          "label": "Repairs only by appointment from now on"
+        }
+      ],
+      "answer": "b",
+      "why": "Right. Customers still walk in as before. They just take a token and get a message, so they don't crowd the counter.",
+      "wrong": {
+        "a": "An app means customers must download and learn something new just to get a repair. That's a big change for a small benefit.",
+        "c": "Appointments mean customers must plan before they come, which they never did before. Some will simply choose another shop."
+      }
+    },
+    {
+      "kind": "sort",
+      "id": "fit-or-change",
+      "prompt": "I'll show you six new ideas. For each one, tell me: does it fit what buyers already do, or ask for a new habit?",
+      "buckets": ["Fits an old habit", "Asks for a new habit"],
+      "items": [
+        {
+          "text": "A chai stall that makes its usual biscuit with less sugar, same taste",
+          "bucket": 0
+        },
+        {
+          "text": "A tiffin service where you must order a week ahead on an app",
+          "bucket": 1
+        },
+        {
+          "text": "A tailor who takes orders on WhatsApp, where his customers already chat",
+          "bucket": 0
+        },
+        {
+          "text": "A shop that only takes card payments in a cash-only market",
+          "bucket": 1
+        },
+        {
+          "text": "Ready dosa batter, so families still make fresh dosa at home, just faster",
+          "bucket": 0
+        },
+        {
+          "text": "A cereal you eat with cold milk, for families who drink milk hot",
+          "bucket": 1
+        }
+      ],
+      "why": "Ideas that fit old habits ask for very little: the same biscuit, the same WhatsApp, the same dosa, just better or easier. Apps, card-only shops and cold milk ask people to change what they do, so the benefit must be huge."
+    },
+    {
+      "kind": "scenario",
+      "id": "launch",
+      "setup": "It's November, and you still believe in less sugar. Your buyers order chocolate birthday cakes at ₹700 each, and each leaves you ₹350.",
+      "question": "What do you do next?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Hold free ragi-cake tastings in your colony",
+          "grade": "bad",
+          "outcome": "You spend ₹8,000 on free samples. Many mothers say the ragi cake is tasty and healthy. In two months, you sell 5 ragi cakes.",
+          "why": "The tastings made people like the cake. But you still asked them to stop buying the birthday cake they always have.",
+          "better": "Make your usual chocolate cake with less sugar, with the same look and taste."
+        },
+        {
+          "id": "b",
+          "label": "Make your chocolate cake with less sugar, same look",
+          "grade": "great",
+          "outcome": "You test it on 10 regular buyers and change nothing else. 9 can't tell the difference, and orders don't drop. Two mothers like that their children eat less sugar, and tell their friends. You get 4 new orders a month.",
+          "why": "You fitted the old habit: the same cake, look and way to order. Buyers got the healthy change without having to change what they do."
+        },
+        {
+          "id": "c",
+          "label": "Sell ragi cakes to gym-goers who already eat millets",
+          "grade": "ok",
+          "outcome": "You find 6 buyers through one gym in two months. They like it, but your colony families, most of your orders, still get the same sugary cake.",
+          "why": "Finding people who already eat millets is a smart choice. But it's a small extra group, and most of your buyers still eat as much sugar as before.",
+          "better": "Make your usual chocolate cake with less sugar, with the same look and taste."
+        }
+      ]
+    },
+    {
+      "kind": "gap",
+      "id": "fill",
+      "text": "New must be far ___ than old, or ___ the old habit.",
+      "bank": ["better", "fit", "smaller", "ignore"],
+      "answer": ["better", "fit"],
+      "why": "Exactly. Kellogg's waited for habits to change, then had to fit them. Less sugar in the cake your buyers already love fits the habit."
+    }
+  ],
+  "summary": [
+    "Buyers value what they have. Makers value their new idea. The gap can be about nine to one.",
+    "Fit the habit: the same product and the same way to buy, just better.",
+    "Don't try to make people stop a habit. Build your idea into it."
+  ],
+  "cards": [
+    {
+      "id": "m22-habit-1",
+      "front": "When is it easiest for buyers to say yes to your new idea?",
+      "options": ["When it fits what they already do", "When you explain it well"],
+      "answer": 0,
+      "back": "Fit the habit. Talking rarely changes a habit."
+    },
+    {
+      "id": "m22-habit-2",
+      "front": "Kellogg's boss expected Indian breakfast habits to change. Did they?",
+      "options": ["No. Kellogg's changed its products", "Yes, within a few years"],
+      "answer": 0,
+      "back": "Hot milk stayed. Kellogg's made Chocos, Indian flavours, oats and upma."
+    },
+    {
+      "id": "m22-habit-3",
+      "front": "Which shop idea asks buyers for the smallest change?",
+      "options": ["Orders on WhatsApp, like before", "Orders only on a new app"],
+      "answer": 0,
+      "back": "Same habit, less effort. That's easy to say yes to."
+    }
+  ],
+  "sources": [
+    {
+      "label": "Kellogg's Indian Experience (ICMR case study MKTG017, 2001)",
+      "url": "https://www.icmrindia.org/Home/FreeCaseDetails?casecode=MKTG017"
+    },
+    {
+      "label": "After corn flakes, Chocos, oats and muesli, Kellogg's goes the upma way (afaqs!, 26 Nov 2020)",
+      "url": "https://www.afaqs.com/news/mktg/after-corn-flakes-chocos-oats-and-muesli-kelloggs-goes-the-upma-way"
+    },
+    {
+      "label": "Crunch Time (Outlook Business, 18 Aug 2016)",
+      "url": "https://www.outlookbusiness.com/strategy/feature/crunch-time-2964"
+    },
+    {
+      "label": "Gourville, Eager Sellers and Stony Buyers (Harvard Business Review, June 2006), abstract",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/16770897/"
+    }
+  ]
+}

@@ -21,9 +21,9 @@ Every image: Bengaluru (or South India), 2005 to 2007, period-correct (CRT monit
 | rb_d3_improve | Late night coding in a flat, many feature sticky notes on the wall, an unopened stack of pitch folders. |
 | rb_d3_free | A bus operator's dusty desktop computer, a software screen left unused under a cover. |
 | rb_d4 | A wall map of India with pins only in Bengaluru, and a few markers set aside. |
-| rb_d4_cities | Five city names on sticky notes on a whiteboard, three tired young people and a near-empty bank passbook. |
+| rb_d4_cities | Blank sticky notes for five cities on a whiteboard, three tired young people and a near-empty bank passbook. |
 | rb_d4_blr | A flat turned office: two desks, a landline, a CRT monitor showing a booking page, a calendar on August 2006. |
-| rb_d4_wait | A calendar with months crossed off and a long list of operator names, most crossed out. |
+| rb_d4_routes | A computer screen, seen from the side so nothing is readable, showing a long list of routes, most rows greyed out; a frustrated traveller at a cyber café desk. |
 | rb_legend | A busy 2007 Bengaluru office floor with young staff on phones, bike couriers leaving with tickets. |
 | rb_survivor | A small office with a few staff, a city map with three pins. |
 | rb_collapse | A dark empty flat with a switched-off CRT monitor and a "to let" notice. |

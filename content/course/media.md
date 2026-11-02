@@ -12,3 +12,7 @@ Lesson hook images, prepared like `npm run media` does (webp, 1080 px wide at mo
 | ls_batter_bag | u2-workaround-test | generated (ChatGPT, 2026-11-02) | A shopkeeper's hand reaching into a steel tray of plain rubber-band bags of idli batter on a Bengaluru grocery counter, about 2005. |
 | ls_whatsapp_boutique | u2-mom-test | generated (ChatGPT, 2026-11-02) | A boutique owner, seen from behind, photographing a yellow kurta with a plain black phone, racks of kurtas behind (2015). |
 | ls_scooter_booking | u2-praise-not-proof | generated (ChatGPT, 2026-11-02) | A row of plain pastel electric scooters with blank paper tags in a showroom; no badges or text (2021). |
+| ls_bookmarks | u2-beachhead | generated (ChatGPT, 2026-11-02) | Two young men handing blank bookmarks to a woman leaving a Bengaluru bookshop with a bag of books (2007). |
+| ls_tv_meter | u2-loud-few | generated (ChatGPT, 2026-11-02) | A village family on a charpai watching a small CRT TV, a plain grey meter box beside it. |
+| ls_cornflakes | u2-old-habits | generated (ChatGPT, 2026-11-02) | Hot milk poured from a steel pan into a bowl of cornflakes, a blank cereal box beside it (1990s). |
+| ls_meetha | u2-job-to-be-done | generated (ChatGPT, 2026-11-02) | A young man with good news sharing a chocolate bar in a blank wrapper with his parents, mithai on the table. |

@@ -1,0 +1,202 @@
+{
+  "id": "u2-job-to-be-done",
+  "title": "What are they really buying?",
+  "principle": "People pay for a result and a feeling. The product helps them get it.",
+  "minutes": 5,
+  "draft": true,
+  "screens": [
+    {
+      "kind": "explain",
+      "id": "hook",
+      "media": "img:ls_meetha",
+      "text": "Let me tell you about a chocolate. In the early 2000s, Cadbury had a problem in India. People saw Dairy Milk as a sweet for children. Parents were telling children to eat fewer sweets, and sales grew much more slowly than before."
+    },
+    {
+      "kind": "choice",
+      "id": "guess",
+      "guess": true,
+      "prompt": "Cadbury wanted grown-ups to buy Dairy Milk too. What do you think it did?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Made the bar bigger and cheaper"
+        },
+        {
+          "id": "b",
+          "label": "Added new flavours for grown-ups"
+        },
+        {
+          "id": "c",
+          "label": "Sold it as a sweet to share"
+        }
+      ],
+      "answer": "c",
+      "why": "Its research found that Indians share meetha when something good happens, but eat chocolate alone. So Cadbury sold Dairy Milk as the sweet you share."
+    },
+    {
+      "kind": "explain",
+      "id": "meetha",
+      "title": "Kuch meetha ho jaaye",
+      "text": "The ads said \"Kuch meetha ho jaaye\": let's have something sweet. Good news, an exam result, a festival: share a Dairy Milk. Its real rival was no longer other chocolate. It was the box of mithai. Its ad agency later reported much faster growth over seven years."
+    },
+    {
+      "kind": "explain",
+      "id": "the-job",
+      "title": "The job to be done",
+      "text": "Clayton Christensen, a Harvard professor, called this idea the job to be done. People \"hire\" a product to get something done in their life. Each job has three parts: a result, a feeling, and what others will see. If a product does the job well, people hire it again."
+    },
+    {
+      "kind": "explain",
+      "id": "home",
+      "title": "Now look at your business",
+      "text": "Cadbury is huge, but the same question matters in your home bakery. A mother orders a cake for her daughter's 7th birthday, and 12 guests are coming. She tells you that last year's cake, from another bakery, came an hour late, after guests had started to leave."
+    },
+    {
+      "kind": "choice",
+      "id": "really-buying",
+      "prompt": "Which promise would matter most to this mother?",
+      "options": [
+        {
+          "id": "a",
+          "label": "₹50 off her next cake"
+        },
+        {
+          "id": "b",
+          "label": "Delivery by 5 pm, before guests come"
+        },
+        {
+          "id": "c",
+          "label": "An extra flavour layer at no cost"
+        }
+      ],
+      "answer": "b",
+      "why": "Yes. Her real fear is another spoiled party. Delivery on time protects the result she needs, her daughter's joy, and the party her guests will see.",
+      "wrong": {
+        "a": "₹50 is nice, but it doesn't touch her real worry: another late cake and a spoiled party. She's paying for a happy day, not a discount.",
+        "c": "A free flavour is nice, but her real worry is another late cake. She's paying for a happy day, not more cake."
+      }
+    },
+    {
+      "kind": "sort",
+      "id": "result-or-feeling",
+      "prompt": "Here are six things mothers say. For each, tell me: is it what the cake must do, or how she wants to feel or look?",
+      "buckets": ["What the cake must do", "How she wants to feel or look"],
+      "items": [
+        {
+          "text": "I want it delivered before the guests come at 6 pm",
+          "bucket": 0
+        },
+        {
+          "text": "I don't want to worry about anything on the day",
+          "bucket": 1
+        },
+        {
+          "text": "It has to feed 12 people",
+          "bucket": 0
+        },
+        {
+          "text": "I want my friends to admire the party photos",
+          "bucket": 1
+        },
+        {
+          "text": "It must not melt in the summer heat",
+          "bucket": 0
+        },
+        {
+          "text": "My mother-in-law must see it isn't a cheap cake",
+          "bucket": 1
+        }
+      ],
+      "why": "What the cake must do: arrive before 6 pm, feed 12, not melt. How she wants to feel or look: no worry on the day, friends admiring the photos, respect from her mother-in-law. A good cake does both."
+    },
+    {
+      "kind": "scenario",
+      "id": "rival",
+      "setup": "It's December. A new bakery nearby sells chocolate cakes for ₹600, ₹100 less than yours. Each of your cakes leaves you ₹350. A few of your buyers ask about the new bakery.",
+      "question": "What do you do?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Cut your price to ₹600 to match them",
+          "grade": "bad",
+          "outcome": "You keep most buyers, but each cake now leaves you ₹250, not ₹350. A month later, the new bakery cuts to ₹550.",
+          "why": "Your buyers weren't hiring you because you were cheap. You gave away ₹100 a cake, and the other bakery could cut its price again.",
+          "better": "Keep ₹700, and promise on-time delivery with the name checked."
+        },
+        {
+          "id": "b",
+          "label": "Keep ₹700, and promise on time with the name checked",
+          "grade": "great",
+          "outcome": "You call each mother the day before to check the name and time, and every cake arrives by 5 pm. Most buyers stay at ₹700, and two who tried the new bakery come back to you.",
+          "why": "You made the cake do more of the job: on time, the right name, no worry. That's worth more to her than ₹100 off, and it costs you almost nothing."
+        },
+        {
+          "id": "c",
+          "label": "Spend ₹5,000 on prettier photos for Instagram",
+          "grade": "ok",
+          "outcome": "Your posts look lovely and get many likes. A few new orders come in, but some of your buyers still try the cheaper bakery.",
+          "why": "Looks matter for what others will see. But you gave mothers nothing new for the birthday itself.",
+          "better": "Keep ₹700, and promise on-time delivery with the name checked."
+        }
+      ]
+    },
+    {
+      "kind": "gap",
+      "id": "fill",
+      "text": "People don't just buy a product. They ___ it to do a ___.",
+      "bank": ["hire", "job", "sell", "price"],
+      "answer": ["hire", "job"],
+      "why": "Exactly. Families hired Dairy Milk for a happy moment together. Mothers hire your cake for a happy birthday and a party they're proud of."
+    }
+  ],
+  "summary": [
+    "Job to be done: what a buyer wants to get done, with a result and a feeling.",
+    "Every job has a result, a feeling, and what others will see.",
+    "Sell the whole job, not just the product: the right name, on time, a proud moment."
+  ],
+  "cards": [
+    {
+      "id": "m22-job-1",
+      "front": "Parents pay for tuition classes. What are they really buying?",
+      "options": ["Their child passing Class 10", "Hours of teaching"],
+      "answer": 0,
+      "back": "The hours are how they get it. The job is the pass, and the pride."
+    },
+    {
+      "id": "m22-job-2",
+      "front": "A gift box costs you ₹40, and you charge ₹90. 20 buyers add it. What do you keep?",
+      "options": ["₹1,000", "₹1,800", "₹800"],
+      "answer": 0,
+      "back": "₹90 − ₹40 = ₹50 a box, and 20 × ₹50 = ₹1,000."
+    },
+    {
+      "id": "m22-job-3",
+      "front": "How did Cadbury sell Dairy Milk to grown-ups in India?",
+      "options": ["As the sweet you share at good news", "As a cheaper chocolate"],
+      "answer": 0,
+      "back": "It sold the job: a happy moment shared, like meetha."
+    }
+  ],
+  "sources": [
+    {
+      "label": "O&M Mumbai wins gold at IPA Effectiveness Awards for Cadbury's 'Kuch Meetha Ho Jaaye' (Campaign India, 1 Nov 2012)",
+      "url": "https://www.campaignindia.in/article/om-mumbai-wins-gold-at-ipa-effectiveness-awards/417499"
+    },
+    {
+      "label": "Cadbury Dairy Milk: a meetha journey (IPA Effectiveness Awards 2012, Gold)",
+      "url": "https://ipa.co.uk/knowledge/case-studies/cadbury-dairy-milk-a-meetha-journey/"
+    },
+    {
+      "label": "Cadbury Dairy Milk: Getting India to love chocolate, 2004-2011 (WARC)",
+      "url": "https://www.warc.com/content/article/warc-awards-asia/cadbury-dairy-milk-getting-india-to-love-chocolate---cadbury-dairy-milks-growth-story-of-2004-2011/en-gb/97744"
+    },
+    {
+      "label": "Know Your Customers' Jobs to Be Done (Harvard Business Review, Sept 2016)",
+      "url": "https://hbr.org/2016/09/know-your-customers-jobs-to-be-done"
+    },
+    {
+      "label": "Competing Against Luck, book excerpt (Porchlight, 4 Oct 2016)",
+      "url": "https://porchlightbooks.com/blog/excerpts/competing-against-luck-the-story-of-innovation-and-customer-choice"
+    }
+  ]
+}

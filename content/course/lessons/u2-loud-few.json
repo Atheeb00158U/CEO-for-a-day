@@ -1,0 +1,229 @@
+{
+  "id": "u2-loud-few",
+  "title": "Who aren't you hearing?",
+  "principle": "The buyers you hear from are not everyone. Count a fair mix of people.",
+  "minutes": 5,
+  "draft": true,
+  "screens": [
+    {
+      "kind": "explain",
+      "id": "hook",
+      "media": "img:ls_tv_meter",
+      "text": "Let me tell you about TV ratings. For many years, India's TV ratings came from small meter boxes in people's homes. The boxes were only in towns and cities. Village homes had none. So when channels asked, \"What does India watch?\", only city homes gave an answer."
+    },
+    {
+      "kind": "explain",
+      "id": "villages",
+      "title": "The villages are counted",
+      "text": "In October 2015, a new ratings group called BARC counted village homes for the first time. That was a big change. Village homes were about half of all TV homes in India: 7.6 crore out of 15.35 crore."
+    },
+    {
+      "kind": "choice",
+      "id": "guess",
+      "guess": true,
+      "prompt": "Zee Anmol, a TV channel, was No. 9 in the city-only count. In BARC's count with villages, in the same weeks, where was it?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Still near No. 9"
+        },
+        {
+          "id": "b",
+          "label": "Out of the top 10"
+        },
+        {
+          "id": "c",
+          "label": "No. 3"
+        }
+      ],
+      "answer": "c",
+      "why": "In BARC's count with villages, it was No. 3 in the first week and No. 2 the next. Its village viewers had always been there. The city-only count never saw them."
+    },
+    {
+      "kind": "explain",
+      "id": "always-there",
+      "title": "They were always there",
+      "text": "For years, city homes were easy to count, so they looked like all of India. Millions of village viewers were left out of the ratings. TV channels judged what India watched using only the homes they could count."
+    },
+    {
+      "kind": "explain",
+      "id": "selection-bias",
+      "title": "Selection bias",
+      "text": "This trap is called selection bias. You hear from people who are easy to reach or who speak up, and you think they are everyone. In business, that's the buyers who call, post and complain. The fix is to count a fair mix, including quiet people."
+    },
+    {
+      "kind": "explain",
+      "id": "home",
+      "title": "Now look at your business",
+      "text": "TV channels are big, but the same problem can happen in your home bakery. It's August, and your cakes go to families in a few colonies. A hotel manager calls you every day. He wants fancy designer cakes with sugar flowers, and says, \"Everyone wants designer cakes now!\""
+    },
+    {
+      "kind": "choice",
+      "id": "who-to-ask",
+      "prompt": "Before you change your menu, who should you ask about the cakes they bought last year?",
+      "options": [
+        {
+          "id": "a",
+          "label": "40 of your most regular buyers"
+        },
+        {
+          "id": "b",
+          "label": "40 people who follow your Instagram page"
+        },
+        {
+          "id": "c",
+          "label": "40 families, buyers and non-buyers"
+        }
+      ],
+      "answer": "c",
+      "why": "Yes. Your regular buyers and followers already chose you, and the hotel is one loud voice. A fair mix, including families who don't buy from you, shows you the real picture.",
+      "wrong": {
+        "a": "Your regular buyers chose you for your usual cakes, so of course that's what they bought. Families who wanted fancy cakes may never have ordered from you. Ask a fair mix.",
+        "b": "Your followers already like your cakes enough to follow you. They're not a fair mix of everyone. Ask a fair mix of families, buyers and non-buyers."
+      }
+    },
+    {
+      "kind": "choice",
+      "id": "what-it-says",
+      "prompt": "You ask 40 families, buyers or not, about their last birthday cake. 4 bought a designer cake, 36 a usual one. What does this show?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Switch your menu to designer cakes"
+        },
+        {
+          "id": "b",
+          "label": "Designer cakes are a small extra"
+        },
+        {
+          "id": "c",
+          "label": "Only the hotel wants designer cakes"
+        }
+      ],
+      "answer": "b",
+      "why": "Right. About 1 family in 10 bought one. That's a small extra. Your usual cakes stay your main business.",
+      "wrong": {
+        "a": "Only 4 of 40 bought one. Switching your menu would serve the few and lose the 36.",
+        "c": "4 families bought one, so a few people beyond the hotel do want them. Just not many: about 1 in 10."
+      }
+    },
+    {
+      "kind": "sort",
+      "id": "fair-or-heard",
+      "prompt": "I'll show you six things you might learn from. For each one, tell me: is it a fair count, or only who you heard?",
+      "buckets": ["A fair count", "Only who you heard"],
+      "items": [
+        {
+          "text": "You ask 30 families, buyers or not, what cake they last bought",
+          "bucket": 0
+        },
+        {
+          "text": "A food blogger posts that millet cakes are the future",
+          "bucket": 1
+        },
+        {
+          "text": "Only your happiest buyers fill in your feedback form",
+          "bucket": 1
+        },
+        {
+          "text": "You call every 5th family on the colony list, buyers or not",
+          "bucket": 0
+        },
+        {
+          "text": "One angry review says your cakes are too sweet",
+          "bucket": 1
+        },
+        {
+          "text": "You visit 40 families, buyers or not, and ask about their last cake",
+          "bucket": 0
+        }
+      ],
+      "why": "Fair counts ask a mix of buyers and non-buyers about what they really bought. A blogger, one angry review or only your happiest buyers shows only who you heard. Check with a fair count first."
+    },
+    {
+      "kind": "scenario",
+      "id": "hotel-deal",
+      "setup": "It's September. Since August, the hotel has ordered about 6 designer cakes a month, on days you're free. Each leaves you ₹1,000. Your fair count found only 4 in 40 families bought one. But the manager says, \"Change your menu!\"",
+      "question": "What do you say to the hotel?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Change your menu to designer cakes, as he says",
+          "grade": "bad",
+          "outcome": "You change your menu and photos. Some families think you've become costly, and family orders drop. The hotel still orders about 6 a month.",
+          "why": "You planned your whole business around one loud buyer. Your fair count said only 4 in 40 families bought a designer cake.",
+          "better": "Keep the hotel's orders, and keep your menu for families."
+        },
+        {
+          "id": "b",
+          "label": "Stop the hotel's orders, to keep your focus",
+          "grade": "ok",
+          "outcome": "Your family orders keep growing slowly. You lose about ₹6,000 a month from days you weren't using.",
+          "why": "Your menu stayed right for the many. But these orders used days you weren't using and paid well, so they didn't hurt your families.",
+          "better": "Keep the hotel's orders, and keep your menu for families."
+        },
+        {
+          "id": "c",
+          "label": "Keep the hotel's orders, and your menu",
+          "grade": "great",
+          "outcome": "The hotel keeps ordering, and every family order still goes out on time. Your menu stays the same.",
+          "why": "You served the loud buyer when it paid well, and kept planning your business for the many."
+        }
+      ]
+    },
+    {
+      "kind": "gap",
+      "id": "fill",
+      "text": "The people you ___ from are not everyone. Count a fair ___.",
+      "bank": ["hear", "mix", "pay", "guess"],
+      "answer": ["hear", "mix"],
+      "why": "Exactly. TV ratings heard only from cities until villages were counted. Your fair count of 40 families showed designer cakes are a small extra."
+    }
+  ],
+  "summary": [
+    "Selection bias: you hear from people who are easy to reach or who speak up, and think they're everyone.",
+    "A loud buyer is one buyer. Count a fair mix, including people who don't buy from you.",
+    "Serve a loud buyer if it pays, but plan your business around the many."
+  ],
+  "cards": [
+    {
+      "id": "m22-loud-1",
+      "front": "One customer complains loudly that your tea is too sweet. What do you do first?",
+      "options": ["Count how many others say so", "Change the recipe today"],
+      "answer": 0,
+      "back": "One voice is one buyer. Count before you change."
+    },
+    {
+      "id": "m22-loud-2",
+      "front": "4 of 40 families bought a fancy cake last year. Should you switch your whole menu to fancy cakes?",
+      "options": ["No. It's a small extra", "Yes. It's the new trend"],
+      "answer": 0,
+      "back": "4 in 40 is 1 in 10. Serve them, but keep your menu for the many."
+    },
+    {
+      "id": "m22-loud-3",
+      "front": "TV ratings once counted only city homes. What happened when village homes were added?",
+      "options": ["Some channels jumped up the list", "Nothing changed"],
+      "answer": 0,
+      "back": "One channel was No. 9 in the city-only count, and No. 2 in the count with villages."
+    }
+  ],
+  "sources": [
+    {
+      "label": "TV viewership measurement goes rural with BARC India's All India data (BARC press release, 23 Oct 2015)",
+      "url": "https://barcindia.co.in/announcement/tv-viewership-measurement-goes-rural-with-barc-indias-all-india-data.pdf"
+    },
+    {
+      "label": "GEC watch: Zee Anmol jumps to No. 2, Star Plus still leading (afaqs!, 30 Oct 2015)",
+      "url": "https://www.afaqs.com/news/media/46128_gec-watch-zee-anmol-jumps-to-no-2-star-plus-still-leading"
+    },
+    {
+      "label": "TRPs' influence on television content (Down To Earth, 30 Jun 2008)",
+      "url": "https://www.downtoearth.org.in/amp/story/environment/trps-influence-television-content-4723"
+    },
+    {
+      "label": "Selection bias (Catalogue of Bias, University of Oxford)",
+      "url": "https://catalogofbias.org/biases/selection-bias/"
+    }
+  ]
+}
