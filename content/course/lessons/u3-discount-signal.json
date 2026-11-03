@@ -1,0 +1,210 @@
+{
+  "id": "u3-discount-signal",
+  "title": "What does a sale say?",
+  "principle": "A discount doesn't fix a weak product, and it makes a good one look cheap.",
+  "minutes": 5,
+  "draft": true,
+  "screens": [
+    {
+      "kind": "explain",
+      "id": "hook",
+      "media": "img:ls_burnt_stock",
+      "text": "Let me tell you about Burberry, a famous British fashion brand. Its coats and bags cost a lot. In 2018, its yearly report showed something unusual. In one year, it had destroyed unsold clothes, bags and perfume worth £28.6 million, about ₹260 crore then."
+    },
+    {
+      "kind": "choice",
+      "id": "guess",
+      "guess": true,
+      "prompt": "Burberry destroyed unsold clothes instead of selling them cheap. Why would a brand do that?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Burning cost less than sending them to shops"
+        },
+        {
+          "id": "b",
+          "label": "A cheap sale would make the brand look cheap"
+        },
+        {
+          "id": "c",
+          "label": "They had no room left to store them"
+        }
+      ],
+      "answer": "b",
+      "why": "News reports said Burberry did it to protect its brand. A big sale tells everyone the full price was not real. Burning good clothes was a waste, and Burberry stopped. But the worry behind it was real."
+    },
+    {
+      "kind": "explain",
+      "id": "no-sale",
+      "title": "Why not a sale?",
+      "text": "Most shops would have a big sale and get back some money. Burberry didn't. News reports said that, like many big fashion brands, it did not want cheap sale goods with its name on them. In September 2018, Burberry said it would stop burning stock."
+    },
+    {
+      "kind": "explain",
+      "id": "drink-test",
+      "title": "The drink test",
+      "text": "Scientists tested this in a study shared in 2005. People drank an energy drink said to help the mind. Some paid full price. Some paid a discount price. Then everyone did puzzles. The discount group solved fewer puzzles. It was the same drink. The low price made them expect less."
+    },
+    {
+      "kind": "explain",
+      "id": "signal",
+      "title": "A price is a clue",
+      "text": "Buyers use the price as a clue. When they can't check quality, the price tells them what to expect. This is called price-quality inference. Cut the price, and a good product looks cheap. A discount can't fix a weak one either: a dry cake at half price is still dry."
+    },
+    {
+      "kind": "explain",
+      "id": "not-loss-leader",
+      "title": "Not the same as a loss leader",
+      "text": "Last module, a cheap first cake for new families was a loss leader: one offer for new buyers, done on purpose. A sale on your main cake, for everyone, is different. It tells all your buyers that your normal price isn't real."
+    },
+    {
+      "kind": "explain",
+      "id": "home",
+      "title": "Now look at your business",
+      "text": "Burberry is a giant brand, but your home bakery has the same choice. It's August of your third year. Orders are slow in the monsoon. Your chocolate birthday cake is ₹700, and each one costs you ₹350 to make."
+    },
+    {
+      "kind": "choice",
+      "id": "dry-cake",
+      "prompt": "Your new ₹700 eggless cake: two families say it's \"a bit dry\", and few order it. What should you do first?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Cut its price to ₹500 until it sells"
+        },
+        {
+          "id": "b",
+          "label": "Give free tastes, so people can try it"
+        },
+        {
+          "id": "c",
+          "label": "Fix the recipe, then sell it at ₹700"
+        }
+      ],
+      "answer": "c",
+      "why": "Yes. The price isn't the problem. The taste is. Fix the recipe, and the cake can earn its full price.",
+      "wrong": {
+        "a": "A lower price won't make it less dry. Families who buy it cheap still find it dry, and now they think it's a cheap cake too. Fix the recipe first.",
+        "b": "Free tastes may sound helpful, but more people would taste a dry cake. Fix the recipe first. Then tastes can help."
+      }
+    },
+    {
+      "kind": "sort",
+      "id": "worth-less",
+      "prompt": "I'll show you six choices for a slow month. For each, tell me: does it say your cake is worth less, or keep its worth?",
+      "buckets": ["Says it's worth less", "Keeps its worth"],
+      "items": [
+        {
+          "text": "A \"50% off\" post on your WhatsApp status",
+          "bucket": 0
+        },
+        {
+          "text": "A free name topper on every cake",
+          "bucket": 1
+        },
+        {
+          "text": "Your ₹700 cake for ₹350 on weekdays",
+          "bucket": 0
+        },
+        {
+          "text": "A small box of cookies with every cake",
+          "bucket": 1
+        },
+        {
+          "text": "A \"Sale! Sale!\" sign on your gate all month",
+          "bucket": 0
+        },
+        {
+          "text": "Photos of happy families with your cakes",
+          "bucket": 1
+        }
+      ],
+      "why": "A half-price post, a weekday ₹350 cake and a sale sign all say \"₹700 was too much\". A topper, cookies or happy photos give buyers something extra, and the price stays ₹700. Buyers still see a ₹700 cake. Something extra is not the same as a lower price."
+    },
+    {
+      "kind": "scenario",
+      "id": "slow-august",
+      "setup": "It's late August. Orders fell from 20 to 14 a week. Each ₹700 cake leaves you ₹350. A friend says, \"Post 30% off. Sell ₹490 cakes all month.\"",
+      "question": "What do you do?",
+      "options": [
+        {
+          "id": "c",
+          "label": "Change nothing, and wait for September",
+          "grade": "ok",
+          "outcome": "You earn about ₹4,900 a week. In September, orders return to 20. You lost nothing, but you didn't get any new families either.",
+          "why": "Waiting kept your price safe. But you could have given families a reason to order without lowering the price.",
+          "better": "Keep ₹700, and add a free name topper on every cake."
+        },
+        {
+          "id": "a",
+          "label": "Post 30% off for all of August",
+          "grade": "bad",
+          "outcome": "Orders rise to 18 a week, but each cake leaves only ₹140. You earn about ₹2,500 a week, not ₹4,900. In September, families wait for another sale.",
+          "why": "The sale brought more orders but less money. It also taught families that ₹700 isn't the real price.",
+          "better": "Keep ₹700, and add a free name topper on every cake."
+        },
+        {
+          "id": "b",
+          "label": "Keep ₹700, and add a free name topper",
+          "grade": "great",
+          "outcome": "Each topper costs you ₹30. You tell families it's an August treat. Orders rise to 17 a week, and each cake leaves ₹320: about ₹5,400 a week. In September the topper ends, and ₹700 still looks like the real price.",
+          "why": "You gave families something extra instead of lowering the price. Your September buyers still see a ₹700 cake, not one that cost ₹490 last month."
+        }
+      ]
+    },
+    {
+      "kind": "gap",
+      "id": "fill",
+      "text": "A discount doesn't fix a ___ cake. It makes a good one look ___.",
+      "bank": ["dry", "cheap", "sweet", "full"],
+      "answer": ["dry", "cheap"],
+      "why": "Exactly. Burberry burned goods rather than sell them cheap. A dry cake needs a better recipe, not a lower price."
+    }
+  ],
+  "summary": [
+    "Price-quality inference: buyers use the price as a clue to quality.",
+    "A discount can't fix a weak product. Fix the product first.",
+    "A discount makes a good product look cheap. In a slow month, give something extra instead of lowering the price."
+  ],
+  "cards": [
+    {
+      "id": "m32-discount-1",
+      "front": "A sari shop puts \"70% off\" on its silk saris all year. What do buyers start to think?",
+      "options": ["The full price was never real", "The saris are better now"],
+      "answer": 0,
+      "back": "A sale that never ends makes buyers think the full price was never real."
+    },
+    {
+      "id": "m32-discount-2",
+      "front": "Your new cake is dry, and few people buy it. Will a lower price fix it?",
+      "options": ["No. Fix the recipe first", "Yes. Cheap things sell"],
+      "answer": 0,
+      "back": "A discount can't fix a weak product. Buyers still find it dry, and now it also looks cheap."
+    },
+    {
+      "id": "m32-discount-3",
+      "front": "In a study shared in 2005, some people paid a discount price for an energy drink. What happened?",
+      "options": ["They solved fewer puzzles", "They solved more puzzles"],
+      "answer": 0,
+      "back": "Same drink, lower price. The low price made them expect less, and they did worse."
+    }
+  ],
+  "sources": [
+    {
+      "label": "Burberry destroys £29m of stock to avoid discounting (Retail Week, 2018)",
+      "url": "https://www.retail-week.com/fashion/burberry-destroys-29m-of-stock-to-avoid-discounting/7029539.article"
+    },
+    {
+      "label": "Burberry trashes tens of millions of dollars' worth of unsold products (CBS News, 2018)",
+      "url": "https://www.cbsnews.com/news/burberry-trashes-tens-of-millions-of-dollars-worth-of-unsold-products/"
+    },
+    {
+      "label": "Burberry will stop burning unsold products (Fortune, 6 Sep 2018)",
+      "url": "https://fortune.com/2018/09/06/burberry-burn-unsold-products-giving-up-practice-and-real-fur"
+    },
+    {
+      "label": "Shiv, Carmon and Ariely, Placebo effects of marketing actions (Journal of Marketing Research, 2005)",
+      "url": "https://scholars.duke.edu/publication/861346"
+    }
+  ]
+}

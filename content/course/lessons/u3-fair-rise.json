@@ -1,0 +1,196 @@
+{
+  "id": "u3-fair-rise",
+  "title": "When is a price rise fair?",
+  "principle": "Raise prices to cover real costs, in small steps you tell buyers about first. Never grab a rush moment, like a storm or Diwali morning.",
+  "minutes": 5,
+  "draft": true,
+  "screens": [
+    {
+      "kind": "explain",
+      "id": "hook",
+      "media": "img:ls_hot_vending",
+      "text": "Let me tell you about Coca-Cola in 1999. Its boss, Douglas Ivester, spoke to a magazine in Brazil. He said people want a cold drink more on a hot day. So, he said, it is fair for a cold drink to cost more on hot days."
+    },
+    {
+      "kind": "explain",
+      "id": "machine",
+      "title": "A machine that feels the heat",
+      "text": "His company was testing a new vending machine. It had a heat sensor and a small computer chip. On a hot day, it could raise the price by itself. The can was the same, and Coca-Cola's cost was the same. Only the weather changed."
+    },
+    {
+      "kind": "choice",
+      "id": "guess",
+      "guess": true,
+      "prompt": "Ivester said a higher price on hot days was fair. What did Pepsi say?",
+      "options": [
+        {
+          "id": "a",
+          "label": "It was a smart idea they would copy soon"
+        },
+        {
+          "id": "b",
+          "label": "It took unfair advantage of thirsty people"
+        },
+        {
+          "id": "c",
+          "label": "It didn't matter, since it's a tiny amount"
+        }
+      ],
+      "answer": "b",
+      "why": "Pepsi said such machines unfairly use people's need for a drink in hot places. The can cost Coca-Cola no more on a hot day. Only the need had grown. Coca-Cola said the machine wasn't in any shop yet."
+    },
+    {
+      "kind": "explain",
+      "id": "shovel",
+      "title": "The snow-shovel question",
+      "text": "Is this only about Coca-Cola? In the mid-1980s, three researchers asked people in Canada about a shop. It sold snow shovels for $15. After a big snowstorm, it raised the price to $20. 82 of every 100 people said this was unfair. The shovel was the same."
+    },
+    {
+      "kind": "explain",
+      "id": "costs",
+      "title": "When costs go up",
+      "text": "They also asked about a shop whose own cost of lettuce went up, so it raised its price. 79 of every 100 people said that was fine. Buyers think the old price is normal, and that you should keep your normal profit. Researchers call this dual entitlement."
+    },
+    {
+      "kind": "explain",
+      "id": "home",
+      "title": "Now look at your business",
+      "text": "Coca-Cola is huge, but your buyers feel the same way. A new price starts from worth, as you learned. But when you raise a price they know, they compare it with your costs. It's September. Each ₹700 cake now costs you ₹400 to make, not ₹350."
+    },
+    {
+      "kind": "choice",
+      "id": "which-rise",
+      "prompt": "Butter and cocoa cost more, so each ₹700 cake costs you ₹50 more. Which new price will buyers most likely call fair?",
+      "options": [
+        {
+          "id": "a",
+          "label": "₹800 from next month, to be safe"
+        },
+        {
+          "id": "b",
+          "label": "₹750 from next month"
+        },
+        {
+          "id": "c",
+          "label": "₹900 in Diwali week"
+        }
+      ],
+      "answer": "b",
+      "why": "Yes. Your cost went up ₹50, and your price goes up ₹50. Buyers can see why, like the lettuce shop.",
+      "wrong": {
+        "a": "Your cost went up ₹50, but ₹800 is ₹100 more. Rounding up \"to be safe\" looks like extra profit, not cost. ₹750 covers your real rise.",
+        "c": "That's like the snow shovel. Your costs in Diwali week are the same as any week. Raising the price only because people need cakes then feels unfair."
+      }
+    },
+    {
+      "kind": "sort",
+      "id": "fair-or-not",
+      "prompt": "I'll show you six price rises. For each, tell me: will most buyers call it fair, or unfair?",
+      "buckets": ["Likely fair", "Likely unfair"],
+      "items": [
+        {
+          "text": "Cake up ₹50 after butter costs rose",
+          "bucket": 0
+        },
+        {
+          "text": "Cake up ₹200 on the morning of Diwali",
+          "bucket": 1
+        },
+        {
+          "text": "Gas costs more, and you tell buyers two weeks ahead",
+          "bucket": 0
+        },
+        {
+          "text": "A family booked at ₹700. You ask them for ₹750",
+          "bucket": 1
+        },
+        {
+          "text": "Cake up ₹150 on the morning before Christmas",
+          "bucket": 1
+        },
+        {
+          "text": "₹50 more for a new, bigger cake",
+          "bucket": 0
+        }
+      ],
+      "why": "Rises that follow your real costs, or a bigger cake, are fair, and a warning helps. Rises that grab a rush moment, like Diwali or Christmas morning, feel unfair. So does changing the price you promised a booked family."
+    },
+    {
+      "kind": "scenario",
+      "id": "raise-step",
+      "setup": "It's late September. Each ₹700 cake now costs you ₹400, so it leaves ₹300, not ₹350. Five families booked October cakes at ₹700 back in August.",
+      "question": "How do you raise the price?",
+      "options": [
+        {
+          "id": "b",
+          "label": "Keep ₹700, and earn less",
+          "grade": "ok",
+          "outcome": "Buyers are happy. But each cake leaves ₹300, not ₹350, so 20 cakes a week earn you ₹1,000 less. By Christmas, that's about ₹12,000 less.",
+          "why": "Keeping buyers happy matters, but a real cost rise is a fair reason to raise your price. Buyers would probably accept it.",
+          "better": "Warn now: ₹750 from 15 October, and keep booked cakes at ₹700."
+        },
+        {
+          "id": "a",
+          "label": "Warn now: ₹750 from 15 October",
+          "grade": "great",
+          "outcome": "You post in your colony group: \"From 15 October, ₹750, because butter and cocoa cost more. Cakes already booked stay at ₹700.\" A few families complain, but almost all keep ordering. New cakes leave ₹350 again: about ₹7,000 a week.",
+          "why": "You raised the price for a real cost, by the same ₹50, and warned buyers first. You also kept your promise to the five booked families."
+        },
+        {
+          "id": "c",
+          "label": "Warn now: ₹900 from 15 October",
+          "grade": "bad",
+          "outcome": "Booked cakes stay at ₹700. But ₹900 is ₹200 more for a ₹50 cost rise, and many families feel this is unfair. New orders fall from 20 to 9 a week: about ₹4,500, not ₹7,000. Families tell their friends you're greedy.",
+          "why": "The warning helped, but the jump was four times your cost rise. Buyers judge a rise by your costs, and ₹200 doesn't match ₹50.",
+          "better": "Warn now: ₹750 from 15 October, and keep booked cakes at ₹700."
+        }
+      ]
+    },
+    {
+      "kind": "gap",
+      "id": "fill",
+      "text": "Raise prices to cover real ___, in small steps you ___ buyers about.",
+      "bank": ["costs", "warn", "profit", "surprise"],
+      "answer": ["costs", "warn"],
+      "why": "Exactly. A ₹50 cost rise can become a ₹50 price rise, told two weeks ahead. Coca-Cola's hot-day price had no cost behind it."
+    }
+  ],
+  "summary": [
+    "Dual entitlement: buyers feel they should get the old price, and you should keep your old profit.",
+    "Raising a price to cover real costs feels fair. Raising it to grab a rush moment, when people need you most, feels unfair.",
+    "Raise in small steps, warn buyers first, and keep the price you promised to anyone who already booked."
+  ],
+  "cards": [
+    {
+      "id": "m32-fair-1",
+      "front": "After a storm, a shop raises umbrellas from ₹300 to ₹500. Its costs didn't change. Most buyers call this…",
+      "options": ["Unfair", "Fair"],
+      "answer": 0,
+      "back": "Raising a price only because people need the product more feels unfair."
+    },
+    {
+      "id": "m32-fair-2",
+      "front": "Milk now costs your tea stall ₹2 more a cup. You raise tea by ₹2. Most buyers call this…",
+      "options": ["Fair", "Unfair"],
+      "answer": 0,
+      "back": "A rise that covers a real cost rise feels fair."
+    },
+    {
+      "id": "m32-fair-3",
+      "front": "A family booked a cake at ₹700. Your price is now ₹750. What do you charge them?",
+      "options": ["₹700, as you promised", "₹750, the new price"],
+      "answer": 0,
+      "back": "Keep the price you promised. A new price is for new orders."
+    }
+  ],
+  "sources": [
+    {
+      "label": "Constance L. Hays, Variable-price Coke machine being tested (New York Times, 28 Oct 1999)",
+      "url": "http://www.uvm.edu/~awoolf/classes/spring2006/ec20/variable%20price%20coke%20machine%20NYT.htm"
+    },
+    {
+      "label": "Kahneman, Knetsch and Thaler, Fairness as a constraint on profit seeking (American Economic Review, 1986)",
+      "url": "https://eml.berkeley.edu/~saez/course131/Kahneman-FairnessConstraintProfit-1986.pdf"
+    }
+  ]
+}

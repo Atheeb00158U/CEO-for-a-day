@@ -56,6 +56,13 @@
           "goal": "Price from what it's worth to the buyer.",
           "lessons": ["u3-value-price", "u3-cost-per-year", "u3-small-packs", "u3-loss-leader"],
           "gates": []
+        },
+        {
+          "id": "u3-change-price",
+          "title": "Change a price",
+          "goal": "Change prices without losing trust or profit.",
+          "lessons": ["u3-discount-signal", "u3-fair-rise", "u3-queue-signal"],
+          "gates": []
         }
       ]
     }

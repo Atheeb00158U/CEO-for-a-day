@@ -20,3 +20,6 @@ Lesson hook images, prepared like `npm run media` does (webp, 1080 px wide at mo
 | ls_led_bulb | u3-cost-per-year | generated (ChatGPT, 2026-11-02) | A hand fitting a white LED bulb into a ceiling holder in a modest home, an old yellow bulb on the table below (2014). |
 | ls_sachets | u3-small-packs | generated (ChatGPT, 2026-11-02) | A village shopkeeper tearing a plain sachet off a hanging strip, coins on the counter (1980s). |
 | ls_cafe_deal | u3-loss-leader | generated (ChatGPT, 2026-11-02) | A crowded small café counter, customers holding blank paper coupons, a worker seen from behind (2010). |
+| ls_burnt_stock | u3-discount-signal | generated (ChatGPT, 2026-11-03) | A dim warehouse of unsold beige trench coats and leather bags, an industrial furnace glowing at the far end (2018). |
+| ls_hot_vending | u3-fair-rise | generated (ChatGPT, 2026-11-03) | A sweating man with coins in his hand at a plain red drinks vending machine on a hot street (1999). |
+| ls_scooter_queue | u3-queue-signal | generated (ChatGPT, 2026-11-03) | A long line of people outside a 1980s scooter showroom, a pale blue scooter behind the glass; no readable signs. |
