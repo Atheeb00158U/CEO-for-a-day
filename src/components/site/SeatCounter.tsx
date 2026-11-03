@@ -12,19 +12,26 @@ export function SeatCounter({ initial }: { initial: number }) {
       if (document.hidden) return;
       try {
         const r = await fetch("/api/seats");
-        if (r.ok) setTaken((await r.json()).taken);
+        if (r.ok) {
+          const j = await r.json();
+          if (typeof j.taken === "number") setTaken(j.taken);
+        }
       } catch {
         /* offline: keep the last number */
       }
     };
     const t = setInterval(check, 20_000);
-    return () => clearInterval(t);
+    document.addEventListener("visibilitychange", check);
+    return () => {
+      clearInterval(t);
+      document.removeEventListener("visibilitychange", check);
+    };
   }, []);
 
   const pct = Math.min(100, (taken / FOUNDING.seats) * 100);
   return (
     <div>
-      <p className="text-[18px] font-black" aria-live="polite">
+      <p className="text-[18px] font-black" role="status">
         {seatsLine(taken)}
       </p>
       <div className="mt-2 h-3 overflow-hidden rounded-full bg-surface-2" aria-hidden="true">
