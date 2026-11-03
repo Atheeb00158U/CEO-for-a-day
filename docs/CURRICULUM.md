@@ -232,9 +232,14 @@ had sourced numbers on who came back; Dholakia's study links returns to profit b
 
 | Code | Concept | The rule | Everyday example (made up) | Source | Exercise |
 |---|---|---|---|---|---|
-| 3.2.1 | **Price-quality inference** (a discount is a signal) | Discounts don't fix a weak product, and they cheapen a good one. | Monthly sales and your sweets still don't sell; a "50% off" sign on handloom says it was never worth full price. | Simon ◇ | Spot the mistake |
-| 3.2.2 | **Dual entitlement** (price fairness) | Raise prices in small, warned steps; honour what early buyers were promised. | Tell tuition parents in March, not on fee day, and keep this year's batch at the old fee. | Simon ◇; Kahneman, Knetsch & Thaler, "Fairness as a Constraint on Profit Seeking" (1986), the snow-shovel survey ◇ | Who's right? |
-| 3.2.3 | **Shortage signal** (below the market-clearing price) | A long queue means price too low or supply too small. | Your bakery sells out by 10 am every day. Bake more, or charge more? | Basic supply and demand ◇ | Pick the best move |
+| 3.2.1 | **Price-quality inference** (a discount is a signal) | A discount doesn't fix a weak product, and it makes a good one look cheap. | Burberry destroyed £28.6 million of unsold stock in one year (2017-18) rather than sell it cheap, then stopped in Sept 2018; in Shiv, Carmon & Ariely's study (2005), people who paid a discount price for the same energy drink solved fewer puzzles ✓. | A dry eggless cake needs a better recipe, not ₹500; in a slow monsoon August, keep ₹700 and add a free name topper instead of 30% off. | Retail Week; CBS; Fortune; Shiv, Carmon & Ariely, *JMR* (2005) ✓ | Pick the best move |
+| 3.2.2 | **Dual entitlement** (price fairness) | Raise prices to cover real costs, in small steps you warn buyers about. Never just because they need you more. | Coca-Cola's heat-sensing vending machine (1999): Ivester called a hot-day price "fair", Pepsi said it exploits people in hot places; Kahneman, Knetsch & Thaler's survey: 82% called a post-snowstorm shovel rise unfair, 79% accepted a lettuce rise that followed the shop's cost ✓. | Butter and cocoa add ₹50 a cake: ₹750 from 15 October, warned, with booked cakes kept at ₹700; ₹900 "warned" is still too big a jump. | NYT (Hays, 28 Oct 1999); Kahneman, Knetsch & Thaler, *AER* (1986) ✓ | Who's right? |
+| 3.2.3 | **Shortage signal** (below the market-clearing price) | A long queue means your price is too low, or you make too little. | The Bajaj Chetak: licence limits capped output, the showroom price stayed low, buyers waited up to 10 years ("A 10-year delivery period is not a joke") and paid others up to nearly double; Bajaj's 1990 ad: "NO WAITING" ✓. | Families offer ₹1,000 for a ₹750 cake; a helper (28 cakes, ₹7,800) vs ₹850 from January, told in December, booked cakes kept (₹9,000). | Autocar Professional; Rahul Bajaj, HBS oral history; AP; OpenStax *Principles of Economics* 3.4 ✓ | Pick the best move |
+
+**Note (3 Nov 2026):** 3.2.3 says out loud why it doesn't contradict 3.2.2: a rise that grabs a moment (a storm,
+Diwali morning, a rival closing) feels unfair; a queue that lasts weeks means the everyday price is too low, so
+raise it once, after the rush, with warning, keeping booked prices. 3.2.1 separates a sale on your main product
+from 3.1.4's loss leader. Both 3.2.1 and 3.2.2 use foreign stories: no clean, sourced Indian case was found.
 
 **Gate (closes 3.1 and 3.2):**
 - **NEW: `tata-nano` "The one-lakh car".** Tata Motors, 2008–2011.

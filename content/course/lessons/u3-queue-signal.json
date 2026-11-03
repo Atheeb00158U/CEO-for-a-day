@@ -1,0 +1,202 @@
+{
+  "id": "u3-queue-signal",
+  "title": "What does a queue tell you?",
+  "principle": "A long queue means your price is too low, or you make too little.",
+  "minutes": 5,
+  "draft": false,
+  "screens": [
+    {
+      "kind": "explain",
+      "id": "hook",
+      "media": "img:ls_scooter_queue",
+      "text": "Let me tell you about the Bajaj Chetak scooter. In the 1970s and 80s, many Indian families wanted one. It was strong and cheap to run. A family could ride it to work, the market and weddings."
+    },
+    {
+      "kind": "explain",
+      "id": "wait",
+      "title": "Pay, then wait",
+      "text": "But you couldn't just go to a showroom and buy one. You paid, then you waited, sometimes for years. Rahul Bajaj, who ran the company, later said: \"A 10-year delivery period is not a joke.\""
+    },
+    {
+      "kind": "choice",
+      "id": "guess",
+      "guess": true,
+      "prompt": "Buyers waited years for a Chetak. What did that long queue tell Bajaj?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Bajaj needed to spend more on its ads"
+        },
+        {
+          "id": "b",
+          "label": "Far more people wanted one than it made"
+        },
+        {
+          "id": "c",
+          "label": "Buyers wanted to see it work for a while"
+        }
+      ],
+      "answer": "b",
+      "why": "People wanted far more scooters than Bajaj made at that price. Over time, Bajaj made far more scooters. In 1990, it ran a newspaper ad with two bold words: \"NO WAITING\". The ad said Bajaj was now the world's largest scooter maker."
+    },
+    {
+      "kind": "explain",
+      "id": "why-slow",
+      "title": "Why so slow?",
+      "text": "The law said how many scooters a company could make. Bajaj couldn't make more, even with buyers waiting. And the showroom price stayed low. So people who didn't want to wait paid others much more to get one sooner, sometimes nearly double the showroom price."
+    },
+    {
+      "kind": "explain",
+      "id": "shortage",
+      "title": "A shortage",
+      "text": "Economists call this a shortage: at that price, more people want something than there is to sell. A long queue has two possible causes. Your price is too low, or you make too little. A queue feels like good news, but it's a warning to fix one of them."
+    },
+    {
+      "kind": "explain",
+      "id": "not-a-moment",
+      "title": "A queue, not a moment",
+      "text": "Last lesson, a rise that grabs a rush moment felt unfair: a storm, Diwali morning. A queue that lasts for weeks is different. It means your everyday price is below what buyers will pay. Raise it once, after the rush, with warning. Some will grumble, but most will understand."
+    },
+    {
+      "kind": "explain",
+      "id": "home",
+      "title": "Now look at your business",
+      "text": "Bajaj made scooters for a whole country, but the same signal can appear in your home bakery. It's November of your third year. In October your cake went to ₹750, and each leaves you ₹350. Alone, you can bake about 20 cakes a week."
+    },
+    {
+      "kind": "choice",
+      "id": "reseller",
+      "prompt": "All 20 of your cakes are booked every week. Three families offer ₹1,000 each to fit their ₹750 cake in. What does that tell you?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Buyers will pay more than ₹750 now"
+        },
+        {
+          "id": "b",
+          "label": "It's a one-time thing; ignore it"
+        },
+        {
+          "id": "c",
+          "label": "They're rich; others won't pay more"
+        }
+      ],
+      "answer": "a",
+      "why": "Yes. Families offer ₹1,000 for your ₹750 cake, like Chetak buyers paying nearly double. Your queue is a signal: your price is low for the number of cakes you can make.",
+      "wrong": {
+        "b": "One offer could be luck, but three families in one week is a pattern. They offer ₹1,000 for a ₹750 cake. Buyers will pay more than ₹750 now.",
+        "c": "Maybe some are rich, but your cakes sell out every week at ₹750. That's many families, not only three. Buyers will pay more than ₹750 now."
+      }
+    },
+    {
+      "kind": "choice",
+      "id": "helper-sum",
+      "prompt": "Quick sum. A helper costs ₹2,000 a week. With her, you bake 28 cakes, each leaving ₹350. Money left after her pay?",
+      "options": [
+        {
+          "id": "a",
+          "label": "₹9,800"
+        },
+        {
+          "id": "b",
+          "label": "₹7,000"
+        },
+        {
+          "id": "c",
+          "label": "₹7,800"
+        }
+      ],
+      "answer": "c",
+      "why": "Right. 28 × ₹350 = ₹9,800, minus ₹2,000 for the helper = ₹7,800. That's ₹800 more than 20 cakes alone (₹7,000). Making more is one way to fix a queue.",
+      "wrong": {
+        "a": "28 × ₹350 = ₹9,800 is right, but the helper costs ₹2,000. ₹9,800 − ₹2,000 = ₹7,800.",
+        "b": "₹7,000 is what 20 cakes alone leave: 20 × ₹350. With the helper: 28 × ₹350 = ₹9,800, minus ₹2,000 = ₹7,800."
+      }
+    },
+    {
+      "kind": "scenario",
+      "id": "december-queue",
+      "setup": "It's December. For eight weeks, all 20 orders each week have been booked by Tuesday. About 12 families a week are turned away. Booked cakes are at ₹750.",
+      "question": "What do you do?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Take every order; bake through the night",
+          "grade": "bad",
+          "outcome": "The first week you bake 30 cakes, about ₹10,500. Three go out late and one burns, so you refund ₹750. The next week you fall sick and bake only 10. Over two weeks, that's about ₹6,600 a week, and two regular families stop ordering.",
+          "why": "One person can't safely bake 30 cakes. The extra money hurt your quality and cost you two regular families.",
+          "better": "₹850 from January, told now, with booked cakes kept at ₹750."
+        },
+        {
+          "id": "c",
+          "label": "₹850 from January, told in December",
+          "grade": "great",
+          "outcome": "You post the new price a month ahead, and booked cakes stay at ₹750. You don't raise it in the Christmas rush. A few families call it greedy, but most stay. 12 were being turned away each week, so your orders still fill, and only a few are turned away now. Each cake leaves ₹450: about ₹9,000 a week.",
+          "why": "The queue lasted eight weeks, so it was a real signal, not a one-week rush. You raised the price once, openly, with warning, and kept your promises."
+        },
+        {
+          "id": "b",
+          "label": "Hire a helper, and bake 28 cakes",
+          "grade": "ok",
+          "outcome": "You earn about ₹7,800 a week and serve 8 more families. But teaching her takes your evenings, and about 4 families a week are still turned away.",
+          "why": "Making more is a fair fix, like Bajaj. Bajaj could only make more, but you can do both. About 4 families a week are still turned away, so your price is still low.",
+          "better": "₹850 from January, told now, with booked cakes kept at ₹750."
+        }
+      ]
+    },
+    {
+      "kind": "gap",
+      "id": "fill",
+      "text": "A long queue means your ___ is too low, or you make too ___.",
+      "bank": ["price", "little", "cake", "fast"],
+      "answer": ["price", "little"],
+      "why": "Exactly. Bajaj fixed its queue by making more scooters. Raising the price with warning is the other fix."
+    }
+  ],
+  "summary": [
+    "A shortage: at your price, more people want it than you can make.",
+    "Two fixes: make more, if you can do it safely, or raise the price once, with warning.",
+    "A queue that lasts for weeks is a real signal. Raise the price openly and with warning, or find a safe way to make more."
+  ],
+  "cards": [
+    {
+      "id": "m32-queue-1",
+      "front": "A tea stall sells out by 9 am every day, and people keep asking for more. What might the owner try?",
+      "options": ["Make more, or charge a bit more", "Nothing. Selling out is perfect"],
+      "answer": 0,
+      "back": "A queue is a signal: the price is low, or you make too little. Fix one of them."
+    },
+    {
+      "id": "m32-queue-2",
+      "front": "Why did buyers wait up to 10 years for a Bajaj Chetak?",
+      "options": ["The law limited how many Bajaj could make", "Bajaj wanted the scooter to look rare"],
+      "answer": 0,
+      "back": "Bajaj couldn't make more, and the showroom price stayed low. So the queue grew."
+    },
+    {
+      "id": "m32-queue-3",
+      "front": "Families offer you ₹1,000 to get your ₹750 cake sooner. What does that tell you?",
+      "options": ["Buyers will pay more than ₹750", "Your price is too high"],
+      "answer": 0,
+      "back": "When buyers offer more than your price, your price is low for the amount you can make."
+    }
+  ],
+  "sources": [
+    {
+      "label": "Bajaj Chetak, once India's favourite steed on wheels (Autocar Professional, 14 Nov 2019)",
+      "url": "https://autocarpro.in/feature/bajaj-chetak-once-india-favourite-steed-on-wheels-44656"
+    },
+    {
+      "label": "Rahul Bajaj, Creating Emerging Markets oral history (Harvard Business School)",
+      "url": "https://www.library.hbs.edu/special-collections-and-archives/collections/collection-areas/oral-histories/creating-emerging-markets/interviews/rahul-bajaj"
+    },
+    {
+      "label": "Tim Sullivan, India's scooter king (AP via NBC News, 14 Mar 2010)",
+      "url": "https://www.nbcnews.com/id/wbna35863906"
+    },
+    {
+      "label": "Price ceilings and price floors (OpenStax, Principles of Economics 3e, 3.4)",
+      "url": "https://openstax.org/books/principles-economics-3e/pages/3-4-price-ceilings-and-price-floors"
+    }
+  ]
+}

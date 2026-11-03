@@ -39,3 +39,11 @@ text or signs, no real person's likeness.
 | `ls_led_bulb` | u3-cost-per-year | A small Indian home at night, 2014: a hand screwing a plain white LED bulb into a ceiling holder, an old yellow glass bulb lying on the table below. No logos or text. |
 | `ls_sachets` | u3-small-packs | A small Tamil Nadu village shop counter, 1980s: a long strip of small plain shampoo sachets hanging from a nail, a hand tearing one off; a few coins on the counter. No brand names, logos or readable text. |
 | `ls_cafe_deal` | u3-loss-leader | A small, busy American neighbourhood café, 2010: a crowded counter, customers holding printed paper coupons, a tired young woman owner behind the counter seen from the side. No readable text, logos or brand marks. |
+
+## Module 3.2: Change a price
+
+| Image id | Lesson | Picture |
+|---|---|---|
+| `ls_burnt_stock` | u3-discount-signal | A large, dim warehouse, 2018: racks of fine unsold beige trench coats and leather bags in neat rows; at the end, the open door of an industrial furnace glowing orange. No people, no check pattern, no logos or readable text. |
+| `ls_hot_vending` | u3-fair-rise | A sunny city street on a very hot day, 1999: a plain red drinks vending machine with no brand name, heat haze over the road, a sweating man in a shirt looking at it. No logos or readable text. |
+| `ls_scooter_queue` | u3-queue-signal | An Indian scooter showroom, early 1980s: a long line of men and a few women outside, some holding booking papers, a pale blue scooter behind the glass. Faces not in focus; no logos, brand names or readable text. |
