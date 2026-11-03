@@ -103,7 +103,13 @@ export interface Db {
 /* ------------------------------------------------------------------ */
 /* In memory, for tests.                                               */
 /* ------------------------------------------------------------------ */
-export function memoryDb(): Db & { profiles: Map<string, Profile>; runs: RunRow[]; lessonPlays: LessonPlayRow[]; leagues: LeagueRow[]; foundingSeats: number } {
+export function memoryDb(): Db & {
+  profiles: Map<string, Profile>;
+  runs: RunRow[];
+  lessonPlays: LessonPlayRow[];
+  leagues: LeagueRow[];
+  foundingSeats: number;
+} {
   const profiles = new Map<string, Profile>();
   const runs: RunRow[] = [];
   const lessonPlays: LessonPlayRow[] = [];
