@@ -7,6 +7,7 @@ import type { Grade, Media } from "@/lib/hotseat-types";
 import type { Pick, PlayView, Screen } from "@/lib/play";
 import { useGame, type RunRecord } from "@/lib/store";
 import { playSfx } from "@/lib/sfx";
+import { VERDICT } from "@/lib/verdict";
 import { ADVISOR, NARRATOR, speak, stopVoice } from "@/lib/voice";
 import { Bar, Caption, Icon, MediaView } from "./ui";
 import { Logo } from "./Logo";
@@ -15,12 +16,6 @@ import { MADE_UP_LABEL } from "@/content/catalog";
 
 type Phase =
   { kind: "screen"; i: number } | { kind: "reveal" } | { kind: "checkpoint" } | { kind: "debrief"; record: RunRecord; endingTitle: string };
-
-const VERDICT = {
-  great: { title: "Great call!", color: "var(--color-green)", bg: "bg-[#0f2a10]", btn: "green", points: "+25 CEO points" },
-  ok: { title: "Risky call", color: "var(--color-gold)", bg: "bg-[#2a2306]", btn: "gold", points: "+10 CEO points" },
-  bad: { title: "Costly call", color: "var(--color-red)", bg: "bg-[#2d0f0f]", btn: "red", points: "−1 board trust" },
-} as const;
 
 /** A pause after the first few calls, used by the welcome screens. The run carries on from where it stopped. */
 export interface Checkpoint {
