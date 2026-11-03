@@ -136,7 +136,7 @@ function Shell() {
     // leaving a gap below the tab bar.
     <div className="mx-auto flex h-dvh max-w-[480px] flex-col">
       <TopBar onShop={() => go("shop")} />
-      <InstallSheet />
+      <InstallSheet page={tab} />
       <main ref={mainRef} className="flex-1 overflow-y-auto overscroll-contain px-4 pb-6">
         {tab === "home" && (
           <HomeTab
