@@ -28,20 +28,21 @@ const STEPS: Record<"ios" | "android" | "inapp", React.ReactNode[]> = {
 };
 
 /** Asks phone players to put the app on their home screen: one tap where Chrome allows it, simple steps everywhere else. */
-export function InstallSheet() {
+export function InstallSheet({ page }: { page: string }) {
   const [way, setWay] = useState<InstallWay>(null);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const update = () => setWay(installWay());
     update();
-    const off = onInstallChange(update);
-    const t = setTimeout(() => !installSnoozed() && installWay() && setOpen(true), 1500); // let Home settle first
-    return () => {
-      off();
-      clearTimeout(t);
-    };
+    return onInstallChange(update);
   }, []);
+
+  // Ask again on every page change (and on coming back from a lesson or Hot Seat, which remounts this).
+  useEffect(() => {
+    const t = setTimeout(() => !installSnoozed() && installWay() && setOpen(true), 1500); // let the page settle first
+    return () => clearTimeout(t);
+  }, [page]);
 
   const close = (snooze = true) => {
     if (snooze) snoozeInstall();

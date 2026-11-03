@@ -62,11 +62,20 @@ export async function install() {
 }
 
 const DISMISSED = "ceo-install-dismissed";
-const REST_DAYS = 3;
+// The sheet asks again on every page change until the app is installed; this only stops quick taps
+// between tabs from reopening it straight after "Not now".
+const REST_MS = 60_000;
+
+/** Never nag on a developer's machine: `npm run dev`, or the site opened from localhost or a LAN address. */
+function onDevMachine() {
+  if (process.env.NODE_ENV === "development") return true;
+  return /^(localhost|127\.|\[::1\]$|10\.|192\.168\.|172\.(1[6-9]|2\d|3[01])\.)|\.(localhost|local|test)$/.test(location.hostname);
+}
 
 export function installSnoozed() {
+  if (onDevMachine()) return true;
   try {
-    return Date.now() - Number(localStorage.getItem(DISMISSED) ?? 0) < REST_DAYS * 864e5;
+    return Date.now() - Number(localStorage.getItem(DISMISSED) ?? 0) < REST_MS;
   } catch {
     return false;
   }
