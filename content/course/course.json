@@ -48,7 +48,7 @@
       "id": "u3-price-offer",
       "title": "Price and offer",
       "goal": "Set prices from what your work is worth, and change them without losing buyers.",
-      "draft": true,
+      "draft": false,
       "modules": [
         {
           "id": "u3-set-price",

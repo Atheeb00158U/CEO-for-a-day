@@ -3,7 +3,7 @@
   "title": "What is it worth to them?",
   "principle": "Price from what it is worth to the buyer. Your cost sets the floor, not the price.",
   "minutes": 5,
-  "draft": true,
+  "draft": false,
   "screens": [
     {
       "kind": "explain",

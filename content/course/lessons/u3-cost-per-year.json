@@ -3,7 +3,7 @@
   "title": "What does it cost per year?",
   "principle": "Judge a price by what it costs for each year of use, not by the price on the box.",
   "minutes": 5,
-  "draft": true,
+  "draft": false,
   "screens": [
     {
       "kind": "explain",

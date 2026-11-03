@@ -3,7 +3,7 @@
   "title": "Will they come back?",
   "principle": "A cheap first offer pays only if enough buyers return and pay full price.",
   "minutes": 5,
-  "draft": true,
+  "draft": false,
   "screens": [
     {
       "kind": "explain",
