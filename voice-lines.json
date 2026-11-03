@@ -7395,44 +7395,44 @@
   "text": "Years ago, your chairman, Ratan Tata, kept seeing families of four or five on one scooter, often on slippery roads in the dark. Since then, he has wanted to build them a car: safe and cheap enough to own. That car is now your job."
  },
  {
-  "id": "4c57054f9388",
+  "id": "32851f0edb4c",
   "voice": "narrator",
-  "text": "It is called the Nano. It has four seats and costs ₹1 lakh at the factory gate. The basic model has no AC, no radio and no power steering. The plan is to sell 2.5 lakh cars a year. In a few days, the whole world will see it."
+  "text": "It is called the Nano. It has four seats and costs ₹1 lakh, before taxes and dealer costs. The basic model has no AC, no radio and no power steering. The plan is to sell 2.5 lakh cars a year. In a few days, the whole world will see it."
  },
  {
-  "id": "5cb2a3a3c995",
+  "id": "1f718a3a4ad5",
   "voice": "narrator",
-  "text": "On 10 January you unveil the Nano at the Auto Expo in New Delhi, and every TV channel will be there. It will be the cheapest car in the world. Your sales team says the price will sell it by itself. But the people you built it for have never owned a car."
+  "text": "On 10 January you will show the Nano for the first time, at the Auto Expo in New Delhi, and every TV channel will be there. It will be the cheapest car in the world. Your sales team says the price will sell it by itself. But the people you built it for have never owned a car."
  },
  {
-  "id": "9e66f0017786",
+  "id": "c4cb102a0baa",
   "voice": "narrator",
-  "text": "What is the one message you want people to take home?"
+  "text": "What is the one message you want people to remember?"
  },
  {
-  "id": "34988c8d1155",
+  "id": "b475833b64fe",
   "voice": "advisor",
-  "text": "One number, ₹1 lakh, will put us on every front page in the world. Nothing else we say will travel that far."
+  "text": "A low price gets us into every paper in the world. Nothing else we say will travel that far."
  },
  {
-  "id": "2d58ce8f6ead",
+  "id": "4a1490293f68",
   "voice": "narrator",
-  "text": "Your ads talk about mileage, low running costs and four real seats. The message is clear and honest. But people at tea stalls still repeat the price, and 'cheap' sticks in their minds more than 'smart'."
+  "text": "Your ads talk about mileage, low running costs and four real seats. The message is clear and honest. But people at tea stalls still repeat the price, and they remember 'cheap', not 'good value'."
  },
  {
-  "id": "cc682ccbceea",
+  "id": "66ce7ffe6bab",
   "voice": "narrator",
-  "text": "Value beats 'cheapest', because Indian buyers want good value, not just a low price. But you still talked about money, not about how it feels to own a car. Remember: feelings count as much as features. What would have worked: Lead with the family and the pride of owning a first car, then show the value."
+  "text": "Remember: people pay for a result and a feeling. Cost per year is a smart way to judge a price, and you showed it. But you still sold money, not the pride of a family's first car. What would have worked: Lead with the family and their pride in a first car, then show the low running cost as proof."
  },
  {
-  "id": "b087a5aa4b83",
+  "id": "764bb4ef2335",
   "voice": "narrator",
-  "text": "On 10 January 2008 the Nano is unveiled at the Auto Expo in New Delhi. Tata calls it the People's Car, but the ₹1 lakh price becomes the headline. The press calls it the world's cheapest car, and soon your own people are calling it that too."
+  "text": "On 10 January 2008 the Nano is shown at the Auto Expo in New Delhi. Tata calls it the People's Car, but the ₹1 lakh price becomes the main story. The press calls it the world's cheapest car, and soon your own people are calling it that too."
  },
  {
-  "id": "4a276e94529e",
+  "id": "a38b0fd14ac6",
   "voice": "narrator",
-  "text": "The price got the Nano noticed everywhere, but it also became the car's name, and nobody wants the neighbours to see them in 'the cheapest car'. Remember: feelings count as much as features. What would have worked: Sell it as a safe, proud first car for a family, a step up from the scooter, and let the price be a happy surprise."
+  "text": "Remember: people pay for a result and a feeling. The price got the Nano noticed everywhere, but it also became its name. Nobody wants the neighbours to see them in 'the cheapest car'. What would have worked: Sell it as a safe, proud first car for the family, a step up from the scooter. Let the price be a happy surprise."
  },
  {
   "id": "027f71467545",
@@ -7440,9 +7440,9 @@
   "text": "On the big screen at the Auto Expo, a family steps off a wet scooter and into a Nano. The price appears only at the end. The papers still print ₹1 lakh, but people remember the proud family in its first car."
  },
  {
-  "id": "3b3de1de5015",
+  "id": "3152cd230c46",
   "voice": "narrator",
-  "text": "You sold the step up, not the discount. A family pays for pride as well as for wheels. Remember: feelings count as much as features, and Indian buyers want good value, not just the lowest price."
+  "text": "Remember: people pay for a result and a feeling. The result was a safe ride, and the feeling was pride in a first car. You sold both, and the price became a happy surprise."
  },
  {
   "id": "3efc1fd2115a",
@@ -7450,14 +7450,19 @@
   "text": "In October 2008, after protests over the land for its new plant at Singur, West Bengal, Tata pulls out and moves the Nano plant to Sanand in Gujarat. The launch is delayed. Then, on 23 March 2009, the world's cheapest car is finally launched in Mumbai."
  },
  {
+  "id": "97d6fa068925",
+  "voice": "narrator",
+  "text": "In October 2008, after protests over the land for its new plant at Singur, West Bengal, Tata pulls out and moves the Nano plant to Sanand in Gujarat. The launch is delayed. Then, on 23 March 2009, the Nano is finally launched in Mumbai, and people talk about it as a family's first car."
+ },
+ {
   "id": "ecfefab163f9",
   "voice": "narrator",
   "text": "In October 2008, after protests over the land for its new plant at Singur, West Bengal, Tata pulls out and moves the Nano plant to Sanand in Gujarat. The launch is delayed. Then, on 23 March 2009, the Nano is finally launched in Mumbai."
  },
  {
-  "id": "91e769903cb4",
+  "id": "2be6e33cca00",
   "voice": "narrator",
-  "text": "Bookings open in April, and you expect a flood. But the Gujarat plant is about a year away. Until then, your only working plant can make about 50,000 Nanos a year. You have also promised your first buyers the launch price."
+  "text": "Bookings open on 9 April, and you expect a huge rush. The new Gujarat plant is more than a year away. Until then, your only working plant can make about 50,000 Nanos a year. You have also promised early buyers the launch price."
  },
  {
   "id": "352126ea5e60",
@@ -7465,9 +7470,9 @@
   "text": "How do you handle the rush?"
  },
  {
-  "id": "c960eb209238",
+  "id": "0bf6a2118678",
   "voice": "advisor",
-  "text": "Every booking brings cash in today. Turning buyers away feels like throwing money in the river."
+  "text": "Every booking brings cash in today. But every buyer we keep waiting will remember it."
  },
  {
   "id": "3873e286b017",
@@ -7475,19 +7480,19 @@
   "text": "Bookings close within days, and many people are angry that they missed out. But every buyer gets a car within months, and soon happy owners are showing them off in every town. A second round, at a higher price, waits for the Gujarat plant."
  },
  {
-  "id": "ecfe3ee9da0b",
+  "id": "cede1121036e",
   "voice": "narrator",
-  "text": "When far more people want your product than you can make, a long queue is a warning. A short wait you can keep is better than a long one that turns buyers against you. Remember: a long queue means the price is too low or supply is too small."
+  "text": "Remember: a long queue means your price is too low, or you make too little. You could not make more yet, so you kept the queue to what you could build. The new round came later, after the rush and with warning, so your promise held."
  },
  {
-  "id": "0a1ca3690c61",
+  "id": "ea009a2e1a6b",
   "voice": "narrator",
-  "text": "In just over two weeks, more than 2 lakh people book a Nano, and nearly ₹2,500 crore comes in. In June a draw picks 1 lakh buyers, and deliveries begin in July. But a year later, only about 45,000 cars have reached their owners."
+  "text": "In just over two weeks, more than 2 lakh people book a Nano, and nearly ₹2,500 crore comes in. In June a draw picks 1,00,000 buyers, and deliveries begin in July. But a year later, only about 45,000 cars have reached their owners, and some buyers cancel."
  },
  {
-  "id": "48ba6fe6a290",
+  "id": "3779e07f6b69",
   "voice": "narrator",
-  "text": "The draw was fair and kept your promise. But 2 lakh orders for a plant that makes 50,000 a year meant years of waiting. Buyers who wait too long start to doubt. Remember: a long queue means the price is too low or supply is too small. What would have worked: Take only the orders you can fill soon, then open another round at a new price when the second plant is ready."
+  "text": "Remember: a long queue means your price is too low, or you make too little. The draw was fair and kept your promise. But 1,00,000 cars from a plant that makes 50,000 a year meant about two years of waiting, and buyers who wait too long start to doubt. What would have worked: Take only the orders you can fill soon. Open a new round, at a higher price, when the Gujarat plant is ready."
  },
  {
   "id": "ccc2ae2ec18c",
@@ -7495,29 +7500,29 @@
   "text": "The queue is shorter, but the news is about one thing: the Nano no longer costs what you promised. People who trusted that promise feel cheated, and many families who could only just afford the car walk away."
  },
  {
-  "id": "9efd1d75487b",
+  "id": "54e792c5f19c",
   "voice": "narrator",
-  "text": "Charging more can shorten a queue, but not by breaking a public promise. Remember: raise prices slowly, give warning and keep your word to the people who trusted it. What would have worked: Keep the promised price for the first buyers, take only the orders you can fill, and charge more in later rounds."
+  "text": "Remember: raise prices for real costs, never to grab a rush moment. You broke a price you had promised in public, before anyone had even waited. Your costs had not changed; only the crowd had grown. What would have worked: Keep the promised price for this round and take only what you can build. Charge more in later rounds."
  },
  {
-  "id": "3014cbe5c8d7",
+  "id": "226ec26680d4",
   "voice": "narrator",
-  "text": "In June 2010 the Gujarat plant opens, built to make 2.5 lakh cars a year, and your second round of bookings starts to fill. But another problem has been growing: the cost of materials like steel and rubber has shot up."
+  "text": "In June 2010 the Gujarat plant opens, built to make 2.5 lakh cars a year, and your second round of bookings starts to fill. But another problem has been growing: the cost of materials like steel and rubber has gone up fast."
  },
  {
-  "id": "73ed363e0de4",
+  "id": "1a9b519a8796",
   "voice": "narrator",
-  "text": "In June 2010 the Gujarat plant opens, built to make 2.5 lakh cars a year. The anger over your price rise has faded a little. But another problem has been growing: the cost of materials like steel and rubber has shot up."
+  "text": "In June 2010 the Gujarat plant opens, built to make 2.5 lakh cars a year. The anger over your price rise has faded a little. But another problem has been growing: the cost of materials like steel and rubber has gone up fast."
  },
  {
-  "id": "37da8146037a",
+  "id": "9cd37339c293",
   "voice": "narrator",
-  "text": "In June 2010 the Gujarat plant opens, built to make 2.5 lakh cars a year, so at last you can start clearing the queue. But another problem has been growing: the cost of materials like steel and rubber has shot up."
+  "text": "In June 2010 the Gujarat plant opens, built to make 2.5 lakh cars a year, so at last you can start clearing the queue. But another problem has been growing: the cost of materials like steel and rubber has gone up fast."
  },
  {
-  "id": "4eab55831434",
+  "id": "17ecf1079642",
   "voice": "narrator",
-  "text": "Every Nano now costs more to build. Your chairman promised India a ₹1 lakh car and wants to keep that promise. The first 1 lakh buyers were told they would pay the old price, and many are still waiting for their cars."
+  "text": "Every Nano now costs more to build. Your chairman promised India a ₹1 lakh car, and the whole country remembers it. The first 1,00,000 buyers were told they would pay the old price, and many are still waiting for their cars."
  },
  {
   "id": "74468b4e7b55",
@@ -7525,9 +7530,9 @@
   "text": "Every Nano now costs more to build. You have already raised the price once, and buyers have not forgotten. Your chairman still wants the Nano to stay a car that families can afford."
  },
  {
-  "id": "5fdcf60574f5",
+  "id": "5308129471af",
   "voice": "narrator",
-  "text": "Every Nano now costs more to build. Your chairman promised India a ₹1 lakh car and wants to keep that promise. Your first buyers already have their cars at the price you promised."
+  "text": "Every Nano now costs more to build. Your chairman promised India a ₹1 lakh car, and the whole country remembers it. Your first buyers already have their cars at the price you promised."
  },
  {
   "id": "083199466cc0",
@@ -7535,54 +7540,54 @@
   "text": "What do you do about the price?"
  },
  {
-  "id": "34573a4441cf",
+  "id": "e5430a44b360",
   "voice": "advisor",
-  "text": "The ₹1 lakh price is the one thing everyone knows about us. If we touch it, we lose that."
+  "text": "Steel costs more for every carmaker in India. But buyers remember every word we said about ₹1 lakh."
  },
  {
-  "id": "81e812393359",
+  "id": "a8d43f7f95f3",
   "voice": "narrator",
-  "text": "Buyers cheer, but now every Nano you build loses money. To save cash, you squeeze your suppliers and put off upgrades. The board starts asking how long you can afford to keep selling your best-known car this way."
+  "text": "Buyers cheer, but even with cheaper parts, every Nano you build still loses money. You ask suppliers for lower prices and delay new features. The board starts asking how long you can keep selling your best-known car this way."
  },
  {
-  "id": "96a8fe16568d",
+  "id": "e9109a122420",
   "voice": "narrator",
-  "text": "Keeping your word to your first buyers was right. Keeping that price for everyone, for ever, while costs rose was not. Remember: raise prices slowly and give warning. What would have worked: Keep the old price for the buyers you promised it to, and raise it for new buyers in small, clear steps."
+  "text": "Remember: raise prices to cover real costs, in small steps you tell buyers about first. Keeping your word to early buyers was right. Holding the price for everyone, while costs kept rising, was not. What would have worked: Keep the old price for the buyers you promised it to. Raise it for new buyers in small steps, and tell them first."
  },
  {
-  "id": "ab121fceffd4",
+  "id": "8c1539be257f",
   "voice": "narrator",
-  "text": "In July 2010 the price goes up 3 to 4% for new buyers because costs have risen sharply, while the first 1 lakh buyers keep the old price, as promised. In November, new bookings go up again, by about ₹9,000. The one-lakh car is gone."
+  "text": "In July 2010 the price goes up 3 to 4% for new buyers, because costs have risen sharply. The first 1,00,000 buyers keep the old price, as promised. On 1 November it rises again for new bookings, by about ₹9,000. The one-lakh car is gone."
  },
  {
-  "id": "9e0cadfb59a6",
+  "id": "8166d14c7d20",
   "voice": "narrator",
-  "text": "You raise the price a little for new bookings, then a little more a few months later, while your first buyers keep what they paid. Some people grumble, but most understand that steel costs more for everyone."
+  "text": "You raise the price a little for new bookings, then a little more a few months later, while your first buyers keep what they paid. Some people complain, but most understand that steel costs more for everyone."
  },
  {
-  "id": "5c340f964fec",
+  "id": "c90f8549b618",
   "voice": "narrator",
-  "text": "You kept your word to the people you promised, while passing rising costs on in small steps. Remember: raise prices slowly and give warning."
+  "text": "Remember: raise prices to cover real costs, in small steps you tell buyers about first. You kept your word to early buyers and passed on real costs bit by bit, with a reason each time."
  },
  {
-  "id": "39fb9e04a649",
+  "id": "e72f218fe9eb",
   "voice": "narrator",
-  "text": "New buyers wake up to a much higher price. Your costs are covered, but the papers call it the end of the one-lakh car. Many families who were saving for a Nano give up."
+  "text": "New bookings now cost much more. Your costs are covered, but the papers call it the end of the one-lakh car. Many families who were saving for a Nano give up."
  },
  {
-  "id": "86ff021a9919",
+  "id": "9d139a4a64a4",
   "voice": "narrator",
-  "text": "Raising the price made sense because costs had gone up. But one big jump shocks buyers, while small steps are easier to accept. Remember: raise prices slowly and give warning. What would have worked: Keep the old price for the buyers you promised it to, then raise it for new buyers in small, announced steps."
+  "text": "Remember: raise prices to cover real costs, in small steps you tell buyers about first. Raising the price was fair, because costs had gone up, and you explained why. But one big jump shocked buyers. What would have worked: Keep the old price for the buyers you promised it to. Then raise it for new buyers in small steps, and tell them first."
  },
  {
-  "id": "ae0e92595feb",
+  "id": "c281c9bb48b6",
   "voice": "narrator",
-  "text": "December 2010. Only 509 Nanos were sold in November, the lowest since launch and the fourth fall in a row. You had planned on 25,000 a month. A few Nanos have caught fire, and buyers find it hard to get loans. Families who want to look well-off choose costlier cars over 'the cheapest car'."
+  "text": "December 2010. Only 509 Nanos were sold in November, the lowest since launch and the fourth fall in a row. That is far below the 2.5 lakh a year you planned. A few Nanos have caught fire, and buyers find it hard to get loans. Families who want to look rich choose more costly cars over 'the cheapest car'."
  },
  {
-  "id": "111b51e59d2d",
+  "id": "5cae11f3ba77",
   "voice": "narrator",
-  "text": "December 2010. Sales have fallen month after month, down to a few hundred cars. A few Nanos have caught fire, and buyers find it hard to get loans. Families who want to look well-off choose costlier cars over 'the cheapest car'."
+  "text": "December 2010. Sales have fallen month after month, down to a few hundred cars. A few Nanos have caught fire, and buyers find it hard to get loans. Families who want to look rich choose more costly cars over 'the cheapest car'."
  },
  {
   "id": "4f7f2c4f9970",
@@ -7600,19 +7605,19 @@
   "text": "How do you win buyers back?"
  },
  {
-  "id": "1a21c1a10d6a",
+  "id": "ffd762c838cb",
   "voice": "advisor",
-  "text": "Cars are piling up at the dealers. A big price cut would clear them in weeks."
+  "text": "Unsold cars are filling the dealers' yards, and every month costs us. Whatever we do, it has to work fast."
  },
  {
-  "id": "14a1d1b75a61",
+  "id": "39c2fe7ef347",
   "voice": "narrator",
-  "text": "The showrooms are busy for a few weeks. Then the fires return to the news, and the price cut confirms what buyers feared: even Tata thinks the Nano is worth less. Sales sink again, and you have less money than before."
+  "text": "The showrooms are busy for a few weeks. Then the fires return to the news, and the price cut makes buyers sure of their fear: even Tata thinks the Nano is worth less. Sales sink again, and you have less money than before."
  },
  {
-  "id": "ab9bf260c301",
+  "id": "2e1dd7543e91",
   "voice": "narrator",
-  "text": "Buyers were worried about safety and about how the car made them look, not about the price. A discount fixed neither, and it made the car look even cheaper. Remember: discounts can hide a product problem, but they don't fix it. What would have worked: Fix the real worry first with a long free warranty and safety upgrades, then add better features."
+  "text": "Remember: a discount doesn't fix a weak product, and it makes a good one look cheap. Buyers were worried about safety and about how the car made them look. A price cut fixed neither, and made the car look even cheaper. What would have worked: Fix the real worry first, with a long free warranty and safety upgrades, then keep improving the car."
  },
  {
   "id": "a77f4dd23181",
@@ -7620,9 +7625,9 @@
   "text": "The plant stays busy, and the losses stop. But families who trusted the Nano feel let down, while rival carmakers win the small-car buyers you leave behind."
  },
  {
-  "id": "b9e3f4c11e61",
+  "id": "1b570f02fb2b",
   "voice": "narrator",
-  "text": "It stopped the losses, but you gave up before fixing the problem. Buyers were worried about safety and image, and both could still be fixed. Remember: when sales fall, find and fix the real problem first. What would have worked: Find out why buyers stayed away and fix it: a long warranty, safety upgrades, then better features."
+  "text": "Remember: a discount doesn't fix a weak product, and neither does giving up on it. You stopped the losses, but before fixing the real worries: safety and image. What would have worked: Find out why buyers stayed away and fix it: a long warranty and safety upgrades, then keep improving the car."
  },
  {
   "id": "b1303ce7229f",
@@ -7635,9 +7640,9 @@
   "text": "You give every Nano, old and new, a free four-year warranty and free safety upgrades. It costs you a lot, but worried buyers start coming back, and owners tell their friends the car is safe."
  },
  {
-  "id": "70891f6570f7",
+  "id": "744e7525f063",
   "voice": "narrator",
-  "text": "Buyers were worried about safety, so you fixed that first at your own cost instead of cutting the price. Remember: discounts can hide a product problem, but they do not fix it."
+  "text": "Remember: a discount doesn't fix a weak product, and it makes a good one look cheap. Buyers were worried about safety, so you fixed that first, at your own cost, and kept the price."
  },
  {
   "id": "3dbae18d757a",

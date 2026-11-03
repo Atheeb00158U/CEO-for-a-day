@@ -1,7 +1,7 @@
 # Tata Nano: research brief
-Hot Seat id: tata-nano · Years covered: 2008–2011 (epilogue to 2018) · Researched: 2026-10-30
+Hot Seat id: tata-nano · Years covered: 2008–2011 (epilogue to 2018) · Researched: 2026-10-30, sources re-opened 2026-11-03
 
-Curriculum entry (`docs/CURRICULUM.md`, gate for Modules 3.1–3.2): tests 3.1.3, 3.2.1, 3.2.2, 3.2.3, 3.2.4 and 2.2.5. Complexity 3 · Indian · big company.
+Curriculum entry (`docs/CURRICULUM.md`, the "Gate (closes 3.1 and 3.2)" block under Module 3.2): d1 → 2.2.4 (+3.1.2), d2 → 3.2.3, d3 → 3.2.2, d4 → 3.2.1. Quiz only: 3.1.1, 3.1.3, 3.1.4. Complexity 3 · Indian · big company. (The decision notes below were written against older lesson codes; the "Tests" lines are updated to the current ones.)
 
 ## Sources
 1. [Tata Nano (Wikipedia)](https://en.wikipedia.org/wiki/Tata_Nano): Singur announced 2006; price of ₹1 lakh announced 10 Jan 2008; pull-out from Singur 3 Oct 2008, production moved to Sanand; launched in Mumbai 23 Mar 2009; first deliveries July 2009; target 250,000 a year; yearly sales FY2009–10 to FY2017–18 (peak 74,527 in FY2011–12); after fires, warranty raised from 18 months to four years in early Dec 2010 and no recall; CNG version Oct 2013; GenX Nano May 2015; production halted May 2018.
@@ -20,6 +20,25 @@ Curriculum entry (`docs/CURRICULUM.md`, gate for Modules 3.1–3.2): tests 3.1.3
 14. [World's cheapest car debuts in India (History.com)](https://www.history.com/this-day-in-history/worlds-cheapest-car-debuts-in-india): unveiled at the New Delhi Auto Expo (10 Jan 2008) and billed as the world's cheapest car; Tata called it the "People's Car"; sales planned for Oct 2008 were delayed by the land dispute; base model had no AC, radio, airbags or power steering; first owners picked by lottery.
 15. [India's Ratan Tata sees brighter future for upmarket Nano (The Peninsula/Reuters, 30 Nov 2013)](https://thepeninsulaqatar.com/article/30/11/2013/india-s-ratan-tata-sees-brighter-future-for-upmarket-nano): Ratan Tata called the "cheapest car" label a mistake; status-conscious buyers chose costlier rivals; relaunch planned with a different image; target 25,000 a month, but 12,322 sold April–October 2013; base price now ₹145,000; should have been aimed at families on two-wheelers.
 16. [Tata Nano: why Ratan Tata's dream was a half success (Outlook Business)](https://www.outlookbusiness.com/amp/story/corporate/tata-nano-why-ratan-tatas-dream-of-affordable-car-for-masses-was-a-half-success): Singur allotment 2006 (nearly 1,000 acres); move to Sanand Oct 2008; aimed at families of four or five; sales staff sold it as "cheapest" not "most affordable", and people then avoided being seen in it; Supreme Court 2016; production stopped 2018; Ratan Tata died 9 Oct 2024.
+
+## Quotes (sources re-opened 2026-11-03)
+Short lines from each page, for the facts the story uses. Numbers in brackets are the source list above.
+- [1] Wikipedia: "with a launch price of ₹100,000 (US$2,500) on 10 January 2008"; "projected production figures of 250,000 annually"; "The maximum sales ever achieved was 74,527 units during FY 2011-2012"; warranty extended "from 18 months to four years in early December 2010"; "refused to recall the cars"; "Production was eventually halted in May 2018"; "The Nano CNG emax was launched in October 2013"; May 2015 enhancements incl. "a 5-speed automated manual transmission".
+- [3] Autocar Professional: "over 203,000 bookings"; "bookings began from April 9 for a period of two weeks", closing "April 25"; "netted Tata nearly Rs 2,500 crore"; Pantnagar "production capacity of 50,000 cars per year"; deliveries "expected to begin from July".
+- [4] CarTrade: "the names of the 100,000 lucky Nano buyers"; "Total 206,703 applications". (The two-thirds who kept bookings: paraphrase only, not used in player text.)
+- [9] IndustryWeek, July 2010: rise "for new customers by three to four percent due to a 'very sharp increase in input costs'"; "keep the price unchanged for the first 100,000 Nano customers as promised when the car was first displayed in 2008"; "so far delivered a less-than-expected 45,000 Nanos".
+- [7] Business Today, 30 Oct 2010: "average increase is about Rs 9,000 (ex- showroom)"; "applicable only for the new bookings with effect from November 1"; "especially that of steel and rubber"; "the second time that Tata Motors has increased its price"; "Rs 1 lakh, which was the sticker price ex- factory"; "a spate of cancellations from the original bookings and a series of high- profile fire incidents".
+- [8] IndustryWeek, Dec 2010: "free four-year or 60,000-kilometer (37,000-mile) warranty"; "lowest since the car was launched in July 2009"; "the fourth straight month of decline"; "around half a dozen of the cars caught fire"; "lack of financing".
+- [13] Autocar Professional, 2 Jun 2010: "Its initial capacity will be 250,000 units per annum."
+- [15] The Peninsula/Reuters, 2013: "It became termed as a cheapest car by the public and, I am sorry to say, by ourselves."; "around 25,000 Nanos a month".
+- [6] The Truth About Cars, 2015: "The first relaunch stressed the value of the Nano by emphasizing low monthly payments"; "only reinforced the image of the Nano as a cheap car"; Sanand "operating at just 15 percent capacity"; buyers "aspire to be seen in something other than the cheapest car in the world".
+- [10] Singur controversy (Wikipedia): "announced on 3 October 2008 that they are pulling out of Singur"; "On 7 October 2008 … Sanand, Gujarat".
+- Cornell Chronicle, 2011 (in `sources` of hotseat.json): "four or five on a scooter"; "often on slippery roads in the dark".
+- [16] Outlook Business: "The salespeople in Tata Motors branded the car as the cheapest car rather than the most affordable car".
+- [5] IndustryWeek, Jan 2012: "a low of just 509 units in November 2010"; "the 25,000 a month the company once expected".
+- N (warning before the 2010 rises): [Autocar Professional, 19 Jul 2010](https://www.autocarpro.in/news-national/tata-motors-hikes-nano-price-2921) gives no start date; [CarTrade, 17 Jun 2010](https://www.cartrade.com/news/tata-nano-to-get-expensive-from-august-112602.html) expected a rise "from August 2010", unconfirmed by Tata. No source shows more than a few days' formal notice.
+- Cancellations (added 2026-11-03, opened by the fact-check): [Tata Nano faces more cancellations (CarTrade, 5 Dec 2009)](https://www.cartrade.com/news/tata-nano-faces-more-cancellations-111832.html): dealers report 10–15% of the April 2009 bookings cancelled. Backs "some buyers cancel" in d2's real outcome.
+- O (the first refresh): [MotorBeam, 21 Nov 2011](https://motorbeam.com/?p=38187), the "Nano 2012": same "Rs. 1.40 lakhs for the Nano Standard", more power, "25.4 kmpl", "4-years / 60,000 kms warranty". Not used in player text.
 
 ## Timeline
 - Late 1990s: Ratan Tata sees a family of four on a scooter in the rain and wants a safe, all-weather car for families like them [2][15].
@@ -54,7 +73,7 @@ Curriculum entry (`docs/CURRICULUM.md`, gate for Modules 3.1–3.2): tests 3.1.3
 - Options: (a) lead with the price: "the one-lakh car", the cheapest in the world; (b) lead with the family: a safe, dry car for scooter families, and say less about price; (c) lead with value: a real car, cheap to run, with the price as proof.
 - What they did: Tata called it the "People's Car" [14], but the ₹1 lakh price was the headline, and the press and Tata's own people called it the cheapest car [6][14][15][16]. Ratan Tata later said the company had joined in using that label [6][15].
 - What happened next: People who wanted status, not just savings, avoided it and bought costlier rivals [6][15][16]. In 2013 Ratan Tata called the label a mistake [6][15].
-- Tests: **2.2.5** (feelings count as much as features) and **3.1.3** (value, not just the lowest price). Both fully supported.
+- Tests: **2.2.4** (people pay for a result and a feeling) and **3.1.2** (judge a price by its cost per year of use: the "value" option, graded ok). Both fully supported.
 - Note: sources disagree on how hard Tata itself pushed "cheapest". In Jan 2012 Ratan Tata said it was never sold as a cheap car for the poor [5]; in Nov 2013 he said the company had used the label too [15]. Option (a) should be described as "the price became the message", not as an official slogan.
 
 ### D2 · Apr–Jun 2009 · Far more bookings than cars
@@ -62,14 +81,15 @@ Curriculum entry (`docs/CURRICULUM.md`, gate for Modules 3.1–3.2): tests 3.1.3
 - Options: (a) a random draw for the first 100,000 at the promised price, and a long wait for the rest; (b) raise the price for everyone until demand matches supply; (c) first come, first served, or put loyal Tata customers and dealer lists first.
 - What they did: (a). A random draw on 23 June 2009 picked 100,000 of 206,703 [4]. The rest could keep their booking [4], at a higher price later [9].
 - What happened next: Deliveries began in July 2009 [1]. By July 2010 only about 45,000 cars had been delivered [9]. Many bookings were cancelled, which cut interest [7].
-- Tests: **3.2.4** (a long queue means the price is too low or supply too small). Supported: demand far exceeded what one small plant could make [3][4].
+- Tests: **3.2.3** (a long queue means the price is too low, or you make too little). Supported: demand far exceeded what one small plant could make [3][4].
+- Grades (2026-11-03): take only what you can build in a year, then a new round at a higher price = great; raise the price before bookings open = ok (it shortens the queue, as 3.2.3 says, but breaks the public 2008 promise [9], the kind of grab 3.2.2 warns about); take every booking and run a draw (real) = bad (the 3.2.3 lesson grades "take every order" as the mistake; only about 45,000 delivered a year on [9]; cancellations [7]).
 
 ### D3 · Jul–Oct 2010 · Costs rise
 - Situation: Steel and rubber cost much more than two years ago [7][9]. Ratan Tata had promised ₹1 lakh and wanted to keep it [2][9]. The first 100,000 buyers were promised the old price [9].
 - Options: (a) hold the famous price for everyone and take the loss; (b) keep the promise to the first 100,000, then raise prices for new buyers in small, announced steps; (c) one big jump now to fix margins in one go.
 - What they did: (b). July 2010: 3–4% for new buyers only, with the first 100,000 protected [9]. Nov 2010: about ₹9,000 more, on new bookings only [7]. By 2013 the base car cost ₹145,000 [15].
 - What happened next: The "one-lakh car" tag was gone [7]. Sales were already falling for other reasons (fires, loans, the plant move) [7][8].
-- Tests: **3.2.3** (raise prices slowly, and give warning). Supported for "slowly" and "protect the promise". "Give warning" is thin: our sources report each rise at the time it was announced; we did not find notice periods. Flag in Open questions.
+- Tests: **3.2.2** (raise prices to cover real costs, in small steps you tell buyers about first). Supported for "small steps", "real costs" and "protect the promise". Warning was short: the November rise was reported on 30 Oct for new bookings from 1 Nov [7]. A June 2010 report said prices would rise from August, not confirmed by Tata (see Quotes, N). So the great option says "say why", not "warn", and its `why` says more warning would have been better.
 - Order note: the curriculum lists this as d4 and the sales slump as d3. In real time the price rises (Jul and Nov 2010) came just before the slump (Nov 2010). Either keep real order (this as d3) or write d3/d4 in a way that does not claim a sequence.
 
 ### D4 · Nov–Dec 2010 · Sales below target
@@ -77,7 +97,7 @@ Curriculum entry (`docs/CURRICULUM.md`, gate for Modules 3.1–3.2): tests 3.1.3
 - Options: (a) deep discounts and cheap loan offers to move the cars; (b) fix trust first: long warranty, safety upgrades, easier loans; later add features and reposition it upmarket; (c) stop the Nano and use Sanand for other models.
 - What they did: (b) first. A free four-year warranty and safety upgrades, no recall [1][8]. Later, from 2013 to 2015, power steering, a CNG version, the Twist and the GenX, sold as a small city car, not "the cheapest" [1][6][15].
 - What happened next: Sales rose for a while; FY2011–12 was the best year (74,527) [1], still far below the 250,000 plan [1]. The first relaunch pushed low monthly payments, which made it look even cheaper [6]. GenX did not save it; Sanand ran at about 15% [6]; production stopped in 2018 [1].
-- Tests: **3.2.1** (discounts can hide a product problem) and **3.2.2** (a price cut can make it look cheap). Supported indirectly: Tata did not cut the list price, but its low-EMI relaunch reinforced the cheap image [6]. That is the clearest real evidence for 3.2.2. We found no source that Tata ran deep discounts.
+- Tests: **3.2.1** (a discount doesn't fix a weak product, and it makes a good one look cheap). Supported indirectly: Tata did not cut the list price, but its low-EMI relaunch reinforced the cheap image [6]. That is the clearest real evidence for 3.2.2. We found no source that Tata ran deep discounts.
 
 ### Optional D5 · Oct 2008 · The plant is under siege (bridge scene only)
 - Situation: Protests at Singur stop work on a nearly built plant [10][16].

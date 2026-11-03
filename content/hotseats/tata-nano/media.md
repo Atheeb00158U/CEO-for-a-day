@@ -1,0 +1,37 @@
+# Media: tata-nano
+
+**Status: planned, not made yet (2026-11-03).** No image exists in `media/` yet; the draft only warns about it.
+
+**Archives searched** (see `research.md`, Archive footage): movingimagearchive.com has nothing Indian or from 2008–2011 (closest, "Robot Reality" (1990), car-factory robots, is not period-correct). No film is referred to, so FILMGRAB doesn't apply. Frame Set and Fashion Gone Rogue have nothing that fits. News footage of the 2008 unveiling and of Singur exists but is copyrighted. So every image is planned as **generated** (ChatGPT in the browser, on Atheeb's sign-in), using the prompts in `image_list.md`.
+
+Rules for every image: India, 2008–2010, period-correct. No logos, badges or readable brand names. **No real person's likeness**: no chairman, no politician, no recognisable face at the unveiling. The car is a tiny, tall, rounded four-seat hatchback with no badge. Singur and Sanand are not shown at all (the land case is still in court), so no protest or political image.
+
+| Media | Source | What it shows |
+|---|---|---|
+| tn_cover | not found in archives → generated (planned) | A tiny rounded hatchback on a wet Indian city street at dusk, a scooter beside it. |
+| tn_intro | not found → generated (planned) | A family of four on one scooter on a dark, wet Indian road; faces not identifiable. |
+| tn_goal | not found → generated (planned) | A tiny four-seat hatchback under a dust sheet in a factory studio, 2008. |
+| tn_d1 | not found → generated (planned) | A big auto show hall, January 2008: a stage with a covered small car, TV cameras and a crowd seen from behind. |
+| tn_d1_value | not found → generated (planned) | A print-style ad layout (no readable words): a small car, a fuel pump and four seated passengers. |
+| tn_d1_cheap | not found → generated (planned) | Newspaper front pages fanned on a table, a huge price figure in the headlines (text blurred), a small car photo. |
+| tn_d1_family | not found → generated (planned) | A projected scene of a family stepping off a wet scooter into a small car; the audience seen from behind. |
+| tn_launch | not found → generated (planned) | A launch event in Mumbai, March 2009: a small car on stage under lights, photographers from behind. |
+| tn_d2 | not found → generated (planned) | A long queue of people outside a car dealer holding booking forms, Indian town, 2009. |
+| tn_d2_cap | not found → generated (planned) | A dealer's door with a closed sign (text unreadable); some people turn away, others smile with car keys. |
+| tn_d2_draw | not found → generated (planned) | A lucky-draw drum full of slips on a table, officials watching, 2009. |
+| tn_d2_raise | not found → generated (planned) | A man frowning over a newspaper at a tea stall, the price headline blurred. |
+| tn_2010 | not found → generated (planned) | A large new car plant, rows of tiny hatchbacks, 2010. |
+| tn_d3 | not found → generated (planned) | Steel coils and stacks of rubber tyres in a warehouse, a manager holding a cost sheet. |
+| tn_d3_hold | not found → generated (planned) | An accountant at a desk with red figures in a ledger, looking worried. |
+| tn_d3_steps | not found → generated (planned) | A dealer's price board being changed by a small amount (digits unreadable). |
+| tn_d3_jump | not found → generated (planned) | A young couple in a car showroom, shocked at a price tag (unreadable). |
+| tn_d4 | not found → generated (planned) | Rows of unsold tiny hatchbacks gathering dust in a dealer's yard, December 2010. |
+| tn_d4_discount | not found → generated (planned) | A showroom with big sale banners (no readable text) and a few customers. |
+| tn_d4_stop | not found → generated (planned) | An empty assembly line, workers walking away, lights dimming. |
+| tn_d4_fix | not found → generated (planned) | A mechanic handing keys and a warranty booklet to a smiling family at a service centre. |
+| tn_legend | not found → generated (planned) | A family proudly parked outside their home in a small car, festival lights, evening. |
+| tn_survivor | not found → generated (planned) | A single small car in a quiet town street, a few owners chatting. |
+| tn_collapse | not found → generated (planned) | An almost empty factory floor with a few tiny cars under covers. |
+| tn_fired | not found → generated (planned) | An empty chair at the head of a long boardroom table, a city skyline outside. |
+
+**Flag to Atheeb:** the car's shape alone will look like the Nano. That's intended (it's a real story) and carries no logo, but say if you'd rather keep it more generic.

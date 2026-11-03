@@ -62,7 +62,7 @@
           "title": "Change a price",
           "goal": "Change prices without losing trust or profit.",
           "lessons": ["u3-discount-signal", "u3-fair-rise", "u3-queue-signal"],
-          "gates": []
+          "gates": ["tata-nano"]
         }
       ]
     }
