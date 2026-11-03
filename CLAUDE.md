@@ -17,7 +17,17 @@ UI components: use shadcn/ui, restyled to this look. Add gluestack-ui only if we
 - **Choice feedback:** every choice shows what happened (as story), why it was good or bad, and, for ok/bad choices, what would have worked. Alternate-history outcomes are labelled as estimates.
 - **Board trust (3 hearts):** losing them all before the last decision ends the run (the "fired" ending). Players can fix mistakes until it's too late.
 - **Media sources:** no more AI-generated images. Find every image in four archives: movingimagearchive.com (public domain, the main source), film-grab.com (copyrighted film stills: small credited inserts only, flagged to Atheeb), frameset.app (reference only unless licensed) and fashiongonerogue.com (reference only unless a credited insert). Rules and the per-Hot Seat `media.md` are in `docs/AUTHORING.md` step 5. Where no archive fits (most Indian stories), images are generated with ChatGPT in the browser on Atheeb's sign-in: period-correct, no logos, no real person's likeness. Images already in the app were made with Z-Image Turbo and stay until replaced. Narration uses OmniVoice (the engine in Atheeb's VoiceStudio app): the narrator is Atheeb's cloned voice and the advisor a designed voice (female, middle-aged, Indian accent), both cloned from `scripts/voices/`.
-- **Pricing plan (not built):** ₹599/week, ₹1,499/month, or ₹999/month billed yearly.
+- **Pricing (3 Nov 2026):**
+  - **Founding offer:** members in seats 1–500 pay ₹99/month, locked while subscribed. The seat count is
+    real (`founding_seats`, `src/lib/offer.ts`), and the offer closes at 500.
+  - **After that:** ₹199/month or ₹1,499/year.
+  - **Not allowed (CCPA dark-patterns guidelines, 2023):** struck-through "was" prices, fake viewer counts,
+    AutoPay free trials.
+  - **Payments (Razorpay Subscriptions):** not built yet; they're the next plan.
+  - **Spec:** `docs/superpowers/specs/2026-11-03-wolf-ambassador-design.md`.
+- **The wolf (3 Nov 2026):** an original wolf in a pinstripe three-piece suit is the face of the brand, and
+  will become the mentor and the Hot Seat advisor. Masters are in `content/brand/wolf/`; `npm run brand`
+  builds the served sizes. His voice will be designed in VoiceStudio, never cloned from a recording.
 
 ## Routes
 - `/` is the website, `/app` the game, `/admin` the Hot Seat list and path trees.
