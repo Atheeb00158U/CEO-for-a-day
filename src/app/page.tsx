@@ -36,7 +36,7 @@ const MOTION = `@media (prefers-reduced-motion: no-preference) {
 const STEPS = [
   { title: "Learn", text: "A 5-minute lesson, one rule, one true story." },
   { title: "Practise", text: "Flashcards repeat before you forget." },
-  { title: "Take the hot seat", text: "Make a real company's big decision. You choose. Then see what really happened." },
+  { title: "Take the Hot Seat", text: "Make a real company's big decision. You choose. Then see what really happened." },
 ];
 
 const POSES: WolfName[] = [
@@ -209,7 +209,7 @@ export default async function Home() {
               </h2>
               <p className="mt-3 text-[17px] leading-snug md:text-[18px]">
                 The first {FOUNDING.seats} members pay ₹{FOUNDING.monthly} a month for as long as they stay members. After that, the price
-                is ₹{REGULAR.monthly} a month.
+                is ₹{REGULAR.monthly} a month, or ₹{REGULAR.yearly.toLocaleString("en-IN")} a year.
               </p>
               <div className="mt-6">
                 <SeatCounter initial={taken} />

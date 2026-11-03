@@ -432,7 +432,10 @@ export function supabaseDb(sb = supabaseAdmin()): Db {
       if (error) throw new Error(error.message);
     },
     async countFoundingSeats() {
-      const { count, error } = await sb.from("founding_seats").select("seat_no", { count: "exact", head: true });
+      const { count, error } = await sb
+        .from("founding_seats")
+        .select("seat_no", { count: "exact", head: true })
+        .abortSignal(AbortSignal.timeout(3000));
       if (error) throw new Error(error.message);
       return count ?? 0;
     },

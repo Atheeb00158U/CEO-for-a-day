@@ -13,7 +13,7 @@ const post = async (picks: Pick[]): Promise<PlayView> => {
   const r = await fetch("/api/play", {
     method: "POST",
     headers: { "content-type": "application/json" },
-    body: JSON.stringify({ hotSeatId: HOT_SEAT, picks, site: true }),
+    body: JSON.stringify({ hotSeatId: HOT_SEAT, picks }),
   });
   if (!r.ok) throw new Error(String(r.status));
   return r.json();

@@ -8,7 +8,11 @@ let db: Db | undefined;
 
 export async function GET(request: Request) {
   if (limited(`seats:${ipOf(request)}`, 60)) return NextResponse.json({ error: "Too many requests" }, { status: 429 });
-  db ??= supabaseDb();
-  const status = await cachedSeatStatus(db);
-  return NextResponse.json(status, { headers: { "Cache-Control": "public, max-age=10" } });
+  try {
+    db ??= supabaseDb();
+    const status = await cachedSeatStatus(db);
+    return NextResponse.json(status, { headers: { "Cache-Control": "public, max-age=10" } });
+  } catch {
+    return NextResponse.json({ error: "Seat count unavailable" }, { status: 503, headers: { "Cache-Control": "no-store" } });
+  }
 }
