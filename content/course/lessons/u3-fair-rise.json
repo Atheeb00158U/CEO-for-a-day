@@ -3,7 +3,7 @@
   "title": "When is a price rise fair?",
   "principle": "Raise prices to cover real costs, in small steps you tell buyers about first. Never grab a rush moment, like a storm or Diwali morning.",
   "minutes": 5,
-  "draft": true,
+  "draft": false,
   "screens": [
     {
       "kind": "explain",

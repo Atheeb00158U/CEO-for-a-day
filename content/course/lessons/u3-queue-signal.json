@@ -3,7 +3,7 @@
   "title": "What does a queue tell you?",
   "principle": "A long queue means your price is too low, or you make too little.",
   "minutes": 5,
-  "draft": true,
+  "draft": false,
   "screens": [
     {
       "kind": "explain",

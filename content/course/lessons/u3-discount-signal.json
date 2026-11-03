@@ -3,7 +3,7 @@
   "title": "What does a sale say?",
   "principle": "A discount doesn't fix a weak product, and it makes a good one look cheap.",
   "minutes": 5,
-  "draft": true,
+  "draft": false,
   "screens": [
     {
       "kind": "explain",
