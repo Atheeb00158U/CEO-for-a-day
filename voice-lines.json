@@ -10995,9 +10995,9 @@
   "text": "300 families nearby. 3 in 10 buy 4 cakes a year: about 7 a week. You can bake 20 a week. What does this show?"
  },
  {
-  "id": "320e1967b19c",
+  "id": "4b6ff189d777",
   "voice": "narrator",
-  "text": "Right. 7 cakes a week at ₹350 each is about ₹2,450 a week, from a group you can serve well. You still have room for 13 more, so you can grow into the next group later."
+  "text": "Right. 7 cakes a week, each leaving ₹350, is about ₹2,450 a week, from a group you can serve well. You still have room for 13 more, so you can grow into the next group later."
  },
  {
   "id": "eeb5b184cbe5",
@@ -12233,6 +12233,646 @@
   "id": "258646187fcb",
   "voice": "narrator",
   "text": "If nobody uses any fix, ask why before you spend."
+ },
+ {
+  "id": "48f3c7944680",
+  "voice": "narrator",
+  "text": "Let me tell you about light bulbs. In 2014, a plain old bulb cost ₹10 to ₹15 in India. An LED bulb gave the same light, but it cost about ₹450 to ₹500. So almost nobody bought it. Fewer than 1 in 100 bulbs sold was an LED."
+ },
+ {
+  "id": "0605ba7988f5",
+  "voice": "narrator",
+  "text": "For 140 hours of light, an LED used 1 unit of electricity. The old bulb used 9 units. The LED also lasted many times longer. Over a year, the cheap bulb cost a family more because of the electricity bill. Most families saw only the price on the box."
+ },
+ {
+  "id": "8cd0bc60e18f",
+  "voice": "narrator",
+  "text": "In 2014, EESL, a company owned by the government, tried a new plan in Puducherry. A family paid just ₹10 for an LED bulb, the same as an old bulb. They paid the rest through their electricity bill, ₹10 a month."
+ },
+ {
+  "id": "d35bba3737ef",
+  "voice": "narrator",
+  "text": "Families paid ₹10 for the LED, then ₹10 a month on their electricity bill. Did their bills go up?"
+ },
+ {
+  "id": "ba3dd5c9df87",
+  "voice": "narrator",
+  "text": "The LED saved more on the bill each month than the ₹10 charge, so bills went down. About 2 lakh homes took 6 lakh LED bulbs. Then other states asked for the same plan."
+ },
+ {
+  "id": "4bf7c26d4216",
+  "voice": "narrator",
+  "text": "The bulb didn't change. What people saw about its price changed. Business people call this the total cost of ownership: what something really costs over its whole life, including power and repairs. Divide it by the years you use it, and compare. Cheap things often cost more."
+ },
+ {
+  "id": "78c4d606ee97",
+  "voice": "narrator",
+  "text": "EESL sold crores of bulbs, and the same idea matters in your home bakery, where you bake cakes for families nearby. It's March of your third year. Your oven has stopped working, and you must buy a new one this week. You have ₹20,000 saved."
+ },
+ {
+  "id": "6444442f6604",
+  "voice": "narrator",
+  "text": "A ₹6,000 oven lasts about 2 years. A ₹15,000 oven lasts about 6 years. Which one costs less per year?"
+ },
+ {
+  "id": "bb8bde2bfb5f",
+  "voice": "narrator",
+  "text": "Right. ₹6,000 ÷ 2 years = ₹3,000 a year. ₹15,000 ÷ 6 years = ₹2,500 a year. The costly oven is cheaper each year, and you still keep ₹5,000 for flour and gas."
+ },
+ {
+  "id": "003b29a9bb03",
+  "voice": "narrator",
+  "text": "I see why: ₹6,000 is the smaller number. But it lasts only 2 years, so it's ₹6,000 ÷ 2 = ₹3,000 a year. The ₹15,000 oven is ₹15,000 ÷ 6 = ₹2,500 a year."
+ },
+ {
+  "id": "f57b56496f08",
+  "voice": "narrator",
+  "text": "Calculate the cost per year. ₹6,000 ÷ 2 = ₹3,000 a year. ₹15,000 ÷ 6 = ₹2,500 a year. The costly one is ₹500 a year cheaper."
+ },
+ {
+  "id": "fcd7b39498a8",
+  "voice": "narrator",
+  "text": "Oven sellers tell you six things. For each, tell me: does it change the cost per year, or only make you want to buy today?"
+ },
+ {
+  "id": "b8113ef8736e",
+  "voice": "narrator",
+  "text": "It lasts about 6 years if you bake daily"
+ },
+ {
+  "id": "2e700e1297e4",
+  "voice": "narrator",
+  "text": "Buy now, only 3 left!"
+ },
+ {
+  "id": "7a80adba69fd",
+  "voice": "narrator",
+  "text": "It uses less electricity for each cake"
+ },
+ {
+  "id": "9ac8e952832b",
+  "voice": "narrator",
+  "text": "This offer ends at midnight"
+ },
+ {
+  "id": "fd99cbcbbfab",
+  "voice": "narrator",
+  "text": "Free repairs for the first 3 years"
+ },
+ {
+  "id": "7d429b4fc778",
+  "voice": "narrator",
+  "text": "Everyone in your area is buying this one"
+ },
+ {
+  "id": "6ccef142595a",
+  "voice": "narrator",
+  "text": "How long it lasts, its electricity and its repairs change what it costs you each year. \"Only 3 left\", \"ends at midnight\" and \"everyone is buying\" only make you decide fast."
+ },
+ {
+  "id": "f2e339373c19",
+  "voice": "narrator",
+  "text": "It's April. Cost per use matters when you sell, too. A mother says, \"The shop on the main road sells a cake for ₹450. Yours is ₹700.\" Her party has 10 guests. Your cake feeds 10. The shop's cake feeds 5."
+ },
+ {
+  "id": "580bda98f778",
+  "voice": "narrator",
+  "text": "What do you say to her?"
+ },
+ {
+  "id": "82e73a9cb217",
+  "voice": "narrator",
+  "text": "She orders the ₹450 cake. It feeds about 6, so 4 guests get no piece. She is unhappy, and you earned less too."
+ },
+ {
+  "id": "f81c266c1d55",
+  "voice": "narrator",
+  "text": "You matched the shop's price by shrinking the cake. But her party needed a cake for 10, and per guest yours was already cheaper. What would have worked: Show her the cost for her 10 guests: two of their cakes are ₹900, yours is ₹700."
+ },
+ {
+  "id": "f5d232920d7f",
+  "voice": "narrator",
+  "text": "She smiles and says she'll think about it. She orders from the shop this time, but she tries yours for Diwali."
+ },
+ {
+  "id": "60f1f192aca1",
+  "voice": "narrator",
+  "text": "Taste matters, but \"better\" is only your claim against the shop's. A number she can check would have helped more. What would have worked: Show her the cost for her 10 guests: two of their cakes are ₹900, yours is ₹700."
+ },
+ {
+  "id": "60fb7fcfc91d",
+  "voice": "narrator",
+  "text": "You tell her: \"For 10 guests, you'd need two of theirs: ₹900. Mine feeds all 10 for ₹700.\" She sees your cake is cheaper for her party, and orders it."
+ },
+ {
+  "id": "2143ece6762d",
+  "voice": "narrator",
+  "text": "Like the LED, you showed the real cost of what she gets, not just the price on the box. Per guest, yours is ₹70 and theirs is ₹90."
+ },
+ {
+  "id": "ca987a37a996",
+  "voice": "narrator",
+  "text": "Don't judge by the price on the blank. Judge by what it costs for each blank of use."
+ },
+ {
+  "id": "7b794f537650",
+  "voice": "narrator",
+  "text": "Exactly. The LED cost more on the box but less each year. The ₹15,000 oven works the same way."
+ },
+ {
+  "id": "da9b0b34de08",
+  "voice": "narrator",
+  "text": "Judge a price by what it costs for each year of use, not by the price on the box."
+ },
+ {
+  "id": "89c9948b7eb4",
+  "voice": "narrator",
+  "text": "Total cost of ownership: what something really costs over its whole life. Divide it by the years, or the times, you use it."
+ },
+ {
+  "id": "b3836f25587e",
+  "voice": "narrator",
+  "text": "Cheap things that break soon, or use more power, often cost more."
+ },
+ {
+  "id": "1d2030bee061",
+  "voice": "narrator",
+  "text": "When you sell, show buyers the cost per year or per use, not just the price."
+ },
+ {
+  "id": "8d43415d65f0",
+  "voice": "narrator",
+  "text": "Buy the cheaper-per-year one only if you still have enough cash to run the business."
+ },
+ {
+  "id": "f5ed888b4db2",
+  "voice": "narrator",
+  "text": "Let me tell you about Jessie Burke. In 2010, she ran a small new café called Posies, in Portland, USA. She wanted more people to know about it. Groupon, a deal website like the offer apps on your phone, offered to sell a deal for her café."
+ },
+ {
+  "id": "20969fa89d7c",
+  "voice": "narrator",
+  "text": "The deal: pay 6 dollars, get 13 dollars of food. Groupon kept half of the 6 dollars. So Jessie got 3 dollars for 13 dollars of food. She hoped new buyers would love the café and return. About 1,000 people used the deal."
+ },
+ {
+  "id": "313a685b65a8",
+  "voice": "narrator",
+  "text": "About 1,000 people used Jessie's deal. Her café was full. What do you think happened next?"
+ },
+ {
+  "id": "a0850fcb4eaf",
+  "voice": "narrator",
+  "text": "Many deal buyers wanted the discount, not the café. Few returned to pay full price. After three months, Posies had lost nearly 8,000 dollars, more than ₹3.5 lakh then. One month, Jessie paid rent and staff from her own savings."
+ },
+ {
+  "id": "8afa1995ea47",
+  "voice": "narrator",
+  "text": "Jessie later called the deal \"the single worst decision\" of her business life. But some deals like hers made money. In 2010, Professor Utpal Dholakia studied 150 businesses that ran them. In the deals that made money, more buyers returned."
+ },
+ {
+  "id": "a4064e587e5e",
+  "voice": "narrator",
+  "text": "Selling something at a loss, so buyers return and pay full price later, is called a loss leader. In Dholakia's study, deals that made money saw about 1 in 3 buyers return at full price. Deals that lost money saw about 1 in 8."
+ },
+ {
+  "id": "5e31c6070977",
+  "voice": "narrator",
+  "text": "Posies was far away, but the same sum matters for your bakery. It's June of your third year. A new colony has opened, and nobody there knows you. Your cake sells for ₹700 and costs you ₹350 to make. You plan to charge new families ₹250 for a first cake."
+ },
+ {
+  "id": "cfb4fb783f69",
+  "voice": "narrator",
+  "text": "Quick sum. 10 first cakes at ₹250 lose ₹100 each. A ₹700 return order leaves ₹350. At least how many families must return?"
+ },
+ {
+  "id": "53d8d11220d5",
+  "voice": "narrator",
+  "text": "Right. 10 × ₹100 = ₹1,000 lost. 3 return orders × ₹350 = ₹1,050. So 3 in 10 must come back, close to Dholakia's 1 in 3."
+ },
+ {
+  "id": "9d3f139607dd",
+  "voice": "narrator",
+  "text": "One return brings ₹350, but you lost 10 × ₹100 = ₹1,000. You need 3 returns: 3 × ₹350 = ₹1,050."
+ },
+ {
+  "id": "2e87b7878a8b",
+  "voice": "narrator",
+  "text": "6 would be great, but you need fewer. The loss is 10 × ₹100 = ₹1,000, and 3 × ₹350 = ₹1,050 covers it."
+ },
+ {
+  "id": "c3ef214d5160",
+  "voice": "narrator",
+  "text": "Six people might take your ₹250 first cake. For each, tell me: will they likely return at ₹700, or take the deal and leave?"
+ },
+ {
+  "id": "a87d5143cd68",
+  "voice": "narrator",
+  "text": "A family with two young children in the new colony"
+ },
+ {
+  "id": "f1a094dc296b",
+  "voice": "narrator",
+  "text": "Someone who follows five deal pages"
+ },
+ {
+  "id": "0f8e73679e9c",
+  "voice": "narrator",
+  "text": "A neighbour your regular buyer sent to you"
+ },
+ {
+  "id": "6da1185cf103",
+  "voice": "narrator",
+  "text": "A student moving out of the city next month"
+ },
+ {
+  "id": "fff2ae4522bf",
+  "voice": "narrator",
+  "text": "An office nearby that buys a cake for every birthday"
+ },
+ {
+  "id": "5bd2bdcf99c4",
+  "voice": "narrator",
+  "text": "Someone who asks, \"Is there a bigger discount?\""
+ },
+ {
+  "id": "bde4bd42b024",
+  "voice": "narrator",
+  "text": "Families with children, people your buyers send, and offices with many birthdays will need cakes again. People who only want discounts, or who are leaving soon, want one cheap buy. Aim your first cake at people likely to need cakes again."
+ },
+ {
+  "id": "a104ea48fdb3",
+  "voice": "narrator",
+  "text": "It's July. You posted the ₹250 first cake on a deal app that takes no cut. 20 people took it, so you lost ₹2,000. Only 2 came back at ₹700, each leaving ₹350. The deal app says, \"Run it again, for more people.\""
+ },
+ {
+  "id": "5f9b3023b1e9",
+  "voice": "narrator",
+  "text": "50 people take the ₹250 cake. About 5 return. You lose ₹5,000 on first cakes and earn back about ₹1,750."
+ },
+ {
+  "id": "43c868d3805f",
+  "voice": "narrator",
+  "text": "Your test said 1 in 10 return, not 1 in 3. Making a losing offer bigger only makes the loss bigger. What would have worked: Stop the deal app, and ask regular buyers to pass the offer to families with young children."
+ },
+ {
+  "id": "3529b3f039d7",
+  "voice": "narrator",
+  "text": "You stop the deal app. Your regular buyers share the ₹250 offer with 10 families with young children they know. 4 return for a birthday cake within three months: 4 × ₹350 = ₹1,400, more than the ₹1,000 you lost."
+ },
+ {
+  "id": "9a57894c74d0",
+  "voice": "narrator",
+  "text": "You used the numbers: 2 in 20 returned, far below the 3 in 10 you need. So you kept the offer but aimed it at people who need cakes again."
+ },
+ {
+  "id": "a8fb655ac446",
+  "voice": "narrator",
+  "text": "You stop losing money. But the new colony still doesn't know your cakes, and only a few families find you."
+ },
+ {
+  "id": "5bfb09bdf9ca",
+  "voice": "narrator",
+  "text": "Stopping a losing offer was right. But you stopped trying to reach new families, instead of aiming the offer better. What would have worked: Stop the deal app, and ask regular buyers to pass the offer to families with young children."
+ },
+ {
+  "id": "c2c641a2beaf",
+  "voice": "narrator",
+  "text": "A cheap first offer pays only if blank buyers come blank at full price."
+ },
+ {
+  "id": "158dc34e6eba",
+  "voice": "narrator",
+  "text": "Exactly. Few of Jessie's deal buyers returned. Your ₹250 cake needed at least 3 in 10 families to return at ₹700."
+ },
+ {
+  "id": "c7feb278f154",
+  "voice": "narrator",
+  "text": "A cheap first offer pays only if enough buyers return and pay full price."
+ },
+ {
+  "id": "62868c98366f",
+  "voice": "narrator",
+  "text": "Loss leader: a cheap first offer that loses money, to win buyers who return."
+ },
+ {
+  "id": "bcaaf8b2cd54",
+  "voice": "narrator",
+  "text": "It pays only if enough buyers return at full price. Calculate how many from your own numbers."
+ },
+ {
+  "id": "f879d4bead2e",
+  "voice": "narrator",
+  "text": "Test it with a few buyers, count who returns, and aim it at people who will need you again."
+ },
+ {
+  "id": "3ed436bd6f00",
+  "voice": "narrator",
+  "text": "Let me tell you about Chinni Krishnan. He lived in Cuddalore, in Tamil Nadu. In the 1970s, good shampoo was costly. Workers paid by the week bought only what lasted a day or a week. He said, \"Whatever I make, I want the coolies and the rickshaw pullers to use.\""
+ },
+ {
+  "id": "32376e8cfd6f",
+  "voice": "narrator",
+  "text": "So he packed shampoo in tiny packets, called sachets. Each held enough for one use. A worker couldn't pay for a big pack, but he could buy one sachet. Later, his youngest son, C.K. Ranganathan, started his own shampoo, Chik, and sold it in sachets too."
+ },
+ {
+  "id": "f7bc0b80ce6b",
+  "voice": "narrator",
+  "text": "In 1999, Chik had 6 of every 100 shampoo sales, and sold a 50-paise sachet. By 2003, how many of every 100 were Chik's?"
+ },
+ {
+  "id": "1070ce72215e",
+  "voice": "narrator",
+  "text": "About 23, about four times as many. Local radio ads and a strong scent helped too. But the 50-paise sachet let many people buy shampoo for the first time."
+ },
+ {
+  "id": "01d64f730b85",
+  "voice": "narrator",
+  "text": "Village shopkeepers did the same with soap. In the 1970s, one shopkeeper cut a bar of Lifebuoy soap into six pieces. The six pieces together cost a little more than the whole bar. People still bought them, because they could pay for one piece today."
+ },
+ {
+  "id": "8f6a9df3993f",
+  "voice": "narrator",
+  "text": "A famous business professor, C.K. Prahalad, wrote about small packs for poorer buyers. Many buyers ask, \"Can I pay for one use today?\", not \"How much is it per kilo?\" A small pack lets them say yes, even if each gram costs a little more."
+ },
+ {
+  "id": "053aa82c2ac7",
+  "voice": "narrator",
+  "text": "Shampoo is a giant market, but the same idea works in your home bakery, where you bake cakes for families nearby. It's April of your third year. Students in a girls' hostel near you love your chocolate cake. But it's ₹700, and most students have only ₹100 or ₹200."
+ },
+ {
+  "id": "e5587de33879",
+  "voice": "narrator",
+  "text": "Hostel students love your ₹700 chocolate cake, but most have only ₹100 or ₹200 to spend. What should you offer them?"
+ },
+ {
+  "id": "bf7f242993fc",
+  "voice": "narrator",
+  "text": "Yes. A student with ₹100 can buy one slice today, like a worker buying one wash. She doesn't need to find 7 friends first."
+ },
+ {
+  "id": "5e2b442475a4",
+  "voice": "narrator",
+  "text": "₹600 is still far more than ₹100 or ₹200. A small discount doesn't help. A small pack does."
+ },
+ {
+  "id": "06e5c21aa5ae",
+  "voice": "narrator",
+  "text": "It sounds fair, but one student must find 7 friends and collect money from each. Most won't. A slice she can buy alone is easier."
+ },
+ {
+  "id": "b05daaec93f2",
+  "voice": "narrator",
+  "text": "Quick sum. Your 1 kg ₹700 cake cuts into 10 slices. Each sells for ₹90, and each box costs ₹10. Money left after boxes?"
+ },
+ {
+  "id": "dd3f9b3f20ab",
+  "voice": "narrator",
+  "text": "Right. 10 × ₹90 = ₹900, minus 10 boxes × ₹10 = ₹100. That's ₹800, ₹100 more than the whole cake, for extra cutting and packing. Students pay more per gram, and they're happy to."
+ },
+ {
+  "id": "8f92da89d08b",
+  "voice": "narrator",
+  "text": "10 × ₹90 = ₹900 is right, but each slice needs its own ₹10 box. ₹900 − ₹100 = ₹800."
+ },
+ {
+  "id": "7e6f3951d187",
+  "voice": "narrator",
+  "text": "₹700 is the whole cake's price. Slices bring 10 × ₹90 = ₹900, minus ₹100 for boxes: ₹800."
+ },
+ {
+  "id": "1e499a93e835",
+  "voice": "narrator",
+  "text": "It's May. You now make a ₹300 mini cake for 3 people. It leaves you ₹170 after costs. Your ₹700 birthday cake leaves you ₹350. Hostel students and two offices want small cakes for tea breaks. Some birthday families ask about the mini too."
+ },
+ {
+  "id": "14ba1182e386",
+  "voice": "narrator",
+  "text": "Where do you sell slices and mini cakes?"
+ },
+ {
+  "id": "90abeafc23f6",
+  "voice": "narrator",
+  "text": "About 10 new buyers come. But 12 birthday families switch from the ₹700 cake to a ₹300 mini. Each switch costs you ₹350 − ₹170 = ₹180, so you lose ₹2,160 a month and gain about ₹1,700."
+ },
+ {
+  "id": "954b68fdfce0",
+  "voice": "narrator",
+  "text": "Small packs are for people who can't buy the big one. When your big-cake buyers choose the smaller one, you earn less from the same people. What would have worked: Sell slices and minis only at the hostel and offices, not on your menu."
+ },
+ {
+  "id": "1f4cc6d057ab",
+  "voice": "narrator",
+  "text": "Slices and minis sell at the hostel gate and to the two offices for tea breaks. Your menu for families shows only the ₹700 cake, and almost no birthday family switches. About 30 new buyers a month."
+ },
+ {
+  "id": "548f5468f8be",
+  "voice": "narrator",
+  "text": "You used small packs to reach people who couldn't buy the big cake, and kept the big cake for people who could."
+ },
+ {
+  "id": "415ac0567b37",
+  "voice": "narrator",
+  "text": "Your weeks stay simple, and your birthday cakes sell as before. The hostel students buy pastries from a shop near their gate."
+ },
+ {
+  "id": "183ce4cdc6dd",
+  "voice": "narrator",
+  "text": "Keeping things simple is fair, but many buyers who loved your cake still couldn't buy it. What would have worked: Sell slices and minis only at the hostel and offices, not on your menu."
+ },
+ {
+  "id": "fe8b2856124a",
+  "voice": "narrator",
+  "text": "People look at the price of one blank. A small pack lets people buy who can't pay for a blank one."
+ },
+ {
+  "id": "943d6e864eb1",
+  "voice": "narrator",
+  "text": "Exactly. A worker could buy one wash of Chik for 50 paise. A student can buy one slice of your cake for ₹90."
+ },
+ {
+  "id": "d3a40e17267b",
+  "voice": "narrator",
+  "text": "People look at the price of one use. A small pack lets more people buy, even if each gram costs a little more."
+ },
+ {
+  "id": "e5bf000200e4",
+  "voice": "narrator",
+  "text": "The sachet idea: many buyers look at the price of one use, not the price per kilo."
+ },
+ {
+  "id": "b2b5f08c828a",
+  "voice": "narrator",
+  "text": "A small pack lets people buy who can't pay for a big one, even if each gram costs a bit more."
+ },
+ {
+  "id": "12aeee5f9522",
+  "voice": "narrator",
+  "text": "Keep small packs for new buyers, so your big-pack buyers don't choose the smaller ones."
+ },
+ {
+  "id": "217bed30ebd4",
+  "voice": "narrator",
+  "text": "Let me tell you about a train ticket. You get a call: a job interview in another city, tomorrow. The normal tickets were sold weeks ago. But in the morning, the day before the train leaves, Indian Railways opens a small group of seats called Tatkal."
+ },
+ {
+  "id": "94375af17ff9",
+  "voice": "narrator",
+  "text": "A Tatkal ticket is a normal seat on the same train. But the railway adds an extra charge: 10% of the base fare in second class, and 30% in sleeper and AC, up to a set limit. Railways started Tatkal in 1997, for people who must travel at once."
+ },
+ {
+  "id": "c1769468dee1",
+  "voice": "narrator",
+  "text": "Carrying a Tatkal traveller costs the railway about the same as carrying anyone else. So why can it charge more?"
+ },
+ {
+  "id": "9c1a2c5ceade",
+  "voice": "narrator",
+  "text": "The seat and the cost of carrying you stay almost the same. What changes is your need: you must travel tomorrow, so that seat is worth much more to you than a seat next month."
+ },
+ {
+  "id": "6bafcdbda945",
+  "voice": "narrator",
+  "text": "Many people choose it. In 2019-20, the railway earned ₹1,669 crore from Tatkal tickets. The extra charge follows a fixed rule, the same for everyone in that class. Tatkal doesn't price what it costs to carry you. It prices what a trip tomorrow is worth to you."
+ },
+ {
+  "id": "5c6316b51486",
+  "voice": "narrator",
+  "text": "Hermann Simon, an expert on prices, calls this value-based pricing. Buyers pay for what something is worth to them, not what it cost you. Faster is worth more. A promise they can trust is worth more. Your cost only sets the floor: the lowest price you can take."
+ },
+ {
+  "id": "3a4662122e77",
+  "voice": "narrator",
+  "text": "The railway is huge, but the same idea works in your home bakery, where you bake cakes for families nearby. It's January of your third year. Your chocolate birthday cake is ₹700, and each one costs you ₹350 to make. Other bakeries need two days to make a cake."
+ },
+ {
+  "id": "15fba0bc93b9",
+  "voice": "narrator",
+  "text": "Two orders, the same chocolate cake, each costing you ₹350 to make. Which one can you charge more for?"
+ },
+ {
+  "id": "c982b94e9099",
+  "voice": "narrator",
+  "text": "Yes. A cake tonight is worth more to the buyer, like a Tatkal seat, even though it costs you the same ₹350. Speed is worth paying for."
+ },
+ {
+  "id": "ab8574d0614b",
+  "voice": "narrator",
+  "text": "A big family needs a bigger cake, but this is the same cake. Size of the family doesn't change what one cake is worth. Speed does: a cake tonight is worth more."
+ },
+ {
+  "id": "763006ce7643",
+  "voice": "narrator",
+  "text": "That's pricing from your cost. The cost is the same, but the worth isn't. A cake tonight can save a party, just as a Tatkal seat can save a trip."
+ },
+ {
+  "id": "83adb9469579",
+  "voice": "narrator",
+  "text": "I'll show you six things. For each, tell me: does it make the cake worth more to the mother, or only cost you more?"
+ },
+ {
+  "id": "ba0fe26726da",
+  "voice": "narrator",
+  "text": "The cake is ready the same day she asks"
+ },
+ {
+  "id": "aeda5ee81f60",
+  "voice": "narrator",
+  "text": "You bought flour from a costlier shop, same flour"
+ },
+ {
+  "id": "9dec0c735c02",
+  "voice": "narrator",
+  "text": "Ready by 6 pm, or ₹200 of her money back"
+ },
+ {
+  "id": "e0e9186d7d1b",
+  "voice": "narrator",
+  "text": "Gas for your oven costs more this month"
+ },
+ {
+  "id": "745ed8256630",
+  "voice": "narrator",
+  "text": "Her child's favourite cartoon drawn in icing"
+ },
+ {
+  "id": "96a93f3a4136",
+  "voice": "narrator",
+  "text": "Costly cocoa that tastes the same to her"
+ },
+ {
+  "id": "153a7d3781a4",
+  "voice": "narrator",
+  "text": "Same-day service, a promise of 6 pm and her child's favourite cartoon make the cake worth more to her. Costlier flour, gas and cocoa raise your cost, but she gets nothing more. If your costs rise a lot, your floor rises. But only the first kind makes the cake worth more."
+ },
+ {
+  "id": "067ee6675eb2",
+  "voice": "narrator",
+  "text": "It's February. About 6 mothers a month now ask for a cake the same day. Your usual price is ₹700, and each cake costs you ₹350. Several mothers say they'd gladly pay ₹200 or ₹300 more to save a party."
+ },
+ {
+  "id": "77bea04d373c",
+  "voice": "narrator",
+  "text": "How do you price same-day cakes?"
+ },
+ {
+  "id": "609b41577484",
+  "voice": "narrator",
+  "text": "Mothers are very happy. Same-day orders grow to about 10 a month, and some regulars start ordering late on purpose. Your weeks get crowded for the same ₹350 a cake."
+ },
+ {
+  "id": "993262215d31",
+  "voice": "narrator",
+  "text": "Being kind isn't wrong, but you gave the extra worth for free. Speed is something buyers will pay for. What would have worked: A fixed ₹950 same-day price on your menu, ready by 6 pm or ₹200 back."
+ },
+ {
+  "id": "d81f089655ef",
+  "voice": "narrator",
+  "text": "Your menu now says: same-day cake ₹950, ready by 6 pm or ₹200 back. Mothers know the price before they call, and about 6 a month still choose it. Each leaves you ₹600, not ₹350: about ₹1,500 more a month."
+ },
+ {
+  "id": "31202a84eb27",
+  "voice": "narrator",
+  "text": "The extra pays for something real: making her cake today, and a promise you keep. You priced it openly, the same for everyone. Your cost stayed the floor, not the price."
+ },
+ {
+  "id": "5abc1449d84f",
+  "voice": "narrator",
+  "text": "You charge one mother ₹1,200 and her neighbour ₹800. They talk. The first mother feels cheated, tells her colony, and two families stop ordering from you."
+ },
+ {
+  "id": "e3c656722938",
+  "voice": "narrator",
+  "text": "Charging more for someone's rush is fair only when the price is open and the same for everyone. Guessing what each person can pay feels like cheating. What would have worked: A fixed ₹950 same-day price on your menu, ready by 6 pm or ₹200 back."
+ },
+ {
+  "id": "f42681e2ea97",
+  "voice": "narrator",
+  "text": "Price from what the cake is blank to the buyer. Your cost is only the blank."
+ },
+ {
+  "id": "18c5c3e74e22",
+  "voice": "narrator",
+  "text": "Exactly. A Tatkal seat costs the railway about the same, but it is worth more to someone who must travel tomorrow. Your same-day cake works the same way, at one open price."
+ },
+ {
+  "id": "52493c90a6c1",
+  "voice": "narrator",
+  "text": "Price from what it is worth to the buyer. Your cost sets the floor, not the price."
+ },
+ {
+  "id": "b8a2760ddd43",
+  "voice": "narrator",
+  "text": "Value-based pricing: price from what it's worth to the buyer, not from your cost."
+ },
+ {
+  "id": "28aedc70eb13",
+  "voice": "narrator",
+  "text": "Faster and surer are worth more. Charge for them openly, the same for everyone."
+ },
+ {
+  "id": "7650bb6460ed",
+  "voice": "narrator",
+  "text": "Your cost is the floor: the lowest price you can take, never the price itself."
  },
  {
   "id": "b91a850e07f2",

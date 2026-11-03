@@ -30,3 +30,12 @@ text or signs, no real person's likeness.
 | `ls_tv_meter` | u2-loud-few | Inside a village home in north India, evening: a family on a charpai watching a small old TV on a wooden shelf; beside it a small plain grey box with a short antenna (a ratings meter). Screen not readable, no logos. |
 | `ls_cornflakes` | u2-old-habits | An Indian home kitchen, 1990s: a hand pouring steaming hot milk from a steel pan into a steel bowl of cornflakes; a plain unbranded cereal box beside it, morning light. No logos or text. |
 | `ls_meetha` | u2-job-to-be-done | An Indian family living room, 2000s: a young man holding an envelope of good news shares pieces of a plain unbranded milk chocolate bar with his smiling parents; a small plate of mithai on the table. No logos or text. |
+
+## Module 3.1: Set a price
+
+| Image id | Lesson | Picture |
+|---|---|---|
+| `ls_tatkal` | u3-value-price | An Indian railway station booking hall, morning: a line of travellers with bags waiting at an old ticket counter window, a wall clock near 10, warm light. Faces not in focus; no readable signs, text or logos. |
+| `ls_led_bulb` | u3-cost-per-year | A small Indian home at night, 2014: a hand screwing a plain white LED bulb into a ceiling holder, an old yellow glass bulb lying on the table below. No logos or text. |
+| `ls_sachets` | u3-small-packs | A small Tamil Nadu village shop counter, 1980s: a long strip of small plain shampoo sachets hanging from a nail, a hand tearing one off; a few coins on the counter. No brand names, logos or readable text. |
+| `ls_cafe_deal` | u3-loss-leader | A small, busy American neighbourhood café, 2010: a crowded counter, customers holding printed paper coupons, a tired young woman owner behind the counter seen from the side. No readable text, logos or brand marks. |

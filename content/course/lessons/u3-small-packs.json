@@ -1,0 +1,196 @@
+{
+  "id": "u3-small-packs",
+  "title": "Can they pay for one?",
+  "principle": "People look at the price of one use. A small pack lets more people buy, even if each gram costs a little more.",
+  "minutes": 5,
+  "draft": false,
+  "screens": [
+    {
+      "kind": "explain",
+      "id": "hook",
+      "media": "img:ls_sachets",
+      "text": "Let me tell you about Chinni Krishnan. He lived in Cuddalore, in Tamil Nadu. In the 1970s, good shampoo was costly. Workers paid by the week bought only what lasted a day or a week. He said, \"Whatever I make, I want the coolies and the rickshaw pullers to use.\""
+    },
+    {
+      "kind": "explain",
+      "id": "one-wash",
+      "title": "One wash at a time",
+      "text": "So he packed shampoo in tiny packets, called sachets. Each held enough for one use. A worker couldn't pay for a big pack, but he could buy one sachet. Later, his youngest son, C.K. Ranganathan, started his own shampoo, Chik, and sold it in sachets too."
+    },
+    {
+      "kind": "choice",
+      "id": "guess",
+      "guess": true,
+      "prompt": "In 1999, Chik had 6 of every 100 shampoo sales, and sold a 50-paise sachet. By 2003, how many of every 100 were Chik's?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Still about 6"
+        },
+        {
+          "id": "b",
+          "label": "About 10"
+        },
+        {
+          "id": "c",
+          "label": "About 23"
+        }
+      ],
+      "answer": "c",
+      "why": "About 23, about four times as many. Local radio ads and a strong scent helped too. But the 50-paise sachet let many people buy shampoo for the first time."
+    },
+    {
+      "kind": "explain",
+      "id": "soap",
+      "title": "A bit more for each piece",
+      "text": "Village shopkeepers did the same with soap. In the 1970s, one shopkeeper cut a bar of Lifebuoy soap into six pieces. The six pieces together cost a little more than the whole bar. People still bought them, because they could pay for one piece today."
+    },
+    {
+      "kind": "explain",
+      "id": "sachet-rule",
+      "title": "The sachet idea",
+      "text": "A famous business professor, C.K. Prahalad, wrote about small packs for poorer buyers. Many buyers ask, \"Can I pay for one use today?\", not \"How much is it per kilo?\" A small pack lets them say yes, even if each gram costs a little more."
+    },
+    {
+      "kind": "explain",
+      "id": "home",
+      "title": "Now look at your business",
+      "text": "Shampoo is a giant market, but the same idea works in your home bakery, where you bake cakes for families nearby. It's April of your third year. Students in a girls' hostel near you love your chocolate cake. But it's ₹700, and most students have only ₹100 or ₹200."
+    },
+    {
+      "kind": "choice",
+      "id": "hostel",
+      "prompt": "Hostel students love your ₹700 chocolate cake, but most have only ₹100 or ₹200 to spend. What should you offer them?",
+      "options": [
+        {
+          "id": "a",
+          "label": "The whole cake at ₹600, for students"
+        },
+        {
+          "id": "b",
+          "label": "One slice at ₹90, in its own box"
+        },
+        {
+          "id": "c",
+          "label": "The ₹700 cake, shared by 8 friends"
+        }
+      ],
+      "answer": "b",
+      "why": "Yes. A student with ₹100 can buy one slice today, like a worker buying one wash. She doesn't need to find 7 friends first.",
+      "wrong": {
+        "a": "₹600 is still far more than ₹100 or ₹200. A small discount doesn't help. A small pack does.",
+        "c": "It sounds fair, but one student must find 7 friends and collect money from each. Most won't. A slice she can buy alone is easier."
+      }
+    },
+    {
+      "kind": "choice",
+      "id": "slice-sum",
+      "prompt": "Quick sum. Your 1 kg ₹700 cake cuts into 10 slices. Each sells for ₹90, and each box costs ₹10. Money left after boxes?",
+      "options": [
+        {
+          "id": "a",
+          "label": "₹900"
+        },
+        {
+          "id": "b",
+          "label": "₹800"
+        },
+        {
+          "id": "c",
+          "label": "₹700"
+        }
+      ],
+      "answer": "b",
+      "why": "Right. 10 × ₹90 = ₹900, minus 10 boxes × ₹10 = ₹100. That's ₹800, ₹100 more than the whole cake, for extra cutting and packing. Students pay more per gram, and they're happy to.",
+      "wrong": {
+        "a": "10 × ₹90 = ₹900 is right, but each slice needs its own ₹10 box. ₹900 − ₹100 = ₹800.",
+        "c": "₹700 is the whole cake's price. Slices bring 10 × ₹90 = ₹900, minus ₹100 for boxes: ₹800."
+      }
+    },
+    {
+      "kind": "scenario",
+      "id": "mini-cake",
+      "setup": "It's May. You now make a ₹300 mini cake for 3 people. It leaves you ₹170 after costs. Your ₹700 birthday cake leaves you ₹350. Hostel students and two offices want small cakes for tea breaks. Some birthday families ask about the mini too.",
+      "question": "Where do you sell slices and mini cakes?",
+      "options": [
+        {
+          "id": "b",
+          "label": "On your menu, for everyone",
+          "grade": "bad",
+          "outcome": "About 10 new buyers come. But 12 birthday families switch from the ₹700 cake to a ₹300 mini. Each switch costs you ₹350 − ₹170 = ₹180, so you lose ₹2,160 a month and gain about ₹1,700.",
+          "why": "Small packs are for people who can't buy the big one. When your big-cake buyers choose the smaller one, you earn less from the same people.",
+          "better": "Sell slices and minis only at the hostel and offices, not on your menu."
+        },
+        {
+          "id": "a",
+          "label": "Only at the hostel and offices, not on your menu",
+          "grade": "great",
+          "outcome": "Slices and minis sell at the hostel gate and to the two offices for tea breaks. Your menu for families shows only the ₹700 cake, and almost no birthday family switches. About 30 new buyers a month.",
+          "why": "You used small packs to reach people who couldn't buy the big cake, and kept the big cake for people who could."
+        },
+        {
+          "id": "c",
+          "label": "Nobody. Small orders are too much work",
+          "grade": "ok",
+          "outcome": "Your weeks stay simple, and your birthday cakes sell as before. The hostel students buy pastries from a shop near their gate.",
+          "why": "Keeping things simple is fair, but many buyers who loved your cake still couldn't buy it.",
+          "better": "Sell slices and minis only at the hostel and offices, not on your menu."
+        }
+      ]
+    },
+    {
+      "kind": "gap",
+      "id": "fill",
+      "text": "People look at the price of one ___. A small pack lets people buy who can't pay for a ___ one.",
+      "bank": ["use", "big", "late", "less"],
+      "answer": ["use", "big"],
+      "why": "Exactly. A worker could buy one wash of Chik for 50 paise. A student can buy one slice of your cake for ₹90."
+    }
+  ],
+  "summary": [
+    "The sachet idea: many buyers look at the price of one use, not the price per kilo.",
+    "A small pack lets people buy who can't pay for a big one, even if each gram costs a bit more.",
+    "Keep small packs for new buyers, so your big-pack buyers don't choose the smaller ones."
+  ],
+  "cards": [
+    {
+      "id": "m31-pack-1",
+      "front": "A family has only ₹20 to spend. A jar of pickle is ₹120. What might let them buy?",
+      "options": ["A ₹10 pouch", "₹20 off the jar"],
+      "answer": 0,
+      "back": "They look at the price of one use. A small pack lets them buy today."
+    },
+    {
+      "id": "m31-pack-2",
+      "front": "A 1 kg cake makes 10 slices. Each slice sells for ₹90 and its box costs ₹10. What do 10 slices bring after boxes?",
+      "options": ["₹800", "₹900", "₹700"],
+      "answer": 0,
+      "back": "10 × ₹90 = ₹900, minus ₹100 of boxes = ₹800."
+    },
+    {
+      "id": "m31-pack-3",
+      "front": "Your ₹700 cake buyers start buying your ₹300 mini cake instead. Is that good?",
+      "options": ["No. You earn less from the same people", "Yes. More small sales"],
+      "answer": 0,
+      "back": "Small packs are for new buyers who can't buy the big one."
+    }
+  ],
+  "sources": [
+    {
+      "label": "The man behind the sachet revolution in India (Madras Musings, Jan 2021)",
+      "url": "https://madrasmusings.com/vol-30-no-17/the-man-behind-the-sachet-revolution-in-india/"
+    },
+    {
+      "label": "Anand Kumar Jaiswal (IIM Ahmedabad) on CavinKare's Chik (Syracuse University, Snyder Center)",
+      "url": "https://snyder.syracuse.edu/?p=3118"
+    },
+    {
+      "label": "Chik India profile (Business Today, 22 Jan 1999)",
+      "url": "https://archives.digitaltoday.in/businesstoday/22011999/cf7.html"
+    },
+    {
+      "label": "Prahalad and Hart, The fortune at the bottom of the pyramid (strategy+business, Jan 2002)",
+      "url": "https://www.strategy-business.com/article/11518"
+    }
+  ]
+}

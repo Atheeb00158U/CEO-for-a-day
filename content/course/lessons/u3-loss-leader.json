@@ -1,0 +1,204 @@
+{
+  "id": "u3-loss-leader",
+  "title": "Will they come back?",
+  "principle": "A cheap first offer pays only if enough buyers return and pay full price.",
+  "minutes": 5,
+  "draft": false,
+  "screens": [
+    {
+      "kind": "explain",
+      "id": "hook",
+      "media": "img:ls_cafe_deal",
+      "text": "Let me tell you about Jessie Burke. In 2010, she ran a small new café called Posies, in Portland, USA. She wanted more people to know about it. Groupon, a deal website like the offer apps on your phone, offered to sell a deal for her café."
+    },
+    {
+      "kind": "explain",
+      "id": "the-deal",
+      "title": "13 dollars of food for 3",
+      "text": "The deal: pay 6 dollars, get 13 dollars of food. Groupon kept half of the 6 dollars. So Jessie got 3 dollars for 13 dollars of food. She hoped new buyers would love the café and return. About 1,000 people used the deal."
+    },
+    {
+      "kind": "choice",
+      "id": "guess",
+      "guess": true,
+      "prompt": "About 1,000 people used Jessie's deal. Her café was full. What do you think happened next?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Most became regular buyers"
+        },
+        {
+          "id": "b",
+          "label": "Most used the deal and didn't return"
+        },
+        {
+          "id": "c",
+          "label": "About half returned at full price"
+        }
+      ],
+      "answer": "b",
+      "why": "Many deal buyers wanted the discount, not the café. Few returned to pay full price. After three months, Posies had lost nearly 8,000 dollars, more than ₹3.5 lakh then. One month, Jessie paid rent and staff from her own savings."
+    },
+    {
+      "kind": "explain",
+      "id": "worst",
+      "title": "\"The single worst decision\"",
+      "text": "Jessie later called the deal \"the single worst decision\" of her business life. But some deals like hers made money. In 2010, Professor Utpal Dholakia studied 150 businesses that ran them. In the deals that made money, more buyers returned."
+    },
+    {
+      "kind": "explain",
+      "id": "loss-leader",
+      "title": "A loss leader",
+      "text": "Selling something at a loss, so buyers return and pay full price later, is called a loss leader. In Dholakia's study, deals that made money saw about 1 in 3 buyers return at full price. Deals that lost money saw about 1 in 8."
+    },
+    {
+      "kind": "explain",
+      "id": "home",
+      "title": "Now look at your business",
+      "text": "Posies was far away, but the same sum matters for your bakery. It's June of your third year. A new colony has opened, and nobody there knows you. Your cake sells for ₹700 and costs you ₹350 to make. You plan to charge new families ₹250 for a first cake."
+    },
+    {
+      "kind": "choice",
+      "id": "payback-sum",
+      "prompt": "Quick sum. 10 first cakes at ₹250 lose ₹100 each. A ₹700 return order leaves ₹350. At least how many families must return?",
+      "options": [
+        {
+          "id": "a",
+          "label": "1 family"
+        },
+        {
+          "id": "b",
+          "label": "3 families"
+        },
+        {
+          "id": "c",
+          "label": "6 families"
+        }
+      ],
+      "answer": "b",
+      "why": "Right. 10 × ₹100 = ₹1,000 lost. 3 return orders × ₹350 = ₹1,050. So 3 in 10 must come back, close to Dholakia's 1 in 3.",
+      "wrong": {
+        "a": "One return brings ₹350, but you lost 10 × ₹100 = ₹1,000. You need 3 returns: 3 × ₹350 = ₹1,050.",
+        "c": "6 would be great, but you need fewer. The loss is 10 × ₹100 = ₹1,000, and 3 × ₹350 = ₹1,050 covers it."
+      }
+    },
+    {
+      "kind": "sort",
+      "id": "who-returns",
+      "prompt": "Six people might take your ₹250 first cake. For each, tell me: will they likely return at ₹700, or take the deal and leave?",
+      "buckets": ["Likely to come back", "Likely to leave"],
+      "items": [
+        {
+          "text": "A family with two young children in the new colony",
+          "bucket": 0
+        },
+        {
+          "text": "Someone who follows five deal pages",
+          "bucket": 1
+        },
+        {
+          "text": "A neighbour your regular buyer sent to you",
+          "bucket": 0
+        },
+        {
+          "text": "A student moving out of the city next month",
+          "bucket": 1
+        },
+        {
+          "text": "An office nearby that buys a cake for every birthday",
+          "bucket": 0
+        },
+        {
+          "text": "Someone who asks, \"Is there a bigger discount?\"",
+          "bucket": 1
+        }
+      ],
+      "why": "Families with children, people your buyers send, and offices with many birthdays will need cakes again. People who only want discounts, or who are leaving soon, want one cheap buy. Aim your first cake at people likely to need cakes again."
+    },
+    {
+      "kind": "scenario",
+      "id": "check-offer",
+      "setup": "It's July. You posted the ₹250 first cake on a deal app that takes no cut. 20 people took it, so you lost ₹2,000. Only 2 came back at ₹700, each leaving ₹350. The deal app says, \"Run it again, for more people.\"",
+      "question": "What do you do next?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Run it again for 50 people",
+          "grade": "bad",
+          "outcome": "50 people take the ₹250 cake. About 5 return. You lose ₹5,000 on first cakes and earn back about ₹1,750.",
+          "why": "Your test said 1 in 10 return, not 1 in 3. Making a losing offer bigger only makes the loss bigger.",
+          "better": "Stop the deal app, and ask regular buyers to pass the offer to families with young children."
+        },
+        {
+          "id": "b",
+          "label": "Give it only to families your buyers know",
+          "grade": "great",
+          "outcome": "You stop the deal app. Your regular buyers share the ₹250 offer with 10 families with young children they know. 4 return for a birthday cake within three months: 4 × ₹350 = ₹1,400, more than the ₹1,000 you lost.",
+          "why": "You used the numbers: 2 in 20 returned, far below the 3 in 10 you need. So you kept the offer but aimed it at people who need cakes again."
+        },
+        {
+          "id": "c",
+          "label": "Stop all offers for new families",
+          "grade": "ok",
+          "outcome": "You stop losing money. But the new colony still doesn't know your cakes, and only a few families find you.",
+          "why": "Stopping a losing offer was right. But you stopped trying to reach new families, instead of aiming the offer better.",
+          "better": "Stop the deal app, and ask regular buyers to pass the offer to families with young children."
+        }
+      ]
+    },
+    {
+      "kind": "gap",
+      "id": "fill",
+      "text": "A cheap first offer pays only if ___ buyers come ___ at full price.",
+      "bank": ["enough", "back", "none", "free"],
+      "answer": ["enough", "back"],
+      "why": "Exactly. Few of Jessie's deal buyers returned. Your ₹250 cake needed at least 3 in 10 families to return at ₹700."
+    }
+  ],
+  "summary": [
+    "Loss leader: a cheap first offer that loses money, to win buyers who return.",
+    "It pays only if enough buyers return at full price. Calculate how many from your own numbers.",
+    "Test it with a few buyers, count who returns, and aim it at people who will need you again."
+  ],
+  "cards": [
+    {
+      "id": "m31-leader-1",
+      "front": "A haircut costs you ₹100 to do. New buyers pay ₹50; return buyers pay ₹250. Of 3 new buyers, how many must return to cover the loss?",
+      "options": ["1", "2", "3"],
+      "answer": 0,
+      "back": "3 × ₹50 = ₹150 lost. One return leaves ₹250 − ₹100 = ₹150, which covers it."
+    },
+    {
+      "id": "m31-leader-2",
+      "front": "In one study of discount deals, which ones made money?",
+      "options": ["The ones where more buyers returned at full price", "The ones where more people bought the deal"],
+      "answer": 0,
+      "back": "Deals that paid saw about 1 in 3 return. Deals that lost saw about 1 in 8."
+    },
+    {
+      "id": "m31-leader-3",
+      "front": "Who is more likely to return after a cheap first cake?",
+      "options": ["A family with young children nearby", "Someone who follows deal pages"],
+      "answer": 0,
+      "back": "Aim a loss leader at people who will need you again."
+    }
+  ],
+  "sources": [
+    {
+      "label": "Jessie Burke, Groupon: success or disaster? (Redfin, 16 Sep 2010)",
+      "url": "https://www.redfin.com/news/groupons_success_disaster/"
+    },
+    {
+      "label": "Groupon \"single worst decision\" (TechCrunch, 9 Jun 2011)",
+      "url": "https://techcrunch.com/2011/06/09/groupon-single-worst-decision/"
+    },
+    {
+      "label": "Utpal M. Dholakia, How effective are Groupon promotions for businesses? (Rice University, 2010)",
+      "url": "https://digitalwellbeing.org/downloads/Rice_Report_Groupon.pdf"
+    },
+    {
+      "label": "Loss leader (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Loss_leader"
+    }
+  ]
+}

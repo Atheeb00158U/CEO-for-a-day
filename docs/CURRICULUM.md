@@ -211,12 +211,17 @@ not a law; 2.2.4 keeps the product as "how they get it" (a cake with the wrong n
 #### Module 3.1: Set a price
 **Goal:** price from what it's worth to the buyer.
 
-| Code | Concept | The rule | Everyday example (made up) | Source | Exercise |
-|---|---|---|---|---|---|
-| 3.1.1 | **Value-based pricing** (economic value to the customer) | Price from the buyer's value: faster and surer is worth more. | "Curtains fitted in 2 hours or your money back" beats a cheaper one-week job; same-day AC repair is worth more in May. | *Confessions of the Pricing Man* (Hermann Simon) ◇; *$100M Offers* (Alex Hormozi), value equation ◇ | Which price? |
-| 3.1.2 | **Total cost of ownership** | Show cost per year of use; cheap and short-lived costs more. | A ₹2,400 cooker that lasts ten years is ₹240 a year; a ₹1,500 one that lasts three is ₹500. | *The Fortune at the Bottom of the Pyramid* (C.K. Prahalad) ◇; total cost of ownership ◇ | Which price? |
-| 3.1.3 | **Sachet economics** (price per use) | Price per use, not per kilo, decides who can buy. | A ₹10 pouch of pickle sells to families who can't buy the ₹120 jar, at a higher price per gram. | Prahalad ◇ | Pick the best move |
-| 3.1.4 | **Loss leader** and payback | A cheap first item pays only if buyers come back. | A ₹49 first haircut fills the chairs; it loses money unless one in three returns at ₹200. | Loss leader, any retail text ◇ | Quick sum |
+| Code | Concept | The rule | Opens with (real case) | Practice example (made up) | Source | Exercise |
+|---|---|---|---|---|---|---|
+| 3.1.1 | **Value-based pricing** (economic value to the customer) | Price from what it's worth to the buyer. Your cost sets the floor, not the price. | Indian Railways' Tatkal (1997): a normal seat on the same train, plus 10% of base fare (second class) or 30% (sleeper and AC); ₹1,669 crore in 2019-20 ✓. | A fixed ₹950 same-day cake price on your menu (ready by 6 pm or ₹200 back) instead of ₹700; charging each mother what she seems able to pay is the bad answer. | Hermann Simon (Simon-Kucher); Railway Board circular; Business Today; PTI ✓ | Which price? |
+| 3.1.2 | **Total cost of ownership** | Judge a price by what it costs for each year of use, not the price on the box. | LED bulbs (2014): ₹450–500 vs ₹10–15, under 1% of sales; 1 unit vs 9 per 140 hours; EESL's Puducherry plan, ₹10 down and ₹10 a month on the bill, less than the saving; 6 lakh bulbs ✓. | A ₹15,000 oven for 6 years (₹2,500 a year) beats a ₹6,000 one for 2 (₹3,000); a ₹700 cake for 10 guests beats two ₹450 shop cakes. | PIB UJALA booklet; CLASP; Down To Earth ✓ | Quick sum |
+| 3.1.3 | **Sachet pricing** (price per use) | People look at the price of one use. A small pack lets more people buy, even if each gram costs a bit more. | Chinni Krishnan's sachets (Cuddalore, 1970s) and his son's Chik: a 50-paise sachet in 1999, share 5.61% → 23% by 2003; a shopkeeper's Lifebuoy bar cut in six ✓. | ₹90 slices for hostel students (₹800 a cake after boxes); sell slices and a ₹300 mini only at the hostel and offices so ₹700 buyers don't move down. | Madras Musings; Jaiswal (IIM-A); Prahalad & Hart (2002) ✓ | Pick the best move |
+| 3.1.4 | **Loss leader** and payback | A cheap first offer pays only if enough buyers come back and pay full price. | Posies Café, Portland (2010): a $6-for-$13 Groupon deal, $3 to the café, ~1,000 users, nearly $8,000 lost; Dholakia's study of 150 businesses: paying deals saw ~1 in 3 return, losing deals ~1 in 8 ✓. | A ₹250 first cake loses ₹100; at least 3 in 10 must return at ₹700. A deal app brings 2 in 20; aim the offer at families with young children instead. | Redfin (Burke); TechCrunch; Dholakia, Rice University (2010) ✓ | Quick sum |
+
+**Note (2 Nov 2026):** 3.1.3's rule says "even if each gram costs a bit more", not "at a higher price per gram": Indian shampoo
+sachets were often cheaper per ml, so the soap-bar story carries that point. 3.1.4 uses a US café because no Indian case
+had sourced numbers on who came back; Dholakia's study links returns to profit but does not say returns decided it.
+3.1.1 frames the higher price as open and the same for everyone (a reader found "price their emergency" unfair).
 
 **Folded in:** 3.1.1: "Your cost sets the floor, not the price." (old 3.1.1, merged with old 3.1.2)
 
