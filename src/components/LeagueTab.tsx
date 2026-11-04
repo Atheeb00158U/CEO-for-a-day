@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { api } from "@/lib/auth";
+import { careerSpoken } from "@/lib/career";
 import { daysLeft } from "@/lib/league";
 import type { LeagueBoard } from "@/lib/server/game";
 import { LEAGUES, useGame } from "@/lib/store";
@@ -106,9 +107,20 @@ export function LeagueTab({ onPlay }: { onPlay: () => void }) {
                   >
                     {r.name[0]?.toUpperCase()}
                   </span>
-                  <span className={`min-w-0 flex-1 truncate text-[17px] font-extrabold ${r.bot ? "text-muted" : ""}`}>
-                    {r.you ? `${r.name} (you)` : r.name}
-                    {r.bot && <span className="ml-1.5 text-[11px] font-black tracking-wider uppercase">practice</span>}
+                  <span className="min-w-0 flex-1">
+                    <span className={`block truncate text-[17px] font-extrabold ${r.bot ? "text-muted" : ""}`}>
+                      {r.you ? `${r.name} (you)` : r.name}
+                      {r.bot && <span className="ml-1.5 text-[11px] font-black tracking-wider uppercase">practice</span>}
+                    </span>
+                    {r.career && (
+                      <span className="block truncate text-[13px] font-bold text-muted">
+                        <span className="sr-only">{careerSpoken(r.career)}</span>
+                        <span aria-hidden="true">
+                          {r.career.title}
+                          {r.career.stars > 0 && <span className="ml-1 text-gold">{"★".repeat(r.career.stars)}</span>}
+                        </span>
+                      </span>
+                    )}
                   </span>
                   <span className="flex shrink-0 items-center gap-1 text-[17px] font-black tabular-nums">
                     <Icon.bolt className="size-5" />

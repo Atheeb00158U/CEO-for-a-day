@@ -42,6 +42,10 @@ UI components: use shadcn/ui, restyled to this look. Add gluestack-ui only if we
 - **The wolf (3 Nov 2026):** an original wolf in a pinstripe three-piece suit is the face of the brand, and
   will become the mentor and the Hot Seat advisor. Masters are in `content/brand/wolf/`; `npm run brand`
   builds the served sizes. His voice will be designed in VoiceStudio, never cloned from a recording.
+- **Career titles (4 Nov 2026):** one title per unit (Street Seller, Shopkeeper, Trader, Brand Owner, Dealmaker,
+  Business Owner, Boss, Tycoon, Founder, CEO) and a star per finished module (lessons or test-out, plus its gates).
+  `careerOf` in `src/lib/career.ts`; others see it in the league. The server works it out from its own records
+  (`trustedCareers`), never from a phone or imported save; each new title is cheered once (`rankSeen`).
 
 ## Routes
 - `/` is the website, `/app` the game, `/admin` the Hot Seat list and path trees.
