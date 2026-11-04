@@ -66,7 +66,7 @@ export function CoursePath({
                     type="button"
                     onClick={() =>
                       locked({ kind: "testout", id: m.id })
-                        ? showPaywall()
+                        ? showPaywall({ testOut: m.id, lessonIds: m.lessons.map((l) => l.id) })
                         : onTestOut(
                             m.id,
                             m.lessons.map((l) => l.id),
@@ -92,7 +92,7 @@ export function CoursePath({
                     sub={
                       paid ? COPY.members : l.state === "done" ? `Best ${l.best}%` : l.state === "locked" ? "Locked" : `${l.minutes} min`
                     }
-                    onClick={() => (paid ? showPaywall() : onLesson(l.id))}
+                    onClick={() => (paid ? showPaywall({ lessonId: l.id }) : onLesson(l.id))}
                   >
                     {l.state === "done" ? <Icon.check /> : l.state === "locked" ? <Icon.lock /> : <Icon.play />}
                   </Node>
@@ -133,7 +133,7 @@ export function CoursePath({
                               ? "Finish the lessons"
                               : hs.title
                     }
-                    onClick={() => (paid ? showPaywall() : playable && onPlay(g.id))}
+                    onClick={() => (paid ? showPaywall({ hotSeatId: g.id }) : playable && onPlay(g.id))}
                   >
                     {hs.emblem ? (
                       <MediaView media={hs.emblem} kenBurns={false} className="!absolute inset-0 !rounded-full" />

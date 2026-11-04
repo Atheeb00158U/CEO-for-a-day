@@ -9,6 +9,8 @@ export const NO_FOUNDING: readonly string[] = [SEATS_FULL, FOUNDING_USED];
 
 export interface MembershipView {
   plan: "founding" | "monthly" | "yearly";
+  /** Razorpay's subscription id (the player already gets it when they subscribe). Keys the one-time welcome. */
+  subscriptionId: string;
   /** Razorpay's subscription status (created, authenticated, active, pending, halted, cancelled, completed, …). */
   status: string;
   /** When the paid period ends (ISO), or null before the first charge. */

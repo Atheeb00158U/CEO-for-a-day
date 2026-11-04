@@ -37,12 +37,15 @@ export interface Synced {
 /** The step after `picks`. `written` is a reviewed, pre-written debrief for the path, when one exists. */
 export type PlayResponse = PlayView & { written?: string };
 
+/** What the player tapped before the paywall, opened for them once they become a member. */
+export type PaywallFor = { lessonId: string } | { testOut: string; lessonIds: string[] } | { hotSeatId: string };
+
 /* The paywall: App registers how to show it; a 402 from a player route shows it. */
-let paywallHandler: (() => void) | undefined;
+let paywallHandler: ((item?: PaywallFor) => void) | undefined;
 /** App's way to show the paywall sheet (and leave any player). Pass nothing to unregister. */
-export const onPaywall = (f?: () => void) => void (paywallHandler = f);
-/** Show the paywall sheet (a tap on a locked item, or the server's 402). */
-export const showPaywall = () => paywallHandler?.();
+export const onPaywall = (f?: (item?: PaywallFor) => void) => void (paywallHandler = f);
+/** Show the paywall sheet (a tap on a locked item, or the server's 402), remembering the item when there is one. */
+export const showPaywall = (item?: PaywallFor) => paywallHandler?.(item);
 
 const membersOnly = (e: unknown) => e instanceof ApiError && e.status === 402;
 

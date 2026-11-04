@@ -136,7 +136,7 @@ export function HomeTab({
                   key={c.id}
                   type="button"
                   disabled={!c.available}
-                  onClick={() => (paid ? showPaywall() : c.available && onPlay(c.id))}
+                  onClick={() => (paid ? showPaywall({ hotSeatId: c.id }) : c.available && onPlay(c.id))}
                   className="flex flex-col items-center gap-2 text-center disabled:cursor-default"
                 >
                   <span

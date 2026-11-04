@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Sheet, SheetContent, SheetDescription, SheetTitle } from "@/components/shadcn/sheet";
 import { freeModule } from "@/lib/access";
 import { ApiError, api } from "@/lib/auth";
+import { markPaymentStarted } from "@/lib/celebrate";
 import { CheckoutClosed, openCheckout, type CheckoutSuccess } from "@/lib/checkout";
 import { useContent } from "@/lib/content-client";
 import { FOUNDING_USED, NO_FOUNDING } from "@/lib/membership-view";
@@ -96,6 +97,7 @@ export function PaywallSheet({ open, onOpenChange }: { open: boolean; onOpenChan
       const { subscriptionId, keyId } = await api<{ subscriptionId: string; keyId: string }>("/api/pay/subscribe", {
         body: { plan: chosen },
       });
+      markPaymentStarted(); // so the app looks for a late (webhook) confirmation when the player comes back
       setInCheckout(true);
       try {
         paid = await openCheckout({ keyId, subscriptionId, description: COPY.checkoutLine[chosen], email: account?.email });
@@ -125,9 +127,9 @@ export function PaywallSheet({ open, onOpenChange }: { open: boolean; onOpenChan
     setPhase("checking");
     try {
       await api("/api/pay/verify", { body: paid });
-      await reload();
+      await reload(); // the app sees the new membership, closes this sheet and celebrates (App.tsx)
       setPhase("idle");
-      onOpenChange(false); // the player taps the item again
+      onOpenChange(false);
     } catch {
       // Paid at Razorpay but not confirmed here: the webhook will make them a member.
       setPhase("idle");
