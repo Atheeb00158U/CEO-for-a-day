@@ -96,12 +96,20 @@ export interface Db {
   /** How many notifications a player got that day. */
   noticesOn(userId: string, day: string): Promise<number>;
   deleteUser(userId: string): Promise<void>;
+  /** How many founding seats are taken (paid founding members). */
+  countFoundingSeats(): Promise<number>;
 }
 
 /* ------------------------------------------------------------------ */
 /* In memory, for tests.                                               */
 /* ------------------------------------------------------------------ */
-export function memoryDb(): Db & { profiles: Map<string, Profile>; runs: RunRow[]; lessonPlays: LessonPlayRow[]; leagues: LeagueRow[] } {
+export function memoryDb(): Db & {
+  profiles: Map<string, Profile>;
+  runs: RunRow[];
+  lessonPlays: LessonPlayRow[];
+  leagues: LeagueRow[];
+  foundingSeats: number;
+} {
   const profiles = new Map<string, Profile>();
   const runs: RunRow[] = [];
   const lessonPlays: LessonPlayRow[] = [];
@@ -208,6 +216,10 @@ export function memoryDb(): Db & { profiles: Map<string, Profile>; runs: RunRow[
       for (const list of [runs, lessonPlays, daily, leagues] as { userId: string }[][])
         for (let i = list.length - 1; i >= 0; i--) if (list[i].userId === id) list.splice(i, 1);
       for (const [k, p] of pushes) if (p.userId === id) pushes.delete(k);
+    },
+    foundingSeats: 0,
+    async countFoundingSeats() {
+      return this.foundingSeats;
     },
   };
 }
@@ -418,6 +430,14 @@ export function supabaseDb(sb = supabaseAdmin()): Db {
       // Every table cascades from auth.users, so deleting the user removes all their rows.
       const { error } = await sb.auth.admin.deleteUser(id);
       if (error) throw new Error(error.message);
+    },
+    async countFoundingSeats() {
+      const { count, error } = await sb
+        .from("founding_seats")
+        .select("seat_no", { count: "exact", head: true })
+        .abortSignal(AbortSignal.timeout(3000));
+      if (error) throw new Error(error.message);
+      return count ?? 0;
     },
   };
 }

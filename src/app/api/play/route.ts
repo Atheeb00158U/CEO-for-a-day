@@ -5,7 +5,12 @@ import { servableHotSeat, writtenDebrief } from "@/lib/server/content";
 import { ipOf, limited } from "@/lib/server/http";
 
 export async function POST(request: Request) {
-  if (limited(`play:${ipOf(request)}`, 240)) return NextResponse.json({ error: "Too many requests" }, { status: 429 });
+  // The website's sample decision (?site=1) has its own, smaller budget, so it never uses up the game's.
+  const site = new URL(request.url).searchParams.has("site");
+  if (limited(`${site ? "site-play" : "play"}:${ipOf(request)}`, site ? 30 : 240))
+    return NextResponse.json({ error: "Too many requests" }, { status: 429 });
+  if (Number(request.headers.get("content-length") ?? 0) > 64_000)
+    return NextResponse.json({ error: "Request too large" }, { status: 413 });
   const body = await request.json().catch(() => null);
   const hs = typeof body?.hotSeatId === "string" ? servableHotSeat(body.hotSeatId) : undefined;
   if (!hs) return NextResponse.json({ error: "No such Hot Seat" }, { status: 404 });
