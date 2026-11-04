@@ -12,9 +12,9 @@ import { Icon, MediaView } from "./ui";
 const COPY = {
   members: "For members",
   lessons: (n: number) => `${n} lesson${n === 1 ? "" : "s"}`,
-  jump: "Jump here",
-  jumpSub: "Short quiz",
-  next: "Your next step",
+  jump: "Skip ahead",
+  jumpSub: "Take a quiz",
+  next: "Back to your place",
 };
 
 /** Each unit gets its own colour: the unit header and the banner of a module without a picture. */
@@ -62,7 +62,7 @@ export function CoursePath({
   // Members-only items (a hint: the server's 402 is the real gate). A tap opens the offer straight away.
   const locked = useMemo(() => phoneLocks(outline, membership, paywall, s), [outline, membership, paywall, s]);
 
-  // "Your next step" shows while the current tile is scrolled out of view, pointing the way back to it.
+  // "Back to your place" shows while the current tile is scrolled out of view, pointing the way back to it.
   const root = useRef<HTMLDivElement>(null);
   const [away, setAway] = useState<"up" | "down" | null>(null);
   useEffect(() => {
@@ -310,7 +310,7 @@ function Gate({
       <span className="relative flex w-full items-center gap-3 p-3">
         <span className="min-w-0 flex-1">
           <span className={`block truncate text-[11px] font-black tracking-[.14em] uppercase ${current ? "text-brand" : "text-gold"}`}>
-            {current && "Start · "}Hot Seat
+            {current && "Start "}Hot Seat
           </span>
           <span className="line-clamp-2 text-[17px] leading-tight font-black text-white">{hs.company}</span>
           <span className="block truncate text-[12px] font-bold text-white/70">{sub}</span>
