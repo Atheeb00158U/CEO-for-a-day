@@ -242,7 +242,7 @@ describe("startCheckout", () => {
     await confirmCheckout(db, env, "u1", pay(subscriptionId), NOW);
     await cancelMembership(db, rp, "u1");
     const later = new Date(NOW.getTime() + 40 * DAY);
-    await expect(startCheckout(db, rp, env, "u1", "founding", later)).rejects.toThrow("Founding price ended when you cancelled");
+    await expect(startCheckout(db, rp, env, "u1", "founding", later)).rejects.toThrow("You lost your founding price when you cancelled");
     expect(created).toHaveLength(1);
     // The database refuses too, under its lock.
     expect(await db.claimSeat("u1", "sub_new")).toBeNull();

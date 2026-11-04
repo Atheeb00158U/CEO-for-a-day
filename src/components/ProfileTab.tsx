@@ -27,13 +27,13 @@ const MEMBER_COPY = {
   renews: (d: string) => `Renews on ${d}`,
   ends: (d: string) => `Ends on ${d}`,
   ended: (d: string) => `Ended on ${d}`,
-  waiting: "Your first payment is being checked.",
+  waiting: "We are checking your first payment.",
   cancel: "Cancel membership",
   confirm: (d: string | null) => (d ? `You keep access until ${d}.` : "Your membership stops now."),
-  foundingEnds: "Founding price ends if you cancel.",
+  foundingEnds: "If you cancel, you lose your founding price.",
   yesCancel: "Yes, cancel",
   keep: "Keep my membership",
-  failed: "That didn't work. Try again.",
+  failed: "There was a problem. Try again.",
   join: "Join again",
 };
 /** Statuses the player can still cancel (the server's list, without an unpaid checkout). */
@@ -278,7 +278,7 @@ function AccountCard({ email }: { email?: string }) {
   const { signOut, deleteAccount } = useGame();
   const [state, setState] = useState<"idle" | "busy" | "failed">("idle");
   // The server's own words when it refuses (e.g. payments couldn't be stopped yet); otherwise a plain retry.
-  const [why, setWhy] = useState("That didn't work. Try again.");
+  const [why, setWhy] = useState("There was a problem. Try again.");
   return (
     <Card className="flex flex-col gap-3">
       <h2 className="text-[19px] font-black">Account</h2>
@@ -298,7 +298,7 @@ function AccountCard({ email }: { email?: string }) {
           onClick={() => {
             setState("busy");
             deleteAccount().catch((e) => {
-              setWhy(e instanceof ApiError && e.status === 409 ? e.message : "That didn't work. Try again.");
+              setWhy(e instanceof ApiError && e.status === 409 ? e.message : "There was a problem. Try again.");
               setState("failed");
             });
           }}

@@ -34,7 +34,7 @@ export function payEnv(e = process.env): PayEnv {
 
 const DAY_MS = 86_400_000;
 const SEATS_FULL = "Founding seats are full";
-const FOUNDING_USED = "Founding price ended when you cancelled";
+const FOUNDING_USED = "You lost your founding price when you cancelled";
 const TRY_AGAIN = "Try again";
 /** A seat is held this long, and any checkout can be paid only this long (Razorpay's expire_by). */
 const HOLD_S = 30 * 60;

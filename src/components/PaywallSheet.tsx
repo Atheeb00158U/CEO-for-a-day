@@ -15,17 +15,17 @@ const rs = (n: number) => `₹${n.toLocaleString("en-IN")}`;
 
 // Draft copy (Task 10 runs the basic-English pass on these).
 const COPY = {
-  titleUnitDone: "Unit 1 is done. Keep going as a founding member.",
-  titleFounding: "Keep going as a founding member.",
-  titleRegular: "Become a member to keep going.",
+  titleUnitDone: "Unit 1 is done. Continue as a founding member.",
+  titleFounding: "Continue as a founding member.",
+  titleRegular: "Become a member to continue.",
   descFounding: `${rs(FOUNDING.monthly)} a month while you stay a member.`,
-  descRegular: "Members open every lesson and Hot Seat.",
+  descRegular: "Members can use every lesson and Hot Seat.",
   monthly: "Monthly",
   monthlyPrice: `${rs(REGULAR.monthly)} a month`,
   yearly: "Yearly",
   yearlyPrice: `${rs(REGULAR.yearly)} a year`,
   yearlyNote: `About ${rs(Math.round(REGULAR.yearly / 12))} a month`,
-  betterValue: "Better value",
+  betterValue: "Save more",
   pay: {
     founding: `Join for ${rs(FOUNDING.monthly)} a month`,
     monthly: `Join for ${rs(REGULAR.monthly)} a month`,
@@ -36,14 +36,14 @@ const COPY = {
     monthly: `Member, ${rs(REGULAR.monthly)} a month`,
     yearly: `Member, ${rs(REGULAR.yearly)} a year`,
   },
-  busy: "Opening payment…",
+  busy: "Opening payment page…",
   checking: "Checking your payment…",
   cancelAnyTime: "Cancel any time from your profile.",
   signInTitle: "Sign in to join",
-  signInText: "Your membership is saved to your Google account.",
+  signInText: "Your membership is linked to your Google account.",
   notCharged: "Payment didn't go through. You were not charged.",
-  notConfirmed: "We could not confirm your payment yet. It can take a few minutes. Close this and try again soon.",
-  member: "You are a member. Tap the lesson again to open it.",
+  notConfirmed: "We could not check your payment yet. This may take a few minutes. Close this and try again soon.",
+  member: "You are now a member. Tap the lesson again.",
   close: "Close",
   notNow: "Not now",
 };
@@ -96,7 +96,7 @@ export function PaywallSheet({ open, onOpenChange }: { open: boolean; onOpenChan
           return;
         }
         if (chosen === "founding") {
-          setNoFounding(e.message); // e.g. "Founding price ended when you cancelled": show the regular plans
+          setNoFounding(e.message); // e.g. "You lost your founding price when you cancelled": show the regular plans
           return;
         }
       }
