@@ -68,14 +68,14 @@ const dbOf = () => (db ??= supabaseDb());
  * Run a signed-in action: 401 without a valid token, 429 when rate limited, 400/409 for refused requests.
  * `max` is requests a minute for this route and player.
  */
-export async function signedIn(request: Request, route: string, act: (db: Db, userId: string) => Promise<unknown>, max = 60) {
+export async function signedIn(request: Request, route: string, act: (db: Db, userId: string) => Promise<object | NextResponse>, max = 60) {
   if (limited(`${route}:${ipOf(request)}`, max * 3)) return json({ error: "Too many requests" }, 429);
   const userId = await userFrom(request);
   if (!userId) return json({ error: "Sign in first" }, 401);
   if (limited(`${route}:${userId}`, max)) return json({ error: "Too many requests" }, 429);
   try {
     const out = await act(dbOf(), userId);
-    return out instanceof Response ? out : json(out); // an action may answer itself, e.g. accessCheck's 402
+    return out instanceof NextResponse ? out : json(out); // an action may answer itself, e.g. accessCheck's 402
   } catch (e) {
     if (e instanceof PlayError) return json({ error: e.message }, 400);
     if (e instanceof GameError) return json({ error: e.message }, 409);
@@ -97,11 +97,12 @@ function remember(userId: string, ctx: AccessContext, at: number) {
   accessCache.set(userId, { ctx, at });
 }
 
-/**
- * The paywall (spec §4a): null when this player (or guest) may open `item`, otherwise a 402 `members_only` reply.
- * While the paywall is off for them, nothing is read from the database.
- */
-export async function accessCheck(request: Request, item: Item, now = new Date()): Promise<NextResponse | null> {
+/** False when the paywall is off for everyone and nobody is a tester: nothing then needs a token or a read. */
+const paywallPossible = () => process.env.PAYWALL_ON === "1" || !!(process.env.PAYWALL_TESTERS ?? "").trim();
+
+/** This request's access context (the cache is good for a minute), or null while the paywall is off for them. */
+async function contextOf(request: Request, now: Date): Promise<{ ctx: AccessContext; userId: string | null } | null> {
+  if (!paywallPossible()) return null;
   const c = await claimsOf(request);
   if (!paywallFor(c?.email)) return null;
   // A guest is never a member and has no early access: no database read.
@@ -114,5 +115,29 @@ export async function accessCheck(request: Request, item: Item, now = new Date()
       remember(c.sub, ctx, now.getTime());
     }
   }
-  return canOpen(item, ctx, freeList()) ? null : json({ error: "members_only" }, 402);
+  return { ctx, userId: c?.sub ?? null };
+}
+
+/**
+ * The paywall (spec §4a): null when this player (or guest) may open `item`, otherwise a 402 `members_only` reply.
+ * While the paywall is off for them, nothing is read from the database.
+ */
+export async function accessCheck(request: Request, item: Item, now = new Date()): Promise<NextResponse | null> {
+  const a = await contextOf(request, now);
+  if (!a) return null;
+  return canOpen(item, a.ctx, freeList()) ? null : NextResponse.json({ error: "members_only" }, { status: 402, headers: NO_STORE });
+}
+
+/**
+ * Which of these lessons the player may study cards for: free lessons, everything for a member, and any lesson a
+ * signed-in player finished (they keep those cards for good). With the paywall off, all of them and no reads.
+ */
+export async function allowedLessonIds(request: Request, ids: string[], now = new Date()): Promise<string[]> {
+  const a = await contextOf(request, now);
+  if (!a) return ids;
+  const free = freeList();
+  const open = ids.filter((id) => canOpen({ kind: "lesson", id }, a.ctx, free));
+  if (!a.userId || open.length === ids.length) return open;
+  const done = (await dbOf().getProfile(a.userId))?.state.lessons ?? {};
+  return ids.filter((id) => open.includes(id) || Object.hasOwn(done, id));
 }

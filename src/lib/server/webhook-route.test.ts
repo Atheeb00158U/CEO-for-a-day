@@ -67,6 +67,20 @@ describe("POST /api/pay/webhook", () => {
     const big = "x".repeat(1_000_001);
     expect((await post("{}", { "content-length": "2000000" })).status).toBe(413);
     expect((await post(big, { "x-razorpay-signature": sign(big), "x-razorpay-event-id": "e" })).status).toBe(413);
+    // No Content-Length (chunked): the cap still holds while reading.
+    const chunked = new Request("http://x/api/pay/webhook", {
+      method: "POST",
+      body: new ReadableStream({
+        start(c) {
+          c.enqueue(new TextEncoder().encode(big.slice(0, 600_000)));
+          c.enqueue(new TextEncoder().encode(big.slice(600_000)));
+          c.close();
+        },
+      }),
+      duplex: "half",
+      headers: { "x-razorpay-signature": sign(big), "x-razorpay-event-id": "e" },
+    } as RequestInit);
+    expect((await POST(chunked)).status).toBe(413);
   });
 
   it("answers 500 when handling fails, so Razorpay retries", async () => {

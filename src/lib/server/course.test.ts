@@ -14,6 +14,7 @@ import { memoryDb } from "./db";
 import { cardLessons, courseLessonIds, courseOutline, lessonOf, servableLesson } from "./content";
 import { finishLesson, importCourse, importGuest, load, parseReviews, reviewCards } from "./game";
 import { POST as lessonRoute } from "../../app/api/lesson/route";
+import { POST as cardsRoute } from "../../app/api/cards/route";
 
 const now = new Date("2026-10-28T06:30:00Z"); // Wednesday, noon IST
 const day = "2026-10-28";
@@ -115,6 +116,33 @@ describe("POST /api/lesson", () => {
     vi.stubEnv("NODE_ENV", "development");
     expect((await post({ lessonId: "sample-margin", answers: [{ screenId: "steps", value: "a" }] })).status).toBe(400);
     expect((await post({ testOut: "sample-profit", answers: [] })).status).toBe(200);
+  });
+});
+
+describe("POST /api/cards", () => {
+  afterEach(() => vi.unstubAllEnvs());
+  const cards = async () => {
+    const r = await cardsRoute(
+      new Request("http://x/api/cards", {
+        method: "POST",
+        body: JSON.stringify({ lessonIds: ["sample-margin", "sample-paid-next"] }),
+        headers: { "x-forwarded-for": "5.6.7.8" },
+      }),
+    );
+    return [...new Set(((await r.json()).cards as { lessonId: string }[]).map((c) => c.lessonId))];
+  };
+
+  it("with PAYWALL_ON=1, a guest gets the free lesson's cards but not a paid lesson's", async () => {
+    vi.stubEnv("NODE_ENV", "development");
+    vi.stubEnv("PAYWALL_ON", "1");
+    expect(await cards()).toEqual(["sample-margin"]);
+  });
+
+  it("with the paywall off, every lesson's cards come back", async () => {
+    vi.stubEnv("NODE_ENV", "development");
+    vi.stubEnv("PAYWALL_ON", "");
+    vi.stubEnv("PAYWALL_TESTERS", "");
+    expect((await cards()).sort()).toEqual(["sample-margin", "sample-paid-next"]);
   });
 });
 
