@@ -6,7 +6,7 @@ UI components: use shadcn/ui, restyled to this look. Add gluestack-ui only if we
 
 ## Product decisions from the owner (Atheeb)
 - **Player first (1 Nov 2026):** judge every change by "will a new Indian player enjoy this, keep playing, and pay?" Question earlier decisions, even approved ones, and change them when that test says so; tell Atheeb what changed and why instead of asking.
-- **Free tier (1 Nov 2026):** Module 1 (lessons + the kirana story) plus one famous showcase Hot Seat, Kingfisher, so free players feel the dramatic stories. The paywall comes after players have something to lose (streak, league place, notes). Pricing isn't built yet.
+- **Free tier (4 Nov 2026):** only Module 1.1 (`u1-where-money-goes`: its lessons, test-out and the Kirana Year Hot Seat). Module 1.2 and Nirma are paid; the website sample shows only Nirma's first decision. `freeItems` (`src/lib/access.ts`) reads the first module of the first unit from course.json. The paywall comes after players have something to lose (streak, league place, notes).
 - **Name:** "CEO For A Day". A single case study is called a **Hot Seat**; never write "case study" in the UI.
 - **Audience:** wannabe and struggling entrepreneurs in India.
   - English first. Hindi, Tamil, Bengali and more come close to launch; don't build i18n yet.
@@ -18,11 +18,14 @@ UI components: use shadcn/ui, restyled to this look. Add gluestack-ui only if we
 - **Board trust (3 hearts):** losing them all before the last decision ends the run (the "fired" ending). Players can fix mistakes until it's too late.
 - **Media sources:** no more AI-generated images. Find every image in four archives: movingimagearchive.com (public domain, the main source), film-grab.com (copyrighted film stills: small credited inserts only, flagged to Atheeb), frameset.app (reference only unless licensed) and fashiongonerogue.com (reference only unless a credited insert). Rules and the per-Hot Seat `media.md` are in `docs/AUTHORING.md` step 5. Where no archive fits (most Indian stories), images are generated with ChatGPT in the browser on Atheeb's sign-in: period-correct, no logos, no real person's likeness. Images already in the app were made with Z-Image Turbo and stay until replaced. Narration uses OmniVoice (the engine in Atheeb's VoiceStudio app): the narrator is Atheeb's cloned voice and the advisor a designed voice (female, middle-aged, Indian accent), both cloned from `scripts/voices/`.
 - **Pricing (3 Nov 2026):**
-  - **Founding offer:** members in seats 1–500 pay ₹99/month, locked while subscribed. The seat count is
-    real (`founding_seats`, `src/lib/offer.ts`), and the offer closes at 500.
+  - **Founding offer (4 Nov 2026):** members in seats 1–1,000 pay ₹99/month, locked while subscribed
+    (`founding_seats`, `src/lib/offer.ts`); the offer closes at 1,000.
   - **After that:** ₹199/month or ₹1,499/year.
-  - **Not allowed (CCPA dark-patterns guidelines, 2023):** struck-through "was" prices, fake viewer counts,
-    AutoPay free trials.
+  - **How it's shown:** `<s>₹199</s> ₹99 a month` (`FoundingPrice`) with "Founding price, only for the first
+    1,000 members." Striking ₹199 is honest because it is the real regular price charged after the founding
+    seats. Never show players a seat count or seat number; `/api/seats` sends only `{ open }`.
+  - **Not allowed (CCPA dark-patterns guidelines, 2023):** invented "was" prices nobody pays, fake viewer
+    counts, AutoPay free trials.
   - **Payments (Razorpay Subscriptions):** not built yet; they're the next plan.
   - **Spec:** `docs/superpowers/specs/2026-11-03-wolf-ambassador-design.md`.
 - **The wolf (3 Nov 2026):** an original wolf in a pinstripe three-piece suit is the face of the brand, and

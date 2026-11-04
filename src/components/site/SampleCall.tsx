@@ -10,7 +10,8 @@ type Decision = Extract<Screen, { kind: "decision" }>;
 const HOT_SEAT = "nirma-washing-powder";
 
 const post = async (picks: Pick[]): Promise<PlayView> => {
-  const r = await fetch("/api/play", {
+  // ?site=1: the website's own rate limit, and the paywall lets a guest see this first decision only.
+  const r = await fetch("/api/play?site=1", {
     method: "POST",
     headers: { "content-type": "application/json" },
     body: JSON.stringify({ hotSeatId: HOT_SEAT, picks }),
@@ -28,7 +29,7 @@ const firstDecision = async (): Promise<Decision> => {
 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
-/** One real decision from a free Hot Seat, playable on the website. The server replays the pick, as in the game. */
+/** One real decision from Nirma (its first one only), playable on the website. The server replays the pick, as in the game. */
 export function SampleCall() {
   const box = useRef<HTMLDivElement>(null);
   const heading = useRef<HTMLParagraphElement>(null);
@@ -170,7 +171,7 @@ export function SampleCall() {
               </div>
             )}
             <Link href="/app" className="btn3d green mt-5">
-              Play the whole Hot Seat free
+              Play free
             </Link>
           </>
         )}

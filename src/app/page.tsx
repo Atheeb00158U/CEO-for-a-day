@@ -1,15 +1,16 @@
-// The public website. A server component: the wolf's pictures are static files; the seat count is read here and
-// kept fresh by <SeatCounter>; the sample decision plays through /api/play, so no Hot Seat answers reach the page.
+// The public website. A server component: the wolf's pictures are static files; whether founding seats are left is
+// read here (never shown as a count) to pick the founding or regular offer; the sample decision plays through
+// /api/play, so no Hot Seat answers reach the page.
 import type { Metadata } from "next";
 import Link from "next/link";
 import { preload } from "react-dom";
+import { FoundingPrice } from "@/components/FoundingPrice";
 import { LegacyHashRedirect } from "@/components/LegacyHashRedirect";
 import { Logo } from "@/components/Logo";
 import { WolfPicture } from "@/components/WolfPicture";
 import { SampleCall } from "@/components/site/SampleCall";
-import { SeatCounter } from "@/components/site/SeatCounter";
 import { srcSet, type WolfName } from "@/lib/brand";
-import { FOUNDING, REGULAR } from "@/lib/offer";
+import { FOUNDING, FOUNDING_LINE, REGULAR } from "@/lib/offer";
 import { supabaseDb } from "@/lib/server/db";
 import { cachedSeatStatus } from "@/lib/server/seats";
 
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
   title: "CEO For A Day · Learn business from real Indian stories",
   description: "Short lessons, then real business decisions you make yourself. Free to start.",
 };
-export const revalidate = 60; // the seat count in the HTML is at most a minute old; the counter refreshes it
+export const revalidate = 60; // the founding offer switches to the regular plans at most a minute after the last seat goes
 
 // The hero is full width on a phone and a fixed column of the 1100 px layout from 768 px up.
 const HERO_SIZES = "(min-width: 1024px) 540px, (min-width: 768px) 340px, 100vw";
@@ -53,7 +54,7 @@ const yearly = REGULAR.yearly.toLocaleString("en-IN");
 
 function faq(full: boolean) {
   return [
-    { q: "Is it free?", a: "Yes, you can start free with Unit 1. Membership gives you access to the rest." },
+    { q: "Is it free?", a: "Yes, your first lessons and your first Hot Seat are free. Membership opens the rest." },
     full
       ? {
           q: "What does membership get me?",
@@ -61,7 +62,11 @@ function faq(full: boolean) {
         }
       : {
           q: `What does ₹${FOUNDING.monthly} get me?`,
-          a: `Every lesson, every Hot Seat, and every new one we add. ₹${FOUNDING.monthly} a month while you stay a member.`,
+          a: (
+            <>
+              Every lesson, every Hot Seat, and every new one we add. <FoundingPrice /> while you stay a member. {FOUNDING_LINE}
+            </>
+          ),
         },
     {
       q: "Can I cancel?",
@@ -77,11 +82,12 @@ function faq(full: boolean) {
   ];
 }
 
-async function seatsTaken() {
+/** True once every founding seat is taken. Never shown as a number. */
+async function seatsFull() {
   try {
-    return (await cachedSeatStatus(supabaseDb())).taken;
+    return !(await cachedSeatStatus(supabaseDb())).open;
   } catch {
-    return 0; // no database (CI build, local without keys): the line then names the offer instead of a count
+    return false; // no database (CI build, local without keys): show the founding offer
   }
 }
 
@@ -101,8 +107,7 @@ export default async function Home() {
     imageSizes: HERO_SIZES,
     fetchPriority: "high",
   });
-  const taken = await seatsTaken();
-  const full = taken >= FOUNDING.seats;
+  const full = await seatsFull();
 
   return (
     <div className="min-h-dvh">
@@ -207,7 +212,7 @@ export default async function Home() {
           </div>
         </section>
 
-        {/* Founding members: the café wolf beside the offer and the live seat count */}
+        {/* Founding members: the café wolf beside the offer */}
         <section id="founding" className="bg-surface">
           <div className="mx-auto grid max-w-[1100px] gap-8 px-4 py-16 sm:px-6 md:grid-cols-[1fr_1.1fr] md:items-center md:gap-12 md:py-20">
             <WolfPicture
@@ -217,19 +222,23 @@ export default async function Home() {
             />
             <div className="rise">
               <h2 className="text-[30px] leading-tight font-black text-balance md:text-[32px] lg:text-[40px]">
-                {full ? `Members pay ₹${REGULAR.monthly} a month` : `Founding members pay ₹${FOUNDING.monthly} a month`}
+                {full ? (
+                  `Members pay ₹${REGULAR.monthly} a month`
+                ) : (
+                  <>
+                    Founding members pay <FoundingPrice />
+                  </>
+                )}
               </h2>
               {full ? (
                 <p className="mt-3 text-[17px] leading-snug md:text-[18px]">Or ₹{yearly} a year.</p>
               ) : (
                 <>
-                  <p className="mt-3 text-[17px] leading-snug md:text-[18px]">
-                    The first {FOUNDING.seats} members pay ₹{FOUNDING.monthly} a month for as long as they stay members. After that, the
-                    price is ₹{REGULAR.monthly} a month, or ₹{yearly} a year.
+                  <p className="mt-3 text-[17px] font-extrabold text-brand md:text-[18px]">{FOUNDING_LINE}</p>
+                  <p className="mt-2 text-[17px] leading-snug md:text-[18px]">
+                    You keep ₹{FOUNDING.monthly} a month for as long as you stay a member. When the founding seats are gone, new members pay
+                    ₹{REGULAR.monthly} a month, or ₹{yearly} a year.
                   </p>
-                  <div className="mt-6">
-                    <SeatCounter initial={taken} />
-                  </div>
                 </>
               )}
               <ul className="mt-6 grid list-disc gap-2 pl-5 text-[17px] font-bold marker:text-brand">
@@ -238,11 +247,9 @@ export default async function Home() {
                 <li>Cancel any time with one tap</li>
               </ul>
               <div className="mt-8 max-w-[360px]">
-                <PlayButton>Play Unit 1 free</PlayButton>
+                <PlayButton>Play free</PlayButton>
               </div>
-              <p className="mt-3 text-[14px] font-bold text-muted">
-                {full ? "You can become a member after you finish Unit 1." : "You can claim a founding seat after you finish Unit 1."}
-              </p>
+              <p className="mt-3 text-[14px] font-bold text-muted">Start free. Join when you&apos;re ready.</p>
             </div>
           </div>
         </section>

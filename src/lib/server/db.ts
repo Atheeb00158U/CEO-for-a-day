@@ -3,6 +3,7 @@
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import type { DailyNote, GameState } from "../game-state";
 import type { Grade } from "../hotseat-types";
+import { FOUNDING } from "../offer";
 
 /** The saved part of a player's state. Runs, the Daily log and the league live in their own tables. */
 export type SavedState = Omit<GameState, "runs" | "dailyLog" | "league">;
@@ -137,7 +138,7 @@ export interface Db {
   hasPaymentEvent(eventId: string): Promise<boolean>;
   /** A payment problem a person must sort out by hand (payment_issues). No PII beyond the ids. */
   recordPaymentIssue(kind: string, subscriptionId: string, userId?: string): Promise<void>;
-  /** Hold the lowest free founding seat for 30 minutes; null when all 500 are taken. */
+  /** Hold the lowest free founding seat for 30 minutes; null when all 1,000 are taken. */
   claimSeat(userId: string, subscriptionId: string): Promise<number | null>;
   /** The first charge: keep the held seat for good. False when no seat is held for it (the hold ran out or moved). */
   keepSeat(subscriptionId: string): Promise<boolean>;
@@ -177,7 +178,6 @@ export function memoryDb(): Db & {
   const early = new Map<string, Set<string>>();
   const paymentIssues: PaymentIssue[] = [];
   const SEAT_HOLD_MS = 30 * 60 * 1000;
-  const TOTAL_SEATS = 500;
   /** A seat is used if it is kept, or an unpaid hold that has not run out. */
   const live = (s: SeatRow) => s.heldUntil === null || s.heldUntil > Date.now();
   const clone = <T>(x: T): T => structuredClone(x);
@@ -334,7 +334,7 @@ export function memoryDb(): Db & {
         if (s.heldUntil !== null && (s.userId === userId || !live(s))) seats.splice(i, 1);
       }
       const used = new Set(seats.map((s) => s.seatNo));
-      for (let n = 1; n <= TOTAL_SEATS; n++) {
+      for (let n = 1; n <= FOUNDING.seats; n++) {
         if (used.has(n)) continue;
         seats.push({ seatNo: n, userId, subscriptionId, heldUntil: Date.now() + SEAT_HOLD_MS, cancelledAt: null });
         return n;

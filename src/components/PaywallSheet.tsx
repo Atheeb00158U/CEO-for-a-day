@@ -2,12 +2,14 @@
 
 import { useEffect, useState } from "react";
 import { Sheet, SheetContent, SheetDescription, SheetTitle } from "@/components/shadcn/sheet";
+import { freeModule } from "@/lib/access";
 import { ApiError, api } from "@/lib/auth";
 import { CheckoutClosed, openCheckout, type CheckoutSuccess } from "@/lib/checkout";
 import { useContent } from "@/lib/content-client";
 import { FOUNDING_USED, NO_FOUNDING } from "@/lib/membership-view";
-import { FOUNDING, REGULAR, seatsLine } from "@/lib/offer";
+import { FOUNDING, FOUNDING_LINE, REGULAR } from "@/lib/offer";
 import { useGame } from "@/lib/store";
+import { FoundingPrice } from "./FoundingPrice";
 import { SignInCard } from "./SignInCard";
 import { WolfPicture } from "./WolfPicture";
 
@@ -15,10 +17,10 @@ type Plan = "founding" | "monthly" | "yearly";
 const rs = (n: number) => `₹${n.toLocaleString("en-IN")}`;
 
 const COPY = {
-  titleUnitDone: "Unit 1 is done. Continue as a founding member.",
+  titleFreeDone: "Your free lessons are done. Continue as a founding member.",
   titleFounding: "Continue as a founding member.",
   titleRegular: "Become a member to continue.",
-  descFounding: `${rs(FOUNDING.monthly)} a month while you stay a member.`,
+  descFounding: " while you stay a member.", // after the struck price: "₹199 ₹99 a month while you stay a member."
   descRegular: "Members can use every lesson and Hot Seat.",
   monthly: "Monthly",
   monthlyPrice: `${rs(REGULAR.monthly)} a month`,
@@ -53,7 +55,8 @@ const COPY = {
 export function PaywallSheet({ open, onOpenChange }: { open: boolean; onOpenChange: (open: boolean) => void }) {
   const { account, membership, reload, s } = useGame();
   const { course } = useContent();
-  const [seats, setSeats] = useState<{ taken: number; open: boolean } | null>(null);
+  // Whether founding seats are left (null: not known yet). The count itself is never shown.
+  const [seatsOpen, setSeatsOpen] = useState<boolean | null>(null);
   // The server's own reason when the founding price isn't on offer to this player (all taken, or they cancelled).
   const [noFounding, setNoFounding] = useState<string | null>(null);
   const [plan, setPlan] = useState<Plan>("monthly");
@@ -69,21 +72,21 @@ export function PaywallSheet({ open, onOpenChange }: { open: boolean; onOpenChan
     let live = true;
     fetch("/api/seats")
       .then((r) => (r.ok ? r.json() : null))
-      .then((x) => live && setSeats(x && typeof x.taken === "number" ? { taken: x.taken, open: !!x.open } : null))
-      .catch(() => live && setSeats(null));
+      .then((x) => live && setSeatsOpen(typeof x?.open === "boolean" ? x.open : null))
+      .catch(() => live && setSeatsOpen(null));
     return () => {
       live = false;
     };
   }, [open]);
 
-  // Unknown seat count: offer the founding price and let the server decide.
+  // Unknown: offer the founding price and let the server decide.
   // A returning founder who cancelled starts on the regular plans, with the reason.
   const reason = noFounding ?? (membership?.foundingUsed ? FOUNDING_USED : null);
-  const founding = !reason && (seats?.open ?? true);
+  const founding = !reason && (seatsOpen ?? true);
   const chosen: Plan = founding ? "founding" : plan;
-  const unit1 = course?.units[0]?.modules.flatMap((m) => m.lessons.map((l) => l.id)) ?? [];
-  const unit1Done = unit1.length > 0 && unit1.every((id) => s.lessons[id]);
-  const title = founding ? (unit1Done ? COPY.titleUnitDone : COPY.titleFounding) : COPY.titleRegular;
+  const freeLessons = (course && freeModule(course)?.lessons.map((l) => l.id)) ?? [];
+  const freeDone = freeLessons.length > 0 && freeLessons.every((id) => s.lessons[id]);
+  const title = founding ? (freeDone ? COPY.titleFreeDone : COPY.titleFounding) : COPY.titleRegular;
 
   async function join() {
     setError(null);
@@ -152,7 +155,14 @@ export function PaywallSheet({ open, onOpenChange }: { open: boolean; onOpenChan
         </div>
         <SheetTitle className="mt-3 text-center text-[22px] leading-tight font-black text-balance">{title}</SheetTitle>
         <SheetDescription className="mt-1 text-center text-[16px] font-bold text-muted">
-          {founding ? COPY.descFounding : COPY.descRegular}
+          {founding ? (
+            <>
+              <FoundingPrice />
+              {COPY.descFounding}
+            </>
+          ) : (
+            COPY.descRegular
+          )}
         </SheetDescription>
 
         {membership?.member ? (
@@ -160,7 +170,7 @@ export function PaywallSheet({ open, onOpenChange }: { open: boolean; onOpenChan
         ) : (
           <>
             {founding ? (
-              seats && <p className="mt-2 text-center text-[14px] font-extrabold text-brand">{seatsLine(seats.taken)}</p>
+              <p className="mt-2 text-center text-[14px] font-extrabold text-brand">{FOUNDING_LINE}</p>
             ) : (
               <>
                 {reason && <p className="mt-2 text-center text-[14px] font-extrabold text-brand">{reason}.</p>}
