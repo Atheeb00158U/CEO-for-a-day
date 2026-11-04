@@ -70,6 +70,12 @@ export interface MembershipRow {
   currentEnd: string | null;
 }
 
+export interface PaymentIssue {
+  kind: string;
+  subscriptionId: string;
+  userId: string | null;
+}
+
 export interface SeatRow {
   seatNo: number;
   userId: string | null;
@@ -120,6 +126,10 @@ export interface Db {
   saveMembership(row: MembershipRow): Promise<void>;
   /** False if this webhook event id was already handled. */
   insertPaymentEvent(eventId: string): Promise<boolean>;
+  /** Forget an event whose handling failed, so Razorpay's retry is applied. */
+  deletePaymentEvent(eventId: string): Promise<void>;
+  /** A payment problem a person must sort out by hand (payment_issues). No PII beyond the ids. */
+  recordPaymentIssue(kind: string, subscriptionId: string, userId?: string): Promise<void>;
   /** Hold the lowest free founding seat for 30 minutes; null when all 500 are taken. */
   claimSeat(userId: string, subscriptionId: string): Promise<number | null>;
   /** The first charge: keep the held seat for good. False when no seat is held for it (the hold ran out or moved). */
@@ -145,6 +155,7 @@ export function memoryDb(): Db & {
   foundingSeats: number;
   seats: SeatRow[];
   early: Map<string, Set<string>>;
+  paymentIssues: PaymentIssue[];
 } {
   const profiles = new Map<string, Profile>();
   const runs: RunRow[] = [];
@@ -157,6 +168,7 @@ export function memoryDb(): Db & {
   const events = new Set<string>();
   const seats: SeatRow[] = [];
   const early = new Map<string, Set<string>>();
+  const paymentIssues: PaymentIssue[] = [];
   const SEAT_HOLD_MS = 30 * 60 * 1000;
   const TOTAL_SEATS = 500;
   /** A seat is used if it is kept, or an unpaid hold that has not run out. */
@@ -262,6 +274,7 @@ export function memoryDb(): Db & {
       for (const [k, p] of pushes) if (p.userId === id) pushes.delete(k);
       memberships.delete(id);
       early.delete(id);
+      for (const p of paymentIssues) if (p.userId === id) p.userId = null;
       // A paid seat stays used with no owner (same as the migration's on delete set null).
       for (let i = seats.length - 1; i >= 0; i--) {
         if (seats[i].userId !== id) continue;
@@ -271,6 +284,7 @@ export function memoryDb(): Db & {
     },
     seats,
     early,
+    paymentIssues,
     foundingSeats: 0,
     async countFoundingSeats() {
       // `foundingSeats` is a test hook for a count with no rows behind it; it adds to the real seats.
@@ -289,6 +303,12 @@ export function memoryDb(): Db & {
       if (events.has(eventId)) return false;
       events.add(eventId);
       return true;
+    },
+    async deletePaymentEvent(eventId) {
+      events.delete(eventId);
+    },
+    async recordPaymentIssue(kind, subscriptionId, userId) {
+      paymentIssues.push({ kind, subscriptionId, userId: userId ?? null });
     },
     async claimSeat(userId, subscriptionId) {
       // A player who kept a seat before gets no second one (20261104100000_seat_rules.sql).
@@ -587,6 +607,12 @@ export function supabaseDb(sb = supabaseAdmin()): Db {
       if (duplicate(error)) return false;
       if (error) throw new Error(error.message);
       return true;
+    },
+    async deletePaymentEvent(eventId) {
+      must(await sb.from("payment_events").delete().eq("event_id", eventId));
+    },
+    async recordPaymentIssue(kind, subscriptionId, userId) {
+      must(await sb.from("payment_issues").insert({ kind, subscription_id: subscriptionId, user_id: userId ?? null }));
     },
     async claimSeat(userId, subscriptionId) {
       return must<number | null>(await sb.rpc("claim_founding_seat", { p_user: userId, p_subscription: subscriptionId }));

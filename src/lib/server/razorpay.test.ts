@@ -1,6 +1,6 @@
 import { createHmac } from "node:crypto";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { checkoutSignatureOk, razorpay, webhookSignatureOk } from "./razorpay";
+import { alreadyCancelled, checkoutSignatureOk, razorpay, webhookSignatureOk } from "./razorpay";
 
 const hmac = (secret: string, s: string) => createHmac("sha256", secret).update(s).digest("hex");
 
@@ -74,5 +74,15 @@ describe("razorpay client", () => {
   it("throws Razorpay's error description on a failed call", async () => {
     stubFetch({ error: { description: "bad plan" } }, 400);
     await expect(razorpay("k", "s").createSubscription("plan_x", 1, {})).rejects.toThrow(/400: bad plan/);
+  });
+});
+
+describe("alreadyCancelled", () => {
+  it("matches Razorpay's refusals for a subscription that is already over, and nothing else", () => {
+    expect(alreadyCancelled(new Error("Razorpay /x 400: Subscription is not cancellable in cancelled status."))).toBe(true);
+    expect(alreadyCancelled(new Error("Razorpay /x 400: Subscription is already cancelled"))).toBe(true);
+    expect(alreadyCancelled(new Error("Razorpay /x 400: in completed state"))).toBe(true);
+    expect(alreadyCancelled(new Error("Razorpay /x 502: error"))).toBe(false);
+    expect(alreadyCancelled("cancelled status")).toBe(false);
   });
 });

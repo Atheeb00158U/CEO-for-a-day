@@ -4,7 +4,7 @@ import { isMember, type AccessContext } from "../access.ts";
 import { FOUNDING } from "../offer.ts";
 import type { Db, MembershipRow } from "./db.ts";
 import { GameError } from "./game.ts";
-import { checkoutSignatureOk, webhookSignatureOk, type RazorpayClient } from "./razorpay.ts";
+import { alreadyCancelled, checkoutSignatureOk, webhookSignatureOk, type RazorpayClient } from "./razorpay.ts";
 
 export type Plan = MembershipRow["plan"];
 export const PLANS: readonly Plan[] = ["founding", "monthly", "yearly"];
@@ -35,8 +35,21 @@ export function payEnv(e = process.env): PayEnv {
 const DAY_MS = 86_400_000;
 const SEATS_FULL = "Founding seats are full";
 const FOUNDING_USED = "Founding price ended when you cancelled";
-/** A seat is held this long, and a founding checkout can be paid only this long (Razorpay's expire_by). */
+/** A seat is held this long, and any checkout can be paid only this long (Razorpay's expire_by). */
 const HOLD_S = 30 * 60;
+/** Statuses after which Razorpay never charges again. A row never moves from one of these back to a live one. */
+const FINAL = new Set(["cancelled", "completed", "expired"]);
+/** The temporary period end when Razorpay hasn't given one: a little over one billing cycle. */
+const tempEnd = (plan: Plan, now: Date) => new Date(now.getTime() + (plan === "yearly" ? 370 : 35) * DAY_MS).toISOString();
+
+/** Cancel at Razorpay; one that is already over counts as done. */
+async function cancelAt(rp: RazorpayClient, subscriptionId: string, atCycleEnd: boolean) {
+  try {
+    await rp.cancelSubscription(subscriptionId, atCycleEnd);
+  } catch (e) {
+    if (!alreadyCancelled(e)) throw e;
+  }
+}
 
 /**
  * The first payment keeps the founding seat. If the hold ran out or moved before the money arrived, take a free seat
@@ -46,6 +59,7 @@ async function secureSeat(db: Db, m: MembershipRow) {
   if (await db.keepSeat(m.subscriptionId)) return;
   if ((await db.claimSeat(m.userId, m.subscriptionId)) !== null && (await db.keepSeat(m.subscriptionId))) return;
   console.error(`FOUNDING_OVERFLOW: paid founding subscription ${m.subscriptionId} has no seat; check by hand`);
+  await db.recordPaymentIssue("FOUNDING_OVERFLOW", m.subscriptionId, m.userId);
 }
 
 export async function startCheckout(db: Db, rp: RazorpayClient, env: PayEnv, userId: string, plan: Plan, now: Date) {
@@ -59,8 +73,14 @@ export async function startCheckout(db: Db, rp: RazorpayClient, env: PayEnv, use
     const ownHold = current?.plan === "founding" && current.status === "created";
     if (!ownHold && (await db.countFoundingSeats()) >= FOUNDING.seats) throw new GameError(SEATS_FULL);
   }
-  // A founding checkout can't be paid after its seat hold runs out.
-  const expireBy = plan === "founding" ? Math.floor(now.getTime() / 1000) + HOLD_S : undefined;
+  // Only one checkout per player is ever live: the row below replaces the old one, so a payment on the old one would
+  // give no access yet keep charging. Stop it first; if Razorpay can't, start nothing new.
+  if (current && !FINAL.has(current.status)) {
+    await cancelAt(rp, current.subscriptionId, false);
+    if (current.plan === "founding") await db.cancelSeat(current.subscriptionId);
+  }
+  // No checkout can be paid after 30 minutes (a founding one's seat hold runs out then too).
+  const expireBy = Math.floor(now.getTime() / 1000) + HOLD_S;
   const sub = await rp.createSubscription(env.plans[plan], env.totalCount[plan], { userId, plan }, expireBy);
   if (plan === "founding" && (await db.claimSeat(userId, sub.id)) === null) {
     await rp.cancelSubscription(sub.id, false);
@@ -84,17 +104,16 @@ export async function confirmCheckout(
     throw new GameError("Payment not verified");
   }
   if (m.plan === "founding") await secureSeat(db, m);
-  forgetAccess(userId);
   // A webhook may have got here first with the real status and period end: don't undo it.
-  if (m.status !== "created") return m;
+  if (m.status !== "created") {
+    forgetAccess(userId);
+    return m;
+  }
   // A temporary end so the player is in at once; the webhook sets Razorpay's real current_end.
-  const days = m.plan === "yearly" ? 370 : 35;
-  const row: MembershipRow = {
-    ...m,
-    status: "authenticated",
-    currentEnd: new Date(now.getTime() + days * DAY_MS).toISOString(),
-  };
+  const row: MembershipRow = { ...m, status: "authenticated", currentEnd: tempEnd(m.plan, now) };
   await db.saveMembership(row);
+  // After the save: a request that read the old row meanwhile mustn't leave "not a member" cached.
+  forgetAccess(userId);
   return row;
 }
 
@@ -102,8 +121,9 @@ interface SubscriptionEntity {
   id: string;
   status: string;
   /** Unix seconds. */
-  current_end: number | null;
+  current_end?: unknown;
 }
+type WebhookBody = { event?: string; payload?: { subscription?: { entity?: SubscriptionEntity } } };
 
 export async function handleWebhook(
   db: Db,
@@ -111,37 +131,55 @@ export async function handleWebhook(
   rawBody: string,
   signature: string | null,
   eventId: string,
+  now = new Date(),
 ): Promise<{ ok: true } | { ok: false; status: number }> {
   if (!webhookSignatureOk(rawBody, signature, env.webhookSecret)) return { ok: false, status: 400 };
-  let body: { event?: string; payload?: { subscription?: { entity?: SubscriptionEntity } } };
+  let body: WebhookBody;
   try {
     body = JSON.parse(rawBody);
   } catch {
     return { ok: false, status: 400 };
   }
-  // Every write below is safe to repeat, so a retried event is simply handled again. It is marked handled only
-  // after it succeeds: a failure answers 500 and Razorpay retries.
-  await applyEvent(db, body);
-  await db.insertPaymentEvent(eventId);
+  // Each event is applied once: a retried delivery is answered without touching anything. If applying fails, the
+  // event is forgotten again and the error answers 500, so Razorpay's retry gets another go.
+  if (!(await db.insertPaymentEvent(eventId))) return { ok: true };
+  try {
+    await applyEvent(db, body, now);
+  } catch (e) {
+    await db.deletePaymentEvent(eventId);
+    throw e;
+  }
   return { ok: true };
 }
 
-async function applyEvent(db: Db, body: { event?: string; payload?: { subscription?: { entity?: SubscriptionEntity } } }) {
+async function applyEvent(db: Db, body: WebhookBody, now: Date) {
   const sub = body.payload?.subscription?.entity;
   if (!sub?.id) return;
+  const charge = body.event === "subscription.activated" || body.event === "subscription.charged";
   const m = await db.membershipBySubscription(sub.id);
-  if (!m) return;
+  if (!m) {
+    // Money taken on a subscription we don't hold (e.g. a replaced checkout paid anyway): a person must refund it.
+    if (charge) {
+      console.error("UNKNOWN_SUBSCRIPTION_CHARGED", sub.id, body.event);
+      await db.recordPaymentIssue("UNKNOWN_SUBSCRIPTION_CHARGED", sub.id);
+    }
+    return;
+  }
+  // Webhooks can arrive late or out of order: a finished subscription never comes back to life.
+  if (FINAL.has(m.status) && !FINAL.has(sub.status)) return;
   const founding = m.plan === "founding";
   switch (body.event) {
     case "subscription.activated":
-    case "subscription.charged":
-      await db.saveMembership({
-        ...m,
-        status: sub.status,
-        currentEnd: sub.current_end ? new Date(sub.current_end * 1000).toISOString() : m.currentEnd,
-      });
+    case "subscription.charged": {
+      // Never forever: with no usable current_end, a temporary one. Never lower a real end either (a late
+      // "activated" after a "charged"), except the guess confirmCheckout stored while authenticated.
+      const incoming = typeof sub.current_end === "number" ? new Date(sub.current_end * 1000).toISOString() : tempEnd(m.plan, now);
+      // Compared as times: Postgres hands back "+00:00", not ISO's "Z".
+      const keepStored = m.status !== "authenticated" && !!m.currentEnd && Date.parse(m.currentEnd) > Date.parse(incoming);
+      await db.saveMembership({ ...m, status: sub.status, currentEnd: keepStored ? m.currentEnd : incoming });
       if (founding) await secureSeat(db, m);
       break;
+    }
     case "subscription.pending":
     case "subscription.halted":
       await db.saveMembership({ ...m, status: sub.status });
@@ -157,11 +195,14 @@ async function applyEvent(db: Db, body: { event?: string; payload?: { subscripti
   forgetAccess(m.userId);
 }
 
+/** Statuses a player can cancel. */
+const CANCELLABLE = new Set(["active", "authenticated", "pending", "halted", "created"]);
+
 export async function cancelMembership(db: Db, rp: RazorpayClient, userId: string): Promise<MembershipRow> {
   const m = await db.getMembership(userId);
-  if (!m || m.status === "cancelled") throw new GameError("No active membership");
-  // At the cycle end: the player keeps what they paid for.
-  await rp.cancelSubscription(m.subscriptionId, true);
+  if (!m || !CANCELLABLE.has(m.status)) throw new GameError("No active membership");
+  // A paid-up member keeps what they paid for until the cycle end; anything else (unpaid, behind) stops now.
+  await cancelAt(rp, m.subscriptionId, m.status === "active" || m.status === "authenticated");
   const row: MembershipRow = { ...m, status: "cancelled" };
   await db.saveMembership(row);
   if (m.plan === "founding") await db.cancelSeat(m.subscriptionId);

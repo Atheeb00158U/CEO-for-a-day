@@ -52,8 +52,9 @@ describe("isMember", () => {
     expect(isMember({ status: "created", currentEnd: null }, now)).toBe(false);
     expect(isMember(null, now)).toBe(false);
   });
-  it("keeps an active member open for 3 days past the period end, then not", () => {
-    expect(isMember({ status: "active", currentEnd: null }, now)).toBe(true);
+  it("keeps an active member open for 3 days past the period end, then not; no end is no access", () => {
+    // Never forever: an active row with no end is not a member.
+    expect(isMember({ status: "active", currentEnd: null }, now)).toBe(false);
     expect(isMember({ status: "active", currentEnd: "2026-11-08T10:00:01Z" }, now)).toBe(true);
     expect(isMember({ status: "active", currentEnd: "2026-11-07T10:00:00Z" }, now)).toBe(false);
     // The grace is for late renewals only: a cancelled member ends on time.

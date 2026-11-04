@@ -23,6 +23,10 @@ export const checkoutSignatureOk = (p: { paymentId: string; subscriptionId: stri
 export const webhookSignatureOk = (rawBody: string, signature: string | null, webhookSecret: string) =>
   !!webhookSecret && !!signature && same(sign(webhookSecret, rawBody), signature);
 
+/** Razorpay's refusal to cancel a subscription that is already over (e.g. a webhook we haven't had yet). */
+const ALREADY_OVER = /already cancell?ed|(cancell?ed|completed|expired) (state|status)/i;
+export const alreadyCancelled = (e: unknown) => e instanceof Error && ALREADY_OVER.test(e.message);
+
 export interface RazorpayClient {
   /** `expireBy` (unix seconds) is the last moment the customer can make the authorisation payment. */
   createSubscription(

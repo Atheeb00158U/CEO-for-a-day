@@ -42,8 +42,8 @@ export const GRACE_MS = 3 * 864e5;
 export function isMember(m: MembershipLike | null, now: Date): boolean {
   if (!m) return false;
   if (m.status === "active") {
-    // Razorpay sets current_end on activation; null only for a moment before that webhook lands.
-    return !m.currentEnd || new Date(m.currentEnd).getTime() + GRACE_MS > now.getTime();
+    // Never forever: the webhook always stores an end (Razorpay's, or a fallback), so no end means no access.
+    return !!m.currentEnd && new Date(m.currentEnd).getTime() + GRACE_MS > now.getTime();
   }
   return PAID_UNTIL_END.has(m.status) && !!m.currentEnd && new Date(m.currentEnd) > now;
 }
