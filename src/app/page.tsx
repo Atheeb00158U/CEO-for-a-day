@@ -49,22 +49,33 @@ const POSES: WolfName[] = [
   "pose-shocked",
 ];
 
-const FAQ = [
-  { q: "Is it free?", a: "Yes, you can start free with Unit 1. Membership gives you access to the rest." },
-  {
-    q: `What does ₹${FOUNDING.monthly} get me?`,
-    a: `Every lesson, every Hot Seat, and every new one we add. ₹${FOUNDING.monthly} a month while you stay a member.`,
-  },
-  {
-    q: "Can I cancel?",
-    a: `Yes. Cancel any time with one tap in your profile or UPI app. If you cancel, the ₹${FOUNDING.monthly} price ends.`,
-  },
-  { q: "Is it in Hindi?", a: "English for now. Hindi, Tamil and Bengali are coming." },
-  {
-    q: "Are the stories true?",
-    a: "Yes, from public sources. Each Hot Seat lists them. One practice story is not real, and it says so.",
-  },
-];
+const yearly = REGULAR.yearly.toLocaleString("en-IN");
+
+function faq(full: boolean) {
+  return [
+    { q: "Is it free?", a: "Yes, you can start free with Unit 1. Membership gives you access to the rest." },
+    full
+      ? {
+          q: "What does membership get me?",
+          a: `Every lesson, every Hot Seat, and every new one we add. ₹${REGULAR.monthly} a month or ₹${yearly} a year.`,
+        }
+      : {
+          q: `What does ₹${FOUNDING.monthly} get me?`,
+          a: `Every lesson, every Hot Seat, and every new one we add. ₹${FOUNDING.monthly} a month while you stay a member.`,
+        },
+    {
+      q: "Can I cancel?",
+      a: full
+        ? "Yes. Cancel any time with one tap in your profile or UPI app."
+        : `Yes. Cancel any time with one tap in your profile or UPI app. If you cancel, the ₹${FOUNDING.monthly} price ends.`,
+    },
+    { q: "Is it in Hindi?", a: "English for now. Hindi, Tamil and Bengali are coming." },
+    {
+      q: "Are the stories true?",
+      a: "Yes, from public sources. Each Hot Seat lists them. One practice story is not real, and it says so.",
+    },
+  ];
+}
 
 async function seatsTaken() {
   try {
@@ -91,6 +102,7 @@ export default async function Home() {
     fetchPriority: "high",
   });
   const taken = await seatsTaken();
+  const full = taken >= FOUNDING.seats;
 
   return (
     <div className="min-h-dvh">
@@ -205,15 +217,21 @@ export default async function Home() {
             />
             <div className="rise">
               <h2 className="text-[30px] leading-tight font-black text-balance md:text-[32px] lg:text-[40px]">
-                Founding members pay ₹{FOUNDING.monthly} a month
+                {full ? `Members pay ₹${REGULAR.monthly} a month` : `Founding members pay ₹${FOUNDING.monthly} a month`}
               </h2>
-              <p className="mt-3 text-[17px] leading-snug md:text-[18px]">
-                The first {FOUNDING.seats} members pay ₹{FOUNDING.monthly} a month for as long as they stay members. After that, the price
-                is ₹{REGULAR.monthly} a month, or ₹{REGULAR.yearly.toLocaleString("en-IN")} a year.
-              </p>
-              <div className="mt-6">
-                <SeatCounter initial={taken} />
-              </div>
+              {full ? (
+                <p className="mt-3 text-[17px] leading-snug md:text-[18px]">Or ₹{yearly} a year.</p>
+              ) : (
+                <>
+                  <p className="mt-3 text-[17px] leading-snug md:text-[18px]">
+                    The first {FOUNDING.seats} members pay ₹{FOUNDING.monthly} a month for as long as they stay members. After that, the
+                    price is ₹{REGULAR.monthly} a month, or ₹{yearly} a year.
+                  </p>
+                  <div className="mt-6">
+                    <SeatCounter initial={taken} />
+                  </div>
+                </>
+              )}
               <ul className="mt-6 grid list-disc gap-2 pl-5 text-[17px] font-bold marker:text-brand">
                 <li>Every lesson and every Hot Seat</li>
                 <li>New lessons and Hot Seats as they come out</li>
@@ -222,7 +240,9 @@ export default async function Home() {
               <div className="mt-8 max-w-[360px]">
                 <PlayButton>Play Unit 1 free</PlayButton>
               </div>
-              <p className="mt-3 text-[14px] font-bold text-muted">You can claim a founding seat after you finish Unit 1.</p>
+              <p className="mt-3 text-[14px] font-bold text-muted">
+                {full ? "You can become a member after you finish Unit 1." : "You can claim a founding seat after you finish Unit 1."}
+              </p>
             </div>
           </div>
         </section>
@@ -231,7 +251,7 @@ export default async function Home() {
         <section className="mx-auto max-w-[760px] px-4 py-20 sm:px-6">
           <h2 className="text-[30px] leading-tight font-black md:text-[40px]">Questions</h2>
           <div className="mt-6 grid gap-3">
-            {FAQ.map((f) => (
+            {faq(full).map((f) => (
               <details key={f.q} className="rise group rounded-2xl bg-surface-2/60 px-5 py-4">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-[18px] font-black [&::-webkit-details-marker]:hidden">
                   {f.q}
