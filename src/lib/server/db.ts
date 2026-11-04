@@ -62,6 +62,23 @@ export interface PushRow {
   remindHour: number;
 }
 
+export interface MembershipRow {
+  userId: string;
+  plan: "founding" | "monthly" | "yearly";
+  subscriptionId: string;
+  status: string;
+  currentEnd: string | null;
+}
+
+export interface SeatRow {
+  seatNo: number;
+  userId: string | null;
+  subscriptionId: string;
+  /** Set while the seat is an unpaid hold; null once the first charge keeps it. */
+  heldUntil: number | null;
+  cancelledAt: number | null;
+}
+
 export interface Db {
   getProfile(userId: string): Promise<Profile | null>;
   /** Creates the profile unless one exists. */
@@ -98,6 +115,19 @@ export interface Db {
   deleteUser(userId: string): Promise<void>;
   /** How many founding seats are taken (paid founding members). */
   countFoundingSeats(): Promise<number>;
+  getMembership(userId: string): Promise<MembershipRow | null>;
+  membershipBySubscription(subscriptionId: string): Promise<MembershipRow | null>;
+  saveMembership(row: MembershipRow): Promise<void>;
+  /** False if this webhook event id was already handled. */
+  insertPaymentEvent(eventId: string): Promise<boolean>;
+  /** Hold the lowest free founding seat for 30 minutes; null when all 500 are taken. */
+  claimSeat(userId: string, subscriptionId: string): Promise<number | null>;
+  /** The first charge: keep the held seat for good. */
+  keepSeat(subscriptionId: string): Promise<void>;
+  /** Mark a kept seat cancelled; an unpaid hold is simply removed. */
+  cancelSeat(subscriptionId: string): Promise<void>;
+  /** `lesson:<id>` / `hotseat:<id>` keys this player finished before the paywall. */
+  earlyAccess(userId: string): Promise<Set<string>>;
 }
 
 /* ------------------------------------------------------------------ */
@@ -109,6 +139,7 @@ export function memoryDb(): Db & {
   lessonPlays: LessonPlayRow[];
   leagues: LeagueRow[];
   foundingSeats: number;
+  seats: SeatRow[];
 } {
   const profiles = new Map<string, Profile>();
   const runs: RunRow[] = [];
@@ -117,6 +148,14 @@ export function memoryDb(): Db & {
   const leagues: LeagueRow[] = [];
   const pushes = new Map<string, PushRow>();
   const notices = new Set<string>();
+  const memberships = new Map<string, MembershipRow>();
+  const events = new Set<string>();
+  const seats: SeatRow[] = [];
+  const early = new Map<string, Set<string>>();
+  const SEAT_HOLD_MS = 30 * 60 * 1000;
+  const TOTAL_SEATS = 500;
+  /** A seat is used if it is kept, or an unpaid hold that has not run out. */
+  const live = (s: SeatRow) => s.heldUntil === null || s.heldUntil > Date.now();
   const clone = <T>(x: T): T => structuredClone(x);
   return {
     profiles,
@@ -216,10 +255,62 @@ export function memoryDb(): Db & {
       for (const list of [runs, lessonPlays, daily, leagues] as { userId: string }[][])
         for (let i = list.length - 1; i >= 0; i--) if (list[i].userId === id) list.splice(i, 1);
       for (const [k, p] of pushes) if (p.userId === id) pushes.delete(k);
+      memberships.delete(id);
+      early.delete(id);
+      // A paid seat stays used with no owner (same as the migration's on delete set null).
+      for (let i = seats.length - 1; i >= 0; i--) {
+        if (seats[i].userId !== id) continue;
+        if (seats[i].heldUntil !== null) seats.splice(i, 1);
+        else seats[i].userId = null;
+      }
     },
+    seats,
     foundingSeats: 0,
     async countFoundingSeats() {
-      return this.foundingSeats;
+      // `foundingSeats` is a test hook for a count with no rows behind it; it adds to the real seats.
+      return this.foundingSeats + seats.filter(live).length;
+    },
+    async getMembership(id) {
+      return clone(memberships.get(id) ?? null);
+    },
+    async membershipBySubscription(subscriptionId) {
+      return clone([...memberships.values()].find((m) => m.subscriptionId === subscriptionId) ?? null);
+    },
+    async saveMembership(row) {
+      memberships.set(row.userId, clone(row));
+    },
+    async insertPaymentEvent(eventId) {
+      if (events.has(eventId)) return false;
+      events.add(eventId);
+      return true;
+    },
+    async claimSeat(userId, subscriptionId) {
+      // Same steps as claim_founding_seat(): drop this player's unpaid hold and any expired holds, then take the lowest free seat.
+      for (let i = seats.length - 1; i >= 0; i--) {
+        const s = seats[i];
+        if (s.heldUntil !== null && (s.userId === userId || !live(s))) seats.splice(i, 1);
+      }
+      const used = new Set(seats.map((s) => s.seatNo));
+      for (let n = 1; n <= TOTAL_SEATS; n++) {
+        if (used.has(n)) continue;
+        seats.push({ seatNo: n, userId, subscriptionId, heldUntil: Date.now() + SEAT_HOLD_MS, cancelledAt: null });
+        return n;
+      }
+      return null;
+    },
+    async keepSeat(subscriptionId) {
+      for (const s of seats) if (s.subscriptionId === subscriptionId) s.heldUntil = null;
+    },
+    async cancelSeat(subscriptionId) {
+      for (let i = seats.length - 1; i >= 0; i--) {
+        const s = seats[i];
+        if (s.subscriptionId !== subscriptionId) continue;
+        if (s.heldUntil !== null) seats.splice(i, 1);
+        else if (s.cancelledAt === null) s.cancelledAt = Date.now();
+      }
+    },
+    async earlyAccess(userId) {
+      return new Set(early.get(userId) ?? []);
     },
   };
 }
@@ -282,6 +373,14 @@ const pushOf = (r: Record<string, unknown>): PushRow => ({
   userId: r.user_id as string,
   keys: r.keys as PushRow["keys"],
   remindHour: r.remind_hour as number,
+});
+
+const membershipOf = (r: Record<string, unknown>): MembershipRow => ({
+  userId: r.user_id as string,
+  plan: r.plan as MembershipRow["plan"],
+  subscriptionId: r.razorpay_subscription_id as string,
+  status: r.status as string,
+  currentEnd: (r.current_end as string | null) ?? null,
 });
 
 export function supabaseDb(sb = supabaseAdmin()): Db {
@@ -435,9 +534,61 @@ export function supabaseDb(sb = supabaseAdmin()): Db {
       const { count, error } = await sb
         .from("founding_seats")
         .select("seat_no", { count: "exact", head: true })
+        .or(`held_until.is.null,held_until.gt.${new Date().toISOString()}`)
         .abortSignal(AbortSignal.timeout(3000));
       if (error) throw new Error(error.message);
       return count ?? 0;
+    },
+    async getMembership(userId) {
+      const r = must<Record<string, unknown> | null>(await sb.from("memberships").select("*").eq("user_id", userId).maybeSingle());
+      return r && membershipOf(r);
+    },
+    async membershipBySubscription(subscriptionId) {
+      const r = must<Record<string, unknown> | null>(
+        await sb.from("memberships").select("*").eq("razorpay_subscription_id", subscriptionId).maybeSingle(),
+      );
+      return r && membershipOf(r);
+    },
+    async saveMembership(row) {
+      must(
+        await sb.from("memberships").upsert(
+          {
+            user_id: row.userId,
+            plan: row.plan,
+            razorpay_subscription_id: row.subscriptionId,
+            status: row.status,
+            current_end: row.currentEnd,
+            updated_at: new Date().toISOString(),
+          },
+          { onConflict: "user_id" },
+        ),
+      );
+    },
+    async insertPaymentEvent(eventId) {
+      const { error } = await sb.from("payment_events").insert({ event_id: eventId });
+      if (duplicate(error)) return false;
+      if (error) throw new Error(error.message);
+      return true;
+    },
+    async claimSeat(userId, subscriptionId) {
+      return must<number | null>(await sb.rpc("claim_founding_seat", { p_user: userId, p_subscription: subscriptionId }));
+    },
+    async keepSeat(subscriptionId) {
+      must(await sb.from("founding_seats").update({ held_until: null }).eq("razorpay_subscription_id", subscriptionId));
+    },
+    async cancelSeat(subscriptionId) {
+      must(await sb.from("founding_seats").delete().eq("razorpay_subscription_id", subscriptionId).not("held_until", "is", null));
+      must(
+        await sb
+          .from("founding_seats")
+          .update({ cancelled_at: new Date().toISOString() })
+          .eq("razorpay_subscription_id", subscriptionId)
+          .is("cancelled_at", null),
+      );
+    },
+    async earlyAccess(userId) {
+      const rows = list(await sb.from("early_access").select("kind, item_id").eq("user_id", userId));
+      return new Set(rows.map((r) => `${r.kind}:${r.item_id}`));
     },
   };
 }
