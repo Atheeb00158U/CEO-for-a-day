@@ -1,15 +1,46 @@
 // Shared bits for the API routes: who is asking, a small rate limit, and turning game errors into replies.
 import { NextResponse } from "next/server";
+import { canOpen, type AccessContext, type Item } from "../access.ts";
 import { PlayError } from "../play.ts";
+import { freeList } from "./content.ts";
 import { supabaseAdmin, supabaseDb, type Db } from "./db.ts";
 import { GameError } from "./game.ts";
+import { accessCache, accessContext, paywallFor } from "./membership.ts";
+
+interface Claims {
+  sub: string;
+  email?: string;
+}
+// One check of the token per request, however many helpers ask (userFrom, emailFrom, accessCheck).
+const verified = new WeakMap<Request, Promise<Claims | null>>();
+
+/** The verified claims of the `Authorization: Bearer <token>` header, or null for a guest or a bad token. */
+function claimsOf(request: Request): Promise<Claims | null> {
+  let p = verified.get(request);
+  if (!p) {
+    const token = request.headers.get("authorization")?.match(/^Bearer (.+)$/)?.[1];
+    p = token
+      ? supabaseAdmin()
+          .auth.getClaims(token)
+          .then(({ data, error }) => {
+            const c = data?.claims;
+            if (error || !c?.sub) return null;
+            return { sub: c.sub, email: typeof c.email === "string" ? c.email : undefined };
+          })
+      : Promise.resolve(null);
+    verified.set(request, p);
+  }
+  return p;
+}
 
 /** The signed-in player's id from the `Authorization: Bearer <token>` header, verified with Supabase. */
 export async function userFrom(request: Request): Promise<string | null> {
-  const token = request.headers.get("authorization")?.match(/^Bearer (.+)$/)?.[1];
-  if (!token) return null;
-  const { data, error } = await supabaseAdmin().auth.getClaims(token);
-  return error || !data?.claims?.sub ? null : data.claims.sub;
+  return (await claimsOf(request))?.sub ?? null;
+}
+
+/** The signed-in player's email (the token's `email` claim), if any. */
+export async function emailFrom(request: Request): Promise<string | undefined> {
+  return (await claimsOf(request))?.email;
 }
 
 // Railway runs one instance, so a counter in memory is enough to stop one phone hammering the server.
@@ -43,10 +74,45 @@ export async function signedIn(request: Request, route: string, act: (db: Db, us
   if (!userId) return json({ error: "Sign in first" }, 401);
   if (limited(`${route}:${userId}`, max)) return json({ error: "Too many requests" }, 429);
   try {
-    return json(await act(dbOf(), userId));
+    const out = await act(dbOf(), userId);
+    return out instanceof Response ? out : json(out); // an action may answer itself, e.g. accessCheck's 402
   } catch (e) {
     if (e instanceof PlayError) return json({ error: e.message }, 400);
     if (e instanceof GameError) return json({ error: e.message }, 409);
     throw e;
   }
+}
+
+const ACCESS_TTL = 60_000;
+const ACCESS_MAX = 5_000;
+
+/** Cache a player's access for at most a minute; drop expired entries, and the oldest past ACCESS_MAX. */
+function remember(userId: string, ctx: AccessContext, at: number) {
+  accessCache.delete(userId); // re-inserted below, so the Map's order stays oldest first
+  for (const [k, v] of accessCache) if (at - v.at >= ACCESS_TTL) accessCache.delete(k);
+  for (const k of accessCache.keys()) {
+    if (accessCache.size < ACCESS_MAX) break;
+    accessCache.delete(k);
+  }
+  accessCache.set(userId, { ctx, at });
+}
+
+/**
+ * The paywall (spec §4a): null when this player (or guest) may open `item`, otherwise a 402 `members_only` reply.
+ * While the paywall is off for them, nothing is read from the database.
+ */
+export async function accessCheck(request: Request, item: Item, now = new Date()): Promise<NextResponse | null> {
+  const c = await claimsOf(request);
+  if (!paywallFor(c?.email)) return null;
+  // A guest is never a member and has no early access: no database read.
+  let ctx: AccessContext = { paywall: true, member: false, early: new Set() };
+  if (c) {
+    const hit = accessCache.get(c.sub);
+    if (hit && now.getTime() - hit.at < ACCESS_TTL) ctx = hit.ctx;
+    else {
+      ctx = await accessContext(dbOf(), c.sub, c.email, now);
+      remember(c.sub, ctx, now.getTime());
+    }
+  }
+  return canOpen(item, ctx, freeList()) ? null : json({ error: "members_only" }, 402);
 }

@@ -1,0 +1,32 @@
+{
+  "id": "sample-paid-next",
+  "title": "Ask before you build",
+  "principle": "Ask people what they do before you build.",
+  "minutes": 2,
+  "draft": true,
+  "screens": [
+    { "kind": "explain", "id": "hook", "text": "Meena wants to sell tiffins. She has not asked anyone yet." },
+    { "kind": "explain", "id": "rule", "title": "Ask first", "text": "Ask people what they eat today, and what they pay for it." },
+    {
+      "kind": "choice",
+      "id": "ask",
+      "prompt": "What should Meena do first?",
+      "options": [
+        { "id": "a", "label": "Cook a hundred tiffins" },
+        { "id": "b", "label": "Ask ten office workers what they eat now" }
+      ],
+      "answer": "b",
+      "why": "Asking costs nothing. Cooking for nobody costs a lot."
+    }
+  ],
+  "summary": ["Ask what people do now before you build."],
+  "cards": [
+    {
+      "id": "sample-paid-next-1",
+      "front": "Before you build, what do you ask?",
+      "options": ["What they do now", "Whether they like your idea"],
+      "answer": 0,
+      "back": "What they do now: it shows the real need."
+    }
+  ]
+}

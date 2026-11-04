@@ -92,6 +92,24 @@ describe("POST /api/lesson", () => {
     expect(next.reveal).toMatchObject({ screenId: "sum", correct: false, right: "₹1" });
   });
 
+  it("with PAYWALL_ON=1, locks a later unit for a guest and keeps the free unit open", async () => {
+    vi.stubEnv("NODE_ENV", "development");
+    vi.stubEnv("PAYWALL_ON", "1");
+    expect((await post({ lessonId: "sample-paid-next", answers: [] })).status).toBe(402);
+    expect(await (await post({ lessonId: "sample-paid-next", answers: [] })).json()).toEqual({ error: "members_only" });
+    expect((await post({ testOut: "sample-ask", answers: [] })).status).toBe(402);
+    expect((await post({ lessonId: "sample-margin", answers: [] })).status).toBe(200);
+    expect((await post({ testOut: "sample-profit", answers: [] })).status).toBe(200);
+  });
+
+  it("with the paywall off, a guest opens every lesson", async () => {
+    vi.stubEnv("NODE_ENV", "development");
+    vi.stubEnv("PAYWALL_ON", "");
+    vi.stubEnv("PAYWALL_TESTERS", "tester@example.com");
+    expect((await post({ lessonId: "sample-paid-next", answers: [] })).status).toBe(200);
+    expect((await post({ lessonId: "sample-margin", answers: [] })).status).toBe(200);
+  });
+
   it("answers 404 for a draft outside dev, and 400 for a forged answer", async () => {
     expect((await post({ lessonId: "sample-margin", answers: [] })).status).toBe(404);
     vi.stubEnv("NODE_ENV", "development");
