@@ -59,6 +59,9 @@ export function PaywallSheet({ open, onOpenChange }: { open: boolean; onOpenChan
   const [plan, setPlan] = useState<Plan>("monthly");
   const [phase, setPhase] = useState<"idle" | "busy" | "checking">("idle");
   const [error, setError] = useState<string | null>(null);
+  // While Razorpay's checkout is open the sheet steps aside: an open modal sheet makes the rest of the page
+  // (Razorpay's frame included) ignore taps.
+  const [inCheckout, setInCheckout] = useState(false);
 
   useEffect(() => {
     if (!open) return;
@@ -90,7 +93,12 @@ export function PaywallSheet({ open, onOpenChange }: { open: boolean; onOpenChan
       const { subscriptionId, keyId } = await api<{ subscriptionId: string; keyId: string }>("/api/pay/subscribe", {
         body: { plan: chosen },
       });
-      paid = await openCheckout({ keyId, subscriptionId, description: COPY.checkoutLine[chosen], email: account?.email });
+      setInCheckout(true);
+      try {
+        paid = await openCheckout({ keyId, subscriptionId, description: COPY.checkoutLine[chosen], email: account?.email });
+      } finally {
+        setInCheckout(false);
+      }
     } catch (e) {
       setPhase("idle");
       if (e instanceof ApiError && e.status === 409) {
@@ -127,7 +135,7 @@ export function PaywallSheet({ open, onOpenChange }: { open: boolean; onOpenChan
 
   const busy = phase !== "idle";
   return (
-    <Sheet open={open} onOpenChange={(o) => !busy && onOpenChange(o)}>
+    <Sheet open={open && !inCheckout} onOpenChange={(o) => !busy && onOpenChange(o)}>
       <SheetContent
         side="bottom"
         showCloseButton={false}
