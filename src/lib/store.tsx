@@ -3,6 +3,7 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { api, signInWithGoogle, signOut, supabase } from "./auth";
 import type { LessonTarget, Synced } from "./content-client";
+import type { MembershipView } from "./membership-view";
 import type { Answer, LessonResult } from "./lesson-play";
 import type { DailyCall, DailyOption, Grade } from "./hotseat-types";
 import type { Pick as PlayPick, Result } from "./play";
@@ -59,6 +60,10 @@ interface Ctx {
   ready: boolean;
   /** Signed in with Google (progress saved on the server). */
   account: { email?: string } | null;
+  /** A signed-in player's membership; null for guests and players who never subscribed. */
+  membership: MembershipView | null;
+  /** Whether the paywall applies to this signed-in player (false for guests until a 402 says otherwise). */
+  paywall: boolean;
   /** Sign-in is set up on this server. */
   canSignIn: boolean;
   boosterActive: boolean;
@@ -107,12 +112,17 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
   const [s, setS] = useState<GameState>(fresh);
   const [ready, setReady] = useState(false);
   const [account, setAccount] = useState<{ email?: string } | null>(null);
+  const [membership, setMembership] = useState<MembershipView | null>(null);
+  const [paywall, setPaywall] = useState(false);
   const version = useRef(-1);
   const [, tick] = useState(0);
   const signedIn = account !== null;
 
   /** Take the server's state unless the phone already has a newer one (replies can arrive out of order). */
   const sync = useCallback((x: Synced) => {
+    // Membership isn't versioned: only /api/state and /api/import carry it, and the latest one is right.
+    if (x.membership !== undefined) setMembership(x.membership);
+    if (x.paywall !== undefined) setPaywall(x.paywall);
     if (x.version < version.current) return;
     version.current = x.version;
     setS(x.state);
@@ -129,6 +139,8 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
     const asGuest = () => {
       version.current = -1;
       setAccount(null);
+      setMembership(null);
+      setPaywall(false);
       setS(rollover(guest ?? fresh()));
       setReady(true);
     };
@@ -162,6 +174,8 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
         if (event === "SIGNED_OUT") {
           version.current = -1;
           setAccount(null);
+          setMembership(null);
+          setPaywall(false);
           setS(fresh());
         }
       });
@@ -270,6 +284,8 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
       s,
       ready,
       account,
+      membership,
+      paywall,
       canSignIn: !!supabase(),
       boosterActive,
       recordDecision,
@@ -306,7 +322,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
       reset: () => !signedIn && setS(fresh()),
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [s, ready, account, boosterActive],
+    [s, ready, account, membership, paywall, boosterActive],
   );
   return <GameCtx.Provider value={value}>{children}</GameCtx.Provider>;
 }

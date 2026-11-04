@@ -23,9 +23,11 @@ import {
   type GameState,
   type RunRecord,
 } from "../game-state.ts";
+import { isMember } from "../access.ts";
 import type { DailyCall, DailyOption, HotSeat } from "../hotseat-types";
 import { leagueRows } from "../league.ts";
 import type { Lesson } from "../course-types";
+import type { MembershipView } from "../membership-view.ts";
 import { lessonPlay, type Answer, type LessonResult } from "../lesson-play.ts";
 import { play, PlayError, type Pick } from "../play.ts";
 import type { CardState } from "../srs.ts";
@@ -42,10 +44,16 @@ const strip = (s: GameState): SavedState => {
   return rest as SavedState;
 };
 
-/** The player's state as the phone sees it, with `version` so it can ignore an older reply. */
+/**
+ * The player's state as the phone sees it, with `version` so it can ignore an older reply. `membership` and `paywall`
+ * come only with /api/state and /api/import (not with every action's reply).
+ */
 export interface Synced {
   state: GameState;
   version: number;
+  membership?: MembershipView | null;
+  /** Whether the paywall applies to this player (PAYWALL_ON, or a listed tester). */
+  paywall?: boolean;
 }
 
 /* ------------------------------------------------------------------ */
@@ -125,8 +133,28 @@ const noteOf = (r: {
   at: r.createdAt ? Date.parse(r.createdAt) : 0,
 });
 
-/** The full GameState the phone shows: saved state, recent runs, the Daily log and this week's league. */
+/** The player's membership as the phone sees it, or null if they never started a checkout. */
+export async function membershipView(db: Db, userId: string, now = new Date()): Promise<MembershipView | null> {
+  const m = await db.getMembership(userId);
+  if (!m) return null;
+  const seat = m.plan === "founding" ? await db.seatOf(m.subscriptionId) : null;
+  return {
+    plan: m.plan,
+    status: m.status,
+    currentEnd: m.currentEnd,
+    member: isMember(m, now),
+    ...(seat !== null ? { seat } : {}),
+  };
+}
+
+/** The full reply for /api/state: the player's state plus their membership. */
 export async function load(db: Db, userId: string, now = new Date()): Promise<Synced> {
+  const [synced, membership] = await Promise.all([loadState(db, userId, now), membershipView(db, userId, now)]);
+  return { ...synced, membership };
+}
+
+/** The full GameState the phone shows: saved state, recent runs, the Daily log and this week's league. */
+async function loadState(db: Db, userId: string, now = new Date()): Promise<Synced> {
   const p = await profileOf(db, userId);
   const [runs, daily, league] = await Promise.all([db.listRuns(userId, 50), db.listDaily(userId, 60), leagueTier(db, userId, now)]);
   const state = rollover(
@@ -154,7 +182,7 @@ export async function update(
   opts?: { imported?: boolean },
 ): Promise<Synced> {
   for (let attempt = 0; attempt < 3; attempt++) {
-    const cur = await load(db, userId, now);
+    const cur = await loadState(db, userId, now);
     const next = change(cur.state);
     if (!next) throw new GameError("not allowed");
     if (await db.saveProfile(userId, cur.version, strip(next), opts)) return { state: next, version: cur.version + 1 };
@@ -181,7 +209,7 @@ export async function finishRun(
   const view = play(hs, req.picks);
   const r = view.result;
   if (!r) throw new PlayError("this run hasn't reached an ending");
-  const before = await load(db, userId, now);
+  const before = await loadState(db, userId, now);
   if (req.hindsightUsed && before.state.hindsights < 1) throw new GameError("no Hindsight left");
   const finish: Finish = {
     run: { hotSeatId: hs.id, score: r.score, endingId: r.endingId, endingTier: r.endingTier, notes: r.lines, patterns: r.patterns },
@@ -203,7 +231,7 @@ export async function finishRun(
     notes: record.notes,
     patterns: record.patterns,
   });
-  if (!fresh) return { ...(await load(db, userId, now)), record, gained: 0 };
+  if (!fresh) return { ...(await loadState(db, userId, now)), record, gained: 0 };
   const synced = await update(
     db,
     userId,
@@ -214,7 +242,7 @@ export async function finishRun(
     now,
   );
   await db.addLeagueXp(weekId(now), userId, synced.state.league.tier, record.xp);
-  return { ...(await load(db, userId, now)), record, gained: record.xp };
+  return { ...(await loadState(db, userId, now)), record, gained: record.xp };
 }
 
 /** Lock in today's Daily Call. The (player, day) key allows one a day; a second lock returns the first answer's state. */
@@ -227,7 +255,7 @@ export async function lockDaily(
   now = new Date(),
 ): Promise<Synced & { gained: number }> {
   const day = today(now);
-  const before = await load(db, userId, now);
+  const before = await loadState(db, userId, now);
   const after = applyDaily(before.state, call, option, now);
   if (after === before.state || !after.daily) return { ...before, gained: 0 }; // already played today
   const note: DailyNote = after.dailyLog[0];
@@ -240,10 +268,10 @@ export async function lockDaily(
     xp: after.daily.xp,
     note,
   });
-  if (!fresh) return { ...(await load(db, userId, now)), gained: 0 };
+  if (!fresh) return { ...(await loadState(db, userId, now)), gained: 0 };
   const synced = await update(db, userId, (s) => applyDaily(s, call, option, now), now);
   await db.addLeagueXp(weekId(now), userId, synced.state.league.tier, after.daily.xp);
-  return { ...(await load(db, userId, now)), gained: after.daily.xp };
+  return { ...(await loadState(db, userId, now)), gained: after.daily.xp };
 }
 
 /**
@@ -265,7 +293,7 @@ export async function finishLesson(
     req.testOut
       ? { state: applyTestOut(s, { lessonIds: req.testOut, accuracy: result.accuracy, cardIds: result.cardIds }, now), xp: 0 }
       : applyLesson(s, finish, now);
-  const before = await load(db, userId, now);
+  const before = await loadState(db, userId, now);
   const { xp } = change(before.state);
   // The play row goes in first: its key is what makes a retry a no-op.
   const fresh = await db.insertLessonPlay({
@@ -289,7 +317,7 @@ export async function finishLesson(
     now,
   );
   if (gained) await db.addLeagueXp(weekId(now), userId, synced.state.league.tier, gained);
-  return { ...(await load(db, userId, now)), result, gained };
+  return { ...(await loadState(db, userId, now)), result, gained };
 }
 
 /**
@@ -317,7 +345,7 @@ export async function reviewCards(
     now,
   );
   if (gained) await db.addLeagueXp(weekId(now), userId, synced.state.league.tier, gained);
-  return { ...(gained ? await load(db, userId, now) : synced), gained, counted };
+  return { ...(gained ? await loadState(db, userId, now) : synced), gained, counted };
 }
 
 /** Checks a request body is a list of card answers. */
@@ -416,7 +444,7 @@ export async function importGuest(
   known: { lessons: Set<string>; cardLesson: Map<string, string> } = { lessons: new Set(), cardLesson: new Map() },
 ): Promise<Synced> {
   const p = await profileOf(db, userId);
-  if (p.imported || (await db.countRuns(userId)) > 0 || !save || typeof save !== "object") return load(db, userId, now);
+  if (p.imported || (await db.countRuns(userId)) > 0 || !save || typeof save !== "object") return loadState(db, userId, now);
   const g = save as Partial<GameState>;
   try {
     return await update(
@@ -461,7 +489,7 @@ export async function importGuest(
       { imported: true },
     );
   } catch (e) {
-    if (e instanceof GameError) return load(db, userId, now);
+    if (e instanceof GameError) return loadState(db, userId, now);
     throw e;
   }
 }

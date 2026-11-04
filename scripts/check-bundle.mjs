@@ -1,4 +1,4 @@
-// After `npm run build`: fails if any answer reached the browser. Every option's "why" and "takeaway" text
+// After `npm run build`: fails if any answer, the server's Razorpay client or a server secret reached the browser. Every option's "why" and "takeaway" text
 // (Hot Seats and Daily Calls, drafts included), and every lesson exercise's "why", "wrong" and scenario outcome,
 // must appear nowhere under .next/static, nor in the prerendered player pages (/ and /app). /admin is left out: it shows every answer, behind its password.
 import { readdirSync, readFileSync, statSync } from "node:fs";
@@ -28,6 +28,17 @@ for (const l of lessonFileIds().map(readLesson))
     if (s.kind === "choice") for (const w of Object.values(s.wrong ?? {})) secrets.push([l.id, w]);
     if (s.kind === "scenario") for (const o of s.options) secrets.push([l.id, o.why], [l.id, o.outcome]);
   }
+
+// Payments: the server's Razorpay client (its REST address) and any secret set in this shell must never ship.
+// (The phone loads Checkout from checkout.razorpay.com, which is a different address.)
+const serverOnly = ["api.razorpay.com"];
+for (const k of ["RAZORPAY_KEY_SECRET", "RAZORPAY_WEBHOOK_SECRET", "SUPABASE_SECRET_KEY"])
+  if (process.env[k]) serverOnly.push(process.env[k]);
+const serverLeaks = serverOnly.filter((s) => bundle.includes(s));
+if (serverLeaks.length) {
+  console.error(`✗ ${serverLeaks.length} server-only values are in the browser bundle (the Razorpay client or a secret)`);
+  process.exit(1);
+}
 
 const leaks = secrets.filter(([, text]) => text.length > 20 && bundle.includes(JSON.stringify(text).slice(1, -1)));
 if (leaks.length) {

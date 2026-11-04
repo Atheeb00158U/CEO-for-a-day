@@ -6,6 +6,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { api } from "./auth";
 import type { GameState } from "./game-state";
 import type { Card, CourseOutline } from "./course-types";
+import type { MembershipView } from "./membership-view";
 import type { CatalogEntry, DailyAnswer, DailyQuestion } from "./hotseat-types";
 import type { Answer, LessonView } from "./lesson-play";
 import type { Pick, PlayView } from "./play";
@@ -22,10 +23,15 @@ const ContentCtx = createContext<Content>({ catalog: [] });
 export const ContentProvider = ContentCtx.Provider;
 export const useContent = () => useContext(ContentCtx);
 
-/** A signed-in player's progress as the server returned it. */
+/**
+ * A signed-in player's progress as the server returned it. `membership` and `paywall` come only with /api/state and
+ * /api/import; other replies leave them out, and the phone keeps what it had.
+ */
 export interface Synced {
   state: GameState;
   version: number;
+  membership?: MembershipView | null;
+  paywall?: boolean;
 }
 
 /** The step after `picks`. `written` is a reviewed, pre-written debrief for the path, when one exists. */

@@ -130,6 +130,8 @@ export interface Db {
   cancelSeat(subscriptionId: string): Promise<void>;
   /** `lesson:<id>` / `hotseat:<id>` keys this player finished before the paywall. */
   earlyAccess(userId: string): Promise<Set<string>>;
+  /** The founding seat number held or kept for this subscription, if any. */
+  seatOf(subscriptionId: string): Promise<number | null>;
 }
 
 /* ------------------------------------------------------------------ */
@@ -322,6 +324,9 @@ export function memoryDb(): Db & {
     },
     async earlyAccess(userId) {
       return new Set(early.get(userId) ?? []);
+    },
+    async seatOf(subscriptionId) {
+      return seats.find((s) => s.subscriptionId === subscriptionId)?.seatNo ?? null;
     },
   };
 }
@@ -609,6 +614,10 @@ export function supabaseDb(sb = supabaseAdmin()): Db {
     async earlyAccess(userId) {
       const rows = list(await sb.from("early_access").select("kind, item_id").eq("user_id", userId));
       return new Set(rows.map((r) => `${r.kind}:${r.item_id}`));
+    },
+    async seatOf(subscriptionId) {
+      const rows = list(await sb.from("founding_seats").select("seat_no").eq("razorpay_subscription_id", subscriptionId).limit(1));
+      return rows.length ? Number(rows[0].seat_no) : null;
     },
   };
 }

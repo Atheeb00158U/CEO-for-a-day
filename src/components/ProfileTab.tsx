@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { ApiError } from "@/lib/auth";
 import { BADGES, LEAGUES, useGame } from "@/lib/store";
 import { ReminderCard } from "./ReminderCard";
 import { SignInCard } from "./SignInCard";
@@ -162,6 +163,8 @@ export function ProfileTab() {
 function AccountCard({ email }: { email?: string }) {
   const { signOut, deleteAccount } = useGame();
   const [state, setState] = useState<"idle" | "busy" | "failed">("idle");
+  // The server's own words when it refuses (e.g. payments couldn't be stopped yet); otherwise a plain retry.
+  const [why, setWhy] = useState("That didn't work. Try again.");
   return (
     <Card className="flex flex-col gap-3">
       <h2 className="text-[19px] font-black">Account</h2>
@@ -180,12 +183,15 @@ function AccountCard({ email }: { email?: string }) {
           disabled={state === "busy"}
           onClick={() => {
             setState("busy");
-            deleteAccount().catch(() => setState("failed"));
+            deleteAccount().catch((e) => {
+              setWhy(e instanceof ApiError && e.status === 409 ? e.message : "That didn't work. Try again.");
+              setState("failed");
+            });
           }}
         >
           Yes, delete everything
         </button>
-        {state === "failed" && <p className="mt-2 text-[14px] font-bold text-red">That didn&apos;t work. Try again.</p>}
+        {state === "failed" && <p className="mt-2 text-[14px] font-bold text-red">{why}</p>}
       </details>
     </Card>
   );
