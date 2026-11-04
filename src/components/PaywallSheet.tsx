@@ -53,7 +53,7 @@ const COPY = {
 };
 
 /** The wolf and the offer, shown when a non-member opens a locked lesson, test-out or Hot Seat. */
-export function PaywallSheet({ open, onOpenChange }: { open: boolean; onOpenChange: (open: boolean) => void }) {
+export function PaywallSheet({ open, onOpenChange, line }: { open: boolean; onOpenChange: (open: boolean) => void; line?: string }) {
   const { account, membership, reload, s } = useGame();
   const { course } = useContent();
   // Whether founding seats are left (null: not known yet). The count itself is never shown.
@@ -155,6 +155,7 @@ export function PaywallSheet({ open, onOpenChange }: { open: boolean; onOpenChan
         <div className="mx-auto w-[150px]">
           <WolfPicture name="pose-pointing" sizes="150px" className="h-auto w-full" />
         </div>
+        {line && <p className="mt-3 text-center text-[16px] font-black text-gold">{line}</p>}
         <SheetTitle className="mt-3 text-center text-[22px] leading-tight font-black text-balance">{title}</SheetTitle>
         <SheetDescription className="mt-1 text-center text-[16px] font-bold text-muted">
           {founding ? (

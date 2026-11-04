@@ -96,6 +96,67 @@ export interface SeatRow {
   cancelledAt: number | null;
 }
 
+/* The Club (supabase/migrations/20261105090000_club.sql). */
+export interface ClubProfileRow {
+  userId: string;
+  handle: string;
+  name: string;
+  building: string;
+  rank: number;
+  stars: number;
+  maxStars: number;
+  streak: number;
+  streakDay: string | null;
+  milestones: boolean;
+  adultAt: string;
+  rulesAt: string;
+  hiddenAt: string | null;
+  createdAt: string;
+}
+
+export interface PostRow {
+  id: number;
+  /** null: the Wolf. */
+  authorId: string | null;
+  kind: "post" | "reply" | "rank_up" | "hotseat" | "question";
+  ref: string | null;
+  parentId: number | null;
+  body: string;
+  likeCount: number;
+  replyCount: number;
+  held: string | null;
+  hiddenAt: string | null;
+  createdAt: string;
+}
+
+export interface ReportRow {
+  id: number;
+  reporterId: string | null;
+  targetKind: "post" | "profile" | "message";
+  targetId: string;
+  targetUser: string | null;
+  reason: string;
+  note: string;
+  snapshot: string;
+  status: "open" | "removed" | "kept";
+  dueAt: string;
+  resolvedAt: string | null;
+  createdAt: string;
+}
+
+export type ActivityKind = "reply" | "like" | "follow" | "report_done" | "removed";
+export interface ActivityRow {
+  id: number;
+  userId: string;
+  kind: ActivityKind;
+  actorId: string | null;
+  postId: number | null;
+  /** report_done: "removed" or "kept"; removed: the report reason. */
+  detail: string | null;
+  seen: boolean;
+  createdAt: string;
+}
+
 export interface Db {
   getProfile(userId: string): Promise<Profile | null>;
   /** Creates the profile unless one exists. */
@@ -162,7 +223,82 @@ export interface Db {
   earlyAccess(userId: string): Promise<Set<string>>;
   /** The founding seat number held or kept for this subscription, if any. */
   seatOf(subscriptionId: string): Promise<number | null>;
+  /** When the account was created (auth.users), or null if it doesn't exist. */
+  accountCreatedAt(userId: string): Promise<string | null>;
+
+  /* The Club. Every list leaves out hidden posts; held ones are filtered in club.ts. */
+  clubProfile(userId: string): Promise<ClubProfileRow | null>;
+  clubProfileByHandle(handle: string): Promise<ClubProfileRow | null>;
+  clubProfiles(userIds: string[]): Promise<ClubProfileRow[]>;
+  /** False when the handle is taken. */
+  insertClubProfile(row: ClubProfileRow): Promise<boolean>;
+  /** Does nothing for a player who hasn't joined. */
+  updateClubProfile(userId: string, patch: Partial<Omit<ClubProfileRow, "userId" | "handle">>): Promise<void>;
+  /** "Leave the Club": everything the profile owns goes with it. */
+  deleteClubProfile(userId: string): Promise<void>;
+  clubBan(userId: string): Promise<{ until: string; reason: "mod" | "left" } | null>;
+  /** `until` null lifts it. */
+  setClubBan(userId: string, until: string | null, reason?: "mod" | "left"): Promise<void>;
+  /** null when a once-only post (the Wolf's, a rank-up) already exists. */
+  insertPost(row: Omit<PostRow, "id" | "likeCount" | "replyCount">): Promise<PostRow | null>;
+  getPost(id: number): Promise<PostRow | null>;
+  wolfPost(kind: "hotseat" | "question", ref: string): Promise<PostRow | null>;
+  deletePost(id: number): Promise<void>;
+  setPostState(id: number, patch: { held?: string | null; hiddenAt?: string | null }): Promise<void>;
+  /** Hide every visible post and reply by this author; returns what it hid. */
+  hidePostsBy(authorId: string, at: string): Promise<PostRow[]>;
+  /** Visible, not held root posts made after `since` and at or before `asOf`, newest first. */
+  feedCandidates(since: string, asOf: string, limit: number): Promise<PostRow[]>;
+  /** Visible, not held root posts by people `viewer` follows, newest first, ids below `before`. */
+  followingFeed(viewer: string, before: number, limit: number): Promise<PostRow[]>;
+  /** Root posts (held included), newest first. */
+  postsBy(authorId: string, before: number, limit: number): Promise<PostRow[]>;
+  /** Replies (held included), oldest first, ids above `after`. */
+  replies(parentId: number, after: number, limit: number): Promise<PostRow[]>;
+  countPostsSince(authorId: string, kind: "post" | "reply", since: string): Promise<number>;
+  /** Whether this author posted this exact text since `since`. */
+  lastPostBody(authorId: string, since: string, body: string): Promise<boolean>;
+  setLike(postId: number, userId: string, on: boolean): Promise<void>;
+  likedOf(userId: string, postIds: number[]): Promise<Set<number>>;
+  setFollow(follower: string, followee: string, on: boolean, at?: string): Promise<void>;
+  followCounts(userId: string): Promise<{ followers: number; following: number }>;
+  follows(follower: string, followee: string): Promise<boolean>;
+  /** Which of `ids` this player follows. */
+  followedAmong(follower: string, ids: string[]): Promise<Set<string>>;
+  countFollowsSince(follower: string, since: string): Promise<number>;
+  setBlock(blocker: string, blocked: string, on: boolean): Promise<void>;
+  /** Who this player blocked (`out`) and who blocked them (`in`). */
+  blocks(userId: string): Promise<{ out: Set<string>; in: Set<string> }>;
+  /** False when this reporter already reported it. */
+  insertReport(row: Omit<ReportRow, "id" | "status" | "resolvedAt">): Promise<boolean>;
+  getReport(id: number): Promise<ReportRow | null>;
+  openReportsOn(targetKind: string, targetId: string): Promise<ReportRow[]>;
+  /** `instantOnly`: only reports with a reason that hides at once (private, fake). */
+  countReportsSince(reporterId: string, since: string, instantOnly?: boolean): Promise<number>;
+  /** Open reports, soonest due first. */
+  reportQueue(): Promise<ReportRow[]>;
+  /** Reports resolved since `since`, newest first. */
+  resolvedReports(since: string): Promise<ReportRow[]>;
+  /** Resolve every open report on a target; returns them. */
+  resolveReports(targetKind: string, targetId: string, status: "removed" | "kept", at: string): Promise<ReportRow[]>;
+  myReports(reporterId: string): Promise<ReportRow[]>;
+  addActivity(row: {
+    userId: string;
+    kind: ActivityKind;
+    actorId?: string;
+    postId?: number;
+    detail?: string;
+    createdAt: string;
+  }): Promise<void>;
+  activity(userId: string, before: number, limit: number): Promise<ActivityRow[]>;
+  markActivitySeen(userId: string, upTo: number): Promise<void>;
+  unseenActivity(userId: string): Promise<number>;
+  /** How many Club notifications (kinds starting club_) a player got that day. */
+  clubNoticesOn(userId: string, day: string): Promise<number>;
 }
+
+/** Notification kinds with their own daily cap (the Club's), not counted in the game's. */
+export const ownCap = (kind: string) => kind.startsWith("club_") || kind.startsWith("dm:");
 
 /* ------------------------------------------------------------------ */
 /* In memory, for tests.                                               */
@@ -176,7 +312,12 @@ export function memoryDb(): Db & {
   seats: SeatRow[];
   early: Map<string, Set<string>>;
   paymentIssues: PaymentIssue[];
+  club: ReturnType<typeof clubStore>;
+  /** auth.users created_at by id; an id missing here counts as an old account. */
+  accounts: Map<string, string>;
 } {
+  const club = clubStore();
+  const accounts = new Map<string, string>();
   const profiles = new Map<string, Profile>();
   const runs: RunRow[] = [];
   const lessonPlays: LessonPlayRow[] = [];
@@ -301,10 +442,18 @@ export function memoryDb(): Db & {
       return true;
     },
     async noticesOn(id, day) {
-      return [...notices].filter((k) => k.startsWith(`${id}|${day}|`)).length;
+      return [...notices].filter((k) => k.startsWith(`${id}|${day}|`) && !ownCap(k.split("|")[2])).length;
+    },
+    async clubNoticesOn(id, day) {
+      return [...notices].filter((k) => k.startsWith(`${id}|${day}|club_`)).length;
     },
     async deleteUser(id) {
       profiles.delete(id);
+      // As the migration's cascades: the Club profile and all it owns, the ban; reports keep their snapshot.
+      club.dropProfile(id);
+      club.bans.delete(id);
+      for (const r of club.reports) if (r.reporterId === id) r.reporterId = null;
+      accounts.delete(id);
       for (const list of [runs, lessonPlays, daily, leagues] as { userId: string }[][])
         for (let i = list.length - 1; i >= 0; i--) if (list[i].userId === id) list.splice(i, 1);
       for (const [k, p] of pushes) if (p.userId === id) pushes.delete(k);
@@ -321,6 +470,12 @@ export function memoryDb(): Db & {
     seats,
     early,
     paymentIssues,
+    club,
+    accounts,
+    async accountCreatedAt(id) {
+      return accounts.get(id) ?? "2000-01-01T00:00:00.000Z";
+    },
+    ...club.methods,
     foundingSeats: 0,
     async countFoundingSeats() {
       // `foundingSeats` is a test hook for a count with no rows behind it; it adds to the real seats.
@@ -390,6 +545,307 @@ export function memoryDb(): Db & {
       return seats.find((s) => s.subscriptionId === subscriptionId)?.seatNo ?? null;
     },
   };
+}
+
+/** The Club's tables in memory, with the migration's cascades and count triggers. */
+function clubStore() {
+  const profiles = new Map<string, ClubProfileRow>();
+  const bans = new Map<string, { until: string; reason: "mod" | "left" }>();
+  const posts: PostRow[] = [];
+  const likes: { postId: number; userId: string }[] = [];
+  const follows: { follower: string; followee: string; at: string }[] = [];
+  const blocks: { blocker: string; blocked: string }[] = [];
+  const reports: ReportRow[] = [];
+  const activity: ActivityRow[] = [];
+  let nextId = 1;
+  const clone = <T>(x: T): T => structuredClone(x);
+  const prune = <T>(list: T[], gone: (x: T) => boolean) => {
+    for (let i = list.length - 1; i >= 0; i--) if (gone(list[i])) list.splice(i, 1);
+  };
+  const root = (p: PostRow) => p.kind === "post" || p.kind === "rank_up";
+  const since = (at: string, from: string) => Date.parse(at) >= Date.parse(from);
+
+  function dropPosts(gone: (p: PostRow) => boolean) {
+    const ids = new Set(posts.filter(gone).map((p) => p.id));
+    for (const p of posts) if (p.parentId !== null && ids.has(p.parentId)) ids.add(p.id); // replies cascade
+    for (const p of posts)
+      if (ids.has(p.id) && p.parentId !== null && !ids.has(p.parentId)) {
+        const parent = posts.find((x) => x.id === p.parentId);
+        if (parent) parent.replyCount--;
+      }
+    prune(likes, (l) => ids.has(l.postId));
+    prune(activity, (a) => a.postId !== null && ids.has(a.postId));
+    prune(posts, (p) => ids.has(p.id));
+  }
+
+  function dropProfile(id: string) {
+    if (!profiles.delete(id)) return;
+    dropPosts((p) => p.authorId === id);
+    for (const l of likes.filter((l) => l.userId === id)) {
+      const p = posts.find((x) => x.id === l.postId);
+      if (p) p.likeCount--;
+    }
+    prune(likes, (l) => l.userId === id);
+    prune(follows, (f) => f.follower === id || f.followee === id);
+    prune(blocks, (b) => b.blocker === id || b.blocked === id);
+    prune(activity, (a) => a.userId === id || a.actorId === id);
+  }
+
+  const methods: Pick<
+    Db,
+    | "clubProfile"
+    | "clubProfileByHandle"
+    | "clubProfiles"
+    | "insertClubProfile"
+    | "updateClubProfile"
+    | "deleteClubProfile"
+    | "clubBan"
+    | "setClubBan"
+    | "insertPost"
+    | "getPost"
+    | "wolfPost"
+    | "deletePost"
+    | "setPostState"
+    | "hidePostsBy"
+    | "feedCandidates"
+    | "followingFeed"
+    | "postsBy"
+    | "replies"
+    | "countPostsSince"
+    | "lastPostBody"
+    | "setLike"
+    | "likedOf"
+    | "setFollow"
+    | "followCounts"
+    | "follows"
+    | "followedAmong"
+    | "countFollowsSince"
+    | "setBlock"
+    | "blocks"
+    | "insertReport"
+    | "getReport"
+    | "openReportsOn"
+    | "countReportsSince"
+    | "reportQueue"
+    | "resolvedReports"
+    | "resolveReports"
+    | "myReports"
+    | "addActivity"
+    | "activity"
+    | "markActivitySeen"
+    | "unseenActivity"
+  > = {
+    async clubProfile(id) {
+      return clone(profiles.get(id) ?? null);
+    },
+    async clubProfileByHandle(handle) {
+      return clone([...profiles.values()].find((p) => p.handle === handle) ?? null);
+    },
+    async clubProfiles(ids) {
+      return clone(ids.flatMap((id) => (profiles.has(id) ? [profiles.get(id)!] : [])));
+    },
+    async insertClubProfile(row) {
+      if ([...profiles.values()].some((p) => p.handle === row.handle) || profiles.has(row.userId)) return false;
+      profiles.set(row.userId, clone(row));
+      return true;
+    },
+    async updateClubProfile(id, patch) {
+      const p = profiles.get(id);
+      if (p) Object.assign(p, clone(patch));
+    },
+    async deleteClubProfile(id) {
+      dropProfile(id);
+    },
+    async clubBan(id) {
+      return clone(bans.get(id) ?? null);
+    },
+    async setClubBan(id, until, reason = "mod") {
+      if (until === null) bans.delete(id);
+      else bans.set(id, { until, reason });
+    },
+    async insertPost(row) {
+      if (
+        posts.some(
+          (p) =>
+            (row.authorId === null && p.kind === row.kind && p.ref === row.ref) ||
+            (row.kind === "rank_up" && p.kind === "rank_up" && p.authorId === row.authorId && p.ref === row.ref),
+        )
+      )
+        return null;
+      const p: PostRow = { ...clone(row), id: nextId++, likeCount: 0, replyCount: 0 };
+      posts.push(p);
+      if (p.parentId !== null) {
+        const parent = posts.find((x) => x.id === p.parentId);
+        if (parent) parent.replyCount++;
+      }
+      return clone(p);
+    },
+    async getPost(id) {
+      return clone(posts.find((p) => p.id === id) ?? null);
+    },
+    async wolfPost(kind, ref) {
+      return clone(posts.find((p) => p.authorId === null && p.kind === kind && p.ref === ref) ?? null);
+    },
+    async deletePost(id) {
+      dropPosts((p) => p.id === id);
+    },
+    async setPostState(id, patch) {
+      const p = posts.find((x) => x.id === id);
+      if (p) Object.assign(p, patch);
+    },
+    async hidePostsBy(authorId, at) {
+      const hit = posts.filter((p) => p.authorId === authorId && p.hiddenAt === null);
+      for (const p of hit) p.hiddenAt = at;
+      return clone(hit);
+    },
+    async feedCandidates(from, asOf, limit) {
+      return clone(
+        posts
+          .filter((p) => root(p) && !p.hiddenAt && !p.held && Date.parse(p.createdAt) > Date.parse(from) && p.createdAt <= asOf)
+          .sort((a, b) => b.id - a.id)
+          .slice(0, limit),
+      );
+    },
+    async followingFeed(viewer, before, limit) {
+      const followed = new Set(follows.filter((f) => f.follower === viewer).map((f) => f.followee));
+      return clone(
+        posts
+          .filter((p) => root(p) && !p.hiddenAt && !p.held && p.id < before && p.authorId && followed.has(p.authorId))
+          .sort((a, b) => b.id - a.id)
+          .slice(0, limit),
+      );
+    },
+    async postsBy(authorId, before, limit) {
+      return clone(
+        posts
+          .filter((p) => p.authorId === authorId && root(p) && !p.hiddenAt && p.id < before)
+          .sort((a, b) => b.id - a.id)
+          .slice(0, limit),
+      );
+    },
+    async replies(parentId, after, limit) {
+      return clone(posts.filter((p) => p.parentId === parentId && !p.hiddenAt && p.id > after).slice(0, limit));
+    },
+    async countPostsSince(authorId, kind, from) {
+      return posts.filter((p) => p.authorId === authorId && p.kind === kind && since(p.createdAt, from)).length;
+    },
+    async lastPostBody(authorId, from, body) {
+      return posts.some((p) => p.authorId === authorId && p.body === body && since(p.createdAt, from));
+    },
+    async setLike(postId, userId, on) {
+      const i = likes.findIndex((l) => l.postId === postId && l.userId === userId);
+      const p = posts.find((x) => x.id === postId);
+      if (on && i < 0 && p) {
+        likes.push({ postId, userId });
+        p.likeCount++;
+      }
+      if (!on && i >= 0) {
+        likes.splice(i, 1);
+        if (p) p.likeCount--;
+      }
+    },
+    async likedOf(userId, ids) {
+      return new Set(likes.filter((l) => l.userId === userId && ids.includes(l.postId)).map((l) => l.postId));
+    },
+    async setFollow(follower, followee, on, at = new Date().toISOString()) {
+      const i = follows.findIndex((f) => f.follower === follower && f.followee === followee);
+      if (on && i < 0) follows.push({ follower, followee, at });
+      if (!on && i >= 0) follows.splice(i, 1);
+    },
+    async followCounts(id) {
+      return { followers: follows.filter((f) => f.followee === id).length, following: follows.filter((f) => f.follower === id).length };
+    },
+    async follows(follower, followee) {
+      return follows.some((f) => f.follower === follower && f.followee === followee);
+    },
+    async followedAmong(follower, ids) {
+      return new Set(follows.filter((f) => f.follower === follower && ids.includes(f.followee)).map((f) => f.followee));
+    },
+    async countFollowsSince(follower, from) {
+      return follows.filter((f) => f.follower === follower && since(f.at, from)).length;
+    },
+    async setBlock(blocker, blocked, on) {
+      const i = blocks.findIndex((b) => b.blocker === blocker && b.blocked === blocked);
+      if (on && i < 0) blocks.push({ blocker, blocked });
+      if (!on && i >= 0) blocks.splice(i, 1);
+    },
+    async blocks(id) {
+      return {
+        out: new Set(blocks.filter((b) => b.blocker === id).map((b) => b.blocked)),
+        in: new Set(blocks.filter((b) => b.blocked === id).map((b) => b.blocker)),
+      };
+    },
+    async insertReport(row) {
+      if (
+        row.reporterId &&
+        reports.some((r) => r.reporterId === row.reporterId && r.targetKind === row.targetKind && r.targetId === row.targetId)
+      )
+        return false;
+      reports.push({ ...clone(row), id: nextId++, status: "open", resolvedAt: null });
+      return true;
+    },
+    async getReport(id) {
+      return clone(reports.find((r) => r.id === id) ?? null);
+    },
+    async openReportsOn(kind, id) {
+      return clone(reports.filter((r) => r.targetKind === kind && r.targetId === id && r.status === "open"));
+    },
+    async countReportsSince(reporterId, from, instantOnly) {
+      return reports.filter(
+        (r) => r.reporterId === reporterId && since(r.createdAt, from) && (!instantOnly || r.reason === "private" || r.reason === "fake"),
+      ).length;
+    },
+    async reportQueue() {
+      return clone(reports.filter((r) => r.status === "open").sort((a, b) => Date.parse(a.dueAt) - Date.parse(b.dueAt)));
+    },
+    async resolvedReports(from) {
+      return clone(
+        reports
+          .filter((r) => r.status !== "open" && r.resolvedAt && since(r.resolvedAt, from))
+          .sort((a, b) => Date.parse(b.resolvedAt!) - Date.parse(a.resolvedAt!)),
+      );
+    },
+    async resolveReports(kind, id, status, at) {
+      const hit = reports.filter((r) => r.targetKind === kind && r.targetId === id && r.status === "open");
+      for (const r of hit) Object.assign(r, { status, resolvedAt: at });
+      return clone(hit);
+    },
+    async myReports(reporterId) {
+      return clone(reports.filter((r) => r.reporterId === reporterId).sort((a, b) => b.id - a.id));
+    },
+    async addActivity(row) {
+      if (
+        row.kind === "like" &&
+        activity.some((a) => a.kind === "like" && a.userId === row.userId && a.actorId === row.actorId && a.postId === row.postId)
+      )
+        return;
+      activity.push({
+        id: nextId++,
+        userId: row.userId,
+        kind: row.kind,
+        actorId: row.actorId ?? null,
+        postId: row.postId ?? null,
+        detail: row.detail ?? null,
+        seen: false,
+        createdAt: row.createdAt,
+      });
+    },
+    async activity(id, before, limit) {
+      return clone(
+        activity
+          .filter((a) => a.userId === id && a.id < before)
+          .sort((a, b) => b.id - a.id)
+          .slice(0, limit),
+      );
+    },
+    async markActivitySeen(id, upTo) {
+      for (const a of activity) if (a.userId === id && a.id <= upTo) a.seen = true;
+    },
+    async unseenActivity(id) {
+      return activity.filter((a) => a.userId === id && !a.seen).length;
+    },
+  };
+  return { profiles, bans, posts, likes, follows, blocks, reports, activity, dropProfile, methods };
 }
 
 /* ------------------------------------------------------------------ */
@@ -467,6 +923,79 @@ const membershipOf = (r: Record<string, unknown>): MembershipRow => ({
   subscriptionId: r.razorpay_subscription_id as string,
   status: r.status as string,
   currentEnd: (r.current_end as string | null) ?? null,
+});
+
+const clubProfileOf = (r: Record<string, unknown>): ClubProfileRow => ({
+  userId: r.user_id as string,
+  handle: r.handle as string,
+  name: r.name as string,
+  building: r.building as string,
+  rank: r.rank as number,
+  stars: r.stars as number,
+  maxStars: r.max_stars as number,
+  streak: r.streak as number,
+  streakDay: (r.streak_day as string | null) ?? null,
+  milestones: r.milestones as boolean,
+  adultAt: r.adult_at as string,
+  rulesAt: r.rules_at as string,
+  hiddenAt: (r.hidden_at as string | null) ?? null,
+  createdAt: r.created_at as string,
+});
+const CLUB_PROFILE_COLS: Record<string, keyof ClubProfileRow> = {
+  user_id: "userId",
+  handle: "handle",
+  name: "name",
+  building: "building",
+  rank: "rank",
+  stars: "stars",
+  max_stars: "maxStars",
+  streak: "streak",
+  streak_day: "streakDay",
+  milestones: "milestones",
+  adult_at: "adultAt",
+  rules_at: "rulesAt",
+  hidden_at: "hiddenAt",
+  created_at: "createdAt",
+};
+/** The columns for a (partial) Club profile. */
+const clubProfileRow = (p: Partial<ClubProfileRow>) =>
+  Object.fromEntries(Object.entries(CLUB_PROFILE_COLS).flatMap(([col, k]) => (p[k] === undefined ? [] : [[col, p[k]]])));
+const postOf = (r: Record<string, unknown>): PostRow => ({
+  id: Number(r.id),
+  authorId: (r.author_id as string | null) ?? null,
+  kind: r.kind as PostRow["kind"],
+  ref: (r.ref as string | null) ?? null,
+  parentId: r.parent_id == null ? null : Number(r.parent_id),
+  body: r.body as string,
+  likeCount: r.like_count as number,
+  replyCount: r.reply_count as number,
+  held: (r.held as string | null) ?? null,
+  hiddenAt: (r.hidden_at as string | null) ?? null,
+  createdAt: r.created_at as string,
+});
+const reportOf = (r: Record<string, unknown>): ReportRow => ({
+  id: Number(r.id),
+  reporterId: (r.reporter_id as string | null) ?? null,
+  targetKind: r.target_kind as ReportRow["targetKind"],
+  targetId: r.target_id as string,
+  targetUser: (r.target_user as string | null) ?? null,
+  reason: r.reason as string,
+  note: r.note as string,
+  snapshot: r.snapshot as string,
+  status: r.status as ReportRow["status"],
+  dueAt: r.due_at as string,
+  resolvedAt: (r.resolved_at as string | null) ?? null,
+  createdAt: r.created_at as string,
+});
+const activityOf = (r: Record<string, unknown>): ActivityRow => ({
+  id: Number(r.id),
+  userId: r.user_id as string,
+  kind: r.kind as ActivityKind,
+  actorId: (r.actor_id as string | null) ?? null,
+  postId: r.post_id == null ? null : Number(r.post_id),
+  detail: (r.detail as string | null) ?? null,
+  seen: r.seen as boolean,
+  createdAt: r.created_at as string,
 });
 
 export function supabaseDb(sb = supabaseAdmin()): Db {
@@ -642,14 +1171,17 @@ export function supabaseDb(sb = supabaseAdmin()): Db {
         .from("notifications_sent")
         .select("kind", { count: "exact", head: true })
         .eq("user_id", id)
-        .eq("day", day);
+        .eq("day", day)
+        .not("kind", "like", "club\\_%")
+        .not("kind", "like", "dm:%");
       if (error) throw new Error(error.message);
       return count ?? 0;
     },
     async deleteUser(id) {
       // An unpaid hold goes with the player, as in memoryDb; a kept seat stays used (user_id set null by the cascade).
       must(await sb.from("founding_seats").delete().eq("user_id", id).not("held_until", "is", null));
-      // Every table cascades from auth.users, so deleting the user removes all their rows.
+      // Every table cascades from auth.users, so deleting the user removes all their rows (the Club's too; a report
+      // keeps its snapshot with reporter_id set null, and the Wolf's posts stay).
       const { error } = await sb.auth.admin.deleteUser(id);
       if (error) throw new Error(error.message);
     },
@@ -750,6 +1282,305 @@ export function supabaseDb(sb = supabaseAdmin()): Db {
     async seatOf(subscriptionId) {
       const rows = list(await sb.from("founding_seats").select("seat_no").eq("razorpay_subscription_id", subscriptionId).limit(1));
       return rows.length ? Number(rows[0].seat_no) : null;
+    },
+    async accountCreatedAt(id) {
+      const { data, error } = await sb.auth.admin.getUserById(id);
+      if (error) return null;
+      return data.user?.created_at ?? null;
+    },
+    async clubNoticesOn(id, day) {
+      const { count, error } = await sb
+        .from("notifications_sent")
+        .select("kind", { count: "exact", head: true })
+        .eq("user_id", id)
+        .eq("day", day)
+        .like("kind", "club\\_%");
+      if (error) throw new Error(error.message);
+      return count ?? 0;
+    },
+    async clubProfile(id) {
+      const r = must<Record<string, unknown> | null>(await sb.from("club_profiles").select("*").eq("user_id", id).maybeSingle());
+      return r && clubProfileOf(r);
+    },
+    async clubProfileByHandle(handle) {
+      const r = must<Record<string, unknown> | null>(await sb.from("club_profiles").select("*").eq("handle", handle).maybeSingle());
+      return r && clubProfileOf(r);
+    },
+    async clubProfiles(ids) {
+      if (!ids.length) return [];
+      return list(await sb.from("club_profiles").select("*").in("user_id", ids)).map(clubProfileOf);
+    },
+    async insertClubProfile(row) {
+      const { error } = await sb.from("club_profiles").insert(clubProfileRow(row));
+      if (duplicate(error)) return false;
+      if (error) throw new Error(error.message);
+      return true;
+    },
+    async updateClubProfile(id, patch) {
+      const values = clubProfileRow(patch);
+      if (Object.keys(values).length) must(await sb.from("club_profiles").update(values).eq("user_id", id));
+    },
+    async deleteClubProfile(id) {
+      must(await sb.from("club_profiles").delete().eq("user_id", id));
+    },
+    async clubBan(id) {
+      const r = must<{ until: string; reason: "mod" | "left" } | null>(
+        await sb.from("club_bans").select("until, reason").eq("user_id", id).maybeSingle(),
+      );
+      return r && { until: r.until, reason: r.reason };
+    },
+    async setClubBan(id, until, reason = "mod") {
+      if (until === null) must(await sb.from("club_bans").delete().eq("user_id", id));
+      else
+        must(
+          await sb
+            .from("club_bans")
+            .upsert({ user_id: id, until, reason, created_at: new Date().toISOString() }, { onConflict: "user_id" }),
+        );
+    },
+    async insertPost(row) {
+      const { data, error } = await sb
+        .from("club_posts")
+        .insert({
+          author_id: row.authorId,
+          kind: row.kind,
+          ref: row.ref,
+          parent_id: row.parentId,
+          body: row.body,
+          held: row.held,
+          hidden_at: row.hiddenAt,
+          created_at: row.createdAt,
+        })
+        .select("*")
+        .single();
+      if (duplicate(error)) return null;
+      if (error) throw new Error(error.message);
+      return postOf(data);
+    },
+    async getPost(id) {
+      const r = must<Record<string, unknown> | null>(await sb.from("club_posts").select("*").eq("id", id).maybeSingle());
+      return r && postOf(r);
+    },
+    async wolfPost(kind, ref) {
+      const r = must<Record<string, unknown> | null>(
+        await sb.from("club_posts").select("*").is("author_id", null).eq("kind", kind).eq("ref", ref).maybeSingle(),
+      );
+      return r && postOf(r);
+    },
+    async deletePost(id) {
+      must(await sb.from("club_posts").delete().eq("id", id));
+    },
+    async setPostState(id, patch) {
+      const values: Record<string, unknown> = {};
+      if (patch.held !== undefined) values.held = patch.held;
+      if (patch.hiddenAt !== undefined) values.hidden_at = patch.hiddenAt;
+      must(await sb.from("club_posts").update(values).eq("id", id));
+    },
+    async hidePostsBy(authorId, at) {
+      return list(await sb.from("club_posts").update({ hidden_at: at }).eq("author_id", authorId).is("hidden_at", null).select("*")).map(
+        postOf,
+      );
+    },
+    async feedCandidates(since, asOf, limit) {
+      return list(
+        await sb
+          .from("club_posts")
+          .select("*")
+          .in("kind", ["post", "rank_up"])
+          .is("hidden_at", null)
+          .is("held", null)
+          .gt("created_at", since)
+          .lte("created_at", asOf)
+          .order("created_at", { ascending: false })
+          .limit(limit),
+      ).map(postOf);
+    },
+    async followingFeed(viewer, before, limit) {
+      return list<Record<string, unknown>>(await sb.rpc("club_following", { p_viewer: viewer, p_before: before, p_limit: limit })).map(
+        postOf,
+      );
+    },
+    async postsBy(authorId, before, limit) {
+      return list(
+        await sb
+          .from("club_posts")
+          .select("*")
+          .eq("author_id", authorId)
+          .in("kind", ["post", "rank_up"])
+          .is("hidden_at", null)
+          .lt("id", before)
+          .order("id", { ascending: false })
+          .limit(limit),
+      ).map(postOf);
+    },
+    async replies(parentId, after, limit) {
+      return list(
+        await sb.from("club_posts").select("*").eq("parent_id", parentId).is("hidden_at", null).gt("id", after).order("id").limit(limit),
+      ).map(postOf);
+    },
+    async countPostsSince(authorId, kind, since) {
+      const { count, error } = await sb
+        .from("club_posts")
+        .select("id", { count: "exact", head: true })
+        .eq("author_id", authorId)
+        .eq("kind", kind)
+        .gte("created_at", since);
+      if (error) throw new Error(error.message);
+      return count ?? 0;
+    },
+    async lastPostBody(authorId, since, body) {
+      const rows = list(
+        await sb.from("club_posts").select("id").eq("author_id", authorId).eq("body", body).gte("created_at", since).limit(1),
+      );
+      return rows.length > 0;
+    },
+    async setLike(postId, userId, on) {
+      if (!on) return void must(await sb.from("club_likes").delete().eq("post_id", postId).eq("user_id", userId));
+      const { error } = await sb.from("club_likes").insert({ post_id: postId, user_id: userId });
+      if (error && !duplicate(error)) throw new Error(error.message);
+    },
+    async likedOf(userId, ids) {
+      if (!ids.length) return new Set<number>();
+      const rows = list(await sb.from("club_likes").select("post_id").eq("user_id", userId).in("post_id", ids));
+      return new Set(rows.map((r) => Number(r.post_id)));
+    },
+    async setFollow(follower, followee, on, at = new Date().toISOString()) {
+      if (!on) return void must(await sb.from("club_follows").delete().eq("follower_id", follower).eq("followee_id", followee));
+      const { error } = await sb.from("club_follows").insert({ follower_id: follower, followee_id: followee, created_at: at });
+      if (error && !duplicate(error)) throw new Error(error.message);
+    },
+    async followCounts(id) {
+      const count = async (col: string) => {
+        const { count, error } = await sb.from("club_follows").select("follower_id", { count: "exact", head: true }).eq(col, id);
+        if (error) throw new Error(error.message);
+        return count ?? 0;
+      };
+      const [followers, following] = await Promise.all([count("followee_id"), count("follower_id")]);
+      return { followers, following };
+    },
+    async follows(follower, followee) {
+      const rows = list(
+        await sb.from("club_follows").select("follower_id").eq("follower_id", follower).eq("followee_id", followee).limit(1),
+      );
+      return rows.length > 0;
+    },
+    async followedAmong(follower, ids) {
+      if (!ids.length) return new Set<string>();
+      const rows = list(await sb.from("club_follows").select("followee_id").eq("follower_id", follower).in("followee_id", ids));
+      return new Set(rows.map((r) => r.followee_id as string));
+    },
+    async countFollowsSince(follower, since) {
+      const { count, error } = await sb
+        .from("club_follows")
+        .select("follower_id", { count: "exact", head: true })
+        .eq("follower_id", follower)
+        .gte("created_at", since);
+      if (error) throw new Error(error.message);
+      return count ?? 0;
+    },
+    async setBlock(blocker, blocked, on) {
+      if (!on) return void must(await sb.from("club_blocks").delete().eq("blocker_id", blocker).eq("blocked_id", blocked));
+      const { error } = await sb.from("club_blocks").insert({ blocker_id: blocker, blocked_id: blocked });
+      if (error && !duplicate(error)) throw new Error(error.message);
+    },
+    async blocks(id) {
+      const [out, inn] = await Promise.all([
+        all<{ blocked_id: string }>((a, b) =>
+          sb.from("club_blocks").select("blocked_id").eq("blocker_id", id).order("blocked_id").range(a, b),
+        ),
+        all<{ blocker_id: string }>((a, b) =>
+          sb.from("club_blocks").select("blocker_id").eq("blocked_id", id).order("blocker_id").range(a, b),
+        ),
+      ]);
+      return { out: new Set(out.map((r) => r.blocked_id)), in: new Set(inn.map((r) => r.blocker_id)) };
+    },
+    async insertReport(row) {
+      const { error } = await sb.from("club_reports").insert({
+        reporter_id: row.reporterId,
+        target_kind: row.targetKind,
+        target_id: row.targetId,
+        target_user: row.targetUser,
+        reason: row.reason,
+        note: row.note,
+        snapshot: row.snapshot,
+        due_at: row.dueAt,
+        created_at: row.createdAt,
+      });
+      if (duplicate(error)) return false;
+      if (error) throw new Error(error.message);
+      return true;
+    },
+    async getReport(id) {
+      const r = must<Record<string, unknown> | null>(await sb.from("club_reports").select("*").eq("id", id).maybeSingle());
+      return r && reportOf(r);
+    },
+    async openReportsOn(kind, id) {
+      return list(await sb.from("club_reports").select("*").eq("target_kind", kind).eq("target_id", id).eq("status", "open")).map(reportOf);
+    },
+    async countReportsSince(reporterId, since, instantOnly) {
+      let q = sb.from("club_reports").select("id", { count: "exact", head: true }).eq("reporter_id", reporterId).gte("created_at", since);
+      if (instantOnly) q = q.in("reason", ["private", "fake"]);
+      const { count, error } = await q;
+      if (error) throw new Error(error.message);
+      return count ?? 0;
+    },
+    async reportQueue() {
+      return list(await sb.from("club_reports").select("*").eq("status", "open").order("due_at").limit(500)).map(reportOf);
+    },
+    async resolvedReports(since) {
+      return list(
+        await sb
+          .from("club_reports")
+          .select("*")
+          .neq("status", "open")
+          .gte("resolved_at", since)
+          .order("resolved_at", { ascending: false })
+          .limit(1000),
+      ).map(reportOf);
+    },
+    async resolveReports(kind, id, status, at) {
+      return list(
+        await sb
+          .from("club_reports")
+          .update({ status, resolved_at: at })
+          .eq("target_kind", kind)
+          .eq("target_id", id)
+          .eq("status", "open")
+          .select("*"),
+      ).map(reportOf);
+    },
+    async myReports(reporterId) {
+      return list(await sb.from("club_reports").select("*").eq("reporter_id", reporterId).order("id", { ascending: false }).limit(100)).map(
+        reportOf,
+      );
+    },
+    async addActivity(row) {
+      const { error } = await sb.from("club_activity").insert({
+        user_id: row.userId,
+        kind: row.kind,
+        actor_id: row.actorId ?? null,
+        post_id: row.postId ?? null,
+        detail: row.detail ?? null,
+        created_at: row.createdAt,
+      });
+      if (error && !duplicate(error)) throw new Error(error.message);
+    },
+    async activity(id, before, limit) {
+      return list(
+        await sb.from("club_activity").select("*").eq("user_id", id).lt("id", before).order("id", { ascending: false }).limit(limit),
+      ).map(activityOf);
+    },
+    async markActivitySeen(id, upTo) {
+      must(await sb.from("club_activity").update({ seen: true }).eq("user_id", id).lte("id", upTo).eq("seen", false));
+    },
+    async unseenActivity(id) {
+      const { count, error } = await sb
+        .from("club_activity")
+        .select("id", { count: "exact", head: true })
+        .eq("user_id", id)
+        .eq("seen", false);
+      if (error) throw new Error(error.message);
+      return count ?? 0;
     },
   };
 }

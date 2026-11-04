@@ -31,11 +31,14 @@ export function Player({
   hotSeatId,
   onExit,
   onNotes,
+  onClub,
   checkpoint,
 }: {
   hotSeatId: string;
   onExit: () => void;
   onNotes: () => void;
+  /** Open this Hot Seat's Club thread (signed in, Club on). */
+  onClub?: (postId: number) => void;
   checkpoint?: Checkpoint;
 }) {
   const game = useGame();
@@ -128,6 +131,7 @@ export function Player({
         badgesBefore={badgesBefore}
         onExit={onExit}
         onNotes={onNotes}
+        onClub={onClub}
         onReplay={() => {
           setUsedHindsight(false);
           setBadgesBefore(game.s.badges);

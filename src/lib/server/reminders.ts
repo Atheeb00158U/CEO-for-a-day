@@ -13,6 +13,10 @@ import { LEAGUE_FULL, leagueTier, MOVE } from "./game.ts";
 export interface Message {
   title: string;
   body: string;
+  /** Where a tap opens, e.g. /app#club/post/9 (default /app). */
+  url?: string;
+  /** Replaces an older notification with the same tag (default daily-reminder). */
+  tag?: string;
 }
 
 /** The hour (0–23) in India right now. */
@@ -104,18 +108,29 @@ export const webPush: Send = async (row, msg) => {
   }
 };
 
-type Tally = { sent: number; gone: number; failed: number };
+export type Tally = { sent: number; gone: number; failed: number };
+/** A daily cap: how many a player already got that day, and the most allowed. */
+export type Cap = { count(userId: string, day: string): Promise<number>; max: number };
 
 /**
- * Send `msg` to all of a player's phones, if the guardrails allow: not in quiet hours, under the daily cap, and this
- * kind not already sent today. Returns false when it was held back.
+ * Send `msg` to all of a player's phones, if the guardrails allow: not in quiet hours, under the daily cap (the
+ * game's by default; the Club passes its own), and this kind not already sent today. Returns false when it was held back.
  */
-async function deliver(db: Db, userId: string, phones: PushRow[], msg: Message & { kind: string }, send: Send, now: Date, tally: Tally) {
+export async function deliver(
+  db: Db,
+  userId: string,
+  phones: PushRow[],
+  msg: Message & { kind: string },
+  send: Send,
+  now: Date,
+  tally: Tally,
+  cap: Cap = { count: (u, d) => db.noticesOn(u, d), max: DAILY_CAP },
+) {
   const day = today(now);
-  if (quiet(istHour(now)) || (await db.noticesOn(userId, day)) >= DAILY_CAP) return false;
+  if (quiet(istHour(now)) || (await cap.count(userId, day)) >= cap.max) return false;
   if (!(await db.logNotice(userId, msg.kind, day))) return false;
   for (const row of phones) {
-    const r = await send(row, { title: msg.title, body: msg.body });
+    const r = await send(row, { title: msg.title, body: msg.body, ...(msg.url ? { url: msg.url, tag: msg.tag } : {}) });
     if (r === "gone") await db.deletePush(row.endpoint);
     tally[r]++;
   }

@@ -1,4 +1,4 @@
-// Streak reminders only. The game is online only (Atheeb's call, 2026-10-29): this worker caches nothing and never
+// Notifications only (streak reminders and the Club's). The game is online only (Atheeb's call, 2026-10-29): this worker caches nothing and never
 // answers a request. It is registered when a signed-in player turns on reminders (src/lib/push.ts).
 // It also still deletes the files the short-lived offline version saved on some phones.
 self.addEventListener("install", () => self.skipWaiting());
@@ -23,8 +23,8 @@ self.addEventListener("push", (e) => {
       body: msg.body,
       icon: "/icon.png",
       badge: "/icon.png",
-      tag: "daily-reminder", // a newer reminder replaces an older one
-      data: { url: "/app" },
+      tag: msg.tag || "daily-reminder", // a newer one with the same tag replaces an older one
+      data: { url: msg.url || "/app" },
     }),
   );
 });
@@ -35,7 +35,9 @@ self.addEventListener("notificationclick", (e) => {
   e.waitUntil(
     self.clients.matchAll({ type: "window", includeUncontrolled: true }).then((list) => {
       const open = list.find((c) => c.url.startsWith(self.location.origin + "/app"));
-      return open ? open.focus() : self.clients.openWindow(url);
+      // An open game goes to the link first (its hashchange listener opens the screen), then comes to the front.
+      if (!open) return self.clients.openWindow(url);
+      return (open.url === url ? Promise.resolve(open) : open.navigate(url)).then((c) => (c ?? open).focus());
     }),
   );
 });

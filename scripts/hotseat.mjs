@@ -5,9 +5,9 @@
 import { execFileSync } from "node:child_process";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import { COURSE_DIR, DAILY_DIR, HOTSEATS_DIR, hotSeatIds, readHotSeat } from "../src/lib/content-files.ts";
+import { COMMUNITY_DIR, COURSE_DIR, DAILY_DIR, HOTSEATS_DIR, hotSeatIds, readHotSeat } from "../src/lib/content-files.ts";
 import { checkCourse } from "../src/lib/course-check.ts";
-import { checkDailyPool, checkHotSeat, mediaCollisions } from "../src/lib/hotseat-check.ts";
+import { checkDailyPool, checkHotSeat, checkQuestions, mediaCollisions } from "../src/lib/hotseat-check.ts";
 import { today } from "../src/lib/game-state.ts";
 
 const [cmd, id] = process.argv.slice(2);
@@ -41,6 +41,12 @@ function check(ids) {
     for (const w of course.warnings) console.log(`  warning: ${w}`);
   }
   failed ||= course.errors.length > 0;
+  const questions = checkQuestions(COMMUNITY_DIR);
+  if (questions.count || questions.errors.length) {
+    console.log(`\n${questions.errors.length ? "✗" : "✓"} Club questions (${questions.count ?? 0})`);
+    for (const e of questions.errors) console.log(`  error: ${e}`);
+  }
+  failed ||= questions.errors.length > 0;
   const clashes = mediaCollisions([...hotSeatIds().map((x) => join(HOTSEATS_DIR, x)), DAILY_DIR, COURSE_DIR]);
   for (const c of clashes) console.log(`error: ${c}`);
   return failed || clashes.length > 0;

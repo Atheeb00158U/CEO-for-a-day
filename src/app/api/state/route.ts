@@ -1,8 +1,11 @@
 // The signed-in player's progress, rolled forward to today (IST), with their membership and whether the paywall
-// applies to them.
+// and the Club apply to them.
 import { load } from "@/lib/server/game";
 import { emailFrom, signedIn } from "@/lib/server/http";
-import { paywallFor } from "@/lib/server/membership";
+import { clubOn, paywallFor } from "@/lib/server/membership";
 
 export const GET = (request: Request) =>
-  signedIn(request, "state", async (db, userId) => ({ ...(await load(db, userId)), paywall: paywallFor(await emailFrom(request)) }));
+  signedIn(request, "state", async (db, userId) => {
+    const email = await emailFrom(request);
+    return { ...(await load(db, userId)), paywall: paywallFor(email), club: clubOn(email) };
+  });

@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 
-const TABS = ["home", "league", "notes", "shop", "profile"];
+const TABS = ["home", "league", "club", "notes", "shop", "profile"];
 
 /** The game used to live at "/", so old links like "/#league" now go to "/app#league". */
 export function LegacyHashRedirect() {

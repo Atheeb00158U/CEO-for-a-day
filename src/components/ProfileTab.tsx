@@ -7,6 +7,7 @@ import type { MembershipView } from "@/lib/membership-view";
 import { FOUNDING, REGULAR } from "@/lib/offer";
 import { BADGES, LEAGUES, useGame } from "@/lib/store";
 import { CareerPill, useCareer } from "./CareerTitle";
+import { ClubCard } from "./club/ClubCard";
 import { ReminderCard } from "./ReminderCard";
 import { SignInCard } from "./SignInCard";
 import { Card, Icon } from "./ui";
@@ -197,6 +198,8 @@ export function ProfileTab() {
       </Card>
 
       <ReminderCard />
+
+      <ClubCard />
 
       {showMembership && !memberNow && <MembershipCard m={membership!} />}
 

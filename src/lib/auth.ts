@@ -113,7 +113,7 @@ export async function api<T>(url: string, init: { method?: string; body?: unknow
     body: init.body === undefined ? undefined : JSON.stringify(init.body),
   });
   const data = await r.json().catch(() => ({}));
-  if (!r.ok) throw new ApiError(r.status, data?.error ?? `${url} ${r.status}`);
+  if (!r.ok) throw new ApiError(r.status, data?.error ?? `${url} ${r.status}`, data);
   return data as T;
 }
 
@@ -121,6 +121,8 @@ export class ApiError extends Error {
   constructor(
     readonly status: number,
     message: string,
+    /** The reply's JSON body, e.g. the Club's `{ error: "club", can }`. */
+    readonly data?: unknown,
   ) {
     super(message);
   }

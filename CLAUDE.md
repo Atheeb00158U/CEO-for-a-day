@@ -47,6 +47,14 @@ UI components: use shadcn/ui, restyled to this look. Add gluestack-ui only if we
   `careerOf` in `src/lib/career.ts`; others see it in the league. The server works it out from its own records
   (`trustedCareers`), never from a phone or imported save; each new title is cheered once (`rankSeen`).
 
+## The Club (step 1, 5 Nov 2026)
+- Spec: `docs/superpowers/specs/2026-11-04-community-design.md`. Feed, profiles, likes, follows, report/block; chat is step 2.
+- Pure rules and every word in `src/lib/community.ts` (`POST_RANK`, `canPost`, `autoFlag`, `rankForYou`, `CLUB_COPY`);
+  server actions in `src/lib/server/club.ts`; all routes in `src/app/api/club/[...path]/route.ts`; UI in
+  `src/components/club/`; moderation at `/admin/club`. Tables `club_*` (`supabase/migrations/20261105090000_club.sql`).
+- Switch: `clubOn()` in `membership.ts`: testers (`PAYWALL_TESTERS`) only, until `COMMUNITY_ON=1` and `GRIEVANCE`
+  (`src/lib/legal.ts`) has no "TODO". Posting needs a paying member at Trader, ranked from server records only.
+
 ## Routes
 - `/` is the website, `/app` the game, `/admin` the Hot Seat list and path trees.
 - `/admin` is behind HTTP Basic Auth (`src/proxy.ts`) against `ADMIN_PASSWORD`. Without it, it's open only in `npm run dev`. The Hot Seat JSON still ships inside `/app`, so the password hides the view, not the answers.

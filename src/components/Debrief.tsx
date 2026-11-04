@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { api } from "@/lib/auth";
+import { CLUB_COPY } from "@/lib/community";
 import type { PlayResponse } from "@/lib/content-client";
 import type { Result } from "@/lib/play";
 import { BADGES, ECONOMY, useGame, type RunRecord } from "@/lib/store";
@@ -25,6 +27,7 @@ export function Debrief({
   badgesBefore,
   onExit,
   onNotes,
+  onClub,
   onReplay,
 }: {
   /** The server's last step: the trust left, what really happened and any pre-written debrief. */
@@ -36,6 +39,8 @@ export function Debrief({
   badgesBefore: string[];
   onExit: () => void;
   onNotes: () => void;
+  /** Open this Hot Seat's Club thread; only for signed-in players with the Club on. */
+  onClub?: (postId: number) => void;
   onReplay: () => void;
 }) {
   const { s } = useGame();
@@ -182,6 +187,7 @@ export function Debrief({
         <button type="button" className="btn3d green" onClick={onExit}>
           Continue
         </button>
+        {onClub && <TalkButton hotSeatId={record.hotSeatId} onClub={onClub} />}
         <div className="grid grid-cols-2 gap-3">
           <button type="button" className="btn3d ghost !text-[14px]" onClick={onReplay}>
             Try another path
@@ -206,5 +212,25 @@ function Stat({ icon, value, label, color }: { icon: React.ReactNode; value: str
         {value}
       </p>
     </div>
+  );
+}
+
+/** "Talk about it · 12 replies": the Club thread for this Hot Seat, open only to players who finished it. */
+function TalkButton({ hotSeatId, onClub }: { hotSeatId: string; onClub: (postId: number) => void }) {
+  const [thread, setThread] = useState<{ id: number; replies: number }>();
+  useEffect(() => {
+    let live = true;
+    api<{ post: { id: number; replies: number } }>(`/api/club/hotseat/${encodeURIComponent(hotSeatId)}`)
+      .then((r) => live && setThread(r.post))
+      .catch(() => {});
+    return () => {
+      live = false;
+    };
+  }, [hotSeatId]);
+  if (!thread) return null;
+  return (
+    <button type="button" className="btn3d ghost !text-[14px]" onClick={() => onClub(thread.id)}>
+      {CLUB_COPY.talk} · {CLUB_COPY.replies(thread.replies)}
+    </button>
   );
 }
