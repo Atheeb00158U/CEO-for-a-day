@@ -28,8 +28,8 @@ const COPY = {
   founder: "Founder",
   member: "Member",
   openProfile: (badge: string) => `${badge}, open your profile`,
-  rankUp: (title: string) => `You're a ${title} now!`,
-  rankUpLine: (unit: number) => `You finished Unit ${unit}. Your new title is on your profile.`,
+  rankUp: (title: string) => `You are now a ${title}!`,
+  rankUpLine: (unit: number) => `You finished Unit ${unit}. See your new title on your profile.`,
   keepGoing: "Keep going",
 };
 
