@@ -70,6 +70,42 @@ Agreed with Atheeb on 3 Nov 2026. Built in the order of the sections below; each
   - **Paywall seat checks:** use the database check under the lock, never the cached count the landing page
     shows.
 
+### 4a. Paywall and payments decisions (Atheeb, 4 Nov 2026)
+
+- **Free for everyone:** all of Unit 1. That is both modules, the Kirana Year story and the Nirma Hot Seat,
+  plus their test-outs. This replaces "Module 1 + Kingfisher": Kingfisher is still a draft, and the landing
+  page already says "start free with Unit 1".
+- **Members:** everything else.
+  - **Who counts as a member:** a player whose subscription is `active`, or one who cancelled or missed a
+    payment but whose paid period hasn't ended.
+- **Early players keep what they finished.** At launch, a one-time snapshot copies every lesson and Hot
+  Seat each signed-in player had finished into `early_access`, taken from the server's own records
+  (`lesson_plays`, `runs`), never from a phone's save. Those items stay open; new ones need membership.
+- **Guests:** play Unit 1 without signing in. To pay, they sign in with Google first; the checkout is tied
+  to the account.
+- **Switch:**
+  - **Off (`PAYWALL_ON` unset):** nothing is locked, except for accounts listed in `PAYWALL_TESTERS`, who
+    see the paywall and the test checkout.
+  - **Why:** Razorpay can't send test webhooks to localhost, so the end-to-end test runs on Railway with
+    test keys and only testers affected.
+  - **Going live:** switch to live keys and set `PAYWALL_ON=1`, after Atheeb has checked GST with his CA.
+- **Seats:**
+  - **Holding a seat:** starting a founding checkout holds the lowest free seat for 30 minutes
+    (`held_until`).
+  - **Keeping it:** the first successful charge keeps the seat for good.
+  - **Expiry:** a hold that runs out frees the seat.
+  - **Lasting seats:** a seat that was paid for is never freed. A cancellation sets `cancelled_at`, and
+    deleting an account sets `user_id` to null.
+  - **What the counter counts:** paid seats plus live holds.
+  - **The founding price:** offered only while seats are free.
+- **Paywall moment:** opening a locked lesson, test-out or Hot Seat shows the wolf (pointing pose) and the
+  offer. The course map shows a small lock on locked items for non-members. Nothing is locked
+  mid-lesson.
+- **Server enforcement:** checked in `/api/lesson`, `/api/lesson/finish`, `/api/play` and
+  `/api/run/finish`. A refusal returns 402 `{ error: "members_only" }`.
+- **Cancelling:** one tap plus a confirmation in Profile cancels at the end of the paid period. Deleting an
+  account cancels the subscription first.
+
 ## 5. The wolf in the app
 
 - **Hot Seats:** "Advisor" becomes the wolf, with a small pose picture on the left of each advisor line,
