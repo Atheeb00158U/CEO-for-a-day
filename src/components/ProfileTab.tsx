@@ -18,7 +18,6 @@ const day = (iso: string) =>
 const MEMBER_COPY = {
   title: "Membership",
   plan: { founding: "Founding member", monthly: "Monthly plan", yearly: "Yearly plan" },
-  seat: (n: number) => `Seat ${n.toLocaleString("en-IN")} of ${FOUNDING.seats.toLocaleString("en-IN")}`,
   price: {
     founding: `${rs(FOUNDING.monthly)} a month, locked`,
     monthly: `${rs(REGULAR.monthly)} a month`,
@@ -195,7 +194,7 @@ export function ProfileTab() {
   );
 }
 
-/** The plan, price, renewal date and seat, with a one-tap cancel behind one confirmation. */
+/** The plan, price and renewal date (never the seat number), with a one-tap cancel behind one confirmation. */
 function MembershipCard({ m }: { m: MembershipView }) {
   const { reload } = useGame();
   const [asking, setAsking] = useState(false);
@@ -226,10 +225,7 @@ function MembershipCard({ m }: { m: MembershipView }) {
     <Card className="flex flex-col gap-3">
       <h2 className="text-[19px] font-black">{MEMBER_COPY.title}</h2>
       <div>
-        <p className="text-[17px] font-black">
-          {MEMBER_COPY.plan[m.plan]}
-          {m.seat !== undefined && <span className="text-brand"> · {MEMBER_COPY.seat(m.seat)}</span>}
-        </p>
+        <p className="text-[17px] font-black">{MEMBER_COPY.plan[m.plan]}</p>
         <p className="font-bold text-muted">{MEMBER_COPY.price[m.plan]}</p>
         <p className="font-bold text-muted">{when}</p>
       </div>

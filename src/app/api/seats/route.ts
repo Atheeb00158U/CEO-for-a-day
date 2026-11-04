@@ -1,4 +1,5 @@
-// The founding-seat count for the landing page. Public and cacheable: it's one number everyone may see.
+// Whether founding seats are left, for the paywall sheet. Public and cacheable. Only `open` is sent: players never
+// see how many seats are taken.
 import { NextResponse } from "next/server";
 import { supabaseDb, type Db } from "@/lib/server/db";
 import { ipOf, limited } from "@/lib/server/http";
@@ -10,9 +11,9 @@ export async function GET(request: Request) {
   if (limited(`seats:${ipOf(request)}`, 60)) return NextResponse.json({ error: "Too many requests" }, { status: 429 });
   try {
     db ??= supabaseDb();
-    const status = await cachedSeatStatus(db);
-    return NextResponse.json(status, { headers: { "Cache-Control": "public, max-age=10" } });
+    const { open } = await cachedSeatStatus(db);
+    return NextResponse.json({ open }, { headers: { "Cache-Control": "public, max-age=10" } });
   } catch {
-    return NextResponse.json({ error: "Seat count unavailable" }, { status: 503, headers: { "Cache-Control": "no-store" } });
+    return NextResponse.json({ error: "Seat status unavailable" }, { status: 503, headers: { "Cache-Control": "no-store" } });
   }
 }
