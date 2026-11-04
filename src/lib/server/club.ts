@@ -14,6 +14,7 @@ import {
   LIMITS,
   rankForYou,
   reasonLabel,
+  reservedName,
   REPORT_REASONS,
   shownStreak,
   titleOf,
@@ -28,7 +29,7 @@ import {
   type ReportView,
 } from "../community.ts";
 import type { CourseOutline } from "../course-types";
-import { today, type GameState } from "../game-state.ts";
+import { dayDiff, today, type GameState } from "../game-state.ts";
 import { courseOutline, servableHotSeat, wolfQuestion } from "./content.ts";
 import type { ClubProfileRow, Db, PostRow, ReportRow } from "./db.ts";
 import { GameError, trustedCareers } from "./game.ts";
@@ -81,6 +82,13 @@ const refuseContacts = (text: string) => {
   const f = autoFlag(text);
   if (f.refuse) throw new GameError(f.refuse);
 };
+/** Profile fields are shown to everyone with no check by a person, so links and money words are refused too. */
+function checkProfile(name: string | undefined, building: string | undefined) {
+  const f = autoFlag(`${name ?? ""}\n${building ?? ""}`);
+  if (f.refuse) throw new GameError(f.refuse);
+  if (f.hold) throw new GameError(CLUB_COPY.profileLinks);
+  if (name !== undefined && reservedName(name)) throw new GameError(CLUB_COPY.reservedName);
+}
 
 /* ------------------------------------------------------------------ */
 /* Who the player is to the Club.                                      */
@@ -142,9 +150,12 @@ const authorOf = (p: ClubProfileRow, now: Date): AuthorView => ({
   streak: shownStreak(p.streak, p.streakDay, today(now)),
 });
 
-/** Whether `me` may see this post (not its thread's Hot Seat rule; see `readable`). */
+/**
+ * Whether `me` may see this post (not its author's hidden profile or its thread's Hot Seat rule; see `readable`). The
+ * Wolf's posts are never hidden: no report can take down today's question or a Hot Seat thread.
+ */
 const visibleTo = (p: PostRow, me: Me) =>
-  !p.hiddenAt && (!p.held || p.authorId === me.userId) && !(p.authorId && me.blocked.has(p.authorId));
+  (!p.hiddenAt || p.authorId === null) && (!p.held || p.authorId === me.userId) && !(p.authorId && me.blocked.has(p.authorId));
 
 /** Posts as the phone sees them, leaving out any `me` mustn't see (hidden, held, blocked, or a hidden author). */
 async function viewsOf(db: Db, me: Me, posts: PostRow[], now: Date): Promise<PostView[]> {
@@ -211,6 +222,10 @@ async function readable(db: Db, me: Me, id: number): Promise<{ post: PostRow; ro
   const post = await db.getPost(id);
   const root = post?.parentId ? await db.getPost(post.parentId) : post;
   if (!post || !root || !visibleTo(post, me) || !visibleTo(root, me)) throw new GameError(CLUB_COPY.postGone);
+  // A hidden profile's posts are out of every list; they can't be liked, replied to or reported either.
+  const authors = [...new Set([post.authorId, root.authorId])].filter((a): a is string => !!a && a !== me.userId);
+  const found = await db.clubProfiles(authors);
+  if (found.length < authors.length || found.some((a) => a.hiddenAt)) throw new GameError(CLUB_COPY.postGone);
   if (root.kind === "hotseat" && !(await db.countRuns(me.userId, root.ref ?? ""))) throw new GameError(CLUB_COPY.hotSeatLocked);
   return { post, root };
 }
@@ -221,6 +236,9 @@ async function readable(db: Db, me: Me, id: number): Promise<{ post: PostRow; ro
 async function clubPush(db: Db, userId: string, msg: Message & { kind: string }, send: Send, now: Date) {
   const phones = await db.pushes(userId);
   if (!phones.length) return;
+  // Like the game's reminders: nothing at all after a player has been away for over a week.
+  const last = (await db.getProfile(userId))?.state.lastActiveDay;
+  if (!last || dayDiff(last, today(now)) > 7) return;
   await deliver(
     db,
     userId,
@@ -286,10 +304,13 @@ export async function join(db: Db, userId: string, body: Record<string, unknown>
   if ("error" in h) throw new GameError(h.error);
   const name = nameOf(body.name);
   const building = optional(body.building, LIMITS.buildingLength);
-  refuseContacts(`${h.handle} ${name} ${building}`);
+  refuseContacts(h.handle);
+  checkProfile(name, building);
   const existing = await db.clubProfile(userId);
   if (!existing) {
     const ban = await db.clubBan(userId);
+    // 4: a banned player can't leave and join again to undo a hidden profile.
+    if (ban?.reason === "mod" && bannedAt(ban.until, now)) throw new ClubGateError("banned");
     if (ban?.reason === "left" && bannedAt(ban.until, now)) throw new GameError(CLUB_COPY.rejoinWait);
     const [career, game] = await Promise.all([trustedCareer(db, userId), db.getProfile(userId)]);
     const at = now.toISOString();
@@ -317,12 +338,12 @@ export async function join(db: Db, userId: string, body: Record<string, unknown>
 
 export async function updateMe(db: Db, userId: string, body: Record<string, unknown>, now = new Date()) {
   const m = await meOf(db, userId);
-  if (!m.profile) throw new ClubGateError("join");
+  await mustInteract(db, m, now);
   const patch: Partial<ClubProfileRow> = {};
   if (body.name !== undefined) patch.name = nameOf(body.name);
   if (body.building !== undefined) patch.building = optional(body.building, LIMITS.buildingLength);
   if (typeof body.milestones === "boolean") patch.milestones = body.milestones;
-  refuseContacts(`${patch.name ?? ""} ${patch.building ?? ""}`);
+  checkProfile(patch.name, patch.building);
   await db.updateClubProfile(userId, patch);
   const p = (await db.clubProfile(userId))!;
   return { profile: await profileView(db, m, p, now) };
@@ -393,12 +414,21 @@ async function todaysQuestion(db: Db, now: Date): Promise<PostRow | null> {
   );
 }
 
-const cursorOut = (asOf: string, offset: number) => Buffer.from(JSON.stringify({ asOf, offset })).toString("base64url");
-function cursorIn(s: string | null): { asOf: string; offset: number } | null {
+/** Feed candidates per page; also the most ids a cursor carries. */
+const CANDIDATES = 300;
+const cursorOut = (asOf: string, seen: number[]) => Buffer.from(JSON.stringify({ asOf, seen })).toString("base64url");
+function cursorIn(s: string | null): { asOf: string; seen: number[] } | null {
   if (!s) return null;
   try {
     const c = JSON.parse(Buffer.from(s, "base64url").toString());
-    if (typeof c.asOf === "string" && !Number.isNaN(Date.parse(c.asOf)) && Number.isSafeInteger(c.offset) && c.offset >= 0) return c;
+    if (
+      typeof c.asOf === "string" &&
+      !Number.isNaN(Date.parse(c.asOf)) &&
+      Array.isArray(c.seen) &&
+      c.seen.length <= CANDIDATES &&
+      c.seen.every((x: unknown) => Number.isSafeInteger(x))
+    )
+      return c;
   } catch {
     /* a bad cursor reads as page 1 */
   }
@@ -419,20 +449,22 @@ export async function feed(db: Db, userId: string, q: { tab: string | null; curs
     return { question, posts, ...(rows.length === PAGE ? { cursor: String(rows.at(-1)!.id) } : {}) };
   }
   const asOf = c?.asOf ?? now.toISOString();
-  const offset = c?.offset ?? 0;
-  const candidates = (await db.feedCandidates(ago(new Date(asOf), FEED_DAYS * 24 * H), asOf, 300)).filter(
+  const seen = new Set(c?.seen ?? []);
+  const candidates = (await db.feedCandidates(ago(new Date(asOf), FEED_DAYS * 24 * H), asOf, CANDIDATES)).filter(
     (p) => !(p.authorId && m.blocked.has(p.authorId)),
   );
   const follows = await db.followedAmong(userId, [...new Set(candidates.flatMap((p) => (p.authorId ? [p.authorId] : [])))]);
-  const ranked = rankForYou(candidates, { follows }, new Date(asOf));
-  const posts = await viewsOf(db, m, ranked.slice(offset, offset + PAGE), now);
-  return { question, posts, ...(offset + PAGE < ranked.length ? { cursor: cursorOut(asOf, offset + PAGE) } : {}) };
+  const left = rankForYou(candidates, { follows }, new Date(asOf)).filter((p) => !seen.has(p.id));
+  const page = left.slice(0, PAGE);
+  const posts = await viewsOf(db, m, page, now);
+  const served = [...seen, ...page.map((p) => p.id)];
+  return { question, posts, ...(left.length > PAGE ? { cursor: cursorOut(asOf, served) } : {}) };
 }
 
 export async function thread(db: Db, userId: string, id: unknown, after: unknown, now = new Date()) {
   const m = await meOf(db, userId);
   const { root } = await readable(db, m, idOf(id));
-  const from = after ? idOf(after) : 0;
+  const from = Number(after) > 0 ? idOf(after) : 0;
   const rows = await db.replies(root.id, from, REPLIES_PAGE);
   const [post] = await viewsOf(db, m, [root], now);
   if (!post) throw new GameError(CLUB_COPY.postGone);
@@ -528,7 +560,7 @@ export async function createPost(db: Db, userId: string, body: Record<string, un
         db,
         to,
         {
-          kind: "club_reply",
+          kind: `club_reply:${parent.id}`, // one push per thread a day, at most 3 Club pushes in all
           title: CLUB_COPY.pushReply(m.profile!.name),
           body: [...text].slice(0, 80).join(""),
           url: `/app#club/post/${parent.id}`,
@@ -596,7 +628,7 @@ export async function follow(db: Db, userId: string, body: Record<string, unknow
       db,
       p.userId,
       {
-        kind: "club_follow",
+        kind: `club_follow:${handle}`,
         title: CLUB_COPY.pushFollow(name),
         body: CLUB_COPY.pushFollowBody,
         url: `/app#club/@${handle}`,
@@ -671,6 +703,7 @@ export async function report(db: Db, userId: string, body: Record<string, unknow
 }
 
 async function hideTarget(db: Db, kind: string, id: string, at: string | null) {
+  if (kind === "post" && at && (await db.getPost(Number(id)))?.authorId === null) return; // never the Wolf's
   if (kind === "post") await db.setPostState(Number(id), at ? { hiddenAt: at } : { hiddenAt: null, held: null });
   else if (kind === "profile") await db.updateClubProfile(id, { hiddenAt: at });
 }
@@ -752,7 +785,8 @@ export async function queue(db: Db, now = new Date()) {
 /* Activity.                                                           */
 /* ------------------------------------------------------------------ */
 export async function activity(db: Db, userId: string, before: unknown) {
-  if (!(await db.clubProfile(userId))) throw new ClubGateError("join");
+  const m = await meOf(db, userId);
+  if (!m.profile) throw new ClubGateError("join");
   const rows = await db.activity(userId, before ? idOf(before) : MAX_ID, REPLIES_PAGE);
   const actors = new Map(
     (await db.clubProfiles([...new Set(rows.flatMap((r) => (r.actorId ? [r.actorId] : [])))])).map((p) => [p.userId, p]),
@@ -761,6 +795,8 @@ export async function activity(db: Db, userId: string, before: unknown) {
   const likesOn = new Map<number, ActivityItem>();
   for (const r of rows) {
     const a = r.actorId ? actors.get(r.actorId) : undefined;
+    // Someone blocked either way, hidden or gone: leave the item out.
+    if (r.actorId && (!a || a.hiddenAt || m.blocked.has(r.actorId))) continue;
     const actor = a ? { handle: a.handle, name: a.name } : null;
     const base = { id: r.id, kind: r.kind, createdAt: r.createdAt, seen: r.seen, actor };
     if (r.kind === "like" && r.postId) {
@@ -775,7 +811,7 @@ export async function activity(db: Db, userId: string, before: unknown) {
     } else if (r.kind === "reply" && r.postId) {
       const reply = await db.getPost(r.postId);
       const root = reply?.parentId ? await db.getPost(reply.parentId) : null;
-      if (!reply || !root) continue;
+      if (!reply || !root || !visibleTo(reply, m) || !visibleTo(root, m)) continue;
       // Never the text of a Hot Seat thread reply: it may give away an answer.
       items.push({ ...base, postId: root.id, ...(root.kind === "hotseat" ? {} : { text: [...reply.body].slice(0, 80).join("") }) });
     } else if (r.kind === "report_done") {

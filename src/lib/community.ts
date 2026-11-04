@@ -55,6 +55,17 @@ export const LIMITS = {
 };
 
 const RESERVED = new Set(["wolf", "thewolf", "admin", "ceoforaday", "support", "moderator", "club"]);
+/** Words a name may not contain, so nobody passes as the Wolf or the app itself. */
+const RESERVED_NAME = /wolf|admin|moderator|ceoforaday|official|grievance/;
+
+/** Whether a display name pretends to be the app (letters only, so "The W0lf"-style spacing still counts). */
+export const reservedName = (name: string) =>
+  RESERVED_NAME.test(
+    name
+      .toLowerCase()
+      .replace(/0/g, "o")
+      .replace(/[^a-z]/g, ""),
+  );
 
 /** A handle, lower-cased, or the sentence to show. */
 export function checkHandle(raw: unknown): { handle: string } | { error: string } {
@@ -90,13 +101,15 @@ export const SCAM_PATTERNS: RegExp[] = [
 const NUMBER_WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
 const LINK = /https?:\/\/|\bwww\.|\b[a-z0-9-]+\.(com|in|net|org|io|co|xyz|app|me|info|link|ly|site|shop|online|biz)\b/i;
 const EMAIL = /[\w.+-]+@[\w-]+\.[\w.-]+/;
+/** "ravi at gmail dot com", with or without brackets. */
+const SPELLED_EMAIL = /\b[\w.+-]+\s*[([]?\s*at\s*[)\]]?\s*[a-z0-9-]+\s*[([]?\s*dot\s*[)\]]?\s*(com|in|net|org|co)\b/i;
 const UPI = /\b[\w.-]{2,}@(ok)?(upi|ybl|paytm|axl|axis|ibl|sbi|apl|icici|hdfcbank)\b/i;
 
-/** The text with spelled-out digits as digits, and digits split by spaces, dots or dashes joined up. */
+/** The text with spelled-out digits as digits, and digits split by spaces or punctuation joined up. */
 function digitsOf(text: string): string {
   let t = text.toLowerCase();
   NUMBER_WORDS.forEach((w, i) => (t = t.replace(new RegExp(`\\b${w}\\b`, "g"), String(i))));
-  return t.replace(/(\d)[\s.\-()]{1,2}(?=\d)/g, "$1");
+  return t.replace(/(\d)[\s.\-()_,/|]{1,3}(?=\d)/g, "$1");
 }
 
 /** An Indian mobile number, written plainly, split up or spelled out. */
@@ -113,7 +126,7 @@ export interface Flag {
 
 /** What the automatic checks make of a piece of text. */
 export function autoFlag(text: string): Flag {
-  if (hasPhone(text) || EMAIL.test(text) || UPI.test(text)) return { refuse: CLUB_COPY.noContacts };
+  if (hasPhone(text) || EMAIL.test(text) || SPELLED_EMAIL.test(text) || UPI.test(text)) return { refuse: CLUB_COPY.noContacts };
   if (SCAM_PATTERNS.some((p) => p.test(text))) return { hold: "auto_scam", warn: true };
   if (LINK.test(text)) return { hold: "auto_link" };
   return {};
@@ -327,6 +340,8 @@ export const CLUB_COPY = {
   handleTaken: "That username is taken.",
   badHandle: "Use 3 to 15 letters, numbers or underscores (_).",
   badName: "Use 1 to 20 letters for your name.",
+  reservedName: "Pick a different name. This one is kept for the app.",
+  profileLinks: "Remove links and money offers from your profile.",
   error: "Something went wrong. Try again.",
   // Join.
   joinTitle: "Join the Club",

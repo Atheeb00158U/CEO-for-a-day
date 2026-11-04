@@ -24,6 +24,7 @@ import {
   report,
   thread,
   trustedCareer,
+  updateMe,
   userProfile,
   type Side,
 } from "./club";
@@ -89,8 +90,11 @@ function fakeSide() {
   const side: Side = { send, later: (t) => void tasks.push(t()) };
   return { side, pushes, settle: () => Promise.all(tasks) };
 }
-const phone = (db: Mem, u: string) =>
-  db.savePush({ endpoint: `https://push/${u}`, userId: u, keys: { p256dh: "k", auth: "a" }, remindHour: 19 });
+/** Reminders on, and played today (Club pushes stop after a week away). */
+async function phone(db: Mem, u: string, lastActiveDay = "2026-11-07") {
+  await db.createProfile(u, { ...fresh(), lastActiveDay });
+  await db.savePush({ endpoint: `https://push/${u}`, userId: u, keys: { p256dh: "k", auth: "a" }, remindHour: 19 });
+}
 const gate = async (p: Promise<unknown>) => {
   try {
     await p;
@@ -367,14 +371,16 @@ describe("reports and moderation", () => {
     expect(await moderate(db, { reportId: 99999, action: "keep" }, at(9))).toBeNull();
   });
 
-  it("a ban survives leaving and rejoining; leaving makes you wait a day", async () => {
+  it("a ban survives leaving: no joining again until it ends; leaving makes you wait a day", async () => {
     const { db, post } = await setup();
     await report(db, "r1", { kind: "post", id: post.id, reason: "hate" }, T0, fakeSide().side);
     await moderate(db, { reportId: (await db.reportQueue())[0].id, action: "ban7" }, T0);
     expect(await gate(createPost(db, "a", { body: "x" }, at(1)))).toBe("banned");
+    await expect(updateMe(db, "a", { building: "new" }, at(1))).rejects.toThrow(ClubGateError);
     await leave(db, "a", at(1));
-    await joinAs(db, "a", at(2));
-    expect(await gate(createPost(db, "a", { body: "x" }, at(3)))).toBe("banned");
+    expect(await gate(joinAs(db, "a", at(2)))).toBe("banned");
+    await joinAs(db, "a", at(8 * 24 * 60));
+    expect(db.club.profiles.get("a")?.hiddenAt).toBeNull();
     await leave(db, "r1", at(3));
     await expect(joinAs(db, "r1", at(4))).rejects.toThrow(CLUB_COPY.rejoinWait);
     await joinAs(db, "r1", at(25 * 60));
@@ -444,5 +450,141 @@ describe("leaving and deleting", () => {
     expect(rows).not.toContain('"a"');
     expect(c.reports[0]).toMatchObject({ reporterId: null, snapshot: "hello" });
     expect((await db.getPost(post.id))?.likeCount).toBe(0);
+  });
+});
+
+describe("review fixes", () => {
+  it("never hides the Wolf's posts on reports, and Hot Seat threads and the question keep working", async () => {
+    const db = memoryDb();
+    await poster(db, "a");
+    for (const u of ["r1", "r2", "r3"]) await joinAs(db, u);
+    const q = (await feed(db, "r1", { tab: null, cursor: null }, T0)).question!;
+    for (const u of ["r1", "r2", "r3"]) await report(db, u, { kind: "post", id: q.id, reason: "private" }, T0, fakeSide().side);
+    expect((await db.getPost(q.id))?.hiddenAt).toBeNull();
+    await moderate(db, { reportId: (await db.reportQueue())[0].id, action: "remove" }, at(1));
+    expect((await db.getPost(q.id))?.hiddenAt).toBeNull();
+    // Even a Wolf post hidden some other way still shows.
+    await db.setPostState(q.id, { hiddenAt: T0.toISOString() });
+    expect((await feed(db, "a", { tab: null, cursor: null }, at(2))).question?.id).toBe(q.id);
+    expect((await thread(db, "a", q.id, null, at(2))).post.id).toBe(q.id);
+  });
+
+  it("leaves blocked and hidden players, and replies you can't see, out of Activity", async () => {
+    const db = memoryDb();
+    for (const u of ["a", "b", "c"]) await poster(db, u);
+    await joinAs(db, "d");
+    const { post } = await createPost(db, "a", { body: "hello" }, T0);
+    const reply = await createPost(db, "c", { body: "hi there", parentId: post.id }, at(1));
+    await createPost(db, "b", { body: "nice", parentId: post.id }, at(2));
+    await like(db, "c", { postId: post.id }, at(3));
+    await follow(db, "d", { handle: hd("a") }, at(3));
+    expect((await activity(db, "a", null)).items).toHaveLength(4);
+    await block(db, "b", { handle: hd("a") }, at(4)); // b blocked a: b's reply goes from a's Activity
+    await db.setPostState(reply.post.id, { hiddenAt: at(4).toISOString() }); // c's reply was removed
+    expect((await activity(db, "a", null)).items.map((i) => [i.kind, i.actor?.handle])).toEqual([
+      ["follow", hd("d")],
+      ["like", hd("c")],
+    ]);
+    await db.updateClubProfile("c", { hiddenAt: at(5).toISOString() });
+    expect((await activity(db, "a", null)).items.map((i) => i.actor?.handle)).toEqual([hd("d")]);
+  });
+
+  it("refuses links, money words and app-like names on profiles", async () => {
+    const db = memoryDb();
+    const ok = { handle: "ravik", name: "Ravi", building: "", adult: true, rules: true };
+    await expect(join(db, "a", { ...ok, building: "see www.ravichai.in" }, T0)).rejects.toThrow(CLUB_COPY.profileLinks);
+    await expect(join(db, "a", { ...ok, building: "Guaranteed returns" }, T0)).rejects.toThrow(CLUB_COPY.profileLinks);
+    for (const name of ["The Wolf", "Admin", "CEO For A Day", "Moderator", "W0LF"])
+      await expect(join(db, "a", { ...ok, name }, T0)).rejects.toThrow(CLUB_COPY.reservedName);
+    await join(db, "a", ok, T0);
+    await expect(updateMe(db, "a", { name: "Club Admin" }, T0)).rejects.toThrow(CLUB_COPY.reservedName);
+    await expect(updateMe(db, "a", { building: "ravi at gmail dot com" }, T0)).rejects.toThrow(CLUB_COPY.noContacts);
+  });
+
+  it("pages For you without skips or repeats while likes change the order", async () => {
+    const db = memoryDb();
+    await joinAs(db, "b");
+    for (let i = 0; i < 30; i++) {
+      await joinAs(db, `p${i}`);
+      await db.insertPost({
+        authorId: `p${i}`,
+        kind: "post",
+        ref: null,
+        parentId: null,
+        body: `p${i}`,
+        held: null,
+        hiddenAt: null,
+        createdAt: at(-i * 10).toISOString(),
+      });
+    }
+    const one = await feed(db, "b", { tab: null, cursor: null }, T0);
+    for (const p of db.club.posts.slice(10)) p.likeCount += 50; // likes reshuffle the order between the two reads
+    const two = await feed(db, "b", { tab: null, cursor: one.cursor! }, at(1));
+    const ids = [...one.posts, ...two.posts].map((p) => p.id);
+    expect(new Set(ids).size).toBe(30);
+    expect(ids).toHaveLength(30);
+    expect(two.cursor).toBeUndefined();
+  });
+
+  it("keeps the daily caps, the gap and the repeat rule after a post is deleted", async () => {
+    const db = memoryDb();
+    await poster(db, "a");
+    const { post } = await createPost(db, "a", { body: "first" }, at(0));
+    await deletePost(db, "a", post.id);
+    await expect(createPost(db, "a", { body: "again" }, at(0.2))).rejects.toThrow(CLUB_COPY.slowDown);
+    await expect(createPost(db, "a", { body: "first" }, at(1))).rejects.toThrow(CLUB_COPY.repeat);
+    for (let i = 1; i < 10; i++) await deletePost(db, "a", (await createPost(db, "a", { body: `post ${i}` }, at(i))).post.id);
+    await expect(createPost(db, "a", { body: "one more" }, at(20))).rejects.toThrow(CLUB_COPY.tooManyPosts);
+  });
+
+  it("refuses likes, replies and reports on a hidden profile's posts", async () => {
+    const db = memoryDb();
+    await poster(db, "a");
+    await poster(db, "b");
+    const { post } = await createPost(db, "a", { body: "hello" }, T0);
+    await db.updateClubProfile("a", { hiddenAt: T0.toISOString() });
+    await expect(like(db, "b", { postId: post.id }, at(1))).rejects.toThrow(CLUB_COPY.postGone);
+    await expect(createPost(db, "b", { body: "hi", parentId: post.id }, at(1))).rejects.toThrow(CLUB_COPY.postGone);
+    await expect(report(db, "b", { kind: "post", id: post.id, reason: "spam" }, at(1))).rejects.toThrow(CLUB_COPY.postGone);
+    expect((await like(db, "a", { postId: post.id }, at(1))).liked).toBe(true); // the author still can
+  });
+
+  it("sends up to 3 Club pushes a day, one reply push per thread, and none after a week away", async () => {
+    const db = memoryDb();
+    const { side, pushes, settle } = fakeSide();
+    await poster(db, "a");
+    await poster(db, "b");
+    await phone(db, "a");
+    const posts: number[] = [];
+    for (let i = 0; i < 4; i++) posts.push((await createPost(db, "a", { body: `post ${i}` }, at(i))).post.id);
+    await createPost(db, "b", { body: "r0", parentId: posts[0] }, at(10), side);
+    await createPost(db, "b", { body: "r0 again", parentId: posts[0] }, at(11), side);
+    for (let i = 1; i < 4; i++) await createPost(db, "b", { body: `r${i}`, parentId: posts[i] }, at(11 + i), side);
+    await settle();
+    expect(pushes.map((p) => p.body)).toEqual(["r0", "r1", "r2"]);
+
+    const db2 = memoryDb();
+    const two = fakeSide();
+    await poster(db2, "a");
+    await poster(db2, "b");
+    await phone(db2, "a", "2026-10-20");
+    const { post } = await createPost(db2, "a", { body: "hello" }, T0);
+    await createPost(db2, "b", { body: "hi", parentId: post.id }, at(1), two.side);
+    await two.settle();
+    expect(two.pushes).toEqual([]);
+  });
+
+  it("counts only replies everyone can see, and reads thread page 1 with after=0", async () => {
+    const db = memoryDb();
+    await poster(db, "a");
+    await poster(db, "b");
+    const { post } = await createPost(db, "a", { body: "hello" }, T0);
+    const r1 = await createPost(db, "b", { body: "fine", parentId: post.id }, at(1));
+    await createPost(db, "b", { body: "see www.x.com", parentId: post.id }, at(2)); // held
+    expect((await db.getPost(post.id))?.replyCount).toBe(1);
+    await db.setPostState(r1.post.id, { hiddenAt: at(3).toISOString() });
+    expect((await db.getPost(post.id))?.replyCount).toBe(0);
+    await db.setPostState(r1.post.id, { hiddenAt: null });
+    expect((await thread(db, "a", post.id, "0", at(4))).post.replies).toBe(1);
   });
 });

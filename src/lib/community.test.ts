@@ -1,5 +1,16 @@
 import { describe, expect, it } from "vitest";
-import { autoFlag, canInteract, canPost, checkHandle, CLUB_COPY, POST_RANK, rankForYou, shownStreak, type GateInput } from "./community";
+import {
+  autoFlag,
+  reservedName,
+  canInteract,
+  canPost,
+  checkHandle,
+  CLUB_COPY,
+  POST_RANK,
+  rankForYou,
+  shownStreak,
+  type GateInput,
+} from "./community";
 
 const now = new Date("2026-11-05T06:30:00Z");
 const base: GateInput = { signedIn: true, joined: true, member: true, rank: POST_RANK, bannedUntil: null };
@@ -49,6 +60,11 @@ describe("automatic flags", () => {
     "mail me at ravi@gmail.com",
     "pay to ravi@okaxis",
     "UPI ravi.k@ybl",
+    "98765,43210",
+    "98765/43210",
+    "9_8_7_6_5_4_3_2_1_0",
+    "mail ravi at gmail dot com",
+    "ravi (at) yahoo (dot) in",
   ])("refuses contact details: %s", (t) => {
     expect(autoFlag(t)).toEqual({ refuse: CLUB_COPY.noContacts });
   });
@@ -77,6 +93,8 @@ describe("automatic flags", () => {
     "Bhai, aaj 3 naye customer aaye",
     "Someone told me money comes slowly at first",
     "I paid 12000 rent and 3500 for stock",
+    "Sold 1,200 cups at ₹10, made ₹2,400 profit",
+    "I looked at the shop next door",
   ])("passes: %s", (t) => {
     expect(autoFlag(t)).toEqual({});
   });
@@ -126,4 +144,10 @@ it("shows a streak only while it was kept today or yesterday", () => {
   expect(shownStreak(5, "2026-11-04", "2026-11-05")).toBe(5);
   expect(shownStreak(5, "2026-11-03", "2026-11-05")).toBe(0);
   expect(shownStreak(5, null, "2026-11-05")).toBe(0);
+});
+
+it("keeps names that pass as the app", () => {
+  for (const n of ["The Wolf", "wolf", "W0lf", "Admin", "CEO For A Day", "Moderator", "Grievance Officer"])
+    expect(reservedName(n)).toBe(true);
+  for (const n of ["Ravi K", "Priya", "Woolly Socks", "Imran"]) expect(reservedName(n)).toBe(false);
 });

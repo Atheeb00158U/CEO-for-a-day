@@ -1,5 +1,6 @@
 // Storage for the server. The game logic (src/lib/server/game.ts) talks to this interface only, so tests run it
 // against `memoryDb()` and production against Supabase. Tables: supabase/migrations/.
+import { createHash } from "node:crypto";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { TEST_OUT_PASS, type DailyNote, type GameState } from "../game-state.ts";
 import type { Grade } from "../hotseat-types";
@@ -557,6 +558,8 @@ function clubStore() {
   const blocks: { blocker: string; blocked: string }[] = [];
   const reports: ReportRow[] = [];
   const activity: ActivityRow[] = [];
+  /** club_post_log: what the daily caps count, untouched by deleting a post (20261105150000_club_fixes.sql). */
+  const postLog: { authorId: string; kind: string; body: string; createdAt: string }[] = [];
   let nextId = 1;
   const clone = <T>(x: T): T => structuredClone(x);
   const prune = <T>(list: T[], gone: (x: T) => boolean) => {
@@ -564,15 +567,23 @@ function clubStore() {
   };
   const root = (p: PostRow) => p.kind === "post" || p.kind === "rank_up";
   const since = (at: string, from: string) => Date.parse(at) >= Date.parse(from);
+  /** reply_count counts only replies everyone can see (the club_count trigger). */
+  const shown = (p: PostRow) => !p.held && !p.hiddenAt;
+  const bump = (p: PostRow, d: number) => {
+    const parent = p.parentId === null ? undefined : posts.find((x) => x.id === p.parentId);
+    if (parent) parent.replyCount += d;
+  };
+  /** Change held/hidden, moving the parent's reply count as the trigger does. */
+  const restate = (p: PostRow, patch: Partial<Pick<PostRow, "held" | "hiddenAt">>) => {
+    const was = shown(p);
+    Object.assign(p, patch);
+    if (was !== shown(p)) bump(p, shown(p) ? 1 : -1);
+  };
 
   function dropPosts(gone: (p: PostRow) => boolean) {
     const ids = new Set(posts.filter(gone).map((p) => p.id));
     for (const p of posts) if (p.parentId !== null && ids.has(p.parentId)) ids.add(p.id); // replies cascade
-    for (const p of posts)
-      if (ids.has(p.id) && p.parentId !== null && !ids.has(p.parentId)) {
-        const parent = posts.find((x) => x.id === p.parentId);
-        if (parent) parent.replyCount--;
-      }
+    for (const p of posts) if (ids.has(p.id) && p.parentId !== null && !ids.has(p.parentId) && shown(p)) bump(p, -1);
     prune(likes, (l) => ids.has(l.postId));
     prune(activity, (a) => a.postId !== null && ids.has(a.postId));
     prune(posts, (p) => ids.has(p.id));
@@ -581,6 +592,7 @@ function clubStore() {
   function dropProfile(id: string) {
     if (!profiles.delete(id)) return;
     dropPosts((p) => p.authorId === id);
+    prune(postLog, (l) => l.authorId === id);
     for (const l of likes.filter((l) => l.userId === id)) {
       const p = posts.find((x) => x.id === l.postId);
       if (p) p.likeCount--;
@@ -674,10 +686,9 @@ function clubStore() {
         return null;
       const p: PostRow = { ...clone(row), id: nextId++, likeCount: 0, replyCount: 0 };
       posts.push(p);
-      if (p.parentId !== null) {
-        const parent = posts.find((x) => x.id === p.parentId);
-        if (parent) parent.replyCount++;
-      }
+      if (shown(p)) bump(p, 1);
+      if (p.authorId && (p.kind === "post" || p.kind === "reply"))
+        postLog.push({ authorId: p.authorId, kind: p.kind, body: p.body, createdAt: p.createdAt });
       return clone(p);
     },
     async getPost(id) {
@@ -691,11 +702,11 @@ function clubStore() {
     },
     async setPostState(id, patch) {
       const p = posts.find((x) => x.id === id);
-      if (p) Object.assign(p, patch);
+      if (p) restate(p, patch);
     },
     async hidePostsBy(authorId, at) {
       const hit = posts.filter((p) => p.authorId === authorId && p.hiddenAt === null);
-      for (const p of hit) p.hiddenAt = at;
+      for (const p of hit) restate(p, { hiddenAt: at });
       return clone(hit);
     },
     async feedCandidates(from, asOf, limit) {
@@ -727,10 +738,10 @@ function clubStore() {
       return clone(posts.filter((p) => p.parentId === parentId && !p.hiddenAt && p.id > after).slice(0, limit));
     },
     async countPostsSince(authorId, kind, from) {
-      return posts.filter((p) => p.authorId === authorId && p.kind === kind && since(p.createdAt, from)).length;
+      return postLog.filter((p) => p.authorId === authorId && p.kind === kind && since(p.createdAt, from)).length;
     },
     async lastPostBody(authorId, from, body) {
-      return posts.some((p) => p.authorId === authorId && p.body === body && since(p.createdAt, from));
+      return postLog.some((p) => p.authorId === authorId && p.body === body && since(p.createdAt, from));
     },
     async setLike(postId, userId, on) {
       const i = likes.findIndex((l) => l.postId === postId && l.userId === userId);
@@ -845,7 +856,7 @@ function clubStore() {
       return activity.filter((a) => a.userId === id && !a.seen).length;
     },
   };
-  return { profiles, bans, posts, likes, follows, blocks, reports, activity, dropProfile, methods };
+  return { profiles, bans, posts, likes, follows, blocks, reports, activity, postLog, dropProfile, methods };
 }
 
 /* ------------------------------------------------------------------ */
@@ -1419,9 +1430,10 @@ export function supabaseDb(sb = supabaseAdmin()): Db {
       ).map(postOf);
     },
     async countPostsSince(authorId, kind, since) {
+      // From club_post_log, so deleting a post doesn't reset the caps.
       const { count, error } = await sb
-        .from("club_posts")
-        .select("id", { count: "exact", head: true })
+        .from("club_post_log")
+        .select("author_id", { count: "exact", head: true })
         .eq("author_id", authorId)
         .eq("kind", kind)
         .gte("created_at", since);
@@ -1430,7 +1442,13 @@ export function supabaseDb(sb = supabaseAdmin()): Db {
     },
     async lastPostBody(authorId, since, body) {
       const rows = list(
-        await sb.from("club_posts").select("id").eq("author_id", authorId).eq("body", body).gte("created_at", since).limit(1),
+        await sb
+          .from("club_post_log")
+          .select("author_id")
+          .eq("author_id", authorId)
+          .eq("body_md5", createHash("md5").update(body).digest("hex"))
+          .gte("created_at", since)
+          .limit(1),
       );
       return rows.length > 0;
     },
