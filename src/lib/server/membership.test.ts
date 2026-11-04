@@ -27,7 +27,8 @@ const env: PayEnv = {
   totalCount: { founding: 120, monthly: 120, yearly: 10 },
 };
 
-function fakeRp(cancelError?: string) {
+/** `live` is what Razorpay says each subscription is now (default: an unpaid checkout). */
+function fakeRp(cancelError?: string, live: Record<string, { status: string; current_end: number | null }> = {}) {
   let n = 0;
   const created: { planId: string; totalCount: number; notes: Record<string, string>; expireBy?: number }[] = [];
   const cancelled: { id: string; atCycleEnd: boolean }[] = [];
@@ -41,8 +42,11 @@ function fakeRp(cancelError?: string) {
       if (cancelError) throw new Error(cancelError);
       return { status: "active", current_end: null };
     },
+    async fetchSubscription(id) {
+      return live[id] ?? { status: "created", current_end: null };
+    },
   };
-  return { rp, created, cancelled };
+  return { rp, created, cancelled, live };
 }
 
 const pay = (subscriptionId: string, paymentId = "pay_1") => ({
@@ -145,6 +149,80 @@ describe("startCheckout", () => {
     await expect(startCheckout(db, rp, env, "u1", "monthly", NOW)).rejects.toThrow("502");
     expect(created).toHaveLength(1);
     expect((await db.getMembership("u1"))?.subscriptionId).toBe("sub_1");
+  });
+
+  it("adopts an old checkout Razorpay says was paid, instead of cancelling it", async () => {
+    for (const [status, plan] of [
+      ["authenticated", "founding"],
+      ["active", "monthly"],
+    ] as const) {
+      const db = memoryDb();
+      const { rp, created, cancelled, live } = fakeRp();
+      const a = await startCheckout(db, rp, env, "u1", plan, NOW);
+      // Paid, but the verify call never came and no webhook has landed yet.
+      const end = Math.floor(NOW.getTime() / 1000) + 30 * 86_400;
+      live[a.subscriptionId] = { status, current_end: status === "active" ? end : null };
+      accessCache.set("u1", { ctx: { paywall: true, member: false, early: new Set() }, at: NOW.getTime() });
+      await expect(startCheckout(db, rp, env, "u1", "yearly", NOW)).rejects.toThrow("Already a member");
+      expect(cancelled).toEqual([]);
+      expect(created).toHaveLength(1);
+      const m = await db.getMembership("u1");
+      expect(m).toMatchObject({ subscriptionId: a.subscriptionId, status });
+      expect(m?.currentEnd).toBe(
+        status === "active" ? new Date(end * 1000).toISOString() : new Date(NOW.getTime() + 35 * DAY).toISOString(),
+      );
+      expect(isMember(m, NOW)).toBe(true);
+      expect(accessCache.has("u1")).toBe(false);
+      if (plan === "founding") expect(db.seats[0]).toMatchObject({ subscriptionId: a.subscriptionId, heldUntil: null });
+    }
+  });
+
+  it("saves a replaced checkout as cancelled right after cancelling it", async () => {
+    const db = memoryDb();
+    const { rp } = fakeRp();
+    const a = await startCheckout(db, rp, env, "u1", "monthly", NOW);
+    const saved: string[] = [];
+    const replace = db.replaceMembership.bind(db);
+    db.replaceMembership = async (userId, expected, row) => {
+      saved.push(`${row.subscriptionId}:${row.status}`);
+      return replace(userId, expected, row);
+    };
+    await startCheckout(db, rp, env, "u1", "yearly", NOW);
+    expect(saved).toEqual([`${a.subscriptionId}:cancelled`, "sub_2:created"]);
+  });
+
+  it("cancels the new subscription when the membership changed meanwhile", async () => {
+    const db = memoryDb();
+    const { rp, cancelled } = fakeRp();
+    const a = await startCheckout(db, rp, env, "u1", "monthly", NOW);
+    // Another tab starts its own checkout while this one is creating its subscription.
+    const create = rp.createSubscription;
+    rp.createSubscription = async (...args) => {
+      const sub = await create(...args);
+      await db.saveMembership({ userId: "u1", plan: "yearly", subscriptionId: "sub_other", status: "created", currentEnd: null });
+      return sub;
+    };
+    await expect(startCheckout(db, rp, env, "u1", "founding", NOW)).rejects.toThrow("Try again");
+    expect(cancelled).toEqual([
+      { id: a.subscriptionId, atCycleEnd: false },
+      { id: "sub_2", atCycleEnd: false },
+    ]);
+    expect((await db.getMembership("u1"))?.subscriptionId).toBe("sub_other");
+    expect(db.seats).toHaveLength(0); // the new checkout's founding hold went too
+  });
+
+  it("starts nothing for a first checkout that loses the race to another", async () => {
+    const db = memoryDb();
+    const { rp, cancelled } = fakeRp();
+    const create = rp.createSubscription;
+    rp.createSubscription = async (...args) => {
+      const sub = await create(...args);
+      await db.saveMembership({ userId: "u1", plan: "yearly", subscriptionId: "sub_other", status: "created", currentEnd: null });
+      return sub;
+    };
+    await expect(startCheckout(db, rp, env, "u1", "monthly", NOW)).rejects.toThrow("Try again");
+    expect(cancelled).toEqual([{ id: "sub_1", atCycleEnd: false }]);
+    expect((await db.getMembership("u1"))?.subscriptionId).toBe("sub_other");
   });
 
   it("does not cancel anything for a finished subscription", async () => {
@@ -380,6 +458,44 @@ describe("handleWebhook", () => {
     expect((await db.getMembership("u1"))?.status).toBe("cancelled");
   });
 
+  it("extends a cancelled row's end on a later charge, still cancelled", async () => {
+    const { db, subscriptionId } = await member();
+    const end = Math.floor(NOW.getTime() / 1000) + 30 * 86_400;
+    const c = event("subscription.cancelled", { id: subscriptionId, status: "cancelled", current_end: end });
+    await handleWebhook(db, env, c.body, c.sig, "evt_1", NOW);
+    await db.saveMembership({ ...(await db.getMembership("u1"))!, currentEnd: new Date(end * 1000).toISOString() });
+    const later = event("subscription.charged", { id: subscriptionId, status: "active", current_end: end + 30 * 86_400 });
+    await handleWebhook(db, env, later.body, later.sig, "evt_2", NOW);
+    expect(await db.getMembership("u1")).toMatchObject({
+      status: "cancelled",
+      currentEnd: new Date((end + 30 * 86_400) * 1000).toISOString(),
+    });
+    // An older charge never shortens it.
+    const older = event("subscription.charged", { id: subscriptionId, status: "active", current_end: end });
+    await handleWebhook(db, env, older.body, older.sig, "evt_3", NOW);
+    expect((await db.getMembership("u1"))?.currentEnd).toBe(new Date((end + 30 * 86_400) * 1000).toISOString());
+  });
+
+  it("keeps halted or pending when a stale charge arrives, and goes active on a new period", async () => {
+    for (const status of ["halted", "pending"]) {
+      const { db, subscriptionId } = await member();
+      const end = Math.floor(NOW.getTime() / 1000) + 30 * 86_400;
+      const charged = event("subscription.charged", { id: subscriptionId, status: "active", current_end: end });
+      await handleWebhook(db, env, charged.body, charged.sig, "evt_1", NOW);
+      const h = event(`subscription.${status}`, { id: subscriptionId, status, current_end: end });
+      await handleWebhook(db, env, h.body, h.sig, "evt_2", NOW);
+      // The same charge again (a new event id), or an older one: still behind.
+      for (const [i, e] of [end, end - 86_400].entries()) {
+        const stale = event("subscription.charged", { id: subscriptionId, status: "active", current_end: e });
+        await handleWebhook(db, env, stale.body, stale.sig, `evt_stale${i}`, NOW);
+        expect(await db.getMembership("u1")).toMatchObject({ status, currentEnd: new Date(end * 1000).toISOString() });
+      }
+      const next = event("subscription.charged", { id: subscriptionId, status: "active", current_end: end + 30 * 86_400 });
+      await handleWebhook(db, env, next.body, next.sig, "evt_next", NOW);
+      expect((await db.getMembership("u1"))?.status).toBe("active");
+    }
+  });
+
   it("gives a charge with no current_end a fallback end, not forever", async () => {
     const db = memoryDb();
     const { rp } = fakeRp();
@@ -564,6 +680,33 @@ describe("paywallFor and accessContext", () => {
 });
 
 describe("handleWebhook dedup on failure", () => {
+  it("applies first and records after: a failed record still applied, and the retry is harmless", async () => {
+    const db = memoryDb();
+    const { rp } = fakeRp();
+    const { subscriptionId } = await startCheckout(db, rp, env, "u1", "monthly", NOW);
+    const e = event("subscription.charged", { id: subscriptionId, status: "active", current_end: 2_000_000_000 });
+    const insert = db.insertPaymentEvent;
+    db.insertPaymentEvent = async () => {
+      throw new Error("db down");
+    };
+    await expect(handleWebhook(db, env, e.body, e.sig, "evt_1", NOW)).rejects.toThrow("db down");
+    expect((await db.getMembership("u1"))?.status).toBe("active");
+    db.insertPaymentEvent = insert;
+    expect(await handleWebhook(db, env, e.body, e.sig, "evt_1", NOW)).toEqual({ ok: true });
+    expect(await db.hasPaymentEvent("evt_1")).toBe(true);
+  });
+
+  it("skips an event already recorded", async () => {
+    const db = memoryDb();
+    const { rp } = fakeRp();
+    const { subscriptionId } = await startCheckout(db, rp, env, "u1", "monthly", NOW);
+    const e = event("subscription.charged", { id: subscriptionId, status: "active", current_end: 2_000_000_000 });
+    expect(await handleWebhook(db, env, e.body, e.sig, "evt_1", NOW)).toEqual({ ok: true });
+    await db.saveMembership({ ...(await db.getMembership("u1"))!, status: "halted" });
+    expect(await handleWebhook(db, env, e.body, e.sig, "evt_1", NOW)).toEqual({ ok: true });
+    expect((await db.getMembership("u1"))?.status).toBe("halted");
+  });
+
   it("leaves a failed event unrecorded so the retry applies it", async () => {
     const db = memoryDb();
     const { rp } = fakeRp();

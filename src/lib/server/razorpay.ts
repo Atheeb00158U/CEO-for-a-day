@@ -2,6 +2,8 @@
 // Docs (checked 4 Nov 2026):
 //   create  POST /v1/subscriptions             https://razorpay.com/docs/api/payments/subscriptions/create-subscription/
 //   cancel  POST /v1/subscriptions/:id/cancel  https://razorpay.com/docs/api/payments/subscriptions/cancel-subscription/
+//   fetch   GET  /v1/subscriptions/:id         https://razorpay.com/docs/api/payments/subscriptions/fetch-subscription-id/
+//           (the subscription entity: status, current_end in unix seconds, null before the first charge)
 //   checkout signature: hmac_sha256(razorpay_payment_id + "|" + subscription_id, key secret), with OUR subscription id
 //   webhook signature: hmac_sha256(raw body, webhook secret) in X-Razorpay-Signature
 import { createHmac, timingSafeEqual } from "node:crypto";
@@ -37,16 +39,19 @@ export interface RazorpayClient {
   ): Promise<{ id: string; status: string }>;
   /** `current_end` is unix seconds (null before the first charge). */
   cancelSubscription(id: string, atCycleEnd: boolean): Promise<{ status: string; current_end: number | null }>;
+  /** What Razorpay says the subscription is now. `current_end` is unix seconds (null before the first charge). */
+  fetchSubscription(id: string): Promise<{ status: string; current_end: number | null }>;
 }
 
 export function razorpay(keyId = process.env.RAZORPAY_KEY_ID, keySecret = process.env.RAZORPAY_KEY_SECRET): RazorpayClient {
   if (!keyId || !keySecret) throw new Error("Razorpay keys are not set");
   const auth = "Basic " + Buffer.from(`${keyId}:${keySecret}`).toString("base64");
-  const call = async <T>(path: string, body: unknown): Promise<T> => {
+  /** POST `body`, or GET when there is none. */
+  const call = async <T>(path: string, body?: unknown): Promise<T> => {
     const r = await fetch(API + path, {
-      method: "POST",
-      headers: { Authorization: auth, "Content-Type": "application/json" },
-      body: JSON.stringify(body),
+      method: body === undefined ? "GET" : "POST",
+      headers: body === undefined ? { Authorization: auth } : { Authorization: auth, "Content-Type": "application/json" },
+      ...(body === undefined ? {} : { body: JSON.stringify(body) }),
       signal: AbortSignal.timeout(10_000),
     });
     const data = await r.json().catch(() => ({}));
@@ -64,5 +69,9 @@ export function razorpay(keyId = process.env.RAZORPAY_KEY_ID, keySecret = proces
         ...(expireBy ? { expire_by: expireBy } : {}),
       }),
     cancelSubscription: (id, atCycleEnd) => call(`/subscriptions/${encodeURIComponent(id)}/cancel`, { cancel_at_cycle_end: atCycleEnd }),
+    fetchSubscription: async (id) => {
+      const s = await call<{ status: string; current_end?: unknown }>(`/subscriptions/${encodeURIComponent(id)}`);
+      return { status: s.status, current_end: typeof s.current_end === "number" ? s.current_end : null };
+    },
   };
 }

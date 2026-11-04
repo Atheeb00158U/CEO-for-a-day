@@ -97,6 +97,8 @@ export interface Db {
   countRuns(userId: string, hotSeatId?: string): Promise<number>;
   /** Returns false if this user already has a lesson play with the same playKey. */
   insertLessonPlay(row: LessonPlayRow): Promise<boolean>;
+  /** Lesson ids this player finished on the server (lesson_plays), test-out quizzes left out. */
+  finishedLessons(userId: string): Promise<Set<string>>;
   /** Returns false if the user already played a Daily Call that day. */
   insertDaily(row: DailyRow): Promise<boolean>;
   getDaily(userId: string, day: string): Promise<DailyRow | null>;
@@ -124,10 +126,15 @@ export interface Db {
   getMembership(userId: string): Promise<MembershipRow | null>;
   membershipBySubscription(subscriptionId: string): Promise<MembershipRow | null>;
   saveMembership(row: MembershipRow): Promise<void>;
-  /** False if this webhook event id was already handled. */
+  /**
+   * Compare-and-swap: write `row` only while the player's stored subscription is still `expected` (null: only when
+   * they have no membership row yet). Returns whether it wrote.
+   */
+  replaceMembership(userId: string, expected: string | null, row: MembershipRow): Promise<boolean>;
+  /** Record a webhook event as handled. False if it already was. */
   insertPaymentEvent(eventId: string): Promise<boolean>;
-  /** Forget an event whose handling failed, so Razorpay's retry is applied. */
-  deletePaymentEvent(eventId: string): Promise<void>;
+  /** Whether this webhook event id was already handled. */
+  hasPaymentEvent(eventId: string): Promise<boolean>;
   /** A payment problem a person must sort out by hand (payment_issues). No PII beyond the ids. */
   recordPaymentIssue(kind: string, subscriptionId: string, userId?: string): Promise<void>;
   /** Hold the lowest free founding seat for 30 minutes; null when all 500 are taken. */
@@ -207,6 +214,9 @@ export function memoryDb(): Db & {
       if (lessonPlays.some((r) => r.userId === row.userId && r.playKey === row.playKey)) return false;
       lessonPlays.unshift(clone(row));
       return true;
+    },
+    async finishedLessons(id) {
+      return new Set(lessonPlays.filter((r) => r.userId === id && !r.lessonId.startsWith("test-")).map((r) => r.lessonId));
     },
     async insertDaily(row) {
       if (daily.some((d) => d.userId === row.userId && d.day === row.day)) return false;
@@ -299,13 +309,18 @@ export function memoryDb(): Db & {
     async saveMembership(row) {
       memberships.set(row.userId, clone(row));
     },
+    async replaceMembership(userId, expected, row) {
+      if ((memberships.get(userId)?.subscriptionId ?? null) !== expected) return false;
+      memberships.set(userId, clone(row));
+      return true;
+    },
     async insertPaymentEvent(eventId) {
       if (events.has(eventId)) return false;
       events.add(eventId);
       return true;
     },
-    async deletePaymentEvent(eventId) {
-      events.delete(eventId);
+    async hasPaymentEvent(eventId) {
+      return events.has(eventId);
     },
     async recordPaymentIssue(kind, subscriptionId, userId) {
       paymentIssues.push({ kind, subscriptionId, userId: userId ?? null });
@@ -479,6 +494,11 @@ export function supabaseDb(sb = supabaseAdmin()): Db {
       if (error) throw new Error(error.message);
       return true;
     },
+    async finishedLessons(userId) {
+      // Test-out quizzes are stored as "test-<module id>"; no lesson id starts with "test-".
+      const rows = list(await sb.from("lesson_plays").select("lesson_id").eq("user_id", userId).not("lesson_id", "like", "test-%"));
+      return new Set(rows.map((r) => r.lesson_id as string));
+    },
     async insertDaily(row) {
       const { error } = await sb.from("daily_plays").insert({
         user_id: row.userId,
@@ -602,14 +622,35 @@ export function supabaseDb(sb = supabaseAdmin()): Db {
         ),
       );
     },
+    async replaceMembership(userId, expected, row) {
+      const values = {
+        user_id: userId,
+        plan: row.plan,
+        razorpay_subscription_id: row.subscriptionId,
+        status: row.status,
+        current_end: row.currentEnd,
+        updated_at: new Date().toISOString(),
+      };
+      if (expected === null) {
+        // The primary key on user_id makes a second insert fail: someone else wrote first.
+        const { error } = await sb.from("memberships").insert(values);
+        if (duplicate(error)) return false;
+        if (error) throw new Error(error.message);
+        return true;
+      }
+      const rows = list(
+        await sb.from("memberships").update(values).eq("user_id", userId).eq("razorpay_subscription_id", expected).select("user_id"),
+      );
+      return rows.length > 0;
+    },
     async insertPaymentEvent(eventId) {
       const { error } = await sb.from("payment_events").insert({ event_id: eventId });
       if (duplicate(error)) return false;
       if (error) throw new Error(error.message);
       return true;
     },
-    async deletePaymentEvent(eventId) {
-      must(await sb.from("payment_events").delete().eq("event_id", eventId));
+    async hasPaymentEvent(eventId) {
+      return list(await sb.from("payment_events").select("event_id").eq("event_id", eventId).limit(1)).length > 0;
     },
     async recordPaymentIssue(kind, subscriptionId, userId) {
       must(await sb.from("payment_issues").insert({ kind, subscription_id: subscriptionId, user_id: userId ?? null }));

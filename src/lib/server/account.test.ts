@@ -18,6 +18,9 @@ function fakeRp(fail?: string) {
       cancelled.push({ id, atCycleEnd });
       return { status: "cancelled", current_end: null };
     },
+    async fetchSubscription() {
+      throw new Error("not used");
+    },
   };
   return { rp: () => rp, cancelled };
 }

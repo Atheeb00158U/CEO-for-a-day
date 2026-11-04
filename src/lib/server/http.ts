@@ -130,7 +130,9 @@ export async function accessCheck(request: Request, item: Item, now = new Date()
 
 /**
  * Which of these lessons the player may study cards for: free lessons, everything for a member, and any lesson a
- * signed-in player finished (they keep those cards for good). With the paywall off, all of them and no reads.
+ * signed-in player finished (they keep those cards for good). "Finished" is the server's own record: early access or
+ * a lesson_plays row, never the save's `lessons`, which a guest import copies from the phone. With the paywall off,
+ * all of them and no reads.
  */
 export async function allowedLessonIds(request: Request, ids: string[], now = new Date()): Promise<string[]> {
   const a = await contextOf(request, now);
@@ -138,6 +140,6 @@ export async function allowedLessonIds(request: Request, ids: string[], now = ne
   const free = freeList();
   const open = ids.filter((id) => canOpen({ kind: "lesson", id }, a.ctx, free));
   if (!a.userId || open.length === ids.length) return open;
-  const done = (await dbOf().getProfile(a.userId))?.state.lessons ?? {};
-  return ids.filter((id) => open.includes(id) || Object.hasOwn(done, id));
+  const done = await dbOf().finishedLessons(a.userId);
+  return ids.filter((id) => open.includes(id) || done.has(id));
 }

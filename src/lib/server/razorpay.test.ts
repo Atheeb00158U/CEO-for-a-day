@@ -71,6 +71,15 @@ describe("razorpay client", () => {
     expect(JSON.parse(String(calls[0].init.body))).toEqual({ cancel_at_cycle_end: true });
   });
 
+  it("fetches a subscription with GET and no body", async () => {
+    const calls = stubFetch({ id: "sub_9", status: "authenticated", current_end: null, plan_id: "plan_1" });
+    const out = await razorpay("k", "s").fetchSubscription("sub_9");
+    expect(out).toEqual({ status: "authenticated", current_end: null });
+    expect(calls[0].url).toBe("https://api.razorpay.com/v1/subscriptions/sub_9");
+    expect(calls[0].init.method).toBe("GET");
+    expect(calls[0].init.body).toBeUndefined();
+  });
+
   it("throws Razorpay's error description on a failed call", async () => {
     stubFetch({ error: { description: "bad plan" } }, 400);
     await expect(razorpay("k", "s").createSubscription("plan_x", 1, {})).rejects.toThrow(/400: bad plan/);

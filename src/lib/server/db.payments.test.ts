@@ -88,6 +88,13 @@ describe("memoryDb payment events", () => {
     expect(await db.insertPaymentEvent("evt_1")).toBe(false);
     expect(await db.insertPaymentEvent("evt_2")).toBe(true);
   });
+
+  it("says whether an event id is recorded", async () => {
+    const db = memoryDb();
+    expect(await db.hasPaymentEvent("evt_1")).toBe(false);
+    await db.insertPaymentEvent("evt_1");
+    expect(await db.hasPaymentEvent("evt_1")).toBe(true);
+  });
 });
 
 describe("memoryDb memberships", () => {
@@ -98,5 +105,25 @@ describe("memoryDb memberships", () => {
     expect(await db.getMembership("a")).toEqual(row);
     expect(await db.membershipBySubscription("sub_a")).toEqual(row);
     expect(await db.getMembership("b")).toBeNull();
+  });
+});
+
+describe("memoryDb replaceMembership", () => {
+  const row = (subscriptionId: string) => ({ userId: "a", plan: "monthly" as const, subscriptionId, status: "created", currentEnd: null });
+
+  it("inserts only when the player has no membership yet", async () => {
+    const db = memoryDb();
+    expect(await db.replaceMembership("a", null, row("sub_1"))).toBe(true);
+    expect(await db.replaceMembership("a", null, row("sub_2"))).toBe(false);
+    expect((await db.getMembership("a"))?.subscriptionId).toBe("sub_1");
+  });
+
+  it("replaces only while the stored subscription is the expected one", async () => {
+    const db = memoryDb();
+    await db.saveMembership(row("sub_1"));
+    expect(await db.replaceMembership("a", "sub_x", row("sub_2"))).toBe(false);
+    expect((await db.getMembership("a"))?.subscriptionId).toBe("sub_1");
+    expect(await db.replaceMembership("a", "sub_1", row("sub_2"))).toBe(true);
+    expect((await db.getMembership("a"))?.subscriptionId).toBe("sub_2");
   });
 });
