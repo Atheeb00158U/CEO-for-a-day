@@ -26,7 +26,18 @@ UI components: use shadcn/ui, restyled to this look. Add gluestack-ui only if we
     seats. Never show players a seat count or seat number; `/api/seats` sends only `{ open }`.
   - **Not allowed (CCPA dark-patterns guidelines, 2023):** invented "was" prices nobody pays, fake viewer
     counts, AutoPay free trials.
-  - **Payments (Razorpay Subscriptions):** not built yet; they're the next plan.
+  - **Payments (Razorpay Subscriptions, live 4 Nov 2026):**
+    - **Client:** `src/lib/server/razorpay.ts` (REST, no SDK). **Logic:** `src/lib/server/membership.ts`.
+    - **Routes:** `/api/pay/{subscribe,verify,webhook,cancel}`.
+    - **Tables:** `memberships`, `founding_seats` (`claim_founding_seat()` under a lock), `payment_events`,
+      `payment_issues` (a person checks these by hand; `/admin` doesn't show them yet), `early_access` (the
+      go-live snapshot of what players had finished).
+    - **Paywall:** the server enforces it (402 `members_only`) through `accessCheck` in `http.ts`. `PAYWALL_ON=1`
+      turns it on for everyone; otherwise only `PAYWALL_TESTERS` emails see it.
+    - **Keys:** live keys, plan ids and the webhook secret are Railway variables (see `.env.example`). Never
+      handle them in chat or code.
+    - **Testing:** Razorpay test mode can't send webhooks to localhost, so test on Railway with test keys and
+      testers. Google Pay shows an error for test UPI links; use UPI `success@razorpay` or a test card.
   - **Spec:** `docs/superpowers/specs/2026-11-03-wolf-ambassador-design.md`.
 - **The wolf (3 Nov 2026):** an original wolf in a pinstripe three-piece suit is the face of the brand, and
   will become the mentor and the Hot Seat advisor. Masters are in `content/brand/wolf/`; `npm run brand`
