@@ -34,9 +34,16 @@ describe("memoryDb seats", () => {
     expect(await db.claimSeat("c", "sub_c")).toBe(1);
   });
 
-  it("returns null when 500 kept seats exist", async () => {
+  it("hands out seat 1,000 when 999 are kept", async () => {
     const db = memoryDb();
-    for (let n = 1; n <= 500; n++)
+    for (let n = 1; n <= 999; n++)
+      db.seats.push({ seatNo: n, userId: `u${n}`, subscriptionId: `s${n}`, heldUntil: null, cancelledAt: null });
+    expect(await db.claimSeat("x", "sub_x")).toBe(1000);
+  });
+
+  it("returns null when 1,000 kept seats exist", async () => {
+    const db = memoryDb();
+    for (let n = 1; n <= 1000; n++)
       db.seats.push({ seatNo: n, userId: `u${n}`, subscriptionId: `s${n}`, heldUntil: null, cancelledAt: null });
     expect(await db.claimSeat("x", "sub_x")).toBeNull();
     vi.advanceTimersByTime(60 * MIN);

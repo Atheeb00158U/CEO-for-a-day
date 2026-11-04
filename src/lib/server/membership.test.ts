@@ -88,9 +88,9 @@ describe("startCheckout", () => {
     expect(await db.countFoundingSeats()).toBe(1);
   });
 
-  it("refuses a founding checkout when all 500 are taken, creating nothing", async () => {
+  it("refuses a founding checkout when all 1,000 are taken, creating nothing", async () => {
     const db = memoryDb();
-    db.foundingSeats = 500;
+    db.foundingSeats = 1000;
     const { rp, created } = fakeRp();
     await expect(startCheckout(db, rp, env, "u1", "founding", NOW)).rejects.toThrow("Founding seats are full");
     expect(created).toHaveLength(0);
@@ -300,7 +300,7 @@ describe("startCheckout", () => {
 
   it("creates monthly and yearly checkouts without a seat", async () => {
     const db = memoryDb();
-    db.foundingSeats = 500;
+    db.foundingSeats = 1000;
     const { rp, created } = fakeRp();
     await startCheckout(db, rp, env, "u1", "monthly", NOW);
     await startCheckout(db, rp, env, "u2", "yearly", NOW);

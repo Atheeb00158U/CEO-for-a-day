@@ -4,12 +4,14 @@ import { cachedSeatStatus, resetSeatCache, seatStatus } from "./seats";
 
 describe("seatStatus", () => {
   it("is open with no seats taken", async () => {
-    expect(await seatStatus(memoryDb())).toEqual({ taken: 0, total: 500, open: true });
+    expect(await seatStatus(memoryDb())).toEqual({ taken: 0, total: 1000, open: true });
   });
-  it("closes at 500", async () => {
+  it("stays open at 999 and closes at 1,000", async () => {
     const db = memoryDb();
-    db.foundingSeats = 500;
-    expect(await seatStatus(db)).toEqual({ taken: 500, total: 500, open: false });
+    db.foundingSeats = 999;
+    expect(await seatStatus(db)).toEqual({ taken: 999, total: 1000, open: true });
+    db.foundingSeats = 1000;
+    expect(await seatStatus(db)).toEqual({ taken: 1000, total: 1000, open: false });
   });
 });
 

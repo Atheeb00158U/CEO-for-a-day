@@ -1,4 +1,4 @@
-// How many of the 500 founding seats are taken, for the landing page and the paywall.
+// How many of the 1,000 founding seats are taken, for the landing page and the paywall (never shown to players).
 import { FOUNDING } from "../offer.ts";
 import type { Db } from "./db.ts";
 
