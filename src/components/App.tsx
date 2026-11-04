@@ -17,7 +17,8 @@ import { ReviewSession } from "./ReviewSession";
 import { InstallSheet } from "./InstallSheet";
 import { PaywallSheet } from "./PaywallSheet";
 import { Onboarding } from "./Onboarding";
-import { MemberWelcome } from "./MemberWelcome";
+import { Celebration, MemberWelcome } from "./MemberWelcome";
+import { useCareer } from "./CareerTitle";
 import { ContentProvider, onPaywall, useDaily, type Content, type LessonTarget, type PaywallFor } from "@/lib/content-client";
 import { celebrationFor, markWelcomed, paidRecently, paymentStartedAt, shownWelcomes } from "@/lib/celebrate";
 import type { MembershipView } from "@/lib/membership-view";
@@ -27,6 +28,9 @@ const COPY = {
   founder: "Founder",
   member: "Member",
   openProfile: (badge: string) => `${badge}, open your profile`,
+  rankUp: (title: string) => `You're a ${title} now!`,
+  rankUpLine: (unit: number) => `You finished Unit ${unit}. Your new title is on your profile.`,
+  keepGoing: "Keep going",
 };
 
 const TABS: { id: Tab; label: string; icon: keyof typeof Icon }[] = [
@@ -87,7 +91,7 @@ function Shell() {
   const [pending, setPending] = useState<PaywallFor | null>(null);
   const [welcome, setWelcome] = useState<MembershipView | null>(null);
   const mainRef = useRef<HTMLElement>(null);
-  const { ready, s, paywallSeen, account, membership, reload } = useGame();
+  const { ready, s, paywallSeen, account, membership, reload, setRankSeen } = useGame();
 
   // A locked item, or the server's 402: leave any player, back to the map, and show the offer. A 402 inside a
   // lesson or Hot Seat remembers that one.
@@ -186,6 +190,7 @@ function Shell() {
   };
 
   const daily = useDaily();
+  const career = useCareer();
   if (!ready) {
     return (
       <div className="grid min-h-dvh place-items-center">
@@ -221,10 +226,20 @@ function Shell() {
       />,
     );
 
+  // A new title is cheered once, back on the map after the lesson or Hot Seat that earned it.
+  const rankUp = !welcome && career && career.rank > s.rankSeen ? career : null;
   return withOverlay(
     // The page itself never scrolls, only <main>: iPhone browsers misplace bars pinned to a scrolling page,
     // leaving a gap below the tab bar.
     <div className="mx-auto flex h-dvh max-w-[480px] flex-col">
+      {rankUp && (
+        <Celebration
+          title={COPY.rankUp(rankUp.title)}
+          line={COPY.rankUpLine(rankUp.rank - 1)}
+          button={COPY.keepGoing}
+          onDone={() => setRankSeen(rankUp.rank)}
+        />
+      )}
       <TopBar onShop={() => go("shop")} onProfile={() => go("profile")} />
       {paywallOpen ? <PaywallSheet open onOpenChange={setPaywallOpen} /> : <InstallSheet page={tab} />}
       <main ref={mainRef} className="flex-1 overflow-y-auto overscroll-contain px-4 pb-6">

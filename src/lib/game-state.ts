@@ -72,6 +72,8 @@ export interface GameState {
   cards: Record<string, CardState>;
   /** Lesson answers the player got wrong the first time, newest first (last 40). */
   mistakes: LessonMistake[];
+  /** The highest career rank (src/lib/career.ts) already celebrated, so each new title is cheered once. */
+  rankSeen: number;
 }
 
 /** Today's counters (IST): quests read them, and the lesson and review caps use them. */
@@ -179,6 +181,7 @@ export function fresh(): GameState {
     lessons: {},
     cards: {},
     mistakes: [],
+    rankSeen: 1,
   };
 }
 

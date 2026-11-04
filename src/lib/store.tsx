@@ -88,6 +88,8 @@ interface Ctx {
   setSetting: <K extends keyof GameState["settings"]>(k: K, v: GameState["settings"][K]) => void;
   setName: (n: string) => void;
   setOnboarding: (o: Partial<Onboarding>) => void;
+  /** Remember that this career rank was celebrated. */
+  setRankSeen: (rank: number) => void;
   signIn: () => void;
   signOut: () => Promise<void>;
   deleteAccount: () => Promise<void>;
@@ -322,6 +324,10 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
       setOnboarding: (o) => {
         setS((x) => ({ ...x, onboarding: { ...x.onboarding, ...o } }));
         if (signedIn) void send("/api/profile", { onboarding: o });
+      },
+      setRankSeen: (rank) => {
+        setS((x) => ({ ...x, rankSeen: Math.max(x.rankSeen, rank) }));
+        if (signedIn) void send("/api/profile", { rankSeen: rank });
       },
       signIn: () => void signInWithGoogle(),
       signOut: async () => {

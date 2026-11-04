@@ -26,7 +26,8 @@ import {
 import { isMember } from "../access.ts";
 import type { DailyCall, DailyOption, HotSeat } from "../hotseat-types";
 import { leagueRows } from "../league.ts";
-import type { Lesson } from "../course-types";
+import { careerOf, type Career } from "../career.ts";
+import type { CourseOutline, Lesson } from "../course-types";
 import type { MembershipView } from "../membership-view.ts";
 import { lessonPlay, type Answer, type LessonResult } from "../lesson-play.ts";
 import { play, PlayError, type Pick } from "../play.ts";
@@ -370,7 +371,7 @@ const LANGS = ["en", "hi", "ta", "bn"] as const;
 const DOING = ["job", "starting", "running", "student", "curious"];
 const FOCUS = ["scratch", "rival", "money", "change"];
 
-/** Name, settings and the welcome answers: the only things the phone may set directly. Each is checked. */
+/** Name, settings, the welcome answers and the last cheered title: the only things the phone may set directly. Each is checked. */
 export function updateProfile(db: Db, userId: string, patch: Record<string, unknown>, now = new Date()) {
   return update(
     db,
@@ -386,6 +387,8 @@ export function updateProfile(db: Db, userId: string, patch: Record<string, unkn
       if (DOING.includes(ob.doing as string)) x.onboarding.doing = ob.doing as typeof x.onboarding.doing;
       if (FOCUS.includes(ob.focus as string)) x.onboarding.focus = ob.focus as typeof x.onboarding.focus;
       if ([5, 10, 15].includes(ob.minutes as number)) x.onboarding.minutes = ob.minutes as 5 | 10 | 15;
+      // Which title was last celebrated: only for the cheer, so it can only go up (the title itself is never stored).
+      if (Number.isInteger(patch.rankSeen) && (patch.rankSeen as number) <= 10) x.rankSeen = Math.max(x.rankSeen, patch.rankSeen as number);
       return x;
     },
     now,
@@ -513,24 +516,47 @@ export interface LeagueBoard {
   weekId: string;
   /** False until the player earns XP this week (that's when they join a group). */
   joined: boolean;
-  rows: { id: string; name: string; xp: number; you?: boolean; bot?: boolean }[];
+  /** Real players carry their career title; practice rivals have none. */
+  rows: { id: string; name: string; xp: number; you?: boolean; bot?: boolean; career?: Career }[];
   /** How players move up this week: the top `count` real players, if they have at least `minXp`. */
   promote: { count: number; minXp: number };
   /** How many real players move down (bottom of a full group), or 0 when only players with no XP do. */
   demote: number;
 }
 
-/** This week's board: the player's group, real players ranked by XP, topped up with practice rivals while small. */
-export async function leagueBoard(db: Db, userId: string, now = new Date()): Promise<LeagueBoard> {
+/**
+ * Each player's career, from the server's own records only (lesson plays, passed test-outs, runs, early access),
+ * never from a save the phone could have edited or imported. One batch of queries for the whole group.
+ */
+export async function trustedCareers(db: Db, userIds: string[], course: CourseOutline): Promise<Record<string, Career>> {
+  const records = await db.careerRecords(userIds);
+  const modules = course.units.flatMap((u) => u.modules);
+  return Object.fromEntries(
+    userIds.map((id) => {
+      const r = records[id] ?? { lessons: [], testOuts: [], hotSeats: [] };
+      const lessons = [...r.lessons, ...modules.filter((m) => r.testOuts.includes(m.id)).flatMap((m) => m.lessons.map((l) => l.id))];
+      const done = (ids: string[]) => Object.fromEntries(ids.map((x) => [x, 0]));
+      return [id, careerOf({ lessons: done(lessons), best: done(r.hotSeats) }, course)];
+    }),
+  );
+}
+
+/**
+ * This week's board: the player's group, real players ranked by XP, topped up with practice rivals while small. With
+ * the course, real players carry their career title.
+ */
+export async function leagueBoard(db: Db, userId: string, now = new Date(), course?: CourseOutline): Promise<LeagueBoard> {
   const week = weekId(now);
   const { tier, row } = await leagueTier(db, userId, now);
   const real = row ? await db.cohort(week, row.cohort) : [];
-  const names = await db.names(real.map((r) => r.userId));
+  const ids = real.map((r) => r.userId);
+  const [names, careers] = await Promise.all([db.names(ids), course ? trustedCareers(db, ids, course) : ({} as Record<string, Career>)]);
   const rows: LeagueBoard["rows"] = real.map((r) => ({
     id: r.userId === userId ? "you" : r.userId.slice(0, 8),
     name: names[r.userId] && names[r.userId] !== "You" ? names[r.userId] : "Player",
     xp: r.weeklyXp,
     ...(r.userId === userId ? { you: true, name: names[r.userId] ?? "You" } : {}),
+    ...(careers[r.userId] ? { career: careers[r.userId] } : {}),
   }));
   if (row && real.length < FILL_TO) {
     // Practice rivals sit around the player's own level (the best at about 1.5× their XP), so the board feels

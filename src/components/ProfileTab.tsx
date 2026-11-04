@@ -6,6 +6,7 @@ import { showPaywall } from "@/lib/content-client";
 import type { MembershipView } from "@/lib/membership-view";
 import { FOUNDING, REGULAR } from "@/lib/offer";
 import { BADGES, LEAGUES, useGame } from "@/lib/store";
+import { CareerPill, useCareer } from "./CareerTitle";
 import { ReminderCard } from "./ReminderCard";
 import { SignInCard } from "./SignInCard";
 import { Card, Icon } from "./ui";
@@ -57,6 +58,7 @@ export function ProfileTab() {
   // Not for a checkout that was never paid. A member sees it first, in gold; a past member near the end.
   const showMembership = !!account && !!membership && (!!membership.currentEnd || CANCELLABLE.has(membership.status));
   const memberNow = showMembership && membership!.member;
+  const career = useCareer();
   return (
     <div className="flex flex-col gap-5 pt-2">
       {memberNow && <MembershipCard m={membership!} />}
@@ -75,6 +77,11 @@ export function ProfileTab() {
             onBlur={(e) => setName(e.target.value)}
             className="w-full bg-transparent text-[26px] font-black outline-none focus:underline"
           />
+          {career && (
+            <div className="mt-0.5 mb-1">
+              <CareerPill career={career} />
+            </div>
+          )}
           <p className="font-bold text-muted">{LEAGUES[s.league.tier]} league</p>
         </div>
       </div>

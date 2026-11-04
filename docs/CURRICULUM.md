@@ -55,6 +55,8 @@ plus 1 backup Hot Seat and 1 existing Hot Seat as optional practice.
 - **Test-out.** A confident player can open a gate early. A good call on a decision passes **only the lessons
   that decision tests**. Every other lesson in the modules the gate closes gets a short test-out quiz: one card
   per lesson. Gateless modules are tested out by the quiz alone.
+- **Career titles.** Each unit is one title on the player's career ladder (Unit 1 Street Seller up to Unit 10
+  CEO), and each finished module in it adds a star (`src/lib/career.ts`).
 
 ### Path order of the units, and why
 

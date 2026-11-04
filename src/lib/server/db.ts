@@ -1,7 +1,7 @@
 // Storage for the server. The game logic (src/lib/server/game.ts) talks to this interface only, so tests run it
 // against `memoryDb()` and production against Supabase. Tables: supabase/migrations/.
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-import type { DailyNote, GameState } from "../game-state";
+import { TEST_OUT_PASS, type DailyNote, type GameState } from "../game-state.ts";
 import type { Grade } from "../hotseat-types";
 import { FOUNDING } from "../offer";
 
@@ -56,6 +56,16 @@ export interface LeagueRow {
   weeklyXp: number;
 }
 
+/** What the server can prove a player finished, for the career ladder. Never read from the phone's save. */
+export interface CareerRecords {
+  /** Lessons played on the server (lesson_plays) or finished before the paywall (early_access). */
+  lessons: string[];
+  /** Modules whose test-out quiz the player passed (lesson_plays rows "test-<module id>"). */
+  testOuts: string[];
+  /** Hot Seats played to an ending (runs) or before the paywall (early_access). */
+  hotSeats: string[];
+}
+
 export interface PushRow {
   endpoint: string;
   userId: string;
@@ -100,6 +110,8 @@ export interface Db {
   insertLessonPlay(row: LessonPlayRow): Promise<boolean>;
   /** Lesson ids this player finished on the server (lesson_plays), test-out quizzes left out. */
   finishedLessons(userId: string): Promise<Set<string>>;
+  /** Each player's career records, in a few queries for the whole group. Players with none are left out. */
+  careerRecords(userIds: string[]): Promise<Record<string, CareerRecords>>;
   /** Returns false if the user already played a Daily Call that day. */
   insertDaily(row: DailyRow): Promise<boolean>;
   getDaily(userId: string, day: string): Promise<DailyRow | null>;
@@ -217,6 +229,20 @@ export function memoryDb(): Db & {
     },
     async finishedLessons(id) {
       return new Set(lessonPlays.filter((r) => r.userId === id && !r.lessonId.startsWith("test-")).map((r) => r.lessonId));
+    },
+    async careerRecords(ids) {
+      const out: Record<string, CareerRecords> = {};
+      const of = (id: string) => (out[id] ??= { lessons: [], testOuts: [], hotSeats: [] });
+      for (const r of lessonPlays.filter((r) => ids.includes(r.userId)))
+        if (!r.lessonId.startsWith("test-")) of(r.userId).lessons.push(r.lessonId);
+        else if (r.accuracy >= TEST_OUT_PASS) of(r.userId).testOuts.push(r.lessonId.slice(5));
+      for (const r of runs.filter((r) => ids.includes(r.userId))) of(r.userId).hotSeats.push(r.hotSeatId);
+      for (const id of ids)
+        for (const key of early.get(id) ?? []) {
+          const [kind, item] = key.split(":");
+          of(id)[kind === "lesson" ? "lessons" : "hotSeats"].push(item);
+        }
+      return out;
     },
     async insertDaily(row) {
       if (daily.some((d) => d.userId === row.userId && d.day === row.day)) return false;
@@ -387,6 +413,15 @@ const must = <T>(r: { data: T | null; error: { message: string; code?: string } 
 };
 /** Like `must`, for queries that return a list (never null once there's no error). */
 const list = <T>(r: { data: T[] | null; error: { message: string } | null }): T[] => must(r) ?? [];
+/** Every row of a query, page by page (Supabase returns at most 1,000 rows a request). */
+async function all<T>(page: (from: number, to: number) => PromiseLike<{ data: T[] | null; error: { message: string } | null }>) {
+  const out: T[] = [];
+  for (let from = 0; ; from += 1000) {
+    const rows = list(await page(from, from + 999));
+    out.push(...rows);
+    if (rows.length < 1000) return out;
+  }
+}
 /** True for a unique-key clash, which several writes use to mean "already done". */
 const duplicate = (e: { code?: string } | null) => e?.code === "23505";
 
@@ -498,6 +533,36 @@ export function supabaseDb(sb = supabaseAdmin()): Db {
       // Test-out quizzes are stored as "test-<module id>"; no lesson id starts with "test-".
       const rows = list(await sb.from("lesson_plays").select("lesson_id").eq("user_id", userId).not("lesson_id", "like", "test-%"));
       return new Set(rows.map((r) => r.lesson_id as string));
+    },
+    async careerRecords(ids) {
+      const out: Record<string, CareerRecords> = {};
+      if (!ids.length) return out;
+      const of = (id: string) => (out[id] ??= { lessons: [], testOuts: [], hotSeats: [] });
+      // One query per table for the whole group, paged because Supabase returns at most 1,000 rows at a time.
+      const [plays, runs, early] = await Promise.all([
+        all<{ user_id: string; lesson_id: string; accuracy: number }>((a, b) =>
+          sb.from("lesson_plays").select("user_id, lesson_id, accuracy").in("user_id", ids).order("id").range(a, b),
+        ),
+        all<{ user_id: string; hot_seat_id: string }>((a, b) =>
+          sb.from("runs").select("user_id, hot_seat_id").in("user_id", ids).order("id").range(a, b),
+        ),
+        all<{ user_id: string; kind: string; item_id: string }>((a, b) =>
+          sb
+            .from("early_access")
+            .select("user_id, kind, item_id")
+            .in("user_id", ids)
+            .order("user_id")
+            .order("kind")
+            .order("item_id")
+            .range(a, b),
+        ),
+      ]);
+      for (const r of plays)
+        if (!r.lesson_id.startsWith("test-")) of(r.user_id).lessons.push(r.lesson_id);
+        else if (r.accuracy >= TEST_OUT_PASS) of(r.user_id).testOuts.push(r.lesson_id.slice(5));
+      for (const r of runs) of(r.user_id).hotSeats.push(r.hot_seat_id);
+      for (const r of early) of(r.user_id)[r.kind === "lesson" ? "lessons" : "hotSeats"].push(r.item_id);
+      return out;
     },
     async insertDaily(row) {
       const { error } = await sb.from("daily_plays").insert({
