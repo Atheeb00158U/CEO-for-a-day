@@ -173,6 +173,12 @@ body {
   -webkit-mask-composite: source-in;
   mask-composite: intersect;
 }
+/* Only the bottom edge wavy: the banner on top of a module card. */
+.wavy-b {
+  --w: 12px;
+  mask: radial-gradient(var(--w) at 50% calc(100% + var(--w) * 0.45), #0000 98%, #000) 50% calc(100% - var(--w) * 0.45) / calc(var(--w) * 2)
+    100% repeat-x;
+}
 
 .node-ring {
   box-shadow: 0 6px 0 rgba(0, 0, 0, 0.45);
