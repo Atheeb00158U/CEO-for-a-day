@@ -4,13 +4,15 @@ import { NextResponse } from "next/server";
 import { lessonPlay, parseAnswers } from "@/lib/lesson-play";
 import { PlayError } from "@/lib/play";
 import { lessonOf } from "@/lib/server/content";
-import { ipOf, limited } from "@/lib/server/http";
+import { accessCheck, ipOf, limited } from "@/lib/server/http";
 
 export async function POST(request: Request) {
   if (limited(`lesson:${ipOf(request)}`, 300)) return NextResponse.json({ error: "Too many requests" }, { status: 429 });
   const body = await request.json().catch(() => null);
   const found = lessonOf(body);
   if (!found) return NextResponse.json({ error: "No such lesson" }, { status: 404 });
+  const denied = await accessCheck(request, found.item);
+  if (denied) return denied;
   try {
     const view = lessonPlay(found.lesson, parseAnswers(body.answers), { retry: !found.testOut });
     return NextResponse.json(view, { headers: { "Cache-Control": "no-store" } });

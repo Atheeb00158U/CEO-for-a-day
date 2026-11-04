@@ -16,6 +16,7 @@ import {
   leagueTier,
   load,
   lockDaily,
+  membershipView,
   nextTier,
   startBooster,
   update,
@@ -220,5 +221,49 @@ describe("leagues", () => {
     ).toEqual(["Asha", "You"]);
     expect(b.rows.find((r) => r.you)?.xp).toBeGreaterThan(0);
     expect(b.rows.some((r) => r.id === other)).toBe(false); // other players' ids aren't shown in full
+  });
+});
+
+describe("membership in the state reply", () => {
+  it("is null for a player who never subscribed, and left out of action replies", async () => {
+    const db = memoryDb();
+    expect((await load(db, "u1", now)).membership).toBeNull();
+    expect("membership" in (await update(db, "u1", (s) => s, now))).toBe(false);
+  });
+
+  it("shows the plan, period end, member flag and a founder's seat", async () => {
+    const db = memoryDb();
+    await db.claimSeat("u1", "sub_1");
+    await db.keepSeat("sub_1");
+    const currentEnd = "2026-11-20T00:00:00.000Z";
+    await db.saveMembership({ userId: "u1", plan: "founding", subscriptionId: "sub_1", status: "active", currentEnd });
+    expect((await load(db, "u1", now)).membership).toEqual({
+      plan: "founding",
+      status: "active",
+      currentEnd,
+      member: true,
+      seat: 1,
+      foundingUsed: true,
+    });
+    await db.saveMembership({
+      userId: "u1",
+      plan: "monthly",
+      subscriptionId: "sub_2",
+      status: "cancelled",
+      currentEnd: "2026-10-01T00:00:00Z",
+    });
+    expect(await membershipView(db, "u1", now)).toEqual({
+      plan: "monthly",
+      status: "cancelled",
+      currentEnd: "2026-10-01T00:00:00Z",
+      member: false,
+      foundingUsed: true, // a returning founder: the sheet starts on the regular plans
+    });
+  });
+
+  it("says foundingUsed is false for a player who never kept a seat", async () => {
+    const db = memoryDb();
+    await db.saveMembership({ userId: "u1", plan: "monthly", subscriptionId: "sub_1", status: "created", currentEnd: null });
+    expect((await membershipView(db, "u1", now))?.foundingUsed).toBe(false);
   });
 });

@@ -15,8 +15,9 @@ import { DailyPlayer } from "./DailyPlayer";
 import { LessonPlayer } from "./LessonPlayer";
 import { ReviewSession } from "./ReviewSession";
 import { InstallSheet } from "./InstallSheet";
+import { PaywallSheet } from "./PaywallSheet";
 import { Onboarding } from "./Onboarding";
-import { ContentProvider, useDaily, type Content, type LessonTarget } from "@/lib/content-client";
+import { ContentProvider, onPaywall, useDaily, type Content, type LessonTarget } from "@/lib/content-client";
 
 export type Tab = "home" | "league" | "notes" | "shop" | "profile";
 const TABS: { id: Tab; label: string; icon: keyof typeof Icon }[] = [
@@ -72,7 +73,21 @@ function Shell() {
   const [playingDaily, setPlayingDaily] = useState(false);
   const [lesson, setLesson] = useState<{ target: LessonTarget; testOut?: string[] } | null>(null);
   const [reviewing, setReviewing] = useState<{ title: string; lessonIds?: string[] } | null>(null);
+  const [paywallOpen, setPaywallOpen] = useState(false);
   const mainRef = useRef<HTMLElement>(null);
+  const { ready, s, paywallSeen } = useGame();
+
+  // A locked item, or the server's 402: leave any player, back to the map, and show the offer.
+  useEffect(() => {
+    onPaywall(() => {
+      paywallSeen();
+      setLesson(null);
+      setPlaying(null);
+      setReviewing(null);
+      setPaywallOpen(true);
+    });
+    return () => onPaywall();
+  }, [paywallSeen]);
 
   useEffect(() => {
     const fromHash = () => {
@@ -95,7 +110,6 @@ function Shell() {
     mainRef.current?.scrollTo(0, 0);
   };
 
-  const { ready, s } = useGame();
   const daily = useDaily();
   if (!ready) {
     return (
@@ -136,7 +150,7 @@ function Shell() {
     // leaving a gap below the tab bar.
     <div className="mx-auto flex h-dvh max-w-[480px] flex-col">
       <TopBar onShop={() => go("shop")} />
-      <InstallSheet page={tab} />
+      {paywallOpen ? <PaywallSheet open onOpenChange={setPaywallOpen} /> : <InstallSheet page={tab} />}
       <main ref={mainRef} className="flex-1 overflow-y-auto overscroll-contain px-4 pb-6">
         {tab === "home" && (
           <HomeTab

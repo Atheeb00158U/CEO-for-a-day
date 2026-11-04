@@ -21,6 +21,21 @@
           "gates": []
         }
       ]
+    },
+    {
+      "id": "sample-unit-2",
+      "title": "Sample: a paid unit",
+      "goal": "Test unit after the free one. Not real course copy.",
+      "draft": true,
+      "modules": [
+        {
+          "id": "sample-ask",
+          "title": "Ask first",
+          "goal": "Ask before you build.",
+          "lessons": ["sample-paid-next"],
+          "gates": []
+        }
+      ]
     }
   ]
 }

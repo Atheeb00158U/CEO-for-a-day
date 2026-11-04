@@ -2,6 +2,7 @@
 // these objects hold every answer. The phone gets only what src/lib/play.ts and the API routes hand out.
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
+import { freeItems, type Item } from "../access.ts";
 import { callsPerRun, dailyFor, reviewedDebrief, type Debriefs } from "../engine.ts";
 import { HOTSEATS_DIR, hotSeatIds, lessonFileIds, readCourse, readDailyPool, readHotSeat, readLesson } from "../content-files.ts";
 import type { Card, CourseOutline, Lesson, Module } from "../course-types";
@@ -174,6 +175,9 @@ export function answerOf(c: DailyCall, optionId: string): DailyAnswer | undefine
 export const courseOn = () => process.env.COURSE_OFF !== "1";
 
 const course = () => cached("course", readCourse);
+
+/** What anyone may open without a membership: all of Unit 1 (see src/lib/access.ts). */
+export const freeList = () => cached("free", () => freeItems(course()));
 const lessonsById = () => cached("lessons", () => new Map(lessonFileIds().map((id) => [id, readLesson(id)])));
 
 /** A lesson the player may play, or undefined (course off, unknown id, or a draft outside dev). */
@@ -241,12 +245,16 @@ export function cardsOf(lessonIds: string[], nodeEnv = process.env.NODE_ENV): (C
 export const cardLessons = () =>
   cached("cardLessons", () => new Map([...lessonsById().values()].flatMap((l) => l.cards.map((c) => [c.id, l.id] as const))));
 
-/** The lesson a request names: `lessonId`, or `testOut` (a module id) for that module's test-out quiz. */
+/**
+ * The lesson a request names: `lessonId`, or `testOut` (a module id) for that module's test-out quiz. `item` is what
+ * the paywall checks.
+ */
 export function lessonOf(body: { lessonId?: unknown; testOut?: unknown } | null, nodeEnv = process.env.NODE_ENV) {
   if (typeof body?.testOut === "string") {
     const m = servableModule(body.testOut, nodeEnv);
-    return m && { lesson: testOutLesson(m.module, m.lessons), testOut: m.module.lessons };
+    const item: Item = { kind: "testout", id: body.testOut };
+    return m && { lesson: testOutLesson(m.module, m.lessons), testOut: m.module.lessons, item };
   }
   const lesson = typeof body?.lessonId === "string" ? servableLesson(body.lessonId, nodeEnv) : undefined;
-  return lesson && { lesson, testOut: undefined };
+  return lesson && { lesson, testOut: undefined, item: { kind: "lesson", id: lesson.id } as Item };
 }

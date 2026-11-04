@@ -2,7 +2,10 @@
 import { NextResponse } from "next/server";
 import { parsePicks, play, PlayError } from "@/lib/play";
 import { servableHotSeat, writtenDebrief } from "@/lib/server/content";
-import { ipOf, limited } from "@/lib/server/http";
+import { accessCheck, ipOf, limited } from "@/lib/server/http";
+
+/** The website's free sample decision. */
+const SITE_SAMPLE = "nirma-washing-powder";
 
 export async function POST(request: Request) {
   // The website's sample decision (?site=1) has its own, smaller budget, so it never uses up the game's.
@@ -14,6 +17,10 @@ export async function POST(request: Request) {
   const body = await request.json().catch(() => null);
   const hs = typeof body?.hotSeatId === "string" ? servableHotSeat(body.hotSeatId) : undefined;
   if (!hs) return NextResponse.json({ error: "No such Hot Seat" }, { status: 404 });
+  if (!(site && hs.id === SITE_SAMPLE)) {
+    const denied = await accessCheck(request, { kind: "hotseat", id: hs.id });
+    if (denied) return denied;
+  }
   try {
     const picks = parsePicks(body.picks);
     const view = play(hs, picks);

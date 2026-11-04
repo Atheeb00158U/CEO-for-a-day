@@ -3,7 +3,7 @@ import { parseAnswers } from "@/lib/lesson-play";
 import { PlayError } from "@/lib/play";
 import { lessonOf } from "@/lib/server/content";
 import { finishLesson } from "@/lib/server/game";
-import { signedIn } from "@/lib/server/http";
+import { accessCheck, signedIn } from "@/lib/server/http";
 import { notifyOvertaken } from "@/lib/server/reminders";
 
 export const POST = (request: Request) =>
@@ -14,6 +14,8 @@ export const POST = (request: Request) =>
       const body = await request.json().catch(() => null);
       const found = lessonOf(body);
       if (!found) throw new PlayError("no such lesson");
+      const denied = await accessCheck(request, found.item);
+      if (denied) return denied;
       const r = await finishLesson(db, userId, found.lesson, {
         playKey: String(body.playKey ?? ""),
         answers: parseAnswers(body.answers),
