@@ -24,7 +24,13 @@ export const webhookSignatureOk = (rawBody: string, signature: string | null, we
   !!webhookSecret && !!signature && same(sign(webhookSecret, rawBody), signature);
 
 export interface RazorpayClient {
-  createSubscription(planId: string, totalCount: number, notes: Record<string, string>): Promise<{ id: string; status: string }>;
+  /** `expireBy` (unix seconds) is the last moment the customer can make the authorisation payment. */
+  createSubscription(
+    planId: string,
+    totalCount: number,
+    notes: Record<string, string>,
+    expireBy?: number,
+  ): Promise<{ id: string; status: string }>;
   /** `current_end` is unix seconds (null before the first charge). */
   cancelSubscription(id: string, atCycleEnd: boolean): Promise<{ status: string; current_end: number | null }>;
 }
@@ -45,8 +51,14 @@ export function razorpay(keyId = process.env.RAZORPAY_KEY_ID, keySecret = proces
   };
   return {
     // The docs type customer_notify and cancel_at_cycle_end as booleans.
-    createSubscription: (planId, totalCount, notes) =>
-      call("/subscriptions", { plan_id: planId, total_count: totalCount, customer_notify: true, notes }),
+    createSubscription: (planId, totalCount, notes, expireBy) =>
+      call("/subscriptions", {
+        plan_id: planId,
+        total_count: totalCount,
+        customer_notify: true,
+        notes,
+        ...(expireBy ? { expire_by: expireBy } : {}),
+      }),
     cancelSubscription: (id, atCycleEnd) => call(`/subscriptions/${encodeURIComponent(id)}/cancel`, { cancel_at_cycle_end: atCycleEnd }),
   };
 }

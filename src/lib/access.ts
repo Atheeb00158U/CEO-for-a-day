@@ -34,12 +34,17 @@ export function freeItems(course: Course): Set<string> {
   return out;
 }
 
-const PAID_UNTIL_END = new Set(["active", "authenticated", "pending", "halted", "cancelled", "completed"]);
+const PAID_UNTIL_END = new Set(["authenticated", "pending", "halted", "cancelled", "completed"]);
+/** An active subscription stays open this long past its period end, in case the renewal webhook is late. */
+export const GRACE_MS = 3 * 864e5;
 
 /** A member is active now, or cancelled or behind on a payment while the paid period runs. */
 export function isMember(m: MembershipLike | null, now: Date): boolean {
   if (!m) return false;
-  if (m.status === "active") return true;
+  if (m.status === "active") {
+    // Razorpay sets current_end on activation; null only for a moment before that webhook lands.
+    return !m.currentEnd || new Date(m.currentEnd).getTime() + GRACE_MS > now.getTime();
+  }
   return PAID_UNTIL_END.has(m.status) && !!m.currentEnd && new Date(m.currentEnd) > now;
 }
 

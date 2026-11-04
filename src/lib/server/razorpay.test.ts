@@ -57,6 +57,12 @@ describe("razorpay client", () => {
     expect(new Headers(calls[0].init.headers).get("authorization")).toBe("Basic " + Buffer.from("rzp_test_x:s").toString("base64"));
   });
 
+  it("passes expire_by when given", async () => {
+    const calls = stubFetch({ id: "sub_9", status: "created" });
+    await razorpay("k", "s").createSubscription("plan_1", 120, {}, 1_800_000_000);
+    expect(JSON.parse(String(calls[0].init.body))).toMatchObject({ expire_by: 1_800_000_000 });
+  });
+
   it("cancels at the cycle end with a boolean flag", async () => {
     const calls = stubFetch({ id: "sub_9", status: "active", current_end: 1_800_000_000 });
     const out = await razorpay("k", "s").cancelSubscription("sub_9", true);

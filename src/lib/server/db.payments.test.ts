@@ -46,10 +46,21 @@ describe("memoryDb seats", () => {
   it("keepSeat makes a hold permanent", async () => {
     const db = memoryDb();
     await db.claimSeat("a", "sub_a");
-    await db.keepSeat("sub_a");
+    expect(await db.keepSeat("sub_a")).toBe(true);
+    expect(await db.keepSeat("sub_none")).toBe(false);
     vi.advanceTimersByTime(60 * MIN);
     expect(await db.countFoundingSeats()).toBe(1);
     expect(await db.claimSeat("b", "sub_b")).toBe(2);
+  });
+
+  it("gives no second founding seat to a player who kept one, even after cancelling", async () => {
+    const db = memoryDb();
+    await db.claimSeat("a", "sub_a");
+    await db.keepSeat("sub_a");
+    await db.cancelSeat("sub_a");
+    expect(await db.hasKeptSeat("a")).toBe(true);
+    expect(await db.claimSeat("a", "sub_a2")).toBeNull();
+    expect(await db.hasKeptSeat("b")).toBe(false);
   });
 
   it("cancelSeat removes an unpaid hold", async () => {

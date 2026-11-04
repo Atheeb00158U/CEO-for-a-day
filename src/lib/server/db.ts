@@ -122,8 +122,10 @@ export interface Db {
   insertPaymentEvent(eventId: string): Promise<boolean>;
   /** Hold the lowest free founding seat for 30 minutes; null when all 500 are taken. */
   claimSeat(userId: string, subscriptionId: string): Promise<number | null>;
-  /** The first charge: keep the held seat for good. */
-  keepSeat(subscriptionId: string): Promise<void>;
+  /** The first charge: keep the held seat for good. False when no seat is held for it (the hold ran out or moved). */
+  keepSeat(subscriptionId: string): Promise<boolean>;
+  /** Whether this player ever kept (paid for) a founding seat; cancelling gives up the founding price for good. */
+  hasKeptSeat(userId: string): Promise<boolean>;
   /** Mark a kept seat cancelled; an unpaid hold is simply removed. */
   cancelSeat(subscriptionId: string): Promise<void>;
   /** `lesson:<id>` / `hotseat:<id>` keys this player finished before the paywall. */
@@ -140,6 +142,7 @@ export function memoryDb(): Db & {
   leagues: LeagueRow[];
   foundingSeats: number;
   seats: SeatRow[];
+  early: Map<string, Set<string>>;
 } {
   const profiles = new Map<string, Profile>();
   const runs: RunRow[] = [];
@@ -265,6 +268,7 @@ export function memoryDb(): Db & {
       }
     },
     seats,
+    early,
     foundingSeats: 0,
     async countFoundingSeats() {
       // `foundingSeats` is a test hook for a count with no rows behind it; it adds to the real seats.
@@ -285,6 +289,8 @@ export function memoryDb(): Db & {
       return true;
     },
     async claimSeat(userId, subscriptionId) {
+      // A player who kept a seat before gets no second one (20261104100000_seat_rules.sql).
+      if (seats.some((s) => s.userId === userId && s.heldUntil === null)) return null;
       // Same steps as claim_founding_seat(): drop this player's unpaid hold and any expired holds, then take the lowest free seat.
       for (let i = seats.length - 1; i >= 0; i--) {
         const s = seats[i];
@@ -299,7 +305,12 @@ export function memoryDb(): Db & {
       return null;
     },
     async keepSeat(subscriptionId) {
-      for (const s of seats) if (s.subscriptionId === subscriptionId) s.heldUntil = null;
+      const s = seats.find((x) => x.subscriptionId === subscriptionId);
+      if (s) s.heldUntil = null;
+      return !!s;
+    },
+    async hasKeptSeat(userId) {
+      return seats.some((s) => s.userId === userId && s.heldUntil === null);
     },
     async cancelSeat(subscriptionId) {
       for (let i = seats.length - 1; i >= 0; i--) {
@@ -526,6 +537,8 @@ export function supabaseDb(sb = supabaseAdmin()): Db {
       return count ?? 0;
     },
     async deleteUser(id) {
+      // An unpaid hold goes with the player, as in memoryDb; a kept seat stays used (user_id set null by the cascade).
+      must(await sb.from("founding_seats").delete().eq("user_id", id).not("held_until", "is", null));
       // Every table cascades from auth.users, so deleting the user removes all their rows.
       const { error } = await sb.auth.admin.deleteUser(id);
       if (error) throw new Error(error.message);
@@ -534,7 +547,7 @@ export function supabaseDb(sb = supabaseAdmin()): Db {
       const { count, error } = await sb
         .from("founding_seats")
         .select("seat_no", { count: "exact", head: true })
-        .or(`held_until.is.null,held_until.gt.${new Date().toISOString()}`)
+        .or(`held_until.is.null,held_until.gt."${new Date().toISOString()}"`)
         .abortSignal(AbortSignal.timeout(3000));
       if (error) throw new Error(error.message);
       return count ?? 0;
@@ -574,7 +587,14 @@ export function supabaseDb(sb = supabaseAdmin()): Db {
       return must<number | null>(await sb.rpc("claim_founding_seat", { p_user: userId, p_subscription: subscriptionId }));
     },
     async keepSeat(subscriptionId) {
-      must(await sb.from("founding_seats").update({ held_until: null }).eq("razorpay_subscription_id", subscriptionId));
+      const rows = list(
+        await sb.from("founding_seats").update({ held_until: null }).eq("razorpay_subscription_id", subscriptionId).select("seat_no"),
+      );
+      return rows.length > 0;
+    },
+    async hasKeptSeat(userId) {
+      const rows = list(await sb.from("founding_seats").select("seat_no").eq("user_id", userId).is("held_until", null).limit(1));
+      return rows.length > 0;
     },
     async cancelSeat(subscriptionId) {
       must(await sb.from("founding_seats").delete().eq("razorpay_subscription_id", subscriptionId).not("held_until", "is", null));

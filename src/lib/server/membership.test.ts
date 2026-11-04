@@ -1,5 +1,5 @@
 import { createHmac } from "node:crypto";
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { isMember } from "../access";
 import { memoryDb } from "./db";
 import { GameError } from "./game";
@@ -20,11 +20,11 @@ const env: PayEnv = {
 
 function fakeRp() {
   let n = 0;
-  const created: { planId: string; totalCount: number; notes: Record<string, string> }[] = [];
+  const created: { planId: string; totalCount: number; notes: Record<string, string>; expireBy?: number }[] = [];
   const cancelled: { id: string; atCycleEnd: boolean }[] = [];
   const rp: RazorpayClient = {
-    async createSubscription(planId, totalCount, notes) {
-      created.push({ planId, totalCount, notes });
+    async createSubscription(planId, totalCount, notes, expireBy) {
+      created.push({ planId, totalCount, notes, expireBy });
       return { id: "sub_" + ++n, status: "created" };
     },
     async cancelSubscription(id, atCycleEnd) {
@@ -92,6 +92,39 @@ describe("startCheckout", () => {
     expect(await db.getMembership("u1")).toBeNull();
   });
 
+  it("asks Razorpay to expire a founding checkout with its 30-minute hold, and only that one", async () => {
+    const db = memoryDb();
+    const { rp, created } = fakeRp();
+    await startCheckout(db, rp, env, "u1", "founding", NOW);
+    await startCheckout(db, rp, env, "u2", "monthly", NOW);
+    expect(created[0].expireBy).toBe(Math.floor(NOW.getTime() / 1000) + 30 * 60);
+    expect(created[1].expireBy).toBeUndefined();
+  });
+
+  it("refuses the founding price to a player who kept a seat and cancelled", async () => {
+    const db = memoryDb();
+    const { rp, created } = fakeRp();
+    const { subscriptionId } = await startCheckout(db, rp, env, "u1", "founding", NOW);
+    await confirmCheckout(db, env, "u1", pay(subscriptionId), NOW);
+    await cancelMembership(db, rp, "u1");
+    const later = new Date(NOW.getTime() + 40 * DAY);
+    await expect(startCheckout(db, rp, env, "u1", "founding", later)).rejects.toThrow("Founding price ended when you cancelled");
+    expect(created).toHaveLength(1);
+    // The database refuses too, under its lock.
+    expect(await db.claimSeat("u1", "sub_new")).toBeNull();
+    // The regular plans stay open to them.
+    await expect(startCheckout(db, rp, env, "u1", "monthly", later)).resolves.toMatchObject({ subscriptionId: "sub_2" });
+  });
+
+  it("refuses a cancelled member whose paid period is still running", async () => {
+    const db = memoryDb();
+    const { rp } = fakeRp();
+    const m = { userId: "u1", plan: "monthly" as const, subscriptionId: "sub_x", status: "cancelled" };
+    await db.saveMembership({ ...m, currentEnd: new Date(NOW.getTime() + DAY).toISOString() });
+    await expect(startCheckout(db, rp, env, "u1", "yearly", NOW)).rejects.toThrow("Already a member");
+    expect((await db.getMembership("u1"))?.subscriptionId).toBe("sub_x");
+  });
+
   it("creates monthly and yearly checkouts without a seat", async () => {
     const db = memoryDb();
     db.foundingSeats = 500;
@@ -141,6 +174,28 @@ describe("confirmCheckout", () => {
     expect(db.seats[0].heldUntil).not.toBeNull();
   });
 
+  it("takes a free seat if the hold ran out before the payment", async () => {
+    const db = memoryDb();
+    const { rp } = fakeRp();
+    const { subscriptionId } = await startCheckout(db, rp, env, "u1", "founding", NOW);
+    db.seats.splice(0); // the hold expired and was cleared by someone else's claim
+    await confirmCheckout(db, env, "u1", pay(subscriptionId), NOW);
+    expect(db.seats).toMatchObject([{ seatNo: 1, subscriptionId, heldUntil: null }]);
+  });
+
+  it("keeps a paying founder a member when no seat is left, and flags it", async () => {
+    const db = memoryDb();
+    const { rp } = fakeRp();
+    const { subscriptionId } = await startCheckout(db, rp, env, "u1", "founding", NOW);
+    db.seats.splice(0);
+    db.claimSeat = async () => null;
+    const err = vi.spyOn(console, "error").mockImplementation(() => {});
+    const m = await confirmCheckout(db, env, "u1", pay(subscriptionId), NOW);
+    expect(isMember(m, NOW)).toBe(true);
+    expect(err).toHaveBeenCalledWith(expect.stringContaining(`FOUNDING_OVERFLOW: paid founding subscription ${subscriptionId}`));
+    err.mockRestore();
+  });
+
   it("gives a yearly member a longer temporary end", async () => {
     const db = memoryDb();
     const { rp } = fakeRp();
@@ -186,11 +241,25 @@ describe("handleWebhook", () => {
     expect(m).toMatchObject({ status: "active", currentEnd: new Date(end * 1000).toISOString() });
     expect(db.seats[0].heldUntil).toBeNull();
 
-    // A replay of the same event (later state changed by hand) is ignored.
-    await db.saveMembership({ ...m!, status: "halted" });
+    // A retried delivery of the same event changes nothing.
     expect(await handleWebhook(db, env, e.body, e.sig, "evt_1")).toEqual({ ok: true });
     m = await db.getMembership("u1");
-    expect(m?.status).toBe("halted");
+    expect(m).toMatchObject({ status: "active", currentEnd: new Date(end * 1000).toISOString() });
+    expect(db.seats).toHaveLength(1);
+    expect(db.seats[0].heldUntil).toBeNull();
+  });
+
+  it("marks an event handled only after it succeeds", async () => {
+    const { db, subscriptionId } = await member();
+    const e = event("subscription.charged", { id: subscriptionId, status: "active", current_end: 1 });
+    const save = db.saveMembership;
+    db.saveMembership = async () => {
+      throw new Error("db down");
+    };
+    await expect(handleWebhook(db, env, e.body, e.sig, "evt_1")).rejects.toThrow("db down");
+    db.saveMembership = save;
+    // Not recorded, so the retry still goes through.
+    expect(await db.insertPaymentEvent("evt_1")).toBe(true);
   });
 
   it("ignores subscriptions that aren't ours", async () => {
@@ -300,6 +369,12 @@ describe("paywallFor and accessContext", () => {
       paywall: true,
       member: true,
       early: new Set(),
+    });
+    db.early.set("u2", new Set(["lesson:u2-mom-test"]));
+    expect(await accessContext(db, "u2", "b@example.com", NOW)).toEqual({
+      paywall: true,
+      member: false,
+      early: new Set(["lesson:u2-mom-test"]),
     });
   });
 });
