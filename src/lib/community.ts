@@ -50,6 +50,8 @@ export const LIMITS = {
   replies: { perDay: 50, gapMs: 10_000 },
   follows: { perDay: 200, total: 2000 },
   reports: { perDay: 20, instantPerDay: 3 },
+  /** Chats (step 2): new chats a day (of which requests), messages before a request is accepted, message length. */
+  chats: { perDay: 20, requestsPerDay: 5, requestMessages: 3, messageLength: 1000 },
   /** Accounts younger than this don't count toward hiding at once; Club members younger than this get half limits. */
   newMs: 24 * 3600_000,
 };
@@ -247,6 +249,46 @@ export interface ReportView {
   resolvedAt?: string;
 }
 
+/** A chat in the inbox or requests list. `with` is null once the other player deleted their account. */
+export interface ChatRow {
+  id: number;
+  with: { handle: string; name: string; title: string } | null;
+  /** request: a request to me. */
+  state: "active" | "request";
+  last: { body: string; at: string; mine: boolean } | null;
+  unread: boolean;
+}
+export interface MessageView {
+  id: number;
+  chatId: number;
+  mine: boolean;
+  body: string;
+  createdAt: string;
+  /** A link or scam words: the warning line shows under it. */
+  flagged: boolean;
+  /** Only ever true for the sender: waiting for a check. */
+  held: boolean;
+  clientId?: string;
+}
+/** GET /api/club/chat/:id. */
+export interface ChatView {
+  chat: ChatRow & {
+    canSend: boolean;
+    /** I started it and they haven't accepted yet. */
+    waiting: boolean;
+  };
+  messages: MessageView[];
+  /** The other player's "Seen" (0 while they haven't accepted). */
+  theirLastRead: number;
+  /** More older messages: pass as ?before=. */
+  before?: number;
+}
+/** What the server sends on a player's private topic user:<id>. */
+export type LiveEvent =
+  | { event: "msg"; payload: { chatId: number; message: MessageView } }
+  | { event: "seen"; payload: { chatId: number; lastId: number } }
+  | { event: "typing"; payload: { chatId: number; handle: string } };
+
 /** GET /api/club/me. */
 export interface ClubMe {
   profile?: ProfileView;
@@ -434,6 +476,38 @@ export const CLUB_COPY = {
   rulesBreak: "If you break a rule, we may remove your post or stop you from posting.",
   rulesComplain: `To complain, tap Report, or write to our Grievance Officer: ${GRIEVANCE.name}, ${GRIEVANCE.email}, ${GRIEVANCE.address}.`,
   rulesReply: "We reply within 24 hours and solve the problem within 7 days.",
+  // Chat (step 2).
+  messages: "Messages",
+  requestsRow: (n: number) => `Requests (${n})`,
+  requestsTitle: "Requests",
+  newMessage: "New message",
+  newMessageHelp: "Type the handle of the player you want to message.",
+  start: "Start chat",
+  message: "Message",
+  emptyInbox: "No messages yet.",
+  emptyRequests: "No requests.",
+  messagePlaceholder: "Message…",
+  send: "Send",
+  sent: "Sent",
+  seen: "Seen",
+  typing: (name: string) => `${name} is typing…`,
+  wantsToChat: (name: string) => `${name} wants to chat.`,
+  requestNote: "They can't see that you read this until you accept.",
+  accept: "Accept",
+  waitAccept: (name: string) => `Wait for ${name} to accept before you send more.`,
+  waitingAccept: (name: string) => `${name} has not accepted yet.`,
+  scamWarning: "Be careful. Never send money to someone you met here.",
+  deleteChat: "Delete chat",
+  deleteChatTitle: "Delete this chat?",
+  deleteChatText: "It goes from your messages only.",
+  deletedAccount: "Deleted account",
+  notSent: "Message not sent.",
+  chatGone: "This chat isn't there any more.",
+  tooManyChats: "That's enough new chats for today. Come back tomorrow.",
+  pushMessage: "Sent you a message",
+  pushRequest: (name: string) => `${name} wants to chat`,
+  pushRequestBody: "Open your message requests in the Club.",
+  reportMessage: "Report message",
   // Added with the phone screens.
   back: "Back",
   close: "Close",

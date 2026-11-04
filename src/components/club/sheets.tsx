@@ -137,7 +137,13 @@ export function RulesSheet({ open, onOpenChange }: { open: boolean; onOpenChange
   );
 }
 
-export function ReportSheet({ target, onClose }: { target: { kind: "post" | "profile"; id: string } | null; onClose: () => void }) {
+export function ReportSheet({
+  target,
+  onClose,
+}: {
+  target: { kind: "post" | "profile" | "message"; id: string } | null;
+  onClose: () => void;
+}) {
   const [reason, setReason] = useState<string | null>(null);
   const [note, setNote] = useState("");
   const [state, setState] = useState<"idle" | "busy" | "done">("idle");

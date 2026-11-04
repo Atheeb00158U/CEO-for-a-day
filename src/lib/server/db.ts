@@ -158,6 +158,36 @@ export interface ActivityRow {
   createdAt: string;
 }
 
+/* Chats (supabase/migrations/20261106090000_club_chat.sql). */
+export interface ChatMemberRow {
+  chatId: number;
+  userId: string;
+  state: "active" | "request" | "declined" | "left";
+  lastReadId: number;
+  clearedId: number;
+  activeAt: string | null;
+}
+export interface MessageRow {
+  id: number;
+  chatId: number;
+  senderId: string;
+  clientId: string;
+  body: string;
+  flagged: "auto_scam" | "auto_link" | null;
+  held: boolean;
+  hiddenAt: string | null;
+  createdAt: string;
+}
+export interface InboxRow {
+  chatId: number;
+  lastAt: string;
+  lastReadId: number;
+  /** null once the other player deleted their account. */
+  otherId: string | null;
+  /** The last message this player may see. */
+  last: MessageRow;
+}
+
 export interface Db {
   getProfile(userId: string): Promise<Profile | null>;
   /** Creates the profile unless one exists. */
@@ -296,6 +326,31 @@ export interface Db {
   unseenActivity(userId: string): Promise<number>;
   /** How many Club notifications (kinds starting club_) a player got that day. */
   clubNoticesOn(userId: string, day: string): Promise<number>;
+
+  /* Chats. */
+  chatByPair(pair: string): Promise<{ id: number } | null>;
+  /** Makes the chat and its members; a pair that already has one gets that chat. */
+  createChat(pair: string, createdBy: string, members: { userId: string; state: ChatMemberRow["state"] }[], at: string): Promise<number>;
+  chatMembers(chatId: number): Promise<ChatMemberRow[]>;
+  setMember(chatId: number, userId: string, patch: Partial<Omit<ChatMemberRow, "chatId" | "userId">>): Promise<void>;
+  /** Newest first, chats with something this player may see (rpc club_inbox). */
+  inbox(userId: string, state: "active" | "request", before: string | null, limit: number): Promise<InboxRow[]>;
+  /** Saves once per (sender, clientId) and moves the chat to the top unless held (rpc club_send). */
+  sendMessage(row: Omit<MessageRow, "id" | "hiddenAt" | "createdAt">, at: string): Promise<MessageRow>;
+  getMessage(id: number): Promise<MessageRow | null>;
+  /** Not hidden; ascending by id. `before`: the newest `limit` below it; `after`: the first `limit` above it. */
+  messages(chatId: number, opts: { before?: number; after?: number; afterCleared: number; limit: number }): Promise<MessageRow[]>;
+  /** The newest message id in a chat, hidden ones too (0 when empty). */
+  lastMessageId(chatId: number): Promise<number>;
+  countMessages(chatId: number, senderId: string): Promise<number>;
+  setMessageState(id: number, patch: { held?: boolean; hiddenAt?: string | null }): Promise<void>;
+  /** "Ban and hide everything": hides every message they sent and returns them. */
+  hideMessagesBy(senderId: string, at: string): Promise<MessageRow[]>;
+  /** Chats this player started since then; `requestsOnly`: those that began as a request. */
+  countChatsSince(userId: string, since: string, requestsOnly: boolean): Promise<number>;
+  unreadChats(userId: string): Promise<{ chats: number; requests: number }>;
+  /** Chat pushes (kinds starting dm:) a player got that day. */
+  dmNoticesOn(userId: string, day: string): Promise<number>;
 }
 
 /** Notification kinds with their own daily cap (the Club's), not counted in the game's. */
@@ -448,6 +503,9 @@ export function memoryDb(): Db & {
     async clubNoticesOn(id, day) {
       return [...notices].filter((k) => k.startsWith(`${id}|${day}|club_`)).length;
     },
+    async dmNoticesOn(id, day) {
+      return [...notices].filter((k) => k.startsWith(`${id}|${day}|dm:`)).length;
+    },
     async deleteUser(id) {
       profiles.delete(id);
       // As the migration's cascades: the Club profile and all it owns, the ban; reports keep their snapshot.
@@ -560,6 +618,9 @@ function clubStore() {
   const activity: ActivityRow[] = [];
   /** club_post_log: what the daily caps count, untouched by deleting a post (20261105150000_club_fixes.sql). */
   const postLog: { authorId: string; kind: string; body: string; createdAt: string }[] = [];
+  const chats: { id: number; pair: string; createdBy: string | null; lastAt: string; createdAt: string }[] = [];
+  const members: ChatMemberRow[] = [];
+  const messages: MessageRow[] = [];
   let nextId = 1;
   const clone = <T>(x: T): T => structuredClone(x);
   const prune = <T>(list: T[], gone: (x: T) => boolean) => {
@@ -601,6 +662,9 @@ function clubStore() {
     prune(follows, (f) => f.follower === id || f.followee === id);
     prune(blocks, (b) => b.blocker === id || b.blocked === id);
     prune(activity, (a) => a.userId === id || a.actorId === id);
+    prune(members, (m) => m.userId === id);
+    prune(messages, (m) => m.senderId === id);
+    for (const c of chats) if (c.createdBy === id) c.createdBy = null;
   }
 
   const methods: Pick<
@@ -646,6 +710,20 @@ function clubStore() {
     | "activity"
     | "markActivitySeen"
     | "unseenActivity"
+    | "chatByPair"
+    | "createChat"
+    | "chatMembers"
+    | "setMember"
+    | "inbox"
+    | "sendMessage"
+    | "getMessage"
+    | "messages"
+    | "lastMessageId"
+    | "countMessages"
+    | "setMessageState"
+    | "hideMessagesBy"
+    | "countChatsSince"
+    | "unreadChats"
   > = {
     async clubProfile(id) {
       return clone(profiles.get(id) ?? null);
@@ -855,8 +933,94 @@ function clubStore() {
     async unseenActivity(id) {
       return activity.filter((a) => a.userId === id && !a.seen).length;
     },
+    async chatByPair(pair) {
+      const c = chats.find((x) => x.pair === pair);
+      return c ? { id: c.id } : null;
+    },
+    async createChat(pair, createdBy, list, at) {
+      const old = chats.find((x) => x.pair === pair);
+      if (old) return old.id;
+      const id = nextId++;
+      chats.push({ id, pair, createdBy, lastAt: at, createdAt: at });
+      for (const m of list) members.push({ chatId: id, userId: m.userId, state: m.state, lastReadId: 0, clearedId: 0, activeAt: null });
+      return id;
+    },
+    async chatMembers(chatId) {
+      return clone(members.filter((m) => m.chatId === chatId));
+    },
+    async setMember(chatId, userId, patch) {
+      const m = members.find((x) => x.chatId === chatId && x.userId === userId);
+      if (m) Object.assign(m, patch);
+    },
+    async inbox(userId, state, before, limit) {
+      const out: InboxRow[] = [];
+      for (const me of members.filter((m) => m.userId === userId && m.state === state)) {
+        const c = chats.find((x) => x.id === me.chatId)!;
+        if (before && c.lastAt >= before) continue;
+        const last = messages
+          .filter((x) => x.chatId === c.id && !x.hiddenAt && (!x.held || x.senderId === userId) && x.id > me.clearedId)
+          .at(-1);
+        if (!last) continue;
+        const other = members.find((m) => m.chatId === c.id && m.userId !== userId);
+        out.push({ chatId: c.id, lastAt: c.lastAt, lastReadId: me.lastReadId, otherId: other?.userId ?? null, last: clone(last) });
+      }
+      return out.sort((a, b) => b.lastAt.localeCompare(a.lastAt) || b.chatId - a.chatId).slice(0, limit);
+    },
+    async sendMessage(row, at) {
+      const old = messages.find((m) => m.senderId === row.senderId && m.clientId === row.clientId);
+      if (old) return clone(old);
+      const m: MessageRow = { ...clone(row), id: nextId++, hiddenAt: null, createdAt: at };
+      messages.push(m);
+      const c = chats.find((x) => x.id === row.chatId);
+      if (c && !row.held) c.lastAt = at;
+      return clone(m);
+    },
+    async getMessage(id) {
+      return clone(messages.find((m) => m.id === id) ?? null);
+    },
+    async messages(chatId, { before, after, afterCleared, limit }) {
+      const shown = messages.filter(
+        (m) =>
+          m.chatId === chatId &&
+          !m.hiddenAt &&
+          m.id > afterCleared &&
+          (before === undefined || m.id < before) &&
+          (after === undefined || m.id > after),
+      );
+      return clone(after !== undefined ? shown.slice(0, limit) : shown.slice(-limit));
+    },
+    async lastMessageId(chatId) {
+      return messages.filter((m) => m.chatId === chatId).at(-1)?.id ?? 0;
+    },
+    async countMessages(chatId, senderId) {
+      return messages.filter((m) => m.chatId === chatId && m.senderId === senderId).length;
+    },
+    async setMessageState(id, patch) {
+      const m = messages.find((x) => x.id === id);
+      if (m) Object.assign(m, patch);
+    },
+    async hideMessagesBy(senderId, at) {
+      const hit = messages.filter((m) => m.senderId === senderId && m.hiddenAt === null);
+      for (const m of hit) m.hiddenAt = at;
+      return clone(hit);
+    },
+    async countChatsSince(userId, from, requestsOnly) {
+      const asked = (id: number) =>
+        members.some((m) => m.chatId === id && m.userId !== userId && (m.state === "request" || m.state === "declined"));
+      return chats.filter((c) => c.createdBy === userId && since(c.createdAt, from) && (!requestsOnly || asked(c.id))).length;
+    },
+    async unreadChats(userId) {
+      let chatsN = 0;
+      let requests = 0;
+      for (const me of members.filter((m) => m.userId === userId)) {
+        const shown = messages.filter((x) => x.chatId === me.chatId && !x.hiddenAt && !x.held && x.id > me.clearedId);
+        if (me.state === "active" && shown.some((x) => x.senderId !== userId && x.id > me.lastReadId)) chatsN++;
+        if (me.state === "request" && shown.length) requests++;
+      }
+      return { chats: chatsN, requests };
+    },
   };
-  return { profiles, bans, posts, likes, follows, blocks, reports, activity, postLog, dropProfile, methods };
+  return { profiles, bans, posts, likes, follows, blocks, reports, activity, postLog, chats, members, messages, dropProfile, methods };
 }
 
 /* ------------------------------------------------------------------ */
@@ -998,6 +1162,31 @@ const reportOf = (r: Record<string, unknown>): ReportRow => ({
   resolvedAt: (r.resolved_at as string | null) ?? null,
   createdAt: r.created_at as string,
 });
+const memberOf = (r: Record<string, unknown>): ChatMemberRow => ({
+  chatId: Number(r.chat_id),
+  userId: r.user_id as string,
+  state: r.state as ChatMemberRow["state"],
+  lastReadId: Number(r.last_read_id),
+  clearedId: Number(r.cleared_id),
+  activeAt: (r.active_at as string | null) ?? null,
+});
+const messageOf = (r: Record<string, unknown>): MessageRow => ({
+  id: Number(r.id),
+  chatId: Number(r.chat_id),
+  senderId: r.sender_id as string,
+  clientId: r.client_id as string,
+  body: r.body as string,
+  flagged: (r.flagged as MessageRow["flagged"]) ?? null,
+  held: !!r.held,
+  hiddenAt: (r.hidden_at as string | null) ?? null,
+  createdAt: r.created_at as string,
+});
+const MEMBER_COLS: Record<string, keyof ChatMemberRow> = {
+  state: "state",
+  last_read_id: "lastReadId",
+  cleared_id: "clearedId",
+  active_at: "activeAt",
+};
 const activityOf = (r: Record<string, unknown>): ActivityRow => ({
   id: Number(r.id),
   userId: r.user_id as string,
@@ -1599,6 +1788,143 @@ export function supabaseDb(sb = supabaseAdmin()): Db {
         .eq("seen", false);
       if (error) throw new Error(error.message);
       return count ?? 0;
+    },
+    async dmNoticesOn(id, day) {
+      const { count, error } = await sb
+        .from("notifications_sent")
+        .select("kind", { count: "exact", head: true })
+        .eq("user_id", id)
+        .eq("day", day)
+        .like("kind", "dm:%");
+      if (error) throw new Error(error.message);
+      return count ?? 0;
+    },
+    async chatByPair(pair) {
+      const r = must<{ id: number } | null>(await sb.from("club_chats").select("id").eq("pair", pair).maybeSingle());
+      return r && { id: Number(r.id) };
+    },
+    async createChat(pair, createdBy, members, at) {
+      const { data, error } = await sb
+        .from("club_chats")
+        .insert({ pair, created_by: createdBy, last_at: at, created_at: at })
+        .select("id")
+        .single();
+      if (duplicate(error))
+        // two taps at once: the other request made it
+        return Number(must<{ id: number }>(await sb.from("club_chats").select("id").eq("pair", pair).single()).id);
+      if (error) throw new Error(error.message);
+      const id = Number(data.id);
+      must(await sb.from("club_chat_members").insert(members.map((m) => ({ chat_id: id, user_id: m.userId, state: m.state }))));
+      return id;
+    },
+    async chatMembers(chatId) {
+      return list(await sb.from("club_chat_members").select("*").eq("chat_id", chatId)).map(memberOf);
+    },
+    async setMember(chatId, userId, patch) {
+      const values = Object.fromEntries(
+        Object.entries(MEMBER_COLS).flatMap(([col, k]) =>
+          patch[k as keyof typeof patch] === undefined ? [] : [[col, patch[k as keyof typeof patch]]],
+        ),
+      );
+      if (Object.keys(values).length) must(await sb.from("club_chat_members").update(values).eq("chat_id", chatId).eq("user_id", userId));
+    },
+    async inbox(userId, state, before, limit) {
+      const rows = list<Record<string, unknown>>(
+        await sb.rpc("club_inbox", { p_user: userId, p_state: state, p_before: before ?? "infinity", p_limit: limit }),
+      );
+      return rows.map((r) => ({
+        chatId: Number(r.chat_id),
+        lastAt: r.last_at as string,
+        lastReadId: Number(r.last_read_id),
+        otherId: (r.other_id as string | null) ?? null,
+        last: messageOf({
+          id: r.msg_id,
+          chat_id: r.chat_id,
+          sender_id: r.msg_sender,
+          client_id: "",
+          body: r.msg_body,
+          flagged: r.msg_flagged,
+          held: false,
+          hidden_at: null,
+          created_at: r.msg_at,
+        }),
+      }));
+    },
+    async sendMessage(row, at) {
+      const r = must<Record<string, unknown>>(
+        await sb
+          .rpc("club_send", {
+            p_chat: row.chatId,
+            p_sender: row.senderId,
+            p_client: row.clientId,
+            p_body: row.body,
+            p_flagged: row.flagged,
+            p_held: row.held,
+          })
+          .single(),
+      );
+      void at; // the database stamps created_at
+      return messageOf(r);
+    },
+    async getMessage(id) {
+      const r = must<Record<string, unknown> | null>(await sb.from("club_messages").select("*").eq("id", id).maybeSingle());
+      return r && messageOf(r);
+    },
+    async messages(chatId, { before, after, afterCleared, limit }) {
+      let q = sb
+        .from("club_messages")
+        .select("*")
+        .eq("chat_id", chatId)
+        .is("hidden_at", null)
+        .gt("id", Math.max(afterCleared, after ?? 0));
+      if (before !== undefined) q = q.lt("id", before);
+      const rows = list(await q.order("id", { ascending: after !== undefined }).limit(limit)).map(messageOf);
+      return after !== undefined ? rows : rows.reverse();
+    },
+    async lastMessageId(chatId) {
+      const r = must<{ id: number } | null>(
+        await sb.from("club_messages").select("id").eq("chat_id", chatId).order("id", { ascending: false }).limit(1).maybeSingle(),
+      );
+      return r ? Number(r.id) : 0;
+    },
+    async countMessages(chatId, senderId) {
+      const { count, error } = await sb
+        .from("club_messages")
+        .select("id", { count: "exact", head: true })
+        .eq("chat_id", chatId)
+        .eq("sender_id", senderId);
+      if (error) throw new Error(error.message);
+      return count ?? 0;
+    },
+    async setMessageState(id, patch) {
+      const values = {
+        ...(patch.held === undefined ? {} : { held: patch.held }),
+        ...(patch.hiddenAt === undefined ? {} : { hidden_at: patch.hiddenAt }),
+      };
+      if (Object.keys(values).length) must(await sb.from("club_messages").update(values).eq("id", id));
+    },
+    async hideMessagesBy(senderId, at) {
+      return list(await sb.from("club_messages").update({ hidden_at: at }).eq("sender_id", senderId).is("hidden_at", null).select("*")).map(
+        messageOf,
+      );
+    },
+    async countChatsSince(userId, since, requestsOnly) {
+      const ids = list<{ id: number }>(
+        await sb.from("club_chats").select("id").eq("created_by", userId).gte("created_at", since).limit(100),
+      ).map((r) => r.id);
+      if (!requestsOnly || !ids.length) return ids.length;
+      const { count, error } = await sb
+        .from("club_chat_members")
+        .select("chat_id", { count: "exact", head: true })
+        .in("chat_id", ids)
+        .neq("user_id", userId)
+        .in("state", ["request", "declined"]);
+      if (error) throw new Error(error.message);
+      return count ?? 0;
+    },
+    async unreadChats(userId) {
+      const r = must<{ chats: number; requests: number }>(await sb.rpc("club_unread", { p_user: userId }).single());
+      return { chats: r.chats ?? 0, requests: r.requests ?? 0 };
     },
   };
 }

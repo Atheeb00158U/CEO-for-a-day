@@ -20,7 +20,8 @@ import { Onboarding } from "./Onboarding";
 import { Celebration, MemberWelcome } from "./MemberWelcome";
 import { useCareer } from "./CareerTitle";
 import { ClubTab } from "./club/ClubTab";
-import { CLUB_COPY } from "@/lib/community";
+import { CLUB_COPY, type ClubMe } from "@/lib/community";
+import { onLive } from "@/lib/live";
 import { grievanceReady } from "@/lib/legal";
 import { api } from "@/lib/auth";
 import { ContentProvider, onPaywall, useDaily, type Content, type LessonTarget, type PaywallFor } from "@/lib/content-client";
@@ -201,18 +202,22 @@ function Shell() {
     };
   }, []);
 
-  // The red dot on the Club tab: new activity, read when the app opens and each time it comes back to the front.
+  // The red dot on the Club tab: new activity, chats or requests, read when the app opens and each time it comes back to the front.
   useEffect(() => {
     if (!account || !club) return setClubDot(false);
     const look = () => {
       if (document.visibilityState !== "visible") return;
-      api<{ activity: number }>("/api/club/badge")
-        .then((b) => setClubDot(b.activity > 0))
+      api<ClubMe["badge"]>("/api/club/badge")
+        .then((b) => setClubDot(b.activity + b.chats + b.requests > 0))
         .catch(() => {});
     };
     look();
     document.addEventListener("visibilitychange", look);
-    return () => document.removeEventListener("visibilitychange", look);
+    const off = onLive((e) => e.event === "msg" && !e.payload.message.mine && look()); // a new chat message
+    return () => {
+      off();
+      document.removeEventListener("visibilitychange", look);
+    };
   }, [account, club]);
 
   const go = (t: Tab) => {
@@ -314,7 +319,13 @@ function Shell() {
             onLesson={(lessonId) => setLesson({ target: { lessonId } })}
           />
         )}
-        {tab === "club" && clubOn && <ClubTab sub={clubSub} onPlay={() => go("home")} onMe={(m) => setClubDot(m.badge.activity > 0)} />}
+        {tab === "club" && clubOn && (
+          <ClubTab
+            sub={clubSub}
+            onPlay={() => go("home")}
+            onMe={(m) => setClubDot(m.badge.activity + m.badge.chats + m.badge.requests > 0)}
+          />
+        )}
         {tab === "shop" && <ShopTab />}
         {tab === "profile" && <ProfileTab />}
       </main>

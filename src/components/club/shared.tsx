@@ -11,12 +11,12 @@ export interface ClubCtx {
   reloadMe: () => void;
   /** Open the sheet that matches a gate refusal (join, pay, rank, banned). */
   nudge: (can: Can) => void;
-  report: (kind: "post" | "profile", id: string) => void;
+  report: (kind: "post" | "profile" | "message", id: string) => void;
 }
 export const ClubContext = createContext<ClubCtx>({ me: null, reloadMe: () => {}, nudge: () => {}, report: () => {} });
 export const useClub = () => useContext(ClubContext);
 
-/** Open a Club screen: "" (feed), "post/9", "@ravik", "activity", "reports". Steps into history, so Back steps out. */
+/** Open a Club screen: "" (feed), "post/9", "@ravik", "activity", "reports", "inbox", "requests", "chat/9". Steps into history, so Back steps out. */
 export function openClub(path: string) {
   try {
     history.pushState(null, "", "#club" + (path ? "/" + path : ""));

@@ -5,12 +5,17 @@ import { after } from "next/server";
 import * as Club from "@/lib/server/club";
 import type { Db } from "@/lib/server/db";
 import { club, json } from "@/lib/server/http";
+import { realtimeLive } from "@/lib/server/live";
 import { webPush } from "@/lib/server/reminders";
 
 type Ctx = { params: Promise<{ path: string[] }> };
 type Act = (db: Db, userId: string, arg: string | undefined, q: URLSearchParams, body: Record<string, unknown>) => Promise<object>;
 
-const side: Club.Side = { send: webPush, later: (task) => after(() => task().catch((e) => console.error("club:", e))) };
+const side: Club.Side = {
+  send: webPush,
+  later: (task) => after(() => task().catch((e) => console.error("club:", e))),
+  live: realtimeLive,
+};
 
 const ROUTES: Record<string, { max: number; act: Act }> = {
   "GET me": { max: 60, act: (db, u) => Club.me(db, u) },
@@ -30,16 +35,28 @@ const ROUTES: Record<string, { max: number; act: Act }> = {
   "GET activity": { max: 30, act: (db, u, _a, q) => Club.activity(db, u, q.get("before")) },
   "GET badge": { max: 60, act: (db, u) => Club.badge(db, u) },
   "GET reports": { max: 10, act: (db, u) => Club.myReports(db, u) },
+  // Chats (step 2): chat/:id/<action> picks "<METHOD> chat/<action>".
+  "GET inbox": { max: 60, act: (db, u, _a, q) => Club.chats(db, u, "active", q.get("before")) },
+  "GET requests": { max: 30, act: (db, u, _a, q) => Club.chats(db, u, "request", q.get("before")) },
+  "POST chat": { max: 10, act: (db, u, _a, _q, b) => Club.startChat(db, u, b) },
+  "GET chat": { max: 120, act: (db, u, id, q) => Club.readChat(db, u, id, { before: q.get("before"), after: q.get("after") }) },
+  "POST chat/send": { max: 30, act: (db, u, id, _q, b) => Club.sendMessage(db, u, id, b, new Date(), side) },
+  "POST chat/seen": { max: 60, act: (db, u, id, _q, b) => Club.seen(db, u, id, b, new Date(), side) },
+  "POST chat/typing": { max: 30, act: (db, u, id) => Club.typing(db, u, id, new Date(), side) },
+  "POST chat/accept": { max: 10, act: (db, u, id) => Club.accept(db, u, id) },
+  "POST chat/decline": { max: 10, act: (db, u, id) => Club.decline(db, u, id) },
+  "POST chat/clear": { max: 10, act: (db, u, id) => Club.clearChat(db, u, id) },
 };
 
 async function handle(request: Request, { params }: Ctx) {
   const path = (await params).path;
-  const route = path.length <= 2 ? ROUTES[`${request.method} ${path[0]}`] : undefined;
+  const name = path.length === 3 ? `${path[0]}/${path[2]}` : path.length <= 2 ? path[0] : "";
+  const route = ROUTES[`${request.method} ${name}`];
   if (!route) return json({ error: "Not found" }, 404);
   const body = request.method === "POST" ? ((await request.json().catch(() => null)) ?? {}) : {};
   if (typeof body !== "object" || Array.isArray(body)) return json({ error: "Send JSON" }, 400);
   const q = new URL(request.url).searchParams;
-  return club(request, `${request.method}-${path[0]}`, (db, userId) => route.act(db, userId, path[1], q, body), route.max);
+  return club(request, `${request.method}-${name}`, (db, userId) => route.act(db, userId, path[1], q, body), route.max);
 }
 
 export const GET = handle;
