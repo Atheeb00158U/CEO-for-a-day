@@ -151,6 +151,45 @@ describe("startCheckout", () => {
     expect((await db.getMembership("u1"))?.subscriptionId).toBe("sub_1");
   });
 
+  it("saves an old checkout Razorpay already ended with its final status, without cancelling it", async () => {
+    for (const status of ["expired", "cancelled", "completed"]) {
+      const db = memoryDb();
+      const { rp, cancelled, live } = fakeRp();
+      const a = await startCheckout(db, rp, env, "u1", "founding", NOW);
+      live[a.subscriptionId] = { status, current_end: null };
+      const saved: string[] = [];
+      const replace = db.replaceMembership.bind(db);
+      db.replaceMembership = async (userId, expected, row) => {
+        saved.push(`${row.subscriptionId}:${row.status}`);
+        return replace(userId, expected, row);
+      };
+      await expect(startCheckout(db, rp, env, "u1", "monthly", NOW)).resolves.toMatchObject({ subscriptionId: "sub_2" });
+      expect(cancelled).toEqual([]);
+      expect(saved).toEqual([`${a.subscriptionId}:${status}`, "sub_2:created"]);
+      expect(db.seats).toHaveLength(0); // the old founding hold is freed
+    }
+  });
+
+  it("records a new subscription it can't stop after losing the seat race, and still gives the real reason", async () => {
+    const db = memoryDb();
+    const { rp, cancelled } = fakeRp("Razorpay /subscriptions/sub_1/cancel 502: error");
+    db.claimSeat = async () => null;
+    const err = vi.spyOn(console, "error").mockImplementation(() => {});
+    await expect(startCheckout(db, rp, env, "u1", "founding", NOW)).rejects.toThrow("Founding seats are full");
+    expect(cancelled).toEqual([{ id: "sub_1", atCycleEnd: false }]);
+    expect(err).toHaveBeenCalledWith(expect.stringContaining("sub_1"));
+    expect(db.paymentIssues).toEqual([{ kind: "ORPHAN_SUBSCRIPTION", subscriptionId: "sub_1", userId: "u1" }]);
+    err.mockRestore();
+  });
+
+  it("treats a lost-race subscription Razorpay already cancelled as stopped", async () => {
+    const db = memoryDb();
+    const { rp } = fakeRp("Razorpay /subscriptions/sub_1/cancel 400: Subscription is not cancellable in cancelled status.");
+    db.claimSeat = async () => null;
+    await expect(startCheckout(db, rp, env, "u1", "founding", NOW)).rejects.toThrow("Founding seats are full");
+    expect(db.paymentIssues).toEqual([]);
+  });
+
   it("adopts an old checkout Razorpay says was paid, instead of cancelling it", async () => {
     for (const [status, plan] of [
       ["authenticated", "founding"],

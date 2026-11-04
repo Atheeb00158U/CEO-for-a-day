@@ -5,6 +5,7 @@ import { Sheet, SheetContent, SheetDescription, SheetTitle } from "@/components/
 import { ApiError, api } from "@/lib/auth";
 import { CheckoutClosed, openCheckout, type CheckoutSuccess } from "@/lib/checkout";
 import { useContent } from "@/lib/content-client";
+import { FOUNDING_USED, NO_FOUNDING } from "@/lib/membership-view";
 import { FOUNDING, REGULAR, seatsLine } from "@/lib/offer";
 import { useGame } from "@/lib/store";
 import { SignInCard } from "./SignInCard";
@@ -13,7 +14,6 @@ import { WolfPicture } from "./WolfPicture";
 type Plan = "founding" | "monthly" | "yearly";
 const rs = (n: number) => `₹${n.toLocaleString("en-IN")}`;
 
-// Draft copy (Task 10 runs the basic-English pass on these).
 const COPY = {
   titleUnitDone: "Unit 1 is done. Continue as a founding member.",
   titleFounding: "Continue as a founding member.",
@@ -42,6 +42,7 @@ const COPY = {
   signInTitle: "Sign in to join",
   signInText: "Your membership is linked to your Google account.",
   notCharged: "Payment didn't go through. You were not charged.",
+  tryAgain: "Something went wrong. Please try again.",
   notConfirmed: "We could not check your payment yet. This may take a few minutes. Close this and try again soon.",
   member: "You are now a member. Tap the lesson again.",
   close: "Close",
@@ -73,7 +74,9 @@ export function PaywallSheet({ open, onOpenChange }: { open: boolean; onOpenChan
   }, [open]);
 
   // Unknown seat count: offer the founding price and let the server decide.
-  const founding = !noFounding && (seats?.open ?? true);
+  // A returning founder who cancelled starts on the regular plans, with the reason.
+  const reason = noFounding ?? (membership?.foundingUsed ? FOUNDING_USED : null);
+  const founding = !reason && (seats?.open ?? true);
   const chosen: Plan = founding ? "founding" : plan;
   const unit1 = course?.units[0]?.modules.flatMap((m) => m.lessons.map((l) => l.id)) ?? [];
   const unit1Done = unit1.length > 0 && unit1.every((id) => s.lessons[id]);
@@ -95,10 +98,14 @@ export function PaywallSheet({ open, onOpenChange }: { open: boolean; onOpenChan
           await reload().catch(() => {});
           return;
         }
-        if (chosen === "founding") {
-          setNoFounding(e.message); // e.g. "You lost your founding price when you cancelled": show the regular plans
+        // Only the server's two founding refusals switch to the regular plans; anything else (e.g. "Try again")
+        // keeps the offer and asks the player to try again.
+        if (chosen === "founding" && NO_FOUNDING.includes(e.message)) {
+          setNoFounding(e.message);
           return;
         }
+        setError(COPY.tryAgain);
+        return;
       }
       if (!(e instanceof CheckoutClosed)) console.warn("checkout failed", e);
       setError(COPY.notCharged);
@@ -148,7 +155,7 @@ export function PaywallSheet({ open, onOpenChange }: { open: boolean; onOpenChan
               seats && <p className="mt-2 text-center text-[14px] font-extrabold text-brand">{seatsLine(seats.taken)}</p>
             ) : (
               <>
-                {noFounding && <p className="mt-2 text-center text-[14px] font-extrabold text-brand">{noFounding}.</p>}
+                {reason && <p className="mt-2 text-center text-[14px] font-extrabold text-brand">{reason}.</p>}
                 <div role="radiogroup" aria-label="Choose a plan" className="mt-4 flex flex-col gap-3">
                   <PlanTile on={plan === "monthly"} onPick={() => setPlan("monthly")} name={COPY.monthly} price={COPY.monthlyPrice} />
                   <PlanTile

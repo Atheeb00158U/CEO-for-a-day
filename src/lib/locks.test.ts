@@ -19,7 +19,7 @@ const none = { lessons: {}, best: {} };
 describe("phoneLocks", () => {
   it("locks nothing while the paywall is off or for a member", () => {
     expect(phoneLocks(outline, null, false, none)({ kind: "lesson", id: "b" })).toBe(false);
-    const member = { plan: "monthly" as const, status: "active", currentEnd: null, member: true };
+    const member = { plan: "monthly" as const, status: "active", currentEnd: null, member: true, foundingUsed: false };
     expect(phoneLocks(outline, member, true, none)({ kind: "lesson", id: "b" })).toBe(false);
   });
   it("locks everything after Unit 1 for a non-member", () => {

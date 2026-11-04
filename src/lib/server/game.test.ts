@@ -237,7 +237,14 @@ describe("membership in the state reply", () => {
     await db.keepSeat("sub_1");
     const currentEnd = "2026-11-20T00:00:00.000Z";
     await db.saveMembership({ userId: "u1", plan: "founding", subscriptionId: "sub_1", status: "active", currentEnd });
-    expect((await load(db, "u1", now)).membership).toEqual({ plan: "founding", status: "active", currentEnd, member: true, seat: 1 });
+    expect((await load(db, "u1", now)).membership).toEqual({
+      plan: "founding",
+      status: "active",
+      currentEnd,
+      member: true,
+      seat: 1,
+      foundingUsed: true,
+    });
     await db.saveMembership({
       userId: "u1",
       plan: "monthly",
@@ -250,6 +257,13 @@ describe("membership in the state reply", () => {
       status: "cancelled",
       currentEnd: "2026-10-01T00:00:00Z",
       member: false,
+      foundingUsed: true, // a returning founder: the sheet starts on the regular plans
     });
+  });
+
+  it("says foundingUsed is false for a player who never kept a seat", async () => {
+    const db = memoryDb();
+    await db.saveMembership({ userId: "u1", plan: "monthly", subscriptionId: "sub_1", status: "created", currentEnd: null });
+    expect((await membershipView(db, "u1", now))?.foundingUsed).toBe(false);
   });
 });

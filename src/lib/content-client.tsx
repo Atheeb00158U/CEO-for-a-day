@@ -3,7 +3,7 @@
 // What the phone knows about content: the map's cards (handed down by the /app page) and calls to the server
 // for each step of play. Answers only ever arrive after the player has picked.
 import { createContext, useContext, useEffect, useState } from "react";
-import { api, ApiError, refreshToken } from "./auth";
+import { api, ApiError } from "./auth";
 import type { GameState } from "./game-state";
 import type { Card, CourseOutline } from "./course-types";
 import type { MembershipView } from "./membership-view";
@@ -46,23 +46,12 @@ export const showPaywall = () => paywallHandler?.();
 
 const membersOnly = (e: unknown) => e instanceof ApiError && e.status === 402;
 
-/**
- * Run a call that can answer 402 `members_only`. A signed-in player who has just paid may still hold an old token:
- * refresh it and try once more before showing the paywall. The error is still thrown, so the caller stops.
- */
-async function gated<T>(call: () => Promise<T>): Promise<T> {
+/** Run a call that can answer 402 `members_only`: show the paywall on it. The error is still thrown, so the caller stops. */
+export async function gated<T>(call: () => Promise<T>): Promise<T> {
   try {
     return await call();
   } catch (e) {
-    if (!membersOnly(e)) throw e;
-    if (await refreshToken()) {
-      try {
-        return await call();
-      } catch (again) {
-        if (!membersOnly(again)) throw again;
-      }
-    }
-    showPaywall();
+    if (membersOnly(e)) showPaywall();
     throw e;
   }
 }

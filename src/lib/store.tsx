@@ -2,7 +2,7 @@
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { api, signInWithGoogle, signOut, supabase } from "./auth";
-import type { LessonTarget, Synced } from "./content-client";
+import { gated, type LessonTarget, type Synced } from "./content-client";
 import type { MembershipView } from "./membership-view";
 import type { Answer, LessonResult } from "./lesson-play";
 import type { DailyCall, DailyOption, Grade } from "./hotseat-types";
@@ -202,10 +202,10 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
 
   const boosterActive = s.boosterUntil > Date.now();
 
-  /** Send a signed-in change to the server and take its reply; false if it was refused. */
+  /** Send a signed-in change to the server and take its reply; false if it was refused. A 402 shows the paywall. */
   const send = async (url: string, body: unknown = {}) => {
     try {
-      sync(await api<Synced>(url, { body }));
+      sync(await gated(() => api<Synced>(url, { body })));
       return true;
     } catch {
       return false;
@@ -223,9 +223,11 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
   const finishRun: Ctx["finishRun"] = async (run) => {
     const r = run.result;
     if (signedIn) {
-      const x = await api<Synced & { record: RunRecord }>("/api/run/finish", {
-        body: { runKey: run.runKey, hotSeatId: run.hotSeatId, picks: run.picks, hindsightUsed: run.hindsightUsed },
-      });
+      const x = await gated(() =>
+        api<Synced & { record: RunRecord }>("/api/run/finish", {
+          body: { runKey: run.runKey, hotSeatId: run.hotSeatId, picks: run.picks, hindsightUsed: run.hindsightUsed },
+        }),
+      );
       sync(x);
       return x.record;
     }
@@ -247,9 +249,11 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
 
   const finishLesson: Ctx["finishLesson"] = async (l) => {
     if (signedIn) {
-      const x = await api<Synced & { gained: number }>("/api/lesson/finish", {
-        body: { ...l.target, playKey: l.playKey, answers: l.answers },
-      });
+      const x = await gated(() =>
+        api<Synced & { gained: number }>("/api/lesson/finish", {
+          body: { ...l.target, playKey: l.playKey, answers: l.answers },
+        }),
+      );
       sync(x);
       return x.gained;
     }
@@ -267,7 +271,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
 
   const reviewCards: Ctx["reviewCards"] = async (reviews, answers) => {
     if (signedIn) {
-      const x = await api<Synced & { gained: number }>("/api/cards/review", { body: { reviews } });
+      const x = await gated(() => api<Synced & { gained: number }>("/api/cards/review", { body: { reviews } }));
       sync(x);
       return x.gained;
     }

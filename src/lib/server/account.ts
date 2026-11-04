@@ -1,5 +1,6 @@
 // Deleting an account (India's DPDP Act gives players this right). A deleted account must never keep being charged,
-// so any live subscription is cancelled at Razorpay first, at once; if that fails, nothing is deleted.
+// so any live subscription is cancelled at Razorpay first, at once (unless Razorpay says it has already ended); if
+// that fails, nothing is deleted.
 import type { Db } from "./db.ts";
 import { GameError } from "./game.ts";
 import { forgetAccess } from "./membership.ts";
@@ -15,7 +16,9 @@ export async function deleteAccount(db: Db, rp: () => RazorpayClient, userId: st
   const m = await db.getMembership(userId);
   if (m && !FINAL.has(m.status)) {
     try {
-      await rp().cancelSubscription(m.subscriptionId, false);
+      // Razorpay may have ended it already (an unpaid checkout expires after 30 minutes): nothing left to cancel.
+      const remote = await rp().fetchSubscription(m.subscriptionId);
+      if (!FINAL.has(remote.status)) await rp().cancelSubscription(m.subscriptionId, false);
     } catch (e) {
       if (!alreadyCancelled(e)) {
         console.error(`account delete: cancelling ${m.subscriptionId} failed; account kept`);

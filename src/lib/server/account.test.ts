@@ -7,7 +7,7 @@ import type { RazorpayClient } from "./razorpay";
 
 const U = "user-1";
 
-function fakeRp(fail?: string) {
+function fakeRp(fail?: string, remote = "active") {
   const cancelled: { id: string; atCycleEnd: boolean }[] = [];
   const rp: RazorpayClient = {
     async createSubscription() {
@@ -19,7 +19,7 @@ function fakeRp(fail?: string) {
       return { status: "cancelled", current_end: null };
     },
     async fetchSubscription() {
-      throw new Error("not used");
+      return { status: remote, current_end: null };
     },
   };
   return { rp: () => rp, cancelled };
@@ -59,6 +59,14 @@ describe("deleteAccount", () => {
   it.each(["cancelled", "completed", "expired"])("skips Razorpay for a %s subscription", async (status) => {
     const db = await withMembership(status);
     const { rp, cancelled } = fakeRp("should not be called");
+    await deleteAccount(db, rp, U);
+    expect(cancelled).toEqual([]);
+    expect(await db.getProfile(U)).toBeNull();
+  });
+
+  it.each(["expired", "cancelled", "completed"])("skips the cancel when Razorpay says the subscription is %s", async (remote) => {
+    const db = await withMembership("created");
+    const { rp, cancelled } = fakeRp("should not be called", remote);
     await deleteAccount(db, rp, U);
     expect(cancelled).toEqual([]);
     expect(await db.getProfile(U)).toBeNull();

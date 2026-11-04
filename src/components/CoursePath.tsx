@@ -9,7 +9,6 @@ import { phoneLocks } from "@/lib/locks";
 import { useGame } from "@/lib/store";
 import { Icon, MediaView } from "./ui";
 
-// Draft copy (Task 10 runs the basic-English pass on these).
 const COPY = { members: "For members", testOutLocked: "Test out, for members" };
 
 // The path snakes left and right a little, like a trail.

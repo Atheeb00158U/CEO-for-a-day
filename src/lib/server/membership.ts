@@ -1,6 +1,7 @@
 // Payments (spec §4 and §4a): checkout, its verification, webhooks, cancelling, and who is a member.
 // Everything takes the Db, the Razorpay client and the env as arguments, so tests use memoryDb() and a fake client.
 import { isMember, type AccessContext } from "../access.ts";
+import { FOUNDING_USED, SEATS_FULL } from "../membership-view.ts";
 import { FOUNDING } from "../offer.ts";
 import type { Db, MembershipRow } from "./db.ts";
 import { GameError } from "./game.ts";
@@ -33,8 +34,6 @@ export function payEnv(e = process.env): PayEnv {
 }
 
 const DAY_MS = 86_400_000;
-const SEATS_FULL = "Founding seats are full";
-const FOUNDING_USED = "You lost your founding price when you cancelled";
 const TRY_AGAIN = "Try again";
 /** A seat is held this long, and any checkout can be paid only this long (Razorpay's expire_by). */
 const HOLD_S = 30 * 60;
@@ -72,6 +71,19 @@ async function cancelAt(rp: RazorpayClient, subscriptionId: string, atCycleEnd: 
 }
 
 /**
+ * Stop a new subscription we won't keep. If Razorpay can't, log it for a person (it could still be paid and charge
+ * with no access) and carry on, so the caller still gives the player the real reason.
+ */
+async function stopOrphan(db: Db, rp: RazorpayClient, subscriptionId: string, userId: string) {
+  try {
+    await cancelAt(rp, subscriptionId, false);
+  } catch {
+    console.error(`ORPHAN_SUBSCRIPTION: could not cancel unused subscription ${subscriptionId}; check by hand`);
+    await db.recordPaymentIssue("ORPHAN_SUBSCRIPTION", subscriptionId, userId);
+  }
+}
+
+/**
  * The first payment keeps the founding seat. If the hold ran out or moved before the money arrived, take a free seat
  * now. With none free the player still paid ₹99 and stays a member: log it for a person to sort out (no PII).
  */
@@ -86,6 +98,8 @@ export async function startCheckout(db: Db, rp: RazorpayClient, env: PayEnv, use
   const current = await db.getMembership(userId);
   if (isMember(current, now)) throw new GameError("Already a member");
   const live = current && !FINAL.has(current.status) ? current : null;
+  // What Razorpay says the old checkout is now: paid, already over (e.g. expired after 30 minutes), or still open.
+  let ended: string | null = null;
   if (live) {
     // The old checkout may be paid already (the verify call failed, or its webhook hasn't landed): ask Razorpay, and
     // if so, keep it as the membership rather than cancel a subscription the player paid for.
@@ -97,6 +111,7 @@ export async function startCheckout(db: Db, rp: RazorpayClient, env: PayEnv, use
       forgetAccess(userId);
       throw new GameError("Already a member");
     }
+    if (FINAL.has(remote.status)) ended = remote.status;
   }
   if (plan === "founding") {
     // Cancelling gives up the founding price (spec §3); the paywall offers the regular plans instead.
@@ -108,23 +123,25 @@ export async function startCheckout(db: Db, rp: RazorpayClient, env: PayEnv, use
   }
   // Only one checkout per player is ever live: the row below replaces the old one, so a payment on the old one would
   // give no access yet keep charging. Stop it first; if Razorpay can't, start nothing new.
+  // One Razorpay already ended needs no cancel: save it with its own final status.
   if (live) {
-    await cancelAt(rp, live.subscriptionId, false);
+    if (!ended) await cancelAt(rp, live.subscriptionId, false);
     if (live.plan === "founding") await db.cancelSeat(live.subscriptionId);
-    if (!(await db.replaceMembership(userId, live.subscriptionId, { ...live, status: "cancelled" }))) throw new GameError(TRY_AGAIN);
+    const status = ended ?? "cancelled";
+    if (!(await db.replaceMembership(userId, live.subscriptionId, { ...live, status }))) throw new GameError(TRY_AGAIN);
   }
   // No checkout can be paid after 30 minutes (a founding one's seat hold runs out then too).
   const expireBy = Math.floor(now.getTime() / 1000) + HOLD_S;
   const sub = await rp.createSubscription(env.plans[plan], env.totalCount[plan], { userId, plan }, expireBy);
   if (plan === "founding" && (await db.claimSeat(userId, sub.id)) === null) {
-    await rp.cancelSubscription(sub.id, false);
+    await stopOrphan(db, rp, sub.id, userId);
     throw new GameError((await db.hasKeptSeat(userId)) ? FOUNDING_USED : SEATS_FULL);
   }
   // Only if nothing else (another tab's checkout, a webhook) changed the membership meanwhile; otherwise this new
   // subscription would be orphaned, so stop it at once.
   const row: MembershipRow = { userId, plan, subscriptionId: sub.id, status: "created", currentEnd: null };
   if (!(await db.replaceMembership(userId, current?.subscriptionId ?? null, row))) {
-    await cancelAt(rp, sub.id, false);
+    await stopOrphan(db, rp, sub.id, userId);
     if (plan === "founding") await db.cancelSeat(sub.id);
     throw new GameError(TRY_AGAIN);
   }

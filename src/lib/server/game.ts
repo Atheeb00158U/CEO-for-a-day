@@ -137,13 +137,14 @@ const noteOf = (r: {
 export async function membershipView(db: Db, userId: string, now = new Date()): Promise<MembershipView | null> {
   const m = await db.getMembership(userId);
   if (!m) return null;
-  const seat = m.plan === "founding" ? await db.seatOf(m.subscriptionId) : null;
+  const [seat, foundingUsed] = await Promise.all([m.plan === "founding" ? db.seatOf(m.subscriptionId) : null, db.hasKeptSeat(userId)]);
   return {
     plan: m.plan,
     status: m.status,
     currentEnd: m.currentEnd,
     member: isMember(m, now),
     ...(seat !== null ? { seat } : {}),
+    foundingUsed,
   };
 }
 

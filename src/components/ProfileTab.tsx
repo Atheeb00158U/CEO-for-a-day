@@ -14,7 +14,7 @@ const rs = (n: number) => `₹${n.toLocaleString("en-IN")}`;
 const day = (iso: string) =>
   new Date(iso).toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric", timeZone: "Asia/Kolkata" });
 
-// Draft copy for the membership card (Task 10 runs the basic-English pass on these).
+// Copy for the membership card.
 const MEMBER_COPY = {
   title: "Membership",
   plan: { founding: "Founding member", monthly: "Monthly plan", yearly: "Yearly plan" },

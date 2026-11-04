@@ -9,7 +9,6 @@ import { questsFor, today, useGame } from "@/lib/store";
 import { CoursePath } from "./CoursePath";
 import { Bar, Card, Icon, MediaView } from "./ui";
 
-// Draft copy (Task 10 runs the basic-English pass on these).
 const COPY = { members: "For members" };
 
 export function HomeTab({
