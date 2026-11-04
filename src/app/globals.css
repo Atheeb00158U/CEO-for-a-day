@@ -265,3 +265,11 @@ body {
     transition: none !important;
   }
 }
+
+/* Razorpay Checkout must always take taps, even if a dialog left `pointer-events: none` on <body>. */
+.razorpay-container,
+.razorpay-container *,
+.razorpay-checkout-frame,
+.razorpay-backdrop {
+  pointer-events: auto !important;
+}

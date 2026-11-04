@@ -52,6 +52,9 @@ const brandColour = () => getComputedStyle(document.documentElement).getProperty
  */
 export async function openCheckout(o: { keyId: string; subscriptionId: string; description: string; email?: string }) {
   const Razorpay = await loadCheckout();
+  // A Radix sheet that just closed can leave `pointer-events: none` on <body>; Razorpay's frame lives in <body>,
+  // so every tap on it would be ignored. Clear it (globals.css also forces Razorpay's frame to take taps).
+  document.body.style.removeProperty("pointer-events");
   return new Promise<CheckoutSuccess>((resolve, reject) => {
     new Razorpay({
       key: o.keyId,
