@@ -329,14 +329,36 @@ export interface Db {
 
   /* Chats. */
   chatByPair(pair: string): Promise<{ id: number } | null>;
-  /** Makes the chat and its members; a pair that already has one gets that chat. */
-  createChat(pair: string, createdBy: string, members: { userId: string; state: ChatMemberRow["state"] }[], at: string): Promise<number>;
+  /**
+   * The pair's chat, made with its members if it has none, under the creator's daily limits (counted from a log that
+   * leaving the Club doesn't clear). null: over the limits. One at a time per creator (rpc club_start_chat).
+   */
+  startChat(input: {
+    pair: string;
+    creator: string;
+    other: string;
+    request: boolean;
+    since: string;
+    perDay: number;
+    requestsPerDay: number;
+    at: string;
+  }): Promise<number | null>;
   chatMembers(chatId: number): Promise<ChatMemberRow[]>;
   setMember(chatId: number, userId: string, patch: Partial<Omit<ChatMemberRow, "chatId" | "userId">>): Promise<void>;
   /** Newest first, chats with something this player may see (rpc club_inbox). */
-  inbox(userId: string, state: "active" | "request", before: string | null, limit: number): Promise<InboxRow[]>;
-  /** Saves once per (sender, clientId) and moves the chat to the top unless held (rpc club_send). */
-  sendMessage(row: Omit<MessageRow, "id" | "hiddenAt" | "createdAt">, at: string): Promise<MessageRow>;
+  inbox(userId: string, state: "active" | "request", before: { at: string; id: number } | null, limit: number): Promise<InboxRow[]>;
+  /**
+   * Saves once per (chat, sender, clientId) and moves the chat to the top unless held, with the chat locked (rpc
+   * club_send). `fresh` is false for a retry: the saved row comes back and nothing else may happen. null: the sender
+   * already sent `requestCap` messages and the other player hasn't accepted.
+   */
+  sendMessage(
+    row: Omit<MessageRow, "id" | "hiddenAt" | "createdAt">,
+    at: string,
+    requestCap: number,
+  ): Promise<{ row: MessageRow; fresh: boolean } | null>;
+  /** Move a chat to the top (a held message a moderator kept). */
+  bumpChat(chatId: number, messageId: number, at: string): Promise<void>;
   getMessage(id: number): Promise<MessageRow | null>;
   /** Not hidden; ascending by id. `before`: the newest `limit` below it; `after`: the first `limit` above it. */
   messages(chatId: number, opts: { before?: number; after?: number; afterCleared: number; limit: number }): Promise<MessageRow[]>;
@@ -346,8 +368,7 @@ export interface Db {
   setMessageState(id: number, patch: { held?: boolean; hiddenAt?: string | null }): Promise<void>;
   /** "Ban and hide everything": hides every message they sent and returns them. */
   hideMessagesBy(senderId: string, at: string): Promise<MessageRow[]>;
-  /** Chats this player started since then; `requestsOnly`: those that began as a request. */
-  countChatsSince(userId: string, since: string, requestsOnly: boolean): Promise<number>;
+  /** Unread chats and waiting requests, leaving out players blocked either way (rpc club_unread). */
   unreadChats(userId: string): Promise<{ chats: number; requests: number }>;
   /** Chat pushes (kinds starting dm:) a player got that day. */
   dmNoticesOn(userId: string, day: string): Promise<number>;
@@ -510,6 +531,7 @@ export function memoryDb(): Db & {
       profiles.delete(id);
       // As the migration's cascades: the Club profile and all it owns, the ban; reports keep their snapshot.
       club.dropProfile(id);
+      for (let i = club.chatLog.length - 1; i >= 0; i--) if (club.chatLog[i].userId === id) club.chatLog.splice(i, 1);
       club.bans.delete(id);
       for (const r of club.reports) if (r.reporterId === id) r.reporterId = null;
       accounts.delete(id);
@@ -621,6 +643,8 @@ function clubStore() {
   const chats: { id: number; pair: string; createdBy: string | null; lastAt: string; createdAt: string }[] = [];
   const members: ChatMemberRow[] = [];
   const messages: MessageRow[] = [];
+  /** club_chat_log: chats started, keyed to the account, so leaving the Club doesn't clear it. */
+  const chatLog: { userId: string; request: boolean; createdAt: string }[] = [];
   let nextId = 1;
   const clone = <T>(x: T): T => structuredClone(x);
   const prune = <T>(list: T[], gone: (x: T) => boolean) => {
@@ -711,7 +735,8 @@ function clubStore() {
     | "markActivitySeen"
     | "unseenActivity"
     | "chatByPair"
-    | "createChat"
+    | "startChat"
+    | "bumpChat"
     | "chatMembers"
     | "setMember"
     | "inbox"
@@ -722,7 +747,6 @@ function clubStore() {
     | "countMessages"
     | "setMessageState"
     | "hideMessagesBy"
-    | "countChatsSince"
     | "unreadChats"
   > = {
     async clubProfile(id) {
@@ -937,12 +961,16 @@ function clubStore() {
       const c = chats.find((x) => x.pair === pair);
       return c ? { id: c.id } : null;
     },
-    async createChat(pair, createdBy, list, at) {
+    async startChat({ pair, creator, other, request, since: from, perDay, requestsPerDay, at }) {
       const old = chats.find((x) => x.pair === pair);
       if (old) return old.id;
+      const mine = chatLog.filter((l) => l.userId === creator && since(l.createdAt, from));
+      if (mine.length >= perDay || (request && mine.filter((l) => l.request).length >= requestsPerDay)) return null;
       const id = nextId++;
-      chats.push({ id, pair, createdBy, lastAt: at, createdAt: at });
-      for (const m of list) members.push({ chatId: id, userId: m.userId, state: m.state, lastReadId: 0, clearedId: 0, activeAt: null });
+      chats.push({ id, pair, createdBy: creator, lastAt: at, createdAt: at });
+      members.push({ chatId: id, userId: creator, state: "active", lastReadId: 0, clearedId: 0, activeAt: null });
+      members.push({ chatId: id, userId: other, state: request ? "request" : "active", lastReadId: 0, clearedId: 0, activeAt: null });
+      chatLog.push({ userId: creator, request, createdAt: at });
       return id;
     },
     async chatMembers(chatId) {
@@ -956,7 +984,7 @@ function clubStore() {
       const out: InboxRow[] = [];
       for (const me of members.filter((m) => m.userId === userId && m.state === state)) {
         const c = chats.find((x) => x.id === me.chatId)!;
-        if (before && c.lastAt >= before) continue;
+        if (before && (c.lastAt > before.at || (c.lastAt === before.at && c.id >= before.id))) continue;
         const last = messages
           .filter((x) => x.chatId === c.id && !x.hiddenAt && (!x.held || x.senderId === userId) && x.id > me.clearedId)
           .at(-1);
@@ -966,14 +994,22 @@ function clubStore() {
       }
       return out.sort((a, b) => b.lastAt.localeCompare(a.lastAt) || b.chatId - a.chatId).slice(0, limit);
     },
-    async sendMessage(row, at) {
-      const old = messages.find((m) => m.senderId === row.senderId && m.clientId === row.clientId);
-      if (old) return clone(old);
+    async sendMessage(row, at, requestCap) {
+      const old = messages.find((m) => m.chatId === row.chatId && m.senderId === row.senderId && m.clientId === row.clientId);
+      if (old) return { row: clone(old), fresh: false };
+      const waiting = members.some(
+        (m) => m.chatId === row.chatId && m.userId !== row.senderId && (m.state === "request" || m.state === "declined"),
+      );
+      if (waiting && messages.filter((m) => m.chatId === row.chatId && m.senderId === row.senderId).length >= requestCap) return null;
       const m: MessageRow = { ...clone(row), id: nextId++, hiddenAt: null, createdAt: at };
       messages.push(m);
       const c = chats.find((x) => x.id === row.chatId);
       if (c && !row.held) c.lastAt = at;
-      return clone(m);
+      return { row: clone(m), fresh: true };
+    },
+    async bumpChat(chatId, _messageId, at) {
+      const c = chats.find((x) => x.id === chatId);
+      if (c) c.lastAt = at;
     },
     async getMessage(id) {
       return clone(messages.find((m) => m.id === id) ?? null);
@@ -1004,15 +1040,14 @@ function clubStore() {
       for (const m of hit) m.hiddenAt = at;
       return clone(hit);
     },
-    async countChatsSince(userId, from, requestsOnly) {
-      const asked = (id: number) =>
-        members.some((m) => m.chatId === id && m.userId !== userId && (m.state === "request" || m.state === "declined"));
-      return chats.filter((c) => c.createdBy === userId && since(c.createdAt, from) && (!requestsOnly || asked(c.id))).length;
-    },
     async unreadChats(userId) {
       let chatsN = 0;
       let requests = 0;
+      const blocked = (other: string) =>
+        blocks.some((b) => (b.blocker === userId && b.blocked === other) || (b.blocker === other && b.blocked === userId));
       for (const me of members.filter((m) => m.userId === userId)) {
+        const other = members.find((m) => m.chatId === me.chatId && m.userId !== userId);
+        if (other && blocked(other.userId)) continue;
         const shown = messages.filter((x) => x.chatId === me.chatId && !x.hiddenAt && !x.held && x.id > me.clearedId);
         if (me.state === "active" && shown.some((x) => x.senderId !== userId && x.id > me.lastReadId)) chatsN++;
         if (me.state === "request" && shown.length) requests++;
@@ -1020,7 +1055,23 @@ function clubStore() {
       return { chats: chatsN, requests };
     },
   };
-  return { profiles, bans, posts, likes, follows, blocks, reports, activity, postLog, chats, members, messages, dropProfile, methods };
+  return {
+    profiles,
+    bans,
+    posts,
+    likes,
+    follows,
+    blocks,
+    reports,
+    activity,
+    postLog,
+    chats,
+    members,
+    messages,
+    chatLog,
+    dropProfile,
+    methods,
+  };
 }
 
 /* ------------------------------------------------------------------ */
@@ -1803,19 +1854,22 @@ export function supabaseDb(sb = supabaseAdmin()): Db {
       const r = must<{ id: number } | null>(await sb.from("club_chats").select("id").eq("pair", pair).maybeSingle());
       return r && { id: Number(r.id) };
     },
-    async createChat(pair, createdBy, members, at) {
-      const { data, error } = await sb
-        .from("club_chats")
-        .insert({ pair, created_by: createdBy, last_at: at, created_at: at })
-        .select("id")
-        .single();
+    async startChat({ pair, creator, other, request, since, perDay, requestsPerDay }) {
+      const { data, error } = await sb.rpc("club_start_chat", {
+        p_pair: pair,
+        p_creator: creator,
+        p_other: other,
+        p_request: request,
+        p_since: since,
+        p_per_day: perDay,
+        p_requests_per_day: requestsPerDay,
+      });
+      if (error?.message.includes("club_chat_cap")) return null;
       if (duplicate(error))
-        // two taps at once: the other request made it
+        // both players started it at once: the other one made it
         return Number(must<{ id: number }>(await sb.from("club_chats").select("id").eq("pair", pair).single()).id);
       if (error) throw new Error(error.message);
-      const id = Number(data.id);
-      must(await sb.from("club_chat_members").insert(members.map((m) => ({ chat_id: id, user_id: m.userId, state: m.state }))));
-      return id;
+      return Number(data);
     },
     async chatMembers(chatId) {
       return list(await sb.from("club_chat_members").select("*").eq("chat_id", chatId)).map(memberOf);
@@ -1830,7 +1884,13 @@ export function supabaseDb(sb = supabaseAdmin()): Db {
     },
     async inbox(userId, state, before, limit) {
       const rows = list<Record<string, unknown>>(
-        await sb.rpc("club_inbox", { p_user: userId, p_state: state, p_before: before ?? "infinity", p_limit: limit }),
+        await sb.rpc("club_inbox", {
+          p_user: userId,
+          p_state: state,
+          p_before: before?.at ?? "infinity",
+          p_before_id: before?.id ?? 0,
+          p_limit: limit,
+        }),
       );
       return rows.map((r) => ({
         chatId: Number(r.chat_id),
@@ -1850,21 +1910,25 @@ export function supabaseDb(sb = supabaseAdmin()): Db {
         }),
       }));
     },
-    async sendMessage(row, at) {
-      const r = must<Record<string, unknown>>(
-        await sb
-          .rpc("club_send", {
-            p_chat: row.chatId,
-            p_sender: row.senderId,
-            p_client: row.clientId,
-            p_body: row.body,
-            p_flagged: row.flagged,
-            p_held: row.held,
-          })
-          .single(),
-      );
+    async sendMessage(row, at, requestCap) {
       void at; // the database stamps created_at
-      return messageOf(r);
+      const { data, error } = await sb
+        .rpc("club_send", {
+          p_chat: row.chatId,
+          p_sender: row.senderId,
+          p_client: row.clientId,
+          p_body: row.body,
+          p_flagged: row.flagged,
+          p_held: row.held,
+          p_request_cap: requestCap,
+        })
+        .single<Record<string, unknown>>();
+      if (error?.message.includes("club_request_cap")) return null;
+      if (error) throw new Error(error.message);
+      return { row: messageOf(data), fresh: !!data.fresh };
+    },
+    async bumpChat(chatId, messageId, at) {
+      must(await sb.from("club_chats").update({ last_message_id: messageId, last_at: at }).eq("id", chatId));
     },
     async getMessage(id) {
       const r = must<Record<string, unknown> | null>(await sb.from("club_messages").select("*").eq("id", id).maybeSingle());
@@ -1907,20 +1971,6 @@ export function supabaseDb(sb = supabaseAdmin()): Db {
       return list(await sb.from("club_messages").update({ hidden_at: at }).eq("sender_id", senderId).is("hidden_at", null).select("*")).map(
         messageOf,
       );
-    },
-    async countChatsSince(userId, since, requestsOnly) {
-      const ids = list<{ id: number }>(
-        await sb.from("club_chats").select("id").eq("created_by", userId).gte("created_at", since).limit(100),
-      ).map((r) => r.id);
-      if (!requestsOnly || !ids.length) return ids.length;
-      const { count, error } = await sb
-        .from("club_chat_members")
-        .select("chat_id", { count: "exact", head: true })
-        .in("chat_id", ids)
-        .neq("user_id", userId)
-        .in("state", ["request", "declined"]);
-      if (error) throw new Error(error.message);
-      return count ?? 0;
     },
     async unreadChats(userId) {
       const r = must<{ chats: number; requests: number }>(await sb.rpc("club_unread", { p_user: userId }).single());

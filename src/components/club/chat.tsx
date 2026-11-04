@@ -196,6 +196,7 @@ export function Chat({ id }: { id: string }) {
     const off = onLive((e) => {
       if (e.payload.chatId !== chatId) return;
       if (e.event === "msg") {
+        if (e.payload.message.chatId !== chatId) return; // only a message of this chat
         setMessages((list) => merge(list, [e.payload.message]));
         if (!e.payload.message.mine) setTypingUntil(0);
       } else if (e.event === "seen") setView((v) => v && { ...v, theirLastRead: Math.max(v.theirLastRead, e.payload.lastId) });

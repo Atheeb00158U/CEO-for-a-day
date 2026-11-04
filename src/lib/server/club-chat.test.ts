@@ -374,3 +374,136 @@ describe("reports, clearing and deleting", () => {
     expect(db.club.messages).toEqual([]);
   });
 });
+
+describe("PR #18 review fixes", () => {
+  const bodies = (events: { userId: string; e: LiveEvent }[], u: string) =>
+    events.filter((e) => e.userId === u && e.e.event === "msg").map((e) => (e.e.payload as { message: { body: string } }).message.body);
+
+  it("1a. a retry of a removed message returns the row and sends nothing", async () => {
+    const { db, chatId } = await pair();
+    await phone(db, "b");
+    const first = fakeSide();
+    await sendMessage(db, "a", chatId, { body: "you are useless", clientId: "k1" }, T0, first.side);
+    await first.settle();
+    await report(db, "b", { kind: "message", id: db.club.messages[0].id, reason: "harass" }, T0, first.side);
+    await moderate(db, { reportId: db.club.reports.at(-1)!.id, action: "remove" }, T0);
+    const s = fakeSide();
+    await sendMessage(db, "a", chatId, { body: "you are useless", clientId: "k1" }, at(90), s.side);
+    await s.settle();
+    expect(s.events).toEqual([]);
+    expect(s.pushes).toEqual([]);
+    expect(db.club.messages).toHaveLength(1);
+  });
+
+  it("1b. the same clientId in another chat is a new message; held text never leaves its chat", async () => {
+    const { db, chatId } = await pair();
+    await joinAs(db, "c");
+    const toC = (await startChat(db, "a", { handle: "ccc" }, T0)).chatId; // c doesn't follow a: a request
+    const s = fakeSide();
+    const held = await sendMessage(db, "a", toC, { body: "see shopname.in", clientId: "same" }, T0, s.side);
+    expect(held.message.held).toBe(true);
+    const y = await sendMessage(db, "a", chatId, { body: "hello b", clientId: "same" }, T0, s.side);
+    await s.settle();
+    expect(y.message.id).not.toBe(held.message.id);
+    expect(y.message.chatId).toBe(chatId);
+    expect(bodies(s.events, "b")).toEqual(["hello b"]);
+    expect(bodies(s.events, "c")).toEqual([]);
+    expect(bodies(s.events, "a")).toEqual(["hello b"]); // the held row isn't broadcast, even to the sender
+  });
+
+  it("2. the request cap holds when sends race", async () => {
+    const { db, chatId } = await pair(true);
+    const s = fakeSide();
+    const tries = await Promise.allSettled([1, 2, 3, 4, 5].map((i) => say(db, "a", chatId, `m${i}`, s.side)));
+    expect(tries.filter((t) => t.status === "fulfilled")).toHaveLength(3);
+    expect(db.club.messages).toHaveLength(3);
+  });
+
+  it("3. the daily chat limits hold when starts race, and survive leaving and joining again", async () => {
+    const db = memoryDb();
+    await poster(db, "a");
+    const others = ["b", "c", "d", "e", "f", "g", "h"];
+    for (const u of others) await joinAs(db, u);
+    const tries = await Promise.allSettled(others.map((u) => startChat(db, "a", { handle: hd(u) }, T0)));
+    expect(tries.filter((t) => t.status === "fulfilled")).toHaveLength(5);
+    await leave(db, "a", T0);
+    await db.setClubBan("a", null); // even without the 24-hour wait
+    await joinAs(db, "a");
+    expect(db.club.chatLog.filter((l) => l.userId === "a")).toHaveLength(5);
+    await expect(startChat(db, "a", { handle: "hhh" }, at(1))).rejects.toThrow(CLUB_COPY.tooManyChats);
+  });
+
+  it("4. the red dot leaves out chats with blocked players", async () => {
+    const { db, chatId } = await pair();
+    const s = fakeSide();
+    await say(db, "a", chatId, "hello", s.side);
+    expect((await badge(db, "b")).chats).toBe(1);
+    await block(db, "b", { handle: "aaa" }, T0);
+    expect((await badge(db, "b")).chats).toBe(0);
+    expect((await badge(db, "a")).chats).toBe(0);
+  });
+
+  it("5. seen is clamped to the chat's newest message", async () => {
+    const { db, chatId } = await pair();
+    const s = fakeSide();
+    const m = (await say(db, "a", chatId, "hello", s.side)).message;
+    await seen(db, "b", chatId, { lastId: 999_999 }, T0, s.side);
+    expect(db.club.members.find((x) => x.userId === "b")?.lastReadId).toBe(m.id);
+    await s.settle();
+    expect(s.events.filter((e) => e.e.event === "seen")).toEqual([
+      { userId: "a", e: { event: "seen", payload: { chatId, lastId: m.id } } },
+    ]);
+  });
+
+  it("6. a request can be reported after it was deleted", async () => {
+    const { db, chatId } = await pair(true);
+    const s = fakeSide();
+    const m = (await say(db, "a", chatId, "you are useless", s.side)).message;
+    await decline(db, "b", chatId);
+    await report(db, "b", { kind: "message", id: m.id, reason: "harass" }, T0, s.side);
+    expect(db.club.reports.find((r) => r.reporterId === "b")).toMatchObject({ targetKind: "message", snapshot: "you are useless" });
+  });
+
+  it("7. a held message a moderator keeps reaches the chat: top of the list, live and a push", async () => {
+    const { db, chatId } = await pair(true);
+    await phone(db, "b");
+    const s = fakeSide();
+    const before = db.club.chats.find((c) => c.id === chatId)!.lastAt;
+    await say(db, "a", chatId, "see shopname.in", s.side);
+    await s.settle();
+    expect(s.events).toEqual([]);
+    const k = fakeSide();
+    await moderate(db, { reportId: db.club.reports.at(-1)!.id, action: "keep" }, at(30), k.side);
+    await k.settle();
+    expect(bodies(k.events, "b")).toEqual(["see shopname.in"]);
+    expect(k.pushes.map((p) => p.title)).toEqual([CLUB_COPY.pushRequest("A")]);
+    expect(db.club.chats.find((c) => c.id === chatId)!.lastAt).not.toBe(before);
+    expect((await chats(db, "b", "request", null)).chats).toHaveLength(1);
+  });
+
+  it("9. the inbox pages by (last_at, chat id) without skipping ties", async () => {
+    const db = memoryDb();
+    await joinAs(db, "z");
+    const same = T0.toISOString();
+    for (let i = 0; i < 32; i++) {
+      await joinAs(db, `q${i}`);
+      const id = (await db.startChat({
+        pair: `q${i}:z`,
+        creator: `q${i}`,
+        other: "z",
+        request: false,
+        since: same,
+        perDay: 99,
+        requestsPerDay: 99,
+        at: same,
+      }))!;
+      await db.sendMessage({ chatId: id, senderId: `q${i}`, clientId: "c", body: "hi", flagged: null, held: false }, same, 3);
+    }
+    const one = await chats(db, "z", "active", null);
+    const two = await chats(db, "z", "active", one.before);
+    const ids = [...one.chats, ...two.chats].map((c) => c.id);
+    expect(one.chats).toHaveLength(30);
+    expect(new Set(ids).size).toBe(32);
+    expect(two.before).toBeUndefined();
+  });
+});

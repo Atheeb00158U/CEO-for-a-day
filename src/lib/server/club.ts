@@ -687,7 +687,7 @@ export async function report(db: Db, userId: string, body: Record<string, unknow
   } else if (body.kind === "message") {
     const msg = await db.getMessage(idOf(body.id));
     if (!msg || msg.hiddenAt || (msg.held && msg.senderId !== userId)) throw new GameError(CLUB_COPY.notFound);
-    await chatOf(db, m, msg.chatId, CLUB_COPY.notFound);
+    await chatOf(db, m, msg.chatId, CLUB_COPY.notFound, true); // a request they deleted can still be reported
     target = { kind: "message", id: String(msg.id), user: msg.senderId, snapshot: msg.body };
   } else throw new GameError(CLUB_COPY.error);
   const midnight = istMidnight(now);
@@ -744,14 +744,25 @@ export type ModAction = (typeof ACTIONS)[number];
 const BAN_DAYS: Partial<Record<ModAction, number>> = { ban7: 7, ban30: 30 };
 
 /** /admin/club: act on a report's target and author, then resolve every open report on that target. */
-export async function moderate(db: Db, input: { reportId: number; action: ModAction; hideAll?: boolean }, now = new Date()) {
+export async function moderate(
+  db: Db,
+  input: { reportId: number; action: ModAction; hideAll?: boolean },
+  now = new Date(),
+  side: Side = background,
+) {
   const r = await db.getReport(input.reportId);
   if (!r) return null;
   const at = now.toISOString();
   const { action } = input;
   const author = r.targetUser;
   const removes = action !== "keep" && action !== "lift";
+  const held = r.targetKind === "message" && action === "keep" ? await db.getMessage(Number(r.targetId)) : null;
   await hideTarget(db, r.targetKind, r.targetId, removes ? at : null);
+  // A held message a moderator kept reaches the chat now: it moves to the top, live and with a push.
+  if (held?.held && !held.hiddenAt) {
+    await db.bumpChat(held.chatId, held.id, at);
+    await deliverMessage(db, { ...held, held: false }, now, side);
+  }
   if (author && action.startsWith("ban"))
     await db.setClubBan(author, BAN_DAYS[action] ? new Date(now.getTime() + BAN_DAYS[action]! * 24 * H).toISOString() : "infinity", "mod");
   if (author && action === "lift") await db.setClubBan(author, null);
@@ -893,11 +904,14 @@ interface ChatCtx {
   otherProfile: ClubProfileRow | null;
 }
 
-/** A chat `m` is in (not a request they deleted), with the other side; refused when blocked either way. */
-async function chatOf(db: Db, m: Me, id: number, refusal: string = CLUB_COPY.chatGone): Promise<ChatCtx> {
+/**
+ * A chat `m` is in (not a request they deleted, unless `declinedToo`), with the other side; refused when blocked
+ * either way.
+ */
+async function chatOf(db: Db, m: Me, id: number, refusal: string = CLUB_COPY.chatGone, declinedToo = false): Promise<ChatCtx> {
   const members = await db.chatMembers(id);
   const mine = members.find((x) => x.userId === m.userId);
-  if (!mine || mine.state === "declined" || mine.state === "left") throw new GameError(refusal);
+  if (!mine || (mine.state === "declined" && !declinedToo) || mine.state === "left") throw new GameError(refusal);
   const other = members.find((x) => x.userId !== m.userId);
   if (other && m.blocked.has(other.userId)) throw new GameError(refusal);
   return { mine, other, otherProfile: other ? await db.clubProfile(other.userId) : null };
@@ -939,22 +953,17 @@ export async function startChat(db: Db, userId: string, body: Record<string, unk
   // New members get half the daily limits, as for posts.
   const isNew = now.getTime() - Date.parse(m.profile!.createdAt) < LIMITS.newMs;
   const cap = (n: number) => (isNew ? Math.floor(n / 2) : n);
-  const midnight = istMidnight(now);
-  const request = !(await db.follows(p.userId, userId));
-  if (
-    (await db.countChatsSince(userId, midnight, false)) >= cap(LIMITS.chats.perDay) ||
-    (request && (await db.countChatsSince(userId, midnight, true)) >= cap(LIMITS.chats.requestsPerDay))
-  )
-    throw new GameError(CLUB_COPY.tooManyChats);
-  const chatId = await db.createChat(
+  const chatId = await db.startChat({
     pair,
-    userId,
-    [
-      { userId, state: "active" },
-      { userId: p.userId, state: request ? "request" : "active" },
-    ],
-    now.toISOString(),
-  );
+    creator: userId,
+    other: p.userId,
+    request: !(await db.follows(p.userId, userId)),
+    since: istMidnight(now),
+    perDay: cap(LIMITS.chats.perDay),
+    requestsPerDay: cap(LIMITS.chats.requestsPerDay),
+    at: now.toISOString(),
+  });
+  if (chatId === null) throw new GameError(CLUB_COPY.tooManyChats);
   return { chatId };
 }
 
@@ -962,8 +971,7 @@ export async function startChat(db: Db, userId: string, body: Record<string, unk
 export async function chats(db: Db, userId: string, state: "active" | "request", before: unknown) {
   const m = await meOf(db, userId);
   if (!m.profile) throw new ClubGateError("join");
-  const from = typeof before === "string" && !Number.isNaN(Date.parse(before)) ? before : null;
-  const rows = await db.inbox(userId, state, from, INBOX_PAGE);
+  const rows = await db.inbox(userId, state, inboxCursor(before), INBOX_PAGE);
   const shown = rows.filter((r) => !(r.otherId && m.blocked.has(r.otherId)));
   const profiles = new Map((await db.clubProfiles(shown.flatMap((r) => (r.otherId ? [r.otherId] : [])))).map((p) => [p.userId, p]));
   const list: ChatRow[] = shown.map((r) => ({
@@ -974,7 +982,14 @@ export async function chats(db: Db, userId: string, state: "active" | "request",
     unread: r.last.senderId !== userId && (state === "request" || r.last.id > r.lastReadId),
   }));
   const { requests } = await db.unreadChats(userId);
-  return { chats: list, requests, ...(rows.length === INBOX_PAGE ? { before: rows.at(-1)!.lastAt } : {}) };
+  const end = rows.at(-1);
+  return { chats: list, requests, ...(rows.length === INBOX_PAGE && end ? { before: `${end.lastAt}|${end.chatId}` } : {}) };
+}
+
+/** "<last_at>|<chat id>": chats with the same last_at are never skipped. */
+function inboxCursor(x: unknown): { at: string; id: number } | null {
+  const [at, id] = typeof x === "string" ? x.split("|") : [];
+  return at && !Number.isNaN(Date.parse(at)) && Number.isSafeInteger(Number(id)) ? { at, id: Number(id) } : null;
 }
 
 /** One chat: a page of messages (`before` for older, `after` to catch up), and the other side's "Seen". */
@@ -1036,13 +1051,18 @@ export async function sendMessage(
   if (!clientId) throw new GameError(CLUB_COPY.error);
   const flag = autoFlag(text);
   if (flag.refuse) throw new GameError(flag.refuse);
-  const waiting = asked(other);
-  if (waiting && (await db.countMessages(chatId, userId)) >= LIMITS.chats.requestMessages)
-    throw new GameError(CLUB_COPY.waitAccept(otherProfile!.name));
-  const held = waiting && !!flag.hold;
+  const held = asked(other) && !!flag.hold;
   const at = now.toISOString();
-  const row = await db.sendMessage({ chatId, senderId: userId, clientId, body: text, flagged: flag.hold ?? null, held }, at);
-  if (flag.hold && !(await db.openReportsOn("message", String(row.id))).length) {
+  const sent = await db.sendMessage(
+    { chatId, senderId: userId, clientId, body: text, flagged: flag.hold ?? null, held },
+    at,
+    LIMITS.chats.requestMessages,
+  );
+  if (!sent) throw new GameError(CLUB_COPY.waitAccept(otherProfile!.name));
+  const { row } = sent;
+  // A retry (same chat and clientId) gets the saved row back and nothing else happens.
+  if (!sent.fresh) return { message: viewOf(row, userId) };
+  if (flag.hold) {
     await db.insertReport({
       reporterId: null,
       targetKind: "message",
@@ -1056,18 +1076,32 @@ export async function sendMessage(
     });
     side.later(() => tellModerators(db, flag.hold!, side.send));
   }
-  const reaches = !held && other.state !== "declined";
-  // The sender's own other phones always hear it; the other player only when it reaches them.
+  await deliverMessage(db, row, now, side);
+  return { message: viewOf(row, userId) };
+}
+
+/**
+ * A new message reaches the chat: live to the other player and to the sender's own other phones, and a push. Never a
+ * hidden or held row, nothing to a request the receiver deleted, and nothing across a block.
+ */
+async function deliverMessage(db: Db, row: MessageRow, now: Date, side: Side) {
+  if (row.hiddenAt || row.held) return;
+  const [members, sender, blocks] = await Promise.all([db.chatMembers(row.chatId), db.clubProfile(row.senderId), db.blocks(row.senderId)]);
+  const other = members.find((x) => x.userId !== row.senderId);
+  const chatId = row.chatId;
+  const reaches = !!other && !!sender && other.state !== "declined" && !blocks.out.has(other.userId) && !blocks.in.has(other.userId);
   tell(side, [
-    { userId, e: { event: "msg", payload: { chatId, message: viewOf(row, userId) } } },
-    ...(reaches ? [{ userId: other.userId, e: { event: "msg" as const, payload: { chatId, message: viewOf(row, other.userId) } } }] : []),
+    { userId: row.senderId, e: { event: "msg", payload: { chatId, message: viewOf(row, row.senderId) } } },
+    ...(reaches ? [{ userId: other!.userId, e: { event: "msg" as const, payload: { chatId, message: viewOf(row, other!.userId) } } }] : []),
   ]);
   if (reaches) {
-    const name = m.profile!.name;
-    const to = other.userId;
-    const reading = !!other.activeAt && now.getTime() - Date.parse(other.activeAt) < OPEN_MS;
-    if (other.state === "active" && !reading) side.later(() => dmPush(db, to, chatId, name, side.send, now));
-    if (other.state === "request" && (await db.countMessages(chatId, userId)) === 1)
+    const name = sender!.name;
+    const to = other!.userId;
+    const reading = !!other!.activeAt && now.getTime() - Date.parse(other!.activeAt) < OPEN_MS;
+    if (other!.state === "active" && !reading) side.later(() => dmPush(db, to, chatId, name, side.send, now));
+    // A request pushes once: on the sender's first message the receiver can see.
+    const shown = (await db.messages(chatId, { afterCleared: 0, limit: 5 })).filter((x) => x.senderId === row.senderId && !x.held);
+    if (other!.state === "request" && shown.length === 1)
       side.later(() =>
         clubPush(
           db,
@@ -1084,7 +1118,6 @@ export async function sendMessage(
         ),
       );
   }
-  return { message: viewOf(row, userId) };
 }
 
 /** A chat push: quiet hours still apply, one per chat an hour, at most 10 a day, never the message text. */
@@ -1115,7 +1148,7 @@ export async function seen(db: Db, userId: string, id: unknown, body: Record<str
   const m = await meOf(db, userId);
   const chatId = idOf(id);
   const { mine, other } = await chatOf(db, m, chatId);
-  const lastId = idOf(body.lastId);
+  const lastId = Math.min(idOf(body.lastId), await db.lastMessageId(chatId));
   if (mine.state !== "active") return { ok: true };
   const moved = lastId > mine.lastReadId;
   await db.setMember(chatId, userId, { activeAt: now.toISOString(), ...(moved ? { lastReadId: lastId } : {}) });

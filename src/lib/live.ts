@@ -10,6 +10,9 @@ import type { LiveEvent } from "./community";
 type Listener = (e: LiveEvent) => void;
 const listeners = new Set<Listener>();
 let channel: RealtimeChannel | null = null;
+/** Whose topic the channel is on: a different player signing in gets a new channel. */
+let channelUser: string | null = null;
+let watching = false;
 let opening = false;
 let up = false;
 
@@ -22,6 +25,7 @@ async function open() {
     const id = data.session?.user.id;
     if (!id || !listeners.size || document.visibilityState !== "visible") return;
     await sb.realtime.setAuth(); // the player's own token, so the topic policy can check it
+    channelUser = id;
     channel = sb
       .channel(`user:${id}`, { config: { private: true } })
       .on("broadcast", { event: "*" }, (m) => listeners.forEach((f) => f({ event: m.event, payload: m.payload } as LiveEvent)))
@@ -35,6 +39,7 @@ function close() {
   up = false;
   if (channel) void supabase()?.removeChannel(channel);
   channel = null;
+  channelUser = null;
 }
 
 function sync() {
@@ -46,6 +51,16 @@ function sync() {
 export function onLive(fn: Listener): () => void {
   listeners.add(fn);
   if (listeners.size === 1) document.addEventListener("visibilitychange", sync);
+  if (!watching) {
+    // Sign-out, or another player signing in without a reload: drop the old player's channel.
+    watching = true;
+    supabase()?.auth.onAuthStateChange((_event, session) => {
+      if ((session?.user.id ?? null) !== channelUser) {
+        close();
+        sync();
+      }
+    });
+  }
   sync();
   return () => {
     listeners.delete(fn);
