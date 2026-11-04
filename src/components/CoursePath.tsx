@@ -1,11 +1,16 @@
 "use client";
 
 import { useMemo } from "react";
+import { showPaywall } from "@/lib/content-client";
 import { coursePath, type NodeState } from "@/lib/course-path";
 import type { CourseOutline } from "@/lib/course-types";
 import type { CatalogEntry } from "@/lib/hotseat-types";
+import { phoneLocks } from "@/lib/locks";
 import { useGame } from "@/lib/store";
 import { Icon, MediaView } from "./ui";
+
+// Draft copy (Task 10 runs the basic-English pass on these).
+const COPY = { members: "For members", testOutLocked: "Test out, for members" };
 
 // The path snakes left and right a little, like a trail.
 const SWAY = [0, 44, 64, 44, 0, -44, -64, -44];
@@ -36,8 +41,10 @@ export function CoursePath({
   onPractice: (title: string, lessonIds: string[]) => void;
   onPlay: (hotSeatId: string) => void;
 }) {
-  const { s } = useGame();
+  const { s, membership, paywall } = useGame();
   const path = useMemo(() => coursePath(outline, { lessons: s.lessons, best: s.best }), [outline, s.lessons, s.best]);
+  // Members-only items (a hint: the server's 402 is the real gate). A tap opens the offer straight away.
+  const locked = useMemo(() => phoneLocks(outline, membership, paywall, s), [outline, membership, paywall, s]);
   let n = 0; // node count, for the sway
   return (
     <div className="flex flex-col gap-8">
@@ -59,29 +66,39 @@ export function CoursePath({
                   <button
                     type="button"
                     onClick={() =>
-                      onTestOut(
-                        m.id,
-                        m.lessons.map((l) => l.id),
-                      )
+                      locked({ kind: "testout", id: m.id })
+                        ? showPaywall()
+                        : onTestOut(
+                            m.id,
+                            m.lessons.map((l) => l.id),
+                          )
                     }
-                    className="shrink-0 rounded-full border-2 border-line px-3 py-1.5 text-[12px] font-black tracking-wide text-brand uppercase"
+                    aria-label={locked({ kind: "testout", id: m.id }) ? COPY.testOutLocked : undefined}
+                    className="flex shrink-0 items-center gap-1 rounded-full border-2 border-line px-3 py-1.5 text-[12px] font-black tracking-wide text-brand uppercase"
                   >
+                    {locked({ kind: "testout", id: m.id }) && <Icon.lock className="size-4" />}
                     Test out
                   </button>
                 )}
               </div>
-              {m.lessons.map((l) => (
-                <Node
-                  key={l.id}
-                  sway={SWAY[n++ % SWAY.length]}
-                  state={l.state}
-                  label={l.title}
-                  sub={l.state === "done" ? `Best ${l.best}%` : l.state === "locked" ? "Locked" : `${l.minutes} min`}
-                  onClick={() => onLesson(l.id)}
-                >
-                  {l.state === "done" ? <Icon.check /> : l.state === "locked" ? <Icon.lock /> : <Icon.play />}
-                </Node>
-              ))}
+              {m.lessons.map((l) => {
+                const paid = locked({ kind: "lesson", id: l.id });
+                return (
+                  <Node
+                    key={l.id}
+                    sway={SWAY[n++ % SWAY.length]}
+                    state={l.state}
+                    members={paid}
+                    label={l.title}
+                    sub={
+                      paid ? COPY.members : l.state === "done" ? `Best ${l.best}%` : l.state === "locked" ? "Locked" : `${l.minutes} min`
+                    }
+                    onClick={() => (paid ? showPaywall() : onLesson(l.id))}
+                  >
+                    {l.state === "done" ? <Icon.check /> : l.state === "locked" ? <Icon.lock /> : <Icon.play />}
+                  </Node>
+                );
+              })}
               <Node
                 sway={SWAY[n++ % SWAY.length]}
                 state={m.practice.state === "open" ? "open" : "locked"}
@@ -97,23 +114,27 @@ export function CoursePath({
                 const hs = catalog.find((c) => c.id === g.id);
                 if (!hs) return null;
                 const playable = hs.available && g.state !== "locked";
+                const paid = hs.available && locked({ kind: "hotseat", id: g.id });
                 return (
                   <Node
                     key={g.id}
                     sway={SWAY[n++ % SWAY.length]}
                     state={hs.available ? g.state : "locked"}
+                    members={paid}
                     size="lg"
                     label={`Hot Seat · ${hs.company}${hs.madeUp ? " (made-up story)" : ""}`}
                     sub={
                       !hs.available
                         ? "Coming soon"
-                        : g.state === "done"
-                          ? `Best ${s.best[g.id]}`
-                          : g.state === "locked"
-                            ? "Finish the lessons"
-                            : hs.title
+                        : paid
+                          ? COPY.members
+                          : g.state === "done"
+                            ? `Best ${s.best[g.id]}`
+                            : g.state === "locked"
+                              ? "Finish the lessons"
+                              : hs.title
                     }
-                    onClick={() => playable && onPlay(g.id)}
+                    onClick={() => (paid ? showPaywall() : playable && onPlay(g.id))}
                   >
                     {hs.emblem ? (
                       <MediaView media={hs.emblem} kenBurns={false} className="!absolute inset-0 !rounded-full" />
@@ -136,12 +157,15 @@ function Node({
   sway,
   size = "md",
   tone,
+  members = false,
   label,
   sub,
   onClick,
   children,
 }: {
   state: NodeState;
+  /** Members only: shows a lock badge, and a tap opens the offer even before the node unlocks. */
+  members?: boolean;
   sway: number;
   size?: "sm" | "md" | "lg";
   tone?: "purple";
@@ -155,7 +179,7 @@ function Node({
   return (
     <button
       type="button"
-      disabled={state === "locked"}
+      disabled={state === "locked" && !members}
       onClick={onClick}
       style={{ transform: `translateX(${sway}px)` }}
       className="flex flex-col items-center gap-1.5 text-center disabled:cursor-default"
@@ -164,7 +188,12 @@ function Node({
       <span className={`node-ring relative grid ${px} place-items-center rounded-full ${ring} ${state === "current" ? "bob" : ""}`}>
         {state === "current" && <span className="absolute -inset-[7px] rounded-full border-[5px] border-brand/30 border-t-brand" />}
         {children}
-        {state === "done" && size === "lg" && (
+        {members && (
+          <span className="absolute -right-1 -bottom-1 grid size-8 place-items-center rounded-full border-[3px] border-bg bg-gold text-[#2a1d00]">
+            <Icon.lock className="size-4" />
+          </span>
+        )}
+        {!members && state === "done" && size === "lg" && (
           <span className="absolute -right-1 -bottom-1 grid size-8 place-items-center rounded-full border-[3px] border-bg bg-brand text-[#1a1206]">
             <Icon.check className="size-4" />
           </span>

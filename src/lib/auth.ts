@@ -25,6 +25,13 @@ export async function token(): Promise<string | null> {
   return data.session?.access_token ?? null;
 }
 
+/** Get a fresh token for a signed-in player (e.g. after paying); false for a guest or when it fails. */
+export async function refreshToken(): Promise<boolean> {
+  const sb = supabase();
+  if (!sb || !(await sb.auth.getSession()).data.session) return false;
+  return !(await sb.auth.refreshSession()).error;
+}
+
 /** Leaves for Google and comes back to /app signed in. The fallback when Google's own button isn't set up. */
 export const signInWithGoogle = () =>
   supabase()?.auth.signInWithOAuth({ provider: "google", options: { redirectTo: `${location.origin}/app` } });

@@ -1,11 +1,43 @@
 "use client";
 
 import { useState } from "react";
-import { ApiError } from "@/lib/auth";
+import { ApiError, api } from "@/lib/auth";
+import { showPaywall } from "@/lib/content-client";
+import type { MembershipView } from "@/lib/membership-view";
+import { FOUNDING, REGULAR } from "@/lib/offer";
 import { BADGES, LEAGUES, useGame } from "@/lib/store";
 import { ReminderCard } from "./ReminderCard";
 import { SignInCard } from "./SignInCard";
 import { Card, Icon } from "./ui";
+
+const rs = (n: number) => `₹${n.toLocaleString("en-IN")}`;
+const day = (iso: string) =>
+  new Date(iso).toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric", timeZone: "Asia/Kolkata" });
+
+// Draft copy for the membership card (Task 10 runs the basic-English pass on these).
+const MEMBER_COPY = {
+  title: "Membership",
+  plan: { founding: "Founding member", monthly: "Monthly plan", yearly: "Yearly plan" },
+  seat: (n: number) => `Seat ${n.toLocaleString("en-IN")} of ${FOUNDING.seats.toLocaleString("en-IN")}`,
+  price: {
+    founding: `${rs(FOUNDING.monthly)} a month, locked`,
+    monthly: `${rs(REGULAR.monthly)} a month`,
+    yearly: `${rs(REGULAR.yearly)} a year`,
+  },
+  renews: (d: string) => `Renews on ${d}`,
+  ends: (d: string) => `Ends on ${d}`,
+  ended: (d: string) => `Ended on ${d}`,
+  waiting: "Your first payment is being checked.",
+  cancel: "Cancel membership",
+  confirm: (d: string | null) => (d ? `You keep access until ${d}.` : "Your membership stops now."),
+  foundingEnds: "Founding price ends if you cancel.",
+  yesCancel: "Yes, cancel",
+  keep: "Keep my membership",
+  failed: "That didn't work. Try again.",
+  join: "Join again",
+};
+/** Statuses the player can still cancel (the server's list, without an unpaid checkout). */
+const CANCELLABLE = new Set(["active", "authenticated", "pending", "halted"]);
 
 const TRAITS = [
   { k: "horizon" as const, name: "Time horizon", low: "Short-term", high: "Long-term" },
@@ -20,7 +52,7 @@ const LANGS = [
 ] as const;
 
 export function ProfileTab() {
-  const { s, setSetting, setName, reset, account } = useGame();
+  const { s, setSetting, setName, reset, account, membership } = useGame();
   const decisions = s.runs.reduce((a, r) => a + r.notes.length, 0) || 1;
   return (
     <div className="flex flex-col gap-5 pt-2">
@@ -155,8 +187,90 @@ export function ProfileTab() {
 
       <ReminderCard />
 
+      {/* Not for a checkout that was never paid. */}
+      {account && membership && (membership.currentEnd || CANCELLABLE.has(membership.status)) && <MembershipCard m={membership} />}
+
       {account && <AccountCard email={account.email} />}
     </div>
+  );
+}
+
+/** The plan, price, renewal date and seat, with a one-tap cancel behind one confirmation. */
+function MembershipCard({ m }: { m: MembershipView }) {
+  const { reload } = useGame();
+  const [asking, setAsking] = useState(false);
+  const [state, setState] = useState<"idle" | "busy" | "failed">("idle");
+  const end = m.currentEnd ? day(m.currentEnd) : null;
+  const canCancel = CANCELLABLE.has(m.status);
+  const when = !end
+    ? MEMBER_COPY.waiting
+    : !m.member
+      ? MEMBER_COPY.ended(end)
+      : m.status === "active"
+        ? MEMBER_COPY.renews(end)
+        : MEMBER_COPY.ends(end);
+
+  async function cancel() {
+    setState("busy");
+    try {
+      await api("/api/pay/cancel", { body: {} });
+      await reload();
+      setAsking(false);
+      setState("idle");
+    } catch {
+      setState("failed");
+    }
+  }
+
+  return (
+    <Card className="flex flex-col gap-3">
+      <h2 className="text-[19px] font-black">{MEMBER_COPY.title}</h2>
+      <div>
+        <p className="text-[17px] font-black">
+          {MEMBER_COPY.plan[m.plan]}
+          {m.seat !== undefined && <span className="text-brand"> · {MEMBER_COPY.seat(m.seat)}</span>}
+        </p>
+        <p className="font-bold text-muted">{MEMBER_COPY.price[m.plan]}</p>
+        <p className="font-bold text-muted">{when}</p>
+      </div>
+      {!m.member && !canCancel && (
+        <button type="button" className="btn3d green !text-[14px]" onClick={showPaywall}>
+          {MEMBER_COPY.join}
+        </button>
+      )}
+      {canCancel && !asking && (
+        <button type="button" className="btn3d ghost !text-[14px]" onClick={() => setAsking(true)}>
+          {MEMBER_COPY.cancel}
+        </button>
+      )}
+      {canCancel && asking && (
+        <div role="group" aria-label={MEMBER_COPY.cancel} className="flex flex-col gap-3">
+          <p className="text-[15px] font-bold">
+            {MEMBER_COPY.confirm(m.member && end ? end : null)}
+            {m.plan === "founding" && ` ${MEMBER_COPY.foundingEnds}`}
+          </p>
+          <button type="button" className="btn3d red !text-[14px]" disabled={state === "busy"} onClick={cancel}>
+            {MEMBER_COPY.yesCancel}
+          </button>
+          <button
+            type="button"
+            className="w-full py-2 text-[15px] font-extrabold tracking-wide text-muted uppercase"
+            disabled={state === "busy"}
+            onClick={() => {
+              setAsking(false);
+              setState("idle");
+            }}
+          >
+            {MEMBER_COPY.keep}
+          </button>
+          {state === "failed" && (
+            <p role="alert" className="text-[14px] font-bold text-red">
+              {MEMBER_COPY.failed}
+            </p>
+          )}
+        </div>
+      )}
+    </Card>
   );
 }
 

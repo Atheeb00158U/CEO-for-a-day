@@ -2,11 +2,15 @@
 
 import { useMemo } from "react";
 import { homeOrder, MADE_UP_LABEL } from "@/content/catalog";
-import { useContent } from "@/lib/content-client";
+import { showPaywall, useContent } from "@/lib/content-client";
 import type { DailyQuestion } from "@/lib/hotseat-types";
+import { phoneLocks } from "@/lib/locks";
 import { questsFor, today, useGame } from "@/lib/store";
 import { CoursePath } from "./CoursePath";
 import { Bar, Card, Icon, MediaView } from "./ui";
+
+// Draft copy (Task 10 runs the basic-English pass on these).
+const COPY = { members: "For members" };
 
 export function HomeTab({
   daily: call,
@@ -26,8 +30,10 @@ export function HomeTab({
   onTestOut: (moduleId: string, lessonIds: string[]) => void;
   onPractice: (title: string, lessonIds: string[]) => void;
 }) {
-  const { s, boosterActive, activateBooster } = useGame();
+  const { s, boosterActive, activateBooster, membership, paywall } = useGame();
   const { catalog, course } = useContent();
+  // Members-only Hot Seats (a hint: the server's 402 is the real gate). A tap opens the offer straight away.
+  const locked = useMemo(() => phoneLocks(course, membership, paywall, s), [course, membership, paywall, s]);
   const order = useMemo(() => homeOrder(catalog, s.seed, s.onboarding.focus), [catalog, s.seed, s.onboarding.focus]);
   const current = order.find((c) => c.available && s.best[c.id] === undefined) ?? order.find((c) => c.available)!;
   const hs = current;
@@ -125,12 +131,13 @@ export function HomeTab({
             .map((c) => {
               const done = s.best[c.id] !== undefined;
               const isCurrent = !course && c.id === current.id;
+              const paid = c.available && locked({ kind: "hotseat", id: c.id });
               return (
                 <button
                   key={c.id}
                   type="button"
                   disabled={!c.available}
-                  onClick={() => c.available && onPlay(c.id)}
+                  onClick={() => (paid ? showPaywall() : c.available && onPlay(c.id))}
                   className="flex flex-col items-center gap-2 text-center disabled:cursor-default"
                 >
                   <span
@@ -150,7 +157,12 @@ export function HomeTab({
                     ) : (
                       <Icon.lock />
                     )}
-                    {done && c.emblem && (
+                    {paid && (
+                      <span className="absolute -right-1 -bottom-1 grid size-8 place-items-center rounded-full border-[3px] border-bg bg-gold text-[#2a1d00]">
+                        <Icon.lock className="size-4" />
+                      </span>
+                    )}
+                    {!paid && done && c.emblem && (
                       <span className="absolute -right-1 -bottom-1 grid size-8 place-items-center rounded-full border-[3px] border-bg bg-brand text-[#1a1206]">
                         <Icon.check className="size-4" />
                       </span>
@@ -161,7 +173,15 @@ export function HomeTab({
                   >
                     {c.company}
                     <span className="block text-[12px] font-bold text-muted">
-                      {c.available ? (done ? `Best ${s.best[c.id]}` : c.madeUp ? "Made-up story" : "Ready") : "Coming soon"}
+                      {c.available
+                        ? paid
+                          ? COPY.members
+                          : done
+                            ? `Best ${s.best[c.id]}`
+                            : c.madeUp
+                              ? "Made-up story"
+                              : "Ready"
+                        : "Coming soon"}
                     </span>
                   </span>
                 </button>

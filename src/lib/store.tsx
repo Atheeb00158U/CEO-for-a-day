@@ -81,6 +81,10 @@ interface Ctx {
   playDaily: (call: Pick<DailyCall, "id" | "company" | "title">, option: DailyOption) => void;
   /** Take the server's reply to any signed-in action. */
   sync: (x: Synced) => void;
+  /** Read a signed-in player's progress and membership again (after paying or cancelling). */
+  reload: () => Promise<void>;
+  /** The server said 402: the paywall applies to this player (a guest learns it this way). */
+  paywallSeen: () => void;
   setSetting: <K extends keyof GameState["settings"]>(k: K, v: GameState["settings"][K]) => void;
   setName: (n: string) => void;
   setOnboarding: (o: Partial<Onboarding>) => void;
@@ -299,6 +303,10 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
       claimQuest: async (id) => void (signedIn ? await send("/api/quest/claim", { id }) : local(applyClaim(s, id))),
       playDaily: (call, option) => setS((x) => applyDaily(x, call, option)),
       sync,
+      reload: async () => {
+        if (signedIn) sync(await api<Synced>("/api/state"));
+      },
+      paywallSeen: () => setPaywall(true),
       setSetting: (k, v) => {
         setS((x) => ({ ...x, settings: { ...x.settings, [k]: v } }));
         if (signedIn) void send("/api/profile", { settings: { [k]: v } });

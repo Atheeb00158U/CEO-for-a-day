@@ -3,7 +3,7 @@
 // What the phone knows about content: the map's cards (handed down by the /app page) and calls to the server
 // for each step of play. Answers only ever arrive after the player has picked.
 import { createContext, useContext, useEffect, useState } from "react";
-import { api } from "./auth";
+import { api, ApiError, refreshToken } from "./auth";
 import type { GameState } from "./game-state";
 import type { Card, CourseOutline } from "./course-types";
 import type { MembershipView } from "./membership-view";
@@ -37,11 +37,41 @@ export interface Synced {
 /** The step after `picks`. `written` is a reviewed, pre-written debrief for the path, when one exists. */
 export type PlayResponse = PlayView & { written?: string };
 
-export const fetchStep = (hotSeatId: string, picks: Pick[]) => api<PlayResponse>("/api/play", { body: { hotSeatId, picks } });
+/* The paywall: App registers how to show it; a 402 from a player route shows it. */
+let paywallHandler: (() => void) | undefined;
+/** App's way to show the paywall sheet (and leave any player). Pass nothing to unregister. */
+export const onPaywall = (f?: () => void) => void (paywallHandler = f);
+/** Show the paywall sheet (a tap on a locked item, or the server's 402). */
+export const showPaywall = () => paywallHandler?.();
+
+const membersOnly = (e: unknown) => e instanceof ApiError && e.status === 402;
+
+/**
+ * Run a call that can answer 402 `members_only`. A signed-in player who has just paid may still hold an old token:
+ * refresh it and try once more before showing the paywall. The error is still thrown, so the caller stops.
+ */
+async function gated<T>(call: () => Promise<T>): Promise<T> {
+  try {
+    return await call();
+  } catch (e) {
+    if (!membersOnly(e)) throw e;
+    if (await refreshToken()) {
+      try {
+        return await call();
+      } catch (again) {
+        if (!membersOnly(again)) throw again;
+      }
+    }
+    showPaywall();
+    throw e;
+  }
+}
+
+export const fetchStep = (hotSeatId: string, picks: Pick[]) => gated(() => api<PlayResponse>("/api/play", { body: { hotSeatId, picks } }));
 /** What to play: a lesson, or a module's test-out quiz. */
 export type LessonTarget = { lessonId: string } | { testOut: string };
 export const fetchLessonStep = (target: LessonTarget, answers: Answer[]) =>
-  api<LessonView>("/api/lesson", { body: { ...target, answers } });
+  gated(() => api<LessonView>("/api/lesson", { body: { ...target, answers } }));
 /** Flashcards of these lessons, each with its lesson id. */
 export const fetchCards = (lessonIds: string[]) =>
   api<{ cards: (Card & { lessonId: string })[] }>("/api/cards", { body: { lessonIds } }).then((r) => r.cards);
