@@ -7,12 +7,21 @@ const guest: AccessContext = { paywall: true, member: false, early: new Set() };
 const now = new Date("2026-11-10T10:00:00Z");
 
 describe("freeItems", () => {
-  it("frees every Unit 1 lesson, test-out and gate", () => {
+  it("frees the first module's lessons, test-out and gate, and nothing else", () => {
+    const first = course.units[0].modules[0];
+    expect(free).toEqual(
+      new Set([...first.lessons.map((l) => `lesson:${l}`), `testout:${first.id}`, ...first.gates.map((g) => `hotseat:${g}`)]),
+    );
     expect(free.has("lesson:u1-cash-runs-out")).toBe(true);
-    expect(free.has("lesson:u1-sunk-cost")).toBe(true);
-    expect(free.has("testout:u1-what-costs-decide")).toBe(true);
+    expect(free.has("lesson:u1-test-small")).toBe(true);
+    expect(free.has("testout:u1-where-money-goes")).toBe(true);
     expect(free.has("hotseat:kirana-year")).toBe(true);
-    expect(free.has("hotseat:nirma-washing-powder")).toBe(true);
+  });
+  it("does not free Module 1.2 or Nirma", () => {
+    expect(free.has("lesson:u1-small-fixed-costs")).toBe(false);
+    expect(free.has("lesson:u1-sunk-cost")).toBe(false);
+    expect(free.has("testout:u1-what-costs-decide")).toBe(false);
+    expect(free.has("hotseat:nirma-washing-powder")).toBe(false);
   });
   it("does not free Unit 2", () => {
     expect(free.has("lesson:u2-mom-test")).toBe(false);

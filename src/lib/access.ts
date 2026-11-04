@@ -1,4 +1,4 @@
-// Who may open what (spec §4a): Unit 1 is free; members open everything; early players keep what they finished.
+// Who may open what (spec §4a): the first module of Unit 1 (its lessons, test-out and Hot Seat gate) is free; members open everything; early players keep what they finished.
 // Pure, shared by the server (enforcement) and the phone (lock badges). Node runs it too: no @/ imports.
 import type { Course } from "./course-types.ts";
 
@@ -19,18 +19,18 @@ export interface MembershipLike {
   currentEnd: string | null;
 }
 
-export const FREE_UNIT = 0; // the first unit in course.json is free
-
 export const keyOf = (item: Item) => `${item.kind}:${item.id}`;
 
+/** The free module: the first module of the first unit in course.json. */
+export const freeModule = <M>(course: { units: { modules: M[] }[] }): M | undefined => course.units[0]?.modules[0];
+
 export function freeItems(course: Course): Set<string> {
-  const unit = course.units[FREE_UNIT];
+  const m = freeModule(course);
   const out = new Set<string>();
-  for (const m of unit?.modules ?? []) {
-    out.add(`testout:${m.id}`);
-    for (const l of m.lessons) out.add(`lesson:${l}`);
-    for (const g of m.gates ?? []) out.add(`hotseat:${g}`);
-  }
+  if (!m) return out;
+  out.add(`testout:${m.id}`);
+  for (const l of m.lessons) out.add(`lesson:${l}`);
+  for (const g of m.gates ?? []) out.add(`hotseat:${g}`);
   return out;
 }
 

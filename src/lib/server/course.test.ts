@@ -93,9 +93,12 @@ describe("POST /api/lesson", () => {
     expect(next.reveal).toMatchObject({ screenId: "sum", correct: false, right: "₹1" });
   });
 
-  it("with PAYWALL_ON=1, locks a later unit for a guest and keeps the free unit open", async () => {
+  it("with PAYWALL_ON=1, locks everything after the first module for a guest and keeps that module open", async () => {
     vi.stubEnv("NODE_ENV", "development");
     vi.stubEnv("PAYWALL_ON", "1");
+    // The first unit's second module is paid too.
+    expect((await post({ lessonId: "sample-fixed-variable", answers: [] })).status).toBe(402);
+    expect((await post({ testOut: "sample-costs", answers: [] })).status).toBe(402);
     expect((await post({ lessonId: "sample-paid-next", answers: [] })).status).toBe(402);
     expect(await (await post({ lessonId: "sample-paid-next", answers: [] })).json()).toEqual({ error: "members_only" });
     expect((await post({ testOut: "sample-ask", answers: [] })).status).toBe(402);

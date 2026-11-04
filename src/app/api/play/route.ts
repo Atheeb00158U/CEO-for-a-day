@@ -4,7 +4,7 @@ import { parsePicks, play, PlayError } from "@/lib/play";
 import { servableHotSeat, writtenDebrief } from "@/lib/server/content";
 import { accessCheck, ipOf, limited } from "@/lib/server/http";
 
-/** The website's free sample decision. */
+/** The website's free sample: its first decision only. */
 const SITE_SAMPLE = "nirma-washing-powder";
 
 export async function POST(request: Request) {
@@ -17,12 +17,19 @@ export async function POST(request: Request) {
   const body = await request.json().catch(() => null);
   const hs = typeof body?.hotSeatId === "string" ? servableHotSeat(body.hotSeatId) : undefined;
   if (!hs) return NextResponse.json({ error: "No such Hot Seat" }, { status: 404 });
-  if (!(site && hs.id === SITE_SAMPLE)) {
+  let picks;
+  try {
+    picks = parsePicks(body.picks);
+  } catch (e) {
+    if (e instanceof PlayError) return NextResponse.json({ error: e.message }, { status: 400 });
+    throw e;
+  }
+  // The sample shows only the first decision and its verdict; anything further is the paid Hot Seat.
+  if (!(site && hs.id === SITE_SAMPLE && picks.length <= 1)) {
     const denied = await accessCheck(request, { kind: "hotseat", id: hs.id });
     if (denied) return denied;
   }
   try {
-    const picks = parsePicks(body.picks);
     const view = play(hs, picks);
     return NextResponse.json(view.result ? { ...view, written: writtenDebrief(hs.id, picks) } : view, {
       headers: { "Cache-Control": "no-store" },

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Sheet, SheetContent, SheetDescription, SheetTitle } from "@/components/shadcn/sheet";
+import { freeModule } from "@/lib/access";
 import { ApiError, api } from "@/lib/auth";
 import { CheckoutClosed, openCheckout, type CheckoutSuccess } from "@/lib/checkout";
 import { useContent } from "@/lib/content-client";
@@ -15,7 +16,7 @@ type Plan = "founding" | "monthly" | "yearly";
 const rs = (n: number) => `₹${n.toLocaleString("en-IN")}`;
 
 const COPY = {
-  titleUnitDone: "Unit 1 is done. Continue as a founding member.",
+  titleFreeDone: "Your free lessons are done. Continue as a founding member.",
   titleFounding: "Continue as a founding member.",
   titleRegular: "Become a member to continue.",
   descFounding: `${rs(FOUNDING.monthly)} a month while you stay a member.`,
@@ -81,9 +82,9 @@ export function PaywallSheet({ open, onOpenChange }: { open: boolean; onOpenChan
   const reason = noFounding ?? (membership?.foundingUsed ? FOUNDING_USED : null);
   const founding = !reason && (seats?.open ?? true);
   const chosen: Plan = founding ? "founding" : plan;
-  const unit1 = course?.units[0]?.modules.flatMap((m) => m.lessons.map((l) => l.id)) ?? [];
-  const unit1Done = unit1.length > 0 && unit1.every((id) => s.lessons[id]);
-  const title = founding ? (unit1Done ? COPY.titleUnitDone : COPY.titleFounding) : COPY.titleRegular;
+  const freeLessons = (course && freeModule(course)?.lessons.map((l) => l.id)) ?? [];
+  const freeDone = freeLessons.length > 0 && freeLessons.every((id) => s.lessons[id]);
+  const title = founding ? (freeDone ? COPY.titleFreeDone : COPY.titleFounding) : COPY.titleRegular;
 
   async function join() {
     setError(null);

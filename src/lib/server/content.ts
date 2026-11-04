@@ -176,7 +176,7 @@ export const courseOn = () => process.env.COURSE_OFF !== "1";
 
 const course = () => cached("course", readCourse);
 
-/** What anyone may open without a membership: all of Unit 1 (see src/lib/access.ts). */
+/** What anyone may open without a membership: the first module of Unit 1 (see src/lib/access.ts). */
 export const freeList = () => cached("free", () => freeItems(course()));
 const lessonsById = () => cached("lessons", () => new Map(lessonFileIds().map((id) => [id, readLesson(id)])));
 
