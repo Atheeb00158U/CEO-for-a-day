@@ -239,6 +239,7 @@ describe("membership in the state reply", () => {
     await db.saveMembership({ userId: "u1", plan: "founding", subscriptionId: "sub_1", status: "active", currentEnd });
     expect((await load(db, "u1", now)).membership).toEqual({
       plan: "founding",
+      subscriptionId: "sub_1",
       status: "active",
       currentEnd,
       member: true,
@@ -254,6 +255,7 @@ describe("membership in the state reply", () => {
     });
     expect(await membershipView(db, "u1", now)).toEqual({
       plan: "monthly",
+      subscriptionId: "sub_2",
       status: "cancelled",
       currentEnd: "2026-10-01T00:00:00Z",
       member: false,

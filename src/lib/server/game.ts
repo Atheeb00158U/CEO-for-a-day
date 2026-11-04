@@ -140,6 +140,7 @@ export async function membershipView(db: Db, userId: string, now = new Date()): 
   const [seat, foundingUsed] = await Promise.all([m.plan === "founding" ? db.seatOf(m.subscriptionId) : null, db.hasKeptSeat(userId)]);
   return {
     plan: m.plan,
+    subscriptionId: m.subscriptionId,
     status: m.status,
     currentEnd: m.currentEnd,
     member: isMember(m, now),

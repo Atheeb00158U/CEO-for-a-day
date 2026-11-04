@@ -9,6 +9,7 @@ import { BADGES, LEAGUES, useGame } from "@/lib/store";
 import { ReminderCard } from "./ReminderCard";
 import { SignInCard } from "./SignInCard";
 import { Card, Icon } from "./ui";
+import { WolfPicture } from "./WolfPicture";
 
 const rs = (n: number) => `₹${n.toLocaleString("en-IN")}`;
 const day = (iso: string) =>
@@ -53,8 +54,12 @@ const LANGS = [
 export function ProfileTab() {
   const { s, setSetting, setName, reset, account, membership } = useGame();
   const decisions = s.runs.reduce((a, r) => a + r.notes.length, 0) || 1;
+  // Not for a checkout that was never paid. A member sees it first, in gold; a past member near the end.
+  const showMembership = !!account && !!membership && (!!membership.currentEnd || CANCELLABLE.has(membership.status));
+  const memberNow = showMembership && membership!.member;
   return (
     <div className="flex flex-col gap-5 pt-2">
+      {memberNow && <MembershipCard m={membership!} />}
       <div className="flex items-center gap-4">
         <div className="grid size-20 place-items-center rounded-full bg-brand text-[34px] font-black text-[#1a1206]">
           {s.name[0]?.toUpperCase()}
@@ -186,8 +191,7 @@ export function ProfileTab() {
 
       <ReminderCard />
 
-      {/* Not for a checkout that was never paid. */}
-      {account && membership && (membership.currentEnd || CANCELLABLE.has(membership.status)) && <MembershipCard m={membership} />}
+      {showMembership && !memberNow && <MembershipCard m={membership!} />}
 
       {account && <AccountCard email={account.email} />}
     </div>
@@ -222,15 +226,22 @@ function MembershipCard({ m }: { m: MembershipView }) {
   }
 
   return (
-    <Card className="flex flex-col gap-3">
-      <h2 className="text-[19px] font-black">{MEMBER_COPY.title}</h2>
-      <div>
-        <p className="text-[17px] font-black">{MEMBER_COPY.plan[m.plan]}</p>
-        <p className="font-bold text-muted">{MEMBER_COPY.price[m.plan]}</p>
-        <p className="font-bold text-muted">{when}</p>
+    <Card className={`flex flex-col gap-3 ${m.member ? "!border-gold/70 !bg-gold/10" : ""}`}>
+      <h2 className={`text-[19px] font-black ${m.member ? "text-gold" : ""}`}>{MEMBER_COPY.title}</h2>
+      <div className="flex items-center gap-3">
+        {m.member && (
+          <div className="w-[72px] shrink-0">
+            <WolfPicture name="pose-pleased" sizes="72px" className="h-auto w-full" />
+          </div>
+        )}
+        <div className="min-w-0">
+          <p className="text-[17px] font-black">{MEMBER_COPY.plan[m.plan]}</p>
+          <p className="font-bold text-muted">{MEMBER_COPY.price[m.plan]}</p>
+          <p className="font-bold text-muted">{when}</p>
+        </div>
       </div>
       {!m.member && !canCancel && (
-        <button type="button" className="btn3d green !text-[14px]" onClick={showPaywall}>
+        <button type="button" className="btn3d green !text-[14px]" onClick={() => showPaywall()}>
           {MEMBER_COPY.join}
         </button>
       )}

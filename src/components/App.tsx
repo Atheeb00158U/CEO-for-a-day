@@ -17,9 +17,18 @@ import { ReviewSession } from "./ReviewSession";
 import { InstallSheet } from "./InstallSheet";
 import { PaywallSheet } from "./PaywallSheet";
 import { Onboarding } from "./Onboarding";
-import { ContentProvider, onPaywall, useDaily, type Content, type LessonTarget } from "@/lib/content-client";
+import { MemberWelcome } from "./MemberWelcome";
+import { ContentProvider, onPaywall, useDaily, type Content, type LessonTarget, type PaywallFor } from "@/lib/content-client";
+import { celebrationFor, markWelcomed, paidRecently, paymentStartedAt, shownWelcomes } from "@/lib/celebrate";
+import type { MembershipView } from "@/lib/membership-view";
 
 export type Tab = "home" | "league" | "notes" | "shop" | "profile";
+const COPY = {
+  founder: "Founder",
+  member: "Member",
+  openProfile: (badge: string) => `${badge}, open your profile`,
+};
+
 const TABS: { id: Tab; label: string; icon: keyof typeof Icon }[] = [
   { id: "home", label: "Play", icon: "navHome" },
   { id: "league", label: "League", icon: "navLeague" },
@@ -74,20 +83,86 @@ function Shell() {
   const [lesson, setLesson] = useState<{ target: LessonTarget; testOut?: string[] } | null>(null);
   const [reviewing, setReviewing] = useState<{ title: string; lessonIds?: string[] } | null>(null);
   const [paywallOpen, setPaywallOpen] = useState(false);
+  // What the player tapped before the paywall, opened for them once they become a member.
+  const [pending, setPending] = useState<PaywallFor | null>(null);
+  const [welcome, setWelcome] = useState<MembershipView | null>(null);
   const mainRef = useRef<HTMLElement>(null);
-  const { ready, s, paywallSeen } = useGame();
+  const { ready, s, paywallSeen, account, membership, reload } = useGame();
 
-  // A locked item, or the server's 402: leave any player, back to the map, and show the offer.
+  // A locked item, or the server's 402: leave any player, back to the map, and show the offer. A 402 inside a
+  // lesson or Hot Seat remembers that one.
   useEffect(() => {
-    onPaywall(() => {
+    onPaywall((item) => {
+      const from: PaywallFor | null =
+        item ??
+        (lesson
+          ? "lessonId" in lesson.target
+            ? { lessonId: lesson.target.lessonId }
+            : { testOut: lesson.target.testOut, lessonIds: lesson.testOut ?? [] }
+          : playing
+            ? { hotSeatId: playing }
+            : null);
       paywallSeen();
+      setPending(from);
       setLesson(null);
       setPlaying(null);
       setReviewing(null);
       setPaywallOpen(true);
     });
     return () => onPaywall();
-  }, [paywallSeen]);
+  }, [paywallSeen, lesson, playing]);
+
+  // Welcome a new member once per subscription: after paying here, or when the webhook's confirmation shows up later.
+  const seen = useRef<{ who: string | null; m: MembershipView | null } | undefined>(undefined);
+  useEffect(() => {
+    if (!ready) return;
+    const who = account ? (account.email ?? "") : null;
+    const before = seen.current?.who === who ? seen.current.m : undefined;
+    seen.current = { who, m: membership };
+    if (!account) return;
+    const w = celebrationFor({
+      before,
+      now: membership,
+      shown: shownWelcomes(),
+      paidRecently: paidRecently(paymentStartedAt(), Date.now()),
+    });
+    if (!w) return;
+    markWelcomed(w.subscriptionId);
+    setPaywallOpen(false);
+    setWelcome(w);
+  }, [ready, account, membership]);
+
+  // Back from the payment app (UPI) or another tab soon after paying: look again, in case only the webhook confirmed it.
+  useEffect(() => {
+    if (!account) return;
+    const look = () => {
+      if (document.visibilityState === "visible" && paidRecently(paymentStartedAt(), Date.now())) void reload().catch(() => {});
+    };
+    document.addEventListener("visibilitychange", look);
+    return () => document.removeEventListener("visibilitychange", look);
+  }, [account, reload]);
+
+  const openPending = () => {
+    setWelcome(null);
+    setPending(null);
+    if (!pending) return;
+    if ("hotSeatId" in pending) setPlaying(pending.hotSeatId);
+    else if ("lessonId" in pending) setLesson({ target: { lessonId: pending.lessonId } });
+    else setLesson({ target: { testOut: pending.testOut }, testOut: pending.lessonIds });
+  };
+  const overlay = welcome && (
+    <MemberWelcome
+      plan={welcome.plan}
+      item={!pending ? null : "hotSeatId" in pending ? "hotSeat" : "lessonId" in pending ? "lesson" : "testOut"}
+      onDone={openPending}
+    />
+  );
+  const withOverlay = (x: React.ReactNode) => (
+    <>
+      {x}
+      {overlay}
+    </>
+  );
 
   useEffect(() => {
     const fromHash = () => {
@@ -122,19 +197,20 @@ function Shell() {
     );
   }
 
-  if (!s.onboarding.done) return <Onboarding onDone={() => go("home")} />;
+  if (!s.onboarding.done) return withOverlay(<Onboarding onDone={() => go("home")} />);
 
   if (lesson)
-    return (
-      <LessonPlayer key={JSON.stringify(lesson.target)} target={lesson.target} testOut={lesson.testOut} onExit={() => setLesson(null)} />
+    return withOverlay(
+      <LessonPlayer key={JSON.stringify(lesson.target)} target={lesson.target} testOut={lesson.testOut} onExit={() => setLesson(null)} />,
     );
 
-  if (reviewing) return <ReviewSession title={reviewing.title} lessonIds={reviewing.lessonIds} onExit={() => setReviewing(null)} />;
+  if (reviewing)
+    return withOverlay(<ReviewSession title={reviewing.title} lessonIds={reviewing.lessonIds} onExit={() => setReviewing(null)} />);
 
-  if (playingDaily && daily?.call) return <DailyPlayer call={daily.call} onExit={() => setPlayingDaily(false)} />;
+  if (playingDaily && daily?.call) return withOverlay(<DailyPlayer call={daily.call} onExit={() => setPlayingDaily(false)} />);
 
   if (playing)
-    return (
+    return withOverlay(
       <Player
         hotSeatId={playing}
         onExit={() => setPlaying(null)}
@@ -142,14 +218,14 @@ function Shell() {
           setPlaying(null);
           go("notes");
         }}
-      />
+      />,
     );
 
-  return (
+  return withOverlay(
     // The page itself never scrolls, only <main>: iPhone browsers misplace bars pinned to a scrolling page,
     // leaving a gap below the tab bar.
     <div className="mx-auto flex h-dvh max-w-[480px] flex-col">
-      <TopBar onShop={() => go("shop")} />
+      <TopBar onShop={() => go("shop")} onProfile={() => go("profile")} />
       {paywallOpen ? <PaywallSheet open onOpenChange={setPaywallOpen} /> : <InstallSheet page={tab} />}
       <main ref={mainRef} className="flex-1 overflow-y-auto overscroll-contain px-4 pb-6">
         {tab === "home" && (
@@ -194,14 +270,15 @@ function Shell() {
           })}
         </div>
       </nav>
-    </div>
+    </div>,
   );
 }
 
-function TopBar({ onShop }: { onShop: () => void }) {
-  const { s, boosterActive } = useGame();
+function TopBar({ onShop, onProfile }: { onShop: () => void; onProfile: () => void }) {
+  const { s, boosterActive, account, membership } = useGame();
   const playedToday = s.lastActiveDay === today();
   const mins = Math.max(0, Math.ceil((s.boosterUntil - Date.now()) / 60000));
+  const badge = membership?.plan === "founding" ? COPY.founder : COPY.member;
   return (
     <header className="flex shrink-0 items-center gap-2 bg-bg px-4 pb-2" style={{ paddingTop: "max(12px, env(safe-area-inset-top))" }}>
       <div className="mr-auto flex items-center gap-2">
@@ -211,6 +288,16 @@ function TopBar({ onShop }: { onShop: () => void }) {
           <br />
           <span className="text-muted">for a day</span>
         </span>
+        {account && membership?.member && (
+          <button
+            type="button"
+            onClick={onProfile}
+            aria-label={COPY.openProfile(badge)}
+            className="pop rounded-full border-2 border-gold-dark bg-gold px-2 py-0.5 text-[11px] font-black tracking-wide text-[#2a1d00] uppercase"
+          >
+            {badge}
+          </button>
+        )}
       </div>
       {boosterActive && (
         <button
