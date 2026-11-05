@@ -138,6 +138,66 @@ function Lock() {
   );
 }
 
+function Tick() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 20 20" className="mt-1 h-4 w-4 shrink-0 fill-none stroke-[var(--brass)] stroke-[2.5]">
+      <path d="m4 10.5 4 4 8-9" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+/** One plan card: name, price, what it includes, and a button at the foot. The featured one has a brass edge. */
+function Plan({
+  name,
+  price,
+  items,
+  action,
+  note,
+  badge,
+  featured = false,
+}: {
+  name: string;
+  price: React.ReactNode;
+  items: string[];
+  action: string;
+  note?: string;
+  badge?: string;
+  featured?: boolean;
+}) {
+  return (
+    <div
+      className={`site-rise flex flex-col rounded-[24px] p-8 ${featured ? "bg-[var(--warm)] ring-2 ring-[var(--brass)]" : "bg-surface"}`}
+      style={step(featured ? 2 : 1)}
+    >
+      <div className="flex items-center justify-between gap-3">
+        <h3 className={`font-display text-[30px] leading-none ${featured ? "text-[var(--brass)]" : ""}`}>{name}</h3>
+        {badge && (
+          <span className="rounded-full bg-[var(--brass)] px-3 py-1 text-[13px] font-semibold text-[var(--brass-ink)]">{badge}</span>
+        )}
+      </div>
+      <p className="mt-5 text-[34px] leading-none font-semibold tracking-[-0.02em]">{price}</p>
+      {featured && badge && <p className="mt-3 text-[15px] font-semibold text-[var(--brass)]">{FOUNDING_LINE}</p>}
+      <ul className="mt-7 grid gap-3 text-[17px]">
+        {items.map((it) => (
+          <li key={it} className="flex gap-3">
+            <Tick />
+            {it}
+          </li>
+        ))}
+      </ul>
+      {note && <p className="mt-6 text-[15px] leading-relaxed text-ink/70">{note}</p>}
+      <div className="mt-auto pt-8">
+        <Link
+          href="/app"
+          className={`flex h-12 items-center justify-center rounded-full text-[16px] font-semibold ${featured ? "site-cta" : "bg-surface-2 transition-colors hover:bg-line"}`}
+        >
+          {action}
+        </Link>
+      </div>
+    </div>
+  );
+}
+
 export default async function Home() {
   preload(`/brand/site/empire-tall-752.avif`, {
     as: "image",
@@ -240,25 +300,36 @@ export default async function Home() {
           <StartButton className="site-rise mt-10 w-full sm:w-auto" />
         </section>
 
-        {/* The problem: the reader's own worries, beside the shopkeeper alone at night */}
-        <section className={`${WRAP} pb-20 md:grid md:grid-cols-12 md:items-center md:gap-10 md:pb-32`}>
-          <div className="site-rise overflow-hidden rounded-[24px] bg-surface md:col-span-5">
-            <ScenePicture name="alone" sizes={SIDE} className="aspect-[4/5] h-auto w-full object-cover" />
+        {/* The problem: the shopkeeper alone at night fills the width; the reader's worries sit on its dark right side,
+            inside the page's column. On a phone the picture comes first and the list below it. */}
+        <section className="site-zoom relative isolate mb-20 overflow-hidden bg-surface md:mb-32 md:min-h-[min(100svh,860px)]">
+          <div className="relative aspect-[4/5] overflow-hidden md:absolute md:inset-0 md:-z-10 md:aspect-auto">
+            <ScenePicture name="alone" className="h-full w-full object-cover md:object-[30%_50%]" />
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-[linear-gradient(to_top,rgb(20_27_34),rgb(20_27_34/0))] md:hidden"
+            />
           </div>
-          <div className="mt-10 md:col-span-7 md:mt-0">
-            <h2 className={`site-rise ${HEADING}`}>Be honest. Is this you?</h2>
-            <ul className="mt-8 grid gap-1">
-              {PAINS.map((p, i) => (
-                <li
-                  key={p}
-                  className={`site-rise rounded-[14px] px-5 py-3.5 text-[18px] leading-snug md:text-[20px] ${i % 2 ? "" : "bg-surface"}`}
-                  style={step(i * 0.3)}
-                >
-                  {p}
-                </li>
-              ))}
-            </ul>
-            <p className={`site-rise mt-6 ${LEAD}`}>If this sounds like you, you are not alone. Nobody taught you these rules.</p>
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 -z-10 hidden md:block md:bg-[linear-gradient(to_left,rgb(11_16_21/0.96)_0%,rgb(11_16_21/0.85)_40%,rgb(11_16_21/0)_70%)]"
+          />
+          <div className={`${WRAP} pt-2 pb-16 md:flex md:min-h-[inherit] md:items-center md:justify-end md:py-20`}>
+            <div className="md:w-[min(52%,600px)]">
+              <h2 className={`site-rise ${HEADING}`}>Be honest. Is this you?</h2>
+              <ul className="mt-8 grid gap-1">
+                {PAINS.map((p, i) => (
+                  <li
+                    key={p}
+                    className={`site-rise rounded-[14px] px-5 py-3.5 text-[18px] leading-snug md:text-[20px] ${i % 2 ? "" : "bg-bg/70"}`}
+                    style={step(i * 0.3)}
+                  >
+                    {p}
+                  </li>
+                ))}
+              </ul>
+              <p className={`site-rise mt-6 ${LEAD}`}>If this sounds like you, you are not alone. Nobody taught you these rules.</p>
+            </div>
           </div>
         </section>
 
@@ -364,92 +435,65 @@ export default async function Home() {
           </div>
         </section>
 
-        {/* Price: the one real scarcity, then the free plan and the bigger member plan */}
+        {/* Price: two plans side by side, the same shape, the member plan highlighted; the one real scarcity on top */}
         <section id="price" className={`${WRAP} scroll-mt-4 pb-20 md:pb-32`}>
-          <div className="md:grid md:grid-cols-12 md:items-end md:gap-10">
-            <h2 className={`site-rise md:col-span-6 ${HEADING}`}>Start free</h2>
+          <div className="mx-auto max-w-[720px] text-center">
+            <h2 className={`site-rise ${HEADING}`}>Start free</h2>
             {!full && (
-              <p className={`site-rise mt-5 max-w-[40ch] md:col-span-6 md:mt-0 ${LEAD}`} style={step(1)}>
+              <p className={`site-rise mt-5 ${LEAD}`} style={step(1)}>
                 The founding price is only for the first {FOUNDING.seats.toLocaleString("en-IN")} members. After that, it is ₹
                 {REGULAR.monthly} a month.
               </p>
             )}
           </div>
-          <div className="mt-10 grid gap-3 md:mt-12 md:grid-cols-12">
-            <div className="site-rise flex flex-col overflow-hidden rounded-[24px] bg-surface md:col-span-5" style={step(1)}>
-              <div className="p-7">
-                <h3 className="font-display text-[34px] leading-none">Free</h3>
-                <p className="mt-4 text-[36px] leading-none font-semibold tracking-[-0.02em]">₹0</p>
-                <ul className="mt-6 grid gap-2.5 text-[18px]">
-                  <li>Your first five lessons</li>
-                  <li>Your first Hot Seat</li>
-                  <li>Flashcards and leagues</li>
-                </ul>
-              </div>
-              <Link href="/app" className="site-link mt-auto flex h-16 items-center bg-surface-2 px-7 text-[17px] font-semibold">
-                Start free
-              </Link>
-            </div>
-            <div
-              className="site-rise mt-6 flex flex-col overflow-hidden rounded-[24px] bg-[var(--warm)] md:col-span-7 md:mt-0"
-              style={step(2)}
-            >
-              <div className="grid gap-6 p-7 lg:grid-cols-[1fr_210px]">
-                <div>
-                  <h3 className="font-display text-[34px] leading-none text-[var(--brass)]">Member</h3>
-                  {full ? (
-                    <>
-                      <p className="mt-4 text-[36px] leading-none font-semibold tracking-[-0.02em]">₹{REGULAR.monthly} a month</p>
-                      <p className="mt-3 text-[18px]">Or ₹{yearly} a year.</p>
-                    </>
-                  ) : (
-                    <>
-                      <p className="mt-4 text-[36px] leading-none font-semibold tracking-[-0.02em]">
-                        <FoundingPrice />
-                      </p>
-                      <p className="mt-3 text-[17px] font-semibold text-[var(--brass)]">{FOUNDING_LINE}</p>
-                    </>
-                  )}
-                  <ul className="mt-6 grid gap-2.5 text-[18px]">
-                    <li>All lessons and Hot Seats</li>
-                    <li>New ones when they are ready</li>
-                    <li>The Club, when it opens</li>
-                    <li>Cancel any time with one tap</li>
-                  </ul>
-                  {!full && (
-                    <p className="mt-6 max-w-[42ch] text-[15px] leading-relaxed text-ink/75">
-                      You keep ₹{FOUNDING.monthly} a month for as long as you stay a member.
-                    </p>
-                  )}
-                </div>
-                <WolfPicture name="cafe" sizes="210px" className="hidden aspect-[4/5] w-full rounded-[16px] object-cover lg:block" />
-              </div>
-              <Link href="/app" className="site-cta mt-auto flex h-16 items-center px-7 text-[17px] font-semibold">
-                Start free, join when you are ready
-              </Link>
-            </div>
+          <div className="mx-auto mt-12 grid max-w-[920px] gap-4 md:grid-cols-2">
+            <Plan
+              name="Free"
+              price={<>₹0</>}
+              items={["Your first five lessons", "Your first Hot Seat", "Flashcards and leagues"]}
+              action="Start free"
+            />
+            <Plan
+              featured
+              name="Member"
+              badge={full ? undefined : "Founding price"}
+              price={full ? <>₹{REGULAR.monthly} a month</> : <FoundingPrice />}
+              note={full ? `Or ₹${yearly} a year.` : `You keep ₹${FOUNDING.monthly} a month for as long as you stay a member.`}
+              items={[
+                "All lessons and Hot Seats",
+                "New ones when they are ready",
+                "The Club, when it opens",
+                "Cancel any time with one tap",
+              ]}
+              action="Start free, join when ready"
+            />
           </div>
         </section>
 
-        {/* Questions: a short heading with the action beside it, the answers as a 2 x 2 grid, every answer showing */}
-        <section aria-labelledby="questions" className={`${WRAP} pb-20 md:grid md:grid-cols-12 md:gap-10 md:pb-32`}>
-          <div className="md:col-span-4">
-            <h2 id="questions" className={`site-rise ${HEADING}`}>
-              Before you start
+        {/* Questions: an accordion, the first one open; works with no script */}
+        <section aria-labelledby="questions" className={`${WRAP} pb-20 md:pb-32`}>
+          <div className="mx-auto max-w-[820px]">
+            <h2 id="questions" className={`site-rise text-center ${HEADING}`}>
+              Questions
             </h2>
-            <p className={`site-rise mt-5 ${LEAD}`} style={step(1)}>
-              Short answers to what people ask first.
-            </p>
-            <StartButton className="site-rise mt-8 hidden md:inline-flex" />
+            <div className="mt-10 grid gap-2">
+              {faq(full).map((f, i) => (
+                <details key={f.q} open={i === 0} className="site-faq group rounded-[18px] bg-surface px-6">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-5 text-[18px] font-semibold md:text-[20px] [&::-webkit-details-marker]:hidden">
+                    {f.q}
+                    <svg
+                      aria-hidden="true"
+                      viewBox="0 0 20 20"
+                      className="h-5 w-5 shrink-0 fill-none stroke-[var(--brass)] stroke-[2.5] transition-transform group-open:rotate-180"
+                    >
+                      <path d="m5 8 5 5 5-5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </summary>
+                  <p className="max-w-[64ch] pb-6 text-[17px] leading-[1.55] text-ink/85">{f.a}</p>
+                </details>
+              ))}
+            </div>
           </div>
-          <dl className="mt-10 grid gap-3 sm:grid-cols-2 md:col-span-8 md:mt-0">
-            {faq(full).map((f, i) => (
-              <div key={f.q} className="site-rise rounded-[20px] bg-surface p-6" style={step(i * 0.4)}>
-                <dt className="text-[20px] leading-tight font-semibold md:text-[21px]">{f.q}</dt>
-                <dd className="mt-3 text-[17px] leading-[1.55] text-ink/85">{f.a}</dd>
-              </div>
-            ))}
-          </dl>
         </section>
 
         {/* The close: learn it here, or with your own money */}
