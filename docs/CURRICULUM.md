@@ -294,6 +294,16 @@ said in every lesson of 3.3, 4.2.5 and 5.3:** use on others only what you'd acce
   "subscription trap", a banned dark pattern in India (CCPA, 2023) ✓; the effect also shrinks in some lab
   repeats (Plott & Zeiler, 2005 ◇), so it helps a good product and can't save a bad one.
 
+**Note (5 Nov 2026, drafts):** lesson ids `u3-first-number`, `u3-decoy-option`, `u3-gain-or-loss`, `u3-loss-hurts`,
+`u3-feels-theirs`. Rule 9 (one business per lesson) moved every practice example into the home bakery, year four
+(January to July, cake ₹850, ₹450 left): the saree shop became the menu order and a 30-box office order (3.3.1); the
+cinema popcorn stays as the "used on you" question and the tuition plans became party packs (3.3.2); the solar installer
+and gym became an office birthday-cake plan (3.3.3); the tailor became a money-back offer in a new colony (3.3.4); the
+sofa trial became a two-week Sunday breakfast-box trial (3.3.5). The beef "75% lean" example was cut (beef reads badly
+for many Indian players); 3.3.3 rests on the disease problem alone. Rothman & Salovey is not cited: 3.3.3 gives
+"gain frame for something new, loss frame for a real cost they pay now" as the teacher's own rule. Iyengar & Lepper's
+jam study is cited in 3.3.2.
+
 **Folded in:** 3.3.1: "When a buyer says 'too costly', they are comparing with an anchor. Change the anchor."
 (taught as a sales move in 5.1.3)
 

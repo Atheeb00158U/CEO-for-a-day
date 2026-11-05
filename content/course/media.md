@@ -24,7 +24,7 @@ Lesson hook images, prepared like `npm run media` does (webp, 1080 px wide at mo
 | ls_hot_vending | u3-fair-rise | generated (ChatGPT, 2026-11-03) | A sweating man with coins in his hand at a plain red drinks vending machine on a hot street (1999). |
 | ls_scooter_queue | u3-queue-signal | generated (ChatGPT, 2026-11-03) | A long line of people outside a 1980s scooter showroom, a pale blue scooter behind the glass; no readable signs. |
 | ls_number_wheel | u3-first-number | generated (ChatGPT, 2026-11-05) | A 1970s classroom: a wooden wheel of fortune spinning at the front, students at desks watching from behind; numbers blurred. |
-| ls_three_offers | u3-decoy-option | generated (ChatGPT, 2026-11-05) | A student at a library desk, seen from behind, comparing three printed offer cards; prices blurred. |
+| ls_three_offers | u3-decoy-option | generated (ChatGPT, 2026-11-05) | A student at a library desk, seen from behind, comparing three printed offer cards with blank colour badges; no prices. |
 | ls_two_frames | u3-gain-or-loss | generated (ChatGPT, 2026-11-05) | A 1981 lecture hall: rows of students ticking boxes on paper questionnaires, a researcher standing at the side. |
 | ls_coin_toss | u3-loss-hurts | generated (ChatGPT, 2026-11-05) | A hand flicking a coin above a tea-stall table, two young men with glasses of chai watching. |
 | ls_mugs_class | u3-feels-theirs | generated (ChatGPT, 2026-11-05) | A 1990 college classroom: students holding plain white mugs, others without mugs looking on. |
