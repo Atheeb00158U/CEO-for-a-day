@@ -73,7 +73,7 @@ const SIZE = {
 };
 
 // How grey each size rests, before the light reaches it.
-const REST = { 1: "38%", 2: "34%", 3: "30%", 4: "28%" };
+const REST = { 1: "22%", 2: "19%", 3: "17%", 4: "15%" };
 
 export function IdeaCloud({ children }: { children: React.ReactNode }) {
   const root = useRef<HTMLDivElement>(null);
