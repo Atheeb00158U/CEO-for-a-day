@@ -321,9 +321,12 @@ export default async function Home() {
                 {PAINS.map((p, i) => (
                   <li
                     key={p}
-                    className={`site-rise rounded-[14px] px-5 py-3.5 text-[18px] leading-snug md:text-[20px] ${i % 2 ? "" : "bg-bg/70"}`}
+                    className={`site-rise flex gap-3 rounded-[14px] px-5 py-3.5 text-[18px] leading-snug md:text-[20px] ${i % 2 ? "" : "bg-bg/70"}`}
                     style={step(i * 0.3)}
                   >
+                    <span aria-hidden="true" className="-mt-0.5 text-[26px] leading-none font-bold text-[var(--brass)]">
+                      •
+                    </span>
                     {p}
                   </li>
                 ))}
