@@ -40,7 +40,7 @@ export const SCENE_TALL = { width: 752, height: 940, widths: [480, 752] } as con
 
 export const SCENES = {
   empire: {
-    alt: "The wolf in a leather boss's chair, half in a shopkeeper's kurta with a glass of chai, half in a pinstripe suit with a cigar, kirana shops on one side and glass towers on the other",
+    alt: "The wolf in a leather boss's chair, half in a shopkeeper's kurta with a glass of chai, half in a pinstripe suit with a fountain pen, kirana shops on one side and glass towers on the other",
     focus: 0.5,
   },
   shop: { alt: "An empty boss's chair behind the counter of a kirana shop in morning light", focus: 0.5 },

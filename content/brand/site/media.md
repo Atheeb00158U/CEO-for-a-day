@@ -2,7 +2,7 @@
 
 The website's pictures (`/`). One idea runs through all five: the same leather boss's chair, the Hot Seat, in a
 real Indian place. The hero is Atheeb's idea: the wolf sits in it between a kirana street and the towers of big
-business, half in a shopkeeper's kurta with chai, half in his pinstripe suit with a cigar. The other four show the
+business, half in a shopkeeper's kurta with chai, half in his pinstripe suit with a fountain pen. The other four show the
 chair empty, waiting for the player. No archive picture fits, so each was generated with ChatGPT in the browser on
 Atheeb's sign-in (5 Nov 2026), following `docs/AUTHORING.md` step 5: no logos, no readable signs, no real person's
 likeness, no airline colours. The hero was made in the same chat as the wolf's poses, so he stays the same wolf.
