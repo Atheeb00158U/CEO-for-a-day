@@ -89,6 +89,7 @@ Follow `docs/AUTHORING.md` for every Hot Seat and Daily Call: research brief →
 
 ## UI
 - shadcn/ui components live in `src/components/shadcn/` (alias set in `components.json`). Their token names are mapped onto our palette in `globals.css`; shadcn's own `muted` is never defined, because ours is the grey text colour.
+- Achievements (5 Nov 2026): levels worked out from the save in `src/lib/achievements.ts` (streak, lessons, Hot Seats, 95+ scores, XP, league) plus the one-off badges; art in `public/achievements/` (ChatGPT, `docs/ACHIEVEMENT-ART.md`). For show only, they pay nothing. A new level or badge is cheered once on the map (`AchievementCelebration`, `cfad.achSeen`); the first look on a device only records what is already earned.
 
 ## The build plan
 Follow `docs/BUILD-PLAN.md` phase by phase and tick items off as you finish them. `HANDOFF.md` has the kickoff instructions.

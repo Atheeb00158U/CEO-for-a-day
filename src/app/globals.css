@@ -253,6 +253,30 @@ body {
     transform: translateY(-5px) rotate(-3deg);
   }
 }
+/* A new achievement: the medal drops in with a bounce, then a light sweeps across it. */
+.medal-drop {
+  animation: medal-drop 0.7s cubic-bezier(0.3, 1.6, 0.5, 1) both;
+}
+@keyframes medal-drop {
+  from {
+    transform: translateY(-120px) scale(0.5) rotate(-20deg);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+.shine {
+  background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, 0.55) 50%, transparent 65%);
+  transform: translateX(-120%);
+  animation: shine 1.4s 0.7s ease-in-out 2;
+}
+@keyframes shine {
+  to {
+    transform: translateX(120%);
+  }
+}
 .word {
   color: var(--color-muted);
   transition: color 0.12s;
