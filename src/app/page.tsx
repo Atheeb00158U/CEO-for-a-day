@@ -13,13 +13,12 @@ import { FoundingPrice } from "@/components/FoundingPrice";
 import { LegacyHashRedirect } from "@/components/LegacyHashRedirect";
 import { Logo } from "@/components/Logo";
 import { WolfPicture } from "@/components/WolfPicture";
-import { CompanyRail, type RailItem } from "@/components/site/CompanyRail";
+import { IdeaCloud } from "@/components/site/IdeaCloud";
 import { ScenePicture } from "@/components/site/ScenePicture";
 import { SCENES, sceneSrcSet } from "@/lib/brand";
 import { TITLES } from "@/lib/career";
 import { FOUNDING, FOUNDING_LINE, REGULAR } from "@/lib/offer";
 import { supabaseDb } from "@/lib/server/db";
-import { catalog } from "@/lib/server/content";
 import { cachedSeatStatus } from "@/lib/server/seats";
 
 const display = Oswald({ weight: ["500", "600"], subsets: ["latin"], variable: "--font-display", display: "swap" });
@@ -30,41 +29,6 @@ export const metadata: Metadata = {
     "Many people learn business by losing money, but you can learn it from real Indian companies in five minutes a day. Start free.",
 };
 export const revalidate = 60; // the founding offer switches to the regular plans at most a minute after the last seat goes
-
-/** Each company's moment, from its Hot Seat's teaser and real history; what they did stays inside the app. */
-/**
- * The companies in the sliding row, biggest names for young readers first. Each one's name, story title and cover
- * come from the Hot Seat catalogue, and "Play now" or "Coming soon" from whether it is published, so the row stays
- * true as stories ship. The made-up kirana story is left out.
- */
-const RAIL = [
-  "netflix",
-  "apple-1997-comeback",
-  "lego-turnaround",
-  "maggi",
-  "new-coke",
-  "nokia",
-  "indigo-one-plane-type",
-  "amul-one-brand",
-  "redbus-first-tickets",
-  "nirma-washing-powder",
-  "tanishq-karatmeter",
-  "kingfisher-airlines",
-  "maruti-800",
-  "intel-quits-memory",
-  "blockbuster",
-];
-
-function railItems(): RailItem[] {
-  const all = catalog();
-  return RAIL.flatMap((id) => {
-    const e = all.find((c) => c.id === id);
-    if (!e) return [];
-    // The catalogue gives a cover only to published Hot Seats (draft pictures are not reviewed yet).
-    const img = e.cover?.startsWith("img:") ? `/media/${e.cover.slice(4)}.webp` : undefined;
-    return [{ company: e.company, title: e.title, img, live: e.available }];
-  });
-}
 
 const PAINS = [
   "Your business is not growing, and you don't know why.",
@@ -256,7 +220,7 @@ export default async function Home() {
         <span className="mr-auto text-[17px] font-semibold tracking-[-0.01em]">CEO For A Day</span>
         <nav aria-label="On this page" className="hidden items-center gap-8 text-[15px] font-medium text-ink/80 md:flex">
           <a className="site-link" href="#why">
-            The companies
+            What you learn
           </a>
           <a className="site-link" href="#club">
             The Club
@@ -296,28 +260,41 @@ export default async function Home() {
           </div>
         </section>
 
-        {/* The companies they will run, as a row that keeps sliding and fades into the page at its right edge, where
-            the promise and the action sit */}
+        {/* What the course teaches: the named ideas from the course map as one cloud, the open ones in brass */}
         <section id="why" className="scroll-mt-4 py-20 md:py-32">
           <div className={`${WRAP} md:grid md:grid-cols-12 md:items-end md:gap-10`}>
-            <h2 className={`site-rise md:col-span-7 ${HEADING}`}>Would you make the same choice?</h2>
-            <p className={`site-rise mt-5 max-w-[40ch] md:col-span-5 md:mt-0 ${LEAD}`} style={step(1)}>
-              In each Hot Seat, you make a big decision for a real company. Then you see what really happened.
-            </p>
-          </div>
-          <div className="mt-10 md:mt-14">
-            <CompanyRail items={railItems()}>
-              <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-[min(46%,560px)] items-center justify-end bg-[linear-gradient(to_right,rgb(11_16_21/0)_0%,rgb(11_16_21/0.85)_38%,rgb(11_16_21)_62%)] pr-10 md:flex">
-                <div className="pointer-events-auto max-w-[320px]">
-                  <p className="font-display text-[40px] leading-[0.95]">100+ Hot Seats on the way</p>
-                  <StartButton className="mt-6" />
-                </div>
-              </div>
-            </CompanyRail>
-            <div className={`${WRAP} mt-8 md:hidden`}>
-              <p className="font-display text-[32px] leading-none">100+ Hot Seats on the way</p>
-              <StartButton className="mt-6 w-full" />
+            <h2 className={`site-rise md:col-span-7 ${HEADING}`}>Business ideas nobody teaches you</h2>
+            <div className="site-rise md:col-span-5" style={step(1)}>
+              <p className={`mt-5 max-w-[42ch] md:mt-0 ${LEAD}`}>
+                Learn ideas like loss aversion, sunk cost and anchoring. Each lesson teaches one idea by name, with a real business
+                example.
+              </p>
+              <p className={`mt-4 max-w-[42ch] ${LEAD}`}>
+                Then you try it in a Hot Seat: you run a real company and make the decisions, so your story can end differently from
+                what really happened.
+              </p>
             </div>
+          </div>
+          <div className={`${WRAP} site-rise mt-12 md:mt-20`}>
+            <IdeaCloud />
+          </div>
+          <div className={`${WRAP} mt-12 flex flex-col gap-6 md:mt-16 md:flex-row md:items-center md:justify-between`}>
+            <div>
+              <p className="text-[18px] leading-snug md:text-[20px]">
+                120 ideas on the course map. 22 are open now, and the rest open one module at a time.
+              </p>
+              <p className="mt-3 flex gap-6 text-[15px] text-ink/70">
+                <span className="flex items-center gap-2">
+                  <span aria-hidden="true" className="size-2.5 rounded-full bg-[var(--brass)]" />
+                  Open now
+                </span>
+                <span className="flex items-center gap-2">
+                  <span aria-hidden="true" className="size-2.5 rounded-full bg-ink/40" />
+                  Coming soon
+                </span>
+              </p>
+            </div>
+            <StartButton className="w-full shrink-0 sm:w-auto" />
           </div>
         </section>
 
