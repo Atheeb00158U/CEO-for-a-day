@@ -13,11 +13,13 @@ import { FoundingPrice } from "@/components/FoundingPrice";
 import { LegacyHashRedirect } from "@/components/LegacyHashRedirect";
 import { Logo } from "@/components/Logo";
 import { WolfPicture } from "@/components/WolfPicture";
+import { CompanyRail, type RailItem } from "@/components/site/CompanyRail";
 import { ScenePicture } from "@/components/site/ScenePicture";
 import { SCENES, sceneSrcSet } from "@/lib/brand";
 import { TITLES } from "@/lib/career";
 import { FOUNDING, FOUNDING_LINE, REGULAR } from "@/lib/offer";
 import { supabaseDb } from "@/lib/server/db";
+import { catalog } from "@/lib/server/content";
 import { cachedSeatStatus } from "@/lib/server/seats";
 
 const display = Oswald({ weight: ["500", "600"], subsets: ["latin"], variable: "--font-display", display: "swap" });
@@ -29,32 +31,39 @@ export const metadata: Metadata = {
 export const revalidate = 60; // the founding offer switches to the regular plans at most a minute after the last seat goes
 
 /** Each company's moment, from its Hot Seat's teaser and real history; what they did stays inside the app. */
-const MOMENTS = [
-  {
-    company: "Nirma",
-    year: 1969,
-    img: "/media/nr_cover.webp",
-    moment: "Washing powder costs too much for many homes. Can you make yours cheap enough to sell?",
-  },
-  {
-    company: "Amul",
-    year: 1946,
-    img: "/media/am_cover.webp",
-    moment: "Middlemen pay farmers too little for milk. What if the farmers owned the dairy?",
-  },
-  {
-    company: "IndiGo",
-    year: 2005,
-    img: "/media/ig_cover.webp",
-    moment: "You have no planes yet. Would you order 100 before your first flight?",
-  },
-  {
-    company: "redBus",
-    year: 2005,
-    img: "/media/rb_cover.webp",
-    moment: "You need a bus ticket home. Every agent says no. Some buses may still have empty seats.",
-  },
+/**
+ * The companies in the sliding row, biggest names for young readers first. Each one's name, story title and cover
+ * come from the Hot Seat catalogue, and "Play now" or "Coming soon" from whether it is published, so the row stays
+ * true as stories ship. The made-up kirana story is left out.
+ */
+const RAIL = [
+  "netflix",
+  "apple-1997-comeback",
+  "lego-turnaround",
+  "maggi",
+  "new-coke",
+  "nokia",
+  "indigo-one-plane-type",
+  "amul-one-brand",
+  "redbus-first-tickets",
+  "nirma-washing-powder",
+  "tanishq-karatmeter",
+  "kingfisher-airlines",
+  "maruti-800",
+  "intel-quits-memory",
+  "blockbuster",
 ];
+
+function railItems(): RailItem[] {
+  const all = catalog();
+  return RAIL.flatMap((id) => {
+    const e = all.find((c) => c.id === id);
+    if (!e) return [];
+    // The catalogue gives a cover only to published Hot Seats (draft pictures are not reviewed yet).
+    const img = e.cover?.startsWith("img:") ? `/media/${e.cover.slice(4)}.webp` : undefined;
+    return [{ company: e.company, title: e.title, img, live: e.available }];
+  });
+}
 
 const PAINS = [
   "Your business is not growing, and you don't know why.",
@@ -130,11 +139,63 @@ const HEADING = "font-display text-[36px] leading-[1] text-balance md:text-[clam
 const LEAD = "text-[18px] leading-[1.55] text-ink/85 md:text-[20px]";
 const SIDE = "(min-width: 1280px) 500px, (min-width: 768px) 40vw, 100vw";
 
-function Lock() {
+function Tick() {
   return (
-    <svg aria-hidden="true" viewBox="0 0 16 16" className="h-4 w-4 shrink-0 fill-current">
-      <path d="M8 1a3.5 3.5 0 0 0-3.5 3.5V6H4a1.5 1.5 0 0 0-1.5 1.5v6A1.5 1.5 0 0 0 4 15h8a1.5 1.5 0 0 0 1.5-1.5v-6A1.5 1.5 0 0 0 12 6h-.5V4.5A3.5 3.5 0 0 0 8 1Zm2 5H6V4.5a2 2 0 1 1 4 0V6Z" />
+    <svg aria-hidden="true" viewBox="0 0 20 20" className="mt-1 h-4 w-4 shrink-0 fill-none stroke-[var(--brass)] stroke-[2.5]">
+      <path d="m4 10.5 4 4 8-9" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
+  );
+}
+
+/** One plan card: name, price, what it includes, and a button at the foot. The featured one has a brass edge. */
+function Plan({
+  name,
+  price,
+  items,
+  action,
+  note,
+  badge,
+  featured = false,
+}: {
+  name: string;
+  price: React.ReactNode;
+  items: string[];
+  action: string;
+  note?: string;
+  badge?: string;
+  featured?: boolean;
+}) {
+  return (
+    <div
+      className={`site-rise flex flex-col rounded-[24px] p-8 ${featured ? "bg-[var(--warm)] ring-2 ring-[var(--brass)]" : "bg-surface"}`}
+      style={step(featured ? 2 : 1)}
+    >
+      <div className="flex items-center justify-between gap-3">
+        <h3 className={`font-display text-[30px] leading-none ${featured ? "text-[var(--brass)]" : ""}`}>{name}</h3>
+        {badge && (
+          <span className="rounded-full bg-[var(--brass)] px-3 py-1 text-[13px] font-semibold text-[var(--brass-ink)]">{badge}</span>
+        )}
+      </div>
+      <p className="mt-5 text-[34px] leading-none font-semibold tracking-[-0.02em]">{price}</p>
+      {featured && badge && <p className="mt-3 text-[15px] font-semibold text-[var(--brass)]">{FOUNDING_LINE}</p>}
+      <ul className="mt-7 grid gap-3 text-[17px]">
+        {items.map((it) => (
+          <li key={it} className="flex gap-3">
+            <Tick />
+            {it}
+          </li>
+        ))}
+      </ul>
+      {note && <p className="mt-6 text-[15px] leading-relaxed text-ink/70">{note}</p>}
+      <div className="mt-auto pt-8">
+        <Link
+          href="/app"
+          className={`flex h-12 items-center justify-center rounded-full text-[16px] font-semibold ${featured ? "site-cta" : "bg-surface-2 transition-colors hover:bg-line"}`}
+        >
+          {action}
+        </Link>
+      </div>
+    </div>
   );
 }
 
@@ -203,62 +264,64 @@ export default async function Home() {
           </div>
         </section>
 
-        {/* Real moments from the companies they will run: the situation, never the answer */}
-        <section id="why" className={`${WRAP} scroll-mt-4 py-20 md:py-32`}>
-          <div className="md:grid md:grid-cols-12 md:items-end md:gap-10">
+        {/* The companies they will run, as a row that keeps sliding and fades into the page at its right edge, where
+            the promise and the action sit */}
+        <section id="why" className="scroll-mt-4 py-20 md:py-32">
+          <div className={`${WRAP} md:grid md:grid-cols-12 md:items-end md:gap-10`}>
             <h2 className={`site-rise md:col-span-7 ${HEADING}`}>Would you make the same choice?</h2>
-            <p className={`site-rise mt-5 max-w-[38ch] md:col-span-5 md:mt-0 ${LEAD}`} style={step(1)}>
-              You make their decision first. Then you see what really happened.
+            <p className={`site-rise mt-5 max-w-[40ch] md:col-span-5 md:mt-0 ${LEAD}`} style={step(1)}>
+              In each Hot Seat, you run a real company for one big decision. Then you see what really happened.
             </p>
           </div>
-          <ul className="mt-10 grid gap-3 sm:grid-cols-2 md:mt-14 lg:grid-cols-4">
-            {MOMENTS.map((m, i) => (
-              <li key={m.company} className="site-rise flex flex-col overflow-hidden rounded-[20px] bg-surface" style={step(i * 0.5)}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={m.img}
-                  alt=""
-                  width={1024}
-                  height={768}
-                  loading="lazy"
-                  decoding="async"
-                  className="aspect-[16/10] w-full object-cover"
-                />
-                <div className="flex flex-1 flex-col p-5">
-                  <p className="font-display text-[26px] leading-none">
-                    {m.company} <span className="text-[var(--brass)]">{m.year}</span>
-                  </p>
-                  <p className="mt-3 text-[17px] leading-snug text-ink/90">{m.moment}</p>
-                  <p className="mt-auto flex items-center gap-2 pt-5 text-[15px] font-semibold text-[var(--brass)]">
-                    <Lock />
-                    See what they did.
-                  </p>
+          <div className="mt-10 md:mt-14">
+            <CompanyRail items={railItems()}>
+              <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-[min(46%,560px)] items-center justify-end bg-[linear-gradient(to_right,rgb(11_16_21/0)_0%,rgb(11_16_21/0.85)_38%,rgb(11_16_21)_62%)] pr-10 md:flex">
+                <div className="pointer-events-auto max-w-[320px]">
+                  <p className="font-display text-[40px] leading-[0.95]">100+ Hot Seats on the way</p>
+                  <StartButton className="mt-6" />
                 </div>
-              </li>
-            ))}
-          </ul>
-          <StartButton className="site-rise mt-10 w-full sm:w-auto" />
+              </div>
+            </CompanyRail>
+            <div className={`${WRAP} mt-8 md:hidden`}>
+              <p className="font-display text-[32px] leading-none">100+ Hot Seats on the way</p>
+              <StartButton className="mt-6 w-full" />
+            </div>
+          </div>
         </section>
 
-        {/* The problem: the reader's own worries, beside the shopkeeper alone at night */}
-        <section className={`${WRAP} pb-20 md:grid md:grid-cols-12 md:items-center md:gap-10 md:pb-32`}>
-          <div className="site-rise overflow-hidden rounded-[24px] bg-surface md:col-span-5">
-            <ScenePicture name="alone" sizes={SIDE} className="aspect-[4/5] h-auto w-full object-cover" />
+        {/* The problem: the shopkeeper alone at night fills the width; the reader's worries sit on its dark right side,
+            inside the page's column. On a phone the picture comes first and the list below it. */}
+        <section className="site-zoom relative isolate mb-20 overflow-hidden bg-surface md:mb-32 md:min-h-[min(100svh,860px)]">
+          <div className="relative aspect-[4/5] overflow-hidden md:absolute md:inset-0 md:-z-10 md:aspect-auto">
+            <ScenePicture name="alone" className="h-full w-full object-cover md:object-[30%_50%]" />
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-[linear-gradient(to_top,rgb(20_27_34),rgb(20_27_34/0))] md:hidden"
+            />
           </div>
-          <div className="mt-10 md:col-span-7 md:mt-0">
-            <h2 className={`site-rise ${HEADING}`}>Be honest. Is this you?</h2>
-            <ul className="mt-8 grid gap-1">
-              {PAINS.map((p, i) => (
-                <li
-                  key={p}
-                  className={`site-rise rounded-[14px] px-5 py-3.5 text-[18px] leading-snug md:text-[20px] ${i % 2 ? "" : "bg-surface"}`}
-                  style={step(i * 0.3)}
-                >
-                  {p}
-                </li>
-              ))}
-            </ul>
-            <p className={`site-rise mt-6 ${LEAD}`}>If this sounds like you, you are not alone. Nobody taught you these rules.</p>
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 -z-10 hidden md:block md:bg-[linear-gradient(to_left,rgb(11_16_21/0.96)_0%,rgb(11_16_21/0.85)_40%,rgb(11_16_21/0)_70%)]"
+          />
+          <div className={`${WRAP} pt-2 pb-16 md:flex md:min-h-[inherit] md:items-center md:justify-end md:py-20`}>
+            <div className="md:w-[min(52%,600px)]">
+              <h2 className={`site-rise ${HEADING}`}>Be honest. Is this you?</h2>
+              <ul className="mt-8 grid gap-1">
+                {PAINS.map((p, i) => (
+                  <li
+                    key={p}
+                    className={`site-rise flex gap-3 rounded-[14px] px-5 py-3.5 text-[18px] leading-snug md:text-[20px] ${i % 2 ? "" : "bg-bg/70"}`}
+                    style={step(i * 0.3)}
+                  >
+                    <span aria-hidden="true" className="-mt-0.5 text-[26px] leading-none font-bold text-[var(--brass)]">
+                      •
+                    </span>
+                    {p}
+                  </li>
+                ))}
+              </ul>
+              <p className={`site-rise mt-6 ${LEAD}`}>If this sounds like you, you are not alone. Nobody taught you these rules.</p>
+            </div>
           </div>
         </section>
 
@@ -302,7 +365,7 @@ export default async function Home() {
           <div className="mt-16 md:mt-24 md:grid md:grid-cols-12 md:items-end md:gap-10">
             <h2 className={`site-rise md:col-span-7 ${HEADING}`}>From Street Seller to CEO</h2>
             <p className={`site-rise mt-5 max-w-[34ch] md:col-span-5 md:mt-0 ${LEAD}`} style={step(1)}>
-              Finish each unit to earn a new title. Other players can see it.
+              Your title grows as you learn, from Street Seller to CEO.
             </p>
           </div>
           <ol className="mt-10 grid gap-1.5 md:mt-12 xl:h-[400px] xl:grid-cols-10 xl:items-end xl:gap-2">
@@ -351,7 +414,7 @@ export default async function Home() {
             <div className="max-w-[620px]">
               <h2 className={`site-rise ${HEADING}`}>Meet serious business minds</h2>
               <p className={`site-rise mt-6 ${LEAD}`} style={step(1)}>
-                Only members who reach Trader can post, chat and start groups.
+                A private club for members who take business seriously.
               </p>
               <p className={`site-rise mt-3 ${LEAD}`} style={step(2)}>
                 Share what worked. Ask for advice before a big decision. Meet people you could build with.
@@ -364,92 +427,65 @@ export default async function Home() {
           </div>
         </section>
 
-        {/* Price: the one real scarcity, then the free plan and the bigger member plan */}
+        {/* Price: two plans side by side, the same shape, the member plan highlighted; the one real scarcity on top */}
         <section id="price" className={`${WRAP} scroll-mt-4 pb-20 md:pb-32`}>
-          <div className="md:grid md:grid-cols-12 md:items-end md:gap-10">
-            <h2 className={`site-rise md:col-span-6 ${HEADING}`}>Start free</h2>
+          <div className="mx-auto max-w-[720px] text-center">
+            <h2 className={`site-rise ${HEADING}`}>Start free</h2>
             {!full && (
-              <p className={`site-rise mt-5 max-w-[40ch] md:col-span-6 md:mt-0 ${LEAD}`} style={step(1)}>
+              <p className={`site-rise mt-5 ${LEAD}`} style={step(1)}>
                 The founding price is only for the first {FOUNDING.seats.toLocaleString("en-IN")} members. After that, it is ₹
                 {REGULAR.monthly} a month.
               </p>
             )}
           </div>
-          <div className="mt-10 grid gap-3 md:mt-12 md:grid-cols-12">
-            <div className="site-rise flex flex-col overflow-hidden rounded-[24px] bg-surface md:col-span-5" style={step(1)}>
-              <div className="p-7">
-                <h3 className="font-display text-[34px] leading-none">Free</h3>
-                <p className="mt-4 text-[36px] leading-none font-semibold tracking-[-0.02em]">₹0</p>
-                <ul className="mt-6 grid gap-2.5 text-[18px]">
-                  <li>Your first five lessons</li>
-                  <li>Your first Hot Seat</li>
-                  <li>Flashcards and leagues</li>
-                </ul>
-              </div>
-              <Link href="/app" className="site-link mt-auto flex h-16 items-center bg-surface-2 px-7 text-[17px] font-semibold">
-                Start free
-              </Link>
-            </div>
-            <div
-              className="site-rise mt-6 flex flex-col overflow-hidden rounded-[24px] bg-[var(--warm)] md:col-span-7 md:mt-0"
-              style={step(2)}
-            >
-              <div className="grid gap-6 p-7 lg:grid-cols-[1fr_210px]">
-                <div>
-                  <h3 className="font-display text-[34px] leading-none text-[var(--brass)]">Member</h3>
-                  {full ? (
-                    <>
-                      <p className="mt-4 text-[36px] leading-none font-semibold tracking-[-0.02em]">₹{REGULAR.monthly} a month</p>
-                      <p className="mt-3 text-[18px]">Or ₹{yearly} a year.</p>
-                    </>
-                  ) : (
-                    <>
-                      <p className="mt-4 text-[36px] leading-none font-semibold tracking-[-0.02em]">
-                        <FoundingPrice />
-                      </p>
-                      <p className="mt-3 text-[17px] font-semibold text-[var(--brass)]">{FOUNDING_LINE}</p>
-                    </>
-                  )}
-                  <ul className="mt-6 grid gap-2.5 text-[18px]">
-                    <li>All lessons and Hot Seats</li>
-                    <li>New ones when they are ready</li>
-                    <li>The Club, when it opens</li>
-                    <li>Cancel any time with one tap</li>
-                  </ul>
-                  {!full && (
-                    <p className="mt-6 max-w-[42ch] text-[15px] leading-relaxed text-ink/75">
-                      You keep ₹{FOUNDING.monthly} a month for as long as you stay a member.
-                    </p>
-                  )}
-                </div>
-                <WolfPicture name="cafe" sizes="210px" className="hidden aspect-[4/5] w-full rounded-[16px] object-cover lg:block" />
-              </div>
-              <Link href="/app" className="site-cta mt-auto flex h-16 items-center px-7 text-[17px] font-semibold">
-                Start free, join when you are ready
-              </Link>
-            </div>
+          <div className="mx-auto mt-12 grid max-w-[920px] gap-4 md:grid-cols-2">
+            <Plan
+              name="Free"
+              price={<>₹0</>}
+              items={["Your first five lessons", "Your first Hot Seat", "Flashcards and leagues"]}
+              action="Start free"
+            />
+            <Plan
+              featured
+              name="Member"
+              badge={full ? undefined : "Founding price"}
+              price={full ? <>₹{REGULAR.monthly} a month</> : <FoundingPrice />}
+              note={full ? `Or ₹${yearly} a year.` : `You keep ₹${FOUNDING.monthly} a month for as long as you stay a member.`}
+              items={[
+                "All lessons and Hot Seats",
+                "New ones when they are ready",
+                "The Club, when it opens",
+                "Cancel any time with one tap",
+              ]}
+              action="Start free, join when ready"
+            />
           </div>
         </section>
 
-        {/* Questions: a short heading with the action beside it, the answers as a 2 x 2 grid, every answer showing */}
-        <section aria-labelledby="questions" className={`${WRAP} pb-20 md:grid md:grid-cols-12 md:gap-10 md:pb-32`}>
-          <div className="md:col-span-4">
-            <h2 id="questions" className={`site-rise ${HEADING}`}>
-              Before you start
+        {/* Questions: an accordion, the first one open; works with no script */}
+        <section aria-labelledby="questions" className={`${WRAP} pb-20 md:pb-32`}>
+          <div className="mx-auto max-w-[820px]">
+            <h2 id="questions" className={`site-rise text-center ${HEADING}`}>
+              Questions
             </h2>
-            <p className={`site-rise mt-5 ${LEAD}`} style={step(1)}>
-              Short answers to what people ask first.
-            </p>
-            <StartButton className="site-rise mt-8 hidden md:inline-flex" />
+            <div className="mt-10 grid gap-2">
+              {faq(full).map((f, i) => (
+                <details key={f.q} open={i === 0} className="site-faq group rounded-[18px] bg-surface px-6">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-5 text-[18px] font-semibold md:text-[20px] [&::-webkit-details-marker]:hidden">
+                    {f.q}
+                    <svg
+                      aria-hidden="true"
+                      viewBox="0 0 20 20"
+                      className="h-5 w-5 shrink-0 fill-none stroke-[var(--brass)] stroke-[2.5] transition-transform group-open:rotate-180"
+                    >
+                      <path d="m5 8 5 5 5-5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </summary>
+                  <p className="max-w-[64ch] pb-6 text-[17px] leading-[1.55] text-ink/85">{f.a}</p>
+                </details>
+              ))}
+            </div>
           </div>
-          <dl className="mt-10 grid gap-3 sm:grid-cols-2 md:col-span-8 md:mt-0">
-            {faq(full).map((f, i) => (
-              <div key={f.q} className="site-rise rounded-[20px] bg-surface p-6" style={step(i * 0.4)}>
-                <dt className="text-[20px] leading-tight font-semibold md:text-[21px]">{f.q}</dt>
-                <dd className="mt-3 text-[17px] leading-[1.55] text-ink/85">{f.a}</dd>
-              </div>
-            ))}
-          </dl>
         </section>
 
         {/* The close: learn it here, or with your own money */}
