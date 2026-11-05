@@ -8,5 +8,13 @@ export const GRIEVANCE = {
   company: "TODO",
 };
 
+export const NOT_ADVICE = "For learning only. Not business or money advice.";
+
+/** "Help and feedback": a mail with a subject and the app version, and nothing about the player. */
+export const helpMail = () =>
+  `mailto:${GRIEVANCE.email}?subject=${encodeURIComponent("CEO For A Day: Help and feedback")}&body=${encodeURIComponent(
+    `\n\n\nApp version: ${process.env.NEXT_PUBLIC_APP_VERSION}`,
+  )}`;
+
 /** False while any grievance detail is still a placeholder. */
 export const grievanceReady = () => !Object.values(GRIEVANCE).includes("TODO");

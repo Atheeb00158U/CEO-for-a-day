@@ -17,6 +17,7 @@ import { IdeaCloud } from "@/components/site/IdeaCloud";
 import { ScenePicture } from "@/components/site/ScenePicture";
 import { SCENES, sceneSrcSet } from "@/lib/brand";
 import { TITLES } from "@/lib/career";
+import { NOT_ADVICE, helpMail } from "@/lib/legal";
 import { FOUNDING, FOUNDING_LINE, REGULAR } from "@/lib/offer";
 import { supabaseDb } from "@/lib/server/db";
 import { cachedSeatStatus } from "@/lib/server/seats";
@@ -491,7 +492,7 @@ export default async function Home() {
 
       <footer className={`${WRAP} pt-16 pb-10 md:pt-20`}>
         <div className="flex flex-col gap-6 text-[15px] text-ink/75 md:flex-row md:items-end md:justify-between">
-          <p className="max-w-[44ch]">Education, not business advice. Other outcomes are estimates.</p>
+          <p className="max-w-[44ch]">{NOT_ADVICE} Other outcomes are estimates.</p>
           <p className="flex gap-6 text-ink">
             <Link className="site-link" href="/app">
               Start
@@ -502,6 +503,9 @@ export default async function Home() {
             <Link className="site-link" href="/terms">
               Terms
             </Link>
+            <a className="site-link" href={helpMail()}>
+              Help
+            </a>
           </p>
         </div>
       </footer>

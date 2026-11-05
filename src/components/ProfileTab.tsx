@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ApiError, api } from "@/lib/auth";
 import { showPaywall } from "@/lib/content-client";
+import { NOT_ADVICE, helpMail } from "@/lib/legal";
 import type { MembershipView } from "@/lib/membership-view";
 import { FOUNDING, REGULAR } from "@/lib/offer";
 import { LEAGUES, useGame } from "@/lib/store";
@@ -184,6 +185,19 @@ export function ProfileTab() {
       {showMembership && !memberNow && <MembershipCard m={membership!} />}
 
       {account && <AccountCard email={account.email} />}
+
+      <Section className="!gap-1">
+        <a href={helpMail()} className="flex items-center justify-between gap-3">
+          <span>
+            <span className="block text-[19px] font-black">Help and feedback</span>
+            <span className="block text-[15px] font-bold text-muted">Email us about a problem or an idea.</span>
+          </span>
+          <span aria-hidden className="text-[24px] font-black text-muted">
+            ›
+          </span>
+        </a>
+      </Section>
+      <p className="pb-2 text-center text-[13px] font-bold text-muted">{NOT_ADVICE}</p>
     </div>
   );
 }

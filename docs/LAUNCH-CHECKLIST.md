@@ -46,10 +46,10 @@ A Hot Seat takes 5–8 minutes. That's too long to protect a daily streak. Add a
 
 ## 9. Legal and trust
 - Privacy policy and consent under India's Digital Personal Data Protection Act, 2023, plus terms of service.
-- A disclaimer that the app is education, not business or financial advice.
+- ~~A disclaimer that the app is education, not business or financial advice~~ Done (2026-11-05): /terms, Profile and the site footer.
 - A notice explaining that alternate-history outcomes are estimates (already labelled in the app).
 - A credits log for every archive clip and its public-domain source.
-- An age rating, and a support or feedback channel.
+- An age rating. ~~A support or feedback channel~~ Done (2026-11-05): "Help and feedback" on Profile, /terms and the site footer email atheeb@gridd.ai.
 
 ## 10. Polish still to do in the prototype
 - Sound effects (correct, wrong, level up), haptics, and a confetti moment on the debrief.
