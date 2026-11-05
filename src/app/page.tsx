@@ -1,9 +1,9 @@
-// The public website. A server component: the pictures are static files; whether founding seats are left is read
-// here (never shown as a count) to pick the founding or regular offer; the sample decision plays through /api/play,
-// so no Hot Seat answers reach the page. Every scene shows the same boss's chair: the Hot Seat, waiting.
-// The website has its own, quieter look (site.css): a cinematic serif for headlines and one brass accent.
+// The public website. It sells the answer to a founder's fear (making the wrong call with nobody to teach them the
+// rules), not samples of the game: the problem, who they become, the Club, then the offer. A server component:
+// whether founding seats are left is read here (never shown as a count) to pick the founding or regular offer.
+// The website has its own look (site.css): bold uppercase headlines, the phone's own text face, one brass accent.
 import type { Metadata } from "next";
-import { Instrument_Serif, Inter } from "next/font/google";
+import { Oswald } from "next/font/google";
 import Link from "next/link";
 import { preload } from "react-dom";
 import "./site.css";
@@ -11,7 +11,6 @@ import { FoundingPrice } from "@/components/FoundingPrice";
 import { LegacyHashRedirect } from "@/components/LegacyHashRedirect";
 import { Logo } from "@/components/Logo";
 import { WolfPicture } from "@/components/WolfPicture";
-import { SampleCall } from "@/components/site/SampleCall";
 import { ScenePicture } from "@/components/site/ScenePicture";
 import { SCENES, sceneSrcSet, type SceneName } from "@/lib/brand";
 import { TITLES } from "@/lib/career";
@@ -19,46 +18,44 @@ import { FOUNDING, FOUNDING_LINE, REGULAR } from "@/lib/offer";
 import { supabaseDb } from "@/lib/server/db";
 import { cachedSeatStatus } from "@/lib/server/seats";
 
-const display = Instrument_Serif({ weight: "400", subsets: ["latin"], variable: "--font-display", display: "swap" });
-const text = Inter({ subsets: ["latin", "latin-ext"], variable: "--font-site", display: "swap" });
+const display = Oswald({ weight: ["500", "600"], subsets: ["latin"], variable: "--font-display", display: "swap" });
 
 export const metadata: Metadata = {
-  title: "CEO For A Day · Be the boss of a real company",
-  description:
-    "Learn one business rule in a short lesson. Then take the Hot Seat and make a big decision for a real Indian company. Start free.",
+  title: "CEO For A Day · Good business decisions are a skill",
+  description: "Learn them from real Indian companies. Five minutes a day. Start free.",
 };
 export const revalidate = 60; // the founding offer switches to the regular plans at most a minute after the last seat goes
 
-/** Published Hot Seats with a real company behind them: a still from each story and its name. */
-const HOT_SEATS = [
-  { company: "Nirma", story: "A quarter of the price", img: "/media/nr_cover.webp", width: 1024, height: 768 },
-  { company: "Amul", story: "A brand owned by farmers", img: "/media/am_cover.webp", width: 1024, height: 576 },
-  { company: "IndiGo", story: "One plane, on time", img: "/media/ig_cover.webp", width: 1024, height: 576 },
-  { company: "redBus", story: "No ticket home for Diwali", img: "/media/rb_cover.webp", width: 1024, height: 768 },
+const PAINS = [
+  "Your business is not growing, and you don't know why.",
+  "You have lost money on wrong decisions.",
+  "Nobody around you understands your business.",
+  "You watch business videos, but you forget them.",
+  "You can't afford an MBA, and you are not sure it would help.",
+  "You worry about one big wrong decision.",
 ];
 
-/** A real flashcard from Module 1.1 (card m11-cash-2 in u1-cash-runs-out), shown already answered. */
-const CARD = {
-  front: "₹2,40,000 in the bank. You lose ₹40,000 a month. How long can you last?",
-  options: ["6 months", "4 months", "10 months"],
-  back: "₹2,40,000 ÷ ₹40,000 = 6 months of runway.",
-};
+const BECOME = [
+  "You know what to ask before a big decision.",
+  "You spot the trap before it costs you money.",
+  "You think like the founders you look up to.",
+];
 
 const yearly = REGULAR.yearly.toLocaleString("en-IN");
 
 function faq(full: boolean) {
   return [
-    { q: "Is it free?", a: "Yes. Your first lessons and your first Hot Seat are free. Membership opens the rest." },
+    { q: "Is it free?", a: "Yes. Your first five lessons and first Hot Seat are free. Membership gives you the rest." },
     full
       ? {
           q: "What does membership get me?",
-          a: `Every lesson, every Hot Seat, and every new one we add. ₹${REGULAR.monthly} a month or ₹${yearly} a year.`,
+          a: `All lessons and Hot Seats, including new ones we add. ₹${REGULAR.monthly} a month or ₹${yearly} a year.`,
         }
       : {
           q: `What does ₹${FOUNDING.monthly} get me?`,
           a: (
             <>
-              Every lesson, every Hot Seat, and every new one we add. <FoundingPrice /> while you stay a member. {FOUNDING_LINE}
+              All lessons and Hot Seats, including new ones we add. <FoundingPrice /> while you stay a member. {FOUNDING_LINE}
             </>
           ),
         },
@@ -66,13 +63,9 @@ function faq(full: boolean) {
       q: "Can I cancel?",
       a: full
         ? "Yes. Cancel any time with one tap in your profile or UPI app."
-        : `Yes. Cancel any time with one tap in your profile or UPI app. If you cancel, the ₹${FOUNDING.monthly} price ends.`,
+        : `Yes. Cancel any time with one tap in your profile or UPI app. If you cancel, you lose the ₹${FOUNDING.monthly} price.`,
     },
-    { q: "Is it in Hindi?", a: "English for now. Hindi, Tamil and Bengali are coming." },
-    {
-      q: "Are the stories true?",
-      a: "Yes, from public sources. Each Hot Seat lists them. One practice story is not real, and it says so.",
-    },
+    { q: "Is it in Hindi?", a: "Only English for now. Hindi, Tamil and Bengali are coming." },
   ];
 }
 
@@ -85,216 +78,175 @@ async function seatsFull() {
   }
 }
 
-function PlayButton({ small = false, className = "" }: { small?: boolean; className?: string }) {
+/** The one action on the page, repeated after each section. */
+function StartButton({ small = false, className = "" }: { small?: boolean; className?: string }) {
   return (
     <Link
       href="/app"
-      className={`site-cta inline-flex items-center justify-center rounded-full font-semibold ${small ? "h-10 px-5 text-[15px]" : "h-14 px-8 text-[18px]"} ${className}`}
+      className={`site-cta inline-flex items-center justify-center rounded-full font-semibold ${small ? "h-10 px-5 text-[15px]" : "h-14 px-9 text-[18px]"} ${className}`}
     >
-      Play free
+      Start free
     </Link>
   );
 }
 
-// On a phone the hero shows a square from the middle of the wide picture (the wolf and both worlds), so it needs
-// the wide file at almost twice the screen's width.
-const HERO_SIZES = "(min-width: 768px) 100vw, 180vw";
-
 /** A delay step for the parts of a section that rise in one after another. */
 const step = (i: number) => ({ "--i": i }) as React.CSSProperties;
 
-// The type steps of the website: display (the hero, the close), heading, lead and body.
-const DISPLAY =
-  "font-display text-[52px] leading-[0.95] tracking-[-0.01em] text-balance md:text-[clamp(72px,7.4vw,124px)] md:leading-[0.9]";
-const HEADING =
-  "font-display text-[44px] leading-[0.98] tracking-[-0.01em] text-balance md:text-[clamp(56px,5.2vw,88px)] md:leading-[0.95]";
-const LEAD = "text-[18px] leading-[1.5] text-ink/85 md:text-[20px]";
+// The type steps of the website: display (the hero, the close), heading, lead.
+const DISPLAY = "font-display text-[46px] leading-[0.98] text-balance md:text-[clamp(64px,6.4vw,112px)] md:leading-[0.94]";
+const HEADING = "font-display text-[38px] leading-[1] text-balance md:text-[clamp(48px,4.4vw,76px)] md:leading-[0.98]";
+const LEAD = "text-[18px] leading-[1.55] text-ink/85 md:text-[20px]";
 
-/**
- * One chapter of "how it works": a full-width scene, the words on its dark side, and a real piece of the game
- * beside them. Below 1024 px the words sit on top and the piece of the game below.
- */
-function Chapter({ scene, title, words, children }: { scene: SceneName; title: string; words: string; children: React.ReactNode }) {
+/** A full-width picture with its words on the dark side: the words below the picture on a phone, at its left from 768 px. */
+function SceneBand({ scene, children, id }: { scene: SceneName; children: React.ReactNode; id?: string }) {
   return (
-    <section className="site-zoom relative isolate overflow-hidden bg-surface lg:min-h-[min(100svh,960px)]">
-      <div className="absolute inset-0 -z-10 overflow-hidden">
+    <section id={id} className="site-zoom relative isolate scroll-mt-4 overflow-hidden bg-surface md:min-h-[min(100svh,900px)]">
+      <div className="relative aspect-[4/5] overflow-hidden md:absolute md:inset-0 md:-z-10 md:aspect-auto">
         <ScenePicture name={scene} className="h-full w-full object-cover" />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-[linear-gradient(to_top,rgb(20_27_34),rgb(20_27_34/0))] md:hidden"
+        />
       </div>
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,rgb(11_16_21/0.94)_0%,rgb(11_16_21/0.7)_35%,rgb(11_16_21/0.45)_100%)] lg:bg-[linear-gradient(to_right,rgb(11_16_21/0.96)_0%,rgb(11_16_21/0.82)_34%,rgb(11_16_21/0.15)_68%)]"
+        className="pointer-events-none absolute inset-0 -z-10 hidden md:block md:bg-[linear-gradient(to_right,rgb(11_16_21/0.95)_0%,rgb(11_16_21/0.8)_36%,rgb(11_16_21/0)_66%)]"
       />
-      <div className="flex flex-col gap-12 px-5 py-20 lg:grid lg:min-h-[inherit] lg:grid-cols-12 lg:items-center lg:gap-8 lg:px-10 lg:py-24">
-        <div className="lg:col-span-5">
-          <h2 className={`site-rise ${HEADING}`}>{title}</h2>
-          <p className={`site-rise mt-5 max-w-[30ch] ${LEAD}`} style={step(1)}>
-            {words}
-          </p>
-        </div>
-        <div data-ui className="site-rise w-full self-center lg:col-span-5 lg:col-start-8 lg:flex lg:justify-center" style={step(2)}>
-          {children}
-        </div>
+      <div className="px-5 pt-2 pb-16 md:flex md:min-h-[inherit] md:items-center md:px-10 md:py-24">
+        <div className="md:max-w-[min(46vw,620px)]">{children}</div>
       </div>
     </section>
   );
 }
 
-/** A plain phone: a black body with a thin light edge and a crisp shadow, the screen inside. */
-function Phone({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="mx-auto w-[min(74vw,300px)] rounded-[48px] bg-[#050607] p-[10px] shadow-[0_0_0_1px_rgb(255_255_255/0.1),0_28px_50px_-18px_rgb(0_0_0/0.9)] lg:w-[min(23vw,320px)]">
-      <div className="overflow-hidden rounded-[38px] bg-bg">{children}</div>
-    </div>
-  );
-}
-
 export default async function Home() {
+  preload(`/brand/site/empire-tall-752.avif`, {
+    as: "image",
+    type: "image/avif",
+    imageSrcSet: sceneSrcSet("empire", true, "avif"),
+    imageSizes: "100vw",
+    media: "(max-width: 767px)",
+    fetchPriority: "high",
+  });
   preload(`/brand/site/empire-1672.avif`, {
     as: "image",
     type: "image/avif",
     imageSrcSet: sceneSrcSet("empire", false, "avif"),
-    imageSizes: HERO_SIZES,
+    imageSizes: "100vw",
+    media: "(min-width: 768px)",
     fetchPriority: "high",
   });
   const full = await seatsFull();
 
   return (
-    <div className={`site ${display.variable} ${text.variable} min-h-dvh overflow-x-clip`}>
+    <div className={`site ${display.variable} min-h-dvh overflow-x-clip`}>
       <LegacyHashRedirect />
       <header className="relative z-20 bg-bg">
         <div className="flex h-16 items-center gap-3 px-5 md:h-[72px] md:px-10">
           <Logo size={32} />
           <span className="mr-auto text-[17px] font-semibold tracking-[-0.01em]">CEO For A Day</span>
           <nav aria-label="On this page" className="hidden items-center gap-8 text-[15px] font-medium text-ink/80 md:flex">
-            <a className="site-link" href="#how">
-              How it works
+            <a className="site-link" href="#is-this-you">
+              Is this you?
             </a>
-            <a className="site-link" href="#hot-seats">
-              Hot Seats
+            <a className="site-link" href="#club">
+              The Club
             </a>
             <a className="site-link" href="#price">
               Price
             </a>
           </nav>
-          <PlayButton small className="md:ml-6" />
+          <StartButton small className="md:ml-6" />
         </div>
       </header>
 
       <main>
-        {/* Hero: the wolf in the boss's chair between a kirana street and the towers. It paints at once: the picture
-            is preloaded, a blurred copy and its colour stand in while it loads, and nothing here waits for a fade. */}
+        {/* Hero: one belief, over the wolf between the kirana and the towers. It paints at once: the picture is
+            preloaded, a blurred copy and its colour stand in while it loads, and nothing here waits for a fade. */}
         <section className="relative isolate md:flex md:h-[calc(100svh-72px)] md:min-h-[600px] md:items-end">
           <div
             className="site-drift relative -z-10 aspect-square overflow-hidden bg-[#281818] bg-cover bg-center md:absolute md:inset-0 md:aspect-auto"
             style={{ backgroundImage: `url(${SCENES.empire.poster})` }}
           >
-            <ScenePicture name="empire" wide priority sizes={HERO_SIZES} className="h-full w-full object-cover object-top" />
+            <ScenePicture name="empire" priority className="h-full w-full object-cover object-top" />
           </div>
           <div
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_top,rgb(11_16_21)_0%,rgb(11_16_21)_44%,rgb(11_16_21/0)_60%)] md:bg-[linear-gradient(to_top,rgb(11_16_21/0.95)_0%,rgb(11_16_21/0.55)_30%,rgb(11_16_21/0)_55%),linear-gradient(to_right,rgb(11_16_21/0.75)_0%,rgb(11_16_21/0)_50%)]"
           />
-          <div className="-mt-10 w-full px-5 pb-12 md:mt-0 md:grid md:grid-cols-12 md:gap-8 md:px-10 md:pb-16">
-            <div className="md:col-span-8 lg:col-span-6">
-              <h1 className={DISPLAY}>Be the boss of a real company</h1>
-              <p className={`mt-5 max-w-[36ch] md:mt-6 ${LEAD}`}>
-                Learn one business rule in a short lesson. Then take the Hot Seat and make a big decision for a real Indian company.
-              </p>
+          <div className="-mt-10 w-full px-5 pb-12 md:mt-0 md:px-10 md:pb-16">
+            <div className="md:max-w-[min(76vw,1120px)]">
+              <h1 className={DISPLAY}>Good business decisions are a skill.</h1>
+              <p className={`mt-5 max-w-[46ch] md:mt-6 ${LEAD}`}>Learn them from real Indian companies. Five minutes a day.</p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6">
-                <PlayButton className="w-full sm:w-auto" />
-                <p className="text-[15px] text-ink/75">Start free. No card needed.</p>
+                <StartButton className="w-full sm:w-auto" />
+                <p className="text-[15px] text-ink/75">No card needed.</p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* The Hot Seats: one tall still from each published story with a real company behind it */}
-        <section id="hot-seats" className="scroll-mt-4 px-5 py-20 md:px-10 md:py-28">
-          <div className="md:grid md:grid-cols-12 md:items-end md:gap-8">
-            <h2 className={`site-rise md:col-span-7 ${HEADING}`}>Real companies. Real decisions.</h2>
-            <p className={`site-rise mt-5 max-w-[34ch] md:col-span-4 md:col-start-9 md:mt-0 ${LEAD}`} style={step(1)}>
-              Make big decisions for Nirma, Amul, IndiGo and redBus. Then see what really happened.
-            </p>
+        {/* The problem: the reader's own worries, beside the shopkeeper alone at night */}
+        <section id="is-this-you" className="scroll-mt-4 px-5 py-20 md:grid md:grid-cols-12 md:gap-10 md:px-10 md:py-28">
+          <div className="site-rise mb-10 md:col-span-5 md:mb-0">
+            <div className="overflow-hidden rounded-[20px] bg-surface md:sticky md:top-10">
+              <ScenePicture name="alone" sizes="(min-width: 768px) 40vw, 100vw" className="aspect-[4/5] h-auto w-full object-cover" />
+            </div>
           </div>
-          <ul className="mt-10 grid grid-cols-2 gap-2 md:mt-14 md:grid-cols-4 md:gap-3">
-            {HOT_SEATS.map((h, i) => (
-              <li key={h.company} className="site-rise" style={step(i * 0.5)}>
-                <Link href="/app" className="site-story relative block aspect-[4/5] overflow-hidden rounded-[18px] bg-surface">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={h.img}
-                    alt=""
-                    width={h.width}
-                    height={h.height}
-                    loading="lazy"
-                    decoding="async"
-                    className="h-full w-full object-cover"
-                  />
-                  <span
-                    aria-hidden="true"
-                    className="absolute inset-0 bg-[linear-gradient(to_top,rgb(11_16_21/0.96)_0%,rgb(11_16_21/0.75)_30%,rgb(11_16_21/0)_62%)]"
-                  />
-                  <span className="absolute inset-x-0 bottom-0 p-4 md:p-5">
-                    <span className="font-display block text-[22px] leading-[1.05] md:text-[30px]">{h.story}</span>
-                    <span className="mt-2 block text-[15px] font-semibold text-[var(--brass)]">{h.company}</span>
-                  </span>
-                </Link>
+          <div className="md:col-span-7 md:pt-4">
+            <h2 className={`site-rise ${HEADING}`}>Be honest. Is this you?</h2>
+            <ul className="mt-8 grid gap-1 md:mt-10">
+              {PAINS.map((p, i) => (
+                <li
+                  key={p}
+                  className={`site-rise rounded-[14px] px-5 py-4 text-[19px] leading-snug md:text-[22px] ${i % 2 ? "" : "bg-surface"}`}
+                  style={step(i * 0.3)}
+                >
+                  {p}
+                </li>
+              ))}
+            </ul>
+            <p className={`site-rise mt-8 max-w-[40ch] ${LEAD}`}>
+              If this sounds like you, you are not alone. Nobody taught you these rules.
+            </p>
+            <StartButton className="site-rise mt-8 w-full sm:w-auto" />
+          </div>
+        </section>
+
+        {/* The reframe: school taught exams, business asks something harder; how the course answers it */}
+        <SceneBand scene="shop">
+          <h2 className={`site-rise ${HEADING}`}>School did not teach you this.</h2>
+          <p className={`site-rise mt-6 ${LEAD}`} style={step(1)}>
+            School taught you to pass exams. Business asks something harder: what do you do when your own money is at risk?
+          </p>
+          <p className={`site-rise mt-4 ${LEAD}`} style={step(2)}>
+            Big Indian companies made these decisions with crores at stake. Each short lesson teaches one rule from their stories. Then, in
+            the Hot Seat, you make the real decision the company faced, and see what it did.
+          </p>
+          <StartButton className="site-rise mt-8 w-full sm:w-auto" />
+        </SceneBand>
+
+        {/* Who you become: the shopkeeper at sunrise, then the ladder of titles */}
+        <SceneBand scene="rise">
+          <h2 className={`site-rise ${HEADING}`}>Who you become</h2>
+          <ul className="mt-6 grid gap-3">
+            {BECOME.map((b, i) => (
+              <li key={b} className="site-rise text-[19px] leading-snug md:text-[22px]" style={step(i * 0.4 + 1)}>
+                <span aria-hidden="true" className="mr-3 text-[var(--brass)]">
+                  →
+                </span>
+                {b}
               </li>
             ))}
           </ul>
-        </section>
+        </SceneBand>
 
-        {/* How it works: three full-width chapters, each with a real piece of the game */}
-        <div id="how" className="scroll-mt-4">
-          <Chapter scene="shop" title="Learn one rule" words="Five minutes. One business rule. One real story. Simple English.">
-            <Phone>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/site/lesson-guess.webp"
-                alt="A lesson in the game: what stopped Jet Airways from flying? The player picked 'It ran out of cash'. Good guess."
-                width={780}
-                height={1228}
-                loading="lazy"
-                decoding="async"
-                className="block h-auto w-full"
-              />
-            </Phone>
-          </Chapter>
-          <Chapter scene="chai" title="Remember it" words="Flashcards come back when it is time to practise. Ten a day is enough.">
-            <Phone>
-              <div className="px-4 pt-8 pb-7 font-sans">
-                <p className="text-[18px] leading-snug font-black">{CARD.front}</p>
-                <div className="mt-4 grid gap-2">
-                  {CARD.options.map((o, i) => (
-                    <div
-                      key={o}
-                      className={`tile ${i === 0 ? "border-brand! bg-[#2a1f0d]! text-[#ffe2b0] shadow-[0_4px_0_var(--color-brand-dark)]!" : ""}`}
-                    >
-                      {o}
-                    </div>
-                  ))}
-                </div>
-                <p className="mt-4 text-[15px] leading-snug font-bold text-brand">{CARD.back}</p>
-              </div>
-            </Phone>
-          </Chapter>
-          <Chapter
-            scene="tarmac"
-            title="Take the Hot Seat"
-            words="Make a big decision for a real company. Then see what happened and why. Try Nirma's first decision here."
-          >
-            <div className="mx-auto w-full max-w-[460px] font-sans shadow-[0_0_0_1px_rgb(255_255_255/0.08),0_28px_50px_-18px_rgb(0_0_0/0.9)] [&>div]:rounded-[24px]">
-              <SampleCall />
-            </div>
-          </Chapter>
-        </div>
-
-        {/* The career ladder: ten titles, each bar taller than the last; the wolf cheers on the last one */}
         <section className="px-5 py-20 md:px-10 md:py-28">
           <div className="md:grid md:grid-cols-12 md:items-end md:gap-8">
             <h2 className={`site-rise md:col-span-7 ${HEADING}`}>From Street Seller to CEO</h2>
             <p className={`site-rise mt-5 max-w-[34ch] md:col-span-4 md:col-start-9 md:mt-0 ${LEAD}`} style={step(1)}>
-              Finish a unit to earn a new title. Other players in your league can see it.
+              Finish each unit to earn a new title. Other players can see it.
             </p>
           </div>
           <ol className="mt-10 grid gap-1.5 md:mt-14 xl:h-[440px] xl:grid-cols-10 xl:items-end xl:gap-2">
@@ -320,39 +272,25 @@ export default async function Home() {
               );
             })}
           </ol>
+          <StartButton className="site-rise mt-10 w-full sm:w-auto" />
         </section>
 
-        {/* Meet your mentor: a warm panel, the wolf in an arch, what he does for you */}
-        <section className="bg-[var(--warm)]">
-          <div className="flex flex-col overflow-hidden md:grid md:grid-cols-12 md:grid-rows-[auto_1fr] md:gap-x-8">
-            <h2 className={`site-rise px-5 pt-20 md:col-span-6 md:px-10 md:pt-28 ${HEADING}`}>Meet your mentor</h2>
-            <div className="grid gap-8 px-5 pt-8 md:col-span-5 md:col-start-8 md:row-span-2 md:row-start-1 md:content-center md:gap-12 md:px-0 md:py-28 md:pr-10">
-              <div className="site-rise" style={step(1)}>
-                <h3 className="font-display text-[30px] leading-tight md:text-[36px]">He warns you</h3>
-                <p className="mt-2 text-[18px] leading-[1.55] text-ink/85">
-                  He knows what can go wrong in business. He tells you before you make a mistake.
-                </p>
-              </div>
-              <div className="site-rise" style={step(2)}>
-                <h3 className="font-display text-[30px] leading-tight md:text-[36px]">He cheers for you</h3>
-                <p className="mt-2 text-[18px] leading-[1.55] text-ink/85">
-                  He is happy when you get it right. So are your streak and your league place.
-                </p>
-              </div>
-              <div className="site-rise grid max-w-[420px] grid-cols-4 gap-2" style={step(3)}>
-                {(["pose-warning", "pose-thinking", "pose-pleased", "pose-shocked"] as const).map((p) => (
-                  <div key={p}>
-                    <WolfPicture name={p} sizes="104px" className="aspect-square w-full" />
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="site-rise mx-auto mt-10 w-[86%] max-w-[480px] translate-y-[14%] md:col-span-6 md:row-start-2 md:mx-10 md:mt-12 md:w-[min(34vw,480px)] md:self-end">
-              <WolfPicture
-                name="closeup"
-                sizes="(min-width: 768px) 34vw, 86vw"
-                className="aspect-[4/5] w-full rounded-t-full object-cover"
-              />
+        {/* The Club: founders together, the whole picture with nothing over their faces; honest that it opens soon */}
+        <section id="club" className="scroll-mt-4 bg-surface pb-20 md:pb-28">
+          <div className="site-zoom relative aspect-[4/5] overflow-hidden md:aspect-[16/7]">
+            <ScenePicture name="club" className="h-full w-full object-cover" />
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-[linear-gradient(to_top,rgb(20_27_34),rgb(20_27_34/0))]"
+            />
+          </div>
+          <div className="px-5 pt-4 md:grid md:grid-cols-12 md:items-start md:gap-8 md:px-10 md:pt-6">
+            <h2 className={`site-rise md:col-span-6 ${HEADING}`}>Meet other founders</h2>
+            <div className="md:col-span-5 md:col-start-8">
+              <p className={`site-rise mt-6 md:mt-2 ${LEAD}`} style={step(1)}>
+                The Club opens soon. Members who reach Trader can post, chat and start small groups with other founders.
+              </p>
+              <StartButton className="site-rise mt-8 w-full sm:w-auto" />
             </div>
           </div>
         </section>
@@ -363,7 +301,7 @@ export default async function Home() {
             <h2 className={`site-rise ${HEADING}`}>Start free</h2>
             <div className="site-rise mt-8 flex flex-col overflow-hidden rounded-[24px] bg-surface md:mt-auto md:h-[420px]" style={step(1)}>
               <div className="p-7">
-                <h3 className="font-display text-[40px] leading-none">Free</h3>
+                <h3 className="font-display text-[34px] leading-none">Free</h3>
                 <p className="mt-4 text-[36px] leading-none font-semibold tracking-[-0.02em]">₹0</p>
                 <ul className="mt-6 grid gap-2.5 text-[18px]">
                   <li>Your first five lessons</li>
@@ -372,17 +310,17 @@ export default async function Home() {
                 </ul>
               </div>
               <Link href="/app" className="site-link mt-auto flex h-16 items-center bg-surface-2 px-7 text-[17px] font-semibold">
-                Play free
+                Start free
               </Link>
             </div>
           </div>
           <div
-            className="site-rise mt-3 flex flex-col overflow-hidden rounded-[24px] bg-[var(--warm)] md:col-span-7 md:mt-0 md:h-[600px]"
+            className="site-rise mt-12 flex flex-col overflow-hidden rounded-[24px] bg-[var(--warm)] md:col-span-7 md:mt-0 md:h-[600px]"
             style={step(2)}
           >
             <div className="grid gap-6 p-7 lg:grid-cols-[1fr_230px]">
               <div>
-                <h3 className="font-display text-[40px] leading-none text-[var(--brass)]">Member</h3>
+                <h3 className="font-display text-[34px] leading-none text-[var(--brass)]">Member</h3>
                 {full ? (
                   <>
                     <p className="mt-4 text-[36px] leading-none font-semibold tracking-[-0.02em]">₹{REGULAR.monthly} a month</p>
@@ -399,6 +337,7 @@ export default async function Home() {
                 <ul className="mt-6 grid gap-2.5 text-[18px]">
                   <li>All lessons and Hot Seats</li>
                   <li>New ones when they are ready</li>
+                  <li>The Club, when it opens</li>
                   <li>Cancel any time with one tap</li>
                 </ul>
                 {!full && (
@@ -447,13 +386,13 @@ export default async function Home() {
           />
           <div className="w-full px-5 pb-14 md:grid md:grid-cols-12 md:items-end md:gap-8 md:px-10 md:pb-20">
             <div className="md:col-span-7">
-              <h2 className={`site-rise ${DISPLAY}`}>Your chair is ready</h2>
+              <h2 className={`site-rise ${DISPLAY}`}>Your chair is ready.</h2>
               <p className={`site-rise mt-5 max-w-[32ch] ${LEAD}`} style={step(1)}>
-                Play your first lesson free in your phone&apos;s browser.
+                Start with a free lesson today.
               </p>
             </div>
             <div className="site-rise mt-8 md:col-span-4 md:col-start-9 md:mt-0 md:justify-self-end" style={step(2)}>
-              <PlayButton className="w-full sm:w-auto" />
+              <StartButton className="w-full sm:w-auto" />
             </div>
           </div>
         </section>
@@ -464,7 +403,7 @@ export default async function Home() {
           <p className="max-w-[44ch]">Education, not business advice. Other outcomes are estimates.</p>
           <p className="flex gap-6 text-ink">
             <Link className="site-link" href="/app">
-              Play
+              Start
             </Link>
             <Link className="site-link" href="/privacy">
               Privacy
@@ -476,7 +415,7 @@ export default async function Home() {
         </div>
         <p
           aria-hidden="true"
-          className="font-display mt-10 -mb-[0.16em] text-[16.5vw] leading-[0.9] whitespace-nowrap text-surface-2 md:mt-14"
+          className="font-display mt-10 -mb-[0.12em] text-[15.2vw] leading-[0.9] whitespace-nowrap text-surface-2 md:mt-14"
         >
           CEO For A Day
         </p>

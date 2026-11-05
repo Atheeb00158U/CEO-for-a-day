@@ -1,12 +1,12 @@
 // Makes the served pictures from the masters in content/brand/:
 // public/brand/wolf/<name>-<width>.avif and .webp for the wolf, and public/brand/site/<name>-<width> (wide) and
-// <name>-tall-<width> (a 4:5 crop) for the website's scenes, at every width in src/lib/brand.ts.
+// <name>-tall-<width> (the phone crop) for the website's scenes, at every width in src/lib/brand.ts.
 // Runs before `next dev` and `next build`; skips files that are already newer than their master.
 import { existsSync, mkdirSync, renameSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import sharp from "sharp";
-import { SCENES, SCENE_TALL, SCENE_WIDE, WOLF } from "../src/lib/brand.ts";
+import { SCENES, SCENE_WIDE, WOLF, phoneCrop } from "../src/lib/brand.ts";
 
 const root = new URL("../", import.meta.url);
 const dir = (p) => fileURLToPath(new URL(p, root));
@@ -42,12 +42,13 @@ mkdirSync(siteOut, { recursive: true });
 for (const [name, scene] of Object.entries(SCENES)) {
   const master = join(dir("content/brand/site/"), `${name}.webp`); // exactly SCENE_WIDE's size
   const { width, height } = SCENE_WIDE;
-  const tall = { width: SCENE_TALL.width, height: SCENE_TALL.height };
+  const crop = phoneCrop(name);
+  const tall = { width: crop.width, height: crop.height };
   const left = Math.round(Math.min(width - tall.width, Math.max(0, scene.focus * width - tall.width / 2)));
   for (const w of SCENE_WIDE.widths) {
     await make(master, join(siteOut, `${name}-${w}`), (s) => s.resize({ width: w, withoutEnlargement: true }));
   }
-  for (const w of SCENE_TALL.widths) {
+  for (const w of crop.widths) {
     await make(master, join(siteOut, `${name}-tall-${w}`), (s) =>
       s.extract({ left, top: Math.round((height - tall.height) / 2), ...tall }).resize({ width: w, withoutEnlargement: true }),
     );
