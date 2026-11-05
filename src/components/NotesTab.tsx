@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useContent } from "@/lib/content-client";
 import { cardsToday, useGame } from "@/lib/store";
 import { playSfx } from "@/lib/sfx";
-import { Card, Icon, MediaView } from "./ui";
+import { Card, Icon, MediaView, Section } from "./ui";
 
 const GRADE_COLOR = { great: "var(--color-green)", ok: "var(--color-gold)", bad: "var(--color-red)" } as const;
 
@@ -87,13 +87,13 @@ function CardsNotes({ onReview, onLesson }: { onReview: () => void; onLesson: (l
         </p>
       )}
       {done.length > 0 && (
-        <Card className="flex flex-col gap-3">
-          <div>
+        <Section className="!gap-0">
+          <div className="mb-1">
             <p className="text-[12px] font-black tracking-[.12em] text-brand uppercase">Rules you know</p>
             <h2 className="text-[19px] leading-tight font-black">Your lessons</h2>
           </div>
           {done.map((l) => (
-            <div key={l.id} className="flex items-center gap-3 rounded-2xl bg-surface-2 p-3">
+            <div key={l.id} className="flex items-center gap-3 border-b-2 border-line py-3 last:border-b-0">
               <div className="min-w-0 flex-1">
                 <p className="text-[12px] font-black tracking-wider text-muted uppercase">
                   {l.title} · {s.lessons[l.id]}%
@@ -105,7 +105,7 @@ function CardsNotes({ onReview, onLesson }: { onReview: () => void; onLesson: (l
               </button>
             </div>
           ))}
-        </Card>
+        </Section>
       )}
     </>
   );
@@ -120,16 +120,16 @@ function Mistakes() {
   );
   if (!s.mistakes.length && !seat.length)
     return (
-      <Card className="flex flex-col items-center gap-2 py-8 text-center">
+      <div className="flex flex-col items-center gap-2 py-8 text-center">
         <Icon.check className="size-10 text-muted" />
         <p className="text-[18px] font-black">No mistakes yet</p>
         <p className="max-w-[28ch] font-bold text-muted">Anything you get wrong lands here, with what works instead.</p>
-      </Card>
+      </div>
     );
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col divide-y-2 divide-line">
       {s.mistakes.map((m) => (
-        <div key={`${m.lessonId}/${m.screenId}`} className="rounded-2xl border-2 border-line bg-surface p-3">
+        <div key={`${m.lessonId}/${m.screenId}`} className="py-4">
           <p className="text-[15px] leading-snug font-black">{m.prompt}</p>
           <p className="mt-1 text-[14px] font-bold text-red">You said: {m.picked}</p>
           {m.right && <p className="text-[14px] font-bold text-green">Answer: {m.right}</p>}
@@ -137,7 +137,7 @@ function Mistakes() {
         </div>
       ))}
       {seat.map((n, i) => (
-        <div key={i} className="rounded-2xl border-2 border-line bg-surface p-3">
+        <div key={i} className="py-4">
           <p className="text-[12px] font-black tracking-wider uppercase" style={{ color: GRADE_COLOR[n.grade] }}>
             {n.company} · {n.year} · {n.title}
           </p>
@@ -163,20 +163,20 @@ function SeatNotes({ onPlay }: { onPlay: () => void }) {
         <p className="font-bold text-muted">Every hot seat you finish leaves notes here, written for the calls you made.</p>
       </div>
       {latest.length === 0 && s.dailyLog.length === 0 && (
-        <Card className="flex flex-col items-center gap-3 py-8 text-center">
+        <div className="flex flex-col items-center gap-3 py-8 text-center">
           <Icon.navNotes className="size-12 text-muted" />
           <p className="text-[18px] font-black">No notes yet</p>
           <p className="max-w-[28ch] font-bold text-muted">Finish your first hot seat and your key takeaways land here.</p>
           <button type="button" className="btn3d mt-2 max-w-[260px]" onClick={onPlay}>
             Take a hot seat
           </button>
-        </Card>
+        </div>
       )}
       {latest.map((r) => {
         const hs = catalog.find((c) => c.id === r.hotSeatId);
         if (!hs) return null; // no longer published
         return (
-          <Card key={r.hotSeatId} className="flex flex-col gap-3">
+          <Section key={r.hotSeatId}>
             <div className="flex items-center gap-3">
               {hs.cover && <MediaView media={hs.cover} className="size-16 shrink-0 !rounded-2xl" kenBurns={false} />}
               <div className="min-w-0">
@@ -194,9 +194,9 @@ function SeatNotes({ onPlay }: { onPlay: () => void }) {
                 <li key={p}>{p}</li>
               ))}
             </ul>
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col divide-y-2 divide-line">
               {r.notes.map((n, i) => (
-                <div key={i} className="rounded-2xl bg-surface-2 p-3">
+                <div key={i} className="py-3">
                   <p className="text-[12px] font-black uppercase tracking-wider" style={{ color: GRADE_COLOR[n.grade] }}>
                     {n.year} · {n.title}
                   </p>
@@ -205,18 +205,18 @@ function SeatNotes({ onPlay }: { onPlay: () => void }) {
                 </div>
               ))}
             </div>
-          </Card>
+          </Section>
         );
       })}
       {s.dailyLog.length > 0 && (
-        <Card className="flex flex-col gap-3">
+        <Section>
           <div>
             <p className="text-[12px] font-black uppercase tracking-[.12em] text-brand">Daily calls</p>
             <h2 className="text-[19px] font-black leading-tight">One decision a day</h2>
           </div>
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col divide-y-2 divide-line">
             {s.dailyLog.map((n) => (
-              <div key={n.day} className="rounded-2xl bg-surface-2 p-3">
+              <div key={n.day} className="py-3">
                 <p className="text-[12px] font-black uppercase tracking-wider" style={{ color: GRADE_COLOR[n.grade] }}>
                   {n.company} · {n.title}
                 </p>
@@ -225,7 +225,7 @@ function SeatNotes({ onPlay }: { onPlay: () => void }) {
               </div>
             ))}
           </div>
-        </Card>
+        </Section>
       )}
     </div>
   );

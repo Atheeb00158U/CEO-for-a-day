@@ -38,7 +38,7 @@ export function Achievements() {
   const { s } = useGame();
   const list = achievements(s);
   return (
-    <section className="flex flex-col gap-4">
+    <section className="flex flex-col gap-4 border-t-2 border-line pt-5">
       <h2 className="text-[19px] font-black">{COPY.title}</h2>
       <ul className="flex flex-col divide-y-2 divide-line">
         {list.map((p) => (

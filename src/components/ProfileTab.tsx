@@ -11,7 +11,7 @@ import { CareerPill, useCareer } from "./CareerTitle";
 import { ClubCard } from "./club/ClubCard";
 import { ReminderCard } from "./ReminderCard";
 import { SignInCard } from "./SignInCard";
-import { Card, Icon } from "./ui";
+import { Card, Icon, Section } from "./ui";
 import { WolfPicture } from "./WolfPicture";
 
 const rs = (n: number) => `₹${n.toLocaleString("en-IN")}`;
@@ -90,14 +90,14 @@ export function ProfileTab() {
 
       <SignInCard />
 
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-2 gap-x-3 gap-y-4">
         <Stat icon={<Icon.flame className="size-7" />} value={s.streak} label="Day streak" />
         <Stat icon={<Icon.bolt className="size-7" />} value={s.xp} label="Total XP" />
         <Stat icon={<Icon.chair className="size-7 text-brand" />} value={s.runs.length} label="Hot seats played" />
         <Stat icon={<Icon.flame className="size-7" />} value={s.bestStreak} label="Best streak" />
       </div>
 
-      <Card>
+      <Section className="!gap-0">
         <h2 className="text-[19px] font-black">How you decide</h2>
         <p className="text-[13px] font-bold text-muted">Built from every call you&apos;ve made.</p>
         <div className="mt-4 flex flex-col gap-5">
@@ -109,7 +109,7 @@ export function ProfileTab() {
                 <div className="relative mt-2 h-3 rounded-full bg-surface-2">
                   <span className="absolute inset-y-[-4px] left-1/2 w-0.5 bg-line" />
                   <span
-                    className="absolute top-1/2 size-6 -translate-x-1/2 -translate-y-1/2 rounded-full border-4 border-surface bg-brand transition-[left] duration-700"
+                    className="absolute top-1/2 size-6 -translate-x-1/2 -translate-y-1/2 rounded-full border-4 border-bg bg-brand transition-[left] duration-700"
                     style={{ left: `${pos}%` }}
                   />
                 </div>
@@ -121,11 +121,11 @@ export function ProfileTab() {
             );
           })}
         </div>
-      </Card>
+      </Section>
 
       <Achievements />
 
-      <Card className="flex flex-col gap-4">
+      <Section className="!gap-4">
         <h2 className="text-[19px] font-black">Settings</h2>
         <label className="flex items-center justify-between font-extrabold">
           Narration voice
@@ -175,7 +175,7 @@ export function ProfileTab() {
           </div>
         </div>
         {!account && <ResetButton onReset={reset} />}
-      </Card>
+      </Section>
 
       <ReminderCard />
 
@@ -277,7 +277,7 @@ function AccountCard({ email }: { email?: string }) {
   // The server's own words when it refuses (e.g. payments couldn't be stopped yet); otherwise a plain retry.
   const [why, setWhy] = useState("There was a problem. Try again.");
   return (
-    <Card className="flex flex-col gap-3">
+    <Section>
       <h2 className="text-[19px] font-black">Account</h2>
       <p className="font-bold text-muted">Signed in{email ? ` as ${email}` : ""}. Your progress is saved on any phone.</p>
       <button type="button" className="btn3d ghost !text-[14px]" onClick={() => void signOut()}>
@@ -304,7 +304,7 @@ function AccountCard({ email }: { email?: string }) {
         </button>
         {state === "failed" && <p className="mt-2 text-[14px] font-bold text-red">{why}</p>}
       </details>
-    </Card>
+    </Section>
   );
 }
 
@@ -322,7 +322,7 @@ function ResetButton({ onReset }: { onReset: () => void }) {
 
 function Stat({ icon, value, label }: { icon: React.ReactNode; value: number; label: string }) {
   return (
-    <div className="flex items-center gap-3 rounded-2xl border-2 border-line p-3">
+    <div className="flex items-center gap-3 py-1">
       {icon}
       <div>
         <p className="text-[22px] font-black leading-none tabular-nums">{value}</p>

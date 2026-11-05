@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { ECONOMY, questsFor, useGame } from "@/lib/store";
-import { Bar, Card, Icon } from "./ui";
+import { Bar, Icon, Section } from "./ui";
 
 export function ShopTab() {
   const { s, buy, claimQuest, activateBooster, boosterActive } = useGame();
@@ -43,8 +43,8 @@ export function ShopTab() {
         <p className="font-bold text-muted">Earn coins from quests and hot seats, then spend them on power-ups.</p>
       </div>
 
-      <Card>
-        <h2 className="mb-3 text-[19px] font-black">Daily quests</h2>
+      <Section>
+        <h2 className="text-[19px] font-black">Daily quests</h2>
         <div className="flex flex-col gap-4">
           {questsFor(s).map((q) => {
             const v = Math.min(q.goal, q.read(s.quests));
@@ -84,13 +84,13 @@ export function ShopTab() {
             );
           })}
         </div>
-        <p className="mt-3 text-[13px] font-bold text-muted">Quests reset every day at midnight.</p>
-      </Card>
+        <p className="text-[13px] font-bold text-muted">Quests reset every day at midnight.</p>
+      </Section>
 
-      <div className="flex flex-col gap-3">
-        <h2 className="text-[19px] font-black">Power-ups</h2>
+      <Section className="!gap-0">
+        <h2 className="mb-1 text-[19px] font-black">Power-ups</h2>
         {items.map((it) => (
-          <Card key={it.id} className="flex items-center gap-3">
+          <div key={it.id} className="flex items-center gap-3 border-b-2 border-line py-4 last:border-b-0">
             {it.icon}
             <div className="min-w-0 flex-1">
               <p className="font-black">
@@ -121,9 +121,9 @@ export function ShopTab() {
                 </button>
               )}
             </div>
-          </Card>
+          </div>
         ))}
-      </div>
+      </Section>
       {msg && (
         <div
           className="pop fixed inset-x-0 top-20 z-40 mx-auto w-fit rounded-full bg-gold px-4 py-2 font-black text-[#2a1d00]"
