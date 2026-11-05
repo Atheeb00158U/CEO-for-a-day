@@ -1,6 +1,6 @@
 // The public website. A server component: the pictures are static files; whether founding seats are left is read
 // here (never shown as a count) to pick the founding or regular offer; the sample decision plays through /api/play,
-// so no Hot Seat answers reach the page. Every scene shows the same empty boss's chair: the Hot Seat, waiting.
+// so no Hot Seat answers reach the page. Every scene shows the same boss's chair: the Hot Seat, waiting.
 import type { Metadata } from "next";
 import Link from "next/link";
 import { preload } from "react-dom";
@@ -89,6 +89,10 @@ function PlayButton({ className = "", children = "Play free" }: { className?: st
   );
 }
 
+// On a phone the hero shows a square from the middle of the wide picture (the wolf and both worlds), so it needs
+// the wide file at almost twice the screen's width.
+const HERO_SIZES = "(min-width: 768px) 100vw, 180vw";
+
 /** A delay step for the parts of a section that rise in one after another. */
 const step = (i: number) => ({ "--i": i }) as React.CSSProperties;
 
@@ -127,20 +131,11 @@ function Chapter({ scene, title, text, children }: { scene: SceneName; title: st
 }
 
 export default async function Home() {
-  preload(`/brand/site/street-tall-752.avif`, {
+  preload(`/brand/site/empire-1672.avif`, {
     as: "image",
     type: "image/avif",
-    imageSrcSet: sceneSrcSet("street", true, "avif"),
-    imageSizes: "100vw",
-    media: "(max-width: 767px)",
-    fetchPriority: "high",
-  });
-  preload(`/brand/site/street-1672.avif`, {
-    as: "image",
-    type: "image/avif",
-    imageSrcSet: sceneSrcSet("street", false, "avif"),
-    imageSizes: "100vw",
-    media: "(min-width: 768px)",
+    imageSrcSet: sceneSrcSet("empire", false, "avif"),
+    imageSizes: HERO_SIZES,
     fetchPriority: "high",
   });
   const full = await seatsFull();
@@ -168,16 +163,16 @@ export default async function Home() {
       </header>
 
       <main>
-        {/* Hero: the empty chair on a wet Mumbai street, the promise at its foot */}
-        <section className="relative isolate flex min-h-[100svh] items-end overflow-hidden">
-          <div className="site-shutter absolute inset-0 -z-10 overflow-hidden">
-            <ScenePicture name="street" priority className="h-full w-full object-cover" />
+        {/* Hero: the wolf in the boss's chair between a kirana street and the towers, the promise at its foot */}
+        <section className="relative isolate overflow-hidden md:flex md:min-h-[100svh] md:items-end">
+          <div className="site-shutter relative -z-10 aspect-square overflow-hidden md:absolute md:inset-0 md:aspect-auto">
+            <ScenePicture name="empire" wide priority sizes={HERO_SIZES} className="h-full w-full object-cover" />
           </div>
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_top,rgb(11_16_21)_0%,rgb(11_16_21/0.9)_26%,rgb(11_16_21/0)_58%)]"
+            className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_top,rgb(11_16_21)_0%,rgb(11_16_21)_48%,rgb(11_16_21/0)_62%)] md:bg-[linear-gradient(to_top,rgb(11_16_21)_0%,rgb(11_16_21/0.9)_26%,rgb(11_16_21/0)_58%)]"
           />
-          <div className="w-full px-4 pt-28 pb-10 md:grid md:grid-cols-12 md:items-end md:gap-8 md:px-8 md:pb-16">
+          <div className="-mt-14 w-full px-4 pb-10 md:mt-0 md:grid md:pt-28 md:grid-cols-12 md:items-end md:gap-8 md:px-8 md:pb-16">
             <div className="md:col-span-8 lg:col-span-7">
               <h1 className={`site-in ${DISPLAY}`}>Be the boss of a real company</h1>
               <p className={`site-in mt-5 max-w-[34ch] md:mt-7 ${LEAD}`} style={step(1)}>

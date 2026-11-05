@@ -28,9 +28,9 @@ export type WolfName = keyof typeof WOLF;
 export const srcSet = (name: WolfName, ext: "avif" | "webp") =>
   WOLF[name].widths.map((w) => `/brand/wolf/${name}-${w}.${ext} ${w}w`).join(", ");
 
-// The website's scenes: the empty boss's chair in real Indian places. Wide masters (16:9) in content/brand/site/,
-// served at public/brand/site/<name>-<width>.<ext> for wide screens and <name>-tall-<width>.<ext>, a 4:5 crop
-// around `focus` (0 = left edge, 1 = right edge), for phones.
+// The website's scenes: the boss's chair in real Indian places (in the hero, the wolf sits in it). Wide masters
+// (16:9) in content/brand/site/, served at public/brand/site/<name>-<width>.<ext> for wide screens and
+// <name>-tall-<width>.<ext>, a 4:5 crop around `focus` (0 = left edge, 1 = right edge), for phones.
 export interface Scene {
   alt: string;
   focus: number;
@@ -39,7 +39,10 @@ export const SCENE_WIDE = { width: 1672, height: 941, widths: [828, 1280, 1672] 
 export const SCENE_TALL = { width: 752, height: 940, widths: [480, 752] } as const;
 
 export const SCENES = {
-  street: { alt: "An empty leather boss's chair on a wet Mumbai street at night, between small shops", focus: 0.5 },
+  empire: {
+    alt: "The wolf in a leather boss's chair, half in a shopkeeper's kurta with a glass of chai, half in a pinstripe suit with a cigar, kirana shops on one side and glass towers on the other",
+    focus: 0.5,
+  },
   shop: { alt: "An empty boss's chair behind the counter of a kirana shop in morning light", focus: 0.5 },
   chai: { alt: "An empty boss's chair beside a chai stall by the sea at dusk", focus: 0.5 },
   tarmac: { alt: "An empty boss's chair on an airport runway at sunrise, a row of planes behind it", focus: 0.5 },
