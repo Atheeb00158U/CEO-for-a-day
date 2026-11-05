@@ -259,6 +259,8 @@ export interface Db {
   logNotice(userId: string, kind: string, day: string): Promise<boolean>;
   /** How many notifications a player got that day. */
   noticesOn(userId: string, day: string): Promise<number>;
+  /** What happened to each phone ("sent", "gone", "failed"), for checking delivery later. Best effort. */
+  noticeResult(userId: string, kind: string, day: string, result: string): Promise<void>;
   deleteUser(userId: string): Promise<void>;
   /** How many founding seats are taken (paid founding members). */
   countFoundingSeats(): Promise<number>;
@@ -605,6 +607,7 @@ export function memoryDb(): Db & {
     async dmNoticesOn(id, day) {
       return [...notices].filter((k) => k.startsWith(`${id}|${day}|dm:`)).length;
     },
+    async noticeResult() {},
     async deleteUser(id) {
       profiles.delete(id);
       // As the migration's cascades: the Club profile and all it owns, the ban; reports keep their snapshot.
@@ -1690,6 +1693,10 @@ export function supabaseDb(sb = supabaseAdmin()): Db {
         .not("kind", "like", "dm:%");
       if (error) throw new Error(error.message);
       return count ?? 0;
+    },
+    async noticeResult(id, kind, day, result) {
+      // Never fails a send: until the column exists this simply does nothing.
+      await sb.from("notifications_sent").update({ result }).eq("user_id", id).eq("kind", kind).eq("day", day);
     },
     async deleteUser(id) {
       // An unpaid hold goes with the player, as in memoryDb; a kept seat stays used (user_id set null by the cascade).
