@@ -87,6 +87,59 @@ describe("deleteAccount", () => {
     expect((await db.getMembership(U))?.status).toBe("active");
   });
 
+  it("removes every Club row of the player; a report they made keeps its snapshot", async () => {
+    const db = memoryDb();
+    await db.createProfile(U, {} as never);
+    const at = new Date().toISOString();
+    const profile = { name: "N", building: "", rank: 1, stars: 0, maxStars: 0, streak: 0, streakDay: null, milestones: true };
+    const times = { adultAt: at, rulesAt: at, hiddenAt: null, createdAt: at };
+    await db.insertClubProfile({ userId: U, handle: "me1", ...profile, ...times });
+    await db.insertClubProfile({ userId: "other", handle: "other", ...profile, ...times });
+    const post = (await db.insertPost({
+      authorId: "other",
+      kind: "post",
+      ref: null,
+      parentId: null,
+      body: "hi",
+      held: null,
+      hiddenAt: null,
+      createdAt: at,
+    }))!;
+    await db.insertPost({
+      authorId: U,
+      kind: "reply",
+      ref: null,
+      parentId: post.id,
+      body: "yo",
+      held: null,
+      hiddenAt: null,
+      createdAt: at,
+    });
+    await db.setLike(post.id, U, true);
+    await db.setFollow(U, "other", true);
+    await db.setBlock("other", U, true);
+    await db.addActivity({ userId: "other", kind: "like", actorId: U, postId: post.id, createdAt: at });
+    await db.insertReport({
+      reporterId: U,
+      targetKind: "post",
+      targetId: String(post.id),
+      targetUser: "other",
+      reason: "spam",
+      note: "",
+      snapshot: "hi",
+      dueAt: at,
+      createdAt: at,
+    });
+    await db.setClubBan(U, "infinity", "mod");
+    await deleteAccount(db, () => fakeRp().rp(), U);
+    const c = db.club;
+    expect(JSON.stringify([[...c.profiles.values()], c.posts, c.likes, c.follows, c.blocks, c.activity, [...c.bans.keys()]])).not.toContain(
+      U,
+    );
+    expect(c.reports[0]).toMatchObject({ reporterId: null, snapshot: "hi" });
+    expect((await db.getPost(post.id))?.replyCount).toBe(0);
+  });
+
   it("refuses when Razorpay's keys are missing but a subscription is live", async () => {
     const db = await withMembership("active");
     const rp = () => {

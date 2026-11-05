@@ -5,7 +5,8 @@ import { PlayError } from "../play.ts";
 import { freeList } from "./content.ts";
 import { supabaseAdmin, supabaseDb, type Db } from "./db.ts";
 import { GameError } from "./game.ts";
-import { accessCache, accessContext, paywallFor } from "./membership.ts";
+import { ClubGateError } from "./club.ts";
+import { accessCache, accessContext, clubOn, paywallFor } from "./membership.ts";
 
 interface Claims {
   sub: string;
@@ -81,6 +82,27 @@ export async function signedIn(request: Request, route: string, act: (db: Db, us
     if (e instanceof GameError) return json({ error: e.message }, 409);
     throw e;
   }
+}
+
+/**
+ * A Club route: as `signedIn` (401, 429), then 404 while the Club is off for this player, and 403
+ * `{ error: "club", can }` when the gate refuses, so the phone opens the right nudge.
+ */
+export function club(request: Request, route: string, act: (db: Db, userId: string) => Promise<object | NextResponse>, max = 60) {
+  return signedIn(
+    request,
+    `club-${route}`,
+    async (db, userId) => {
+      if (!clubOn(await emailFrom(request))) return json({ error: "Not found" }, 404);
+      try {
+        return await act(db, userId);
+      } catch (e) {
+        if (e instanceof ClubGateError) return json({ error: "club", can: e.can }, 403);
+        throw e;
+      }
+    },
+    max,
+  );
 }
 
 const ACCESS_TTL = 60_000;

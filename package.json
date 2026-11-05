@@ -31,6 +31,7 @@
     "radix-ui": "1.8.1",
     "react": "19.3.0",
     "react-dom": "19.3.0",
+    "sharp": "0.35.5",
     "ts-fsrs": "5.4.2",
     "web-push": "3.6.7"
   },
@@ -46,7 +47,6 @@
     "eslint": "9.39.5",
     "eslint-config-next": "16.4.3",
     "prettier": "3.9.10",
-    "sharp": "0.35.5",
     "tailwindcss": "4.3.3",
     "typescript": "5.9.3",
     "vitest": "5.0.5",

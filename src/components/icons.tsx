@@ -147,6 +147,12 @@ export const Icon = {
       <path d="M4 4h16l-1 5a3 3 0 0 1-5 1.5A3 3 0 0 1 12 11a3 3 0 0 1-2-.5A3 3 0 0 1 5 9zM5 12.5a4.9 4.9 0 0 0 2 .5 5 5 0 0 0 2.5-.7 5 5 0 0 0 5 0A5 5 0 0 0 19 12.5V20a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1z" />
     </svg>
   ),
+  navClub: ({ className = "size-7" }: IP) => (
+    <svg viewBox="0 0 24 24" className={className} aria-hidden="true" fill="currentColor">
+      <path d="M4 3h10a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H8.5L5 16v-3H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z" />
+      <path d="M18 7h2a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-1v3l-3.5-3H11a2 2 0 0 1-2-2v-.5h5a4 4 0 0 0 4-4z" opacity=".65" />
+    </svg>
+  ),
   navProfile: ({ className = "size-7" }: IP) => (
     <svg viewBox="0 0 24 24" className={className} aria-hidden="true" fill="currentColor">
       <circle cx="12" cy="8" r="4.5" />

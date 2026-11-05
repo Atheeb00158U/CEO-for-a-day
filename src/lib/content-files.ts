@@ -24,6 +24,14 @@ export const readDailyPool = (): DailyPool =>
     ? JSON.parse(readFileSync(join(DAILY_DIR, "daily.json"), "utf8"))
     : { startDay: "2026-01-01", calls: [] };
 
+export const COMMUNITY_DIR = join(process.cwd(), "content/community");
+
+/** The Wolf's question of the day for the Club: question N plays on day N after startDay. Unvalidated; see checkQuestions. */
+export const readQuestions = (): { startDay: string; questions: string[] } =>
+  existsSync(join(COMMUNITY_DIR, "questions.json"))
+    ? JSON.parse(readFileSync(join(COMMUNITY_DIR, "questions.json"), "utf8"))
+    : { startDay: "2026-01-01", questions: [] };
+
 // CFAD_COURSE_DIR points the tests at their own small course (src/lib/__fixtures__/course).
 export const COURSE_DIR = process.env.CFAD_COURSE_DIR ?? join(process.cwd(), "content/course");
 

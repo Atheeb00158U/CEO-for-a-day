@@ -47,6 +47,22 @@ UI components: use shadcn/ui, restyled to this look. Add gluestack-ui only if we
   `careerOf` in `src/lib/career.ts`; others see it in the league. The server works it out from its own records
   (`trustedCareers`), never from a phone or imported save; each new title is cheered once (`rankSeen`).
 
+## The Club (step 1, 5 Nov 2026)
+- Spec: `docs/superpowers/specs/2026-11-04-community-design.md`. Feed, profiles, likes, follows, report/block; chat is step 2.
+- Pure rules and every word in `src/lib/community.ts` (`POST_RANK`, `canPost`, `autoFlag`, `rankForYou`, `CLUB_COPY`);
+  server actions in `src/lib/server/club.ts`; all routes in `src/app/api/club/[...path]/route.ts`; UI in
+  `src/components/club/`; moderation at `/admin/club`. Tables `club_*` (`supabase/migrations/20261105090000_club.sql`).
+- Switch: `clubOn()` in `membership.ts`: testers (`PAYWALL_TESTERS`) only, until `COMMUNITY_ON=1` and `GRIEVANCE`
+  (`src/lib/legal.ts`) has no "TODO". Posting needs a paying member at Trader, ranked from server records only.
+- Pictures (step 3): uploads go through `POST /api/club/image` (multipart; `sharp` makes upright WebP ≤ 1080 px with no
+  EXIF, `club-image.ts`) into the private Storage bucket `club`; the phone only ever gets signed URLs (an hour), never
+  for held or hidden content, nor for a request's pictures before it's accepted. Removed pictures move to `removed/`
+  for 180 days; the hourly `/api/cron/remind` deletes those and unused uploads (`purgeImages`). Account delete and
+  "Leave the Club" delete `<user id>/*` from Storage (`removeFolder`), after `keepEvidence` moves pictures in an open
+  report or hidden content to `removed/`. One picture goes into one post or message (claimed inside `club_send`).
+- Group chats (step 3): the maker (a member at Trader) picks 2–19 people who follow each other with them; only the
+  maker adds and removes; groups are counted with new chats in `club_chat_log` (`club_start_group`).
+
 ## Routes
 - `/` is the website, `/app` the game, `/admin` the Hot Seat list and path trees.
 - `/admin` is behind HTTP Basic Auth (`src/proxy.ts`) against `ADMIN_PASSWORD`. Without it, it's open only in `npm run dev`. The Hot Seat JSON still ships inside `/app`, so the password hides the view, not the answers.

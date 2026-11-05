@@ -8,6 +8,7 @@ import { FOUNDING, REGULAR } from "@/lib/offer";
 import { LEAGUES, useGame } from "@/lib/store";
 import { Achievements } from "./Achievements";
 import { CareerPill, useCareer } from "./CareerTitle";
+import { ClubCard } from "./club/ClubCard";
 import { ReminderCard } from "./ReminderCard";
 import { SignInCard } from "./SignInCard";
 import { Card, Icon } from "./ui";
@@ -177,6 +178,8 @@ export function ProfileTab() {
       </Card>
 
       <ReminderCard />
+
+      <ClubCard />
 
       {showMembership && !memberNow && <MembershipCard m={membership!} />}
 

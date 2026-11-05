@@ -4,9 +4,19 @@ import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { freeItems, type Item } from "../access.ts";
 import { callsPerRun, dailyFor, reviewedDebrief, type Debriefs } from "../engine.ts";
-import { HOTSEATS_DIR, hotSeatIds, lessonFileIds, readCourse, readDailyPool, readHotSeat, readLesson } from "../content-files.ts";
+import {
+  HOTSEATS_DIR,
+  hotSeatIds,
+  lessonFileIds,
+  readCourse,
+  readDailyPool,
+  readHotSeat,
+  readLesson,
+  readQuestions,
+} from "../content-files.ts";
 import type { Card, CourseOutline, Lesson, Module } from "../course-types";
 import type { CatalogEntry, DailyAnswer, DailyCall, DailyPool, DailyQuestion, HotSeat } from "../hotseat-types";
+import { dayDiff } from "../game-state.ts";
 import { testOutLesson } from "../lesson-play.ts";
 import type { Pick } from "../play.ts";
 import { COURSE_TRIAL_ID, TRIAL_ID } from "../../content/catalog";
@@ -257,4 +267,11 @@ export function lessonOf(body: { lessonId?: unknown; testOut?: unknown } | null,
   }
   const lesson = typeof body?.lessonId === "string" ? servableLesson(body.lessonId, nodeEnv) : undefined;
   return lesson && { lesson, testOut: undefined, item: { kind: "lesson", id: lesson.id } as Item };
+}
+
+/** The Wolf's question for this IST day in the Club, or undefined before the list starts. */
+export function wolfQuestion(day: string): string | undefined {
+  const { startDay, questions } = cached("questions", readQuestions);
+  const n = dayDiff(startDay, day);
+  return n < 0 || !questions.length ? undefined : questions[n % questions.length];
 }
