@@ -41,7 +41,7 @@ A Hot Seat takes 5–8 minutes. That's too long to protect a daily streak. Add a
 - **Timed crisis decisions:** occasional calls with a countdown, to add pressure.
 
 ## 8. Measurement
-- Product analytics (for example PostHog or Firebase): Day-1, Day-7 and Day-30 retention, Hot Seat completion rate, where players quit, and paywall conversion.
+- ~~Product analytics~~ PostHog (EU cloud), built 5 Nov 2026: events and dashboard setup in `docs/ANALYTICS.md`. Live once `NEXT_PUBLIC_POSTHOG_KEY` is set on Railway.
 - Make the A/B testing setup ready from day one; most of the retention wins will come from experiments.
 
 ## 9. Legal and trust

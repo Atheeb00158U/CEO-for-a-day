@@ -4,6 +4,7 @@ import { isMember, type AccessContext } from "../access.ts";
 import { FOUNDING_USED, SEATS_FULL } from "../membership-view.ts";
 import { grievanceReady } from "../legal.ts";
 import { FOUNDING } from "../offer.ts";
+import { capture } from "./analytics.ts";
 import type { Db, MembershipRow } from "./db.ts";
 import { GameError } from "./game.ts";
 import { alreadyCancelled, checkoutSignatureOk, webhookSignatureOk, type RazorpayClient } from "./razorpay.ts";
@@ -254,6 +255,7 @@ async function applyEvent(db: Db, body: WebhookBody, now: Date) {
       return;
   }
   forgetAccess(m.userId);
+  capture(m.userId, body.event.replace(".", "_"), { plan: m.plan, status: sub.status }); // e.g. subscription_charged
 }
 
 /** Statuses a player can cancel. */

@@ -1,5 +1,6 @@
 // Checkout's success handler sends its three fields here; a valid signature makes the player a member at once.
 import { PlayError } from "@/lib/play";
+import { capture } from "@/lib/server/analytics";
 import { membershipView } from "@/lib/server/game";
 import { signedIn } from "@/lib/server/http";
 import { confirmCheckout, payEnv } from "@/lib/server/membership";
@@ -21,7 +22,8 @@ export const POST = (request: Request) =>
         signature: field(body?.razorpay_signature),
       };
       const now = new Date();
-      await confirmCheckout(db, payEnv(), userId, p, now);
+      const row = await confirmCheckout(db, payEnv(), userId, p, now);
+      capture(userId, "payment_verified", { plan: row.plan });
       return { membership: await membershipView(db, userId, now) };
     },
     10,

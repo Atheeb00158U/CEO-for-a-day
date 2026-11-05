@@ -3,6 +3,7 @@
 // Streak reminders (Web Push). Signed-in players turn them on from Profile or after a Hot Seat; the phone asks
 // permission, registers the notification-only worker (public/sw.js) and hands the subscription to the server,
 // which sends reminders around the chosen hour (IST); see src/lib/server/reminders.ts.
+import { track } from "./analytics";
 import { api } from "./auth";
 
 /** Why reminders can't be turned on here, or null when they can. */
@@ -34,13 +35,17 @@ export async function currentSubscription(): Promise<PushSubscription | null> {
 export async function enableReminders(hour: number): Promise<boolean> {
   const key = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY;
   if (!key || pushBlocker()) return false;
-  if ((await Notification.requestPermission()) !== "granted") return false;
+  if ((await Notification.requestPermission()) !== "granted") {
+    track("notifications_refused");
+    return false;
+  }
   const reg = await navigator.serviceWorker.register("/sw.js", { scope: "/" });
   await navigator.serviceWorker.ready;
   const sub =
     (await reg.pushManager.getSubscription()) ??
     (await reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: keyBytes(key) }));
   await api("/api/push/subscribe", { body: { subscription: sub.toJSON(), hour } });
+  track("notifications_on", { hour });
   return true;
 }
 

@@ -5,6 +5,8 @@
  * (public/sw.js only shows streak reminders; see src/lib/push.ts).
  */
 
+import { track } from "./analytics";
+
 type InstallEvent = Event & { prompt: () => Promise<void>; userChoice: Promise<{ outcome: "accepted" | "dismissed" }> };
 
 let deferred: InstallEvent | null = null;
@@ -19,6 +21,7 @@ if (typeof window !== "undefined") {
     changed();
   });
   window.addEventListener("appinstalled", () => {
+    track("app_installed");
     deferred = null;
     changed();
   });
@@ -57,6 +60,7 @@ export async function install() {
   deferred = null;
   await e.prompt();
   const { outcome } = await e.userChoice;
+  track("install_prompt", { outcome });
   changed();
   return outcome === "accepted";
 }

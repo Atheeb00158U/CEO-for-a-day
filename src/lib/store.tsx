@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
+import { forget, identify } from "./analytics";
 import { api, signInWithGoogle, signOut, supabase } from "./auth";
 import { gated, type LessonTarget, type Synced } from "./content-client";
 import type { MembershipView } from "./membership-view";
@@ -155,7 +156,8 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
       setS(rollover(guest ?? fresh()));
       setReady(true);
     };
-    const asUser = async (email?: string) => {
+    const asUser = async (id: string, email?: string) => {
+      identify(id);
       try {
         // A guest who signs in brings their progress along, once. The server caps it and skips it for an account
         // that has already played.
@@ -179,10 +181,11 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
     };
     if (!sb) asGuest();
     else {
-      sb.auth.getSession().then(({ data }) => (data.session ? asUser(data.session.user.email) : asGuest()));
+      sb.auth.getSession().then(({ data }) => (data.session ? asUser(data.session.user.id, data.session.user.email) : asGuest()));
       const { data } = sb.auth.onAuthStateChange((event, session) => {
-        if (event === "SIGNED_IN" && session) setTimeout(() => asUser(session.user.email), 0);
+        if (event === "SIGNED_IN" && session) setTimeout(() => asUser(session.user.id, session.user.email), 0);
         if (event === "SIGNED_OUT") {
+          forget();
           version.current = -1;
           setAccount(null);
           setMembership(null);

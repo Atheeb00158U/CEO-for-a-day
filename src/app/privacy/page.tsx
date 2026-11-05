@@ -7,7 +7,7 @@ export const metadata: Metadata = { title: "Privacy · CEO For A Day" };
 
 export default function Privacy() {
   return (
-    <LegalPage title="Privacy" updated="30 October 2026">
+    <LegalPage title="Privacy" updated="5 November 2026">
       <p>CEO For A Day is a game about real business decisions. This page says what we keep about you and why.</p>
 
       <h2>If you play without signing in</h2>
@@ -25,6 +25,15 @@ export default function Privacy() {
         <li>if you turn on reminders, the address your phone gives us for sending them, and the hour you picked.</li>
       </ul>
       <p>We use this only to run the game: to save your progress, run the weekly leagues and send the reminders you asked for.</p>
+
+      <h2>How the game is used</h2>
+      <p>
+        We count what players do in the game, like starting a lesson, leaving a Hot Seat or opening the payment page. This shows us where
+        the game is too hard or boring, so we can fix it. We use PostHog for this, with servers in the EU. Each count has a random id, or
+        your account id if you signed in. It never has your name, your email or anything you type. We don&apos;t record your screen. If your
+        browser asks sites not to track you (&quot;Do Not Track&quot;), your phone sends us no counts. Payments are counted either way (the
+        plan, never your details), so we know how many people joined.
+      </p>
 
       <h2>What we don&apos;t do</h2>
       <ul>

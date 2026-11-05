@@ -38,11 +38,18 @@ self.addEventListener("push", (e) => {
 self.addEventListener("notificationclick", (e) => {
   e.notification.close();
   const url = new URL(e.notification.data?.url ?? "/app", self.location.origin).href;
+  // For analytics, which kind was opened: the tag up to its first "-" ("streak", "cards", "club"…), never an id.
+  const kind = (e.notification.tag || "daily").split("-")[0];
   e.waitUntil(
     self.clients.matchAll({ type: "window", includeUncontrolled: true }).then((list) => {
       const open = list.find((c) => c.url.startsWith(self.location.origin + "/app"));
+      if (!open) {
+        const fresh = new URL(url);
+        fresh.searchParams.set("push", kind); // App.tsx counts it and takes it off the address
+        return self.clients.openWindow(fresh.href);
+      }
+      open.postMessage({ push: kind });
       // An open game goes to the link first (its hashchange listener opens the screen), then comes to the front.
-      if (!open) return self.clients.openWindow(url);
       return (open.url === url || !open.navigate ? Promise.resolve(open) : open.navigate(url).catch(() => open)).then((c) =>
         (c ?? open).focus(),
       );

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { track } from "@/lib/analytics";
 import { fetchLessonStep, type LessonTarget } from "@/lib/content-client";
 import { TEST_OUT_PASS } from "@/lib/game-state";
 import type { Answer, LessonScreen, LessonView } from "@/lib/lesson-play";
@@ -36,6 +37,14 @@ export function LessonPlayer({ target, testOut, onExit }: { target: LessonTarget
   const playKey = useRef(newPlayKey());
   const finished = useRef(false); // a double tap at the end must not pay twice
   const combo = useCombo();
+  const where = "lessonId" in target ? { lesson: target.lessonId } : { test_out: target.testOut };
+
+  /** Show screen i of v, counting it for analytics (its id and kind only). */
+  const reach = (v: LessonView, i: number) => {
+    const at = v.screens[i];
+    if (at) track("lesson_screen", { ...where, screen: at.id, kind: at.kind, answered: v.progress.done });
+    setPhase({ kind: "screen", i });
+  };
 
   const load = (next: Answer[], shown?: Exercise, value?: Answer["value"]) => {
     setBusy(true);
@@ -48,13 +57,14 @@ export function LessonPlayer({ target, testOut, onExit }: { target: LessonTarget
           playSfx(v.reveal.correct ? "great" : "bad");
           combo.hit(v.reveal.guess ? null : v.reveal.correct);
           setPhase({ kind: "reveal", shown, value });
-        } else setPhase({ kind: "screen", i: 0 });
+        } else reach(v, 0);
       })
       .catch(() => setFailed({ answers: next, shown, value }))
       .finally(() => setBusy(false));
   };
 
   useEffect(() => {
+    track("lesson_started", where);
     load([]);
     return () => stopVoice();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -69,6 +79,7 @@ export function LessonPlayer({ target, testOut, onExit }: { target: LessonTarget
       .finishLesson({ target, answers, result: r, playKey: playKey.current, testOut })
       .then((xp) => {
         if (xp) playSfx("coins", 300);
+        track("lesson_finished", { ...where, xp, accuracy: r.accuracy, passed: testOut ? r.accuracy >= TEST_OUT_PASS : undefined });
         setPhase({ kind: "done", xp });
       })
       .catch(() => {
@@ -79,8 +90,9 @@ export function LessonPlayer({ target, testOut, onExit }: { target: LessonTarget
 
   /** After a verdict or an explain screen: the next screen, or the end. */
   const advance = (i: number) => {
-    if (view && i >= view.screens.length && view.result) finish();
-    else setPhase({ kind: "screen", i });
+    if (!view) return;
+    if (i >= view.screens.length && view.result) finish();
+    else reach(view, i);
   };
 
   if (!view)
@@ -124,6 +136,7 @@ export function LessonPlayer({ target, testOut, onExit }: { target: LessonTarget
           type="button"
           onClick={() => {
             stopVoice();
+            track("lesson_quit", { ...where, answered: view.progress.done });
             onExit();
           }}
           aria-label="Leave lesson"

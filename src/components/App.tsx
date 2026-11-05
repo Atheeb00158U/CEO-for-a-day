@@ -24,6 +24,7 @@ import { CLUB_COPY, type ClubMe } from "@/lib/community";
 import { onLive } from "@/lib/live";
 import { grievanceReady } from "@/lib/legal";
 import { api } from "@/lib/auth";
+import { track } from "@/lib/analytics";
 import { StreakCelebration } from "./StreakCelebration";
 import { WolfTip } from "./WolfTip";
 import { AchievementCelebration } from "./Achievements";
@@ -130,6 +131,15 @@ function Shell() {
           : playing
             ? { hotSeatId: playing }
             : null);
+      const kind = (x: PaywallFor) => ("hotSeatId" in x ? "hotseat" : "lessonId" in x ? "lesson" : "test_out");
+      // Counted once per opening (a second 402 while it's open isn't a new look at the offer).
+      if (!paywallOpen)
+        track("paywall_shown", {
+          from: item ? kind(item) : line ? "club" : from ? kind(from) : "profile",
+          // A tap on a locked item, or the server's 402 from inside a lesson or Hot Seat.
+          by: item ? "tap" : from ? "server" : "button",
+          item: from ? ("hotSeatId" in from ? from.hotSeatId : "lessonId" in from ? from.lessonId : from.testOut) : undefined,
+        });
       paywallSeen();
       setPending(from);
       setLesson(null);
@@ -138,7 +148,23 @@ function Shell() {
       setPaywallOpen(true);
     });
     return () => onPaywall();
-  }, [paywallSeen, lesson, playing]);
+  }, [paywallSeen, lesson, playing, paywallOpen]);
+
+  // Analytics: one "app_opened" per visit (it also starts PostHog), and taps on our notifications: a new window
+  // carries ?push=<kind>, an open game gets a message from public/sw.js.
+  useEffect(() => {
+    const url = new URL(location.href);
+    const push = url.searchParams.get("push");
+    if (push) {
+      url.searchParams.delete("push");
+      history.replaceState(history.state, "", url.href);
+      track("notification_opened", { kind: push });
+    }
+    track("app_opened", { installed: matchMedia("(display-mode: standalone)").matches });
+    const fromWorker = (e: MessageEvent) => typeof e.data?.push === "string" && track("notification_opened", { kind: e.data.push });
+    navigator.serviceWorker?.addEventListener("message", fromWorker);
+    return () => navigator.serviceWorker?.removeEventListener("message", fromWorker);
+  }, []);
 
   // The first play of a new day lights the streak: cheered once, back on the map. Only a change seen in this visit
   // counts (not opening the app after playing elsewhere today), and a stored day stops a second cheer after a reload.

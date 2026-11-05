@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, type CSSProperties } from "react";
+import { track } from "@/lib/analytics";
 import { useContent } from "@/lib/content-client";
 import type { Doing, Focus, Onboarding as Answers } from "@/lib/game-state";
 import type { CatalogEntry } from "@/lib/hotseat-types";
@@ -79,7 +80,12 @@ export function Onboarding({ onDone }: { onDone: () => void }) {
   const [beat, setBeat] = useState(0);
   // No lesson to show without the course, so its beat and the "go" beat drop out.
   const tour = TOUR.filter((b) => firstLesson || (b !== "lesson" && b !== "go"));
+  // Analytics: each welcome screen reached (a tour beat by its name), and where the player left them.
+  const reached = step === "tour" ? `tour_${tour[beat]}` : step;
+  useEffect(() => track("onboarding_step", { step: reached }), [reached]);
   const finish = () => {
+    const { doing, focus, minutes } = s.onboarding; // their own picks from our lists, for splitting the numbers
+    track("onboarding_done", { at: reached, doing, focus, minutes });
     setOnboarding({ done: true });
     onDone();
   };

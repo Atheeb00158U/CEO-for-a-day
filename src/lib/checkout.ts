@@ -1,5 +1,6 @@
 // Razorpay Checkout on the phone. Its script loads only when a checkout starts (never on the landing page), once.
 // The server creates the subscription; Checkout takes the payment and hands back three fields for /api/pay/verify.
+import { track } from "./analytics";
 
 const SRC = "https://checkout.razorpay.com/v1/checkout.js";
 
@@ -19,6 +20,7 @@ export class CheckoutClosed extends Error {
 
 interface RazorpayCheckout {
   open(): void;
+  on(event: "payment.failed", f: (r: { error?: { reason?: string } }) => void): void;
 }
 type RazorpayCtor = new (options: Record<string, unknown>) => RazorpayCheckout;
 declare global {
@@ -56,7 +58,7 @@ export async function openCheckout(o: { keyId: string; subscriptionId: string; d
   // so every tap on it would be ignored. Clear it (globals.css also forces Razorpay's frame to take taps).
   document.body.style.removeProperty("pointer-events");
   return new Promise<CheckoutSuccess>((resolve, reject) => {
-    new Razorpay({
+    const checkout = new Razorpay({
       key: o.keyId,
       subscription_id: o.subscriptionId,
       name: "CEO For A Day",
@@ -65,6 +67,9 @@ export async function openCheckout(o: { keyId: string; subscriptionId: string; d
       theme: { color: brandColour() },
       handler: (r: CheckoutSuccess) => resolve(r),
       modal: { ondismiss: () => reject(new CheckoutClosed()) },
-    }).open();
+    });
+    // Razorpay's reason code only (e.g. "payment_cancelled"), never the payer's details.
+    checkout.on("payment.failed", (r) => track("payment_failed", { reason: r.error?.reason ?? "unknown" }));
+    checkout.open();
   });
 }

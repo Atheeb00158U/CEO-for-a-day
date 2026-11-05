@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { track } from "@/lib/analytics";
 import { fetchStep, type PlayResponse } from "@/lib/content-client";
 import { spokenWhy } from "@/lib/engine";
 import type { Grade, Media } from "@/lib/hotseat-types";
@@ -65,6 +66,8 @@ export function Player({
           if (next.length) before.current = view;
           setPicks(next);
           setView(v);
+          // The decision's number only: never the option picked or its grade.
+          track(next.length ? "hotseat_decision" : "hotseat_started", { hotseat: hotSeatId, decision: next.length || undefined });
           setPhase(next.length ? { kind: "reveal" } : { kind: "screen", i: 0 });
           if (next.length && v.reveal) hit(v.reveal.grade === "great");
         })
@@ -110,7 +113,15 @@ export function Player({
     setSaveFailed(false);
     game
       .finishRun({ hotSeatId: meta.id, picks, result: r, hindsightUsed: usedHindsight, runKey: runKey.current })
-      .then((record) => setPhase({ kind: "debrief", record, endingTitle: title }))
+      .then((record) => {
+        track("hotseat_ended", {
+          hotseat: meta.id,
+          ending: screen?.kind === "ending" ? screen.tier : null,
+          decisions: picks.length,
+          hindsight: usedHindsight,
+        });
+        setPhase({ kind: "debrief", record, endingTitle: title });
+      })
       .catch(() => {
         finished.current = false; // same run key, so trying again can't pay twice
         setSaveFailed(true);
@@ -158,6 +169,7 @@ export function Player({
           type="button"
           onClick={() => {
             stopVoice();
+            track("hotseat_quit", { hotseat: meta.id, decisions: decisionsDone });
             onExit();
           }}
           aria-label="Leave hot seat"

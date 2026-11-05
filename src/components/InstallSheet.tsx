@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Sheet, SheetContent, SheetDescription, SheetTitle } from "@/components/shadcn/sheet";
+import { track } from "@/lib/analytics";
 import { install, installSnoozed, installWay, onInstallChange, snoozeInstall, type InstallWay } from "@/lib/pwa";
 import { Logo } from "./Logo";
 
@@ -40,7 +41,12 @@ export function InstallSheet({ page }: { page: string }) {
 
   // Ask again on every page change (and on coming back from a lesson or Hot Seat, which remounts this).
   useEffect(() => {
-    const t = setTimeout(() => !installSnoozed() && installWay() && setOpen(true), 1500); // let the page settle first
+    const t = setTimeout(() => {
+      const how = !installSnoozed() && installWay();
+      if (!how) return;
+      track("install_sheet_shown", { way: how });
+      setOpen(true);
+    }, 1500); // let the page settle first
     return () => clearTimeout(t);
   }, [page]);
 

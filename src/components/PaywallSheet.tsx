@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { Sheet, SheetContent, SheetDescription, SheetTitle } from "@/components/shadcn/sheet";
 import { freeModule } from "@/lib/access";
+import { track } from "@/lib/analytics";
 import { ApiError, api } from "@/lib/auth";
 import { markPaymentStarted } from "@/lib/celebrate";
 import { CheckoutClosed, openCheckout, type CheckoutSuccess } from "@/lib/checkout";
@@ -89,6 +90,11 @@ export function PaywallSheet({ open, onOpenChange, line }: { open: boolean; onOp
   const freeDone = freeLessons.length > 0 && freeLessons.every((id) => s.lessons[id]);
   const title = founding ? (freeDone ? COPY.titleFreeDone : COPY.titleFounding) : COPY.titleRegular;
 
+  const pick = (p: Plan) => {
+    if (p !== plan) track("paywall_plan_picked", { plan: p });
+    setPlan(p);
+  };
+
   async function join() {
     setError(null);
     setPhase("busy");
@@ -98,6 +104,7 @@ export function PaywallSheet({ open, onOpenChange, line }: { open: boolean; onOp
         body: { plan: chosen },
       });
       markPaymentStarted(); // so the app looks for a late (webhook) confirmation when the player comes back
+      track("checkout_opened", { plan: chosen });
       setInCheckout(true);
       try {
         paid = await openCheckout({ keyId, subscriptionId, description: COPY.checkoutLine[chosen], email: account?.email });
@@ -106,6 +113,10 @@ export function PaywallSheet({ open, onOpenChange, line }: { open: boolean; onOp
       }
     } catch (e) {
       setPhase("idle");
+      track(e instanceof CheckoutClosed ? "checkout_closed" : "checkout_failed", {
+        plan: chosen,
+        reason: e instanceof ApiError ? e.message : e instanceof CheckoutClosed ? undefined : "checkout",
+      });
       if (e instanceof ApiError && e.status === 409) {
         if (e.message === "Already a member") {
           await reload().catch(() => {});
@@ -127,11 +138,13 @@ export function PaywallSheet({ open, onOpenChange, line }: { open: boolean; onOp
     setPhase("checking");
     try {
       await api("/api/pay/verify", { body: paid });
+      track("checkout_paid", { plan: chosen });
       await reload(); // the app sees the new membership, closes this sheet and celebrates (App.tsx)
       setPhase("idle");
       onOpenChange(false);
     } catch {
       // Paid at Razorpay but not confirmed here: the webhook will make them a member.
+      track("checkout_unconfirmed", { plan: chosen });
       setPhase("idle");
       setError(COPY.notConfirmed);
       void reload().catch(() => {});
@@ -178,10 +191,10 @@ export function PaywallSheet({ open, onOpenChange, line }: { open: boolean; onOp
               <>
                 {reason && <p className="mt-2 text-center text-[14px] font-extrabold text-brand">{reason}.</p>}
                 <div role="radiogroup" aria-label="Choose a plan" className="mt-4 flex flex-col gap-3">
-                  <PlanTile on={plan === "monthly"} onPick={() => setPlan("monthly")} name={COPY.monthly} price={COPY.monthlyPrice} />
+                  <PlanTile on={plan === "monthly"} onPick={() => pick("monthly")} name={COPY.monthly} price={COPY.monthlyPrice} />
                   <PlanTile
                     on={plan === "yearly"}
-                    onPick={() => setPlan("yearly")}
+                    onPick={() => pick("yearly")}
                     name={COPY.yearly}
                     price={COPY.yearlyPrice}
                     note={COPY.yearlyNote}

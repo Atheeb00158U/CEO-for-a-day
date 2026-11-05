@@ -133,5 +133,9 @@ Follow `docs/BUILD-PLAN.md` phase by phase and tick items off as you finish them
 - A guest's save is imported once on sign-in, with every number capped (`importGuest`).
 - Sign-in uses Google's own button (`renderGoogleButton` in `src/lib/auth.ts`, then `signInWithIdToken` with a nonce), so Google's page names ceoforaday.in. Without `NEXT_PUBLIC_GOOGLE_CLIENT_ID`, or if Google's script fails to load, it falls back to Supabase's redirect. An app added to an iPhone's Home Screen can't see Safari's Google accounts, so the first sign-in there always asks for the email (an iOS rule).
 
+## Analytics (5 Nov 2026)
+- PostHog (EU cloud), off without `NEXT_PUBLIC_POSTHOG_KEY`. Phone: `track()` in `src/lib/analytics.ts` (posthog-js loads lazily, no autocapture, no recording, Do Not Track respected); server-only facts (verified payments, webhooks): `capture()` in `src/lib/server/analytics.ts`. Never on `/`.
+- Events carry ids, counts and our own list values only: no email, name, typed text, option picked or grade. Event list: `docs/ANALYTICS.md`.
+
 ## Known gaps
 See `docs/LAUNCH-CHECKLIST.md`.

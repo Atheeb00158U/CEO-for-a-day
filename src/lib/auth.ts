@@ -4,6 +4,7 @@
 // routes, which check this session's token. Without the Supabase env vars (CI, a fresh checkout) everyone plays as a
 // guest.
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
+import { track } from "./analytics";
 
 let client: SupabaseClient | null | undefined;
 
@@ -26,8 +27,10 @@ export async function token(): Promise<string | null> {
 }
 
 /** Leaves for Google and comes back to /app signed in. The fallback when Google's own button isn't set up. */
-export const signInWithGoogle = () =>
-  supabase()?.auth.signInWithOAuth({ provider: "google", options: { redirectTo: `${location.origin}/app` } });
+export const signInWithGoogle = () => {
+  track("sign_in_started", { via: "redirect" }); // finishing shows up as the player's id on the next /app pageview
+  return supabase()?.auth.signInWithOAuth({ provider: "google", options: { redirectTo: `${location.origin}/app` } });
+};
 
 /* ------------------------------------------------------------------ */
 /* Google's own sign-in button (Google Identity Services).              */
@@ -89,6 +92,7 @@ export async function renderGoogleButton(el: HTMLElement, onError: (message: str
     callback: async ({ credential }) => {
       const { error } = await sb.auth.signInWithIdToken({ provider: "google", token: credential, nonce });
       if (error) onError("Sign-in didn't work. Try again.");
+      else track("signed_in", { via: "google_button" });
     },
   });
   id.renderButton(el, {
