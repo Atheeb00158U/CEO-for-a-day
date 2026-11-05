@@ -26,7 +26,8 @@ const display = Oswald({ weight: ["500", "600"], subsets: ["latin"], variable: "
 
 export const metadata: Metadata = {
   title: "CEO For A Day · Good business decisions are a skill",
-  description: "Nirma, Amul, IndiGo, redBus. Real money was at stake. What would you decide? Start free.",
+  description:
+    "Many people learn business by losing money, but you can learn it from real Indian companies in five minutes a day. Start free.",
 };
 export const revalidate = 60; // the founding offer switches to the regular plans at most a minute after the last seat goes
 
@@ -67,9 +68,9 @@ function railItems(): RailItem[] {
 
 const PAINS = [
   "Your business is not growing, and you don't know why.",
-  "You have lost money on wrong decisions.",
-  "Nobody around you understands your business.",
-  "You watch business videos, but you forget them.",
+  "You have lost money because of a wrong decision.",
+  "You have no one to talk to about your business.",
+  "You watch business videos, but forget what you learn.",
   "You can't afford an MBA, and you are not sure it would help.",
   "You worry about one big wrong decision.",
 ];
@@ -84,27 +85,56 @@ const yearly = REGULAR.yearly.toLocaleString("en-IN");
 
 function faq(full: boolean) {
   return [
-    { q: "Is it free?", a: "Yes. Your first five lessons and first Hot Seat are free. Membership gives you the rest." },
+    {
+      q: "What is CEO For A Day?",
+      a: "It is a game that teaches you business. You learn one rule at a time in short lessons, then play a Hot Seat and make decisions for a real company.",
+    },
+    {
+      q: "What is a Hot Seat?",
+      a: "You face a big decision from a real company. You choose what to do, then see what the company did and what happened next.",
+    },
+    {
+      q: "Do I need business experience?",
+      a: "No. Each lesson starts with a real story and explains one rule in simple English.",
+    },
+    { q: "How long does it take?", a: "About five minutes for a lesson, and five to seven minutes for a Hot Seat." },
+    {
+      q: "Is it free?",
+      a: "Yes. Your first five lessons and your first Hot Seat are free. Become a member to get the rest.",
+    },
     full
       ? {
           q: "What does membership get me?",
-          a: `All lessons and Hot Seats, including new ones we add. ₹${REGULAR.monthly} a month or ₹${yearly} a year.`,
+          a: `All lessons and Hot Seats, plus new ones when they are added. ₹${REGULAR.monthly} a month or ₹${yearly} a year.`,
         }
       : {
           q: `What does ₹${FOUNDING.monthly} get me?`,
           a: (
             <>
-              All lessons and Hot Seats, including new ones we add. <FoundingPrice /> while you stay a member. {FOUNDING_LINE}
+              All lessons and Hot Seats, plus new ones when they are added. <FoundingPrice /> while you stay a member. {FOUNDING_LINE}
             </>
           ),
         },
+    { q: "How do I pay?", a: "With UPI or a card, once a month." },
     {
       q: "Can I cancel?",
       a: full
         ? "Yes. Cancel any time with one tap in your profile or UPI app."
         : `Yes. Cancel any time with one tap in your profile or UPI app. If you cancel, you lose the ₹${FOUNDING.monthly} price.`,
     },
-    { q: "Is it in Hindi?", a: "Only English for now. Hindi, Tamil and Bengali are coming." },
+    {
+      q: "Do I need to download an app?",
+      a: "No. Play in your phone's browser. You can also add it to your home screen and open it like an app.",
+    },
+    {
+      q: "Are the stories true?",
+      a: "Yes. They come from public sources, and you can see the sources in each Hot Seat. One practice story is made up, and we tell you that.",
+    },
+    { q: "Is it in Hindi?", a: "Only English for now, but Hindi, Tamil and Bengali are coming." },
+    {
+      q: "Is this business advice?",
+      a: "No. It is for learning. The real events come from public sources, and other possible results are our estimates.",
+    },
   ];
 }
 
@@ -226,7 +256,7 @@ export default async function Home() {
         <span className="mr-auto text-[17px] font-semibold tracking-[-0.01em]">CEO For A Day</span>
         <nav aria-label="On this page" className="hidden items-center gap-8 text-[15px] font-medium text-ink/80 md:flex">
           <a className="site-link" href="#why">
-            Why it matters
+            The companies
           </a>
           <a className="site-link" href="#club">
             The Club
@@ -255,10 +285,12 @@ export default async function Home() {
             />
             <div className={`${WRAP} -mt-10 pb-8 md:absolute md:inset-x-0 md:bottom-0 md:mt-0 md:pb-16`}>
               <h1 className={`md:max-w-[22ch] ${DISPLAY}`}>Good business decisions are a skill.</h1>
-              <p className={`mt-5 max-w-[44ch] ${LEAD}`}>Nirma, Amul, IndiGo, redBus. Real money was at stake. What would you decide?</p>
+              <p className={`mt-5 max-w-[44ch] ${LEAD}`}>
+                Many people learn business by losing money, but you can learn it from real Indian companies in five minutes a day.
+              </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6">
                 <StartButton className="w-full sm:w-auto" />
-                <p className="text-[15px] text-ink/75">Free to start. Five minutes a lesson.</p>
+                <p className="text-[15px] text-ink/75">Free to start. No card needed.</p>
               </div>
             </div>
           </div>
@@ -270,7 +302,7 @@ export default async function Home() {
           <div className={`${WRAP} md:grid md:grid-cols-12 md:items-end md:gap-10`}>
             <h2 className={`site-rise md:col-span-7 ${HEADING}`}>Would you make the same choice?</h2>
             <p className={`site-rise mt-5 max-w-[40ch] md:col-span-5 md:mt-0 ${LEAD}`} style={step(1)}>
-              In each Hot Seat, you run a real company for one big decision. Then you see what really happened.
+              In each Hot Seat, you make a big decision for a real company. Then you see what really happened.
             </p>
           </div>
           <div className="mt-10 md:mt-14">
@@ -330,10 +362,10 @@ export default async function Home() {
           <div className="md:col-span-6">
             <h2 className={`site-rise ${HEADING}`}>School did not teach you this.</h2>
             <p className={`site-rise mt-6 ${LEAD}`} style={step(1)}>
-              School taught you to pass exams. Business asks something harder: what do you do when your own money is at risk?
+              School taught you to pass exams, but business asks something harder: what do you do when your own money is at risk?
             </p>
             <p className={`site-rise mt-4 ${LEAD}`} style={step(2)}>
-              Real companies made these decisions with crores at stake. You learn the rule behind each one in five minutes.
+              Real companies made these decisions with crores at stake, and you learn the rule behind each one in five minutes.
             </p>
             <StartButton className="site-rise mt-8 w-full sm:w-auto" />
           </div>
@@ -414,10 +446,7 @@ export default async function Home() {
             <div className="max-w-[620px]">
               <h2 className={`site-rise ${HEADING}`}>Meet serious business minds</h2>
               <p className={`site-rise mt-6 ${LEAD}`} style={step(1)}>
-                A private club for members who take business seriously.
-              </p>
-              <p className={`site-rise mt-3 ${LEAD}`} style={step(2)}>
-                Share what worked. Ask for advice before a big decision. Meet people you could build with.
+                The Club is a private place for members to share what worked, ask for advice and meet people who want to build a business.
               </p>
               <p className="site-rise mt-3 text-[18px] font-semibold text-[var(--brass)] md:text-[20px]" style={step(3)}>
                 The Club opens soon.
