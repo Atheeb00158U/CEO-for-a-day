@@ -21,11 +21,14 @@ import { Celebration, MemberWelcome } from "./MemberWelcome";
 import { useCareer } from "./CareerTitle";
 import { StreakCelebration } from "./StreakCelebration";
 import { WolfTip } from "./WolfTip";
+import { AchievementCelebration } from "./Achievements";
+import { cheerFor, earnedKeys } from "@/lib/achievements";
 import { ContentProvider, onPaywall, useDaily, type Content, type LessonTarget, type PaywallFor } from "@/lib/content-client";
 import { celebrationFor, markWelcomed, paidRecently, paymentStartedAt, shownWelcomes } from "@/lib/celebrate";
 import type { MembershipView } from "@/lib/membership-view";
 
 const STREAK_CHEERED = "cfad.streakCheered";
+const ACH_SEEN = "cfad.achSeen";
 
 export type Tab = "home" | "league" | "notes" | "shop" | "profile";
 const COPY = {
@@ -138,6 +141,38 @@ function Shell() {
     }
     setStreakUp(s.streak);
   }, [ready, s.lastActiveDay, s.streak]);
+  // A new achievement level or badge is cheered once, on the map. The first look on a device only records what is
+  // already earned, so nobody gets a pile of cheers for old progress.
+  const [newAch, setNewAch] = useState<string[]>([]);
+  useEffect(() => {
+    if (!ready) return;
+    const now = earnedKeys(s);
+    let seen: string[] | null = null;
+    try {
+      seen = JSON.parse(localStorage.getItem(ACH_SEEN) ?? "null");
+    } catch {
+      /* private mode: start fresh */
+    }
+    if (!seen) {
+      try {
+        localStorage.setItem(ACH_SEEN, JSON.stringify(now));
+      } catch {
+        /* private mode */
+      }
+      return;
+    }
+    const fresh = now.filter((k) => !seen.includes(k));
+    if (fresh.length) setNewAch(fresh);
+  }, [ready, s]);
+  const doneAch = () => {
+    try {
+      const seen: string[] = JSON.parse(localStorage.getItem(ACH_SEEN) ?? "[]");
+      localStorage.setItem(ACH_SEEN, JSON.stringify([...new Set([...seen, ...newAch])]));
+    } catch {
+      /* private mode */
+    }
+    setNewAch([]);
+  };
 
   // Welcome a new member once per subscription: after paying here, or when the webhook's confirmation shows up later.
   const seen = useRef<{ who: string | null; m: MembershipView | null } | undefined>(undefined);
@@ -252,11 +287,14 @@ function Shell() {
 
   // A new title is cheered once, back on the map after the lesson or Hot Seat that earned it.
   const rankUp = !welcome && !streakUp && career && career.rank > s.rankSeen ? career : null;
+  // The newest earned thing is the one cheered (the highest level when several land at once).
+  const ach = !welcome && !streakUp && !rankUp && newAch.length ? cheerFor(newAch[newAch.length - 1]) : null;
   return withOverlay(
     // The page itself never scrolls, only <main>: iPhone browsers misplace bars pinned to a scrolling page,
     // leaving a gap below the tab bar.
     <div className="mx-auto flex h-dvh max-w-[480px] flex-col">
       {streakUp && !welcome && <StreakCelebration streak={streakUp} onDone={() => setStreakUp(null)} />}
+      {ach && <AchievementCelebration key={ach.id + ach.level} {...ach} onDone={doneAch} />}
       {rankUp && (
         <Celebration
           title={COPY.rankUp(rankUp.title)}
