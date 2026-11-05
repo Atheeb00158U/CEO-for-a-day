@@ -86,10 +86,7 @@
       "kind": "sort",
       "id": "feels-theirs",
       "prompt": "I'll show you six ideas for the breakfast box. For each, tell me: does the box feel like theirs?",
-      "buckets": [
-        "Feels like theirs",
-        "Not yet"
-      ],
+      "buckets": ["Feels like theirs", "Not yet"],
       "items": [
         {
           "text": "They get the box free at home for two Sundays",
@@ -159,16 +156,8 @@
       "kind": "gap",
       "id": "fill",
       "text": "Once it feels ___, giving it back feels like a ___.",
-      "bank": [
-        "theirs",
-        "loss",
-        "cheap",
-        "gain"
-      ],
-      "answer": [
-        "theirs",
-        "loss"
-      ],
+      "bank": ["theirs", "loss", "cheap", "gain"],
+      "answer": ["theirs", "loss"],
       "why": "Correct. Owners wanted twice the price for their mugs. After two Sundays of fresh bread, 15 families kept the box."
     }
   ],
@@ -181,30 +170,21 @@
     {
       "id": "m33-own-1",
       "front": "Students given a mug asked about twice what others would pay for it. Why?",
-      "options": [
-        "Losing something you own hurts",
-        "Their mugs were better"
-      ],
+      "options": ["Losing something you own hurts", "Their mugs were better"],
       "answer": 0,
       "back": "The endowment effect: once you own something, giving it away feels like a loss."
     },
     {
       "id": "m33-own-2",
       "front": "A free trial charges you without a reminder. The cancel button is hidden. What is this?",
-      "options": [
-        "A normal trial",
-        "A subscription trap"
-      ],
+      "options": ["A normal trial", "A subscription trap"],
       "answer": 1,
       "back": "This trap earns money when people forget to cancel. India banned it as a dark pattern in 2023."
     },
     {
       "id": "m33-own-3",
       "front": "You want families to try your weekly snack box. Which trial is fair?",
-      "options": [
-        "Free week, reminder, stop by message",
-        "Free week, then AutoPay without a reminder"
-      ],
+      "options": ["Free week, reminder, stop by message", "Free week, then AutoPay without a reminder"],
       "answer": 0,
       "back": "Give a real trial, remind them before charging, and make it easy to stop."
     }

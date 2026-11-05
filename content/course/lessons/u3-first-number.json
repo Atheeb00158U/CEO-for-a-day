@@ -111,10 +111,7 @@
       "kind": "sort",
       "id": "honest-or-trick",
       "prompt": "I'll show you six anchors. For each one, tell me: is it honest, or a trick?",
-      "buckets": [
-        "Honest",
-        "A trick"
-      ],
+      "buckets": ["Honest", "A trick"],
       "items": [
         {
           "text": "Show your real ₹2,500 party cake first",
@@ -184,16 +181,8 @@
       "kind": "gap",
       "id": "fill",
       "text": "The ___ number a buyer sees changes how every ___ feels.",
-      "bank": [
-        "first",
-        "price",
-        "last",
-        "cake"
-      ],
-      "answer": [
-        "first",
-        "price"
-      ],
+      "bank": ["first", "price", "last", "cake"],
+      "answer": ["first", "price"],
       "why": "Exactly. The wheel moved people's guesses from 25% to 45%. Show your real ₹2,500 party cake first, and ₹850 feels fair."
     }
   ],
@@ -206,31 +195,21 @@
     {
       "id": "m33-anchor-1",
       "front": "A phone website says \"MRP ₹40,000, now ₹24,999\". The phone never sold at ₹40,000. What is ₹40,000?",
-      "options": [
-        "A fake anchor",
-        "The phone's real value"
-      ],
+      "options": ["A fake anchor", "The phone's real value"],
       "answer": 0,
       "back": "A price nobody paid is an anchor. It makes the price you pay feel cheap."
     },
     {
       "id": "m33-anchor-2",
       "front": "You sell a ₹600 thali and a ₹250 one. Which should a new customer see first on the menu?",
-      "options": [
-        "The ₹250 thali",
-        "The ₹600 thali"
-      ],
+      "options": ["The ₹250 thali", "The ₹600 thali"],
       "answer": 1,
       "back": "Show a real, higher-priced option first. It makes the other prices feel fair."
     },
     {
       "id": "m33-anchor-3",
       "front": "A shop asks your price for a big order. Nearby shops charge ₹400. What price should you say first?",
-      "options": [
-        "₹600, to bargain down",
-        "₹350, and say why",
-        "₹250, to win it"
-      ],
+      "options": ["₹600, to bargain down", "₹350, and say why", "₹250, to win it"],
       "answer": 1,
       "back": "The first price helps decide the deal. Start with a price you can explain."
     }

@@ -111,10 +111,7 @@
       "kind": "sort",
       "id": "help-or-trick",
       "prompt": "I'll show you six menu ideas. For each one, tell me: does it help buyers choose, or does it trick or confuse them?",
-      "buckets": [
-        "Helps them choose",
-        "Tricks or confuses"
-      ],
+      "buckets": ["Helps them choose", "Tricks or confuses"],
       "items": [
         {
           "text": "Fresh cake and cupcakes at ₹1,400, a plan you're happy to sell",
@@ -184,16 +181,8 @@
       "kind": "gap",
       "id": "fill",
       "text": "A clearly ___ third choice helps sell the one ___ it.",
-      "bank": [
-        "worse",
-        "beside",
-        "cheaper",
-        "inside"
-      ],
-      "answer": [
-        "worse",
-        "beside"
-      ],
+      "bank": ["worse", "beside", "cheaper", "inside"],
+      "answer": ["worse", "beside"],
       "why": "Correct. Print only helped sell print and web. Your ₹1,400 cake and cupcakes helps sell the ₹1,450 full pack."
     }
   ],
@@ -206,31 +195,21 @@
     {
       "id": "m33-decoy-1",
       "front": "Coffee: small ₹120, medium ₹200, large ₹220. Which is the decoy?",
-      "options": [
-        "Small",
-        "Medium",
-        "Large"
-      ],
+      "options": ["Small", "Medium", "Large"],
       "answer": 1,
       "back": "Medium costs only ₹20 less than large. It makes large look like a good deal."
     },
     {
       "id": "m33-decoy-2",
       "front": "Which decoy is honest?",
-      "options": [
-        "A real plan you'd be happy to sell",
-        "A plan you'd refuse to make"
-      ],
+      "options": ["A real plan you'd be happy to sell", "A plan you'd refuse to make"],
       "answer": 0,
       "back": "A fair decoy is a real choice. A fake one looks like a trick when buyers notice it."
     },
     {
       "id": "m33-decoy-3",
       "front": "You offer 10 tiffin plans, and many people leave without choosing. What should you do?",
-      "options": [
-        "Add more plans",
-        "Keep about three clear plans"
-      ],
+      "options": ["Add more plans", "Keep about three clear plans"],
       "answer": 1,
       "back": "Too many choices can stop people from buying. Keep the menu short and clear."
     }

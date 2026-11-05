@@ -154,16 +154,8 @@
       "kind": "gap",
       "id": "fill",
       "text": "A ___ hurts about twice as much as an equal ___ pleases.",
-      "bank": [
-        "loss",
-        "gain",
-        "price",
-        "cake"
-      ],
-      "answer": [
-        "loss",
-        "gain"
-      ],
+      "bank": ["loss", "gain", "price", "cake"],
+      "answer": ["loss", "gain"],
       "why": "Exactly. That's why most people refuse the coin toss. And why \"money back\" helps new families decide to buy."
     }
   ],
@@ -176,31 +168,21 @@
     {
       "id": "m33-loss-1",
       "front": "Coin toss: tails you lose ₹100, heads you win ₹150. Why do most people refuse?",
-      "options": [
-        "A loss feels worse than a gain feels good",
-        "They can't add the numbers"
-      ],
+      "options": ["A loss feels worse than a gain feels good", "They can't add the numbers"],
       "answer": 0,
       "back": "Loss aversion: losing money hurts about twice as much as winning the same amount feels good."
     },
     {
       "id": "m33-loss-2",
       "front": "New customers won't try your ₹300 tiffin. Which works best?",
-      "options": [
-        "₹30 off the first tiffin",
-        "\"Not happy? Money back.\"",
-        "\"Only 3 left today!\" (it isn't true)"
-      ],
+      "options": ["₹30 off the first tiffin", "\"Not happy? Money back.\"", "\"Only 3 left today!\" (it isn't true)"],
       "answer": 1,
       "back": "Remove the buyer's risk, so trying feels safe."
     },
     {
       "id": "m33-loss-3",
       "front": "Cart ₹460. Free delivery above ₹499, or ₹30 to deliver. You add a ₹50 item you don't need. You pay…",
-      "options": [
-        "₹20 more",
-        "₹30 less"
-      ],
+      "options": ["₹20 more", "₹30 less"],
       "answer": 0,
       "back": "₹510 instead of ₹490. Trying to avoid a small \"loss\" can make you spend more."
     }

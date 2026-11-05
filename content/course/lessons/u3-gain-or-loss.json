@@ -179,16 +179,8 @@
       "kind": "gap",
       "id": "fill",
       "text": "The same ___ feels different as a ___ or a loss.",
-      "bank": [
-        "fact",
-        "gain",
-        "lie",
-        "cake"
-      ],
-      "answer": [
-        "fact",
-        "gain"
-      ],
+      "bank": ["fact", "gain", "lie", "cake"],
+      "answer": ["fact", "gain"],
       "why": "Correct. \"200 saved\" and \"400 die\" were the same plan. \"Save ₹250 a cake\" helps a new office buy from you."
     }
   ],
@@ -201,32 +193,21 @@
     {
       "id": "m33-frame-1",
       "front": "A gym says \"only ₹25 a day\". You must pay for the whole year at once. How much is that?",
-      "options": [
-        "About ₹750",
-        "About ₹9,000",
-        "₹25"
-      ],
+      "options": ["About ₹750", "About ₹9,000", "₹25"],
       "answer": 1,
       "back": "₹25 × 365 = about ₹9,000. Showing a daily price makes a big bill feel small."
     },
     {
       "id": "m33-frame-2",
       "front": "A new customer has never tried your tiffin. Which message is better?",
-      "options": [
-        "\"Hot lunch at your desk by 1 pm\"",
-        "\"Stop wasting money on canteen food!\""
-      ],
+      "options": ["\"Hot lunch at your desk by 1 pm\"", "\"Stop wasting money on canteen food!\""],
       "answer": 0,
       "back": "For something new, use a gain frame: tell them what they get."
     },
     {
       "id": "m33-frame-3",
       "front": "\"Yogurt: 95% fat-free.\" How much fat is in it?",
-      "options": [
-        "5%",
-        "None",
-        "95%"
-      ],
+      "options": ["5%", "None", "95%"],
       "answer": 0,
       "back": "A frame shows one side of a fact. Look at the other side too."
     }
