@@ -6,6 +6,8 @@ import { TEST_OUT_PASS } from "@/lib/game-state";
 import type { Answer, LessonScreen, LessonView } from "@/lib/lesson-play";
 import { useGame } from "@/lib/store";
 import { playSfx } from "@/lib/sfx";
+import { useCombo } from "./Combo";
+import { wolfSay } from "@/lib/wolf";
 import { askLines, takeawayLines, type Said } from "@/lib/lesson-voice";
 import { ADVISOR, NARRATOR, stopVoice } from "@/lib/voice";
 import { DecisionView, RevealView, useHeard, useNarration, VerdictSheet, VoiceButton } from "./Player";
@@ -34,6 +36,8 @@ export function LessonPlayer({ target, testOut, onExit }: { target: LessonTarget
   const [context, setContext] = useState<Extract<LessonScreen, { kind: "explain" }>>();
   const playKey = useRef(newPlayKey());
   const finished = useRef(false); // a double tap at the end must not pay twice
+  const combo = useCombo();
+  const misses = useRef(0); // wrong answers in a row: two, and the wolf says slow down
 
   const load = (next: Answer[], shown?: Exercise, value?: Answer["value"]) => {
     setBusy(true);
@@ -44,6 +48,9 @@ export function LessonPlayer({ target, testOut, onExit }: { target: LessonTarget
         setView(v);
         if (shown && value !== undefined && v.reveal) {
           playSfx(v.reveal.correct ? "great" : "bad");
+          combo.hit(v.reveal.guess ? null : v.reveal.correct);
+          if (!v.reveal.guess) misses.current = v.reveal.correct ? 0 : misses.current + 1;
+          if (misses.current === 2) wolfSay("slowDown");
           setPhase({ kind: "reveal", shown, value });
         } else setPhase({ kind: "screen", i: 0 });
       })
@@ -115,6 +122,7 @@ export function LessonPlayer({ target, testOut, onExit }: { target: LessonTarget
 
   return (
     <div className="mx-auto flex min-h-dvh max-w-[480px] flex-col px-4" style={{ paddingTop: "max(12px, env(safe-area-inset-top))" }}>
+      {combo.burst}
       <div className="flex items-center gap-3 py-2">
         <button
           type="button"

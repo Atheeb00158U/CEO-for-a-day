@@ -19,9 +19,13 @@ import { PaywallSheet } from "./PaywallSheet";
 import { Onboarding } from "./Onboarding";
 import { Celebration, MemberWelcome } from "./MemberWelcome";
 import { useCareer } from "./CareerTitle";
+import { StreakCelebration } from "./StreakCelebration";
+import { WolfTip } from "./WolfTip";
 import { ContentProvider, onPaywall, useDaily, type Content, type LessonTarget, type PaywallFor } from "@/lib/content-client";
 import { celebrationFor, markWelcomed, paidRecently, paymentStartedAt, shownWelcomes } from "@/lib/celebrate";
 import type { MembershipView } from "@/lib/membership-view";
+
+const STREAK_CHEERED = "cfad.streakCheered";
 
 export type Tab = "home" | "league" | "notes" | "shop" | "profile";
 const COPY = {
@@ -116,6 +120,25 @@ function Shell() {
     return () => onPaywall();
   }, [paywallSeen, lesson, playing]);
 
+  // The first play of a new day lights the streak: cheered once, back on the map. Only a change seen in this visit
+  // counts (not opening the app after playing elsewhere today), and a stored day stops a second cheer after a reload.
+  const streakDay = useRef<string | null | undefined>(undefined);
+  const [streakUp, setStreakUp] = useState<number | null>(null);
+  useEffect(() => {
+    if (!ready) return;
+    const t = today();
+    const before = streakDay.current;
+    streakDay.current = s.lastActiveDay;
+    if (before === undefined || before === t || s.lastActiveDay !== t || s.streak < 1) return;
+    try {
+      if (localStorage.getItem(STREAK_CHEERED) === t) return;
+      localStorage.setItem(STREAK_CHEERED, t);
+    } catch {
+      /* private mode: cheer anyway */
+    }
+    setStreakUp(s.streak);
+  }, [ready, s.lastActiveDay, s.streak]);
+
   // Welcome a new member once per subscription: after paying here, or when the webhook's confirmation shows up later.
   const seen = useRef<{ who: string | null; m: MembershipView | null } | undefined>(undefined);
   useEffect(() => {
@@ -165,6 +188,7 @@ function Shell() {
     <>
       {x}
       {overlay}
+      <WolfTip />
     </>
   );
 
@@ -227,11 +251,12 @@ function Shell() {
     );
 
   // A new title is cheered once, back on the map after the lesson or Hot Seat that earned it.
-  const rankUp = !welcome && career && career.rank > s.rankSeen ? career : null;
+  const rankUp = !welcome && !streakUp && career && career.rank > s.rankSeen ? career : null;
   return withOverlay(
     // The page itself never scrolls, only <main>: iPhone browsers misplace bars pinned to a scrolling page,
     // leaving a gap below the tab bar.
     <div className="mx-auto flex h-dvh max-w-[480px] flex-col">
+      {streakUp && !welcome && <StreakCelebration streak={streakUp} onDone={() => setStreakUp(null)} />}
       {rankUp && (
         <Celebration
           title={COPY.rankUp(rankUp.title)}

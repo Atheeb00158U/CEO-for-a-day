@@ -38,7 +38,7 @@ const RING: Record<NodeState, string> = {
 };
 
 /**
- * Home's course map: each unit's header, then one card per module: a picture banner, the title, and a grid of round
+ * Home's course map: each unit's header, then one unboxed block per module (on the page background): a picture banner, the title, and a grid of round
  * tiles (a test-out to jump ahead, the lessons in order, Practice) closed by the module's Hot Seats as wide tiles.
  * Lessons unlock in order; a module can be skipped with a short test-out quiz.
  */
@@ -81,7 +81,7 @@ export function CoursePath({
   return (
     <div ref={root} className="flex flex-col gap-8">
       {path.units.map((u, ui) => (
-        <section key={u.id} className="flex flex-col gap-5">
+        <section key={u.id} className="flex flex-col gap-10">
           <div className="rounded-3xl border-b-4 border-black/30 px-4 py-3 text-[#1a1206]" style={{ background: gradient(ui) }}>
             <p className="text-[12px] font-black tracking-[.14em] uppercase opacity-70">Unit {ui + 1}</p>
             <h2 className="text-[21px] leading-tight font-black">{u.title}</h2>
@@ -96,15 +96,15 @@ export function CoursePath({
             const lessonIds = m.lessons.map((l) => l.id);
             const testOutPaid = locked({ kind: "testout", id: m.id });
             return (
-              <article key={m.id} className="overflow-hidden rounded-3xl border-2 border-b-[5px] border-line bg-surface">
+              <article key={m.id}>
                 {cover ? (
-                  <MediaView media={cover} kenBurns={false} className="wavy-b h-[132px] w-full !rounded-none" />
+                  <MediaView media={cover} kenBurns={false} className="wavy-b h-[148px] w-full !rounded-t-3xl !rounded-b-none" />
                 ) : (
-                  <div className="wavy-b grid h-[132px] place-items-center" style={{ background: gradient(ui) }}>
+                  <div className="wavy-b grid h-[148px] place-items-center rounded-t-3xl" style={{ background: gradient(ui) }}>
                     <Icon.chair className="size-14 text-[#1a1206] opacity-25" />
                   </div>
                 )}
-                <div className="px-4 pt-2 pb-5">
+                <div className="pt-3">
                   <h3 className="text-[20px] leading-tight font-black">{m.title}</h3>
                   <p className="mt-0.5 text-[12px] font-black tracking-[.12em] text-brand uppercase">{COPY.lessons(m.lessons.length)}</p>
                   <p className="mt-1 text-[14px] font-bold text-muted">{m.goal}</p>
@@ -194,7 +194,7 @@ export function CoursePath({
         <button
           type="button"
           onClick={() => root.current?.querySelector("[data-current]")?.scrollIntoView({ behavior: "smooth", block: "center" })}
-          className="pop fixed left-1/2 z-20 flex -translate-x-1/2 items-center gap-1.5 rounded-full bg-brand px-4 py-2.5 text-[14px] font-black text-[#1a1206] shadow-[0_4px_0_var(--color-brand-dark)] active:translate-y-[2px]"
+          className="pop fixed left-1/2 z-20 flex -translate-x-1/2 items-center gap-1.5 rounded-full whitespace-nowrap bg-brand px-4 py-2.5 text-[14px] font-black text-[#1a1206] shadow-[0_4px_0_var(--color-brand-dark)] active:translate-y-[2px]"
           style={{ bottom: "calc(env(safe-area-inset-bottom) + 92px)" }}
         >
           <svg viewBox="0 0 24 24" className={`size-5 ${away === "up" ? "rotate-180" : ""}`} aria-hidden>
@@ -215,7 +215,7 @@ const Skip = () => (
 );
 
 const MembersBadge = () => (
-  <span className="absolute -right-1 -bottom-1 grid size-7 place-items-center rounded-full border-[3px] border-surface bg-gold text-[#2a1d00]">
+  <span className="absolute -right-1 -bottom-1 grid size-7 place-items-center rounded-full border-[3px] border-bg bg-gold text-[#2a1d00]">
     <Icon.lock className="size-3.5" />
   </span>
 );
@@ -290,7 +290,7 @@ function Gate({
   onClick: () => void;
 }) {
   const current = state === "current";
-  const label = `Hot Seat · ${hs.company}${hs.madeUp ? " (made-up story)" : ""}`;
+  const label = `Hot Seat · ${hs.company}`;
   const pic = hs.cover ?? hs.emblem;
   return (
     <button
