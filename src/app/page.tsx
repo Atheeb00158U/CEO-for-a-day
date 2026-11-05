@@ -147,11 +147,11 @@ export default async function Home() {
     media: "(max-width: 767px)",
     fetchPriority: "high",
   });
-  preload(`/brand/site/empire-1280.avif`, {
+  preload(`/brand/site/empire-1672.avif`, {
     as: "image",
     type: "image/avif",
     imageSrcSet: sceneSrcSet("empire", false, "avif"),
-    imageSizes: "(min-width: 1280px) 1200px, 100vw",
+    imageSizes: "100vw",
     media: "(min-width: 768px)",
     fetchPriority: "high",
   });
@@ -180,24 +180,19 @@ export default async function Home() {
       <main>
         {/* Hero: one belief, on the wolf between the kirana and the towers. It paints at once: the picture is
             preloaded, a blurred copy and its colour stand in while it loads, and nothing here waits for a fade. */}
-        <section className={WRAP}>
-          <div className="relative isolate overflow-hidden rounded-[28px] bg-surface md:h-[min(calc(100svh-120px),760px)] md:min-h-[560px]">
+        <section>
+          <div className="relative isolate overflow-hidden bg-surface md:h-[calc(100svh-80px)] md:min-h-[600px]">
             <div
               className="site-drift relative -z-10 aspect-square overflow-hidden bg-[#281818] bg-cover bg-center md:absolute md:inset-0 md:aspect-auto"
               style={{ backgroundImage: `url(${SCENES.empire.poster})` }}
             >
-              <ScenePicture
-                name="empire"
-                priority
-                sizes="(min-width: 1280px) 1200px, 100vw"
-                className="h-full w-full object-cover object-top"
-              />
+              <ScenePicture name="empire" priority sizes="100vw" className="h-full w-full object-cover object-top" />
             </div>
             <div
               aria-hidden="true"
               className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_top,rgb(20_27_34)_0%,rgb(20_27_34)_42%,rgb(20_27_34/0)_58%)] md:bg-[linear-gradient(to_top,rgb(11_16_21/0.95)_0%,rgb(11_16_21/0.5)_34%,rgb(11_16_21/0)_58%),linear-gradient(to_right,rgb(11_16_21/0.7)_0%,rgb(11_16_21/0)_55%)]"
             />
-            <div className="-mt-10 px-6 pb-8 md:absolute md:inset-x-0 md:bottom-0 md:mt-0 md:px-12 md:pb-12">
+            <div className={`${WRAP} -mt-10 pb-8 md:absolute md:inset-x-0 md:bottom-0 md:mt-0 md:pb-16`}>
               <h1 className={`md:max-w-[22ch] ${DISPLAY}`}>Good business decisions are a skill.</h1>
               <p className={`mt-5 max-w-[44ch] ${LEAD}`}>Nirma, Amul, IndiGo, redBus. Real money was at stake. What would you decide?</p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6">
@@ -208,30 +203,8 @@ export default async function Home() {
           </div>
         </section>
 
-        {/* The cost of not knowing: a real fall, told in two numbers, with the reason kept for the first lesson */}
-        <section id="why" className={`${WRAP} scroll-mt-4 py-20 md:grid md:grid-cols-12 md:items-center md:gap-10 md:py-32`}>
-          <div className="site-rise grid grid-cols-2 gap-4 md:col-span-6">
-            <div>
-              <p className="font-display text-[96px] leading-[0.85] md:text-[clamp(120px,13vw,190px)]">119</p>
-              <p className="mt-3 text-[16px] leading-snug text-ink/75">planes in the Jet Airways fleet, December 2018</p>
-            </div>
-            <div>
-              <p className="font-display text-[96px] leading-[0.85] text-[var(--brass)] md:text-[clamp(120px,13vw,190px)]">0</p>
-              <p className="mt-3 text-[16px] leading-snug text-ink/75">flights by April 2019</p>
-            </div>
-          </div>
-          <div className="mt-12 md:col-span-6 md:mt-0">
-            <h2 className={`site-rise ${HEADING}`}>119 planes. Then zero flights.</h2>
-            <p className={`site-rise mt-6 ${LEAD}`} style={step(1)}>
-              Jet Airways ran out of cash to keep flying. Your first lesson, free, teaches the rule behind it: watch your cash, not just
-              your profit.
-            </p>
-            <StartButton className="site-rise mt-8 w-full sm:w-auto" />
-          </div>
-        </section>
-
         {/* Real moments from the companies they will run: the situation, never the answer */}
-        <section className={`${WRAP} pb-20 md:pb-32`}>
+        <section id="why" className={`${WRAP} scroll-mt-4 py-20 md:py-32`}>
           <div className="md:grid md:grid-cols-12 md:items-end md:gap-10">
             <h2 className={`site-rise md:col-span-7 ${HEADING}`}>Would you make the same choice?</h2>
             <p className={`site-rise mt-5 max-w-[38ch] md:col-span-5 md:mt-0 ${LEAD}`} style={step(1)}>
