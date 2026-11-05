@@ -2,8 +2,12 @@
 // path pick the action and its per-minute limit. `club()` answers 401 without a token, 404 while the Club is off for
 // this player, and 403 { can } when the gate refuses. Pushes run after the reply.
 import { after } from "next/server";
+import { CLUB_COPY, LIMITS } from "@/lib/community";
 import * as Club from "@/lib/server/club";
 import type { Db } from "@/lib/server/db";
+import { readCapped } from "@/lib/server/club-image";
+import { GameError } from "@/lib/server/game";
+
 import { club, json } from "@/lib/server/http";
 import { realtimeLive } from "@/lib/server/live";
 import { webPush } from "@/lib/server/reminders";
@@ -46,6 +50,27 @@ const ROUTES: Record<string, { max: number; act: Act }> = {
   "POST chat/accept": { max: 10, act: (db, u, id) => Club.accept(db, u, id) },
   "POST chat/decline": { max: 10, act: (db, u, id) => Club.decline(db, u, id) },
   "POST chat/clear": { max: 10, act: (db, u, id) => Club.clearChat(db, u, id) },
+  // Pictures and groups (step 3). The picture comes as multipart (see `picture`); ?chat=<id> for a chat picture.
+  "POST image": { max: 20, act: (db, u, _a, q, b) => Club.uploadImage(db, u, q.get("chat"), b.read as () => Promise<Uint8Array | null>) },
+  "GET mutuals": { max: 30, act: (db, u) => Club.mutualList(db, u) },
+  "POST group": { max: 10, act: (db, u, _a, _q, b) => Club.createGroup(db, u, b, new Date(), side) },
+  "POST chat/add": { max: 20, act: (db, u, id, _q, b) => Club.addToGroup(db, u, id, b, new Date(), side) },
+  "POST chat/remove": { max: 20, act: (db, u, id, _q, b) => Club.removeFromGroup(db, u, id, b, new Date(), side) },
+  "POST chat/leave": { max: 10, act: (db, u, id) => Club.leaveGroup(db, u, id, new Date(), side) },
+};
+
+/** The picture's bytes, read only once the gate has passed; a body over the limit is refused unread. */
+const picture = (request: Request) => async () => {
+  const max = LIMITS.pictures.maxBytes + 64 * 1024; // the picture plus the multipart wrapping
+  if (Number(request.headers.get("content-length")) > max) throw new GameError(CLUB_COPY.pictureTooBig);
+  // content-length can lie (or be missing): the bytes are counted as they arrive, and reading stops past the limit.
+  const body = await readCapped(request, max);
+  if (!body) throw new GameError(CLUB_COPY.pictureTooBig);
+  const type = request.headers.get("content-type") ?? "";
+  const file = (await new Response(body, { headers: { "content-type": type } }).formData().catch(() => null))?.get("file");
+  if (!(file instanceof Blob)) return null;
+  if (file.size > LIMITS.pictures.maxBytes) throw new GameError(CLUB_COPY.pictureTooBig);
+  return new Uint8Array(await file.arrayBuffer());
 };
 
 async function handle(request: Request, { params }: Ctx) {
@@ -53,7 +78,8 @@ async function handle(request: Request, { params }: Ctx) {
   const name = path.length === 3 ? `${path[0]}/${path[2]}` : path.length <= 2 ? path[0] : "";
   const route = ROUTES[`${request.method} ${name}`];
   if (!route) return json({ error: "Not found" }, 404);
-  const body = request.method === "POST" ? ((await request.json().catch(() => null)) ?? {}) : {};
+  const body =
+    name === "image" ? { read: picture(request) } : request.method === "POST" ? ((await request.json().catch(() => null)) ?? {}) : {};
   if (typeof body !== "object" || Array.isArray(body)) return json({ error: "Send JSON" }, 400);
   const q = new URL(request.url).searchParams;
   return club(request, `${request.method}-${name}`, (db, userId) => route.act(db, userId, path[1], q, body), route.max);

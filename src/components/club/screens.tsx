@@ -16,7 +16,7 @@ import {
 import { ReminderCard } from "../ReminderCard";
 import { messagePlayer } from "./chat";
 import { PostCard } from "./PostCard";
-import { Avatar, errorText, gateOf, linkBtn, openClub, TitleStars, useClub } from "./shared";
+import { Avatar, errorText, gateOf, linkBtn, openClub, PictureButton, PicturePreview, TitleStars, useClub, usePicture } from "./shared";
 
 /** Load a page; `more` appends the next one. */
 function usePaged<T>(load: (cursor?: string) => Promise<{ items: T[]; cursor?: string }>, key: string) {
@@ -163,12 +163,14 @@ export function Thread({ id }: { id: string }) {
     return { items: r.replies, cursor: r.after ? String(r.after) : undefined };
   }, id);
   const canReply = me?.can.post === "ok";
+  const picture = usePicture();
   const reply = async () => {
     setBusy(true);
     setSendError(undefined);
     try {
-      const r = await api<{ post: PostView }>("/api/club/post", { body: { body: text, parentId: post!.id } });
+      const r = await api<{ post: PostView }>("/api/club/post", { body: { body: text, parentId: post!.id, imageId: picture.imageId } });
       setText("");
+      picture.clear();
       page.setItems((x) => [...(x ?? []), r.post]);
       setPost((p) => p && { ...p, replies: p.replies + 1 });
     } catch (e) {
@@ -198,7 +200,9 @@ export function Thread({ id }: { id: string }) {
         <div className="sticky bottom-0 -mx-4 mt-auto border-t-2 border-line bg-bg px-4 py-3">
           {canReply ? (
             <>
-              <div className="flex gap-2">
+              <PicturePreview p={picture} />
+              <div className="mt-2 flex gap-2 first:mt-0">
+                {!picture.pic && <PictureButton onPick={picture.pick} />}
                 <input
                   className="min-w-0 flex-1 rounded-2xl border-2 border-line bg-surface px-3 py-2.5 text-[16px] font-bold outline-none focus:border-brand"
                   placeholder={CLUB_COPY.replyPlaceholder}
@@ -209,7 +213,7 @@ export function Thread({ id }: { id: string }) {
                 <button
                   type="button"
                   className="btn3d green !w-auto !px-4 !py-2 !text-[15px]"
-                  disabled={busy || !text.trim()}
+                  disabled={busy || picture.busy || !text.trim()}
                   onClick={() => void reply()}
                 >
                   {CLUB_COPY.reply}

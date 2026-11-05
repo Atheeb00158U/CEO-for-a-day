@@ -16,7 +16,7 @@ export default async function ClubAdmin() {
       <h1 className="mt-3 text-[28px] font-black">Club reports</h1>
       <p className="font-bold text-muted">
         Private pictures and pretending to be someone: 2 hours. Everything else: 36 hours. Every action closes all open reports on the same
-        post or profile.
+        post or profile. A removed picture leaves the app at once and is kept here for 180 days, then deleted.
       </p>
       <ClubQueue open={open} done={done} now={Date.now()} />
     </main>

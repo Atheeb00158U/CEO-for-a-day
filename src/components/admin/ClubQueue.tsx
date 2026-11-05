@@ -5,7 +5,14 @@ import { useState } from "react";
 import { reasonLabel } from "@/lib/community";
 import type { ReportRow } from "@/lib/server/db";
 
-type Row = ReportRow & { reporter: string; author: string; removals: number };
+type Row = ReportRow & { reporter: string; author: string; removals: number; imageUrl: string | null };
+
+/** The reported picture (a signed link, good for an hour). */
+const Pic = ({ url }: { url: string | null }) =>
+  url ? (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img src={url} alt="Reported picture" className="mt-2 max-h-64 rounded-xl border-2 border-line" />
+  ) : null;
 
 const BUTTONS: { action: string; label: string; cls: string; hideAll?: boolean }[] = [
   { action: "remove", label: "Remove", cls: "red" },
@@ -59,6 +66,7 @@ export function ClubQueue({ open, done, now }: { open: Row[]; done: Row[]; now: 
               </span>
             </div>
             <p className="mt-2 whitespace-pre-wrap font-bold">{r.snapshot}</p>
+            <Pic url={r.imageUrl} />
             {r.note && <p className="mt-1 text-[14px] font-bold text-muted">Note: {r.note}</p>}
             <p className="mt-1 text-[13px] font-bold text-muted">
               Author: @{r.author} · {r.removals} past removals
@@ -86,6 +94,7 @@ export function ClubQueue({ open, done, now }: { open: Row[]; done: Row[]; now: 
           <span className={r.status === "removed" ? "text-red" : "text-green"}>{r.status}</span> · {reasonLabel(r.reason)} · @{r.author} ·{" "}
           {when(r.resolvedAt!)}
           <p className="mt-1 truncate text-muted">{r.snapshot}</p>
+          <Pic url={r.imageUrl} />
         </div>
       ))}
     </div>
