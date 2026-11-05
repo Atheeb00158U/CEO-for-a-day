@@ -6,7 +6,6 @@ import type { Result } from "@/lib/play";
 import { BADGES, ECONOMY, useGame, type RunRecord } from "@/lib/store";
 import { playSfx } from "@/lib/sfx";
 import { stopVoice } from "@/lib/voice";
-import { MADE_UP_LABEL } from "@/content/catalog";
 import { ReminderCard } from "./ReminderCard";
 import { SignInCard } from "./SignInCard";
 import { Card, Icon } from "./ui";
@@ -142,7 +141,10 @@ export function Debrief({
 
       <Card>
         {meta.madeUp ? (
-          <h2 className="text-[19px] font-black">{MADE_UP_LABEL}</h2>
+          <>
+            <h2 className="text-[19px] font-black">About this story</h2>
+            {meta.realHistory && <p className="mt-2 text-[15px] font-bold leading-snug text-muted">{meta.realHistory}</p>}
+          </>
         ) : (
           <>
             <h2 className="text-[19px] font-black">What really happened</h2>
@@ -160,7 +162,7 @@ export function Debrief({
               </li>
             ))}
           </ul>
-          <p className="mt-2">{meta.credits}</p>
+          <p className="mt-2">{credits(meta.credits)}</p>
         </details>
       </Card>
 
@@ -208,3 +210,6 @@ function Stat({ icon, value, label, color }: { icon: React.ReactNode; value: str
     </div>
   );
 }
+
+/** Credits as players see them: without the "Research brief: content/…/research.md" pointers meant for us. */
+const credits = (text: string) => text.replace(/\s*Research brief[^:]*:\s*content\/\S+?\.md\.?/g, "").trim();

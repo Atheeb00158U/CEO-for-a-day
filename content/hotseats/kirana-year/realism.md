@@ -1,6 +1,7 @@
 # Realism check: kirana-year
-checked-sha256: dd5528abd067ab9be7a883d5dae004e314e6de42a96fa66a54e1574cbd598ce6
+checked-sha256: 2f866f4a13e54fa4d72bec7621a8cfcc08b186d57138d843a0a0c2d844bc2a3c
 Checked: 2026-10-31 · by: Claude (fresh-context fact-check)
+Re-stamped: 2026-11-05 · only the "made-up" labels were removed (company, role, first line) and `realHistory` was reworded on Atheeb's ask; no claim changed.
 
 Made-up story (Asha, Kulkarni General Stores, Imliganj). There is no company to check, so this is a realism
 check: every claim about how kiranas, rain, festivals, payments and delivery apps work, checked against sources

@@ -1,11 +1,12 @@
 "use client";
 
-import { useMemo } from "react";
-import { homeOrder, MADE_UP_LABEL } from "@/content/catalog";
+import { useEffect, useMemo } from "react";
+import { homeOrder } from "@/content/catalog";
 import { showPaywall, useContent } from "@/lib/content-client";
 import type { DailyQuestion } from "@/lib/hotseat-types";
 import { phoneLocks } from "@/lib/locks";
 import { questsFor, today, useGame } from "@/lib/store";
+import { wolfSay } from "@/lib/wolf";
 import { CoursePath } from "./CoursePath";
 import { Bar, Card, Icon, MediaView } from "./ui";
 
@@ -41,6 +42,13 @@ export function HomeTab({
   const best = s.best[current.id];
   // With the course on, Hot Seats that gate a module sit on the path; the rest stay in a grid below it.
   const gated = new Set(course?.units.flatMap((u) => u.modules.flatMap((m) => m.gates)) ?? []);
+
+  // The wolf drops by a moment after Home opens: a nudge before today's play, a well done after it.
+  const missedDay = !playedToday && s.streak === 0 && s.bestStreak > 0;
+  useEffect(() => {
+    const t = setTimeout(() => wolfSay(playedToday ? "homeDone" : missedDay ? "missedDay" : "homeNudge"), 1800);
+    return () => clearTimeout(t);
+  }, [playedToday, missedDay]);
 
   return (
     <div className="flex flex-col gap-5 pt-2">
@@ -90,7 +98,6 @@ export function HomeTab({
             </p>
             <h2 className="mt-1 text-[28px] font-black leading-tight text-balance">{hs.title}</h2>
             <p className="mt-1 text-[16px] font-bold text-muted">{hs.hook}</p>
-            {hs.madeUp && <p className="mt-1 text-[13px] font-black tracking-wider text-purple uppercase">{MADE_UP_LABEL}</p>}
             <p className="mt-2 text-[14px] font-bold text-muted">
               {hs.calls} big calls · {hs.minutes} min · {best !== undefined ? `Your best: ${best}` : "Narrated"}
             </p>
@@ -172,15 +179,7 @@ export function HomeTab({
                   >
                     {c.company}
                     <span className="block text-[12px] font-bold text-muted">
-                      {c.available
-                        ? paid
-                          ? COPY.members
-                          : done
-                            ? `Best ${s.best[c.id]}`
-                            : c.madeUp
-                              ? "Made-up story"
-                              : "Ready"
-                        : "Coming soon"}
+                      {c.available ? (paid ? COPY.members : done ? `Best ${s.best[c.id]}` : "Ready") : "Coming soon"}
                     </span>
                   </span>
                 </button>
