@@ -161,7 +161,7 @@
         },
         {
           "id": "c",
-          "label": "\"Just ₹112 a day!\" Full year paid first, in small text",
+          "label": "\"Only ₹112 a day!*\" (*pay for the full year first)",
           "grade": "bad",
           "outcome": "The manager agrees. Then her accounts team reads the small text: ₹40,800 due at once. They feel cheated and cancel. You lose the order, and they tell other offices.",
           "why": "₹112 a day is about ₹40,800 a year, so it isn't a lie. But showing a daily price when the full bill is due at once feels unfair.",

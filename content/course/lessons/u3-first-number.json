@@ -66,7 +66,7 @@
         },
         {
           "id": "c",
-          "label": "A false price, so ₹1,199 seems cheap"
+          "label": "A false price to make you buy"
         }
       ],
       "answer": "c",
@@ -101,7 +101,7 @@
         }
       ],
       "answer": "b",
-      "why": "Yes. You really sell the ₹2,500 cake, and you make it often. Show it first, and ₹850 feels fair. When a buyer says \"too costly\", ask: compared to what? Then change what they compare it with.",
+      "why": "Yes. You do sell the ₹2,500 cake. Show it first, so ₹850 feels fair. When a buyer says \"too costly\", ask: compared to which price? Then change what they compare it with.",
       "wrong": {
         "a": "Then ₹850 is the first price they see, so it feels high. Show your real ₹2,500 party cake first. After that, ₹850 feels fair.",
         "c": "Then they ask, and ₹850 is still the first price they hear. Show your real ₹2,500 party cake first. After that, ₹850 feels fair."
@@ -152,11 +152,11 @@
           "grade": "bad",
           "outcome": "The manager looks unhappy: \"Big shops charge ₹400.\" She doesn't ask for a lower price. She thanks you and calls another baker. You lose the order.",
           "why": "You can start with a high price only if you can explain it. ₹600 looked like a trick when big shops charged ₹400.",
-          "better": "₹350 a box: say what it includes, and that big shops charge ₹400."
+          "better": "₹350 a box, and show that big shops charge ₹400."
         },
         {
           "id": "b",
-          "label": "₹350 per box, and say what's inside",
+          "label": "₹350 a box, next to the ₹400 shops",
           "grade": "great",
           "outcome": "You say: \"₹350 a box, fresh from my kitchen. Big shops charge about ₹400.\" She asks for ₹320. You agree on ₹330. Each of the 30 boxes leaves you ₹180: ₹5,400.",
           "why": "You started with a price you could explain and compared it with a real price. That first price led to a fair deal."
@@ -167,7 +167,7 @@
           "grade": "ok",
           "outcome": "She says yes at once, too fast. 30 boxes leave ₹100 each: ₹3,000. Later, she says she had planned to pay ₹350 a box.",
           "why": "You got the order, but your low first price decided the deal. You can't raise it after saying it.",
-          "better": "₹350 a box: say what it includes, and that big shops charge ₹400."
+          "better": "₹350 a box, and show that big shops charge ₹400."
         }
       ]
     },

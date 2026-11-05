@@ -181,7 +181,7 @@
       "kind": "gap",
       "id": "fill",
       "text": "A clearly ___ third choice helps sell the one ___ it.",
-      "bank": ["worse", "beside", "cheaper", "inside"],
+      "bank": ["worse", "beside", "sweet", "inside"],
       "answer": ["worse", "beside"],
       "why": "Correct. Print only helped sell print and web. Your ₹1,400 cake and cupcakes helps sell the ₹1,450 full pack."
     }

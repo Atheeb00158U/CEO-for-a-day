@@ -133,13 +133,13 @@
           "id": "b",
           "label": "Take UPI AutoPay now; charge from week 3 if they don't cancel",
           "grade": "bad",
-          "outcome": "30 families join. In week 3, 18 forget to cancel and are charged ₹350. Many get angry. Five complain in the colony group. Your cake orders also fall.",
+          "outcome": "30 families join. In week 3, 18 forget to stop and pay ₹350. Many get angry. Five complain in the colony group. By week 5, only 4 still pay: ₹600 a week. You also lose 3 cake orders a week: ₹1,350 less profit.",
           "why": "That's a subscription trap. You earn money when people forget. India's rules ban it, and you lose trust from your cake customers too.",
           "better": "Give two free boxes, remind them in week 2, and let them stop with one message."
         },
         {
           "id": "c",
-          "label": "Two free boxes, a reminder, stop with one message",
+          "label": "Two free boxes, remind them, let them stop on WhatsApp",
           "grade": "great",
           "outcome": "25 families try it for free. In week 2 you send: \"Keep your Sunday box? ₹350 a week. Reply STOP any time.\" 15 keep it: ₹2,250 a week. The 50 free boxes cost ₹10,000, earned back in under five weeks.",
           "why": "Two Sundays made the box feel like theirs, so most kept it. Every family chose to pay. Nobody paid just because they forgot."
