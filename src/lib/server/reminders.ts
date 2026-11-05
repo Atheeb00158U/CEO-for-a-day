@@ -77,9 +77,19 @@ export function reminderFor(state: Player, now = new Date()): Notice | null {
       image: banner("pose-worried"),
       tag: "streak",
     };
-  const back = (title: string, body: string, pose: string): Notice => ({ kind: `winback${gap}`, title, body, image: banner(pose), tag: "winback" });
+  const back = (title: string, body: string, pose: string): Notice => ({
+    kind: `winback${gap}`,
+    title,
+    body,
+    image: banner(pose),
+    tag: "winback",
+  });
   if (gap === 2)
-    return back(n > 1 ? "Your streak has ended" : "Your next lesson is waiting", "Start a new streak today with one lesson.", "pose-thinking");
+    return back(
+      n > 1 ? "Your streak has ended" : "Your next lesson is waiting",
+      "Start a new streak today with one lesson.",
+      "pose-thinking",
+    );
   if (gap === 3) return back("One story. One big decision.", "Play a Hot Seat and decide what the CEO should do.", "pose-pointing");
   if (gap === 4) return back("What would you do as CEO?", "Play one Hot Seat. Make your own decision.", "pose-pointing");
   if (gap === 5) return back("Your notes are waiting", "Review a few cards. It takes two minutes.", "pose-pleased");

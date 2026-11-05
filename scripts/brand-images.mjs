@@ -46,7 +46,10 @@ for (const name of POSES) {
   const dest = join(OUT, `notify-${name}.jpg`);
   if (existsSync(dest) && statSync(dest).mtimeMs > statSync(master).mtimeMs) continue;
   const wolf = await sharp(master).resize(470, 470).toBuffer();
-  await sharp(glow).composite([{ input: wolf, top: 30, left: 277 }]).jpeg({ quality: 78, mozjpeg: true }).toFile(dest + ".tmp");
+  await sharp(glow)
+    .composite([{ input: wolf, top: 30, left: 277 }])
+    .jpeg({ quality: 78, mozjpeg: true })
+    .toFile(dest + ".tmp");
   renameSync(dest + ".tmp", dest);
   extra++;
 }
@@ -54,7 +57,10 @@ const knight = fileURLToPath(new URL("public/brand/knight.png", root));
 const badge = join(OUT, "badge.png");
 if (!existsSync(badge) || statSync(badge).mtimeMs < statSync(knight).mtimeMs) {
   const alpha = await sharp(knight).resize(96, 96, { fit: "contain", background: "#0000" }).extractChannel("alpha").toBuffer();
-  await sharp({ create: { width: 96, height: 96, channels: 3, background: "#fff" } }).joinChannel(alpha).png().toFile(badge + ".tmp");
+  await sharp({ create: { width: 96, height: 96, channels: 3, background: "#fff" } })
+    .joinChannel(alpha)
+    .png()
+    .toFile(badge + ".tmp");
   renameSync(badge + ".tmp", badge);
   extra++;
 }
