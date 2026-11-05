@@ -12,8 +12,8 @@ export default function Terms() {
 
       <h2>A game, not advice</h2>
       <p>
-        CEO For A Day is for learning only, so it does not give business, financial, legal, tax or investment advice. Real stories are
-        based on public sources, while other outcomes in the game are our estimates of what could have happened.
+        CEO For A Day is for learning only, so it does not give business, financial, legal, tax or investment advice. Real stories are based
+        on public sources, while other outcomes in the game are our estimates of what could have happened.
       </p>
 
       <h2>Help</h2>
