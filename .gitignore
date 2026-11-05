@@ -8,3 +8,4 @@ next-env.d.ts
 public/media/
 content/hotseats/*/tree.mmd
 /public/brand/wolf/
+/public/brand/site/
