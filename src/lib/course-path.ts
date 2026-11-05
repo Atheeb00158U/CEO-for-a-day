@@ -11,7 +11,10 @@ export interface PathModule {
   /** Mixed flashcard practice of the module's lessons: open once one of them is done. */
   practice: { state: "open" | "locked"; lessonIds: string[] };
   gates: { id: string; state: NodeState }[];
-  /** A confident player can skip the module's lessons with a short quiz. */
+  /**
+   * A confident player can skip the module's lessons with a short quiz. Never on the first (free) module, and only
+   * once a lesson is done: a new player shouldn't meet a quiz on ideas they haven't seen before their first lesson.
+   */
   canTestOut: boolean;
 }
 
@@ -25,6 +28,7 @@ export function coursePath(
   progress: { lessons: Record<string, number>; best: Record<string, number> },
 ): { units: { id: string; title: string; goal: string; modules: PathModule[] }[] } {
   let prevDone = true;
+  const played = Object.keys(progress.lessons).length > 0;
   let current = false;
   const mark = (available: boolean, done: boolean): NodeState => {
     if (done) return "done";
@@ -33,11 +37,11 @@ export function coursePath(
     current = true;
     return "current";
   };
-  const units = outline.units.map((u) => ({
+  const units = outline.units.map((u, ui) => ({
     id: u.id,
     title: u.title,
     goal: u.goal,
-    modules: u.modules.map((m): PathModule => {
+    modules: u.modules.map((m, mi): PathModule => {
       const done = m.lessons.map((l) => progress.lessons[l.id] !== undefined);
       const allDone = done.every(Boolean);
       const open = prevDone || allDone;
@@ -60,7 +64,7 @@ export function coursePath(
           lessonIds: m.lessons.filter((_, i) => done[i]).map((l) => l.id),
         },
         gates,
-        canTestOut: !allDone,
+        canTestOut: played && !allDone && (ui > 0 || mi > 0),
       };
     }),
   }));
