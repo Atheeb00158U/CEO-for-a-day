@@ -8,7 +8,6 @@ import type { Pick, PlayView, Screen } from "@/lib/play";
 import { useGame, type RunRecord } from "@/lib/store";
 import { playSfx } from "@/lib/sfx";
 import { useCombo } from "./Combo";
-import { wolfSay } from "@/lib/wolf";
 import { VERDICT } from "@/lib/verdict";
 import { ADVISOR, NARRATOR, speak, stopVoice } from "@/lib/voice";
 import { Bar, Caption, Icon, MediaView } from "./ui";
@@ -80,14 +79,6 @@ export function Player({
     return () => stopVoice();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hotSeatId]);
-
-  // A player's very first Hot Seat: the wolf hands over the chair.
-  const firstSeat = game.s.runs.length === 0;
-  useEffect(() => {
-    if (!firstSeat) return;
-    const t = setTimeout(() => wolfSay("firstSeat"), 1500);
-    return () => clearTimeout(t);
-  }, [firstSeat]);
 
   // A lost heart lands after the verdict and meter sounds (see RevealView and Meters).
   const trust = view?.trust;

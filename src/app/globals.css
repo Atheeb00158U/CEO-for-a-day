@@ -363,6 +363,17 @@ body {
     opacity: 1;
   }
 }
+.wolf-dim-in {
+  animation: wolf-dim 0.25s ease-out both;
+}
+.wolf-dim-out {
+  animation: wolf-dim 0.3s ease-in reverse both;
+}
+@keyframes wolf-dim {
+  from {
+    opacity: 0;
+  }
+}
 .wolf-out {
   animation: wolf-out 0.3s ease-in both;
 }

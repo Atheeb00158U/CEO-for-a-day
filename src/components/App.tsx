@@ -240,7 +240,6 @@ function Shell() {
     <>
       {x}
       {overlay}
-      <WolfTip />
     </>
   );
 
@@ -372,6 +371,7 @@ function Shell() {
             onLesson={(lessonId) => setLesson({ target: { lessonId } })}
             onTestOut={(moduleId, lessonIds) => setLesson({ target: { testOut: moduleId }, testOut: lessonIds })}
             onPractice={(title, lessonIds) => setReviewing({ title, lessonIds })}
+            calm={!welcome && !streakUp && !rankUp && !ach && !paywallOpen}
           />
         )}
         {tab === "league" && <LeagueTab onPlay={() => go("home")} />}
@@ -392,6 +392,7 @@ function Shell() {
         {tab === "shop" && <ShopTab />}
         {tab === "profile" && <ProfileTab />}
       </main>
+      {tab === "home" && <WolfTip />}
       <nav className="shrink-0 border-t-2 border-line bg-bg" style={{ paddingBottom: "env(safe-area-inset-bottom)" }}>
         <div className="flex justify-around px-2 py-2">
           {TABS.map((t) => {
