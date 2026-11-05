@@ -62,11 +62,11 @@
         },
         {
           "id": "b",
-          "label": "A subscription trap"
+          "label": "A trial built so you forget and pay"
         },
         {
           "id": "c",
-          "label": "A normal free trial"
+          "label": "A normal free trial, like any other app"
         }
       ],
       "answer": "b",

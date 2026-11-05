@@ -85,7 +85,7 @@
     {
       "kind": "choice",
       "id": "how-big",
-      "prompt": "Quick sum. A family may lose ₹850 on a new baker. A loss feels about twice as big. How good must it feel, in rupees?",
+      "prompt": "Quick sum. A family risks ₹850 on a new baker. Losses feel about twice as big. To say yes, how big must the win feel?",
       "options": [
         {
           "id": "a",
@@ -117,20 +117,20 @@
           "id": "a",
           "label": "\"Only 5 cakes left this week!\"",
           "grade": "bad",
-          "outcome": "3 families order quickly. The next week, you post \"Only 5 cakes left!\" again. A family sees the same message twice. She tells the colony group, and orders stop.",
+          "outcome": "3 families order quickly. The next week, you post \"Only 5 cakes left!\" again. A mother sees the same message twice. She tells the colony group. No one orders after that.",
           "why": "You can bake 20 cakes a week, so \"only 5 left\" was not true. Fake limits may work once, but then buyers who hear about it stop trusting you.",
           "better": "\"Not happy? Full money back.\" Remove their risk."
         },
         {
           "id": "b",
-          "label": "\"Not happy? Full money back, no questions.\"",
+          "label": "\"Not happy? Full money back.\"",
           "grade": "great",
           "outcome": "12 families order. One asks for her money back, and you pay her ₹850 at once. You still earn ₹4,550: 11 cakes at ₹450, minus ₹400 for the refunded cake. Next month, 8 order again.",
           "why": "You removed their risk. If the cake was bad, they could get their money back. So they no longer feared losing ₹850."
         },
         {
           "id": "c",
-          "label": "₹200 off the first cake",
+          "label": "₹200 off your first cake",
           "grade": "ok",
           "outcome": "6 families order at ₹650. Each cake leaves you ₹250: ₹1,500 in all. Some ask, \"Why so cheap? Is it old?\" Next month, 2 come back at ₹850.",
           "why": "A small saving doesn't remove the fear of losing ₹650 on a bad cake. And a discount can make a good cake seem poor.",

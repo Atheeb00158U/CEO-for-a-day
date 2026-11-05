@@ -95,11 +95,11 @@
       "options": [
         {
           "id": "a",
-          "label": "Your sister: a gain frame for something new"
+          "label": "Your sister: they haven't tried you yet"
         },
         {
           "id": "b",
-          "label": "Your friend: a loss always works better"
+          "label": "Your friend: fear of loss works best"
         },
         {
           "id": "c",
@@ -124,11 +124,11 @@
         },
         {
           "id": "b",
-          "label": "\"Save ₹250 a cake with us!\""
+          "label": "\"You save ₹250 on each cake!\""
         },
         {
           "id": "c",
-          "label": "\"Each month you wait costs about ₹1,000.\""
+          "label": "\"Four cakes elsewhere cost you ₹1,000 more a month.\""
         }
       ],
       "answer": "c",
@@ -141,12 +141,12 @@
     {
       "kind": "scenario",
       "id": "year-deal",
-      "setup": "It's May. A big office wants all its birthday cakes for a year: about 48 cakes at ₹850 each, ₹40,800 in total. Each cake leaves you ₹450. You write the offer.",
+      "setup": "It's May. A big office has never bought from you before. It wants all its birthday cakes for a year: about 48 cakes at ₹850 each, ₹40,800 in total. You keep ₹450 from each cake.",
       "question": "How should you show the price?",
       "options": [
         {
           "id": "a",
-          "label": "\"₹850 a cake, paid monthly. You save ₹250 a cake.\"",
+          "label": "\"₹850 per cake, pay monthly: save ₹250 each\"",
           "grade": "great",
           "outcome": "The manager sees each cake's price and the saving: about ₹12,000 a year. She signs. About 4 cakes a month, each leaving you ₹450: ₹1,800 a month, all year.",
           "why": "You used a gain frame for a new buyer, and the price was the same as the bill they'd get. Nothing would feel unfair later."
@@ -161,7 +161,7 @@
         },
         {
           "id": "c",
-          "label": "\"Only ₹112 a day!\" Yearly bill in small text",
+          "label": "\"Just ₹112 a day!\" Full year paid first, in small text",
           "grade": "bad",
           "outcome": "The manager agrees. Then her accounts team reads the small text: ₹40,800 due at once. They feel cheated and cancel. You lose the order, and they tell other offices.",
           "why": "₹112 a day is about ₹40,800 a year, so it isn't a lie. But showing a daily price when the full bill is due at once feels unfair.",

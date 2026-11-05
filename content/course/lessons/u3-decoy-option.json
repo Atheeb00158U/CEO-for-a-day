@@ -48,7 +48,7 @@
     {
       "kind": "choice",
       "id": "popcorn",
-      "prompt": "At the cinema, popcorn is ₹180 small, ₹290 medium and ₹320 large. Which one is the decoy?",
+      "prompt": "Popcorn costs ₹180 for small, ₹290 for medium, and ₹320 for large. Large has twice as much as medium. Which is the decoy?",
       "options": [
         {
           "id": "a",
@@ -164,10 +164,10 @@
         },
         {
           "id": "c",
-          "label": "Add cake and cupcakes at ₹1,400 (leaves you ₹820)",
+          "label": "Add cake and cupcakes for ₹1,400",
           "grade": "great",
-          "outcome": "Now the full pack costs only ₹50 more than cake and cupcakes. 9 families choose it, 2 choose cake and cupcakes (leaving you ₹820 each), and 9 choose cake only. You earn ₹12,440 a month.",
-          "why": "Your decoy is a real plan you're happy to sell, and you earn well if someone picks it. But mostly, it made the full pack look like the best choice."
+          "outcome": "Now the full pack costs only ₹50 more than cake and cupcakes. 9 families choose it, 2 choose cake and cupcakes (you keep ₹740 from each), and 9 choose cake only. You earn ₹12,280 a month.",
+          "why": "Your decoy is a real plan you're happy to sell. But its main job was to make the full pack look better. You earn the most from the full pack."
         }
       ]
     },

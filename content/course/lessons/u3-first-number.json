@@ -15,7 +15,7 @@
       "kind": "explain",
       "id": "question",
       "title": "A question about Africa",
-      "text": "First: what percent of United Nations countries are in Africa? (The UN is the group of the world's countries.) Is it more or less than the wheel's number? Now, what is your best guess? The wheel had nothing to do with Africa. Everyone knew the number was random."
+      "text": "They asked two things. First: is the percent of UN countries in Africa higher or lower than the wheel's number? (The UN is a group of countries from around the world.) Then: what percent do you guess? The wheel had nothing to do with Africa."
     },
     {
       "kind": "choice",
@@ -58,15 +58,15 @@
       "options": [
         {
           "id": "a",
-          "label": "Showing the shirt's real value"
+          "label": "Showing what the shirt is really worth"
         },
         {
           "id": "b",
-          "label": "Showing how much the shop paid"
+          "label": "Showing what the shop paid for the shirt"
         },
         {
           "id": "c",
-          "label": "A fake anchor, to make ₹1,199 feel cheap"
+          "label": "A false price, so ₹1,199 seems cheap"
         }
       ],
       "answer": "c",
@@ -143,7 +143,7 @@
     {
       "kind": "scenario",
       "id": "big-order",
-      "setup": "It's late January. An office wants 30 boxes of cupcakes for a staff party. Each box costs you ₹150 to make. Big shops charge about ₹400 a box. The manager asks, \"What's your price?\"",
+      "setup": "It's late January. An office wants 30 boxes of cupcakes for a staff party. Each box costs you ₹150 to make. Big shops charge about ₹400 a box. The manager knows this. She asks, \"What's your price?\"",
       "question": "What do you say first?",
       "options": [
         {
@@ -156,9 +156,9 @@
         },
         {
           "id": "b",
-          "label": "₹350 a box, and explain what it includes",
+          "label": "₹350 per box, and say what's inside",
           "grade": "great",
-          "outcome": "You say: \"₹350 a box, baked that morning. Big shops charge about ₹400.\" She asks for ₹320. You agree on ₹330. 30 boxes leave ₹180 each: ₹5,400.",
+          "outcome": "You say: \"₹350 a box, fresh from my kitchen. Big shops charge about ₹400.\" She asks for ₹320. You agree on ₹330. Each of the 30 boxes leaves you ₹180: ₹5,400.",
           "why": "You started with a price you could explain and compared it with a real price. That first price led to a fair deal."
         },
         {

@@ -12430,9 +12430,9 @@
   "text": "This is called the decoy effect. A decoy is a choice that is clearly worse than the one next to it. Few people buy it. But it makes the better choice look like a good deal, so more people pick it. Shops often use this on you."
  },
  {
-  "id": "a0c845f5087e",
+  "id": "a57118b62de3",
   "voice": "narrator",
-  "text": "At the cinema, popcorn is ₹180 small, ₹290 medium and ₹320 large. Which one is the decoy?"
+  "text": "Popcorn costs ₹180 for small, ₹290 for medium, and ₹320 for large. Large has twice as much as medium. Which is the decoy?"
  },
  {
   "id": "1eda2b9b7a9c",
@@ -12550,14 +12550,14 @@
   "text": "Too many choices made families wait instead of choosing. Like the jam test, fewer choices can lead to more sales. What would have worked: Add cake and cupcakes at ₹1,400, a real plan you'd be happy to sell."
  },
  {
-  "id": "fe101ead0201",
+  "id": "f2e04102b268",
   "voice": "narrator",
-  "text": "Now the full pack costs only ₹50 more than cake and cupcakes. 9 families choose it, 2 choose cake and cupcakes (leaving you ₹820 each), and 9 choose cake only. You earn ₹12,440 a month."
+  "text": "Now the full pack costs only ₹50 more than cake and cupcakes. 9 families choose it, 2 choose cake and cupcakes (you keep ₹740 from each), and 9 choose cake only. You earn ₹12,280 a month."
  },
  {
-  "id": "03f0cc04e65d",
+  "id": "c15c2ca9a376",
   "voice": "narrator",
-  "text": "Your decoy is a real plan you're happy to sell, and you earn well if someone picks it. But mostly, it made the full pack look like the best choice."
+  "text": "Your decoy is a real plan you're happy to sell. But its main job was to make the full pack look better. You earn the most from the full pack."
  },
  {
   "id": "8b23f1d91e47",
@@ -13100,9 +13100,9 @@
   "text": "Let me tell you about an odd test from the 1970s. Two scientists, Amos Tversky and Daniel Kahneman, spun a wheel with numbers in front of people. The wheel could stop only at 10 or 65. Then they asked about Africa."
  },
  {
-  "id": "aec126530da1",
+  "id": "e9deaee1190f",
   "voice": "narrator",
-  "text": "First: what percent of United Nations countries are in Africa? (The UN is the group of the world's countries.) Is it more or less than the wheel's number? Now, what is your best guess? The wheel had nothing to do with Africa. Everyone knew the number was random."
+  "text": "They asked two things. First: is the percent of UN countries in Africa higher or lower than the wheel's number? (The UN is a group of countries from around the world.) Then: what percent do you guess? The wheel had nothing to do with Africa."
  },
  {
   "id": "6a4e22269729",
@@ -13210,9 +13210,9 @@
   "text": "Honest anchors use real prices: a cake you sell, a price another shop charges, or a price you can explain. Tricks use fake prices or numbers you can't explain."
  },
  {
-  "id": "5b9c4dd01c01",
+  "id": "a8fb32245f81",
   "voice": "narrator",
-  "text": "It's late January. An office wants 30 boxes of cupcakes for a staff party. Each box costs you ₹150 to make. Big shops charge about ₹400 a box. The manager asks, \"What's your price?\""
+  "text": "It's late January. An office wants 30 boxes of cupcakes for a staff party. Each box costs you ₹150 to make. Big shops charge about ₹400 a box. The manager knows this. She asks, \"What's your price?\""
  },
  {
   "id": "c81f2af6ab70",
@@ -13230,9 +13230,9 @@
   "text": "You can start with a high price only if you can explain it. ₹600 looked like a trick when big shops charged ₹400. What would have worked: ₹350 a box: say what it includes, and that big shops charge ₹400."
  },
  {
-  "id": "02230eca4984",
+  "id": "ed11bcbed64b",
   "voice": "narrator",
-  "text": "You say: \"₹350 a box, baked that morning. Big shops charge about ₹400.\" She asks for ₹320. You agree on ₹330. 30 boxes leave ₹180 each: ₹5,400."
+  "text": "You say: \"₹350 a box, fresh from my kitchen. Big shops charge about ₹400.\" She asks for ₹320. You agree on ₹330. Each of the 30 boxes leaves you ₹180: ₹5,400."
  },
  {
   "id": "c42b69fbed14",
@@ -13385,9 +13385,9 @@
   "text": "They already know they can save, but they still wait. Showing the real loss helps more: 4 cakes × ₹250 = about ₹1,000 a month."
  },
  {
-  "id": "db9b9adbc2b0",
+  "id": "9f5732dd89f2",
   "voice": "narrator",
-  "text": "It's May. A big office wants all its birthday cakes for a year: about 48 cakes at ₹850 each, ₹40,800 in total. Each cake leaves you ₹450. You write the offer."
+  "text": "It's May. A big office has never bought from you before. It wants all its birthday cakes for a year: about 48 cakes at ₹850 each, ₹40,800 in total. You keep ₹450 from each cake."
  },
  {
   "id": "97c001c1bea1",
@@ -13515,9 +13515,9 @@
   "text": "Your buyers feel the same fear. It's June. You start baking for a new colony across town. Families there don't know you. Paying ₹850 for a cake from someone new feels risky: they could lose ₹850."
  },
  {
-  "id": "c60e40f1d996",
+  "id": "35c8ab9f65dc",
   "voice": "narrator",
-  "text": "Quick sum. A family may lose ₹850 on a new baker. A loss feels about twice as big. How good must it feel, in rupees?"
+  "text": "Quick sum. A family risks ₹850 on a new baker. Losses feel about twice as big. To say yes, how big must the win feel?"
  },
  {
   "id": "5016000a4315",
@@ -13545,9 +13545,9 @@
   "text": "How do you get families to try you?"
  },
  {
-  "id": "99f46a305311",
+  "id": "8fcd350e10fe",
   "voice": "narrator",
-  "text": "3 families order quickly. The next week, you post \"Only 5 cakes left!\" again. A family sees the same message twice. She tells the colony group, and orders stop."
+  "text": "3 families order quickly. The next week, you post \"Only 5 cakes left!\" again. A mother sees the same message twice. She tells the colony group. No one orders after that."
  },
  {
   "id": "b35ae6157a06",
