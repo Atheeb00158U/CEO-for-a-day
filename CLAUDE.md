@@ -79,6 +79,8 @@ UI components: use shadcn/ui, restyled to this look. Add gluestack-ui only if we
 - `python scripts/make-sfx.py`: rebuild the sound effects in `public/sfx/` (needs earshot + ffmpeg; sources, licences and mix levels in `docs/SOUNDS.md`)
 
 ## Writing stories
+Before writing or reviewing any lesson, question, option, Hot Seat or player line, load the `cfad-writing` skill (`.claude/skills/cfad-writing/SKILL.md`): every rule Atheeb has given on how content sounds and plays, and the QA it passes.
+
 Follow `docs/AUTHORING.md` for every Hot Seat and Daily Call: research brief → draft → check → fresh-context fact-check (stamped `factcheck.md`) → media from the archives (`media.md`) → Atheeb's review. A published story needs a `factcheck.md` stamped for its exact file, with no open claims. Missing narration is a warning for drafts; an unrecorded line plays silently (there's no browser-voice fallback: it sounded robotic).
 
 ## Lessons and flashcards (live since 1 Nov 2026)
@@ -89,7 +91,7 @@ Follow `docs/AUTHORING.md` for every Hot Seat and Daily Call: research brief →
 - **No answers on the phone**, like Hot Seats: `/api/lesson` replays the answers (`src/lib/lesson-play.ts`) and returns the verdict plus the next screens; missed exercises come back once at the end. `/api/lesson/finish` pays once per `playKey` (`lesson_plays` table). A module's test-out is the same replay over one exercise per lesson (`testOut: <module id>`), no XP, pass at 80%.
 - Rules (pure, in `game-state.ts`, shared by phone and server): `applyLesson`, `applyTestOut`, `applyReview`, `cardsToday`. Flashcards use FSRS (`ts-fsrs`, `src/lib/srs.ts`) by whole IST days; "Daily 10": at most 10 a session, 20 a day, 5 new. Review XP is capped at 10 a day; lesson replays pay for 5 a day.
 - Old saves: always load through `withDefaults()` (deep merge), on the phone and the server.
-- **Narration:** every lesson is read aloud like a Hot Seat. `src/lib/lesson-voice.ts` says what each screen speaks (teaching text, question, a choice's options, a gap with "blank"; scenarios through DecisionView/RevealView), shared by the player and `voice-lines.ts`, so `npm run voices` / `npm run narrate` cover lessons too. Feedback lines are only spoken (and their ids only worked out) after the server's verdict. The voice mute applies; a line with no recording yet stays silent.
+- **Narration:** every lesson is read aloud like a Hot Seat. `src/lib/lesson-voice.ts` says what each screen speaks (teaching text, question, a gap with "blank"; never a choice's options (Atheeb, 1 Nov 2026); scenarios through DecisionView/RevealView), shared by the player and `voice-lines.ts`, so `npm run voices` / `npm run narrate` cover lessons too. Feedback lines are only spoken (and their ids only worked out) after the server's verdict. The voice mute applies; a line with no recording yet stays silent.
 
 ## Daily Call
 - **Suspended (30 Oct 2026, Atheeb):** no new Daily Calls; the focus is modules and Hot Seats. The course map (`docs/CURRICULUM.md`) doesn't rely on them.

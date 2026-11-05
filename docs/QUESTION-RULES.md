@@ -39,5 +39,5 @@ Every lesson question passes these before Atheeb sees it. Each rule comes from a
    basic English and answers every question before seeing the answer. It reports each screen where it
    stopped, guessed, or asked "but how?". Fix every one, then run a second fresh reader.
 3. **Arithmetic.** Every sum is worked again in a script; every option's number is checked.
-4. **ChatGPT pass** on all player copy, then slopmonster and fluent-prose on the teaching screens.
+4. **Copy passes:** slopmonster, then fluent-prose, then ChatGPT on all player copy (the same order as `AUTHORING.md` 2b), then the slopmonster checker again.
 5. **Play it** in the app at phone size, with voice, before showing Atheeb.

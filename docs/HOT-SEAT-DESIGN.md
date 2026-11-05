@@ -62,7 +62,7 @@ Players don't know these stories. A Hot Seat has to work like a short story they
 - **Check before shipping**: `npm run hotseat:check -- <id>` checks the schema and links, walks every path, checks that every ending is reachable, that every image, clip and narrated line exists, and prints the score range. `/admin/<id>` shows every path as a tree; `npm run hotseat:tree -- <id>` writes a Mermaid version.
 - **Media**: `npm run media -- <id> <files…>` makes 1080 px webp images and ≤ 9 s silent clips. Name them uniquely across Hot Seats.
 - **Copy passes are required** for all player-facing text: see *Copy* in `AUTHORING.md`.
-- **Regenerate the voice lines** after editing text: `npm run voices` (and `npm run narrate` on Atheeb's Mac). Lines without audio fall back to the browser's voice.
+- **Regenerate the voice lines** after editing text: `npm run voices` (and `npm run narrate` on Atheeb's Mac). A line without audio stays silent (there is no browser-voice fallback: it sounded robotic).
 
 ## Ordering ("level planning")
 

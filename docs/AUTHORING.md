@@ -8,7 +8,7 @@ Read `HOT-SEAT-DESIGN.md` first for how a Hot Seat plays.
 - **Real history is sourced.** Every fact on the real path (dates, numbers, names, events) must be backed by a source someone actually opened.
 - **Alternate history is an estimate.** Options the company didn't take are written as plausible stories, never as facts about the real company. The app badges every off-path screen "Our estimate", so the text itself never says so.
 - **No quotes from real people**, and no logos in images. Real faces are allowed in archive footage and credited film stills (Atheeb's call, 30 Oct 2026), but never put a face next to a line about a real person it isn't.
-- **Avoid** companies in active litigation, and stories that turn on a living person's private life. When unsure, flag it for Atheeb.
+- **Live litigation doesn't rule a story out** (Atheeb kept Kingfisher, 30 Oct 2026): keep every claim sourced and neutral, and re-check court status before publishing. Avoid stories that turn on a living person's private life. When unsure, flag it for Atheeb.
 - **Simple English.** Short words, short sentences. Many players have basic English.
 - Never write "case study". A story is a **Hot Seat**; a one-minute story is a **Daily Call**.
 
@@ -75,7 +75,7 @@ shasum -a 256 content/hotseats/<id>/hotseat.json
 `hotseat:check` errors on a published Hot Seat whose report is missing, stamped for another version of the file, or still has open claims. **Any edit to `hotseat.json` means checking the changes and stamping again.**
 
 ### 5. Media → `content/hotseats/<id>/media.md`
-Find every image and clip in these four archives. Don't AI-generate images any more (Atheeb's call, 30 Oct 2026).
+Look for every image and clip in these four archives first (Atheeb's call, 30 Oct 2026); where none fits, generate it with ChatGPT as described below (31 Oct 2026).
 
 | Archive | What it has | How we may use it |
 |---|---|---|
@@ -91,10 +91,10 @@ Find every image and clip in these four archives. Don't AI-generate images any m
 - Download, then add with `npm run media -- <id> <files…>`. Media names must be unique across all Hot Seats.
 
 ### 6. Review and publish
-Atheeb reviews the story in `/admin/<id>` and plays it in `npm run dev`. Then:
-1. Record the narration: `npm run narrate`.
-2. Optionally draft the per-path debriefs: `npm run debriefs -- <id>`.
-3. Set `"draft": false`.
+1. Record the narration first (`npm run narrate`): Atheeb plays it with voice, never with silent lines.
+2. Atheeb reviews the story in `/admin/<id>` and plays it in `npm run dev`.
+3. Optionally draft the per-path debriefs: `npm run debriefs -- <id>`.
+4. Set `"draft": false`.
 
 `hotseat:check` must then pass with no errors.
 
