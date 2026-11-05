@@ -1,6 +1,8 @@
-// The Club on the server (docs/superpowers/specs/2026-11-04-community-design.md, step 1): joining, posts, replies,
-// likes, follows, blocks, reports, activity and moderation. Every check runs here; the phone only shows what comes
-// back. Players are named by handle, never by id. Pushes go through `side` so the reply never waits on them.
+// The Club on the server (docs/superpowers/specs/2026-11-04-community-design.md): joining, posts, replies, likes,
+// follows, blocks, reports, activity and moderation (step 1), chats (step 2), pictures and group chats (step 3).
+// Every check runs here; the phone only shows what comes back. Players are named by handle, never by id. Pushes go
+// through `side` so the reply never waits on them.
+import { randomUUID } from "node:crypto";
 import { isMember } from "../access.ts";
 import type { Career } from "../career.ts";
 import {
@@ -11,6 +13,7 @@ import {
   checkHandle,
   CLUB_COPY,
   FEED_DAYS,
+  groupLine,
   LIMITS,
   rankForYou,
   reasonLabel,
@@ -28,6 +31,7 @@ import {
   type LiveEvent,
   type MessageView,
   type GateInput,
+  type ImageView,
   type PostView,
   type ProfileView,
   type ReportView,
@@ -35,7 +39,8 @@ import {
 import type { CourseOutline } from "../course-types";
 import { dayDiff, today, type GameState } from "../game-state.ts";
 import { courseOutline, servableHotSeat, wolfQuestion } from "./content.ts";
-import type { ChatMemberRow, ClubProfileRow, Db, MessageRow, PostRow, ReportRow } from "./db.ts";
+import { pictureKind, toWebp } from "./club-image.ts";
+import type { ChatInfo, ChatMemberRow, ClubProfileRow, Db, MessageRow, PostRow, ReportRow } from "./db.ts";
 import { GameError, trustedCareers } from "./game.ts";
 import { realtimeLive, type Live } from "./live.ts";
 import { broadcast, deliver, istHour, webPush, type Message, type Send } from "./reminders.ts";
@@ -99,6 +104,15 @@ function checkProfile(name: string | undefined, building: string | undefined) {
   if (f.refuse) throw new GameError(f.refuse);
   if (f.hold) throw new GameError(CLUB_COPY.profileLinks);
   if (name !== undefined && reservedName(name)) throw new GameError(CLUB_COPY.reservedName);
+}
+
+/** Signed URLs for these pictures, by id. A picture a moderator removed is never served. */
+async function imagesFor(db: Db, ids: (string | null)[]): Promise<Map<string, ImageView>> {
+  const want = [...new Set(ids.filter((x): x is string => !!x))];
+  if (!want.length) return new Map();
+  const rows = (await db.imagesByIds(want)).filter((i) => i.ownerId !== null);
+  const urls = await db.signFiles(rows.map((i) => i.path));
+  return new Map(rows.flatMap((i) => (urls[i.path] ? [[i.id, { url: urls[i.path], width: i.width, height: i.height }]] : [])));
 }
 
 /* ------------------------------------------------------------------ */
@@ -172,17 +186,22 @@ const visibleTo = (p: PostRow, me: Me) =>
 async function viewsOf(db: Db, me: Me, posts: PostRow[], now: Date): Promise<PostView[]> {
   const shown = posts.filter((p) => visibleTo(p, me));
   const ids = [...new Set(shown.flatMap((p) => (p.authorId ? [p.authorId] : [])))];
-  const [authors, liked] = await Promise.all([
+  const [authors, liked, images] = await Promise.all([
     db.clubProfiles(ids),
     db.likedOf(
       me.userId,
       shown.map((p) => p.id),
+    ),
+    imagesFor(
+      db,
+      shown.map((p) => p.imageId),
     ),
   ]);
   const byId = new Map(authors.map((a) => [a.userId, a]));
   return shown.flatMap((p) => {
     const a = p.authorId ? byId.get(p.authorId) : null;
     if (p.authorId && (!a || (a.hiddenAt && a.userId !== me.userId))) return [];
+    const image = p.imageId ? images.get(p.imageId) : undefined;
     return [
       {
         id: p.id,
@@ -195,6 +214,7 @@ async function viewsOf(db: Db, me: Me, posts: PostRow[], now: Date): Promise<Pos
         mine: p.authorId === me.userId,
         held: !!p.held && p.authorId === me.userId,
         author: a ? authorOf(a, now) : null,
+        ...(image ? { image } : {}),
       },
     ];
   });
@@ -366,6 +386,7 @@ export async function updateMe(db: Db, userId: string, body: Record<string, unkn
 export async function leave(db: Db, userId: string, now = new Date()) {
   const m = await meOf(db, userId);
   if (!m.profile) throw new ClubGateError("join");
+  await db.removeFolder(userId); // Storage doesn't cascade (removed pictures are kept apart, for the IT Rules)
   await db.deleteClubProfile(userId);
   if (!bannedAt(m.bannedUntil, now)) await db.setClubBan(userId, new Date(now.getTime() + LIMITS.newMs).toISOString(), "left");
   return { left: true };
@@ -539,6 +560,7 @@ export async function createPost(db: Db, userId: string, body: Record<string, un
     throw new GameError(parent ? CLUB_COPY.tooManyReplies : CLUB_COPY.tooManyPosts);
   if (await db.countPostsSince(userId, kind, ago(now, rule.gapMs))) throw new GameError(CLUB_COPY.slowDown);
   if (await db.lastPostBody(userId, ago(now, 24 * H), text)) throw new GameError(CLUB_COPY.repeat);
+  const imageId = await attach(db, userId, body.imageId, "post", now);
   const at = now.toISOString();
   const row = await db.insertPost({
     authorId: userId,
@@ -549,6 +571,7 @@ export async function createPost(db: Db, userId: string, body: Record<string, un
     held: flag.hold ?? null,
     hiddenAt: null,
     createdAt: at,
+    imageId,
   });
   if (!row) throw new GameError(CLUB_COPY.error);
   if (flag.hold) {
@@ -562,6 +585,7 @@ export async function createPost(db: Db, userId: string, body: Record<string, un
       snapshot: text,
       dueAt: new Date(now.getTime() + 36 * H).toISOString(),
       createdAt: at,
+      imageId,
     });
     side.later(() => tellModerators(db, flag.hold!, side.send));
   } else if (parent?.authorId && parent.authorId !== userId) {
@@ -591,6 +615,12 @@ export async function deletePost(db: Db, userId: string, id: unknown) {
   const p = await db.getPost(idOf(id));
   if (!p || p.authorId !== userId) throw new GameError(CLUB_COPY.postGone);
   await db.deletePost(p.id);
+  // Its picture goes too (its replies' pictures go in the hourly clean-up); one a moderator removed stays its 180 days.
+  const [img] = p.imageId ? await db.imagesByIds([p.imageId]) : [];
+  if (img?.ownerId) {
+    await db.removeFiles([img.path]);
+    await db.deleteImages([img.id]);
+  }
   return { deleted: true };
 }
 
@@ -676,10 +706,10 @@ export async function report(db: Db, userId: string, body: Record<string, unknow
   const reason = String(body.reason ?? "");
   if (!REASON_IDS.includes(reason)) throw new GameError(CLUB_COPY.error);
   const note = optional(body.note, LIMITS.noteLength);
-  let target: { kind: "post" | "profile" | "message"; id: string; user: string | null; snapshot: string };
+  let target: { kind: "post" | "profile" | "message"; id: string; user: string | null; snapshot: string; imageId?: string | null };
   if (body.kind === "post") {
     const { post } = await readable(db, m, idOf(body.id));
-    target = { kind: "post", id: String(post.id), user: post.authorId, snapshot: post.body };
+    target = { kind: "post", id: String(post.id), user: post.authorId, snapshot: post.body, imageId: post.imageId };
   } else if (body.kind === "profile") {
     const p = await other(db, m, body.id, true);
     if (p.hiddenAt) throw new GameError(CLUB_COPY.notFound);
@@ -688,7 +718,8 @@ export async function report(db: Db, userId: string, body: Record<string, unknow
     const msg = await db.getMessage(idOf(body.id));
     if (!msg || msg.hiddenAt || (msg.held && msg.senderId !== userId)) throw new GameError(CLUB_COPY.notFound);
     await chatOf(db, m, msg.chatId, CLUB_COPY.notFound, true); // a request they deleted can still be reported
-    target = { kind: "message", id: String(msg.id), user: msg.senderId, snapshot: msg.body };
+    if (m.blocked.has(msg.senderId) || msg.event) throw new GameError(CLUB_COPY.notFound); // blocked: hidden from them in a group
+    target = { kind: "message", id: String(msg.id), user: msg.senderId, snapshot: msg.body || "(picture)", imageId: msg.imageId };
   } else throw new GameError(CLUB_COPY.error);
   const midnight = istMidnight(now);
   if ((await db.countReportsSince(userId, midnight)) >= LIMITS.reports.perDay) throw new GameError(CLUB_COPY.tooManyReports);
@@ -704,6 +735,7 @@ export async function report(db: Db, userId: string, body: Record<string, unknow
     snapshot: target.snapshot,
     dueAt: new Date(now.getTime() + (urgent ? 2 : 36) * H).toISOString(),
     createdAt: at,
+    imageId: target.imageId ?? null,
   });
   if (!fresh) return { reported: true };
   // Hide at once so the 2-hour duty never waits for a person, but only on reports from accounts over a day old, and
@@ -718,6 +750,19 @@ export async function report(db: Db, userId: string, body: Record<string, unknow
   if (hide) await hideTarget(db, target.kind, target.id, at);
   side.later(() => tellModerators(db, reason, side.send));
   return { reported: true };
+}
+
+const KEEP_DAYS = 180;
+/**
+ * A moderator removed the post or message this picture is in: it stops being served and leaves the owner's folder
+ * (so deleting the account doesn't delete it), and the file is deleted after 180 days (IT Rules 3(1)(g)).
+ */
+async function keepRemoved(db: Db, imageId: string | null, now: Date) {
+  const [img] = imageId ? await db.imagesByIds([imageId]) : [];
+  if (!img?.ownerId) return;
+  const to = `removed/${img.id}.webp`;
+  await db.moveFile(img.path, to);
+  await db.keepImage(img.id, to, new Date(now.getTime() + KEEP_DAYS * 24 * H).toISOString());
 }
 
 async function hideTarget(db: Db, kind: string, id: string, at: string | null) {
@@ -758,6 +803,8 @@ export async function moderate(
   const removes = action !== "keep" && action !== "lift";
   const held = r.targetKind === "message" && action === "keep" ? await db.getMessage(Number(r.targetId)) : null;
   await hideTarget(db, r.targetKind, r.targetId, removes ? at : null);
+  if (removes && r.targetKind === "post") await keepRemoved(db, (await db.getPost(Number(r.targetId)))?.imageId ?? null, now);
+  if (removes && r.targetKind === "message") await keepRemoved(db, (await db.getMessage(Number(r.targetId)))?.imageId ?? null, now);
   // A held message a moderator kept reaches the chat now: it moves to the top, live and with a push.
   if (held?.held && !held.hiddenAt) {
     await db.bumpChat(held.chatId, held.id, at);
@@ -769,6 +816,7 @@ export async function moderate(
   if (author && action === "ban" && input.hideAll) {
     // Hide everything they posted; each hidden item keeps its text in a resolved report row (the 180-day record).
     for (const p of await db.hidePostsBy(author, at)) {
+      await keepRemoved(db, p.imageId, now);
       await db.insertReport({
         reporterId: null,
         targetKind: "post",
@@ -779,10 +827,12 @@ export async function moderate(
         snapshot: p.body,
         dueAt: at,
         createdAt: at,
+        imageId: p.imageId,
       });
       await db.resolveReports("post", String(p.id), "removed", at);
     }
     for (const msg of await db.hideMessagesBy(author, at)) {
+      await keepRemoved(db, msg.imageId, now);
       await db.insertReport({
         reporterId: null,
         targetKind: "message",
@@ -790,9 +840,10 @@ export async function moderate(
         targetUser: author,
         reason: r.reason,
         note: "",
-        snapshot: msg.body,
+        snapshot: msg.body || "(picture)",
         dueAt: at,
         createdAt: at,
+        imageId: msg.imageId,
       });
       await db.resolveReports("message", String(msg.id), "removed", at);
     }
@@ -815,13 +866,19 @@ export async function queue(db: Db, now = new Date()) {
   const [open, done] = await Promise.all([db.reportQueue(), db.resolvedReports(ago(now, 180 * 24 * H))]);
   const ids = [...new Set([...open, ...done].flatMap((r) => [r.reporterId, r.targetUser]).filter((x): x is string => !!x))];
   const handles = new Map((await db.clubProfiles(ids)).map((p) => [p.userId, p.handle]));
+  // Moderators see the picture too, removed ones included (signed for an hour, like the app's).
+  const pics = await db.imagesByIds([...new Set([...open, ...done].flatMap((r) => (r.imageId ? [r.imageId] : [])))]);
+  const urls = await db.signFiles(pics.map((i) => i.path));
+  const urlOf = new Map(pics.map((i) => [i.id, urls[i.path]]));
   const removals = (u: string | null) => (u ? done.filter((d) => d.targetUser === u && d.status === "removed").length : 0);
   const row = (r: ReportRow) => ({
     ...r,
     reporter: r.reporterId ? (handles.get(r.reporterId) ?? "A player") : "Automatic",
     author: r.targetUser ? (handles.get(r.targetUser) ?? "Deleted account") : "The Wolf",
     removals: removals(r.targetUser),
+    imageUrl: (r.imageId && urlOf.get(r.imageId)) || null,
   });
+
   return { open: open.map(row), done: done.filter((d) => Date.parse(d.resolvedAt!) > now.getTime() - 30 * 24 * H).map(row) };
 }
 
@@ -869,7 +926,7 @@ export async function activity(db: Db, userId: string, before: unknown) {
 }
 
 /* ------------------------------------------------------------------ */
-/* Chats (step 2).                                                     */
+/* Chats (step 2) and group chats (step 3).                            */
 /* ------------------------------------------------------------------ */
 const CHAT_PAGE = 50;
 const INBOX_PAGE = 30;
@@ -883,39 +940,67 @@ const typingAt = new Map<string, number>();
 const pairOf = (a: string, b: string) => (a < b ? `${a}:${b}` : `${b}:${a}`);
 const withOf = (p: ClubProfileRow | null | undefined): ChatRow["with"] =>
   p ? { handle: p.handle, name: p.name, title: titleOf(p.rank) } : null;
-const viewOf = (x: MessageRow, viewer: string): MessageView => ({
-  id: x.id,
-  chatId: x.chatId,
-  mine: x.senderId === viewer,
-  body: x.body,
-  createdAt: x.createdAt,
-  flagged: !!x.flagged,
-  held: x.held && x.senderId === viewer,
-  ...(x.senderId === viewer ? { clientId: x.clientId } : {}),
-});
+
+/** What a viewer needs to see messages: pictures signed once for everyone, and the senders' names in a group. */
+interface Shown {
+  images?: Map<string, ImageView>;
+  names?: Map<string, ClubProfileRow>;
+  /** The viewer hasn't accepted this request: its pictures wait until they do (no URL is sent). */
+  waitingPictures?: boolean;
+}
+const viewOf = (x: MessageRow, viewer: string, s: Shown = {}): MessageView => {
+  const mine = x.senderId === viewer;
+  const image = x.imageId ? s.images?.get(x.imageId) : undefined;
+  const from = !mine ? s.names?.get(x.senderId) : undefined;
+  return {
+    id: x.id,
+    chatId: x.chatId,
+    mine,
+    body: x.body,
+    createdAt: x.createdAt,
+    flagged: !!x.flagged,
+    held: x.held && mine,
+    ...(mine ? { clientId: x.clientId } : {}),
+    ...(x.imageId && (image || s.waitingPictures) ? (s.waitingPictures && !mine ? { imageHidden: true as const } : { image }) : {}),
+    ...(x.event ? { event: x.event } : {}),
+    ...(from ? { from: { handle: from.handle, name: from.name } } : {}),
+  };
+};
+/** The inbox line: the text, "Picture", or the group line. */
+const preview = (x: MessageRow, viewer: string, names: Map<string, ClubProfileRow>) =>
+  x.event
+    ? groupLine(x.event, x.senderId === viewer ? CLUB_COPY.you : (names.get(x.senderId)?.name ?? CLUB_COPY.deletedAccount), x.body)
+    : x.body || CLUB_COPY.picture;
 /** Not waiting for a check, unless it's the viewer's own. */
 const shownTo = (x: MessageRow, viewer: string) => !x.held || x.senderId === viewer;
 const asked = (x?: ChatMemberRow) => x?.state === "request" || x?.state === "declined";
 
 interface ChatCtx {
+  info: ChatInfo;
   mine: ChatMemberRow;
+  members: ChatMemberRow[];
+  /** One-to-one only: the other side. */
   other: ChatMemberRow | undefined;
-  /** null: the other player deleted their account. */
+  /** null: the other player deleted their account (or a group). */
   otherProfile: ClubProfileRow | null;
 }
 
 /**
- * A chat `m` is in (not a request they deleted, unless `declinedToo`), with the other side; refused when blocked
- * either way.
+ * A chat `m` is in (not a request they deleted, unless `declinedToo`; not a group they left). A one-to-one chat is
+ * refused when blocked either way; in a group, blocked players' messages are left out instead.
  */
 async function chatOf(db: Db, m: Me, id: number, refusal: string = CLUB_COPY.chatGone, declinedToo = false): Promise<ChatCtx> {
-  const members = await db.chatMembers(id);
+  const [info, members] = await Promise.all([db.getChat(id), db.chatMembers(id)]);
   const mine = members.find((x) => x.userId === m.userId);
-  if (!mine || (mine.state === "declined" && !declinedToo) || mine.state === "left") throw new GameError(refusal);
+  if (!info || !mine || (mine.state === "declined" && !declinedToo) || mine.state === "left") throw new GameError(refusal);
+  if (info.group) return { info, mine, members, other: undefined, otherProfile: null };
   const other = members.find((x) => x.userId !== m.userId);
   if (other && m.blocked.has(other.userId)) throw new GameError(refusal);
-  return { mine, other, otherProfile: other ? await db.clubProfile(other.userId) : null };
+  return { info, mine, members, other, otherProfile: other ? await db.clubProfile(other.userId) : null };
 }
+/** The group's other members who hear from `m`: still in it, and not blocked either way. */
+const listeners = (c: ChatCtx, m: Me) =>
+  c.members.filter((x) => x.state === "active" && x.userId !== m.userId && !m.blocked.has(x.userId)).map((x) => x.userId);
 
 /** Someone you can chat with: still in the Club, not hidden by a moderator or reports, and not banned. */
 async function reachable(db: Db, p: ClubProfileRow | null, now: Date): Promise<boolean> {
@@ -934,6 +1019,9 @@ const tell = (side: Side, events: { userId: string; e: LiveEvent }[]) => {
   if (events.length) side.later(() => (side.live ?? realtimeLive)(events));
 };
 
+/** New members get half the daily limits, as for posts. */
+const chatCap = (m: Me, now: Date, n: number) => (now.getTime() - Date.parse(m.profile!.createdAt) < LIMITS.newMs ? Math.floor(n / 2) : n);
+
 /** Start a chat with a player by handle, or open the one the pair already has. */
 export async function startChat(db: Db, userId: string, body: Record<string, unknown>, now = new Date()) {
   const m = await meOf(db, userId);
@@ -950,17 +1038,14 @@ export async function startChat(db: Db, userId: string, body: Record<string, unk
   }
   const can = canPost(await gateOf(db, m, now, true), now);
   if (can !== "ok") throw new ClubGateError(can);
-  // New members get half the daily limits, as for posts.
-  const isNew = now.getTime() - Date.parse(m.profile!.createdAt) < LIMITS.newMs;
-  const cap = (n: number) => (isNew ? Math.floor(n / 2) : n);
   const chatId = await db.startChat({
     pair,
     creator: userId,
     other: p.userId,
     request: !(await db.follows(p.userId, userId)),
     since: istMidnight(now),
-    perDay: cap(LIMITS.chats.perDay),
-    requestsPerDay: cap(LIMITS.chats.requestsPerDay),
+    perDay: chatCap(m, now, LIMITS.chats.perDay),
+    requestsPerDay: chatCap(m, now, LIMITS.chats.requestsPerDay),
     at: now.toISOString(),
   });
   if (chatId === null) throw new GameError(CLUB_COPY.tooManyChats);
@@ -973,12 +1058,19 @@ export async function chats(db: Db, userId: string, state: "active" | "request",
   if (!m.profile) throw new ClubGateError("join");
   const rows = await db.inbox(userId, state, inboxCursor(before), INBOX_PAGE);
   const shown = rows.filter((r) => !(r.otherId && m.blocked.has(r.otherId)));
-  const profiles = new Map((await db.clubProfiles(shown.flatMap((r) => (r.otherId ? [r.otherId] : [])))).map((p) => [p.userId, p]));
+  const ids = [...new Set(shown.flatMap((r) => [r.otherId, r.last.senderId].filter((x): x is string => !!x)))];
+  const profiles = new Map((await db.clubProfiles(ids)).map((p) => [p.userId, p]));
   const list: ChatRow[] = shown.map((r) => ({
     id: r.chatId,
-    with: withOf(r.otherId ? profiles.get(r.otherId) : null),
+    with: r.title === null ? withOf(r.otherId ? profiles.get(r.otherId) : null) : null,
+    ...(r.title !== null ? { title: r.title } : {}),
     state,
-    last: { body: r.last.body, at: r.last.createdAt, mine: r.last.senderId === userId },
+    // A blocked player's last message in a group isn't shown.
+    last: {
+      body: m.blocked.has(r.last.senderId) ? "" : preview(r.last, userId, profiles),
+      at: r.last.createdAt,
+      mine: r.last.senderId === userId,
+    },
     unread: r.last.senderId !== userId && (state === "request" || r.last.id > r.lastReadId),
   }));
   const { requests } = await db.unreadChats(userId);
@@ -1002,26 +1094,49 @@ export async function readChat(
 ): Promise<ChatView> {
   const m = await meOf(db, userId);
   const chatId = idOf(id);
-  const { mine, other, otherProfile } = await chatOf(db, m, chatId);
+  const c = await chatOf(db, m, chatId);
+  const { info, mine, other, otherProfile } = c;
   await db.setMember(chatId, userId, { activeAt: now.toISOString() }); // no push while they're reading it
   const after = q.after ? idOf(q.after) : undefined;
   const before = q.before ? idOf(q.before) : undefined;
   const rows = await db.messages(chatId, { before, after, afterCleared: mine.clearedId, limit: CHAT_PAGE });
-  const messages = rows.filter((x) => shownTo(x, userId)).map((x) => viewOf(x, userId));
-  const last = messages.at(-1);
+  const visible = rows.filter((x) => shownTo(x, userId) && !m.blocked.has(x.senderId));
+  let names: Map<string, ClubProfileRow> | undefined;
+  let group: ChatView["chat"]["group"];
+  if (info.group) {
+    const active = c.members.filter((x) => x.state === "active");
+    const ids = [...new Set([...active.map((x) => x.userId), ...visible.map((x) => x.senderId)])];
+    names = new Map((await db.clubProfiles(ids)).map((p) => [p.userId, p]));
+    group = {
+      members: active.flatMap((x) => {
+        const p = names!.get(x.userId);
+        return p ? [{ handle: p.handle, name: p.name, title: titleOf(p.rank), mine: x.userId === userId }] : [];
+      }),
+      admin: info.createdBy === userId,
+    };
+  }
+  // A request's receiver gets no picture URLs until they accept.
+  const waitingPictures = mine.state === "request";
+  const images = await imagesFor(
+    db,
+    visible.filter((x) => !waitingPictures || x.senderId === userId).map((x) => x.imageId),
+  );
+  const messages = visible.map((x) => viewOf(x, userId, { images, names, waitingPictures }));
+  const last = visible.at(-1);
   return {
     chat: {
       id: chatId,
-      with: withOf(otherProfile),
+      with: info.group ? null : withOf(otherProfile),
+      ...(info.group ? { title: info.title ?? "", group } : {}),
       state: mine.state === "request" ? "request" : "active",
-      last: last ? { body: last.body, at: last.createdAt, mine: last.mine } : null,
+      last: last ? { body: preview(last, userId, names ?? new Map()), at: last.createdAt, mine: last.senderId === userId } : null,
       unread: false,
-      canSend: mine.state === "active" && (await reachable(db, otherProfile, now)),
-      waiting: mine.state === "active" && asked(other),
+      canSend: mine.state === "active" && (info.group || (await reachable(db, otherProfile, now))),
+      waiting: !info.group && mine.state === "active" && asked(other),
     },
     messages,
-    // A request's receiver reads without the sender being told (Instagram's rule).
-    theirLastRead: other?.state === "active" ? other.lastReadId : 0,
+    // A request's receiver reads without the sender being told (Instagram's rule). Groups show no "Seen".
+    theirLastRead: !info.group && other?.state === "active" ? other.lastReadId : 0,
     ...(after === undefined && rows.length === CHAT_PAGE ? { before: rows[0].id } : {}),
   };
 }
@@ -1029,9 +1144,10 @@ export async function readChat(
 const CLIENT_ID = /^[A-Za-z0-9_-]{1,64}$/;
 
 /**
- * Send a message. Contact details are refused; a link or scam words show a warning under it (and go to the queue),
- * and in a request they are held until a moderator approves them. A request allows 3 messages before it's accepted;
- * after a silent "Delete" the sender still sees "Sent", but nothing reaches the other player.
+ * Send a message: text, a picture, or both. Contact details are refused; a link or scam words show a warning under
+ * it (and go to the queue), and in a request they are held until a moderator approves them. A request allows 3
+ * messages before it's accepted, and its pictures show once it is; after a silent "Delete" the sender still sees
+ * "Sent", but nothing reaches the other player. In a group, it goes to every member who hasn't blocked either way.
  */
 export async function sendMessage(
   db: Db,
@@ -1044,24 +1160,28 @@ export async function sendMessage(
   const m = await meOf(db, userId);
   await mustInteract(db, m, now);
   const chatId = idOf(id);
-  const { mine, other, otherProfile } = await chatOf(db, m, chatId, CLUB_COPY.notSent);
-  if (!other || mine.state !== "active" || !(await reachable(db, otherProfile, now))) throw new GameError(CLUB_COPY.notSent);
-  const text = textOf(body.body, LIMITS.chats.messageLength);
+  const { info, mine, other, otherProfile } = await chatOf(db, m, chatId, CLUB_COPY.notSent);
+  if (mine.state !== "active" || (!info.group && (!other || !(await reachable(db, otherProfile, now)))))
+    throw new GameError(CLUB_COPY.notSent);
+  const picture = body.imageId !== undefined && body.imageId !== null && body.imageId !== "";
+  const text = picture ? optional(body.body, LIMITS.chats.messageLength) : textOf(body.body, LIMITS.chats.messageLength);
   const clientId = typeof body.clientId === "string" && CLIENT_ID.test(body.clientId) ? body.clientId : null;
   if (!clientId) throw new GameError(CLUB_COPY.error);
   const flag = autoFlag(text);
   if (flag.refuse) throw new GameError(flag.refuse);
-  const held = asked(other) && !!flag.hold;
+  const held = !info.group && asked(other) && !!flag.hold;
+  const imageId = await attach(db, userId, body.imageId, "message", now, true);
   const at = now.toISOString();
   const sent = await db.sendMessage(
-    { chatId, senderId: userId, clientId, body: text, flagged: flag.hold ?? null, held },
+    { chatId, senderId: userId, clientId, body: text, flagged: flag.hold ?? null, held, imageId },
     at,
     LIMITS.chats.requestMessages,
   );
   if (!sent) throw new GameError(CLUB_COPY.waitAccept(otherProfile!.name));
   const { row } = sent;
+  const mineView = async () => viewOf(row, userId, { images: await imagesFor(db, [row.imageId]) });
   // A retry (same chat and clientId) gets the saved row back and nothing else happens.
-  if (!sent.fresh) return { message: viewOf(row, userId) };
+  if (!sent.fresh) return { message: await mineView() };
   if (flag.hold) {
     await db.insertReport({
       reporterId: null,
@@ -1073,32 +1193,55 @@ export async function sendMessage(
       snapshot: text,
       dueAt: new Date(now.getTime() + 36 * H).toISOString(),
       createdAt: at,
+      imageId,
     });
     side.later(() => tellModerators(db, flag.hold!, side.send));
   }
   await deliverMessage(db, row, now, side);
-  return { message: viewOf(row, userId) };
+  return { message: await mineView() };
 }
 
 /**
- * A new message reaches the chat: live to the other player and to the sender's own other phones, and a push. Never a
- * hidden or held row, nothing to a request the receiver deleted, and nothing across a block.
+ * A new message reaches the chat: live to the other members and to the sender's own other phones, and a push. Never
+ * a hidden or held row (so never its picture), nothing to a request the receiver deleted, and nothing across a block.
+ * A request's receiver gets no picture URL until they accept. Group lines push nothing here (see addToGroup).
  */
 async function deliverMessage(db: Db, row: MessageRow, now: Date, side: Side) {
   if (row.hiddenAt || row.held) return;
-  const [members, sender, blocks] = await Promise.all([db.chatMembers(row.chatId), db.clubProfile(row.senderId), db.blocks(row.senderId)]);
-  const other = members.find((x) => x.userId !== row.senderId);
+  const [info, members, sender, blocks] = await Promise.all([
+    db.getChat(row.chatId),
+    db.chatMembers(row.chatId),
+    db.clubProfile(row.senderId),
+    db.blocks(row.senderId),
+  ]);
+  if (!info) return;
   const chatId = row.chatId;
-  const reaches = !!other && !!sender && other.state !== "declined" && !blocks.out.has(other.userId) && !blocks.in.has(other.userId);
+  const blocked = (u: string) => blocks.out.has(u) || blocks.in.has(u);
+  const images = await imagesFor(db, [row.imageId]);
+  const live = (u: string, s: Shown) => ({ userId: u, e: { event: "msg" as const, payload: { chatId, message: viewOf(row, u, s) } } });
+  if (info.group) {
+    const to = members.filter((x) => x.state === "active" && x.userId !== row.senderId && !blocked(x.userId));
+    const names = sender ? new Map([[sender.userId, sender]]) : undefined;
+    tell(side, [live(row.senderId, { images }), ...to.map((x) => live(x.userId, { images, names }))]);
+    if (!sender || row.event) return;
+    for (const x of to) {
+      const reading = !!x.activeAt && now.getTime() - Date.parse(x.activeAt) < OPEN_MS;
+      if (!reading)
+        side.later(() => dmPush(db, x.userId, chatId, info.title ?? "", CLUB_COPY.pushGroupMessage(sender.name), side.send, now));
+    }
+    return;
+  }
+  const other = members.find((x) => x.userId !== row.senderId);
+  const reaches = !!other && !!sender && other.state !== "declined" && !blocked(other.userId);
   tell(side, [
-    { userId: row.senderId, e: { event: "msg", payload: { chatId, message: viewOf(row, row.senderId) } } },
-    ...(reaches ? [{ userId: other!.userId, e: { event: "msg" as const, payload: { chatId, message: viewOf(row, other!.userId) } } }] : []),
+    live(row.senderId, { images }),
+    ...(reaches ? [live(other!.userId, other!.state === "request" ? { waitingPictures: true } : { images })] : []),
   ]);
   if (reaches) {
     const name = sender!.name;
     const to = other!.userId;
     const reading = !!other!.activeAt && now.getTime() - Date.parse(other!.activeAt) < OPEN_MS;
-    if (other!.state === "active" && !reading) side.later(() => dmPush(db, to, chatId, name, side.send, now));
+    if (other!.state === "active" && !reading) side.later(() => dmPush(db, to, chatId, name, CLUB_COPY.pushMessage, side.send, now));
     // A request pushes once: on the sender's first message the receiver can see.
     const shown = (await db.messages(chatId, { afterCleared: 0, limit: 5 })).filter((x) => x.senderId === row.senderId && !x.held);
     if (other!.state === "request" && shown.length === 1)
@@ -1121,7 +1264,7 @@ async function deliverMessage(db: Db, row: MessageRow, now: Date, side: Side) {
 }
 
 /** A chat push: quiet hours still apply, one per chat an hour, at most 10 a day, never the message text. */
-async function dmPush(db: Db, userId: string, chatId: number, name: string, send: Send, now: Date) {
+async function dmPush(db: Db, userId: string, chatId: number, title: string, body: string, send: Send, now: Date) {
   const phones = await db.pushes(userId);
   if (!phones.length || (await away(db, userId, now))) return;
   await deliver(
@@ -1130,8 +1273,8 @@ async function dmPush(db: Db, userId: string, chatId: number, name: string, send
     phones,
     {
       kind: `dm:${chatId}:${istHour(now)}`,
-      title: name,
-      body: CLUB_COPY.pushMessage,
+      title,
+      body,
       url: `/app#club/chat/${chatId}`,
       tag: `chat-${chatId}`,
       urgent: true,
@@ -1143,7 +1286,7 @@ async function dmPush(db: Db, userId: string, chatId: number, name: string, send
   );
 }
 
-/** "Seen": moves forward only, and the other player hears it only in an accepted chat. */
+/** "Seen": moves forward only, and the other player hears it only in an accepted one-to-one chat. */
 export async function seen(db: Db, userId: string, id: unknown, body: Record<string, unknown>, now = new Date(), side: Side = background) {
   const m = await meOf(db, userId);
   const chatId = idOf(id);
@@ -1164,13 +1307,18 @@ export async function typing(db: Db, userId: string, id: unknown, now = new Date
   if (typingAt.size > 10_000) typingAt.clear();
   typingAt.set(key, now.getTime());
   const m = await meOf(db, userId);
-  const { mine, other, otherProfile } = await chatOf(db, m, chatId);
-  if (mine.state === "active" && other?.state === "active" && otherProfile && m.profile)
-    tell(side, [{ userId: other.userId, e: { event: "typing", payload: { chatId, handle: m.profile.handle } } }]);
+  const c = await chatOf(db, m, chatId);
+  if (c.mine.state !== "active" || !m.profile) return { ok: true };
+  const to = c.info.group ? listeners(c, m) : c.other?.state === "active" && c.otherProfile ? [c.other.userId] : [];
+  const handle = m.profile.handle;
+  tell(
+    side,
+    to.map((u) => ({ userId: u, e: { event: "typing" as const, payload: { chatId, handle } } })),
+  );
   return { ok: true };
 }
 
-/** The receiver takes a request: it moves to the inbox, and "Seen" starts to count. */
+/** The receiver takes a request: it moves to the inbox, "Seen" starts to count, and its pictures show. */
 export async function accept(db: Db, userId: string, id: unknown, now = new Date()) {
   const m = await meOf(db, userId);
   await mustInteract(db, m, now);
@@ -1196,4 +1344,218 @@ export async function clearChat(db: Db, userId: string, id: unknown) {
   await chatOf(db, m, chatId);
   await db.setMember(chatId, userId, { clearedId: await db.lastMessageId(chatId) });
   return { ok: true };
+}
+
+/* ------------------------------------------------------------------ */
+/* Group chats (step 3).                                               */
+/* ------------------------------------------------------------------ */
+/** A group's name passes the same checks as a profile: no contacts, links, money words or the app's names. */
+function groupTitle(x: unknown): string {
+  const t = textOf(x, LIMITS.groups.titleLength, CLUB_COPY.badGroupName);
+  if (t.includes("\n")) throw new GameError(CLUB_COPY.badGroupName);
+  const f = autoFlag(t);
+  if (f.refuse) throw new GameError(f.refuse);
+  if (f.hold) throw new GameError(CLUB_COPY.groupNameLinks);
+  if (reservedName(t)) throw new GameError(CLUB_COPY.reservedName);
+  return t;
+}
+
+/** Someone `m` may put in a group: in the Club, reachable, not blocked either way, and following each other. */
+async function groupable(db: Db, m: Me, handle: unknown, now: Date): Promise<ClubProfileRow> {
+  const p = await other(db, m, handle);
+  if (!(await reachable(db, p, now))) throw new GameError(CLUB_COPY.notFound);
+  if (!(await db.follows(m.userId, p.userId)) || !(await db.follows(p.userId, m.userId))) throw new GameError(CLUB_COPY.mutualOnly);
+  return p;
+}
+
+let lines = 0;
+/** "Ravi added Priya" and the like: a message from whoever did it, delivered like any other. */
+async function groupEvent(
+  db: Db,
+  side: Side,
+  chatId: number,
+  userId: string,
+  event: NonNullable<MessageRow["event"]>,
+  name: string,
+  now: Date,
+) {
+  const at = now.toISOString();
+  const sent = await db.sendMessage(
+    { chatId, senderId: userId, clientId: `g-${event}-${now.getTime()}-${++lines}`, body: name, flagged: null, held: false, event },
+    at,
+    LIMITS.chats.requestMessages,
+  );
+  if (sent?.fresh) await deliverMessage(db, sent.row, now, side);
+}
+
+/** People the player follows who follow them back: who can go in a group. */
+export async function mutualList(db: Db, userId: string) {
+  const m = await meOf(db, userId);
+  if (!m.profile) throw new ClubGateError("join");
+  const ids = (await db.mutuals(userId)).filter((id) => !m.blocked.has(id));
+  const people = (await db.clubProfiles(ids))
+    .filter((p) => !p.hiddenAt)
+    .map((p) => ({ handle: p.handle, name: p.name, title: titleOf(p.rank) }))
+    .sort((a, b) => a.name.localeCompare(b.name));
+  return { people };
+}
+
+/**
+ * A new group: a member at Trader and above, with 2 to 19 people who follow each other with them (so no requests).
+ * Counted with new chats, from the log that leaving the Club doesn't clear, under the same per-player lock.
+ */
+export async function createGroup(db: Db, userId: string, body: Record<string, unknown>, now = new Date(), side: Side = background) {
+  const m = await meOf(db, userId);
+  const can = canPost(await gateOf(db, m, now, true), now);
+  if (can !== "ok") throw new ClubGateError(can);
+  const title = groupTitle(body.title);
+  const { minOthers, maxMembers } = LIMITS.groups;
+  const handles = Array.isArray(body.handles)
+    ? [...new Set(body.handles.map((h) => String(h).trim().replace(/^@/, "").toLowerCase()))]
+    : [];
+  if (handles.length < minOthers || handles.length > maxMembers - 1) throw new GameError(CLUB_COPY.pickPeople(minOthers, maxMembers - 1));
+  const people: ClubProfileRow[] = [];
+  for (const h of handles) people.push(await groupable(db, m, h, now));
+  const ids = people.map((p) => p.userId);
+  const chatId = await db.startGroup({
+    creator: userId,
+    others: ids,
+    title,
+    since: istMidnight(now),
+    perDay: chatCap(m, now, LIMITS.chats.perDay),
+    at: now.toISOString(),
+  });
+  if (chatId === null) throw new GameError(CLUB_COPY.tooManyChats);
+  await groupEvent(db, side, chatId, userId, "created", "", now);
+  const by = m.profile!.name;
+  for (const u of ids) side.later(() => dmPush(db, u, chatId, title, CLUB_COPY.pushAddedToGroup(by), side.send, now));
+  return { chatId };
+}
+
+/** A group the player made and is still in: only they add and remove people, while they can post. */
+async function myGroup(db: Db, m: Me, id: unknown, now: Date) {
+  const chatId = idOf(id);
+  const c = await chatOf(db, m, chatId);
+  if (!c.info.group) throw new GameError(CLUB_COPY.chatGone);
+  if (c.info.createdBy !== m.userId) throw new GameError(CLUB_COPY.onlyMaker);
+  const can = canPost(await gateOf(db, m, now, true), now);
+  if (can !== "ok") throw new ClubGateError(can);
+  return { chatId, c };
+}
+
+/** The maker adds someone who follows each other with them; they see only what comes after. */
+export async function addToGroup(
+  db: Db,
+  userId: string,
+  id: unknown,
+  body: Record<string, unknown>,
+  now = new Date(),
+  side: Side = background,
+) {
+  const m = await meOf(db, userId);
+  const { chatId, c } = await myGroup(db, m, id, now);
+  const p = await groupable(db, m, body.handle, now);
+  const active = c.members.filter((x) => x.state === "active");
+  if (active.some((x) => x.userId === p.userId)) return { ok: true };
+  if (active.length >= LIMITS.groups.maxMembers) throw new GameError(CLUB_COPY.groupFull);
+  await db.addMember(chatId, p.userId, await db.lastMessageId(chatId));
+  await groupEvent(db, side, chatId, userId, "added", p.name, now);
+  const by = m.profile!.name;
+  const title = c.info.title ?? "";
+  side.later(() => dmPush(db, p.userId, chatId, title, CLUB_COPY.pushAddedToGroup(by), side.send, now));
+  return { ok: true };
+}
+
+/** The maker takes someone out. */
+export async function removeFromGroup(
+  db: Db,
+  userId: string,
+  id: unknown,
+  body: Record<string, unknown>,
+  now = new Date(),
+  side: Side = background,
+) {
+  const m = await meOf(db, userId);
+  const { chatId, c } = await myGroup(db, m, id, now);
+  const h = checkHandle(body.handle);
+  const p = "handle" in h ? await db.clubProfileByHandle(h.handle) : null;
+  if (!p || p.userId === userId || !c.members.some((x) => x.userId === p.userId && x.state === "active"))
+    throw new GameError(CLUB_COPY.notFound);
+  await db.setMember(chatId, p.userId, { state: "left" });
+  await groupEvent(db, side, chatId, userId, "removed", p.name, now);
+  return { ok: true };
+}
+
+/** Leave a group (anyone, even when banned). If the maker leaves, nobody can add or remove people any more. */
+export async function leaveGroup(db: Db, userId: string, id: unknown, now = new Date(), side: Side = background) {
+  const m = await meOf(db, userId);
+  const chatId = idOf(id);
+  const c = await chatOf(db, m, chatId);
+  if (!c.info.group) throw new GameError(CLUB_COPY.chatGone);
+  await groupEvent(db, side, chatId, userId, "left", "", now);
+  await db.setMember(chatId, userId, { state: "left" });
+  return { ok: true };
+}
+
+/* ------------------------------------------------------------------ */
+/* Pictures (step 3).                                                  */
+/* ------------------------------------------------------------------ */
+const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
+
+/**
+ * A picture the player added in the last hour and hasn't used, now taken by this post or message (null: none).
+ * `retry`: a message sent again (same clientId) carries the picture its first try already took.
+ */
+async function attach(db: Db, userId: string, x: unknown, usedBy: "post" | "message", now: Date, retry = false): Promise<string | null> {
+  if (x === undefined || x === null || x === "") return null;
+  if (typeof x !== "string" || !UUID.test(x)) throw new GameError(CLUB_COPY.pictureGone);
+  const img = await db.claimImage(x, userId, ago(now, H), usedBy);
+  if (img) return img.id;
+  const [used] = retry ? await db.imagesByIds([x]) : [];
+  if (used?.ownerId === userId && used.usedBy === usedBy && Date.parse(used.createdAt) > now.getTime() - H) return used.id;
+  throw new GameError(CLUB_COPY.pictureGone);
+}
+
+/**
+ * POST /api/club/image: one JPEG, PNG or WebP (by its bytes) up to 5 MB, 20 a day. For a post the player must be
+ * able to post; with `chat`, an active member of that chat. `read` gets the file only after those checks pass.
+ * Stored as upright WebP, at most 1080 px, no EXIF or location, in '<user>/<id>.webp'.
+ */
+export async function uploadImage(db: Db, userId: string, chat: unknown, read: () => Promise<Uint8Array | null>, now = new Date()) {
+  const m = await meOf(db, userId);
+  if (chat) {
+    await mustInteract(db, m, now);
+    const { mine } = await chatOf(db, m, idOf(chat), CLUB_COPY.notSent);
+    if (mine.state !== "active") throw new GameError(CLUB_COPY.notSent);
+  } else {
+    const can = canPost(await gateOf(db, m, now, true), now);
+    if (can !== "ok") throw new ClubGateError(can);
+  }
+  if ((await db.countImagesSince(userId, istMidnight(now))) >= LIMITS.pictures.perDay) throw new GameError(CLUB_COPY.tooManyPictures);
+  const bytes = await read();
+  if (!bytes || !bytes.length) throw new GameError(CLUB_COPY.pictureType);
+  if (bytes.length > LIMITS.pictures.maxBytes) throw new GameError(CLUB_COPY.pictureTooBig);
+  if (!pictureKind(bytes)) throw new GameError(CLUB_COPY.pictureType);
+  const pic = await toWebp(bytes).catch(() => null);
+  if (!pic) throw new GameError(CLUB_COPY.pictureType);
+  const id = randomUUID();
+  const path = `${userId}/${id}.webp`;
+  // The row first: if the upload fails, the hourly clean-up deletes the row.
+  await db.insertImage({ id, ownerId: userId, path, width: pic.width, height: pic.height, createdAt: now.toISOString() });
+  await db.putFile(path, pic.data);
+  return { imageId: id, width: pic.width, height: pic.height };
+}
+
+/** Hourly (with the reminders): delete pictures nobody uses after a day, and removed ones after their 180 days. */
+export async function purgeImages(db: Db, now = new Date()) {
+  let n = 0;
+  for (;;) {
+    const stale = await db.staleImages(ago(now, 24 * H), 200);
+    if (stale.length) {
+      await db.removeFiles(stale.map((i) => i.path));
+      await db.deleteImages(stale.map((i) => i.id));
+    }
+    n += stale.length;
+    if (stale.length < 200) return { images: n };
+  }
 }

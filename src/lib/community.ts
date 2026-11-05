@@ -52,6 +52,10 @@ export const LIMITS = {
   reports: { perDay: 20, instantPerDay: 3 },
   /** Chats (step 2): new chats a day (of which requests), messages before a request is accepted, message length. */
   chats: { perDay: 20, requestsPerDay: 5, requestMessages: 3, messageLength: 1000 },
+  /** Pictures (step 3): a day, the biggest file, and the longest side once resized. */
+  pictures: { perDay: 20, maxBytes: 5 * 1024 * 1024, maxSide: 1080 },
+  /** Group chats: people in all (the maker too), and the name's length. */
+  groups: { maxMembers: 20, minOthers: 2, titleLength: 30 },
   /** Accounts younger than this don't count toward hiding at once; Club members younger than this get half limits. */
   newMs: 24 * 3600_000,
 };
@@ -204,6 +208,15 @@ export interface PostView {
   held: boolean;
   /** null: the Wolf. */
   author: AuthorView | null;
+  /** A signed URL, good for an hour. */
+  image?: ImageView;
+}
+
+/** A picture as the phone gets it. */
+export interface ImageView {
+  url: string;
+  width: number;
+  height: number;
 }
 
 /** A player as others see them. Never an id, email, plan or seat. */
@@ -252,7 +265,10 @@ export interface ReportView {
 /** A chat in the inbox or requests list. `with` is null once the other player deleted their account. */
 export interface ChatRow {
   id: number;
+  /** One-to-one: the other player (null once they deleted their account). Groups: null, with `title`. */
   with: { handle: string; name: string; title: string } | null;
+  /** A group's name. */
+  title?: string;
   /** request: a request to me. */
   state: "active" | "request";
   last: { body: string; at: string; mine: boolean } | null;
@@ -269,6 +285,13 @@ export interface MessageView {
   /** Only ever true for the sender: waiting for a check. */
   held: boolean;
   clientId?: string;
+  image?: ImageView;
+  /** A picture in a message request: shown once the request is accepted. */
+  imageHidden?: true;
+  /** A group line, e.g. "Ravi added Priya": the sender did it; for added and removed, `body` is the other name. */
+  event?: "created" | "added" | "removed" | "left";
+  /** In a group, who sent it (not on my own). */
+  from?: { handle: string; name: string };
 }
 /** GET /api/club/chat/:id. */
 export interface ChatView {
@@ -276,6 +299,8 @@ export interface ChatView {
     canSend: boolean;
     /** I started it and they haven't accepted yet. */
     waiting: boolean;
+    /** A group: who is in it, and whether I made it (only the maker adds and removes people). */
+    group?: { members: { handle: string; name: string; title: string; mine: boolean }[]; admin: boolean };
   };
   messages: MessageView[];
   /** The other player's "Seen" (0 while they haven't accepted). */
@@ -298,6 +323,14 @@ export interface ClubMe {
   /** Until when a moderator's ban runs ("infinity" for good). */
   bannedUntil?: string;
   badge: { activity: number; chats: number; requests: number };
+}
+
+/** A group line as shown: `who` did it ("You" for the viewer); `name` is the other player for added and removed. */
+export function groupLine(event: NonNullable<MessageView["event"]>, who: string, name: string): string {
+  if (event === "created") return CLUB_COPY.groupCreated(who);
+  if (event === "added") return CLUB_COPY.groupAdded(who, name);
+  if (event === "removed") return CLUB_COPY.groupRemoved(who, name);
+  return CLUB_COPY.groupLeft(who);
 }
 
 export const titleOf = (rank: number) => TITLES[Math.max(1, Math.min(TITLES.length, rank)) - 1];
@@ -508,6 +541,40 @@ export const CLUB_COPY = {
   pushRequest: (name: string) => `${name} wants to chat`,
   pushRequestBody: "Open your message requests in the Club.",
   reportMessage: "Report message",
+  // Pictures (step 3).
+  addPicture: "Add a picture",
+  removePicture: "Remove picture",
+  addingPicture: "Adding picture…",
+  picture: "Picture",
+  pictureTooBig: "That picture is too big. Pick one under 5 MB.",
+  pictureType: "Use a JPG, PNG or WebP picture.",
+  tooManyPictures: "You have added enough pictures for today. Try again tomorrow.",
+  pictureGone: "That picture did not work. Add it again.",
+  pictureHidden: "Accept to see the picture.",
+  // Group chats (step 3).
+  newGroup: "New group",
+  groupName: "Group name",
+  addPeople: "Add people",
+  mutualOnly: "You can add people who follow you back.",
+  noMutuals: "Nobody follows you back yet.",
+  pickPeople: (min: number, max: number) => `Pick ${min} to ${max} people.`,
+  makeGroup: "Make group",
+  you: "You",
+  groupCreated: (name: string) => `${name} made this group.`,
+  groupAdded: (who: string, name: string) => `${who} added ${name}`,
+  groupRemoved: (who: string, name: string) => `${who} removed ${name}`,
+  groupLeft: (who: string) => `${who} left`,
+  members: (n: number) => `${n} people`,
+  remove: (name: string) => `Remove ${name}`,
+  leaveGroup: "Leave group",
+  leaveGroupTitle: "Leave this group?",
+  leaveGroupText: "You will stop getting its messages.",
+  groupFull: "A group can have up to 20 people.",
+  onlyMaker: "Only the person who made the group can do this.",
+  badGroupName: "Use 1 to 30 letters for the group name.",
+  groupNameLinks: "Remove links and money offers from the group name.",
+  pushGroupMessage: (name: string) => `${name} sent a message`,
+  pushAddedToGroup: (name: string) => `${name} added you to a group`,
   // Added with the phone screens.
   back: "Back",
   close: "Close",

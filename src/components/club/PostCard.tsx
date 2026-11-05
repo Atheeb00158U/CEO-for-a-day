@@ -4,7 +4,7 @@ import { useState } from "react";
 import { api } from "@/lib/auth";
 import { CLUB_COPY, timeAgo, type PostView } from "@/lib/community";
 import { WolfPicture } from "../WolfPicture";
-import { Avatar, ClubSheet, errorText, gateOf, linkBtn, openClub, TitleStars, useClub } from "./shared";
+import { Avatar, ClubSheet, errorText, gateOf, linkBtn, openClub, Picture, TitleStars, useClub } from "./shared";
 
 /**
  * One post: who, when, the text (links never clickable), ♥ and 💬, and ⋯ for Report, Block or Delete. `onGone` runs
@@ -100,6 +100,7 @@ export function PostCard({
 
       <div role={inThread ? undefined : "link"} tabIndex={inThread ? undefined : 0} onClick={openThread} className="mt-2 cursor-default">
         <p className={`text-[16px] font-bold break-words whitespace-pre-wrap ${p.kind === "rank_up" ? "text-gold" : ""}`}>{p.body}</p>
+        {p.image && <Picture image={p.image} className="mt-2" />}
         {p.held && <p className="mt-2 rounded-xl bg-gold/10 px-3 py-2 text-[13px] font-bold text-gold">{CLUB_COPY.held}</p>}
       </div>
 
