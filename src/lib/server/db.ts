@@ -86,6 +86,17 @@ export interface PaymentIssue {
   kind: string;
   subscriptionId: string;
   userId: string | null;
+  paymentId?: string | null;
+  /** What went wrong, in a line. Never a key, a secret or a payload. */
+  note?: string | null;
+}
+
+/** A stored payment_issues row, as /admin/payments shows it. */
+export interface PaymentIssueRow extends Required<PaymentIssue> {
+  id: number;
+  createdAt: string;
+  resolvedAt: string | null;
+  resolution: string | null;
 }
 
 export interface SeatRow {
@@ -277,7 +288,13 @@ export interface Db {
   /** Whether this webhook event id was already handled. */
   hasPaymentEvent(eventId: string): Promise<boolean>;
   /** A payment problem a person must sort out by hand (payment_issues). No PII beyond the ids. */
-  recordPaymentIssue(kind: string, subscriptionId: string, userId?: string): Promise<void>;
+  recordPaymentIssue(kind: string, subscriptionId: string, userId?: string, detail?: { paymentId?: string; note?: string }): Promise<void>;
+  /** For /admin/payments: every open issue and the latest resolved ones, newest first. */
+  paymentIssueList(resolvedLimit: number): Promise<{ open: PaymentIssueRow[]; resolved: PaymentIssueRow[] }>;
+  /** Close an open issue. False when there is no such open issue. */
+  resolvePaymentIssue(id: number, resolution: string | null, at: Date): Promise<boolean>;
+  /** Webhook deliveries handled since `since`, and when the latest arrived. */
+  paymentEventsSince(since: Date): Promise<{ count: number; last: string | null }>;
   /** Hold the lowest free founding seat for 30 minutes; null when all 1,000 are taken. */
   claimSeat(userId: string, subscriptionId: string): Promise<number | null>;
   /** The first charge: keep the held seat for good. False when no seat is held for it (the hold ran out or moved). */
@@ -468,7 +485,7 @@ export function memoryDb(): Db & {
   foundingSeats: number;
   seats: SeatRow[];
   early: Map<string, Set<string>>;
-  paymentIssues: PaymentIssue[];
+  paymentIssues: PaymentIssueRow[];
   club: ReturnType<typeof clubStore>;
   /** auth.users created_at by id; an id missing here counts as an old account. */
   accounts: Map<string, string>;
@@ -483,10 +500,11 @@ export function memoryDb(): Db & {
   const pushes = new Map<string, PushRow>();
   const notices = new Set<string>();
   const memberships = new Map<string, MembershipRow>();
-  const events = new Set<string>();
+  /** Event id → when it was received (ms). */
+  const events = new Map<string, number>();
   const seats: SeatRow[] = [];
   const early = new Map<string, Set<string>>();
-  const paymentIssues: PaymentIssue[] = [];
+  const paymentIssues: PaymentIssueRow[] = [];
   const SEAT_HOLD_MS = 30 * 60 * 1000;
   /** A seat is used if it is kept, or an unpaid hold that has not run out. */
   const live = (s: SeatRow) => s.heldUntil === null || s.heldUntil > Date.now();
@@ -661,14 +679,48 @@ export function memoryDb(): Db & {
     },
     async insertPaymentEvent(eventId) {
       if (events.has(eventId)) return false;
-      events.add(eventId);
+      events.set(eventId, Date.now());
       return true;
     },
     async hasPaymentEvent(eventId) {
       return events.has(eventId);
     },
-    async recordPaymentIssue(kind, subscriptionId, userId) {
-      paymentIssues.push({ kind, subscriptionId, userId: userId ?? null });
+    async recordPaymentIssue(kind, subscriptionId, userId, detail) {
+      paymentIssues.push({
+        id: paymentIssues.length + 1,
+        kind,
+        subscriptionId,
+        userId: userId ?? null,
+        paymentId: detail?.paymentId ?? null,
+        note: detail?.note ?? null,
+        createdAt: new Date().toISOString(),
+        resolvedAt: null,
+        resolution: null,
+      });
+    },
+    async paymentIssueList(resolvedLimit) {
+      const newest = (a: PaymentIssueRow, b: PaymentIssueRow) => b.id - a.id;
+      return {
+        open: clone(paymentIssues.filter((p) => !p.resolvedAt).sort(newest)),
+        resolved: clone(
+          paymentIssues
+            .filter((p) => p.resolvedAt)
+            .sort((a, b) => b.resolvedAt!.localeCompare(a.resolvedAt!))
+            .slice(0, resolvedLimit),
+        ),
+      };
+    },
+    async resolvePaymentIssue(id, resolution, at) {
+      const p = paymentIssues.find((x) => x.id === id && !x.resolvedAt);
+      if (!p) return false;
+      p.resolvedAt = at.toISOString();
+      p.resolution = resolution;
+      return true;
+    },
+    async paymentEventsSince(since) {
+      const times = [...events.values()];
+      const last = times.length ? new Date(Math.max(...times)).toISOString() : null;
+      return { count: times.filter((t) => t >= since.getTime()).length, last };
     },
     async claimSeat(userId, subscriptionId) {
       // A player who kept a seat before gets no second one (20261104100000_seat_rules.sql).
@@ -1772,8 +1824,71 @@ export function supabaseDb(sb = supabaseAdmin()): Db {
     async hasPaymentEvent(eventId) {
       return list(await sb.from("payment_events").select("event_id").eq("event_id", eventId).limit(1)).length > 0;
     },
-    async recordPaymentIssue(kind, subscriptionId, userId) {
-      must(await sb.from("payment_issues").insert({ kind, subscription_id: subscriptionId, user_id: userId ?? null }));
+    async recordPaymentIssue(kind, subscriptionId, userId, detail) {
+      must(
+        await sb.from("payment_issues").insert({
+          kind,
+          subscription_id: subscriptionId,
+          user_id: userId ?? null,
+          payment_id: detail?.paymentId ?? null,
+          note: detail?.note ?? null,
+        }),
+      );
+    },
+    async paymentIssueList(resolvedLimit) {
+      const cols = "id, kind, subscription_id, user_id, payment_id, note, created_at, resolved_at, resolution";
+      type R = {
+        id: number;
+        kind: string;
+        subscription_id: string;
+        user_id: string | null;
+        payment_id: string | null;
+        note: string | null;
+        created_at: string;
+        resolved_at: string | null;
+        resolution: string | null;
+      };
+      const row = (r: R): PaymentIssueRow => ({
+        id: r.id,
+        kind: r.kind,
+        subscriptionId: r.subscription_id,
+        userId: r.user_id,
+        paymentId: r.payment_id,
+        note: r.note,
+        createdAt: r.created_at,
+        resolvedAt: r.resolved_at,
+        resolution: r.resolution,
+      });
+      const [open, resolved] = await Promise.all([
+        sb.from("payment_issues").select(cols).is("resolved_at", null).order("created_at", { ascending: false }),
+        sb
+          .from("payment_issues")
+          .select(cols)
+          .not("resolved_at", "is", null)
+          .order("resolved_at", { ascending: false })
+          .limit(resolvedLimit),
+      ]);
+      return { open: list<R>(open).map(row), resolved: list<R>(resolved).map(row) };
+    },
+    async resolvePaymentIssue(id, resolution, at) {
+      const rows = list(
+        await sb
+          .from("payment_issues")
+          .update({ resolved_at: at.toISOString(), resolution })
+          .eq("id", id)
+          .is("resolved_at", null)
+          .select("id"),
+      );
+      return rows.length > 0;
+    },
+    async paymentEventsSince(since) {
+      const [recent, latest] = await Promise.all([
+        sb.from("payment_events").select("event_id", { count: "exact", head: true }).gte("received_at", since.toISOString()),
+        sb.from("payment_events").select("received_at").order("received_at", { ascending: false }).limit(1),
+      ]);
+      if (recent.error) throw new Error(recent.error.message);
+      const last = list<{ received_at: string }>(latest)[0]?.received_at ?? null;
+      return { count: recent.count ?? 0, last };
     },
     async claimSeat(userId, subscriptionId) {
       return must<number | null>(await sb.rpc("claim_founding_seat", { p_user: userId, p_subscription: subscriptionId }));

@@ -30,7 +30,7 @@ UI components: use shadcn/ui, restyled to this look. Add gluestack-ui only if we
     - **Client:** `src/lib/server/razorpay.ts` (REST, no SDK). **Logic:** `src/lib/server/membership.ts`.
     - **Routes:** `/api/pay/{subscribe,verify,webhook,cancel}`.
     - **Tables:** `memberships`, `founding_seats` (`claim_founding_seat()` under a lock), `payment_events`,
-      `payment_issues` (a person checks these by hand; `/admin` doesn't show them yet), `early_access` (the
+      `payment_issues` (a person checks these by hand at `/admin/payments` and marks them resolved; it also counts recent webhooks), `early_access` (the
       go-live snapshot of what players had finished).
     - **Paywall:** the server enforces it (402 `members_only`) through `accessCheck` in `http.ts`. `PAYWALL_ON=1`
       turns it on for everyone; otherwise only `PAYWALL_TESTERS` emails see it.
