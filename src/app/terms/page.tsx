@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ClubRules, Grievance } from "@/components/legal/ClubLegal";
 import { LegalPage } from "@/components/legal/LegalPage";
+import { GRIEVANCE, helpMail } from "@/lib/legal";
 
 export const metadata: Metadata = { title: "Terms · CEO For A Day" };
 
@@ -11,8 +12,17 @@ export default function Terms() {
 
       <h2>A game, not advice</h2>
       <p>
-        CEO For A Day is for learning. It is not business, legal, tax or investment advice. Real stories use public sources. Other outcomes
-        in the game are our estimates of what might have happened.
+        CEO For A Day is for learning only, so it does not give business, financial, legal, tax or investment advice. Real stories are
+        based on public sources, while other outcomes in the game are our estimates of what could have happened.
+      </p>
+
+      <h2>Help</h2>
+      <p>
+        If you find a problem or have an idea, email{" "}
+        <a className="underline" href={helpMail()}>
+          {GRIEVANCE.email}
+        </a>
+        .
       </p>
 
       <h2>Your account</h2>
