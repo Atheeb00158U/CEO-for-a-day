@@ -58,7 +58,8 @@ UI components: use shadcn/ui, restyled to this look. Add gluestack-ui only if we
   EXIF, `club-image.ts`) into the private Storage bucket `club`; the phone only ever gets signed URLs (an hour), never
   for held or hidden content, nor for a request's pictures before it's accepted. Removed pictures move to `removed/`
   for 180 days; the hourly `/api/cron/remind` deletes those and unused uploads (`purgeImages`). Account delete and
-  "Leave the Club" delete `<user id>/*` from Storage (`removeFolder`).
+  "Leave the Club" delete `<user id>/*` from Storage (`removeFolder`), after `keepEvidence` moves pictures in an open
+  report or hidden content to `removed/`. One picture goes into one post or message (claimed inside `club_send`).
 - Group chats (step 3): the maker (a member at Trader) picks 2–19 people who follow each other with them; only the
   maker adds and removes; groups are counted with new chats in `club_chat_log` (`club_start_group`).
 

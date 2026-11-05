@@ -387,8 +387,11 @@ export interface Db {
     at: string;
   }): Promise<number | null>;
   getChat(id: number): Promise<ChatInfo | null>;
-  /** Add (or bring back) a group member, seeing only what comes after `clearedId`. */
-  addMember(chatId: number, userId: string, clearedId: number): Promise<void>;
+  /**
+   * Add (or bring back) a group member with the chat locked, seeing only what comes after; false when it already has
+   * `max` people (rpc club_add_member).
+   */
+  addMember(chatId: number, userId: string, max: number): Promise<boolean>;
   /** Players who follow `userId` and whom `userId` follows. */
   mutuals(userId: string): Promise<string[]>;
   chatMembers(chatId: number): Promise<ChatMemberRow[]>;
@@ -397,10 +400,11 @@ export interface Db {
   inbox(userId: string, state: "active" | "request", before: { at: string; id: number } | null, limit: number): Promise<InboxRow[]>;
   /**
    * Saves once per (chat, sender, clientId) and moves the chat to the top unless held, with the chat locked (rpc
-   * club_send). `fresh` is false for a retry: the saved row comes back and nothing else may happen. null: the sender
-   * already sent `requestCap` messages and the other player hasn't accepted.
+   * club_send). `fresh` is false for a retry: the saved row comes back and nothing else may happen. "cap": the sender
+   * already sent `requestCap` messages and the other player hasn't accepted. A picture is claimed inside the same lock,
+   * after the retry check; "picture": it isn't the sender's, is used already, or is over an hour old.
    */
-  sendMessage(row: NewMessage, at: string, requestCap: number): Promise<{ row: MessageRow; fresh: boolean } | null>;
+  sendMessage(row: NewMessage, at: string, requestCap: number): Promise<{ row: MessageRow; fresh: boolean } | "cap" | "picture">;
   /** Move a chat to the top (a held message a moderator kept). */
   bumpChat(chatId: number, messageId: number, at: string): Promise<void>;
   getMessage(id: number): Promise<MessageRow | null>;
@@ -418,13 +422,24 @@ export interface Db {
   dmNoticesOn(userId: string, day: string): Promise<number>;
 
   // Pictures (step 3): rows, then the files in the private bucket.
-  insertImage(row: Omit<ImageRow, "usedBy" | "keepUntil">): Promise<void>;
+  /**
+   * Save a new picture's row under the owner's daily cap, counted from a log that deletes don't clear, with a per-player
+   * lock (rpc club_add_image). false: over the cap.
+   */
+  addImage(row: Omit<ImageRow, "usedBy" | "keepUntil">, since: string, perDay: number): Promise<boolean>;
   /** Mark the owner's unused picture, made after `since`, as used; null if it isn't one. */
   claimImage(id: string, ownerId: string, since: string, usedBy: "post" | "message"): Promise<ImageRow | null>;
   imagesByIds(ids: string[]): Promise<ImageRow[]>;
+  /** Pictures added since then (from the log). */
   countImagesSince(ownerId: string, since: string): Promise<number>;
   /** A moderator removed it: no owner any more, a new path, deleted after `until`. */
   keepImage(id: string, path: string, until: string): Promise<void>;
+  /** A moderator kept it after all: back with its owner, at `path`. */
+  restoreImage(id: string, ownerId: string, path: string): Promise<void>;
+  /** The owner's pictures in an open report or in hidden content (rpc club_evidence_images). */
+  evidenceImages(ownerId: string): Promise<string[]>;
+  /** Which of these pictures an open report points at. */
+  reportedImages(ids: string[]): Promise<Set<string>>;
   deleteImages(ids: string[]): Promise<void>;
   /** Unused or orphaned for a day, and removed pictures past their keep date (rpc club_stale_images). */
   staleImages(before: string, limit: number): Promise<ImageRow[]>;
@@ -596,6 +611,7 @@ export function memoryDb(): Db & {
       club.files.removeFolder(id);
       club.dropProfile(id);
       for (let i = club.chatLog.length - 1; i >= 0; i--) if (club.chatLog[i].userId === id) club.chatLog.splice(i, 1);
+      for (let i = club.imageLog.length - 1; i >= 0; i--) if (club.imageLog[i].userId === id) club.imageLog.splice(i, 1);
       club.bans.delete(id);
       for (const r of club.reports) if (r.reporterId === id) r.reporterId = null;
       accounts.delete(id);
@@ -713,6 +729,8 @@ function clubStore() {
   const stored = new Map<string, Uint8Array>();
   /** club_chat_log: chats started, keyed to the account, so leaving the Club doesn't clear it. */
   const chatLog: { userId: string; request: boolean; createdAt: string }[] = [];
+  /** club_image_log: pictures added, keyed to the account. */
+  const imageLog: { userId: string; createdAt: string }[] = [];
   let nextId = 1;
   const clone = <T>(x: T): T => structuredClone(x);
   const prune = <T>(list: T[], gone: (x: T) => boolean) => {
@@ -853,7 +871,10 @@ function clubStore() {
     | "getChat"
     | "addMember"
     | "mutuals"
-    | "insertImage"
+    | "addImage"
+    | "restoreImage"
+    | "evidenceImages"
+    | "reportedImages"
     | "claimImage"
     | "imagesByIds"
     | "countImagesSince"
@@ -1103,10 +1124,14 @@ function clubStore() {
       const c = chats.find((x) => x.id === id);
       return c ? { id, group: c.pair === null, title: c.title, createdBy: c.createdBy } : null;
     },
-    async addMember(chatId, userId, clearedId) {
+    async addMember(chatId, userId, max) {
       const m = members.find((x) => x.chatId === chatId && x.userId === userId);
-      if (m) Object.assign(m, { state: "active", clearedId, lastReadId: clearedId });
-      else members.push({ chatId, userId, state: "active", lastReadId: clearedId, clearedId, activeAt: null });
+      if (m?.state === "active") return true;
+      if (members.filter((x) => x.chatId === chatId && x.state === "active").length >= max) return false;
+      const last = messages.filter((x) => x.chatId === chatId).at(-1)?.id ?? 0;
+      if (m) Object.assign(m, { state: "active", clearedId: last, lastReadId: last, activeAt: null });
+      else members.push({ chatId, userId, state: "active", lastReadId: last, clearedId: last, activeAt: null });
+      return true;
     },
     async mutuals(userId) {
       const back = new Set(follows.filter((f) => f.followee === userId).map((f) => f.follower));
@@ -1146,7 +1171,15 @@ function clubStore() {
       const waiting = members.some(
         (m) => m.chatId === row.chatId && m.userId !== row.senderId && (m.state === "request" || m.state === "declined"),
       );
-      if (waiting && messages.filter((m) => m.chatId === row.chatId && m.senderId === row.senderId).length >= requestCap) return null;
+      if (waiting && messages.filter((m) => m.chatId === row.chatId && m.senderId === row.senderId).length >= requestCap) return "cap";
+      if (row.imageId) {
+        const pic = images.find(
+          (i) =>
+            i.id === row.imageId && i.ownerId === row.senderId && i.usedBy === null && Date.parse(i.createdAt) > Date.parse(at) - 3600_000,
+        );
+        if (!pic) return "picture";
+        pic.usedBy = "message";
+      }
       const m: MessageRow = {
         ...clone(row),
         imageId: row.imageId ?? null,
@@ -1209,8 +1242,23 @@ function clubStore() {
       }
       return { chats: chatsN, requests };
     },
-    async insertImage(row) {
+    async addImage(row, from, perDay) {
+      if (imageLog.filter((l) => l.userId === row.ownerId && since(l.createdAt, from)).length >= perDay) return false;
       images.push({ ...clone(row), usedBy: null, keepUntil: null });
+      imageLog.push({ userId: row.ownerId!, createdAt: row.createdAt });
+      return true;
+    },
+    async restoreImage(id, ownerId, path) {
+      const i = images.find((x) => x.id === id);
+      if (i) Object.assign(i, { ownerId, path, keepUntil: null });
+    },
+    async evidenceImages(ownerId) {
+      const open = new Set(reports.filter((r) => r.status === "open" && r.imageId).map((r) => r.imageId));
+      const hidden = new Set([...posts, ...messages].filter((x) => x.hiddenAt && x.imageId).map((x) => x.imageId));
+      return images.filter((i) => i.ownerId === ownerId && (open.has(i.id) || hidden.has(i.id))).map((i) => i.id);
+    },
+    async reportedImages(ids) {
+      return new Set(reports.filter((r) => r.status === "open" && r.imageId && ids.includes(r.imageId)).map((r) => r.imageId!));
     },
     async claimImage(id, ownerId, from, usedBy) {
       const i = images.find((x) => x.id === id && x.ownerId === ownerId && x.usedBy === null && since(x.createdAt, from));
@@ -1222,7 +1270,7 @@ function clubStore() {
       return clone(images.filter((i) => ids.includes(i.id)));
     },
     async countImagesSince(ownerId, from) {
-      return images.filter((i) => i.ownerId === ownerId && since(i.createdAt, from)).length;
+      return imageLog.filter((l) => l.userId === ownerId && since(l.createdAt, from)).length;
     },
     async keepImage(id, path, until) {
       const i = images.find((x) => x.id === id);
@@ -1266,6 +1314,7 @@ function clubStore() {
     members,
     messages,
     chatLog,
+    imageLog,
     images,
     stored,
     files,
@@ -2114,15 +2163,8 @@ export function supabaseDb(sb = supabaseAdmin()): Db {
         }
       );
     },
-    async addMember(chatId, userId, clearedId) {
-      must(
-        await sb
-          .from("club_chat_members")
-          .upsert(
-            { chat_id: chatId, user_id: userId, state: "active", last_read_id: clearedId, cleared_id: clearedId, active_at: null },
-            { onConflict: "chat_id,user_id" },
-          ),
-      );
+    async addMember(chatId, userId, max) {
+      return !!must(await sb.rpc("club_add_member", { p_chat: chatId, p_user: userId, p_max: max }));
     },
     async mutuals(userId) {
       const [out, inn] = await Promise.all([
@@ -2193,7 +2235,8 @@ export function supabaseDb(sb = supabaseAdmin()): Db {
           p_event: row.event ?? null,
         })
         .single<Record<string, unknown>>();
-      if (error?.message.includes("club_request_cap")) return null;
+      if (error?.message.includes("club_request_cap")) return "cap";
+      if (error?.message.includes("club_picture")) return "picture";
       if (error) throw new Error(error.message);
       return { row: messageOf(data), fresh: !!data.fresh };
     },
@@ -2246,17 +2289,30 @@ export function supabaseDb(sb = supabaseAdmin()): Db {
       const r = must<{ chats: number; requests: number }>(await sb.rpc("club_unread", { p_user: userId }).single());
       return { chats: r.chats ?? 0, requests: r.requests ?? 0 };
     },
-    async insertImage(row) {
-      must(
-        await sb.from("club_images").insert({
-          id: row.id,
-          owner_id: row.ownerId,
-          path: row.path,
-          width: row.width,
-          height: row.height,
-          created_at: row.createdAt,
-        }),
-      );
+    async addImage(row, since, perDay) {
+      const { error } = await sb.rpc("club_add_image", {
+        p_id: row.id,
+        p_owner: row.ownerId,
+        p_path: row.path,
+        p_width: row.width,
+        p_height: row.height,
+        p_since: since,
+        p_per_day: perDay,
+      });
+      if (error?.message.includes("club_picture_cap")) return false;
+      if (error) throw new Error(error.message);
+      return true;
+    },
+    async restoreImage(id, ownerId, path) {
+      must(await sb.from("club_images").update({ owner_id: ownerId, path, keep_until: null }).eq("id", id));
+    },
+    async evidenceImages(ownerId) {
+      return list<string>(await sb.rpc("club_evidence_images", { p_owner: ownerId })).map(String);
+    },
+    async reportedImages(ids) {
+      if (!ids.length) return new Set<string>();
+      const rows = list<{ image_id: string }>(await sb.from("club_reports").select("image_id").eq("status", "open").in("image_id", ids));
+      return new Set(rows.map((r) => r.image_id));
     },
     async claimImage(id, ownerId, since, usedBy) {
       const r = must<Record<string, unknown> | null>(
@@ -2278,10 +2334,11 @@ export function supabaseDb(sb = supabaseAdmin()): Db {
     },
     async countImagesSince(ownerId, since) {
       const { count, error } = await sb
-        .from("club_images")
-        .select("id", { count: "exact", head: true })
-        .eq("owner_id", ownerId)
+        .from("club_image_log")
+        .select("user_id", { count: "exact", head: true })
+        .eq("user_id", ownerId)
         .gte("created_at", since);
+
       if (error) throw new Error(error.message);
       return count ?? 0;
     },

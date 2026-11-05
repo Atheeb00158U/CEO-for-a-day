@@ -547,7 +547,7 @@ export const CLUB_COPY = {
   addingPicture: "Adding picture…",
   picture: "Picture",
   pictureTooBig: "That picture is too big. Pick one under 5 MB.",
-  pictureType: "Use a JPG, PNG or WebP picture.",
+  pictureType: "Use a JPG, PNG or WebP picture. HEIC photos do not work yet.",
   tooManyPictures: "You cannot add more pictures today. Try tomorrow.",
   pictureGone: "Could not add the picture. Try again.",
   pictureHidden: "Accept the chat to see the picture.",

@@ -5,6 +5,7 @@ import { after } from "next/server";
 import { CLUB_COPY, LIMITS } from "@/lib/community";
 import * as Club from "@/lib/server/club";
 import type { Db } from "@/lib/server/db";
+import { readCapped } from "@/lib/server/club-image";
 import { GameError } from "@/lib/server/game";
 
 import { club, json } from "@/lib/server/http";
@@ -60,10 +61,16 @@ const ROUTES: Record<string, { max: number; act: Act }> = {
 
 /** The picture's bytes, read only once the gate has passed; a body over the limit is refused unread. */
 const picture = (request: Request) => async () => {
-  const size = Number(request.headers.get("content-length"));
-  if (!size || size > LIMITS.pictures.maxBytes + 64 * 1024) throw new GameError(CLUB_COPY.pictureTooBig);
-  const file = (await request.formData().catch(() => null))?.get("file");
-  return file instanceof Blob ? new Uint8Array(await file.arrayBuffer()) : null;
+  const max = LIMITS.pictures.maxBytes + 64 * 1024; // the picture plus the multipart wrapping
+  if (Number(request.headers.get("content-length")) > max) throw new GameError(CLUB_COPY.pictureTooBig);
+  // content-length can lie (or be missing): the bytes are counted as they arrive, and reading stops past the limit.
+  const body = await readCapped(request, max);
+  if (!body) throw new GameError(CLUB_COPY.pictureTooBig);
+  const type = request.headers.get("content-type") ?? "";
+  const file = (await new Response(body, { headers: { "content-type": type } }).formData().catch(() => null))?.get("file");
+  if (!(file instanceof Blob)) return null;
+  if (file.size > LIMITS.pictures.maxBytes) throw new GameError(CLUB_COPY.pictureTooBig);
+  return new Uint8Array(await file.arrayBuffer());
 };
 
 async function handle(request: Request, { params }: Ctx) {

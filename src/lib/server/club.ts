@@ -386,7 +386,9 @@ export async function updateMe(db: Db, userId: string, body: Record<string, unkn
 export async function leave(db: Db, userId: string, now = new Date()) {
   const m = await meOf(db, userId);
   if (!m.profile) throw new ClubGateError("join");
-  await db.removeFolder(userId); // Storage doesn't cascade (removed pictures are kept apart, for the IT Rules)
+  // Storage doesn't cascade. Pictures that are evidence (an open report, hidden content) are kept apart first.
+  await keepEvidence(db, userId, now);
+  await db.removeFolder(userId);
   await db.deleteClubProfile(userId);
   if (!bannedAt(m.bannedUntil, now)) await db.setClubBan(userId, new Date(now.getTime() + LIMITS.newMs).toISOString(), "left");
   return { left: true };
@@ -560,7 +562,7 @@ export async function createPost(db: Db, userId: string, body: Record<string, un
     throw new GameError(parent ? CLUB_COPY.tooManyReplies : CLUB_COPY.tooManyPosts);
   if (await db.countPostsSince(userId, kind, ago(now, rule.gapMs))) throw new GameError(CLUB_COPY.slowDown);
   if (await db.lastPostBody(userId, ago(now, 24 * H), text)) throw new GameError(CLUB_COPY.repeat);
-  const imageId = await attach(db, userId, body.imageId, "post", now);
+  const imageId = await attach(db, userId, body.imageId, now);
   const at = now.toISOString();
   const row = await db.insertPost({
     authorId: userId,
@@ -611,12 +613,15 @@ export async function createPost(db: Db, userId: string, body: Record<string, un
   return { post: (await viewsOf(db, m, [row], now))[0] };
 }
 
-export async function deletePost(db: Db, userId: string, id: unknown) {
+export async function deletePost(db: Db, userId: string, id: unknown, now = new Date()) {
   const p = await db.getPost(idOf(id));
   if (!p || p.authorId !== userId) throw new GameError(CLUB_COPY.postGone);
+  // Its picture goes too, unless it is evidence (an open report on it, or the post is hidden): then it is kept 180 days
+  // apart from the player. Replies' pictures go in the hourly clean-up, which keeps reported ones the same way.
+  const evidence = !!p.imageId && (!!p.hiddenAt || (await db.reportedImages([p.imageId])).size > 0);
+  if (evidence) await keepRemoved(db, p.imageId, now);
   await db.deletePost(p.id);
-  // Its picture goes too (its replies' pictures go in the hourly clean-up); one a moderator removed stays its 180 days.
-  const [img] = p.imageId ? await db.imagesByIds([p.imageId]) : [];
+  const [img] = p.imageId && !evidence ? await db.imagesByIds([p.imageId]) : [];
   if (img?.ownerId) {
     await db.removeFiles([img.path]);
     await db.deleteImages([img.id]);
@@ -765,6 +770,15 @@ async function keepRemoved(db: Db, imageId: string | null, now: Date) {
   await db.keepImage(img.id, to, new Date(now.getTime() + KEEP_DAYS * 24 * H).toISOString());
 }
 
+/** A moderator kept or restored the content after all: its picture goes back to its owner, if they're still here. */
+async function restoreKept(db: Db, imageId: string | null, ownerId: string | null) {
+  const [img] = imageId ? await db.imagesByIds([imageId]) : [];
+  if (!img || img.ownerId || !ownerId || !(await db.clubProfile(ownerId))) return;
+  const to = `${ownerId}/${img.id}.webp`;
+  await db.moveFile(img.path, to);
+  await db.restoreImage(img.id, ownerId, to);
+}
+
 async function hideTarget(db: Db, kind: string, id: string, at: string | null) {
   if (kind === "post" && at && (await db.getPost(Number(id)))?.authorId === null) return; // never the Wolf's
   if (kind === "post") await db.setPostState(Number(id), at ? { hiddenAt: at } : { hiddenAt: null, held: null });
@@ -803,8 +817,14 @@ export async function moderate(
   const removes = action !== "keep" && action !== "lift";
   const held = r.targetKind === "message" && action === "keep" ? await db.getMessage(Number(r.targetId)) : null;
   await hideTarget(db, r.targetKind, r.targetId, removes ? at : null);
-  if (removes && r.targetKind === "post") await keepRemoved(db, (await db.getPost(Number(r.targetId)))?.imageId ?? null, now);
-  if (removes && r.targetKind === "message") await keepRemoved(db, (await db.getMessage(Number(r.targetId)))?.imageId ?? null, now);
+  const pictureOf = async () =>
+    r.targetKind === "post"
+      ? ((await db.getPost(Number(r.targetId)))?.imageId ?? null)
+      : r.targetKind === "message"
+        ? ((await db.getMessage(Number(r.targetId)))?.imageId ?? null)
+        : null;
+  if (removes) await keepRemoved(db, await pictureOf(), now);
+  else await restoreKept(db, await pictureOf(), author);
   // A held message a moderator kept reaches the chat now: it moves to the top, live and with a push.
   if (held?.held && !held.hiddenAt) {
     await db.bumpChat(held.chatId, held.id, at);
@@ -816,7 +836,6 @@ export async function moderate(
   if (author && action === "ban" && input.hideAll) {
     // Hide everything they posted; each hidden item keeps its text in a resolved report row (the 180-day record).
     for (const p of await db.hidePostsBy(author, at)) {
-      await keepRemoved(db, p.imageId, now);
       await db.insertReport({
         reporterId: null,
         targetKind: "post",
@@ -832,7 +851,6 @@ export async function moderate(
       await db.resolveReports("post", String(p.id), "removed", at);
     }
     for (const msg of await db.hideMessagesBy(author, at)) {
-      await keepRemoved(db, msg.imageId, now);
       await db.insertReport({
         reporterId: null,
         targetKind: "message",
@@ -847,6 +865,8 @@ export async function moderate(
       });
       await db.resolveReports("message", String(msg.id), "removed", at);
     }
+    // Every picture in their hidden content, also what reports hid before now, is kept 180 days apart from them.
+    await keepEvidence(db, author, now);
     await db.updateClubProfile(author, { hiddenAt: at });
   }
   const resolved = await db.resolveReports(r.targetKind, r.targetId, removes ? "removed" : "kept", at);
@@ -1071,7 +1091,8 @@ export async function chats(db: Db, userId: string, state: "active" | "request",
       at: r.last.createdAt,
       mine: r.last.senderId === userId,
     },
-    unread: r.last.senderId !== userId && (state === "request" || r.last.id > r.lastReadId),
+    // As club_unread: a blocked player's message doesn't make a chat unread.
+    unread: r.last.senderId !== userId && !m.blocked.has(r.last.senderId) && (state === "request" || r.last.id > r.lastReadId),
   }));
   const { requests } = await db.unreadChats(userId);
   const end = rows.at(-1);
@@ -1170,14 +1191,16 @@ export async function sendMessage(
   const flag = autoFlag(text);
   if (flag.refuse) throw new GameError(flag.refuse);
   const held = !info.group && asked(other) && !!flag.hold;
-  const imageId = await attach(db, userId, body.imageId, "message", now, true);
+  const imageId = picture ? pictureId(body.imageId) : null;
   const at = now.toISOString();
+  // The picture is claimed inside club_send, under the chat lock, after the retry check: one picture, one message.
   const sent = await db.sendMessage(
     { chatId, senderId: userId, clientId, body: text, flagged: flag.hold ?? null, held, imageId },
     at,
     LIMITS.chats.requestMessages,
   );
-  if (!sent) throw new GameError(CLUB_COPY.waitAccept(otherProfile!.name));
+  if (sent === "cap") throw new GameError(CLUB_COPY.waitAccept(otherProfile!.name));
+  if (sent === "picture") throw new GameError(CLUB_COPY.pictureGone);
   const { row } = sent;
   const mineView = async () => viewOf(row, userId, { images: await imagesFor(db, [row.imageId]) });
   // A retry (same chat and clientId) gets the saved row back and nothing else happens.
@@ -1385,7 +1408,7 @@ async function groupEvent(
     at,
     LIMITS.chats.requestMessages,
   );
-  if (sent?.fresh) await deliverMessage(db, sent.row, now, side);
+  if (typeof sent === "object" && sent.fresh) await deliverMessage(db, sent.row, now, side);
 }
 
 /** People the player follows who follow them back: who can go in a group. */
@@ -1440,7 +1463,20 @@ async function myGroup(db: Db, m: Me, id: unknown, now: Date) {
   if (c.info.createdBy !== m.userId) throw new GameError(CLUB_COPY.onlyMaker);
   const can = canPost(await gateOf(db, m, now, true), now);
   if (can !== "ok") throw new ClubGateError(can);
+  if (groupBusy(chatId, now)) throw new GameError(CLUB_COPY.slowDown);
   return { chatId, c };
+}
+
+/** Adds and removes: at most 20 a minute in one group, so a maker can't flood its members with lines and pushes. */
+const GROUP_OPS = 20;
+const groupOps = new Map<number, number[]>();
+function groupBusy(chatId: number, now: Date) {
+  const t = now.getTime();
+  if (groupOps.size > 10_000) groupOps.clear();
+  const recent = (groupOps.get(chatId) ?? []).filter((x) => t - x < 60_000);
+  if (recent.length >= GROUP_OPS) return true;
+  groupOps.set(chatId, [...recent, t]);
+  return false;
 }
 
 /** The maker adds someone who follows each other with them; they see only what comes after. */
@@ -1455,10 +1491,10 @@ export async function addToGroup(
   const m = await meOf(db, userId);
   const { chatId, c } = await myGroup(db, m, id, now);
   const p = await groupable(db, m, body.handle, now);
-  const active = c.members.filter((x) => x.state === "active");
-  if (active.some((x) => x.userId === p.userId)) return { ok: true };
-  if (active.length >= LIMITS.groups.maxMembers) throw new GameError(CLUB_COPY.groupFull);
-  await db.addMember(chatId, p.userId, await db.lastMessageId(chatId));
+  if (c.members.some((x) => x.userId === p.userId && x.state === "active")) return { ok: true };
+  // The count and the add happen with the chat locked, so two adds at once can't pass 20 people.
+  if (!(await db.addMember(chatId, p.userId, LIMITS.groups.maxMembers))) throw new GameError(CLUB_COPY.groupFull);
+
   await groupEvent(db, side, chatId, userId, "added", p.name, now);
   const by = m.profile!.name;
   const title = c.info.title ?? "";
@@ -1502,18 +1538,20 @@ export async function leaveGroup(db: Db, userId: string, id: unknown, now = new 
 /* ------------------------------------------------------------------ */
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
 
-/**
- * A picture the player added in the last hour and hasn't used, now taken by this post or message (null: none).
- * `retry`: a message sent again (same clientId) carries the picture its first try already took.
- */
-async function attach(db: Db, userId: string, x: unknown, usedBy: "post" | "message", now: Date, retry = false): Promise<string | null> {
-  if (x === undefined || x === null || x === "") return null;
+const pictureId = (x: unknown): string => {
   if (typeof x !== "string" || !UUID.test(x)) throw new GameError(CLUB_COPY.pictureGone);
-  const img = await db.claimImage(x, userId, ago(now, H), usedBy);
-  if (img) return img.id;
-  const [used] = retry ? await db.imagesByIds([x]) : [];
-  if (used?.ownerId === userId && used.usedBy === usedBy && Date.parse(used.createdAt) > now.getTime() - H) return used.id;
-  throw new GameError(CLUB_COPY.pictureGone);
+  return x;
+};
+
+/**
+ * A picture the player added in the last hour and hasn't used, taken by this post in one conditional update (only one
+ * caller can win it). null: none. Messages claim theirs inside club_send instead.
+ */
+async function attach(db: Db, userId: string, x: unknown, now: Date): Promise<string | null> {
+  if (x === undefined || x === null || x === "") return null;
+  const img = await db.claimImage(pictureId(x), userId, ago(now, H), "post");
+  if (!img) throw new GameError(CLUB_COPY.pictureGone);
+  return img.id;
 }
 
 /**
@@ -1531,7 +1569,9 @@ export async function uploadImage(db: Db, userId: string, chat: unknown, read: (
     const can = canPost(await gateOf(db, m, now, true), now);
     if (can !== "ok") throw new ClubGateError(can);
   }
-  if ((await db.countImagesSince(userId, istMidnight(now))) >= LIMITS.pictures.perDay) throw new GameError(CLUB_COPY.tooManyPictures);
+  const midnight = istMidnight(now);
+  // A cheap first check, so a player over the cap isn't decoded; the real one is atomic (addImage).
+  if ((await db.countImagesSince(userId, midnight)) >= LIMITS.pictures.perDay) throw new GameError(CLUB_COPY.tooManyPictures);
   const bytes = await read();
   if (!bytes || !bytes.length) throw new GameError(CLUB_COPY.pictureType);
   if (bytes.length > LIMITS.pictures.maxBytes) throw new GameError(CLUB_COPY.pictureTooBig);
@@ -1540,22 +1580,41 @@ export async function uploadImage(db: Db, userId: string, chat: unknown, read: (
   if (!pic) throw new GameError(CLUB_COPY.pictureType);
   const id = randomUUID();
   const path = `${userId}/${id}.webp`;
-  // The row first: if the upload fails, the hourly clean-up deletes the row.
-  await db.insertImage({ id, ownerId: userId, path, width: pic.width, height: pic.height, createdAt: now.toISOString() });
+  // The row first (counted under the daily cap, atomically): if the upload fails, the hourly clean-up deletes the row.
+  const row = { id, ownerId: userId, path, width: pic.width, height: pic.height, createdAt: now.toISOString() };
+  if (!(await db.addImage(row, midnight, LIMITS.pictures.perDay))) throw new GameError(CLUB_COPY.tooManyPictures);
   await db.putFile(path, pic.data);
   return { imageId: id, width: pic.width, height: pic.height };
 }
 
-/** Hourly (with the reminders): delete pictures nobody uses after a day, and removed ones after their 180 days. */
+const PURGE_PAGE = 200;
+const PURGE_ROUNDS = 10;
+/**
+ * Hourly (with the reminders): delete pictures nobody uses after a day, and removed ones after their 180 days. An
+ * unused picture an open report points at (say, a deleted post's reply) is kept as evidence instead. At most 10
+ * rounds an hour, so a failing delete can't loop for ever; the rest waits for the next hour.
+ */
 export async function purgeImages(db: Db, now = new Date()) {
   let n = 0;
-  for (;;) {
-    const stale = await db.staleImages(ago(now, 24 * H), 200);
-    if (stale.length) {
-      await db.removeFiles(stale.map((i) => i.path));
-      await db.deleteImages(stale.map((i) => i.id));
+  for (let round = 0; round < PURGE_ROUNDS; round++) {
+    const stale = await db.staleImages(ago(now, 24 * H), PURGE_PAGE);
+    const reported = await db.reportedImages(stale.filter((i) => i.ownerId).map((i) => i.id));
+    for (const id of reported) await keepRemoved(db, id, now);
+    const gone = stale.filter((i) => !reported.has(i.id));
+    if (gone.length) {
+      await db.removeFiles(gone.map((i) => i.path));
+      await db.deleteImages(gone.map((i) => i.id));
     }
-    n += stale.length;
-    if (stale.length < 200) return { images: n };
+    n += gone.length;
+    if (stale.length < PURGE_PAGE) break;
   }
+  return { images: n };
+}
+
+/**
+ * Before a player's own pictures are deleted (deleting a post or the account, leaving the Club): any that are evidence,
+ * in an open report or in hidden content, are kept 180 days apart from them instead.
+ */
+export async function keepEvidence(db: Db, ownerId: string, now = new Date()) {
+  for (const id of await db.evidenceImages(ownerId)) await keepRemoved(db, id, now);
 }
