@@ -17,6 +17,8 @@ export interface Message {
   url?: string;
   /** Replaces an older notification with the same tag (default daily-reminder). */
   tag?: string;
+  /** A chat message: sent at high urgency and dropped after an hour (not part of the payload). */
+  urgent?: boolean;
 }
 
 /** The hour (0–23) in India right now. */
@@ -96,10 +98,11 @@ export const webPush: Send = async (row, msg) => {
   const priv = process.env.VAPID_PRIVATE_KEY;
   if (!pub || !priv) throw new Error("NEXT_PUBLIC_VAPID_PUBLIC_KEY and VAPID_PRIVATE_KEY must be set on the server");
   try {
-    await webpush.sendNotification({ endpoint: row.endpoint, keys: row.keys }, JSON.stringify(msg), {
+    const { urgent, ...payload } = msg;
+    await webpush.sendNotification({ endpoint: row.endpoint, keys: row.keys }, JSON.stringify(payload), {
       vapidDetails: { subject: "https://ceoforaday.in", publicKey: pub, privateKey: priv },
-      TTL: 6 * 3600, // a reminder older than 6 hours is no use
-      urgency: "normal",
+      TTL: urgent ? 3600 : 6 * 3600, // a reminder older than 6 hours is no use; a chat push older than one hour
+      urgency: urgent ? "high" : "normal",
     });
     return "sent";
   } catch (e) {
@@ -130,7 +133,12 @@ export async function deliver(
   if (quiet(istHour(now)) || (await cap.count(userId, day)) >= cap.max) return false;
   if (!(await db.logNotice(userId, msg.kind, day))) return false;
   for (const row of phones) {
-    const r = await send(row, { title: msg.title, body: msg.body, ...(msg.url ? { url: msg.url, tag: msg.tag } : {}) });
+    const r = await send(row, {
+      title: msg.title,
+      body: msg.body,
+      ...(msg.url ? { url: msg.url, tag: msg.tag } : {}),
+      ...(msg.urgent ? { urgent: true } : {}),
+    });
     if (r === "gone") await db.deletePush(row.endpoint);
     tally[r]++;
   }

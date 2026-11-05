@@ -55,6 +55,19 @@ describe("/api/club/*", () => {
     expect(await r.json()).toEqual({ error: "club", can: "join" });
     expect((await call("GET", ["nope"], "good")).status).toBe(404);
   });
+
+  it("takes a picture as multipart, after the gate", async () => {
+    vi.stubEnv("PAYWALL_TESTERS", "tester@example.com");
+    const form = new FormData();
+    form.append("file", new Blob([new Uint8Array([0xff, 0xd8, 0xff, 0])], { type: "image/jpeg" }), "a.jpg");
+    const upload = (headers: Record<string, string> = {}) =>
+      POST(new Request("http://x/api/club/image", { method: "POST", headers: { authorization: "Bearer good", ...headers }, body: form }), {
+        params: Promise.resolve({ path: ["image"] }),
+      });
+    const r = await upload();
+    expect(r.status).toBe(403); // not joined: refused before the file is read
+    expect(await r.json()).toEqual({ error: "club", can: "join" });
+  });
 });
 
 describe("clubOn", () => {

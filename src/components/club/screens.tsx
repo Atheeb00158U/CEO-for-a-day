@@ -14,8 +14,9 @@ import {
   type ReportView,
 } from "@/lib/community";
 import { ReminderCard } from "../ReminderCard";
+import { messagePlayer } from "./chat";
 import { PostCard } from "./PostCard";
-import { Avatar, errorText, gateOf, linkBtn, openClub, TitleStars, useClub } from "./shared";
+import { Avatar, errorText, gateOf, linkBtn, openClub, PictureButton, PicturePreview, TitleStars, useClub, usePicture } from "./shared";
 
 /** Load a page; `more` appends the next one. */
 function usePaged<T>(load: (cursor?: string) => Promise<{ items: T[]; cursor?: string }>, key: string) {
@@ -98,12 +99,20 @@ export function Feed({
       <div className="flex items-center justify-between pt-2">
         <h1 className="text-[26px] font-black">{CLUB_COPY.title}</h1>
         {me?.profile && (
-          <button type="button" className="relative p-1 text-muted" aria-label={CLUB_COPY.activity} onClick={() => openClub("activity")}>
-            <svg viewBox="0 0 24 24" className="size-7" fill="currentColor" aria-hidden="true">
-              <path d="M12 2a6 6 0 0 0-6 6v4l-2 3v1h16v-1l-2-3V8a6 6 0 0 0-6-6zm-2.5 16a2.5 2.5 0 0 0 5 0z" />
-            </svg>
-            {me.badge.activity > 0 && <span className="absolute top-1 right-1 size-2.5 rounded-full bg-red" />}
-          </button>
+          <span className="flex items-center gap-1">
+            <button type="button" className="relative p-1 text-muted" aria-label={CLUB_COPY.messages} onClick={() => openClub("inbox")}>
+              <svg viewBox="0 0 24 24" className="size-7" fill="currentColor" aria-hidden="true">
+                <path d="M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H8l-5 4z" />
+              </svg>
+              {me.badge.chats + me.badge.requests > 0 && <span className="absolute top-1 right-1 size-2.5 rounded-full bg-red" />}
+            </button>
+            <button type="button" className="relative p-1 text-muted" aria-label={CLUB_COPY.activity} onClick={() => openClub("activity")}>
+              <svg viewBox="0 0 24 24" className="size-7" fill="currentColor" aria-hidden="true">
+                <path d="M12 2a6 6 0 0 0-6 6v4l-2 3v1h16v-1l-2-3V8a6 6 0 0 0-6-6zm-2.5 16a2.5 2.5 0 0 0 5 0z" />
+              </svg>
+              {me.badge.activity > 0 && <span className="absolute top-1 right-1 size-2.5 rounded-full bg-red" />}
+            </button>
+          </span>
         )}
       </div>
       <div className="flex items-center gap-2">
@@ -154,12 +163,14 @@ export function Thread({ id }: { id: string }) {
     return { items: r.replies, cursor: r.after ? String(r.after) : undefined };
   }, id);
   const canReply = me?.can.post === "ok";
+  const picture = usePicture();
   const reply = async () => {
     setBusy(true);
     setSendError(undefined);
     try {
-      const r = await api<{ post: PostView }>("/api/club/post", { body: { body: text, parentId: post!.id } });
+      const r = await api<{ post: PostView }>("/api/club/post", { body: { body: text, parentId: post!.id, imageId: picture.imageId } });
       setText("");
+      picture.clear();
       page.setItems((x) => [...(x ?? []), r.post]);
       setPost((p) => p && { ...p, replies: p.replies + 1 });
     } catch (e) {
@@ -189,7 +200,9 @@ export function Thread({ id }: { id: string }) {
         <div className="sticky bottom-0 -mx-4 mt-auto border-t-2 border-line bg-bg px-4 py-3">
           {canReply ? (
             <>
-              <div className="flex gap-2">
+              <PicturePreview p={picture} />
+              <div className="mt-2 flex gap-2 first:mt-0">
+                {!picture.pic && <PictureButton onPick={picture.pick} />}
                 <input
                   className="min-w-0 flex-1 rounded-2xl border-2 border-line bg-surface px-3 py-2.5 text-[16px] font-bold outline-none focus:border-brand"
                   placeholder={CLUB_COPY.replyPlaceholder}
@@ -200,7 +213,7 @@ export function Thread({ id }: { id: string }) {
                 <button
                   type="button"
                   className="btn3d green !w-auto !px-4 !py-2 !text-[15px]"
-                  disabled={busy || !text.trim()}
+                  disabled={busy || picture.busy || !text.trim()}
                   onClick={() => void reply()}
                 >
                   {CLUB_COPY.reply}
@@ -377,13 +390,22 @@ export function ClubProfile({ handle }: { handle: string }) {
           {CLUB_COPY.unblock(p.name)}
         </button>
       ) : (
-        <button
-          type="button"
-          className={`btn3d ${p.youFollow ? "ghost" : "green"}`}
-          onClick={() => void call("/api/club/follow", { handle: p.handle, on: !p.youFollow })}
-        >
-          {p.youFollow ? CLUB_COPY.followingBtn : CLUB_COPY.follow}
-        </button>
+        <div className="flex gap-2">
+          <button
+            type="button"
+            className={`btn3d flex-1 ${p.youFollow ? "ghost" : "green"}`}
+            onClick={() => void call("/api/club/follow", { handle: p.handle, on: !p.youFollow })}
+          >
+            {p.youFollow ? CLUB_COPY.followingBtn : CLUB_COPY.follow}
+          </button>
+          <button
+            type="button"
+            className="btn3d ghost flex-1"
+            onClick={() => void messagePlayer(p.handle, nudge).then((e) => e && setError(e))}
+          >
+            {CLUB_COPY.message}
+          </button>
+        </div>
       )}
       {!p.blocked && (
         <>

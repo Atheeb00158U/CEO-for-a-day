@@ -6,7 +6,7 @@ import { api } from "@/lib/auth";
 import { CLUB_COPY, LIMITS, REPORT_REASONS, type PostView, type ProfileView } from "@/lib/community";
 import { GRIEVANCE } from "@/lib/legal";
 import { useGame } from "@/lib/store";
-import { ClubSheet, errorText, gateOf, linkBtn, useClub } from "./shared";
+import { ClubSheet, errorText, gateOf, linkBtn, PictureButton, PicturePreview, useClub, usePicture } from "./shared";
 
 const field = "w-full rounded-2xl border-2 border-line bg-bg px-3 py-2.5 text-[16px] font-bold outline-none focus:border-brand";
 
@@ -137,7 +137,13 @@ export function RulesSheet({ open, onOpenChange }: { open: boolean; onOpenChange
   );
 }
 
-export function ReportSheet({ target, onClose }: { target: { kind: "post" | "profile"; id: string } | null; onClose: () => void }) {
+export function ReportSheet({
+  target,
+  onClose,
+}: {
+  target: { kind: "post" | "profile" | "message"; id: string } | null;
+  onClose: () => void;
+}) {
   const [reason, setReason] = useState<string | null>(null);
   const [note, setNote] = useState("");
   const [state, setState] = useState<"idle" | "busy" | "done">("idle");
@@ -219,13 +225,15 @@ export function Composer({
   const [text, setText] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string>();
+  const picture = usePicture();
   const left = LIMITS.postLength - [...text].length;
   const post = async () => {
     setBusy(true);
     setError(undefined);
     try {
-      const r = await api<{ post: PostView }>("/api/club/post", { body: { body: text } });
+      const r = await api<{ post: PostView }>("/api/club/post", { body: { body: text, imageId: picture.imageId } });
       setText("");
+      picture.clear();
       onPosted(r.post);
       onOpenChange(false);
     } catch (e) {
@@ -247,8 +255,10 @@ export function Composer({
         value={text}
         onChange={(e) => setText(e.target.value)}
       />
-      <div className="flex items-center justify-between text-[14px] font-bold text-muted">
-        <span>{CLUB_COPY.rulesLine}</span>
+      <PicturePreview p={picture} />
+      <div className="flex items-center justify-between gap-3 text-[14px] font-bold text-muted">
+        {!picture.pic && <PictureButton onPick={picture.pick} />}
+        <span className="flex-1">{CLUB_COPY.rulesLine}</span>
         {left <= 50 && <span className={left < 0 ? "text-red" : ""}>{CLUB_COPY.left(left)}</span>}
       </div>
       {error && (
@@ -256,7 +266,7 @@ export function Composer({
           {error}
         </p>
       )}
-      <button type="button" className="btn3d green" disabled={busy || !text.trim() || left < 0} onClick={() => void post()}>
+      <button type="button" className="btn3d green" disabled={busy || picture.busy || !text.trim() || left < 0} onClick={() => void post()}>
         {CLUB_COPY.post}
       </button>
       <button type="button" className={linkBtn} onClick={() => onOpenChange(false)}>

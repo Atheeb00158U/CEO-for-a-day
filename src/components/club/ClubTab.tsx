@@ -1,13 +1,14 @@
 "use client";
 
 // The Club tab: a small screen stack mirrored in the hash (#club, #club/post/9, #club/@ravik, #club/activity,
-// #club/reports), so the phone's back button and notification links work. App passes the part after "#club/".
+// #club/reports, #club/inbox, #club/requests, #club/chat/9), so the phone's back button and notification links work. App passes the part after "#club/".
 import { useCallback, useEffect, useRef, useState } from "react";
 import { api } from "@/lib/auth";
 import { CLUB_COPY, type Can, type ClubMe, type PostView } from "@/lib/community";
 import { showPaywall } from "@/lib/content-client";
 import { useGame } from "@/lib/store";
 import { SignInCard } from "../SignInCard";
+import { Chat, Inbox, Requests } from "./chat";
 import { Activity, ClubProfile, Feed, MyReports, Thread } from "./screens";
 import { ClubContext, TitleStars } from "./shared";
 import { Composer, JoinSheet, NudgeSheet, ReportSheet } from "./sheets";
@@ -19,7 +20,7 @@ export function ClubTab({ sub, onPlay, onMe }: { sub: string; onPlay: () => void
   const [composing, setComposing] = useState(false);
   const [joining, setJoining] = useState(false);
   const [nudgeKind, setNudgeKind] = useState<"rank" | "banned" | null>(null);
-  const [reporting, setReporting] = useState<{ kind: "post" | "profile"; id: string } | null>(null);
+  const [reporting, setReporting] = useState<{ kind: "post" | "profile" | "message"; id: string } | null>(null);
   const [added, setAdded] = useState<PostView[]>([]);
 
   const onMeRef = useRef(onMe);
@@ -56,6 +57,12 @@ export function ClubTab({ sub, onPlay, onMe }: { sub: string; onPlay: () => void
         <Activity />
       ) : screen === "reports" ? (
         <MyReports />
+      ) : screen === "inbox" ? (
+        <Inbox />
+      ) : screen === "requests" ? (
+        <Requests />
+      ) : screen === "chat" && arg ? (
+        <Chat key={arg} id={arg} />
       ) : (
         <>
           <Feed tab={tab} onTab={setTab} added={added} />
