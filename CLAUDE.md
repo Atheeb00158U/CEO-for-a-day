@@ -6,7 +6,7 @@ UI components: use shadcn/ui, restyled to this look. Add gluestack-ui only if we
 
 ## Product decisions from the owner (Atheeb)
 - **Player first (1 Nov 2026):** judge every change by "will a new Indian player enjoy this, keep playing, and pay?" Question earlier decisions, even approved ones, and change them when that test says so; tell Atheeb what changed and why instead of asking.
-- **Free tier (1 Nov 2026):** Module 1 (lessons + the kirana story) plus one famous showcase Hot Seat, Kingfisher, so free players feel the dramatic stories. The paywall comes after players have something to lose (streak, league place, notes). Pricing isn't built yet.
+- **Free tier (4 Nov 2026):** only Module 1.1 (`u1-where-money-goes`: its lessons, test-out and the Kirana Year Hot Seat). Module 1.2 and Nirma are paid; the website sample shows only Nirma's first decision. `freeItems` (`src/lib/access.ts`) reads the first module of the first unit from course.json. The paywall comes after players have something to lose (streak, league place, notes).
 - **Name:** "CEO For A Day". A single case study is called a **Hot Seat**; never write "case study" in the UI.
 - **Audience:** wannabe and struggling entrepreneurs in India.
   - English first. Hindi, Tamil, Bengali and more come close to launch; don't build i18n yet.
@@ -17,7 +17,53 @@ UI components: use shadcn/ui, restyled to this look. Add gluestack-ui only if we
 - **Choice feedback:** every choice shows what happened (as story), why it was good or bad, and, for ok/bad choices, what would have worked. Alternate-history outcomes are labelled as estimates.
 - **Board trust (3 hearts):** losing them all before the last decision ends the run (the "fired" ending). Players can fix mistakes until it's too late.
 - **Media sources:** no more AI-generated images. Find every image in four archives: movingimagearchive.com (public domain, the main source), film-grab.com (copyrighted film stills: small credited inserts only, flagged to Atheeb), frameset.app (reference only unless licensed) and fashiongonerogue.com (reference only unless a credited insert). Rules and the per-Hot Seat `media.md` are in `docs/AUTHORING.md` step 5. Where no archive fits (most Indian stories), images are generated with ChatGPT in the browser on Atheeb's sign-in: period-correct, no logos, no real person's likeness. Images already in the app were made with Z-Image Turbo and stay until replaced. Narration uses OmniVoice (the engine in Atheeb's VoiceStudio app): the narrator is Atheeb's cloned voice and the advisor a designed voice (female, middle-aged, Indian accent), both cloned from `scripts/voices/`.
-- **Pricing plan (not built):** ₹599/week, ₹1,499/month, or ₹999/month billed yearly.
+- **Pricing (3 Nov 2026):**
+  - **Founding offer (4 Nov 2026):** members in seats 1–1,000 pay ₹99/month, locked while subscribed
+    (`founding_seats`, `src/lib/offer.ts`); the offer closes at 1,000.
+  - **After that:** ₹199/month or ₹1,499/year.
+  - **How it's shown:** `<s>₹199</s> ₹99 a month` (`FoundingPrice`) with "Founding price, only for the first
+    1,000 members." Striking ₹199 is honest because it is the real regular price charged after the founding
+    seats. Never show players a seat count or seat number; `/api/seats` sends only `{ open }`.
+  - **Not allowed (CCPA dark-patterns guidelines, 2023):** invented "was" prices nobody pays, fake viewer
+    counts, AutoPay free trials.
+  - **Payments (Razorpay Subscriptions, live 4 Nov 2026):**
+    - **Client:** `src/lib/server/razorpay.ts` (REST, no SDK). **Logic:** `src/lib/server/membership.ts`.
+    - **Routes:** `/api/pay/{subscribe,verify,webhook,cancel}`.
+    - **Tables:** `memberships`, `founding_seats` (`claim_founding_seat()` under a lock), `payment_events`,
+      `payment_issues` (a person checks these by hand; `/admin` doesn't show them yet), `early_access` (the
+      go-live snapshot of what players had finished).
+    - **Paywall:** the server enforces it (402 `members_only`) through `accessCheck` in `http.ts`. `PAYWALL_ON=1`
+      turns it on for everyone; otherwise only `PAYWALL_TESTERS` emails see it.
+    - **Keys:** live keys, plan ids and the webhook secret are Railway variables (see `.env.example`). Never
+      handle them in chat or code.
+    - **Testing:** Razorpay test mode can't send webhooks to localhost, so test on Railway with test keys and
+      testers. Google Pay shows an error for test UPI links; use UPI `success@razorpay` or a test card.
+  - **Spec:** `docs/superpowers/specs/2026-11-03-wolf-ambassador-design.md`.
+- **The wolf (3 Nov 2026):** an original wolf in a pinstripe three-piece suit is the face of the brand, and
+  will become the mentor and the Hot Seat advisor. Masters are in `content/brand/wolf/`; `npm run brand`
+  builds the served sizes. His voice is designed in OmniVoice (`scripts/voices/wolf.wav`, deep, male, Indian
+  accent), never cloned from a recording. Since 5 Nov 2026 he is calm, firm and serious (no "Hah!"): seed 42 of
+  the instruct with a serious reference sentence (`REF_TEXT` in `narrate.py`).
+- **Career titles (4 Nov 2026):** one title per unit (Street Seller, Shopkeeper, Trader, Brand Owner, Dealmaker,
+  Business Owner, Boss, Tycoon, Founder, CEO) and a star per finished module (lessons or test-out, plus its gates).
+  `careerOf` in `src/lib/career.ts`; others see it in the league. The server works it out from its own records
+  (`trustedCareers`), never from a phone or imported save; each new title is cheered once (`rankSeen`).
+
+## The Club (step 1, 5 Nov 2026)
+- Spec: `docs/superpowers/specs/2026-11-04-community-design.md`. Feed, profiles, likes, follows, report/block; chat is step 2.
+- Pure rules and every word in `src/lib/community.ts` (`POST_RANK`, `canPost`, `autoFlag`, `rankForYou`, `CLUB_COPY`);
+  server actions in `src/lib/server/club.ts`; all routes in `src/app/api/club/[...path]/route.ts`; UI in
+  `src/components/club/`; moderation at `/admin/club`. Tables `club_*` (`supabase/migrations/20261105090000_club.sql`).
+- Switch: `clubOn()` in `membership.ts`: testers (`PAYWALL_TESTERS`) only, until `COMMUNITY_ON=1` and `GRIEVANCE`
+  (`src/lib/legal.ts`) has no "TODO". Posting needs a paying member at Trader, ranked from server records only.
+- Pictures (step 3): uploads go through `POST /api/club/image` (multipart; `sharp` makes upright WebP ≤ 1080 px with no
+  EXIF, `club-image.ts`) into the private Storage bucket `club`; the phone only ever gets signed URLs (an hour), never
+  for held or hidden content, nor for a request's pictures before it's accepted. Removed pictures move to `removed/`
+  for 180 days; the hourly `/api/cron/remind` deletes those and unused uploads (`purgeImages`). Account delete and
+  "Leave the Club" delete `<user id>/*` from Storage (`removeFolder`), after `keepEvidence` moves pictures in an open
+  report or hidden content to `removed/`. One picture goes into one post or message (claimed inside `club_send`).
+- Group chats (step 3): the maker (a member at Trader) picks 2–19 people who follow each other with them; only the
+  maker adds and removes; groups are counted with new chats in `club_chat_log` (`club_start_group`).
 
 ## Routes
 - `/` is the website, `/app` the game, `/admin` the Hot Seat list and path trees.
@@ -56,11 +102,14 @@ Follow `docs/AUTHORING.md` for every Hot Seat and Daily Call: research brief →
 - **No answers on the phone.** Hot Seat and Daily Call JSON is read only on the server (`src/lib/server/content.ts`). The phone sends its picks to `/api/play`, which replays them (`src/lib/play.ts`) and returns the next screens plus the verdict on the last pick. `/api/daily` and `/api/daily/lock` do the same for the Daily Call. Never import `server/content.ts` or `content-files.ts` from client code; `npm run check-bundle` (in CI, after the build) fails if any option's `why` or `takeaway` text reaches the browser. Narration ids are worked out on the phone (`lineId` in `voice.ts`), so `voice-lines.json` is never bundled.
 - Railway runs plain `next start` (not `output: "standalone"`), so `content/` is on disk at runtime.
 - Media names must be unique across Hot Seats (they share `public/media/`).
-- `madeUp: true` marks a made-up story (only kirana-year, approved by Atheeb): the app shows `MADE_UP_LABEL` (on the map card, first screen and verdict sheet) and never "Real history", "Our estimate" or a real-history panel. It may leave out `realHistory`, may mark no option real, and needs a stamped `realism.md` (same format as `factcheck.md`) instead of a fact-check; every `sources` URL must be in its `research.md`.
+- `madeUp: true` marks a made-up story (only kirana-year, approved by Atheeb): the app never shows "Real history", "Our estimate" or a real-history panel. Its debrief's "About this story" card (from `realHistory`) is the only place that says the people are invented; no made-up tags anywhere else (Atheeb, 5 Nov 2026: tags look cheap). It may leave out `realHistory`, may mark no option real, and needs a stamped `realism.md` (same format as `factcheck.md`) instead of a fact-check; every `sources` URL must be in its `research.md`.
 - Files that Node runs directly (`engine.ts`, `hotseat-schema.ts`, `hotseat-check.ts`, `voice-lines.ts`, `content-files.ts`) use `import type` for types and relative `.ts` imports, no `@/` paths.
 
 ## UI
 - shadcn/ui components live in `src/components/shadcn/` (alias set in `components.json`). Their token names are mapped onto our palette in `globals.css`; shadcn's own `muted` is never defined, because ours is the grey text colour.
+- No boxed UI (Atheeb, 5 Nov 2026: "the whole UI looks boxed"): blocks sit on the page background, split by a thin rule (`Section` in `ui.tsx`), lists use dividers. `Card` (a box) is only for something that must stand out: a call to action, the membership card, a highlight.
+- Cheers (5 Nov 2026): `StreakCelebration` once a day when the first play lights the streak; `useCombo` cheers right answers in a row at 3/5/8/every 4 (cricket words: Hat-trick!); the wolf drops in on Home at most once a day, only with a reason (meeting a new player, welcoming one back to a live streak, teasing one who lost it; never on a day already played), says his line in his own voice and stays until tapped (`wolfSay` in `src/lib/wolf.ts`, lines in `wolf-lines.ts`, `WolfTip`). Don't put him over narration. Never add AI-image or "made-up" tags to player screens.
+- Achievements (5 Nov 2026): levels worked out from the save in `src/lib/achievements.ts` (streak, lessons, Hot Seats, 95+ scores, XP, league) plus the one-off badges; art in `public/achievements/` (ChatGPT, `docs/ACHIEVEMENT-ART.md`). For show only, they pay nothing. A new level or badge is cheered once on the map (`AchievementCelebration`, `cfad.achSeen`); the first look on a device only records what is already earned.
 
 ## The build plan
 Follow `docs/BUILD-PLAN.md` phase by phase and tick items off as you finish them. `HANDOFF.md` has the kickoff instructions.
@@ -68,6 +117,7 @@ Follow `docs/BUILD-PLAN.md` phase by phase and tick items off as you finish them
 ## Welcome screens
 - A new player (no `onboarding.done` in the save) sees `Onboarding`: three questions, then the first two calls of the trial (`TRIAL_ID` in `catalog.ts`). In production the trial needs the Hot Seat published; `npm run dev` also allows its draft. Anyone who skips or has played before goes straight to Home.
 - With the course on and `kirana-year` in place (`COURSE_TRIAL_ID`), the three questions are followed by Unit 1's first lesson, then kirana-year's first two calls. Until its hotseat.json exists, onboarding is as above.
+- The wolf hosts it (5 Nov 2026): he's in the frame on every welcome screen with a pose per beat, asks the three questions, then gives a quick tour (lessons, the hot seat, hearts, streak, XP and league, Notes), each beat a real piece of the game animating beside him. Every line is his recorded voice (`WOLF_WELCOME` in `wolf-lines.ts`; record with narrate on the wolf lines only). "Skip tour" jumps to the lesson; "Skip, just play" goes Home. Home's `meet` line only points at Home, since he has already introduced himself.
 
 ## Installable app
 - The game is **online only** (Atheeb's call): no offline caching. A "No internet" screen covers the game while the connection is down. `public/sw.js` only removes the offline worker an early version installed; don't register a worker again without asking.
@@ -79,7 +129,7 @@ Follow `docs/BUILD-PLAN.md` phase by phase and tick items off as you finish them
 - **The server is the referee** (`src/lib/server/game.ts`): rewards use the same pure rules as guests (`applyFinish`, `applyBuy`, … in `game-state.ts`). Finishing a Hot Seat replays the picks; a run key pays once; a replay pays only `completionXp`; Hindsight is charged at the finish; the Daily Call is one a day by database key. Saves use a version check and retry (supabase-js can't lock rows).
 - Storage goes through the `Db` interface (`src/lib/server/db.ts`): `memoryDb()` in tests, `supabaseDb()` in the app. Every table has RLS on and no policies: only the server's secret key can touch them. Migrations are in `supabase/migrations/` (apply them with the Supabase MCP, then run `get_advisors`).
 - **Leagues** (`leagueBoard`): groups of up to 30 per tier, joined on the first XP of the week (`add_league_xp`), settled when the player next looks (no weekly job). Small groups are topped up with practice rivals that never count for moving up. Badges are `public/league/<tier>.webp`.
-- **Notifications** (`src/lib/server/reminders.ts`): `public/sw.js` only shows them (no caching; the game stays online only). Supabase `pg_cron` calls `/api/cron/remind` at the start of each IST hour with the `cron_secret` from Vault. Kinds: streak warning and win-back on days 2, 4 and 7 (at the player's hour), the 9 am Daily Call teaser, Sunday's "league ends tonight", Monday's promotion, and "X just passed you" right after a league change. Guardrails: nothing 10 pm–8 am IST, at most 2 a player a day, each kind once a day (`notifications_sent`), nothing after a week away. `/admin/notify` sends one by hand (no guardrails).
+- **Notifications** (`src/lib/server/reminders.ts`): `public/sw.js` only shows them (no caching; the game stays online only). Supabase `pg_cron` calls `/api/cron/remind` at the start of each IST hour with the `cron_secret` from Vault. Schedule (IST): 9 am next lesson (or the Daily Call when calls are on) and Monday's promotion; 1 pm due flashcards; the player's hour: streak warning with the hours left, or a win-back on days 2–7; 9 pm last call for an open streak (players whose hour is 7 pm or earlier); Sunday's "league ends tonight"; "X moved ahead of you" right after a league change. Each slot is also tried the next hour, in case a run was missed. Guardrails: nothing 10 pm–8 am IST, at most 4 a player a day and the 4th only to save a streak, each kind once a day (`notifications_sent`, with each phone's `result`), nothing after a week away. Pictures are wolf banners from `npm run brand` (`public/brand/wolf/notify-*.jpg`, `badge.png`); iPhones show only the text and the app icon. `/admin/notify` sends one by hand (no guardrails).
 - A guest's save is imported once on sign-in, with every number capped (`importGuest`).
 - Sign-in uses Google's own button (`renderGoogleButton` in `src/lib/auth.ts`, then `signInWithIdToken` with a nonce), so Google's page names ceoforaday.in. Without `NEXT_PUBLIC_GOOGLE_CLIENT_ID`, or if Google's script fails to load, it falls back to Supabase's redirect. An app added to an iPhone's Home Screen can't see Safari's Google accounts, so the first sign-in there always asks for the email (an iOS rule).
 

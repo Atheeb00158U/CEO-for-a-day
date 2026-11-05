@@ -1,12 +1,16 @@
 "use client";
 
-import { useMemo } from "react";
-import { homeOrder, MADE_UP_LABEL } from "@/content/catalog";
-import { useContent } from "@/lib/content-client";
+import { useEffect, useMemo } from "react";
+import { homeOrder } from "@/content/catalog";
+import { showPaywall, useContent } from "@/lib/content-client";
 import type { DailyQuestion } from "@/lib/hotseat-types";
+import { phoneLocks } from "@/lib/locks";
 import { questsFor, today, useGame } from "@/lib/store";
+import { wolfSay } from "@/lib/wolf";
 import { CoursePath } from "./CoursePath";
 import { Bar, Card, Icon, MediaView } from "./ui";
+
+const COPY = { members: "For members" };
 
 export function HomeTab({
   daily: call,
@@ -16,6 +20,7 @@ export function HomeTab({
   onLesson,
   onTestOut,
   onPractice,
+  calm,
 }: {
   /** Today's Daily Call, once loaded. */
   daily?: DailyQuestion | null;
@@ -25,9 +30,13 @@ export function HomeTab({
   onLesson: (lessonId: string) => void;
   onTestOut: (moduleId: string, lessonIds: string[]) => void;
   onPractice: (title: string, lessonIds: string[]) => void;
+  /** No cheer or sheet is open, so the wolf may drop in. */
+  calm: boolean;
 }) {
-  const { s, boosterActive, activateBooster } = useGame();
+  const { s, boosterActive, activateBooster, membership, paywall } = useGame();
   const { catalog, course } = useContent();
+  // Members-only Hot Seats (a hint: the server's 402 is the real gate). A tap opens the offer straight away.
+  const locked = useMemo(() => phoneLocks(course, membership, paywall, s), [course, membership, paywall, s]);
   const order = useMemo(() => homeOrder(catalog, s.seed, s.onboarding.focus), [catalog, s.seed, s.onboarding.focus]);
   const current = order.find((c) => c.available && s.best[c.id] === undefined) ?? order.find((c) => c.available)!;
   const hs = current;
@@ -36,6 +45,16 @@ export function HomeTab({
   const best = s.best[current.id];
   // With the course on, Hot Seats that gate a module sit on the path; the rest stay in a grid below it.
   const gated = new Set(course?.units.flatMap((u) => u.modules.flatMap((m) => m.gates)) ?? []);
+
+  // The wolf drops in once a day, only with a reason: meeting a new player, welcoming one back to keep a live
+  // streak, or teasing one who lost it. Never on a day already played (the streak cheer said it all).
+  const newPlayer = Object.keys(s.lessons).length + s.runs.length <= 1;
+  const moment = playedToday ? (newPlayer ? "meet" : null) : s.streak > 0 ? "back" : s.bestStreak > 0 ? "lost" : null;
+  useEffect(() => {
+    if (!calm || !moment) return;
+    const t = setTimeout(() => wolfSay(moment), 900);
+    return () => clearTimeout(t);
+  }, [calm, moment]);
 
   return (
     <div className="flex flex-col gap-5 pt-2">
@@ -85,7 +104,6 @@ export function HomeTab({
             </p>
             <h2 className="mt-1 text-[28px] font-black leading-tight text-balance">{hs.title}</h2>
             <p className="mt-1 text-[16px] font-bold text-muted">{hs.hook}</p>
-            {hs.madeUp && <p className="mt-1 text-[13px] font-black tracking-wider text-purple uppercase">{MADE_UP_LABEL}</p>}
             <p className="mt-2 text-[14px] font-bold text-muted">
               {hs.calls} big calls · {hs.minutes} min · {best !== undefined ? `Your best: ${best}` : "Narrated"}
             </p>
@@ -125,12 +143,13 @@ export function HomeTab({
             .map((c) => {
               const done = s.best[c.id] !== undefined;
               const isCurrent = !course && c.id === current.id;
+              const paid = c.available && locked({ kind: "hotseat", id: c.id });
               return (
                 <button
                   key={c.id}
                   type="button"
                   disabled={!c.available}
-                  onClick={() => c.available && onPlay(c.id)}
+                  onClick={() => (paid ? showPaywall({ hotSeatId: c.id }) : c.available && onPlay(c.id))}
                   className="flex flex-col items-center gap-2 text-center disabled:cursor-default"
                 >
                   <span
@@ -150,7 +169,12 @@ export function HomeTab({
                     ) : (
                       <Icon.lock />
                     )}
-                    {done && c.emblem && (
+                    {paid && (
+                      <span className="absolute -right-1 -bottom-1 grid size-8 place-items-center rounded-full border-[3px] border-bg bg-gold text-[#2a1d00]">
+                        <Icon.lock className="size-4" />
+                      </span>
+                    )}
+                    {!paid && done && c.emblem && (
                       <span className="absolute -right-1 -bottom-1 grid size-8 place-items-center rounded-full border-[3px] border-bg bg-brand text-[#1a1206]">
                         <Icon.check className="size-4" />
                       </span>
@@ -161,7 +185,7 @@ export function HomeTab({
                   >
                     {c.company}
                     <span className="block text-[12px] font-bold text-muted">
-                      {c.available ? (done ? `Best ${s.best[c.id]}` : c.madeUp ? "Made-up story" : "Ready") : "Coming soon"}
+                      {c.available ? (paid ? COPY.members : done ? `Best ${s.best[c.id]}` : "Ready") : "Coming soon"}
                     </span>
                   </span>
                 </button>

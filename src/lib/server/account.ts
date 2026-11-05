@@ -1,0 +1,36 @@
+// Deleting an account (India's DPDP Act gives players this right). A deleted account must never keep being charged,
+// so any live subscription is cancelled at Razorpay first, at once (unless Razorpay says it has already ended); if
+// that fails, nothing is deleted.
+import { keepEvidence } from "./club.ts";
+import type { Db } from "./db.ts";
+import { GameError } from "./game.ts";
+import { forgetAccess } from "./membership.ts";
+import { alreadyCancelled, type RazorpayClient } from "./razorpay.ts";
+
+/** Statuses after which Razorpay never charges again: nothing to cancel. */
+const FINAL = new Set(["cancelled", "completed", "expired"]);
+
+export const CANT_CANCEL = "We could not stop your membership payments yet, so your account is not deleted. Try again in a few minutes.";
+
+/** `rp` is a getter, so an account with no membership needs no Razorpay keys. */
+export async function deleteAccount(db: Db, rp: () => RazorpayClient, userId: string): Promise<{ deleted: true }> {
+  const m = await db.getMembership(userId);
+  if (m && !FINAL.has(m.status)) {
+    try {
+      // Razorpay may have ended it already (an unpaid checkout expires after 30 minutes): nothing left to cancel.
+      const remote = await rp().fetchSubscription(m.subscriptionId);
+      if (!FINAL.has(remote.status)) await rp().cancelSubscription(m.subscriptionId, false);
+    } catch (e) {
+      if (!alreadyCancelled(e)) {
+        console.error(`account delete: cancelling ${m.subscriptionId} failed; account kept`);
+        throw new GameError(CANT_CANCEL);
+      }
+    }
+  }
+  // Club pictures that are evidence (an open report, hidden content) are kept 180 days apart (IT Rules 3(1)(g));
+  // deleteUser then deletes the rest of the player's pictures from Storage.
+  await keepEvidence(db, userId);
+  await db.deleteUser(userId);
+  forgetAccess(userId);
+  return { deleted: true };
+}

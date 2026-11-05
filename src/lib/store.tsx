@@ -2,7 +2,8 @@
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { api, signInWithGoogle, signOut, supabase } from "./auth";
-import type { LessonTarget, Synced } from "./content-client";
+import { gated, type LessonTarget, type Synced } from "./content-client";
+import type { MembershipView } from "./membership-view";
 import type { Answer, LessonResult } from "./lesson-play";
 import type { DailyCall, DailyOption, Grade } from "./hotseat-types";
 import type { Pick as PlayPick, Result } from "./play";
@@ -59,6 +60,12 @@ interface Ctx {
   ready: boolean;
   /** Signed in with Google (progress saved on the server). */
   account: { email?: string } | null;
+  /** A signed-in player's membership; null for guests and players who never subscribed. */
+  membership: MembershipView | null;
+  /** Whether the paywall applies to this signed-in player (false for guests until a 402 says otherwise). */
+  paywall: boolean;
+  /** Whether the Club is on for this signed-in player (from /api/state); false for guests. */
+  club: boolean;
   /** Sign-in is set up on this server. */
   canSignIn: boolean;
   boosterActive: boolean;
@@ -76,9 +83,15 @@ interface Ctx {
   playDaily: (call: Pick<DailyCall, "id" | "company" | "title">, option: DailyOption) => void;
   /** Take the server's reply to any signed-in action. */
   sync: (x: Synced) => void;
+  /** Read a signed-in player's progress and membership again (after paying or cancelling). */
+  reload: () => Promise<void>;
+  /** The server said 402: the paywall applies to this player (a guest learns it this way). */
+  paywallSeen: () => void;
   setSetting: <K extends keyof GameState["settings"]>(k: K, v: GameState["settings"][K]) => void;
   setName: (n: string) => void;
   setOnboarding: (o: Partial<Onboarding>) => void;
+  /** Remember that this career rank was celebrated. */
+  setRankSeen: (rank: number) => void;
   signIn: () => void;
   signOut: () => Promise<void>;
   deleteAccount: () => Promise<void>;
@@ -107,12 +120,19 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
   const [s, setS] = useState<GameState>(fresh);
   const [ready, setReady] = useState(false);
   const [account, setAccount] = useState<{ email?: string } | null>(null);
+  const [membership, setMembership] = useState<MembershipView | null>(null);
+  const [paywall, setPaywall] = useState(false);
+  const [club, setClub] = useState(false);
   const version = useRef(-1);
   const [, tick] = useState(0);
   const signedIn = account !== null;
 
   /** Take the server's state unless the phone already has a newer one (replies can arrive out of order). */
   const sync = useCallback((x: Synced) => {
+    // Membership isn't versioned: only /api/state and /api/import carry it, and the latest one is right.
+    if (x.membership !== undefined) setMembership(x.membership);
+    if (x.paywall !== undefined) setPaywall(x.paywall);
+    if (x.club !== undefined) setClub(x.club);
     if (x.version < version.current) return;
     version.current = x.version;
     setS(x.state);
@@ -129,6 +149,9 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
     const asGuest = () => {
       version.current = -1;
       setAccount(null);
+      setMembership(null);
+      setPaywall(false);
+      setClub(false);
       setS(rollover(guest ?? fresh()));
       setReady(true);
     };
@@ -162,6 +185,9 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
         if (event === "SIGNED_OUT") {
           version.current = -1;
           setAccount(null);
+          setMembership(null);
+          setPaywall(false);
+          setClub(false);
           setS(fresh());
         }
       });
@@ -184,10 +210,10 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
 
   const boosterActive = s.boosterUntil > Date.now();
 
-  /** Send a signed-in change to the server and take its reply; false if it was refused. */
+  /** Send a signed-in change to the server and take its reply; false if it was refused. A 402 shows the paywall. */
   const send = async (url: string, body: unknown = {}) => {
     try {
-      sync(await api<Synced>(url, { body }));
+      sync(await gated(() => api<Synced>(url, { body })));
       return true;
     } catch {
       return false;
@@ -205,9 +231,11 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
   const finishRun: Ctx["finishRun"] = async (run) => {
     const r = run.result;
     if (signedIn) {
-      const x = await api<Synced & { record: RunRecord }>("/api/run/finish", {
-        body: { runKey: run.runKey, hotSeatId: run.hotSeatId, picks: run.picks, hindsightUsed: run.hindsightUsed },
-      });
+      const x = await gated(() =>
+        api<Synced & { record: RunRecord }>("/api/run/finish", {
+          body: { runKey: run.runKey, hotSeatId: run.hotSeatId, picks: run.picks, hindsightUsed: run.hindsightUsed },
+        }),
+      );
       sync(x);
       return x.record;
     }
@@ -229,9 +257,11 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
 
   const finishLesson: Ctx["finishLesson"] = async (l) => {
     if (signedIn) {
-      const x = await api<Synced & { gained: number }>("/api/lesson/finish", {
-        body: { ...l.target, playKey: l.playKey, answers: l.answers },
-      });
+      const x = await gated(() =>
+        api<Synced & { gained: number }>("/api/lesson/finish", {
+          body: { ...l.target, playKey: l.playKey, answers: l.answers },
+        }),
+      );
       sync(x);
       return x.gained;
     }
@@ -249,7 +279,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
 
   const reviewCards: Ctx["reviewCards"] = async (reviews, answers) => {
     if (signedIn) {
-      const x = await api<Synced & { gained: number }>("/api/cards/review", { body: { reviews } });
+      const x = await gated(() => api<Synced & { gained: number }>("/api/cards/review", { body: { reviews } }));
       sync(x);
       return x.gained;
     }
@@ -270,6 +300,9 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
       s,
       ready,
       account,
+      membership,
+      paywall,
+      club,
       canSignIn: !!supabase(),
       boosterActive,
       recordDecision,
@@ -283,6 +316,10 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
       claimQuest: async (id) => void (signedIn ? await send("/api/quest/claim", { id }) : local(applyClaim(s, id))),
       playDaily: (call, option) => setS((x) => applyDaily(x, call, option)),
       sync,
+      reload: async () => {
+        if (signedIn) sync(await api<Synced>("/api/state"));
+      },
+      paywallSeen: () => setPaywall(true),
       setSetting: (k, v) => {
         setS((x) => ({ ...x, settings: { ...x.settings, [k]: v } }));
         if (signedIn) void send("/api/profile", { settings: { [k]: v } });
@@ -295,6 +332,10 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
         setS((x) => ({ ...x, onboarding: { ...x.onboarding, ...o } }));
         if (signedIn) void send("/api/profile", { onboarding: o });
       },
+      setRankSeen: (rank) => {
+        setS((x) => ({ ...x, rankSeen: Math.max(x.rankSeen, rank) }));
+        if (signedIn) void send("/api/profile", { rankSeen: rank });
+      },
       signIn: () => void signInWithGoogle(),
       signOut: async () => {
         await signOut();
@@ -306,7 +347,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
       reset: () => !signedIn && setS(fresh()),
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [s, ready, account, boosterActive],
+    [s, ready, account, membership, paywall, club, boosterActive],
   );
   return <GameCtx.Provider value={value}>{children}</GameCtx.Provider>;
 }

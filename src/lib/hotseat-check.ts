@@ -4,6 +4,8 @@ import { createHash } from "node:crypto";
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { basename, extname, join } from "node:path";
 import { callsPerRun, choose, debriefKey, resolveNode, score, startRun, type RunState } from "./engine.ts";
+import { z } from "zod";
+import { autoFlag } from "./community.ts";
 import { DailyPoolSchema, HotSeatSchema } from "./hotseat-schema.ts";
 import type { EndingNode, HotSeat, Media } from "./hotseat-types";
 import { voiceLines } from "./voice-lines.ts";
@@ -281,4 +283,32 @@ export function checkDailyPool(dir: string, today: string, audioDir = AUDIO_DIR)
     warnings.push(`the Daily Calls ran out ${n - pool.calls.length + 1} days ago and are repeating; append more`);
   else if (daysLeft < 14) warnings.push(`only ${daysLeft} days of Daily Calls left after today; append more`);
   return { errors, warnings, daysLeft };
+}
+
+const QuestionsSchema = z.strictObject({
+  startDay: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+  questions: z.array(z.string().min(5).max(500)).min(1),
+});
+
+/** content/community/questions.json: the Club's Wolf question of the day. Only append to it, like daily.json. */
+export function checkQuestions(dir: string): CheckResult & { count?: number } {
+  const file = join(dir, "questions.json");
+  if (!existsSync(file)) return { errors: [], warnings: [] };
+  let raw: unknown;
+  try {
+    raw = JSON.parse(readFileSync(file, "utf8"));
+  } catch (e) {
+    return { errors: [`questions.json: ${(e as Error).message}`], warnings: [] };
+  }
+  const parsed = QuestionsSchema.safeParse(raw);
+  if (!parsed.success)
+    return { errors: parsed.error.issues.map((i) => `questions.json schema: ${i.path.join(".") || "(root)"}: ${i.message}`), warnings: [] };
+  const errors: string[] = [];
+  const seen = new Set<string>();
+  parsed.data.questions.forEach((q, i) => {
+    if (seen.has(q)) errors.push(`questions.json: question ${i + 1} is used twice`);
+    seen.add(q);
+    if (Object.keys(autoFlag(q)).length) errors.push(`questions.json: question ${i + 1} trips the Club's own filters`);
+  });
+  return { errors, warnings: [], count: parsed.data.questions.length };
 }

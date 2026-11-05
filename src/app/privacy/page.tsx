@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { Grievance } from "@/components/legal/ClubLegal";
+import { CLUB_COPY } from "@/lib/community";
 import { LegalPage } from "@/components/legal/LegalPage";
 
 export const metadata: Metadata = { title: "Privacy · CEO For A Day" };
@@ -45,6 +47,9 @@ export default function Privacy() {
 
       <h2>Changes</h2>
       <p>If we change what we keep or why, we will update this page and the date at the top.</p>
+      <h2>{CLUB_COPY.privacyTitle}</h2>
+      <p>{CLUB_COPY.notice}</p>
+      <Grievance />
     </LegalPage>
   );
 }

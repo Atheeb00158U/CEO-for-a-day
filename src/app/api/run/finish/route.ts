@@ -2,7 +2,7 @@
 import { parsePicks, PlayError } from "@/lib/play";
 import { servableHotSeat } from "@/lib/server/content";
 import { finishRun } from "@/lib/server/game";
-import { signedIn } from "@/lib/server/http";
+import { accessCheck, signedIn } from "@/lib/server/http";
 import { notifyOvertaken } from "@/lib/server/reminders";
 
 export const POST = (request: Request) =>
@@ -13,6 +13,8 @@ export const POST = (request: Request) =>
       const body = await request.json().catch(() => null);
       const hs = typeof body?.hotSeatId === "string" ? servableHotSeat(body.hotSeatId) : undefined;
       if (!hs) throw new PlayError("no such Hot Seat");
+      const denied = await accessCheck(request, { kind: "hotseat", id: hs.id });
+      if (denied) return denied;
       const r = await finishRun(db, userId, hs, {
         runKey: String(body.runKey ?? ""),
         picks: parsePicks(body.picks),

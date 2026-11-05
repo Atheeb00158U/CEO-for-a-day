@@ -173,6 +173,12 @@ body {
   -webkit-mask-composite: source-in;
   mask-composite: intersect;
 }
+/* Only the bottom edge wavy: the banner on top of a module card. */
+.wavy-b {
+  --w: 12px;
+  mask: radial-gradient(var(--w) at 50% calc(100% + var(--w) * 0.45), #0000 98%, #000) 50% calc(100% - var(--w) * 0.45) / calc(var(--w) * 2)
+    100% repeat-x;
+}
 
 .node-ring {
   box-shadow: 0 6px 0 rgba(0, 0, 0, 0.45);
@@ -247,6 +253,211 @@ body {
     transform: translateY(-5px) rotate(-3deg);
   }
 }
+/* Streak: a grey flame catches fire, flickers, sheds embers; the count ticks up. Base states are the end states, so
+   reduced motion simply shows the lit flame. */
+.ignite {
+  transform-origin: 50% 90%;
+  animation: ignite 0.7s 0.25s cubic-bezier(0.3, 1.6, 0.5, 1) both;
+}
+@keyframes ignite {
+  from {
+    transform: scale(0.2);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.unlit {
+  opacity: 0;
+  animation: unlit 0.3s 0.6s both;
+}
+@keyframes unlit {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+.flicker {
+  transform-origin: 50% 90%;
+  animation: flicker 1.1s ease-in-out infinite alternate;
+}
+@keyframes flicker {
+  0% {
+    transform: scale(1, 1) skewX(0deg);
+  }
+  35% {
+    transform: scale(0.97, 1.05) skewX(-2deg);
+  }
+  70% {
+    transform: scale(1.03, 0.97) skewX(2deg);
+  }
+  100% {
+    transform: scale(0.98, 1.04) skewX(-1deg);
+  }
+}
+.ember {
+  opacity: 0;
+  animation: ember 1.8s ease-out infinite;
+}
+@keyframes ember {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(10px, -150px) scale(0.3);
+    opacity: 0;
+  }
+}
+.tick {
+  animation: tick 0.5s 0.75s cubic-bezier(0.3, 1.8, 0.5, 1) both;
+}
+@keyframes tick {
+  from {
+    transform: translateY(24px) scale(0.4);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+/* Right answers in a row: the badge drops in, holds, and leaves. */
+.combo {
+  opacity: 0;
+  animation: combo 1.9s cubic-bezier(0.3, 1.5, 0.5, 1) both;
+}
+@keyframes combo {
+  0% {
+    transform: translateY(-40px) scale(0.6);
+    opacity: 0;
+  }
+  15%,
+  80% {
+    transform: none;
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-20px) scale(0.9);
+    opacity: 0;
+  }
+}
+/* The wolf's tips: he pops up from below the corner and slips back down. */
+.wolf-in {
+  animation: wolf-in 0.45s cubic-bezier(0.3, 1.5, 0.5, 1) both;
+}
+@keyframes wolf-in {
+  from {
+    transform: translate(-40px, 60px) rotate(-8deg);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+.wolf-dim-in {
+  animation: wolf-dim 0.25s ease-out both;
+}
+.wolf-dim-out {
+  animation: wolf-dim 0.3s ease-in reverse both;
+}
+@keyframes wolf-dim {
+  from {
+    opacity: 0;
+  }
+}
+.wolf-out {
+  animation: wolf-out 0.3s ease-in both;
+}
+@keyframes wolf-out {
+  to {
+    transform: translate(-30px, 80px);
+    opacity: 0;
+  }
+}
+/* A new achievement: the medal drops in with a bounce, then a light sweeps across it. */
+.medal-drop {
+  animation: medal-drop 0.7s cubic-bezier(0.3, 1.6, 0.5, 1) both;
+}
+@keyframes medal-drop {
+  from {
+    transform: translateY(-120px) scale(0.5) rotate(-20deg);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+.shine {
+  background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, 0.55) 50%, transparent 65%);
+  transform: translateX(-120%);
+  animation: shine 1.4s 0.7s ease-in-out 2;
+}
+@keyframes shine {
+  to {
+    transform: translateX(120%);
+  }
+}
+/* The welcome tour: pieces of the game pop in, fade out, fill or climb after a delay (--d). Each element's own style
+   is its end state, so reduced motion simply shows how it ends. */
+.t-in {
+  animation: t-in 0.45s var(--d, 0s) cubic-bezier(0.3, 1.6, 0.5, 1) both;
+}
+@keyframes t-in {
+  from {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+}
+.t-out {
+  opacity: 0;
+  animation: t-out 0.35s var(--d, 0s) ease-in both;
+}
+@keyframes t-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    transform: scale(0.5) rotate(-15deg);
+    opacity: 0;
+  }
+}
+.t-fill {
+  transform-origin: left;
+  animation: t-fill 1s var(--d, 0s) ease-out both;
+}
+@keyframes t-fill {
+  from {
+    transform: scaleX(0);
+  }
+}
+.t-rise {
+  animation: t-rise 0.6s var(--d, 0s) cubic-bezier(0.3, 1.3, 0.5, 1) both;
+}
+@keyframes t-rise {
+  from {
+    transform: translateY(var(--from));
+  }
+}
+/* The wolf moves a little while he talks. */
+.wolf-talk {
+  transform-origin: 50% 100%;
+  animation: wolf-talk 0.45s ease-in-out infinite alternate;
+}
+@keyframes wolf-talk {
+  to {
+    transform: translateY(-3px) rotate(-1.5deg);
+  }
+}
 .word {
   color: var(--color-muted);
   transition: color 0.12s;
@@ -264,4 +475,12 @@ body {
     animation: none !important;
     transition: none !important;
   }
+}
+
+/* Razorpay Checkout must always take taps, even if a dialog left `pointer-events: none` on <body>. */
+.razorpay-container,
+.razorpay-container *,
+.razorpay-checkout-frame,
+.razorpay-backdrop {
+  pointer-events: auto !important;
 }

@@ -1,0 +1,103 @@
+/* The website's own look (the game never loads this file): bold uppercase headlines, the phone's own text face (no
+   download, so the first screen stays light), and one warm brass accent taken from the pictures. The game keeps its
+   Duolingo style. */
+.site {
+  --brass: #d9a35b;
+  --brass-hover: #e6b674;
+  --brass-ink: #17110a;
+  --warm: #1c1610;
+  font-family:
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+}
+.site .font-display {
+  font-family: var(--font-display), "Arial Narrow", sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.005em;
+}
+
+/* The one button: solid brass, quiet, no 3D edge. */
+.site-cta {
+  background: var(--brass);
+  color: var(--brass-ink);
+  transition:
+    background-color 0.2s,
+    transform 0.08s;
+}
+.site-cta:hover {
+  background: var(--brass-hover);
+}
+.site-cta:active {
+  transform: translateY(1px);
+}
+.site-cta:focus-visible,
+.site a:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 3px;
+}
+
+/* Plain text links on the website. */
+.site-link {
+  text-decoration-line: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 5px;
+  text-decoration-color: transparent;
+  transition: text-decoration-color 0.2s;
+}
+.site-link:hover,
+.site-link:focus-visible {
+  text-decoration-color: currentColor;
+}
+
+/* Motion: transform only, so nothing is ever hidden, and nothing on the first screen waits for an animation.
+   With reduced motion everything stands still. */
+@media (prefers-reduced-motion: no-preference) {
+  /* The hero picture is there at once, then drifts very slowly. */
+  .site-drift img {
+    animation: site-drift 24s ease-in-out infinite alternate;
+  }
+  @supports (animation-timeline: view()) {
+    /* Each section's parts rise once as they scroll in, one after another. */
+    .site-rise {
+      animation: site-rise linear both;
+      animation-timeline: view();
+      animation-range: entry calc(var(--i, 0) * 6%) entry calc(55% + var(--i, 0) * 6%);
+    }
+    /* A chapter's picture eases from slightly large to rest as it comes up. */
+    .site-zoom img {
+      animation: site-zoom linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 50%;
+    }
+  }
+}
+@keyframes site-drift {
+  to {
+    transform: scale(1.05);
+  }
+}
+@keyframes site-rise {
+  from {
+    transform: translateY(32px);
+  }
+}
+@keyframes site-zoom {
+  from {
+    transform: scale(1.08);
+  }
+}
+
+/* The course-ideas cloud: each word rests grey and turns gold as the moving light reaches it (--lit, 0 to 1). */
+.idea {
+  --lit: 0;
+  color: color-mix(in oklab, var(--brass) calc(var(--lit) * 100%), color-mix(in oklab, var(--color-ink) var(--rest), transparent));
+  transition: color 0.35s ease-out;
+}
+/* A pool of the page's ground under the heading, so the words behind it fall away (a scrim, not a decoration). */
+.idea-pool {
+  background: radial-gradient(closest-side, var(--color-bg) 62%, rgb(11 16 21 / 0));
+}

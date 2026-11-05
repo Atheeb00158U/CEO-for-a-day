@@ -6,6 +6,7 @@ import { ADVISOR, NARRATOR, spokenWhy } from "./engine.ts";
 import type { Lesson } from "./course-types";
 import type { DailyCall, HotSeat, Text } from "./hotseat-types";
 import { askLines, GOT_IT, takeawayLines } from "./lesson-voice.ts";
+import { WOLF_LINES, WOLF_VOICE, WOLF_WELCOME } from "./wolf-lines.ts";
 
 export interface VoiceLine {
   id: string;
@@ -64,5 +65,7 @@ export function voiceLines(hotSeats: HotSeat[], daily: DailyCall[] = [], lessons
     for (const x of takeawayLines(l)) add(x.text);
   }
   if (lessons.length) add(GOT_IT);
+  for (const m of Object.values(WOLF_LINES)) for (const t of m.lines) add(t, WOLF_VOICE);
+  for (const b of Object.values(WOLF_WELCOME)) add(b.line, WOLF_VOICE);
   return [...lines.values()];
 }

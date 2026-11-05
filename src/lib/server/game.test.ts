@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { readDailyPool, readHotSeat } from "../content-files";
-import { ECONOMY, finishXp } from "../game-state";
+import type { CourseOutline } from "../course-types";
+import { ECONOMY, finishXp, TEST_OUT_PASS, withDefaults } from "../game-state";
 import type { HotSeat } from "../hotseat-types";
 import { play, PlayError, type Pick } from "../play";
 import { memoryDb, type LeagueRow } from "./db";
@@ -16,9 +17,12 @@ import {
   leagueTier,
   load,
   lockDaily,
+  membershipView,
   nextTier,
   startBooster,
+  trustedCareers,
   update,
+  updateProfile,
 } from "./game";
 
 const kodak = readHotSeat("kodak");
@@ -220,5 +224,129 @@ describe("leagues", () => {
     ).toEqual(["Asha", "You"]);
     expect(b.rows.find((r) => r.you)?.xp).toBeGreaterThan(0);
     expect(b.rows.some((r) => r.id === other)).toBe(false); // other players' ids aren't shown in full
+  });
+});
+
+describe("career titles from the server's records", () => {
+  const lesson = (id: string) => ({ id, title: id, principle: "", minutes: 3, exercises: 4 });
+  const course: CourseOutline = {
+    units: [
+      {
+        id: "u1",
+        title: "U1",
+        goal: "",
+        modules: [
+          { id: "m1", title: "", goal: "", lessons: [lesson("l1"), lesson("l2")], gates: ["kodak"] },
+          { id: "m2", title: "", goal: "", lessons: [lesson("l3")], gates: [] },
+        ],
+      },
+      { id: "u2", title: "U2", goal: "", modules: [{ id: "m3", title: "", goal: "", lessons: [lesson("l4")], gates: [] }] },
+    ],
+  };
+  const playLesson = (db: ReturnType<typeof memoryDb>, userId: string, lessonId: string, accuracy = 100) =>
+    db.insertLessonPlay({ userId, playKey: `${lessonId}-${accuracy}`, lessonId, answers: [], accuracy, xp: 0 });
+
+  it("collects lesson plays, passed test-outs, runs and early access for a group in one call", async () => {
+    const db = memoryDb();
+    await playLesson(db, "a", "l1");
+    await playLesson(db, "a", "test-m2", TEST_OUT_PASS - 1); // failed: doesn't count
+    await playLesson(db, "b", "test-m2", TEST_OUT_PASS);
+    await finishRun(db, "b", kodak, { runKey: "run-career-1", picks: path(kodak), hindsightUsed: false }, now);
+    db.early.set("c", new Set(["lesson:l2", "hotseat:kodak"]));
+    expect(await db.careerRecords(["a", "b", "c", "d"])).toEqual({
+      a: { lessons: ["l1"], testOuts: [], hotSeats: [] },
+      b: { lessons: [], testOuts: ["m2"], hotSeats: ["kodak"] },
+      c: { lessons: ["l2"], testOuts: [], hotSeats: ["kodak"] },
+    });
+  });
+
+  it("counts lessons, a passed test-out and a played gate, and moves up a title", async () => {
+    const db = memoryDb();
+    await playLesson(db, U, "l1");
+    await playLesson(db, U, "l2");
+    expect((await trustedCareers(db, [U], course))[U]).toEqual({ rank: 1, title: "Street Seller", stars: 0, maxStars: 2 });
+    await finishRun(db, U, kodak, { runKey: "run-career-2", picks: path(kodak), hindsightUsed: false }, now);
+    expect((await trustedCareers(db, [U], course))[U].stars).toBe(1);
+    await playLesson(db, U, "test-m2", 90);
+    expect((await trustedCareers(db, [U], course))[U]).toEqual({ rank: 2, title: "Shopkeeper", stars: 0, maxStars: 1 });
+  });
+
+  it("never trusts an imported guest save", async () => {
+    const db = memoryDb();
+    const known = { lessons: new Set(["l1", "l2", "l3", "l4"]), cardLesson: new Map() };
+    const s = await importGuest(db, U, { lessons: { l1: 100, l2: 100, l3: 100, l4: 100 }, best: { kodak: 100 } }, now, known);
+    expect(Object.keys(s.state.lessons).sort()).toEqual(["l1", "l2", "l3", "l4"]);
+    expect(await trustedCareers(db, [U, "nobody"], course)).toEqual({
+      [U]: { rank: 1, title: "Street Seller", stars: 0, maxStars: 2 },
+      nobody: { rank: 1, title: "Street Seller", stars: 0, maxStars: 2 },
+    });
+  });
+
+  it("remembers the last cheered title, only ever going up, and loads old saves at rank 1", async () => {
+    const db = memoryDb();
+    expect((await load(db, U, now)).state.rankSeen).toBe(1);
+    expect((await updateProfile(db, U, { rankSeen: 3 }, now)).state.rankSeen).toBe(3);
+    expect((await updateProfile(db, U, { rankSeen: 2 }, now)).state.rankSeen).toBe(3);
+    expect((await updateProfile(db, U, { rankSeen: 99 }, now)).state.rankSeen).toBe(3);
+    expect((await updateProfile(db, U, { rankSeen: "4" }, now)).state.rankSeen).toBe(3);
+    expect(withDefaults({ name: "Old save" }).rankSeen).toBe(1);
+  });
+
+  it("shows each real player's title on the league board, and none for practice rivals", async () => {
+    const db = memoryDb();
+    const week = new Date("2026-10-28T06:30:00Z");
+    await finishRun(db, U, kodak, { runKey: "run-career-3", picks: path(kodak), hindsightUsed: false }, week);
+    await playLesson(db, U, "l1");
+    await playLesson(db, U, "l2");
+    const b = await leagueBoard(db, U, week, course);
+    expect(b.rows.find((r) => r.you)?.career).toEqual({ rank: 1, title: "Street Seller", stars: 1, maxStars: 2 });
+    expect(b.rows.filter((r) => r.bot).every((r) => r.career === undefined)).toBe(true);
+    expect((await leagueBoard(db, U, week)).rows.find((r) => r.you)?.career).toBeUndefined();
+  });
+});
+
+describe("membership in the state reply", () => {
+  it("is null for a player who never subscribed, and left out of action replies", async () => {
+    const db = memoryDb();
+    expect((await load(db, "u1", now)).membership).toBeNull();
+    expect("membership" in (await update(db, "u1", (s) => s, now))).toBe(false);
+  });
+
+  it("shows the plan, period end, member flag and a founder's seat", async () => {
+    const db = memoryDb();
+    await db.claimSeat("u1", "sub_1");
+    await db.keepSeat("sub_1");
+    const currentEnd = "2026-11-20T00:00:00.000Z";
+    await db.saveMembership({ userId: "u1", plan: "founding", subscriptionId: "sub_1", status: "active", currentEnd });
+    expect((await load(db, "u1", now)).membership).toEqual({
+      plan: "founding",
+      subscriptionId: "sub_1",
+      status: "active",
+      currentEnd,
+      member: true,
+      seat: 1,
+      foundingUsed: true,
+    });
+    await db.saveMembership({
+      userId: "u1",
+      plan: "monthly",
+      subscriptionId: "sub_2",
+      status: "cancelled",
+      currentEnd: "2026-10-01T00:00:00Z",
+    });
+    expect(await membershipView(db, "u1", now)).toEqual({
+      plan: "monthly",
+      subscriptionId: "sub_2",
+      status: "cancelled",
+      currentEnd: "2026-10-01T00:00:00Z",
+      member: false,
+      foundingUsed: true, // a returning founder: the sheet starts on the regular plans
+    });
+  });
+
+  it("says foundingUsed is false for a player who never kept a seat", async () => {
+    const db = memoryDb();
+    await db.saveMembership({ userId: "u1", plan: "monthly", subscriptionId: "sub_1", status: "created", currentEnd: null });
+    expect((await membershipView(db, "u1", now))?.foundingUsed).toBe(false);
   });
 });

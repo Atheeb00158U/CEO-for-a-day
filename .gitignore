@@ -7,3 +7,5 @@ next-env.d.ts
 !.env.example
 public/media/
 content/hotseats/*/tree.mmd
+/public/brand/wolf/
+/public/brand/site/

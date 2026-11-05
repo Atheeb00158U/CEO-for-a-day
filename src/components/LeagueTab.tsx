@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { api } from "@/lib/auth";
+import { careerSpoken } from "@/lib/career";
 import { daysLeft } from "@/lib/league";
 import type { LeagueBoard } from "@/lib/server/game";
 import { LEAGUES, useGame } from "@/lib/store";
@@ -70,7 +71,7 @@ export function LeagueTab({ onPlay }: { onPlay: () => void }) {
       )}
 
       {account && board && !board.joined && (
-        <div className="rounded-3xl border-2 border-line p-4">
+        <div className="border-t-2 border-line pt-5">
           <p className="text-[18px] font-black">Start earning XP!</p>
           <p className="mb-3 font-bold text-muted">Earn XP this week to join a group of players in your league.</p>
           <button type="button" className="btn3d" onClick={onPlay}>
@@ -85,7 +86,7 @@ export function LeagueTab({ onPlay }: { onPlay: () => void }) {
             <span>Player</span>
             <span>XP this week</span>
           </div>
-          <ol className="flex flex-col gap-2">
+          <ol className="-mx-3 flex flex-col gap-0.5">
             {board.rows.map((r, i) => {
               const place = r.bot ? -1 : real.indexOf(r);
               const zoneTop = place >= 0 && place < board.promote.count && r.xp >= board.promote.minXp;
@@ -93,7 +94,7 @@ export function LeagueTab({ onPlay }: { onPlay: () => void }) {
               return (
                 <li
                   key={r.id}
-                  className={`flex items-center gap-3 rounded-2xl border-2 px-3 py-2.5 ${r.you ? "border-brand bg-brand/10" : zoneTop ? "border-transparent bg-[#0f2116]" : "border-transparent bg-surface"}`}
+                  className={`flex items-center gap-3 rounded-2xl border-2 px-3 py-2.5 ${r.you ? "border-brand bg-brand/10" : zoneTop ? "border-transparent bg-[#0f2116]" : "border-transparent"}`}
                 >
                   <span
                     className={`w-6 shrink-0 text-center text-[16px] font-black tabular-nums ${zoneTop ? "text-green" : zoneBottom ? "text-red" : "text-muted"}`}
@@ -106,9 +107,20 @@ export function LeagueTab({ onPlay }: { onPlay: () => void }) {
                   >
                     {r.name[0]?.toUpperCase()}
                   </span>
-                  <span className={`min-w-0 flex-1 truncate text-[17px] font-extrabold ${r.bot ? "text-muted" : ""}`}>
-                    {r.you ? `${r.name} (you)` : r.name}
-                    {r.bot && <span className="ml-1.5 text-[11px] font-black tracking-wider uppercase">practice</span>}
+                  <span className="min-w-0 flex-1">
+                    <span className={`block truncate text-[17px] font-extrabold ${r.bot ? "text-muted" : ""}`}>
+                      {r.you ? `${r.name} (you)` : r.name}
+                      {r.bot && <span className="ml-1.5 text-[11px] font-black tracking-wider uppercase">practice</span>}
+                    </span>
+                    {r.career && (
+                      <span className="block truncate text-[13px] font-bold text-muted">
+                        <span className="sr-only">{careerSpoken(r.career)}</span>
+                        <span aria-hidden="true">
+                          {r.career.title}
+                          {r.career.stars > 0 && <span className="ml-1 text-gold">{"★".repeat(r.career.stars)}</span>}
+                        </span>
+                      </span>
+                    )}
                   </span>
                   <span className="flex shrink-0 items-center gap-1 text-[17px] font-black tabular-nums">
                     <Icon.bolt className="size-5" />

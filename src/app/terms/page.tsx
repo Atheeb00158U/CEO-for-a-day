@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ClubRules, Grievance } from "@/components/legal/ClubLegal";
 import { LegalPage } from "@/components/legal/LegalPage";
 
 export const metadata: Metadata = { title: "Terms · CEO For A Day" };
@@ -41,6 +42,8 @@ export default function Terms() {
         </a>
         .
       </p>
+      <ClubRules />
+      <Grievance />
     </LegalPage>
   );
 }

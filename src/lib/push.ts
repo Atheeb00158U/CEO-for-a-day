@@ -2,7 +2,7 @@
 
 // Streak reminders (Web Push). Signed-in players turn them on from Profile or after a Hot Seat; the phone asks
 // permission, registers the notification-only worker (public/sw.js) and hands the subscription to the server,
-// which sends one reminder a day at the chosen hour (IST) if the player hasn't played yet.
+// which sends reminders around the chosen hour (IST); see src/lib/server/reminders.ts.
 import { api } from "./auth";
 
 /** Why reminders can't be turned on here, or null when they can. */

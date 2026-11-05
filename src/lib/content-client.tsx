@@ -3,9 +3,10 @@
 // What the phone knows about content: the map's cards (handed down by the /app page) and calls to the server
 // for each step of play. Answers only ever arrive after the player has picked.
 import { createContext, useContext, useEffect, useState } from "react";
-import { api } from "./auth";
+import { api, ApiError } from "./auth";
 import type { GameState } from "./game-state";
 import type { Card, CourseOutline } from "./course-types";
+import type { MembershipView } from "./membership-view";
 import type { CatalogEntry, DailyAnswer, DailyQuestion } from "./hotseat-types";
 import type { Answer, LessonView } from "./lesson-play";
 import type { Pick, PlayView } from "./play";
@@ -22,20 +23,52 @@ const ContentCtx = createContext<Content>({ catalog: [] });
 export const ContentProvider = ContentCtx.Provider;
 export const useContent = () => useContext(ContentCtx);
 
-/** A signed-in player's progress as the server returned it. */
+/**
+ * A signed-in player's progress as the server returned it. `membership` and `paywall` come only with /api/state and
+ * /api/import; other replies leave them out, and the phone keeps what it had.
+ */
 export interface Synced {
   state: GameState;
   version: number;
+  membership?: MembershipView | null;
+  paywall?: boolean;
+  /** Whether the Club is on for this player. */
+  club?: boolean;
 }
 
 /** The step after `picks`. `written` is a reviewed, pre-written debrief for the path, when one exists. */
 export type PlayResponse = PlayView & { written?: string };
 
-export const fetchStep = (hotSeatId: string, picks: Pick[]) => api<PlayResponse>("/api/play", { body: { hotSeatId, picks } });
+/** What the player tapped before the paywall, opened for them once they become a member. */
+export type PaywallFor = { lessonId: string } | { testOut: string; lessonIds: string[] } | { hotSeatId: string };
+
+/* The paywall: App registers how to show it; a 402 from a player route shows it. */
+let paywallHandler: ((item?: PaywallFor, line?: string) => void) | undefined;
+/** App's way to show the paywall sheet (and leave any player). Pass nothing to unregister. */
+export const onPaywall = (f?: (item?: PaywallFor, line?: string) => void) => void (paywallHandler = f);
+/**
+ * Show the paywall sheet (a tap on a locked item, or the server's 402), remembering the item when there is one.
+ * `line` is an extra sentence on the sheet, e.g. why the Club needs a membership.
+ */
+export const showPaywall = (item?: PaywallFor, line?: string) => paywallHandler?.(item, line);
+
+const membersOnly = (e: unknown) => e instanceof ApiError && e.status === 402;
+
+/** Run a call that can answer 402 `members_only`: show the paywall on it. The error is still thrown, so the caller stops. */
+export async function gated<T>(call: () => Promise<T>): Promise<T> {
+  try {
+    return await call();
+  } catch (e) {
+    if (membersOnly(e)) showPaywall();
+    throw e;
+  }
+}
+
+export const fetchStep = (hotSeatId: string, picks: Pick[]) => gated(() => api<PlayResponse>("/api/play", { body: { hotSeatId, picks } }));
 /** What to play: a lesson, or a module's test-out quiz. */
 export type LessonTarget = { lessonId: string } | { testOut: string };
 export const fetchLessonStep = (target: LessonTarget, answers: Answer[]) =>
-  api<LessonView>("/api/lesson", { body: { ...target, answers } });
+  gated(() => api<LessonView>("/api/lesson", { body: { ...target, answers } }));
 /** Flashcards of these lessons, each with its lesson id. */
 export const fetchCards = (lessonIds: string[]) =>
   api<{ cards: (Card & { lessonId: string })[] }>("/api/cards", { body: { lessonIds } }).then((r) => r.cards);

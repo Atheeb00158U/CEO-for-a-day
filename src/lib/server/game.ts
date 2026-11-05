@@ -23,12 +23,16 @@ import {
   type GameState,
   type RunRecord,
 } from "../game-state.ts";
+import { isMember } from "../access.ts";
 import type { DailyCall, DailyOption, HotSeat } from "../hotseat-types";
 import { leagueRows } from "../league.ts";
-import type { Lesson } from "../course-types";
+import { careerOf, type Career } from "../career.ts";
+import type { CourseOutline, Lesson } from "../course-types";
+import type { MembershipView } from "../membership-view.ts";
 import { lessonPlay, type Answer, type LessonResult } from "../lesson-play.ts";
 import { play, PlayError, type Pick } from "../play.ts";
 import type { CardState } from "../srs.ts";
+import { afterSave, refreshCareer } from "./club.ts";
 import type { Db, LeagueRow, Profile, SavedState } from "./db.ts";
 
 /** A request the rules refuse: not enough coins, nothing to claim, a run that can't be finished. */
@@ -42,10 +46,18 @@ const strip = (s: GameState): SavedState => {
   return rest as SavedState;
 };
 
-/** The player's state as the phone sees it, with `version` so it can ignore an older reply. */
+/**
+ * The player's state as the phone sees it, with `version` so it can ignore an older reply. `membership` and `paywall`
+ * come only with /api/state and /api/import (not with every action's reply).
+ */
 export interface Synced {
   state: GameState;
   version: number;
+  membership?: MembershipView | null;
+  /** Whether the paywall applies to this player (PAYWALL_ON, or a listed tester). */
+  paywall?: boolean;
+  /** Whether the Club is on for this player (COMMUNITY_ON, or a listed tester). */
+  club?: boolean;
 }
 
 /* ------------------------------------------------------------------ */
@@ -125,8 +137,30 @@ const noteOf = (r: {
   at: r.createdAt ? Date.parse(r.createdAt) : 0,
 });
 
-/** The full GameState the phone shows: saved state, recent runs, the Daily log and this week's league. */
+/** The player's membership as the phone sees it, or null if they never started a checkout. */
+export async function membershipView(db: Db, userId: string, now = new Date()): Promise<MembershipView | null> {
+  const m = await db.getMembership(userId);
+  if (!m) return null;
+  const [seat, foundingUsed] = await Promise.all([m.plan === "founding" ? db.seatOf(m.subscriptionId) : null, db.hasKeptSeat(userId)]);
+  return {
+    plan: m.plan,
+    subscriptionId: m.subscriptionId,
+    status: m.status,
+    currentEnd: m.currentEnd,
+    member: isMember(m, now),
+    ...(seat !== null ? { seat } : {}),
+    foundingUsed,
+  };
+}
+
+/** The full reply for /api/state: the player's state plus their membership. */
 export async function load(db: Db, userId: string, now = new Date()): Promise<Synced> {
+  const [synced, membership] = await Promise.all([loadState(db, userId, now), membershipView(db, userId, now)]);
+  return { ...synced, membership };
+}
+
+/** The full GameState the phone shows: saved state, recent runs, the Daily log and this week's league. */
+async function loadState(db: Db, userId: string, now = new Date()): Promise<Synced> {
   const p = await profileOf(db, userId);
   const [runs, daily, league] = await Promise.all([db.listRuns(userId, 50), db.listDaily(userId, 60), leagueTier(db, userId, now)]);
   const state = rollover(
@@ -154,10 +188,14 @@ export async function update(
   opts?: { imported?: boolean },
 ): Promise<Synced> {
   for (let attempt = 0; attempt < 3; attempt++) {
-    const cur = await load(db, userId, now);
+    const cur = await loadState(db, userId, now);
     const next = change(cur.state);
     if (!next) throw new GameError("not allowed");
-    if (await db.saveProfile(userId, cur.version, strip(next), opts)) return { state: next, version: cur.version + 1 };
+    if (await db.saveProfile(userId, cur.version, strip(next), opts)) {
+      // The Club profile shows the streak; a failure here never fails the game action.
+      await afterSave(db, userId, cur.state, next).catch((e) => console.error("club afterSave:", e));
+      return { state: next, version: cur.version + 1 };
+    }
   }
   throw new Error("too many writes at once; try again");
 }
@@ -165,6 +203,10 @@ export async function update(
 /* ------------------------------------------------------------------ */
 /* Actions.                                                            */
 /* ------------------------------------------------------------------ */
+
+/** A new server record (lesson, test-out, Hot Seat) may move the Club title; a failure never fails the game action. */
+const clubCareer = (db: Db, userId: string, now: Date) =>
+  refreshCareer(db, userId, now).catch((e) => console.error("club refreshCareer:", e));
 
 /**
  * Finish a Hot Seat. The server replays `picks`, so the score, ending and XP can't be forged. `runKey` (random,
@@ -181,7 +223,7 @@ export async function finishRun(
   const view = play(hs, req.picks);
   const r = view.result;
   if (!r) throw new PlayError("this run hasn't reached an ending");
-  const before = await load(db, userId, now);
+  const before = await loadState(db, userId, now);
   if (req.hindsightUsed && before.state.hindsights < 1) throw new GameError("no Hindsight left");
   const finish: Finish = {
     run: { hotSeatId: hs.id, score: r.score, endingId: r.endingId, endingTier: r.endingTier, notes: r.lines, patterns: r.patterns },
@@ -203,7 +245,7 @@ export async function finishRun(
     notes: record.notes,
     patterns: record.patterns,
   });
-  if (!fresh) return { ...(await load(db, userId, now)), record, gained: 0 };
+  if (!fresh) return { ...(await loadState(db, userId, now)), record, gained: 0 };
   const synced = await update(
     db,
     userId,
@@ -214,7 +256,8 @@ export async function finishRun(
     now,
   );
   await db.addLeagueXp(weekId(now), userId, synced.state.league.tier, record.xp);
-  return { ...(await load(db, userId, now)), record, gained: record.xp };
+  await clubCareer(db, userId, now);
+  return { ...(await loadState(db, userId, now)), record, gained: record.xp };
 }
 
 /** Lock in today's Daily Call. The (player, day) key allows one a day; a second lock returns the first answer's state. */
@@ -227,7 +270,7 @@ export async function lockDaily(
   now = new Date(),
 ): Promise<Synced & { gained: number }> {
   const day = today(now);
-  const before = await load(db, userId, now);
+  const before = await loadState(db, userId, now);
   const after = applyDaily(before.state, call, option, now);
   if (after === before.state || !after.daily) return { ...before, gained: 0 }; // already played today
   const note: DailyNote = after.dailyLog[0];
@@ -240,10 +283,10 @@ export async function lockDaily(
     xp: after.daily.xp,
     note,
   });
-  if (!fresh) return { ...(await load(db, userId, now)), gained: 0 };
+  if (!fresh) return { ...(await loadState(db, userId, now)), gained: 0 };
   const synced = await update(db, userId, (s) => applyDaily(s, call, option, now), now);
   await db.addLeagueXp(weekId(now), userId, synced.state.league.tier, after.daily.xp);
-  return { ...(await load(db, userId, now)), gained: after.daily.xp };
+  return { ...(await loadState(db, userId, now)), gained: after.daily.xp };
 }
 
 /**
@@ -265,7 +308,7 @@ export async function finishLesson(
     req.testOut
       ? { state: applyTestOut(s, { lessonIds: req.testOut, accuracy: result.accuracy, cardIds: result.cardIds }, now), xp: 0 }
       : applyLesson(s, finish, now);
-  const before = await load(db, userId, now);
+  const before = await loadState(db, userId, now);
   const { xp } = change(before.state);
   // The play row goes in first: its key is what makes a retry a no-op.
   const fresh = await db.insertLessonPlay({
@@ -289,7 +332,8 @@ export async function finishLesson(
     now,
   );
   if (gained) await db.addLeagueXp(weekId(now), userId, synced.state.league.tier, gained);
-  return { ...(await load(db, userId, now)), result, gained };
+  await clubCareer(db, userId, now);
+  return { ...(await loadState(db, userId, now)), result, gained };
 }
 
 /**
@@ -317,7 +361,7 @@ export async function reviewCards(
     now,
   );
   if (gained) await db.addLeagueXp(weekId(now), userId, synced.state.league.tier, gained);
-  return { ...(gained ? await load(db, userId, now) : synced), gained, counted };
+  return { ...(gained ? await loadState(db, userId, now) : synced), gained, counted };
 }
 
 /** Checks a request body is a list of card answers. */
@@ -340,7 +384,7 @@ const LANGS = ["en", "hi", "ta", "bn"] as const;
 const DOING = ["job", "starting", "running", "student", "curious"];
 const FOCUS = ["scratch", "rival", "money", "change"];
 
-/** Name, settings and the welcome answers: the only things the phone may set directly. Each is checked. */
+/** Name, settings, the welcome answers and the last cheered title: the only things the phone may set directly. Each is checked. */
 export function updateProfile(db: Db, userId: string, patch: Record<string, unknown>, now = new Date()) {
   return update(
     db,
@@ -356,6 +400,8 @@ export function updateProfile(db: Db, userId: string, patch: Record<string, unkn
       if (DOING.includes(ob.doing as string)) x.onboarding.doing = ob.doing as typeof x.onboarding.doing;
       if (FOCUS.includes(ob.focus as string)) x.onboarding.focus = ob.focus as typeof x.onboarding.focus;
       if ([5, 10, 15].includes(ob.minutes as number)) x.onboarding.minutes = ob.minutes as 5 | 10 | 15;
+      // Which title was last celebrated: only for the cheer, so it can only go up (the title itself is never stored).
+      if (Number.isInteger(patch.rankSeen) && (patch.rankSeen as number) <= 10) x.rankSeen = Math.max(x.rankSeen, patch.rankSeen as number);
       return x;
     },
     now,
@@ -416,7 +462,7 @@ export async function importGuest(
   known: { lessons: Set<string>; cardLesson: Map<string, string> } = { lessons: new Set(), cardLesson: new Map() },
 ): Promise<Synced> {
   const p = await profileOf(db, userId);
-  if (p.imported || (await db.countRuns(userId)) > 0 || !save || typeof save !== "object") return load(db, userId, now);
+  if (p.imported || (await db.countRuns(userId)) > 0 || !save || typeof save !== "object") return loadState(db, userId, now);
   const g = save as Partial<GameState>;
   try {
     return await update(
@@ -461,7 +507,7 @@ export async function importGuest(
       { imported: true },
     );
   } catch (e) {
-    if (e instanceof GameError) return load(db, userId, now);
+    if (e instanceof GameError) return loadState(db, userId, now);
     throw e;
   }
 }
@@ -483,24 +529,47 @@ export interface LeagueBoard {
   weekId: string;
   /** False until the player earns XP this week (that's when they join a group). */
   joined: boolean;
-  rows: { id: string; name: string; xp: number; you?: boolean; bot?: boolean }[];
+  /** Real players carry their career title; practice rivals have none. */
+  rows: { id: string; name: string; xp: number; you?: boolean; bot?: boolean; career?: Career }[];
   /** How players move up this week: the top `count` real players, if they have at least `minXp`. */
   promote: { count: number; minXp: number };
   /** How many real players move down (bottom of a full group), or 0 when only players with no XP do. */
   demote: number;
 }
 
-/** This week's board: the player's group, real players ranked by XP, topped up with practice rivals while small. */
-export async function leagueBoard(db: Db, userId: string, now = new Date()): Promise<LeagueBoard> {
+/**
+ * Each player's career, from the server's own records only (lesson plays, passed test-outs, runs, early access),
+ * never from a save the phone could have edited or imported. One batch of queries for the whole group.
+ */
+export async function trustedCareers(db: Db, userIds: string[], course: CourseOutline): Promise<Record<string, Career>> {
+  const records = await db.careerRecords(userIds);
+  const modules = course.units.flatMap((u) => u.modules);
+  return Object.fromEntries(
+    userIds.map((id) => {
+      const r = records[id] ?? { lessons: [], testOuts: [], hotSeats: [] };
+      const lessons = [...r.lessons, ...modules.filter((m) => r.testOuts.includes(m.id)).flatMap((m) => m.lessons.map((l) => l.id))];
+      const done = (ids: string[]) => Object.fromEntries(ids.map((x) => [x, 0]));
+      return [id, careerOf({ lessons: done(lessons), best: done(r.hotSeats) }, course)];
+    }),
+  );
+}
+
+/**
+ * This week's board: the player's group, real players ranked by XP, topped up with practice rivals while small. With
+ * the course, real players carry their career title.
+ */
+export async function leagueBoard(db: Db, userId: string, now = new Date(), course?: CourseOutline): Promise<LeagueBoard> {
   const week = weekId(now);
   const { tier, row } = await leagueTier(db, userId, now);
   const real = row ? await db.cohort(week, row.cohort) : [];
-  const names = await db.names(real.map((r) => r.userId));
+  const ids = real.map((r) => r.userId);
+  const [names, careers] = await Promise.all([db.names(ids), course ? trustedCareers(db, ids, course) : ({} as Record<string, Career>)]);
   const rows: LeagueBoard["rows"] = real.map((r) => ({
     id: r.userId === userId ? "you" : r.userId.slice(0, 8),
     name: names[r.userId] && names[r.userId] !== "You" ? names[r.userId] : "Player",
     xp: r.weeklyXp,
     ...(r.userId === userId ? { you: true, name: names[r.userId] ?? "You" } : {}),
+    ...(careers[r.userId] ? { career: careers[r.userId] } : {}),
   }));
   if (row && real.length < FILL_TO) {
     // Practice rivals sit around the player's own level (the best at about 1.5× their XP), so the board feels

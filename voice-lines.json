@@ -2740,9 +2740,9 @@
   "text": "One costly call too many. The board and the banks lose faith in you, and they hand the airline to someone else to save."
  },
  {
-  "id": "94c688ff00f4",
+  "id": "5b39b2504274",
   "voice": "narrator",
-  "text": "This is a made-up story based on many real kiranas. You are Asha, 27. For 30 years, your father, Baba, ran Kulkarni General Stores on a busy lane in Imliganj, a town in Madhya Pradesh. His knees are bad now, so this April he hands the shop to you."
+  "text": "You are Asha, 27. For 30 years, your father, Baba, ran Kulkarni General Stores on a busy lane in Imliganj, a town in Madhya Pradesh. His knees are bad now, so this April he hands the shop to you."
  },
  {
   "id": "a3293a4c04fb",
@@ -13358,5 +13358,100 @@
   "id": "b91a850e07f2",
   "voice": "narrator",
   "text": "There you go, you've got it now. Here's the rule to keep:"
+ },
+ {
+  "id": "d187a6438dc9",
+  "voice": "wolf",
+  "text": "This is Home, boss. You will find your next lesson here."
+ },
+ {
+  "id": "5c31e006e870",
+  "voice": "wolf",
+  "text": "Welcome back, boss. Play one lesson today to keep your streak."
+ },
+ {
+  "id": "c047dcb0121a",
+  "voice": "wolf",
+  "text": "Back again, boss? Good. One lesson today will keep your streak."
+ },
+ {
+  "id": "212c443e7d4e",
+  "voice": "wolf",
+  "text": "Good to see you back, boss. One lesson today keeps your streak."
+ },
+ {
+  "id": "6af1a2bacf46",
+  "voice": "wolf",
+  "text": "Welcome back, boss. Your streak has ended. Start a new one today."
+ },
+ {
+  "id": "855dc51467f5",
+  "voice": "wolf",
+  "text": "You missed a day, boss. Your streak has ended. Start again today."
+ },
+ {
+  "id": "8f765d480886",
+  "voice": "wolf",
+  "text": "I'm the Wolf. I will teach you to think like a boss. First, three questions."
+ },
+ {
+  "id": "221d29a2c7b4",
+  "voice": "wolf",
+  "text": "What do you do now?"
+ },
+ {
+  "id": "aeea7ffb1b6b",
+  "voice": "wolf",
+  "text": "What do you want to learn most? I will start there."
+ },
+ {
+  "id": "86cb60fe33f9",
+  "voice": "wolf",
+  "text": "How much time can you play each day? This will be your daily goal."
+ },
+ {
+  "id": "021784d4f664",
+  "voice": "wolf",
+  "text": "Each lesson teaches you one business rule. It takes a few minutes."
+ },
+ {
+  "id": "36b20da7b2c1",
+  "voice": "wolf",
+  "text": "Then you sit in the hot seat. You are the boss. You make the big decisions."
+ },
+ {
+  "id": "7e52c5e5a300",
+  "voice": "wolf",
+  "text": "You have three hearts. They are the board's trust. Lose all three, and you are fired."
+ },
+ {
+  "id": "9d00782270de",
+  "voice": "wolf",
+  "text": "Play one lesson each day to keep your streak."
+ },
+ {
+  "id": "fc955010345f",
+  "voice": "wolf",
+  "text": "Every win earns XP. More XP moves you up the weekly league."
+ },
+ {
+  "id": "365f8f3651e6",
+  "voice": "wolf",
+  "text": "Every rule you learn is saved in Notes. Read them again to remember."
+ },
+ {
+  "id": "a53581a93007",
+  "voice": "wolf",
+  "text": "You are ready. Start your first lesson."
+ },
+ {
+  "id": "a6d1553b2231",
+  "voice": "wolf",
+  "text": "Now sit in the hot seat. You have two big decisions to make."
+ },
+ {
+  "id": "07cf81c3b26c",
+  "voice": "wolf",
+  "text": "This is how you have made decisions so far. The story is not over."
  }
 ]
