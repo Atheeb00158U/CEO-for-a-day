@@ -20,6 +20,7 @@ export function HomeTab({
   onLesson,
   onTestOut,
   onPractice,
+  calm,
 }: {
   /** Today's Daily Call, once loaded. */
   daily?: DailyQuestion | null;
@@ -29,6 +30,8 @@ export function HomeTab({
   onLesson: (lessonId: string) => void;
   onTestOut: (moduleId: string, lessonIds: string[]) => void;
   onPractice: (title: string, lessonIds: string[]) => void;
+  /** No cheer or sheet is open, so the wolf may drop in. */
+  calm: boolean;
 }) {
   const { s, boosterActive, activateBooster, membership, paywall } = useGame();
   const { catalog, course } = useContent();
@@ -43,12 +46,15 @@ export function HomeTab({
   // With the course on, Hot Seats that gate a module sit on the path; the rest stay in a grid below it.
   const gated = new Set(course?.units.flatMap((u) => u.modules.flatMap((m) => m.gates)) ?? []);
 
-  // The wolf drops by a moment after Home opens: a nudge before today's play, a well done after it.
-  const missedDay = !playedToday && s.streak === 0 && s.bestStreak > 0;
+  // The wolf drops in once a day, only with a reason: meeting a new player, welcoming one back to keep a live
+  // streak, or teasing one who lost it. Never on a day already played (the streak cheer said it all).
+  const newPlayer = Object.keys(s.lessons).length + s.runs.length <= 1;
+  const moment = playedToday ? (newPlayer ? "meet" : null) : s.streak > 0 ? "back" : s.bestStreak > 0 ? "lost" : null;
   useEffect(() => {
-    const t = setTimeout(() => wolfSay(playedToday ? "homeDone" : missedDay ? "missedDay" : "homeNudge"), 1800);
+    if (!calm || !moment) return;
+    const t = setTimeout(() => wolfSay(moment), 900);
     return () => clearTimeout(t);
-  }, [playedToday, missedDay]);
+  }, [calm, moment]);
 
   return (
     <div className="flex flex-col gap-5 pt-2">

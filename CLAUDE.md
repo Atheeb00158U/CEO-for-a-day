@@ -41,7 +41,8 @@ UI components: use shadcn/ui, restyled to this look. Add gluestack-ui only if we
   - **Spec:** `docs/superpowers/specs/2026-11-03-wolf-ambassador-design.md`.
 - **The wolf (3 Nov 2026):** an original wolf in a pinstripe three-piece suit is the face of the brand, and
   will become the mentor and the Hot Seat advisor. Masters are in `content/brand/wolf/`; `npm run brand`
-  builds the served sizes. His voice will be designed in VoiceStudio, never cloned from a recording.
+  builds the served sizes. His voice is designed in OmniVoice (`scripts/voices/wolf.wav`, deep, male, Indian
+  accent), never cloned from a recording.
 - **Career titles (4 Nov 2026):** one title per unit (Street Seller, Shopkeeper, Trader, Brand Owner, Dealmaker,
   Business Owner, Boss, Tycoon, Founder, CEO) and a star per finished module (lessons or test-out, plus its gates).
   `careerOf` in `src/lib/career.ts`; others see it in the league. The server works it out from its own records
@@ -106,7 +107,7 @@ Follow `docs/AUTHORING.md` for every Hot Seat and Daily Call: research brief →
 ## UI
 - shadcn/ui components live in `src/components/shadcn/` (alias set in `components.json`). Their token names are mapped onto our palette in `globals.css`; shadcn's own `muted` is never defined, because ours is the grey text colour.
 - No boxed UI (Atheeb, 5 Nov 2026: "the whole UI looks boxed"): blocks sit on the page background, split by a thin rule (`Section` in `ui.tsx`), lists use dividers. `Card` (a box) is only for something that must stand out: a call to action, the membership card, a highlight.
-- Cheers (5 Nov 2026): `StreakCelebration` once a day when the first play lights the streak; `useCombo` cheers right answers in a row at 3/5/8/every 4 (cricket words: Hat-trick!); the wolf drops in with one line now and then (`wolfSay` in `src/lib/wolf.ts`, `WolfTip`), each line once a day or once ever, at most 3 a day. Never add AI-image or "made-up" tags to player screens.
+- Cheers (5 Nov 2026): `StreakCelebration` once a day when the first play lights the streak; `useCombo` cheers right answers in a row at 3/5/8/every 4 (cricket words: Hat-trick!); the wolf drops in on Home at most once a day, only with a reason (meeting a new player, welcoming one back to a live streak, teasing one who lost it; never on a day already played), says his line in his own voice and stays until tapped (`wolfSay` in `src/lib/wolf.ts`, lines in `wolf-lines.ts`, `WolfTip`). Don't put him over narration. Never add AI-image or "made-up" tags to player screens.
 - Achievements (5 Nov 2026): levels worked out from the save in `src/lib/achievements.ts` (streak, lessons, Hot Seats, 95+ scores, XP, league) plus the one-off badges; art in `public/achievements/` (ChatGPT, `docs/ACHIEVEMENT-ART.md`). For show only, they pay nothing. A new level or badge is cheered once on the map (`AchievementCelebration`, `cfad.achSeen`); the first look on a device only records what is already earned.
 
 ## The build plan
