@@ -105,7 +105,7 @@ Follow `docs/AUTHORING.md` for every Hot Seat and Daily Call: research brief →
 
 ## UI
 - shadcn/ui components live in `src/components/shadcn/` (alias set in `components.json`). Their token names are mapped onto our palette in `globals.css`; shadcn's own `muted` is never defined, because ours is the grey text colour.
-- Home's module blocks sit on the page background, not in boxed cards (Atheeb, 5 Nov 2026: "the whole UI looks boxed").
+- No boxed UI (Atheeb, 5 Nov 2026: "the whole UI looks boxed"): blocks sit on the page background, split by a thin rule (`Section` in `ui.tsx`), lists use dividers. `Card` (a box) is only for something that must stand out: a call to action, the membership card, a highlight.
 - Cheers (5 Nov 2026): `StreakCelebration` once a day when the first play lights the streak; `useCombo` cheers right answers in a row at 3/5/8/every 4 (cricket words: Hat-trick!); the wolf drops in with one line now and then (`wolfSay` in `src/lib/wolf.ts`, `WolfTip`), each line once a day or once ever, at most 3 a day. Never add AI-image or "made-up" tags to player screens.
 - Achievements (5 Nov 2026): levels worked out from the save in `src/lib/achievements.ts` (streak, lessons, Hot Seats, 95+ scores, XP, league) plus the one-off badges; art in `public/achievements/` (ChatGPT, `docs/ACHIEVEMENT-ART.md`). For show only, they pay nothing. A new level or badge is cheered once on the map (`AchievementCelebration`, `cfad.achSeen`); the first look on a device only records what is already earned.
 

@@ -33,6 +33,12 @@ export function Bar({ value, color = "var(--color-green)", h = "h-3.5" }: { valu
   );
 }
 
+/** An unboxed block on the page background, set off by a thin rule above it (Atheeb, 5 Nov 2026: "the whole UI looks boxed"). */
+export function Section({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  return <section className={`flex flex-col gap-3 border-t-2 border-line pt-5 ${className}`}>{children}</section>;
+}
+
+/** A boxed block: only for something that must stand out (a call to action, a membership, a highlight). */
 export function Card({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return <div className={`rounded-3xl border-2 border-line bg-surface p-4 ${className}`}>{children}</div>;
 }
