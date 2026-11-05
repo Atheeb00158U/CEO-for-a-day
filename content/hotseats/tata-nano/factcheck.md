@@ -1,7 +1,7 @@
 # Fact-check: tata-nano
-checked-sha256: e6d24e3345e22ecf357b43dda347a8a9e6d87a5c0fc13f9b6562e6165eed7b07
+checked-sha256: 521af6b86bd6d6485ca7a4f4175faf69bdfe529c6cffa3af213d2b60eab58e8e
 Checked: 2026-11-05 · by: Claude (fresh-context fact-check); the three open claims were fixed by the author the same day and re-stamped.
-Changed after the check, none of it a new fact about Tata: alternate-path text (d1 value outcome, d3 raise setup, d3 hold outcome, the hold and default d4 setups, new survivor and collapse variants) and the d3 option labels. The real `steps` label ("raise it a little now and a little more a few months later") matches the two rises below [5][6].
+Changed after the check, none of it a new fact about Tata: alternate-path text (d1 value outcome, d3 raise setup, d3 hold outcome, the hold and default d4 setups, new survivor and collapse variants) and the d3 option labels. Later the same day every `why` was re-worded to name its lesson (job to be done, shortage, dual entitlement, price-quality inference); no facts changed. The real `steps` label ("raise it a little now and a little more a few months later") matches the two rises below [5][6].
 
 ## Sources opened
 1. [Tata Nano (Wikipedia)](https://en.wikipedia.org/wiki/Tata_Nano) — opened; launch price ₹1,00,000 on 10 Jan 2008, 250,000/yr projection, no AC/power steering in base, warranty to four years in early Dec 2010, best year 74,527 (FY2011-12), CNG emax Oct 2013, GenX 2015 with AMT and power steering, production halted May 2018; Mumbai launch 23 Mar 2009 and Singur pullout 3 Oct 2008 appear only as reference titles.

@@ -64,7 +64,7 @@
           "next": "launch",
           "media": "img:tn_d1_value",
           "outcome": "Your ads talk about mileage, low running costs and four real seats. Some buyers ask smart questions about mileage. But at tea stalls people still repeat the price, and they remember 'cheap', not 'good value'.",
-          "why": "Remember: people pay for a result and a feeling. Low running costs matter, and you made them clear. But you sold a saving, not the pride of a family's first car.",
+          "why": "Remember the job to be done: people pay for a result and a feeling. Low running costs matter, and you made them clear. But you focused on saving money, not the pride of owning a family's first car.",
           "better": "Lead with the family and their pride in a first car, then show the low running cost as proof.",
           "takeaway": "In 2008 you sold the Nano on value. That helps, but buyers also want to feel proud of what they own.",
           "traits": {
@@ -87,7 +87,7 @@
           "next": "launch",
           "media": "img:tn_d1_cheap",
           "outcome": "On 10 January 2008 the Nano is shown at the Auto Expo in New Delhi. Tata calls it the People's Car, but the ₹1 lakh price becomes the main story. The press calls it the world's cheapest car, and soon your own people are calling it that too.",
-          "why": "Remember: people pay for a result and a feeling. The price got the Nano noticed everywhere, but it also became its name. Nobody wants the neighbours to see them in 'the cheapest car'.",
+          "why": "Remember the job to be done: people pay for a result and a feeling. The price got the Nano noticed everywhere, but it also became its name. Nobody wants the neighbours to see them in 'the cheapest car'.",
           "better": "Sell it as a safe, proud first car for the family, a step up from the scooter. Let the price be a happy surprise.",
           "takeaway": "In 2008 you made the price the headline. People also buy what a product says about them.",
           "traits": {
@@ -108,7 +108,7 @@
           "next": "launch",
           "media": "img:tn_d1_family",
           "outcome": "On the big screen at the Auto Expo, a family steps off a wet scooter and into a Nano. The price appears only at the end. The papers still print ₹1 lakh, but people remember the proud family in its first car.",
-          "why": "Remember: people pay for a result and a feeling. The result was a safe ride, and the feeling was pride in a first car. You sold both, and the price became a happy surprise.",
+          "why": "Remember the job to be done: people pay for a result and a feeling. The result was a safe ride, and the feeling was pride in a first car. You sold both, and the price became a happy surprise.",
           "takeaway": "In 2008 you sold the Nano as a proud first car. People buy a feeling, not just a price.",
           "traits": {
             "horizon": 1,
@@ -164,7 +164,7 @@
           "next": "y2010",
           "media": "img:tn_d2_cap",
           "outcome": "Bookings close within days, and many people are angry that they missed out. But every buyer gets a car within a year, and soon happy owners are showing them off in every town. A second round, at a higher price, waits for the Gujarat plant.",
-          "why": "Remember: a long queue means your price is too low, or you make too little. You could not make more yet, so you kept the queue to what you could build. The new round came later, after the rush and with warning, so your promise held.",
+          "why": "Remember what a shortage tells you: a long queue means your price is too low, or you make too little. You could not make more yet, so you kept the queue to what you could build. The new round came later, after the rush and with warning, so your promise held.",
           "takeaway": "In 2009 you took only the orders you could fill. A promise you can keep beats a crowd you cannot serve.",
           "traits": {
             "horizon": 1,
@@ -185,7 +185,7 @@
           "next": "y2010",
           "media": "img:tn_d2_draw",
           "outcome": "In just over two weeks, more than 2 lakh people book a Nano, and nearly ₹2,500 crore comes in. In June a draw picks 1,00,000 buyers, and deliveries begin in July. But a year later, only about 45,000 cars have reached their owners, and some buyers cancel.",
-          "why": "Remember: a long queue means your price is too low, or you make too little. The draw was fair and kept your promise. But 1,00,000 cars from a plant that makes 50,000 a year meant about two years of waiting, and buyers who wait too long start to doubt.",
+          "why": "Remember what a shortage tells you: a long queue means your price is too low, or you make too little. The draw was fair and kept your promise. But 1,00,000 cars from a plant that makes 50,000 a year meant about two years of waiting, and buyers who wait too long start to doubt.",
           "better": "Take only the orders you can fill soon. Open a new round, at a higher price, when the Gujarat plant is ready.",
           "takeaway": "In 2009 you took far more orders than you could fill. A long wait turns excited buyers into doubters.",
           "traits": {
@@ -207,7 +207,7 @@
           "next": "y2010",
           "media": "img:tn_d2_raise",
           "outcome": "The queue is shorter, but the news is about one thing: the Nano no longer costs what you promised. People who trusted that promise feel cheated, and many families who could only just afford the car walk away.",
-          "why": "Remember: raise prices for real costs, never to grab a rush moment. You broke a price you had promised in public, before anyone had even waited. Your costs had not changed; only the crowd had grown.",
+          "why": "Remember what a shortage tells you: a long queue means your price is too low, or you make too little. But that never means breaking a price promise. You raised the price before bookings opened, and your costs had not changed.",
           "better": "Keep the promised price for this round and take only what you can build. Charge more in later rounds.",
           "takeaway": "In 2009 you broke a price promise to shorten the queue. Lost trust costs more than the money you gain.",
           "traits": {
@@ -281,7 +281,7 @@
           "next": "d4",
           "media": "img:tn_d3_hold",
           "outcome": "Buyers cheer, but even with cheaper parts, each Nano now earns almost nothing. You ask suppliers for lower prices and delay new features. The board starts asking how long you can keep selling your best-known car this way.",
-          "why": "Remember: raise prices to cover real costs, in small steps you tell buyers about first. Keeping your word to early buyers was right. Holding the price for everyone, while costs kept rising, was not.",
+          "why": "Remember dual entitlement: raise prices to cover real costs, in small steps you tell buyers about first. Keeping your word to early buyers was right. Holding the price for everyone, while costs kept rising, was not.",
           "better": "Keep today's price for buyers already booked. Raise it for new buyers in small steps, and tell them first.",
           "takeaway": "In 2010 you held a price your costs could not support. A promise that keeps losing money cannot last.",
           "traits": {
@@ -313,7 +313,7 @@
               "text": "You raise the price a little for new bookings, then a little more a few months later, while your first buyers keep what they paid. Some people complain, but most understand that steel costs more for everyone."
             }
           ],
-          "why": "Remember: raise prices to cover real costs, in small steps you tell buyers about first. You kept your word to early buyers and passed on real costs bit by bit, with a reason each time.",
+          "why": "Remember dual entitlement: raise prices to cover real costs, in small steps you tell buyers about first. You kept your word to early buyers and passed on real costs bit by bit, with a reason each time.",
           "takeaway": "In 2010 you kept your promise to early buyers and raised the price for new ones in small steps.",
           "traits": {
             "horizon": 1,
@@ -333,7 +333,7 @@
           "next": "d4",
           "media": "img:tn_d3_jump",
           "outcome": "New bookings now cost much more. Your costs are covered, but the papers call it the end of the one-lakh car. Many families who were saving for a Nano give up.",
-          "why": "Remember: raise prices to cover real costs, in small steps you tell buyers about first. Raising the price was fair, because costs had gone up, and you explained why. But one big jump shocked buyers.",
+          "why": "Remember dual entitlement: raise prices to cover real costs, in small steps you tell buyers about first. Raising the price was fair, because costs had gone up, and you explained why. But one big jump shocked buyers.",
           "better": "Keep today's price for buyers already booked. Raise it for new buyers in small steps, and tell them first.",
           "takeaway": "In 2010 you raised the price in one big jump. Small steps keep more buyers with you.",
           "traits": {
@@ -389,7 +389,7 @@
           "next": "ending_route",
           "media": "img:tn_d4_discount",
           "outcome": "The showrooms are busy for a few weeks. Then the fires return to the news, and the price cut makes buyers sure of their fear: even Tata thinks the Nano is worth less. Sales sink again, and you have less money than before.",
-          "why": "Remember: a discount doesn't fix a weak product, and it makes a good one look cheap. Buyers were worried about safety and about how the car made them look. A price cut fixed neither, and made the car look even cheaper.",
+          "why": "Remember price-quality inference: a discount doesn't fix a weak product, and it makes a good one look cheap. Buyers were worried about safety and about how the car made them look. A price cut fixed neither, and made the car look even cheaper.",
           "better": "Fix the real worry first, with a long free warranty and safety upgrades, then keep improving the car.",
           "takeaway": "In 2010 you cut the price to fix a trust problem. A discount can make a cheap image even worse.",
           "traits": {
@@ -410,7 +410,7 @@
           "next": "ending_route",
           "media": "img:tn_d4_stop",
           "outcome": "The plant stays busy, and the losses stop. But families who trusted the Nano feel let down, while rival carmakers win the small-car buyers you leave behind.",
-          "why": "Remember: a discount doesn't fix a weak product, and walking away doesn't fix it either. You stopped the losses before you had tried to fix the real worries, safety and image.",
+          "why": "Remember price-quality inference: a discount doesn't fix a weak product, and it makes a good one look cheap. You were right not to cut the price. But you stopped the Nano before trying to fix the real worries, safety and image.",
           "better": "Find out why buyers stayed away and fix it: a long warranty and safety upgrades, then keep improving the car.",
           "takeaway": "In 2010 you dropped a product before trying to fix the reasons buyers stayed away.",
           "traits": {
@@ -442,7 +442,7 @@
               "text": "You give every Nano, old and new, a free four-year warranty and free safety upgrades. It costs you a lot, but worried buyers start coming back, and owners tell their friends the car is safe."
             }
           ],
-          "why": "Remember: a discount doesn't fix a weak product, and it makes a good one look cheap. Buyers were worried about safety, so you fixed that first, at your own cost, and kept the price.",
+          "why": "Remember price-quality inference: a discount doesn't fix a weak product, and it makes a good one look cheap. Buyers were worried about safety, so you fixed that first, at your own cost, and kept the price.",
           "takeaway": "In 2010 you fixed the real worry, safety, instead of cutting the price.",
           "traits": {
             "horizon": 1,
