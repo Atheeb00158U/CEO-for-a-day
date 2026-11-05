@@ -13,11 +13,13 @@ import { FoundingPrice } from "@/components/FoundingPrice";
 import { LegacyHashRedirect } from "@/components/LegacyHashRedirect";
 import { Logo } from "@/components/Logo";
 import { WolfPicture } from "@/components/WolfPicture";
+import { CompanyRail, type RailItem } from "@/components/site/CompanyRail";
 import { ScenePicture } from "@/components/site/ScenePicture";
 import { SCENES, sceneSrcSet } from "@/lib/brand";
 import { TITLES } from "@/lib/career";
 import { FOUNDING, FOUNDING_LINE, REGULAR } from "@/lib/offer";
 import { supabaseDb } from "@/lib/server/db";
+import { catalog } from "@/lib/server/content";
 import { cachedSeatStatus } from "@/lib/server/seats";
 
 const display = Oswald({ weight: ["500", "600"], subsets: ["latin"], variable: "--font-display", display: "swap" });
@@ -29,32 +31,39 @@ export const metadata: Metadata = {
 export const revalidate = 60; // the founding offer switches to the regular plans at most a minute after the last seat goes
 
 /** Each company's moment, from its Hot Seat's teaser and real history; what they did stays inside the app. */
-const MOMENTS = [
-  {
-    company: "Nirma",
-    year: 1969,
-    img: "/media/nr_cover.webp",
-    moment: "Washing powder costs too much for many homes. Can you make yours cheap enough to sell?",
-  },
-  {
-    company: "Amul",
-    year: 1946,
-    img: "/media/am_cover.webp",
-    moment: "Middlemen pay farmers too little for milk. What if the farmers owned the dairy?",
-  },
-  {
-    company: "IndiGo",
-    year: 2005,
-    img: "/media/ig_cover.webp",
-    moment: "You have no planes yet. Would you order 100 before your first flight?",
-  },
-  {
-    company: "redBus",
-    year: 2005,
-    img: "/media/rb_cover.webp",
-    moment: "You need a bus ticket home. Every agent says no. Some buses may still have empty seats.",
-  },
+/**
+ * The companies in the sliding row, biggest names for young readers first. Each one's name, story title and cover
+ * come from the Hot Seat catalogue, and "Play now" or "Coming soon" from whether it is published, so the row stays
+ * true as stories ship. The made-up kirana story is left out.
+ */
+const RAIL = [
+  "netflix",
+  "apple-1997-comeback",
+  "lego-turnaround",
+  "maggi",
+  "new-coke",
+  "nokia",
+  "indigo-one-plane-type",
+  "amul-one-brand",
+  "redbus-first-tickets",
+  "nirma-washing-powder",
+  "tanishq-karatmeter",
+  "kingfisher-airlines",
+  "maruti-800",
+  "intel-quits-memory",
+  "blockbuster",
 ];
+
+function railItems(): RailItem[] {
+  const all = catalog();
+  return RAIL.flatMap((id) => {
+    const e = all.find((c) => c.id === id);
+    if (!e) return [];
+    // The catalogue gives a cover only to published Hot Seats (draft pictures are not reviewed yet).
+    const img = e.cover?.startsWith("img:") ? `/media/${e.cover.slice(4)}.webp` : undefined;
+    return [{ company: e.company, title: e.title, img, live: e.available }];
+  });
+}
 
 const PAINS = [
   "Your business is not growing, and you don't know why.",
@@ -129,14 +138,6 @@ const DISPLAY = "font-display text-[40px] leading-[0.98] text-balance md:text-[c
 const HEADING = "font-display text-[36px] leading-[1] text-balance md:text-[clamp(44px,4vw,64px)] md:leading-[0.98]";
 const LEAD = "text-[18px] leading-[1.55] text-ink/85 md:text-[20px]";
 const SIDE = "(min-width: 1280px) 500px, (min-width: 768px) 40vw, 100vw";
-
-function Lock() {
-  return (
-    <svg aria-hidden="true" viewBox="0 0 16 16" className="h-4 w-4 shrink-0 fill-current">
-      <path d="M8 1a3.5 3.5 0 0 0-3.5 3.5V6H4a1.5 1.5 0 0 0-1.5 1.5v6A1.5 1.5 0 0 0 4 15h8a1.5 1.5 0 0 0 1.5-1.5v-6A1.5 1.5 0 0 0 12 6h-.5V4.5A3.5 3.5 0 0 0 8 1Zm2 5H6V4.5a2 2 0 1 1 4 0V6Z" />
-    </svg>
-  );
-}
 
 function Tick() {
   return (
@@ -263,41 +264,29 @@ export default async function Home() {
           </div>
         </section>
 
-        {/* Real moments from the companies they will run: the situation, never the answer */}
-        <section id="why" className={`${WRAP} scroll-mt-4 py-20 md:py-32`}>
-          <div className="md:grid md:grid-cols-12 md:items-end md:gap-10">
+        {/* The companies they will run, as a row that keeps sliding and fades into the page at its right edge, where
+            the promise and the action sit */}
+        <section id="why" className="scroll-mt-4 py-20 md:py-32">
+          <div className={`${WRAP} md:grid md:grid-cols-12 md:items-end md:gap-10`}>
             <h2 className={`site-rise md:col-span-7 ${HEADING}`}>Would you make the same choice?</h2>
-            <p className={`site-rise mt-5 max-w-[38ch] md:col-span-5 md:mt-0 ${LEAD}`} style={step(1)}>
-              You make their decision first. Then you see what really happened.
+            <p className={`site-rise mt-5 max-w-[40ch] md:col-span-5 md:mt-0 ${LEAD}`} style={step(1)}>
+              In each Hot Seat, you run a real company for one big decision. Then you see what really happened.
             </p>
           </div>
-          <ul className="mt-10 grid gap-3 sm:grid-cols-2 md:mt-14 lg:grid-cols-4">
-            {MOMENTS.map((m, i) => (
-              <li key={m.company} className="site-rise flex flex-col overflow-hidden rounded-[20px] bg-surface" style={step(i * 0.5)}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={m.img}
-                  alt=""
-                  width={1024}
-                  height={768}
-                  loading="lazy"
-                  decoding="async"
-                  className="aspect-[16/10] w-full object-cover"
-                />
-                <div className="flex flex-1 flex-col p-5">
-                  <p className="font-display text-[26px] leading-none">
-                    {m.company} <span className="text-[var(--brass)]">{m.year}</span>
-                  </p>
-                  <p className="mt-3 text-[17px] leading-snug text-ink/90">{m.moment}</p>
-                  <p className="mt-auto flex items-center gap-2 pt-5 text-[15px] font-semibold text-[var(--brass)]">
-                    <Lock />
-                    See what they did.
-                  </p>
+          <div className="mt-10 md:mt-14">
+            <CompanyRail items={railItems()}>
+              <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-[min(46%,560px)] items-center justify-end bg-[linear-gradient(to_right,rgb(11_16_21/0)_0%,rgb(11_16_21/0.85)_38%,rgb(11_16_21)_62%)] pr-10 md:flex">
+                <div className="pointer-events-auto max-w-[320px]">
+                  <p className="font-display text-[40px] leading-[0.95]">100+ Hot Seats on the way</p>
+                  <StartButton className="mt-6" />
                 </div>
-              </li>
-            ))}
-          </ul>
-          <StartButton className="site-rise mt-10 w-full sm:w-auto" />
+              </div>
+            </CompanyRail>
+            <div className={`${WRAP} mt-8 md:hidden`}>
+              <p className="font-display text-[32px] leading-none">100+ Hot Seats on the way</p>
+              <StartButton className="mt-6 w-full" />
+            </div>
+          </div>
         </section>
 
         {/* The problem: the shopkeeper alone at night fills the width; the reader's worries sit on its dark right side,
@@ -376,7 +365,7 @@ export default async function Home() {
           <div className="mt-16 md:mt-24 md:grid md:grid-cols-12 md:items-end md:gap-10">
             <h2 className={`site-rise md:col-span-7 ${HEADING}`}>From Street Seller to CEO</h2>
             <p className={`site-rise mt-5 max-w-[34ch] md:col-span-5 md:mt-0 ${LEAD}`} style={step(1)}>
-              Finish each unit to earn a new title. Other players can see it.
+              Your title grows as you learn, from Street Seller to CEO.
             </p>
           </div>
           <ol className="mt-10 grid gap-1.5 md:mt-12 xl:h-[400px] xl:grid-cols-10 xl:items-end xl:gap-2">
@@ -425,7 +414,7 @@ export default async function Home() {
             <div className="max-w-[620px]">
               <h2 className={`site-rise ${HEADING}`}>Meet serious business minds</h2>
               <p className={`site-rise mt-6 ${LEAD}`} style={step(1)}>
-                Only members who reach Trader can post, chat and start groups.
+                A private club for members who take business seriously.
               </p>
               <p className={`site-rise mt-3 ${LEAD}`} style={step(2)}>
                 Share what worked. Ask for advice before a big decision. Meet people you could build with.
