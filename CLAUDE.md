@@ -42,7 +42,8 @@ UI components: use shadcn/ui, restyled to this look. Add gluestack-ui only if we
 - **The wolf (3 Nov 2026):** an original wolf in a pinstripe three-piece suit is the face of the brand, and
   will become the mentor and the Hot Seat advisor. Masters are in `content/brand/wolf/`; `npm run brand`
   builds the served sizes. His voice is designed in OmniVoice (`scripts/voices/wolf.wav`, deep, male, Indian
-  accent), never cloned from a recording.
+  accent), never cloned from a recording. Since 5 Nov 2026 he is calm, firm and serious (no "Hah!"): seed 42 of
+  the instruct with a serious reference sentence (`REF_TEXT` in `narrate.py`).
 - **Career titles (4 Nov 2026):** one title per unit (Street Seller, Shopkeeper, Trader, Brand Owner, Dealmaker,
   Business Owner, Boss, Tycoon, Founder, CEO) and a star per finished module (lessons or test-out, plus its gates).
   `careerOf` in `src/lib/career.ts`; others see it in the league. The server works it out from its own records
@@ -116,6 +117,7 @@ Follow `docs/BUILD-PLAN.md` phase by phase and tick items off as you finish them
 ## Welcome screens
 - A new player (no `onboarding.done` in the save) sees `Onboarding`: three questions, then the first two calls of the trial (`TRIAL_ID` in `catalog.ts`). In production the trial needs the Hot Seat published; `npm run dev` also allows its draft. Anyone who skips or has played before goes straight to Home.
 - With the course on and `kirana-year` in place (`COURSE_TRIAL_ID`), the three questions are followed by Unit 1's first lesson, then kirana-year's first two calls. Until its hotseat.json exists, onboarding is as above.
+- The wolf hosts it (5 Nov 2026): he's in the frame on every welcome screen with a pose per beat, asks the three questions, then gives a quick tour (lessons, the hot seat, hearts, streak, XP and league, Notes), each beat a real piece of the game animating beside him. Every line is his recorded voice (`WOLF_WELCOME` in `wolf-lines.ts`; record with narrate on the wolf lines only). "Skip tour" jumps to the lesson; "Skip, just play" goes Home. Home's `meet` line only points at Home, since he has already introduced himself.
 
 ## Installable app
 - The game is **online only** (Atheeb's call): no offline caching. A "No internet" screen covers the game while the connection is down. `public/sw.js` only removes the offline worker an early version installed; don't register a worker again without asking.

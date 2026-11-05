@@ -3,7 +3,7 @@ Usage: npm run narrate   (runs with VoiceStudio's Python; set VOICESTUDIO_PYTHON
    or: <python> scripts/narrate.py voice-lines.json public/audio
 Voices are cloned from scripts/voices/<voice>.wav, read with the matching text in REF_TEXT below:
   narrator: Atheeb's own cloned voice; advisor: a designed voice (female, middle-aged, Indian accent);
-  wolf: a designed voice (OmniVoice instruct "male, middle-aged, low pitch, indian accent"), never a person's.
+  wolf: a designed voice (OmniVoice instruct "male, middle-aged, low pitch, indian accent", seed 42: calm and firm), never a person's.
 Skips lines that already have audio. Output: <id>.mp3 (mono, 48 kbps, loudness -16 LUFS)."""
 import os, subprocess, sys, tempfile, json, time
 
@@ -15,7 +15,7 @@ from omnivoice import OmniVoice
 REF_TEXT = {
     "narrator": "A survey published this May by a hiring software company asked people who had been through an AI interview what happened afterwards.",
     "advisor": "Milk spoils in hours. Whoever owns the plant decides the price.",
-    "wolf": "Hah! So you want to be the boss? Every rupee counts. Show me what you can do.",
+    "wolf": "Sit down. Every rupee you spend is a choice. Think first, then act. I will show you how a real boss plays.",
 }
 # One line per call: batched generate() on Apple Silicon returned noise, not speech.
 

@@ -13355,33 +13355,98 @@
   "text": "There you go, you've got it now. Here's the rule to keep:"
  },
  {
-  "id": "5c6f33bc00c7",
+  "id": "d187a6438dc9",
   "voice": "wolf",
-  "text": "Hah! A new boss! I'm the Wolf. Show me what you can do."
+  "text": "This is Home, boss. You will find your next lesson here."
  },
  {
-  "id": "4a6340d773eb",
+  "id": "5c31e006e870",
   "voice": "wolf",
-  "text": "Hah! Welcome back, boss. One lesson keeps your streak alive."
+  "text": "Welcome back, boss. Play one lesson today to keep your streak."
  },
  {
-  "id": "5a2f716c6bb5",
+  "id": "c047dcb0121a",
   "voice": "wolf",
-  "text": "Back again, boss? Good. Your streak needs one lesson today."
+  "text": "Back again, boss? Good. One lesson today will keep your streak."
  },
  {
-  "id": "774337e3b1da",
+  "id": "212c443e7d4e",
   "voice": "wolf",
-  "text": "Hah! I knew you'd be back. Play one lesson to keep your streak."
+  "text": "Good to see you back, boss. One lesson today keeps your streak."
  },
  {
-  "id": "a8e5d751f4d8",
+  "id": "6af1a2bacf46",
   "voice": "wolf",
-  "text": "Hah! Look who's back. Your streak is gone. Start a new one today."
+  "text": "Welcome back, boss. Your streak has ended. Start a new one today."
  },
  {
-  "id": "5d92d0fbd149",
+  "id": "855dc51467f5",
   "voice": "wolf",
-  "text": "Where were you, boss? You lost your streak. Let's start again today."
+  "text": "You missed a day, boss. Your streak has ended. Start again today."
+ },
+ {
+  "id": "8f765d480886",
+  "voice": "wolf",
+  "text": "I'm the Wolf. I will teach you to think like a boss. First, three questions."
+ },
+ {
+  "id": "221d29a2c7b4",
+  "voice": "wolf",
+  "text": "What do you do now?"
+ },
+ {
+  "id": "aeea7ffb1b6b",
+  "voice": "wolf",
+  "text": "What do you want to learn most? I will start there."
+ },
+ {
+  "id": "86cb60fe33f9",
+  "voice": "wolf",
+  "text": "How much time can you play each day? This will be your daily goal."
+ },
+ {
+  "id": "021784d4f664",
+  "voice": "wolf",
+  "text": "Each lesson teaches you one business rule. It takes a few minutes."
+ },
+ {
+  "id": "36b20da7b2c1",
+  "voice": "wolf",
+  "text": "Then you sit in the hot seat. You are the boss. You make the big decisions."
+ },
+ {
+  "id": "7e52c5e5a300",
+  "voice": "wolf",
+  "text": "You have three hearts. They are the board's trust. Lose all three, and you are fired."
+ },
+ {
+  "id": "9d00782270de",
+  "voice": "wolf",
+  "text": "Play one lesson each day to keep your streak."
+ },
+ {
+  "id": "fc955010345f",
+  "voice": "wolf",
+  "text": "Every win earns XP. More XP moves you up the weekly league."
+ },
+ {
+  "id": "365f8f3651e6",
+  "voice": "wolf",
+  "text": "Every rule you learn is saved in Notes. Read them again to remember."
+ },
+ {
+  "id": "a53581a93007",
+  "voice": "wolf",
+  "text": "You are ready. Start your first lesson."
+ },
+ {
+  "id": "a6d1553b2231",
+  "voice": "wolf",
+  "text": "Now sit in the hot seat. You have two big decisions to make."
+ },
+ {
+  "id": "07cf81c3b26c",
+  "voice": "wolf",
+  "text": "This is how you have made decisions so far. The story is not over."
  }
 ]
