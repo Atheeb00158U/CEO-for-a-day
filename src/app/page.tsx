@@ -13,6 +13,7 @@ import { FoundingPrice } from "@/components/FoundingPrice";
 import { LegacyHashRedirect } from "@/components/LegacyHashRedirect";
 import { Logo } from "@/components/Logo";
 import { WolfPicture } from "@/components/WolfPicture";
+import { ClubPhones } from "@/components/site/ClubPhones";
 import { ScenePicture } from "@/components/site/ScenePicture";
 import { SCENES, sceneSrcSet } from "@/lib/brand";
 import { TITLES } from "@/lib/career";
@@ -24,11 +25,9 @@ const display = Oswald({ weight: ["500", "600"], subsets: ["latin"], variable: "
 
 export const metadata: Metadata = {
   title: "CEO For A Day · Good business decisions are a skill",
-  description: "Learn them from real Indian companies. Five minutes a day. Start free.",
+  description: "Nirma, Amul, IndiGo, redBus. Real money was at stake. What would you decide? Start free.",
 };
 export const revalidate = 60; // the founding offer switches to the regular plans at most a minute after the last seat goes
-
-const COMPANIES = ["Nirma", "Amul", "IndiGo", "redBus"];
 
 /** Each company's moment, from its Hot Seat's teaser and real history; what they did stays inside the app. */
 const MOMENTS = [
@@ -201,21 +200,13 @@ export default async function Home() {
             />
             <div className="-mt-10 px-6 pb-8 md:absolute md:inset-x-0 md:bottom-0 md:mt-0 md:px-12 md:pb-12">
               <h1 className={`md:max-w-[22ch] ${DISPLAY}`}>Good business decisions are a skill.</h1>
-              <p className={`mt-5 max-w-[42ch] ${LEAD}`}>Learn them from real Indian companies. Five minutes a day.</p>
+              <p className={`mt-5 max-w-[44ch] ${LEAD}`}>Nirma, Amul, IndiGo, redBus. Real money was at stake. What would you decide?</p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6">
                 <StartButton className="w-full sm:w-auto" />
-                <p className="text-[15px] text-ink/75">No card needed.</p>
+                <p className="text-[15px] text-ink/75">Free to start. Five minutes a lesson.</p>
               </div>
             </div>
           </div>
-          <p className="mt-8 flex flex-wrap items-baseline gap-x-6 gap-y-2 md:mt-10">
-            <span className="text-[16px] text-ink/70">You make the big decisions at</span>
-            {COMPANIES.map((c) => (
-              <span key={c} className="font-display text-[28px] leading-none text-ink md:text-[36px]">
-                {c}
-              </span>
-            ))}
-          </p>
         </section>
 
         {/* The cost of not knowing: a real fall, told in two numbers, with the reason kept for the first lesson */}
@@ -367,7 +358,7 @@ export default async function Home() {
           </ol>
         </section>
 
-        {/* The Club: founders together, nothing over their faces; honest that it opens soon */}
+        {/* The Club: people serious about business, together; two example screens; honest that it opens soon */}
         <section id="club" className={`${WRAP} scroll-mt-4 pb-20 md:pb-32`}>
           <div className="site-rise overflow-hidden rounded-[24px] bg-surface">
             <ScenePicture
@@ -377,12 +368,16 @@ export default async function Home() {
             />
           </div>
           <div className="mt-8 md:mt-12 md:grid md:grid-cols-12 md:items-start md:gap-10">
-            <h2 className={`site-rise md:col-span-6 ${HEADING}`}>Meet other founders</h2>
-            <div className="md:col-span-5 md:col-start-8">
-              <p className={`site-rise mt-6 md:mt-1 ${LEAD}`} style={step(1)}>
-                The Club opens soon. Members who reach Trader can post, chat and start small groups with other founders.
+            <div className="md:col-span-5">
+              <h2 className={`site-rise ${HEADING}`}>Meet serious business minds</h2>
+              <p className={`site-rise mt-6 ${LEAD}`} style={step(1)}>
+                The Club opens soon. Members who reach Trader can post, chat and start small groups with people who take business seriously.
               </p>
               <StartButton className="site-rise mt-8 w-full sm:w-auto" />
+            </div>
+            <div className="site-rise mt-12 md:col-span-7 md:-mt-48" style={step(2)}>
+              <ClubPhones />
+              <p className="mt-4 text-center text-[14px] text-ink/60">Example screens. The Club opens soon.</p>
             </div>
           </div>
         </section>
@@ -454,18 +449,22 @@ export default async function Home() {
           </div>
         </section>
 
-        {/* Questions: every answer showing */}
-        <section aria-labelledby="questions" className={`${WRAP} pb-20 md:pb-32`}>
-          <h2 id="questions" className={`site-rise ${HEADING}`}>
-            Questions
-          </h2>
-          <dl className="mt-8 grid gap-1 md:mt-10">
+        {/* Questions: a short heading with the action beside it, the answers as a 2 x 2 grid, every answer showing */}
+        <section aria-labelledby="questions" className={`${WRAP} pb-20 md:grid md:grid-cols-12 md:gap-10 md:pb-32`}>
+          <div className="md:col-span-4">
+            <h2 id="questions" className={`site-rise ${HEADING}`}>
+              Before you start
+            </h2>
+            <p className={`site-rise mt-5 ${LEAD}`} style={step(1)}>
+              Short answers to what people ask first.
+            </p>
+            <StartButton className="site-rise mt-8 hidden md:inline-flex" />
+          </div>
+          <dl className="mt-10 grid gap-3 sm:grid-cols-2 md:col-span-8 md:mt-0">
             {faq(full).map((f, i) => (
-              <div key={f.q} className={`rounded-[16px] px-5 py-6 md:grid md:grid-cols-12 md:gap-8 md:px-8 ${i % 2 ? "" : "bg-surface"}`}>
-                <dt className="site-rise text-[19px] leading-tight font-semibold md:col-span-5 md:text-[21px]">{f.q}</dt>
-                <dd className="site-rise mt-2 text-[17px] leading-[1.55] text-ink/85 md:col-span-7 md:mt-0" style={step(1)}>
-                  {f.a}
-                </dd>
+              <div key={f.q} className="site-rise rounded-[20px] bg-surface p-6" style={step(i * 0.4)}>
+                <dt className="text-[20px] leading-tight font-semibold md:text-[21px]">{f.q}</dt>
+                <dd className="mt-3 text-[17px] leading-[1.55] text-ink/85">{f.a}</dd>
               </div>
             ))}
           </dl>
