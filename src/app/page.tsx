@@ -266,12 +266,11 @@ export default async function Home() {
             <h2 className={`site-rise md:col-span-7 ${HEADING}`}>Business ideas nobody teaches you</h2>
             <div className="site-rise md:col-span-5" style={step(1)}>
               <p className={`mt-5 max-w-[42ch] md:mt-0 ${LEAD}`}>
-                Learn ideas like loss aversion, sunk cost and anchoring. Each lesson teaches one idea by name, with a real business
-                example.
+                Learn ideas like loss aversion, sunk cost and anchoring. Each lesson teaches one idea by name, with a real business example.
               </p>
               <p className={`mt-4 max-w-[42ch] ${LEAD}`}>
-                Then you try it in a Hot Seat: you run a real company and make the decisions, so your story can end differently from
-                what really happened.
+                Then you try it in a Hot Seat: you run a real company and make the decisions, so your story can end differently from what
+                really happened.
               </p>
             </div>
           </div>
