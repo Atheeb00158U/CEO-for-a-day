@@ -113,7 +113,7 @@ function SceneBand({ scene, children, id }: { scene: SceneName; children: React.
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-10 hidden md:block md:bg-[linear-gradient(to_right,rgb(11_16_21/0.95)_0%,rgb(11_16_21/0.8)_36%,rgb(11_16_21/0)_66%)]"
       />
-      <div className="px-5 pt-2 pb-16 md:flex md:min-h-[inherit] md:items-center md:px-10 md:py-24">
+      <div className="px-5 pt-2 pb-16 md:flex md:min-h-[inherit] md:items-center md:px-[max(2.5rem,calc((100%-1200px)/2))] md:py-24">
         <div className="md:max-w-[min(46vw,620px)]">{children}</div>
       </div>
     </section>
@@ -143,7 +143,7 @@ export default async function Home() {
     <div className={`site ${display.variable} min-h-dvh overflow-x-clip`}>
       <LegacyHashRedirect />
       <header className="relative z-20 bg-bg">
-        <div className="flex h-16 items-center gap-3 px-5 md:h-[72px] md:px-10">
+        <div className="flex h-16 items-center gap-3 px-5 md:h-[72px] md:px-[max(2.5rem,calc((100%-1200px)/2))]">
           <Logo size={32} />
           <span className="mr-auto text-[17px] font-semibold tracking-[-0.01em]">CEO For A Day</span>
           <nav aria-label="On this page" className="hidden items-center gap-8 text-[15px] font-medium text-ink/80 md:flex">
@@ -175,7 +175,7 @@ export default async function Home() {
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_top,rgb(11_16_21)_0%,rgb(11_16_21)_44%,rgb(11_16_21/0)_60%)] md:bg-[linear-gradient(to_top,rgb(11_16_21/0.95)_0%,rgb(11_16_21/0.55)_30%,rgb(11_16_21/0)_55%),linear-gradient(to_right,rgb(11_16_21/0.75)_0%,rgb(11_16_21/0)_50%)]"
           />
-          <div className="-mt-10 w-full px-5 pb-12 md:mt-0 md:px-10 md:pb-16">
+          <div className="-mt-10 w-full px-5 pb-12 md:mt-0 md:px-[max(2.5rem,calc((100%-1200px)/2))] md:pb-16">
             <div className="md:max-w-[min(76vw,1120px)]">
               <h1 className={DISPLAY}>Good business decisions are a skill.</h1>
               <p className={`mt-5 max-w-[46ch] md:mt-6 ${LEAD}`}>Learn them from real Indian companies. Five minutes a day.</p>
@@ -188,7 +188,10 @@ export default async function Home() {
         </section>
 
         {/* The problem: the reader's own worries, beside the shopkeeper alone at night */}
-        <section id="is-this-you" className="scroll-mt-4 px-5 py-20 md:grid md:grid-cols-12 md:gap-10 md:px-10 md:py-28">
+        <section
+          id="is-this-you"
+          className="scroll-mt-4 px-5 py-20 md:grid md:grid-cols-12 md:gap-10 md:px-[max(2.5rem,calc((100%-1200px)/2))] md:py-28"
+        >
           <div className="site-rise mb-10 md:col-span-5 md:mb-0">
             <div className="overflow-hidden rounded-[20px] bg-surface md:sticky md:top-10">
               <ScenePicture name="alone" sizes="(min-width: 768px) 40vw, 100vw" className="aspect-[4/5] h-auto w-full object-cover" />
@@ -242,7 +245,7 @@ export default async function Home() {
           </ul>
         </SceneBand>
 
-        <section className="px-5 py-20 md:px-10 md:py-28">
+        <section className="px-5 py-20 md:px-[max(2.5rem,calc((100%-1200px)/2))] md:py-28">
           <div className="md:grid md:grid-cols-12 md:items-end md:gap-8">
             <h2 className={`site-rise md:col-span-7 ${HEADING}`}>From Street Seller to CEO</h2>
             <p className={`site-rise mt-5 max-w-[34ch] md:col-span-4 md:col-start-9 md:mt-0 ${LEAD}`} style={step(1)}>
@@ -284,7 +287,7 @@ export default async function Home() {
               className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-[linear-gradient(to_top,rgb(20_27_34),rgb(20_27_34/0))]"
             />
           </div>
-          <div className="px-5 pt-4 md:grid md:grid-cols-12 md:items-start md:gap-8 md:px-10 md:pt-6">
+          <div className="px-5 pt-4 md:grid md:grid-cols-12 md:items-start md:gap-8 md:px-[max(2.5rem,calc((100%-1200px)/2))] md:pt-6">
             <h2 className={`site-rise md:col-span-6 ${HEADING}`}>Meet other founders</h2>
             <div className="md:col-span-5 md:col-start-8">
               <p className={`site-rise mt-6 md:mt-2 ${LEAD}`} style={step(1)}>
@@ -296,7 +299,10 @@ export default async function Home() {
         </section>
 
         {/* Price: the free plan, then the bigger member plan beside it */}
-        <section id="price" className="scroll-mt-4 px-5 py-20 md:grid md:grid-cols-12 md:items-end md:gap-3 md:px-10 md:py-28">
+        <section
+          id="price"
+          className="scroll-mt-4 px-5 py-20 md:grid md:grid-cols-12 md:items-end md:gap-3 md:px-[max(2.5rem,calc((100%-1200px)/2))] md:py-28"
+        >
           <div className="md:col-span-5 md:flex md:h-[600px] md:flex-col">
             <h2 className={`site-rise ${HEADING}`}>Start free</h2>
             <div className="site-rise mt-8 flex flex-col overflow-hidden rounded-[24px] bg-surface md:mt-auto md:h-[420px]" style={step(1)}>
@@ -357,12 +363,15 @@ export default async function Home() {
 
         {/* Questions: one band each, every answer showing */}
         <section aria-labelledby="questions" className="bg-surface">
-          <h2 id="questions" className={`site-rise px-5 pt-20 pb-6 md:px-10 md:pt-28 md:pb-10 ${HEADING}`}>
+          <h2 id="questions" className={`site-rise px-5 pt-20 pb-6 md:px-[max(2.5rem,calc((100%-1200px)/2))] md:pt-28 md:pb-10 ${HEADING}`}>
             Questions
           </h2>
           <dl>
             {faq(full).map((f, i) => (
-              <div key={f.q} className={`px-5 py-8 md:grid md:grid-cols-12 md:gap-8 md:px-10 md:py-12 ${i % 2 ? "" : "bg-bg/40"}`}>
+              <div
+                key={f.q}
+                className={`px-5 py-8 md:grid md:grid-cols-12 md:gap-8 md:px-[max(2.5rem,calc((100%-1200px)/2))] md:py-12 ${i % 2 ? "" : "bg-bg/40"}`}
+              >
                 <dt className="site-rise text-[20px] leading-tight font-semibold md:col-span-5 md:text-[22px]">{f.q}</dt>
                 <dd
                   className="site-rise mt-2 max-w-[56ch] text-[18px] leading-[1.55] text-ink/85 md:col-span-6 md:col-start-7 md:mt-0"
@@ -384,7 +393,7 @@ export default async function Home() {
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_top,rgb(11_16_21/0.94)_0%,rgb(11_16_21/0.6)_32%,rgb(11_16_21/0)_62%)]"
           />
-          <div className="w-full px-5 pb-14 md:grid md:grid-cols-12 md:items-end md:gap-8 md:px-10 md:pb-20">
+          <div className="w-full px-5 pb-14 md:grid md:grid-cols-12 md:items-end md:gap-8 md:px-[max(2.5rem,calc((100%-1200px)/2))] md:pb-20">
             <div className="md:col-span-7">
               <h2 className={`site-rise ${DISPLAY}`}>Your chair is ready.</h2>
               <p className={`site-rise mt-5 max-w-[32ch] ${LEAD}`} style={step(1)}>
@@ -398,7 +407,7 @@ export default async function Home() {
         </section>
       </main>
 
-      <footer className="overflow-hidden px-5 pt-20 md:px-10 md:pt-28">
+      <footer className="overflow-hidden px-5 pt-20 md:px-[max(2.5rem,calc((100%-1200px)/2))] md:pt-28">
         <div className="flex flex-col gap-6 text-[15px] text-ink/75 md:flex-row md:items-end md:justify-between">
           <p className="max-w-[44ch]">Education, not business advice. Other outcomes are estimates.</p>
           <p className="flex gap-6 text-ink">
