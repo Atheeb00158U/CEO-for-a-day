@@ -261,40 +261,13 @@ export default async function Home() {
         </section>
 
         {/* What the course teaches: the named ideas from the course map as one cloud, the open ones in brass */}
-        <section id="why" className="scroll-mt-4 py-20 md:py-32">
-          <div className={`${WRAP} md:grid md:grid-cols-12 md:items-end md:gap-10`}>
-            <h2 className={`site-rise md:col-span-7 ${HEADING}`}>Business ideas nobody teaches you</h2>
-            <div className="site-rise md:col-span-5" style={step(1)}>
-              <p className={`mt-5 max-w-[42ch] md:mt-0 ${LEAD}`}>
-                Learn ideas like loss aversion, sunk cost and anchoring. Each lesson teaches one idea by name, with a real business example.
-              </p>
-              <p className={`mt-4 max-w-[42ch] ${LEAD}`}>
-                Then you try it in a Hot Seat: you run a real company and make the decisions, so your story can end differently from what
-                really happened.
-              </p>
-            </div>
-          </div>
-          <div className={`${WRAP} site-rise mt-12 md:mt-20`}>
-            <IdeaCloud />
-          </div>
-          <div className={`${WRAP} mt-12 flex flex-col gap-6 md:mt-16 md:flex-row md:items-center md:justify-between`}>
-            <div>
-              <p className="text-[18px] leading-snug md:text-[20px]">
-                120 ideas on the course map. 22 are open now, and the rest open one module at a time.
-              </p>
-              <p className="mt-3 flex gap-6 text-[15px] text-ink/70">
-                <span className="flex items-center gap-2">
-                  <span aria-hidden="true" className="size-2.5 rounded-full bg-[var(--brass)]" />
-                  Open now
-                </span>
-                <span className="flex items-center gap-2">
-                  <span aria-hidden="true" className="size-2.5 rounded-full bg-ink/40" />
-                  Coming soon
-                </span>
-              </p>
-            </div>
-            <StartButton className="w-full shrink-0 sm:w-auto" />
-          </div>
+        <section id="why" className="scroll-mt-4 md:py-16">
+          <IdeaCloud>
+            <h2 className="font-display max-w-[14ch] text-[40px] leading-[0.98] text-balance md:text-[clamp(56px,5.6vw,88px)]">
+              Business ideas nobody teaches you
+            </h2>
+            <StartButton className="mt-8" />
+          </IdeaCloud>
         </section>
 
         {/* The problem: the shopkeeper alone at night fills the width; the reader's worries sit on its dark right side,
