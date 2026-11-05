@@ -78,9 +78,13 @@ async function cancelAt(rp: RazorpayClient, subscriptionId: string, atCycleEnd: 
 async function stopOrphan(db: Db, rp: RazorpayClient, subscriptionId: string, userId: string) {
   try {
     await cancelAt(rp, subscriptionId, false);
-  } catch {
+  } catch (e) {
     console.error(`ORPHAN_SUBSCRIPTION: could not cancel unused subscription ${subscriptionId}; check by hand`);
-    await db.recordPaymentIssue("ORPHAN_SUBSCRIPTION", subscriptionId, userId);
+    // Razorpay's own error line (path, status, description): no keys in it.
+    const why = e instanceof Error ? e.message.slice(0, 300) : "unknown error";
+    await db.recordPaymentIssue("ORPHAN_SUBSCRIPTION", subscriptionId, userId, {
+      note: `Could not cancel the unused subscription: ${why}`,
+    });
   }
 }
 
@@ -92,7 +96,9 @@ async function secureSeat(db: Db, m: MembershipRow) {
   if (await db.keepSeat(m.subscriptionId)) return;
   if ((await db.claimSeat(m.userId, m.subscriptionId)) !== null && (await db.keepSeat(m.subscriptionId))) return;
   console.error(`FOUNDING_OVERFLOW: paid founding subscription ${m.subscriptionId} has no seat; check by hand`);
-  await db.recordPaymentIssue("FOUNDING_OVERFLOW", m.subscriptionId, m.userId);
+  await db.recordPaymentIssue("FOUNDING_OVERFLOW", m.subscriptionId, m.userId, {
+    note: "Paid the founding price but no founding seat was free.",
+  });
 }
 
 export async function startCheckout(db: Db, rp: RazorpayClient, env: PayEnv, userId: string, plan: Plan, now: Date) {
@@ -182,7 +188,10 @@ interface SubscriptionEntity {
   /** Unix seconds. */
   current_end?: unknown;
 }
-type WebhookBody = { event?: string; payload?: { subscription?: { entity?: SubscriptionEntity } } };
+type WebhookBody = {
+  event?: string;
+  payload?: { subscription?: { entity?: SubscriptionEntity }; payment?: { entity?: { id?: unknown } } };
+};
 
 export async function handleWebhook(
   db: Db,
@@ -217,7 +226,11 @@ async function applyEvent(db: Db, body: WebhookBody, now: Date) {
     // Money taken on a subscription we don't hold (e.g. a replaced checkout paid anyway): a person must refund it.
     if (charge) {
       console.error("UNKNOWN_SUBSCRIPTION_CHARGED", sub.id, body.event);
-      await db.recordPaymentIssue("UNKNOWN_SUBSCRIPTION_CHARGED", sub.id);
+      const paymentId = body.payload?.payment?.entity?.id;
+      await db.recordPaymentIssue("UNKNOWN_SUBSCRIPTION_CHARGED", sub.id, undefined, {
+        paymentId: typeof paymentId === "string" ? paymentId.slice(0, 100) : undefined,
+        note: `${body.event} on a subscription no player holds: refund it.`,
+      });
     }
     return;
   }
@@ -301,4 +314,22 @@ export async function accessContext(db: Db, userId: string | null, email: string
 export const accessCache = new Map<string, { ctx: AccessContext; at: number }>();
 export function forgetAccess(userId: string) {
   accessCache.delete(userId);
+}
+
+/** What /admin/payments shows: open issues, the latest closed ones, and whether webhooks still arrive. */
+export async function paymentsAdmin(db: Db, now: Date) {
+  const day = 86_400_000;
+  const [issues, lastDay, lastWeek] = await Promise.all([
+    db.paymentIssueList(30),
+    db.paymentEventsSince(new Date(now.getTime() - day)),
+    db.paymentEventsSince(new Date(now.getTime() - 7 * day)),
+  ]);
+  return { ...issues, events: { lastDay: lastDay.count, lastWeek: lastWeek.count, last: lastWeek.last } };
+}
+
+/** Close an issue from /admin/payments; the note says what the person did (optional, kept short). */
+export async function resolveIssue(db: Db, id: unknown, note: unknown, now: Date) {
+  if (!Number.isSafeInteger(id) || (id as number) < 1) return false;
+  const text = typeof note === "string" ? note.trim().slice(0, 500) : "";
+  return db.resolvePaymentIssue(id as number, text || null, now);
 }

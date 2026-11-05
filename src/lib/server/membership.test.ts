@@ -9,7 +9,9 @@ import {
   cancelMembership,
   confirmCheckout,
   handleWebhook,
+  paymentsAdmin,
   paywallFor,
+  resolveIssue,
   startCheckout,
   type PayEnv,
 } from "./membership";
@@ -130,7 +132,7 @@ describe("startCheckout", () => {
     const e = event("subscription.charged", { id: a.subscriptionId, status: "active", current_end: end });
     expect(await handleWebhook(db, env, e.body, e.sig, "evt_a", NOW)).toEqual({ ok: true });
     expect(err).toHaveBeenCalledWith("UNKNOWN_SUBSCRIPTION_CHARGED", a.subscriptionId, "subscription.charged");
-    expect(db.paymentIssues).toEqual([{ kind: "UNKNOWN_SUBSCRIPTION_CHARGED", subscriptionId: a.subscriptionId, userId: null }]);
+    expect(db.paymentIssues).toMatchObject([{ kind: "UNKNOWN_SUBSCRIPTION_CHARGED", subscriptionId: a.subscriptionId, userId: null }]);
     err.mockRestore();
   });
 
@@ -178,7 +180,14 @@ describe("startCheckout", () => {
     await expect(startCheckout(db, rp, env, "u1", "founding", NOW)).rejects.toThrow("Founding seats are full");
     expect(cancelled).toEqual([{ id: "sub_1", atCycleEnd: false }]);
     expect(err).toHaveBeenCalledWith(expect.stringContaining("sub_1"));
-    expect(db.paymentIssues).toEqual([{ kind: "ORPHAN_SUBSCRIPTION", subscriptionId: "sub_1", userId: "u1" }]);
+    expect(db.paymentIssues).toMatchObject([
+      {
+        kind: "ORPHAN_SUBSCRIPTION",
+        subscriptionId: "sub_1",
+        userId: "u1",
+        note: "Could not cancel the unused subscription: Razorpay /subscriptions/sub_1/cancel 502: error",
+      },
+    ]);
     err.mockRestore();
   });
 
@@ -366,7 +375,7 @@ describe("confirmCheckout", () => {
     const m = await confirmCheckout(db, env, "u1", pay(subscriptionId), NOW);
     expect(isMember(m, NOW)).toBe(true);
     expect(err).toHaveBeenCalledWith(expect.stringContaining(`FOUNDING_OVERFLOW: paid founding subscription ${subscriptionId}`));
-    expect(db.paymentIssues).toEqual([{ kind: "FOUNDING_OVERFLOW", subscriptionId, userId: "u1" }]);
+    expect(db.paymentIssues).toMatchObject([{ kind: "FOUNDING_OVERFLOW", subscriptionId, userId: "u1" }]);
     err.mockRestore();
   });
 
@@ -572,6 +581,20 @@ describe("handleWebhook", () => {
     expect(await db.insertPaymentEvent("evt_1")).toBe(true);
   });
 
+  it("keeps the payment id of a charge on a subscription we don't know", async () => {
+    const db = memoryDb();
+    const err = vi.spyOn(console, "error").mockImplementation(() => {});
+    const body = JSON.stringify({
+      event: "subscription.charged",
+      payload: { subscription: { entity: { id: "sub_other", status: "active", current_end: 1 } }, payment: { entity: { id: "pay_9" } } },
+    });
+    await handleWebhook(db, env, body, hmac(env.webhookSecret, body), "evt_1");
+    expect(db.paymentIssues).toMatchObject([
+      { subscriptionId: "sub_other", paymentId: "pay_9", note: "subscription.charged on a subscription no player holds: refund it." },
+    ]);
+    err.mockRestore();
+  });
+
   it("records a charge on a subscription we don't know, and ignores its other events", async () => {
     const db = memoryDb();
     const err = vi.spyOn(console, "error").mockImplementation(() => {});
@@ -579,7 +602,7 @@ describe("handleWebhook", () => {
     expect(await handleWebhook(db, env, e.body, e.sig, "evt_1")).toEqual({ ok: true });
     const c = event("subscription.cancelled", { id: "sub_other", status: "cancelled", current_end: 1 });
     expect(await handleWebhook(db, env, c.body, c.sig, "evt_2")).toEqual({ ok: true });
-    expect(db.paymentIssues).toEqual([{ kind: "UNKNOWN_SUBSCRIPTION_CHARGED", subscriptionId: "sub_other", userId: null }]);
+    expect(db.paymentIssues).toMatchObject([{ kind: "UNKNOWN_SUBSCRIPTION_CHARGED", subscriptionId: "sub_other", userId: null }]);
     expect(err).toHaveBeenCalledTimes(1);
     err.mockRestore();
   });
@@ -759,5 +782,41 @@ describe("handleWebhook dedup on failure", () => {
     db.saveMembership = save;
     expect(await handleWebhook(db, env, e.body, e.sig, "evt_1", NOW)).toEqual({ ok: true });
     expect((await db.getMembership("u1"))?.status).toBe("active");
+  });
+});
+
+describe("/admin/payments", () => {
+  it("lists open issues newest first, closes one with a note, and counts recent webhooks", async () => {
+    const db = memoryDb();
+    await db.recordPaymentIssue("FOUNDING_OVERFLOW", "sub_a", "u1");
+    await db.recordPaymentIssue("UNKNOWN_SUBSCRIPTION_CHARGED", "sub_b", undefined, { paymentId: "pay_b" });
+    await db.insertPaymentEvent("evt_1");
+
+    let r = await paymentsAdmin(db, new Date());
+    expect(r.open.map((p) => p.subscriptionId)).toEqual(["sub_b", "sub_a"]);
+    expect(r.resolved).toEqual([]);
+    expect(r.events).toMatchObject({ lastDay: 1, lastWeek: 1 });
+    expect(r.events.last).not.toBeNull();
+
+    const first = r.open[1].id;
+    expect(await resolveIssue(db, first, "  Refunded on Razorpay  ", NOW)).toBe(true);
+    expect(await resolveIssue(db, first, "again", NOW)).toBe(false); // already closed
+    expect(await resolveIssue(db, 999, "", NOW)).toBe(false);
+    expect(await resolveIssue(db, "1", "", NOW)).toBe(false);
+
+    r = await paymentsAdmin(db, new Date());
+    expect(r.open.map((p) => p.subscriptionId)).toEqual(["sub_b"]);
+    expect(r.resolved).toMatchObject([{ subscriptionId: "sub_a", resolution: "Refunded on Razorpay", resolvedAt: NOW.toISOString() }]);
+
+    // An empty note is stored as none.
+    await resolveIssue(db, r.open[0].id, "   ", new Date(NOW.getTime() + 1000));
+    expect((await paymentsAdmin(db, new Date())).resolved[0].resolution).toBeNull();
+  });
+
+  it("counts only webhooks from the last day in lastDay", async () => {
+    const db = memoryDb();
+    await db.insertPaymentEvent("evt_old");
+    const later = new Date(Date.now() + 2 * 86_400_000);
+    expect((await paymentsAdmin(db, later)).events).toMatchObject({ lastDay: 0, lastWeek: 1 });
   });
 });

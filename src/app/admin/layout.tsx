@@ -17,6 +17,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           <Link href="/admin/club" className="ml-auto text-[13px] font-black tracking-wide text-muted uppercase hover:text-ink">
             Club
           </Link>
+          <Link href="/admin/payments" className="text-[13px] font-black tracking-wide text-muted uppercase hover:text-ink">
+            Payments
+          </Link>
           <Link href="/admin/notify" className="text-[13px] font-black tracking-wide text-muted uppercase hover:text-ink">
             Notifications
           </Link>
