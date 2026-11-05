@@ -37,7 +37,7 @@
       "kind": "explain",
       "id": "take-away",
       "title": "What happened next",
-      "text": "84 of the 100 students chose print and web for $125. Then Ariely removed print only and asked a new group of students. Now only 32 of 100 chose print and web. The other 68 chose the cheaper $59 web plan."
+      "text": "84 of 100 students chose print and web for $125. Nobody chose print only. Then Ariely removed print only and asked another group. Now only 32 of 100 chose print and web. The other 68 chose the cheaper $59 web plan."
     },
     {
       "kind": "explain",
@@ -143,7 +143,7 @@
     {
       "kind": "scenario",
       "id": "party-menu",
-      "setup": "It's March. 20 families book party cakes each month. 16 choose cake only at ₹850, leaving you ₹450 each. 4 choose the full pack at ₹1,450, leaving you ₹750 each. That's ₹10,200 a month.",
+      "setup": "It's March. 20 families order party cakes each month. 16 buy only the ₹850 cake. You keep ₹450 from each. 4 buy the full pack for ₹1,450. You keep ₹750 from each. That's ₹10,200 a month. Cake and 12 cupcakes at ₹1,400 would leave you ₹740.",
       "question": "How do you set your party menu?",
       "options": [
         {
@@ -164,7 +164,7 @@
         },
         {
           "id": "c",
-          "label": "Add cake and cupcakes for ₹1,400",
+          "label": "Add a third plan, ₹50 less than the full pack",
           "grade": "great",
           "outcome": "Now the full pack costs only ₹50 more than cake and cupcakes. 9 families choose it, 2 choose cake and cupcakes (you keep ₹740 from each), and 9 choose cake only. You earn ₹12,280 a month.",
           "why": "Your decoy is a real plan you're happy to sell. But its main job was to make the full pack look better. You earn the most from the full pack."

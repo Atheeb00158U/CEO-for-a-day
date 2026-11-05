@@ -128,7 +128,7 @@
         },
         {
           "id": "c",
-          "label": "\"Four cakes elsewhere cost you ₹1,000 more a month.\""
+          "label": "\"Elsewhere you pay ₹1,000 more each month.\""
         }
       ],
       "answer": "c",
@@ -141,7 +141,7 @@
     {
       "kind": "scenario",
       "id": "year-deal",
-      "setup": "It's May. A big office has never bought from you before. It wants all its birthday cakes for a year: about 48 cakes at ₹850 each, ₹40,800 in total. You keep ₹450 from each cake.",
+      "setup": "It's May. A big office has never ordered from you before. Its manager has never paid this much to a new baker. It wants all its birthday cakes for a year: about 48 cakes at ₹850 each, ₹40,800 in total. You keep ₹450 from each cake.",
       "question": "How should you show the price?",
       "options": [
         {

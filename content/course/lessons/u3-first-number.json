@@ -85,7 +85,7 @@
     {
       "kind": "choice",
       "id": "menu-order",
-      "prompt": "Your WhatsApp menu shows a ₹850 cake and a ₹2,500 party cake. Some families say ₹850 is \"a bit much\". Which should come first?",
+      "prompt": "Your WhatsApp menu shows a ₹850 cake and a ₹2,500 party cake. Some families say ₹850 is \"too costly\". Which should you show first?",
       "options": [
         {
           "id": "a",

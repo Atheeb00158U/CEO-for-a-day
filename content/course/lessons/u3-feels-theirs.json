@@ -105,7 +105,7 @@
           "bucket": 1
         },
         {
-          "text": "Their child's name on the box",
+          "text": "They try it at home before paying anything",
           "bucket": 0
         },
         {
@@ -113,7 +113,7 @@
           "bucket": 1
         }
       ],
-      "why": "A box delivered home, filled with things they chose, with their child's name on it, starts to feel like theirs. A photo, coupon or price list is still just your offer."
+      "why": "A box at their door has things they chose. They try them before paying, so the things start to feel like theirs. A photo, coupon or price list is still just your offer."
     },
     {
       "kind": "scenario",
