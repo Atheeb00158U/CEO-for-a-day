@@ -13,9 +13,6 @@ export const TRIAL_ID = "kingfisher-airlines";
  */
 export const COURSE_TRIAL_ID = "kirana-year";
 
-/** The label every made-up Hot Seat carries: on its map card, its first screen and every verdict sheet. */
-export const MADE_UP_LABEL = "Made-up story, based on many real kiranas.";
-
 /** Hot Seats that fit what the player said they want to get better at. Ids that don't exist yet are skipped. */
 const FOCUS: Record<Focus, string[]> = {
   scratch: ["amul-one-brand", "indigo-one-plane-type", "maruti-800"],

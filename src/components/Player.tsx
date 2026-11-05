@@ -7,12 +7,13 @@ import type { Grade, Media } from "@/lib/hotseat-types";
 import type { Pick, PlayView, Screen } from "@/lib/play";
 import { useGame, type RunRecord } from "@/lib/store";
 import { playSfx } from "@/lib/sfx";
+import { useCombo } from "./Combo";
+import { wolfSay } from "@/lib/wolf";
 import { VERDICT } from "@/lib/verdict";
 import { ADVISOR, NARRATOR, speak, stopVoice } from "@/lib/voice";
 import { Bar, Caption, Icon, MediaView } from "./ui";
 import { Logo } from "./Logo";
 import { Debrief } from "./Debrief";
-import { MADE_UP_LABEL } from "@/content/catalog";
 
 type Phase =
   { kind: "screen"; i: number } | { kind: "reveal" } | { kind: "checkpoint" } | { kind: "debrief"; record: RunRecord; endingTitle: string };
@@ -52,6 +53,7 @@ export function Player({
   const [badgesBefore, setBadgesBefore] = useState(game.s.badges);
   const finished = useRef(false); // a double tap on "See your results" must not pay out twice
   const runKey = useRef(newRunKey());
+  const { hit, burst } = useCombo();
   const [saveFailed, setSaveFailed] = useState(false);
   const paused = useRef(false);
 
@@ -65,11 +67,12 @@ export function Player({
           setPicks(next);
           setView(v);
           setPhase(next.length ? { kind: "reveal" } : { kind: "screen", i: 0 });
+          if (next.length && v.reveal) hit(v.reveal.grade === "great");
         })
         .catch(() => setFailed(next))
         .finally(() => setBusy(false));
     },
-    [hotSeatId, view],
+    [hotSeatId, view, hit],
   );
 
   useEffect(() => {
@@ -77,6 +80,14 @@ export function Player({
     return () => stopVoice();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hotSeatId]);
+
+  // A player's very first Hot Seat: the wolf hands over the chair.
+  const firstSeat = game.s.runs.length === 0;
+  useEffect(() => {
+    if (!firstSeat) return;
+    const t = setTimeout(() => wolfSay("firstSeat"), 1500);
+    return () => clearTimeout(t);
+  }, [firstSeat]);
 
   // A lost heart lands after the verdict and meter sounds (see RevealView and Meters).
   const trust = view?.trust;
@@ -149,6 +160,7 @@ export function Player({
 
   return (
     <div className="mx-auto flex min-h-dvh max-w-[480px] flex-col px-4" style={{ paddingTop: "max(12px, env(safe-area-inset-top))" }}>
+      {burst}
       {/* HUD */}
       <div className="flex items-center gap-3 py-2">
         <button
@@ -204,7 +216,6 @@ export function Player({
           question={screen.question}
           advisor={screen.advisor}
           estimate={!madeUp && !view.onRealPath}
-          madeUp={madeUp}
           warning={view.trust === 1 ? "Board warning: one more costly call and you're out." : undefined}
           options={screen.options}
           busy={busy}
@@ -218,7 +229,6 @@ export function Player({
           year={reveal.year}
           media={reveal.media}
           real={madeUp ? undefined : view.onRealPath}
-          madeUp={madeUp}
           outcome={reveal.outcome}
           grade={reveal.grade}
           why={reveal.why}
@@ -367,7 +377,7 @@ export function VoiceButton({ onClick }: { onClick: () => void }) {
   );
 }
 
-function YearChip({ year, real, madeUp }: { year?: string; real?: boolean; madeUp?: boolean }) {
+function YearChip({ year, real }: { year?: string; real?: boolean }) {
   return (
     <div className="flex flex-wrap items-center gap-2">
       {year && <span className="rounded-lg bg-surface-2 px-2 py-1 text-[13px] font-black tabular-nums text-ink">{year}</span>}
@@ -376,11 +386,6 @@ function YearChip({ year, real, madeUp }: { year?: string; real?: boolean; madeU
           className={`rounded-lg px-2 py-1 text-[11px] font-black uppercase tracking-wider ${real ? "bg-ink text-bg" : "border-2 border-dashed border-muted text-muted"}`}
         >
           {real ? "Real history" : "Our estimate"}
-        </span>
-      )}
-      {madeUp && (
-        <span className="rounded-lg border-2 border-dashed border-purple px-2 py-1 text-[11px] font-black tracking-wider text-purple uppercase">
-          {MADE_UP_LABEL}
         </span>
       )}
     </div>
@@ -395,7 +400,7 @@ function SceneView({ view, node, onNext }: { view: PlayView; node: Extract<Scree
   return (
     <div className="flex flex-1 flex-col gap-4">
       <MediaView media={node.media} className="aspect-[4/3] w-full" />
-      <YearChip year={node.year} real={run.picks.length && !run.meta.madeUp ? run.onRealPath : undefined} madeUp={run.meta.madeUp} />
+      <YearChip year={node.year} real={run.picks.length && !run.meta.madeUp ? run.onRealPath : undefined} />
       <Caption text={text} progress={prog(0)} className="text-[21px] font-bold leading-snug" />
       {s.settings.voice && <VoiceButton onClick={replay} />}
       <div className="mt-auto pb-6 pt-4">
@@ -428,7 +433,6 @@ export function DecisionView({
   advisor,
   warning,
   estimate,
-  madeUp,
   options,
   busy,
   onChoose,
@@ -441,8 +445,6 @@ export function DecisionView({
   warning?: string;
   /** The player has left the real path, so this situation is our estimate. */
   estimate?: boolean;
-  /** A made-up story: labelled as such, never "Real history" or "Our estimate". */
-  madeUp?: boolean;
   options: ChoiceItem[];
   /** Waiting for the server's verdict: the lock button stays down. */
   busy?: boolean;
@@ -462,7 +464,7 @@ export function DecisionView({
       <div className="flex items-center gap-3">
         {media && <MediaView media={media} className="size-20 shrink-0 !rounded-2xl" kenBurns={false} />}
         <div className="min-w-0">
-          <YearChip year={year} real={estimate ? false : undefined} madeUp={madeUp} />
+          <YearChip year={year} real={estimate ? false : undefined} />
           <p className="mt-1 text-[13px] font-black uppercase tracking-[.12em] text-brand">Your call</p>
         </div>
       </div>
@@ -530,7 +532,6 @@ export function RevealView({
   realChoice,
   extra,
   hindsight,
-  madeUp,
   onNext,
 }: {
   year: string;
@@ -548,7 +549,6 @@ export function RevealView({
   realChoice?: { company: string; label: string };
   extra?: React.ReactNode;
   hindsight?: { left: number; onUse: () => void };
-  madeUp?: boolean;
   onNext: () => void;
 }) {
   const { s } = useGame();
@@ -559,7 +559,7 @@ export function RevealView({
   return (
     <div className="flex flex-1 flex-col gap-4 pb-[300px]">
       {media && <MediaView media={media} className="aspect-[16/9] w-full" />}
-      <YearChip year={year} real={real} madeUp={madeUp} />
+      <YearChip year={year} real={real} />
       {choice && (
         <div className="rounded-2xl border-2 border-line bg-surface px-3 py-2">
           <p className="text-[11px] font-black uppercase tracking-wider text-muted">You chose</p>
@@ -587,7 +587,6 @@ export function RevealView({
         ]}
         ready={heard}
         hindsight={hindsight}
-        note={madeUp ? MADE_UP_LABEL : undefined}
         onNext={onNext}
       />
     </div>
@@ -637,7 +636,7 @@ export function VerdictSheet({
   pointsLabel?: string;
   lines: { label: string; text: string }[];
   hindsight?: { left: number; onUse: () => void };
-  /** A small line under the verdict, like the made-up story label. */
+  /** A small line under the verdict. */
   note?: string;
   /** False while the verdict is still being read out: Continue waits, so nobody skips what happened. */
   ready?: boolean;
@@ -707,7 +706,7 @@ function EndingView({ view, node, onNext }: { view: PlayView; node: Extract<Scre
   return (
     <div className="flex flex-1 flex-col gap-4">
       <MediaView media={node.media} className="aspect-[4/3] w-full" />
-      {run.meta.madeUp ? <YearChip madeUp /> : !run.onRealPath && <YearChip real={false} />}
+      {!run.meta.madeUp && !run.onRealPath && <YearChip real={false} />}
       <p className="text-[13px] font-black uppercase tracking-[.14em]" style={{ color }}>
         {node.tier === "fired" ? "Game over" : "The end"}
       </p>

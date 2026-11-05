@@ -11,7 +11,7 @@ import { useGame } from "@/lib/store";
 import { Player } from "./Player";
 import { Bar, Card, MediaView } from "./ui";
 import { Logo } from "./Logo";
-import { COURSE_TRIAL_ID, MADE_UP_LABEL } from "@/content/catalog";
+import { COURSE_TRIAL_ID } from "@/content/catalog";
 import { LessonPlayer } from "./LessonPlayer";
 
 /** Calls a new player makes in the trial before the style card. */
@@ -180,7 +180,6 @@ function TrialIntro({ hs, onStart }: { hs: CatalogEntry; onStart: () => void }) 
       </p>
       <h1 className="-mt-2 text-[28px] leading-tight font-black text-balance">{hs.title}</h1>
       <p className="text-[18px] font-bold">{hs.hook}</p>
-      {hs.madeUp && <p className="text-[13px] font-black tracking-wider text-purple uppercase">{MADE_UP_LABEL}</p>}
       <p className="text-[15px] font-bold text-muted">Try the first {TRIAL_CALLS} calls. About two minutes.</p>
       <div className="mt-auto pb-6">
         <button type="button" className="btn3d green" onClick={onStart}>
