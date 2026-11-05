@@ -19,6 +19,8 @@ create table public.club_images (
   check ((owner_id is null) = (keep_until is not null))
 );
 create index club_images_owner on public.club_images (owner_id, created_at desc);   -- the 20-a-day count
+alter table public.club_images enable row level security;
+revoke all on public.club_images from anon, authenticated;
 
 alter table public.club_posts add column image_id uuid references public.club_images (id) on delete set null;
 alter table public.club_messages add column image_id uuid references public.club_images (id) on delete set null;
@@ -160,3 +162,7 @@ returns table (chats int, requests int) language sql stable set search_path = ''
        where o.chat_id = me.chat_id and o.user_id <> p_user and o.user_id in (select id from blocked)));
 $$;
 revoke execute on function public.club_unread(uuid) from public, anon, authenticated;
+
+-- The private bucket for Club pictures: not public, WebP only, 5 MB, no storage policies (only the secret key).
+insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
+values ('club', 'club', false, 5242880, array['image/webp']);
