@@ -27,3 +27,34 @@ export type WolfName = keyof typeof WOLF;
 
 export const srcSet = (name: WolfName, ext: "avif" | "webp") =>
   WOLF[name].widths.map((w) => `/brand/wolf/${name}-${w}.${ext} ${w}w`).join(", ");
+
+// The website's scenes: the boss's chair in real Indian places (in the hero, the wolf sits in it). Wide masters
+// (16:9) in content/brand/site/, served at public/brand/site/<name>-<width>.<ext> for wide screens and
+// <name>-tall-<width>.<ext>, a 4:5 crop around `focus` (0 = left edge, 1 = right edge), for phones.
+export interface Scene {
+  alt: string;
+  focus: number;
+  /** For a picture on the first screen: a 32×18 blur of the master, shown at once while the real file loads.
+   *  Remake it if the master changes: sharp(master).resize(32, 18).blur(0.6).webp({ quality: 40 }), as base64. */
+  poster?: string;
+}
+export const SCENE_WIDE = { width: 1672, height: 941, widths: [828, 1280, 1672] } as const;
+export const SCENE_TALL = { width: 752, height: 940, widths: [480, 752] } as const;
+
+export const SCENES = {
+  empire: {
+    alt: "The wolf in a leather boss's chair, half in a shopkeeper's kurta with a glass of chai, half in a pinstripe suit with a fountain pen, kirana shops on one side and glass towers on the other",
+    focus: 0.5,
+    poster:
+      "data:image/webp;base64,UklGRqoAAABXRUJQVlA4IJ4AAAAQBQCdASogABIAPu1mqU2ppaOiMAgBMB2JYgCdMoR071MATxZRF9recKjbN4I3ak2AAP2cSXtJrUtJ5NWVj2LI36C4uBT7XbUf9efNDMHSX8L/SnwPkUCq50KQHcRGzRVFzWUG/uInyhbAY7dvjPQ2/GZ4+g0R1Rr33HyNJpbPVwyHihA9B6QHeyBDXqhFOKFX7WcdsUgp+gfuk0gAAA==",
+  },
+  shop: { alt: "An empty boss's chair behind the counter of a kirana shop in morning light", focus: 0.5 },
+  chai: { alt: "An empty boss's chair beside a chai stall by the sea at dusk", focus: 0.5 },
+  tarmac: { alt: "An empty boss's chair on an airport runway at sunrise, a row of planes behind it", focus: 0.5 },
+  dairy: { alt: "An empty boss's chair in a misty village field at dawn, steel milk cans beside it", focus: 0.5 },
+} satisfies Record<string, Scene>;
+
+export type SceneName = keyof typeof SCENES;
+
+export const sceneSrcSet = (name: SceneName, tall: boolean, ext: "avif" | "webp") =>
+  (tall ? SCENE_TALL : SCENE_WIDE).widths.map((w) => `/brand/site/${name}${tall ? "-tall" : ""}-${w}.${ext} ${w}w`).join(", ");

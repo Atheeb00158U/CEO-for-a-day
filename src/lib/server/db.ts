@@ -1,5 +1,6 @@
 // Storage for the server. The game logic (src/lib/server/game.ts) talks to this interface only, so tests run it
 // against `memoryDb()` and production against Supabase. Tables: supabase/migrations/.
+import { createHash } from "node:crypto";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { TEST_OUT_PASS, type DailyNote, type GameState } from "../game-state.ts";
 import type { Grade } from "../hotseat-types";
@@ -96,6 +97,131 @@ export interface SeatRow {
   cancelledAt: number | null;
 }
 
+/* The Club (supabase/migrations/20261105090000_club.sql). */
+export interface ClubProfileRow {
+  userId: string;
+  handle: string;
+  name: string;
+  building: string;
+  rank: number;
+  stars: number;
+  maxStars: number;
+  streak: number;
+  streakDay: string | null;
+  milestones: boolean;
+  adultAt: string;
+  rulesAt: string;
+  hiddenAt: string | null;
+  createdAt: string;
+}
+
+export interface PostRow {
+  id: number;
+  /** null: the Wolf. */
+  authorId: string | null;
+  kind: "post" | "reply" | "rank_up" | "hotseat" | "question";
+  ref: string | null;
+  parentId: number | null;
+  body: string;
+  likeCount: number;
+  replyCount: number;
+  held: string | null;
+  hiddenAt: string | null;
+  createdAt: string;
+  /** A picture (step 3). */
+  imageId: string | null;
+}
+
+export interface ReportRow {
+  id: number;
+  reporterId: string | null;
+  targetKind: "post" | "profile" | "message";
+  targetId: string;
+  targetUser: string | null;
+  reason: string;
+  note: string;
+  snapshot: string;
+  status: "open" | "removed" | "kept";
+  dueAt: string;
+  resolvedAt: string | null;
+  createdAt: string;
+  /** The reported post's or message's picture, while it exists. */
+  imageId: string | null;
+}
+
+export type ActivityKind = "reply" | "like" | "follow" | "report_done" | "removed";
+export interface ActivityRow {
+  id: number;
+  userId: string;
+  kind: ActivityKind;
+  actorId: string | null;
+  postId: number | null;
+  /** report_done: "removed" or "kept"; removed: the report reason. */
+  detail: string | null;
+  seen: boolean;
+  createdAt: string;
+}
+
+/* Chats (supabase/migrations/20261106090000_club_chat.sql). */
+export interface ChatMemberRow {
+  chatId: number;
+  userId: string;
+  state: "active" | "request" | "declined" | "left";
+  lastReadId: number;
+  clearedId: number;
+  activeAt: string | null;
+}
+export interface MessageRow {
+  id: number;
+  chatId: number;
+  senderId: string;
+  clientId: string;
+  body: string;
+  flagged: "auto_scam" | "auto_link" | null;
+  held: boolean;
+  hiddenAt: string | null;
+  createdAt: string;
+  imageId: string | null;
+  /** A group line: who did it is the sender; body is the other player's name (added, removed). */
+  event: "created" | "added" | "removed" | "left" | null;
+}
+export interface InboxRow {
+  chatId: number;
+  lastAt: string;
+  lastReadId: number;
+  /** One-to-one: the other player, null once they deleted their account. Always null for a group. */
+  otherId: string | null;
+  /** A group's name; null for one-to-one. */
+  title: string | null;
+  /** The last message this player may see. */
+  last: MessageRow;
+}
+
+/* Pictures (supabase/migrations/20261108090000_club_media.sql). */
+export interface ImageRow {
+  id: string;
+  /** null once a moderator removed it (kept until `keepUntil` for the IT Rules, then deleted). */
+  ownerId: string | null;
+  /** In the private bucket 'club': '<owner>/<id>.webp', or 'removed/<id>.webp'. */
+  path: string;
+  width: number;
+  height: number;
+  usedBy: "post" | "message" | null;
+  keepUntil: string | null;
+  createdAt: string;
+}
+export interface ChatInfo {
+  id: number;
+  /** A group chat (no pair). */
+  group: boolean;
+  title: string | null;
+  createdBy: string | null;
+}
+/** Signed URLs last an hour (spec §6.5). */
+export const SIGNED_SECONDS = 3600;
+export const BUCKET = "club";
+type NewMessage = Omit<MessageRow, "id" | "hiddenAt" | "createdAt" | "imageId" | "event"> & Partial<Pick<MessageRow, "imageId" | "event">>;
+
 export interface Db {
   getProfile(userId: string): Promise<Profile | null>;
   /** Creates the profile unless one exists. */
@@ -164,7 +290,172 @@ export interface Db {
   earlyAccess(userId: string): Promise<Set<string>>;
   /** The founding seat number held or kept for this subscription, if any. */
   seatOf(subscriptionId: string): Promise<number | null>;
+  /** When the account was created (auth.users), or null if it doesn't exist. */
+  accountCreatedAt(userId: string): Promise<string | null>;
+
+  /* The Club. Every list leaves out hidden posts; held ones are filtered in club.ts. */
+  clubProfile(userId: string): Promise<ClubProfileRow | null>;
+  clubProfileByHandle(handle: string): Promise<ClubProfileRow | null>;
+  clubProfiles(userIds: string[]): Promise<ClubProfileRow[]>;
+  /** False when the handle is taken. */
+  insertClubProfile(row: ClubProfileRow): Promise<boolean>;
+  /** Does nothing for a player who hasn't joined. */
+  updateClubProfile(userId: string, patch: Partial<Omit<ClubProfileRow, "userId" | "handle">>): Promise<void>;
+  /** "Leave the Club": everything the profile owns goes with it. */
+  deleteClubProfile(userId: string): Promise<void>;
+  clubBan(userId: string): Promise<{ until: string; reason: "mod" | "left" } | null>;
+  /** `until` null lifts it. */
+  setClubBan(userId: string, until: string | null, reason?: "mod" | "left"): Promise<void>;
+  /** null when a once-only post (the Wolf's, a rank-up) already exists. */
+  insertPost(row: Omit<PostRow, "id" | "likeCount" | "replyCount" | "imageId"> & { imageId?: string | null }): Promise<PostRow | null>;
+  getPost(id: number): Promise<PostRow | null>;
+  wolfPost(kind: "hotseat" | "question", ref: string): Promise<PostRow | null>;
+  deletePost(id: number): Promise<void>;
+  setPostState(id: number, patch: { held?: string | null; hiddenAt?: string | null }): Promise<void>;
+  /** Hide every visible post and reply by this author; returns what it hid. */
+  hidePostsBy(authorId: string, at: string): Promise<PostRow[]>;
+  /** Visible, not held root posts made after `since` and at or before `asOf`, newest first. */
+  feedCandidates(since: string, asOf: string, limit: number): Promise<PostRow[]>;
+  /** Visible, not held root posts by people `viewer` follows, newest first, ids below `before`. */
+  followingFeed(viewer: string, before: number, limit: number): Promise<PostRow[]>;
+  /** Root posts (held included), newest first. */
+  postsBy(authorId: string, before: number, limit: number): Promise<PostRow[]>;
+  /** Replies (held included), oldest first, ids above `after`. */
+  replies(parentId: number, after: number, limit: number): Promise<PostRow[]>;
+  countPostsSince(authorId: string, kind: "post" | "reply", since: string): Promise<number>;
+  /** Whether this author posted this exact text since `since`. */
+  lastPostBody(authorId: string, since: string, body: string): Promise<boolean>;
+  setLike(postId: number, userId: string, on: boolean): Promise<void>;
+  likedOf(userId: string, postIds: number[]): Promise<Set<number>>;
+  setFollow(follower: string, followee: string, on: boolean, at?: string): Promise<void>;
+  followCounts(userId: string): Promise<{ followers: number; following: number }>;
+  follows(follower: string, followee: string): Promise<boolean>;
+  /** Which of `ids` this player follows. */
+  followedAmong(follower: string, ids: string[]): Promise<Set<string>>;
+  countFollowsSince(follower: string, since: string): Promise<number>;
+  setBlock(blocker: string, blocked: string, on: boolean): Promise<void>;
+  /** Who this player blocked (`out`) and who blocked them (`in`). */
+  blocks(userId: string): Promise<{ out: Set<string>; in: Set<string> }>;
+  /** False when this reporter already reported it. */
+  insertReport(row: Omit<ReportRow, "id" | "status" | "resolvedAt" | "imageId"> & { imageId?: string | null }): Promise<boolean>;
+  getReport(id: number): Promise<ReportRow | null>;
+  openReportsOn(targetKind: string, targetId: string): Promise<ReportRow[]>;
+  /** `instantOnly`: only reports with a reason that hides at once (private, fake). */
+  countReportsSince(reporterId: string, since: string, instantOnly?: boolean): Promise<number>;
+  /** Open reports, soonest due first. */
+  reportQueue(): Promise<ReportRow[]>;
+  /** Reports resolved since `since`, newest first. */
+  resolvedReports(since: string): Promise<ReportRow[]>;
+  /** Resolve every open report on a target; returns them. */
+  resolveReports(targetKind: string, targetId: string, status: "removed" | "kept", at: string): Promise<ReportRow[]>;
+  myReports(reporterId: string): Promise<ReportRow[]>;
+  addActivity(row: {
+    userId: string;
+    kind: ActivityKind;
+    actorId?: string;
+    postId?: number;
+    detail?: string;
+    createdAt: string;
+  }): Promise<void>;
+  activity(userId: string, before: number, limit: number): Promise<ActivityRow[]>;
+  markActivitySeen(userId: string, upTo: number): Promise<void>;
+  unseenActivity(userId: string): Promise<number>;
+  /** How many Club notifications (kinds starting club_) a player got that day. */
+  clubNoticesOn(userId: string, day: string): Promise<number>;
+
+  /* Chats. */
+  chatByPair(pair: string): Promise<{ id: number } | null>;
+  /**
+   * The pair's chat, made with its members if it has none, under the creator's daily limits (counted from a log that
+   * leaving the Club doesn't clear). null: over the limits. One at a time per creator (rpc club_start_chat).
+   */
+  startChat(input: {
+    pair: string;
+    creator: string;
+    other: string;
+    request: boolean;
+    since: string;
+    perDay: number;
+    requestsPerDay: number;
+    at: string;
+  }): Promise<number | null>;
+  /** A new group with its members, counted in the same log and limit as new chats (rpc club_start_group). null: over it. */
+  startGroup(input: {
+    creator: string;
+    others: string[];
+    title: string;
+    since: string;
+    perDay: number;
+    at: string;
+  }): Promise<number | null>;
+  getChat(id: number): Promise<ChatInfo | null>;
+  /**
+   * Add (or bring back) a group member with the chat locked, seeing only what comes after; false when it already has
+   * `max` people (rpc club_add_member).
+   */
+  addMember(chatId: number, userId: string, max: number): Promise<boolean>;
+  /** Players who follow `userId` and whom `userId` follows. */
+  mutuals(userId: string): Promise<string[]>;
+  chatMembers(chatId: number): Promise<ChatMemberRow[]>;
+  setMember(chatId: number, userId: string, patch: Partial<Omit<ChatMemberRow, "chatId" | "userId">>): Promise<void>;
+  /** Newest first, chats with something this player may see (rpc club_inbox). */
+  inbox(userId: string, state: "active" | "request", before: { at: string; id: number } | null, limit: number): Promise<InboxRow[]>;
+  /**
+   * Saves once per (chat, sender, clientId) and moves the chat to the top unless held, with the chat locked (rpc
+   * club_send). `fresh` is false for a retry: the saved row comes back and nothing else may happen. "cap": the sender
+   * already sent `requestCap` messages and the other player hasn't accepted. A picture is claimed inside the same lock,
+   * after the retry check; "picture": it isn't the sender's, is used already, or is over an hour old.
+   */
+  sendMessage(row: NewMessage, at: string, requestCap: number): Promise<{ row: MessageRow; fresh: boolean } | "cap" | "picture">;
+  /** Move a chat to the top (a held message a moderator kept). */
+  bumpChat(chatId: number, messageId: number, at: string): Promise<void>;
+  getMessage(id: number): Promise<MessageRow | null>;
+  /** Not hidden; ascending by id. `before`: the newest `limit` below it; `after`: the first `limit` above it. */
+  messages(chatId: number, opts: { before?: number; after?: number; afterCleared: number; limit: number }): Promise<MessageRow[]>;
+  /** The newest message id in a chat, hidden ones too (0 when empty). */
+  lastMessageId(chatId: number): Promise<number>;
+  countMessages(chatId: number, senderId: string): Promise<number>;
+  setMessageState(id: number, patch: { held?: boolean; hiddenAt?: string | null }): Promise<void>;
+  /** "Ban and hide everything": hides every message they sent and returns them. */
+  hideMessagesBy(senderId: string, at: string): Promise<MessageRow[]>;
+  /** Unread chats and waiting requests, leaving out players blocked either way (rpc club_unread). */
+  unreadChats(userId: string): Promise<{ chats: number; requests: number }>;
+  /** Chat pushes (kinds starting dm:) a player got that day. */
+  dmNoticesOn(userId: string, day: string): Promise<number>;
+
+  // Pictures (step 3): rows, then the files in the private bucket.
+  /**
+   * Save a new picture's row under the owner's daily cap, counted from a log that deletes don't clear, with a per-player
+   * lock (rpc club_add_image). false: over the cap.
+   */
+  addImage(row: Omit<ImageRow, "usedBy" | "keepUntil">, since: string, perDay: number): Promise<boolean>;
+  /** Mark the owner's unused picture, made after `since`, as used; null if it isn't one. */
+  claimImage(id: string, ownerId: string, since: string, usedBy: "post" | "message"): Promise<ImageRow | null>;
+  imagesByIds(ids: string[]): Promise<ImageRow[]>;
+  /** Pictures added since then (from the log). */
+  countImagesSince(ownerId: string, since: string): Promise<number>;
+  /** A moderator removed it: no owner any more, a new path, deleted after `until`. */
+  keepImage(id: string, path: string, until: string): Promise<void>;
+  /** A moderator kept it after all: back with its owner, at `path`. */
+  restoreImage(id: string, ownerId: string, path: string): Promise<void>;
+  /** The owner's pictures in an open report or in hidden content (rpc club_evidence_images). */
+  evidenceImages(ownerId: string): Promise<string[]>;
+  /** Which of these pictures an open report points at. */
+  reportedImages(ids: string[]): Promise<Set<string>>;
+  deleteImages(ids: string[]): Promise<void>;
+  /** Unused or orphaned for a day, and removed pictures past their keep date (rpc club_stale_images). */
+  staleImages(before: string, limit: number): Promise<ImageRow[]>;
+  putFile(path: string, bytes: Uint8Array): Promise<void>;
+  moveFile(from: string, to: string): Promise<void>;
+  removeFiles(paths: string[]): Promise<void>;
+  /** Every file in '<ownerId>/'. */
+  removeFolder(ownerId: string): Promise<void>;
+  /** A signed URL for each path, good for an hour. */
+  signFiles(paths: string[]): Promise<Record<string, string>>;
 }
+
+/** Notification kinds with their own daily cap (the Club's), not counted in the game's. */
+export const ownCap = (kind: string) => kind.startsWith("club_") || kind.startsWith("dm:");
 
 /* ------------------------------------------------------------------ */
 /* In memory, for tests.                                               */
@@ -178,7 +469,12 @@ export function memoryDb(): Db & {
   seats: SeatRow[];
   early: Map<string, Set<string>>;
   paymentIssues: PaymentIssue[];
+  club: ReturnType<typeof clubStore>;
+  /** auth.users created_at by id; an id missing here counts as an old account. */
+  accounts: Map<string, string>;
 } {
+  const club = clubStore();
+  const accounts = new Map<string, string>();
   const profiles = new Map<string, Profile>();
   const runs: RunRow[] = [];
   const lessonPlays: LessonPlayRow[] = [];
@@ -303,11 +599,25 @@ export function memoryDb(): Db & {
       return true;
     },
     async noticesOn(id, day) {
-      return [...notices].filter((k) => k.startsWith(`${id}|${day}|`)).length;
+      return [...notices].filter((k) => k.startsWith(`${id}|${day}|`) && !ownCap(k.split("|")[2])).length;
+    },
+    async clubNoticesOn(id, day) {
+      return [...notices].filter((k) => k.startsWith(`${id}|${day}|club_`)).length;
+    },
+    async dmNoticesOn(id, day) {
+      return [...notices].filter((k) => k.startsWith(`${id}|${day}|dm:`)).length;
     },
     async noticeResult() {},
     async deleteUser(id) {
       profiles.delete(id);
+      // As the migration's cascades: the Club profile and all it owns, the ban; reports keep their snapshot.
+      club.files.removeFolder(id);
+      club.dropProfile(id);
+      for (let i = club.chatLog.length - 1; i >= 0; i--) if (club.chatLog[i].userId === id) club.chatLog.splice(i, 1);
+      for (let i = club.imageLog.length - 1; i >= 0; i--) if (club.imageLog[i].userId === id) club.imageLog.splice(i, 1);
+      club.bans.delete(id);
+      for (const r of club.reports) if (r.reporterId === id) r.reporterId = null;
+      accounts.delete(id);
       for (const list of [runs, lessonPlays, daily, leagues] as { userId: string }[][])
         for (let i = list.length - 1; i >= 0; i--) if (list[i].userId === id) list.splice(i, 1);
       for (const [k, p] of pushes) if (p.userId === id) pushes.delete(k);
@@ -324,6 +634,12 @@ export function memoryDb(): Db & {
     seats,
     early,
     paymentIssues,
+    club,
+    accounts,
+    async accountCreatedAt(id) {
+      return accounts.get(id) ?? "2000-01-01T00:00:00.000Z";
+    },
+    ...club.methods,
     foundingSeats: 0,
     async countFoundingSeats() {
       // `foundingSeats` is a test hook for a count with no rows behind it; it adds to the real seats.
@@ -392,6 +708,621 @@ export function memoryDb(): Db & {
     async seatOf(subscriptionId) {
       return seats.find((s) => s.subscriptionId === subscriptionId)?.seatNo ?? null;
     },
+  };
+}
+
+/** The Club's tables in memory, with the migration's cascades and count triggers. */
+function clubStore() {
+  const profiles = new Map<string, ClubProfileRow>();
+  const bans = new Map<string, { until: string; reason: "mod" | "left" }>();
+  const posts: PostRow[] = [];
+  const likes: { postId: number; userId: string }[] = [];
+  const follows: { follower: string; followee: string; at: string }[] = [];
+  const blocks: { blocker: string; blocked: string }[] = [];
+  const reports: ReportRow[] = [];
+  const activity: ActivityRow[] = [];
+  /** club_post_log: what the daily caps count, untouched by deleting a post (20261105150000_club_fixes.sql). */
+  const postLog: { authorId: string; kind: string; body: string; createdAt: string }[] = [];
+  const chats: { id: number; pair: string | null; title: string | null; createdBy: string | null; lastAt: string; createdAt: string }[] =
+    [];
+  const members: ChatMemberRow[] = [];
+  const messages: MessageRow[] = [];
+  const images: ImageRow[] = [];
+  /** The private bucket: path → WebP bytes. */
+  const stored = new Map<string, Uint8Array>();
+  /** club_chat_log: chats started, keyed to the account, so leaving the Club doesn't clear it. */
+  const chatLog: { userId: string; request: boolean; createdAt: string }[] = [];
+  /** club_image_log: pictures added, keyed to the account. */
+  const imageLog: { userId: string; createdAt: string }[] = [];
+  let nextId = 1;
+  const clone = <T>(x: T): T => structuredClone(x);
+  const prune = <T>(list: T[], gone: (x: T) => boolean) => {
+    for (let i = list.length - 1; i >= 0; i--) if (gone(list[i])) list.splice(i, 1);
+  };
+  const root = (p: PostRow) => p.kind === "post" || p.kind === "rank_up";
+  const since = (at: string, from: string) => Date.parse(at) >= Date.parse(from);
+  /** reply_count counts only replies everyone can see (the club_count trigger). */
+  const shown = (p: PostRow) => !p.held && !p.hiddenAt;
+  const bump = (p: PostRow, d: number) => {
+    const parent = p.parentId === null ? undefined : posts.find((x) => x.id === p.parentId);
+    if (parent) parent.replyCount += d;
+  };
+  /** Change held/hidden, moving the parent's reply count as the trigger does. */
+  const restate = (p: PostRow, patch: Partial<Pick<PostRow, "held" | "hiddenAt">>) => {
+    const was = shown(p);
+    Object.assign(p, patch);
+    if (was !== shown(p)) bump(p, shown(p) ? 1 : -1);
+  };
+
+  function dropPosts(gone: (p: PostRow) => boolean) {
+    const ids = new Set(posts.filter(gone).map((p) => p.id));
+    for (const p of posts) if (p.parentId !== null && ids.has(p.parentId)) ids.add(p.id); // replies cascade
+    for (const p of posts) if (ids.has(p.id) && p.parentId !== null && !ids.has(p.parentId) && shown(p)) bump(p, -1);
+    prune(likes, (l) => ids.has(l.postId));
+    prune(activity, (a) => a.postId !== null && ids.has(a.postId));
+    prune(posts, (p) => ids.has(p.id));
+  }
+
+  function dropProfile(id: string) {
+    if (!profiles.delete(id)) return;
+    dropPosts((p) => p.authorId === id);
+    prune(postLog, (l) => l.authorId === id);
+    for (const l of likes.filter((l) => l.userId === id)) {
+      const p = posts.find((x) => x.id === l.postId);
+      if (p) p.likeCount--;
+    }
+    prune(likes, (l) => l.userId === id);
+    prune(follows, (f) => f.follower === id || f.followee === id);
+    prune(blocks, (b) => b.blocker === id || b.blocked === id);
+    prune(activity, (a) => a.userId === id || a.actorId === id);
+    prune(members, (m) => m.userId === id);
+    prune(messages, (m) => m.senderId === id);
+    for (const c of chats) if (c.createdBy === id) c.createdBy = null;
+    dropImages((i) => i.ownerId === id);
+  }
+  /** Rows going, as the foreign keys do: posts, messages and reports keep going without the picture. */
+  function dropImages(gone: (i: ImageRow) => boolean) {
+    const ids = new Set(images.filter(gone).map((i) => i.id));
+    for (const x of [...posts, ...messages, ...reports]) if (x.imageId && ids.has(x.imageId)) x.imageId = null;
+    prune(images, (i) => ids.has(i.id));
+  }
+  const files = {
+    async putFile(path: string, bytes: Uint8Array) {
+      stored.set(path, bytes);
+    },
+    async moveFile(from: string, to: string) {
+      const b = stored.get(from);
+      if (!b) throw new Error(`no file ${from}`);
+      stored.delete(from);
+      stored.set(to, b);
+    },
+    async removeFiles(paths: string[]) {
+      for (const p of paths) stored.delete(p);
+    },
+    removeFolder(owner: string) {
+      for (const p of [...stored.keys()]) if (p.startsWith(`${owner}/`)) stored.delete(p);
+    },
+    /** In tests and the screenshot harness, the picture itself as a data URL. */
+    async signFiles(paths: string[]) {
+      return Object.fromEntries(
+        paths.flatMap((p) => {
+          const b = stored.get(p);
+          return b ? [[p, `data:image/webp;base64,${Buffer.from(b).toString("base64")}`]] : [];
+        }),
+      );
+    },
+  };
+
+  const methods: Pick<
+    Db,
+    | "clubProfile"
+    | "clubProfileByHandle"
+    | "clubProfiles"
+    | "insertClubProfile"
+    | "updateClubProfile"
+    | "deleteClubProfile"
+    | "clubBan"
+    | "setClubBan"
+    | "insertPost"
+    | "getPost"
+    | "wolfPost"
+    | "deletePost"
+    | "setPostState"
+    | "hidePostsBy"
+    | "feedCandidates"
+    | "followingFeed"
+    | "postsBy"
+    | "replies"
+    | "countPostsSince"
+    | "lastPostBody"
+    | "setLike"
+    | "likedOf"
+    | "setFollow"
+    | "followCounts"
+    | "follows"
+    | "followedAmong"
+    | "countFollowsSince"
+    | "setBlock"
+    | "blocks"
+    | "insertReport"
+    | "getReport"
+    | "openReportsOn"
+    | "countReportsSince"
+    | "reportQueue"
+    | "resolvedReports"
+    | "resolveReports"
+    | "myReports"
+    | "addActivity"
+    | "activity"
+    | "markActivitySeen"
+    | "unseenActivity"
+    | "chatByPair"
+    | "startChat"
+    | "bumpChat"
+    | "chatMembers"
+    | "setMember"
+    | "inbox"
+    | "sendMessage"
+    | "getMessage"
+    | "messages"
+    | "lastMessageId"
+    | "countMessages"
+    | "setMessageState"
+    | "hideMessagesBy"
+    | "unreadChats"
+    | "startGroup"
+    | "getChat"
+    | "addMember"
+    | "mutuals"
+    | "addImage"
+    | "restoreImage"
+    | "evidenceImages"
+    | "reportedImages"
+    | "claimImage"
+    | "imagesByIds"
+    | "countImagesSince"
+    | "keepImage"
+    | "deleteImages"
+    | "staleImages"
+    | "putFile"
+    | "moveFile"
+    | "removeFiles"
+    | "removeFolder"
+    | "signFiles"
+  > = {
+    async clubProfile(id) {
+      return clone(profiles.get(id) ?? null);
+    },
+    async clubProfileByHandle(handle) {
+      return clone([...profiles.values()].find((p) => p.handle === handle) ?? null);
+    },
+    async clubProfiles(ids) {
+      return clone(ids.flatMap((id) => (profiles.has(id) ? [profiles.get(id)!] : [])));
+    },
+    async insertClubProfile(row) {
+      if ([...profiles.values()].some((p) => p.handle === row.handle) || profiles.has(row.userId)) return false;
+      profiles.set(row.userId, clone(row));
+      return true;
+    },
+    async updateClubProfile(id, patch) {
+      const p = profiles.get(id);
+      if (p) Object.assign(p, clone(patch));
+    },
+    async deleteClubProfile(id) {
+      dropProfile(id);
+    },
+    async clubBan(id) {
+      return clone(bans.get(id) ?? null);
+    },
+    async setClubBan(id, until, reason = "mod") {
+      if (until === null) bans.delete(id);
+      else bans.set(id, { until, reason });
+    },
+    async insertPost(row) {
+      if (
+        posts.some(
+          (p) =>
+            (row.authorId === null && p.kind === row.kind && p.ref === row.ref) ||
+            (row.kind === "rank_up" && p.kind === "rank_up" && p.authorId === row.authorId && p.ref === row.ref),
+        )
+      )
+        return null;
+      const p: PostRow = { ...clone(row), imageId: row.imageId ?? null, id: nextId++, likeCount: 0, replyCount: 0 };
+      posts.push(p);
+      if (shown(p)) bump(p, 1);
+      if (p.authorId && (p.kind === "post" || p.kind === "reply"))
+        postLog.push({ authorId: p.authorId, kind: p.kind, body: p.body, createdAt: p.createdAt });
+      return clone(p);
+    },
+    async getPost(id) {
+      return clone(posts.find((p) => p.id === id) ?? null);
+    },
+    async wolfPost(kind, ref) {
+      return clone(posts.find((p) => p.authorId === null && p.kind === kind && p.ref === ref) ?? null);
+    },
+    async deletePost(id) {
+      dropPosts((p) => p.id === id);
+    },
+    async setPostState(id, patch) {
+      const p = posts.find((x) => x.id === id);
+      if (p) restate(p, patch);
+    },
+    async hidePostsBy(authorId, at) {
+      const hit = posts.filter((p) => p.authorId === authorId && p.hiddenAt === null);
+      for (const p of hit) restate(p, { hiddenAt: at });
+      return clone(hit);
+    },
+    async feedCandidates(from, asOf, limit) {
+      return clone(
+        posts
+          .filter((p) => root(p) && !p.hiddenAt && !p.held && Date.parse(p.createdAt) > Date.parse(from) && p.createdAt <= asOf)
+          .sort((a, b) => b.id - a.id)
+          .slice(0, limit),
+      );
+    },
+    async followingFeed(viewer, before, limit) {
+      const followed = new Set(follows.filter((f) => f.follower === viewer).map((f) => f.followee));
+      return clone(
+        posts
+          .filter((p) => root(p) && !p.hiddenAt && !p.held && p.id < before && p.authorId && followed.has(p.authorId))
+          .sort((a, b) => b.id - a.id)
+          .slice(0, limit),
+      );
+    },
+    async postsBy(authorId, before, limit) {
+      return clone(
+        posts
+          .filter((p) => p.authorId === authorId && root(p) && !p.hiddenAt && p.id < before)
+          .sort((a, b) => b.id - a.id)
+          .slice(0, limit),
+      );
+    },
+    async replies(parentId, after, limit) {
+      return clone(posts.filter((p) => p.parentId === parentId && !p.hiddenAt && p.id > after).slice(0, limit));
+    },
+    async countPostsSince(authorId, kind, from) {
+      return postLog.filter((p) => p.authorId === authorId && p.kind === kind && since(p.createdAt, from)).length;
+    },
+    async lastPostBody(authorId, from, body) {
+      return postLog.some((p) => p.authorId === authorId && p.body === body && since(p.createdAt, from));
+    },
+    async setLike(postId, userId, on) {
+      const i = likes.findIndex((l) => l.postId === postId && l.userId === userId);
+      const p = posts.find((x) => x.id === postId);
+      if (on && i < 0 && p) {
+        likes.push({ postId, userId });
+        p.likeCount++;
+      }
+      if (!on && i >= 0) {
+        likes.splice(i, 1);
+        if (p) p.likeCount--;
+      }
+    },
+    async likedOf(userId, ids) {
+      return new Set(likes.filter((l) => l.userId === userId && ids.includes(l.postId)).map((l) => l.postId));
+    },
+    async setFollow(follower, followee, on, at = new Date().toISOString()) {
+      const i = follows.findIndex((f) => f.follower === follower && f.followee === followee);
+      if (on && i < 0) follows.push({ follower, followee, at });
+      if (!on && i >= 0) follows.splice(i, 1);
+    },
+    async followCounts(id) {
+      return { followers: follows.filter((f) => f.followee === id).length, following: follows.filter((f) => f.follower === id).length };
+    },
+    async follows(follower, followee) {
+      return follows.some((f) => f.follower === follower && f.followee === followee);
+    },
+    async followedAmong(follower, ids) {
+      return new Set(follows.filter((f) => f.follower === follower && ids.includes(f.followee)).map((f) => f.followee));
+    },
+    async countFollowsSince(follower, from) {
+      return follows.filter((f) => f.follower === follower && since(f.at, from)).length;
+    },
+    async setBlock(blocker, blocked, on) {
+      const i = blocks.findIndex((b) => b.blocker === blocker && b.blocked === blocked);
+      if (on && i < 0) blocks.push({ blocker, blocked });
+      if (!on && i >= 0) blocks.splice(i, 1);
+    },
+    async blocks(id) {
+      return {
+        out: new Set(blocks.filter((b) => b.blocker === id).map((b) => b.blocked)),
+        in: new Set(blocks.filter((b) => b.blocked === id).map((b) => b.blocker)),
+      };
+    },
+    async insertReport(row) {
+      if (
+        row.reporterId &&
+        reports.some((r) => r.reporterId === row.reporterId && r.targetKind === row.targetKind && r.targetId === row.targetId)
+      )
+        return false;
+      reports.push({ ...clone(row), imageId: row.imageId ?? null, id: nextId++, status: "open", resolvedAt: null });
+      return true;
+    },
+    async getReport(id) {
+      return clone(reports.find((r) => r.id === id) ?? null);
+    },
+    async openReportsOn(kind, id) {
+      return clone(reports.filter((r) => r.targetKind === kind && r.targetId === id && r.status === "open"));
+    },
+    async countReportsSince(reporterId, from, instantOnly) {
+      return reports.filter(
+        (r) => r.reporterId === reporterId && since(r.createdAt, from) && (!instantOnly || r.reason === "private" || r.reason === "fake"),
+      ).length;
+    },
+    async reportQueue() {
+      return clone(reports.filter((r) => r.status === "open").sort((a, b) => Date.parse(a.dueAt) - Date.parse(b.dueAt)));
+    },
+    async resolvedReports(from) {
+      return clone(
+        reports
+          .filter((r) => r.status !== "open" && r.resolvedAt && since(r.resolvedAt, from))
+          .sort((a, b) => Date.parse(b.resolvedAt!) - Date.parse(a.resolvedAt!)),
+      );
+    },
+    async resolveReports(kind, id, status, at) {
+      const hit = reports.filter((r) => r.targetKind === kind && r.targetId === id && r.status === "open");
+      for (const r of hit) Object.assign(r, { status, resolvedAt: at });
+      return clone(hit);
+    },
+    async myReports(reporterId) {
+      return clone(reports.filter((r) => r.reporterId === reporterId).sort((a, b) => b.id - a.id));
+    },
+    async addActivity(row) {
+      if (
+        row.kind === "like" &&
+        activity.some((a) => a.kind === "like" && a.userId === row.userId && a.actorId === row.actorId && a.postId === row.postId)
+      )
+        return;
+      activity.push({
+        id: nextId++,
+        userId: row.userId,
+        kind: row.kind,
+        actorId: row.actorId ?? null,
+        postId: row.postId ?? null,
+        detail: row.detail ?? null,
+        seen: false,
+        createdAt: row.createdAt,
+      });
+    },
+    async activity(id, before, limit) {
+      return clone(
+        activity
+          .filter((a) => a.userId === id && a.id < before)
+          .sort((a, b) => b.id - a.id)
+          .slice(0, limit),
+      );
+    },
+    async markActivitySeen(id, upTo) {
+      for (const a of activity) if (a.userId === id && a.id <= upTo) a.seen = true;
+    },
+    async unseenActivity(id) {
+      return activity.filter((a) => a.userId === id && !a.seen).length;
+    },
+    async chatByPair(pair) {
+      const c = chats.find((x) => x.pair === pair);
+      return c ? { id: c.id } : null;
+    },
+    async startChat({ pair, creator, other, request, since: from, perDay, requestsPerDay, at }) {
+      const old = chats.find((x) => x.pair === pair);
+      if (old) return old.id;
+      const mine = chatLog.filter((l) => l.userId === creator && since(l.createdAt, from));
+      if (mine.length >= perDay || (request && mine.filter((l) => l.request).length >= requestsPerDay)) return null;
+      const id = nextId++;
+      chats.push({ id, pair, title: null, createdBy: creator, lastAt: at, createdAt: at });
+      members.push({ chatId: id, userId: creator, state: "active", lastReadId: 0, clearedId: 0, activeAt: null });
+      members.push({ chatId: id, userId: other, state: request ? "request" : "active", lastReadId: 0, clearedId: 0, activeAt: null });
+      chatLog.push({ userId: creator, request, createdAt: at });
+      return id;
+    },
+    async startGroup({ creator, others, title, since: from, perDay, at }) {
+      if (chatLog.filter((l) => l.userId === creator && since(l.createdAt, from)).length >= perDay) return null;
+      const id = nextId++;
+      chats.push({ id, pair: null, title, createdBy: creator, lastAt: at, createdAt: at });
+      for (const u of [creator, ...others])
+        members.push({ chatId: id, userId: u, state: "active", lastReadId: 0, clearedId: 0, activeAt: null });
+      chatLog.push({ userId: creator, request: false, createdAt: at });
+      return id;
+    },
+    async getChat(id) {
+      const c = chats.find((x) => x.id === id);
+      return c ? { id, group: c.pair === null, title: c.title, createdBy: c.createdBy } : null;
+    },
+    async addMember(chatId, userId, max) {
+      const m = members.find((x) => x.chatId === chatId && x.userId === userId);
+      if (m?.state === "active") return true;
+      if (members.filter((x) => x.chatId === chatId && x.state === "active").length >= max) return false;
+      const last = messages.filter((x) => x.chatId === chatId).at(-1)?.id ?? 0;
+      if (m) Object.assign(m, { state: "active", clearedId: last, lastReadId: last, activeAt: null });
+      else members.push({ chatId, userId, state: "active", lastReadId: last, clearedId: last, activeAt: null });
+      return true;
+    },
+    async mutuals(userId) {
+      const back = new Set(follows.filter((f) => f.followee === userId).map((f) => f.follower));
+      return follows.filter((f) => f.follower === userId && back.has(f.followee)).map((f) => f.followee);
+    },
+    async chatMembers(chatId) {
+      return clone(members.filter((m) => m.chatId === chatId));
+    },
+    async setMember(chatId, userId, patch) {
+      const m = members.find((x) => x.chatId === chatId && x.userId === userId);
+      if (m) Object.assign(m, patch);
+    },
+    async inbox(userId, state, before, limit) {
+      const out: InboxRow[] = [];
+      for (const me of members.filter((m) => m.userId === userId && m.state === state)) {
+        const c = chats.find((x) => x.id === me.chatId)!;
+        if (before && (c.lastAt > before.at || (c.lastAt === before.at && c.id >= before.id))) continue;
+        const last = messages
+          .filter((x) => x.chatId === c.id && !x.hiddenAt && (!x.held || x.senderId === userId) && x.id > me.clearedId)
+          .at(-1);
+        if (!last) continue;
+        const other = c.pair === null ? undefined : members.find((m) => m.chatId === c.id && m.userId !== userId);
+        out.push({
+          chatId: c.id,
+          lastAt: c.lastAt,
+          lastReadId: me.lastReadId,
+          otherId: other?.userId ?? null,
+          title: c.title,
+          last: clone(last),
+        });
+      }
+      return out.sort((a, b) => b.lastAt.localeCompare(a.lastAt) || b.chatId - a.chatId).slice(0, limit);
+    },
+    async sendMessage(row, at, requestCap) {
+      const old = messages.find((m) => m.chatId === row.chatId && m.senderId === row.senderId && m.clientId === row.clientId);
+      if (old) return { row: clone(old), fresh: false };
+      const waiting = members.some(
+        (m) => m.chatId === row.chatId && m.userId !== row.senderId && (m.state === "request" || m.state === "declined"),
+      );
+      if (waiting && messages.filter((m) => m.chatId === row.chatId && m.senderId === row.senderId).length >= requestCap) return "cap";
+      if (row.imageId) {
+        const pic = images.find(
+          (i) =>
+            i.id === row.imageId && i.ownerId === row.senderId && i.usedBy === null && Date.parse(i.createdAt) > Date.parse(at) - 3600_000,
+        );
+        if (!pic) return "picture";
+        pic.usedBy = "message";
+      }
+      const m: MessageRow = {
+        ...clone(row),
+        imageId: row.imageId ?? null,
+        event: row.event ?? null,
+        id: nextId++,
+        hiddenAt: null,
+        createdAt: at,
+      };
+      messages.push(m);
+      const c = chats.find((x) => x.id === row.chatId);
+      if (c && !row.held) c.lastAt = at;
+      return { row: clone(m), fresh: true };
+    },
+    async bumpChat(chatId, _messageId, at) {
+      const c = chats.find((x) => x.id === chatId);
+      if (c) c.lastAt = at;
+    },
+    async getMessage(id) {
+      return clone(messages.find((m) => m.id === id) ?? null);
+    },
+    async messages(chatId, { before, after, afterCleared, limit }) {
+      const shown = messages.filter(
+        (m) =>
+          m.chatId === chatId &&
+          !m.hiddenAt &&
+          m.id > afterCleared &&
+          (before === undefined || m.id < before) &&
+          (after === undefined || m.id > after),
+      );
+      return clone(after !== undefined ? shown.slice(0, limit) : shown.slice(-limit));
+    },
+    async lastMessageId(chatId) {
+      return messages.filter((m) => m.chatId === chatId).at(-1)?.id ?? 0;
+    },
+    async countMessages(chatId, senderId) {
+      return messages.filter((m) => m.chatId === chatId && m.senderId === senderId).length;
+    },
+    async setMessageState(id, patch) {
+      const m = messages.find((x) => x.id === id);
+      if (m) Object.assign(m, patch);
+    },
+    async hideMessagesBy(senderId, at) {
+      const hit = messages.filter((m) => m.senderId === senderId && m.hiddenAt === null);
+      for (const m of hit) m.hiddenAt = at;
+      return clone(hit);
+    },
+    async unreadChats(userId) {
+      let chatsN = 0;
+      let requests = 0;
+      const blocked = (other: string) =>
+        blocks.some((b) => (b.blocker === userId && b.blocked === other) || (b.blocker === other && b.blocked === userId));
+      for (const me of members.filter((m) => m.userId === userId)) {
+        // One-to-one chats with a blocked player drop out; a group stays (their messages are left out on reading).
+        const other = members.find((m) => m.chatId === me.chatId && m.userId !== userId);
+        const group = chats.find((c) => c.id === me.chatId)?.pair === null;
+        if (!group && other && blocked(other.userId)) continue;
+        const shown = messages.filter((x) => x.chatId === me.chatId && !x.hiddenAt && !x.held && x.id > me.clearedId);
+        if (me.state === "active" && shown.some((x) => x.senderId !== userId && !blocked(x.senderId) && x.id > me.lastReadId)) chatsN++;
+        if (me.state === "request" && shown.length) requests++;
+      }
+      return { chats: chatsN, requests };
+    },
+    async addImage(row, from, perDay) {
+      if (imageLog.filter((l) => l.userId === row.ownerId && since(l.createdAt, from)).length >= perDay) return false;
+      images.push({ ...clone(row), usedBy: null, keepUntil: null });
+      imageLog.push({ userId: row.ownerId!, createdAt: row.createdAt });
+      return true;
+    },
+    async restoreImage(id, ownerId, path) {
+      const i = images.find((x) => x.id === id);
+      if (i) Object.assign(i, { ownerId, path, keepUntil: null });
+    },
+    async evidenceImages(ownerId) {
+      const open = new Set(reports.filter((r) => r.status === "open" && r.imageId).map((r) => r.imageId));
+      const hidden = new Set([...posts, ...messages].filter((x) => x.hiddenAt && x.imageId).map((x) => x.imageId));
+      return images.filter((i) => i.ownerId === ownerId && (open.has(i.id) || hidden.has(i.id))).map((i) => i.id);
+    },
+    async reportedImages(ids) {
+      return new Set(reports.filter((r) => r.status === "open" && r.imageId && ids.includes(r.imageId)).map((r) => r.imageId!));
+    },
+    async claimImage(id, ownerId, from, usedBy) {
+      const i = images.find((x) => x.id === id && x.ownerId === ownerId && x.usedBy === null && since(x.createdAt, from));
+      if (!i) return null;
+      i.usedBy = usedBy;
+      return clone(i);
+    },
+    async imagesByIds(ids) {
+      return clone(images.filter((i) => ids.includes(i.id)));
+    },
+    async countImagesSince(ownerId, from) {
+      return imageLog.filter((l) => l.userId === ownerId && since(l.createdAt, from)).length;
+    },
+    async keepImage(id, path, until) {
+      const i = images.find((x) => x.id === id);
+      if (i) Object.assign(i, { ownerId: null, path, keepUntil: until });
+    },
+    async deleteImages(ids) {
+      dropImages((i) => ids.includes(i.id));
+    },
+    async staleImages(before, limit) {
+      const used = new Set([...posts, ...messages].flatMap((x) => (x.imageId ? [x.imageId] : [])));
+      const now = Date.now();
+      return clone(
+        images
+          .filter(
+            (i) =>
+              (i.ownerId !== null && Date.parse(i.createdAt) < Date.parse(before) && !used.has(i.id)) ||
+              (i.keepUntil !== null && Date.parse(i.keepUntil) < now),
+          )
+          .slice(0, limit),
+      );
+    },
+    putFile: files.putFile,
+    moveFile: files.moveFile,
+    removeFiles: files.removeFiles,
+    signFiles: files.signFiles,
+    async removeFolder(owner) {
+      files.removeFolder(owner);
+    },
+  };
+  return {
+    profiles,
+    bans,
+    posts,
+    likes,
+    follows,
+    blocks,
+    reports,
+    activity,
+    postLog,
+    chats,
+    members,
+    messages,
+    chatLog,
+    imageLog,
+    images,
+    stored,
+    files,
+    dropProfile,
+    methods,
   };
 }
 
@@ -470,6 +1401,118 @@ const membershipOf = (r: Record<string, unknown>): MembershipRow => ({
   subscriptionId: r.razorpay_subscription_id as string,
   status: r.status as string,
   currentEnd: (r.current_end as string | null) ?? null,
+});
+
+const clubProfileOf = (r: Record<string, unknown>): ClubProfileRow => ({
+  userId: r.user_id as string,
+  handle: r.handle as string,
+  name: r.name as string,
+  building: r.building as string,
+  rank: r.rank as number,
+  stars: r.stars as number,
+  maxStars: r.max_stars as number,
+  streak: r.streak as number,
+  streakDay: (r.streak_day as string | null) ?? null,
+  milestones: r.milestones as boolean,
+  adultAt: r.adult_at as string,
+  rulesAt: r.rules_at as string,
+  hiddenAt: (r.hidden_at as string | null) ?? null,
+  createdAt: r.created_at as string,
+});
+const CLUB_PROFILE_COLS: Record<string, keyof ClubProfileRow> = {
+  user_id: "userId",
+  handle: "handle",
+  name: "name",
+  building: "building",
+  rank: "rank",
+  stars: "stars",
+  max_stars: "maxStars",
+  streak: "streak",
+  streak_day: "streakDay",
+  milestones: "milestones",
+  adult_at: "adultAt",
+  rules_at: "rulesAt",
+  hidden_at: "hiddenAt",
+  created_at: "createdAt",
+};
+/** The columns for a (partial) Club profile. */
+const clubProfileRow = (p: Partial<ClubProfileRow>) =>
+  Object.fromEntries(Object.entries(CLUB_PROFILE_COLS).flatMap(([col, k]) => (p[k] === undefined ? [] : [[col, p[k]]])));
+const postOf = (r: Record<string, unknown>): PostRow => ({
+  id: Number(r.id),
+  authorId: (r.author_id as string | null) ?? null,
+  kind: r.kind as PostRow["kind"],
+  ref: (r.ref as string | null) ?? null,
+  parentId: r.parent_id == null ? null : Number(r.parent_id),
+  body: r.body as string,
+  likeCount: r.like_count as number,
+  replyCount: r.reply_count as number,
+  held: (r.held as string | null) ?? null,
+  hiddenAt: (r.hidden_at as string | null) ?? null,
+  createdAt: r.created_at as string,
+  imageId: (r.image_id as string | null) ?? null,
+});
+const imageOf = (r: Record<string, unknown>): ImageRow => ({
+  id: r.id as string,
+  ownerId: (r.owner_id as string | null) ?? null,
+  path: r.path as string,
+  width: r.width as number,
+  height: r.height as number,
+  usedBy: (r.used_by as ImageRow["usedBy"]) ?? null,
+  keepUntil: (r.keep_until as string | null) ?? null,
+  createdAt: r.created_at as string,
+});
+const reportOf = (r: Record<string, unknown>): ReportRow => ({
+  id: Number(r.id),
+  reporterId: (r.reporter_id as string | null) ?? null,
+  targetKind: r.target_kind as ReportRow["targetKind"],
+  targetId: r.target_id as string,
+  targetUser: (r.target_user as string | null) ?? null,
+  reason: r.reason as string,
+  note: r.note as string,
+  snapshot: r.snapshot as string,
+  status: r.status as ReportRow["status"],
+  dueAt: r.due_at as string,
+  resolvedAt: (r.resolved_at as string | null) ?? null,
+  createdAt: r.created_at as string,
+  imageId: (r.image_id as string | null) ?? null,
+});
+const memberOf = (r: Record<string, unknown>): ChatMemberRow => ({
+  chatId: Number(r.chat_id),
+  userId: r.user_id as string,
+  state: r.state as ChatMemberRow["state"],
+  lastReadId: Number(r.last_read_id),
+  clearedId: Number(r.cleared_id),
+  activeAt: (r.active_at as string | null) ?? null,
+});
+const messageOf = (r: Record<string, unknown>): MessageRow => ({
+  id: Number(r.id),
+  chatId: Number(r.chat_id),
+  senderId: r.sender_id as string,
+  clientId: r.client_id as string,
+  body: r.body as string,
+  flagged: (r.flagged as MessageRow["flagged"]) ?? null,
+  held: !!r.held,
+  hiddenAt: (r.hidden_at as string | null) ?? null,
+  createdAt: r.created_at as string,
+  imageId: (r.image_id as string | null) ?? null,
+  event: (r.event as MessageRow["event"]) ?? null,
+});
+const MEMBER_COLS: Record<string, keyof ChatMemberRow> = {
+  state: "state",
+  last_read_id: "lastReadId",
+  cleared_id: "clearedId",
+  active_at: "activeAt",
+};
+const activityOf = (r: Record<string, unknown>): ActivityRow => ({
+  id: Number(r.id),
+  userId: r.user_id as string,
+  kind: r.kind as ActivityKind,
+  actorId: (r.actor_id as string | null) ?? null,
+  postId: r.post_id == null ? null : Number(r.post_id),
+  detail: (r.detail as string | null) ?? null,
+  seen: r.seen as boolean,
+  createdAt: r.created_at as string,
 });
 
 export function supabaseDb(sb = supabaseAdmin()): Db {
@@ -645,7 +1688,9 @@ export function supabaseDb(sb = supabaseAdmin()): Db {
         .from("notifications_sent")
         .select("kind", { count: "exact", head: true })
         .eq("user_id", id)
-        .eq("day", day);
+        .eq("day", day)
+        .not("kind", "like", "club\\_%")
+        .not("kind", "like", "dm:%");
       if (error) throw new Error(error.message);
       return count ?? 0;
     },
@@ -656,7 +1701,10 @@ export function supabaseDb(sb = supabaseAdmin()): Db {
     async deleteUser(id) {
       // An unpaid hold goes with the player, as in memoryDb; a kept seat stays used (user_id set null by the cascade).
       must(await sb.from("founding_seats").delete().eq("user_id", id).not("held_until", "is", null));
-      // Every table cascades from auth.users, so deleting the user removes all their rows.
+      // Storage doesn't cascade: the Club pictures go first (removed ones under removed/ stay their 180 days).
+      await this.removeFolder(id);
+      // Every table cascades from auth.users, so deleting the user removes all their rows (the Club's too; a report
+      // keeps its snapshot with reporter_id set null, and the Wolf's posts stay).
       const { error } = await sb.auth.admin.deleteUser(id);
       if (error) throw new Error(error.message);
     },
@@ -757,6 +1805,581 @@ export function supabaseDb(sb = supabaseAdmin()): Db {
     async seatOf(subscriptionId) {
       const rows = list(await sb.from("founding_seats").select("seat_no").eq("razorpay_subscription_id", subscriptionId).limit(1));
       return rows.length ? Number(rows[0].seat_no) : null;
+    },
+    async accountCreatedAt(id) {
+      const { data, error } = await sb.auth.admin.getUserById(id);
+      if (error) return null;
+      return data.user?.created_at ?? null;
+    },
+    async clubNoticesOn(id, day) {
+      const { count, error } = await sb
+        .from("notifications_sent")
+        .select("kind", { count: "exact", head: true })
+        .eq("user_id", id)
+        .eq("day", day)
+        .like("kind", "club\\_%");
+      if (error) throw new Error(error.message);
+      return count ?? 0;
+    },
+    async clubProfile(id) {
+      const r = must<Record<string, unknown> | null>(await sb.from("club_profiles").select("*").eq("user_id", id).maybeSingle());
+      return r && clubProfileOf(r);
+    },
+    async clubProfileByHandle(handle) {
+      const r = must<Record<string, unknown> | null>(await sb.from("club_profiles").select("*").eq("handle", handle).maybeSingle());
+      return r && clubProfileOf(r);
+    },
+    async clubProfiles(ids) {
+      if (!ids.length) return [];
+      return list(await sb.from("club_profiles").select("*").in("user_id", ids)).map(clubProfileOf);
+    },
+    async insertClubProfile(row) {
+      const { error } = await sb.from("club_profiles").insert(clubProfileRow(row));
+      if (duplicate(error)) return false;
+      if (error) throw new Error(error.message);
+      return true;
+    },
+    async updateClubProfile(id, patch) {
+      const values = clubProfileRow(patch);
+      if (Object.keys(values).length) must(await sb.from("club_profiles").update(values).eq("user_id", id));
+    },
+    async deleteClubProfile(id) {
+      must(await sb.from("club_profiles").delete().eq("user_id", id));
+    },
+    async clubBan(id) {
+      const r = must<{ until: string; reason: "mod" | "left" } | null>(
+        await sb.from("club_bans").select("until, reason").eq("user_id", id).maybeSingle(),
+      );
+      return r && { until: r.until, reason: r.reason };
+    },
+    async setClubBan(id, until, reason = "mod") {
+      if (until === null) must(await sb.from("club_bans").delete().eq("user_id", id));
+      else
+        must(
+          await sb
+            .from("club_bans")
+            .upsert({ user_id: id, until, reason, created_at: new Date().toISOString() }, { onConflict: "user_id" }),
+        );
+    },
+    async insertPost(row) {
+      const { data, error } = await sb
+        .from("club_posts")
+        .insert({
+          author_id: row.authorId,
+          kind: row.kind,
+          ref: row.ref,
+          parent_id: row.parentId,
+          body: row.body,
+          held: row.held,
+          hidden_at: row.hiddenAt,
+          created_at: row.createdAt,
+          image_id: row.imageId ?? null,
+        })
+        .select("*")
+        .single();
+      if (duplicate(error)) return null;
+      if (error) throw new Error(error.message);
+      return postOf(data);
+    },
+    async getPost(id) {
+      const r = must<Record<string, unknown> | null>(await sb.from("club_posts").select("*").eq("id", id).maybeSingle());
+      return r && postOf(r);
+    },
+    async wolfPost(kind, ref) {
+      const r = must<Record<string, unknown> | null>(
+        await sb.from("club_posts").select("*").is("author_id", null).eq("kind", kind).eq("ref", ref).maybeSingle(),
+      );
+      return r && postOf(r);
+    },
+    async deletePost(id) {
+      must(await sb.from("club_posts").delete().eq("id", id));
+    },
+    async setPostState(id, patch) {
+      const values: Record<string, unknown> = {};
+      if (patch.held !== undefined) values.held = patch.held;
+      if (patch.hiddenAt !== undefined) values.hidden_at = patch.hiddenAt;
+      must(await sb.from("club_posts").update(values).eq("id", id));
+    },
+    async hidePostsBy(authorId, at) {
+      return list(await sb.from("club_posts").update({ hidden_at: at }).eq("author_id", authorId).is("hidden_at", null).select("*")).map(
+        postOf,
+      );
+    },
+    async feedCandidates(since, asOf, limit) {
+      return list(
+        await sb
+          .from("club_posts")
+          .select("*")
+          .in("kind", ["post", "rank_up"])
+          .is("hidden_at", null)
+          .is("held", null)
+          .gt("created_at", since)
+          .lte("created_at", asOf)
+          .order("created_at", { ascending: false })
+          .limit(limit),
+      ).map(postOf);
+    },
+    async followingFeed(viewer, before, limit) {
+      return list<Record<string, unknown>>(await sb.rpc("club_following", { p_viewer: viewer, p_before: before, p_limit: limit })).map(
+        postOf,
+      );
+    },
+    async postsBy(authorId, before, limit) {
+      return list(
+        await sb
+          .from("club_posts")
+          .select("*")
+          .eq("author_id", authorId)
+          .in("kind", ["post", "rank_up"])
+          .is("hidden_at", null)
+          .lt("id", before)
+          .order("id", { ascending: false })
+          .limit(limit),
+      ).map(postOf);
+    },
+    async replies(parentId, after, limit) {
+      return list(
+        await sb.from("club_posts").select("*").eq("parent_id", parentId).is("hidden_at", null).gt("id", after).order("id").limit(limit),
+      ).map(postOf);
+    },
+    async countPostsSince(authorId, kind, since) {
+      // From club_post_log, so deleting a post doesn't reset the caps.
+      const { count, error } = await sb
+        .from("club_post_log")
+        .select("author_id", { count: "exact", head: true })
+        .eq("author_id", authorId)
+        .eq("kind", kind)
+        .gte("created_at", since);
+      if (error) throw new Error(error.message);
+      return count ?? 0;
+    },
+    async lastPostBody(authorId, since, body) {
+      const rows = list(
+        await sb
+          .from("club_post_log")
+          .select("author_id")
+          .eq("author_id", authorId)
+          .eq("body_md5", createHash("md5").update(body).digest("hex"))
+          .gte("created_at", since)
+          .limit(1),
+      );
+      return rows.length > 0;
+    },
+    async setLike(postId, userId, on) {
+      if (!on) return void must(await sb.from("club_likes").delete().eq("post_id", postId).eq("user_id", userId));
+      const { error } = await sb.from("club_likes").insert({ post_id: postId, user_id: userId });
+      if (error && !duplicate(error)) throw new Error(error.message);
+    },
+    async likedOf(userId, ids) {
+      if (!ids.length) return new Set<number>();
+      const rows = list(await sb.from("club_likes").select("post_id").eq("user_id", userId).in("post_id", ids));
+      return new Set(rows.map((r) => Number(r.post_id)));
+    },
+    async setFollow(follower, followee, on, at = new Date().toISOString()) {
+      if (!on) return void must(await sb.from("club_follows").delete().eq("follower_id", follower).eq("followee_id", followee));
+      const { error } = await sb.from("club_follows").insert({ follower_id: follower, followee_id: followee, created_at: at });
+      if (error && !duplicate(error)) throw new Error(error.message);
+    },
+    async followCounts(id) {
+      const count = async (col: string) => {
+        const { count, error } = await sb.from("club_follows").select("follower_id", { count: "exact", head: true }).eq(col, id);
+        if (error) throw new Error(error.message);
+        return count ?? 0;
+      };
+      const [followers, following] = await Promise.all([count("followee_id"), count("follower_id")]);
+      return { followers, following };
+    },
+    async follows(follower, followee) {
+      const rows = list(
+        await sb.from("club_follows").select("follower_id").eq("follower_id", follower).eq("followee_id", followee).limit(1),
+      );
+      return rows.length > 0;
+    },
+    async followedAmong(follower, ids) {
+      if (!ids.length) return new Set<string>();
+      const rows = list(await sb.from("club_follows").select("followee_id").eq("follower_id", follower).in("followee_id", ids));
+      return new Set(rows.map((r) => r.followee_id as string));
+    },
+    async countFollowsSince(follower, since) {
+      const { count, error } = await sb
+        .from("club_follows")
+        .select("follower_id", { count: "exact", head: true })
+        .eq("follower_id", follower)
+        .gte("created_at", since);
+      if (error) throw new Error(error.message);
+      return count ?? 0;
+    },
+    async setBlock(blocker, blocked, on) {
+      if (!on) return void must(await sb.from("club_blocks").delete().eq("blocker_id", blocker).eq("blocked_id", blocked));
+      const { error } = await sb.from("club_blocks").insert({ blocker_id: blocker, blocked_id: blocked });
+      if (error && !duplicate(error)) throw new Error(error.message);
+    },
+    async blocks(id) {
+      const [out, inn] = await Promise.all([
+        all<{ blocked_id: string }>((a, b) =>
+          sb.from("club_blocks").select("blocked_id").eq("blocker_id", id).order("blocked_id").range(a, b),
+        ),
+        all<{ blocker_id: string }>((a, b) =>
+          sb.from("club_blocks").select("blocker_id").eq("blocked_id", id).order("blocker_id").range(a, b),
+        ),
+      ]);
+      return { out: new Set(out.map((r) => r.blocked_id)), in: new Set(inn.map((r) => r.blocker_id)) };
+    },
+    async insertReport(row) {
+      const { error } = await sb.from("club_reports").insert({
+        reporter_id: row.reporterId,
+        target_kind: row.targetKind,
+        target_id: row.targetId,
+        target_user: row.targetUser,
+        reason: row.reason,
+        note: row.note,
+        snapshot: row.snapshot,
+        due_at: row.dueAt,
+        created_at: row.createdAt,
+        image_id: row.imageId ?? null,
+      });
+      if (duplicate(error)) return false;
+      if (error) throw new Error(error.message);
+      return true;
+    },
+    async getReport(id) {
+      const r = must<Record<string, unknown> | null>(await sb.from("club_reports").select("*").eq("id", id).maybeSingle());
+      return r && reportOf(r);
+    },
+    async openReportsOn(kind, id) {
+      return list(await sb.from("club_reports").select("*").eq("target_kind", kind).eq("target_id", id).eq("status", "open")).map(reportOf);
+    },
+    async countReportsSince(reporterId, since, instantOnly) {
+      let q = sb.from("club_reports").select("id", { count: "exact", head: true }).eq("reporter_id", reporterId).gte("created_at", since);
+      if (instantOnly) q = q.in("reason", ["private", "fake"]);
+      const { count, error } = await q;
+      if (error) throw new Error(error.message);
+      return count ?? 0;
+    },
+    async reportQueue() {
+      return list(await sb.from("club_reports").select("*").eq("status", "open").order("due_at").limit(500)).map(reportOf);
+    },
+    async resolvedReports(since) {
+      return list(
+        await sb
+          .from("club_reports")
+          .select("*")
+          .neq("status", "open")
+          .gte("resolved_at", since)
+          .order("resolved_at", { ascending: false })
+          .limit(1000),
+      ).map(reportOf);
+    },
+    async resolveReports(kind, id, status, at) {
+      return list(
+        await sb
+          .from("club_reports")
+          .update({ status, resolved_at: at })
+          .eq("target_kind", kind)
+          .eq("target_id", id)
+          .eq("status", "open")
+          .select("*"),
+      ).map(reportOf);
+    },
+    async myReports(reporterId) {
+      return list(await sb.from("club_reports").select("*").eq("reporter_id", reporterId).order("id", { ascending: false }).limit(100)).map(
+        reportOf,
+      );
+    },
+    async addActivity(row) {
+      const { error } = await sb.from("club_activity").insert({
+        user_id: row.userId,
+        kind: row.kind,
+        actor_id: row.actorId ?? null,
+        post_id: row.postId ?? null,
+        detail: row.detail ?? null,
+        created_at: row.createdAt,
+      });
+      if (error && !duplicate(error)) throw new Error(error.message);
+    },
+    async activity(id, before, limit) {
+      return list(
+        await sb.from("club_activity").select("*").eq("user_id", id).lt("id", before).order("id", { ascending: false }).limit(limit),
+      ).map(activityOf);
+    },
+    async markActivitySeen(id, upTo) {
+      must(await sb.from("club_activity").update({ seen: true }).eq("user_id", id).lte("id", upTo).eq("seen", false));
+    },
+    async unseenActivity(id) {
+      const { count, error } = await sb
+        .from("club_activity")
+        .select("id", { count: "exact", head: true })
+        .eq("user_id", id)
+        .eq("seen", false);
+      if (error) throw new Error(error.message);
+      return count ?? 0;
+    },
+    async dmNoticesOn(id, day) {
+      const { count, error } = await sb
+        .from("notifications_sent")
+        .select("kind", { count: "exact", head: true })
+        .eq("user_id", id)
+        .eq("day", day)
+        .like("kind", "dm:%");
+      if (error) throw new Error(error.message);
+      return count ?? 0;
+    },
+    async chatByPair(pair) {
+      const r = must<{ id: number } | null>(await sb.from("club_chats").select("id").eq("pair", pair).maybeSingle());
+      return r && { id: Number(r.id) };
+    },
+    async startChat({ pair, creator, other, request, since, perDay, requestsPerDay }) {
+      const { data, error } = await sb.rpc("club_start_chat", {
+        p_pair: pair,
+        p_creator: creator,
+        p_other: other,
+        p_request: request,
+        p_since: since,
+        p_per_day: perDay,
+        p_requests_per_day: requestsPerDay,
+      });
+      if (error?.message.includes("club_chat_cap")) return null;
+      if (duplicate(error))
+        // both players started it at once: the other one made it
+        return Number(must<{ id: number }>(await sb.from("club_chats").select("id").eq("pair", pair).single()).id);
+      if (error) throw new Error(error.message);
+      return Number(data);
+    },
+    async startGroup({ creator, others, title, since, perDay }) {
+      const { data, error } = await sb.rpc("club_start_group", {
+        p_creator: creator,
+        p_others: others,
+        p_title: title,
+        p_since: since,
+        p_per_day: perDay,
+      });
+      if (error?.message.includes("club_chat_cap")) return null;
+      if (error) throw new Error(error.message);
+      return Number(data);
+    },
+    async getChat(id) {
+      const r = must<Record<string, unknown> | null>(
+        await sb.from("club_chats").select("id, pair, title, created_by").eq("id", id).maybeSingle(),
+      );
+      return (
+        r && {
+          id: Number(r.id),
+          group: r.pair === null,
+          title: (r.title as string | null) ?? null,
+          createdBy: (r.created_by as string | null) ?? null,
+        }
+      );
+    },
+    async addMember(chatId, userId, max) {
+      return !!must(await sb.rpc("club_add_member", { p_chat: chatId, p_user: userId, p_max: max }));
+    },
+    async mutuals(userId) {
+      const [out, inn] = await Promise.all([
+        all<{ followee_id: string }>((a, b) =>
+          sb.from("club_follows").select("followee_id").eq("follower_id", userId).order("followee_id").range(a, b),
+        ),
+        all<{ follower_id: string }>((a, b) =>
+          sb.from("club_follows").select("follower_id").eq("followee_id", userId).order("follower_id").range(a, b),
+        ),
+      ]);
+      const back = new Set(inn.map((r) => r.follower_id));
+      return out.map((r) => r.followee_id).filter((id) => back.has(id));
+    },
+    async chatMembers(chatId) {
+      return list(await sb.from("club_chat_members").select("*").eq("chat_id", chatId)).map(memberOf);
+    },
+    async setMember(chatId, userId, patch) {
+      const values = Object.fromEntries(
+        Object.entries(MEMBER_COLS).flatMap(([col, k]) =>
+          patch[k as keyof typeof patch] === undefined ? [] : [[col, patch[k as keyof typeof patch]]],
+        ),
+      );
+      if (Object.keys(values).length) must(await sb.from("club_chat_members").update(values).eq("chat_id", chatId).eq("user_id", userId));
+    },
+    async inbox(userId, state, before, limit) {
+      const rows = list<Record<string, unknown>>(
+        await sb.rpc("club_inbox", {
+          p_user: userId,
+          p_state: state,
+          p_before: before?.at ?? "infinity",
+          p_before_id: before?.id ?? 0,
+          p_limit: limit,
+        }),
+      );
+      return rows.map((r) => ({
+        chatId: Number(r.chat_id),
+        lastAt: r.last_at as string,
+        lastReadId: Number(r.last_read_id),
+        otherId: (r.other_id as string | null) ?? null,
+        title: (r.title as string | null) ?? null,
+        last: messageOf({
+          id: r.msg_id,
+          chat_id: r.chat_id,
+          sender_id: r.msg_sender,
+          client_id: "",
+          body: r.msg_body,
+          flagged: r.msg_flagged,
+          held: false,
+          hidden_at: null,
+          created_at: r.msg_at,
+          image_id: r.msg_image ? "picture" : null, // the inbox only needs to know there is one
+          event: r.msg_event,
+        }),
+      }));
+    },
+    async sendMessage(row, at, requestCap) {
+      void at; // the database stamps created_at
+      const { data, error } = await sb
+        .rpc("club_send", {
+          p_chat: row.chatId,
+          p_sender: row.senderId,
+          p_client: row.clientId,
+          p_body: row.body,
+          p_flagged: row.flagged,
+          p_held: row.held,
+          p_request_cap: requestCap,
+          p_image: row.imageId ?? null,
+          p_event: row.event ?? null,
+        })
+        .single<Record<string, unknown>>();
+      if (error?.message.includes("club_request_cap")) return "cap";
+      if (error?.message.includes("club_picture")) return "picture";
+      if (error) throw new Error(error.message);
+      return { row: messageOf(data), fresh: !!data.fresh };
+    },
+    async bumpChat(chatId, messageId, at) {
+      must(await sb.from("club_chats").update({ last_message_id: messageId, last_at: at }).eq("id", chatId));
+    },
+    async getMessage(id) {
+      const r = must<Record<string, unknown> | null>(await sb.from("club_messages").select("*").eq("id", id).maybeSingle());
+      return r && messageOf(r);
+    },
+    async messages(chatId, { before, after, afterCleared, limit }) {
+      let q = sb
+        .from("club_messages")
+        .select("*")
+        .eq("chat_id", chatId)
+        .is("hidden_at", null)
+        .gt("id", Math.max(afterCleared, after ?? 0));
+      if (before !== undefined) q = q.lt("id", before);
+      const rows = list(await q.order("id", { ascending: after !== undefined }).limit(limit)).map(messageOf);
+      return after !== undefined ? rows : rows.reverse();
+    },
+    async lastMessageId(chatId) {
+      const r = must<{ id: number } | null>(
+        await sb.from("club_messages").select("id").eq("chat_id", chatId).order("id", { ascending: false }).limit(1).maybeSingle(),
+      );
+      return r ? Number(r.id) : 0;
+    },
+    async countMessages(chatId, senderId) {
+      const { count, error } = await sb
+        .from("club_messages")
+        .select("id", { count: "exact", head: true })
+        .eq("chat_id", chatId)
+        .eq("sender_id", senderId);
+      if (error) throw new Error(error.message);
+      return count ?? 0;
+    },
+    async setMessageState(id, patch) {
+      const values = {
+        ...(patch.held === undefined ? {} : { held: patch.held }),
+        ...(patch.hiddenAt === undefined ? {} : { hidden_at: patch.hiddenAt }),
+      };
+      if (Object.keys(values).length) must(await sb.from("club_messages").update(values).eq("id", id));
+    },
+    async hideMessagesBy(senderId, at) {
+      return list(await sb.from("club_messages").update({ hidden_at: at }).eq("sender_id", senderId).is("hidden_at", null).select("*")).map(
+        messageOf,
+      );
+    },
+    async unreadChats(userId) {
+      const r = must<{ chats: number; requests: number }>(await sb.rpc("club_unread", { p_user: userId }).single());
+      return { chats: r.chats ?? 0, requests: r.requests ?? 0 };
+    },
+    async addImage(row, since, perDay) {
+      const { error } = await sb.rpc("club_add_image", {
+        p_id: row.id,
+        p_owner: row.ownerId,
+        p_path: row.path,
+        p_width: row.width,
+        p_height: row.height,
+        p_since: since,
+        p_per_day: perDay,
+      });
+      if (error?.message.includes("club_picture_cap")) return false;
+      if (error) throw new Error(error.message);
+      return true;
+    },
+    async restoreImage(id, ownerId, path) {
+      must(await sb.from("club_images").update({ owner_id: ownerId, path, keep_until: null }).eq("id", id));
+    },
+    async evidenceImages(ownerId) {
+      return list<string>(await sb.rpc("club_evidence_images", { p_owner: ownerId })).map(String);
+    },
+    async reportedImages(ids) {
+      if (!ids.length) return new Set<string>();
+      const rows = list<{ image_id: string }>(await sb.from("club_reports").select("image_id").eq("status", "open").in("image_id", ids));
+      return new Set(rows.map((r) => r.image_id));
+    },
+    async claimImage(id, ownerId, since, usedBy) {
+      const r = must<Record<string, unknown> | null>(
+        await sb
+          .from("club_images")
+          .update({ used_by: usedBy })
+          .eq("id", id)
+          .eq("owner_id", ownerId)
+          .is("used_by", null)
+          .gte("created_at", since)
+          .select("*")
+          .maybeSingle(),
+      );
+      return r && imageOf(r);
+    },
+    async imagesByIds(ids) {
+      if (!ids.length) return [];
+      return list(await sb.from("club_images").select("*").in("id", ids)).map(imageOf);
+    },
+    async countImagesSince(ownerId, since) {
+      const { count, error } = await sb
+        .from("club_image_log")
+        .select("user_id", { count: "exact", head: true })
+        .eq("user_id", ownerId)
+        .gte("created_at", since);
+
+      if (error) throw new Error(error.message);
+      return count ?? 0;
+    },
+    async keepImage(id, path, until) {
+      must(await sb.from("club_images").update({ owner_id: null, path, keep_until: until }).eq("id", id));
+    },
+    async deleteImages(ids) {
+      if (ids.length) must(await sb.from("club_images").delete().in("id", ids));
+    },
+    async staleImages(before, limit) {
+      return list<Record<string, unknown>>(await sb.rpc("club_stale_images", { p_before: before, p_limit: limit })).map(imageOf);
+    },
+    async putFile(path, bytes) {
+      must(await sb.storage.from(BUCKET).upload(path, bytes, { contentType: "image/webp", upsert: false }));
+    },
+    async moveFile(from, to) {
+      must(await sb.storage.from(BUCKET).move(from, to));
+    },
+    async removeFiles(paths) {
+      for (let i = 0; i < paths.length; i += 100) must(await sb.storage.from(BUCKET).remove(paths.slice(i, i + 100)));
+    },
+    async removeFolder(ownerId) {
+      // Listing again after each removal: the page that was at offset 0 is gone.
+      for (;;) {
+        const names = list(await sb.storage.from(BUCKET).list(ownerId, { limit: 100 })).map((f) => `${ownerId}/${f.name}`);
+        if (!names.length) return;
+        must(await sb.storage.from(BUCKET).remove(names));
+        if (names.length < 100) return;
+      }
+    },
+    async signFiles(paths) {
+      if (!paths.length) return {};
+      const rows = must(await sb.storage.from(BUCKET).createSignedUrls(paths, SIGNED_SECONDS));
+      return Object.fromEntries(rows.flatMap((r) => (r.path && r.signedUrl && !r.error ? [[r.path, r.signedUrl]] : [])));
     },
   };
 }

@@ -5,6 +5,7 @@ import { memoryDb, type LeagueRow } from "./db";
 import {
   broadcast,
   cardsDue,
+  deliver,
   hoursLeft,
   istHour,
   lastCall,
@@ -204,5 +205,25 @@ describe("admin messages", () => {
     expect(await broadcast(db, { title: "New", body: "Hot Seat" }, undefined, send)).toMatchObject({ phones: 2, sent: 2 });
     expect(await broadcast(db, { title: "Hi", body: "You" }, "b", send)).toMatchObject({ phones: 1, sent: 1 });
     expect(sent.map((s) => s.user)).toEqual(["a", "b", "b"]);
+  });
+});
+
+describe("Club pushes", () => {
+  const clubCap = (db: ReturnType<typeof memoryDb>) => ({ count: (u: string, d: string) => db.clubNoticesOn(u, d), max: 3 });
+  const tally = () => ({ sent: 0, gone: 0, failed: 0 });
+
+  it("have their own cap of 3, keep quiet hours, and never use up the game's 4", async () => {
+    const db = memoryDb();
+    const { sent, send } = recorder();
+    await player(db, "a", "2026-10-29", 19);
+    const phones = await db.pushes("a");
+    const night = at("2026-10-30T17:30:00Z"); // 23:00 IST
+    expect(await deliver(db, "a", phones, { kind: "club_reply", title: "R", body: "x" }, send, night, tally(), clubCap(db))).toBe(false);
+    for (const kind of ["club_reply", "club_follow", "club_request", "club_other"])
+      await deliver(db, "a", phones, { kind, title: kind, body: "x", url: "/app#club", tag: "club" }, send, evening, tally(), clubCap(db));
+    expect(sent.map((s) => s.title)).toEqual(["club_reply", "club_follow", "club_request"]);
+    expect(await db.noticesOn("a", "2026-10-30")).toBe(0);
+    await sendReminders(db, call, send, evening);
+    expect(sent.at(-1)?.title).toBe("5 hours left to keep your 3-day streak");
   });
 });

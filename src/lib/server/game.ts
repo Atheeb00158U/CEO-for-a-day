@@ -32,6 +32,7 @@ import type { MembershipView } from "../membership-view.ts";
 import { lessonPlay, type Answer, type LessonResult } from "../lesson-play.ts";
 import { play, PlayError, type Pick } from "../play.ts";
 import type { CardState } from "../srs.ts";
+import { afterSave, refreshCareer } from "./club.ts";
 import type { Db, LeagueRow, Profile, SavedState } from "./db.ts";
 
 /** A request the rules refuse: not enough coins, nothing to claim, a run that can't be finished. */
@@ -55,6 +56,8 @@ export interface Synced {
   membership?: MembershipView | null;
   /** Whether the paywall applies to this player (PAYWALL_ON, or a listed tester). */
   paywall?: boolean;
+  /** Whether the Club is on for this player (COMMUNITY_ON, or a listed tester). */
+  club?: boolean;
 }
 
 /* ------------------------------------------------------------------ */
@@ -188,7 +191,11 @@ export async function update(
     const cur = await loadState(db, userId, now);
     const next = change(cur.state);
     if (!next) throw new GameError("not allowed");
-    if (await db.saveProfile(userId, cur.version, strip(next), opts)) return { state: next, version: cur.version + 1 };
+    if (await db.saveProfile(userId, cur.version, strip(next), opts)) {
+      // The Club profile shows the streak; a failure here never fails the game action.
+      await afterSave(db, userId, cur.state, next).catch((e) => console.error("club afterSave:", e));
+      return { state: next, version: cur.version + 1 };
+    }
   }
   throw new Error("too many writes at once; try again");
 }
@@ -196,6 +203,10 @@ export async function update(
 /* ------------------------------------------------------------------ */
 /* Actions.                                                            */
 /* ------------------------------------------------------------------ */
+
+/** A new server record (lesson, test-out, Hot Seat) may move the Club title; a failure never fails the game action. */
+const clubCareer = (db: Db, userId: string, now: Date) =>
+  refreshCareer(db, userId, now).catch((e) => console.error("club refreshCareer:", e));
 
 /**
  * Finish a Hot Seat. The server replays `picks`, so the score, ending and XP can't be forged. `runKey` (random,
@@ -245,6 +256,7 @@ export async function finishRun(
     now,
   );
   await db.addLeagueXp(weekId(now), userId, synced.state.league.tier, record.xp);
+  await clubCareer(db, userId, now);
   return { ...(await loadState(db, userId, now)), record, gained: record.xp };
 }
 
@@ -320,6 +332,7 @@ export async function finishLesson(
     now,
   );
   if (gained) await db.addLeagueXp(weekId(now), userId, synced.state.league.tier, gained);
+  await clubCareer(db, userId, now);
   return { ...(await loadState(db, userId, now)), result, gained };
 }
 

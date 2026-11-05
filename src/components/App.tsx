@@ -19,11 +19,23 @@ import { PaywallSheet } from "./PaywallSheet";
 import { Onboarding } from "./Onboarding";
 import { Celebration, MemberWelcome } from "./MemberWelcome";
 import { useCareer } from "./CareerTitle";
+import { ClubTab } from "./club/ClubTab";
+import { CLUB_COPY, type ClubMe } from "@/lib/community";
+import { onLive } from "@/lib/live";
+import { grievanceReady } from "@/lib/legal";
+import { api } from "@/lib/auth";
+import { StreakCelebration } from "./StreakCelebration";
+import { WolfTip } from "./WolfTip";
+import { AchievementCelebration } from "./Achievements";
+import { cheerFor, earnedKeys } from "@/lib/achievements";
 import { ContentProvider, onPaywall, useDaily, type Content, type LessonTarget, type PaywallFor } from "@/lib/content-client";
 import { celebrationFor, markWelcomed, paidRecently, paymentStartedAt, shownWelcomes } from "@/lib/celebrate";
 import type { MembershipView } from "@/lib/membership-view";
 
-export type Tab = "home" | "league" | "notes" | "shop" | "profile";
+const STREAK_CHEERED = "cfad.streakCheered";
+const ACH_SEEN = "cfad.achSeen";
+
+export type Tab = "home" | "league" | "club" | "notes" | "shop" | "profile";
 const COPY = {
   founder: "Founder",
   member: "Member",
@@ -33,13 +45,18 @@ const COPY = {
   keepGoing: "Keep going",
 };
 
-const TABS: { id: Tab; label: string; icon: keyof typeof Icon }[] = [
-  { id: "home", label: "Play", icon: "navHome" },
-  { id: "league", label: "League", icon: "navLeague" },
-  { id: "notes", label: "Notes", icon: "navNotes" },
-  { id: "shop", label: "Shop", icon: "navShop" },
-  { id: "profile", label: "Profile", icon: "navProfile" },
-];
+type TabItem = { id: Tab; label: string; icon: keyof typeof Icon };
+const PLAY: TabItem = { id: "home", label: "Play", icon: "navHome" };
+const LEAGUE: TabItem = { id: "league", label: "League", icon: "navLeague" };
+const CLUB: TabItem = { id: "club", label: CLUB_COPY.tab, icon: "navClub" };
+const NOTES: TabItem = { id: "notes", label: "Notes", icon: "navNotes" };
+const SHOP: TabItem = { id: "shop", label: "Shop", icon: "navShop" };
+const PROFILE: TabItem = { id: "profile", label: "Profile", icon: "navProfile" };
+/** The bar. With the Club on, Club takes Shop's place; Shop still opens from the coins pill (and #shop). */
+const barFor = (club: boolean) => (club ? [PLAY, LEAGUE, CLUB, NOTES, PROFILE] : [PLAY, LEAGUE, NOTES, SHOP, PROFILE]);
+const ALL_TABS: Tab[] = ["home", "league", "club", "notes", "shop", "profile"];
+/** Guests see the Club tab (a sign-in card) only when it's on for everyone. */
+const CLUB_FOR_GUESTS = process.env.NEXT_PUBLIC_COMMUNITY_ON === "1" && grievanceReady();
 
 export function App({ content }: { content: Content }) {
   return (
@@ -82,6 +99,10 @@ function OfflineCover() {
 
 function Shell() {
   const [tab, setTab] = useState<Tab>("home");
+  // The Club screen inside the Club tab: the part of the hash after "#club/".
+  const [clubSub, setClubSub] = useState("");
+  const [clubDot, setClubDot] = useState(false);
+  const [paywallLine, setPaywallLine] = useState<string>();
   const [playing, setPlaying] = useState<string | null>(null);
   const [playingDaily, setPlayingDaily] = useState(false);
   const [lesson, setLesson] = useState<{ target: LessonTarget; testOut?: string[] } | null>(null);
@@ -91,12 +112,15 @@ function Shell() {
   const [pending, setPending] = useState<PaywallFor | null>(null);
   const [welcome, setWelcome] = useState<MembershipView | null>(null);
   const mainRef = useRef<HTMLElement>(null);
-  const { ready, s, paywallSeen, account, membership, reload, setRankSeen } = useGame();
+  const { ready, s, paywallSeen, account, membership, reload, setRankSeen, club } = useGame();
+  const clubOn = account ? club : CLUB_FOR_GUESTS;
+  const TABS = barFor(clubOn);
 
   // A locked item, or the server's 402: leave any player, back to the map, and show the offer. A 402 inside a
   // lesson or Hot Seat remembers that one.
   useEffect(() => {
-    onPaywall((item) => {
+    onPaywall((item, line) => {
+      setPaywallLine(line);
       const from: PaywallFor | null =
         item ??
         (lesson
@@ -115,6 +139,57 @@ function Shell() {
     });
     return () => onPaywall();
   }, [paywallSeen, lesson, playing]);
+
+  // The first play of a new day lights the streak: cheered once, back on the map. Only a change seen in this visit
+  // counts (not opening the app after playing elsewhere today), and a stored day stops a second cheer after a reload.
+  const streakDay = useRef<string | null | undefined>(undefined);
+  const [streakUp, setStreakUp] = useState<number | null>(null);
+  useEffect(() => {
+    if (!ready) return;
+    const t = today();
+    const before = streakDay.current;
+    streakDay.current = s.lastActiveDay;
+    if (before === undefined || before === t || s.lastActiveDay !== t || s.streak < 1) return;
+    try {
+      if (localStorage.getItem(STREAK_CHEERED) === t) return;
+      localStorage.setItem(STREAK_CHEERED, t);
+    } catch {
+      /* private mode: cheer anyway */
+    }
+    setStreakUp(s.streak);
+  }, [ready, s.lastActiveDay, s.streak]);
+  // A new achievement level or badge is cheered once, on the map. The first look on a device only records what is
+  // already earned, so nobody gets a pile of cheers for old progress.
+  const [newAch, setNewAch] = useState<string[]>([]);
+  useEffect(() => {
+    if (!ready) return;
+    const now = earnedKeys(s);
+    let seen: string[] | null = null;
+    try {
+      seen = JSON.parse(localStorage.getItem(ACH_SEEN) ?? "null");
+    } catch {
+      /* private mode: start fresh */
+    }
+    if (!seen) {
+      try {
+        localStorage.setItem(ACH_SEEN, JSON.stringify(now));
+      } catch {
+        /* private mode */
+      }
+      return;
+    }
+    const fresh = now.filter((k) => !seen.includes(k));
+    if (fresh.length) setNewAch(fresh);
+  }, [ready, s]);
+  const doneAch = () => {
+    try {
+      const seen: string[] = JSON.parse(localStorage.getItem(ACH_SEEN) ?? "[]");
+      localStorage.setItem(ACH_SEEN, JSON.stringify([...new Set([...seen, ...newAch])]));
+    } catch {
+      /* private mode */
+    }
+    setNewAch([]);
+  };
 
   // Welcome a new member once per subscription: after paying here, or when the webhook's confirmation shows up later.
   const seen = useRef<{ who: string | null; m: MembershipView | null } | undefined>(undefined);
@@ -165,22 +240,49 @@ function Shell() {
     <>
       {x}
       {overlay}
+      <WolfTip />
     </>
   );
 
   useEffect(() => {
     const fromHash = () => {
-      const h = location.hash.replace("#", "") as Tab;
-      if (TABS.some((t) => t.id === h)) setTab(h);
+      const h = location.hash.replace("#", "");
+      if (h === "club" || h.startsWith("club/")) {
+        setTab("club");
+        setClubSub(h.slice(5));
+      } else if (ALL_TABS.includes(h as Tab)) setTab(h as Tab);
     };
     fromHash();
     window.addEventListener("hashchange", fromHash);
-    return () => window.removeEventListener("hashchange", fromHash);
+    window.addEventListener("popstate", fromHash);
+    return () => {
+      window.removeEventListener("hashchange", fromHash);
+      window.removeEventListener("popstate", fromHash);
+    };
   }, []);
+
+  // The red dot on the Club tab: new activity, chats or requests, read when the app opens and each time it comes back to the front.
+  useEffect(() => {
+    if (!account || !club) return setClubDot(false);
+    const look = () => {
+      if (document.visibilityState !== "visible") return;
+      api<ClubMe["badge"]>("/api/club/badge")
+        .then((b) => setClubDot(b.activity + b.chats + b.requests > 0))
+        .catch(() => {});
+    };
+    look();
+    document.addEventListener("visibilitychange", look);
+    const off = onLive((e) => e.event === "msg" && !e.payload.message.mine && look()); // a new chat message
+    return () => {
+      off();
+      document.removeEventListener("visibilitychange", look);
+    };
+  }, [account, club]);
 
   const go = (t: Tab) => {
     playSfx("tab");
     setTab(t);
+    if (t === "club") setClubSub("");
     try {
       history.replaceState(null, "", "#" + t);
     } catch {
@@ -223,15 +325,33 @@ function Shell() {
           setPlaying(null);
           go("notes");
         }}
+        onClub={
+          account && club
+            ? (postId) => {
+                setPlaying(null);
+                setTab("club");
+                setClubSub(`post/${postId}`);
+                try {
+                  history.pushState(null, "", `#club/post/${postId}`);
+                } catch {
+                  /* sandboxed */
+                }
+              }
+            : undefined
+        }
       />,
     );
 
   // A new title is cheered once, back on the map after the lesson or Hot Seat that earned it.
-  const rankUp = !welcome && career && career.rank > s.rankSeen ? career : null;
+  const rankUp = !welcome && !streakUp && career && career.rank > s.rankSeen ? career : null;
+  // The newest earned thing is the one cheered (the highest level when several land at once).
+  const ach = !welcome && !streakUp && !rankUp && newAch.length ? cheerFor(newAch[newAch.length - 1]) : null;
   return withOverlay(
     // The page itself never scrolls, only <main>: iPhone browsers misplace bars pinned to a scrolling page,
     // leaving a gap below the tab bar.
     <div className="mx-auto flex h-dvh max-w-[480px] flex-col">
+      {streakUp && !welcome && <StreakCelebration streak={streakUp} onDone={() => setStreakUp(null)} />}
+      {ach && <AchievementCelebration key={ach.id + ach.level} {...ach} onDone={doneAch} />}
       {rankUp && (
         <Celebration
           title={COPY.rankUp(rankUp.title)}
@@ -241,7 +361,7 @@ function Shell() {
         />
       )}
       <TopBar onShop={() => go("shop")} onProfile={() => go("profile")} />
-      {paywallOpen ? <PaywallSheet open onOpenChange={setPaywallOpen} /> : <InstallSheet page={tab} />}
+      {paywallOpen ? <PaywallSheet open onOpenChange={setPaywallOpen} line={paywallLine} /> : <InstallSheet page={tab} />}
       <main ref={mainRef} className="flex-1 overflow-y-auto overscroll-contain px-4 pb-6">
         {tab === "home" && (
           <HomeTab
@@ -262,6 +382,13 @@ function Shell() {
             onLesson={(lessonId) => setLesson({ target: { lessonId } })}
           />
         )}
+        {tab === "club" && clubOn && (
+          <ClubTab
+            sub={clubSub}
+            onPlay={() => go("home")}
+            onMe={(m) => setClubDot(m.badge.activity + m.badge.chats + m.badge.requests > 0)}
+          />
+        )}
         {tab === "shop" && <ShopTab />}
         {tab === "profile" && <ProfileTab />}
       </main>
@@ -278,7 +405,12 @@ function Shell() {
                 aria-current={on ? "page" : undefined}
                 className={`flex flex-col items-center gap-0.5 rounded-2xl px-3 py-1.5 text-[11px] font-extrabold uppercase tracking-wide ${on ? "bg-brand/15 text-brand ring-2 ring-brand/60" : "text-muted"}`}
               >
-                <I className="size-7" />
+                <span className="relative">
+                  <I className="size-7" />
+                  {t.id === "club" && clubDot && (
+                    <span className="absolute -top-0.5 -right-1 size-2.5 rounded-full bg-red ring-2 ring-bg" />
+                  )}
+                </span>
                 {t.label}
               </button>
             );

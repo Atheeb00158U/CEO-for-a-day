@@ -1,9 +1,9 @@
 // Bring a guest's progress into their new account, once. Every number is capped (see importGuest). The reply is the
-// phone's first state after signing in, so it carries the membership and the paywall flag like /api/state.
+// phone's first state after signing in, so it carries the membership, the paywall and Club flags like /api/state.
 import { cardLessons, courseLessonIds } from "@/lib/server/content";
 import { importGuest, membershipView } from "@/lib/server/game";
 import { emailFrom, signedIn } from "@/lib/server/http";
-import { paywallFor } from "@/lib/server/membership";
+import { clubOn, paywallFor } from "@/lib/server/membership";
 
 export const POST = (request: Request) =>
   signedIn(
@@ -14,7 +14,8 @@ export const POST = (request: Request) =>
         lessons: courseLessonIds(),
         cardLesson: cardLessons(),
       });
-      return { ...synced, membership: await membershipView(db, userId), paywall: paywallFor(await emailFrom(request)) };
+      const email = await emailFrom(request);
+      return { ...synced, membership: await membershipView(db, userId), paywall: paywallFor(email), club: clubOn(email) };
     },
     5,
   );

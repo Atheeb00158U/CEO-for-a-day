@@ -5,8 +5,10 @@ import { ApiError, api } from "@/lib/auth";
 import { showPaywall } from "@/lib/content-client";
 import type { MembershipView } from "@/lib/membership-view";
 import { FOUNDING, REGULAR } from "@/lib/offer";
-import { BADGES, LEAGUES, useGame } from "@/lib/store";
+import { LEAGUES, useGame } from "@/lib/store";
+import { Achievements } from "./Achievements";
 import { CareerPill, useCareer } from "./CareerTitle";
+import { ClubCard } from "./club/ClubCard";
 import { ReminderCard } from "./ReminderCard";
 import { SignInCard } from "./SignInCard";
 import { Card, Icon } from "./ui";
@@ -121,28 +123,7 @@ export function ProfileTab() {
         </div>
       </Card>
 
-      <Card>
-        <h2 className="mb-3 text-[19px] font-black">Badges</h2>
-        <div className="grid grid-cols-3 gap-3">
-          {Object.entries(BADGES).map(([id, b]) => {
-            const got = s.badges.includes(id);
-            return (
-              <div
-                key={id}
-                className={`flex flex-col items-center gap-1 rounded-2xl p-2 text-center ${got ? "bg-gold/10" : "bg-surface-2 opacity-50"}`}
-                title={b.desc}
-              >
-                <span
-                  className={`grid size-12 place-items-center rounded-full text-[20px] font-black ${got ? "bg-gold text-[#2a1d00]" : "bg-line text-muted"}`}
-                >
-                  {got ? "★" : "?"}
-                </span>
-                <span className="text-[12px] font-extrabold leading-tight">{b.name}</span>
-              </div>
-            );
-          })}
-        </div>
-      </Card>
+      <Achievements />
 
       <Card className="flex flex-col gap-4">
         <h2 className="text-[19px] font-black">Settings</h2>
@@ -197,6 +178,8 @@ export function ProfileTab() {
       </Card>
 
       <ReminderCard />
+
+      <ClubCard />
 
       {showMembership && !memberNow && <MembershipCard m={membership!} />}
 

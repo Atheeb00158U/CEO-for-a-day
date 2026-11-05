@@ -2,6 +2,7 @@
 // Everything takes the Db, the Razorpay client and the env as arguments, so tests use memoryDb() and a fake client.
 import { isMember, type AccessContext } from "../access.ts";
 import { FOUNDING_USED, SEATS_FULL } from "../membership-view.ts";
+import { grievanceReady } from "../legal.ts";
 import { FOUNDING } from "../offer.ts";
 import type { Db, MembershipRow } from "./db.ts";
 import { GameError } from "./game.ts";
@@ -270,12 +271,24 @@ export async function cancelMembership(db: Db, rp: RazorpayClient, userId: strin
   return row;
 }
 
-/** The paywall applies to everyone with PAYWALL_ON=1, otherwise only to the emails in PAYWALL_TESTERS. */
-export function paywallFor(email: string | undefined): boolean {
-  if (process.env.PAYWALL_ON === "1") return true;
+/** Whether this email is in PAYWALL_TESTERS (the testers for the paywall and the Club). */
+function tester(email: string | undefined): boolean {
   if (!email) return false;
   const testers = (process.env.PAYWALL_TESTERS ?? "").split(",").map((s) => s.trim().toLowerCase());
   return testers.includes(email.trim().toLowerCase());
+}
+
+/** The paywall applies to everyone with PAYWALL_ON=1, otherwise only to the emails in PAYWALL_TESTERS. */
+export function paywallFor(email: string | undefined): boolean {
+  return process.env.PAYWALL_ON === "1" || tester(email);
+}
+
+/**
+ * The Club is on for testers, and for everyone with COMMUNITY_ON=1 once a Grievance Officer is named (the IT Rules
+ * need one before people can post).
+ */
+export function clubOn(email: string | undefined): boolean {
+  return tester(email) || (process.env.COMMUNITY_ON === "1" && grievanceReady());
 }
 
 export async function accessContext(db: Db, userId: string | null, email: string | undefined, now: Date): Promise<AccessContext> {

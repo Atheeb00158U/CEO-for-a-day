@@ -22,10 +22,12 @@ export interface Message {
   body: string;
   /** A wide picture under the text (Android and desktop Chrome; iPhones show only the app icon). */
   image?: string;
-  /** Notifications with the same tag replace each other on the phone. */
+  /** Replaces an older notification with the same tag (default daily-reminder). */
   tag?: string;
-  /** Where a tap goes. */
+  /** Where a tap opens, e.g. /app#club/post/9 (default /app). */
   url?: string;
+  /** A chat message: sent at high urgency and dropped after an hour (not part of the payload). */
+  urgent?: boolean;
 }
 
 export type Notice = Message & { kind: string };
@@ -168,12 +170,13 @@ export const webPush: Send = async (row, msg, ttl = 6 * 3600) => {
   const pub = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY;
   const priv = process.env.VAPID_PRIVATE_KEY;
   if (!pub || !priv) throw new Error("NEXT_PUBLIC_VAPID_PUBLIC_KEY and VAPID_PRIVATE_KEY must be set on the server");
+  const { urgent, ...payload } = msg;
   for (let attempt = 0; ; attempt++) {
     try {
-      await webpush.sendNotification({ endpoint: row.endpoint, keys: row.keys }, JSON.stringify(msg), {
+      await webpush.sendNotification({ endpoint: row.endpoint, keys: row.keys }, JSON.stringify(payload), {
         vapidDetails: { subject: "https://ceoforaday.in", publicKey: pub, privateKey: priv },
-        TTL: ttl,
-        urgency: msg.tag === "streak" ? "high" : "normal",
+        TTL: urgent ? 3600 : ttl, // a chat push older than one hour is no use
+        urgency: urgent || msg.tag === "streak" ? "high" : "normal",
       });
       return "sent";
     } catch (e) {
@@ -184,16 +187,27 @@ export const webPush: Send = async (row, msg, ttl = 6 * 3600) => {
   }
 };
 
-type Tally = { sent: number; gone: number; failed: number };
+export type Tally = { sent: number; gone: number; failed: number };
+/** A daily cap: how many a player already got that day, and the most allowed. */
+export type Cap = { count(userId: string, day: string): Promise<number>; max: number };
 
 /**
- * Send `msg` to all of a player's phones, if the guardrails allow: not in quiet hours, under the daily cap (the last
- * place is only for saving a streak), and this kind not already sent today. Returns false when it was held back.
+ * Send `msg` to all of a player's phones, if the guardrails allow: not in quiet hours, under the daily cap, and this
+ * kind not already sent today. Returns false when it was held back. The game's cap keeps its last place for saving a
+ * streak; the Club passes its own.
  */
-async function deliver(db: Db, userId: string, phones: PushRow[], msg: Notice, send: Send, now: Date, tally: Tally) {
+export async function deliver(
+  db: Db,
+  userId: string,
+  phones: PushRow[],
+  msg: Notice,
+  send: Send,
+  now: Date,
+  tally: Tally,
+  cap: Cap = { count: (u, d) => db.noticesOn(u, d), max: STREAK_KINDS.has(msg.kind) ? DAILY_CAP : DAILY_CAP - 1 },
+) {
   const day = today(now);
-  const cap = STREAK_KINDS.has(msg.kind) ? DAILY_CAP : DAILY_CAP - 1;
-  if (quiet(istHour(now)) || (await db.noticesOn(userId, day)) >= cap) return false;
+  if (quiet(istHour(now)) || (await cap.count(userId, day)) >= cap.max) return false;
   if (!(await db.logNotice(userId, msg.kind, day))) return false;
   const { kind, ...payload } = msg;
   const results: string[] = [];

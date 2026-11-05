@@ -1,9 +1,9 @@
 {
   "id": "kirana-year",
-  "company": "Kulkarni General Stores (made up)",
+  "company": "Kulkarni General Stores",
   "title": "A kirana's year",
   "hook": "Your father's corner shop is yours for one year. Pay every bill and keep the regulars, or you lose the shop.",
-  "role": "You run your family's kirana for one year (a made-up story)",
+  "role": "You run your family's kirana for one year",
   "years": "One year, April to March",
   "cover": "img:ky_cover",
   "emblem": "img:ky_emblem",
@@ -33,7 +33,7 @@
       "type": "scene",
       "year": "April",
       "media": "img:ky_intro",
-      "text": "This is a made-up story based on many real kiranas. You are Asha, 27. For 30 years, your father, Baba, ran Kulkarni General Stores on a busy lane in Imliganj, a town in Madhya Pradesh. His knees are bad now, so this April he hands the shop to you.",
+      "text": "You are Asha, 27. For 30 years, your father, Baba, ran Kulkarni General Stores on a busy lane in Imliganj, a town in Madhya Pradesh. His knees are bad now, so this April he hands the shop to you.",
       "next": "keys"
     },
     "keys": {
@@ -629,7 +629,7 @@
     }
   },
   "realEnding": "legend",
-  "realHistory": "This story is made up. Asha, her shop and the town of Imliganj are invented. They are based on what many real kiranas face: small margins, udhaar, rain that comes late, the Diwali rush and new delivery apps. It is not about any real shop or person.",
+  "realHistory": "Asha, her shop and Imliganj are not real. But her problems are real: low profit on each sale, udhaar, late rain, busy Diwali days and new delivery apps. Many real kirana shops face them.",
   "sources": [
     {
       "label": "Kirana store profit margin in India: category-wise (Accountune, 2026)",

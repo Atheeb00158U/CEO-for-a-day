@@ -64,6 +64,8 @@ interface Ctx {
   membership: MembershipView | null;
   /** Whether the paywall applies to this signed-in player (false for guests until a 402 says otherwise). */
   paywall: boolean;
+  /** Whether the Club is on for this signed-in player (from /api/state); false for guests. */
+  club: boolean;
   /** Sign-in is set up on this server. */
   canSignIn: boolean;
   boosterActive: boolean;
@@ -120,6 +122,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
   const [account, setAccount] = useState<{ email?: string } | null>(null);
   const [membership, setMembership] = useState<MembershipView | null>(null);
   const [paywall, setPaywall] = useState(false);
+  const [club, setClub] = useState(false);
   const version = useRef(-1);
   const [, tick] = useState(0);
   const signedIn = account !== null;
@@ -129,6 +132,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
     // Membership isn't versioned: only /api/state and /api/import carry it, and the latest one is right.
     if (x.membership !== undefined) setMembership(x.membership);
     if (x.paywall !== undefined) setPaywall(x.paywall);
+    if (x.club !== undefined) setClub(x.club);
     if (x.version < version.current) return;
     version.current = x.version;
     setS(x.state);
@@ -147,6 +151,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
       setAccount(null);
       setMembership(null);
       setPaywall(false);
+      setClub(false);
       setS(rollover(guest ?? fresh()));
       setReady(true);
     };
@@ -182,6 +187,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
           setAccount(null);
           setMembership(null);
           setPaywall(false);
+          setClub(false);
           setS(fresh());
         }
       });
@@ -296,6 +302,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
       account,
       membership,
       paywall,
+      club,
       canSignIn: !!supabase(),
       boosterActive,
       recordDecision,
@@ -340,7 +347,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
       reset: () => !signedIn && setS(fresh()),
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [s, ready, account, membership, paywall, boosterActive],
+    [s, ready, account, membership, paywall, club, boosterActive],
   );
   return <GameCtx.Provider value={value}>{children}</GameCtx.Provider>;
 }

@@ -32,6 +32,8 @@ export interface Synced {
   version: number;
   membership?: MembershipView | null;
   paywall?: boolean;
+  /** Whether the Club is on for this player. */
+  club?: boolean;
 }
 
 /** The step after `picks`. `written` is a reviewed, pre-written debrief for the path, when one exists. */
@@ -41,11 +43,14 @@ export type PlayResponse = PlayView & { written?: string };
 export type PaywallFor = { lessonId: string } | { testOut: string; lessonIds: string[] } | { hotSeatId: string };
 
 /* The paywall: App registers how to show it; a 402 from a player route shows it. */
-let paywallHandler: ((item?: PaywallFor) => void) | undefined;
+let paywallHandler: ((item?: PaywallFor, line?: string) => void) | undefined;
 /** App's way to show the paywall sheet (and leave any player). Pass nothing to unregister. */
-export const onPaywall = (f?: (item?: PaywallFor) => void) => void (paywallHandler = f);
-/** Show the paywall sheet (a tap on a locked item, or the server's 402), remembering the item when there is one. */
-export const showPaywall = (item?: PaywallFor) => paywallHandler?.(item);
+export const onPaywall = (f?: (item?: PaywallFor, line?: string) => void) => void (paywallHandler = f);
+/**
+ * Show the paywall sheet (a tap on a locked item, or the server's 402), remembering the item when there is one.
+ * `line` is an extra sentence on the sheet, e.g. why the Club needs a membership.
+ */
+export const showPaywall = (item?: PaywallFor, line?: string) => paywallHandler?.(item, line);
 
 const membersOnly = (e: unknown) => e instanceof ApiError && e.status === 402;
 
