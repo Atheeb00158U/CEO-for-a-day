@@ -57,9 +57,9 @@ export function ReminderCard({ compact }: { compact?: boolean }) {
   return (
     <Card className="flex flex-col gap-3">
       <div>
-        <h2 className="text-[19px] font-black">Daily reminder</h2>
+        <h2 className="text-[19px] font-black">Reminders</h2>
         <p className="text-[15px] font-bold text-muted">
-          {compact ? "Get one reminder a day, so you never lose your streak." : "One reminder a day, only if you haven't played yet."}
+          {compact ? "Get a reminder before your streak ends." : "Up to four a day, only when it helps. Never at night."}
         </p>
       </div>
       {blocker === "install-first" ? (
