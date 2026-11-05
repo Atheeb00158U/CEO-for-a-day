@@ -13,7 +13,6 @@ import { FoundingPrice } from "@/components/FoundingPrice";
 import { LegacyHashRedirect } from "@/components/LegacyHashRedirect";
 import { Logo } from "@/components/Logo";
 import { WolfPicture } from "@/components/WolfPicture";
-import { ClubPhones } from "@/components/site/ClubPhones";
 import { ScenePicture } from "@/components/site/ScenePicture";
 import { SCENES, sceneSrcSet } from "@/lib/brand";
 import { TITLES } from "@/lib/career";
@@ -358,26 +357,36 @@ export default async function Home() {
           </ol>
         </section>
 
-        {/* The Club: people serious about business, together; two example screens; honest that it opens soon */}
-        <section id="club" className={`${WRAP} scroll-mt-4 pb-20 md:pb-32`}>
-          <div className="site-rise overflow-hidden rounded-[24px] bg-surface">
-            <ScenePicture
-              name="club"
-              sizes="(min-width: 1280px) 1200px, 100vw"
-              className="aspect-[4/5] w-full object-cover md:aspect-[16/7]"
+        {/* The Club: founders pushing each other's ideas at a chai stall, the wolf hosting at the edge; full width, the
+            words on the dark foot of the picture, inside the page's column; honest that it opens soon */}
+        <section
+          id="club"
+          className="site-zoom relative isolate mb-20 scroll-mt-4 overflow-hidden bg-surface md:mb-32 md:min-h-[min(100svh,860px)]"
+        >
+          <div className="relative aspect-[4/5] overflow-hidden md:absolute md:inset-0 md:-z-10 md:aspect-auto">
+            <ScenePicture name="club" className="h-full w-full object-cover" />
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-[linear-gradient(to_top,rgb(20_27_34),rgb(20_27_34/0))] md:hidden"
             />
           </div>
-          <div className="mt-8 md:mt-12 md:grid md:grid-cols-12 md:items-start md:gap-10">
-            <div className="md:col-span-5">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 -z-10 hidden md:block md:bg-[linear-gradient(to_top,rgb(11_16_21/0.95)_0%,rgb(11_16_21/0.75)_28%,rgb(11_16_21/0)_58%)]"
+          />
+          <div className={`${WRAP} pt-2 pb-16 md:flex md:min-h-[inherit] md:items-end md:pb-20`}>
+            <div className="max-w-[620px]">
               <h2 className={`site-rise ${HEADING}`}>Meet serious business minds</h2>
               <p className={`site-rise mt-6 ${LEAD}`} style={step(1)}>
-                The Club opens soon. Members who reach Trader can post, chat and start small groups with people who take business seriously.
+                Only members who reach Trader can post, chat and start groups.
+              </p>
+              <p className={`site-rise mt-3 ${LEAD}`} style={step(2)}>
+                Share what worked. Ask for advice before a big decision. Meet people you could build with.
+              </p>
+              <p className="site-rise mt-3 text-[18px] font-semibold text-[var(--brass)] md:text-[20px]" style={step(3)}>
+                The Club opens soon.
               </p>
               <StartButton className="site-rise mt-8 w-full sm:w-auto" />
-            </div>
-            <div className="site-rise mt-12 md:col-span-7 md:-mt-48" style={step(2)}>
-              <ClubPhones />
-              <p className="mt-4 text-center text-[14px] text-ink/60">Example screens. The Club opens soon.</p>
             </div>
           </div>
         </section>
