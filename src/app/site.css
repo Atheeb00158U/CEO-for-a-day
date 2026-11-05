@@ -90,3 +90,14 @@
     transform: scale(1.08);
   }
 }
+
+/* The course-ideas cloud: each word rests grey and turns gold as the moving light reaches it (--lit, 0 to 1). */
+.idea {
+  --lit: 0;
+  color: color-mix(in oklab, var(--brass) calc(var(--lit) * 100%), color-mix(in oklab, var(--color-ink) var(--rest), transparent));
+  transition: color 0.35s ease-out;
+}
+/* A pool of the page's ground under the heading, so the words behind it fall away (a scrim, not a decoration). */
+.idea-pool {
+  background: radial-gradient(closest-side, var(--color-bg) 62%, rgb(11 16 21 / 0));
+}
