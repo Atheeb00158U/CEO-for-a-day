@@ -47,3 +47,13 @@ text or signs, no real person's likeness.
 | `ls_burnt_stock` | u3-discount-signal | A large, dim warehouse, 2018: racks of fine unsold beige trench coats and leather bags in neat rows; at the end, the open door of an industrial furnace glowing orange. No people, no check pattern, no logos or readable text. |
 | `ls_hot_vending` | u3-fair-rise | A sunny city street on a very hot day, 1999: a plain red drinks vending machine with no brand name, heat haze over the road, a sweating man in a shirt looking at it. No logos or readable text. |
 | `ls_scooter_queue` | u3-queue-signal | An Indian scooter showroom, early 1980s: a long line of men and a few women outside, some holding booking papers, a pale blue scooter behind the glass. Faces not in focus; no logos, brand names or readable text. |
+
+## Module 3.3: How buyers really judge a price
+
+| Image id | Lesson | Picture |
+|---|---|---|
+| `ls_number_wheel` | u3-first-number | A small university classroom in the early 1970s: a large wooden wheel of fortune on a stand, mid-spin, numbers blurred by motion; a few students at wooden desks watch, seen from behind. No readable text or logos. |
+| `ls_three_offers` | u3-decoy-option | A university library desk in the mid-2000s: a student, seen from behind the shoulder, looks at three printed offer cards side by side; two look almost the same, one is plainly cheaper. Text and prices blurred; no magazine names or logos. |
+| `ls_two_frames` | u3-gain-or-loss | A university lecture hall in 1981: rows of students ticking one of two boxes on paper questionnaires, a researcher in a sweater standing at the side. Text blurred; no logos. |
+| `ls_coin_toss` | u3-loss-hurts | A small Indian tea stall in the evening: a hand flicks a steel coin above a wooden table; two men watch, one unsure, one smiling; glasses of tea. No readable text or logos. |
+| `ls_mugs_class` | u3-feels-theirs | An American university classroom in 1990: half the students hold identical plain white mugs, the others look across at them. No text, logos or prints on the mugs. |

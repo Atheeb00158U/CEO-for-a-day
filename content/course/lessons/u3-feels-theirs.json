@@ -1,0 +1,226 @@
+{
+  "id": "u3-feels-theirs",
+  "title": "Why is it hard to give back?",
+  "principle": "Once it feels theirs, giving it back feels like a loss.",
+  "minutes": 5,
+  "draft": true,
+  "screens": [
+    {
+      "kind": "explain",
+      "id": "hook",
+      "media": "img:ls_mugs_class",
+      "text": "Let me tell you about some coffee mugs. In 1990, Kahneman, Knetsch and Thaler gave mugs to half the students in a class at Cornell, an American university. The other half got nothing. Then students with mugs could sell them, and the others could buy."
+    },
+    {
+      "kind": "choice",
+      "id": "guess",
+      "guess": true,
+      "prompt": "All the mugs were the same. How much did owners ask compared to what buyers would pay?",
+      "options": [
+        {
+          "id": "a",
+          "label": "About the same"
+        },
+        {
+          "id": "b",
+          "label": "Owners asked about twice the price"
+        },
+        {
+          "id": "c",
+          "label": "Owners asked less to sell it quickly"
+        }
+      ],
+      "answer": "b",
+      "why": "Owners asked about twice what buyers would pay. Just minutes before, it was only a mug. Now it was theirs, and giving it away felt like a loss."
+    },
+    {
+      "kind": "explain",
+      "id": "endowment",
+      "title": "The endowment effect",
+      "text": "This is called the endowment effect. An endowment is something given to you. Once something feels like yours, you value it more. Giving it away feels like a loss. And as you learned last lesson, losing hurts about twice as much."
+    },
+    {
+      "kind": "explain",
+      "id": "on-you",
+      "title": "It's used on you",
+      "text": "Businesses use this on you often: free trials, test drives, and websites where you choose the colour of \"your\" car. Lenskart can send an optician home with over 100 frames to try. Once you wear frames at home, giving them back feels harder."
+    },
+    {
+      "kind": "explain",
+      "id": "trap",
+      "title": "The bad side",
+      "text": "Some free trials start taking money without warning. The cancel button is hard to find. They earn money when people forget to cancel. In 2023, India's consumer authority banned this \"subscription trap\" as a dark pattern: a design made to trick you."
+    },
+    {
+      "kind": "choice",
+      "id": "spot-trap",
+      "prompt": "An app's free month ends. It charges ₹199 on day 31 with no reminder. Cancelling takes six screens. What is this?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Fair: you agreed when you joined"
+        },
+        {
+          "id": "b",
+          "label": "A subscription trap"
+        },
+        {
+          "id": "c",
+          "label": "A normal free trial"
+        }
+      ],
+      "answer": "b",
+      "why": "Yes. There's no reminder, and cancelling is hard. So you may forget and pay. That's a subscription trap.",
+      "wrong": {
+        "a": "You agreed, but there's no reminder and it takes six screens to cancel. This makes you forget and pay. That's a subscription trap.",
+        "c": "A fair trial reminds you before charging and makes it easy to stop. This one does neither. That's a subscription trap."
+      }
+    },
+    {
+      "kind": "explain",
+      "id": "home",
+      "title": "Now look at your business",
+      "text": "A mug in a classroom and your bakery work the same way. It's July. You plan a Sunday breakfast box for families: fresh bread, buns and cookies delivered home for ₹350 a week. Each box costs ₹200 to make, leaving you ₹150."
+    },
+    {
+      "kind": "sort",
+      "id": "feels-theirs",
+      "prompt": "I'll show you six ideas for the breakfast box. For each, tell me: does the box feel like theirs?",
+      "buckets": [
+        "Feels like theirs",
+        "Not yet"
+      ],
+      "items": [
+        {
+          "text": "They get the box free at home for two Sundays",
+          "bucket": 0
+        },
+        {
+          "text": "A photo of the box on your menu",
+          "bucket": 1
+        },
+        {
+          "text": "They choose their bread and cookies",
+          "bucket": 0
+        },
+        {
+          "text": "A ₹50 discount coupon to try it",
+          "bucket": 1
+        },
+        {
+          "text": "Their child's name on the box",
+          "bucket": 0
+        },
+        {
+          "text": "A price list sent on WhatsApp",
+          "bucket": 1
+        }
+      ],
+      "why": "A box delivered home, filled with things they chose, with their child's name on it, starts to feel like theirs. A photo, coupon or price list is still just your offer."
+    },
+    {
+      "kind": "scenario",
+      "id": "box-trial",
+      "setup": "It's late July. 40 nearby families know your cakes. You plan a two-week free trial of the ₹350 Sunday box. Each box costs ₹200 to make.",
+      "question": "How will you run the trial?",
+      "options": [
+        {
+          "id": "a",
+          "label": "No trial: show a photo and the price",
+          "grade": "ok",
+          "outcome": "Families like the photo, but only 4 order. You earn ₹150 per box: ₹600 a week.",
+          "why": "This is fair, but the box never reached their table, so it never felt like theirs. It was just another offer.",
+          "better": "Give two free boxes, remind them in week 2, and let them stop with one message."
+        },
+        {
+          "id": "b",
+          "label": "Take UPI AutoPay now; charge from week 3 if they don't cancel",
+          "grade": "bad",
+          "outcome": "30 families join. In week 3, 18 forget to cancel and are charged ₹350. Many get angry. Five complain in the colony group. Your cake orders also fall.",
+          "why": "That's a subscription trap. You earn money when people forget. India's rules ban it, and you lose trust from your cake customers too.",
+          "better": "Give two free boxes, remind them in week 2, and let them stop with one message."
+        },
+        {
+          "id": "c",
+          "label": "Two free boxes, a reminder, stop with one message",
+          "grade": "great",
+          "outcome": "25 families try it for free. In week 2 you send: \"Keep your Sunday box? ₹350 a week. Reply STOP any time.\" 15 keep it: ₹2,250 a week. The 50 free boxes cost ₹10,000, earned back in under five weeks.",
+          "why": "Two Sundays made the box feel like theirs, so most kept it. Every family chose to pay. Nobody paid just because they forgot."
+        }
+      ]
+    },
+    {
+      "kind": "explain",
+      "id": "honest-line",
+      "title": "The honest line",
+      "text": "One last time in this module: use on others only what you'd accept being used on you. Give a real trial, remind them before charging, and make it easy to stop. A trial helps a good product, but cannot save a bad one. Nobody keeps a box they dislike."
+    },
+    {
+      "kind": "gap",
+      "id": "fill",
+      "text": "Once it feels ___, giving it back feels like a ___.",
+      "bank": [
+        "theirs",
+        "loss",
+        "cheap",
+        "gain"
+      ],
+      "answer": [
+        "theirs",
+        "loss"
+      ],
+      "why": "Correct. Owners wanted twice the price for their mugs. After two Sundays of fresh bread, 15 families kept the box."
+    }
+  ],
+  "summary": [
+    "The endowment effect: once something feels like yours, giving it away feels like a loss.",
+    "Free trials, test drives and trying things at home use this. Before a trial, check when you will be charged.",
+    "Use it fairly: give a real trial, remind people before charging, and make it easy to stop. Traps that earn money when people forget are banned in India."
+  ],
+  "cards": [
+    {
+      "id": "m33-own-1",
+      "front": "Students given a mug asked about twice what others would pay for it. Why?",
+      "options": [
+        "Losing something you own hurts",
+        "Their mugs were better"
+      ],
+      "answer": 0,
+      "back": "The endowment effect: once you own something, giving it away feels like a loss."
+    },
+    {
+      "id": "m33-own-2",
+      "front": "A free trial charges you without a reminder. The cancel button is hidden. What is this?",
+      "options": [
+        "A normal trial",
+        "A subscription trap"
+      ],
+      "answer": 1,
+      "back": "This trap earns money when people forget to cancel. India banned it as a dark pattern in 2023."
+    },
+    {
+      "id": "m33-own-3",
+      "front": "You want families to try your weekly snack box. Which trial is fair?",
+      "options": [
+        "Free week, reminder, stop by message",
+        "Free week, then AutoPay without a reminder"
+      ],
+      "answer": 0,
+      "back": "Give a real trial, remind them before charging, and make it easy to stop."
+    }
+  ],
+  "sources": [
+    {
+      "label": "Kahneman, Knetsch and Thaler, Experimental Tests of the Endowment Effect and the Coase Theorem (Journal of Political Economy, 1990)",
+      "url": "https://doi.org/10.1086/261737"
+    },
+    {
+      "label": "Lenskart: Lenskart at Home, frames to try at home (FAQ)",
+      "url": "https://www.lenskart.com/gfaq"
+    },
+    {
+      "label": "Central Consumer Protection Authority, Guidelines for Prevention and Regulation of Dark Patterns, 2023 (notified 30 Nov 2023; Annexure 1, item 5: subscription trap)",
+      "url": "https://consumeraffairs.nic.in/sites/default/files/The%20Guidelines%20for%20Prevention%20and%20Regulation%20of%20Dark%20Patterns%2C%202023.pdf"
+    }
+  ]
+}

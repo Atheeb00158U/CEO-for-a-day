@@ -63,6 +63,13 @@
           "goal": "Change prices without losing trust or profit.",
           "lessons": ["u3-discount-signal", "u3-fair-rise", "u3-queue-signal"],
           "gates": []
+        },
+        {
+          "id": "u3-judge-price",
+          "title": "How buyers really judge a price",
+          "goal": "See the tricks on every price tag, and use them honestly.",
+          "lessons": ["u3-first-number", "u3-decoy-option", "u3-gain-or-loss", "u3-loss-hurts", "u3-feels-theirs"],
+          "gates": []
         }
       ]
     }

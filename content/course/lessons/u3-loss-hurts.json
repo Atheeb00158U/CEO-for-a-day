@@ -1,0 +1,218 @@
+{
+  "id": "u3-loss-hurts",
+  "title": "Why does losing hurt more?",
+  "principle": "A loss hurts about twice as much as an equal gain pleases.",
+  "minutes": 5,
+  "draft": true,
+  "screens": [
+    {
+      "kind": "explain",
+      "id": "hook",
+      "media": "img:ls_coin_toss",
+      "text": "Let me offer you a bet. I toss a coin. Tails, you pay me ₹100. Heads, I pay you ₹150. You can win more than you can lose. Will you play? Most people say no. Nobel Prize winner Daniel Kahneman wrote about bets like this."
+    },
+    {
+      "kind": "explain",
+      "id": "why-no",
+      "title": "Why say no?",
+      "text": "Play this bet many times, and you win more than you lose. Half the time you win ₹150, half the time you lose ₹100. But most people fear losing ₹100 more than they want to win ₹150."
+    },
+    {
+      "kind": "choice",
+      "id": "guess",
+      "guess": true,
+      "prompt": "In 1992, Tversky and Kahneman studied how much worse a loss feels than an equal gain. What did they find?",
+      "options": [
+        {
+          "id": "a",
+          "label": "About the same"
+        },
+        {
+          "id": "b",
+          "label": "A little more: about 1.2 times"
+        },
+        {
+          "id": "c",
+          "label": "Much more: about 2.25 times"
+        }
+      ],
+      "answer": "c",
+      "why": "In their study, a loss felt about 2.25 times as bad as an equal gain felt good. Other studies find different numbers, some lower, some higher. But \"about twice\" is a useful rule."
+    },
+    {
+      "kind": "explain",
+      "id": "loss-aversion",
+      "title": "Loss aversion",
+      "text": "This is called loss aversion. Losing money hurts about twice as much as winning the same amount feels good. Losing ₹100 can feel as bad as winning ₹200 feels good. This also helps explain why a price rise hurts more than an equal price cut feels good."
+    },
+    {
+      "kind": "explain",
+      "id": "on-you",
+      "title": "It's used on you",
+      "text": "Shops use this on you every day. \"Free delivery above ₹499\" makes you add a snack to avoid paying ₹40 for delivery. \"Your cart will expire soon!\" makes you fear losing your items. You often spend more to avoid a small loss."
+    },
+    {
+      "kind": "choice",
+      "id": "free-delivery",
+      "prompt": "Let's do a sum. Cart: ₹450. Delivery: ₹40, free above ₹499. You add a ₹60 snack you didn't need. How much more did you pay?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Nothing: delivery became free"
+        },
+        {
+          "id": "b",
+          "label": "₹20 more"
+        },
+        {
+          "id": "c",
+          "label": "₹60 more"
+        }
+      ],
+      "answer": "b",
+      "why": "Right. Without the snack: ₹450 + ₹40 = ₹490. With it: ₹510. You paid ₹20 more for a snack you didn't need, just to avoid paying ₹40 for delivery.",
+      "wrong": {
+        "a": "Delivery became free, but you paid ₹60 for the snack. Without it: ₹450 + ₹40 = ₹490. With it: ₹510. That's ₹20 more.",
+        "c": "The snack cost ₹60, but you saved ₹40 on delivery. Without it: ₹490. With it: ₹510. You paid ₹20 more."
+      }
+    },
+    {
+      "kind": "explain",
+      "id": "home",
+      "title": "Now look at your business",
+      "text": "Your buyers feel the same fear. It's June. You start baking for a new colony across town. Families there don't know you. Paying ₹850 for a cake from someone new feels risky: they could lose ₹850."
+    },
+    {
+      "kind": "choice",
+      "id": "how-big",
+      "prompt": "Quick sum. A family may lose ₹850 on a new baker. A loss feels about twice as big. How good must it feel, in rupees?",
+      "options": [
+        {
+          "id": "a",
+          "label": "About ₹425"
+        },
+        {
+          "id": "b",
+          "label": "About ₹850"
+        },
+        {
+          "id": "c",
+          "label": "About ₹1,700"
+        }
+      ],
+      "answer": "c",
+      "why": "Yes. ₹850 × 2 = about ₹1,700. One cake can't promise that much. So promising a bigger gain won't work.",
+      "wrong": {
+        "a": "That makes the risk half as big. A loss feels about twice as bad, so the win must feel like ₹850 × 2 = about ₹1,700.",
+        "b": "That means a loss and a win feel equal. A loss feels about twice as bad: ₹850 × 2 = about ₹1,700."
+      }
+    },
+    {
+      "kind": "scenario",
+      "id": "new-colony",
+      "setup": "It's June. In the new colony, 30 families saw your post, but only 2 ordered. Your cake sells for ₹850. It costs ₹400 to make, so you keep ₹450. You can bake 20 cakes a week.",
+      "question": "How do you get families to try you?",
+      "options": [
+        {
+          "id": "a",
+          "label": "\"Only 5 cakes left this week!\"",
+          "grade": "bad",
+          "outcome": "3 families order quickly. The next week, you post \"Only 5 cakes left!\" again. A family sees the same message twice. She tells the colony group, and orders stop.",
+          "why": "You can bake 20 cakes a week, so \"only 5 left\" was not true. Fake limits may work once, but then buyers who hear about it stop trusting you.",
+          "better": "\"Not happy? Full money back.\" Remove their risk."
+        },
+        {
+          "id": "b",
+          "label": "\"Not happy? Full money back, no questions.\"",
+          "grade": "great",
+          "outcome": "12 families order. One asks for her money back, and you pay her ₹850 at once. You still earn ₹4,550: 11 cakes at ₹450, minus ₹400 for the refunded cake. Next month, 8 order again.",
+          "why": "You removed their risk. If the cake was bad, they could get their money back. So they no longer feared losing ₹850."
+        },
+        {
+          "id": "c",
+          "label": "₹200 off the first cake",
+          "grade": "ok",
+          "outcome": "6 families order at ₹650. Each cake leaves you ₹250: ₹1,500 in all. Some ask, \"Why so cheap? Is it old?\" Next month, 2 come back at ₹850.",
+          "why": "A small saving doesn't remove the fear of losing ₹650 on a bad cake. And a discount can make a good cake seem poor.",
+          "better": "\"Not happy? Full money back.\" Remove their risk."
+        }
+      ]
+    },
+    {
+      "kind": "explain",
+      "id": "take-away",
+      "title": "Remove the risk",
+      "text": "Here's the fair way to use this. A money-back offer takes the risk off the buyer, so trying your cake feels safe. If buyers can't lose money, they don't need to feel they're getting ₹1,700 worth to say yes."
+    },
+    {
+      "kind": "explain",
+      "id": "honest-line",
+      "title": "The honest line",
+      "text": "Remember the line: use on others only what you'd accept being used on you. Removing a buyer's risk is fair. Fake deadlines and repeated \"you'll lose!\" messages scare buyers. Use loss aversion to remove a buyer's fear, never to create it."
+    },
+    {
+      "kind": "gap",
+      "id": "fill",
+      "text": "A ___ hurts about twice as much as an equal ___ pleases.",
+      "bank": [
+        "loss",
+        "gain",
+        "price",
+        "cake"
+      ],
+      "answer": [
+        "loss",
+        "gain"
+      ],
+      "why": "Exactly. That's why most people refuse the coin toss. And why \"money back\" helps new families decide to buy."
+    }
+  ],
+  "summary": [
+    "Loss aversion: losing money hurts about twice as much as winning the same amount feels good.",
+    "\"Free delivery above ₹499\" and \"your cart will expire\" use this fear. Do the sum before you add another item.",
+    "Use it fairly: remove the buyer's risk, so trying feels safe. No fake deadlines."
+  ],
+  "cards": [
+    {
+      "id": "m33-loss-1",
+      "front": "Coin toss: tails you lose ₹100, heads you win ₹150. Why do most people refuse?",
+      "options": [
+        "A loss feels worse than a gain feels good",
+        "They can't add the numbers"
+      ],
+      "answer": 0,
+      "back": "Loss aversion: losing money hurts about twice as much as winning the same amount feels good."
+    },
+    {
+      "id": "m33-loss-2",
+      "front": "New customers won't try your ₹300 tiffin. Which works best?",
+      "options": [
+        "₹30 off the first tiffin",
+        "\"Not happy? Money back.\"",
+        "\"Only 3 left today!\" (it isn't true)"
+      ],
+      "answer": 1,
+      "back": "Remove the buyer's risk, so trying feels safe."
+    },
+    {
+      "id": "m33-loss-3",
+      "front": "Cart ₹460. Free delivery above ₹499, or ₹30 to deliver. You add a ₹50 item you don't need. You pay…",
+      "options": [
+        "₹20 more",
+        "₹30 less"
+      ],
+      "answer": 0,
+      "back": "₹510 instead of ₹490. Trying to avoid a small \"loss\" can make you spend more."
+    }
+  ],
+  "sources": [
+    {
+      "label": "Tversky and Kahneman, Advances in Prospect Theory: Cumulative Representation of Uncertainty (Journal of Risk and Uncertainty, 1992)",
+      "url": "https://doi.org/10.1007/BF00122574"
+    },
+    {
+      "label": "Daniel Kahneman, Thinking, Fast and Slow (2011), chapter 26, Prospect Theory: the coin-toss bet",
+      "url": "https://en.wikipedia.org/wiki/Thinking,_Fast_and_Slow"
+    }
+  ]
+}

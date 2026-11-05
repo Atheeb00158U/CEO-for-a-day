@@ -1,0 +1,248 @@
+{
+  "id": "u3-decoy-option",
+  "title": "Why add an option few people buy?",
+  "principle": "A clearly worse third option makes the one beside it sell.",
+  "minutes": 5,
+  "draft": true,
+  "screens": [
+    {
+      "kind": "explain",
+      "id": "hook",
+      "media": "img:ls_three_offers",
+      "text": "Let me tell you about a magazine called The Economist. Its website once had three yearly plans. Web only: $59. Print only: $125. Print and web together: $125. Look again. Print only cost the same as print and web."
+    },
+    {
+      "kind": "choice",
+      "id": "guess",
+      "guess": true,
+      "prompt": "Dan Ariely, a scientist, showed these three plans to 100 students. How many picked print only?",
+      "options": [
+        {
+          "id": "a",
+          "label": "About half"
+        },
+        {
+          "id": "b",
+          "label": "About one third"
+        },
+        {
+          "id": "c",
+          "label": "None of them"
+        }
+      ],
+      "answer": "c",
+      "why": "Nobody chose print only. Why would they? For the same $125, they could get print and web. But that plan nobody chose had a purpose. Let me show you."
+    },
+    {
+      "kind": "explain",
+      "id": "take-away",
+      "title": "What happened next",
+      "text": "84 of the 100 students chose print and web for $125. Then Ariely removed print only and asked a new group of students. Now only 32 of 100 chose print and web. The other 68 chose the cheaper $59 web plan."
+    },
+    {
+      "kind": "explain",
+      "id": "decoy",
+      "title": "The decoy effect",
+      "text": "This is called the decoy effect. A decoy is a choice that is clearly worse than the one next to it. Few people buy it. But it makes the better choice look like a good deal, so more people pick it. Shops often use this on you."
+    },
+    {
+      "kind": "choice",
+      "id": "popcorn",
+      "prompt": "At the cinema, popcorn is ₹180 small, ₹290 medium and ₹320 large. Which one is the decoy?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Small, at ₹180"
+        },
+        {
+          "id": "b",
+          "label": "Medium, at ₹290"
+        },
+        {
+          "id": "c",
+          "label": "Large, at ₹320"
+        }
+      ],
+      "answer": "b",
+      "why": "Yes. Medium costs only ₹30 less than large. So large looks like a good deal, and more people pick it. That's how a decoy works on you.",
+      "wrong": {
+        "a": "Small is the cheap choice, like the $59 web plan. Look at medium: ₹290, only ₹30 less than large. It makes large look like a good deal.",
+        "c": "Large is the one the cinema wants you to buy. The decoy is medium: ₹290 for less popcorn, only ₹30 less than large."
+      }
+    },
+    {
+      "kind": "explain",
+      "id": "home",
+      "title": "Now look at your business",
+      "text": "The Economist sells around the world, but your home bakery can use the same idea fairly. It's February. Families want more than a cake for birthday parties. Your cake is ₹850. You plan a party pack with 12 cupcakes, a name topper and delivery."
+    },
+    {
+      "kind": "choice",
+      "id": "which-decoy",
+      "prompt": "Here are your three party plans. Which one is the decoy?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Cake, 12 cupcakes, topper and delivery: ₹1,450"
+        },
+        {
+          "id": "b",
+          "label": "Cake only: ₹850"
+        },
+        {
+          "id": "c",
+          "label": "Cake and 12 cupcakes: ₹1,400"
+        }
+      ],
+      "answer": "c",
+      "why": "Right. For only ₹50 more, the full pack adds a topper and delivery. Cake and cupcakes makes the full pack look like a good deal, just as print only helped sell print and web.",
+      "wrong": {
+        "a": "That's the plan you want families to pick. The decoy is cake and cupcakes at ₹1,400: only ₹50 less, but without a topper or delivery.",
+        "b": "Cake only is the cheap choice, like the $59 web plan. The decoy is cake and cupcakes at ₹1,400: only ₹50 less than the full pack."
+      }
+    },
+    {
+      "kind": "explain",
+      "id": "backfire",
+      "title": "Where it goes wrong",
+      "text": "This can fail in two ways. A decoy nobody would want looks like a trick, so buyers stop trusting you. Too many choices can also stop people from buying. In a famous jam test, many more shoppers bought from a table with 6 jams than one with 24."
+    },
+    {
+      "kind": "sort",
+      "id": "help-or-trick",
+      "prompt": "I'll show you six menu ideas. For each one, tell me: does it help buyers choose, or does it trick or confuse them?",
+      "buckets": [
+        "Helps them choose",
+        "Tricks or confuses"
+      ],
+      "items": [
+        {
+          "text": "Fresh cake and cupcakes at ₹1,400, a plan you're happy to sell",
+          "bucket": 0
+        },
+        {
+          "text": "A ₹4,999 \"royal\" cake you would refuse to bake",
+          "bucket": 1
+        },
+        {
+          "text": "Ten party plans, each a little different",
+          "bucket": 1
+        },
+        {
+          "text": "Three plans, with the best value marked clearly",
+          "bucket": 0
+        },
+        {
+          "text": "A \"Value\" plan with a smaller cake, but you don't tell buyers",
+          "bucket": 1
+        },
+        {
+          "text": "Saying plainly what each plan includes",
+          "bucket": 0
+        }
+      ],
+      "why": "A fair decoy is a real plan you'd be happy to sell, on a short, clear menu. A plan you'd never make, hidden details, or too many choices can trick or confuse buyers."
+    },
+    {
+      "kind": "scenario",
+      "id": "party-menu",
+      "setup": "It's March. 20 families book party cakes each month. 16 choose cake only at ₹850, leaving you ₹450 each. 4 choose the full pack at ₹1,450, leaving you ₹750 each. That's ₹10,200 a month.",
+      "question": "How do you set your party menu?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Keep two plans and tell everyone about the full pack",
+          "grade": "ok",
+          "outcome": "You tell every family about the full pack. A few more agree: 6 of 20. You earn ₹10,800 a month, but every call takes more time.",
+          "why": "Telling families about it helped a little. But they still compare ₹1,450 with ₹850, and the price difference looks big.",
+          "better": "Add cake and cupcakes at ₹1,400, a real plan you'd be happy to sell."
+        },
+        {
+          "id": "b",
+          "label": "Add eight more plans so everyone has a choice",
+          "grade": "bad",
+          "outcome": "Families look at the plans, ask questions, and say, \"We'll think about it.\" Bookings fall from 20 to 15 a month, across many plans. You earn about ₹7,650 a month.",
+          "why": "Too many choices made families wait instead of choosing. Like the jam test, fewer choices can lead to more sales.",
+          "better": "Add cake and cupcakes at ₹1,400, a real plan you'd be happy to sell."
+        },
+        {
+          "id": "c",
+          "label": "Add cake and cupcakes at ₹1,400 (leaves you ₹820)",
+          "grade": "great",
+          "outcome": "Now the full pack costs only ₹50 more than cake and cupcakes. 9 families choose it, 2 choose cake and cupcakes (leaving you ₹820 each), and 9 choose cake only. You earn ₹12,440 a month.",
+          "why": "Your decoy is a real plan you're happy to sell, and you earn well if someone picks it. But mostly, it made the full pack look like the best choice."
+        }
+      ]
+    },
+    {
+      "kind": "explain",
+      "id": "honest-line",
+      "title": "The honest line",
+      "text": "Remember the line: use on others only what you'd accept being used on you. A decoy is fair when it's a real option you'd be happy to sell, and you clearly say what each plan includes. This helps buyers see which plan gives them the most for their money."
+    },
+    {
+      "kind": "gap",
+      "id": "fill",
+      "text": "A clearly ___ third choice helps sell the one ___ it.",
+      "bank": [
+        "worse",
+        "beside",
+        "cheaper",
+        "inside"
+      ],
+      "answer": [
+        "worse",
+        "beside"
+      ],
+      "why": "Correct. Print only helped sell print and web. Your ₹1,400 cake and cupcakes helps sell the ₹1,450 full pack."
+    }
+  ],
+  "summary": [
+    "The decoy effect: a clearly worse choice makes the one next to it look like a good deal.",
+    "You'll see it in popcorn sizes and phone models. Ask: which choice is there just to make another look better?",
+    "Use it fairly: the decoy must be a real plan you'd be happy to sell, on a short, clear menu."
+  ],
+  "cards": [
+    {
+      "id": "m33-decoy-1",
+      "front": "Coffee: small ₹120, medium ₹200, large ₹220. Which is the decoy?",
+      "options": [
+        "Small",
+        "Medium",
+        "Large"
+      ],
+      "answer": 1,
+      "back": "Medium costs only ₹20 less than large. It makes large look like a good deal."
+    },
+    {
+      "id": "m33-decoy-2",
+      "front": "Which decoy is honest?",
+      "options": [
+        "A real plan you'd be happy to sell",
+        "A plan you'd refuse to make"
+      ],
+      "answer": 0,
+      "back": "A fair decoy is a real choice. A fake one looks like a trick when buyers notice it."
+    },
+    {
+      "id": "m33-decoy-3",
+      "front": "You offer 10 tiffin plans, and many people leave without choosing. What should you do?",
+      "options": [
+        "Add more plans",
+        "Keep about three clear plans"
+      ],
+      "answer": 1,
+      "back": "Too many choices can stop people from buying. Keep the menu short and clear."
+    }
+  ],
+  "sources": [
+    {
+      "label": "Dan Ariely, Predictably Irrational (2008), chapter 1: The Economist subscription test",
+      "url": "https://en.wikipedia.org/wiki/Decoy_effect"
+    },
+    {
+      "label": "Iyengar and Lepper, When choice is demotivating (Journal of Personality and Social Psychology, 2000)",
+      "url": "https://doi.org/10.1037/0022-3514.79.6.995"
+    }
+  ]
+}

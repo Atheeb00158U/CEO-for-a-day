@@ -1,0 +1,240 @@
+{
+  "id": "u3-gain-or-loss",
+  "title": "Same fact, different words",
+  "principle": "The same fact feels different as a gain or a loss.",
+  "minutes": 6,
+  "draft": true,
+  "screens": [
+    {
+      "kind": "explain",
+      "id": "hook",
+      "media": "img:ls_two_frames",
+      "text": "Let me tell you about a test from 1981. Tversky and Kahneman asked people to imagine a disease that would kill 600 people. Plan A: 200 people will be saved. Plan B: maybe all 600 are saved (one chance in three), maybe none (two chances in three)."
+    },
+    {
+      "kind": "explain",
+      "id": "second-group",
+      "title": "Same plans, different words",
+      "text": "Then they asked a second group, using different words. Plan C: 400 people will die. Plan D: maybe no one dies (one chance in three), maybe all 600 die (two chances in three). Look. Plan C is the same as Plan A: 200 live, 400 die."
+    },
+    {
+      "kind": "choice",
+      "id": "guess",
+      "guess": true,
+      "prompt": "72 of every 100 people chose Plan A, \"200 saved\". How many chose Plan C, \"400 will die\"? It's the same plan.",
+      "options": [
+        {
+          "id": "a",
+          "label": "About the same: 72"
+        },
+        {
+          "id": "b",
+          "label": "Far fewer: about 22"
+        },
+        {
+          "id": "c",
+          "label": "More: about 90"
+        }
+      ],
+      "answer": "b",
+      "why": "Only 22 of 100 chose Plan C. 78 chose the risky plan instead. The plan was the same. Only the words changed, from \"saved\" to \"die\"."
+    },
+    {
+      "kind": "explain",
+      "id": "framing",
+      "title": "Framing",
+      "text": "Scientists call this framing. A gain frame says what you get: \"200 saved\". A loss frame says what you lose: \"400 die\". Same fact, different feeling. People choose differently, even when the facts are the same."
+    },
+    {
+      "kind": "explain",
+      "id": "on-you",
+      "title": "It's used on you",
+      "text": "You see this every day. \"90% fat-free\" sounds healthy, but it means 10% fat. \"Only ₹33 a day\" for insurance sounds cheap, but it's about ₹12,000 a year. \"Don't miss out!\" is a loss frame. These words are not lies. They show only one side of the fact."
+    },
+    {
+      "kind": "choice",
+      "id": "per-day",
+      "prompt": "Insurance costs ₹12,000 a year. An ad says \"only ₹33 a day\". Does it cost less?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Yes: ₹33 is much less than ₹12,000"
+        },
+        {
+          "id": "b",
+          "label": "No: it's the same price, shown per day"
+        },
+        {
+          "id": "c",
+          "label": "Can't tell without reading the whole policy"
+        }
+      ],
+      "answer": "b",
+      "why": "Right. ₹33 × 365 days = about ₹12,000. Same price. Saying it per day only makes it feel small.",
+      "wrong": {
+        "a": "₹33 is for one day. ₹33 × 365 days = about ₹12,000, the same as the yearly price. Only the words changed.",
+        "c": "You can check with one sum: ₹33 × 365 days = about ₹12,000. It's the same price, shown per day."
+      }
+    },
+    {
+      "kind": "explain",
+      "id": "which-frame",
+      "title": "When to use each frame",
+      "text": "So which frame should you use? Here's my rule. For something new, use a gain frame: say what they get. If waiting costs them money every month, use a loss frame: show how much they lose by waiting. Only show a real loss."
+    },
+    {
+      "kind": "explain",
+      "id": "home",
+      "title": "Now look at your business",
+      "text": "A disease test and your bakery seem very different, but words work the same way. It's April. You start a birthday cake plan for offices: a cake for every staff birthday, delivered that day, ₹850 each. Nearby offices buy from a chain shop at ₹1,100."
+    },
+    {
+      "kind": "choice",
+      "id": "new-office",
+      "prompt": "A new office doesn't know you. Your sister says: \"Save ₹250 a birthday cake.\" Your friend says: \"You're wasting ₹250 on every cake!\" Who's right?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Your sister: a gain frame for something new"
+        },
+        {
+          "id": "b",
+          "label": "Your friend: a loss always works better"
+        },
+        {
+          "id": "c",
+          "label": "Neither: send only the price list"
+        }
+      ],
+      "answer": "a",
+      "why": "Yes. They have never bought from you, so tell them what they get. \"You're wasting money\" from someone new sounds rude, and people may say no.",
+      "wrong": {
+        "b": "A loss frame works for a cost they already know they pay. From someone new, \"You're wasting money!\" sounds rude. Tell a new office what they get.",
+        "c": "A price list alone doesn't show the ₹250 saving. For someone new, a gain frame helps: \"Save ₹250 on every birthday cake.\""
+      }
+    },
+    {
+      "kind": "choice",
+      "id": "next-month",
+      "prompt": "A manager liked your plan last month but keeps saying \"next month\". They buy about 4 cakes a month at ₹1,100. Which message works best?",
+      "options": [
+        {
+          "id": "a",
+          "label": "\"Last chance! This offer ends tonight!\""
+        },
+        {
+          "id": "b",
+          "label": "\"Save ₹250 a cake with us!\""
+        },
+        {
+          "id": "c",
+          "label": "\"Each month you wait costs about ₹1,000.\""
+        }
+      ],
+      "answer": "c",
+      "why": "Yes. 4 cakes × ₹250 = ₹1,000 a month. That loss is real, and they pay it now. Telling them this helps them decide.",
+      "wrong": {
+        "a": "There's no real deadline, so that message is false. Show the real loss instead: 4 cakes × ₹250 = about ₹1,000 a month.",
+        "b": "They already know they can save, but they still wait. Showing the real loss helps more: 4 cakes × ₹250 = about ₹1,000 a month."
+      }
+    },
+    {
+      "kind": "scenario",
+      "id": "year-deal",
+      "setup": "It's May. A big office wants all its birthday cakes for a year: about 48 cakes at ₹850 each, ₹40,800 in total. Each cake leaves you ₹450. You write the offer.",
+      "question": "How should you show the price?",
+      "options": [
+        {
+          "id": "a",
+          "label": "\"₹850 a cake, paid monthly. You save ₹250 a cake.\"",
+          "grade": "great",
+          "outcome": "The manager sees each cake's price and the saving: about ₹12,000 a year. She signs. About 4 cakes a month, each leaving you ₹450: ₹1,800 a month, all year.",
+          "why": "You used a gain frame for a new buyer, and the price was the same as the bill they'd get. Nothing would feel unfair later."
+        },
+        {
+          "id": "b",
+          "label": "\"₹40,800 for the year, paid now.\"",
+          "grade": "ok",
+          "outcome": "It's true, but the big number worries the manager. She says she'll think about it. Two weeks later, she agrees to six months only: 24 cakes, leaving you ₹10,800.",
+          "why": "The price was correct, but it showed only the big number. She couldn't see the ₹250 she saves on every cake.",
+          "better": "₹850 a cake, paid monthly, with the ₹250 saving said plainly."
+        },
+        {
+          "id": "c",
+          "label": "\"Only ₹112 a day!\" Yearly bill in small text",
+          "grade": "bad",
+          "outcome": "The manager agrees. Then her accounts team reads the small text: ₹40,800 due at once. They feel cheated and cancel. You lose the order, and they tell other offices.",
+          "why": "₹112 a day is about ₹40,800 a year, so it isn't a lie. But showing a daily price when the full bill is due at once feels unfair.",
+          "better": "₹850 a cake, paid monthly, with the ₹250 saving said plainly."
+        }
+      ]
+    },
+    {
+      "kind": "explain",
+      "id": "honest-line",
+      "title": "The honest line",
+      "text": "The line again: use on others only what you'd accept being used on you. Help buyers see the truth. Making a small problem sound scary puts pressure on people, and they say no. A daily price that hides a big bill feels unfair."
+    },
+    {
+      "kind": "gap",
+      "id": "fill",
+      "text": "The same ___ feels different as a ___ or a loss.",
+      "bank": [
+        "fact",
+        "gain",
+        "lie",
+        "cost"
+      ],
+      "answer": [
+        "fact",
+        "gain"
+      ],
+      "why": "Correct. \"200 saved\" and \"400 die\" were the same plan. \"Save ₹250 a cake\" helps a new office buy from you."
+    }
+  ],
+  "summary": [
+    "Framing: the same fact feels different as a gain (\"200 saved\") or a loss (\"400 die\").",
+    "\"90% fat-free\" and \"only ₹33 a day\" are frames. Look at the other side, or find the yearly price.",
+    "Use a gain frame for something new, and a loss frame only for a real cost they pay now. Never show only a daily price for a big bill."
+  ],
+  "cards": [
+    {
+      "id": "m33-frame-1",
+      "front": "A gym says \"only ₹25 a day\". You must pay for the whole year at once. How much is that?",
+      "options": [
+        "About ₹750",
+        "About ₹9,000",
+        "₹25"
+      ],
+      "answer": 1,
+      "back": "₹25 × 365 = about ₹9,000. Showing a daily price makes a big bill feel small."
+    },
+    {
+      "id": "m33-frame-2",
+      "front": "A new customer has never tried your tiffin. Which message is better?",
+      "options": [
+        "\"Hot lunch at your desk by 1 pm\"",
+        "\"Stop wasting money on canteen food!\""
+      ],
+      "answer": 0,
+      "back": "For something new, use a gain frame: tell them what they get."
+    },
+    {
+      "id": "m33-frame-3",
+      "front": "\"Yogurt: 95% fat-free.\" How much fat is in it?",
+      "options": [
+        "5%",
+        "None",
+        "95%"
+      ],
+      "answer": 0,
+      "back": "A frame shows one side of a fact. Look at the other side too."
+    }
+  ],
+  "sources": [
+    {
+      "label": "Tversky and Kahneman, The Framing of Decisions and the Psychology of Choice (Science, 1981)",
+      "url": "https://doi.org/10.1126/science.7455683"
+    }
+  ]
+}

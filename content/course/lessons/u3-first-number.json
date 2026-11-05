@@ -1,0 +1,244 @@
+{
+  "id": "u3-first-number",
+  "title": "Why does the first price matter?",
+  "principle": "The first number buyers see sets what every price feels like.",
+  "minutes": 5,
+  "draft": true,
+  "screens": [
+    {
+      "kind": "explain",
+      "id": "hook",
+      "media": "img:ls_number_wheel",
+      "text": "Let me tell you about an odd test from the 1970s. Two scientists, Amos Tversky and Daniel Kahneman, spun a wheel with numbers in front of people. The wheel could stop only at 10 or 65. Then they asked about Africa."
+    },
+    {
+      "kind": "explain",
+      "id": "question",
+      "title": "A question about Africa",
+      "text": "First: what percent of United Nations countries are in Africa? (The UN is the group of the world's countries.) Is it more or less than the wheel's number? Now, what is your best guess? The wheel had nothing to do with Africa. Everyone knew the number was random."
+    },
+    {
+      "kind": "choice",
+      "id": "guess",
+      "guess": true,
+      "prompt": "Some people saw the wheel stop at 65, others at 10. Then they guessed what percent of UN countries are in Africa. What happened?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Both groups guessed about the same"
+        },
+        {
+          "id": "b",
+          "label": "The 65 group guessed much higher"
+        },
+        {
+          "id": "c",
+          "label": "The 10 group guessed higher"
+        }
+      ],
+      "answer": "b",
+      "why": "The typical guess was 45% for those who saw 65, and 25% for those who saw 10. The wheel's number moved their guesses from 25% to 45%."
+    },
+    {
+      "kind": "explain",
+      "id": "anchoring",
+      "title": "Anchoring",
+      "text": "Scientists call this anchoring. A ship's anchor stops it from moving far. The first number you see does the same to your thinking. You guess above or below it, but stay too close. This happens even when you know the number means nothing."
+    },
+    {
+      "kind": "explain",
+      "id": "on-you",
+      "title": "It's used on you",
+      "text": "You'll see this in shops. A sale page says \"MRP ₹2,999, now ₹1,199\". The old price has a line through it. That number is the anchor: it makes ₹1,199 seem cheap. When you bargain, the first fair-sounding price is the anchor. Did anyone really pay ₹2,999? Often, nobody did."
+    },
+    {
+      "kind": "choice",
+      "id": "fake-was",
+      "prompt": "A website shows a shirt: \"Was ₹2,999, now ₹1,199\". Nobody ever paid ₹2,999. What is the ₹2,999 doing?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Showing the shirt's real value"
+        },
+        {
+          "id": "b",
+          "label": "Showing how much the shop paid"
+        },
+        {
+          "id": "c",
+          "label": "A fake anchor, to make ₹1,199 feel cheap"
+        }
+      ],
+      "answer": "c",
+      "why": "Yes. Nobody paid ₹2,999, so it's not the shirt's real value. It's shown only to make ₹1,199 feel cheap.",
+      "wrong": {
+        "a": "Nobody ever paid ₹2,999, so it's not the shirt's real value. It's a fake anchor to make ₹1,199 feel cheap.",
+        "b": "Shops don't show what they paid on a sale page. Nobody paid ₹2,999. It's a fake anchor to make ₹1,199 feel cheap."
+      }
+    },
+    {
+      "kind": "explain",
+      "id": "home",
+      "title": "Now look at your business",
+      "text": "A test with a wheel can teach you about your home bakery. It's January of your fourth year. Your chocolate birthday cake now sells for ₹850, and you keep ₹450 from each one. You also make a big two-tier party cake for ₹2,500."
+    },
+    {
+      "kind": "choice",
+      "id": "menu-order",
+      "prompt": "Your WhatsApp menu shows a ₹850 cake and a ₹2,500 party cake. Some families say ₹850 is \"a bit much\". Which should come first?",
+      "options": [
+        {
+          "id": "a",
+          "label": "The ₹850 cake, so families don't get scared"
+        },
+        {
+          "id": "b",
+          "label": "The ₹2,500 party cake, then the ₹850 cake"
+        },
+        {
+          "id": "c",
+          "label": "Neither: hide prices until they ask"
+        }
+      ],
+      "answer": "b",
+      "why": "Yes. You really sell the ₹2,500 cake, and you make it often. Show it first, and ₹850 feels fair. When a buyer says \"too costly\", ask: compared to what? Then change what they compare it with.",
+      "wrong": {
+        "a": "Then ₹850 is the first price they see, so it feels high. Show your real ₹2,500 party cake first. After that, ₹850 feels fair.",
+        "c": "Then they ask, and ₹850 is still the first price they hear. Show your real ₹2,500 party cake first. After that, ₹850 feels fair."
+      }
+    },
+    {
+      "kind": "sort",
+      "id": "honest-or-trick",
+      "prompt": "I'll show you six anchors. For each one, tell me: is it honest, or a trick?",
+      "buckets": [
+        "Honest",
+        "A trick"
+      ],
+      "items": [
+        {
+          "text": "Show your real ₹2,500 party cake first",
+          "bucket": 0
+        },
+        {
+          "text": "\"Was ₹1,200, now ₹850\", though it was never ₹1,200",
+          "bucket": 1
+        },
+        {
+          "text": "Tell buyers the big chain shop's cake costs ₹1,100, which is true",
+          "bucket": 0
+        },
+        {
+          "text": "Write \"MRP ₹1,500\" on a cake you always sell at ₹850",
+          "bucket": 1
+        },
+        {
+          "text": "For a big order, start with a price you can explain",
+          "bucket": 0
+        },
+        {
+          "text": "Ask ₹5,000 for an ₹850 cake, hoping to come down to ₹1,500",
+          "bucket": 1
+        }
+      ],
+      "why": "Honest anchors use real prices: a cake you sell, a price another shop charges, or a price you can explain. Tricks use fake prices or numbers you can't explain."
+    },
+    {
+      "kind": "scenario",
+      "id": "big-order",
+      "setup": "It's late January. An office wants 30 boxes of cupcakes for a staff party. Each box costs you ₹150 to make. Big shops charge about ₹400 a box. The manager asks, \"What's your price?\"",
+      "question": "What do you say first?",
+      "options": [
+        {
+          "id": "a",
+          "label": "₹600 a box, so you can bargain down",
+          "grade": "bad",
+          "outcome": "The manager looks unhappy: \"Big shops charge ₹400.\" She doesn't ask for a lower price. She thanks you and calls another baker. You lose the order.",
+          "why": "You can start with a high price only if you can explain it. ₹600 looked like a trick when big shops charged ₹400.",
+          "better": "₹350 a box: say what it includes, and that big shops charge ₹400."
+        },
+        {
+          "id": "b",
+          "label": "₹350 a box, and explain what it includes",
+          "grade": "great",
+          "outcome": "You say: \"₹350 a box, baked that morning. Big shops charge about ₹400.\" She asks for ₹320. You agree on ₹330. 30 boxes leave ₹180 each: ₹5,400.",
+          "why": "You started with a price you could explain and compared it with a real price. That first price led to a fair deal."
+        },
+        {
+          "id": "c",
+          "label": "₹250 a box, so she won't buy elsewhere",
+          "grade": "ok",
+          "outcome": "She says yes at once, too fast. 30 boxes leave ₹100 each: ₹3,000. Later, she says she had planned to pay ₹350 a box.",
+          "why": "You got the order, but your low first price decided the deal. You can't raise it after saying it.",
+          "better": "₹350 a box: say what it includes, and that big shops charge ₹400."
+        }
+      ]
+    },
+    {
+      "kind": "explain",
+      "id": "honest-line",
+      "title": "The honest line",
+      "text": "Here's the line to keep for this whole module: use on others only what you'd accept being used on you. A real cake shown first is fair. A \"was\" price nobody paid is a lie. If a buyer finds one fake price, they may stop trusting all your prices."
+    },
+    {
+      "kind": "gap",
+      "id": "fill",
+      "text": "The ___ number a buyer sees changes how every ___ feels.",
+      "bank": [
+        "first",
+        "price",
+        "last",
+        "cake"
+      ],
+      "answer": [
+        "first",
+        "price"
+      ],
+      "why": "Exactly. The wheel moved people's guesses from 25% to 45%. Show your real ₹2,500 party cake first, and ₹850 feels fair."
+    }
+  ],
+  "summary": [
+    "Anchoring: the first number you see affects your thinking, even when it means nothing.",
+    "Crossed-out MRPs and \"was\" prices are anchors. Ask: did anyone ever pay that price?",
+    "Show a real, higher-priced option first. Start a deal with a price you can explain. Never use a fake \"was\" price."
+  ],
+  "cards": [
+    {
+      "id": "m33-anchor-1",
+      "front": "A phone website says \"MRP ₹40,000, now ₹24,999\". The phone never sold at ₹40,000. What is ₹40,000?",
+      "options": [
+        "A fake anchor",
+        "The phone's real value"
+      ],
+      "answer": 0,
+      "back": "A price nobody paid is an anchor. It makes the price you pay feel cheap."
+    },
+    {
+      "id": "m33-anchor-2",
+      "front": "You sell a ₹600 thali and a ₹250 one. Which should a new customer see first on the menu?",
+      "options": [
+        "The ₹250 thali",
+        "The ₹600 thali"
+      ],
+      "answer": 1,
+      "back": "Show a real, higher-priced option first. It makes the other prices feel fair."
+    },
+    {
+      "id": "m33-anchor-3",
+      "front": "A shop asks your price for a big order. Nearby shops charge ₹400. What price should you say first?",
+      "options": [
+        "₹600, to bargain down",
+        "₹350, and say why",
+        "₹250, to win it"
+      ],
+      "answer": 1,
+      "back": "The first price helps decide the deal. Start with a price you can explain."
+    }
+  ],
+  "sources": [
+    {
+      "label": "Tversky and Kahneman, Judgment under Uncertainty: Heuristics and Biases (Science, 1974)",
+      "url": "https://doi.org/10.1126/science.185.4157.1124"
+    }
+  ]
+}
