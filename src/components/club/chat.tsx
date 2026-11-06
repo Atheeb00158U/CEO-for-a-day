@@ -4,6 +4,7 @@
 // messages, "Seen" and "typing…" come live on the player's own Realtime topic; while it's down, an open chat asks the
 // server every 15 seconds.
 import { useCallback, useEffect, useRef, useState } from "react";
+import { Icon } from "../icons";
 import { api } from "@/lib/auth";
 import { CLUB_COPY, groupLine, LIMITS, timeAgo, type ChatRow, type ChatView, type MessageView } from "@/lib/community";
 import { liveUp, onLive } from "@/lib/live";
@@ -114,10 +115,16 @@ function NewGroup({ open, onOpenChange }: { open: boolean; onOpenChange: (o: boo
   );
 }
 
+/** The way back: an arrow, in front of the screen's title when it has one. */
 function Back() {
   return (
-    <button type="button" className="self-start py-2 text-[15px] font-black text-muted uppercase" onClick={() => history.back()}>
-      ← {CLUB_COPY.back}
+    <button
+      type="button"
+      aria-label={CLUB_COPY.back}
+      className="-ml-2 grid size-11 shrink-0 place-items-center self-start text-ink"
+      onClick={() => history.back()}
+    >
+      <Icon.back />
     </button>
   );
 }
@@ -259,8 +266,10 @@ export function Requests() {
   const { data, error } = useChats("/api/club/requests");
   return (
     <div className="flex flex-col gap-3">
-      <Back />
-      <h1 className="text-[26px] font-black">{CLUB_COPY.requestsTitle}</h1>
+      <h1 className="flex items-center gap-1 text-[26px] font-black">
+        <Back />
+        {CLUB_COPY.requestsTitle}
+      </h1>
       {error && <Problem text={error} />}
       {data && !data.chats.length && <Problem text={CLUB_COPY.emptyRequests} />}
       {data && <ChatList rows={data.chats} />}

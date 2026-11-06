@@ -297,11 +297,11 @@ export function paywallFor(email: string | undefined): boolean {
 }
 
 /**
- * The Club is on for testers, and for everyone with COMMUNITY_ON=1 once a Grievance Officer is named (the IT Rules
- * need one before people can post).
+ * The Club is "coming soon" for everyone, testers too (Atheeb, 6 Nov 2026), until COMMUNITY_ON=1 and a Grievance
+ * Officer is named (the IT Rules need one before people can post). Off, every /api/club route answers 404.
  */
-export function clubOn(email: string | undefined): boolean {
-  return tester(email) || (process.env.COMMUNITY_ON === "1" && grievanceReady());
+export function clubOn(): boolean {
+  return process.env.COMMUNITY_ON === "1" && grievanceReady();
 }
 
 export async function accessContext(db: Db, userId: string | null, email: string | undefined, now: Date): Promise<AccessContext> {

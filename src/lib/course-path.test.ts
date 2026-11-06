@@ -43,20 +43,8 @@ describe("the Home path", () => {
     expect(states({ d: 100 })[2]).toBe("d:done hs2:open hs3:open");
   });
 
-  it("offers practice once a lesson in the module is done, and test-out until all are", () => {
+  it("offers practice once a lesson in the module is done", () => {
     const m = coursePath(outline, { lessons: { a: 50 }, best: {} }).units[0].modules[0];
     expect(m.practice).toEqual({ state: "open", lessonIds: ["a"] });
-    const next = (lessons: Record<string, number>) => coursePath(outline, { lessons, best: {} }).units[0].modules[1].canTestOut;
-    expect(next({ a: 50 })).toBe(true);
-    expect(next({ c: 1 })).toBe(false);
-  });
-
-  it("never offers a test-out on the first module, nor before any lesson is done", () => {
-    expect(coursePath(outline, { lessons: { a: 50 }, best: {} }).units[0].modules[0].canTestOut).toBe(false);
-    expect(
-      coursePath(outline, { lessons: {}, best: {} })
-        .units.flatMap((u) => u.modules)
-        .some((m) => m.canTestOut),
-    ).toBe(false);
   });
 });

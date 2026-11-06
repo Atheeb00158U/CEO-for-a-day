@@ -1,7 +1,8 @@
 "use client";
 
 // The Club's screens: the feed, a thread, a profile, Activity and My reports.
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
+import { Icon } from "../icons";
 import { api, ApiError } from "@/lib/auth";
 import {
   CLUB_COPY,
@@ -58,13 +59,26 @@ function usePaged<T>(load: (cursor?: string) => Promise<{ items: T[]; cursor?: s
   return { items, setItems, cursor, error, busy, more };
 }
 
+/** The way back: an arrow, in front of the screen's title when it has one. */
 function Back() {
   return (
-    <button type="button" className="py-2 text-[15px] font-black text-muted uppercase" onClick={() => history.back()}>
-      ← {CLUB_COPY.back}
+    <button
+      type="button"
+      aria-label={CLUB_COPY.back}
+      className="-ml-2 grid size-11 shrink-0 place-items-center text-ink"
+      onClick={() => history.back()}
+    >
+      <Icon.back />
     </button>
   );
 }
+
+const Title = ({ children }: { children: ReactNode }) => (
+  <h1 className="flex items-center gap-1 text-[26px] font-black">
+    <Back />
+    {children}
+  </h1>
+);
 
 const Problem = ({ text }: { text: string }) => <p className="py-8 text-center text-[16px] font-bold text-muted">{text}</p>;
 
@@ -441,8 +455,7 @@ export function Activity() {
   }, [!!page.items]);
   return (
     <div className="flex flex-col gap-3">
-      <Back />
-      <h1 className="text-[26px] font-black">{CLUB_COPY.activity}</h1>
+      <Title>{CLUB_COPY.activity}</Title>
       <p className="font-bold text-muted">{CLUB_COPY.turnOnNotifications}</p>
       <ReminderCard compact />
       {page.error && <Problem text={page.error} />}
@@ -482,8 +495,7 @@ export function MyReports() {
   );
   return (
     <div className="flex flex-col gap-3">
-      <Back />
-      <h1 className="text-[26px] font-black">{CLUB_COPY.myReports}</h1>
+      <Title>{CLUB_COPY.myReports}</Title>
       {page.error && <Problem text={page.error} />}
       {page.items && !page.items.length && <Problem text={CLUB_COPY.noReports} />}
       {page.items?.map((r) => (

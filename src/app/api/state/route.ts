@@ -7,5 +7,5 @@ import { clubOn, paywallFor } from "@/lib/server/membership";
 export const GET = (request: Request) =>
   signedIn(request, "state", async (db, userId) => {
     const email = await emailFrom(request);
-    return { ...(await load(db, userId)), paywall: paywallFor(email), club: clubOn(email) };
+    return { ...(await load(db, userId)), paywall: paywallFor(email), club: clubOn() };
   });

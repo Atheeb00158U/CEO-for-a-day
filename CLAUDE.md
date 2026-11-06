@@ -11,7 +11,7 @@ UI components: use shadcn/ui, restyled to this look. Add gluestack-ui only if we
 - **Audience:** wannabe and struggling entrepreneurs in India.
   - English first. Hindi, Tamil, Bengali and more come close to launch; don't build i18n yet.
   - Copy must work for people with basic English: short words, short sentences.
-- **Learn, then practise (30 Oct 2026):** the app is becoming an interactive course: short lessons teach one rule each, then Hot Seats test those rules; flashcards and study tools live in Notes. The plan and its decisions are in `docs/LEARNING-PLAN.md` (research in `docs/research/`). Lessons unlock in order with a "test out"; a new player starts with Unit 1's first lesson; Unit 1 may use one clearly labelled composite (made-up) story. A module can have several Hot Seats to clear. Curriculum is planned first, then Hot Seats; a video version of one Hot Seat is an experiment (story not chosen yet; not Kodak).
+- **Learn, then practise (30 Oct 2026):** the app is becoming an interactive course: short lessons teach one rule each, then Hot Seats test those rules; flashcards and study tools live in Notes. The plan and its decisions are in `docs/LEARNING-PLAN.md` (research in `docs/research/`). Lessons unlock in order, with no skipping ahead (Atheeb, 6 Nov 2026: players miss the learning; the map has no test-out button); a new player starts with Unit 1's first lesson; Unit 1 may use one clearly labelled composite (made-up) story. A module can have several Hot Seats to clear. Curriculum is planned first, then Hot Seats; a video version of one Hot Seat is an experiment (story not chosen yet; not Kodak).
 - **Ordering:** Hot Seats aren't tagged easy or hard for players. Each player gets a seeded random order, but the first two are always gentle (hidden `complexity` ≤ 2).
 - **Trees are fully pre-mapped.** There are no live LLM calls during play. Personalised takeaways are assembled from authored lines; richer per-path debriefs can be pre-generated at build time.
 - **Choice feedback:** every choice shows what happened (as story), why it was good or bad, and, for ok/bad choices, what would have worked. Alternate-history outcomes are labelled as estimates.
@@ -54,8 +54,11 @@ UI components: use shadcn/ui, restyled to this look. Add gluestack-ui only if we
 - Pure rules and every word in `src/lib/community.ts` (`POST_RANK`, `canPost`, `autoFlag`, `rankForYou`, `CLUB_COPY`);
   server actions in `src/lib/server/club.ts`; all routes in `src/app/api/club/[...path]/route.ts`; UI in
   `src/components/club/`; moderation at `/admin/club`. Tables `club_*` (`supabase/migrations/20261105090000_club.sql`).
-- Switch: `clubOn()` in `membership.ts`: testers (`PAYWALL_TESTERS`) only, until `COMMUNITY_ON=1` and `GRIEVANCE`
-  (`src/lib/legal.ts`) has no "TODO". Posting needs a paying member at Trader, ranked from server records only.
+- Switch: `clubOn()` in `membership.ts`: "coming soon" for everyone, testers too (Atheeb, 6 Nov 2026), until
+  `COMMUNITY_ON=1` and `GRIEVANCE` (`src/lib/legal.ts`) has no "TODO". Off, the tab shows "Soon" and can't be tapped,
+  a `#club` link shows Home, and every `/api/club` route answers 404. Inside the Club the top bar (logo, streak,
+  coins) is hidden and "back" is an arrow in front of the screen's title. Posting needs a paying member at Trader,
+  ranked from server records only.
 - Pictures (step 3): uploads go through `POST /api/club/image` (multipart; `sharp` makes upright WebP ≤ 1080 px with no
   EXIF, `club-image.ts`) into the private Storage bucket `club`; the phone only ever gets signed URLs (an hour), never
   for held or hidden content, nor for a request's pictures before it's accepted. Removed pictures move to `removed/`
@@ -88,7 +91,7 @@ Follow `docs/AUTHORING.md` for every Hot Seat and Daily Call: research brief →
 - Content: `content/course/course.json` (units → modules → lesson ids + Hot Seat `gates`) and `content/course/lessons/<id>.json`, checked by `src/lib/course-schema.ts` (must match `course-types.ts`) and `course-check.ts` inside `npm run hotseat:check`. The three `sample-*` lessons are test fixtures (draft), not course copy. Card ids are review-schedule keys: never rename or reuse one.
 - **Questions:** every new lesson and Hot Seat passes `docs/QUESTION-RULES.md` (rule checks in `course-check.ts`, then two fresh-reader rounds and ChatGPT) before Atheeb sees it.
 - Exercise kinds: explain, choice (with `guess` for "guess first"), gap (word bank), order, sort (two buckets), scenario. Not built yet: slider, match pairs.
-- **No answers on the phone**, like Hot Seats: `/api/lesson` replays the answers (`src/lib/lesson-play.ts`) and returns the verdict plus the next screens; missed exercises come back once at the end. `/api/lesson/finish` pays once per `playKey` (`lesson_plays` table). A module's test-out is the same replay over one exercise per lesson (`testOut: <module id>`), no XP, pass at 80%.
+- **No answers on the phone**, like Hot Seats: `/api/lesson` replays the answers (`src/lib/lesson-play.ts`) and returns the verdict plus the next screens; missed exercises come back once at the end. `/api/lesson/finish` pays once per `playKey` (`lesson_plays` table). A module's test-out (no longer offered on the map, but still served) is the same replay over one exercise per lesson (`testOut: <module id>`), no XP, pass at 80%.
 - Rules (pure, in `game-state.ts`, shared by phone and server): `applyLesson`, `applyTestOut`, `applyReview`, `cardsToday`. Flashcards use FSRS (`ts-fsrs`, `src/lib/srs.ts`) by whole IST days; "Daily 10": at most 10 a session, 20 a day, 5 new. Review XP is capped at 10 a day; lesson replays pay for 5 a day.
 - Old saves: always load through `withDefaults()` (deep merge), on the phone and the server.
 - **Narration:** every lesson is read aloud like a Hot Seat. `src/lib/lesson-voice.ts` says what each screen speaks (teaching text, question, a gap with "blank"; never a choice's options (Atheeb, 1 Nov 2026); scenarios through DecisionView/RevealView), shared by the player and `voice-lines.ts`, so `npm run voices` / `npm run narrate` cover lessons too. Feedback lines are only spoken (and their ids only worked out) after the server's verdict. The voice mute applies; a line with no recording yet stays silent.

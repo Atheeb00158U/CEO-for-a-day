@@ -43,6 +43,8 @@ const COPY = {
   rankUp: (title: string) => `You are now a ${title}!`,
   rankUpLine: (unit: number) => `You finished Unit ${unit}. See your new title on your profile.`,
   keepGoing: "Keep going",
+  soon: "Soon",
+  clubSoon: "Club, coming soon",
 };
 
 type TabItem = { id: Tab; label: string; icon: keyof typeof Icon };
@@ -50,12 +52,11 @@ const PLAY: TabItem = { id: "home", label: "Play", icon: "navHome" };
 const LEAGUE: TabItem = { id: "league", label: "League", icon: "navLeague" };
 const CLUB: TabItem = { id: "club", label: CLUB_COPY.tab, icon: "navClub" };
 const NOTES: TabItem = { id: "notes", label: "Notes", icon: "navNotes" };
-const SHOP: TabItem = { id: "shop", label: "Shop", icon: "navShop" };
 const PROFILE: TabItem = { id: "profile", label: "Profile", icon: "navProfile" };
-/** The bar. With the Club on, Club takes Shop's place; Shop still opens from the coins pill (and #shop). */
-const barFor = (club: boolean) => (club ? [PLAY, LEAGUE, CLUB, NOTES, PROFILE] : [PLAY, LEAGUE, NOTES, SHOP, PROFILE]);
+/** The bar. Club has Shop's place, shown as "Soon" until it's on; Shop opens from the coins pill (and #shop). */
+const TABS = [PLAY, LEAGUE, CLUB, NOTES, PROFILE];
 const ALL_TABS: Tab[] = ["home", "league", "club", "notes", "shop", "profile"];
-/** Guests see the Club tab (a sign-in card) only when it's on for everyone. */
+/** Guests can open the Club tab (a sign-in card) only when it's on for everyone. */
 const CLUB_FOR_GUESTS = process.env.NEXT_PUBLIC_COMMUNITY_ON === "1" && grievanceReady();
 
 export function App({ content }: { content: Content }) {
@@ -114,7 +115,8 @@ function Shell() {
   const mainRef = useRef<HTMLElement>(null);
   const { ready, s, paywallSeen, account, membership, reload, setRankSeen, club } = useGame();
   const clubOn = account ? club : CLUB_FOR_GUESTS;
-  const TABS = barFor(clubOn);
+  // Off, the Club can't be opened at all: a #club link shows Home.
+  const view: Tab = tab === "club" && !clubOn ? "home" : tab;
 
   // A locked item, or the server's 402: leave any player, back to the map, and show the offer. A 402 inside a
   // lesson or Hot Seat remembers that one.
@@ -247,7 +249,7 @@ function Shell() {
     const fromHash = () => {
       const h = location.hash.replace("#", "");
       if (h === "club" || h.startsWith("club/")) {
-        setTab("club");
+        setTab("club"); // shows Home instead while the Club is off (below)
         setClubSub(h.slice(5));
       } else if (ALL_TABS.includes(h as Tab)) setTab(h as Tab);
     };
@@ -359,52 +361,54 @@ function Shell() {
           onDone={() => setRankSeen(rankUp.rank)}
         />
       )}
-      <TopBar onShop={() => go("shop")} onProfile={() => go("profile")} />
-      {paywallOpen ? <PaywallSheet open onOpenChange={setPaywallOpen} line={paywallLine} /> : <InstallSheet page={tab} />}
+      {view !== "club" && <TopBar onShop={() => go("shop")} onProfile={() => go("profile")} />}
+      {paywallOpen ? <PaywallSheet open onOpenChange={setPaywallOpen} line={paywallLine} /> : <InstallSheet page={view} />}
       <main ref={mainRef} className="flex-1 overflow-y-auto overscroll-contain px-4 pb-6">
-        {tab === "home" && (
+        {view === "home" && (
           <HomeTab
             daily={daily?.call}
             onPlay={setPlaying}
             onDaily={() => setPlayingDaily(true)}
             onShop={() => go("shop")}
             onLesson={(lessonId) => setLesson({ target: { lessonId } })}
-            onTestOut={(moduleId, lessonIds) => setLesson({ target: { testOut: moduleId }, testOut: lessonIds })}
             onPractice={(title, lessonIds) => setReviewing({ title, lessonIds })}
             calm={!welcome && !streakUp && !rankUp && !ach && !paywallOpen}
           />
         )}
-        {tab === "league" && <LeagueTab onPlay={() => go("home")} />}
-        {tab === "notes" && (
+        {view === "league" && <LeagueTab onPlay={() => go("home")} />}
+        {view === "notes" && (
           <NotesTab
             onPlay={() => go("home")}
             onReview={() => setReviewing({ title: "Today's cards" })}
             onLesson={(lessonId) => setLesson({ target: { lessonId } })}
           />
         )}
-        {tab === "club" && clubOn && (
+        {view === "club" && (
           <ClubTab
             sub={clubSub}
             onPlay={() => go("home")}
             onMe={(m) => setClubDot(m.badge.activity + m.badge.chats + m.badge.requests > 0)}
           />
         )}
-        {tab === "shop" && <ShopTab />}
-        {tab === "profile" && <ProfileTab />}
+        {view === "shop" && <ShopTab />}
+        {view === "profile" && <ProfileTab />}
       </main>
-      {tab === "home" && <WolfTip />}
+      {view === "home" && <WolfTip />}
       <nav className="shrink-0 border-t-2 border-line bg-bg" style={{ paddingBottom: "env(safe-area-inset-bottom)" }}>
         <div className="flex justify-around px-2 py-2">
           {TABS.map((t) => {
             const I = Icon[t.icon];
-            const on = t.id === tab;
+            const on = t.id === view;
+            const soon = t.id === "club" && !clubOn;
             return (
               <button
                 key={t.id}
                 type="button"
                 onClick={() => go(t.id)}
+                disabled={soon}
                 aria-current={on ? "page" : undefined}
-                className={`flex flex-col items-center gap-0.5 rounded-2xl px-3 py-1.5 text-[11px] font-extrabold uppercase tracking-wide ${on ? "bg-brand/15 text-brand ring-2 ring-brand/60" : "text-muted"}`}
+                aria-label={soon ? COPY.clubSoon : undefined}
+                className={`flex flex-col items-center gap-0.5 rounded-2xl px-3 py-1.5 text-[11px] font-extrabold uppercase tracking-wide ${on ? "bg-brand/15 text-brand ring-2 ring-brand/60" : "text-muted"} ${soon ? "opacity-50" : ""}`}
               >
                 <span className="relative">
                   <I className="size-7" />
@@ -412,7 +416,7 @@ function Shell() {
                     <span className="absolute -top-0.5 -right-1 size-2.5 rounded-full bg-red ring-2 ring-bg" />
                   )}
                 </span>
-                {t.label}
+                {soon ? COPY.soon : t.label}
               </button>
             );
           })}
