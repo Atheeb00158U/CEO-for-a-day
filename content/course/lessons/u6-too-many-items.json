@@ -98,7 +98,7 @@
     {
       "kind": "sort",
       "id": "hidden",
-      "prompt": "Your chocolate cake costs ₹400 to make, with ingredients and box. I'll show you six costs. For each one, tell me: inside that ₹400, or hidden?",
+      "prompt": "Your chocolate cake costs ₹400 to make, ingredients and box. I'll show you six costs. For each one, tell me: inside that ₹400, or hidden?",
       "buckets": ["Inside the ₹400", "Hidden cost"],
       "items": [
         {

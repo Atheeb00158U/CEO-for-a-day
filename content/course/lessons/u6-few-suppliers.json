@@ -123,7 +123,7 @@
     {
       "kind": "choice",
       "id": "bulk",
-      "prompt": "A good supplier can still sell you too much. Butter: 45 kg at ₹480 a kg, ₹20 off. You use 15 kg monthly. Diwali is close. Problem?",
+      "prompt": "Good suppliers can sell you too much. Butter: 45 kg at ₹480 a kg, ₹20 off. You use 15 kg monthly. Diwali is close. Problem?",
       "options": [
         {
           "id": "a",

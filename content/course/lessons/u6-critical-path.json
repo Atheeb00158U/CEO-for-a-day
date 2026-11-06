@@ -37,7 +37,7 @@
       "kind": "explain",
       "id": "path",
       "title": "The critical path",
-      "text": "Some jobs must finish before others can start. Say boxes take 10 days to come from Mumbai, and you can't pack without them, while baking takes 2 days. The 10-day chain is longer, so it's your critical path: it decides when you finish. If it may delay you, buy boxes nearby."
+      "text": "Some jobs must finish before others start. Say boxes take 10 days to come from Mumbai, and you can't pack without them, while baking takes 2 days. The 10-day chain is longer, so it's your critical path: it decides when you finish. If it may delay you, buy boxes nearby."
     },
     {
       "kind": "explain",
