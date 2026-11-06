@@ -9,7 +9,7 @@
       "kind": "explain",
       "id": "hook",
       "media": "img:ls_radiator_caps",
-      "text": "Let me tell you about a company from Chennai. In 1992, General Motors, the American carmaker, sold Sundram Fasteners its factories in England that made radiator caps, a small part that keeps an engine from boiling over. Sundram became GM's main supplier of them, and GM named it Supplier of the Year from 1996 to 2000."
+      "text": "Let me tell you about a Chennai company. In 1992, General Motors, the American carmaker, sold Sundram Fasteners its English factories making radiator caps, a small part that stops an engine boiling over. Sundram became GM's main cap supplier, and from 1996 to 2000, GM's Supplier of the Year."
     },
     {
       "kind": "choice",
@@ -37,7 +37,7 @@
       "kind": "explain",
       "id": "deming",
       "title": "Deming's point 4",
-      "text": "Here is the idea behind that. W. Edwards Deming, a famous American quality teacher, gave managers 14 rules. Rule 4 says: stop buying on the price tag alone, because a cheap part can cost the most when it fails. Buy from as few suppliers as you can, for many years, and help them improve."
+      "text": "Here's the idea behind it. W. Edwards Deming, a famous American quality teacher, gave managers 14 rules. Rule 4: stop buying on the price tag alone. A cheap part can cost the most when it fails. Buy from as few suppliers as you can, for years, and help them improve."
     },
     {
       "kind": "explain",
@@ -123,7 +123,7 @@
     {
       "kind": "choice",
       "id": "bulk",
-      "prompt": "Good suppliers also tempt you with deals. Your butter shop offers 120 kg at once for ₹480 a kg, ₹20 off. You use 40 kg a month. The catch?",
+      "prompt": "Good suppliers tempt you with deals. Your butter shop offers 120 kg at once for ₹480 a kg, ₹20 off. You use 40 kg monthly. The catch?",
       "options": [
         {
           "id": "a",

@@ -131,7 +131,7 @@
     {
       "kind": "choice",
       "id": "factory",
-      "prompt": "A big cake factory offers to make chocolate cakes for you, from its own recipe, at ₹300 each. That's ₹100 below your cost. What's the biggest risk?",
+      "prompt": "A big factory offers to make chocolate cakes for you, from its own recipe, at ₹300 each, ₹100 below your cost. The biggest risk?",
       "options": [
         {
           "id": "a",

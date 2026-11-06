@@ -73,7 +73,7 @@
     {
       "kind": "choice",
       "id": "hours",
-      "prompt": "Pineapple earns ₹350 a month and takes 5 hours a month. In those hours you could bake 3 chocolate cakes you now turn away. Which pays more?",
+      "prompt": "Pineapple earns ₹350 and takes 5 hours a month. In those hours you could bake 3 chocolate cakes you turn away. Which pays more?",
       "options": [
         {
           "id": "a",
@@ -131,7 +131,7 @@
     {
       "kind": "choice",
       "id": "stock",
-      "prompt": "With 18 items, ₹15,000 of stock sits on your shelves. If you cut to your 8 best sellers, you'd need ₹6,000. What does the cut give you?",
+      "prompt": "With 18 items, ₹15,000 of stock sits on your shelves. With only your 8 best sellers, you'd need ₹6,000. What does cutting give you?",
       "options": [
         {
           "id": "a",
