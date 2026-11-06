@@ -9,40 +9,40 @@
       "kind": "explain",
       "id": "hook",
       "media": "img:ls_washing_powder",
-      "text": "Remember Nirma from Unit 1? Nirma powder sold at ₹7 a kilo, and Surf cost ₹28. Surf chose not to cut its price. Instead, in 1984, Surf's TV ads brought in a sharp, careful housewife called Lalitaji. She never said Surf was cheap."
+      "text": "Remember Nirma from Unit 1? Nirma powder cost ₹7 a kilo. Surf cost ₹28. Surf did not cut its price. Instead, in 1984, Surf's TV ads showed Lalitaji, a smart housewife who spent money carefully. She never said Surf was cheap."
     },
     {
       "kind": "choice",
       "id": "guess",
       "guess": true,
-      "prompt": "Surf cost four times as much as Nirma. What do you think Lalitaji told shoppers?",
+      "prompt": "Surf cost four times as much as Nirma. What do you think Lalitaji said to shoppers?",
       "options": [
         {
           "id": "a",
-          "label": "Surf was on sale this week"
+          "label": "Surf had a lower price this week"
         },
         {
           "id": "b",
-          "label": "Buying cheap is not the same as buying good"
+          "label": "Surf was worth paying more for"
         },
         {
           "id": "c",
-          "label": "Rich families all use Surf"
+          "label": "Surf was used by rich families"
         }
       ],
       "answer": "b",
-      "why": "Her famous line in Hindi, \"Surf ki kharidari mein hi samajhdari hai\", means smart buying is buying Surf. The idea behind it: buying cheap is not the same as buying good. She made shoppers think about what they got, not the price on the packet."
+      "why": "Her famous Hindi line, \"Surf ki kharidari mein hi samajhdari hai\", means buying Surf is a smart choice. Her point was simple: a low price does not always mean a good product. She made shoppers think about what they got for their money."
     },
     {
       "kind": "explain",
       "id": "reference",
       "title": "The reference price",
-      "text": "Every buyer has a price in their head to compare with. It's called the reference price. Shoppers compared ₹28 with ₹7, and Surf lost. Lalitaji made them compare what they got. So when a buyer says \"too costly\", don't cut your price. Ask: \"Compared to what?\""
+      "text": "Every buyer has a price they compare with. This is called the reference price. Shoppers compared Surf's ₹28 with Nirma's ₹7, so Surf seemed costly. Lalitaji made them think about what they got for the money. When a buyer says \"too costly\", first ask: \"Compared to what?\""
     },
     {
       "kind": "choice",
       "id": "haircut",
-      "prompt": "A customer says your ₹300 haircut is \"too costly\". What should you say first?",
+      "prompt": "A customer says your ₹300 haircut is \"too costly\". What should you ask first?",
       "options": [
         {
           "id": "a",
@@ -50,30 +50,30 @@
         },
         {
           "id": "b",
-          "label": "\"Our barbers trained in Mumbai, you know.\""
+          "label": "\"Our barbers learned their work in Mumbai.\""
         },
         {
           "id": "c",
-          "label": "\"What were you expecting to pay?\""
+          "label": "\"What price did you expect to pay?\""
         }
       ],
       "answer": "c",
-      "why": "Yes. First find out what they compare with. If it's a ₹60 roadside cut, you can show what's different. If it's the salon next door at ₹250, you know where you stand.",
+      "why": "Yes. First find out what price they have in mind. If it is a ₹60 roadside haircut, you can show what is different. If it is the salon next door at ₹250, you know what they are comparing with.",
       "wrong": {
-        "a": "You cut ₹50 before you know what they're comparing with. They might be thinking of ₹280. Ask first: \"What were you expecting to pay?\"",
-        "b": "That may be true, but you don't know their comparison yet. If they're thinking of a ₹60 roadside cut, Mumbai training won't help. Ask first."
+        "a": "You offered ₹50 off before asking what price they had in mind. They might have expected ₹280. First ask: \"What price did you expect to pay?\"",
+        "b": "That may be true, but you still do not know what price they have in mind. If they expected a ₹60 roadside haircut, Mumbai training may not matter to them. Ask about the price first."
       }
     },
     {
       "kind": "explain",
       "id": "home",
       "title": "Now look at your business",
-      "text": "Surf's problem can turn up at your café deal too. It's March. In the two-week trial, he took 10 brownies a day, and they sold out most evenings. Now he wants a monthly deal, but he says ₹45 a brownie is \"too costly\"."
+      "text": "You may face Surf's problem with your café deal too. It is March. During the two-week trial, the café owner took 10 brownies a day. They sold out most evenings. Now he wants a monthly deal, but he says ₹45 for each brownie is \"too costly\"."
     },
     {
       "kind": "choice",
       "id": "per-piece",
-      "prompt": "His supplier's slice costs ₹30 and sells at ₹50. Your ₹45 brownie sells at ₹80. Per brownie, what does he keep compared with a slice?",
+      "prompt": "His supplier's slice costs him ₹30 and sells for ₹50. Your brownie costs him ₹45 and sells for ₹80. Per brownie, he keeps…",
       "options": [
         {
           "id": "a",
@@ -89,20 +89,20 @@
         }
       ],
       "answer": "b",
-      "why": "Exactly. He keeps ₹20 on a slice (₹50 − ₹30) and ₹35 on a brownie (₹80 − ₹45). That's ₹15 more on each brownie. He was comparing what he pays, not what he keeps.",
+      "why": "Yes. He keeps ₹20 on a slice (₹50 − ₹30) and ₹35 on a brownie (₹80 − ₹45). That is ₹15 more on each brownie. He was looking at what he paid, not what he kept.",
       "wrong": {
-        "a": "That's ₹45 − ₹30: you compared what he pays, as he did. Now look at what he keeps: ₹80 − ₹45 is ₹35 on a brownie, ₹50 − ₹30 is ₹20 on a slice. ₹15 more.",
-        "c": "Check both sums: ₹80 − ₹45 is ₹35 on a brownie, and ₹50 − ₹30 is ₹20 on a slice. The difference is ₹15."
+        "a": "You worked out ₹45 − ₹30. That compares what he pays. Now look at what he keeps. He gets ₹35 on a brownie (₹80 − ₹45) and ₹20 on a slice (₹50 − ₹30). That is ₹15 more.",
+        "c": "Check both sums. He keeps ₹35 on a brownie (₹80 − ₹45) and ₹20 on a slice (₹50 − ₹30). So he keeps ₹15 more on a brownie."
       }
     },
     {
       "kind": "sort",
       "id": "replies",
-      "prompt": "I'll show you six replies to \"too costly\". For each one, tell me: does it change what he compares, or just cut the price?",
+      "prompt": "I'll show you six replies to \"too costly\". For each one, tell me: does it show a different comparison or cut the price?",
       "buckets": ["Changes the comparison", "Just cuts the price"],
       "items": [
         {
-          "text": "Show what he keeps on a brownie and on a slice",
+          "text": "Show what he keeps on each brownie and each slice",
           "bucket": 0
         },
         {
@@ -110,15 +110,15 @@
           "bucket": 1
         },
         {
-          "text": "Show how fast your brownies sold out in the trial",
+          "text": "Show how quickly your brownies sold out during the trial",
           "bucket": 0
         },
         {
-          "text": "Agree to ₹40 if he signs today",
+          "text": "Offer ₹40 if he agrees today",
           "bucket": 1
         },
         {
-          "text": "Show the chain café's real ₹70 brownie price",
+          "text": "Show that the chain café sells brownies for ₹70",
           "bucket": 0
         },
         {
@@ -126,61 +126,61 @@
           "bucket": 1
         }
       ],
-      "why": "Nicely done. The first kind shows a fairer comparison: what he keeps, how fast they sell, a real price elsewhere. The second kind just takes money out of your pocket."
+      "why": "Good work. Some replies help him compare what he keeps, how fast the brownies sell, or a real price elsewhere. The others lower your price, so you earn less."
     },
     {
       "kind": "choice",
       "id": "discount",
-      "prompt": "Imagine you drop to ₹35 a brownie to close the deal. Later, you want ₹45 again. What's the likely problem?",
+      "prompt": "You cut your price to ₹35 a brownie to get the deal. Later, you want ₹45 again. What problem might you face?",
       "options": [
         {
           "id": "a",
-          "label": "He now sees ₹35 as your real price"
+          "label": "He thinks ₹35 is your normal price"
         },
         {
           "id": "b",
-          "label": "He will want fewer brownies each day"
+          "label": "He wants to order fewer brownies daily"
         },
         {
           "id": "c",
-          "label": "He will ask for more time to pay"
+          "label": "He wants more days to pay you"
         }
       ],
       "answer": "a",
-      "why": "Right. You saw this in Unit 3: a discount makes a good product look cheap. Once he pays ₹35, going back to ₹45 feels like a price rise.",
+      "why": "Right. You learned this in Unit 3: a discount can make a good product seem cheap. Once he pays ₹35, he starts to see it as your normal price. Then ₹45 feels like a price rise.",
       "wrong": {
-        "b": "He may not cut his order. The real problem is the price. Remember Unit 3: a discount makes a good product look cheap. ₹35 becomes your price in his head.",
-        "c": "Paying later is a different problem. Remember Unit 3: a discount makes a good product look cheap. ₹35 becomes your price in his head."
+        "b": "He may still order the same number. The problem is what he now thinks your price should be. Remember Unit 3: a discount can make a good product seem cheap. He starts to see ₹35 as your normal price.",
+        "c": "Paying later is a different problem. Remember Unit 3: a discount can make a good product seem cheap. He starts to see ₹35 as your normal price."
       }
     },
     {
       "kind": "scenario",
       "id": "monthly-deal",
-      "setup": "It's late March. The owner wants 70 brownies a week, as in the trial, but says ₹45 is too costly. Each brownie costs you ₹20. He sells it at ₹80. His cake slices cost him ₹30 and sell at ₹50.",
+      "setup": "It is late March. The café owner wants 70 brownies a week, as in the trial. But he says ₹45 is too costly. Each brownie costs you ₹20 to make. He sells it for ₹80. His cake slices cost him ₹30 each and sell for ₹50.",
       "question": "What do you do?",
       "options": [
         {
           "id": "a",
-          "label": "Drop to ₹35 a brownie to keep the deal",
+          "label": "Charge ₹35 per brownie, but earn less",
           "grade": "bad",
-          "outcome": "He agrees at once. 70 brownies leave you ₹15 each: ₹1,050 a week. A month later, his friend's café asks you for ₹35 too.",
-          "why": "You beat his comparison on price, but he was comparing the wrong things. Now ₹35 is your price in two cafés.",
-          "better": "Ask what he compares with, then show what he keeps on each brownie."
+          "outcome": "He agrees at once. You earn ₹15 on each of the 70 brownies. That is ₹1,050 a week. A month later, his friend's café also asks you for ₹35.",
+          "why": "You lowered your price to match what he expected. But he was comparing what he paid, not what he earned. Now two cafés expect you to charge ₹35.",
+          "better": "Ask what price he compares with. Then show how much he keeps on each brownie."
         },
         {
           "id": "b",
-          "label": "Keep ₹45 and tell him your brownies are worth it",
+          "label": "Keep ₹45 per brownie, but explain its value",
           "grade": "ok",
-          "outcome": "He isn't sure, so he orders 50 a week instead of 70. You keep ₹25 on each: ₹1,250 a week.",
-          "why": "Holding your price was right, but \"worth it\" is only your word. He needed to see the numbers for himself.",
-          "better": "Ask what he compares with, then show what he keeps on each brownie."
+          "outcome": "He is still unsure, so he orders 50 a week instead of 70. You earn ₹25 on each brownie. That is ₹1,250 a week.",
+          "why": "You kept your price, which was good. But just saying your brownies are worth ₹45 is not enough. He needed to see the numbers himself.",
+          "better": "Ask what price he compares with. Then show how much he keeps on each brownie."
         },
         {
           "id": "c",
-          "label": "Ask what he compares with, and work it out together",
+          "label": "Compare what he earns, but keep ₹45",
           "grade": "great",
-          "outcome": "He sees ₹35 on a brownie against ₹20 on a slice. \"So the costly one earns me more!\" He signs for 70 a week at ₹45. You keep ₹25 on each: ₹1,750 a week.",
-          "why": "You changed what he compared: not what he pays, but what he keeps. Your price stayed the same, and now he sees it as fair."
+          "outcome": "He sees that he keeps ₹35 on a brownie but only ₹20 on a slice. \"So I earn more on the costly one!\" He agrees to 70 a week at ₹45. You earn ₹25 on each brownie. That is ₹1,750 a week.",
+          "why": "You helped him compare what he earned instead of what he paid. Your price stayed the same. Now he understands why ₹45 is fair."
         }
       ]
     },
@@ -190,35 +190,35 @@
       "text": "When a buyer says \"too costly\", ask: compared to ___? Then show a fairer ___.",
       "bank": ["what", "comparison", "discount", "reason"],
       "answer": ["what", "comparison"],
-      "why": "Exactly. Lalitaji moved shoppers from price per kilo to what they got for it. You moved the café from what he pays to what he keeps."
+      "why": "Exactly. Lalitaji made shoppers think about what they got for their money, not just the price per kilo. You helped the café owner compare what he kept, not just what he paid."
     }
   ],
   "summary": [
-    "The reference price: every price is judged against another one.",
-    "When a buyer says \"too costly\", ask \"compared to what?\" before you cut anything.",
-    "Show a fairer, true comparison: cost per use, what they keep, or a real price elsewhere."
+    "Reference price: the price a buyer uses to judge another price.",
+    "When a buyer says \"too costly\", ask \"compared to what?\" before you lower your price.",
+    "Show a fair comparison using real numbers: cost per use, what the buyer keeps, or a real price elsewhere."
   ],
   "cards": [
     {
       "id": "m51-ref-1",
-      "front": "A buyer says your price is too costly. What do you say first?",
+      "front": "A buyer says your price is too high. What do you ask first?",
       "options": ["\"Okay, ₹100 off\"", "\"Compared to what?\"", "\"It's the best\""],
       "answer": 1,
-      "back": "Find their reference price first. Then show a fairer comparison."
+      "back": "First find out their reference price. Then show a fairer comparison."
     },
     {
       "id": "m51-ref-2",
-      "front": "A shop buys your ₹45 item and sells it at ₹80. A rival's ₹30 item sells at ₹50. Which earns the shop more?",
+      "front": "A shop buys your item for ₹45 and sells it for ₹80. A rival's item costs ₹30 and sells for ₹50. Which earns more?",
       "options": ["Yours, ₹35 against ₹20", "The rival's, it's cheaper"],
       "answer": 0,
-      "back": "Compare what the shop keeps, not what it pays."
+      "back": "Your item earns the shop ₹35. The rival's earns ₹20. Compare what the shop keeps, not just what it pays."
     },
     {
       "id": "m51-ref-3",
-      "front": "Surf cost ₹28 a kilo, Nirma ₹7. What did Lalitaji get shoppers to compare instead?",
+      "front": "Surf cost ₹28 a kilo, and Nirma cost ₹7. What did Lalitaji want shoppers to compare?",
       "options": ["What they got for the money", "The price per kilo"],
       "answer": 0,
-      "back": "She changed the reference: smart buying is about what you get, not the packet price."
+      "back": "She wanted them to think about what they got for their money, not just the price on the packet."
     }
   ],
   "sources": [

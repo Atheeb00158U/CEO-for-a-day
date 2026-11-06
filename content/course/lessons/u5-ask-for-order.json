@@ -9,71 +9,71 @@
       "kind": "explain",
       "id": "hook",
       "media": "img:ls_closing_line",
-      "text": "Here's a surprise from Neil Rackham, the researcher from the last lesson. Many sellers believe closing lines, words that push a buyer to say yes now, always win more sales. Rackham's team found that in big sales, those lines did not raise the chance of a yes."
+      "text": "Remember Neil Rackham, the researcher from the last lesson? Many sellers think that closing lines, words that push a buyer to say yes now, help them sell more. But Rackham's team found that in big sales, such lines did not make buyers more likely to say yes."
     },
     {
       "kind": "choice",
       "id": "guess",
       "guess": true,
-      "prompt": "Why do you think pushing for a yes didn't help in big sales?",
+      "prompt": "Why do you think pushing buyers to say yes did not help in big sales?",
       "options": [
         {
           "id": "a",
-          "label": "Big buyers feel pushed and need more time"
+          "label": "Big buyers feel pressure and need more time"
         },
         {
           "id": "b",
-          "label": "Big buyers don't like to talk about price"
+          "label": "Big buyers dislike talking about the price"
         },
         {
           "id": "c",
-          "label": "The sellers forgot to say the price"
+          "label": "Big buyers did not hear the price clearly"
         }
       ],
       "answer": "a",
-      "why": "Rackham's team found closing lines didn't help in big sales. One likely reason: a big order is a big risk for the buyer, and pressure makes people step back. In a small, quick sale, the risk is small, so asking clearly for the order is fine."
+      "why": "Rackham's team found that pushing for a yes did not help in big sales. One possible reason is that big orders carry more risk for buyers. Pressure can make them pull away. In a small, quick sale, the risk is lower, so asking clearly is fine."
     },
     {
       "kind": "explain",
       "id": "close",
       "title": "The alternative-choice close",
-      "text": "So, in a small sale, one that's quick and low-risk for the buyer, ask for the order with two easy yeses, like \"Monday or Tuesday?\" This is called the alternative-choice close. In a big, risky sale, though, don't push, because a \"no\" there often means \"not yet\"."
+      "text": "In a small sale that is quick and has little risk, offer two ways to say yes. For example, \"Monday or Tuesday?\" This is called the alternative-choice close. But in a big sale with more risk, do not push. A buyer's \"no\" may mean \"not yet\"."
     },
     {
       "kind": "choice",
       "id": "best-line",
-      "prompt": "A family tasted your cake at a party and liked it. Their son's birthday is next week. Which line asks for the order best?",
+      "prompt": "A family liked your cake at a party. Their son's birthday is next week. How should you ask for the order?",
       "options": [
         {
           "id": "a",
-          "label": "\"Shall I send you my full menu on WhatsApp?\""
+          "label": "\"Shall I send the full menu on WhatsApp?\""
         },
         {
           "id": "b",
-          "label": "\"Do you want to order it, yes or no?\""
+          "label": "\"Shall I take your order now, yes or no?\""
         },
         {
           "id": "c",
-          "label": "\"Shall I bring it on Friday or Saturday?\""
+          "label": "\"Shall I bring the cake Friday or Saturday?\""
         }
       ],
       "answer": "c",
-      "why": "Yes. Both answers are a yes, and the family only has to pick a day. It's a small sale, they liked the cake, and the birthday is soon, so asking clearly helps them.",
+      "why": "Yes. Both choices mean the family will order. They only need to choose a day. They already liked your cake, and the birthday is soon. So it makes sense to ask clearly.",
       "wrong": {
-        "a": "That's helpful, but it leaves the next step to them, and busy families forget. They liked the cake and the birthday is next week. Ask: \"Friday or Saturday?\"",
-        "b": "\"Yes or no\" makes no as easy as yes. Give them two yeses instead: \"Shall I bring it on Friday or Saturday?\""
+        "a": "Sending the menu may help, but the family still has to decide what to do next. They are busy and may forget. They liked your cake, and the birthday is next week. Ask: \"Friday or Saturday?\"",
+        "b": "Asking \"yes or no\" makes it easy to refuse. Instead, offer two days they can choose from: \"Shall I bring it on Friday or Saturday?\""
       }
     },
     {
       "kind": "explain",
       "id": "home",
       "title": "Now look at your business",
-      "text": "Closing lines matter in your bakery too. It's April, and wedding season has begun. Families and planners call to ask about cakes. Last year, many calls ended with \"we'll let you know\", and you never heard from them again."
+      "text": "Asking for an order matters in your bakery too. It is April, and wedding season has started. Families and wedding planners call to ask about cakes. Last year, many calls ended with \"we'll let you know\". But they never called you again."
     },
     {
       "kind": "sort",
       "id": "no-or-not-yet",
-      "prompt": "I'll show you six things buyers said to you. For each one, tell me: is it a real no, or a \"not yet\"?",
+      "prompt": "I'll show you six things buyers said. For each one, tell me: does the buyer mean no, or not yet?",
       "buckets": ["A real no", "Not yet"],
       "items": [
         {
@@ -81,7 +81,7 @@
           "bucket": 0
         },
         {
-          "text": "\"Ask me after my salary comes on the 1st.\"",
+          "text": "\"Ask me after I get my salary on the 1st.\"",
           "bucket": 1
         },
         {
@@ -89,7 +89,7 @@
           "bucket": 0
         },
         {
-          "text": "\"My husband decides. He's back on Friday.\"",
+          "text": "\"My husband decides. He comes back on Friday.\"",
           "bucket": 1
         },
         {
@@ -97,115 +97,115 @@
           "bucket": 0
         },
         {
-          "text": "\"Call me before Diwali. We order then.\"",
+          "text": "\"Call me before Diwali. That is when we order.\"",
           "bucket": 1
         }
       ],
-      "why": "Well sorted. A real no is about need: they don't eat sweets, the event is off, or they bake at home. \"Not yet\" is about money, the person who decides, or timing. Those buyers just need a date."
+      "why": "Good work. A real no means they do not need your cakes. Maybe they do not eat sweets, the event is cancelled, or they bake at home. \"Not yet\" means they are waiting for money, another person to decide, or the right time. Agree on a day to call again."
     },
     {
       "kind": "order",
       "id": "not-yet-steps",
-      "prompt": "A school principal says, \"Not this term.\" Put these steps in order, first one at the top.",
+      "prompt": "A school principal says, \"Not this term.\" Put these steps in order, with the first step at the top.",
       "steps": [
-        "Ask what stops her this term",
-        "Agree on a day to call back",
+        "Ask why she cannot order this term",
+        "Agree on a day to call her again",
         "After the meeting, plan an offer for next term",
-        "Call on that day with your offer"
+        "Call her on that day with your offer"
       ],
-      "why": "Well done. First learn what stops her, then fix a day together. After the meeting, plan something useful, like cakes for sports day, so the call is more than \"any orders?\""
+      "why": "Good work. First ask why she cannot order this term. Then agree on a day to call again. After the meeting, plan something useful for next term, like cakes for sports day. This gives you a reason to call."
     },
     {
       "kind": "choice",
       "id": "judge",
-      "prompt": "You asked a family, \"Saturday or Sunday?\" They said no: they'd already ordered elsewhere. Was asking a mistake?",
+      "prompt": "You asked a family, \"Saturday or Sunday?\" They said no because they had already ordered elsewhere. Was it wrong to ask?",
       "options": [
         {
           "id": "a",
-          "label": "Yes: asking pushed them away"
+          "label": "Yes, because asking made them refuse"
         },
         {
           "id": "b",
-          "label": "No: it was right with what you knew"
+          "label": "No, because asking made sense then"
         },
         {
           "id": "c",
-          "label": "Yes: you should have waited"
+          "label": "Yes, because waiting would be better"
         }
       ],
       "answer": "b",
-      "why": "Right. You learned this in Unit 1: judge the call by what you knew then. They liked the cake and the date was close. Asking was right, even though this time it didn't work.",
+      "why": "Right. You learned this in Unit 1: judge a choice by what you knew when you made it. They liked your cake, and the date was close. So asking was right, even though they did not order.",
       "wrong": {
-        "a": "They had already ordered elsewhere, so your question didn't push them away. Remember Unit 1: judge the call, not the result. Asking was right.",
-        "c": "If you'd waited, they'd still have ordered elsewhere, maybe sooner. Remember Unit 1: judge the call, not the result. Asking was right."
+        "a": "They had already ordered elsewhere, so your question did not make them refuse. Remember Unit 1: judge your choice by what you knew then, not just what happened. Asking made sense.",
+        "c": "Waiting would not change the fact that they had already ordered elsewhere. Remember Unit 1: judge your choice by what you knew then, not just what happened. Asking made sense."
       }
     },
     {
       "kind": "scenario",
       "id": "planner",
-      "setup": "It's late April. A wedding planner tasted your cakes and liked them. She has weddings on 10 May and 17 May. Each needs a ₹6,000 cake that leaves you ₹3,000. For her, it's a quick choice. She says, \"Let me think.\"",
+      "setup": "It is late April. A wedding planner tried your cakes and liked them. She has weddings on 10 May and 17 May. Each needs a cake priced at ₹6,000, leaving you ₹3,000. This is a quick choice for her. She says, \"Let me think.\"",
       "question": "What do you say?",
       "options": [
         {
           "id": "a",
-          "label": "\"Sure. Call me any time you're ready.\"",
+          "label": "\"Call me when you are ready to book.\"",
           "grade": "bad",
-          "outcome": "You wait. She doesn't call. On 12 May, you see photos of both weddings online, with another baker's cakes. You missed ₹6,000 of profit.",
-          "why": "She liked the cakes and the dates were close, but nobody asked for the order. Busy planners book whoever asks first.",
-          "better": "Ask which date she'd like to book first, and fix a day to talk if she isn't ready."
+          "outcome": "You wait, but she does not call. On 12 May, you see photos of both weddings online. Another baker made the cakes. You lost the chance to earn ₹6,000 in profit.",
+          "why": "She liked your cakes, and the wedding dates were close. But you did not ask her to book. Busy planners may book with the baker who asks first.",
+          "better": "Ask which date she wants to book first. If she is not ready, agree on a day to talk again."
         },
         {
           "id": "b",
-          "label": "\"Shall I book both dates, or just 10 May?\"",
+          "label": "\"Shall I book both dates or just 10 May?\"",
           "grade": "great",
-          "outcome": "She smiles. \"Book 10 May. For 17 May, the family is still deciding. Call me on Monday.\" You call on Monday, and she books that one too. Two cakes leave you ₹6,000.",
-          "why": "Two easy yeses made the choice simple. When part of it was \"not yet\", you fixed a date instead of pushing."
+          "outcome": "She smiles. \"Book 10 May. For 17 May, the family is still deciding. Call me on Monday.\" You call on Monday, and she books that date too. You earn ₹6,000 from the two cakes.",
+          "why": "You gave her two easy ways to say yes. She booked one cake. For the second, she was not ready yet. So you agreed on a day to call again instead of pushing her."
         },
         {
           "id": "c",
-          "label": "\"Book both today, and I'll take ₹1,000 off each.\"",
+          "label": "\"Book both today and get ₹1,000 off each.\"",
           "grade": "ok",
-          "outcome": "She books both, but each cake now leaves you ₹2,000: ₹4,000 in all. On her next booking, she asks for the same discount.",
-          "why": "You asked for the order, which was right. But you paid ₹2,000 to hurry a buyer who was already keen.",
-          "better": "Ask which date she'd like to book first, and fix a day to talk if she isn't ready."
+          "outcome": "She books both cakes. But after the discount, you earn only ₹2,000 on each cake. That is ₹4,000 in total. Next time she books, she asks for the same discount.",
+          "why": "You asked for the order, which was right. But you gave away ₹2,000 in discounts to make someone who already liked your cakes book sooner.",
+          "better": "Ask which date she wants to book first. If she is not ready, agree on a day to talk again."
         }
       ]
     },
     {
       "kind": "gap",
       "id": "fill",
-      "text": "In a small sale, ask for the ___ with two easy choices. When a buyer says \"not yet\", agree on a ___ to come back.",
+      "text": "In a small sale, ask for the ___ with two easy choices. When a buyer says \"not yet\", agree on a ___ to call again.",
       "bank": ["order", "date", "discount", "reason"],
       "answer": ["order", "date"],
-      "why": "Exactly. \"Both dates, or just 10 May?\" got you one booking at once, and a Monday call got you the second."
+      "why": "Exactly. \"Both dates, or just 10 May?\" helped you get the first booking. Calling on Monday helped you get the second."
     }
   ],
   "summary": [
-    "The alternative-choice close: in a small sale, ask for the order with two easy yeses.",
-    "Pushy closing lines don't help in big sales. In a small sale, asking clearly does.",
-    "A \"no\" about money, the person who decides or timing means \"not yet\". Agree on a date and come back with something useful."
+    "Alternative-choice close: in a small sale, offer two easy ways to say yes to an order.",
+    "Pushing buyers to say yes does not help in big sales. In small sales, asking clearly can help.",
+    "When a buyer says no because of money, who decides, or timing, it may mean \"not yet\". Agree on a day to call again with something useful."
   ],
   "cards": [
     {
       "id": "m51-close-1",
-      "front": "A buyer liked your sample and the event is next week. What do you say?",
+      "front": "A buyer liked your sample, and the event is next week. What should you say?",
       "options": ["\"Let me know\"", "\"Tuesday or Wednesday?\"", "\"Yes or no?\""],
       "answer": 1,
-      "back": "Ask for the order with two easy yeses."
+      "back": "Ask for the order by offering two easy choices that both mean yes."
     },
     {
       "id": "m51-close-2",
       "front": "\"My partner decides. He's back on Friday.\" What is this?",
       "options": ["A real no", "Not yet"],
       "answer": 1,
-      "back": "Not yet. Agree on a day after Friday to call back."
+      "back": "Not yet. Agree on a day after Friday to call again."
     },
     {
       "id": "m51-close-3",
-      "front": "In big sales, what did Rackham find about pushy closing lines?",
+      "front": "What did Rackham find about pushing for a yes in big sales?",
       "options": ["They didn't help", "They always helped"],
       "answer": 0,
-      "back": "In big sales, they don't raise the chance of a yes. In a small sale, asking clearly is fine."
+      "back": "In big sales, pushing did not make buyers more likely to say yes. In a small sale, asking clearly is fine."
     }
   ],
   "sources": [
