@@ -61,9 +61,7 @@
           "effect": {
             "profit": -5,
             "future": 0,
-            "flags": [
-              "kansas"
-            ]
+            "flags": ["kansas"]
           },
           "next": "d2",
           "media": "img:nc_d1_kansas",
@@ -84,9 +82,7 @@
           "effect": {
             "profit": 5,
             "future": 10,
-            "flags": [
-              "brand"
-            ]
+            "flags": ["brand"]
           },
           "next": "d2",
           "media": "img:nc_d1_brand",
@@ -107,9 +103,7 @@
             "profit": -15,
             "future": -10,
             "trust": -1,
-            "flags": [
-              "price"
-            ]
+            "flags": ["price"]
           },
           "next": "d2",
           "media": "vid:nc_d1_price",
@@ -134,17 +128,13 @@
       "setup": [
         {
           "when": {
-            "flags": [
-              "kansas"
-            ]
+            "flags": ["kansas"]
           },
           "text": "The sweeter recipe has won your tests. But the tests only checked taste, not how people would feel if the old Coke was gone. About 10 to 12 in every 100 testers said they were angry about changing it."
         },
         {
           "when": {
-            "flags": [
-              "brand"
-            ]
+            "flags": ["brand"]
           },
           "text": "Your new drinks are selling, but Pepsi is still close behind. Your marketing team wants to use the lab's sweeter recipe, though a few people in early tests say they would be angry if the old Coke changed."
         },
@@ -162,9 +152,7 @@
           "effect": {
             "profit": 5,
             "future": 15,
-            "flags": [
-              "extra"
-            ]
+            "flags": ["extra"]
           },
           "next": "d3alt",
           "media": "img:nc_d2_extra",
@@ -186,18 +174,14 @@
             "profit": -10,
             "future": -25,
             "trust": -1,
-            "flags": [
-              "replaced"
-            ]
+            "flags": ["replaced"]
           },
           "next": "d3",
           "media": "img:nc_d2_replace",
           "outcome": [
             {
               "when": {
-                "flags": [
-                  "kansas"
-                ]
+                "flags": ["kansas"]
               },
               "text": "On April 23, 1985, at a big event in New York, you announce the first recipe change in 99 years. The old Coke is taken off the market. Pepsi celebrates by giving its staff a day off and putting ads across whole newspaper pages."
             },
@@ -222,9 +206,7 @@
             "profit": -5,
             "future": -5,
             "trust": -1,
-            "flags": [
-              "city"
-            ]
+            "flags": ["city"]
           },
           "next": "d3alt",
           "media": "img:nc_d2_city",
@@ -249,9 +231,7 @@
       "setup": [
         {
           "when": {
-            "flags": [
-              "kansas"
-            ]
+            "flags": ["kansas"]
           },
           "text": "By June, about 1,500 fans call your phone line every day, and the angry letters will reach about 40,000 in all. Fans form protest groups and buy as much old Coke as they can. A survey says only 13 in 100 cola drinkers like the new taste. Liking one sip in a test is different from drinking it every day."
         },
@@ -269,9 +249,7 @@
           "effect": {
             "profit": -10,
             "future": -5,
-            "flags": [
-              "ads"
-            ]
+            "flags": ["ads"]
           },
           "next": "s_shelf",
           "media": "vid:nc_d3_ads",
@@ -293,9 +271,7 @@
             "profit": -10,
             "future": -20,
             "trust": -1,
-            "flags": [
-              "waited"
-            ]
+            "flags": ["waited"]
           },
           "next": "s_shelf",
           "media": "img:nc_d3_wait",
@@ -317,18 +293,14 @@
           "effect": {
             "profit": 10,
             "future": 20,
-            "flags": [
-              "classic"
-            ]
+            "flags": ["classic"]
           },
           "next": "s_shelf",
           "media": "img:nc_d3_classic",
           "outcome": [
             {
               "when": {
-                "flags": [
-                  "kansas"
-                ]
+                "flags": ["kansas"]
               },
               "text": "On July 11, 1985, just 79 days after the change, you say sorry and bring back the old recipe, now called Coca-Cola Classic. TV channels stop their regular shows to report the news, and your phone line gets 31,600 calls in two days."
             },
@@ -355,9 +327,7 @@
       "setup": [
         {
           "when": {
-            "flags": [
-              "extra"
-            ]
+            "flags": ["extra"]
           },
           "text": "The sweet drink is sold beside the old Coke. Sales show that some people like it, but most still choose the taste they grew up with. Your sales team says having two Cokes is confusing shoppers."
         },
@@ -376,18 +346,14 @@
             "profit": -10,
             "future": -20,
             "trust": -1,
-            "flags": [
-              "replaced_late"
-            ]
+            "flags": ["replaced_late"]
           },
           "next": "s_shelf",
           "media": "img:nc_d3alt_everywhere",
           "outcome": [
             {
               "when": {
-                "flags": [
-                  "city"
-                ]
+                "flags": ["city"]
               },
               "text": "Fans across the country get angry, just as people in your test cities warned you. After a summer of protests, you agree to their demands and bring the old Coke back."
             },
@@ -411,9 +377,7 @@
           "effect": {
             "profit": 0,
             "future": 0,
-            "flags": [
-              "liked"
-            ]
+            "flags": ["liked"]
           },
           "next": "s_shelf",
           "media": "img:nc_d3alt_liked",
@@ -434,18 +398,14 @@
           "effect": {
             "profit": 5,
             "future": 10,
-            "flags": [
-              "side"
-            ]
+            "flags": ["side"]
           },
           "next": "s_shelf",
           "media": "img:nc_d3alt_side",
           "outcome": [
             {
               "when": {
-                "flags": [
-                  "city"
-                ]
+                "flags": ["city"]
               },
               "text": "The old Coke returns to shops in your test cities, with the sweet drink beside it. Fans calm down, and the sweet drink finds a small group of buyers."
             },
@@ -471,50 +431,37 @@
       "text": [
         {
           "when": {
-            "flags": [
-              "classic",
-              "kansas"
-            ]
+            "flags": ["classic", "kansas"]
           },
           "text": "Fans are happy, and Classic sells fast. You keep selling the new drink too, so shops now have two Cokes: Classic and the new, sweeter drink, which still has the name Coca-Cola."
         },
         {
           "when": {
-            "flags": [
-              "classic"
-            ]
+            "flags": ["classic"]
           },
           "text": "Fans are happy, and the old Coke sells fast again. You keep selling the new drink too, so shops now have two Cokes."
         },
         {
           "when": {
-            "flags": [
-              "waited"
-            ]
+            "flags": ["waited"]
           },
           "text": "Your lab works all summer, but few fans like the changed recipe, and the protests continue. In the end, you bring the old recipe back, but fans say you listened only when you had no other choice. Now shops have two Cokes."
         },
         {
           "when": {
-            "flags": [
-              "ads"
-            ]
+            "flags": ["ads"]
           },
           "text": "The ads cost a lot of money but change few minds. Fans protest all summer, and in the end you bring the old recipe back. Now shops have two Cokes."
         },
         {
           "when": {
-            "flags": [
-              "replaced_late"
-            ]
+            "flags": ["replaced_late"]
           },
           "text": "The old taste is back after a difficult summer, and shops now have two Cokes. Many fans are still angry with you."
         },
         {
           "when": {
-            "flags": [
-              "liked"
-            ]
+            "flags": ["liked"]
           },
           "text": "In some towns, shoppers find one Coke, but in others they find two. Your sales team wants one clear plan for the whole country."
         },
@@ -541,9 +488,7 @@
           "effect": {
             "profit": 10,
             "future": 10,
-            "flags": [
-              "star"
-            ]
+            "flags": ["star"]
           },
           "next": "ending_route",
           "media": "img:nc_d4_star",
@@ -564,20 +509,14 @@
           "effect": {
             "profit": 0,
             "future": 5,
-            "flags": [
-              "both"
-            ]
+            "flags": ["both"]
           },
           "next": "ending_route",
           "media": "img:nc_d4_both",
           "outcome": [
             {
               "when": {
-                "flags": [
-                  "kansas",
-                  "replaced",
-                  "classic"
-                ]
+                "flags": ["kansas", "replaced", "classic"]
               },
               "text": "You keep both drinks and give each its own ads. Classic quickly sells more than the new drink, and within a few months it is again the best-selling regular cola, ahead of Pepsi. The new drink's share of the market falls to about 3 in 100."
             },
@@ -602,9 +541,7 @@
             "profit": -10,
             "future": -15,
             "trust": -1,
-            "flags": [
-              "push"
-            ]
+            "flags": ["push"]
           },
           "next": "ending_route",
           "media": "img:nc_d4_push",
@@ -650,22 +587,14 @@
       "text": [
         {
           "when": {
-            "flags": [
-              "brand"
-            ],
-            "notFlags": [
-              "city",
-              "replaced",
-              "replaced_late"
-            ]
+            "flags": ["brand"],
+            "notFlags": ["city", "replaced", "replaced_late"]
           },
           "text": "You never took away your fans' favourite drink. New drinks and fresh ads bring in more buyers, and Coke increases its lead over Pepsi without a summer of angry fans."
         },
         {
           "when": {
-            "flags": [
-              "side"
-            ]
+            "flags": ["side"]
           },
           "text": "You listened to what the test showed you. The old Coke stays the main drink, the sweet drink stays a small extra, and Coke increases its lead over Pepsi again."
         },
@@ -684,28 +613,19 @@
       "text": [
         {
           "when": {
-            "flags": [
-              "kansas",
-              "replaced",
-              "classic",
-              "both"
-            ]
+            "flags": ["kansas", "replaced", "classic", "both"]
           },
           "text": "By the end of 1985, Coca-Cola Classic sells far more than both the new drink and Pepsi. The new drink is later given a new name and stopped in 2002, and Coca-Cola becomes stronger."
         },
         {
           "when": {
-            "flags": [
-              "waited"
-            ]
+            "flags": ["waited"]
           },
           "text": "The old Coke is back and selling again, but you took a whole summer to listen. Coke stays ahead of Pepsi, and fans remember how long you made them wait."
         },
         {
           "when": {
-            "flags": [
-              "push"
-            ]
+            "flags": ["push"]
           },
           "text": "You spent money on the wrong drink at the end, and some fans leave for Pepsi. Coke is still big and still ahead, but its lead is smaller than before the new drink."
         },
@@ -724,9 +644,7 @@
       "text": [
         {
           "when": {
-            "flags": [
-              "push"
-            ]
+            "flags": ["push"]
           },
           "text": "You kept promoting the new drink even after fans rejected it twice. Many switch to Pepsi and never return, and the world's best-known drink loses its lead."
         },

@@ -1,5 +1,5 @@
 # Fact-check: tanishq-karatmeter
-checked-sha256: 2917c2462edaf1478f5b18718a517079dba8dc876c2ffdd1e62a8fc3aa86d6ca
+checked-sha256: d29b955395c32ed64b93ed0d0829eb3073e623d5ff6e661627b3849f217deb43
 Checked: 2026-11-06 · by: fresh-context fact-check agent (delta re-check)
 
 ## Sources opened

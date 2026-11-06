@@ -62,9 +62,7 @@
             "profit": -10,
             "future": -15,
             "trust": -1,
-            "flags": [
-              "western"
-            ]
+            "flags": ["western"]
           },
           "next": "d2",
           "media": "img:tq_d1_western",
@@ -85,9 +83,7 @@
           "effect": {
             "profit": -5,
             "future": 20,
-            "flags": [
-              "research"
-            ]
+            "flags": ["research"]
           },
           "next": "scene1997",
           "media": "img:tq_d1_research",
@@ -107,9 +103,7 @@
           "effect": {
             "profit": -5,
             "future": 0,
-            "flags": [
-              "mix"
-            ]
+            "flags": ["mix"]
           },
           "next": "d2",
           "media": "img:tq_d1_mix",
@@ -134,9 +128,7 @@
       "setup": [
         {
           "when": {
-            "flags": [
-              "mix"
-            ]
+            "flags": ["mix"]
           },
           "text": "It is 1996. In your Chennai store the few 22-karat pieces sell, but the 18-karat diamond pieces don't. Your staff hear the same request every day: give us more 22-karat gold. Craftsmen in other cities could make it quickly. But your designers say the 18-karat diamond pieces are what make Tanishq different, and your plant was built to make them."
         },
@@ -154,9 +146,7 @@
           "effect": {
             "profit": 0,
             "future": 15,
-            "flags": [
-              "fullswitch"
-            ]
+            "flags": ["fullswitch"]
           },
           "next": "scene1997",
           "media": "img:tq_d2_full",
@@ -177,9 +167,7 @@
           "effect": {
             "profit": 5,
             "future": 5,
-            "flags": [
-              "add22"
-            ]
+            "flags": ["add22"]
           },
           "next": "scene1997",
           "media": "img:tq_d2_add22",
@@ -201,9 +189,7 @@
             "profit": -10,
             "future": -15,
             "trust": -1,
-            "flags": [
-              "holdfirm"
-            ]
+            "flags": ["holdfirm"]
           },
           "next": "scene1997",
           "media": "img:tq_d2_hold",
@@ -227,34 +213,25 @@
       "text": [
         {
           "when": {
-            "flags": [
-              "research"
-            ]
+            "flags": ["research"]
           },
           "text": "It is 1997. Your 22-karat gold sells, but buyers keep asking one question: how do I know it is really 22-karat? Every jeweller in India promises the same thing."
         },
         {
           "when": {
-            "flags": [
-              "fullswitch"
-            ]
+            "flags": ["fullswitch"]
           },
           "text": "It is 1997. Your new 22-karat range brings families in, but they keep asking one question: how do I know your gold is really 22-karat? Every jeweller promises the same thing."
         },
         {
           "when": {
-            "flags": [
-              "holdfirm"
-            ]
+            "flags": ["holdfirm"]
           },
           "text": "It is 1997. Your 18-karat stores are still quiet, and the losses keep growing. The board wants to hear what will make buyers choose you over the jeweller they already know."
         },
         {
           "when": {
-            "flags": [
-              "western",
-              "add22"
-            ]
+            "flags": ["western", "add22"]
           },
           "text": "It is 1997, and Tanishq lost ₹10.6 crore last year. Your own annual report now says that Indians strongly prefer 22-karat gold, and that many buyers get less gold than they paid for. You add more 22-karat jewellery, and your price tags now show the weight of the gold and the making charge, the fee for making the piece, as two separate amounts."
         },
@@ -282,9 +259,7 @@
             "profit": -5,
             "future": -5,
             "trust": -1,
-            "flags": [
-              "lab"
-            ]
+            "flags": ["lab"]
           },
           "next": "scene2000",
           "media": "img:tq_d3_lab",
@@ -305,9 +280,7 @@
           "effect": {
             "profit": -5,
             "future": 10,
-            "flags": [
-              "onestore"
-            ]
+            "flags": ["onestore"]
           },
           "next": "scene2000",
           "media": "img:tq_d3_one",
@@ -329,18 +302,14 @@
           "effect": {
             "profit": -10,
             "future": 25,
-            "flags": [
-              "karatmeter"
-            ]
+            "flags": ["karatmeter"]
           },
           "next": "scene2000",
           "media": "img:tq_d3_meter",
           "outcome": [
             {
               "when": {
-                "flags": [
-                  "holdfirm"
-                ]
+                "flags": ["holdfirm"]
               },
               "text": "Crowds come to test their gold, and many are shocked to learn how little pure gold it contains. But you have no 22-karat pieces for them to buy, so most leave without buying anything."
             },
@@ -366,27 +335,19 @@
       "text": [
         {
           "when": {
-            "flags": [
-              "western",
-              "add22",
-              "karatmeter"
-            ]
+            "flags": ["western", "add22", "karatmeter"]
           },
           "text": "It is 2000, and Tanishq has about 30 stores. Sales have grown to more than four times what they were three years ago, but the company has lost money every year. In May, Titan chooses a new managing director. The next day, the head of jewellery, who did not get the job, quits along with six senior staff. Then the whole sales and marketing team leaves, so you take charge of the stores with a new team."
         },
         {
           "when": {
-            "flags": [
-              "holdfirm"
-            ]
+            "flags": ["holdfirm"]
           },
           "text": "It is 2000, and you now have about 30 stores. Buyers never liked your 18-karat jewellery, so after the board pushed you, you finally added 22-karat gold, years late. Then Titan chooses a new managing director, and many senior staff quit. You take charge of the stores with a new team."
         },
         {
           "when": {
-            "flags": [
-              "lab"
-            ]
+            "flags": ["lab"]
           },
           "text": "It is 2000, and you now have about 30 stores. Your losses keep growing, and buyers still see no reason to stop buying from their family jeweller. Then Titan chooses a new managing director, and many senior staff quit. You take charge of the stores with a new team."
         },
@@ -418,9 +379,7 @@
             "profit": -15,
             "future": -10,
             "trust": -1,
-            "flags": [
-              "bigads"
-            ]
+            "flags": ["bigads"]
           },
           "next": "s2002",
           "media": "img:tq_d4_bigads",
@@ -442,20 +401,14 @@
           "effect": {
             "profit": 15,
             "future": 15,
-            "flags": [
-              "cheer"
-            ]
+            "flags": ["cheer"]
           },
           "next": "s2002",
           "media": "img:tq_d4_cheer",
           "outcome": [
             {
               "when": {
-                "flags": [
-                  "western",
-                  "add22",
-                  "karatmeter"
-                ]
+                "flags": ["western", "add22", "karatmeter"]
               },
               "text": "Tanishq's birthday sale brings big crowds. Your ads now show real bracelets, rings and chains, and prices starting at ₹399 help more buyers feel they can shop at Tanishq. You then launch collections for working women and start selling to companies. In 2000–01, Tanishq makes its first profit."
             },
@@ -478,9 +431,7 @@
           "effect": {
             "profit": 5,
             "future": 0,
-            "flags": [
-              "shrink"
-            ]
+            "flags": ["shrink"]
           },
           "next": "s2002",
           "media": "img:tq_d4_shrink",
@@ -505,28 +456,19 @@
       "text": [
         {
           "when": {
-            "flags": [
-              "western",
-              "add22",
-              "karatmeter",
-              "cheer"
-            ]
+            "flags": ["western", "add22", "karatmeter", "cheer"]
           },
           "text": "By 2002 your stores are busy, and Tanishq has made a small profit two years running. But in 2002 Indians buy about a fifth less gold than in 2001, so every new family counts."
         },
         {
           "when": {
-            "flags": [
-              "cheer"
-            ]
+            "flags": ["cheer"]
           },
           "text": "By 2002 your stores are busy, and the business makes a small profit. But most families still keep their gold with the old family jeweller."
         },
         {
           "when": {
-            "flags": [
-              "bigads"
-            ]
+            "flags": ["bigads"]
           },
           "text": "By 2002 everyone knows the name Tanishq, but the stores are still too quiet, and cash is running low."
         },
@@ -544,9 +486,7 @@
       "setup": [
         {
           "when": {
-            "flags": [
-              "lab"
-            ]
+            "flags": ["lab"]
           },
           "text": "By 2002 you have moved the machines into your stores, and many families learn that their '22-karat' gold holds less gold than they paid for. They are upset, but they still own that jewellery and don't know what to do with it."
         },
@@ -565,21 +505,14 @@
           "effect": {
             "profit": 5,
             "future": 15,
-            "flags": [
-              "swap"
-            ]
+            "flags": ["swap"]
           },
           "next": "ending_route",
           "media": "img:tq_d5_swap",
           "outcome": [
             {
               "when": {
-                "flags": [
-                  "western",
-                  "add22",
-                  "karatmeter",
-                  "cheer"
-                ]
+                "flags": ["western", "add22", "karatmeter", "cheer"]
               },
               "text": "You call it Impure to Pure. Old jewellery that tests between 19 and 22 karat can be swapped for 22-karat Tanishq jewellery, and Tanishq pays for the missing gold. It wins families away from their old jewellers. In 2002–03 sales grow by more than a third, profit is more than four times higher, and you have 60 stores in 47 towns."
             },
@@ -602,9 +535,7 @@
           "effect": {
             "profit": 0,
             "future": 5,
-            "flags": [
-              "coupon"
-            ]
+            "flags": ["coupon"]
           },
           "next": "ending_route",
           "media": "img:tq_d5_coupon",
@@ -626,9 +557,7 @@
             "profit": 0,
             "future": -10,
             "trust": -1,
-            "flags": [
-              "truevalue"
-            ]
+            "flags": ["truevalue"]
           },
           "next": "ending_route",
           "media": "img:tq_d5_value",
@@ -651,9 +580,7 @@
         {
           "when": {
             "minFuture": 70,
-            "notFlags": [
-              "shrink"
-            ]
+            "notFlags": ["shrink"]
           },
           "to": "legend"
         },
@@ -677,21 +604,13 @@
       "text": [
         {
           "when": {
-            "flags": [
-              "western",
-              "add22",
-              "karatmeter",
-              "cheer",
-              "swap"
-            ]
+            "flags": ["western", "add22", "karatmeter", "cheer", "swap"]
           },
           "text": "By 2003 Tanishq is one of India's top five retailers, and it goes on to become India's biggest jewellery brand. A plant built for Europe found its buyers in India by proving that its gold was pure."
         },
         {
           "when": {
-            "flags": [
-              "research"
-            ]
+            "flags": ["research"]
           },
           "text": "You found out early what Indian families wanted, and then gave them a way to check your promise for themselves. Millions of families come to trust Tanishq with their gold."
         },
@@ -710,9 +629,7 @@
       "text": [
         {
           "when": {
-            "flags": [
-              "shrink"
-            ]
+            "flags": ["shrink"]
           },
           "text": "Tanishq stops losing money and keeps its stores busy in the big cities. But families in smaller towns never get to know it, so they stay with their old jewellers."
         },

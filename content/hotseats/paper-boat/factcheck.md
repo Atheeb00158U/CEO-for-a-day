@@ -1,5 +1,5 @@
 # Fact-check: paper-boat
-checked-sha256: 348f4573cfb34f898f0726f67811b94ea6aa473a77bbddb4a740212a72f5a035
+checked-sha256: 56102c5903e7981f12f39239fb1b9ecdc12c3270d5064cb4d9769641dfde80e1
 Checked: 2026-11-06 · by: fresh-context fact-check agent (delta re-check)
 
 ## Sources opened

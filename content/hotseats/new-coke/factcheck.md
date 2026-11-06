@@ -1,5 +1,5 @@
 # Fact-check: new-coke
-checked-sha256: 48e8bcafec7e208f7ae5f59d1da0d42075e83bfec866c82f25be5353dfccf0a8
+checked-sha256: ef68cd5c7edb38f84a766395cda27dbf194ca16dbfb7e78fc9fc768618462a61
 Checked: 2026-11-06 · by: fresh-context fact-check agent (delta re-check)
 
 ## Sources opened

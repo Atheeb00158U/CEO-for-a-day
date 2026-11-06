@@ -60,9 +60,7 @@
             "profit": 5,
             "future": -10,
             "trust": -1,
-            "flags": [
-              "tzinga"
-            ]
+            "flags": ["tzinga"]
           },
           "next": "d2",
           "media": "img:pb_d1_tzinga",
@@ -83,9 +81,7 @@
           "effect": {
             "profit": 0,
             "future": 0,
-            "flags": [
-              "juice"
-            ]
+            "flags": ["juice"]
           },
           "next": "d2",
           "media": "img:pb_d1_juice",
@@ -107,9 +103,7 @@
           "effect": {
             "profit": -5,
             "future": 15,
-            "flags": [
-              "panna"
-            ]
+            "flags": ["panna"]
           },
           "next": "d2",
           "media": "img:pb_d1_panna",
@@ -133,17 +127,13 @@
       "setup": [
         {
           "when": {
-            "flags": [
-              "tzinga"
-            ]
+            "flags": ["tzinga"]
           },
           "text": "You have lost a year, and Tzinga has stopped growing. So you try the aam panna idea and call it Paper Boat, after the paper boats children float in the rain. Now you must choose a pack, and every pack adds to the cost of your drink."
         },
         {
           "when": {
-            "flags": [
-              "juice"
-            ]
+            "flags": ["juice"]
           },
           "text": "Your juices are not selling well, so you try drinks no shop sells: aam panna and jaljeera. You call them Paper Boat, after the paper boats children float in the rain. Now you must choose a pack, and every pack adds to the cost of your drink."
         },
@@ -162,9 +152,7 @@
           "effect": {
             "profit": 10,
             "future": 10,
-            "flags": [
-              "pouch"
-            ]
+            "flags": ["pouch"]
           },
           "next": "d3",
           "media": "img:pb_d2_pouch",
@@ -185,9 +173,7 @@
             "profit": -10,
             "future": -5,
             "trust": -1,
-            "flags": [
-              "carton"
-            ]
+            "flags": ["carton"]
           },
           "next": "d3",
           "media": "img:pb_d2_carton",
@@ -208,9 +194,7 @@
           "effect": {
             "profit": 5,
             "future": 0,
-            "flags": [
-              "bottle"
-            ]
+            "flags": ["bottle"]
           },
           "next": "d3",
           "media": "img:pb_d2_bottle",
@@ -243,9 +227,7 @@
           "effect": {
             "profit": 0,
             "future": 0,
-            "flags": [
-              "plain"
-            ]
+            "flags": ["plain"]
           },
           "next": "d4",
           "media": "img:pb_d3_plain",
@@ -267,9 +249,7 @@
             "profit": -10,
             "future": -5,
             "trust": -1,
-            "flags": [
-              "star"
-            ]
+            "flags": ["star"]
           },
           "next": "d4",
           "media": "img:pb_d3_star",
@@ -291,9 +271,7 @@
           "effect": {
             "profit": 0,
             "future": 15,
-            "flags": [
-              "story"
-            ]
+            "flags": ["story"]
           },
           "next": "d4",
           "media": "img:pb_d3_story",
@@ -325,9 +303,7 @@
           "effect": {
             "profit": -10,
             "future": 5,
-            "flags": [
-              "tv"
-            ]
+            "flags": ["tv"]
           },
           "next": "y2014",
           "media": "img:pb_d4_tv",
@@ -349,18 +325,14 @@
           "effect": {
             "profit": 5,
             "future": 15,
-            "flags": [
-              "try"
-            ]
+            "flags": ["try"]
           },
           "next": "y2014",
           "media": "img:pb_d4_try",
           "outcome": [
             {
               "when": {
-                "flags": [
-                  "panna"
-                ]
+                "flags": ["panna"]
               },
               "text": "In February 2013 you quietly sell the drinks in 500 big stores in four cities, with no ads. They sell so fast that you decide to make more. In August you launch in Delhi and Bengaluru. Flights and office canteens serve your drinks, and shops can return unsold packs for a full refund."
             },
@@ -384,9 +356,7 @@
             "profit": -15,
             "future": -5,
             "trust": -1,
-            "flags": [
-              "cheap"
-            ]
+            "flags": ["cheap"]
           },
           "next": "y2014",
           "media": "img:pb_d4_cheap",
@@ -410,17 +380,13 @@
       "text": [
         {
           "when": {
-            "flags": [
-              "try"
-            ]
+            "flags": ["try"]
           },
           "text": "Through 2014 you still run no TV or newspaper ads. You share drawings of childhood memories on Facebook, and the packs served on flights become your best ads. Late in 2014, you put post boxes in office canteens so people can send letters to their parents, and you pay to send them."
         },
         {
           "when": {
-            "flags": [
-              "tv"
-            ]
+            "flags": ["tv"]
           },
           "text": "Through 2014 you spend less to save money after paying for ads. People already know your name, and more shops slowly start selling your drinks. At last, people who saw the ads can find them."
         },
@@ -439,17 +405,13 @@
       "setup": [
         {
           "when": {
-            "flags": [
-              "tv"
-            ]
+            "flags": ["tv"]
           },
           "text": "It's 2015. Your earlier ads made your brand known, and now investors will pay for a bigger TV ad. Your drinks have no preservatives, no added colours and no fizz. Other brands sell fruit juice and cola. Some experts say young buyers and people in the South won't care about childhood memories."
         },
         {
           "when": {
-            "flags": [
-              "cheap"
-            ]
+            "flags": ["cheap"]
           },
           "text": "It's 2015. Money is tight, but investors will pay for one TV ad if it works. Your drinks have no preservatives, no added colours and no fizz. Other brands sell fruit juice and cola. Some experts say young buyers and people in the South won't care about childhood memories."
         },
@@ -468,19 +430,14 @@
           "effect": {
             "profit": 10,
             "future": 15,
-            "flags": [
-              "memories"
-            ]
+            "flags": ["memories"]
           },
           "next": "ending_route",
           "media": "img:pb_d5_memories",
           "outcome": [
             {
               "when": {
-                "flags": [
-                  "panna",
-                  "try"
-                ]
+                "flags": ["panna", "try"]
               },
               "text": "Your line is 'Drinks and Memories'. In 2015 your TV ads are written and spoken by a famous poet. They use the music from Malgudi Days, an old TV show, and tell stories of childhood. Sales double in a year, and in July investors put in about ₹180 crore."
             },
@@ -503,9 +460,7 @@
           "effect": {
             "profit": 5,
             "future": 0,
-            "flags": [
-              "specs"
-            ]
+            "flags": ["specs"]
           },
           "next": "ending_route",
           "media": "img:pb_d5_specs",
@@ -527,9 +482,7 @@
             "profit": -5,
             "future": -10,
             "trust": -1,
-            "flags": [
-              "price"
-            ]
+            "flags": ["price"]
           },
           "next": "ending_route",
           "media": "img:pb_d5_price",
@@ -575,13 +528,7 @@
       "text": [
         {
           "when": {
-            "flags": [
-              "panna",
-              "pouch",
-              "story",
-              "try",
-              "memories"
-            ]
+            "flags": ["panna", "pouch", "story", "try", "memories"]
           },
           "text": "By 2015, Paper Boat makes up about 90% of your company's sales, and yearly sales reach about ₹24 crore. That is still small, but in July investors put in about ₹180 crore to help the company grow. Drinks no shop once sold are now sold in shops, on flights and in office canteens."
         },
@@ -600,18 +547,13 @@
       "text": [
         {
           "when": {
-            "flags": [
-              "panna",
-              "memories"
-            ]
+            "flags": ["panna", "memories"]
           },
           "text": "Paper Boat finds people who love its drinks in shops, on flights and in office canteens. But one less successful choice means the brand stays smaller than it could have been."
         },
         {
           "when": {
-            "flags": [
-              "tzinga"
-            ]
+            "flags": ["tzinga"]
           },
           "text": "Paper Boat finally starts selling well, but a year later than it could have. By then, other brands have started copying the idea. People love your drinks, but your brand is smaller than it could have been."
         },
