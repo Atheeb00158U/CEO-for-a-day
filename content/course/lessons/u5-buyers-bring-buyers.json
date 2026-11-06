@@ -68,7 +68,7 @@
       "kind": "explain",
       "id": "home",
       "title": "Now look at your business",
-      "text": "Hotmail's line rode on every email, and your cake rides into every party. It's late May. About 15 guests see each birthday cake you make. Some ask the family, \"Who made this?\" But most families can't remember your name or number."
+      "text": "Hotmail's line rode on every email, and your cake rides into every party. It's late May. About 15 guests see each birthday cake you make, and some ask the family, \"Who made this?\" But most families can't remember your name or number."
     },
     {
       "kind": "sort",
@@ -130,7 +130,7 @@
       "options": [
         {
           "id": "a",
-          "label": "Trust them; happy families share"
+          "label": "Trust them: happy families share"
         },
         {
           "id": "b",

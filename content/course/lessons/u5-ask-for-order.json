@@ -37,7 +37,7 @@
       "kind": "explain",
       "id": "close",
       "title": "The alternative-choice close",
-      "text": "So, in a small sale, one that's quick and low-risk for the buyer, ask for the order. Give two easy yeses: \"Monday or Tuesday?\" This is the alternative-choice close. In a big, risky sale, don't push. A \"no\" there often means \"not yet\"."
+      "text": "So, in a small sale, one that's quick and low-risk for the buyer, ask for the order with two easy yeses, like \"Monday or Tuesday?\" This is called the alternative-choice close. In a big, risky sale, though, don't push, because a \"no\" there often means \"not yet\"."
     },
     {
       "kind": "choice",
@@ -118,7 +118,7 @@
     {
       "kind": "choice",
       "id": "judge",
-      "prompt": "You asked a family, \"Saturday or Sunday?\" They said no; they'd already ordered elsewhere. Was asking a mistake?",
+      "prompt": "You asked a family, \"Saturday or Sunday?\" They said no: they'd already ordered elsewhere. Was asking a mistake?",
       "options": [
         {
           "id": "a",

@@ -9,7 +9,7 @@
       "kind": "explain",
       "id": "hook",
       "media": "img:ls_cheap_offer",
-      "text": "Let me tell you about PepperTap, an Indian grocery delivery app that started in 2014. It gave big discounts to win buyers. In 2015, it claimed 40,000 orders in a single day. In April 2016, it shut down."
+      "text": "Let me tell you about PepperTap, an Indian grocery delivery app that started in 2014. It gave big discounts to win buyers, and in 2015 it claimed 40,000 orders in a single day. In April 2016, it shut down."
     },
     {
       "kind": "choice",
@@ -37,7 +37,7 @@
       "kind": "explain",
       "id": "cac",
       "title": "LTV:CAC",
-      "text": "What one customer costs to win is your spend divided by the new customers it brought: ₹4,000 for 10 is ₹400 each. That's called CAC, the cost to win a customer. Lifetime value must be well above it. People write this as LTV:CAC."
+      "text": "What one customer costs to win is your spend divided by the new customers it brought: ₹4,000 for 10 is ₹400 each. That's called CAC, the cost to win a customer, and lifetime value must be well above it. People write this check as LTV:CAC."
     },
     {
       "kind": "choice",
@@ -102,27 +102,27 @@
       "buckets": ["Earned back more", "Lost money"],
       "items": [
         {
-          "text": "₹300 of ads; the family stays and orders 4 cakes a year",
+          "text": "₹300 of ads, and the family stays and orders 4 cakes a year",
           "bucket": 0
         },
         {
-          "text": "₹500 of free samples; the family orders one cake",
+          "text": "₹500 of free samples, and the family orders one cake",
           "bucket": 1
         },
         {
-          "text": "A ₹5 card in a box; the family orders 4 cakes a year",
+          "text": "A ₹5 card in a box, and the family orders 4 cakes a year",
           "bucket": 0
         },
         {
-          "text": "₹2,000 to a blogger; 2 families order once each",
+          "text": "₹2,000 to a blogger, and 2 families order once each",
           "bucket": 1
         },
         {
-          "text": "₹100 of referral discounts; the family orders 4 cakes a year",
+          "text": "₹100 of referral discounts, and the family orders 4 cakes a year",
           "bucket": 0
         },
         {
-          "text": "₹500 off each of 2 cakes; then the family stops",
+          "text": "₹500 off each of 2 cakes, then the family stops",
           "bucket": 1
         }
       ],
@@ -135,7 +135,7 @@
       "options": [
         {
           "id": "a",
-          "label": "The ₹9,000 comes over years; the cash goes now"
+          "label": "The ₹9,000 comes over years, but the cash goes now"
         },
         {
           "id": "b",
