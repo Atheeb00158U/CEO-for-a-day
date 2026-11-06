@@ -126,7 +126,7 @@
           "bucket": 1
         }
       ],
-      "why": "Exactly. Flour, the box and the cream on top are part of the ₹400 cost. But wasted cream, learning time and fridge space are hidden extra costs that grow when you add items. That's why a long menu can eat your profit without you noticing."
+      "why": "Exactly. Flour, the box and the cream on top are part of the ₹400 cost. But wasted cream, learning time and power for an extra fridge are hidden costs that grow when you add items. That's why a long menu can eat your profit without you noticing."
     },
     {
       "kind": "choice",
@@ -147,7 +147,7 @@
         }
       ],
       "answer": "a",
-      "why": "Correct. That ₹3,000 will no longer sit as stock in your fridge. Once you use up the last of it and stop buying more, you get the cash back one time. Remember frozen cash from Unit 1: money kept in stock cannot pay your bills.",
+      "why": "Exactly. That ₹3,000 will no longer sit as stock in your fridge. Once you use up the last of it and stop buying more, you get the cash back one time. Remember frozen cash from Unit 1: money kept in stock cannot pay your bills.",
       "wrong": {
         "b": "You don't get ₹3,000 every month. You get it back one time: when you stop buying stock for those cakes, you free up the ₹3,000 you kept in stock. That's the frozen cash from Unit 1.",
         "c": "You have already spent money on this stock. When you use it up and stop buying stock for those 4 cakes, you no longer keep ₹3,000 in it. That money becomes cash you can use."
