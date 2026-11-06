@@ -37,7 +37,7 @@
       "kind": "explain",
       "id": "path",
       "title": "The critical path",
-      "text": "Here's how to find what decides your date. Some jobs wait for others: buy flour, then bake, then pack. That's a chain. Add up each chain's days. The longest is your critical path. Speed up any other job, and you finish the same day. If a job on it is slow, buy it ready-made."
+      "text": "Here's how to find what decides your date. Some jobs wait for others: buy flour, then bake, then pack. That's a chain. The longest chain is your critical path. Speed up any other job, and you finish the same day. If a job on it is slow, buy it ready-made."
     },
     {
       "kind": "explain",
@@ -48,7 +48,7 @@
     {
       "kind": "choice",
       "id": "which-chain",
-      "prompt": "Chain 1: stands from Mumbai, 10 days. Chain 2: design approval, 3 days, then test cake, 2 days. Both run at once. Which sets your date?",
+      "prompt": "Chain 1: stands from Mumbai, 10 days. Chain 2: design approval, 3 days, then test cake, 2 days. Both run together. Which sets your date?",
       "options": [
         {
           "id": "a",
@@ -167,7 +167,7 @@
     {
       "kind": "gap",
       "id": "fill",
-      "text": "Chain A takes 7 days. Chain B takes 4 days, then 3, then 1. Side by side, the critical path is chain ___, taking ___ days.",
+      "text": "Chain A takes 7 days. Chain B takes 4, then 3, then 1. They run together. The critical path is chain ___, taking ___ days.",
       "bank": ["A", "B", "7", "8"],
       "answer": ["B", "8"],
       "why": "Exactly. Chain B is 4 + 3 + 1 = 8 days, longer than A's 7. That's your critical path. Plan spare days on it, and buy ready-made anything on it that could make you late."

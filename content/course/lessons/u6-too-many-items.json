@@ -37,7 +37,7 @@
       "kind": "explain",
       "id": "complexity",
       "title": "The cost you don't see",
-      "text": "Think of your fridge. Every new item needs its own stock, its own shelf and its own recipe to learn, and it goes bad if it doesn't sell. That's called complexity cost: costs that grow with every item but never show on its price. A bigger menu feels like more sales. Often it's more cost."
+      "text": "Think of your fridge. Every new item needs its own stock, shelf and recipe, and it goes bad if it doesn't sell. That's complexity cost: costs that grow with every item but don't show on its price. A bigger menu feels like more sales. Often it's more cost."
     },
     {
       "kind": "explain",
