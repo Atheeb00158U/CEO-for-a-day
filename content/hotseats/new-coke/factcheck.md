@@ -1,5 +1,5 @@
 # Fact-check: new-coke
-checked-sha256: 8ca822533aba6eca593cfb55ec363cc51d2da1aedddda2602b68ac10d2e5e1d5
+checked-sha256: 0e76a94c619adf812d6dd9b77c31a324fc22c551b725b1243394e5c47a02061f
 Checked: 2026-11-06 · by: fresh-context fact-check agent (delta re-check)
 
 ## Sources opened
@@ -69,3 +69,4 @@ Real-path lines changed since the last stamp, checked against the sources above:
 - [supported] Both drinks get their own ads; money split between a popular drink and one few people wanted (nodes.d4.options.both.label/why/better/takeaway) — [1] (two campaigns), [6] (new drink about 3% share)
 - [supported] survivor.title "The return of the old Coke" — [1], [6]
 - Off-path changes (d1.brand/price, d2.extra/city, d3.ads/wait, d3alt.*, d4.star/push, legend/collapse/fired titles, fired.text) were read: hypothetical "you" outcomes, no invented history about Coca-Cola or Pepsi.
+- d2.replace.better now reads "Sell the new taste as an extra drink beside the old Coke, and keep selling the old one." (it no longer suggests the test-cities option, which is itself a costly call). Off-path advice; no claim changed.

@@ -1,5 +1,5 @@
 # Fact-check: paper-boat
-checked-sha256: 60fd795f69d157bf1f1b532cc0dbb3f0d1aeb40bf827b26ba579a2a671328b72
+checked-sha256: 6faf546e1dfba709ce3c15d4472130f67edf01073a17f2e74ed599b977ed2e96
 Checked: 2026-11-06 · by: fresh-context fact-check agent (delta re-check)
 
 ## Sources opened
@@ -74,3 +74,4 @@ Real-path lines changed since the last stamp, checked against the sources above:
 
 ## Re-check 2026-11-06 (after the delta re-check)
 - Option order changed in d1 and d5 (no text change). Checked by the author; no claim changed.
+- d4.setup now opens "The packs are printed, but…" (it repeated d2's opening) and survivor.text[2] no longer says the brand looks like other drinks. No claim changed.
