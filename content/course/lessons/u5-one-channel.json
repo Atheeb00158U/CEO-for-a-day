@@ -15,7 +15,7 @@
       "kind": "choice",
       "id": "guess",
       "guess": true,
-      "prompt": "What do you think most of these founders did to find customers?",
+      "prompt": "What do you think many of these founders did to find customers?",
       "options": [
         {
           "id": "a",
@@ -37,16 +37,16 @@
       "kind": "explain",
       "id": "bullseye",
       "title": "The Bullseye framework",
-      "text": "A channel is a road customers take to find you: WhatsApp groups, Instagram, a café counter, flyers. The book lists 19. Its method is the Bullseye framework, like aiming at the centre of a target: list many, test the best few cheaply, then master the one that works."
+      "text": "A channel is a road customers take to find you: WhatsApp groups, Instagram, a café counter, flyers. The book lists 19. Its method is the Bullseye framework, like aiming at the centre of a target: think of many, test the best few cheaply, then focus on the one that works."
     },
     {
       "kind": "order",
       "id": "bullseye-steps",
-      "prompt": "Here are the four steps of the Bullseye framework, mixed up. Put them in order, first one at the top.",
+      "prompt": "Here are the Bullseye steps, mixed up. Put them in order, first one at the top.",
       "steps": [
         "List every channel you could use",
         "Pick the three that look most likely",
-        "Test each one cheaply for a month",
+        "Test each one cheaply and count the orders",
         "Put most of your effort into the winner"
       ],
       "why": "Well done. Think wide first, then test a few cheaply, then go deep on the one that works. The test tells you, not your guess."

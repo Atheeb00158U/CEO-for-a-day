@@ -9,13 +9,13 @@
       "kind": "explain",
       "id": "hook",
       "media": "img:ls_cheap_offer",
-      "text": "Let me tell you about PepperTap, an Indian grocery delivery app that started in 2014. It gave big discounts to win buyers, and in 2015 it claimed 40,000 orders in a single day. In April 2016, it shut down."
+      "text": "Let me tell you about PepperTap, an Indian grocery delivery app that started in 2014. It gave big discounts to win buyers, and in 2015 it claimed 40,000 orders in a single day. In April 2016, it shut its grocery delivery."
     },
     {
       "kind": "choice",
       "id": "guess",
       "guess": true,
-      "prompt": "It had so many orders. Why do you think PepperTap shut down?",
+      "prompt": "It had so many orders. Why do you think PepperTap stopped delivering groceries?",
       "options": [
         {
           "id": "a",
@@ -31,7 +31,7 @@
         }
       ],
       "answer": "b",
-      "why": "Its boss said it was losing cash on every order. Discounts and the high cost of winning customers ate the money. Orders fell to about 7,000 or 8,000 a day, and it closed."
+      "why": "Its boss said it was losing cash on every order. Discounts and the high cost of winning customers ate the money. Orders fell to about 7,000 or 8,000 a day, and it stopped delivering groceries."
     },
     {
       "kind": "explain",

@@ -31,7 +31,7 @@
         }
       ],
       "answer": "a",
-      "why": "Big buyers felt pushed. A big order is a big risk for them, and pressure makes them step back. In a small, quick sale, the risk is small, so asking clearly for the order is fine."
+      "why": "Rackham's team found closing lines didn't help in big sales. One likely reason: a big order is a big risk for the buyer, and pressure makes people step back. In a small, quick sale, the risk is small, so asking clearly for the order is fine."
     },
     {
       "kind": "explain",
@@ -205,7 +205,7 @@
       "front": "In big sales, what did Rackham find about pushy closing lines?",
       "options": ["They didn't help", "They always helped"],
       "answer": 0,
-      "back": "Big buyers feel pushed. In a small sale, asking clearly is fine."
+      "back": "In big sales, they don't raise the chance of a yes. In a small sale, asking clearly is fine."
     }
   ],
   "sources": [

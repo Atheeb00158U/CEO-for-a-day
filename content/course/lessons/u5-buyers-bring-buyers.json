@@ -9,7 +9,7 @@
       "kind": "explain",
       "id": "hook",
       "media": "img:ls_email_line",
-      "text": "Let me tell you about Hotmail. In July 1996, Sabeer Bhatia, who grew up in India, and Jack Smith started a free email service on the web. They had little money for ads. So at the bottom of every email, they added one line: \"Get your free email at Hotmail.\""
+      "text": "Let me tell you about Hotmail. In July 1996, Sabeer Bhatia, who grew up in India, and Jack Smith started a free email service on the web. Instead of big ads, they added a short line at the bottom of every email, like: \"Get your free email at Hotmail.\""
     },
     {
       "kind": "choice",
@@ -118,9 +118,9 @@
         }
       ],
       "answer": "b",
-      "why": "False. Most loops have a K-factor below 1. Each round of buyers brings a smaller round, so the loop slows down unless new buyers keep coming in from somewhere else.",
+      "why": "False. When the K-factor is below 1, each round of buyers brings a smaller round, so the loop slows down unless new buyers keep coming in from somewhere else.",
       "wrong": {
-        "a": "Only if K is above 1, which is rare. With K at 0.3, 20 families bring 6, those 6 bring about 2, and the loop slows down. You still need other roads in."
+        "a": "Only if K stays above 1. With K at 0.3, 20 families bring 6, those 6 bring about 2, and the loop slows down. You still need other roads in."
       }
     },
     {

@@ -15,7 +15,7 @@
       "kind": "choice",
       "id": "guess",
       "guess": true,
-      "prompt": "Imagine a business keeps 5 more customers out of every 100 each year. What do you think happened to its profit?",
+      "prompt": "Imagine a business keeps 5 more customers out of every 100 each year. What do you think they estimated for its profit?",
       "options": [
         {
           "id": "a",
@@ -31,7 +31,7 @@
         }
       ],
       "answer": "c",
-      "why": "Profits rose by 25% to 85%, depending on the business. Five more customers out of 100 doesn't sound like much. But a customer who stays keeps buying, year after year."
+      "why": "They estimated profits could rise by 25% to 85%, depending on the business. Five more customers out of 100 doesn't sound like much. But a customer who stays keeps buying, year after year."
     },
     {
       "kind": "explain",
@@ -173,7 +173,7 @@
       "text": "A customer is worth the ___ on all their ___ buys, not just the first.",
       "bank": ["margin", "future", "price", "past"],
       "answer": ["margin", "future"],
-      "why": "Exactly. Reichheld and Sasser found that keeping a few more customers raised profits a lot. Your squashed-cake family is worth about ₹9,000, not ₹850."
+      "why": "Exactly. Reichheld and Sasser estimated that keeping a few more customers could raise profits a lot. Your squashed-cake family is worth about ₹9,000, not ₹850."
     }
   ],
   "summary": [

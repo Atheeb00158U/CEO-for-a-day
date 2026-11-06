@@ -9,13 +9,13 @@
       "kind": "explain",
       "id": "hook",
       "media": "img:ls_big_computer",
-      "text": "Let me start with IBM, the computer company. Its salespeople sold big, costly computer systems to other companies. A deal like that can take months of visits. Spend those months on the wrong company, and you earn nothing."
+      "text": "Let me start with a problem every seller has. A big deal can take months of visits. Spend those months on the wrong buyer, and you earn nothing. IBM, the computer company, gives its sales partners four checks to stop that from happening."
     },
     {
       "kind": "choice",
       "id": "guess",
       "guess": true,
-      "prompt": "IBM's sellers checked four things before a long sale. Which of these do you think sellers forget most?",
+      "prompt": "Before a long sale, a seller checks a few things. Which of these do you think sellers forget most?",
       "options": [
         {
           "id": "a",
@@ -31,19 +31,19 @@
         }
       ],
       "answer": "b",
-      "why": "Many sellers forget the second one: they spend weeks with someone who likes them but can't say yes. IBM's sellers checked all three, plus one more."
+      "why": "Many sellers forget the second one: they spend weeks with someone who likes them but can't say yes. IBM's checks cover all three, plus one more."
     },
     {
       "kind": "explain",
       "id": "bant",
       "title": "BANT",
-      "text": "IBM's sales teams made four checks famous, called BANT. Budget: can they pay? Authority: can this person say yes? Need: do they have the problem you fix? Timing: will they buy soon? A buyer who passes all four is worth your time."
+      "text": "IBM's four checks are called BANT. Budget: can they pay? Authority: can this person say yes? Need: do they have the problem you fix? Timing: will they buy soon? A buyer who passes all four is worth your time."
     },
     {
       "kind": "explain",
       "id": "home",
       "title": "Now look at your business",
-      "text": "IBM sold giant computers, but the same four checks save a small business time too. It's January of your fifth year at the home bakery, and your ₹850 cake leaves you ₹450. Now you want a few big buyers who order every month."
+      "text": "IBM sells to big companies, but the same four checks save a small business time too. It's January of your fifth year at the home bakery, and your ₹850 cake leaves you ₹450. Now you want a few big buyers who order every month."
     },
     {
       "kind": "choice",
@@ -165,7 +165,7 @@
       "text": "Before you spend time on a buyer, check: can they ___, can this person ___, do they need it, will they buy soon?",
       "bank": ["pay", "decide", "like", "wait"],
       "answer": ["pay", "decide"],
-      "why": "Exactly. That's BANT: Budget, Authority, Need and Timing. IBM's sellers used it for computers, and you can use it for cakes."
+      "why": "Exactly. That's BANT: Budget, Authority, Need and Timing. IBM uses it for computer deals, and you can use it for cakes."
     }
   ],
   "summary": [
