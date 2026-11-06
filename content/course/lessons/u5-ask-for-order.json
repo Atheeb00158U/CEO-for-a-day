@@ -106,7 +106,7 @@
     {
       "kind": "order",
       "id": "not-yet-steps",
-      "prompt": "A school principal says, \"Not this term.\" Put these steps in order, with the first step at the top.",
+      "prompt": "At a meeting, a school principal says, \"Not this term.\" Put these steps in order, first one at the top.",
       "steps": [
         "Ask why she cannot order this term",
         "Agree on a day to call her again",
@@ -143,7 +143,7 @@
     {
       "kind": "scenario",
       "id": "planner",
-      "setup": "It is late April. A wedding planner tried your cakes and liked them. She has weddings on 10 May and 17 May. Each needs a cake priced at ₹6,000, leaving you ₹3,000. This is a quick choice for her. She says, \"Let me think.\"",
+      "setup": "It is late April. A wedding planner tried your cakes and liked them. She has weddings on 10 May and 17 May. Each needs a cake priced at ₹6,000, leaving you ₹3,000. For her, this is a small, quick decision. She says, \"Let me think.\"",
       "question": "What do you say?",
       "options": [
         {

@@ -73,7 +73,7 @@
     {
       "kind": "gap",
       "id": "box-ltv",
-      "text": "The café deal leaves you ₹1,750 a week. Over 50 weeks: ₹1,750 × 50 = ___ a year, and 2 years make ___.",
+      "text": "Your biggest buyer, the café, leaves ₹1,750 a week for 50 weeks a year. ₹1,750 × 50 = ___ a year; 2 years: ___.",
       "bank": ["₹87,500", "₹1,75,000", "₹8,750", "₹3,50,000"],
       "answer": ["₹87,500", "₹1,75,000"],
       "why": "Yes. ₹1,750 × 50 = ₹87,500 a year. Over 2 years, that makes ₹1,75,000. The café brings you much more than one order. It's your biggest customer."

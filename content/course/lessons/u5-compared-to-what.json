@@ -118,7 +118,7 @@
           "bucket": 1
         },
         {
-          "text": "Show that the chain café sells brownies for ₹70",
+          "text": "Show that the chain café sells brownies for ₹110",
           "bucket": 0
         },
         {
@@ -161,7 +161,7 @@
       "options": [
         {
           "id": "a",
-          "label": "Charge ₹35 per brownie, but earn less",
+          "label": "Agree to ₹35 so he signs today",
           "grade": "bad",
           "outcome": "He agrees at once. You earn ₹15 on each of the 70 brownies. That is ₹1,050 a week. A month later, his friend's café also asks you for ₹35.",
           "why": "You lowered your price to match what he expected. But he was comparing what he paid, not what he earned. Now two cafés expect you to charge ₹35.",

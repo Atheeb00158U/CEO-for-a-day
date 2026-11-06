@@ -143,7 +143,7 @@
     {
       "kind": "scenario",
       "id": "insert-offer",
-      "setup": "It's mid-May. WhatsApp groups now bring 8 new families a month. A sales agent offers to put your ad in newspapers going to 50,000 homes for ₹15,000. Each cake leaves you ₹450.",
+      "setup": "It's mid-May. Most families in your colony now know you, and WhatsApp groups bring 8 new families a month. A sales agent offers to put your ad in newspapers going to 50,000 homes for ₹15,000. Each cake leaves you ₹450.",
       "question": "How will you spend your time and money this month?",
       "options": [
         {

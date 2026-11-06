@@ -136,7 +136,7 @@
       "options": [
         {
           "id": "a",
-          "label": "An IT office with 200 staff, starting in March",
+          "label": "IT office, 200 staff, from March: the front desk called",
           "grade": "bad",
           "outcome": "The front desk called you. You make three more visits with prices and samples. But the admin head never meets you. In March, the office chooses a chain shop. You spent four visits and ₹1,200 on samples.",
           "why": "The office had 200 staff, but you never met the person who could say yes. The Authority check failed. A big buyer is not useful if you cannot meet the person who decides.",
@@ -144,14 +144,14 @@
         },
         {
           "id": "b",
-          "label": "A factory owner with 40 workers, starting in February",
+          "label": "Factory, 40 workers, from February: the owner called",
           "grade": "great",
           "outcome": "He called you himself, so he can decide, and he agrees to ₹850 a cake. He wants a cake for every worker's birthday from February: about 40 cakes a year. That's ₹18,000 a year for you from one visit.",
           "why": "He passes all four checks. He can pay, he can decide, he needs cakes, and he wants to start next month."
         },
         {
           "id": "c",
-          "label": "A chain café with 12 branches, starting next year",
+          "label": "Chain café, 12 branches, next year: the manager called",
           "grade": "ok",
           "outcome": "The manager likes your samples, but the café will not change bakers until next year. You spent ₹600 on samples, but you have no order yet.",
           "why": "The café can pay and may need you, but it will not change bakers until next year. The Timing check fails for now. Keep its number and call again when the time is closer.",
