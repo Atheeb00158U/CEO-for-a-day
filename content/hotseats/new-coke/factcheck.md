@@ -1,6 +1,6 @@
 # Fact-check: new-coke
-checked-sha256: 26440aeb9727bb1137302de424236beefcee7caf3cdedbee9744b7a082682ef7
-Checked: 2026-11-06 · by: fresh-context fact-check agent
+checked-sha256: 8ca822533aba6eca593cfb55ec363cc51d2da1aedddda2602b68ac10d2e5e1d5
+Checked: 2026-11-06 · by: fresh-context fact-check agent (delta re-check)
 
 ## Sources opened
 1. [New Coke: The Most Memorable Marketing Blunder Ever? (The Coca-Cola Company)](https://www.coca-colacompany.com/about-us/history/new-coke-the-most-memorable-marketing-blunder-ever)
@@ -54,3 +54,18 @@ Checked: 2026-11-06 · by: fresh-context fact-check agent
 
 ## Quotes
 - No quotes from real people. Advisor lines are the game's own advisor.
+
+## Re-check 2026-11-06 (copy pass)
+Real-path lines changed since the last stamp, checked against the sources above:
+- [supported] Title and hook: Pepsi keeps winning taste tests; the world's most famous recipe (title, hook) — [3], [8]
+- [supported] Atlanta 1984; world's best-known drink, almost unchanged for nearly 100 years; Coke still sells more, but for 15 years Pepsi has been getting closer (nodes.intro.text) — [1], [3], [4], [6]
+- [supported] Pepsi Challenge since 1975 in shops and markets, blind tasting, more choose Pepsi; Coke's own tests agree; people like a sweeter taste (nodes.s_challenge.text) — [3], [5], [8]
+- [supported] Diet Coke 1982 brings in buyers; lab's sweeter recipe beat Pepsi and old Coke in taste tests (nodes.d1.setup) — [2], [3], [9]
+- [supported] d1 title/question/advisor ("keep your lead", "our own tests show the same thing") — [1], [3]; framing
+- [supported] Secret team, sweeter recipe, nearly 200,000 testers, beats Pepsi and old Coke (nodes.d1.options.kansas.label/outcome) — [1], [2], [6]; why/better/takeaway carry no new facts
+- [supported] d2 title/advisor; replace label/why/better/takeaway: tests measured taste not feeling; own research warned some fans would be angry (nodes.d2.*, nodes.d2.options.replace.*) — [2], [5], [6]
+- [supported] d3 title/advisor; classic label/why/takeaway: old Coke back with an apology, acted within weeks (79 days) (nodes.d3.*, nodes.d3.options.classic.*) — [1], [2], [4], [6]
+- [supported] d4 title/setup/question/advisor: a fixed ad budget for next year that both drinks want (nodes.d4.*) — story framing for the real outcome that each drink got its own campaign [1]; the "asks for half" request is framing, not a claim about a named person
+- [supported] Both drinks get their own ads; money split between a popular drink and one few people wanted (nodes.d4.options.both.label/why/better/takeaway) — [1] (two campaigns), [6] (new drink about 3% share)
+- [supported] survivor.title "The return of the old Coke" — [1], [6]
+- Off-path changes (d1.brand/price, d2.extra/city, d3.ads/wait, d3alt.*, d4.star/push, legend/collapse/fired titles, fired.text) were read: hypothetical "you" outcomes, no invented history about Coca-Cola or Pepsi.

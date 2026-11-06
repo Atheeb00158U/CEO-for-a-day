@@ -68,7 +68,7 @@
           },
           "next": "d2",
           "media": "img:tq_d1_western",
-          "outcome": "No test is done. In July 1996 Tanishq opens its first store on Cathedral Road in Chennai: a quiet, European-style shop full of 18-karat diamond jewellery, where buyers must book a visit before they come in. For most of that first year, almost nobody comes in.",
+          "outcome": "You do not test what buyers want. In July 1996, Tanishq opens its first store on Cathedral Road in Chennai. It is a quiet, European-style shop selling 18-karat diamond jewellery, and buyers must book a time before visiting. For most of that first year, almost nobody comes in.",
           "why": "Remember: ask what they did last time, never \"would you buy?\" Nobody asked families what gold they had bought for their last wedding. You built the launch around what your plant could make, not what buyers already bought.",
           "better": "Find out what families really bought last time: 22-karat gold, from a jeweller they trusted. Lead with that, and add your designs on top.",
           "takeaway": "In 1994 you launched a product without asking customers if they wanted it.",
@@ -91,7 +91,7 @@
           },
           "next": "scene1997",
           "media": "img:tq_d1_research",
-          "outcome": "For a few months your team visits families and jewellers and watches what people really buy. The answer is clear: 22-karat gold, for weddings and for savings. Craftsmen in other cities help your plant make it, and in 1996 you open later than planned, but your first store sells what people came looking for.",
+          "outcome": "For a few months, your team visits families and jewellers to see what people really buy. The answer is clear: 22-karat gold, for weddings and savings. Craftsmen in other cities help your plant make it, so in 1996 you open later than planned, but your first store sells what people want.",
           "why": "Remember: ask what they did last time, never \"would you buy?\" What families had bought, again and again, was 22-karat gold. A few slow months showed you the market you were entering, not the one you had planned for in Europe.",
           "takeaway": "In 1994 you watched what buyers really bought before you built the shop.",
           "traits": {
@@ -171,7 +171,7 @@
         },
         {
           "id": "add22",
-          "label": "Add more 22-karat pieces from outside craftsmen. Diamonds stay the star, but your shelves are split.",
+          "label": "Add 22-karat gold from other craftsmen. More choice, but less space for diamonds.",
           "grade": "ok",
           "real": true,
           "effect": {
@@ -183,7 +183,7 @@
           },
           "next": "scene1997",
           "media": "img:tq_d2_add22",
-          "outcome": "Your team gets 22-karat jewellery made by craftsmen in Mumbai and Mysore, and many more people walk in. But most of the range is still 18-karat diamonds, and the Chennai store ends its first year at ₹2.8 crore of sales, short of the ₹3.5 crore it aimed for.",
+          "outcome": "Your team asks craftsmen in Mumbai and Mysore to make 22-karat jewellery, and many more people visit. But most pieces are still 18-karat diamonds. The Chennai store ends its first year with ₹2.8 crore in sales, below its goal of ₹3.5 crore.",
           "why": "Remember: new must be far better than old, or fit old habits. The 22-karat pieces let families buy the way they always had, so more people came in. But most of your shelves still asked them to change how they buy gold.",
           "better": "Make 22-karat gold the main range, not a side line, and make the stores feel open to everyone.",
           "takeaway": "In 1996 you fixed part of the problem and left the rest.",
@@ -195,7 +195,7 @@
         },
         {
           "id": "holdfirm",
-          "label": "Keep only 18-karat and trust your designers. Your brand stays clear, but sales may stay slow.",
+          "label": "Sell only 18-karat gold and trust your designers. Your brand stays clear, but sales may stay slow.",
           "grade": "bad",
           "effect": {
             "profit": -10,
@@ -270,13 +270,13 @@
       "year": "1997",
       "title": "The gold-testing machine",
       "media": "img:tq_d3",
-      "setup": "Many jewellers sell 19 or 20-karat gold but call it 22-karat. Titan's own tests prove it, but a buyer can only check by melting the piece. At a show in Basel, Switzerland, your head of manufacturing saw a machine that reads the gold in a piece in about three minutes, without harming it. Each costs more than ₹10 lakh, and you are losing money.",
+      "setup": "Many jewellers sell 19 or 20-karat gold but say it is 22-karat. Titan's own tests prove this, but buyers can only check by melting the gold. At a show in Basel, Switzerland, your head of manufacturing saw a machine that checks how pure gold is in about three minutes, without harming it. Each machine costs more than ₹10 lakh, and your business is losing money.",
       "question": "What do you do with the machine?",
       "advisor": "If we prove our gold is pure, we also prove that other jewellers' gold is not. They won't forgive us for that.",
       "options": [
         {
           "id": "lab",
-          "label": "Keep it in your factory so all your gold is perfect. Jewellers stay calm, but it costs ₹10 lakh.",
+          "label": "Keep the machine in your factory to check your gold. Jewellers stay calm, but it costs over ₹10 lakh.",
           "grade": "bad",
           "effect": {
             "profit": -5,
@@ -312,7 +312,7 @@
           "next": "scene2000",
           "media": "img:tq_d3_one",
           "outcome": "One machine goes into the Chennai store. People stand in line to test their gold, and many are shocked by what they learn. A year later you put machines in every store, but for that year, buyers everywhere else still had to trust your word.",
-          "why": "Remember: let buyers check your promise for themselves. Trying something in one store first is usually wise, but your own tests had already shown the cheating. In every store without a machine, buyers still had to trust your word.",
+          "why": "Remember: let buyers check your promise for themselves. Testing something in one store first is usually wise, but your own tests had already shown that jewellers were cheating buyers. In stores without the machine, buyers still had to take your word for it.",
           "better": "Put the machines in every store at once, so buyers everywhere can check your gold.",
           "takeaway": "In 1997 you tested in one store when buyers everywhere needed the proof.",
           "traits": {
@@ -342,7 +342,7 @@
                   "holdfirm"
                 ]
               },
-              "text": "Crowds come to test their gold, and many are shocked to learn how little of it is pure. They leave knowing your gold is honest, but there is no 22-karat gold on your shelves for them to buy, so most of them walk out empty-handed."
+              "text": "Crowds come to test their gold, and many are shocked to learn how little pure gold it contains. But you have no 22-karat pieces for them to buy, so most leave without buying anything."
             },
             {
               "text": "From 1997 the machines go into Tanishq stores across India, and the ad company Lintas names them the Karatmeter. Anyone can test their gold free, even gold bought elsewhere. Hundreds stand in line, and some cry when they see how little gold their jewellery holds. Local jewellers pressure your shop owners, some even threatening to hurt them, and purity becomes the heart of your ads."
@@ -372,7 +372,7 @@
               "karatmeter"
             ]
           },
-          "text": "It is 2000, and Tanishq has about 30 stores. Sales have grown more than four times in three years, but it has lost money every year. In May, Titan picks a new managing director. The next day the head of jewellery, passed over for the job, quits with six senior staff, and then the whole sales and marketing team leaves. You take charge of the stores with a new team."
+          "text": "It is 2000, and Tanishq has about 30 stores. Sales have grown to more than four times what they were three years ago, but the company has lost money every year. In May, Titan chooses a new managing director. The next day, the head of jewellery, who did not get the job, quits along with six senior staff. Then the whole sales and marketing team leaves, so you take charge of the stores with a new team."
         },
         {
           "when": {
@@ -380,7 +380,7 @@
               "holdfirm"
             ]
           },
-          "text": "It is 2000, and you now have about 30 stores. Buyers never liked your 18-karat jewellery, so under pressure from the board you have finally added 22-karat gold, years late. Then Titan picks a new managing director, and many senior staff quit. You take charge of the stores with a new team."
+          "text": "It is 2000, and you now have about 30 stores. Buyers never liked your 18-karat jewellery, so after the board pushed you, you finally added 22-karat gold, years late. Then Titan chooses a new managing director, and many senior staff quit. You take charge of the stores with a new team."
         },
         {
           "when": {
@@ -388,10 +388,10 @@
               "lab"
             ]
           },
-          "text": "It is 2000, and you now have about 30 stores. Your losses keep growing, and buyers still have no reason to leave their family jeweller. Then Titan picks a new managing director, and many senior staff quit. You take charge of the stores with a new team."
+          "text": "It is 2000, and you now have about 30 stores. Your losses keep growing, and buyers still see no reason to stop buying from their family jeweller. Then Titan chooses a new managing director, and many senior staff quit. You take charge of the stores with a new team."
         },
         {
-          "text": "It is 2000, and you now have about 30 stores. Sales are growing, but the business is still losing money. Then Titan picks a new managing director, and many senior staff quit. You take charge of the stores with a new team."
+          "text": "It is 2000, and you now have about 30 stores. Sales are growing, but the business still loses money. Then Titan chooses a new managing director, and many senior staff quit. You take charge of the stores with a new team."
         }
       ],
       "next": "d4"
@@ -404,7 +404,7 @@
       "media": "img:tq_d4",
       "setup": [
         {
-          "text": "Too few people visit your stores. Your new team asks buyers why, and they give three reasons: many don't know Tanishq, some think it costs too much, and others feel the stores are only for rich people."
+          "text": "Too few people visit your stores. Your new team asks buyers why, and hears three reasons: many do not know Tanishq, some think the jewellery costs too much, and others think the stores are only for rich people."
         }
       ],
       "question": "How do you get people through the door?",
@@ -412,7 +412,7 @@
       "options": [
         {
           "id": "bigads",
-          "label": "Run a big TV campaign in your usual style. All of India learns your name, but it costs a lot.",
+          "label": "Run big TV ads in your usual style. More people know Tanishq, but you spend a lot.",
           "grade": "bad",
           "effect": {
             "profit": -15,
@@ -426,7 +426,7 @@
           "media": "img:tq_d4_bigads",
           "outcome": "The new ads make Tanishq famous, but they still look like ads for a luxury shop. Buyers who felt shut out still feel shut out, and your cash runs low.",
           "why": "Remember: a cheap first offer pays only if enough buyers return and pay full price. More ads gave no one an easy, low-cost reason to visit. The problem was what your ads said, not how many people saw them.",
-          "better": "Give people one easy, low-cost reason to visit, like a birthday sale with low-priced pieces.",
+          "better": "Give people one simple, low-cost reason to visit, like a birthday sale with cheaper pieces.",
           "takeaway": "In 2000 you made the brand famous without making it feel open to more people.",
           "traits": {
             "horizon": -1,
@@ -436,7 +436,7 @@
         },
         {
           "id": "cheer",
-          "label": "Hold a birthday sale from ₹399. Crowds may come, but rich buyers may think you're cheap.",
+          "label": "Hold a birthday sale with pieces from ₹399. More people may come, but rich buyers may see you as cheap.",
           "grade": "great",
           "real": true,
           "effect": {
@@ -457,7 +457,7 @@
                   "karatmeter"
                 ]
               },
-              "text": "Tanishq's birthday offer brings big crowds. Your ads now show real bracelets, rings and chains, and a range from ₹399 tells buyers that Tanishq is for them too. Collections for working women and sales to companies follow, and in 2000–01 Tanishq makes its first profit."
+              "text": "Tanishq's birthday sale brings big crowds. Your ads now show real bracelets, rings and chains, and prices starting at ₹399 help more buyers feel they can shop at Tanishq. You then launch collections for working women and start selling to companies. In 2000–01, Tanishq makes its first profit."
             },
             {
               "text": "The birthday offer brings big crowds, and your ads now show real pieces. A range from ₹399 tells buyers that Tanishq is for them too, and for the first time your stores feel busy."
@@ -551,7 +551,7 @@
           "text": "By 2002 you have moved the machines into your stores, and many families learn that their '22-karat' gold holds less gold than they paid for. They are upset, but they still own that jewellery and don't know what to do with it."
         },
         {
-          "text": "Your machines have shown many families that their '22-karat' gold holds less gold than they paid for. They are upset, but they still own that jewellery and don't know what to do with it."
+          "text": "Your machines have shown many families that their '22-karat' jewellery has less gold than they paid for. They are upset, but they still have that jewellery and do not know what to do with it."
         }
       ],
       "question": "What do you offer them?",
@@ -597,7 +597,7 @@
         },
         {
           "id": "coupon",
-          "label": "Give every family that tests its gold a ₹500 coupon. It's simple, though you pay even if they never buy.",
+          "label": "Give every family that tests its gold a ₹500 coupon. Easy to offer, but some may never buy.",
           "grade": "ok",
           "effect": {
             "profit": 0,
@@ -690,7 +690,7 @@
               "research"
             ]
           },
-          "text": "You learned early what Indian families wanted, and then gave them proof they could see for themselves. Tanishq becomes the name millions of families trust with their gold."
+          "text": "You found out early what Indian families wanted, and then gave them a way to check your promise for themselves. Millions of families come to trust Tanishq with their gold."
         },
         {
           "text": "You gave Indian families the gold they wanted and the proof they needed. Tanishq becomes the name millions of families trust with their gold."

@@ -328,11 +328,11 @@ telecom free-trial launch ◇.
 
 **Gate:**
 - **`tanishq-karatmeter`** (complexity 2, Indian, big)
-  - d1 A plant built for Europe → 2.1.2
+  - d1 A plant built for Europe (watch what families buy, or ask "would you buy?") → 2.1.2
   - d2 The empty store → 2.2.3
-  - d3 The X-ray machine → 4.1.2
-  - d4 Nobody walks in → 3.1.4
-  - d5 From shock to sale (exchange offer) → 4.1.1
+  - d3 The gold-testing machine (every store, one store first, or the factory) → 4.1.2
+  - d4 Too few buyers → 3.1.4
+  - d5 Turn the test into a sale (exchange offer, coupon, or tested value) → 4.1.1
   - Tests: 4.1.1, 4.1.2. Quiz only: 4.1.3. By count it could sit at 3.1, but its title decision (d3, "the gold test") is taught here.
 
 #### Module 4.2: Why people pick you
@@ -377,9 +377,9 @@ telecom free-trial launch ◇.
   - d1 Your next big bet: the drink you sell, a crowded market, or drinks people miss → 2.1.1
   - d2 What goes around the drink: a costly pack, or one that costs less and stands out → 1.1.2
   - d3 What does the pack say: plain, a star's face, or a story on every pack → 4.2.3
-  - d4 Getting people to try it: ads, a price cut, or tasting first → 4.1.3
-  - d5 What do you stand for: price, a memory, or a memory plus a clean recipe → 4.2.4 (+2.2.4)
-  - Tests: 4.2.3, 4.2.4 (and 4.1.3). Quiz only: 4.2.1, 4.2.2, 4.2.5.
+  - d4 Getting people to try it: ads, a price cut, or no ads and full refunds to shops for unsold packs → 4.1.1 (changed from 4.1.3 on 6 Nov 2026: free tastings have no primary source; the refunds do)
+  - d5 What do you stand for: a list of what's inside, a memory, or price → 4.2.4
+  - Tests: 4.2.3, 4.2.4 (and 4.1.1). Quiz only: 4.2.1, 4.2.2, 4.2.5, 4.1.3.
   - Complexity 2 · Indian: yes · small, founder · Facts: research brief in `paper-boat/` (d1 and the 2015 sales share ✓ in the `paper-boat-2013` Daily Call).
 - **`new-coke`** (complexity 2, Western, big). Its title call is about brand, and its d2 shows what happens
   when you change the product the buyer already loves.
@@ -387,7 +387,7 @@ telecom free-trial launch ◇.
   - d2 The taste test winner: replace, add, or test in a few cities → 2.2.4 (+1.1.5)
   - d3 The fans fight back → 7.2.4 (taught later)
   - d3alt What the test told you → 1.1.5 (its aside: decide which numbers count)
-  - d4 Two Cokes on one shelf → 2.2.4
+  - d4 Next year's ad money: back the old Coke, a campaign each, or the sweet drink → 2.2.4
   - Tests: 4.2.4 (and earlier 1.1.5, 2.2.4). Title decision d1 is taught here.
 
 ### Unit 5: Getting customers

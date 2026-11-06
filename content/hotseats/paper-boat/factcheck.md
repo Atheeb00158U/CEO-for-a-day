@@ -1,6 +1,6 @@
 # Fact-check: paper-boat
-checked-sha256: 3b1f73dc72492e7875d32e3aa40e242ea3ae1942e66b8e0856d74c33f477d918
-Checked: 2026-11-06 · by: fresh-context fact-check agent
+checked-sha256: e85ff7c1d6191d2574ce882217571c39e13f619b9cf9bef3f80c007d7133c076
+Checked: 2026-11-06 · by: fresh-context fact-check agent (delta re-check)
 
 ## Sources opened
 1. [Bottled nostalgia (Outlook Business, June 2015)](https://outlookbusiness.com/magazine/business/story/bottled-nostalgia-965)
@@ -56,3 +56,18 @@ Checked: 2026-11-06 · by: fresh-context fact-check agent
 
 ## People and quotes
 - No real person is named in player text; the poet (Gulzar) and the partners are unnamed. No quotes from real people; 'Drinks and Memories' is the brand's tagline [3]. Red Bull is not named ("the biggest energy drink").
+
+## Re-check 2026-11-06 (copy pass)
+Real-path lines changed since the last stamp, checked against the sources above:
+- [supported] Hook: no shop sells the drinks you grew up with (hook) — [1], [2]
+- [supported] Four partners; Tzinga ₹25 vs the biggest energy drink at ₹95; little money, must last until a drink sells well (nodes.intro.text) — [1] (₹25 vs ₹95; ₹2.5 crore savings, ₹1 crore angel; Kakkar: "a startup with limited resources"). "little money left" is close to the source's "limited resources"; acceptable.
+- [supported] Partner's mother makes aam panna, he brings it to work; team looks in shops, finds none; no shop sells aam panna or jaljeera (nodes.idea.text) — [1], [2], [10]
+- [supported] Tzinga growing but suits one kind of buyer at certain times; more people buy fruit juice; shops don't sell home drinks (nodes.d1.setup; d1.title/advisor framing) — [1], [4]
+- [supported] Home drinks like aam panna and jaljeera; no fizz, no preservatives, no added colours; named after paper boats children float in the monsoon (nodes.d1.options.panna.label/outcome/why/takeaway) — [1], [2], [3], [8], [10]
+- [supported] 250 ml pouch that stands and looks like paper; costs less than a carton; looks different on the shelf (nodes.d2.options.pouch.label/outcome/why/takeaway; d2 title/question/advisor framing) — [1], [2], [8], [9]
+- [supported] Almost no money for ads; the pack is the first thing people see (nodes.d3.setup; title/advisor framing) — [6]
+- [supported] Short childhood story like climbing mango trees, small joke at the bottom (nodes.d3.options.story.label/outcome/why/takeaway) — [6], [2]
+- [supported] Nobody had bought jaljeera in a pack; small shops wary of a drink nobody asks for (nodes.d4.setup; title/advisor framing) — [4]
+- [supported] Skip ads, refund unsold packs; the drinks sold well (nodes.d4.options.try.label/why/takeaway) — [8] (no advertising, sold fast, plans raised), [9] (full refunds on returns)
+- [supported] d5 title/advisor; memories label/why/takeaway: childhood summers and home drinks; memories made people remember the brand (nodes.d5.*, nodes.d5.options.memories.*) — [1], [3]; the restructured real-path outcome and legend.text[0] were already checked above
+- Off-path changes (d1.tzinga/juice, d2.carton/bottle, d3.plain/star, d4.tv/cheap, d5.specs/price, survivor/collapse/fired titles and text) were read: hypothetical "you" outcomes, no invented events, people or figures about Hector Beverages.

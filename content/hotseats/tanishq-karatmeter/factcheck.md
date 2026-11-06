@@ -1,6 +1,6 @@
 # Fact-check: tanishq-karatmeter
-checked-sha256: b5c53bdbac4ac7a37a38298ef92d3f916199a0f93f150be053f14ad2e99b8644
-Checked: 2026-11-06 · by: fresh-context fact-check agent
+checked-sha256: e8b28f15a0b6ed77a050b1624859122af96f41e0b65a9e03c53d012b23e31b64
+Checked: 2026-11-06 · by: fresh-context fact-check agent (delta re-check)
 
 ## Sources opened
 1. [The Tanishq Story, Foreword and Chapter 1 sample, C.K. Venkataraman (Juggernaut Books, 2024)](https://juggernaut.in/cdn/shop/files/Tanishq_Story_Interior_till_chapter_1.pdf) (PDF downloaded and read in full)
@@ -55,3 +55,13 @@ Checked: 2026-11-06 · by: fresh-context fact-check agent
 ## Other issues
 - Quotes: none from real people. Advisor lines are generic.
 - Living people: none named. Lintas is named as a company.
+
+## Re-check 2026-11-06 (copy pass)
+Real-path lines changed since the last stamp, checked against the sources above:
+- [supported] Titan "leads India's quartz watch market"; "a new brand that will be called Tanishq" (nodes.intro.text) — [1]
+- [supported] "You do not test what buyers want"; July 1996, Cathedral Road, Chennai; European-style shop of 18-karat diamond jewellery; buyers book a time; almost nobody comes in the first year (nodes.d1.options.western.outcome) — [1], [6]
+- [supported] Add 22-karat gold from other craftsmen (nodes.d2.options.add22.label) — [1]
+- [supported] Craftsmen in Mumbai and Mysore make 22-karat; many more visit; most pieces still 18-karat diamonds; Chennai first year ₹2.8 crore vs ₹3.5 crore goal (nodes.d2.options.add22.outcome) — [1]
+- [supported] Jewellers sell 19 or 20-karat as 22-karat; Titan's own tests prove it; buyers can only check by melting; Basel show; machine checks purity in about three minutes without harm; more than ₹10 lakh each; business losing money (nodes.d3.setup) — [1], [2], [5]
+- [supported] Birthday sale with pieces from ₹399 (nodes.d4.options.cheer.label) — [2]
+- Off-path changes (d1.research.outcome, d2.holdfirm.label, d3.lab.label, d3.onestore.why, d4.bigads.label/better, d5.coupon.label) were read: wording only, "you" estimates, no invented history about Titan or Tanishq.
