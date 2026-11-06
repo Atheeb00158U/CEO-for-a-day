@@ -31,7 +31,7 @@
         }
       ],
       "answer": "c",
-      "why": "\"This room\" worked best. In one test, 35 of every 100 guests used towels again with the environment card, compared with 44 for \"most guests at this hotel\". In a second test, \"this room\" got 49, compared with 37 for the environment card."
+      "why": "\"This room\" worked best. In one test, 35 of every 100 guests used towels again after the environment card, and 44 after \"most guests at this hotel\". In a second test, \"guests who stayed in this room\" got 49, the most of all."
     },
     {
       "kind": "explain",
@@ -60,7 +60,7 @@
     {
       "kind": "choice",
       "id": "best-post",
-      "prompt": "The new colony has 120 homes, and 38 order from you. Which message in its WhatsApp group will bring the most new orders?",
+      "prompt": "The new colony has 120 homes, and many families already order from you. Which WhatsApp message will get the most new orders?",
       "options": [
         {
           "id": "a",
@@ -68,7 +68,7 @@
         },
         {
           "id": "b",
-          "label": "\"Thousands of people order our cakes\""
+          "label": "\"More than 500 happy customers across the city\""
         },
         {
           "id": "c",

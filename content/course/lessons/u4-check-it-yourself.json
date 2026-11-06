@@ -43,13 +43,13 @@
       "kind": "explain",
       "id": "rule",
       "title": "Costly signals",
-      "text": "Anyone can say \"best quality\". Words cost nothing, so buyers don't believe them. Buyers believe proof that would cost a liar a lot. This is called a costly signal. Otis could never have faked standing on that platform."
+      "text": "Anyone can say \"best quality\". It costs nothing to say, so buyers don't believe it. Buyers trust proof that would cost a liar much more than an honest seller. This is called a costly signal. Otis could not have faked standing on that platform."
     },
     {
       "kind": "explain",
       "id": "check",
       "title": "Let them check",
-      "text": "A small shop doesn't need to risk anyone's life. One easy costly signal is letting buyers check your claim themselves. A milk seller tests your milk with a lactometer while you watch, and a liar would not want that. When buyers can check, they don't need your word."
+      "text": "A small shop doesn't need to put anyone in danger. One easy costly signal is letting buyers check your claim. A milk seller tests the milk with a lactometer in front of you, and a liar would not want that. Buyers see the proof themselves."
     },
     {
       "kind": "explain",
@@ -64,11 +64,11 @@
       "options": [
         {
           "id": "a",
-          "label": "Write \"100% eggless, I promise\" on every post"
+          "label": "Write \"100% eggless, I promise\" in big letters on every post"
         },
         {
           "id": "b",
-          "label": "Ask five happy customers to post reviews"
+          "label": "Ask five regular buyers to share reviews of the taste"
         },
         {
           "id": "c",

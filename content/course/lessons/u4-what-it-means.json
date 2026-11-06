@@ -61,12 +61,8 @@
       "kind": "order",
       "id": "your-ladder",
       "prompt": "Here are three lines about your cake in the wrong order. Put them in order, from the bottom step to the top.",
-      "steps": [
-        "Real butter, no preservatives",
-        "Fresh, and you can give it to your child without worry",
-        "A birthday made at home, with love"
-      ],
-      "why": "Well done. Real butter is what it is. Giving it to your child without worry is what that lets you do. A birthday made with love is what it means. Families choose with the top step, but it must be supported by a true fact."
+      "steps": ["Real butter, no preservatives", "Your child can eat it safely", "A birthday made at home, with love"],
+      "why": "Well done. Real butter is what it is. Your child eating it safely is what that lets you do. A birthday made with love is what it means. Families choose with the top step, but it must be supported by a true fact."
     },
     {
       "kind": "choice",
@@ -163,7 +159,7 @@
           "grade": "ok",
           "outcome": "Families agree your cake is good, but compare ₹850 with ₹700. 12 order, leaving you ₹5,400.",
           "why": "The facts are true, but they only show the bottom step. Buyers compare facts and prices.",
-          "better": "Show what the facts mean: \"Real butter, no preservatives: New Year, made like home.\""
+          "better": "Show what the facts mean: \"Real butter, baked this morning: New Year at home.\""
         },
         {
           "id": "b",
@@ -171,11 +167,11 @@
           "grade": "bad",
           "outcome": "14 order at ₹750, leaving you ₹350 per cake: ₹4,900. In January, families wait for your next offer.",
           "why": "You made buyers think about price. The chain shop already has a lower price.",
-          "better": "Show what the facts mean: \"Real butter, no preservatives: New Year, made like home.\""
+          "better": "Show what the facts mean: \"Real butter, baked this morning: New Year at home.\""
         },
         {
           "id": "c",
-          "label": "\"Real butter, no preservatives: New Year, made like home\"",
+          "label": "\"Real butter, baked this morning: New Year at home\"",
           "grade": "great",
           "outcome": "Families reply with photos of last year's party at home. 20 order at ₹850, leaving you ₹9,000. Nobody asks about the chain shop's price.",
           "why": "A true fact supported something families care about. They chose what the cake meant to them, not the cheaper cake."
@@ -205,10 +201,10 @@
   "cards": [
     {
       "id": "m42-ladder-1",
-      "front": "\"99.7% pure ghee\" or \"Pure, like home\". Which sells more?",
-      "options": ["\"99.7% pure ghee\"", "\"Pure, like home\""],
+      "front": "Which sells more: \"99.7% pure ghee\" or \"99.7% pure, for your family's rotis\"?",
+      "options": ["\"99.7% pure ghee\"", "\"99.7% pure, for your family's rotis\""],
       "answer": 1,
-      "back": "Buyers choose what a product means to them, not just what it is."
+      "back": "Join a true fact with what it means to buyers. People choose what matters to them, not just what the product is."
     },
     {
       "id": "m42-ladder-2",

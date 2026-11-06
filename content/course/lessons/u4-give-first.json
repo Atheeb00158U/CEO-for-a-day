@@ -89,7 +89,7 @@
       "options": [
         {
           "id": "a",
-          "label": "Small crumbs on toothpicks for all 200 families"
+          "label": "Give one ₹2,000 cake only to the society secretary"
         },
         {
           "id": "b",
@@ -103,7 +103,7 @@
       "answer": "b",
       "why": "Exactly. A full cupcake feels like a real gift, so people want to give back. A crumb feels cheap, and a gift that needs an order isn't a gift.",
       "wrong": {
-        "a": "More people taste, but a crumb on a toothpick feels cheap. A gift must feel real before people want to give back. 50 full cupcakes beat 200 crumbs.",
+        "a": "That's an expensive gift for one person, and it may look like you're trying to get a favour. The 200 families get nothing. A full cupcake each for 50 families feels like a real gift to more people.",
         "c": "That's a deal, not a gift. It asks for an order first, so nobody feels they owe you. Give first, with nothing asked."
       }
     },
@@ -168,7 +168,7 @@
     {
       "kind": "scenario",
       "id": "office-gift",
-      "setup": "It's the end of September. A big office down the road has never ordered from you. Diwali is a month away, and offices buy gift boxes then. Your ₹500 Diwali box costs ₹300 to make. You have ₹3,000 to spend winning them.",
+      "setup": "It's the end of September. The bank branch on Main Road has never ordered from you. Diwali is a month away, when offices buy gift boxes. Your ₹500 Diwali box costs ₹300 to make. You have ₹3,000 to try to get an order from them.",
       "question": "What do you do?",
       "options": [
         {

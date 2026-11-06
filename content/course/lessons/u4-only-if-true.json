@@ -64,11 +64,11 @@
       "options": [
         {
           "id": "a",
-          "label": "True: a limit I chose is still real"
+          "label": "True: a limit you set is still real"
         },
         {
           "id": "b",
-          "label": "False: only limits I can't change count"
+          "label": "False: only limits you can't change are real"
         }
       ],
       "answer": "a",
@@ -88,7 +88,7 @@
         },
         {
           "id": "b",
-          "label": "\"Order in 10 minutes or pay more!\""
+          "label": "\"Order soon! Plum cakes are selling fast!\""
         },
         {
           "id": "c",
@@ -98,8 +98,8 @@
       "answer": "c",
       "why": "Exactly. The number and date are both real, and you said them clearly. Buyers can plan without feeling cheated.",
       "wrong": {
-        "a": "Saying \"Only 3 left\" every day for a month is false. Buyers notice, like the mother in June did. Tell them the real limit: 40 cakes, orders close 20 December.",
-        "b": "That time limit is false. Nothing changes in 10 minutes. Buyers who feel forced may decide not to buy. Tell them the real limit: 40 cakes, orders close 20 December."
+        "a": "Saying \"Only 3 left\" every day for a month is not true. Buyers notice, as the new colony did in June. Tell them the real limit: 40 cakes, orders close 20 December.",
+        "b": "It may sound fine, but there's no real number or date, and it makes buyers feel they must order at once. Tell them the real limit: 40 cakes, orders close 20 December."
       }
     },
     {
@@ -121,7 +121,7 @@
           "bucket": 0
         },
         {
-          "text": "\"Only 2 left!\" when you could bake 20 more",
+          "text": "\"Only 2 left!\", but then you bake 20 more",
           "bucket": 1
         },
         {

@@ -55,12 +55,12 @@
       "kind": "explain",
       "id": "home",
       "title": "Now look at your business",
-      "text": "A lawn sign and a cake order have something in common. It's late October. A big office that has never ordered from you has 120 staff and about 10 birthdays a month. But the manager won't agree to a year's plan without trying your cakes first."
+      "text": "A lawn sign and a cake order work the same way. It's mid-October. An IT office in the tech park has 120 staff and about 10 birthdays a month. You meet its manager for a short, free chat. She won't sign a year's plan with a baker she's never tried."
     },
     {
       "kind": "choice",
       "id": "let-me-think",
-      "prompt": "After your first free chat, you suggest one trial cake. The manager says, \"Let me think.\" What do you say?",
+      "prompt": "During the chat, you offer one ₹850 cake for Friday's birthday. The manager says, \"Let me think.\" What do you say?",
       "options": [
         {
           "id": "a",
@@ -102,7 +102,7 @@
       "options": [
         {
           "id": "a",
-          "label": "A ₹1 trial that becomes ₹10,000 next month"
+          "label": "A ₹1 trial that becomes ₹10,000 next month without telling them"
         },
         {
           "id": "b",

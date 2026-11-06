@@ -390,6 +390,19 @@ telecom free-trial launch ◇.
   - d4 Two Cokes on one shelf → 2.2.4
   - Tests: 4.2.4 (and earlier 1.1.5, 2.2.4). Title decision d1 is taught here.
 
+**Note (6 Nov 2026, drafts):** lesson ids `u4-take-the-risk`, `u4-check-it-yourself`, `u4-give-first` (4.1) and
+`u4-people-like-them`, `u4-small-yes-first`, `u4-be-remembered`, `u4-what-it-means`, `u4-only-if-true` (4.2); cards
+`m41-*` and `m42-*`. The bakery runs on through year four, August to December: a ₹6,000 engagement cake (4.1.1), eggless
+proof and a ₹700 chain bakery (4.1.2), the Ganesh festival and an office's Diwali boxes (4.1.3), Lake View society and 15
+offices on the birthday plan (4.2.1), a 120-staff office won step by step (4.2.2), the pink box and fridge magnets
+(4.2.3), a New Year post (4.2.4) and 40 Christmas plum cakes (4.2.5). Opening cases: Flipkart's cash on delivery, 2010
+(4.1.1); Elisha Otis's rope cut, 1854 (4.1.2, foreign: no sourced Indian case that isn't a gate); Strohmetz's chocolates
+(4.1.3); the hotel towels and the Petrified Forest signs (4.2.1); Freedman & Fraser (4.2.2); the Hutch pug that Vodafone
+kept, 2003–2007 (4.2.3, in place of the made-up ghee); Surf Excel's "Daag acche hain", 2005 (4.2.4); OnePlus invites and
+the cookie jar (4.2.5). Fact-check corrections: the 76% counts everyone asked the small favour, not only those who said
+yes; the Petrified Forest result compares signs (no before-and-after); IS 19000 is a voluntary standard; OnePlus's motive
+for invites isn't sourced, so 4.2.5's guess is the cookie study.
+
 ### Unit 5: Getting customers
 
 #### Module 5.1: Selling, step by step
