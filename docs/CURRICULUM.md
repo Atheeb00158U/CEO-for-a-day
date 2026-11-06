@@ -474,39 +474,43 @@ that pushes a buyer away (reactance).
 
 ### Unit 6: Running the business
 
+Written 6 Nov 2026 (draft, `u6-running` in course.json). Practice thread: the player's home bakery in its fifth year,
+July to December (cake ₹850, costs ₹400, ₹450 kept; the sister and cousin bake from August).
+
 #### Module 6.1: Keep it simple
 **Goal:** cut the mess that eats your time and money.
 
-| Code | Concept | The rule | Everyday example (made up) | Source | Exercise |
-|---|---|---|---|---|---|
-| 6.1.1 | **Complexity cost** (SKU proliferation) | Every extra variety adds hidden costs. | 40 menu items mean 40 kinds of stock, waste and training. | *Profit from the Core* (Chris Zook) ◇ | Spot the mistake |
-| 6.1.2 | **Standard work** | One standard way of working cuts cost and errors. | All three delivery bikes are the same model: one mechanic, one set of spares. | Standard work, Toyota Production System ◇; *The Checklist Manifesto* (Gawande) ◇ | Match pairs |
-| 6.1.3 | **Core competence** | Own your core skill. Rent or outsource the rest. | Lease the delivery van and outsource the packing; keep the recipe. | Prahalad & Hamel, "The Core Competence of the Corporation" (HBR, 1990) ◇ | Sort into buckets |
+| Code | Lesson id | Concept | The rule | Opens with (real case) | Practice (bakery) | Source | Exercise |
+|---|---|---|---|---|---|---|---|
+| 6.1.1 | u6-too-many-items | **Complexity cost** (SKUs) | Every extra item you sell adds hidden costs. | Britannia in the April 2020 lockdown made about one in five of its brands, which brought in about 80% of its money ✓ | 18 items in July: the pineapple cake's real earnings, a mango cake that must push out weak items | DNA (2021); Agro & Food Processing (2020) ✓ | Quick sum, scenario |
+| 6.1.2 | u6-one-way | **Standard work** | One standard way of working cuts cost and mistakes. | Aravind Eye Hospital: about 2,000 operations a surgeon a year against India's 250, half Britain's complications ✓ | Sister and cousin bake three ways; one written card; a café's 10 cakes every Friday | NPR (2011); Governing; Ophthalmology Times ✓ | Order, sort, scenario |
+| 6.1.3 | u6-own-the-core | **Core competence** | Own your core skill. Pay others for the rest. | Bharti Airtel (2004) let Ericsson and Nokia run its network and IBM its computers, paying for what it used ✓ | Diwali: delivery service per trip vs a salaried rider; never hand out the taste | Ericsson (2004, 2006); Light Reading; Al Jazeera; Prahalad & Hamel, HBR 1990 ✓ | Sort, quick sum, scenario |
 
-**Folded in:** 6.1.2: "Write the standard way on one page, so anyone can open the shop." (old 6.1.3)
+**Folded in:** 6.1.2: write the standard on one card, and change it when someone finds a better way (old 6.1.3).
+6.1.3: a fixed cost hurts in a slow month (1.2 aside).
 
 **Gate:** none here. Closed by the Maruti gate after Module 6.2.
 
 #### Module 6.2: Suppliers, quality and speed
 **Goal:** get good parts, on time, without losing control.
 
-| Code | Concept | The rule | Everyday example (made up) | Source | Exercise |
-|---|---|---|---|---|---|
-| 6.2.1 | **Single sourcing** (Deming's point 4) | Pick a few strong suppliers on quality, and push them. | Two reliable fabric mills, not twelve cheap ones. | Deming's 14 points (point 4) ◇ | Who's right? |
-| 6.2.2 | **Critical path** (and Hofstadter's law) | Find the critical path; buy in whatever would make you late. | Open for the wedding season with bought-in parts; make them yourself within a year. | Critical path method, any project-management text ◇; Hofstadter's law (*Gödel, Escher, Bach*) ◇ | Pick the best move |
-| 6.2.3 | **Demanding home buyers** (Porter's diamond) | Tough buyers make you better. Seek them out. | A big hotel order forces your bakery to fix its hygiene. | Porter, *The Competitive Advantage of Nations* ◇ | True or false, then why |
+| Code | Lesson id | Concept | The rule | Opens with (real case) | Practice (bakery) | Source | Exercise |
+|---|---|---|---|---|---|---|---|
+| 6.2.1 | u6-few-suppliers | **Few strong suppliers** (Deming's point 4) | Pick a few strong suppliers on quality, and push them. | Sundram Fasteners became GM's main radiator-cap supplier and its Supplier of the Year, 1996–2000; the 1997 Aisin fire shows why one is risky ✓ | Cream from five shops, then two good ones and a tested third for Diwali | Madras Musings; Autocar Professional; Deming's 14 points; Wikipedia (Aisin fire) ✓ | Who's right, scenario |
+| 6.2.2 | u6-critical-path | **Critical path** (and Hofstadter's law) | Find the critical path. Buy ready-made anything that could make you late. | Delhi Metro's first phase finished 2 years 9 months early (2005); its first trains were bought from South Korea ✓ | A wedding order: stands from Mumbai or rented nearby | ThePrint; Business Today (2002); Railway Technology; Hofstadter (1979) ✓ | Pick the chain, order, scenario |
+| 6.2.3 | u6-tough-buyers | **Demanding buyers** (Porter) | Tough buyers make you better. Seek them out. | Hero Honda's CD 100 (1985), India's first 100 cc four-stroke bike, for riders who counted every rupee of petrol ✓ | A hotel's kitchen rules in December; tough on quality vs tough on price | Down To Earth (2001); Autocar Professional (2009); Porter, HBR 1990 ✓ | Quick sum, sort, scenario |
 
-**Folded in:** 6.2.2: "Hofstadter's law: it always takes longer than you expect, even when you expect that."
+**Folded in:** 6.2.2: Hofstadter's law: things take longer than you plan, even when you plan for delay.
 
 **Gate (closes 6.1 and 6.2):**
-- **`maruti-800`** (complexity 2, Indian, big)
-  - d1 Find a partner → 8.3.2 (taught later)
-  - d2 Which car first? → 2.2.2
-  - d3 Make the date → 6.2.2
-  - d4 Price and the queue → 3.2.3
+- **`maruti-800`** (complexity 2, Indian, big), rewritten 6 Nov 2026 so every decision tests a Unit 6 lesson:
+  - d1 Find a partner → 6.1.3 (a partner that teaches vs one that runs the plant for you)
+  - d2 Which car first? → 6.1.1 (one small car vs all three vehicles at once)
+  - d3 Make the date → 6.2.2 (imported parts now vs waiting for Indian parts)
+  - d4 How will the plant work? → 6.1.2 (one set of rules for every rank vs each shop its own way)
   - d5 Build Indian suppliers → 6.2.1
-  - d6 Sell abroad? → 6.2.3
-  - Tests: 6.2.1–6.2.3. Quiz only: 6.1.1–6.1.3.
+  - d6 Sell abroad? → 6.2.3 (a small first batch vs staying home vs a big export push)
+  - Tests: all six lessons.
 
 ### Unit 7: People
 
@@ -901,7 +905,7 @@ Gate number = order on the path.
 |---|---|---|---|---|---|---|
 | tanishq-karatmeter | 2 | 4.1 | 5 | yes | big | title rule moves it from 3.1 |
 | new-coke | 2 | 4.2 | 7 | no | big | |
-| maruti-800 | 2 | 6.2 (closes 6.1–6.2) | 9 | yes | big | |
+| maruti-800 | 2 | 6.2 (closes 6.1–6.2) | 9 | yes | big | rewritten 6 Nov 2026: tests all six Unit 6 lessons |
 | amul-one-brand | 2 | 8.1 | 11 | yes | small (co-op) | published |
 | kingfisher-airlines | 3 | 9.2 | 13 | yes | big | kept; free-tier showcase; re-check court status before publishing |
 | harshad-mehta | 4 | 9.3 | 14 | yes | small (one broker) | d5 kept as is (Atheeb) |
