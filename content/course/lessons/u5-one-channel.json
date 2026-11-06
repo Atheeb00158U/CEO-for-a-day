@@ -9,7 +9,7 @@
       "kind": "explain",
       "id": "hook",
       "media": "img:ls_bullseye",
-      "text": "Let me tell you about a book called Traction. Gabriel Weinberg, who started the search engine DuckDuckGo, wrote it with Justin Mares. They asked more than 40 founders how they found their customers. Most founders guess this part, and guess wrong."
+      "text": "Let me tell you about a book called Traction, about how new businesses find customers. Two founders, Gabriel Weinberg and Justin Mares, wrote it. They asked more than 40 founders how they found their first customers. Most people starting out guess this part wrong."
     },
     {
       "kind": "choice",
@@ -19,15 +19,15 @@
       "options": [
         {
           "id": "a",
-          "label": "Tried roads until one worked, then focused on it"
+          "label": "Tried roads until one worked, then stuck to it"
         },
         {
           "id": "b",
-          "label": "Used every road at once, a little each"
+          "label": "Used every road at once, a little of each"
         },
         {
           "id": "c",
-          "label": "Spent most of their money on ads"
+          "label": "Spent most of their money on paid ads"
         }
       ],
       "answer": "a",
@@ -37,7 +37,7 @@
       "kind": "explain",
       "id": "bullseye",
       "title": "The Bullseye framework",
-      "text": "A channel is a road customers take to find you: WhatsApp groups, Instagram, a café shelf, flyers. The book lists 19. Its method is called the Bullseye framework: list many, test the best few cheaply, then put most of your effort into the one that works."
+      "text": "A channel is a road customers take to find you: WhatsApp groups, Instagram, a café counter, flyers. The book lists 19. Its method is the Bullseye framework, like aiming at the centre of a target: list many, test the best few cheaply, then master the one that works."
     },
     {
       "kind": "order",
@@ -55,7 +55,7 @@
       "kind": "explain",
       "id": "home",
       "title": "Now look at your business",
-      "text": "A search engine and a home bakery both need a road to their customers. It's April. Most of your buyers have come from friends and your WhatsApp menu. Now you want 10 new families every month, so last month you tested six roads."
+      "text": "A tech company and a home bakery both need a road to their customers. It's April. You bake cakes at home: each ₹850 cake leaves you ₹450. You want 10 new families a month, so last month you tested six roads."
     },
     {
       "kind": "sort",
@@ -118,7 +118,7 @@
     {
       "kind": "choice",
       "id": "one-colony",
-      "prompt": "Your WhatsApp posts work best in your own colony's group. Why win that group fully before joining twenty others?",
+      "prompt": "Your posts work best in your own colony's group. Why win that group fully before moving to the next colony?",
       "options": [
         {
           "id": "a",
@@ -136,8 +136,8 @@
       "answer": "a",
       "why": "Yes. You learned this in Unit 2: win one group first. When a whole colony knows and loves your cakes, they carry your name into the next one.",
       "wrong": {
-        "b": "Joining WhatsApp groups is free. The reason is Unit 2's beachhead idea: win one group first, and happy buyers carry your name into the next.",
-        "c": "Nothing says they don't. The reason is Unit 2's beachhead idea: win one group first, and happy buyers carry your name into the next."
+        "b": "Joining WhatsApp groups is free. The reason is Unit 2's idea: win one group first, and happy buyers carry your name into the next.",
+        "c": "Nothing says they don't. The reason is Unit 2's idea: win one group first, and happy buyers carry your name into the next."
       }
     },
     {
@@ -152,7 +152,7 @@
           "grade": "bad",
           "outcome": "The insert brings 3 orders: ₹1,350 for ₹15,000. With your time on the insert, WhatsApp brings only 5 families this month.",
           "why": "50,000 homes sounded big, but your own test showed newspaper inserts bring almost nothing for you.",
-          "better": "Go deeper on WhatsApp groups: more colonies, better photos, faster replies."
+          "better": "Go deeper on WhatsApp: join the groups of the colonies next to yours."
         },
         {
           "id": "b",
@@ -160,14 +160,14 @@
           "grade": "ok",
           "outcome": "A ₹5,000 insert brings 1 order. WhatsApp brings 8 families, as before. The insert cost ₹5,000 and earned ₹450 back.",
           "why": "You kept your best road, but spent money on one your test had already dropped.",
-          "better": "Go deeper on WhatsApp groups: more colonies, better photos, faster replies."
+          "better": "Go deeper on WhatsApp: join the groups of the colonies next to yours."
         },
         {
           "id": "c",
-          "label": "Join five more colony groups and post better photos",
+          "label": "Join the groups of the two colonies next to yours",
           "grade": "great",
-          "outcome": "Five new colonies, faster replies and photos of real birthday tables. You get 15 new families this month, not 8. That's ₹3,150 more profit, and you spent no money.",
-          "why": "You mastered the road that already works before trying new ones."
+          "outcome": "Your neighbours already talk about your cakes in those colonies. With real photos and fast replies, you get 13 new families this month, not 8. That's ₹2,250 more profit, and you spent no money.",
+          "why": "You mastered the road that already works, one colony at a time, before trying new roads."
         }
       ]
     },
@@ -175,9 +175,9 @@
       "kind": "gap",
       "id": "fill",
       "text": "Test a few ___ cheaply, then put most of your effort into the ___ that works.",
-      "bank": ["channels", "one", "hoardings", "all"],
+      "bank": ["channels", "one", "prices", "all"],
       "answer": ["channels", "one"],
-      "why": "Exactly. That's the Bullseye framework. Your test found WhatsApp groups, and going deeper there nearly doubled your new families."
+      "why": "Exactly. That's the Bullseye framework. Your test found WhatsApp groups, and going one colony further brought 13 families instead of 8."
     }
   ],
   "summary": [

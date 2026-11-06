@@ -37,7 +37,7 @@
       "kind": "explain",
       "id": "cac",
       "title": "LTV:CAC",
-      "text": "What one customer costs to win is your spend divided by the customers it brought: ₹6,000 for 20 is ₹300 each. That's customer acquisition cost, or CAC. Compare it with lifetime value, LTV. Investors call this LTV:CAC. If LTV isn't well above CAC, growth makes you poorer."
+      "text": "What one customer costs to win is your spend divided by the new customers it brought: ₹6,000 for 20 is ₹300 each. That's called CAC, the cost to acquire, or win, a customer. Lifetime value must be well above it. People write this as LTV:CAC."
     },
     {
       "kind": "choice",
@@ -68,7 +68,7 @@
       "kind": "explain",
       "id": "home",
       "title": "Now look at your business",
-      "text": "Last lesson, loops beat paying for each buyer. But paying is fine when each buyer earns back more than they cost. Let's check your bakery. It's June. A family who stays usually orders 4 cakes a year, and each cake leaves you ₹450."
+      "text": "Two lessons ago, loops beat paying for each buyer. But paying is fine when each buyer earns back more than they cost. It's late June. A family who stays usually orders 4 cakes a year, and each cake leaves you ₹450."
     },
     {
       "kind": "choice",
@@ -106,7 +106,7 @@
           "bucket": 0
         },
         {
-          "text": "₹500 of free samples; the family orders one ₹450-margin cake",
+          "text": "₹500 of free samples; the family orders one cake",
           "bucket": 1
         },
         {
@@ -122,7 +122,7 @@
           "bucket": 0
         },
         {
-          "text": "₹1,000 coupon; the family orders 2 cakes in all",
+          "text": "₹500 off each of 2 cakes; then the family stops",
           "bucket": 1
         }
       ],
@@ -156,12 +156,12 @@
     {
       "kind": "scenario",
       "id": "june-push",
-      "setup": "It's late June. You have ₹6,000 to win new families before the festival months. A family who stays usually orders 4 cakes a year. Each cake leaves you ₹450.",
+      "setup": "It's the end of June. Your referral offer is running. You've set aside ₹6,000 from profit to win new families, so your cash is safe. A family who stays usually orders 4 cakes a year. Each cake leaves you ₹450.",
       "question": "Where do you spend the ₹6,000?",
       "options": [
         {
           "id": "a",
-          "label": "₹300 off the first cake, for anyone on your menu",
+          "label": "₹300 off any cake, for every customer",
           "grade": "bad",
           "outcome": "20 orders use the coupon, but 14 come from your old families. Only 6 families are new, so each new one cost you ₹1,000. Their first cakes leave you just ₹150 each.",
           "why": "Your old customers took most of the discount. Divide the cost by new families only, and the CAC was ₹1,000.",

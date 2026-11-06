@@ -15,7 +15,7 @@
       "kind": "choice",
       "id": "guess",
       "guess": true,
-      "prompt": "Before spending months on a company, what would you check first?",
+      "prompt": "IBM's sellers checked four things before a long sale. Which of these do you think sellers forget most?",
       "options": [
         {
           "id": "a",
@@ -31,13 +31,13 @@
         }
       ],
       "answer": "b",
-      "why": "All three matter, and IBM's sellers checked all of them, plus one more. Many sellers forget the second one: they spend weeks with someone who likes them but can't say yes."
+      "why": "Many sellers forget the second one: they spend weeks with someone who likes them but can't say yes. IBM's sellers checked all three, plus one more."
     },
     {
       "kind": "explain",
       "id": "bant",
       "title": "BANT",
-      "text": "IBM's sales teams made four checks famous, called BANT. Budget: can they pay? Authority: can this person say yes? Need: do they have the problem you fix? Timing: will they buy soon? A buyer who passes all four is worth your time. This is BANT qualification."
+      "text": "IBM's sales teams made four checks famous, called BANT. Budget: can they pay? Authority: can this person say yes? Need: do they have the problem you fix? Timing: will they buy soon? A buyer who passes all four is worth your time."
     },
     {
       "kind": "explain",
@@ -74,10 +74,10 @@
       "kind": "sort",
       "id": "leads",
       "prompt": "I'll show you six people who asked about your cakes. For each one, tell me: is this person worth a visit now?",
-      "buckets": ["Worth a visit now", "Not yet"],
+      "buckets": ["Worth a visit now", "Not worth a visit now"],
       "items": [
         {
-          "text": "A café owner whose snacks run out by 5 pm every day",
+          "text": "A café owner whose snacks run out by 5 pm, who wants to start this week",
           "bucket": 0
         },
         {
@@ -101,7 +101,7 @@
           "bucket": 1
         }
       ],
-      "why": "Good sorting. The café owner, the planner and the manager pass all four checks. The peon can't decide, the student can't pay, and the hotel has no need. Be kind to them, but spend your visits on the first three."
+      "why": "Good sorting. The café owner, the planner and the manager pass all four checks. The peon can't decide, the student can't pay, and the hotel doesn't need you. Be kind to them, but spend your visits on the first three."
     },
     {
       "kind": "choice",
@@ -110,28 +110,28 @@
       "options": [
         {
           "id": "a",
-          "label": "That he can pay and will decide soon"
+          "label": "Nothing new yet"
         },
         {
           "id": "b",
-          "label": "Nothing yet: kind words cost him nothing"
+          "label": "That he will pay"
         },
         {
           "id": "c",
-          "label": "That he needs brownies at his café"
+          "label": "That he will order soon"
         }
       ],
-      "answer": "b",
+      "answer": "a",
       "why": "Exactly. You learned this in Unit 2: praise is not proof. Kind words cost him nothing. An order, a date or money tells you he passes the checks.",
       "wrong": {
-        "a": "He hasn't said a price or a date, so you don't know about budget or timing yet. Remember from Unit 2: praise is not proof. Ask for an order or a date.",
-        "c": "His empty shelf by 5 pm shows a need. His kind words don't prove anything new. Remember from Unit 2: praise is not proof. Ask for an order or a date."
+        "b": "He hasn't said a price yet, so you don't know his budget. Remember Unit 2: praise is not proof. Ask for an order or a date.",
+        "c": "He hasn't named a day or a number of brownies. Remember Unit 2: praise is not proof. Ask for an order or a date."
       }
     },
     {
       "kind": "scenario",
       "id": "one-visit",
-      "setup": "It's late January. You can bake 20 cakes a week, and you have time for one sales visit this week. Three people have called. Each cake leaves you ₹450.",
+      "setup": "It's late January. You have time for one sales visit this week. Three people have called. Each cake leaves you ₹450.",
       "question": "Who do you visit?",
       "options": [
         {
@@ -163,7 +163,7 @@
       "kind": "gap",
       "id": "fill",
       "text": "Before you spend time on a buyer, check: can they ___, can this person ___, do they need it, will they buy soon?",
-      "bank": ["pay", "decide", "smile", "wait"],
+      "bank": ["pay", "decide", "wait", "talk"],
       "answer": ["pay", "decide"],
       "why": "Exactly. That's BANT: Budget, Authority, Need and Timing. IBM's sellers used it for computers, and you can use it for cakes."
     }

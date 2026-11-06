@@ -19,7 +19,7 @@
       "options": [
         {
           "id": "a",
-          "label": "Few people noticed the small line"
+          "label": "It grew slowly, as small ads do"
         },
         {
           "id": "b",
@@ -37,7 +37,7 @@
       "kind": "explain",
       "id": "loop",
       "title": "Growth loops",
-      "text": "This is a growth loop: each buyer's use brings in the next buyer. Ads stop the day you stop paying, but a loop keeps going. Growth teams measure it with the K-factor, how many new buyers each buyer brings. If 10 buyers bring 5 more, K is 0.5."
+      "text": "This is a growth loop: each buyer's use brings in the next buyer. Ads stop the day you stop paying, but a loop keeps going. Growth teams measure it with a number called the K-factor: new buyers for each buyer. If 10 buyers bring 5 more, K is 0.5."
     },
     {
       "kind": "choice",
@@ -85,7 +85,7 @@
           "bucket": 1
         },
         {
-          "text": "A free cupcake for each child guest, your number on the wrapper",
+          "text": "A thank-you note in each box, asking them to share your number",
           "bucket": 0
         },
         {
@@ -114,7 +114,7 @@
         },
         {
           "id": "b",
-          "label": "False: below 1, it needs other roads too"
+          "label": "False: you still need other ways in"
         }
       ],
       "answer": "b",
@@ -130,15 +130,15 @@
       "options": [
         {
           "id": "a",
-          "label": "Trust them: happy families always share"
+          "label": "Trust them; happy families share"
         },
         {
           "id": "b",
-          "label": "Ask them how many friends they told"
+          "label": "Ask how many friends they told"
         },
         {
           "id": "c",
-          "label": "Count new orders that came from their friends"
+          "label": "Count orders from their friends"
         }
       ],
       "answer": "c",
@@ -158,24 +158,24 @@
           "id": "a",
           "label": "Boost Instagram reels with all ₹4,000",
           "grade": "ok",
-          "outcome": "The ads bring 12 families. Their first cakes leave you ₹5,400, so you're ₹1,400 up. When the ads stop, so do the new families.",
+          "outcome": "The ads bring 10 families. Their first cakes leave you ₹4,500, so you're only ₹500 up. When the ads stop, so do the new families.",
           "why": "It paid this month, but you paid for each buyer. The money stopped working the day the ads ended.",
-          "better": "Give ₹50 off to both the family and each friend who orders, so buyers bring buyers."
+          "better": "Give ₹50 off to the family and ₹50 off to each friend who orders, so buyers bring buyers."
         },
         {
           "id": "b",
-          "label": "₹50 off for a family and each friend they bring",
+          "label": "₹50 off for the family, and ₹50 off for each friend",
           "grade": "great",
           "outcome": "Families start sharing your number. 20 orders now bring 12 new families, not 6. The 6 extra families leave you ₹2,700. The ₹50 discounts cost ₹1,200, so you're ₹1,500 up, with ₹2,800 still in hand. And the new families start bringing friends too.",
           "why": "You made sharing worth it, so your K-factor doubled from 0.3 to 0.6, and the loop keeps paying next month."
         },
         {
           "id": "c",
-          "label": "Print smart boxes with your name on every order",
+          "label": "Print nicer boxes with your name on every order",
           "grade": "bad",
           "outcome": "The boxes cost ₹4,000. Guests admire them, but few ask for your number. 20 orders bring 7 new families, just 1 more than before. You're ₹3,550 down.",
           "why": "A nice box gave guests no reason to order. It cost a lot and barely moved your K-factor.",
-          "better": "Give ₹50 off to both the family and each friend who orders, so buyers bring buyers."
+          "better": "Give ₹50 off to the family and ₹50 off to each friend who orders, so buyers bring buyers."
         }
       ]
     },

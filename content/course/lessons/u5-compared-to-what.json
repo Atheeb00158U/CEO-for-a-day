@@ -31,49 +31,49 @@
         }
       ],
       "answer": "b",
-      "why": "Her line in Hindi was \"Surf ki kharidari mein hi samajhdari hai\": smart buying is buying Surf. Cheap and good are not the same. She made shoppers compare what they got for their money, not the price on the packet."
+      "why": "Her famous line in Hindi, \"Surf ki kharidari mein hi samajhdari hai\", means smart buying is buying Surf. The idea behind it: buying cheap is not the same as buying good. She made shoppers think about what they got, not the price on the packet."
     },
     {
       "kind": "explain",
       "id": "reference",
       "title": "The reference price",
-      "text": "Every price is judged against another one, called the reference price. Shoppers compared ₹28 with ₹7, and Surf lost. Lalitaji made them compare what they got. So when a buyer says \"too costly\", don't cut your price. Ask: \"Compared to what?\" Then show a fairer comparison."
+      "text": "Every buyer has a price in their head to compare with. It's called the reference price. Shoppers compared ₹28 with ₹7, and Surf lost. Lalitaji made them compare what they got. So when a buyer says \"too costly\", don't cut your price. Ask: \"Compared to what?\""
     },
     {
       "kind": "choice",
       "id": "haircut",
-      "prompt": "A customer says your ₹1,200 haircut is \"too costly\". What should you say first?",
+      "prompt": "A customer says your ₹300 haircut is \"too costly\". What should you say first?",
       "options": [
         {
           "id": "a",
-          "label": "\"Okay, I'll give you ₹200 off today.\""
+          "label": "\"Shall I give you ₹50 off today?\""
         },
         {
           "id": "b",
-          "label": "\"Our stylists trained in Mumbai, you know.\""
+          "label": "\"Our barbers trained in Mumbai, you know.\""
         },
         {
           "id": "c",
-          "label": "\"May I ask which price you're thinking of?\""
+          "label": "\"Which price are you comparing it with?\""
         }
       ],
       "answer": "c",
-      "why": "Yes. First find out what they compare with. If it's a ₹150 roadside cut, you can show what's different. If it's a salon at ₹1,000, you know where you stand.",
+      "why": "Yes. First find out what they compare with. If it's a ₹60 roadside cut, you can show what's different. If it's the salon next door at ₹250, you know where you stand.",
       "wrong": {
-        "a": "You cut ₹200 before you know what they're comparing with. They might be thinking of ₹1,100. Ask first: \"Which price are you thinking of?\"",
-        "b": "That may be true, but you don't know their comparison yet. If they're thinking of a ₹150 roadside cut, Mumbai training won't help. Ask first."
+        "a": "You cut ₹50 before you know what they're comparing with. They might be thinking of ₹280. Ask first: \"Which price are you comparing it with?\"",
+        "b": "That may be true, but you don't know their comparison yet. If they're thinking of a ₹60 roadside cut, Mumbai training won't help. Ask first."
       }
     },
     {
       "kind": "explain",
       "id": "home",
       "title": "Now look at your business",
-      "text": "Surf's problem can turn up at your café deal too. It's March. The café's two-week trial went well: your brownies sold out most evenings. Now the owner wants a monthly deal. But he says ₹45 a brownie is \"too costly\"."
+      "text": "Surf's problem can turn up at your café deal too. It's March. In the two-week trial, he took 10 brownies a day, and they sold out most evenings. Now he wants a monthly deal. But he says ₹45 a brownie is \"too costly\"."
     },
     {
       "kind": "choice",
       "id": "per-piece",
-      "prompt": "A cake slice costs ₹30 and sells at ₹50. Your ₹45 brownie sells at ₹80. Compared with a slice, what does he keep per brownie?",
+      "prompt": "A slice costs him ₹30 and sells at ₹50. Your ₹45 brownie sells at ₹80. What does he keep per brownie, compared with a slice?",
       "options": [
         {
           "id": "a",
@@ -110,7 +110,7 @@
           "bucket": 1
         },
         {
-          "text": "Count how many slices he throws away unsold",
+          "text": "Show how fast your brownies sold out in the trial",
           "bucket": 0
         },
         {
@@ -118,7 +118,7 @@
           "bucket": 1
         },
         {
-          "text": "Show the big chain café's ₹70 brownie, which is true",
+          "text": "Show the chain café's real ₹70 brownie price",
           "bucket": 0
         },
         {
@@ -126,12 +126,12 @@
           "bucket": 1
         }
       ],
-      "why": "Nicely done. The first kind shows a fairer comparison: what he keeps, what he throws away, a real price elsewhere. The second kind just takes money out of your pocket."
+      "why": "Nicely done. The first kind shows a fairer comparison: what he keeps, how fast they sell, a real price elsewhere. The second kind just takes money out of your pocket."
     },
     {
       "kind": "choice",
       "id": "discount",
-      "prompt": "Imagine you drop to ₹35 a brownie to close the deal. Next month your costs rise. What's the likely problem?",
+      "prompt": "Imagine you drop to ₹35 a brownie to close the deal. Later, you want ₹45 again. What's the likely problem?",
       "options": [
         {
           "id": "a",
@@ -139,24 +139,24 @@
         },
         {
           "id": "b",
-          "label": "He will want more brownies each day"
+          "label": "He will want fewer brownies each day"
         },
         {
           "id": "c",
-          "label": "Other cafés will ask you for ₹45"
+          "label": "He will ask for more time to pay"
         }
       ],
       "answer": "a",
       "why": "Right. You saw this in Unit 3: a discount makes a good product look cheap. Once he pays ₹35, going back to ₹45 feels like a price rise.",
       "wrong": {
-        "b": "More brownies would be nice, but the real problem is the price. Remember Unit 3: a discount makes a good product look cheap. ₹35 becomes your price in his head.",
-        "c": "Other cafés will hear ₹35 too, not ₹45. Remember Unit 3: a discount makes a good product look cheap. ₹35 becomes your price in his head."
+        "b": "He may not cut his order. The real problem is the price. Remember Unit 3: a discount makes a good product look cheap. ₹35 becomes your price in his head.",
+        "c": "Paying later is a different problem. Remember Unit 3: a discount makes a good product look cheap. ₹35 becomes your price in his head."
       }
     },
     {
       "kind": "scenario",
       "id": "monthly-deal",
-      "setup": "It's late March. The owner wants 70 brownies a week, but says ₹45 is too costly. Each brownie costs you ₹20. He sells it at ₹80. His cake slices cost him ₹30 and sell at ₹50.",
+      "setup": "It's late March. The owner wants 70 brownies a week, as in the trial, but says ₹45 is too costly. Each brownie costs you ₹20. He sells it at ₹80. His cake slices cost him ₹30 and sell at ₹50.",
       "question": "What do you do?",
       "options": [
         {
@@ -169,7 +169,7 @@
         },
         {
           "id": "b",
-          "label": "Keep ₹45 and say your brownies are worth it",
+          "label": "Keep ₹45 and tell him your brownies are worth it",
           "grade": "ok",
           "outcome": "He isn't sure, so he orders 50 a week instead of 70. You keep ₹25 on each: ₹1,250 a week.",
           "why": "Holding your price was right, but \"worth it\" is only your word. He needed to see the numbers for himself.",
@@ -177,7 +177,7 @@
         },
         {
           "id": "c",
-          "label": "Show what he keeps per brownie versus per slice",
+          "label": "Ask what he compares with, and work it out together",
           "grade": "great",
           "outcome": "He sees ₹35 on a brownie against ₹20 on a slice. \"So the costly one earns me more!\" He signs for 70 a week at ₹45. You keep ₹25 on each: ₹1,750 a week.",
           "why": "You changed what he compared: not what he pays, but what he keeps. Your price stayed the same, and now he sees it as fair."
@@ -188,7 +188,7 @@
       "kind": "gap",
       "id": "fill",
       "text": "When a buyer says \"too costly\", ask: compared to ___? Then show a fairer ___.",
-      "bank": ["what", "comparison", "discount", "rupee"],
+      "bank": ["what", "comparison", "discount", "reason"],
       "answer": ["what", "comparison"],
       "why": "Exactly. Lalitaji moved shoppers from price per kilo to what they got for it. You moved the café from what he pays to what he keeps."
     }

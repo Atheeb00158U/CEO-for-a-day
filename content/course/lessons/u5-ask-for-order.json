@@ -37,7 +37,7 @@
       "kind": "explain",
       "id": "close",
       "title": "The alternative-choice close",
-      "text": "So, in a small sale, ask for the order. Give two easy yeses instead of yes or no: \"Shall I deliver on Saturday or Sunday?\" This is the alternative-choice close. In a big sale, don't push. A \"no\" there often means \"not yet\"."
+      "text": "So, in a small sale, one that's quick and low-risk for the buyer, ask for the order. Give two easy yeses: \"Monday or Tuesday?\" This is the alternative-choice close. In a big, risky sale, don't push. A \"no\" there often means \"not yet\"."
     },
     {
       "kind": "choice",
@@ -46,7 +46,7 @@
       "options": [
         {
           "id": "a",
-          "label": "\"Let me know if you ever need a cake.\""
+          "label": "\"Shall I send you my full menu on WhatsApp?\""
         },
         {
           "id": "b",
@@ -60,7 +60,7 @@
       "answer": "c",
       "why": "Yes. Both answers are a yes, and the family only has to pick a day. It's a small sale, they liked the cake, and the birthday is soon, so asking clearly helps them.",
       "wrong": {
-        "a": "That's polite, but it leaves the next step to them, and busy families forget. They liked the cake and the birthday is next week. Ask: \"Friday or Saturday?\"",
+        "a": "That's helpful, but it leaves the next step to them, and busy families forget. They liked the cake and the birthday is next week. Ask: \"Friday or Saturday?\"",
         "b": "\"Yes or no\" makes no as easy as yes. Give them two yeses instead: \"Shall I bring it on Friday or Saturday?\""
       }
     },
@@ -109,11 +109,11 @@
       "prompt": "A school principal says, \"Not this term.\" Put these steps in order, first one at the top.",
       "steps": [
         "Ask what stops her this term",
-        "Agree on a date to call back",
-        "Write that date in your diary",
-        "On that day, call with a useful new idea"
+        "Agree on a day to call back",
+        "Plan a useful new idea for her",
+        "Call on that day with your idea"
       ],
-      "why": "Well done. First learn what stops her, then fix a date together, then write it down so you don't forget. When you call back, bring something useful, not just \"any orders?\""
+      "why": "Well done. First learn what stops her, then fix a day together. Before you call, plan something useful, so the call is more than \"any orders?\""
     },
     {
       "kind": "choice",
@@ -126,11 +126,11 @@
         },
         {
           "id": "b",
-          "label": "No: judge the call, not the result"
+          "label": "No: it was right with what you knew"
         },
         {
           "id": "c",
-          "label": "Yes: you should have waited for them"
+          "label": "Yes: you should have waited"
         }
       ],
       "answer": "b",
@@ -143,7 +143,7 @@
     {
       "kind": "scenario",
       "id": "planner",
-      "setup": "It's late April. A wedding planner tasted your cakes and liked them. She has weddings on 10 May and 17 May. Each needs a ₹6,000 cake that leaves you ₹3,000. She says, \"Let me think.\"",
+      "setup": "It's late April. A wedding planner tasted your cakes and liked them. She has weddings on 10 May and 17 May. Each needs a ₹6,000 cake that leaves you ₹3,000. For her, it's a quick choice. She says, \"Let me think.\"",
       "question": "What do you say?",
       "options": [
         {
@@ -156,14 +156,14 @@
         },
         {
           "id": "b",
-          "label": "\"Shall I keep 10 May or 17 May for you?\"",
+          "label": "\"Shall I book both dates, or just 10 May?\"",
           "grade": "great",
-          "outcome": "She laughs. \"Keep 10 May. For 17 May, the family is still deciding. Call me on Monday.\" You call on Monday, and she books that one too. Two cakes leave you ₹6,000.",
+          "outcome": "She smiles. \"Book 10 May. For 17 May, the family is still deciding. Call me on Monday.\" You call on Monday, and she books that one too. Two cakes leave you ₹6,000.",
           "why": "Two easy yeses made the choice simple. When part of it was \"not yet\", you fixed a date instead of pushing."
         },
         {
           "id": "c",
-          "label": "\"Book both today and I'll take ₹1,000 off each.\"",
+          "label": "\"Book both today, and I'll take ₹1,000 off each.\"",
           "grade": "ok",
           "outcome": "She books both, but each cake now leaves you ₹2,000: ₹4,000 in all. On her next booking, she asks for the same discount.",
           "why": "You asked for the order, which was right. But you paid ₹2,000 to hurry a buyer who was already keen.",
@@ -177,7 +177,7 @@
       "text": "In a small sale, ask for the ___ with two easy choices. When a buyer says \"not yet\", agree on a ___ to come back.",
       "bank": ["order", "date", "discount", "reason"],
       "answer": ["order", "date"],
-      "why": "Exactly. \"10 May or 17 May?\" got you one booking at once, and a Monday call got you the second."
+      "why": "Exactly. \"Both dates, or just 10 May?\" got you one booking at once, and a Monday call got you the second."
     }
   ],
   "summary": [

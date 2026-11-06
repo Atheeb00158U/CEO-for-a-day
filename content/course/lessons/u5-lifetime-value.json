@@ -73,7 +73,7 @@
     {
       "kind": "gap",
       "id": "box-ltv",
-      "text": "Your breakfast box leaves ₹150 a week. A family takes it 40 weeks a year for 2 years. ₹150 × ___ × 2 = ___.",
+      "text": "Your July breakfast box leaves ₹150 a week. A family takes it 40 weeks a year, 2 years: ₹150 × ___ × 2 = ___.",
       "bank": ["40", "₹12,000", "52", "₹6,000"],
       "answer": ["40", "₹12,000"],
       "why": "Right. ₹150 × 40 = ₹6,000 a year, and 2 years makes ₹12,000. Count the weeks they really take it, not all 52."
@@ -89,7 +89,7 @@
           "bucket": 0
         },
         {
-          "text": "₹100 off a family's first cake only",
+          "text": "₹100 off for anyone, this Sunday only",
           "bucket": 1
         },
         {
@@ -101,7 +101,7 @@
           "bucket": 1
         },
         {
-          "text": "Replace a damaged cake free, the same day",
+          "text": "Keep a note of each family's birthdays and orders",
           "bucket": 0
         },
         {
@@ -109,7 +109,7 @@
           "bucket": 1
         }
       ],
-      "why": "Good. The first kind makes families stay and order again: a reminder, their favourite flavour, a fix when things go wrong. The second kind helps one sale and then stops."
+      "why": "Good. The first kind makes families stay and order again: a reminder, their favourite flavour, knowing their dates. The second kind helps one sale and then stops."
     },
     {
       "kind": "choice",
@@ -139,7 +139,7 @@
     {
       "kind": "scenario",
       "id": "squashed",
-      "setup": "It's late June. A family who orders 4 cakes a year calls, upset: today's birthday cake arrived squashed. Baking a fresh one costs you ₹400 and two hours. The party starts at 7 pm.",
+      "setup": "It's mid-June, 3 pm. A family who orders 4 cakes a year calls, upset: today's birthday cake arrived squashed. Baking a fresh one costs you ₹400 and two hours. The party starts at 7 pm.",
       "question": "What do you do?",
       "options": [
         {

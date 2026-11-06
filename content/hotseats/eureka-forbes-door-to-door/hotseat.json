@@ -46,7 +46,7 @@
       "options": [
         {
           "id": "shops",
-          "label": "Sell through appliance shops in big cities, and use newspaper ads to bring buyers in.",
+          "label": "Sell through appliance shops, where dealers pay for the space and stock.",
           "grade": "bad",
           "effect": {
             "profit": 5,
@@ -57,8 +57,8 @@
           "next": "s1988",
           "media": "img:ef_d1_shops",
           "outcome": "Dealers put your box on a shelf beside the fans. Shoppers look at it, but few understand why they need it, and dealers spend little time explaining. Most boxes sit there for months.",
-          "why": "A product people have never used won't sell from a shelf. Someone has to ask how the family cleans today, and then show the answer. Remember: ask questions first, then listen.",
-          "better": "Send salespeople into homes. Let them ask how the family cleans, then show the machine working there.",
+          "why": "A product people have never used won't sell from a shelf. Nobody asks how the family cleans today, or what the dust costs them, before the box is shown. Remember: ask what the problem costs them before you show the fix.",
+          "better": "Send salespeople into homes. Let them ask what dust and sweeping cost the family, then show the machine working there.",
           "takeaway": "In 1982 you put a new product on a shelf. People are more likely to buy after seeing it work.",
           "traits": {
             "horizon": -1,
@@ -79,7 +79,7 @@
           "next": "s1988",
           "media": "img:ef_d1_homes",
           "outcome": "You open no shops. Instead, your salespeople carry the machine into homes and switch it on there. The work is slow and hard. By 1987, you still have just one office in Bombay and 20 salespeople, and the company is struggling.",
-          "why": "A new kind of product must be shown, not shelved. In a home, a salesperson can ask how the family cleans, listen to the answer, and then show the machine on their own floor. Remember: ask questions first, then listen more than you talk.",
+          "why": "A new kind of product must be shown, not shelved. In a home, a salesperson can ask what the dust costs the family in time and work, listen, and then switch the machine on. That's an implication question, then the fix. Remember: ask what the problem costs them before you show the fix.",
           "takeaway": "In 1982 you took your machine into homes. A new product is easier to sell when people see it work for them.",
           "traits": {
             "horizon": 1,
@@ -89,7 +89,7 @@
         },
         {
           "id": "showroom",
-          "label": "Open a few showrooms in big cities, give live demos, and wait for buyers to come in.",
+          "label": "Open big showrooms in city centres, give live demos, and wait for buyers.",
           "grade": "ok",
           "effect": {
             "profit": -5,
@@ -99,8 +99,8 @@
           "next": "s1988",
           "media": "img:ef_d1_showroom",
           "outcome": "The people who walk in like the demo, but not many come. Most families will not make a trip to see a machine they do not know they need.",
-          "why": "Showing the machine was right, but you waited for buyers to come to you. People rarely go looking for something they've never heard of. Remember: go to the buyer, ask questions first, then show.",
-          "better": "Take the demo into people's homes, where you can ask how they clean and show the machine on their own floor.",
+          "why": "Showing the machine was right, but you waited for buyers who didn't know they had a problem. Nobody was there to ask what sweeping cost them. Remember: ask what the problem costs them before you show the fix.",
+          "better": "Take the demo into homes, where you can ask what dust and sweeping cost the family, then show the machine on their own floor.",
           "takeaway": "In 1982 you waited for buyers to visit. Go to them instead.",
           "traits": {
             "horizon": 0,
@@ -157,7 +157,7 @@
           "next": "d3",
           "media": "img:ef_d2_compare",
           "outcome": "You keep the price and make your case, home by home. Over the years, you talk many Indian families out of boiling their tap water and into buying Aquaguard. By 2004, three of every four water purifiers sold in India are yours.",
-          "why": "Boiling looks free, but it isn't: it costs fuel and time every day, and an illness costs far more. Remember: when they say \"too costly\", ask \"compared to what?\"",
+          "why": "Families were judging your price against boiling, as if boiling were free. It isn't: it costs fuel and time every day, and an illness costs far more. You changed their reference price. Remember: when they say \"too costly\", ask \"compared to what?\"",
           "takeaway": "In the 1980s you answered \"too costly\" by showing families what boiling really costs.",
           "traits": {
             "horizon": 1,
@@ -167,7 +167,7 @@
         },
         {
           "id": "emi",
-          "label": "Keep the price. Let families pay a small sum each month, so the cost feels much lighter.",
+          "label": "Keep the price, and offer a monthly plan so families sign on the first visit.",
           "grade": "ok",
           "effect": {
             "profit": 5,
@@ -177,7 +177,7 @@
           "next": "d3",
           "media": "img:ef_d2_emi",
           "outcome": "More families sign up because the monthly sum looks small. But many still wonder why they should pay at all when boiling works, and some stop paying halfway. Chasing payments takes up your team's time.",
-          "why": "Easy payments help people who already want the machine. They don't answer the real doubt: why pay when boiling is free? Remember: when they say \"too costly\", ask \"compared to what?\"",
+          "why": "A monthly plan helps families who already want the machine. It doesn't answer the real doubt: why pay at all, when boiling looks free? Their reference price was still \"free\". Remember: when they say \"too costly\", ask \"compared to what?\"",
           "better": "Keep the price, and show what boiling really costs in fuel, time and doctor's bills. Then your price looks fair.",
           "takeaway": "In the 1980s you made the price easier to pay, but did not show families why it was worth paying.",
           "traits": {
@@ -199,7 +199,7 @@
           "next": "d3",
           "media": "img:ef_d2_pricecut",
           "outcome": "More families buy, but each sale now barely covers your salesperson's pay. Buyers still compare your machine with boiling, which is free, so many still say no.",
-          "why": "You can't beat free on price. Even a cheaper machine costs more than boiling, and now each sale earns you less. Remember: when they say \"too costly\", ask \"compared to what?\"",
+          "why": "You can't beat free on price. Even a cheaper machine costs more than boiling, and now each sale earns you less. The reference was the problem, not the price. Remember: when they say \"too costly\", ask \"compared to what?\"",
           "better": "Keep the price, and show what boiling really costs in fuel, time and doctor's bills. Then your price looks fair.",
           "takeaway": "In the 1980s you tried to beat free on price. You needed to show the value instead.",
           "traits": {
@@ -249,7 +249,7 @@
           "next": "s2005",
           "media": "img:ef_d3_nextdoor",
           "outcome": "Sales keep coming, but local mechanics fit machines badly and use cheap filters. When the water tastes odd, families blame your name and tell their neighbours.",
-          "why": "The sale is not the end. A family that trusts your service buys filters, repairs and the next machine from you. Remember: a customer is worth the margin on all their future buys.",
+          "why": "The sale is not the end. A family that trusts your service buys filters, repairs and the next machine from you. That's customer lifetime value. Remember: a customer is worth the margin on all their future buys.",
           "better": "Fit every machine yourself, send technicians back regularly, and sell yearly service plans.",
           "takeaway": "In the 1990s you walked away after the sale and left your name in a stranger's hands.",
           "traits": {
@@ -270,7 +270,7 @@
           "next": "s2005",
           "media": "img:ef_d3_paidvisit",
           "outcome": "You earn a little on each call. But most owners call only after the machine has failed, and by then some have gone back to boiling. Few buy a second machine from you.",
-          "why": "Waiting for the call means you only turn up when something has gone wrong. Regular visits keep the machine working and the family buying. Remember: a customer is worth the margin on all their future buys.",
+          "why": "Waiting for the call means you only turn up when something has gone wrong, and a family that gives up stops buying. Regular visits also bring the next order without asking. Remember: a customer is worth the margin on all their future buys.",
           "better": "Fit every machine yourself, send technicians back regularly, and sell yearly service plans.",
           "takeaway": "In the 1990s you waited for customers to call. Regular care could have kept more of them buying.",
           "traits": {
@@ -302,7 +302,7 @@
               "text": "A company plumber fits every purifier, and your technicians return to service it. You also sell yearly service plans. Families who trust your service keep buying filters and plans from you, year after year."
             }
           ],
-          "why": "A machine sold once can earn for years through filters and service. Remember: a customer is worth the margin on everything they buy from you, not just the first sale.",
+          "why": "A machine sold once can earn for years through filters, plans and the next machine. That's customer lifetime value, and every visit is a chance to ask for the next order. Remember: a customer is worth the margin on all their future buys.",
           "takeaway": "In the 1990s you looked after every machine you sold, and families kept buying from you.",
           "traits": {
             "horizon": 1,
@@ -369,7 +369,7 @@
           "next": "ending_route",
           "media": "img:ef_d4_morereps",
           "outcome": "Your pay bill jumps, but guards keep many new salespeople at the gate. Each extra sale costs more than the last, so the money left from each one keeps shrinking.",
-          "why": "More knocks only help if each sale earns more than it cost to win. Remember: each customer must earn you more than you spent to win them.",
+          "why": "More knocks only help if each sale earns more than it cost to win. With gated buildings, each extra sale cost more than the last. That's LTV:CAC. Remember: each customer must earn more margin than winning them cost.",
           "better": "Work out what one sale costs in each channel. Keep home demos where they pay, and put simpler models in shops.",
           "takeaway": "In 2012 you hired more sellers without doing the sums. Each customer must earn more than they cost to win.",
           "traits": {
@@ -390,7 +390,7 @@
           "next": "ending_route",
           "media": "img:ef_d4_sums",
           "outcome": "Your sums show that a home visit pays off for costly machines, but not for basic ones. You put simple models in shops and keep demos for the rest. Your sales team shrinks, and some loyal sellers leave angry, but each sale now costs you less.",
-          "why": "Remember: know what it costs to win one customer. The way that made you famous isn't always the cheapest way to reach the next buyer.",
+          "why": "The way that made you famous isn't always the cheapest way to win the next buyer. You checked what each sale cost against what it earned. That's LTV:CAC. Remember: each customer must earn more margin than winning them cost.",
           "takeaway": "In 2012 you did the sums on every sale and changed how you sold, even though it hurt.",
           "traits": {
             "horizon": 1,
@@ -411,7 +411,7 @@
           "next": "ending_route",
           "media": "img:ef_d4_online",
           "outcome": "You decide not to break up your sales force because it is the core of the company. Online ads now bring in requests for demos. In 2014 you still have more than 8,000 salespeople, while rivals keep selling in shops.",
-          "why": "A demo that a family asked for is easier to close, so online ads were a smart fix. But every sale still paid for a home visit, and buyers who shop in stores never met you. Remember: know what it costs to win one customer.",
+          "why": "A demo that a family asked for is easier to close, so online ads were a smart fix. But every sale still paid for a home visit, and buyers who shop in stores never met you. That's LTV:CAC. Remember: each customer must earn more margin than winning them cost.",
           "better": "Work out what one sale costs in each channel. Keep home demos where they pay, and put simpler models in shops.",
           "takeaway": "In 2012 you kept your famous sales team at the centre. You still needed to check what every sale cost.",
           "traits": {

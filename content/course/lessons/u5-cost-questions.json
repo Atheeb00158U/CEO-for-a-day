@@ -37,7 +37,7 @@
       "kind": "explain",
       "id": "spin",
       "title": "SPIN questions",
-      "text": "Rackham named four kinds, SPIN. Situation: \"How many snacks do you sell?\" Problem: \"Do they run out?\" Implication: \"What does running out cost you?\" Need-payoff: \"What would a full shelf mean?\" Implication questions mattered most: they make a small problem look as big as it is."
+      "text": "Rackham named four kinds of questions, SPIN. Situation: the facts. Problem: what goes wrong. Implication: what the problem costs. Need-payoff: what fixing it would mean. The best sellers asked many more implication questions. They make a small problem look as big as it really is."
     },
     {
       "kind": "choice",
@@ -68,7 +68,7 @@
       "kind": "explain",
       "id": "home",
       "title": "Now look at your business",
-      "text": "Rackham studied big company deals, but the same questions work at a café counter. It's February. A busy café near the bus stand sells tea and snacks. You'd like to sell it brownies every day. Each brownie costs you ₹20 to make."
+      "text": "Rackham studied big company deals, but the same questions work at a café counter. Remember the café owner who said \"I will surely buy\"? He never ordered. It's February, and you go back. Each brownie costs you ₹20 to make."
     },
     {
       "kind": "order",
@@ -101,24 +101,24 @@
         }
       ],
       "answer": "b",
-      "why": "Exactly. 15 customers × ₹60 is ₹900 an evening, and 30 evenings make ₹27,000 a month. He never added it up. Once he says it out loud, a brownie order looks small.",
+      "why": "Exactly. 15 customers × ₹60 is ₹900 of sales an evening, and 30 evenings make ₹27,000 of sales a month walking out of his door. He never added it up. Once he says it out loud, a brownie order looks small.",
       "wrong": {
-        "a": "₹900 is one evening: 15 × ₹60. Now multiply by 30 evenings. Running out costs him about ₹27,000 a month.",
+        "a": "₹900 is one evening: 15 × ₹60. Now multiply by 30 evenings. About ₹27,000 of sales walk away each month.",
         "c": "₹6,300 is one week: ₹900 × 7. The question asked about a 30-day month: ₹900 × 30 is ₹27,000."
       }
     },
     {
       "kind": "choice",
       "id": "true-answer",
-      "prompt": "You want the owner's true answer about his problem. Which question should you ask?",
+      "prompt": "You want a fact from the owner, not a polite answer. Which question should you ask?",
       "options": [
         {
           "id": "a",
-          "label": "Last week, on how many evenings did snacks run out?"
+          "label": "How many evenings did snacks run out last week?"
         },
         {
           "id": "b",
-          "label": "Would you buy brownies if I made them?"
+          "label": "Would you buy brownies from me every day?"
         },
         {
           "id": "c",
@@ -135,12 +135,12 @@
     {
       "kind": "scenario",
       "id": "the-visit",
-      "setup": "It's late February. The café owner gives you ten minutes. Every evening, about 15 customers walk away when his snacks run out. He has never added up what that costs. You've brought a box of brownies.",
+      "setup": "It's late February. The owner gives you ten minutes. About 15 customers walk away each evening when his snacks run out. You want ₹45 a brownie; his snack supplier charges ₹30. You've brought a box.",
       "question": "How do you use your ten minutes?",
       "options": [
         {
           "id": "a",
-          "label": "Open the box first and explain your recipe",
+          "label": "Open the box first and talk about your recipe",
           "grade": "ok",
           "outcome": "He tastes one and smiles. \"Very nice. Let me think about it.\" Ten minutes pass, and he never says what the empty shelf costs him. A week later, he still hasn't called.",
           "why": "You showed the fix before he felt the problem. A brownie was just a nice brownie to him.",
@@ -148,17 +148,17 @@
         },
         {
           "id": "b",
-          "label": "Ask what the empty shelf costs him, then open the box",
+          "label": "Ask about the evenings he runs out, then open the box",
           "grade": "great",
-          "outcome": "He works it out himself: about ₹27,000 a month walks away. Then you open the box. He orders 30 brownies a day for a two-week trial at ₹45 each. You keep ₹25 on each: ₹750 a day.",
+          "outcome": "He works it out himself: about ₹27,000 of sales a month walk away. Then you open the box. He orders 10 brownies a day for a two-week trial at ₹45 each. You keep ₹25 on each: ₹250 a day.",
           "why": "He said the cost in his own words, so your brownies became the fix for a ₹27,000 problem."
         },
         {
           "id": "c",
-          "label": "Offer brownies cheaper than his snack supplier",
+          "label": "Match his supplier and offer brownies at ₹30",
           "grade": "bad",
-          "outcome": "He agrees to 30 brownies a day at ₹30 each. You keep only ₹10 on each: ₹300 a day. He still thinks of you as the cheap baker.",
-          "why": "He had a ₹27,000 problem, but you sold on price. You keep less than half of what the trial at ₹45 would pay you.",
+          "outcome": "He agrees to 10 brownies a day at ₹30 each. You keep only ₹10 on each: ₹100 a day. He thinks of you as the cheap baker.",
+          "why": "He had a ₹27,000 problem, but you sold on price. You keep less than half of what the trial at ₹45 would pay.",
           "better": "Ask what the empty shelf costs him first. Then open the box."
         }
       ]
@@ -167,7 +167,7 @@
       "kind": "gap",
       "id": "fill",
       "text": "Before you show your fix, ask what the ___ costs them, and ___ more than you talk.",
-      "bank": ["problem", "listen", "recipe", "argue"],
+      "bank": ["problem", "listen", "price", "smile"],
       "answer": ["problem", "listen"],
       "why": "Exactly. Rackham's best sellers asked implication questions and listened. The café owner found his own ₹27,000 problem, so your brownies sold themselves."
     }
