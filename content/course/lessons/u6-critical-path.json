@@ -1,7 +1,7 @@
 {
   "id": "u6-critical-path",
   "title": "What decides your finish date?",
-  "principle": "Find the critical path. Buy ready-made anything that could make you late.",
+  "principle": "Find the critical path. Buy ready-made things if making them could delay you.",
   "minutes": 5,
   "draft": true,
   "screens": [
@@ -9,7 +9,7 @@
       "kind": "explain",
       "id": "hook",
       "media": "img:ls_metro_build",
-      "text": "Let me tell you about the Delhi Metro. In India, big building projects were often years late. But the Delhi Metro finished its first part two years and nine months ahead of time, in 2005, and within its budget. Have a guess how."
+      "text": "Let me tell you about the Delhi Metro. In India, big building projects were often years late. But the Delhi Metro finished its first part in 2005, two years and nine months early, without spending more than planned. Can you guess how?"
     },
     {
       "kind": "choice",
@@ -19,158 +19,158 @@
       "options": [
         {
           "id": "a",
-          "label": "It ran its sites day and night"
+          "label": "It worked at its sites day and night"
         },
         {
           "id": "b",
-          "label": "It built everything itself, from day one"
+          "label": "It made all the parts on its own"
         },
         {
           "id": "c",
-          "label": "It tracked deadlines, day by day"
+          "label": "It checked each day's work against its plan"
         }
       ],
       "answer": "c",
-      "why": "Its chief, E. Sreedharan, tracked every deadline day by day. And rather than wait to learn to build trains, it bought the first ones ready-made from South Korea. Later trains were finished in India by BEML, an Indian company."
+      "why": "Its chief, E. Sreedharan, checked every deadline each day. Instead of waiting to learn how to make trains, it bought the first trains ready-made from South Korea. Later trains were finished in India by BEML, an Indian company."
     },
     {
       "kind": "explain",
       "id": "path",
       "title": "The critical path",
-      "text": "Here's how to find what decides your date. Some jobs wait for others: buy flour, then bake, then pack. That's a chain. The longest chain is your critical path. Speed up any other job, and you finish the same day. If a job on it is slow, buy it ready-made."
+      "text": "Some jobs must wait for others: first buy flour, then bake, then pack. These jobs form a chain. The longest chain is your critical path, and it decides when you finish. Making other jobs faster won't help. If a job on this chain is slow, buy it ready-made."
     },
     {
       "kind": "explain",
       "id": "home",
       "title": "Now look at your bakery",
-      "text": "A metro and a wedding cake both have a date that can't move. It's November, your home bakery's fifth year, and the wedding season. A family wants a three-tier cake and 200 cupcakes for 28 November. Some jobs can happen side by side, while others must wait."
+      "text": "A metro and a wedding cake both have a date that cannot change. It's November, the fifth year of your home bakery, and wedding season. A family wants a three-tier cake and 200 cupcakes for 28 November. You can do some jobs together, but others must wait."
     },
     {
       "kind": "choice",
       "id": "which-chain",
-      "prompt": "Chain 1: stands from Mumbai, 10 days. Chain 2: design approval, 3 days, then test cake, 2 days. Both run together. Which sets your date?",
+      "prompt": "Chain 1: stands from Mumbai, 10 days. Chain 2: design approval, 3 days, then test cake, 2 days. Both start together. Which sets your date?",
       "options": [
         {
           "id": "a",
-          "label": "Chain 2: design and test cake, 5 days"
+          "label": "Chain 2: design and test, 5 days"
         },
         {
           "id": "b",
-          "label": "Chain 1: the stands, 10 days"
+          "label": "Chain 1: cake stands, 10 days"
         },
         {
           "id": "c",
-          "label": "Both added together, 15 days"
+          "label": "Both chains together, 15 days"
         }
       ],
       "answer": "b",
-      "why": "Exactly. Both chains run side by side, so the longer one decides: 10 days for the stands. That's your critical path. Rushing the test cake won't bring the wedding cake one day closer.",
+      "why": "Exactly. Both chains run at the same time, so the longer one decides when you finish. The stands take 10 days. That's your critical path. Making the test cake faster won't help the order finish earlier.",
       "wrong": {
-        "a": "Chain 2 takes 3 + 2 = 5 days, but the stands take 10. Both run at the same time, so the longer chain, 10 days, decides your date.",
-        "c": "You'd add them only if one had to wait for the other. These run side by side, so the longer chain decides: 10 days for the stands."
+        "a": "Chain 2 takes 3 + 2 = 5 days. But the stands take 10 days. Both chains start together, so the longer one decides when you finish.",
+        "c": "You would add the days only if one chain had to wait for the other. Here, both run together. So the longer chain, 10 days, decides when you finish."
       }
     },
     {
       "kind": "choice",
       "id": "hofstadter",
-      "prompt": "Check your past orders: stands from Mumbai took 10, 12 and 13 days. The shop says 10. How many days do you plan for?",
+      "prompt": "Your past Mumbai orders took 10, 12 and 13 days. The shop promises 10 days. How many days should you plan for?",
       "options": [
         {
           "id": "a",
-          "label": "10 days, as the shop says"
+          "label": "10 days, as the shop promised"
         },
         {
           "id": "b",
-          "label": "12 days, the middle one"
+          "label": "12 days, between the two ends"
         },
         {
           "id": "c",
-          "label": "13 days, the slowest so far"
+          "label": "13 days, the longest time before"
         }
       ],
       "answer": "c",
-      "why": "Right. A writer, Douglas Hofstadter, made this a law: things take longer than you plan, even when you plan for delay. Plan for the slowest time you've seen, and add spare days if you can.",
+      "why": "Right. A writer named Douglas Hofstadter gave this idea a name: things take longer than you plan, even when you allow for delays. Plan for the longest time you've seen, and keep some extra days if you can.",
       "wrong": {
-        "a": "That's the shop's promise. But they took 10, 12 and 13 days before. Plan for the slowest, 13 days.",
-        "b": "12 days would have been late one time in three. They took up to 13 days before, so plan for 13. Things take longer than you plan."
+        "a": "That's what the shop promises. But your past orders took 10, 12 and 13 days. Plan for the longest time you've seen: 13 days.",
+        "b": "If you planned for 12 days, one of your three past orders would have been late. The longest took 13 days, so plan for 13. Things can take longer than you expect."
       }
     },
     {
       "kind": "order",
       "id": "plan",
-      "prompt": "Here are five steps for planning a big order, mixed up. Put them in the right order.",
+      "prompt": "Here are five steps to plan a big order, but they're mixed up. Put them in the right order.",
       "steps": [
-        "List every job the order needs",
-        "Mark which jobs must wait for another",
-        "Add up the days in each chain of jobs",
-        "Find the longest chain: your critical path",
-        "Add spare days, and buy ready-made anything that could make you late"
+        "Write down every job needed for the order",
+        "Mark which jobs must wait for other jobs",
+        "Add the days needed for each chain of jobs",
+        "Find the longest chain, called the critical path",
+        "Keep extra days, and buy ready-made things that could delay you"
       ],
-      "why": "Exactly. You can't find the longest chain until you know every job and which ones wait for others. Then add spare days, because things take longer than you plan, and buy ready-made anything on the critical path that could make you late."
+      "why": "Exactly. First, list all the jobs and find which ones must wait. Then find the longest chain. Keep extra days, because work can take longer than planned. If making something on your critical path could delay you, buy it ready-made."
     },
     {
       "kind": "scenario",
       "id": "wedding",
-      "setup": "It's 15 November. The wedding is in 13 days. Cake stands from Mumbai cost ₹900 and took 10 to 13 days before. No shop nearby sells them, but one rents them today for ₹1,500, ₹600 more than Mumbai.",
+      "setup": "It's 15 November. The wedding is in 13 days. Stands from Mumbai cost ₹900 and took 10 to 13 days before. No nearby shop sells them, but one will rent them to you today for ₹1,500. That's ₹600 more.",
       "question": "How do you plan the wedding order?",
       "options": [
         {
           "id": "a",
-          "label": "Order from Mumbai, and bake the cupcakes early",
+          "label": "Order from Mumbai and bake the cupcakes early",
           "grade": "bad",
-          "outcome": "The cupcakes are ready by 20 November. The stands arrive on the 27th, the night before. By then the cupcakes are a week old, and you bake all 200 again, about ₹3,000 more, while decorating three tiers all night.",
-          "why": "You sped up a job that wasn't on the critical path, so the finish date didn't move. The stands were the long chain.",
+          "outcome": "The cupcakes are ready by 20 November. The stands arrive on the 27th, the night before the wedding. The cupcakes are now a week old, so you bake all 200 again. That costs about ₹3,000 more, while you spend the whole night decorating three tiers.",
+          "why": "You finished the cupcakes early, but they weren't on the critical path, so the order couldn't finish sooner. You still had to wait for the stands.",
           "better": "Rent the stands nearby today, and buy your own later."
         },
         {
           "id": "b",
-          "label": "Order from Mumbai, and save ₹600",
+          "label": "Order from Mumbai and save ₹600 on stands",
           "grade": "ok",
-          "outcome": "The stands arrive on day 12, the evening before the wedding. You decorate through the night. The cake is ready, but one tier leans, and you fix it at the hall an hour before the guests arrive.",
-          "why": "You saved ₹600, but you left no spare days on your slowest job, and it came close to making you late.",
+          "outcome": "The stands arrive on day 12, the evening before the wedding. You spend the night decorating. The cake is ready, but one tier leans to one side, and you fix it at the wedding hall an hour before the guests arrive.",
+          "why": "You saved ₹600, but you kept no extra days for the slowest job. The stands almost made you late.",
           "better": "Rent the stands nearby today, and buy your own later."
         },
         {
           "id": "c",
-          "label": "Rent stands nearby today, for ₹600 more",
+          "label": "Rent stands nearby and pay ₹600 more today",
           "grade": "great",
-          "outcome": "You have the stands today. The test cake is done by the 20th and the family approves it. You bake the cupcakes two days before, and the cake is ready a day early. In January, with no rush, you order your own stands from Mumbai.",
-          "why": "Exactly. You paid ₹600 to take the slowest job off the critical path, with spare days left. Buy ready-made anything that could make you late, and make it yours later."
+          "outcome": "You get the stands today. The test cake is ready by the 20th, and the family says yes to it. You bake the cupcakes two days before the wedding, and the cake is ready a day early. In January, when there's no rush, you order your own stands from Mumbai.",
+          "why": "Exactly. You paid ₹600 more to take the slowest job off your critical path, so now you have extra days. Buy ready-made things when making or waiting for them could delay you. You can buy your own later."
         }
       ]
     },
     {
       "kind": "choice",
       "id": "advance",
-      "prompt": "One more thing: the family will pay ₹18,000. You spend ₹8,000 on flour, boxes and stands first. What should you ask for?",
+      "prompt": "The family will pay ₹18,000. You must first spend ₹8,000 on flour, boxes and stands. How should you ask them to pay?",
       "options": [
         {
           "id": "b",
-          "label": "Half now, half on the day"
+          "label": "Ask for half now and half on the day"
         },
         {
           "id": "a",
-          "label": "All of it after the wedding"
+          "label": "Ask for the full amount after the wedding"
         },
         {
           "id": "c",
-          "label": "Give them ₹2,000 off to pay now"
+          "label": "Offer ₹2,000 off if they pay it all now"
         }
       ],
       "answer": "b",
-      "why": "Right. Half now is ₹9,000, enough to cover the ₹8,000 you spend first. Remember the gym deal from Unit 1: before a big order, check how much cash you'll have before the customer pays.",
+      "why": "Right. Half of ₹18,000 is ₹9,000. That's enough to pay the ₹8,000 you need first. Remember the gym deal from Unit 1: before taking a big order, check how much money you need before the customer pays.",
       "wrong": {
-        "a": "Then you spend ₹8,000 of your own cash first, and wait to be paid. Remember Unit 1: ask for an advance. Half now, ₹9,000, covers the ₹8,000.",
-        "c": "That costs you ₹2,000 you don't need to lose. An ordinary advance, half now, is ₹9,000, enough for the ₹8,000 you spend first."
+        "a": "Then you must spend ₹8,000 of your own money and wait for payment. Remember Unit 1: ask for some money in advance. Half now is ₹9,000, enough to cover the ₹8,000.",
+        "c": "You would lose ₹2,000 when you don't need to. Instead, ask for half in advance. That's ₹9,000, enough to cover the ₹8,000 you must spend first."
       }
     },
     {
       "kind": "gap",
       "id": "fill",
-      "text": "Chain A takes 7 days. Chain B takes 4, then 3, then 1. They run together. The critical path is chain ___, taking ___ days.",
+      "text": "Chain A takes 7 days. Chain B's jobs take 4, 3 and 1 days. Both start together. The critical path is chain ___, taking ___ days.",
       "bank": ["A", "B", "7", "8"],
       "answer": ["B", "8"],
-      "why": "Exactly. Chain B is 4 + 3 + 1 = 8 days, longer than A's 7. That's your critical path. Plan spare days on it, and buy ready-made anything on it that could make you late."
+      "why": "Exactly. Chain B takes 4 + 3 + 1 = 8 days, longer than Chain A's 7 days. So B is your critical path. Keep extra days for it, and buy ready-made things if making them could delay you."
     }
   ],
   "summary": [
@@ -196,9 +196,9 @@
     {
       "id": "m62-path-3",
       "front": "A job took 4, 5 and 7 days before. How long do you plan?",
-      "options": ["4 days", "5 days", "7 days or more"],
+      "options": ["4 days", "5 days", "7 days, the slowest"],
       "answer": 2,
-      "back": "Hofstadter's law: it always takes longer than you expect."
+      "back": "Hofstadter's law: things take longer than you plan. Plan for the slowest."
     }
   ],
   "sources": [

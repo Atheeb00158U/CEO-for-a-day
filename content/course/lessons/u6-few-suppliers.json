@@ -1,7 +1,7 @@
 {
   "id": "u6-few-suppliers",
   "title": "Why not just buy the cheapest?",
-  "principle": "Pick a few strong suppliers on quality, and push them.",
+  "principle": "Pick a few good suppliers for quality, and push them to improve.",
   "minutes": 5,
   "draft": true,
   "screens": [
@@ -9,62 +9,62 @@
       "kind": "explain",
       "id": "hook",
       "media": "img:ls_radiator_caps",
-      "text": "Let me tell you about a Chennai company. General Motors, the American carmaker, had factories in England making radiator caps, a small part that stops an engine boiling over. In 1992 it sold them to Sundram Fasteners. Sundram became GM's main cap supplier, and Supplier of the Year 1996–2000."
+      "text": "Let me tell you about a Chennai company. General Motors, the American carmaker, had factories in England making radiator caps, small parts that stop engines getting too hot. In 1992 it sold them to Sundram Fasteners. Sundram became GM's main cap supplier, and its Supplier of the Year from 1996 to 2000."
     },
     {
       "kind": "choice",
       "id": "guess",
       "guess": true,
-      "prompt": "GM could buy caps from many firms. Why do you think it gave so much work to one?",
+      "prompt": "GM could buy caps from many companies. Why do you think it bought so many from one?",
       "options": [
         {
           "id": "a",
-          "label": "Its caps were cheaper than other firms' caps"
+          "label": "Its caps cost less than caps from other firms"
         },
         {
           "id": "b",
-          "label": "Its caps were good, year after year"
+          "label": "Its caps worked well year after year"
         },
         {
           "id": "c",
-          "label": "GM had no other firm to buy from"
+          "label": "GM had no other firms selling those caps"
         }
       ],
       "answer": "b",
-      "why": "Good quality, year after year. A radiator cap costs little, but if it fails, the engine can overheat. Five Supplier of the Year awards in a row tell you Sundram kept earning GM's trust."
+      "why": "The caps worked well year after year. A radiator cap costs little, but if it fails, the engine can get too hot. Sundram won Supplier of the Year five times in a row, which shows how it kept GM's trust."
     },
     {
       "kind": "explain",
       "id": "deming",
       "title": "Deming's rule 4",
-      "text": "W. Edwards Deming, a famous American quality teacher, gave managers 14 rules. Rule 4 says stop buying on the price tag alone, because a cheap part can cost the most when it fails. Buy from as few suppliers as you can, for years, and help them improve."
+      "text": "W. Edwards Deming, an American who taught companies how to improve quality, gave managers 14 rules. Rule 4 says don't buy only because the price is low, because a cheap part can cost more if it fails. Work with a few good suppliers for years, and help them improve."
     },
     {
       "kind": "explain",
       "id": "home",
       "title": "Now look at your bakery",
-      "text": "Now picture your home bakery in October of its fifth year. Each week you buy cream from whichever of five shops is cheapest, and it changes week to week. Some weeks it won't whip, and cakes fail. And last Holi, your one milk shop shut for three days."
+      "text": "Now think about your home bakery in October of its fifth year. Each week, you buy cream from the cheapest of five shops, so the cream keeps changing. Some weeks it won't whip, and cakes fail. Last Holi, your only milk shop also closed for three days."
     },
     {
       "kind": "choice",
       "id": "cheap-cream",
-      "prompt": "The cheapest cream saves you ₹200 a week. But 2 cakes a week fail, and each costs ₹400 to bake again. Is it really cheaper?",
+      "prompt": "Cheap cream saves ₹200 a week. But 2 cakes fail each week, and baking each again costs ₹400. Are you saving money?",
       "options": [
         {
           "id": "a",
-          "label": "Yes. It saves you ₹200 a week"
+          "label": "Yes, you save ₹200 each week"
         },
         {
           "id": "b",
-          "label": "It works out about even"
+          "label": "It's about even, ₹0 either way"
         },
         {
           "id": "c",
-          "label": "No. It costs you ₹600 more a week"
+          "label": "No, you spend ₹600 more each week"
         }
       ],
       "answer": "c",
-      "why": "Exactly. 2 failed cakes × ₹400 is ₹800 a week. Take away the ₹200 you saved, and the cheap cream costs you ₹600 more each week. That's Deming's point: the price tag isn't the whole cost.",
+      "why": "Exactly. Baking 2 failed cakes again costs 2 × ₹400 = ₹800 a week. Take away the ₹200 saved, and you spend ₹600 more each week. That's Deming's rule: a low buying price does not always mean a low total cost.",
       "wrong": {
         "a": "That's the price tag. But 2 failed cakes × ₹400 = ₹800 a week. ₹800 minus the ₹200 you saved means you lose ₹600 a week.",
         "b": "Let's check. You save ₹200, but lose 2 × ₹400 = ₹800 on failed cakes. That's ₹600 a week worse, not even."
@@ -73,48 +73,48 @@
     {
       "kind": "choice",
       "id": "whos-right",
-      "prompt": "Your sister says: buy cream from all five shops. Your cousin says: only from the best one. You think: the best two. Who's right?",
+      "prompt": "Your sister says buy cream from all five shops. Your cousin says buy only from the best one. You prefer the best two. Who's right?",
       "options": [
         {
           "id": "a",
-          "label": "Your sister: all five"
+          "label": "Your sister says all five shops"
         },
         {
           "id": "b",
-          "label": "You: the best two"
+          "label": "You say the best two shops"
         },
         {
           "id": "c",
-          "label": "Your cousin: only the best one"
+          "label": "Your cousin says only one shop"
         }
       ],
       "answer": "b",
-      "why": "Right. Five shops means five kinds of cream. But only one can hurt too. In 1997, a fire hit the Aisin factory that made almost all of Toyota's brake valves, and Toyota's car plants in Japan stopped for days. So pick a few strong suppliers, not one.",
+      "why": "Right. Five shops mean your cream keeps changing. But one shop is also risky. In 1997, a fire at Aisin, the factory making almost all of Toyota's brake valves, stopped Toyota's car factories in Japan for days. So choose a few good suppliers, not just one.",
       "wrong": {
-        "a": "Five shops means five kinds of cream, and none of them sees you as an important buyer. Two good shops still keep each other honest, and each one cares about your orders.",
-        "c": "Close. Deming liked as few as you can. But remember Holi: when your one shop shut, so did you. In 1997, a fire at the Aisin factory, which made almost all of Toyota's brake valves, stopped Toyota's car plants in Japan for days. Keep a second good one."
+        "a": "With five shops, your cream keeps changing, and none gets much work from you. With two good shops, both get regular orders and have a reason to keep you happy.",
+        "c": "Almost. Deming wanted you to buy from as few suppliers as possible. But remember Holi, when your only milk shop closed. In 1997, a fire at Aisin, which made almost all of Toyota's brake valves, stopped Toyota's car factories in Japan for days. Keep a second good shop."
       }
     },
     {
       "kind": "choice",
       "id": "push",
-      "prompt": "You now buy from two good shops. One shop's cream still fails about twice a month. What should you do first?",
+      "prompt": "You now buy from two good shops. But one shop's cream still fails about twice a month. What should you do first?",
       "options": [
         {
           "id": "a",
-          "label": "Show him a failed cake, and say what you need"
+          "label": "Show him a failed cake and explain what you need"
         },
         {
           "id": "b",
-          "label": "Stop buying from him, and find a new shop"
+          "label": "Stop buying from him and choose another shop"
         },
         {
           "id": "c",
-          "label": "Pay him less for each bad week"
+          "label": "Pay him less when his cream is bad"
         }
       ],
       "answer": "a",
-      "why": "Exactly. Picking good suppliers is half of it. The other half is pushing them: show what went wrong, say what good cream means for you, like how thick and how fresh, and check it together. A supplier who knows your standard can meet it.",
+      "why": "Exactly. Choosing good suppliers is only the first step; you must also push them to improve. Show what went wrong, tell him how thick and fresh the cream must be, and check it together. When a supplier knows what you need, he can work towards it.",
       "wrong": {
         "b": "A new shop starts from zero, and may be worse. First show this one what went wrong, and tell him what good cream means for you. Push a good supplier before you drop one.",
         "c": "Paying less won't fix his cream. Show him the failed cakes, and agree on what good cream means, so he knows what to fix."
@@ -123,23 +123,23 @@
     {
       "kind": "choice",
       "id": "bulk",
-      "prompt": "Your butter shop offers 120 kg at ₹480 a kg, ₹20 off. You use 40 kg a month, and Diwali is close. What's the catch?",
+      "prompt": "Your butter shop offers 120 kg at ₹480 a kg, ₹20 off a kg. You use 40 kg a month, and Diwali is near. What's the problem?",
       "options": [
         {
           "id": "a",
-          "label": "None. You save ₹2,400"
+          "label": "No problem, you save ₹2,400"
         },
         {
           "id": "b",
-          "label": "The shop may close at Diwali"
+          "label": "The shop might close for Diwali"
         },
         {
           "id": "c",
-          "label": "₹57,600 leaves your hands before Diwali"
+          "label": "You must pay ₹57,600 before Diwali"
         }
       ],
       "answer": "c",
-      "why": "Exactly. 120 kg × ₹480 is ₹57,600, paid now, for three months of butter. You save ₹2,400, but most of that cash sits in your fridge for weeks, just when Diwali needs it. Remember frozen cash from Unit 1.",
+      "why": "Exactly. 120 kg × ₹480 = ₹57,600 paid now, for three months of butter. You save ₹2,400, but much of your money stays in the butter for weeks, when you may need it for Diwali. Remember frozen cash from Unit 1: money tied up in things you've bought.",
       "wrong": {
         "a": "You do save 120 × ₹20 = ₹2,400. But you pay 120 × ₹480 = ₹57,600 today, for butter you'll use over three months. That's frozen cash from Unit 1.",
         "b": "It might, but that's not the catch here. 120 kg × ₹480 = ₹57,600, paid now, for butter you'll use over three months, just when Diwali needs cash."
@@ -148,29 +148,29 @@
     {
       "kind": "scenario",
       "id": "diwali-cream",
-      "setup": "It's late October. Your best cream shop says it will close for five days at Diwali. That week you'll need 30 kg of cream for about 50 cakes. Your second good shop can't supply that much.",
+      "setup": "It's late October. Your best cream shop says it will close for five days during Diwali. That week, you need 30 kg of cream for about 50 cakes. Your second good shop cannot supply enough.",
       "question": "How do you make sure you have good cream at Diwali?",
       "options": [
         {
           "id": "a",
-          "label": "Buy that week from the cheapest shops",
+          "label": "Buy cream from the cheapest shops that week",
           "grade": "bad",
-          "outcome": "The cheap cream won't whip on the busiest day of the year. 8 cakes fail: ₹3,200 to bake again, and four orders reach families late. Two of them complain in the colony WhatsApp group.",
+          "outcome": "The cheap cream won't become thick when you whip it on the busiest day of the year. 8 cakes fail, costing ₹3,200 to bake again. Four orders reach families late, and two families complain in the colony WhatsApp group.",
           "why": "You were back to buying on price alone, on the week you could least afford a failed cake.",
           "better": "Test new shops before Diwali, and keep the best as a third supplier."
         },
         {
           "id": "b",
-          "label": "Test cream from three shops you've never used",
+          "label": "Try cream from three shops you don't know",
           "grade": "great",
-          "outcome": "You test cream from three shops you've never used, on two cakes each, and one whips well every time. It covers the Diwali week. No cakes fail, and you keep it as your backup.",
+          "outcome": "You try cream from three new shops, making two cakes with each shop's cream. One shop's cream whips well every time, and it can supply 30 kg. It covers Diwali week. No cakes fail, and you keep this shop as your backup.",
           "why": "Exactly. You chose on quality, tested before you needed it, and now have a few strong suppliers, not one."
         },
         {
           "id": "c",
-          "label": "Ask your best shop to deliver extra early",
+          "label": "Ask your best shop for extra cream early",
           "grade": "ok",
-          "outcome": "The shop delivers a week's cream before it closes. By day four, some has gone sour. You throw away 6 kg and bake 2 cakes again. It works, just.",
+          "outcome": "The shop delivers a week's cream before it closes. By day four, some cream has gone bad. You throw away 6 kg and bake 2 cakes again. You manage, but only just.",
           "why": "Getting it early saved the week, but fresh cream doesn't keep well, and you'll face the same problem every holiday.",
           "better": "Test new shops before Diwali, and keep the best as a third supplier."
         }
@@ -179,14 +179,14 @@
     {
       "kind": "gap",
       "id": "fill",
-      "text": "A shop buys rice from whoever is ___ each week, and the rice keeps changing. Deming would say: buy from a ___ strong suppliers.",
+      "text": "A shop buys rice from whoever is ___ each week, so the rice keeps changing. Deming would say: buy from a ___ good suppliers.",
       "bank": ["cheapest", "few", "nearest", "many"],
       "answer": ["cheapest", "few"],
       "why": "Exactly. Buying on price alone brings a different rice every week. A few strong suppliers, kept for years and pushed to improve, bring the same good rice every week."
     }
   ],
   "summary": [
-    "Deming's point 4: stop buying on the price tag alone. A cheap part can cost the most.",
+    "Deming's rule 4: stop buying on the price tag alone. A cheap part can cost the most.",
     "Work with a few strong suppliers for years, and push them to get better.",
     "Keep a few, not one: if your only supplier stops, so do you."
   ],
