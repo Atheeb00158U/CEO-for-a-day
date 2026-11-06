@@ -1,5 +1,5 @@
 # Fact-check: tanishq-karatmeter
-checked-sha256: e8b28f15a0b6ed77a050b1624859122af96f41e0b65a9e03c53d012b23e31b64
+checked-sha256: 9fb5ce005fd29d29a92e31defa1a40223ac0c3650a505926e4d25b235044feb6
 Checked: 2026-11-06 · by: fresh-context fact-check agent (delta re-check)
 
 ## Sources opened
@@ -65,3 +65,6 @@ Real-path lines changed since the last stamp, checked against the sources above:
 - [supported] Jewellers sell 19 or 20-karat as 22-karat; Titan's own tests prove it; buyers can only check by melting; Basel show; machine checks purity in about three minutes without harm; more than ₹10 lakh each; business losing money (nodes.d3.setup) — [1], [2], [5]
 - [supported] Birthday sale with pieces from ₹399 (nodes.d4.options.cheer.label) — [2]
 - Off-path changes (d1.research.outcome, d2.holdfirm.label, d3.lab.label, d3.onestore.why, d4.bigads.label/better, d5.coupon.label) were read: wording only, "you" estimates, no invented history about Titan or Tanishq.
+
+## Re-check 2026-11-06 (after the delta re-check)
+- d4.question reworded to "How do you bring more people into your stores?" (no factual content). Checked by the author; no claim changed.

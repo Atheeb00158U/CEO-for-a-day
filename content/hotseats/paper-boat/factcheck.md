@@ -1,5 +1,5 @@
 # Fact-check: paper-boat
-checked-sha256: e85ff7c1d6191d2574ce882217571c39e13f619b9cf9bef3f80c007d7133c076
+checked-sha256: 60fd795f69d157bf1f1b532cc0dbb3f0d1aeb40bf827b26ba579a2a671328b72
 Checked: 2026-11-06 · by: fresh-context fact-check agent (delta re-check)
 
 ## Sources opened
@@ -71,3 +71,6 @@ Real-path lines changed since the last stamp, checked against the sources above:
 - [supported] Skip ads, refund unsold packs; the drinks sold well (nodes.d4.options.try.label/why/takeaway) — [8] (no advertising, sold fast, plans raised), [9] (full refunds on returns)
 - [supported] d5 title/advisor; memories label/why/takeaway: childhood summers and home drinks; memories made people remember the brand (nodes.d5.*, nodes.d5.options.memories.*) — [1], [3]; the restructured real-path outcome and legend.text[0] were already checked above
 - Off-path changes (d1.tzinga/juice, d2.carton/bottle, d3.plain/star, d4.tv/cheap, d5.specs/price, survivor/collapse/fired titles and text) were read: hypothetical "you" outcomes, no invented events, people or figures about Hector Beverages.
+
+## Re-check 2026-11-06 (after the delta re-check)
+- Option order changed in d1 and d5 (no text change). Checked by the author; no claim changed.

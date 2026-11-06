@@ -77,29 +77,6 @@
           }
         },
         {
-          "id": "panna",
-          "label": "Bottle home drinks like aam panna. They're new, and Tzinga gets less.",
-          "grade": "great",
-          "real": true,
-          "effect": {
-            "profit": -5,
-            "future": 15,
-            "flags": [
-              "panna"
-            ]
-          },
-          "next": "d2",
-          "media": "img:pb_d1_panna",
-          "outcome": "You start making Indian home drinks like aam panna and jaljeera. They have no fizz, no preservatives (chemicals that keep drinks fresh) and no added colours. You call them Paper Boat, after the paper boats children float in the monsoon rain.",
-          "why": "Remember: a bad fix people already use proves the pain is real. Here, mothers made these drinks at home because shops didn't sell them. It took time, but they still made them. That showed people wanted these drinks.",
-          "takeaway": "In 2012 you sold drinks people loved but couldn't buy. Good ideas can come from things people already want.",
-          "traits": {
-            "horizon": 1,
-            "risk": 1,
-            "disrupt": 1
-          }
-        },
-        {
           "id": "juice",
           "label": "Sell fruit juices. Many people buy them, but big brands already sell them.",
           "grade": "ok",
@@ -120,6 +97,29 @@
             "horizon": 0,
             "risk": -1,
             "disrupt": 0
+          }
+        },
+        {
+          "id": "panna",
+          "label": "Bottle home drinks like aam panna. They're new, and Tzinga gets less.",
+          "grade": "great",
+          "real": true,
+          "effect": {
+            "profit": -5,
+            "future": 15,
+            "flags": [
+              "panna"
+            ]
+          },
+          "next": "d2",
+          "media": "img:pb_d1_panna",
+          "outcome": "You start making Indian home drinks like aam panna and jaljeera. They have no fizz, no preservatives (chemicals that keep drinks fresh) and no added colours. You call them Paper Boat, after the paper boats children float in the monsoon rain.",
+          "why": "Remember: a bad fix people already use proves the pain is real. Here, mothers made these drinks at home because shops didn't sell them. It took time, but they still made them. That showed people wanted these drinks.",
+          "takeaway": "In 2012 you sold drinks people loved but couldn't buy. Good ideas can come from things people already want.",
+          "traits": {
+            "horizon": 1,
+            "risk": 1,
+            "disrupt": 1
           }
         }
       ]
@@ -461,29 +461,6 @@
       "advisor": "Many buyers care about health. Tell them clearly what's inside your drink and what you've left out.",
       "options": [
         {
-          "id": "specs",
-          "label": "Show what's not inside. It's honest, but every juice says much the same.",
-          "grade": "ok",
-          "effect": {
-            "profit": 5,
-            "future": 0,
-            "flags": [
-              "specs"
-            ]
-          },
-          "next": "ending_route",
-          "media": "img:pb_d5_specs",
-          "outcome": "Your ads show fresh fruit and clearly tell people what is not in the drink. People like that, but the ad looks like other juice ads on TV. Few remember which brand it was for, so sales grow slowly.",
-          "why": "Remember: sell what you stand for, not just specs. A list of what's inside tells people about the product. Other juice brands can say much the same, so your ad didn't give people anything special to remember.",
-          "takeaway": "In 2015 you told people what was inside. Other brands can do that too, so tell people what makes yours special.",
-          "traits": {
-            "horizon": 1,
-            "risk": 0,
-            "disrupt": 1
-          },
-          "better": "Talk about what makes your brand special: the drinks you grew up with, made like they were at home."
-        },
-        {
           "id": "memories",
           "label": "Show childhood summers and home drinks. Moving, but the young may not care.",
           "grade": "great",
@@ -518,6 +495,29 @@
             "risk": 1,
             "disrupt": 1
           }
+        },
+        {
+          "id": "specs",
+          "label": "Show what's not inside. It's honest, but every juice says much the same.",
+          "grade": "ok",
+          "effect": {
+            "profit": 5,
+            "future": 0,
+            "flags": [
+              "specs"
+            ]
+          },
+          "next": "ending_route",
+          "media": "img:pb_d5_specs",
+          "outcome": "Your ads show fresh fruit and clearly tell people what is not in the drink. People like that, but the ad looks like other juice ads on TV. Few remember which brand it was for, so sales grow slowly.",
+          "why": "Remember: sell what you stand for, not just specs. A list of what's inside tells people about the product. Other juice brands can say much the same, so your ad didn't give people anything special to remember.",
+          "takeaway": "In 2015 you told people what was inside. Other brands can do that too, so tell people what makes yours special.",
+          "traits": {
+            "horizon": 1,
+            "risk": 0,
+            "disrupt": 1
+          },
+          "better": "Talk about what makes your brand special: the drinks you grew up with, made like they were at home."
         },
         {
           "id": "price",
