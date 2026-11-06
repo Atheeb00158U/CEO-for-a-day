@@ -1,59 +1,57 @@
 # Fact-check: tanishq-karatmeter
-checked-sha256: 4d351b6fcdd6fb385cb73ebae7a04d1f2682b8e27c2ea15658eef63b1044f660
-Checked: 2026-10-28 · by: independent fact-check agent (fresh context)
+checked-sha256: b5c53bdbac4ac7a37a38298ef92d3f916199a0f93f150be053f14ad2e99b8644
+Checked: 2026-11-06 · by: fresh-context fact-check agent
 
 ## Sources opened
-1. [The Tanishq Story, Foreword and Chapter 1 sample, C.K. Venkataraman (Juggernaut Books, 2024)](https://juggernaut.in/cdn/shop/files/Tanishq_Story_Interior_till_chapter_1.pdf)
+1. [The Tanishq Story, Foreword and Chapter 1 sample, C.K. Venkataraman (Juggernaut Books, 2024)](https://juggernaut.in/cdn/shop/files/Tanishq_Story_Interior_till_chapter_1.pdf) (PDF downloaded and read in full)
 2. [How Tanishq turned around (Rediff, 4 July 2003)](http://www.rediff.com/business/special/tan/20030704.htm)
 3. [Tanishq completes three-year turnaround story (afaqs, 3 July 2003)](https://www.afaqs.com/company-briefs/1003_tanishq-completes-three-year-turnaround-story)
 4. [Rise of the Titan (Business Today, January 2019)](https://www.businesstoday.in/magazine/the-break-out-zone/story/rise-of-the-titan-165877-2019-01-21)
-5. [SNAP #9: How Karatmeters gave a new life to Tanishq (Simplanations, 2021)](https://www.simplanations.in/p/snap-9-how-karatmeters-gave-a-new)
+5. [SNAP #9: How Karatmeters gave a new life to Tanishq (Simplanations)](https://www.simplanations.in/p/snap-9-how-karatmeters-gave-a-new)
 6. [Tanishq (Wikipedia)](https://en.wikipedia.org/wiki/Tanishq)
-7. [Tanishq makes US debut, unveils 'Impure to Pure' campaign (Rediff / Business Standard, 15 May 2002)](https://m.rediff.com/money/2002/may/15tanisq.htm) — not yet in hotseat.json sources
-8. [India's biggest jeweller Tanishq hits expansion mode in UAE (Gulf News, December 2021)](https://gulfnews.com/business/retail/indias-biggest-jeweller-tanishq-hits-expansion-mode-in-uae---2-stores-open-in-dubai-and-one-soon-in-abu-dhabi-1.1638433773185) — not yet in hotseat.json sources
+7. [Tanishq makes US debut, unveils 'Impure to Pure' (Rediff / Business Standard, 15 May 2002)](https://m.rediff.com/money/2002/may/15tanisq.htm)
+8. [India's biggest jeweller Tanishq hits expansion mode in UAE (Gulf News, 2021)](https://gulfnews.com/business/retail/indias-biggest-jeweller-tanishq-hits-expansion-mode-in-uae---2-stores-open-in-dubai-and-one-soon-in-abu-dhabi-1.1638433773185)
 
 ## Claims
-- [supported] FIXED: intro now calls Titan "the Tata company behind India's favourite quartz watches" (nodes.intro.text) — [1] (60% of quartz analogue watches)
-- [supported] FIXED: intro now says the idea grew out of India's shortage of foreign money in 1990–91 (nodes.intro.text) — [1]
-- [supported] Titan is a Tata company; the Hosur jewellery plant cost Rs 65 crore and was built to export to Europe (intro.text) — [1] (European and American markets)
-- [supported] The export plan failed and the plant had to turn to India (intro.text; realHistory) — [1] ("the export operations sputtered… the export opportunity did not quite exist"). Wording note: "the export orders never came" slightly overstates "sputtered"; acceptable.
-- [supported] Indian jewellery is a store of value; more than two-thirds of jewellery made in the early 1990s was wedding jewellery (s_goal.text) — [1]
-- [supported] Families buy from a jeweller they have trusted for years (s_goal.text) — [4] ("long-standing family jewellers"), [5]
-- [supported] Indians prefer 22-karat (91.6% gold); the plant made minimal 18-karat (75% gold) pieces (s_goal.text) — [1]
-- [supported] The market research head suggested testing whether Indians would buy 18-karat; no research was done (d1.setup; d1.options.0.outcome) — [1]
-- [supported] Titan launched with 18-karat diamond jewellery in stores modelled on European boutiques (d1.options.0.label/outcome; realHistory) — [1]
-- [supported] First store opened on Cathedral Road, Chennai, in July 1996; customers were meant to book an appointment; walk-ins were low for most of the first year (d1.options.0.outcome) — [1], [6]
-- [supported] Store feedback was "we need 22-karat jewellery" (d2.setup.1) — [1]
-- [supported] The team had 22-karat pieces made in Mumbai and Mysore; walk-ins improved a lot; most of the range stayed 18-karat diamond; Chennai's first year closed at Rs 2.8 crore against a Rs 3.5 crore target (d2.options.0.label/outcome) — [1]
-- [supported] Tanishq lost Rs 10.6 crore in 1996–97 (scene1997.text.3) — [2]
-- [supported] Titan's 1996–97 annual report admitted a very strong preference for 22-karat and that buyers often get under-karat jewellery sold as 22-karat (scene1997.text.3) — [1]
-- [supported] In 1997 a new head of jewellery brought more 22-karat lines and began showing gold weight and making charges separately (scene1997.text.3) — [1]
-- [supported] Many jewellers sold 19 or 20-karat as 22-karat; checking meant melting the piece (d3.setup) — [1]
-- [supported] The head of manufacturing saw an XRF machine at the Basel show (1996); it reads an alloy in about three minutes without damage; each cost more than Rs 10 lakh while the business was losing money (d3.setup) — [1]
-- [supported] From 1997 the machines went into boutiques nationwide; Lintas branded it the Karatmeter (d3.options.1.outcome.1; realHistory) — [1]
-- [supported] Anyone could test their gold free, including gold bought elsewhere (d3.options.1.label/outcome.1; realHistory) — [5] ("tested for free"), [4] (checked "gold jewellery owned by consumers"), [1] (customers angry at "the jeweller who had gypped them"). Note: no source dates the free offer exactly to 1997.
-- [supported] Hundreds queued; some customers broke down; local jewellers leaned on Tanishq franchisees, some threatening violence; purity became the core of the ads (d3.options.1.outcome.1) — [1]
-- [supported] Sales grew more than four times in three years (Rs 32 crore 1996–97 to Rs 141 crore 1999–2000) and Tanishq lost money every year to 2000 (scene2000.text.0; realHistory) — [2]
-- [supported] In May 2000 a new MD was named; the next day the COO quit with six senior executives; the entire sales and marketing team resigned (scene2000.text.0) — [2]
-- [supported] About 30 stores; loud ads not working; a survey found buyers didn't know the brand, found it too expensive, or felt it was not for people like them (d4.setup.0) — [2]
-- [supported] FIXED: d4 label, alternate outcome and `better` now say "name real pieces in your ads", not prices (nodes.d4.options.2.label; .outcome.1; nodes.d4.options.0.better) — [2]
-- [supported] Fifth-anniversary offer drew big crowds; ads named bracelets, rings and chains; a range from Rs 399 to lower the price barrier; collections for working women; corporate sales; first profit (Rs 2.07 crore) in 2000–01 (d4.options.2.outcome.0; realHistory) — [2]
-- [supported] Impure to Pure, launched May 2002: jewellery of 19 karat and up swapped for 22-karat Tanishq jewellery, with Tanishq bearing the gold difference (d5 year; d5.options.1.label/outcome.0; realHistory) — [7] ("at no extra cost"), [4] ("at the brand's cost"), [5]
-- [supported] The exchange won customers from traditional jewellers (d5.options.1.outcome.0; realHistory) — [3]
-- [supported] In 2002–03 sales grew more than a third (39%) and profit more than four times (+318%, Rs 1.87 to 7.82 crore); 60 stores in 47 towns (d5.options.1.outcome.0) — [2], [3]. Note: 39% is retail/annual sales growth per [2][3]; total turnover in [2]'s table rose about 30% (299 to 389).
-- [supported] Tanishq was 43% of Titan's business in 2002–03 and one of India's top five retailers in 2003 (legend.text.0) — [2] (table: 43%; text says 40%), [6]
-- [supported] 105 stores in 71 cities by 2008 (legend.text.0) — [6]
-- [supported] Tanishq became India's biggest jewellery brand (legend.text.0; realHistory) — [8] ("India's biggest jewellery retailer")
+- [unsupported] Titan "makes India's best-selling watches" (nodes.intro.text) — [1] gives 60% of the quartz analogue market but only 12% of the total watch market by March 1993, and says HMT still led overall in 1990. Searched [1], [2], [4].
+- [supported] Titan is a Tata company; ₹65 crore jewellery plant in Hosur built for export (nodes.intro.text; hook) — [1] (export to "European and American markets").
+- [supported] The idea grew out of India's 1990–91 foreign-exchange shortage (nodes.intro.text) — [1].
+- [supported] The export orders never came / Europe did not buy (nodes.intro.text; hook; realHistory) — [1] ("the export operations sputtered… the export opportunity did not quite exist").
+- [contradicted] In 1994 the India brand is "a new name: Tanishq" (nodes.intro.text, year 1994) — [1]: in March and mid 1994 the planned brand was Celeste; the name Tanishq was chosen later, before the 1995 launch ads.
+- [supported] Gold as savings; more than two-thirds of jewellery made is for weddings; families buy from a long-trusted jeweller; 22-karat (91.6%) preferred; plant made minimal 18-karat (75%) pieces (nodes.s_goal.text) — [1], [4], [5].
+- [supported] No research was done before launching 18-karat (nodes.d1.options.western.outcome) — [1].
+- [supported] First store Cathedral Road, Chennai, July 1996; European-style boutique; all 18-karat diamond jewellery; buyers expected to book an appointment (nodes.d1.options.western.outcome) — [1], [6].
+- [supported] Walk-ins low for most of the first year (nodes.d1.options.western.outcome "almost nobody comes in"; nodes.d2.setup default "almost empty") — [1] ("quite low most of the first year"). Wording slightly strong but acceptable.
+- [supported] Store feedback "we need 22-karat jewellery" (nodes.d2.setup default) — [1].
+- [supported] 22-karat pieces made by manufacturers in Mumbai and Mysore; walk-ins improved a lot; most of the range still 18-karat diamond; Chennai first year ₹2.8 crore vs ₹3.5 crore target (nodes.d2.options.add22.outcome) — [1].
+- [supported] Tanishq lost ₹10.6 crore in 1996–97 (nodes.scene1997.text western+add22 variant) — [2].
+- [supported] Titan's 1996–97 annual report admits a very strong Indian preference for 22-karat and that buyers often get under-karat jewellery sold as 22-karat (same variant) — [1].
+- [supported] In 1997 more 22-karat lines were added and gold weight and making charges began to be shown separately (same variant) — [1].
+- [supported] Many jewellers sold 19 or 20-karat as 22-karat; checking meant melting the piece (nodes.d3.setup) — [1].
+- [unsupported] "Everyone in the trade knows it, and many buyers suspect it" (nodes.d3.setup) — [1] says tests had proved it "to the people within Titan"; no source says buyers suspected it. Searched [1], [2], [4], [5].
+- [supported] Head of manufacturing saw an XRF machine at the Basel show (1996); it reads an alloy in about three minutes without damage; each cost more than ₹10 lakh while Tanishq was losing money (nodes.d3.setup) — [1], [5].
+- [supported] From 1997 machines went into boutiques across India; Lintas branded it the Karatmeter (nodes.d3.options.karatmeter.outcome default; realHistory) — [1].
+- [supported] Anyone could test their gold free, including gold bought elsewhere (nodes.d3.options.karatmeter.label/outcome; realHistory) — [5] ("get its purity tested for free"), [4] (jewellery consumers already owned), [1] (customers irate at "the jeweller who had gypped them"). Note: no source dates the free offer to 1997 exactly; [5] places the free-testing campaign in the turnaround years.
+- [supported] Hundreds queued; some broke down; local jewellers leaned on Tanishq franchisees, some threatening violence; purity became the core of the ads (nodes.d3.options.karatmeter.outcome default) — [1].
+- [supported] About 30 stores in 2000; sales grew more than four times in three years (₹32 crore 1996–97 to ₹141 crore 1999–2000); losses every year to 2000 (nodes.scene2000.text real variant) — [2].
+- [contradicted] "In May, Titan puts a new managing director above you. The next day your head of operations quits with six senior staff" (nodes.scene2000.text real variant) — [2]: Bhaskar Bhat was named MD over Vasant Nangia, the jewellery business head, who was made COO; it was Nangia himself (the player's own role) who quit the next day with six senior executives. "Your head of operations" makes him a subordinate. The whole sales and marketing team resigning is supported — [2].
+- [supported] Survey reasons: didn't know the brand, too expensive, not for people like them; empty stores the core problem (nodes.d4.setup) — [2].
+- [supported] Fifth-anniversary offer drew big crowds; ads named bracelets, rings, chains; range from ₹399; collections for working women; corporate sales; first profit (₹2.07 crore) in 2000–01 (nodes.d4.options.cheer.label/outcome real variant; realHistory) — [2].
+- [supported] A small profit two years running by 2002 (₹2.07 crore 2000–01, ₹1.87 crore 2001–02) (nodes.s2002.text real variant) — [2].
+- [supported] Gold demand in 2002 about a fifth lower than 2001 (843 to 680 tonnes, −19%) (nodes.s2002.text real variant) — [2].
+- [supported] Machines showed many families their "22-karat" held less gold (nodes.d5.setup) — [1], [5] (nearly 60% of tested pieces below promised purity).
+- [supported] Impure to Pure, May 2002: 19 to 22-karat jewellery swapped for 22-karat Tanishq jewellery; Tanishq bears the gold difference; buyer pays only the making charge (nodes.d5.year; nodes.d5.options.swap.label/outcome both variants) — [7] ("no extra cost" for 19 karat and above), [4] (Tanishq bore the cost), [5] (only making charges).
+- [supported] The exchange won customers from traditional jewellers (nodes.d5.options.swap.outcome; realHistory) — [3], [4].
+- [supported] 2002–03: sales up more than a third (39%), profit more than four times (+318%), 60 stores in 47 towns (nodes.d5.options.swap.outcome real variant) — [2], [3]. Note: 39% is retail sales; total jewellery sales rose about 30% (₹299 to ₹389 crore).
+- [supported] By 2003 one of India's top five retailers (nodes.legend.text real variant) — [2], [6].
+- [supported] Tanishq became India's biggest jewellery brand (nodes.legend.text real variant; realHistory) — [8] ("India's biggest jewellery retailer").
+- [supported] realHistory as a whole (export failure, 1996 18-karat launch, losses, move to 22-karat, Karatmeter from 1997, 2000 crisis, first profit, Impure to Pure) — [1], [2], [5], [7], [8].
 
 ## Alternate history
-- d1.options.1/2, d2.setup.0, d2.options.1/2, scene1997.text.0–2 and .4, d3.options.0/2, d3.options.1.outcome.0, d4.setup.1, d4.options.0/1, d5.setup.1, d5.options.0/2, survivor, fired, legend.text.1/2: written as "you" estimates; no invented facts about named people. ok.
-- scene2000.text.1–3 repeat the real May 2000 MD change and resignations; those are real, so ok.
-- collapse ("The jewellery business is sold off, and Titan goes back to making watches") is invented about a real company, but only on an off-path ending with the estimate badge. ok.
-- d4.options.2.outcome.1 and d4.options.0.better repeat "real prices" (see the unsupported claim above).
+- d1.research/survey, d2.setup mix variant, d2.fullswitch/holdfirm, scene1997 non-real variants, d3.lab/onestore, karatmeter holdfirm variant, scene2000 non-real variants, d4.bigads/shrink, cheer default variant, s2002 non-real variants, d5.setup lab variant, d5.coupon/truevalue, legend non-real variants, survivor, collapse, fired: written as "you" estimates, no invented facts about named people. ok.
+- scene2000 non-real variants repeat the real May 2000 MD change and resignations in general terms. ok.
+- collapse ("Titan sells it and goes back to making watches") is invented about a real company, but only on an off-path ending with the estimate label. ok.
 
 ## Other issues
 - Quotes: none from real people. Advisor lines are generic.
-- Living people: none named. Lintas is named as a company. No jeweller is named in the under-karat claims.
-
-## Changes after this check (2026-10-28)
-- Added Rediff/Business Standard 2002 and Gulf News 2021 to `sources`. Checked by the author.
+- Living people: none named. Lintas is named as a company.

@@ -31,7 +31,7 @@
       "type": "scene",
       "year": "2012",
       "media": "img:pb_intro",
-      "text": "You and three partners run a small drinks company. Your energy drink, Tzinga, sells for ₹25, while the biggest energy drink costs ₹95. But money is tight, and it must last until you find a real hit.",
+      "text": "You and three partners run a small drinks company. Your energy drink, Tzinga, sells for ₹25, far less than the biggest energy drink at ₹95, but money is tight, and it must last until you find a real hit.",
       "next": "idea"
     },
     "idea": {
@@ -39,7 +39,7 @@
       "type": "scene",
       "year": "2012",
       "media": "img:pb_idea",
-      "text": "One partner's mother makes aam panna, the raw mango drink, and he often brings it to work. When the team wants more, it looks in the shops, but can't find it anywhere. No shop sells aam panna, jaljeera or the other drinks you all grew up with.",
+      "text": "One partner's mother makes aam panna, the raw mango drink, and he often brings it to work. When the team wants more, it looks in the shops, but can't find it anywhere. No shop sells aam panna, jaljeera, the cumin drink, or the other drinks you all grew up with.",
       "next": "d1"
     },
     "d1": {
@@ -67,7 +67,7 @@
           "next": "d2",
           "media": "img:pb_d1_tzinga",
           "outcome": "Tzinga grows a little, but it still sells to the same small group, and the big brands spend far more than you on ads. A year later sales have stopped growing, and the aam panna idea is still sitting on your desk.",
-          "why": "Remember: a bad fix people already use proves the pain is real. Tzinga sold, but to one small group. The stronger sign was a drink people's mothers made at home because no shop sold it.",
+          "why": "Remember: a bad fix people already use proves the pain is real. Here, the bad fix was mothers making these drinks at home, the slow way, because no shop sold them. Tzinga sold, but to one small group; the home-made drinks showed a bigger want.",
           "better": "Bet on the drinks people grew up with but couldn't buy in any shop.",
           "takeaway": "In 2012 you backed the drink you already sold. The bigger chance was a need no one was serving.",
           "traits": {
@@ -90,8 +90,8 @@
           },
           "next": "d2",
           "media": "img:pb_d1_panna",
-          "outcome": "You start working on drinks from Indian homes, like aam panna and jaljeera, with no fizz, no preservatives and no added colours. You call the range Paper Boat, after the boats children float in the monsoon rain.",
-          "why": "Remember: a bad fix people already use proves the pain is real. Families made these drinks at home, the slow way, because no shop sold them. That home-made fix showed the want was real.",
+          "outcome": "You start working on drinks from Indian homes, like aam panna and jaljeera, with no fizz, no preservatives (chemicals that keep a drink fresh) and no added colours. You call the range Paper Boat, after the boats children float in the monsoon rain.",
+          "why": "Remember: a bad fix people already use proves the pain is real. Here, the bad fix was mothers making these drinks at home, the slow way, because no shop sold them. That showed the want was real.",
           "takeaway": "In 2012 you bottled drinks people loved but couldn't buy. The best ideas fill a gap people already feel.",
           "traits": {
             "horizon": 1,
@@ -113,7 +113,7 @@
           "next": "d2",
           "media": "img:pb_d1_juice",
           "outcome": "Your mango and orange juices reach the shelves beside dozens of others that look much the same. Shops want big discounts to stock one more juice. After a year, you are still a small name in a crowded aisle.",
-          "why": "Remember: a bad fix people already use proves the pain is real. A big market can also be a crowded one. Nobody was struggling to find mango juice, so you gave buyers one more choice, not something they were missing.",
+          "why": "Remember: a bad fix people already use proves the pain is real. Nobody was making mango juice at home because no shop sold it; shops were full of it. The home-made drinks were the real gap.",
           "better": "Bottle the drinks people grew up with but couldn't buy in any shop.",
           "takeaway": "In 2012 you entered a crowded market. A gap no one fills beats a big market everyone fills.",
           "traits": {
@@ -169,7 +169,7 @@
           "next": "d3",
           "media": "img:pb_d2_pouch",
           "outcome": "You choose a 250 ml pouch that stands up on the shelf and looks like paper. It costs less than a carton, so you keep more from every sale. On the shelf, it also looks like nothing else.",
-          "why": "Remember: price minus stock cost isn't profit. Count every hidden cost. The pack is a hidden cost on every drink you sell. A cheaper pack left you more from each sale, and it stood out on the shelf too.",
+          "why": "Remember: price minus stock cost isn't profit. Count every hidden cost. Here, the pack is part of what each drink costs you. A cheaper pack left you more from each sale, and it stood out on the shelf too.",
           "takeaway": "In 2013 you chose a pack that cost less and stood out. Small savings on every item add up.",
           "traits": {
             "horizon": 1,
@@ -192,7 +192,7 @@
           "next": "d3",
           "media": "img:pb_d2_carton",
           "outcome": "Your drinks look neat and safe on the shelf, but every carton cuts into what you make on each pack. To earn anything, you must price them above the juices next to them, and many shoppers walk past.",
-          "why": "Remember: price minus stock cost isn't profit. Count every hidden cost. The pack is a hidden cost on every single drink, and a costly carton ate into the money you needed to grow.",
+          "why": "Remember: price minus stock cost isn't profit. Count every hidden cost. Here, the pack is part of what each drink costs you, and a costly carton ate into the money you needed to grow.",
           "better": "Choose a cheaper pack, like a pouch, and make it look special.",
           "takeaway": "In 2013 you chose a costly pack. A few rupees on every item add up across the whole business.",
           "traits": {
@@ -215,7 +215,7 @@
           "next": "d3",
           "media": "img:pb_d2_bottle",
           "outcome": "The bottles are cheap and tough, but on the shelf your aam panna looks like one more soft drink. Shoppers can't tell it apart from the colas unless they stop and read the label.",
-          "why": "Remember: price minus stock cost isn't profit. Count every hidden cost. The bottle kept that hidden cost low, so each sale still paid. But the pack did nothing to show what made your drink special.",
+          "why": "Remember: price minus stock cost isn't profit. Count every hidden cost. The bottle kept the pack cost low, so each sale still paid. But the pack did nothing to show what made your drink special.",
           "better": "Pick a pack that costs less and also looks different, like a paper-look pouch.",
           "takeaway": "In 2013 you saved money on the pack but looked like everyone else.",
           "traits": {
@@ -234,7 +234,7 @@
       "media": "img:pb_d3",
       "setup": "You have almost no money for ads, so for most people the pack on the shelf will be the first thing they see from you. Every pack has one small space you can fill however you like.",
       "question": "What do you print on the pack?",
-      "advisor": "The pack is the only ad we can afford. What should people feel when they pick it up?",
+      "advisor": "Shoppers read a pack to see what's inside. Keep it clear and honest.",
       "options": [
         {
           "id": "plain",
@@ -285,7 +285,7 @@
         },
         {
           "id": "story",
-          "label": "Print a short childhood story on each pack. It's warm, but leaves less room for facts.",
+          "label": "Print a short childhood story on each pack. It's warm, but the facts get squeezed into a corner.",
           "grade": "great",
           "real": true,
           "effect": {
@@ -343,7 +343,7 @@
         },
         {
           "id": "try",
-          "label": "Skip ads, and take back any pack a shop can't sell. Shops relax, but growth will be slow.",
+          "label": "Skip ads, and take back any pack a shop can't sell. Shops relax, but every return costs you.",
           "grade": "great",
           "real": true,
           "effect": {
@@ -446,42 +446,51 @@
           "text": "It's 2015. Your early ads made your name known, and now investors will pay for a bigger TV campaign. Your drinks have no preservatives, no added colours and no fizz, while your rivals sell fruit juice and cola. Some experts say childhood memories won't work with young buyers or in the South."
         },
         {
+          "when": {
+            "flags": [
+              "cheap"
+            ]
+          },
+          "text": "It's 2015. Money is tight, but investors will pay for one TV campaign if it works. Your drinks have no preservatives, no added colours and no fizz, while your rivals sell fruit juice and cola. Some experts say childhood memories won't work with young buyers or in the South."
+        },
+        {
           "text": "It's 2015, and at last you can afford TV. Your drinks have no preservatives, no added colours and no fizz, while your rivals sell fruit juice and cola. Some experts say childhood memories won't work with young buyers or in the South."
         }
       ],
       "question": "What should your first big ad say?",
-      "advisor": "Memories are what made people love us. A list of what's not inside could make us sound like every juice.",
+      "advisor": "Health matters to many buyers. Tell them plainly what's in the drink and what isn't.",
       "options": [
         {
-          "id": "both",
-          "label": "Show childhood memories, then one plain line: nothing artificial inside. Clear, but less magic.",
-          "grade": "great",
+          "id": "specs",
+          "label": "Show what's inside: no preservatives, no colours, no fizz. It's honest, but every juice says that.",
+          "grade": "ok",
           "effect": {
-            "profit": 10,
-            "future": 15,
+            "profit": 5,
+            "future": 0,
             "flags": [
-              "both"
+              "specs"
             ]
           },
           "next": "ending_route",
-          "media": "img:pb_d5_both",
-          "outcome": "Your ads show childhood summers and drinks made at home, and end on one plain line: nothing artificial inside. People who grew up with these drinks feel the memory, while younger buyers and people in the South get a simple reason to try one. Sales climb in more places, not just the big cities.",
-          "why": "Remember: sell what you stand for, not just specs. The memory was what you stood for, and it moved people who grew up with these drinks. The plain line gave everyone else a reason to try it. People pay for a result and a feeling.",
-          "takeaway": "In 2015 you sold a memory and a clean recipe together. A feeling plus a reason reaches more people.",
+          "media": "img:pb_d5_specs",
+          "outcome": "Your ads show fresh fruit and a clear list of what's not inside. People nod, but the ad looks like every juice ad on TV, and few remember which drink it was for. Sales grow slowly.",
+          "why": "Remember: sell what you stand for, not just specs. A list of what's inside is a spec, and every juice brand can say much the same. Nothing in the ad was yours alone.",
+          "takeaway": "In 2015 you sold what's inside. Every rival can say that; sell what only you stand for.",
           "traits": {
             "horizon": 1,
             "risk": 0,
             "disrupt": 1
-          }
+          },
+          "better": "Lead with what only you stand for: the drinks of a childhood, made the way they were at home."
         },
         {
           "id": "memories",
-          "label": "Show childhood memories alone, and let people guess it's natural. Moving, but the young may not care.",
-          "grade": "ok",
+          "label": "Show childhood summers and drinks from home. It's moving, but young buyers may not care.",
+          "grade": "great",
           "real": true,
           "effect": {
             "profit": 10,
-            "future": 5,
+            "future": 15,
             "flags": [
               "memories"
             ]
@@ -502,14 +511,13 @@
               "text": "Your line is 'Drinks and Memories', and your TV ads are all about childhood summers and drinks from home. People feel something when they see them, and sales begin to climb."
             }
           ],
-          "why": "Remember: sell what you stand for, not just specs. The memory was what you stood for, and sales grew fast. But experts had warned it might not reach young buyers or the South, and a memory alone gave them no plain reason to try it.",
-          "takeaway": "In 2015 you sold a memory. It moved people who missed these drinks, but others needed a reason too.",
+          "why": "Remember: sell what you stand for, not just specs. Many juices can say what's inside. Only you stood for the drinks of a childhood, and that is what made people remember you and pay more.",
+          "takeaway": "In 2015 you sold a memory, not a list of what's inside. Sell what only you stand for.",
           "traits": {
             "horizon": 1,
             "risk": 1,
             "disrupt": 1
-          },
-          "better": "Keep the memories, and add a plain reason anyone can see: no preservatives, no colours, no fizz."
+          }
         },
         {
           "id": "price",
@@ -543,7 +551,7 @@
       "routes": [
         {
           "when": {
-            "minFuture": 95
+            "minFuture": 90
           },
           "to": "legend"
         },
@@ -564,7 +572,23 @@
       "tier": "legend",
       "title": "A memory in every pack",
       "media": "img:pb_legend",
-      "text": "Paper Boat becomes most of your company's sales, in shops, on flights and in office canteens. Young buyers and people in the South try it for the clean recipe and stay for the taste. It grows into one of India's best-loved new drink brands.",
+      "text": [
+        {
+          "when": {
+            "flags": [
+              "panna",
+              "pouch",
+              "story",
+              "try",
+              "memories"
+            ]
+          },
+          "text": "By 2015 Paper Boat makes up about 90% of your company's sales, and yearly sales reach about ₹24 crore. That is still small, but in July investors put in about ₹180 crore to help it grow. A drink no shop sold now sells in shops, on flights and in office canteens."
+        },
+        {
+          "text": "Paper Boat becomes most of your company's sales, in shops, on flights and in office canteens. A drink no shop sold a few years ago now has fans across India, and investors line up to help it grow."
+        }
+      ],
       "bonus": 15
     },
     "survivor": {
@@ -578,13 +602,10 @@
           "when": {
             "flags": [
               "panna",
-              "pouch",
-              "story",
-              "try",
               "memories"
             ]
           },
-          "text": "By 2015 Paper Boat makes up about 90% of your company's sales, and yearly sales reach about ₹24 crore. That is still small, but investors have just put in about ₹180 crore to help it grow. It sells in shops, on flights and in office canteens in big cities, but experts still doubt that childhood memories will win over young buyers and the South."
+          "text": "Paper Boat finds real fans in shops, on flights and in office canteens. But one weaker call along the way keeps it smaller than it could have been."
         },
         {
           "when": {
@@ -619,7 +640,7 @@
       "bonus": 0
     }
   },
-  "realEnding": "survivor",
+  "realEnding": "legend",
   "realHistory": "Hector Beverages sold a cheap energy drink, Tzinga. Its founders saw that old Indian drinks like aam panna were not sold in any shop. They quietly tested Paper Boat in 500 stores in February 2013, with no ads, and launched it in Delhi and Bengaluru that August in paper-look pouches that cost less than cartons. Each pack told a small childhood story, and the brand's line was 'Drinks and Memories'. For about two years it ran no TV or print ads, and people found it in shops, on flights and in office canteens. By 2015 Paper Boat was about 90% of the company's sales, yearly sales were about ₹24 crore, and investors put in about ₹180 crore.",
   "sources": [
     {
