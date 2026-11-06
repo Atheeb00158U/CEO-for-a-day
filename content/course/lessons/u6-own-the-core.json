@@ -31,7 +31,7 @@
         }
       ],
       "answer": "c",
-      "why": "Airtel paid only for the network it used, a bit like paying a delivery service per trip, instead of owning the network. That left more time and money to win customers, and it kept growing: more than 2.4 crore mobile customers by July 2006."
+      "why": "Airtel paid only for the network it used, like paying a delivery service for each trip, instead of owning the network. This gave Airtel more time and money to win customers. It kept growing, and had more than 2.4 crore mobile customers by July 2006."
     },
     {
       "kind": "explain",
@@ -143,7 +143,7 @@
         },
         {
           "id": "b",
-          "label": "Other shops could sell the very same cake"
+          "label": "Other shops could sell exactly the same cake"
         }
       ],
       "answer": "b",
@@ -165,19 +165,19 @@
           "grade": "bad",
           "outcome": "You finish every Diwali order. But some regular customers get factory cakes, notice the different taste, and talk about it in the colony group. In November, your orders fall below 120.",
           "why": "You gave away the one thing customers came for. Your taste is your core, so it's the last thing to give away.",
-          "better": "Keep the baking. Pay others for delivery."
+          "better": "Keep making the cakes. Pay others to deliver them."
         },
         {
           "id": "b",
-          "label": "Hire a full-time rider on a salary",
+          "label": "Hire your own rider for a monthly salary",
           "grade": "ok",
-          "outcome": "Diwali deliveries go well, at ₹12,000 a month for the rider. In November, deliveries fall to about 90. A delivery service would cost ₹5,400, but your rider still costs ₹12,000.",
+          "outcome": "Diwali deliveries go well. You pay the rider ₹12,000 a month. In November, deliveries fall to about 90. A delivery service would cost ₹5,400, but you still pay your rider ₹12,000.",
           "why": "Deliveries worked, but you took on a fixed cost for a busy month. Delivery isn't your core, so there was no need to own it.",
           "better": "Pay a delivery service per trip, and keep the baking yourselves."
         },
         {
           "id": "c",
-          "label": "Pay a delivery service for each trip",
+          "label": "Pay a delivery service for each delivery",
           "grade": "great",
           "outcome": "In October, the service makes 200 deliveries for ₹12,000, the same as your own rider. In November, it makes about 90 for ₹5,400, saving you ₹6,600. You spend Diwali baking, and your regular customers keep ordering.",
           "why": "Exactly. You kept your core, the baking, and paid others only for what you used. When the rush ended, the cost fell with it."

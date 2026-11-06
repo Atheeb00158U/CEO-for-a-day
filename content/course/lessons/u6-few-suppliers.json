@@ -37,13 +37,13 @@
       "kind": "explain",
       "id": "deming",
       "title": "Deming's rule 4",
-      "text": "Here's the idea behind that. W. Edwards Deming, an American quality expert, told managers: don't buy on price alone, because a cheap part that fails costs more. Move towards one good supplier for each item, and help them improve. But one is risky, so many small firms keep two."
+      "text": "W. Edwards Deming was an American quality expert. He told managers not to buy on price alone, because a cheap part that fails can cost more. He advised one good supplier for each item, and helping them improve. But one supplier is risky, so many small firms keep two."
     },
     {
       "kind": "explain",
       "id": "home",
       "title": "Now look at your bakery",
-      "text": "Your home bakery is five years old. It's October. Each week, you buy cream from the cheapest of five shops, so the cream keeps changing. Most weeks some won't get thick when you whip it, and cakes fail. Last Holi, your only milk shop also closed for three days."
+      "text": "Your home bakery is five years old. It's October. Each week, you buy cream from the cheapest of five shops, so the cream keeps changing. Most weeks, some cream won't get thick when you whip it, and cakes fail. Last Holi, your only milk shop closed for three days."
     },
     {
       "kind": "choice",
@@ -110,20 +110,20 @@
         },
         {
           "id": "c",
-          "label": "Ask him for money back for the failed cakes"
+          "label": "Ask him to pay for the failed cakes"
         }
       ],
       "answer": "a",
       "why": "Exactly. Choosing good suppliers is only the first step; you must also push them to improve. Show what went wrong, tell him how thick and fresh the cream must be, and check it together. When a supplier knows what you need, he can work towards it.",
       "wrong": {
         "b": "A new shop might be better, but you don't know yet. First, show your current supplier the failed cake and explain what went wrong. Give a good supplier a chance to improve before you replace him.",
-        "c": "Money back helps this week, but his cream will still fail next week. Show him the failed cake and explain what you need, so he can fix it."
+        "c": "Getting money back helps this week, but his cream may fail again next week. Show him the failed cake, and explain what you need so he can fix the problem."
       }
     },
     {
       "kind": "choice",
       "id": "bulk",
-      "prompt": "A good supplier can still sell you too much. Butter: 45 kg at ₹480, ₹20 off. You use 15 kg monthly. Diwali is close. Problem?",
+      "prompt": "A good supplier can still sell you too much. Butter: 45 kg at ₹480 a kg, ₹20 off. You use 15 kg monthly. Diwali is close. Problem?",
       "options": [
         {
           "id": "a",
@@ -179,7 +179,7 @@
     {
       "kind": "gap",
       "id": "fill",
-      "text": "You buy flour from whoever is ___ each week, and the flour keeps changing. Deming would say: buy from a ___ good suppliers.",
+      "text": "You buy flour from the ___ shop each week, but the flour keeps changing. Deming would say: buy from a ___ good suppliers.",
       "bank": ["cheapest", "few", "biggest", "many"],
       "answer": ["cheapest", "few"],
       "why": "Exactly. Buying only on price means your flour may change every week. Deming wanted firms to work with as few good suppliers as possible, for years, and help them improve. That makes it easier to get the same quality every week."

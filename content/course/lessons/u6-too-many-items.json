@@ -19,7 +19,7 @@
       "options": [
         {
           "id": "a",
-          "label": "All kinds, a few of each, so shops stay full"
+          "label": "Sell all kinds, but only a few of each"
         },
         {
           "id": "b",
@@ -98,7 +98,7 @@
     {
       "kind": "sort",
       "id": "hidden",
-      "prompt": "Your chocolate cake costs ₹400 to make: ingredients and box. I'll show you six costs. For each one: inside that ₹400, or hidden?",
+      "prompt": "Your chocolate cake costs ₹400 to make, with ingredients and box. I'll show you six costs. For each one, tell me: inside that ₹400, or hidden?",
       "buckets": ["Inside the ₹400", "Hidden cost"],
       "items": [
         {
@@ -122,7 +122,7 @@
           "bucket": 0
         },
         {
-          "text": "Power for a second fridge for extra stock",
+          "text": "Electricity for a second fridge to hold extra stock",
           "bucket": 1
         }
       ],
@@ -131,15 +131,15 @@
     {
       "kind": "choice",
       "id": "stock",
-      "prompt": "Your 4 slowest cakes tie up ₹3,000 of stock: their own fruit, creams and toppings. If you drop them, what do you get?",
+      "prompt": "Your 4 slowest cakes need ₹3,000 of stock: fruit, cream and toppings. If you stop selling them, what happens to that money?",
       "options": [
         {
           "id": "a",
-          "label": "₹3,000 of cash back, once"
+          "label": "Get ₹3,000 cash back one time"
         },
         {
           "id": "b",
-          "label": "₹3,000 extra profit each month"
+          "label": "Earn ₹3,000 more profit every month"
         },
         {
           "id": "c",
@@ -147,10 +147,10 @@
         }
       ],
       "answer": "a",
-      "why": "Exactly. That ₹3,000 no longer sits in your fridge. As you use up the last of it and don't buy more, the cash comes back to you, once. Remember frozen cash from Unit 1: money in stock can't pay your bills.",
+      "why": "Correct. That ₹3,000 will no longer sit as stock in your fridge. Once you use up the last of it and stop buying more, you get the cash back one time. Remember frozen cash from Unit 1: money kept in stock cannot pay your bills.",
       "wrong": {
-        "b": "Not every month. You get it back once. The ₹3,000 tied up in those cakes' stock comes back as you stop buying it, the frozen cash from Unit 1.",
-        "c": "Stock is money you've already spent. Stop buying stock for those 4 cakes, and the ₹3,000 you no longer keep tied up stays in your hand. That's cash you can use."
+        "b": "You don't get ₹3,000 every month. You get it back one time: when you stop buying stock for those cakes, you free up the ₹3,000 you kept in stock. That's the frozen cash from Unit 1.",
+        "c": "You have already spent money on this stock. When you use it up and stop buying stock for those 4 cakes, you no longer keep ₹3,000 in it. That money becomes cash you can use."
       }
     },
     {
@@ -161,15 +161,15 @@
       "options": [
         {
           "id": "a",
-          "label": "Add mango only",
+          "label": "Add mango and keep all other cakes",
           "grade": "ok",
-          "outcome": "Mango earns ₹2,100. But its 5 hours must come from cakes you bake now, so you bake 3 fewer chocolate cakes: ₹1,350 less. You gain ₹750 a month, and your menu grows to 19 items.",
+          "outcome": "Mango earns ₹2,100, but it takes 5 hours away from cakes you bake now. You make 3 fewer chocolate cakes, at ₹450 each, and lose ₹1,350. You gain ₹750 a month, but your menu now has 19 items.",
           "why": "Mango was a good add. But every new item brings new hidden costs, here 5 hours of your time, so it should push out a weak item.",
           "better": "Add mango, and drop pineapple and coffee."
         },
         {
           "id": "c",
-          "label": "Swap mango for pineapple",
+          "label": "Add mango, remove pineapple",
           "grade": "ok",
           "outcome": "You lose pineapple's ₹350, but mango earns ₹2,100. Mango takes the 5 hours you used for pineapple, so you can't bake extra chocolate cakes. You gain ₹1,750 a month. Coffee still earns only ₹150 for 5 hours, and your menu stays at 18 items.",
           "why": "A good swap, but you kept one weak item. Coffee's 5 hours could have baked 3 chocolate cakes, ₹1,350, instead of ₹150.",
@@ -177,7 +177,7 @@
         },
         {
           "id": "b",
-          "label": "Swap mango for pineapple and coffee",
+          "label": "Add mango, remove pineapple and coffee",
           "grade": "great",
           "outcome": "You give up the ₹500 from pineapple and coffee, and mango earns ₹2,100. Dropping both frees 10 hours. Mango takes 5, and in the other 5 you bake the 3 chocolate cakes you used to turn away: ₹1,350. You gain ₹2,950 a month, and your menu drops to 17 items.",
           "why": "Exactly. You let a new item in only by pushing out two weak ones. Your menu got shorter, your waste fell, and your hours went to cakes people want."

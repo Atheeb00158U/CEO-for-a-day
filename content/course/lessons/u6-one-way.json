@@ -37,13 +37,13 @@
       "kind": "explain",
       "id": "standard",
       "title": "Standard work",
-      "text": "This is called standard work: writing down the best way to do a job, so everyone follows it. Toyota made it famous in its factories. It isn't about working harder. When everyone follows the same steps, mistakes show up fast, and one fix helps everyone. Let's try it here."
+      "text": "This is called standard work: you write down the best way to do a job, so everyone follows it. Toyota made it famous in its factories. It doesn't mean working harder. When everyone follows the same steps, you find mistakes faster and fix them for everyone. Let's try it here."
     },
     {
       "kind": "explain",
       "id": "home",
       "title": "Now look at your bakery",
-      "text": "It's August, your home bakery's fifth year. Your sister and cousin now bake with you: about 30 cakes a week at ₹850, costing ₹400 each. But their chocolate cakes taste different from yours, and about 3 a week come out wrong, because each of you bakes differently."
+      "text": "It's August, your home bakery's fifth year. Your sister and cousin now bake with you: about 30 cakes a week at ₹850 each, costing ₹400 each. But your chocolate cakes taste different, and about 3 a week come out wrong, because each of you bakes differently."
     },
     {
       "kind": "choice",
@@ -111,7 +111,7 @@
         "Bake your best cake and weigh every ingredient",
         "Write down the weights, times and checks on a card",
         "Teach your helpers and watch each person bake once",
-        "Check a few cakes from each person against the card",
+        "Check a few cakes from each person using the card",
         "When someone finds a better way, test it and change the card"
       ],
       "why": "Exactly. First, find your best way and measure everything. Then write it down, teach everyone and check their cakes. The last step matters most, because the card can change: when someone finds a better way and it works, everyone follows the new card."
@@ -127,7 +127,7 @@
         },
         {
           "id": "c",
-          "label": "Yes, if the customer liked the cake"
+          "label": "Yes, because the customer liked the cake"
         },
         {
           "id": "b",
@@ -138,7 +138,7 @@
       "why": "Right. Remember Unit 1: judge the thinking, not the luck. A cake can come out well even when someone guesses, but that doesn't make guessing a good method. A clear card helps all three of you bake cakes that taste alike.",
       "wrong": {
         "a": "Her cake came out well this time. But remember Unit 1: judge the thinking, not the luck. One good result doesn't prove that guessing works. Next time she may guess wrong, and nobody will know why.",
-        "c": "The customer liked one cake, but that's one result, not a method. Judge the thinking, not the luck. Guessing the sugar may fail next time, and nobody will know why."
+        "c": "The customer liked one cake, but one good result does not prove the method works. Judge the thinking, not the luck. Guessing the sugar may fail next time, and nobody will know why."
       }
     },
     {
@@ -189,7 +189,7 @@
         },
         {
           "id": "c",
-          "label": "Give them the card, and check the finished cakes",
+          "label": "Give them the card and check the cakes they make",
           "grade": "ok",
           "outcome": "The card helps, but you never watched them bake. Your cousin uses a heaped spoon of cocoa instead of weighing 60 g. Every Friday one cake tastes wrong, so you bake it again and earn ₹2,600 a week. The café is happy, but you spend Friday mornings fixing cakes.",
           "why": "Writing the card was a good start. But you didn't bake together, so each person could understand it differently. Show them every step, and watch them do it once.",

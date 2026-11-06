@@ -37,18 +37,18 @@
       "kind": "explain",
       "id": "path",
       "title": "The critical path",
-      "text": "Some jobs wait for others. Say boxes take 10 days to come from Mumbai and you can't pack until they arrive, while baking takes 2 days. The 10-day chain is longer, so it's your critical path: it decides when you finish. If it could make you late, buy boxes nearby."
+      "text": "Some jobs must finish before others can start. Say boxes take 10 days to come from Mumbai, and you can't pack without them, while baking takes 2 days. The 10-day chain is longer, so it's your critical path: it decides when you finish. If it may delay you, buy boxes nearby."
     },
     {
       "kind": "explain",
       "id": "home",
       "title": "Now look at your bakery",
-      "text": "A metro and a wedding cake both have a date that cannot change. It's November, your home bakery's fifth year. A family wants a three-tier cake and 200 cupcakes for 28 November. You need cake stands from Mumbai, the family's yes on a design, and a test cake first."
+      "text": "It's November, your home bakery's fifth year. A family wants a three-tier cake and 200 cupcakes for 28 November. Like a metro, your order has a date you cannot change. You need cake stands from Mumbai, the family's approval of the design, and a test cake."
     },
     {
       "kind": "choice",
       "id": "which-chain",
-      "prompt": "Chain 1: cake stands from Mumbai, 10 days. Chain 2: design approval, 3 days, then test cake, 2 days. Both start together. Which decides?",
+      "prompt": "Chain 1: cake stands take 10 days. Chain 2: design approval takes 3 days, then a test cake takes 2. Both start together. Which decides?",
       "options": [
         {
           "id": "a",
@@ -60,7 +60,7 @@
         },
         {
           "id": "c",
-          "label": "Add both chains: 15 days"
+          "label": "Add both: 15 days"
         }
       ],
       "answer": "b",
@@ -178,7 +178,7 @@
   "cards": [
     {
       "id": "m62-path-1",
-      "front": "Chain 1: job A, 8 days. Chain 2: job B, 3 days, then C, 2 days. Both start together. When can you finish?",
+      "front": "Chain 1: job A takes 8 days. Chain 2: job B takes 3 days, then C takes 2 days. Both start together. When can you finish?",
       "options": ["After 5 days", "After 8 days", "After 13 days"],
       "answer": 1,
       "back": "The longest chain decides: 8 days. That's the critical path."
@@ -187,9 +187,9 @@
       "id": "m62-path-2",
       "front": "A part from far away may make you late. What should you do?",
       "options": [
-        "Wait for it and hope it's on time",
+        "Wait and hope it arrives on time",
         "Rent or buy it nearby; get your own later",
-        "Order two from far away, just in case"
+        "Order two from far away in case one is late"
       ],
       "answer": 1,
       "back": "Buy ready-made anything that could make you late, and get your own later."
