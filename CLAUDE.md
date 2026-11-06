@@ -111,6 +111,12 @@ Follow `docs/AUTHORING.md` for every Hot Seat and Daily Call: research brief →
 - Files that Node runs directly (`engine.ts`, `hotseat-schema.ts`, `hotseat-check.ts`, `voice-lines.ts`, `content-files.ts`) use `import type` for types and relative `.ts` imports, no `@/` paths.
 
 ## UI
+- **Design skills (Atheeb, 6 Nov 2026): use them for every UI/UX change.** Plan a screen or flow with
+  `design-superpowers:design` (`design-superpowers:creative` for a new visual direction); onboarding, animation and
+  microinteractions with `design-skills:interaction-design`; polish with `design-skills:design-elevation`; every
+  label and button with `design-skills:ux-writing` (then the basic-English and ChatGPT rules in `cfad-writing`).
+  Before showing Atheeb, review with `design-skills:design-critique` or `design-superpowers:design-review` and
+  `design-skills:accessibility-audit`, and keep the taste-skill look-and-fix loop for the website.
 - shadcn/ui components live in `src/components/shadcn/` (alias set in `components.json`). Their token names are mapped onto our palette in `globals.css`; shadcn's own `muted` is never defined, because ours is the grey text colour.
 - No boxed UI (Atheeb, 5 Nov 2026: "the whole UI looks boxed"): blocks sit on the page background, split by a thin rule (`Section` in `ui.tsx`), lists use dividers. `Card` (a box) is only for something that must stand out: a call to action, the membership card, a highlight.
 - Cheers (5 Nov 2026): `StreakCelebration` once a day when the first play lights the streak; `useCombo` cheers right answers in a row at 3/5/8/every 4 (cricket words: Hat-trick!); the wolf drops in on Home at most once a day, only with a reason (meeting a new player, welcoming one back to a live streak, teasing one who lost it; never on a day already played), says his line in his own voice and stays until tapped (`wolfSay` in `src/lib/wolf.ts`, lines in `wolf-lines.ts`, `WolfTip`). Don't put him over narration. Never add AI-image or "made-up" tags to player screens.
