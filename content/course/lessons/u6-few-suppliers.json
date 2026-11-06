@@ -37,7 +37,7 @@
       "kind": "explain",
       "id": "deming",
       "title": "Deming's rule 4",
-      "text": "Here's the idea behind it. W. Edwards Deming, a famous American quality teacher, gave managers 14 rules. Rule 4 says stop buying on the price tag alone, because a cheap part can cost the most when it fails. Buy from as few suppliers as you can, for years, and help them improve."
+      "text": "W. Edwards Deming, a famous American quality teacher, gave managers 14 rules. Rule 4 says stop buying on the price tag alone, because a cheap part can cost the most when it fails. Buy from as few suppliers as you can, for years, and help them improve."
     },
     {
       "kind": "explain",
@@ -123,7 +123,7 @@
     {
       "kind": "choice",
       "id": "bulk",
-      "prompt": "Your good butter shop offers 120 kg at ₹480 a kg, ₹20 off. You use 40 kg a month, and Diwali is close. What's the catch?",
+      "prompt": "Your butter shop offers 120 kg at ₹480 a kg, ₹20 off. You use 40 kg a month, and Diwali is close. What's the catch?",
       "options": [
         {
           "id": "a",
