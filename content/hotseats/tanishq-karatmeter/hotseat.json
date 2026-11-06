@@ -32,7 +32,7 @@
       "type": "scene",
       "year": "1994",
       "media": "img:tq_intro",
-      "text": "Hosur, 1994. Titan, the Tata company that makes India's best-selling watches, has built a ₹65 crore jewellery plant here to sell to Europe. The idea grew out of 1990–91, when India was short of the dollars it needed to buy from abroad, but the orders from Europe never came. Now you must make money from the plant in India, under a new name: Tanishq.",
+      "text": "Hosur, 1994. Titan, the Tata company that leads India's quartz watch market, has built a ₹65 crore jewellery plant here to sell to Europe. The idea grew out of 1990–91, when India was short of the dollars it needed to buy from abroad, but the orders from Europe never came. Now you must make money from the plant in India, with a new brand that will be called Tanishq.",
       "next": "s_goal"
     },
     "s_goal": {
@@ -270,7 +270,7 @@
       "year": "1997",
       "title": "The gold-testing machine",
       "media": "img:tq_d3",
-      "setup": "Many jewellers sell 19 or 20-karat gold but call it 22-karat. Everyone in the trade knows it, and many buyers suspect it, but a buyer can only check by melting the piece. At a show in Basel, Switzerland, your head of manufacturing saw a machine that reads the gold in a piece in about three minutes, without harming it. Each costs more than ₹10 lakh, and you are losing money.",
+      "setup": "Many jewellers sell 19 or 20-karat gold but call it 22-karat. Titan's own tests prove it, but a buyer can only check by melting the piece. At a show in Basel, Switzerland, your head of manufacturing saw a machine that reads the gold in a piece in about three minutes, without harming it. Each costs more than ₹10 lakh, and you are losing money.",
       "question": "What do you do with the machine?",
       "advisor": "If we prove our gold is pure, we also prove that other jewellers' gold is not. They won't forgive us for that.",
       "options": [
@@ -312,7 +312,7 @@
           "next": "scene2000",
           "media": "img:tq_d3_one",
           "outcome": "One machine goes into the Chennai store. People stand in line to test their gold, and many are shocked by what they learn. A year later you put machines in every store, but for that year, buyers everywhere else still had to trust your word.",
-          "why": "Remember: let buyers check your promise for themselves. Trying something in one store first is usually wise, but the cheating was already well known. In every store without a machine, buyers still had to trust your word.",
+          "why": "Remember: let buyers check your promise for themselves. Trying something in one store first is usually wise, but your own tests had already shown the cheating. In every store without a machine, buyers still had to trust your word.",
           "better": "Put the machines in every store at once, so buyers everywhere can check your gold.",
           "takeaway": "In 1997 you tested in one store when buyers everywhere needed the proof.",
           "traits": {
@@ -372,7 +372,7 @@
               "karatmeter"
             ]
           },
-          "text": "It is 2000, and you now have about 30 stores. Sales have grown more than four times in three years, but Tanishq has lost money every year. In May, Titan puts a new managing director above you. The next day your head of operations quits with six senior staff, and then the whole sales and marketing team leaves. You must hire a new team."
+          "text": "It is 2000, and Tanishq has about 30 stores. Sales have grown more than four times in three years, but it has lost money every year. In May, Titan picks a new managing director. The next day the head of jewellery, passed over for the job, quits with six senior staff, and then the whole sales and marketing team leaves. You take charge of the stores with a new team."
         },
         {
           "when": {
@@ -380,7 +380,7 @@
               "holdfirm"
             ]
           },
-          "text": "It is 2000, and you now have about 30 stores. Buyers never liked your 18-karat jewellery, so under pressure from the board you have finally added 22-karat gold, years late. Then Titan puts a new managing director above you, and many senior staff quit. The stores are still yours to run, but you must hire a new team."
+          "text": "It is 2000, and you now have about 30 stores. Buyers never liked your 18-karat jewellery, so under pressure from the board you have finally added 22-karat gold, years late. Then Titan picks a new managing director, and many senior staff quit. You take charge of the stores with a new team."
         },
         {
           "when": {
@@ -388,10 +388,10 @@
               "lab"
             ]
           },
-          "text": "It is 2000, and you now have about 30 stores. Your losses keep growing, and buyers still have no reason to leave their family jeweller. Then Titan puts a new managing director above you, and many senior staff quit. The stores are still yours to run, but you must hire a new team."
+          "text": "It is 2000, and you now have about 30 stores. Your losses keep growing, and buyers still have no reason to leave their family jeweller. Then Titan picks a new managing director, and many senior staff quit. You take charge of the stores with a new team."
         },
         {
-          "text": "It is 2000, and you now have about 30 stores. Sales are growing, but the business is still losing money. Then Titan puts a new managing director above you, and many senior staff quit. The stores are still yours to run, but you must hire a new team."
+          "text": "It is 2000, and you now have about 30 stores. Sales are growing, but the business is still losing money. Then Titan picks a new managing director, and many senior staff quit. You take charge of the stores with a new team."
         }
       ],
       "next": "d4"

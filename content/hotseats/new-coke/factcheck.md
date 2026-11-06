@@ -1,6 +1,6 @@
 # Fact-check: new-coke
-checked-sha256: d7357653df6d049025168926795adcdc27d01ff476bb78d29264febdef7dbb14
-Checked: 2026-10-28 · by: independent fact-check agent (fresh context)
+checked-sha256: 26440aeb9727bb1137302de424236beefcee7caf3cdedbee9744b7a082682ef7
+Checked: 2026-11-06 · by: fresh-context fact-check agent
 
 ## Sources opened
 1. [New Coke: The Most Memorable Marketing Blunder Ever? (The Coca-Cola Company)](https://www.coca-colacompany.com/about-us/history/new-coke-the-most-memorable-marketing-blunder-ever)
@@ -9,53 +9,48 @@ Checked: 2026-10-28 · by: independent fact-check agent (fresh context)
 4. [New Coke debuts (History.com, This Day in History)](https://history.com/this-day-in-history/new-coke-debuts-one-of-the-biggest-product-flops-in-history)
 5. [30 years ago today, Coca-Cola made its worst mistake (CBS News, 2015)](https://www.cbsnews.com/news/30-years-ago-today-coca-cola-new-coke-failure/)
 6. [New Coke (Wikipedia)](https://en.wikipedia.org/wiki/New_Coke)
-7. [New Coke, Top 10 Bad Beverage Ideas (TIME, 2010)](https://content.time.com/time/specials/packages/article/0,28804,1913612_1913610_1913608,00.html) — not yet in `sources`
-8. [Pepsi Challenge (Wikipedia)](https://en.wikipedia.org/wiki/Pepsi_Challenge) — not yet in `sources`
-9. [Diet Coke global premiere, 1982 (The Coca-Cola Company)](https://www.coca-colacompany.com/about-us/history/diet-coke-global-premiere-1982) — not yet in `sources`
+7. [New Coke, Top 10 Bad Beverage Ideas (TIME, 2010)](https://content.time.com/time/specials/packages/article/0,28804,1913612_1913610_1913608,00.html)
+8. [Pepsi Challenge (Wikipedia)](https://en.wikipedia.org/wiki/Pepsi_Challenge)
+9. [Diet Coke global premiere, 1982 (The Coca-Cola Company)](https://www.coca-colacompany.com/about-us/history/diet-coke-global-premiere-1982)
 
 ## Claims
-- [supported] Coke's formula was almost unchanged for nearly 100 years (99 years) (nodes.intro.text) — [1][4]
-- [supported] Coke's lead over its main rival had slipped for 15 years in a row (nodes.intro.text) — [1] ("chief competitor"); [3] Coke's share falling while Pepsi's rose
-- [supported] The board wants you to stop the slide (nodes.intro.text) — story framing, not a factual claim about a board decision
-- [supported] Pepsi Challenge from 1975; blind tests in malls and shops; more people picked Pepsi (nodes.s_challenge.text) — [3][8][2]
-- [supported] Coke's own blind tests gave the same answer (nodes.s_challenge.text) — [2][3]
-- [supported] People preferred a sweeter taste (nodes.s_challenge.text) — [5][6]
-- [supported] Diet Coke launched in 1982 (nodes.d1.setup) — [3][6]
-- [supported] Diet Coke shows new drinks can still win buyers (nodes.d1.setup) — [9] No. 1 US diet soft drink by end of 1983, No. 3 soft drink by end of 1984
-- [supported] While developing Diet Coke, secret tests found a sweeter recipe that beat Pepsi and the old Coke (nodes.d1.setup) — [2]
-- [supported] Secret team code-named Project Kansas worked on a sweeter formula (nodes.d1.options[0].outcome) — [6]
-- [supported] Tests with nearly 200,000 people; it beat both Pepsi and the old Coke (nodes.d1.options[0].outcome) — [1] (number); [2] says 190,000; [4][6][7] (beat both)
-- [supported] Tests measured taste, not feeling about losing the old Coke (nodes.d2.setup[0].text) — [5] (company research "could not measure" the attachment)
-- [supported] About 10–12 in 100 testers were angry at the idea of change (nodes.d2.setup[0].text) — [6]
-- [supported] April 23, 1985, event in New York (Lincoln Center); first new formula in 99 years; old recipe off the market (nodes.d2.options[1].outcome[0].text) — [1][2][4]
-- [supported] FIXED: "Your shares fall" cut, since the sources disagree; the line now reads only that Pepsi gives its staff a day off and runs full-page ads (nodes.d2.options[1].outcome[0]) — [2]
-- [supported] Pepsi gave its staff a day off and ran full-page newspaper ads (nodes.d2.options[1].outcome[0].text) — [2][6]
-- [supported] By June hotline gets 1,500 calls a day, up from 400 (nodes.d3.setup[0].text) — [1] ("By June 1985"); [2][4] give higher numbers (5,000–8,000)
-- [supported] About 40,000 letters (nodes.d3.setup[0].text) — [4][7]; note sources give this as the total for the whole episode, not "by June"
-- [supported] Fans formed protest groups; people hoarded the old Coke (nodes.d3.setup[0].text) — [1][5]
-- [supported] A poll found only 13 in 100 soda drinkers liked the new taste (nodes.d3.setup[0].text) — [5] (poll date not given)
-- [supported] July 11, 1985, 79 days after the change, old recipe returns as Coca-Cola Classic (nodes.d3.options[2].outcome[0].text) — [1][4][6] ([5] says 77 days)
-- [supported] Company said sorry (nodes.d3.options[2].outcome[0].text) — [2] (president said "we're really sorry"); [5] admitted its mistake
-- [supported] TV news broke into regular shows to report it (nodes.d3.options[2].outcome[0].text) — [2][6][7]
-- [supported] Hotline got 31,600 calls in two days (nodes.d3.options[2].outcome[0].text) — [1]
-- [supported] Classic sales surged (nodes.s_shelf.text[0].text) — [7]
-- [supported] The new drink still carried the name Coca-Cola (nodes.s_shelf.text[0].text) — [1][3][6]
-- [supported] Both drinks got their own ad campaign (nodes.d4.options[1].outcome[0].text) — [1] ("Catch the Wave", "Red, White and You")
-- [supported] Classic quickly outsold the new drink and within months was again the top sugar cola, ahead of Pepsi (nodes.d4.options[1].outcome[0].text) — [2][7]
-- [supported] The new drink fell to about 3% of the market (nodes.d4.options[1].outcome[0].text) — [6]
-- [supported] By end of 1985 Classic was selling well ahead of both new Coke and Pepsi (nodes.survivor.text[0].text) — [6]
-- [supported] The new drink was renamed Coke II and dropped in 2002 (nodes.survivor.text[0].text) — [2][6] (rename 1990; [3] says 1992; story gives no year)
-- [supported] In 2009 "Classic" came off the label in North America (nodes.survivor.text[0].text) — [6]
-- [supported] Coca-Cola came out stronger (nodes.survivor.text[0].text) — [2]
-- [supported] realHistory: losing ground to Pepsi, which kept winning blind tests; nearly 200,000 testers; 99-year-old recipe replaced with a sweeter one on April 23, 1985; calls, letters, protest groups; 79 days later, July 11, 1985, said sorry and brought back Coca-Cola Classic; within months top sugar cola ahead of Pepsi; new drink about 3% and dropped in 2002 (realHistory) — [1][2][3][4][6]
+- [supported] Atlanta is Coca-Cola's home (nodes.intro.text) — [6] ("headquarters in Atlanta")
+- [supported] Best-known drink in the world, made almost the same way for nearly 100 years (nodes.intro.text) — [4] (world's bestselling soft drink; first change in 99 years), [1]
+- [supported] Coke still sells more than Pepsi, but its lead has shrunk for 15 years in a row (nodes.intro.text) — [1] (share lead over chief competitor slipping 15 consecutive years), [3] (Coke still outselling Pepsi, share declining as Pepsi's rose)
+- [supported] The board wants you to stop the fall (nodes.intro.text) — story framing, not a claim about a board decision
+- [supported] Node years: intro, s_challenge, d1 = 1984; d2–d4 = 1985 — [1][3][6] (decline before 1985; launch April 1985); sources give no start date for the secret project, consistent with a 1984 decision
+- [supported] Pepsi Challenge since 1975; blind tests; more people pick Pepsi (nodes.s_challenge.text) — [3][8]; "shops and markets" matches [8] ("malls, shopping centers")
+- [supported] Coke's own tests agreed; people prefer a sweeter taste (nodes.s_challenge.text) — [3] (internal studies "confirmed what the Pepsi Challenge was showing"; Pepsi sweeter), [5]
+- [supported] Diet Coke launched in 1982 and showed new drinks can still win buyers (nodes.d1.setup) — [3][9] (No. 1 US diet drink by end of 1983, No. 3 soft drink by end of 1984)
+- [supported] While making Diet Coke, the company found a sweeter recipe that beat both Pepsi and Coke in tests (nodes.d1.setup) — [2]
+- [supported] Hook: Pepsi keeps winning the taste test; role "You run Coca-Cola, 1984 to 1985" (hook, role) — [3][8]; role is framing
+- [supported] Secret team; tests with nearly 200,000 people; it beat both Pepsi and the old Coke (nodes.d1.options.kansas.outcome) — [1] (nearly 200,000), [2] (190,000), [6] (secret Project Kansas; beat both)
+- [supported] Label: a 99-year-old drink (nodes.d1.options.kansas.label) — [1][4]
+- [supported] Tests measured taste, not feelings about losing the old Coke (nodes.d2.setup kansas) — [2][5]
+- [supported] About 10 to 12 in every 100 testers angry at the very idea of a change (nodes.d2.setup kansas) — [6]
+- [supported] April 23, 1985, big event in New York; first new recipe in 99 years; old one off the market (nodes.d2.options.replace.outcome kansas) — [1][2][4][6] (Lincoln Center)
+- [supported] Pepsi gives staff a day off and runs full-page newspaper ads (nodes.d2.options.replace.outcome kansas) — [2][6]
+- [supported] By June about 1,500 calls a day to the phone line (nodes.d3.setup kansas) — [1] (1,500 by June, up from 400); [2][4] give higher numbers
+- [supported] FIXED: "By June about 1,500 fans call your phone line every day, and the angry letters will reach about 40,000 in all." (nodes.d3.setup, kansas variant) — [1] 1,500 calls a day by June; [4], [6], [7] about 40,000 letters over the whole episode.
+- [supported] Fans form protest groups and buy up the old Coke (nodes.d3.setup kansas) — [1] (Old Cola Drinkers of America; stockpiling), [5][6]
+- [supported] A survey says only 13 in 100 cola drinkers like the new taste (nodes.d3.setup kansas) — [5] ("only 13 percent of soda drinkers"; poll date not given)
+- [supported] July 11, 1985, 79 days after the change, old recipe back as Coca-Cola Classic (nodes.d3.options.classic.outcome kansas) — [1][4][6] ([5] says 77 days)
+- [supported] You say sorry (nodes.d3.options.classic.outcome kansas) — [2][5]
+- [supported] TV news breaks into regular shows (nodes.d3.options.classic.outcome kansas) — [2][6][7]
+- [supported] 31,600 calls in two days (nodes.d3.options.classic.outcome kansas) — [1][6]
+- [supported] Fans cheer, Classic sells fast; new drink still carries the name Coca-Cola; two Cokes on the shelf (nodes.s_shelf.text classic+kansas) — [7] (sales surged), [6] (new product left as just "Coke"), [1]
+- [supported] Each drink gets its own ad campaign (nodes.d4.options.both.outcome kansas) — [1] ("Catch the Wave", "Red, White and You")
+- [supported] Classic quickly outsells the new drink and within a few months is again the best-selling regular cola, ahead of Pepsi (nodes.d4.options.both.outcome kansas) — [2][6]
+- [supported] FIXED: "The new drink's share of the market falls to about 3 in 100." (nodes.d4.options.both.outcome, real variant) — [6] "a three percent share of the market".
+- [supported] By the end of 1985 Classic sells well ahead of both the new drink and Pepsi (nodes.survivor.text real) — [6]
+- [supported] New drink later renamed and dropped in 2002 (nodes.survivor.text real) — [2][6] (Coke II, 1990; [3] says 1992)
+- [supported] Coca-Cola comes out of it stronger (nodes.survivor.text real) — [2] ("market position actually strengthened"), [6]
+- [supported] realHistory: losing ground to Pepsi, which won blind tests; nearly 200,000 testers; 99-year-old recipe replaced with a sweeter one on April 23, 1985; calls, letters, protest groups; 79 days later, July 11, 1985, said sorry and brought back Coca-Cola Classic; within months again the top regular cola ahead of Pepsi; new drink about 3% of the market; dropped in 2002 (realHistory) — [1][2][3][4][5][6]
 
 ## Alternate paths
-- No alternate screen states an invented event as real history. All are badged "Our estimate".
-- nodes.d2.options[2].outcome: "Pepsi's salesmen make sure the newspapers hear about it" invents a specific action by a real company's staff. It's a soft risk; suggest "and the newspapers soon hear about it."
-- nodes.d1.options[2].outcome ("until Pepsi cuts its prices too") is a plausible hypothetical; fine as an estimate.
+- No off-path option or ending states an invented event as real history; all are hypothetical "you" outcomes, badged as estimates.
+- nodes.d1.options.price.outcome ("until Pepsi cuts its prices too") and nodes.d2.options.city.outcome ("the newspapers soon hear about it") are plausible hypotheticals, not claims about what the real companies did.
+- nodes.d1.options.brand.outcome ("Diet Coke keeps winning new buyers") fits [9].
 
 ## Quotes
-- No quotes from real people anywhere in the file.
-
-## Changes after this check (2026-10-28)
-- d3 setup now says the 40,000 letters came in all, not by June; alternate d2 test-cities outcome no longer pins an action on Pepsi's staff; added TIME, Pepsi Challenge (Wikipedia) and Coca-Cola's Diet Coke page to `sources`. Checked by the author.
+- No quotes from real people. Advisor lines are the game's own advisor.

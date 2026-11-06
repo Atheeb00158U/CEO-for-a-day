@@ -2,7 +2,7 @@
   "id": "paper-boat",
   "company": "Hector Beverages (Paper Boat)",
   "title": "Drinks and memories",
-  "hook": "No shop sells the drinks you grew up with. Can you bottle a memory and make money from it?",
+  "hook": "No shop sells the drinks you grew up with. Can you put those memories in a bottle and make money?",
   "role": "You run Hector Beverages, 2012 to 2015",
   "years": "2012–2015",
   "cover": "img:pb_cover",
@@ -31,7 +31,7 @@
       "type": "scene",
       "year": "2012",
       "media": "img:pb_intro",
-      "text": "You and three partners run a small drinks company. Your energy drink, Tzinga, sells for ₹25, far less than the biggest energy drink at ₹95, but money is tight, and it must last until you find a real hit.",
+      "text": "You and three partners run a small drinks company. Your energy drink, Tzinga, costs ₹25, much less than the biggest energy drink at ₹95. But you have little money left, and it must last until you find a drink that sells well.",
       "next": "idea"
     },
     "idea": {
@@ -39,22 +39,22 @@
       "type": "scene",
       "year": "2012",
       "media": "img:pb_idea",
-      "text": "One partner's mother makes aam panna, the raw mango drink, and he often brings it to work. When the team wants more, it looks in the shops, but can't find it anywhere. No shop sells aam panna, jaljeera, the cumin drink, or the other drinks you all grew up with.",
+      "text": "One partner's mother makes aam panna, a raw mango drink, and he often brings it to work. The team wants more, so you look in shops but find none. No shop sells aam panna, jaljeera, a cumin drink, or the other drinks you grew up with.",
       "next": "d1"
     },
     "d1": {
       "id": "d1",
       "type": "decision",
       "year": "2012",
-      "title": "Your next big bet",
+      "title": "Where to spend your money",
       "media": "img:pb_d1",
-      "setup": "Tzinga is growing, but energy drinks suit one kind of buyer at one time of day. Fruit juice is a much bigger market, and then there are the home drinks no shop sells. You have money for one big push, and your team is split.",
+      "setup": "Tzinga is growing, but only one kind of buyer wants energy drinks, and only at certain times. Many more people buy fruit juice, and shops don't sell the old drinks made at home. You have enough money to try one idea, but your team cannot agree.",
       "question": "Where do you put your money?",
-      "advisor": "Tzinga already sells. But it sells to one kind of buyer, at one time of day.",
+      "advisor": "Tzinga already sells. Why bet our money on a drink no shop has ever sold?",
       "options": [
         {
           "id": "tzinga",
-          "label": "Put your money behind Tzinga. It already sells, but only to one kind of buyer.",
+          "label": "Spend more on Tzinga. It already sells, but only to a few buyers.",
           "grade": "bad",
           "effect": {
             "profit": 5,
@@ -66,10 +66,10 @@
           },
           "next": "d2",
           "media": "img:pb_d1_tzinga",
-          "outcome": "Tzinga grows a little, but it still sells to the same small group, and the big brands spend far more than you on ads. A year later sales have stopped growing, and the aam panna idea is still sitting on your desk.",
-          "why": "Remember: a bad fix people already use proves the pain is real. Here, the bad fix was mothers making these drinks at home, the slow way, because no shop sold them. Tzinga sold, but to one small group; the home-made drinks showed a bigger want.",
-          "better": "Bet on the drinks people grew up with but couldn't buy in any shop.",
-          "takeaway": "In 2012 you backed the drink you already sold. The bigger chance was a need no one was serving.",
+          "outcome": "Tzinga sells a little more, but the buyers are still the same small group. Big brands spend far more than you on ads. A year later, sales stop growing, and you still haven't tried the aam panna idea.",
+          "why": "Remember: a bad fix people already use proves the pain is real. Here, mothers made these drinks at home because shops didn't sell them. Making them took time, but people still did it. Tzinga had buyers, but the drinks made at home showed that more people wanted something shops didn't sell.",
+          "better": "Sell the drinks people grew up with but couldn't find in shops.",
+          "takeaway": "In 2012 you spent more on the drink you already sold. But more people wanted drinks that shops didn't sell.",
           "traits": {
             "horizon": -1,
             "risk": -1,
@@ -78,7 +78,7 @@
         },
         {
           "id": "panna",
-          "label": "Bottle old home drinks like aam panna. It's new to shops, and Tzinga gets less money.",
+          "label": "Bottle home drinks like aam panna. They're new, and Tzinga gets less.",
           "grade": "great",
           "real": true,
           "effect": {
@@ -90,9 +90,9 @@
           },
           "next": "d2",
           "media": "img:pb_d1_panna",
-          "outcome": "You start working on drinks from Indian homes, like aam panna and jaljeera, with no fizz, no preservatives (chemicals that keep a drink fresh) and no added colours. You call the range Paper Boat, after the boats children float in the monsoon rain.",
-          "why": "Remember: a bad fix people already use proves the pain is real. Here, the bad fix was mothers making these drinks at home, the slow way, because no shop sold them. That showed the want was real.",
-          "takeaway": "In 2012 you bottled drinks people loved but couldn't buy. The best ideas fill a gap people already feel.",
+          "outcome": "You start making Indian home drinks like aam panna and jaljeera. They have no fizz, no preservatives (chemicals that keep drinks fresh) and no added colours. You call them Paper Boat, after the paper boats children float in the monsoon rain.",
+          "why": "Remember: a bad fix people already use proves the pain is real. Here, mothers made these drinks at home because shops didn't sell them. It took time, but they still made them. That showed people wanted these drinks.",
+          "takeaway": "In 2012 you sold drinks people loved but couldn't buy. Good ideas can come from things people already want.",
           "traits": {
             "horizon": 1,
             "risk": 1,
@@ -101,7 +101,7 @@
         },
         {
           "id": "juice",
-          "label": "Launch fruit juices. It's a huge market, but it's already full of big brands.",
+          "label": "Sell fruit juices. Many people buy them, but big brands already sell them.",
           "grade": "ok",
           "effect": {
             "profit": 0,
@@ -112,10 +112,10 @@
           },
           "next": "d2",
           "media": "img:pb_d1_juice",
-          "outcome": "Your mango and orange juices reach the shelves beside dozens of others that look much the same. Shops want big discounts to stock one more juice. After a year, you are still a small name in a crowded aisle.",
-          "why": "Remember: a bad fix people already use proves the pain is real. Nobody was making mango juice at home because no shop sold it; shops were full of it. The home-made drinks were the real gap.",
-          "better": "Bottle the drinks people grew up with but couldn't buy in any shop.",
-          "takeaway": "In 2012 you entered a crowded market. A gap no one fills beats a big market everyone fills.",
+          "outcome": "Your mango and orange juices reach shops, but many other juices look just like yours. Shops ask for big discounts before they will sell your juice. After a year, you are still a small brand among many others.",
+          "why": "Remember: a bad fix people already use proves the pain is real. People didn't need to make mango juice at home because shops already sold it. But they still made drinks like aam panna at home because shops didn't sell them.",
+          "better": "Sell the drinks people grew up with but couldn't find in shops.",
+          "takeaway": "In 2012 you entered a market with many brands. Finding something people want but cannot buy can be better than selling what many shops already have.",
           "traits": {
             "horizon": 0,
             "risk": -1,
@@ -128,7 +128,7 @@
       "id": "d2",
       "type": "decision",
       "year": "2013",
-      "title": "What goes around the drink?",
+      "title": "How will you pack the drink?",
       "media": "img:pb_d2",
       "setup": [
         {
@@ -137,7 +137,7 @@
               "tzinga"
             ]
           },
-          "text": "You have lost a year, and Tzinga has stopped growing, so you finally turn to the aam panna idea. You call it Paper Boat, after the boats children float in the rain. Now you need a pack, and every pack adds to the cost of every drink you sell."
+          "text": "You have lost a year, and Tzinga has stopped growing. So you try the aam panna idea and call it Paper Boat, after the paper boats children float in the rain. Now you must choose a pack, and every pack adds to the cost of your drink."
         },
         {
           "when": {
@@ -145,18 +145,18 @@
               "juice"
             ]
           },
-          "text": "Your juices are stuck in a crowded aisle, so you try what no shop sells: aam panna and jaljeera. You call them Paper Boat, after the boats children float in the rain. Now you need a pack, and every pack adds to the cost of each drink you sell."
+          "text": "Your juices are not selling well, so you try drinks no shop sells: aam panna and jaljeera. You call them Paper Boat, after the paper boats children float in the rain. Now you must choose a pack, and every pack adds to the cost of your drink."
         },
         {
-          "text": "The recipes are ready. Now you need a pack, and every pack adds to the cost of each drink you sell. The drink should feel homely but special, not like a cheap cola, and it has to travel all over India."
+          "text": "Your drinks are ready, but now you need a pack. Every pack adds to your cost. You want the drink to remind people of home and feel special, not like a cheap cola. It must also travel across India."
         }
       ],
-      "question": "Which pack do you choose?",
-      "advisor": "The big juice brands use cartons. Shops know how to stack them, and buyers already trust them.",
+      "question": "What kind of pack will you use?",
+      "advisor": "Big juice brands use cartons. Shops know how to keep them on shelves, and buyers already trust them.",
       "options": [
         {
           "id": "pouch",
-          "label": "Use a pouch that stands up and looks like paper. It costs less, but buyers may not trust it.",
+          "label": "Use a paper-look pouch. It costs less, but buyers may not trust it.",
           "grade": "great",
           "real": true,
           "effect": {
@@ -168,9 +168,9 @@
           },
           "next": "d3",
           "media": "img:pb_d2_pouch",
-          "outcome": "You choose a 250 ml pouch that stands up on the shelf and looks like paper. It costs less than a carton, so you keep more from every sale. On the shelf, it also looks like nothing else.",
-          "why": "Remember: price minus stock cost isn't profit. Count every hidden cost. Here, the pack is part of what each drink costs you. A cheaper pack left you more from each sale, and it stood out on the shelf too.",
-          "takeaway": "In 2013 you chose a pack that cost less and stood out. Small savings on every item add up.",
+          "outcome": "You choose a 250 ml pouch that stands on the shelf and looks like paper. It costs less than a carton, so you keep more money from every sale. It also looks different from other drinks.",
+          "why": "Remember: price minus stock cost isn't profit. Count every hidden cost. The pack adds to the cost of each drink. A cheaper pack left you more money from every sale, and it also looked different on the shelf.",
+          "takeaway": "In 2013 you chose a pack that cost less and looked different. Saving a little on every pack can save a lot of money.",
           "traits": {
             "horizon": 1,
             "risk": 1,
@@ -179,7 +179,7 @@
         },
         {
           "id": "carton",
-          "label": "Use cartons like the big juice brands. Buyers trust them, but each one costs you more.",
+          "label": "Use juice cartons. Buyers trust them, but they cost more.",
           "grade": "bad",
           "effect": {
             "profit": -10,
@@ -191,10 +191,10 @@
           },
           "next": "d3",
           "media": "img:pb_d2_carton",
-          "outcome": "Your drinks look neat and safe on the shelf, but every carton cuts into what you make on each pack. To earn anything, you must price them above the juices next to them, and many shoppers walk past.",
-          "why": "Remember: price minus stock cost isn't profit. Count every hidden cost. Here, the pack is part of what each drink costs you, and a costly carton ate into the money you needed to grow.",
-          "better": "Choose a cheaper pack, like a pouch, and make it look special.",
-          "takeaway": "In 2013 you chose a costly pack. A few rupees on every item add up across the whole business.",
+          "outcome": "Your drinks look neat and safe on the shelf, but each carton costs more and leaves you less money from every sale. You must charge more than the juices beside them to make money, so many buyers walk past.",
+          "why": "Remember: price minus stock cost isn't profit. Count every hidden cost. The pack adds to the cost of each drink. Costly cartons left you less money from every sale, so you had less money to grow.",
+          "better": "Use a cheaper pack, like a pouch, and make it look special.",
+          "takeaway": "In 2013 you chose a costly pack. Even a few extra rupees on every pack can cost your business a lot.",
           "traits": {
             "horizon": -1,
             "risk": -1,
@@ -203,7 +203,7 @@
         },
         {
           "id": "bottle",
-          "label": "Use clear plastic bottles. They're cheap and strong, but they look like every other drink.",
+          "label": "Use plastic bottles. They're cheap and strong, but look ordinary.",
           "grade": "ok",
           "effect": {
             "profit": 5,
@@ -214,10 +214,10 @@
           },
           "next": "d3",
           "media": "img:pb_d2_bottle",
-          "outcome": "The bottles are cheap and tough, but on the shelf your aam panna looks like one more soft drink. Shoppers can't tell it apart from the colas unless they stop and read the label.",
-          "why": "Remember: price minus stock cost isn't profit. Count every hidden cost. The bottle kept the pack cost low, so each sale still paid. But the pack did nothing to show what made your drink special.",
-          "better": "Pick a pack that costs less and also looks different, like a paper-look pouch.",
-          "takeaway": "In 2013 you saved money on the pack but looked like everyone else.",
+          "outcome": "The bottles are cheap and strong, but your aam panna looks like another soft drink on the shelf. Buyers cannot see how it is different from colas unless they stop and read the label.",
+          "why": "Remember: price minus stock cost isn't profit. Count every hidden cost. The bottle kept the pack cost low, so you still made money on each sale. But the pack didn't show buyers why your drink was special.",
+          "better": "Use a pack that costs less and looks different, like a paper-look pouch.",
+          "takeaway": "In 2013 you saved money on the pack, but your drink looked like all the others.",
           "traits": {
             "horizon": 0,
             "risk": -1,
@@ -230,15 +230,15 @@
       "id": "d3",
       "type": "decision",
       "year": "2013",
-      "title": "What does the pack say?",
+      "title": "What will you write on the pack?",
       "media": "img:pb_d3",
-      "setup": "You have almost no money for ads, so for most people the pack on the shelf will be the first thing they see from you. Every pack has one small space you can fill however you like.",
+      "setup": "You have almost no money for ads, so most people will first see your drink on a shop shelf. Each pack has a small space where you can print anything you want.",
       "question": "What do you print on the pack?",
-      "advisor": "Shoppers read a pack to see what's inside. Keep it clear and honest.",
+      "advisor": "Buyers read packs to know what they're buying. Tell them clearly what's inside, and be honest.",
       "options": [
         {
           "id": "plain",
-          "label": "Keep it simple: the name, the flavour and what's inside. It's clear, but looks like any pack.",
+          "label": "Print the name and what's inside. It's clear, but looks ordinary.",
           "grade": "ok",
           "effect": {
             "profit": 0,
@@ -249,10 +249,10 @@
           },
           "next": "d4",
           "media": "img:pb_d3_plain",
-          "outcome": "The packs are clean and clear. Shoppers can see there's no fizz and nothing artificial. But nothing on the pack makes them smile or want to pick up a second one.",
-          "why": "Remember: people pick brands they remember, and a voice they enjoy helps. Clear facts helped, but every juice pack has facts. Nothing on yours gave people a reason to remember you.",
+          "outcome": "The packs look neat, and buyers can see there is no fizz and nothing artificial. But nothing on the pack makes them smile or want to buy another one.",
+          "why": "Remember: people pick brands they remember, and a voice they enjoy helps. Clear facts helped, but every juice pack has facts. Your pack gave people no reason to remember your brand.",
           "better": "Add a short, warm story or a small joke to each pack, so people enjoy reading it.",
-          "takeaway": "In 2013 you kept the pack plain. Clear facts alone don't make people remember you.",
+          "takeaway": "In 2013 you kept the pack simple. Clear facts are useful, but they may not help people remember your brand.",
           "traits": {
             "horizon": 0,
             "risk": -1,
@@ -261,7 +261,7 @@
         },
         {
           "id": "star",
-          "label": "Put a famous film star on each pack. People trust a face they know, but the fee is huge.",
+          "label": "Print a film star's photo. People know them, but fees are high.",
           "grade": "bad",
           "effect": {
             "profit": -10,
@@ -273,10 +273,10 @@
           },
           "next": "d4",
           "media": "img:pb_d3_star",
-          "outcome": "The star's fee eats most of your money for the year. The packs get noticed, but people remember the star, not your drink. When the deal ends, you have nothing of your own left.",
-          "why": "Remember: people pick brands they remember, and a voice they enjoy helps. People remembered the star, not your drink. You paid a lot to borrow someone else's fame instead of building a voice of your own.",
-          "better": "Write a short, warm story on each pack, so the drink itself talks to people.",
-          "takeaway": "In 2013 you rented a star's face. A brand needs a voice of its own.",
+          "outcome": "You spend most of your money for the year paying the film star. People notice the packs, but they remember the star, not your drink. When the deal ends, you have nothing special of your own.",
+          "why": "Remember: people pick brands they remember, and a voice they enjoy helps. People remembered the star, not your drink. You paid a lot to use someone else's fame instead of giving your brand its own voice.",
+          "better": "Write a short, warm story on each pack, so people remember the drink itself.",
+          "takeaway": "In 2013 you paid to use a film star's face. Your brand needs something people can remember on its own.",
           "traits": {
             "horizon": -1,
             "risk": 1,
@@ -285,7 +285,7 @@
         },
         {
           "id": "story",
-          "label": "Print a short childhood story on each pack. It's warm, but the facts get squeezed into a corner.",
+          "label": "Print a childhood story. It feels warm, but leaves less space for facts.",
           "grade": "great",
           "real": true,
           "effect": {
@@ -297,9 +297,9 @@
           },
           "next": "d4",
           "media": "img:pb_d3_story",
-          "outcome": "Each pack tells a tiny childhood story, like climbing mango trees, and hides a small joke at the bottom for anyone who looks. Your drink now has a voice of its own.",
-          "why": "Remember: people pick brands they remember, and a voice they enjoy helps. The pack was your only ad, so you made it worth reading. A warm voice made people feel they knew you, and remember you.",
-          "takeaway": "In 2013 you gave every pack a story. A voice people enjoy turns a pack into an ad.",
+          "outcome": "Each pack tells a short childhood story, like climbing mango trees. There is also a small joke at the bottom for anyone who reads it. Your drink now has its own way of talking to people.",
+          "why": "Remember: people pick brands they remember, and a voice they enjoy helps. The pack was your only ad, so you gave people something they would enjoy reading. The warm stories made people feel close to your brand and remember it.",
+          "takeaway": "In 2013 you gave every pack a story. When people enjoy reading your pack, it can also work as an ad.",
           "traits": {
             "horizon": 1,
             "risk": 0,
@@ -312,15 +312,15 @@
       "id": "d4",
       "type": "decision",
       "year": "2013",
-      "title": "Getting people to try it",
+      "title": "How will people try it?",
       "media": "img:pb_d4",
-      "setup": "The drinks are ready, but nobody has ever bought jaljeera in a pack. Small shops don't want to fill shelf space with a drink their customers don't ask for. You have money for one big push.",
+      "setup": "Your drinks are ready, but nobody has bought jaljeera in a pack before. Small shops don't want to use shelf space for a drink their buyers haven't asked for. You have enough money to try one big idea.",
       "question": "How do you get people to try it?",
-      "advisor": "Without ads, nobody will know we exist. One good TV campaign would make shops want us in a month.",
+      "advisor": "Without ads, nobody will know about us. One good TV ad could make shops want our drinks in a month.",
       "options": [
         {
           "id": "tv",
-          "label": "Spend on TV ads first. People across India learn your name, but it uses most of your money.",
+          "label": "Run TV ads first. Many people learn your name, but ads cost a lot.",
           "grade": "ok",
           "effect": {
             "profit": -10,
@@ -331,10 +331,10 @@
           },
           "next": "y2014",
           "media": "img:pb_d4_tv",
-          "outcome": "The ads are lovely, and people across India hear your name. But many still can't find the drink in their local shop. The money runs low, and by the end of the year you have to slow down to save cash.",
-          "why": "Remember: take the risk off the buyer. The shops' fear was being stuck with packs. Ads made people curious, but they didn't take that risk off the shops, so the drink was hard to find.",
-          "better": "Take the risk off the shops: let them return unsold packs, and put the drink where people already are. Spend on ads later.",
-          "takeaway": "In 2013 you paid for ads before people had tasted the drink. Let them try it first.",
+          "outcome": "People like your ads, and many across India hear your name. But they still cannot find the drink in their local shops. You are running out of money, so by the end of the year you must spend less to save cash.",
+          "why": "Remember: take the risk off the buyer. Shops were afraid they would be left with drinks they couldn't sell. Ads made people want to try the drinks, but shops still had that risk. So people couldn't find the drink easily.",
+          "better": "Let shops return packs they cannot sell, and sell the drink in places where people already go. Run ads later.",
+          "takeaway": "In 2013 you paid for ads before enough shops sold the drink. Help people find and try it first.",
           "traits": {
             "horizon": 0,
             "risk": 1,
@@ -343,7 +343,7 @@
         },
         {
           "id": "try",
-          "label": "Skip ads, and take back any pack a shop can't sell. Shops relax, but every return costs you.",
+          "label": "Skip ads and refund unsold packs. Shops feel safer, but returns cost you.",
           "grade": "great",
           "real": true,
           "effect": {
@@ -362,14 +362,14 @@
                   "panna"
                 ]
               },
-              "text": "In February 2013 you quietly put packs in 500 big stores in four cities, with no ads. They sell so fast that you raise your plans. In August you launch in Delhi and Bengaluru. Flights and office canteens serve your drinks, and shops can return unsold packs for a full refund."
+              "text": "In February 2013 you quietly sell the drinks in 500 big stores in four cities, with no ads. They sell so fast that you decide to make more. In August you launch in Delhi and Bengaluru. Flights and office canteens serve your drinks, and shops can return unsold packs for a full refund."
             },
             {
-              "text": "You quietly put packs in big stores with no ads, and they sell faster than you hoped. Flights and office canteens serve your drinks. Shops can also return unsold packs for a full refund."
+              "text": "You quietly sell the drinks in big stores with no ads, and they sell faster than you hoped. Flights and office canteens serve your drinks. Shops can also return unsold packs for a full refund."
             }
           ],
-          "why": "Remember: take the risk off the buyer. Your first buyers were the shops, and their fear was being stuck with a new drink. A full refund on unsold packs took that fear away, and the drink did the rest.",
-          "takeaway": "In 2013 you let people try it before you advertised. Give first, and people give back.",
+          "why": "Remember: take the risk off the buyer. Your first buyers were the shops. They were afraid of being left with drinks they couldn't sell. A full refund on unsold packs removed that fear, and the drinks sold well.",
+          "takeaway": "In 2013 you let people try the drink before running ads. Make it easier for shops to sell something new.",
           "traits": {
             "horizon": 1,
             "risk": 0,
@@ -378,7 +378,7 @@
         },
         {
           "id": "cheap",
-          "label": "Cut the price to match a cola. More people try it, but you earn less on each pack.",
+          "label": "Charge the same as cola. More people try it, but you earn less.",
           "grade": "bad",
           "effect": {
             "profit": -15,
@@ -390,10 +390,10 @@
           },
           "next": "y2014",
           "media": "img:pb_d4_cheap",
-          "outcome": "Lots of people try it, but now each pack loses money. The more you sell, the faster your cash runs out. Worse, a drink priced like a cola starts to look like one, and the price is hard to raise later.",
-          "why": "Remember: take the risk off the buyer. The risk that stopped people was the shops' risk, not the price. A cola price lost you money on every pack and made a special drink look ordinary.",
-          "better": "Keep the price, and take the risk off the shops: let them return any pack they can't sell.",
-          "takeaway": "In 2013 you cut the price to win trial. A low price is hard to raise, and it can make a special drink look ordinary.",
+          "outcome": "Many people try the drink, but you now lose money on every pack. The more you sell, the faster you run out of cash. Your drink also starts to look like an ordinary cola, and raising the price later is hard.",
+          "why": "Remember: take the risk off the buyer. Shops were afraid of being left with drinks they couldn't sell. Price wasn't the problem. Charging the same as cola made you lose money on every pack and made your special drink look ordinary.",
+          "better": "Keep your price, but let shops return packs they cannot sell.",
+          "takeaway": "In 2013 you cut the price to get more people to try your drink. Raising it later was hard, and the drink looked ordinary.",
           "traits": {
             "horizon": -1,
             "risk": 0,
@@ -414,7 +414,7 @@
               "try"
             ]
           },
-          "text": "Through 2014 you still run no TV or print ads. You share drawings of childhood memories on Facebook, while the packs on flights become your biggest ad. In November you put post boxes in office canteens, so people can send letters to their parents, and you pay the postage."
+          "text": "Through 2014 you still run no TV or newspaper ads. You share drawings of childhood memories on Facebook, and the packs served on flights become your best ads. Late in 2014, you put post boxes in office canteens so people can send letters to their parents, and you pay to send them."
         },
         {
           "when": {
@@ -422,10 +422,10 @@
               "tv"
             ]
           },
-          "text": "Through 2014 you spend carefully to make up for the money used on ads. People already know your name, and the shops slowly catch up. At last, those who saw the ads can find the drink."
+          "text": "Through 2014 you spend less to save money after paying for ads. People already know your name, and more shops slowly start selling your drinks. At last, people who saw the ads can find them."
         },
         {
-          "text": "Through 2014 you slowly raise your price again, and some buyers who liked the cheap drink drift away. Those who stay like the taste, but money is tighter than ever."
+          "text": "Through 2014 you slowly raise your price again, and some people who bought the cheaper drink stop buying it. Those who stay like the taste, but you have even less money left."
         }
       ],
       "next": "d5"
@@ -434,7 +434,7 @@
       "id": "d5",
       "type": "decision",
       "year": "2015",
-      "title": "What do you stand for?",
+      "title": "What makes your drink special?",
       "media": "img:pb_d5",
       "setup": [
         {
@@ -443,7 +443,7 @@
               "tv"
             ]
           },
-          "text": "It's 2015. Your early ads made your name known, and now investors will pay for a bigger TV campaign. Your drinks have no preservatives, no added colours and no fizz, while your rivals sell fruit juice and cola. Some experts say childhood memories won't work with young buyers or in the South."
+          "text": "It's 2015. Your earlier ads made your brand known, and now investors will pay for a bigger TV ad. Your drinks have no preservatives, no added colours and no fizz. Other brands sell fruit juice and cola. Some experts say young buyers and people in the South won't care about childhood memories."
         },
         {
           "when": {
@@ -451,18 +451,18 @@
               "cheap"
             ]
           },
-          "text": "It's 2015. Money is tight, but investors will pay for one TV campaign if it works. Your drinks have no preservatives, no added colours and no fizz, while your rivals sell fruit juice and cola. Some experts say childhood memories won't work with young buyers or in the South."
+          "text": "It's 2015. Money is tight, but investors will pay for one TV ad if it works. Your drinks have no preservatives, no added colours and no fizz. Other brands sell fruit juice and cola. Some experts say young buyers and people in the South won't care about childhood memories."
         },
         {
-          "text": "It's 2015, and at last you can afford TV. Your drinks have no preservatives, no added colours and no fizz, while your rivals sell fruit juice and cola. Some experts say childhood memories won't work with young buyers or in the South."
+          "text": "It's 2015, and you finally have money for TV ads. Your drinks have no preservatives, no added colours and no fizz. Other brands sell fruit juice and cola. Some experts say young buyers and people in the South won't care about childhood memories."
         }
       ],
       "question": "What should your first big ad say?",
-      "advisor": "Health matters to many buyers. Tell them plainly what's in the drink and what isn't.",
+      "advisor": "Many buyers care about health. Tell them clearly what's inside your drink and what you've left out.",
       "options": [
         {
           "id": "specs",
-          "label": "Show what's inside: no preservatives, no colours, no fizz. It's honest, but every juice says that.",
+          "label": "Show what's not inside. It's honest, but every juice says much the same.",
           "grade": "ok",
           "effect": {
             "profit": 5,
@@ -473,19 +473,19 @@
           },
           "next": "ending_route",
           "media": "img:pb_d5_specs",
-          "outcome": "Your ads show fresh fruit and a clear list of what's not inside. People nod, but the ad looks like every juice ad on TV, and few remember which drink it was for. Sales grow slowly.",
-          "why": "Remember: sell what you stand for, not just specs. A list of what's inside is a spec, and every juice brand can say much the same. Nothing in the ad was yours alone.",
-          "takeaway": "In 2015 you sold what's inside. Every rival can say that; sell what only you stand for.",
+          "outcome": "Your ads show fresh fruit and clearly tell people what is not in the drink. People like that, but the ad looks like other juice ads on TV. Few remember which brand it was for, so sales grow slowly.",
+          "why": "Remember: sell what you stand for, not just specs. A list of what's inside tells people about the product. Other juice brands can say much the same, so your ad didn't give people anything special to remember.",
+          "takeaway": "In 2015 you told people what was inside. Other brands can do that too, so tell people what makes yours special.",
           "traits": {
             "horizon": 1,
             "risk": 0,
             "disrupt": 1
           },
-          "better": "Lead with what only you stand for: the drinks of a childhood, made the way they were at home."
+          "better": "Talk about what makes your brand special: the drinks you grew up with, made like they were at home."
         },
         {
           "id": "memories",
-          "label": "Show childhood summers and drinks from home. It's moving, but young buyers may not care.",
+          "label": "Show childhood summers and home drinks. Moving, but the young may not care.",
           "grade": "great",
           "real": true,
           "effect": {
@@ -505,14 +505,14 @@
                   "try"
                 ]
               },
-              "text": "Your line is 'Drinks and Memories'. In 2015 your TV ads, written and voiced by a famous poet and set to the tune of Malgudi Days, an old TV show, are all about childhood. Sales double in a year, and in July investors put in about ₹180 crore."
+              "text": "Your line is 'Drinks and Memories'. In 2015 your TV ads are written and spoken by a famous poet. They use the music from Malgudi Days, an old TV show, and tell stories of childhood. Sales double in a year, and in July investors put in about ₹180 crore."
             },
             {
-              "text": "Your line is 'Drinks and Memories', and your TV ads are all about childhood summers and drinks from home. People feel something when they see them, and sales begin to climb."
+              "text": "Your line is 'Drinks and Memories', and your TV ads show childhood summers and drinks made at home. People feel close to the stories, and sales start growing."
             }
           ],
-          "why": "Remember: sell what you stand for, not just specs. Many juices can say what's inside. Only you stood for the drinks of a childhood, and that is what made people remember you and pay more.",
-          "takeaway": "In 2015 you sold a memory, not a list of what's inside. Sell what only you stand for.",
+          "why": "Remember: sell what you stand for, not just specs. Many juice brands can talk about what's inside. Your brand was about the drinks people grew up with, and those memories made people remember you and pay more.",
+          "takeaway": "In 2015 you sold childhood memories, not just facts about the drink. Tell people what makes your brand special.",
           "traits": {
             "horizon": 1,
             "risk": 1,
@@ -521,7 +521,7 @@
         },
         {
           "id": "price",
-          "label": "Show it as a better drink than a cola, worth the extra money. Clear, but it invites a price fight.",
+          "label": "Compare it with cola. Buyers see its value, but may focus on price.",
           "grade": "bad",
           "effect": {
             "profit": -5,
@@ -533,10 +533,10 @@
           },
           "next": "ending_route",
           "media": "img:pb_d5_price",
-          "outcome": "Shoppers start comparing you with colas, and next to a cola your drink just looks expensive. The ad makes them think about money, not memories, and sales slow down.",
-          "why": "Remember: sell what you stand for, not just specs. Price is a spec, a plain number anyone can compare, and next to a cola your drink lost. The ad made people think about money, not about what you stood for.",
-          "better": "Lead with childhood and home, and say plainly what's not inside, so price is not the first thing people see.",
-          "takeaway": "In 2015 you sold on price. Start a price fight, and the cheaper drink wins.",
+          "outcome": "Buyers start comparing your drink with colas, and your drink looks costly beside them. The ad makes people think about price instead of memories, so sales slow down.",
+          "why": "Remember: sell what you stand for, not just specs. Price is a number people can easily compare. Your drink cost more than cola, so the ad made people think about money instead of why your brand was special.",
+          "better": "Talk about childhood and home, and clearly say what's not inside. Don't make price the first thing people notice.",
+          "takeaway": "In 2015 you made people compare prices. When buyers only look at price, they may choose the cheaper drink.",
           "traits": {
             "horizon": -1,
             "risk": 0,
@@ -583,10 +583,10 @@
               "memories"
             ]
           },
-          "text": "By 2015 Paper Boat makes up about 90% of your company's sales, and yearly sales reach about ₹24 crore. That is still small, but in July investors put in about ₹180 crore to help it grow. A drink no shop sold now sells in shops, on flights and in office canteens."
+          "text": "By 2015, Paper Boat makes up about 90% of your company's sales, and yearly sales reach about ₹24 crore. That is still small, but in July investors put in about ₹180 crore to help the company grow. Drinks no shop once sold are now sold in shops, on flights and in office canteens."
         },
         {
-          "text": "Paper Boat becomes most of your company's sales, in shops, on flights and in office canteens. A drink no shop sold a few years ago now has fans across India, and investors line up to help it grow."
+          "text": "Paper Boat makes up most of your company's sales. People buy it in shops, on flights and in office canteens. A few years ago, shops didn't sell these drinks. Now people across India enjoy them, and investors want to help the company grow."
         }
       ],
       "bonus": 15
@@ -595,7 +595,7 @@
       "id": "survivor",
       "type": "ending",
       "tier": "survivor",
-      "title": "A small brand with fans",
+      "title": "A small brand people love",
       "media": "img:pb_survivor",
       "text": [
         {
@@ -605,7 +605,7 @@
               "memories"
             ]
           },
-          "text": "Paper Boat finds real fans in shops, on flights and in office canteens. But one weaker call along the way keeps it smaller than it could have been."
+          "text": "Paper Boat finds people who love its drinks in shops, on flights and in office canteens. But one less successful choice means the brand stays smaller than it could have been."
         },
         {
           "when": {
@@ -613,10 +613,10 @@
               "tzinga"
             ]
           },
-          "text": "Paper Boat takes off in the end, but a year late. By then, others have started to copy the idea. You build a brand with real fans, though it is smaller than it could have been."
+          "text": "Paper Boat finally starts selling well, but a year later than it could have. By then, other brands have started copying the idea. People love your drinks, but your brand is smaller than it could have been."
         },
         {
-          "text": "Paper Boat finds loyal fans in a few big cities, but it never quite stands out from the crowd. Money stays tight, and though you keep going, you are still small."
+          "text": "Paper Boat finds people who keep buying it in a few big cities, but it doesn't look very different from other drinks. Money stays tight, and your business remains small."
         }
       ],
       "bonus": 5
@@ -625,18 +625,18 @@
       "id": "collapse",
       "type": "ending",
       "tier": "collapse",
-      "title": "The boat sinks",
+      "title": "Paper Boat runs out of money",
       "media": "img:pb_collapse",
-      "text": "The money runs out before enough people learn to love your drinks. You sell your recipes to a bigger company for a small sum. The drinks you grew up with disappear from the shelves again.",
+      "text": "You run out of money before enough people start buying your drinks. You sell your recipes to a bigger company for a small amount of money. The drinks you grew up with disappear from shops again.",
       "bonus": 0
     },
     "fired": {
       "id": "fired",
       "type": "ending",
       "tier": "fired",
-      "title": "Your backers take over",
+      "title": "Investors take charge",
       "media": "img:pb_fired",
-      "text": "After three costly calls, your backers lose faith in you and bring in someone else to run the company.",
+      "text": "After three costly choices, your investors stop trusting your decisions and choose someone else to run the company.",
       "bonus": 0
     }
   },

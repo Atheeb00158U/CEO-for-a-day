@@ -1,8 +1,8 @@
 {
   "id": "new-coke",
   "company": "Coca-Cola",
-  "title": "The recipe nobody asked you to change",
-  "hook": "Pepsi keeps winning the taste test. Do you change the world's most famous recipe?",
+  "title": "The recipe no one asked you to change",
+  "hook": "Pepsi keeps winning taste tests. Do you change the world's most famous recipe?",
   "role": "You run Coca-Cola, 1984 to 1985",
   "years": "1984–1985",
   "cover": "img:nc_cover",
@@ -32,7 +32,7 @@
       "type": "scene",
       "year": "1984",
       "media": "img:nc_intro",
-      "text": "Atlanta, USA, 1984. You run Coca-Cola, the best-known drink in the world, made almost the same way for nearly 100 years. Coke still sells more than Pepsi, but for 15 years in a row it has been ahead by a little less each year, and your board wants you to stop the fall.",
+      "text": "Atlanta, USA, 1984. You run Coca-Cola, the world's best-known drink, made almost the same way for nearly 100 years. Coke still sells more than Pepsi, but for 15 years, Pepsi has been getting closer. Your board wants you to stop losing your lead.",
       "next": "s_challenge"
     },
     "s_challenge": {
@@ -40,22 +40,22 @@
       "type": "scene",
       "year": "1984",
       "media": "img:nc_challenge",
-      "text": "Since 1975, Pepsi has run the Pepsi Challenge in shops and markets. People sip two colas without seeing the names, and more of them pick Pepsi. When your own team runs the same kind of test, it gets the same answer: people prefer a sweeter taste.",
+      "text": "Since 1975, Pepsi has run the Pepsi Challenge in shops and markets. People taste two colas without seeing the names, and more people choose Pepsi. Your own team does the same test and gets the same result: people like a sweeter taste.",
       "next": "d1"
     },
     "d1": {
       "id": "d1",
       "type": "decision",
       "year": "1984",
-      "title": "How to stop the fall",
+      "title": "How to keep your lead",
       "media": "img:nc_d1",
-      "setup": "There is some good news: Diet Coke, launched in 1982, shows that new drinks can still win buyers. While making it, your lab also found a sweeter recipe that beat both Pepsi and your own Coke in tests.",
-      "question": "How do you stop the fall?",
-      "advisor": "Pepsi says the problem is our taste, and our own tests agree with them.",
+      "setup": "There is some good news. Diet Coke, launched in 1982, shows that new drinks can bring in buyers. While making it, your lab also found a sweeter recipe that beat both Pepsi and your old Coke in taste tests.",
+      "question": "How do you keep your lead?",
+      "advisor": "Pepsi says our taste is the problem, and our own tests show the same thing.",
       "options": [
         {
           "id": "kansas",
-          "label": "Turn the lab's sweeter recipe into a new Coke in secret. It may win, but it changes a 99-year-old drink.",
+          "label": "Make a new, sweeter Coke in secret. It may win, but the old recipe changes.",
           "grade": "ok",
           "real": true,
           "effect": {
@@ -67,10 +67,10 @@
           },
           "next": "d2",
           "media": "img:nc_d1_kansas",
-          "outcome": "You decide taste is the problem. A secret team works on a sweeter recipe, and in tests with nearly 200,000 people it beats both Pepsi and the old Coke.",
-          "why": "Remember: sell what you stand for, not just specs. Taste is only a spec, a fact about the drink. Coke stood for a lifetime of habits and memories, and a secret new recipe got your team ready to change the thing fans loved most.",
-          "better": "Keep the old recipe safe. Win with new drinks and fresh ads, the way Diet Coke did, and test new tastes as extra drinks.",
-          "takeaway": "In 1984 you treated a fight about feelings as a fight about flavour.",
+          "outcome": "You decide taste is the problem. A team works in secret on a sweeter recipe, and in tests with nearly 200,000 people, it beats both Pepsi and the old Coke.",
+          "why": "Remember: sell what you stand for, not just specs. Taste is only one fact about the drink. Coke was part of people's lives and memories, but your team was getting ready to change the recipe those fans loved.",
+          "better": "Keep the old recipe. Bring in buyers with new drinks and fresh ads, as Diet Coke did, and test new tastes as extra drinks.",
+          "takeaway": "In 1984 you tried to solve a problem about feelings by changing the flavour.",
           "traits": {
             "horizon": 0,
             "risk": 1,
@@ -79,7 +79,7 @@
         },
         {
           "id": "brand",
-          "label": "Keep the recipe, and fight with new drinks and ads. Fans stay happy, but Pepsi keeps gaining for now.",
+          "label": "Keep the recipe and use new drinks and ads. Fans stay happy, but Pepsi keeps gaining.",
           "grade": "great",
           "effect": {
             "profit": 5,
@@ -90,9 +90,9 @@
           },
           "next": "d2",
           "media": "img:nc_d1_brand",
-          "outcome": "You leave the recipe alone and put your money into new drinks and fresh ads. For a while Pepsi keeps gaining, and your board grows impatient. But your fans keep the taste they grew up with, and Diet Coke keeps winning new buyers.",
-          "why": "Remember: sell what you stand for, not just specs. Taste was only one spec, a fact about the drink. Your name, your history and your fans' memories were worth more than a sip in a test.",
-          "takeaway": "In 1984 you grew around your core product instead of changing it.",
+          "outcome": "You keep the recipe and spend your money on new drinks and fresh ads. Pepsi keeps gaining for a while, and your board wants faster results. But fans still get the taste they grew up with, and Diet Coke keeps bringing in new buyers.",
+          "why": "Remember: sell what you stand for, not just specs. Taste was only one fact about the drink. Your name, your history and your fans' memories mattered more than which drink won a taste test.",
+          "takeaway": "In 1984 you grew your business without changing your main drink.",
           "traits": {
             "horizon": 1,
             "risk": 0,
@@ -101,7 +101,7 @@
         },
         {
           "id": "price",
-          "label": "Cut prices so families get more Coke for their money. Sales may rise, but you earn less on every can.",
+          "label": "Cut prices to give families more Coke for less. Sales may rise, but profit per can falls.",
           "grade": "bad",
           "effect": {
             "profit": -15,
@@ -113,10 +113,10 @@
           },
           "next": "d2",
           "media": "vid:nc_d1_price",
-          "outcome": "Cheaper Coke wins back some buyers, until Pepsi cuts its prices too. Now both of you earn less on every can, and Coke is still falling behind.",
-          "why": "Remember: sell what you stand for, not just specs. Price is a spec too, a number Pepsi could match in a week. A fight on prices also told your fans that Coke was worth less.",
-          "better": "Protect your price. Give people new reasons to choose Coke, like new drinks and fresh ads.",
-          "takeaway": "In 1984 you fought with discounts and made your own drink look cheap.",
+          "outcome": "Cheaper Coke brings back some buyers, but then Pepsi cuts its prices too. Now both companies earn less on every can, and Pepsi is still getting closer to Coke.",
+          "why": "Remember: sell what you stand for, not just specs. Price is also just a number, and Pepsi could match your price in a week. Cutting prices also made fans think Coke was worth less.",
+          "better": "Keep your price. Give people new reasons to buy Coke, like new drinks and fresh ads.",
+          "takeaway": "In 1984 you used lower prices to fight Pepsi, but made Coke seem worth less.",
           "traits": {
             "horizon": -1,
             "risk": 0,
@@ -129,7 +129,7 @@
       "id": "d2",
       "type": "decision",
       "year": "1985",
-      "title": "The taste test winner",
+      "title": "The drink that won the taste test",
       "media": "img:nc_d2",
       "setup": [
         {
@@ -138,7 +138,7 @@
               "kansas"
             ]
           },
-          "text": "The sweeter recipe has won your tests. But the tests measured taste, not how people would feel if their old Coke disappeared, and about 10 to 12 in every 100 testers said they were angry at the very idea of a change."
+          "text": "The sweeter recipe has won your tests. But the tests only checked taste, not how people would feel if the old Coke was gone. About 10 to 12 in every 100 testers said they were angry about changing it."
         },
         {
           "when": {
@@ -146,14 +146,14 @@
               "brand"
             ]
           },
-          "text": "Your new drinks are selling, but Pepsi is still close behind, and your marketing team wants to use the lab's sweeter recipe. In early tests, a few people say they would be angry if the old Coke changed."
+          "text": "Your new drinks are selling, but Pepsi is still close behind. Your marketing team wants to use the lab's sweeter recipe, though a few people in early tests say they would be angry if the old Coke changed."
         },
         {
-          "text": "The fight on prices has left you with thin profits and no clear win, so your marketing team wants to use the lab's sweeter recipe. In early tests, a few people say they would be angry if the old Coke changed."
+          "text": "Cutting prices has left you with low profits and no clear win. Your marketing team wants to use the lab's sweeter recipe, though a few people in early tests say they would be angry if the old Coke changed."
         }
       ],
       "question": "What do you do with the new recipe?",
-      "advisor": "One Coke gives you one clear message, and the new taste wins the tests. But people have drunk the old one all their lives.",
+      "advisor": "One Coke makes advertising simpler, and the new taste wins the tests. But people have drunk the old one all their lives.",
       "options": [
         {
           "id": "extra",
@@ -168,9 +168,9 @@
           },
           "next": "d3alt",
           "media": "img:nc_d2_extra",
-          "outcome": "The sweet drink goes on shelves beside the old Coke. Pepsi gets no story about angry Coke fans, and your fans still have the drink they love.",
-          "why": "Remember: people pay for a result and a feeling. The new taste might win on the result, a nicer sip. The old Coke kept the feeling, so no fan lost anything.",
-          "takeaway": "In 1985 you added a new choice instead of taking away an old one.",
+          "outcome": "The sweet drink goes into shops beside the old Coke. Pepsi cannot tell a story about angry Coke fans, and your fans still have the drink they love.",
+          "why": "Remember: people pay for a result and a feeling. The new taste might give people a better taste when they take a sip. The old Coke kept the feeling people loved, so fans did not lose their favourite drink.",
+          "takeaway": "In 1985 you gave buyers a new choice without taking away the old one.",
           "traits": {
             "horizon": 1,
             "risk": 1,
@@ -179,7 +179,7 @@
         },
         {
           "id": "replace",
-          "label": "Replace the old Coke everywhere. One clear Coke, though fans lose the taste they know.",
+          "label": "Replace the old Coke everywhere. Buyers get one clear Coke, but fans lose the old taste.",
           "grade": "bad",
           "real": true,
           "effect": {
@@ -199,15 +199,15 @@
                   "kansas"
                 ]
               },
-              "text": "On April 23, 1985, at a big event in New York, you announce the first new recipe in 99 years, and the old one comes off the market. Pepsi celebrates: it gives its staff a day off and runs full-page newspaper ads."
+              "text": "On April 23, 1985, at a big event in New York, you announce the first recipe change in 99 years. The old Coke is taken off the market. Pepsi celebrates by giving its staff a day off and putting ads across whole newspaper pages."
             },
             {
-              "text": "You announce the new recipe and take the old Coke off the market. Pepsi celebrates with newspaper ads, and reporters start asking your fans how they feel."
+              "text": "You announce the new recipe and stop selling the old Coke. Pepsi celebrates with newspaper ads, and reporters start asking fans what they think."
             }
           ],
-          "why": "Remember: people pay for a result and a feeling. A sip test measures taste, not the feeling of a drink people grew up with. Your own research warned you that some fans would be angry.",
-          "better": "Sell the new taste as an extra drink, or test it in a few cities first, and never take the old one away.",
-          "takeaway": "In 1985 you took away what fans loved because a test said they would like something else.",
+          "why": "Remember: people pay for a result and a feeling. A taste test shows which drink tastes better, but not how people feel about a drink they grew up with. Your own research warned you that some fans would be angry.",
+          "better": "Sell the new taste as an extra drink, or test it in a few cities first, but keep selling the old Coke.",
+          "takeaway": "In 1985 you took away the drink fans loved because a test said they liked a new taste more.",
           "traits": {
             "horizon": -1,
             "risk": 1,
@@ -216,7 +216,7 @@
         },
         {
           "id": "city",
-          "label": "Swap it in a few cities first. You learn more, but it's slower, and Pepsi will see it.",
+          "label": "Replace it in a few cities first. You learn more, but it takes longer, and Pepsi will notice.",
           "grade": "bad",
           "effect": {
             "profit": -5,
@@ -228,10 +228,10 @@
           },
           "next": "d3alt",
           "media": "img:nc_d2_city",
-          "outcome": "In a few test cities, the sweet drink takes the old Coke's place. Within weeks, those cities send you a pile of angry letters, and the newspapers soon hear about it.",
-          "why": "Remember: people pay for a result and a feeling. Testing small sounded careful, but in those cities you took away the drink people had feelings for, and the anger was real.",
-          "better": "Test the new taste without taking the old one away: sell it beside the old Coke.",
-          "takeaway": "In 1985 you tested before going big, but still tested the wrong idea.",
+          "outcome": "In a few test cities, the sweet drink replaces the old Coke. Within weeks, people in those cities send you many angry letters, and newspapers soon report the complaints.",
+          "why": "Remember: people pay for a result and a feeling. Testing in a few cities seemed careful, but you still took away a drink people loved. The anger in those cities was real.",
+          "better": "Test the new taste without removing the old Coke. Sell both drinks together.",
+          "takeaway": "In 1985 you tested the change before doing it everywhere, but you still took away the old Coke.",
           "traits": {
             "horizon": 1,
             "risk": -1,
@@ -244,7 +244,7 @@
       "id": "d3",
       "type": "decision",
       "year": "1985",
-      "title": "The fans fight back",
+      "title": "The fans get angry",
       "media": "img:nc_d3",
       "setup": [
         {
@@ -253,18 +253,18 @@
               "kansas"
             ]
           },
-          "text": "By June about 1,500 fans call your phone line every day, and about 40,000 write letters. They form protest groups and buy up the old Coke. A survey says only 13 in 100 cola drinkers like the new taste: a sip in a test was one thing, but drinking it every day is another."
+          "text": "By June, about 1,500 fans call your phone line every day, and the angry letters will reach about 40,000 in all. Fans form protest groups and buy as much old Coke as they can. A survey says only 13 in 100 cola drinkers like the new taste. Liking one sip in a test is different from drinking it every day."
         },
         {
-          "text": "Within weeks, your phones are ringing all day and the letters won't stop. Fans form protest groups and buy up all the old Coke they can find."
+          "text": "Within weeks, your phones ring all day and the letters keep coming. Fans form protest groups and buy as much old Coke as they can find."
         }
       ],
       "question": "Your fans are furious. What do you do?",
-      "advisor": "If we back down, the world will say we failed. If we keep going, how many fans will we lose?",
+      "advisor": "If we admit we were wrong, the world will see us fail. But if we continue, how many fans will leave?",
       "options": [
         {
           "id": "ads",
-          "label": "Spend big on ads for the new taste. Testers liked it, but angry fans may get angrier.",
+          "label": "Spend more on ads for the new taste. It may bring buyers, but angry fans may get angrier.",
           "grade": "ok",
           "effect": {
             "profit": -10,
@@ -275,10 +275,10 @@
           },
           "next": "s_shelf",
           "media": "vid:nc_d3_ads",
-          "outcome": "You pour money into ads for the new taste. A few people switch, but most fans feel you are not listening, and the protests get louder.",
-          "why": "Remember: admit a mistake early and openly, then fix it. Ads can tell people about a product. They can't make people stop missing something they loved, and every week you defended it made fans feel you weren't listening.",
-          "better": "Admit the mistake fast. Bring the old recipe back and say sorry.",
-          "takeaway": "In 1985 you tried to out-shout your own customers.",
+          "outcome": "You spend a lot on ads for the new taste. A few people start buying it, but most fans feel you are not listening, and more people join the protests.",
+          "why": "Remember: admit a mistake early and openly, then fix it. Ads can tell people about a drink, but they cannot make people stop missing something they loved. Each week you defended the new Coke, fans felt you were not listening.",
+          "better": "Admit the mistake quickly. Bring the old recipe back and say sorry.",
+          "takeaway": "In 1985 you spent money trying to change your fans' minds instead of listening to them.",
           "traits": {
             "horizon": 0,
             "risk": 0,
@@ -287,7 +287,7 @@
         },
         {
           "id": "wait",
-          "label": "Change the new recipe to taste more like the old one. You keep one Coke, but it takes months.",
+          "label": "Make the new recipe more like the old one. You keep one Coke, but it takes months.",
           "grade": "bad",
           "effect": {
             "profit": -10,
@@ -299,10 +299,10 @@
           },
           "next": "s_shelf",
           "media": "img:nc_d3_wait",
-          "outcome": "Your lab works all summer on a softer version of the new taste. But fans don't want a closer copy of their Coke. They want the real one back, and some switch to Pepsi for good.",
-          "why": "Remember: admit a mistake early and openly, then fix it. Fans weren't asking for a better new taste. They wanted the old one back, and every month in the lab made them angrier.",
-          "better": "Listen to what fans are asking for. Bring the old recipe back quickly and say sorry.",
-          "takeaway": "In 1985 you kept fixing the new recipe when fans wanted the old drink back.",
+          "outcome": "Your lab works all summer to make the new taste more like the old one. But fans do not want a similar taste. They want the real Coke back, and some leave for Pepsi and never return.",
+          "why": "Remember: admit a mistake early and openly, then fix it. Fans did not ask you to improve the new taste. They wanted their old Coke back, and every month spent changing the recipe made them angrier.",
+          "better": "Listen to what fans want. Bring the old recipe back quickly and say sorry.",
+          "takeaway": "In 1985 you kept changing the new recipe when fans wanted the old Coke back.",
           "traits": {
             "horizon": -1,
             "risk": 1,
@@ -311,7 +311,7 @@
         },
         {
           "id": "classic",
-          "label": "Bring back the old recipe and say sorry. Fans get it back, but the world sees you admit it.",
+          "label": "Bring back the old Coke and say sorry. Fans get it back, but everyone sees you were wrong.",
           "grade": "great",
           "real": true,
           "effect": {
@@ -330,14 +330,14 @@
                   "kansas"
                 ]
               },
-              "text": "On July 11, 1985, just 79 days after the change, you say sorry and bring back the old recipe, now called Coca-Cola Classic. TV news breaks into regular shows to report it, and your phone line gets 31,600 calls in two days."
+              "text": "On July 11, 1985, just 79 days after the change, you say sorry and bring back the old recipe, now called Coca-Cola Classic. TV channels stop their regular shows to report the news, and your phone line gets 31,600 calls in two days."
             },
             {
-              "text": "Within weeks of the change, you say sorry and bring the old recipe back. The news spreads fast, and your phones fill with calls from happy fans."
+              "text": "Within weeks of the change, you say sorry and bring back the old recipe. The news spreads quickly, and many happy fans call your company."
             }
           ],
-          "why": "Remember: admit a mistake early and openly, then fix it. Saying sorry is hard for a big company. You moved within weeks and gave fans back what they loved.",
-          "takeaway": "In 1985 you admitted a big mistake fast and fixed it.",
+          "why": "Remember: admit a mistake early and openly, then fix it. Saying sorry is hard for a big company, but you acted within weeks and gave fans back what they loved.",
+          "takeaway": "In 1985 you admitted a big mistake quickly and fixed it.",
           "traits": {
             "horizon": 1,
             "risk": 1,
@@ -350,7 +350,7 @@
       "id": "d3alt",
       "type": "decision",
       "year": "1985",
-      "title": "What the buyers told you",
+      "title": "What the buyers showed you",
       "media": "img:nc_d3alt",
       "setup": [
         {
@@ -359,18 +359,18 @@
               "extra"
             ]
           },
-          "text": "The sweet drink sits next to the old Coke. Sales show that some people like it, but most still reach for the taste they grew up with, and your sales team says two Cokes confuse shoppers."
+          "text": "The sweet drink is sold beside the old Coke. Sales show that some people like it, but most still choose the taste they grew up with. Your sales team says having two Cokes is confusing shoppers."
         },
         {
-          "text": "In your test cities, many fans are angry that their old Coke is gone. In taste tests, people there still like the sweet drink, but they miss the old one. Your team is split on what that means for the rest of the country."
+          "text": "In your test cities, many fans are angry because the old Coke is gone. People there still like the sweet drink in taste tests, but they miss the old one. Your team cannot agree on what to do in the rest of the country."
         }
       ],
       "question": "What next for the sweet recipe?",
-      "advisor": "Most people who tried the new taste liked it. Isn't that a yes?",
+      "advisor": "Most people who tried the new taste liked it. Doesn't that mean we should go ahead?",
       "options": [
         {
           "id": "everywhere",
-          "label": "Put the new taste everywhere anyway. Most testers liked it, and one Coke is simpler.",
+          "label": "Sell the new taste everywhere and replace the old. Tests were good, but fans may object.",
           "grade": "bad",
           "effect": {
             "profit": -10,
@@ -389,15 +389,15 @@
                   "city"
                 ]
               },
-              "text": "Fans across the country get angry, just as your test cities warned. After a hard summer of protests, you give in and bring the old taste back."
+              "text": "Fans across the country get angry, just as people in your test cities warned you. After a summer of protests, you agree to their demands and bring the old Coke back."
             },
             {
-              "text": "When you take the old Coke off the shelves, fans across the country get angry. After a hard summer of protests, you give in and bring the old taste back."
+              "text": "When you remove the old Coke from shops, fans across the country get angry. After a summer of protests, you agree to their demands and bring the old Coke back."
             }
           ],
-          "why": "Remember: test small first, and decide beforehand what result means yes. What your buyers did told you most still wanted the old Coke, and you went ahead anyway. A test helps only if you act on what it tells you.",
-          "better": "Keep the old Coke as the star, and sell the sweet taste only as a side drink.",
-          "takeaway": "In 1985 you ignored your own warning signs.",
+          "why": "Remember: test small first, and decide beforehand what result means yes. Your buyers showed you that most still wanted the old Coke, but you continued anyway. A test only helps if you use what you learn.",
+          "better": "Make the old Coke your main drink, and sell the sweet taste only as an extra choice.",
+          "takeaway": "In 1985 you ignored what your own tests warned you about.",
           "traits": {
             "horizon": -1,
             "risk": 1,
@@ -406,7 +406,7 @@
         },
         {
           "id": "liked",
-          "label": "Sell it only in the towns where it sells best, though different Cokes cost more to run.",
+          "label": "Sell it only in towns where it sells best. Sales may grow, but running different Cokes costs more.",
           "grade": "ok",
           "effect": {
             "profit": 0,
@@ -417,10 +417,10 @@
           },
           "next": "s_shelf",
           "media": "img:nc_d3alt_liked",
-          "outcome": "The sweet drink sells in a few places, but running different Cokes in different places is costly and confusing, and nobody is sure which Coke is the real one.",
-          "why": "Remember: test small first, and decide beforehand what result means yes. \"Some people liked it\" was never a yes. Different Cokes in different towns split your effort for a small gain.",
-          "better": "Make the old Coke the star everywhere, and keep the sweet taste as a clear side drink.",
-          "takeaway": "In 1985 you played safe, but made your brand more confusing.",
+          "outcome": "The sweet drink sells in a few places, but selling different Cokes in different places costs more and confuses buyers. People are not sure which Coke is the real one.",
+          "why": "Remember: test small first, and decide beforehand what result means yes. You had not decided that \"some people liked it\" was enough to continue. Selling different Cokes in different towns made more work for a small gain.",
+          "better": "Make the old Coke your main drink everywhere, and sell the sweet taste as a clear extra choice.",
+          "takeaway": "In 1985 you tried to reduce risk, but made your brand more confusing.",
           "traits": {
             "horizon": 0,
             "risk": -1,
@@ -429,7 +429,7 @@
         },
         {
           "id": "side",
-          "label": "Keep the old Coke as the star, and keep the sweet one only as a small extra.",
+          "label": "Keep the old Coke as the main drink and the sweet one as an extra. Fans stay, but growth may be slow.",
           "grade": "great",
           "effect": {
             "profit": 5,
@@ -447,14 +447,14 @@
                   "city"
                 ]
               },
-              "text": "The old Coke goes back on the shelves in your test cities, with the sweet drink beside it. Fans calm down, and the sweet drink finds its own small group of buyers."
+              "text": "The old Coke returns to shops in your test cities, with the sweet drink beside it. Fans calm down, and the sweet drink finds a small group of buyers."
             },
             {
-              "text": "Fans keep the Coke they love, and the sweet drink finds its own small group of buyers. Slowly, your lead over Pepsi starts to grow again."
+              "text": "Fans keep the Coke they love, and the sweet drink finds a small group of buyers. Slowly, Coke starts to increase its lead over Pepsi again."
             }
           ],
-          "why": "Remember: test small first, and decide beforehand what result means yes. The test said people liked the new taste but loved the old Coke. You acted on what it really said.",
-          "takeaway": "In 1985 you kept your core safe and let the new idea earn its place.",
+          "why": "Remember: test small first, and decide beforehand what result means yes. Your tests showed that people liked the new taste but loved the old Coke. You used what the tests showed you.",
+          "takeaway": "In 1985 you protected your main drink and gave the new one a chance to prove itself.",
           "traits": {
             "horizon": 1,
             "risk": 0,
@@ -476,7 +476,7 @@
               "kansas"
             ]
           },
-          "text": "Fans cheer, and Classic sells fast. You keep the new drink on sale too, so now two Cokes sit side by side in the shops: Classic, and the new, sweeter drink, which still carries the name Coca-Cola."
+          "text": "Fans are happy, and Classic sells fast. You keep selling the new drink too, so shops now have two Cokes: Classic and the new, sweeter drink, which still has the name Coca-Cola."
         },
         {
           "when": {
@@ -484,7 +484,7 @@
               "classic"
             ]
           },
-          "text": "Fans cheer, and the old Coke sells fast again. You keep the new drink on sale too, so now two Cokes sit side by side."
+          "text": "Fans are happy, and the old Coke sells fast again. You keep selling the new drink too, so shops now have two Cokes."
         },
         {
           "when": {
@@ -492,7 +492,7 @@
               "waited"
             ]
           },
-          "text": "Your lab works all summer, but the changed recipe wins few fans, and the protests won't stop. In the end you bring the old recipe back, but fans say you only listened when you had no choice. Now two Cokes share the shelf."
+          "text": "Your lab works all summer, but few fans like the changed recipe, and the protests continue. In the end, you bring the old recipe back, but fans say you listened only when you had no other choice. Now shops have two Cokes."
         },
         {
           "when": {
@@ -500,7 +500,7 @@
               "ads"
             ]
           },
-          "text": "The ads cost a fortune and change few minds. Fans protest all summer, and in the end you bring the old recipe back. Now two Cokes share the shelf."
+          "text": "The ads cost a lot of money but change few minds. Fans protest all summer, and in the end you bring the old recipe back. Now shops have two Cokes."
         },
         {
           "when": {
@@ -508,7 +508,7 @@
               "replaced_late"
             ]
           },
-          "text": "The old taste is back after a hard summer, and now two Cokes share the shelf. Many fans still haven't forgiven you."
+          "text": "The old taste is back after a difficult summer, and shops now have two Cokes. Many fans are still angry with you."
         },
         {
           "when": {
@@ -516,10 +516,10 @@
               "liked"
             ]
           },
-          "text": "In some towns shoppers find one Coke, and in others they find two. Your sales team wants one clear plan for the whole country."
+          "text": "In some towns, shoppers find one Coke, but in others they find two. Your sales team wants one clear plan for the whole country."
         },
         {
-          "text": "The old Coke is still the star, and the sweet drink has a small group of fans. Pepsi is no longer gaining on you."
+          "text": "The old Coke is still the main drink, and the sweet drink has a small group of fans. Pepsi is no longer getting closer to Coke."
         }
       ],
       "next": "d4"
@@ -528,15 +528,15 @@
       "id": "d4",
       "type": "decision",
       "year": "1985",
-      "title": "Next year's ad money",
+      "title": "Money for next year's ads",
       "media": "img:nc_d4",
-      "setup": "Next year's ad money is fixed, and both drinks want it. The team behind the sweet drink asks for half. Whatever you back now will shape what people think Coke is.",
-      "question": "How do you split the ad money?",
-      "advisor": "Splitting it evenly is fair to both teams, and gives each drink a real chance.",
+      "setup": "You have a fixed amount to spend on ads next year, and both drinks need it. The team selling the sweet drink asks for half the money. Your choice will change how people see Coke.",
+      "question": "How will you divide the ad money?",
+      "advisor": "Giving each drink half is fair to both teams, and both drinks get a chance to sell more.",
       "options": [
         {
           "id": "star",
-          "label": "Put nearly all of it behind the old Coke and let the sweet one fade, though its team will be upset.",
+          "label": "Spend nearly all on old Coke. Fans may buy more, but the sweet drink's team loses support.",
           "grade": "great",
           "effect": {
             "profit": 10,
@@ -547,9 +547,9 @@
           },
           "next": "ending_route",
           "media": "img:nc_d4_star",
-          "outcome": "You put your money behind the taste your fans chose, and the new drink quietly fades away. Shoppers know exactly which Coke is the real one.",
-          "why": "Remember: people pay for a result and a feeling. Your fans had shown you which Coke gave them that feeling. You put your money there and stopped paying for a drink they didn't want.",
-          "takeaway": "In 1985 you backed what your customers chose, not what you hoped they would choose.",
+          "outcome": "You spend your money on the taste your fans chose, and the new drink slowly stops selling. Shoppers know which Coke is the main drink.",
+          "why": "Remember: people pay for a result and a feeling. Your fans had shown you which Coke gave them the feeling they wanted. You spent your money on that drink instead of one they did not want.",
+          "takeaway": "In 1985 you spent money on what buyers wanted, not what you hoped they would want.",
           "traits": {
             "horizon": 1,
             "risk": 0,
@@ -558,7 +558,7 @@
         },
         {
           "id": "both",
-          "label": "Give each drink its own campaign, so each gets a fair chance, though each gets only part of the push.",
+          "label": "Give both drinks their own ads. Each gets a chance, but each gets less money.",
           "grade": "ok",
           "real": true,
           "effect": {
@@ -579,15 +579,15 @@
                   "classic"
                 ]
               },
-              "text": "You keep both drinks and give each its own ad campaign. Classic quickly sells more than the new drink, and within a few months it is again the best-selling regular cola, ahead of Pepsi. The new drink falls to about 3 in every 100 colas sold."
+              "text": "You keep both drinks and give each its own ads. Classic quickly sells more than the new drink, and within a few months it is again the best-selling regular cola, ahead of Pepsi. The new drink's share of the market falls to about 3 in 100."
             },
             {
-              "text": "You split the money and give each drink its own ad campaign. The old taste sells far more than the new one, and half your ad money goes to a drink few people want."
+              "text": "You divide the money and give each drink its own ads. The old Coke sells far more than the new one, and half your ad money goes to a drink few people want."
             }
           ],
-          "why": "Remember: people pay for a result and a feeling. Only one of your two Cokes gave fans the feeling they paid for, but you split your money and attention across both.",
-          "better": "Put your weight behind the taste fans chose, and let the new drink fade quietly.",
-          "takeaway": "In 1985 you split your effort between a winner and a loser.",
+          "why": "Remember: people pay for a result and a feeling. Only one of your two Cokes gave fans the feeling they wanted, but you divided your money and attention between both drinks.",
+          "better": "Spend most of your money on the taste fans chose, and let the new drink slowly stop selling.",
+          "takeaway": "In 1985 you divided your money between a popular drink and one that few people wanted.",
           "traits": {
             "horizon": 0,
             "risk": -1,
@@ -596,7 +596,7 @@
         },
         {
           "id": "push",
-          "label": "Put most of it behind the sweet drink, since young people like their cola sweeter.",
+          "label": "Spend most on sweet Coke. It may attract young buyers, but old Coke gets less support.",
           "grade": "bad",
           "effect": {
             "profit": -10,
@@ -608,10 +608,10 @@
           },
           "next": "ending_route",
           "media": "img:nc_d4_push",
-          "outcome": "You back the new drink again. Fans feel ignored for a second time, and many of them decide Pepsi is the easier choice.",
-          "why": "Remember: people pay for a result and a feeling. Young buyers liked the sweet taste, but your fans had told you twice which Coke gave them the feeling they wanted.",
-          "better": "Back the drink your fans chose, and let the new one fade.",
-          "takeaway": "In 1985 you kept pushing a product your customers had already rejected.",
+          "outcome": "You spend money promoting the new drink again. Fans feel you have ignored them for a second time, and many decide to buy Pepsi instead.",
+          "why": "Remember: people pay for a result and a feeling. Young buyers liked the sweet taste, but your fans had already told you twice which Coke gave them the feeling they wanted.",
+          "better": "Spend more on the drink your fans chose, and let the new one slowly stop selling.",
+          "takeaway": "In 1985 you kept promoting a drink your buyers had already said they did not want.",
           "traits": {
             "horizon": -1,
             "risk": 1,
@@ -645,7 +645,7 @@
       "id": "legend",
       "type": "ending",
       "tier": "legend",
-      "title": "The taste that never left",
+      "title": "The taste people still loved",
       "media": "img:nc_legend",
       "text": [
         {
@@ -659,7 +659,7 @@
               "replaced_late"
             ]
           },
-          "text": "You never took your fans' favourite drink away. New drinks and fresh ads bring in new buyers, and Coke's lead over Pepsi grows again without a summer of anger."
+          "text": "You never took away your fans' favourite drink. New drinks and fresh ads bring in more buyers, and Coke increases its lead over Pepsi without a summer of angry fans."
         },
         {
           "when": {
@@ -667,10 +667,10 @@
               "side"
             ]
           },
-          "text": "You listened to what the test really said. The old Coke stays the star, the sweet drink stays a small extra, and Coke's lead over Pepsi grows again."
+          "text": "You listened to what the test showed you. The old Coke stays the main drink, the sweet drink stays a small extra, and Coke increases its lead over Pepsi again."
         },
         {
-          "text": "You made mistakes, but you listened quickly and backed the taste your fans loved. Coke ends the year stronger than Pepsi, and its fans know you will listen."
+          "text": "You made mistakes, but you listened quickly and spent money on the taste your fans loved. Coke ends the year stronger than Pepsi, and its fans know you will listen."
         }
       ],
       "bonus": 15
@@ -679,7 +679,7 @@
       "id": "survivor",
       "type": "ending",
       "tier": "survivor",
-      "title": "The comeback of the old Coke",
+      "title": "The return of the old Coke",
       "media": "img:nc_survivor",
       "text": [
         {
@@ -691,7 +691,7 @@
               "both"
             ]
           },
-          "text": "By the end of 1985, Coca-Cola Classic is selling well ahead of both the new drink and Pepsi. The new drink is later renamed and dropped in 2002, and Coca-Cola comes out of it stronger."
+          "text": "By the end of 1985, Coca-Cola Classic sells far more than both the new drink and Pepsi. The new drink is later given a new name and stopped in 2002, and Coca-Cola becomes stronger."
         },
         {
           "when": {
@@ -699,7 +699,7 @@
               "waited"
             ]
           },
-          "text": "The old Coke is back and selling again, but it took you a whole summer to listen. Coke stays ahead of Pepsi, and fans remember how long you made them wait."
+          "text": "The old Coke is back and selling again, but you took a whole summer to listen. Coke stays ahead of Pepsi, and fans remember how long you made them wait."
         },
         {
           "when": {
@@ -707,10 +707,10 @@
               "push"
             ]
           },
-          "text": "You backed the wrong drink at the end, and some fans drift to Pepsi. Coke is still big and still ahead, but its lead is smaller than before the new drink."
+          "text": "You spent money on the wrong drink at the end, and some fans leave for Pepsi. Coke is still big and still ahead, but its lead is smaller than before the new drink."
         },
         {
-          "text": "You made some costly moves, but you listened in time. Your fans stay with you, and Coke stays ahead of Pepsi."
+          "text": "You made some costly choices, but you listened before it was too late. Your fans stay with you, and Coke stays ahead of Pepsi."
         }
       ],
       "bonus": 5
@@ -719,7 +719,7 @@
       "id": "collapse",
       "type": "ending",
       "tier": "collapse",
-      "title": "The cola that lost its fans",
+      "title": "The Coke that lost its fans",
       "media": "img:nc_collapse",
       "text": [
         {
@@ -728,10 +728,10 @@
               "push"
             ]
           },
-          "text": "You pushed the new drink even after fans said no twice. Many of them switch to Pepsi for good, and the world's best-known drink loses its lead."
+          "text": "You kept promoting the new drink even after fans rejected it twice. Many switch to Pepsi and never return, and the world's best-known drink loses its lead."
         },
         {
-          "text": "By the time you backed the taste your fans loved, too many of them had switched to Pepsi for good. The world's best-known drink loses its lead."
+          "text": "By the time you spent money on the taste your fans loved, too many had switched to Pepsi and never returned. The world's best-known drink loses its lead."
         }
       ],
       "bonus": 0
@@ -740,9 +740,9 @@
       "id": "fired",
       "type": "ending",
       "tier": "fired",
-      "title": "The board lets you go",
+      "title": "The board asks you to leave",
       "media": "img:nc_fired",
-      "text": "Three costly calls are too many. The board has lost its trust in you, and it asks someone else to win the fans back.",
+      "text": "You made three costly decisions. The board no longer trusts you, so it asks someone else to bring the fans back.",
       "bonus": 0
     }
   },
