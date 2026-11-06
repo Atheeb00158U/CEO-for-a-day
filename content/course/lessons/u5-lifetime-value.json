@@ -1,0 +1,221 @@
+{
+  "id": "u5-lifetime-value",
+  "title": "What is one customer worth?",
+  "principle": "A customer is worth the margin on all their future buys.",
+  "minutes": 5,
+  "draft": true,
+  "screens": [
+    {
+      "kind": "explain",
+      "id": "hook",
+      "media": "img:ls_loyal_customer",
+      "text": "Let me tell you about a famous study from 1990. Two researchers, Frederick Reichheld and Earl Sasser, studied service businesses such as banks. They asked one question: what happens to profit when a few more customers stay?"
+    },
+    {
+      "kind": "choice",
+      "id": "guess",
+      "guess": true,
+      "prompt": "Imagine a business keeps 5 more customers out of every 100 each year. What do you think happened to its profit?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Up by about 5%"
+        },
+        {
+          "id": "b",
+          "label": "About the same"
+        },
+        {
+          "id": "c",
+          "label": "Up by 25% to 85%"
+        }
+      ],
+      "answer": "c",
+      "why": "Profits rose by 25% to 85%, depending on the business. Five more customers out of 100 doesn't sound like much. But a customer who stays keeps buying, year after year."
+    },
+    {
+      "kind": "explain",
+      "id": "ltv",
+      "title": "Customer lifetime value",
+      "text": "The money one customer brings you over all their years is called customer lifetime value, or LTV. Count the margin you keep, not the price they pay. The sum: margin on each order × orders a year × years they stay."
+    },
+    {
+      "kind": "explain",
+      "id": "home",
+      "title": "Now look at your business",
+      "text": "Those studies looked at banks, but your best customers work the same way. It's June. One family has ordered from you for three years: four birthday cakes every year. Each ₹850 cake leaves you ₹450."
+    },
+    {
+      "kind": "choice",
+      "id": "ltv-sum",
+      "prompt": "A family orders 4 cakes a year. Each leaves you ₹450. If they stay 5 years, what's their lifetime value?",
+      "options": [
+        {
+          "id": "a",
+          "label": "₹1,800"
+        },
+        {
+          "id": "b",
+          "label": "₹9,000"
+        },
+        {
+          "id": "c",
+          "label": "₹17,000"
+        }
+      ],
+      "answer": "b",
+      "why": "Exactly. ₹450 × 4 cakes = ₹1,800 a year, and 5 years makes ₹9,000. That family isn't an ₹850 order. It's ₹9,000 of profit, if you keep them happy.",
+      "wrong": {
+        "a": "₹1,800 is one year: ₹450 × 4. They stay 5 years, so ₹1,800 × 5 = ₹9,000.",
+        "c": "You used the price: ₹850 × 4 × 5. Lifetime value counts what you keep: ₹450 × 4 × 5 = ₹9,000."
+      }
+    },
+    {
+      "kind": "gap",
+      "id": "box-ltv",
+      "text": "Your breakfast box leaves ₹150 a week. A family takes it 40 weeks a year for 2 years. ₹150 × ___ × 2 = ___.",
+      "bank": ["40", "₹12,000", "52", "₹6,000"],
+      "answer": ["40", "₹12,000"],
+      "why": "Right. ₹150 × 40 = ₹6,000 a year, and 2 years makes ₹12,000. Count the weeks they really take it, not all 52."
+    },
+    {
+      "kind": "sort",
+      "id": "raise-ltv",
+      "prompt": "I'll show you six ideas. For each one, tell me: does it raise lifetime value, or only today's sale?",
+      "buckets": ["Raises lifetime value", "Only today's sale"],
+      "items": [
+        {
+          "text": "A message a week before each child's birthday",
+          "bucket": 0
+        },
+        {
+          "text": "₹100 off a family's first cake only",
+          "bucket": 1
+        },
+        {
+          "text": "Remember each family's favourite flavour",
+          "bucket": 0
+        },
+        {
+          "text": "A bigger cake at the same price, just this once",
+          "bucket": 1
+        },
+        {
+          "text": "Replace a damaged cake free, the same day",
+          "bucket": 0
+        },
+        {
+          "text": "A festival sale banner on your menu",
+          "bucket": 1
+        }
+      ],
+      "why": "Good. The first kind makes families stay and order again: a reminder, their favourite flavour, a fix when things go wrong. The second kind helps one sale and then stops."
+    },
+    {
+      "kind": "choice",
+      "id": "trial-cake",
+      "prompt": "You think of a ₹400 trial cake, which leaves you nothing, to win new families. When does it make sense?",
+      "options": [
+        {
+          "id": "a",
+          "label": "When most of them come back at ₹850"
+        },
+        {
+          "id": "b",
+          "label": "When it brings lots of first orders"
+        },
+        {
+          "id": "c",
+          "label": "When other bakers are cheaper than you"
+        }
+      ],
+      "answer": "a",
+      "why": "Exactly. You met this in Unit 3: a cheap first offer pays only if buyers return at full price. The trial cake earns nothing. Lifetime value is what pays for it.",
+      "wrong": {
+        "b": "Lots of ₹0 orders still make ₹0. Remember Unit 3: a cheap first offer pays only if buyers come back at full price.",
+        "c": "Then you'd be fighting on price. Remember Unit 3: a cheap first offer pays only if buyers come back at the full ₹850."
+      }
+    },
+    {
+      "kind": "scenario",
+      "id": "squashed",
+      "setup": "It's late June. A family who orders 4 cakes a year calls, upset: today's birthday cake arrived squashed. Baking a fresh one costs you ₹400 and two hours. The party starts at 7 pm.",
+      "question": "What do you do?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Say sorry and give ₹100 off their next cake",
+          "grade": "bad",
+          "outcome": "They have a party tonight and a squashed cake. They thank you coldly. Next birthday, they order from someone else. You saved ₹400 and lost about ₹9,000 over the next five years.",
+          "why": "You protected today's ₹400 and lost a family worth about ₹9,000.",
+          "better": "Bake a fresh cake now and deliver it before 7 pm, free."
+        },
+        {
+          "id": "b",
+          "label": "Bake a fresh cake now and deliver it free",
+          "grade": "great",
+          "outcome": "The new cake arrives at 6:30 pm. The mother sends a photo of the candles and thanks you in the colony group. They keep ordering. You spent ₹400 to keep a family worth about ₹9,000.",
+          "why": "You judged the cost against the family's lifetime value, not against one cake."
+        },
+        {
+          "id": "c",
+          "label": "Refund the full ₹850 and say sorry",
+          "grade": "ok",
+          "outcome": "They're glad to get the money back, but they buy a shop cake for tonight. Next time, they're not sure about you. You're ₹850 down and may lose the family.",
+          "why": "A refund is fair, but it didn't save the party, and the party was what they paid for.",
+          "better": "Bake a fresh cake now and deliver it before 7 pm, free."
+        }
+      ]
+    },
+    {
+      "kind": "gap",
+      "id": "fill",
+      "text": "A customer is worth the ___ on all their ___ buys, not just the first.",
+      "bank": ["margin", "future", "price", "past"],
+      "answer": ["margin", "future"],
+      "why": "Exactly. Reichheld and Sasser found that keeping a few more customers raised profits a lot. Your squashed-cake family is worth about ₹9,000, not ₹850."
+    }
+  ],
+  "summary": [
+    "Customer lifetime value (LTV): the margin one customer brings you over all their years.",
+    "LTV = margin on each order × orders a year × years they stay.",
+    "When a problem comes up, compare its cost with the customer's lifetime value, not one order."
+  ],
+  "cards": [
+    {
+      "id": "m52-ltv-1",
+      "front": "A family orders 4 cakes a year at ₹450 margin and stays 5 years. LTV?",
+      "options": ["₹1,800", "₹9,000", "₹17,000"],
+      "answer": 1,
+      "back": "₹450 × 4 × 5 = ₹9,000."
+    },
+    {
+      "id": "m52-ltv-2",
+      "front": "Lifetime value counts which number from each order?",
+      "options": ["The price they pay", "The margin you keep"],
+      "answer": 1,
+      "back": "Count what you keep, not what they pay."
+    },
+    {
+      "id": "m52-ltv-3",
+      "front": "Fixing a regular customer's problem costs ₹400. They're worth ₹9,000 over the years. Fix it?",
+      "options": ["Yes", "No, ₹400 is too much"],
+      "answer": 0,
+      "back": "Compare the cost with lifetime value, not one order."
+    }
+  ],
+  "sources": [
+    {
+      "label": "Reichheld and Sasser, Zero Defections: Quality Comes to Services (Harvard Business Review, Sep–Oct 1990)",
+      "url": "https://hbr.org/1990/09/zero-defections-quality-comes-to-services"
+    },
+    {
+      "label": "Ipsos, Shattering myths about customer loyalty (quotes the 25% to 85% finding)",
+      "url": "https://www.ipsos.com/en-us/shattering-myths-customer-loyalty"
+    },
+    {
+      "label": "Reichheld, Here's the truth about customer retention (American Banker, 1991)",
+      "url": "https://www.americanbanker.com/news/heres-the-truth-about-customer-retention"
+    }
+  ]
+}

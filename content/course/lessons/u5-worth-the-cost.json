@@ -1,0 +1,234 @@
+{
+  "id": "u5-worth-the-cost",
+  "title": "Is a new customer worth it?",
+  "principle": "Each customer must earn more margin than winning them cost.",
+  "minutes": 5,
+  "draft": true,
+  "screens": [
+    {
+      "kind": "explain",
+      "id": "hook",
+      "media": "img:ls_cheap_offer",
+      "text": "Let me tell you about PepperTap, an Indian grocery delivery app that started in 2014. It gave big discounts to win buyers. In 2015, it claimed 40,000 orders in a single day. In April 2016, it shut down."
+    },
+    {
+      "kind": "choice",
+      "id": "guess",
+      "guess": true,
+      "prompt": "It had so many orders. Why do you think PepperTap shut down?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Rivals copied its app and its prices"
+        },
+        {
+          "id": "b",
+          "label": "It lost money on every order it won"
+        },
+        {
+          "id": "c",
+          "label": "Shops stopped selling to it"
+        }
+      ],
+      "answer": "b",
+      "why": "Its boss said it was losing cash on every order. Discounts and the high cost of winning customers ate the money. Orders fell to about 7,000 or 8,000 a day, and it closed."
+    },
+    {
+      "kind": "explain",
+      "id": "cac",
+      "title": "LTV:CAC",
+      "text": "What one customer costs to win is your spend divided by the customers it brought: ₹6,000 for 20 is ₹300 each. That's customer acquisition cost, or CAC. Compare it with lifetime value, LTV. Investors call this LTV:CAC. If LTV isn't well above CAC, growth makes you poorer."
+    },
+    {
+      "kind": "choice",
+      "id": "cac-sum",
+      "prompt": "You spend ₹3,000 on Instagram ads, and 10 new families order. What did each family cost to win?",
+      "options": [
+        {
+          "id": "a",
+          "label": "₹30"
+        },
+        {
+          "id": "b",
+          "label": "₹3,000"
+        },
+        {
+          "id": "c",
+          "label": "₹300"
+        }
+      ],
+      "answer": "c",
+      "why": "Exactly. ₹3,000 ÷ 10 families = ₹300 each. That's your CAC.",
+      "wrong": {
+        "a": "Check the zeros: ₹3,000 ÷ 10 is ₹300, not ₹30.",
+        "b": "₹3,000 is what you spent on all 10 families. Divide by 10: ₹300 each."
+      }
+    },
+    {
+      "kind": "explain",
+      "id": "home",
+      "title": "Now look at your business",
+      "text": "Last lesson, loops beat paying for each buyer. But paying is fine when each buyer earns back more than they cost. Let's check your bakery. It's June. A family who stays usually orders 4 cakes a year, and each cake leaves you ₹450."
+    },
+    {
+      "kind": "choice",
+      "id": "payback",
+      "prompt": "A new family cost ₹600 to win. Each cake leaves you ₹450. After how many cakes have you earned back the ₹600?",
+      "options": [
+        {
+          "id": "a",
+          "label": "1 cake"
+        },
+        {
+          "id": "b",
+          "label": "2 cakes"
+        },
+        {
+          "id": "c",
+          "label": "3 cakes"
+        }
+      ],
+      "answer": "b",
+      "why": "Right. One cake leaves ₹450, still ₹150 short. The second cake makes ₹900, more than ₹600. This is the payback: how many orders before a customer repays what you spent to win them.",
+      "wrong": {
+        "a": "One cake leaves ₹450, but you spent ₹600, so you're still ₹150 short. After 2 cakes you have ₹900, so the payback is 2 cakes.",
+        "c": "You're there sooner: 2 cakes leave ₹900, more than the ₹600 you spent. The payback is 2 cakes."
+      }
+    },
+    {
+      "kind": "sort",
+      "id": "worth-it",
+      "prompt": "I'll show you six ways you won families last year. For each one, tell me: did it earn back more than it cost?",
+      "buckets": ["Earned back more", "Lost money"],
+      "items": [
+        {
+          "text": "₹300 of ads; the family stays and orders 4 cakes a year",
+          "bucket": 0
+        },
+        {
+          "text": "₹500 of free samples; the family orders one ₹450-margin cake",
+          "bucket": 1
+        },
+        {
+          "text": "A ₹5 card in a box; the family orders 4 cakes a year",
+          "bucket": 0
+        },
+        {
+          "text": "₹2,000 to a blogger; 2 families order once each",
+          "bucket": 1
+        },
+        {
+          "text": "₹100 of referral discounts; the family orders 4 cakes a year",
+          "bucket": 0
+        },
+        {
+          "text": "₹1,000 coupon; the family orders 2 cakes in all",
+          "bucket": 1
+        }
+      ],
+      "why": "Good sorting. Ads, the card and referrals cost far less than the families earned back. The samples, the blogger and the big coupon cost more than ₹450 for each cake sold."
+    },
+    {
+      "kind": "choice",
+      "id": "runway",
+      "prompt": "Ads win families at ₹300 each. Each is worth about ₹9,000 over five years. You have ₹30,000. Why not spend it all now?",
+      "options": [
+        {
+          "id": "a",
+          "label": "The ₹9,000 comes over years; the cash goes now"
+        },
+        {
+          "id": "b",
+          "label": "₹300 is too much for one family"
+        },
+        {
+          "id": "c",
+          "label": "Ads always stop working after a month"
+        }
+      ],
+      "answer": "a",
+      "why": "Exactly. Remember Unit 1: businesses die when cash runs out. Each family pays you back slowly, cake by cake. Spend in steps, and let early payback fund the next round.",
+      "wrong": {
+        "b": "₹300 is cheap next to ₹9,000. The problem is timing. Remember Unit 1: you spend the ₹30,000 now, but the ₹9,000 comes over five years. Cash can run out first.",
+        "c": "We don't know that. The problem is timing. Remember Unit 1: you spend the ₹30,000 now, but the ₹9,000 comes over five years. Cash can run out first."
+      }
+    },
+    {
+      "kind": "scenario",
+      "id": "june-push",
+      "setup": "It's late June. You have ₹6,000 to win new families before the festival months. A family who stays usually orders 4 cakes a year. Each cake leaves you ₹450.",
+      "question": "Where do you spend the ₹6,000?",
+      "options": [
+        {
+          "id": "a",
+          "label": "₹300 off the first cake, for anyone on your menu",
+          "grade": "bad",
+          "outcome": "20 orders use the coupon, but 14 come from your old families. Only 6 families are new, so each new one cost you ₹1,000. Their first cakes leave you just ₹150 each.",
+          "why": "Your old customers took most of the discount. Divide the cost by new families only, and the CAC was ₹1,000.",
+          "better": "Boost Instagram reels, where a new family costs you about ₹300."
+        },
+        {
+          "id": "b",
+          "label": "Boost Instagram reels with the ₹6,000",
+          "grade": "great",
+          "outcome": "The reels bring 20 new families: ₹300 each. Each family's first cake leaves you ₹450, so they pay back on the first order. If they stay a year, each one leaves you ₹1,800.",
+          "why": "CAC of ₹300 against ₹1,800 a year of margin, with payback on the first cake. The numbers say yes."
+        },
+        {
+          "id": "c",
+          "label": "Pay a food blogger ₹6,000 for one big post",
+          "grade": "ok",
+          "outcome": "The post looks lovely and brings 8 new families: ₹750 each. Each needs two cakes to pay back. Some only order once.",
+          "why": "It can still pay over time, but each family cost more than twice as much as the reels did.",
+          "better": "Boost Instagram reels, where a new family costs you about ₹300."
+        }
+      ]
+    },
+    {
+      "kind": "gap",
+      "id": "fill",
+      "text": "Divide what you ___ by the new customers it brought. Each customer must earn more ___ than that.",
+      "bank": ["spent", "margin", "sold", "praise"],
+      "answer": ["spent", "margin"],
+      "why": "Exactly. That's LTV:CAC. Your reels won families at ₹300 each, and each one leaves you ₹1,800 a year."
+    }
+  ],
+  "summary": [
+    "CAC: what you spent to win customers ÷ the new customers it brought.",
+    "LTV:CAC: lifetime value must be well above CAC, or growth makes you poorer.",
+    "Payback: how many orders before a customer repays their CAC. Long paybacks can empty your cash."
+  ],
+  "cards": [
+    {
+      "id": "m52-cac-1",
+      "front": "₹6,000 of ads brought 20 new customers. What's the CAC?",
+      "options": ["₹300", "₹120", "₹6,000"],
+      "answer": 0,
+      "back": "₹6,000 ÷ 20 = ₹300 each."
+    },
+    {
+      "id": "m52-cac-2",
+      "front": "A customer costs ₹500 to win and orders once, leaving ₹200. Worth it?",
+      "options": ["Yes, a sale is a sale", "No, you lose ₹300"],
+      "answer": 1,
+      "back": "Each customer must earn more margin than winning them cost."
+    },
+    {
+      "id": "m52-cac-3",
+      "front": "A customer costs ₹600 to win. Each order leaves ₹300. What's the payback?",
+      "options": ["2 orders", "1 order"],
+      "answer": 0,
+      "back": "₹300 × 2 = ₹600. Paid back on the second order."
+    }
+  ],
+  "sources": [
+    {
+      "label": "PepperTap shuts down grocery delivery (Medianama, Apr 2016)",
+      "url": "https://www.medianama.com/2016/04/223-peppertap-shutdown-logistics/"
+    },
+    {
+      "label": "PepperTap shuts grocery delivery ops, 150 staffers laid off (Millennium Post / PTI)",
+      "url": "https://www.millenniumpost.in/peppertap-shuts-grocery-delivery-ops-150-staffers-laid-off-140008"
+    }
+  ]
+}

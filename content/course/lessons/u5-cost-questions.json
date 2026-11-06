@@ -1,0 +1,217 @@
+{
+  "id": "u5-cost-questions",
+  "title": "What does the problem cost?",
+  "principle": "Ask what the problem costs them before you show the fix.",
+  "minutes": 5,
+  "draft": true,
+  "screens": [
+    {
+      "kind": "explain",
+      "id": "hook",
+      "media": "img:ls_sales_calls",
+      "text": "Let me tell you about a very long study. A British researcher, Neil Rackham, and his team watched more than 35,000 sales calls in 23 countries, over 12 years. They wanted to know one thing: in big sales, what do the best sellers do differently?"
+    },
+    {
+      "kind": "choice",
+      "id": "guess",
+      "guess": true,
+      "prompt": "What do you think the best sellers did more than the others?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Explained every feature of the product"
+        },
+        {
+          "id": "b",
+          "label": "Asked about the buyer's problems"
+        },
+        {
+          "id": "c",
+          "label": "Offered a lower price early"
+        }
+      ],
+      "answer": "b",
+      "why": "They asked questions. Most people expect great sellers to be great talkers, but the best ones asked more and talked less. And one kind of question mattered most."
+    },
+    {
+      "kind": "explain",
+      "id": "spin",
+      "title": "SPIN questions",
+      "text": "Rackham named four kinds, SPIN. Situation: \"How many snacks do you sell?\" Problem: \"Do they run out?\" Implication: \"What does running out cost you?\" Need-payoff: \"What would a full shelf mean?\" Implication questions mattered most: they make a small problem look as big as it is."
+    },
+    {
+      "kind": "choice",
+      "id": "which-kind",
+      "prompt": "You ask a café owner, \"When snacks run out at 5 pm, how many customers walk away?\" What kind of question is this?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Situation: a plain fact"
+        },
+        {
+          "id": "b",
+          "label": "Problem: does it go wrong?"
+        },
+        {
+          "id": "c",
+          "label": "Implication: what it costs"
+        }
+      ],
+      "answer": "c",
+      "why": "Yes. You already know the snacks run out. Now you're asking what that costs him: customers who walk away. That's an implication question.",
+      "wrong": {
+        "a": "A situation question asks a plain fact, like \"How many snacks do you sell?\" This one asks what running out costs him. That's an implication question.",
+        "b": "A problem question asks if something goes wrong: \"Do snacks run out?\" You know they do. Asking how many customers walk away is an implication question."
+      }
+    },
+    {
+      "kind": "explain",
+      "id": "home",
+      "title": "Now look at your business",
+      "text": "Rackham studied big company deals, but the same questions work at a café counter. It's February. A busy café near the bus stand sells tea and snacks. You'd like to sell it brownies every day. Each brownie costs you ₹20 to make."
+    },
+    {
+      "kind": "order",
+      "id": "spin-order",
+      "prompt": "Here are four questions for the café owner, mixed up. Put them in the order you'd ask them, first one at the top.",
+      "steps": [
+        "How many snacks do you sell each evening?",
+        "Do your snacks ever run out early?",
+        "When they run out, how many customers walk away?",
+        "What would a full shelf until 9 pm mean for you?"
+      ],
+      "why": "Well done. Start with plain facts, then the problem, then what it costs, then what fixing it would mean. By the end, he's telling you why he needs you."
+    },
+    {
+      "kind": "choice",
+      "id": "cost-sum",
+      "prompt": "The owner says about 15 customers walk away each evening. Each would spend about ₹60. What does this cost him in a 30-day month?",
+      "options": [
+        {
+          "id": "a",
+          "label": "₹900"
+        },
+        {
+          "id": "b",
+          "label": "₹27,000"
+        },
+        {
+          "id": "c",
+          "label": "₹6,300"
+        }
+      ],
+      "answer": "b",
+      "why": "Exactly. 15 customers × ₹60 is ₹900 an evening, and 30 evenings make ₹27,000 a month. He never added it up. Once he says it out loud, a brownie order looks small.",
+      "wrong": {
+        "a": "₹900 is one evening: 15 × ₹60. Now multiply by 30 evenings. Running out costs him about ₹27,000 a month.",
+        "c": "₹6,300 is one week: ₹900 × 7. The question asked about a 30-day month: ₹900 × 30 is ₹27,000."
+      }
+    },
+    {
+      "kind": "choice",
+      "id": "true-answer",
+      "prompt": "You want the owner's true answer about his problem. Which question should you ask?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Last week, on how many evenings did snacks run out?"
+        },
+        {
+          "id": "b",
+          "label": "Would you buy brownies if I made them?"
+        },
+        {
+          "id": "c",
+          "label": "Don't you think your café needs brownies?"
+        }
+      ],
+      "answer": "a",
+      "why": "Right. This is the Mom Test from Unit 2: ask what happened last time. \"Last week\" gets a fact. Then ask what those evenings cost him.",
+      "wrong": {
+        "b": "He'll say yes to be polite, and it proves nothing. Remember the Mom Test from Unit 2: ask what happened last week, not what he would do.",
+        "c": "This tells him the answer you want, so he'll just agree. Remember the Mom Test from Unit 2: ask what happened last week."
+      }
+    },
+    {
+      "kind": "scenario",
+      "id": "the-visit",
+      "setup": "It's late February. The café owner gives you ten minutes. Every evening, about 15 customers walk away when his snacks run out. He has never added up what that costs. You've brought a box of brownies.",
+      "question": "How do you use your ten minutes?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Open the box first and explain your recipe",
+          "grade": "ok",
+          "outcome": "He tastes one and smiles. \"Very nice. Let me think about it.\" Ten minutes pass, and he never says what the empty shelf costs him. A week later, he still hasn't called.",
+          "why": "You showed the fix before he felt the problem. A brownie was just a nice brownie to him.",
+          "better": "Ask what the empty shelf costs him first. Then open the box."
+        },
+        {
+          "id": "b",
+          "label": "Ask what the empty shelf costs him, then open the box",
+          "grade": "great",
+          "outcome": "He works it out himself: about ₹27,000 a month walks away. Then you open the box. He orders 30 brownies a day for a two-week trial at ₹45 each. You keep ₹25 on each: ₹750 a day.",
+          "why": "He said the cost in his own words, so your brownies became the fix for a ₹27,000 problem."
+        },
+        {
+          "id": "c",
+          "label": "Offer brownies cheaper than his snack supplier",
+          "grade": "bad",
+          "outcome": "He agrees to 30 brownies a day at ₹30 each. You keep only ₹10 on each: ₹300 a day. He still thinks of you as the cheap baker.",
+          "why": "He had a ₹27,000 problem, but you sold on price. You keep less than half of what the trial at ₹45 would pay you.",
+          "better": "Ask what the empty shelf costs him first. Then open the box."
+        }
+      ]
+    },
+    {
+      "kind": "gap",
+      "id": "fill",
+      "text": "Before you show your fix, ask what the ___ costs them, and ___ more than you talk.",
+      "bank": ["problem", "listen", "recipe", "argue"],
+      "answer": ["problem", "listen"],
+      "why": "Exactly. Rackham's best sellers asked implication questions and listened. The café owner found his own ₹27,000 problem, so your brownies sold themselves."
+    }
+  ],
+  "summary": [
+    "SPIN questions: Situation, Problem, Implication, Need-payoff. Implication questions ask what the problem costs.",
+    "When buyers add up the cost in their own words, your fix starts to look cheap.",
+    "Ask what happened last time, and listen more than you talk."
+  ],
+  "cards": [
+    {
+      "id": "m51-spin-1",
+      "front": "\"When the machine breaks, how many orders do you lose?\" What kind of SPIN question is this?",
+      "options": ["Situation", "Implication", "Problem"],
+      "answer": 1,
+      "back": "Implication: it asks what the problem costs."
+    },
+    {
+      "id": "m51-spin-2",
+      "front": "15 customers walk away each evening, each worth ₹60. What's that over 30 days?",
+      "options": ["₹27,000", "₹900"],
+      "answer": 0,
+      "back": "₹900 an evening × 30 = ₹27,000 a month."
+    },
+    {
+      "id": "m51-spin-3",
+      "front": "You have ten minutes with a buyer. What comes first?",
+      "options": ["Show the product", "Ask what the problem costs"],
+      "answer": 1,
+      "back": "Ask first. A fix only looks cheap once the buyer feels the cost."
+    }
+  ],
+  "sources": [
+    {
+      "label": "Neil Rackham, SPIN Selling (Routledge, 1988): publisher's page",
+      "url": "https://www.routledge.com/SPIN-Selling-1st-Edition/Rackham/p/book/9780566076893"
+    },
+    {
+      "label": "Neil Rackham (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Neil_Rackham"
+    },
+    {
+      "label": "The Power of Selling: How to use SPIN selling (open textbook)",
+      "url": "https://saylordotorg.github.io/text_the-power-of-selling/s13-04-how-to-use-spin-selling-in-you.html"
+    }
+  ]
+}

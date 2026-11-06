@@ -1,0 +1,233 @@
+{
+  "id": "u5-buyers-bring-buyers",
+  "title": "Can buyers bring buyers?",
+  "principle": "A loop where buyers bring buyers beats paying for each one.",
+  "minutes": 5,
+  "draft": true,
+  "screens": [
+    {
+      "kind": "explain",
+      "id": "hook",
+      "media": "img:ls_email_line",
+      "text": "Let me tell you about Hotmail. In July 1996, Sabeer Bhatia, who grew up in India, and Jack Smith started a free email service on the web. They had little money for ads. So at the bottom of every email, they added one line: \"Get your free email at Hotmail.\""
+    },
+    {
+      "kind": "choice",
+      "id": "guess",
+      "guess": true,
+      "prompt": "Every email a user sent carried that line. What do you think happened next?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Few people noticed the small line"
+        },
+        {
+          "id": "b",
+          "label": "Users complained, so it was removed"
+        },
+        {
+          "id": "c",
+          "label": "A million joined within six months"
+        }
+      ],
+      "answer": "c",
+      "why": "A million people joined within six months. Every email a user sent was a small ad, read by a friend who could join for free. Then that friend's emails did the same. In December 1997, Microsoft bought Hotmail."
+    },
+    {
+      "kind": "explain",
+      "id": "loop",
+      "title": "Growth loops",
+      "text": "This is a growth loop: each buyer's use brings in the next buyer. Ads stop the day you stop paying, but a loop keeps going. Growth teams measure it with the K-factor, how many new buyers each buyer brings. If 10 buyers bring 5 more, K is 0.5."
+    },
+    {
+      "kind": "choice",
+      "id": "k-sum",
+      "prompt": "20 families order cakes in May. Their party guests bring 6 new families in June. What's your K-factor?",
+      "options": [
+        {
+          "id": "a",
+          "label": "0.3"
+        },
+        {
+          "id": "b",
+          "label": "3"
+        },
+        {
+          "id": "c",
+          "label": "6"
+        }
+      ],
+      "answer": "a",
+      "why": "Exactly. 6 new families ÷ 20 buyers = 0.3. Each family brings about a third of a new one. That helps, but below 1 the loop can't grow on its own, so you still need other roads in.",
+      "wrong": {
+        "b": "You did 20 ÷ 6. Flip it: new families ÷ buyers. 6 ÷ 20 = 0.3.",
+        "c": "6 is the number of new families. K-factor is new families for each buyer: 6 ÷ 20 = 0.3."
+      }
+    },
+    {
+      "kind": "explain",
+      "id": "home",
+      "title": "Now look at your business",
+      "text": "Hotmail's line rode on every email, and your cake rides into every party. It's May. About 15 guests see each birthday cake you make. Some ask the family, \"Who made this?\" But most families can't remember your name or number."
+    },
+    {
+      "kind": "sort",
+      "id": "loop-or-paid",
+      "prompt": "I'll show you six ideas. For each one, tell me: does it build a loop, or pay for each new buyer?",
+      "buckets": ["Builds a loop", "Pays for each buyer"],
+      "items": [
+        {
+          "text": "A small card with your number in every cake box",
+          "bucket": 0
+        },
+        {
+          "text": "A boosted Instagram post",
+          "bucket": 1
+        },
+        {
+          "text": "A free cupcake for each child guest, your number on the wrapper",
+          "bucket": 0
+        },
+        {
+          "text": "₹2,000 to a food blogger for one post",
+          "bucket": 1
+        },
+        {
+          "text": "Your WhatsApp number printed on the cake board",
+          "bucket": 0
+        },
+        {
+          "text": "Flyers handed out at the market",
+          "bucket": 1
+        }
+      ],
+      "why": "Well sorted. A loop rides on something your buyer already does: opening a box, sharing cake with guests. Paid ways bring buyers only while you keep paying."
+    },
+    {
+      "kind": "choice",
+      "id": "true-false",
+      "prompt": "True or false: once you have a loop, you never need to spend money on finding customers.",
+      "options": [
+        {
+          "id": "a",
+          "label": "True: the loop does all the work"
+        },
+        {
+          "id": "b",
+          "label": "False: below 1, it needs other roads too"
+        }
+      ],
+      "answer": "b",
+      "why": "False. Most loops have a K-factor below 1. Each round of buyers brings a smaller round, so the loop slows down unless new buyers keep coming in from somewhere else.",
+      "wrong": {
+        "a": "Only if K is above 1, which is rare. With K at 0.3, 20 families bring 6, those 6 bring about 2, and the loop slows down. You still need other roads in."
+      }
+    },
+    {
+      "kind": "choice",
+      "id": "praise",
+      "prompt": "A happy family says, \"We'll tell all our friends about you!\" How do you know if your loop is working?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Trust them: happy families always share"
+        },
+        {
+          "id": "b",
+          "label": "Ask them how many friends they told"
+        },
+        {
+          "id": "c",
+          "label": "Count new orders that came from their friends"
+        }
+      ],
+      "answer": "c",
+      "why": "Right. Remember Unit 2: praise is not proof. Ask each new buyer, \"How did you hear about us?\" and count. That's how you know your K-factor.",
+      "wrong": {
+        "a": "Kind words are nice, but they prove nothing. Remember Unit 2: praise is not proof. Count orders that came from their friends.",
+        "b": "\"We told ten friends\" is still just words. Remember Unit 2: praise is not proof. Count orders that came from their friends."
+      }
+    },
+    {
+      "kind": "scenario",
+      "id": "loop-or-ads",
+      "setup": "It's late May. Cards in boxes now bring 6 new families from every 20 orders. You have ₹4,000 to spend on getting more. Each cake leaves you ₹450.",
+      "question": "How do you spend it?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Boost Instagram reels with all ₹4,000",
+          "grade": "ok",
+          "outcome": "The ads bring 12 families. Their first cakes leave you ₹5,400, so you're ₹1,400 up. When the ads stop, so do the new families.",
+          "why": "It paid this month, but you paid for each buyer. The money stopped working the day the ads ended.",
+          "better": "Give ₹50 off to both the family and each friend who orders, so buyers bring buyers."
+        },
+        {
+          "id": "b",
+          "label": "₹50 off for a family and each friend they bring",
+          "grade": "great",
+          "outcome": "Families start sharing your number. 20 orders now bring 12 new families, not 6. The 6 extra families leave you ₹2,700. The ₹50 discounts cost ₹1,200, so you're ₹1,500 up, with ₹2,800 still in hand. And the new families start bringing friends too.",
+          "why": "You made sharing worth it, so your K-factor doubled from 0.3 to 0.6, and the loop keeps paying next month."
+        },
+        {
+          "id": "c",
+          "label": "Print smart boxes with your name on every order",
+          "grade": "bad",
+          "outcome": "The boxes cost ₹4,000. Guests admire them, but few ask for your number. 20 orders bring 7 new families, just 1 more than before. You're ₹3,550 down.",
+          "why": "A nice box gave guests no reason to order. It cost a lot and barely moved your K-factor.",
+          "better": "Give ₹50 off to both the family and each friend who orders, so buyers bring buyers."
+        }
+      ]
+    },
+    {
+      "kind": "gap",
+      "id": "fill",
+      "text": "A growth ___ makes each buyer bring the next one, so you don't ___ for every new buyer.",
+      "bank": ["loop", "pay", "sale", "wait"],
+      "answer": ["loop", "pay"],
+      "why": "Exactly. Hotmail's line rode on every email. Your cards and referral offer ride on every cake."
+    }
+  ],
+  "summary": [
+    "A growth loop: each buyer's use brings in the next buyer. Word of mouth is the oldest loop.",
+    "K-factor = new buyers ÷ buyers who brought them. Below 1, you still need other roads in.",
+    "Make sharing easy and worth it, then count where new buyers came from."
+  ],
+  "cards": [
+    {
+      "id": "m52-loop-1",
+      "front": "30 buyers bring 15 new buyers. What's the K-factor?",
+      "options": ["0.5", "2", "15"],
+      "answer": 0,
+      "back": "15 ÷ 30 = 0.5. Each buyer brings half a new one."
+    },
+    {
+      "id": "m52-loop-2",
+      "front": "Which builds a loop for a tiffin service?",
+      "options": ["A boosted post", "A referral offer for both sides"],
+      "answer": 1,
+      "back": "A loop rides on what buyers already do. Ads stop when the money stops."
+    },
+    {
+      "id": "m52-loop-3",
+      "front": "Your K-factor is 0.4. Can you stop all other ways of finding buyers?",
+      "options": ["Yes", "No"],
+      "answer": 1,
+      "back": "Below 1, each round brings a smaller round. You still need other roads in."
+    }
+  ],
+  "sources": [
+    {
+      "label": "PS: I love you. Get your free email at Hotmail (TechCrunch, 2009)",
+      "url": "https://techcrunch.com/2009/10/18/ps-i-love-you-get-your-free-email-at-hotmail/"
+    },
+    {
+      "label": "Microsoft acquires Hotmail (Microsoft, 31 Dec 1997)",
+      "url": "https://news.microsoft.com/source/1997/12/31/microsoft-acquires-hotmail/"
+    },
+    {
+      "label": "Sabeer Bhatia (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Sabeer_Bhatia"
+    }
+  ]
+}

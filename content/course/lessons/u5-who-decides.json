@@ -1,0 +1,205 @@
+{
+  "id": "u5-who-decides",
+  "title": "Who can say yes?",
+  "principle": "Sell to the person who needs it, can pay, and decides.",
+  "minutes": 5,
+  "draft": true,
+  "screens": [
+    {
+      "kind": "explain",
+      "id": "hook",
+      "media": "img:ls_big_computer",
+      "text": "Let me start with IBM, the computer company. Its salespeople sold big, costly computer systems to other companies. A deal like that can take months of visits. Spend those months on the wrong company, and you earn nothing."
+    },
+    {
+      "kind": "choice",
+      "id": "guess",
+      "guess": true,
+      "prompt": "Before spending months on a company, what would you check first?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Whether they can pay for it"
+        },
+        {
+          "id": "b",
+          "label": "Whether this person can say yes"
+        },
+        {
+          "id": "c",
+          "label": "Whether they really need it"
+        }
+      ],
+      "answer": "b",
+      "why": "All three matter, and IBM's sellers checked all of them, plus one more. Many sellers forget the second one: they spend weeks with someone who likes them but can't say yes."
+    },
+    {
+      "kind": "explain",
+      "id": "bant",
+      "title": "BANT",
+      "text": "IBM's sales teams made four checks famous, called BANT. Budget: can they pay? Authority: can this person say yes? Need: do they have the problem you fix? Timing: will they buy soon? A buyer who passes all four is worth your time. This is BANT qualification."
+    },
+    {
+      "kind": "explain",
+      "id": "home",
+      "title": "Now look at your business",
+      "text": "IBM sold giant computers, but the same four checks save a small business time too. It's January of your fifth year at the home bakery. Your ₹850 cake leaves you ₹450. Now you want a few big buyers who order every month."
+    },
+    {
+      "kind": "choice",
+      "id": "which-check",
+      "prompt": "An office receptionist loves your samples. She wants cakes for every staff birthday, but the manager signs all bills. Which check fails?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Budget: can they pay?"
+        },
+        {
+          "id": "b",
+          "label": "Need: do they want cakes?"
+        },
+        {
+          "id": "c",
+          "label": "Authority: can she say yes?"
+        }
+      ],
+      "answer": "c",
+      "why": "Right. The office has the money and the need, but the receptionist can't say yes. She can take you to the manager. Ask her to set up a meeting.",
+      "wrong": {
+        "a": "The office can pay: it already buys things. The problem is who decides. The receptionist likes you, but the manager signs the bills.",
+        "b": "She does want the cakes, so the need is there. But she doesn't sign the bills. The manager decides, so you need to meet the manager."
+      }
+    },
+    {
+      "kind": "sort",
+      "id": "leads",
+      "prompt": "I'll show you six people who asked about your cakes. For each one, tell me: is this person worth a visit now?",
+      "buckets": ["Worth a visit now", "Not yet"],
+      "items": [
+        {
+          "text": "A café owner whose snacks run out by 5 pm every day",
+          "bucket": 0
+        },
+        {
+          "text": "A school peon who says the canteen needs cakes",
+          "bucket": 1
+        },
+        {
+          "text": "A wedding planner booking cakes for weddings in March",
+          "bucket": 0
+        },
+        {
+          "text": "A student who wants a ₹5,000 cake but has ₹500",
+          "bucket": 1
+        },
+        {
+          "text": "An office manager who signs bills and has birthdays next week",
+          "bucket": 0
+        },
+        {
+          "text": "A hotel that makes every cake in its own kitchen",
+          "bucket": 1
+        }
+      ],
+      "why": "Good sorting. The café owner, the planner and the manager pass all four checks. The peon can't decide, the student can't pay, and the hotel has no need. Be kind to them, but spend your visits on the first three."
+    },
+    {
+      "kind": "choice",
+      "id": "praise",
+      "prompt": "The café owner tastes a brownie and says, \"Very nice! I will surely buy from you.\" What has he proved so far?",
+      "options": [
+        {
+          "id": "a",
+          "label": "That he can pay and will decide soon"
+        },
+        {
+          "id": "b",
+          "label": "Nothing yet: kind words cost him nothing"
+        },
+        {
+          "id": "c",
+          "label": "That he needs brownies at his café"
+        }
+      ],
+      "answer": "b",
+      "why": "Exactly. You learned this in Unit 2: praise is not proof. Kind words cost him nothing. An order, a date or money tells you he passes the checks.",
+      "wrong": {
+        "a": "He hasn't said a price or a date, so you don't know about budget or timing yet. Remember from Unit 2: praise is not proof. Ask for an order or a date.",
+        "c": "His empty shelf by 5 pm shows a need. His kind words don't prove anything new. Remember from Unit 2: praise is not proof. Ask for an order or a date."
+      }
+    },
+    {
+      "kind": "scenario",
+      "id": "one-visit",
+      "setup": "It's late January. You can bake 20 cakes a week, and you have time for one sales visit this week. Three people have called. Each cake leaves you ₹450.",
+      "question": "Who do you visit?",
+      "options": [
+        {
+          "id": "a",
+          "label": "A big IT office's front desk, for 200 staff",
+          "grade": "bad",
+          "outcome": "The front desk asks for a price list and samples. You go back three times. The admin head never meets you, and in March the office picks a chain shop. You spent four visits and ₹1,200 of samples.",
+          "why": "200 staff sounded big, but you never met the person who decides. Authority failed, so the size of the office didn't matter.",
+          "better": "Visit the factory owner, who called you himself and wants cakes from February."
+        },
+        {
+          "id": "b",
+          "label": "A factory owner with 40 workers, from February",
+          "grade": "great",
+          "outcome": "He called you himself, so he decides. He wants a cake for every worker's birthday from February: about 40 cakes a year. That's ₹18,000 a year for you from one visit.",
+          "why": "He passes all four checks: he can pay, he decides, he has the need, and he wants to start next month."
+        },
+        {
+          "id": "c",
+          "label": "A chain café that wants samples sometime this year",
+          "grade": "ok",
+          "outcome": "The manager likes your samples, but says to call again in September. You spent ₹600 on samples, and there's no order yet.",
+          "why": "The café can pay and may need you, but timing failed: \"sometime this year\" is not soon. Keep its number and call again in September.",
+          "better": "Visit the factory owner, who called you himself and wants cakes from February."
+        }
+      ]
+    },
+    {
+      "kind": "gap",
+      "id": "fill",
+      "text": "Before you spend time on a buyer, check: can they ___, can this person ___, do they need it, will they buy soon?",
+      "bank": ["pay", "decide", "smile", "wait"],
+      "answer": ["pay", "decide"],
+      "why": "Exactly. That's BANT: Budget, Authority, Need and Timing. IBM's sellers used it for computers, and you can use it for cakes."
+    }
+  ],
+  "summary": [
+    "BANT qualification: check Budget, Authority, Need and Timing before you spend time on a buyer.",
+    "The person who likes you is not always the person who decides. Ask to meet the one who signs.",
+    "Praise is not proof. An order, a date or money shows a buyer passes the checks."
+  ],
+  "cards": [
+    {
+      "id": "m51-bant-1",
+      "front": "A shop helper loves your product, but the owner pays all bills. Which BANT check fails?",
+      "options": ["Need", "Authority", "Budget"],
+      "answer": 1,
+      "back": "Authority. Ask the helper to set up a meeting with the owner."
+    },
+    {
+      "id": "m51-bant-2",
+      "front": "A café can pay, needs snacks and the owner decides. He wants to start \"sometime next year\". What's missing?",
+      "options": ["Timing", "Budget"],
+      "answer": 0,
+      "back": "Timing. Keep his number and call again nearer the date."
+    },
+    {
+      "id": "m51-bant-3",
+      "front": "What do the four letters of BANT stand for?",
+      "options": ["Budget, Authority, Need, Timing", "Buyer, Ads, Name, Trust"],
+      "answer": 0,
+      "back": "Can they pay, can this person say yes, do they need it, will they buy soon?"
+    }
+  ],
+  "sources": [
+    {
+      "label": "IBM PartnerWorld, BANT qualification form (2012)",
+      "url": "https://public.dhe.ibm.com/partnerworld/pub/swg/emea_bant_template.pdf"
+    }
+  ]
+}

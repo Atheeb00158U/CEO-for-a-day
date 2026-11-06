@@ -65,6 +65,28 @@
           "gates": []
         }
       ]
+    },
+    {
+      "id": "u5-getting-customers",
+      "title": "Getting customers",
+      "goal": "Turn conversations into sales, and know where customers come from and what each is worth.",
+      "draft": true,
+      "modules": [
+        {
+          "id": "u5-selling-steps",
+          "title": "Selling, step by step",
+          "goal": "Turn a conversation into a sale.",
+          "lessons": ["u5-who-decides", "u5-cost-questions", "u5-compared-to-what", "u5-ask-for-order"],
+          "gates": []
+        },
+        {
+          "id": "u5-channels",
+          "title": "Channels and customer maths",
+          "goal": "Know where customers come from and what each one is worth.",
+          "lessons": ["u5-one-channel", "u5-buyers-bring-buyers", "u5-lifetime-value", "u5-worth-the-cost"],
+          "gates": ["eureka-forbes-door-to-door"]
+        }
+      ]
     }
   ]
 }

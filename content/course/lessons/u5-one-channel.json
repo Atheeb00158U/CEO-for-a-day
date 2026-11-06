@@ -1,0 +1,221 @@
+{
+  "id": "u5-one-channel",
+  "title": "Where do customers come from?",
+  "principle": "Find one channel that works, and master it first.",
+  "minutes": 5,
+  "draft": true,
+  "screens": [
+    {
+      "kind": "explain",
+      "id": "hook",
+      "media": "img:ls_bullseye",
+      "text": "Let me tell you about a book called Traction. Gabriel Weinberg, who started the search engine DuckDuckGo, wrote it with Justin Mares. They asked more than 40 founders how they found their customers. Most founders guess this part, and guess wrong."
+    },
+    {
+      "kind": "choice",
+      "id": "guess",
+      "guess": true,
+      "prompt": "What do you think most of these founders did to find customers?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Tried roads until one worked, then focused on it"
+        },
+        {
+          "id": "b",
+          "label": "Used every road at once, a little each"
+        },
+        {
+          "id": "c",
+          "label": "Spent most of their money on ads"
+        }
+      ],
+      "answer": "a",
+      "why": "Many tried several roads until they found one that worked, then put their effort there. The investor Peter Thiel says in the book that one road is very likely best."
+    },
+    {
+      "kind": "explain",
+      "id": "bullseye",
+      "title": "The Bullseye framework",
+      "text": "A channel is a road customers take to find you: WhatsApp groups, Instagram, a café shelf, flyers. The book lists 19. Its method is called the Bullseye framework: list many, test the best few cheaply, then put most of your effort into the one that works."
+    },
+    {
+      "kind": "order",
+      "id": "bullseye-steps",
+      "prompt": "Here are the four steps of the Bullseye framework, mixed up. Put them in order, first one at the top.",
+      "steps": [
+        "List every channel you could use",
+        "Pick the three that look most likely",
+        "Test each one cheaply for a month",
+        "Put most of your effort into the winner"
+      ],
+      "why": "Well done. Think wide first, then test a few cheaply, then go deep on the one that works. The test tells you, not your guess."
+    },
+    {
+      "kind": "explain",
+      "id": "home",
+      "title": "Now look at your business",
+      "text": "A search engine and a home bakery both need a road to their customers. It's April. Most of your buyers have come from friends and your WhatsApp menu. Now you want 10 new families every month, so last month you tested six roads."
+    },
+    {
+      "kind": "sort",
+      "id": "test-results",
+      "prompt": "Here are your six test results. For each one, tell me: keep it in the test, or drop it?",
+      "buckets": ["Keep it", "Drop it"],
+      "items": [
+        {
+          "text": "Posts in colony WhatsApp groups: free, 6 orders",
+          "bucket": 0
+        },
+        {
+          "text": "Flyers at the market: ₹2,000, 1 order",
+          "bucket": 1
+        },
+        {
+          "text": "Instagram reels, boosted for ₹1,000: 4 orders",
+          "bucket": 0
+        },
+        {
+          "text": "Newspaper insert: ₹3,000, no orders",
+          "bucket": 1
+        },
+        {
+          "text": "A card on the café counter: free, 3 orders",
+          "bucket": 0
+        },
+        {
+          "text": "A hoarding near the station: ₹5,000, 1 order",
+          "bucket": 1
+        }
+      ],
+      "why": "Good. WhatsApp, Instagram and the café card brought orders for little or no money. The others cost ₹2,000 to ₹5,000 for one order or none."
+    },
+    {
+      "kind": "choice",
+      "id": "next-month",
+      "prompt": "WhatsApp groups brought 6 orders for free, Instagram 4 for ₹1,000, the café card 3. What do you do next month?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Spread your time evenly over all three"
+        },
+        {
+          "id": "b",
+          "label": "Put most of your time into WhatsApp groups"
+        },
+        {
+          "id": "c",
+          "label": "Try three new roads to reach new people"
+        }
+      ],
+      "answer": "b",
+      "why": "Right. WhatsApp groups gave the most orders for the least money. Go deeper there: more colonies, better photos, faster replies. Keep the other two small.",
+      "wrong": {
+        "a": "That feels fair, but it splits your time three ways. WhatsApp groups gave the most orders for free, so put most of your time there.",
+        "c": "You just found a road that works. New roads can wait. WhatsApp groups gave the most orders for free, so go deeper there first."
+      }
+    },
+    {
+      "kind": "choice",
+      "id": "one-colony",
+      "prompt": "Your WhatsApp posts work best in your own colony's group. Why win that group fully before joining twenty others?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Happy neighbours there tell the next colony"
+        },
+        {
+          "id": "b",
+          "label": "Twenty groups would cost too much money"
+        },
+        {
+          "id": "c",
+          "label": "Other colonies don't like home bakers"
+        }
+      ],
+      "answer": "a",
+      "why": "Yes. You learned this in Unit 2: win one group first. When a whole colony knows and loves your cakes, they carry your name into the next one.",
+      "wrong": {
+        "b": "Joining WhatsApp groups is free. The reason is Unit 2's beachhead idea: win one group first, and happy buyers carry your name into the next.",
+        "c": "Nothing says they don't. The reason is Unit 2's beachhead idea: win one group first, and happy buyers carry your name into the next."
+      }
+    },
+    {
+      "kind": "scenario",
+      "id": "insert-offer",
+      "setup": "It's May. WhatsApp groups now bring 8 new families a month. A sales agent offers a newspaper insert to 50,000 homes for ₹15,000. Each cake leaves you ₹450.",
+      "question": "What do you do with your time and money this month?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Take the insert. It reaches far more homes",
+          "grade": "bad",
+          "outcome": "The insert brings 3 orders: ₹1,350 for ₹15,000. With your time on the insert, WhatsApp brings only 5 families this month.",
+          "why": "50,000 homes sounded big, but your own test showed newspaper inserts bring almost nothing for you.",
+          "better": "Go deeper on WhatsApp groups: more colonies, better photos, faster replies."
+        },
+        {
+          "id": "b",
+          "label": "Split it: a small insert, plus your WhatsApp groups",
+          "grade": "ok",
+          "outcome": "A ₹5,000 insert brings 1 order. WhatsApp brings 8 families, as before. The insert cost ₹5,000 and earned ₹450 back.",
+          "why": "You kept your best road, but spent money on one your test had already dropped.",
+          "better": "Go deeper on WhatsApp groups: more colonies, better photos, faster replies."
+        },
+        {
+          "id": "c",
+          "label": "Join five more colony groups and post better photos",
+          "grade": "great",
+          "outcome": "Five new colonies, faster replies and photos of real birthday tables. You get 15 new families this month, not 8. That's ₹3,150 more profit, and you spent no money.",
+          "why": "You mastered the road that already works before trying new ones."
+        }
+      ]
+    },
+    {
+      "kind": "gap",
+      "id": "fill",
+      "text": "Test a few ___ cheaply, then put most of your effort into the ___ that works.",
+      "bank": ["channels", "one", "hoardings", "all"],
+      "answer": ["channels", "one"],
+      "why": "Exactly. That's the Bullseye framework. Your test found WhatsApp groups, and going deeper there nearly doubled your new families."
+    }
+  ],
+  "summary": [
+    "A channel is a road customers take to find you. One channel is often far better than the rest.",
+    "The Bullseye framework: list many channels, test the best few cheaply, then master the one that works.",
+    "Let test results choose your channel, not how big it sounds."
+  ],
+  "cards": [
+    {
+      "id": "m52-bull-1",
+      "front": "Flyers: ₹2,000 for 1 order. WhatsApp: free, 6 orders. Where do you put your effort?",
+      "options": ["Flyers", "WhatsApp", "Both equally"],
+      "answer": 1,
+      "back": "Master the channel that works before adding more."
+    },
+    {
+      "id": "m52-bull-2",
+      "front": "What are the steps of the Bullseye framework?",
+      "options": ["List many, test a few, master one", "Try everything at once"],
+      "answer": 0,
+      "back": "Think wide, test cheaply, then go deep on the winner."
+    },
+    {
+      "id": "m52-bull-3",
+      "front": "An agent offers an ad to 50,000 homes. Your last test of that kind brought nothing. What do you do?",
+      "options": ["Say no and go deeper on what works", "Take it, it's big"],
+      "answer": 0,
+      "back": "Your test results choose the channel, not the size of the offer."
+    }
+  ],
+  "sources": [
+    {
+      "label": "Gabriel Weinberg and Justin Mares, Traction (Portfolio/Penguin, 2015): publisher's page",
+      "url": "https://www.penguinrandomhouse.com/books/319121/traction-by-gabriel-weinberg-and-justin-mares/9781591848363/"
+    },
+    {
+      "label": "Traction, first chapters (2014 edition, PDF)",
+      "url": "https://leananalyticsbook.com/wp-content/uploads/2014/08/Traction-1-3.pdf"
+    }
+  ]
+}
