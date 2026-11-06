@@ -1,0 +1,221 @@
+{
+  "id": "u4-check-it-yourself",
+  "title": "Why should they believe you?",
+  "principle": "Let buyers check your promise for themselves.",
+  "minutes": 5,
+  "draft": true,
+  "screens": [
+    {
+      "kind": "explain",
+      "id": "hook",
+      "media": "img:ls_rope_cut",
+      "text": "Let me tell you about a man named Elisha Otis. In the 1850s, people in America were scared of lifts. If the rope broke, the lift fell. Otis had built a lift with a safety brake. But every seller said \"my lift is safe\", so nobody listened."
+    },
+    {
+      "kind": "explain",
+      "id": "the-show",
+      "title": "The show",
+      "text": "So in 1854, at a big fair in New York, Otis stood on an open lift platform, high above a crowd. Then he had the rope cut. The platform dropped a little, and stopped. His brake had caught it. He had bet his own life on his claim."
+    },
+    {
+      "kind": "choice",
+      "id": "guess",
+      "guess": true,
+      "prompt": "Otis had said \"my lift is safe\" for a long time, and few believed him. Why do you think the show worked?",
+      "options": [
+        {
+          "id": "a",
+          "label": "A big fair gave him a big crowd"
+        },
+        {
+          "id": "b",
+          "label": "Nobody would risk his life on a lie"
+        },
+        {
+          "id": "c",
+          "label": "People like a good show"
+        }
+      ],
+      "answer": "b",
+      "why": "The crowd helped, but here's the real reason. A liar would never stand on that platform. The show would have cost Otis his life if his claim were false, so people believed it."
+    },
+    {
+      "kind": "explain",
+      "id": "rule",
+      "title": "Costly signals",
+      "text": "Anyone can say \"best quality\". Saying it costs nothing, so buyers don't believe it. A costly signal is proof that would cost you a lot if you were lying. Scientists call this costly signalling. Honest sellers can afford it. Liars can't."
+    },
+    {
+      "kind": "explain",
+      "id": "check",
+      "title": "Let them check",
+      "text": "A small shop has a simpler way: let buyers check the claim themselves. A dairy tests the milk's fat in front of you. A shop shows you the bill from its supplier. When buyers can check, they don't need to trust you."
+    },
+    {
+      "kind": "explain",
+      "id": "home",
+      "title": "Now look at your business",
+      "text": "Otis sold lifts, but your bakery has the same problem with words. It's September. Many Jain families in the new colony want eggless cakes. Your cakes really are eggless, and they cost ₹850. But families ask, \"How do we know?\""
+    },
+    {
+      "kind": "choice",
+      "id": "eggless-proof",
+      "prompt": "Families ask how they can know your ₹850 cake is really eggless. Which answer will they believe most?",
+      "options": [
+        {
+          "id": "a",
+          "label": "\"100% eggless, I promise\" on every post"
+        },
+        {
+          "id": "b",
+          "label": "Five happy customers post reviews for you"
+        },
+        {
+          "id": "c",
+          "label": "Families can watch you bake, live on video"
+        }
+      ],
+      "answer": "c",
+      "why": "Yes. On a live video, families see every step for themselves. They don't have to trust your words.",
+      "wrong": {
+        "a": "Anyone can write \"I promise\". It costs nothing, so a family that was fooled before won't believe it. A live video lets them see for themselves.",
+        "b": "Reviews help, and you'll learn more about them soon. But a review can't prove there was no egg in this cake. A live video lets families check for themselves."
+      }
+    },
+    {
+      "kind": "choice",
+      "id": "who-right",
+      "prompt": "Your sister says: \"Spend ₹8,000 on a big ad saying 'pure eggless'.\" Your friend says: \"Promise ₹5,000 to anyone who finds egg.\" Who's right?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Your sister: the costly ad"
+        },
+        {
+          "id": "b",
+          "label": "Your friend: the ₹5,000 promise"
+        },
+        {
+          "id": "c",
+          "label": "Neither: words never work"
+        }
+      ],
+      "answer": "b",
+      "why": "Right. The ₹5,000 promise costs you nothing if you're honest, but it would ruin a liar. That's why families believe it. A liar could pay for the same ad.",
+      "wrong": {
+        "a": "The ad does cost money, but a liar could pay ₹8,000 for the same ad. Your friend's promise would only cost a liar, so families believe it.",
+        "c": "Plain words don't work, but this promise isn't plain words. It would cost a liar ₹5,000 each time, so families believe it."
+      }
+    },
+    {
+      "kind": "sort",
+      "id": "check-or-trust",
+      "prompt": "I'll show you six things a baker might do. For each one, tell me: can buyers check it, or must they trust you?",
+      "buckets": ["They can check it", "They must just trust you"],
+      "items": [
+        {
+          "text": "A live video of the cake being baked",
+          "bucket": 0
+        },
+        {
+          "text": "\"Made with love\" printed on the box",
+          "bucket": 1
+        },
+        {
+          "text": "Every ingredient listed, with the packs shown",
+          "bucket": 0
+        },
+        {
+          "text": "\"Freshest cakes in town\"",
+          "bucket": 1
+        },
+        {
+          "text": "The baking date written on every box",
+          "bucket": 0
+        },
+        {
+          "text": "\"Our customers are always happy\"",
+          "bucket": 1
+        }
+      ],
+      "why": "A video, a list with the packs, and a date are things buyers can check for themselves. \"Made with love\", \"freshest\" and \"always happy\" cost nothing to say, so buyers must just trust you."
+    },
+    {
+      "kind": "scenario",
+      "id": "butter-war",
+      "setup": "It's late September. A chain bakery opens near the colony. Its cakes cost ₹700, and its sign says \"pure butter\". Your real-butter cakes cost ₹400 to make and sell for ₹850. You sell 20 a week. A mother says, \"They say butter too, and they're cheaper.\"",
+      "question": "What do you do?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Cut your cake to ₹700 to match them",
+          "grade": "bad",
+          "outcome": "You still sell 20 cakes a week, but each now leaves you ₹300, not ₹450. You earn ₹6,000 a week, not ₹9,000. Families still can't tell your butter from theirs.",
+          "why": "A price cut didn't prove anything. You lost ₹3,000 a week and gave buyers no way to see the difference.",
+          "better": "Let families check: show the butter packs and the baking."
+        },
+        {
+          "id": "b",
+          "label": "Post \"Real butter, not like others!\" every day",
+          "grade": "ok",
+          "outcome": "Families have heard \"pure butter\" from both of you. 3 of your 20 weekly buyers try the chain. You sell 17 cakes: ₹7,650 a week.",
+          "why": "You kept your price, but your words sounded just like theirs. Nothing showed which claim was true.",
+          "better": "Let families check: show the butter packs and the baking."
+        },
+        {
+          "id": "c",
+          "label": "Show the butter packs in every baking video",
+          "grade": "great",
+          "outcome": "Families see the butter packs and the bill in every video. A mother asks the chain shop for the same. It has nothing to show. You keep all 20 weekly buyers at ₹850: ₹9,000 a week.",
+          "why": "You gave proof that buyers could check. Now the chain's claim looks weak next to yours."
+        }
+      ]
+    },
+    {
+      "kind": "gap",
+      "id": "fill",
+      "text": "A claim buyers can ___ beats a claim they must just ___.",
+      "bank": ["check", "trust", "share", "hide"],
+      "answer": ["check", "trust"],
+      "why": "Exactly. Otis let the crowd see the brake catch. You let families see the butter and the baking. When buyers can check, your claim is believed."
+    }
+  ],
+  "summary": [
+    "Costly signalling: proof that would cost a liar a lot is believed. Cheap words are not.",
+    "A costly ad isn't a costly signal. A liar can pay for an ad too.",
+    "Let buyers check your claim themselves: show the baking, the packs, the date."
+  ],
+  "cards": [
+    {
+      "id": "m41-signal-1",
+      "front": "A ghee seller wants buyers to believe it's pure. What works best?",
+      "options": ["\"100% pure\" on a big sign", "Melt a spoon so buyers can smell and taste it"],
+      "answer": 1,
+      "back": "Let buyers check the claim themselves. Words cost nothing, so they prove nothing."
+    },
+    {
+      "id": "m41-signal-2",
+      "front": "Which promise is a costly signal?",
+      "options": ["A ₹20,000 ad saying \"best quality\"", "₹5,000 to anyone who finds a fault"],
+      "answer": 1,
+      "back": "A costly signal costs only a liar. Anyone, honest or not, can pay for an ad."
+    },
+    {
+      "id": "m41-signal-3",
+      "front": "A rival copies your claim, \"pure butter\". How do you show yours is true?",
+      "options": ["Cut your price", "Show the butter packs and the baking", "Say it louder"],
+      "answer": 1,
+      "back": "When both say the same words, the one who shows proof wins."
+    }
+  ],
+  "sources": [
+    {
+      "label": "Elisha Graves Otis produces first passenger elevator safety locks (Encyclopedia.com)",
+      "url": "https://www.encyclopedia.com/science/encyclopedias-almanacs-transcripts-and-maps/elisha-graves-otis-produces-first-passenger-elevator-safety-locks-facilitating-growth-high-rise"
+    },
+    {
+      "label": "Elisha Graves Otis (ASME)",
+      "url": "https://www.asme.org/topics-resources/content/elisha-graves-otis"
+    }
+  ]
+}

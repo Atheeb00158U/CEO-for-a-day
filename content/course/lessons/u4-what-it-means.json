@@ -1,0 +1,234 @@
+{
+  "id": "u4-what-it-means",
+  "title": "What are you really selling?",
+  "principle": "Sell what it means to them, not just what it is.",
+  "minutes": 5,
+  "draft": true,
+  "screens": [
+    {
+      "kind": "explain",
+      "id": "hook",
+      "media": "img:ls_muddy_kid",
+      "text": "Let me tell you about a washing powder. For years, washing powder ads in India promised spotless clothes. Then in 2005, Surf Excel said something strange. It said stains are good. \"Daag acche hain.\""
+    },
+    {
+      "kind": "explain",
+      "id": "story",
+      "title": "Stains are good",
+      "text": "In one ad, a little girl falls into a muddy puddle. Her brother jumps into the puddle to take revenge for her, and gets dirty. The idea was simple: if a stain comes from doing something good, the stain is good. Surf will wash it out."
+    },
+    {
+      "kind": "choice",
+      "id": "guess",
+      "guess": true,
+      "prompt": "Every powder said \"removes stains\". What do you think \"stains are good\" was really selling to parents?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Whiter clothes than other powders give"
+        },
+        {
+          "id": "b",
+          "label": "Letting children play and do good, without worry"
+        },
+        {
+          "id": "c",
+          "label": "A lower price than other powders"
+        }
+      ],
+      "answer": "b",
+      "why": "It sold a kind of parent: one who lets children play, help and stand up for others. Every powder removed stains. Only Surf said what that means for your child."
+    },
+    {
+      "kind": "explain",
+      "id": "ladder",
+      "title": "Means–end laddering",
+      "text": "Marketers call this means–end laddering. Think of a ladder with three steps. The bottom step is a feature: what it is. The middle step is a benefit: what it does for you. The top step is a value: what it means to you."
+    },
+    {
+      "kind": "explain",
+      "id": "surf-ladder",
+      "title": "Surf's ladder",
+      "text": "Surf's ladder: it removes tough stains, the feature. So children can play freely, the benefit. So you're a parent who lets them do good, the value. Buyers compare features, but they choose values. And the top step only works if the bottom step is true."
+    },
+    {
+      "kind": "explain",
+      "id": "home",
+      "title": "Now look at your business",
+      "text": "Washing powder and cakes seem far apart, but your bakery has a ladder too. It's late November. Your cakes use real butter and no preservatives, and your posts say exactly that. Families nod, then compare your ₹850 with the chain shop's ₹700."
+    },
+    {
+      "kind": "order",
+      "id": "your-ladder",
+      "prompt": "Here are three lines about your cake, mixed up. Climb the ladder: put what it is first, then what it does, then what it means.",
+      "steps": ["Real butter, no preservatives", "Fresh and safe for your child to eat", "A birthday that feels made at home, with love"],
+      "why": "Well done. Real butter is what it is. Fresh and safe is what it does. A birthday made with love is what it means to a parent. That's the step families choose with."
+    },
+    {
+      "kind": "choice",
+      "id": "who-right",
+      "prompt": "Your sister wants your posts to say: \"Real butter, no preservatives.\" Your friend wants: \"Like the cake your mother baked.\" Who's right?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Your sister: give the facts"
+        },
+        {
+          "id": "b",
+          "label": "Your friend: give the feeling"
+        },
+        {
+          "id": "c",
+          "label": "Both, joined in one line"
+        }
+      ],
+      "answer": "c",
+      "why": "Exactly. \"Real butter, no preservatives: like the cake your mother baked.\" The fact makes the feeling true, and the feeling makes the fact matter.",
+      "wrong": {
+        "a": "Facts alone get compared on price, and the chain says \"butter\" too. Join the fact to what it means: \"Real butter, no preservatives: like the cake your mother baked.\"",
+        "b": "A feeling with no fact under it sounds empty; any shop can say it. Join them: \"Real butter, no preservatives: like the cake your mother baked.\""
+      }
+    },
+    {
+      "kind": "choice",
+      "id": "empty-top",
+      "prompt": "A chain shop's ad says, \"Baked with a mother's love.\" Its cakes are made in a factory, with preservatives. What's wrong?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Nothing, because every ad talks like this"
+        },
+        {
+          "id": "b",
+          "label": "It should talk about its low price"
+        },
+        {
+          "id": "c",
+          "label": "Its cake can't back up the feeling"
+        }
+      ],
+      "answer": "c",
+      "why": "Yes. A top step with nothing true under it is empty. Buyers who notice stop believing the shop.",
+      "wrong": {
+        "a": "Many ads do, and that's why buyers stop believing them. A feeling needs a true fact under it. A factory cake with preservatives can't back up \"a mother's love\".",
+        "b": "Price is just another bottom step that rivals can beat. The real problem: the feeling isn't true, because a factory cake with preservatives can't back it up."
+      }
+    },
+    {
+      "kind": "sort",
+      "id": "is-or-means",
+      "prompt": "I'll show you six lines about a cake. For each one, tell me: does it say what it is, or what it means?",
+      "buckets": ["What it is", "What it means"],
+      "items": [
+        {
+          "text": "Made with real butter",
+          "bucket": 0
+        },
+        {
+          "text": "A birthday your child will remember",
+          "bucket": 1
+        },
+        {
+          "text": "100% eggless",
+          "bucket": 0
+        },
+        {
+          "text": "Made the way your family would make it",
+          "bucket": 1
+        },
+        {
+          "text": "No preservatives",
+          "bucket": 0
+        },
+        {
+          "text": "Share sweet moments with the people you love",
+          "bucket": 1
+        }
+      ],
+      "why": "Butter, eggless and no preservatives say what the cake is. A birthday to remember, made like family and shared moments say what it means. The best line joins one of each."
+    },
+    {
+      "kind": "scenario",
+      "id": "christmas-post",
+      "setup": "It's the end of November. Christmas is coming. The chain shop sells cakes at ₹700; yours are ₹850 and leave you ₹450 each. Your next post goes to 500 past buyers.",
+      "question": "What does it say?",
+      "options": [
+        {
+          "id": "a",
+          "label": "\"Real butter, eggless, no preservatives. ₹850.\"",
+          "grade": "ok",
+          "outcome": "Families agree it's good, then compare ₹850 with ₹700. 12 order, leaving you ₹5,400.",
+          "why": "True facts, but only the bottom step. Facts get compared on price.",
+          "better": "Join the facts to what they mean: \"Real butter, no preservatives: Christmas like home.\""
+        },
+        {
+          "id": "b",
+          "label": "\"₹100 off this week only, real butter cakes!\"",
+          "grade": "bad",
+          "outcome": "14 order at ₹750, leaving you ₹350 each: ₹4,900. In December, families wait for your next offer.",
+          "why": "You moved the talk to price, the one thing the chain shop wins on.",
+          "better": "Join the facts to what they mean: \"Real butter, no preservatives: Christmas like home.\""
+        },
+        {
+          "id": "c",
+          "label": "\"Real butter, no preservatives: Christmas like home\"",
+          "grade": "great",
+          "outcome": "Families reply with memories of their own mothers' baking. 20 order at ₹850, leaving you ₹9,000. Nobody asks about the chain shop's price.",
+          "why": "A true fact carried a value families care about. They chose the value, not the cheaper cake."
+        }
+      ]
+    },
+    {
+      "kind": "explain",
+      "id": "honest-line",
+      "title": "The honest line",
+      "text": "The line again: use on others only what you'd accept being used on you. Climb the ladder only on true steps. A feeling your product can't back up, like \"a mother's love\" on a factory cake, is a trick buyers will see through."
+    },
+    {
+      "kind": "gap",
+      "id": "fill",
+      "text": "Sell what it ___ to them, not just what it ___.",
+      "bank": ["means", "is", "costs", "weighs"],
+      "answer": ["means", "is"],
+      "why": "Exactly. Surf sold children who do good, not just clean clothes. You sell a birthday like home, on top of real butter."
+    }
+  ],
+  "summary": [
+    "Means–end laddering: feature (what it is) → benefit (what it does) → value (what it means).",
+    "Buyers compare features, but choose values. Join the two in one line.",
+    "Every step must be true. A feeling with nothing true under it is a trick."
+  ],
+  "cards": [
+    {
+      "id": "m42-ladder-1",
+      "front": "\"99.7% pure ghee\" or \"Pure, like home\". Which sells more?",
+      "options": ["\"99.7% pure ghee\"", "\"Pure, like home\""],
+      "answer": 1,
+      "back": "Buyers choose what it means to them, not just what it is."
+    },
+    {
+      "id": "m42-ladder-2",
+      "front": "\"Removes tough stains\" is which step of the ladder?",
+      "options": ["Feature", "Benefit", "Value"],
+      "answer": 0,
+      "back": "Feature: what it is. Benefit: what it does. Value: what it means."
+    },
+    {
+      "id": "m42-ladder-3",
+      "front": "A factory cake says \"made with a mother's love\". What's wrong?",
+      "options": ["Nothing", "No true fact backs up the feeling"],
+      "answer": 1,
+      "back": "Climb the ladder only on true steps."
+    }
+  ],
+  "sources": [
+    {
+      "label": "Surf Excel's Daag Acche Hai campaign (Social Samosa, 2018)",
+      "url": "https://www.socialsamosa.com/2018/02/surf-excel-daag-acche-hai-campaign"
+    },
+    {
+      "label": "Reynolds and Gutman, Laddering theory, method, analysis and interpretation (Journal of Advertising Research, 1988), as cited",
+      "url": "https://www.redalyc.org/pdf/4717/471747342005.pdf"
+    }
+  ]
+}

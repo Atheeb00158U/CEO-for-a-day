@@ -1,0 +1,231 @@
+{
+  "id": "u4-people-like-them",
+  "title": "Who do buyers copy?",
+  "principle": "People copy people like them. Show real, similar buyers.",
+  "minutes": 5,
+  "draft": true,
+  "screens": [
+    {
+      "kind": "explain",
+      "id": "hook",
+      "media": "img:ls_hotel_towels",
+      "text": "Let me tell you about some hotel towels. In an American hotel, scientists put a card in each bathroom asking guests to use their towels again. One card said: help save the environment. Another said: most guests at this hotel use their towels again."
+    },
+    {
+      "kind": "choice",
+      "id": "guess",
+      "guess": true,
+      "prompt": "A third card said: most guests who stayed in this room used their towels again. Which card worked best?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Help save the environment"
+        },
+        {
+          "id": "b",
+          "label": "Most guests at this hotel"
+        },
+        {
+          "id": "c",
+          "label": "Most guests who stayed in this room"
+        }
+      ],
+      "answer": "c",
+      "why": "\"This room\" won. With the environment card, about 35 of every 100 guests used their towels again. \"Most guests at this hotel\" got 44. \"Guests who stayed in this room\" got 49."
+    },
+    {
+      "kind": "explain",
+      "id": "social-proof",
+      "title": "Social proof",
+      "text": "This is called social proof. When we're not sure what to do, we copy other people, most of all people like us. \"This room\" felt closer than \"this hotel\". The closer those people are to you, the stronger the pull."
+    },
+    {
+      "kind": "explain",
+      "id": "on-you",
+      "title": "It's used on you",
+      "text": "You see this every day: \"bestseller\" tags, star ratings, \"1,200 bought this week\". Some of it is fake. Fake or paid reviews mislead buyers, and India has a standard against them, called IS 19000. So never fake it."
+    },
+    {
+      "kind": "explain",
+      "id": "backfire",
+      "title": "Where it goes wrong",
+      "text": "Social proof can also work against you. In an American national park, a sign said many visitors had taken pieces of old stone wood. Theft went up. The sign told people, \"everyone does it\". Never tell buyers that most people do the wrong thing."
+    },
+    {
+      "kind": "explain",
+      "id": "home",
+      "title": "Now look at your business",
+      "text": "Hotel guests and cake buyers think alike. It's early October. 38 families in the new colony now order from you. Next you want orders from Lake View, a society of 300 flats nearby. Only 6 Lake View families have ordered so far."
+    },
+    {
+      "kind": "choice",
+      "id": "best-post",
+      "prompt": "Which post in the new colony's WhatsApp group will win the most new orders there?",
+      "options": [
+        {
+          "id": "a",
+          "label": "\"38 families in this colony order from us\""
+        },
+        {
+          "id": "b",
+          "label": "\"Thousands of people love our cakes!\""
+        },
+        {
+          "id": "c",
+          "label": "\"The best eggless cakes in the whole city\""
+        }
+      ],
+      "answer": "a",
+      "why": "Yes. 38 neighbours are people like them, and the number is real and exact. \"Thousands\" and \"the best\" are vague, and buyers have heard them a hundred times.",
+      "wrong": {
+        "b": "\"Thousands\" sounds big, but it's vague, and buyers can't tell who those people are. 38 real neighbours in their own colony pull much harder.",
+        "c": "Every baker says \"the best\". It shows no people at all. 38 real neighbours in their own colony are people like them."
+      }
+    },
+    {
+      "kind": "choice",
+      "id": "reminder",
+      "prompt": "6 of your 15 office clients haven't paid this month. Which reminder will get the most of them to pay?",
+      "options": [
+        {
+          "id": "a",
+          "label": "\"Many clients pay late, but please pay soon\""
+        },
+        {
+          "id": "b",
+          "label": "\"9 of our 15 clients have already paid\""
+        },
+        {
+          "id": "c",
+          "label": "\"Pay by Friday, or deliveries will stop\""
+        }
+      ],
+      "answer": "b",
+      "why": "Exactly. It shows that most clients pay on time, and that makes the late ones want to do the same.",
+      "wrong": {
+        "a": "That's the national park sign again. \"Many pay late\" tells them everyone does it. Show that most clients pay: \"9 of our 15 have already paid\".",
+        "c": "A threat makes people push back, and you may lose a client. Show that most clients pay: \"9 of our 15 have already paid\"."
+      }
+    },
+    {
+      "kind": "sort",
+      "id": "honest-or-not",
+      "prompt": "I'll show you six ways to show social proof. For each one, tell me: is it honest, or does it mislead?",
+      "buckets": ["Honest", "Misleads"],
+      "items": [
+        {
+          "text": "A customer's party photo, shared with her OK",
+          "bucket": 0
+        },
+        {
+          "text": "Ask your cousin to post a 5-star review",
+          "bucket": 1
+        },
+        {
+          "text": "\"38 families in this colony order from us\", a true count",
+          "bucket": 0
+        },
+        {
+          "text": "Pay ₹50 for each 5-star review",
+          "bucket": 1
+        },
+        {
+          "text": "A real buyer's voice note, shared with her OK",
+          "bucket": 0
+        },
+        {
+          "text": "Delete every review below 4 stars",
+          "bucket": 1
+        }
+      ],
+      "why": "Honest proof is real buyers, shared with their OK. Reviews from family, paid reviews and hiding bad reviews all mislead buyers."
+    },
+    {
+      "kind": "scenario",
+      "id": "lake-view",
+      "setup": "It's mid-October. You start delivering to Lake View, a society of 300 flats. 6 families there have ordered and liked your cakes. 38 families in the new colony order often. Each cake leaves you ₹450.",
+      "question": "What do you post in the Lake View group?",
+      "options": [
+        {
+          "id": "a",
+          "label": "\"38 happy families!\" with photos from the other colony",
+          "grade": "ok",
+          "outcome": "It's true, but Lake View families don't know those people. 4 new families order in a month, leaving you ₹1,800.",
+          "why": "Real proof helped, but from people they don't know. Neighbours pull harder than strangers.",
+          "better": "Show your 6 Lake View buyers, with their OK."
+        },
+        {
+          "id": "b",
+          "label": "\"Lake View's favourite bakery!\" with reviews from relatives",
+          "grade": "bad",
+          "outcome": "2 families order. Then someone notices a reviewer is your cousin. She posts it in the group, and the admin removes your post. You earn ₹900 and lose trust.",
+          "why": "Fake proof works only until someone checks. Then it costs you more than it won.",
+          "better": "Show your 6 Lake View buyers, with their OK."
+        },
+        {
+          "id": "c",
+          "label": "\"6 Lake View families ordered this month\", with their OK",
+          "grade": "great",
+          "outcome": "Two of the six reply with photos of their cakes. Their neighbours ask questions. 10 new families order in a month, leaving you ₹4,500.",
+          "why": "6 real neighbours beat 38 strangers. People copy people like them."
+        }
+      ]
+    },
+    {
+      "kind": "explain",
+      "id": "honest-line",
+      "title": "The honest line",
+      "text": "The line again: use on others only what you'd accept being used on you. Show real buyers, with their OK. Never buy, fake or hide reviews. You wouldn't want to buy from a shop that did."
+    },
+    {
+      "kind": "gap",
+      "id": "fill",
+      "text": "People copy people ___ them, so show ___ buyers.",
+      "bank": ["like", "real", "above", "famous"],
+      "answer": ["like", "real"],
+      "why": "Exactly. \"Guests who stayed in this room\" beat \"save the environment\". Your 6 Lake View neighbours beat 38 strangers. Real, similar buyers pull hardest."
+    }
+  ],
+  "summary": [
+    "Social proof: when unsure, we copy others, most of all people like us.",
+    "Show real, exact, nearby buyers: \"38 families in this colony\" beats \"thousands love us\".",
+    "Never say most people do the wrong thing. Never buy, fake or hide reviews."
+  ],
+  "cards": [
+    {
+      "id": "m42-proof-1",
+      "front": "Which line wins more orders in a colony?",
+      "options": ["\"Thousands love us\"", "\"40 families in your colony order from us\""],
+      "answer": 1,
+      "back": "People copy people like them. Real, exact, nearby buyers pull hardest."
+    },
+    {
+      "id": "m42-proof-2",
+      "front": "Some clients pay late. Which reminder works best?",
+      "options": ["\"Many clients pay late, but please pay\"", "\"Most of our clients have already paid\""],
+      "answer": 1,
+      "back": "Never tell people that most do the wrong thing. Show that most do the right thing."
+    },
+    {
+      "id": "m42-proof-3",
+      "front": "Your cousin offers to post a 5-star review. Should you let her?",
+      "options": ["Yes, it helps", "No, it misleads buyers"],
+      "answer": 1,
+      "back": "Fake or paid reviews mislead buyers, and India has a standard against them."
+    }
+  ],
+  "sources": [
+    {
+      "label": "Goldstein, Cialdini and Griskevicius, A Room with a Viewpoint (2008), figures as reported in the PLoS ONE replication (2014)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4118982/"
+    },
+    {
+      "label": "Cialdini et al., Managing social norms for persuasive impact (Social Influence, 2006): the Petrified Forest signs",
+      "url": "https://research.fs.usda.gov/download/treesearch/45277.pdf"
+    },
+    {
+      "label": "BIS releases new standard for online consumer reviews, IS 19000:2022 (Business Today, 13 Dec 2022)",
+      "url": "https://businesstoday.in/latest/trends/story/fake-online-reviews-bis-releases-new-standard-for-online-consumer-reviews-356195-2022-12-13"
+    }
+  ]
+}

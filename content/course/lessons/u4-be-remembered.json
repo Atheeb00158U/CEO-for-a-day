@@ -1,0 +1,245 @@
+{
+  "id": "u4-be-remembered",
+  "title": "Will they remember you?",
+  "principle": "People buy the names that come to mind first.",
+  "minutes": 5,
+  "draft": true,
+  "screens": [
+    {
+      "kind": "explain",
+      "id": "hook",
+      "media": "img:ls_pug_kennel",
+      "text": "Let me tell you about a small dog. In 2003, a phone company called Hutch made ads with a pug following a boy everywhere. The line was: \"Wherever you go, our network follows.\" People loved that pug, and pug sales in India went up."
+    },
+    {
+      "kind": "choice",
+      "id": "guess",
+      "guess": true,
+      "prompt": "In 2007, Vodafone bought Hutch and changed its name to Vodafone. What do you think it did with the pug?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Dropped it, to make a fresh start"
+        },
+        {
+          "id": "b",
+          "label": "Kept it, to carry people to the new name"
+        },
+        {
+          "id": "c",
+          "label": "Swapped it for a famous film star"
+        }
+      ],
+      "answer": "b",
+      "why": "Vodafone kept the pug. In the new ad, the pug walked out of a pink kennel, Hutch's colour, into a red one, Vodafone's colour. The name changed, but the thing people remembered stayed."
+    },
+    {
+      "kind": "explain",
+      "id": "rule",
+      "title": "Mental availability",
+      "text": "Byron Sharp, who studies how brands grow, calls this mental availability. When it's time to buy, people pick a name that comes to mind quickly. Most don't compare every shop. They pick what they remember, even if another shop is a little better."
+    },
+    {
+      "kind": "explain",
+      "id": "assets",
+      "title": "Things that remind them",
+      "text": "So what makes a name come to mind? Things people link to you, even without your name: a colour, a sound, a character like the pug. Marketers call them distinctive brand assets. And a voice people enjoy, a line they repeat, gets your name talked about."
+    },
+    {
+      "kind": "explain",
+      "id": "home",
+      "title": "Now look at your business",
+      "text": "Phone networks are huge, but people forget small bakeries even faster. It's early November. A mother who loved your cake in March just bought her son's birthday cake from a chain shop. She told you: \"I forgot your name, and I couldn't find your number.\""
+    },
+    {
+      "kind": "choice",
+      "id": "true-false",
+      "prompt": "True or false: if your cake really is the best, families will remember you.",
+      "options": [
+        {
+          "id": "a",
+          "label": "True: a great cake sells itself"
+        },
+        {
+          "id": "b",
+          "label": "False: they must also remember your name"
+        }
+      ],
+      "answer": "b",
+      "why": "False. The mother loved your cake, but months later, your name didn't come to mind. When it's time to buy, people pick what they remember.",
+      "wrong": {
+        "a": "That's what most bakers believe. But the mother loved your cake and still bought elsewhere, because months later she couldn't remember your name. A great cake isn't enough."
+      }
+    },
+    {
+      "kind": "choice",
+      "id": "which-asset",
+      "prompt": "Which will help families remember your bakery months later?",
+      "options": [
+        {
+          "id": "a",
+          "label": "A fresh new design for your box every month"
+        },
+        {
+          "id": "b",
+          "label": "A new special offer posted every week"
+        },
+        {
+          "id": "c",
+          "label": "The same pink box and ribbon on every cake"
+        }
+      ],
+      "answer": "c",
+      "why": "Yes. Seen again and again, the same pink box becomes yours, like the pug became Hutch's. Families think of you when they see it.",
+      "wrong": {
+        "a": "New designs look exciting, but families can't link any of them to you. Keep one look, the same pink box every time, so it becomes yours.",
+        "b": "Offers bring a quick order, but people remember the deal, not you. The same pink box every time becomes something they link to you."
+      }
+    },
+    {
+      "kind": "choice",
+      "id": "voice",
+      "prompt": "Which WhatsApp status line will families repeat to their friends?",
+      "options": [
+        {
+          "id": "a",
+          "label": "\"Diet starts Monday. Cake starts today.\""
+        },
+        {
+          "id": "b",
+          "label": "\"Fresh cakes ready. Order now on WhatsApp.\""
+        },
+        {
+          "id": "c",
+          "label": "\"Best quality cakes at the best price.\""
+        }
+      ],
+      "answer": "a",
+      "why": "Exactly. It's short, funny and true to how people feel. A line people enjoy gets repeated, and your name travels with it.",
+      "wrong": {
+        "b": "It's clear, but every baker says it. Nobody repeats a line they've read a hundred times. A short, funny line gets passed on.",
+        "c": "Every shop says \"best quality, best price\", so nobody notices it. A short, funny line is the one people pass on."
+      }
+    },
+    {
+      "kind": "sort",
+      "id": "remember-or-not",
+      "prompt": "I'll show you six things a baker might do. For each one, tell me: will it help families remember you?",
+      "buckets": ["Yes, they'll remember", "No, it won't help"],
+      "items": [
+        {
+          "text": "The same pink box on every cake",
+          "bucket": 0
+        },
+        {
+          "text": "A new logo every few months",
+          "bucket": 1
+        },
+        {
+          "text": "Your name and number on a sticker on every box",
+          "bucket": 0
+        },
+        {
+          "text": "A different name on WhatsApp and Instagram",
+          "bucket": 1
+        },
+        {
+          "text": "The same funny line at the end of every post",
+          "bucket": 0
+        },
+        {
+          "text": "Posting only when you have an offer",
+          "bucket": 1
+        }
+      ],
+      "why": "Things that stay the same, seen often, help families remember you. Changing logos and names, or posting only for offers, leaves nothing to remember."
+    },
+    {
+      "kind": "scenario",
+      "id": "magnets",
+      "setup": "It's mid-November. Christmas and New Year parties are coming. You have ₹10,000 to spend so families remember you. Each cake leaves you ₹450. About 500 families have bought from you this year.",
+      "question": "How do you spend it?",
+      "options": [
+        {
+          "id": "a",
+          "label": "One big ad in the local paper for ₹10,000",
+          "grade": "ok",
+          "outcome": "Many people see the ad, once. Most forget it by the next day. 8 new orders come in December, leaving you ₹3,600.",
+          "why": "An ad seen once is soon forgotten. People need to see your name again and again, close to when they buy.",
+          "better": "Give past buyers something they'll see every day, with your name and number."
+        },
+        {
+          "id": "b",
+          "label": "A fancy new name and logo for the new year",
+          "grade": "bad",
+          "outcome": "The new name looks smart. But families who knew \"the pink box baker\" can't find you. Your orders in December fall by 10, and you lose ₹4,500.",
+          "why": "You threw away what families remembered. Even Vodafone kept the pug when it changed its name.",
+          "better": "Give past buyers something they'll see every day, with your name and number."
+        },
+        {
+          "id": "c",
+          "label": "Pink fridge magnets with your number for 500 buyers",
+          "grade": "great",
+          "outcome": "Each magnet costs ₹20. Families see your pink magnet every day on the fridge. When a party comes up, your number is right there. 25 extra orders come in December, leaving you ₹11,250.",
+          "why": "Your colour and number sit where families look every day. When it's time to buy, you come to mind first."
+        }
+      ]
+    },
+    {
+      "kind": "explain",
+      "id": "honest-line",
+      "title": "The honest line",
+      "text": "The line again: use on others only what you'd accept being used on you. Making your own name easy to remember is fair. Copying a famous shop's colours, so buyers think your cake is theirs, is a trick. You'd be angry if someone did it to you."
+    },
+    {
+      "kind": "gap",
+      "id": "fill",
+      "text": "People buy the names that come to ___ first, so make yours easy to ___.",
+      "bank": ["mind", "remember", "market", "change"],
+      "answer": ["mind", "remember"],
+      "why": "Exactly. Vodafone kept the pug because people remembered it. Your pink box, your funny line and your magnet on the fridge do the same for you."
+    }
+  ],
+  "summary": [
+    "Mental availability: when it's time to buy, people pick the name that comes to mind first.",
+    "Distinctive brand assets: keep one colour, one look, one voice, and show them often.",
+    "A great product isn't enough if people forget your name. Never copy another brand's look."
+  ],
+  "cards": [
+    {
+      "id": "m42-remember-1",
+      "front": "Your ghee is better than a famous brand, but it has no name people know. Who wins?",
+      "options": ["Your better ghee", "The name people remember"],
+      "answer": 1,
+      "back": "People buy the names that come to mind first."
+    },
+    {
+      "id": "m42-remember-2",
+      "front": "What helps buyers remember your shop?",
+      "options": ["A new logo every few months", "The same colour and look every time"],
+      "answer": 1,
+      "back": "Distinctive brand assets: keep one look, and show it often."
+    },
+    {
+      "id": "m42-remember-3",
+      "front": "A big company buys yours and changes the name. What should it keep?",
+      "options": ["Nothing, start fresh", "What people remember, like a mascot"],
+      "answer": 1,
+      "back": "Vodafone kept Hutch's pug. Keep the thing people link to you."
+    }
+  ],
+  "sources": [
+    {
+      "label": "When Hutch sold the idea of a loyal network, but instead triggered a pug mania in India (ThePrint)",
+      "url": "https://theprint.in/feature/when-hutch-sold-the-idea-of-a-loyal-network-but-instead-triggered-a-pug-mania-in-india/731314"
+    },
+    {
+      "label": "From Hutch to Vodafone, the pug follows faithfully (exchange4media, 2007)",
+      "url": "https://www.exchange4media.com/advertising-news/from-hutch-to-vodafonethe-pug-follows-faithfully-27839.html"
+    },
+    {
+      "label": "Ehrenberg-Bass Institute: mental availability and distinctive assets (Byron Sharp, Jenni Romaniuk)",
+      "url": "https://marketingscience.info/how-do-you-measure-how-brands-grow"
+    }
+  ]
+}

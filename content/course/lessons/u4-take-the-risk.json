@@ -1,0 +1,240 @@
+{
+  "id": "u4-take-the-risk",
+  "title": "Who carries the risk?",
+  "principle": "Take the risk off the buyer, the risk they really fear.",
+  "minutes": 5,
+  "draft": true,
+  "screens": [
+    {
+      "kind": "explain",
+      "id": "hook",
+      "media": "img:ls_cash_parcel",
+      "text": "Let me take you back to 2010. Flipkart was selling books and phones online. But very few Indians had cards, and many didn't trust paying on a website. What if the money went and the parcel never came? Flipkart had to fix that fear. Have a guess how."
+    },
+    {
+      "kind": "choice",
+      "id": "guess",
+      "guess": true,
+      "prompt": "Few Indians would pay online first. What do you think Flipkart did?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Gave big discounts on every order"
+        },
+        {
+          "id": "b",
+          "label": "Let people pay cash when the parcel came"
+        },
+        {
+          "id": "c",
+          "label": "Ran TV ads with famous film stars"
+        }
+      ],
+      "answer": "b",
+      "why": "It let people pay cash at the door. If no parcel came, the buyer lost nothing. Two months later, 30 of every 100 orders were paid this way. By 2013, it was 80."
+    },
+    {
+      "kind": "explain",
+      "id": "reversal",
+      "title": "Risk reversal",
+      "text": "Think about who carries the risk. Usually the buyer pays first and hopes. If it goes wrong, the buyer loses. Flipkart moved that risk onto itself. This is called risk reversal: you carry the risk, so saying yes feels safe for the buyer."
+    },
+    {
+      "kind": "explain",
+      "id": "which-risk",
+      "title": "Which risk?",
+      "text": "Here's what most sellers miss. Money is not the only risk. A buyer can also lose time, or look foolish in front of family. A money-back offer fixes only the money. So first ask: what is this buyer really afraid of losing?"
+    },
+    {
+      "kind": "explain",
+      "id": "home",
+      "title": "Now look at your business",
+      "text": "Flipkart sold across India, but your home bakery meets the same fear. You've already used this once: in June, \"full money back\" won you the new colony. Now it's August of your fourth year, and a family asks about a ₹6,000 cake for their daughter's engagement."
+    },
+    {
+      "kind": "choice",
+      "id": "real-fear",
+      "prompt": "The family has never tried your cakes. 150 guests will see this ₹6,000 engagement cake. What are they most afraid of?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Paying a little more than a shop charges"
+        },
+        {
+          "id": "b",
+          "label": "The cake going wrong in front of guests"
+        },
+        {
+          "id": "c",
+          "label": "Losing the ₹6,000 if they don't like it"
+        }
+      ],
+      "answer": "b",
+      "why": "Exactly. ₹6,000 is small next to the whole party. What scares them is a bad cake in front of 150 guests. A refund can't undo that.",
+      "wrong": {
+        "a": "A few hundred rupees won't worry a family spending lakhs on a party. What scares them is a bad cake in front of 150 guests.",
+        "c": "That's the money risk, and a money-back offer fixes it. But a refund comes after the party. What really scares them is a bad cake in front of 150 guests."
+      }
+    },
+    {
+      "kind": "choice",
+      "id": "fix-the-fear",
+      "prompt": "The family fears a bad cake in front of 150 guests. Which offer takes that risk off them?",
+      "options": [
+        {
+          "id": "a",
+          "label": "A free tasting first, and delivery 3 hours early"
+        },
+        {
+          "id": "b",
+          "label": "Full ₹6,000 back after the party if unhappy"
+        },
+        {
+          "id": "c",
+          "label": "₹600 off if they book with you today"
+        }
+      ],
+      "answer": "a",
+      "why": "Yes. The tasting lets them check the cake before the big day. Early delivery leaves time to fix anything. Now the risk is yours, not theirs.",
+      "wrong": {
+        "b": "That fixes the money, but the refund comes after the party, when 150 guests have already seen the cake. A tasting first and early delivery remove the fear they really have.",
+        "c": "A discount makes the cake cheaper, but the fear stays the same. And \"today only\" adds pressure. A tasting first and early delivery remove the real risk."
+      }
+    },
+    {
+      "kind": "choice",
+      "id": "tasting-sum",
+      "prompt": "Let's do the sum. 10 tasting boxes cost you ₹300 each. 6 families then book, and each cake leaves you ₹3,200. What's left?",
+      "options": [
+        {
+          "id": "a",
+          "label": "₹19,200"
+        },
+        {
+          "id": "b",
+          "label": "₹17,400"
+        },
+        {
+          "id": "c",
+          "label": "₹16,200"
+        }
+      ],
+      "answer": "c",
+      "why": "Well done. 6 cakes × ₹3,200 = ₹19,200. All 10 tasting boxes cost ₹3,000, so ₹16,200 is left. Taking the risk has a cost, so always check it against what you earn.",
+      "wrong": {
+        "a": "I see what you did: 6 × ₹3,200 = ₹19,200. But the 10 tasting boxes cost you ₹3,000. Take that away, and ₹16,200 is left.",
+        "b": "You took away only the 6 boxes for families who booked: ₹1,800. But all 10 boxes cost you, ₹3,000 in all. So ₹19,200 − ₹3,000 = ₹16,200."
+      }
+    },
+    {
+      "kind": "sort",
+      "id": "who-carries",
+      "prompt": "I'll show you six offers. For each one, tell me: does it take a risk off the buyer?",
+      "buckets": ["Yes, it takes a risk off", "No, the buyer still carries it"],
+      "items": [
+        {
+          "text": "Pay the last half after the cake arrives",
+          "bucket": 0
+        },
+        {
+          "text": "Full payment two weeks before the day",
+          "bucket": 1
+        },
+        {
+          "text": "A new cake free if the name is spelt wrong",
+          "bucket": 0
+        },
+        {
+          "text": "\"Best cakes in town!\" on your post",
+          "bucket": 1
+        },
+        {
+          "text": "A free tasting before a big order",
+          "bucket": 0
+        },
+        {
+          "text": "No changes allowed after booking",
+          "bucket": 1
+        }
+      ],
+      "why": "Paying later, a free fix for a mistake and a tasting all move the risk onto you. Paying early and \"no changes\" leave it with the buyer, and a boast removes no risk at all."
+    },
+    {
+      "kind": "scenario",
+      "id": "rainy-day",
+      "setup": "It's late August. You promised the family: \"Delivered 3 hours early, or the cake is free.\" On the day, heavy rain floods the roads. The cake arrives perfect, but only 1 hour early. The family hasn't noticed. The cake leaves you ₹3,200.",
+      "question": "What do you do?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Say nothing. The cake was still on time",
+          "grade": "bad",
+          "outcome": "You keep the ₹3,200. A week later, the mother checks the time on her phone photos. She tells her sister your promise means nothing. No guest from the party orders from you.",
+          "why": "Your promise only works if people believe it. Breaking it quietly, even once, turns it into empty words.",
+          "better": "Tell them, and keep the promise: the cake is free."
+        },
+        {
+          "id": "b",
+          "label": "Tell them, and say the cake is free",
+          "grade": "great",
+          "outcome": "You return the ₹6,000. Making the cake cost you ₹2,800, so you're ₹2,800 down. The family is amazed and tells everyone. In September, 4 guests order cakes, leaving you ₹12,800. You end ₹10,000 up.",
+          "why": "Keeping a promise when it costs you is when people remember it. That story sells your next cakes for you."
+        },
+        {
+          "id": "c",
+          "label": "Explain the rain and give ₹1,000 back",
+          "grade": "ok",
+          "outcome": "The family says thank you politely. You keep ₹2,200. One guest orders later, leaving you ₹3,200. You end ₹5,400 up, but your promise now sounds like \"free, unless something happens\".",
+          "why": "Being honest helped. But you changed the promise after the event. A guarantee with excuses is worth less next time.",
+          "better": "Keep the promise in full: the cake is free."
+        }
+      ]
+    },
+    {
+      "kind": "gap",
+      "id": "fill",
+      "text": "Risk ___ means you carry the risk, so saying ___ feels safe for the buyer.",
+      "bank": ["reversal", "yes", "return", "sorry"],
+      "answer": ["reversal", "yes"],
+      "why": "Exactly. Flipkart let buyers pay at the door. You let the family taste first. Find the risk they really fear, take it on, and keep your promise even when it costs you."
+    }
+  ],
+  "summary": [
+    "Risk reversal: you carry the risk, so saying yes feels safe for the buyer.",
+    "Find the risk they really fear. Money back can't fix a ruined party; a tasting first can.",
+    "Check what the promise costs you, and keep it when it hurts. That's when people remember."
+  ],
+  "cards": [
+    {
+      "id": "m41-risk-1",
+      "front": "Parents worry their child won't like your tuition class. Which offer takes that risk off them?",
+      "options": ["₹500 off the first month", "Pay after the first week, only if the child likes it"],
+      "answer": 1,
+      "back": "Risk reversal: you carry the risk, so saying yes feels safe."
+    },
+    {
+      "id": "m41-risk-2",
+      "front": "A family fears a bad wedding cake in front of guests. What fixes that fear?",
+      "options": ["Money back after the wedding", "A tasting first and early delivery"],
+      "answer": 1,
+      "back": "Fix the risk they really fear. A refund after the event can't undo it."
+    },
+    {
+      "id": "m41-risk-3",
+      "front": "You promised \"on time or free\". You were late, and nobody noticed. What now?",
+      "options": ["Say nothing", "Tell them, and keep the promise", "Offer a small discount"],
+      "answer": 1,
+      "back": "Keep the promise when it costs you. That's when people remember it."
+    }
+  ],
+  "sources": [
+    {
+      "label": "Comment Flipkart est devenu l'Amazon indien (Journal du Net, 2013)",
+      "url": "https://www.journaldunet.com/retail/1123188-comment-flipkart-est-devenu-l-amazon-indien"
+    },
+    {
+      "label": "Flipkart: every wish will be fulfilled (Harvard Digital Innovation and Transformation)",
+      "url": "https://d3.harvard.edu/platform-rctom/submission/flipkart-every-wish-will-be-fulfilled/"
+    }
+  ]
+}

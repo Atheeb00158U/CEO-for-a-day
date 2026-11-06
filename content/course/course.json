@@ -65,6 +65,28 @@
           "gates": []
         }
       ]
+    },
+    {
+      "id": "u4-trust-brand",
+      "title": "Trust and brand",
+      "goal": "Make strangers trust you, remember you and pick you, honestly.",
+      "draft": true,
+      "modules": [
+        {
+          "id": "u4-trust",
+          "title": "Trust",
+          "goal": "Make it safe for a stranger to buy from you.",
+          "lessons": ["u4-take-the-risk", "u4-check-it-yourself", "u4-give-first"],
+          "gates": ["tanishq-karatmeter"]
+        },
+        {
+          "id": "u4-why-you",
+          "title": "Why people pick you",
+          "goal": "Be the name people remember, trust and choose, honestly.",
+          "lessons": ["u4-people-like-them", "u4-small-yes-first", "u4-be-remembered", "u4-what-it-means", "u4-only-if-true"],
+          "gates": ["new-coke", "paper-boat"]
+        }
+      ]
     }
   ]
 }

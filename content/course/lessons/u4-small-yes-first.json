@@ -1,0 +1,203 @@
+{
+  "id": "u4-small-yes-first",
+  "title": "Why ask for a small yes first?",
+  "principle": "A small yes first makes the big yes easier.",
+  "minutes": 5,
+  "draft": true,
+  "screens": [
+    {
+      "kind": "explain",
+      "id": "hook",
+      "media": "img:ls_lawn_sign",
+      "text": "Let me tell you about a test from 1966 in California. Researchers asked home owners to put a big, ugly sign on their front lawn. It said \"Drive Carefully\". Most said no. But one group said yes far more often."
+    },
+    {
+      "kind": "explain",
+      "id": "small-ask",
+      "title": "The small ask",
+      "text": "Two weeks earlier, someone had asked that group for something tiny: put a small \"Be a safe driver\" sign in a window or car. Almost all said yes. Two weeks later, a different person came and asked about the big lawn sign."
+    },
+    {
+      "kind": "choice",
+      "id": "guess",
+      "guess": true,
+      "prompt": "Of those asked only about the big sign, 17 in 100 said yes. How many said yes after first agreeing to the small sign?",
+      "options": [
+        {
+          "id": "a",
+          "label": "About 20 in 100"
+        },
+        {
+          "id": "b",
+          "label": "About 40 in 100"
+        },
+        {
+          "id": "c",
+          "label": "About 76 in 100"
+        }
+      ],
+      "answer": "c",
+      "why": "About 76 in 100. A small yes two weeks earlier, to a different person, made the big yes more than four times as likely."
+    },
+    {
+      "kind": "explain",
+      "id": "rule",
+      "title": "Commitment and consistency",
+      "text": "This is called commitment and consistency, or \"foot in the door\". Once we say yes, we start to see ourselves as that kind of person. Saying no later feels like going against ourselves. So a small yes makes a big yes easier."
+    },
+    {
+      "kind": "explain",
+      "id": "on-you",
+      "title": "It's used on you",
+      "text": "It's used on you all the time: \"just answer three quick questions\", a ₹1 first month, a free account before the paid plan. Each small yes makes the next one easier. Later studies found a smaller effect than 76 against 17, but it is real."
+    },
+    {
+      "kind": "explain",
+      "id": "home",
+      "title": "Now look at your business",
+      "text": "A lawn sign and a cake order work the same way. It's late October. A big office with 120 staff could use your ₹850 birthday cakes, about 10 a month. But the manager won't sign a year's plan with a baker she's never tried."
+    },
+    {
+      "kind": "order",
+      "id": "steps",
+      "prompt": "Here are five steps to win the office's year plan, mixed up. Drag them into order, first step at the top.",
+      "steps": [
+        "Offer one ₹850 cake for this Friday's birthday",
+        "Ask the manager what her staff liked about it",
+        "Agree a one-month trial, with a date to talk",
+        "Meet on that date and look at the month together",
+        "Offer the year plan"
+      ],
+      "why": "Well done. Each step is a small yes that is useful by itself. The manager says what her staff liked in her own words, then picks the next step. By the time you offer the year plan, saying yes fits what she has already said."
+    },
+    {
+      "kind": "choice",
+      "id": "let-me-think",
+      "prompt": "After the first cake, you suggest a one-month trial. The manager says, \"Let me think.\" What do you say?",
+      "options": [
+        {
+          "id": "a",
+          "label": "\"Sure, call me whenever you're ready\""
+        },
+        {
+          "id": "b",
+          "label": "\"Can we talk again on Monday at 11?\""
+        },
+        {
+          "id": "c",
+          "label": "\"This price is only for this week\""
+        }
+      ],
+      "answer": "b",
+      "why": "Exactly. A small next step with a date is a small yes. People keep promises they've said out loud, so Monday at 11 is likely to happen.",
+      "wrong": {
+        "a": "That's polite, but nothing is agreed, and busy managers forget. Ask for one small next step with a date: \"Monday at 11?\"",
+        "c": "A false deadline pushes her, and people who feel pushed often say no. Ask for one small next step with a date instead."
+      }
+    },
+    {
+      "kind": "choice",
+      "id": "fair-small",
+      "prompt": "You want more offices to try your cakes. Which small first step is fair to ask for?",
+      "options": [
+        {
+          "id": "a",
+          "label": "A ₹1 trial that turns into ₹10,000 next month"
+        },
+        {
+          "id": "b",
+          "label": "A free cake if they sign a year's plan now"
+        },
+        {
+          "id": "c",
+          "label": "A ₹300 cupcake box to share at one meeting"
+        }
+      ],
+      "answer": "c",
+      "why": "Yes. The cupcake box is useful by itself, and the office decides if it wants more. A fair small step never traps anyone into the big one.",
+      "wrong": {
+        "a": "A ₹1 trial that quietly becomes ₹10,000 is a trap, like the free trials from the price lessons. The small step must be useful by itself, with the big step their choice.",
+        "b": "That asks for the big yes first, with a gift as bait. A small step should come before the big one, not with it."
+      }
+    },
+    {
+      "kind": "scenario",
+      "id": "after-trial",
+      "setup": "It's late November. The one-month trial went well: 10 cakes, all liked. You meet on the agreed date. The manager says a whole year at ₹850 a cake feels like too much to sign right now. Each cake leaves you ₹450.",
+      "question": "What do you say?",
+      "options": [
+        {
+          "id": "a",
+          "label": "\"You've come this far. Don't waste the trial\"",
+          "grade": "bad",
+          "outcome": "The manager feels pushed and guilty. She says she'll ask other bakers too. In December, the office orders nothing from you. You earn ₹0 from it.",
+          "why": "Using \"you've already started\" as pressure is a guilt trap, like the sunk-cost mistake from Unit 1. People push back when they feel trapped.",
+          "better": "Offer three months, with another date to talk."
+        },
+        {
+          "id": "b",
+          "label": "\"Then let's do three months, and talk again\"",
+          "grade": "great",
+          "outcome": "She signs three months: about 30 cakes, ₹13,500 for you. In February she signs the year at ₹850: 120 cakes, ₹54,000.",
+          "why": "You offered the next small yes instead of the big one. Each yes made the next feel natural."
+        },
+        {
+          "id": "c",
+          "label": "\"I'll drop to ₹750 a cake for the year\"",
+          "grade": "ok",
+          "outcome": "She signs the year at once. 120 cakes now leave you ₹350 each: ₹42,000. That's ₹12,000 less than at ₹850.",
+          "why": "You won the year, but you paid for it with your price. A smaller next step would have kept ₹850.",
+          "better": "Offer three months, with another date to talk."
+        }
+      ]
+    },
+    {
+      "kind": "explain",
+      "id": "honest-line",
+      "title": "The honest line",
+      "text": "The line again: use on others only what you'd accept being used on you. A small step should be useful by itself, and the buyer chooses the big step. Using \"you've already started\" to push someone into more is a guilt trap."
+    },
+    {
+      "kind": "gap",
+      "id": "fill",
+      "text": "Ask for a small ___ first. People like to stay ___ with what they've already said.",
+      "bank": ["yes", "consistent", "gift", "quiet"],
+      "answer": ["yes", "consistent"],
+      "why": "Exactly. The small window sign led to the big lawn sign. One Friday cake led to a trial, then three months, then the year."
+    }
+  ],
+  "summary": [
+    "Commitment and consistency: once we say yes, saying yes again feels natural.",
+    "After \"let me think\", agree one small next step and a date.",
+    "The small step must be useful by itself. Never use \"you've already started\" as pressure."
+  ],
+  "cards": [
+    {
+      "id": "m42-commit-1",
+      "front": "A gym wants new members. What's a good first ask?",
+      "options": ["A ₹12,000 yearly plan", "A ₹99 first class"],
+      "answer": 1,
+      "back": "A small yes first makes the big yes easier."
+    },
+    {
+      "id": "m42-commit-2",
+      "front": "A buyer says \"let me think\". What do you say?",
+      "options": ["\"Call me when ready\"", "\"Can we talk on Monday at 11?\""],
+      "answer": 1,
+      "back": "Agree one small next step and a date. People keep promises they've said out loud."
+    },
+    {
+      "id": "m42-commit-3",
+      "front": "A trial buyer isn't ready for the big plan. What should you avoid saying?",
+      "options": ["\"Let's try three more months\"", "\"Don't waste what you've started\""],
+      "answer": 1,
+      "back": "Guilt about what they've started is a trap. Offer the next small step instead."
+    }
+  ],
+  "sources": [
+    {
+      "label": "Freedman and Fraser, Compliance without pressure: the foot-in-the-door technique (1966)",
+      "url": "https://web.mit.edu/curhan/www/docs/Articles/15341_Readings/Influence_Compliance/Freedman_Fraser_Foot-in-the-door.pdf"
+    }
+  ]
+}
