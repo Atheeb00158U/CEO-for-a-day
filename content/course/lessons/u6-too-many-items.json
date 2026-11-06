@@ -9,7 +9,7 @@
       "kind": "explain",
       "id": "hook",
       "media": "img:ls_few_lines",
-      "text": "Let me take you to April 2020. India was in lockdown. Britannia, the biscuit maker, could run its factories, but with far fewer workers than usual. It sold many kinds of biscuit. Should it make all of them, a few of each, or make fewer kinds? Have a guess."
+      "text": "Let me take you to April 2020, when India was in lockdown. Britannia, the biscuit maker, could run its factories, but with far fewer workers than usual. It sold many kinds of biscuit, so should it make all of them, a few of each, or make fewer kinds? Have a guess."
     },
     {
       "kind": "choice",
@@ -43,7 +43,7 @@
       "kind": "explain",
       "id": "home",
       "title": "Now look at your bakery",
-      "text": "Now picture your home bakery. It's July, your fifth year. Your menu has grown to 18 items: six cake flavours, cupcakes, cookies, breads, the party pack and more. Your chocolate cake sells for ₹850; you keep ₹450. You're so busy you turn away about 3 chocolate orders a month."
+      "text": "Now picture your home bakery in July of its fifth year. Your menu has grown to 18 items: six cake flavours, cupcakes, cookies, breads, the party pack and more. Your chocolate cake sells for ₹850; you keep ₹450. You're so busy you turn away about 3 chocolate orders a month."
     },
     {
       "kind": "choice",
