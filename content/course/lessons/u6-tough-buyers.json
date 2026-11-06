@@ -19,15 +19,15 @@
       "options": [
         {
           "id": "a",
-          "label": "Forced it to keep cutting its prices"
+          "label": "Made it famous for the lowest prices"
         },
         {
           "id": "b",
-          "label": "Pushed it to sell outside India"
+          "label": "Made it a big seller outside India"
         },
         {
           "id": "c",
-          "label": "Helped it become India's biggest bike maker"
+          "label": "Made it India's biggest bike maker"
         }
       ],
       "answer": "c",
@@ -37,13 +37,13 @@
       "kind": "explain",
       "id": "porter",
       "title": "Demanding buyers",
-      "text": "That wasn't luck. In 1990, Michael Porter, a Harvard professor, asked why some countries' companies lead the world. One answer was demanding buyers at home. Buyers who want more push you to get better, faster than easy buyers ever would. So don't run from tough buyers. Look for them."
+      "text": "That wasn't luck. In 1990, Michael Porter, a Harvard professor, asked why some countries make the world's best products. One answer was fussy buyers at home. Buyers who want more push you to get better, faster than easy buyers ever would. So don't run from tough buyers. Look for them."
     },
     {
       "kind": "explain",
       "id": "home",
       "title": "Now look at your bakery",
-      "text": "Your home bakery can find tough buyers too. It's December, your fifth year. A hotel nearby wants 15 cakes a week at ₹700 each. But its rules are strict: hair nets, a daily note of the fridge's temperature, a date on every cake, and a kitchen check each month."
+      "text": "Your home bakery can find tough buyers too. It's December, your fifth year. A hotel nearby wants 15 cakes a week at ₹700 each. Its rules are strict: hair nets, a daily fridge temperature note, a date on every cake, monthly kitchen checks. Meeting them needs a ₹30,000 kitchen fix."
     },
     {
       "kind": "choice",
@@ -93,7 +93,7 @@
           "bucket": 1
         },
         {
-          "text": "A mother whose child has a nut allergy",
+          "text": "A mother who wants a list of what's in each cake, for her child's allergy",
           "bucket": 0
         },
         {
@@ -118,7 +118,7 @@
         },
         {
           "id": "c",
-          "label": "They get better, and less cream goes bad"
+          "label": "They get better too"
         }
       ],
       "answer": "c",
@@ -135,22 +135,22 @@
       "options": [
         {
           "id": "b",
-          "label": "The chef's. She's tasted cakes from many bakers"
+          "label": "The chef's. She has tasted many bakers"
         },
         {
           "id": "a",
-          "label": "Your friends'. They've eaten your cakes for years"
+          "label": "Your friends'. They're your real buyers"
         },
         {
           "id": "c",
-          "label": "Neither. Only sales numbers matter"
+          "label": "Neither. Only what sells matters"
         }
       ],
       "answer": "b",
       "why": "Right. Remember Unit 2: praise is not proof. Kind words cost nothing and teach you nothing. The chef's three problems are three things to fix before other buyers find them.",
       "wrong": {
         "a": "Your friends are kind. But remember Unit 2: praise is not proof. The chef's three problems tell you what to fix.",
-        "c": "Sales matter. But the chef's three problems are what will keep sales coming. Praise is not proof; a tough buyer's notes are useful."
+        "c": "What sells matters. But the chef's three problems are what will keep cakes selling. Remember Unit 2: praise is not proof. A tough buyer's notes tell you what to fix."
       }
     },
     {
@@ -163,7 +163,7 @@
           "id": "a",
           "label": "Yes, and fix the kitchen in January",
           "grade": "bad",
-          "outcome": "You deliver for Christmas and keep ₹9,000 in two weeks. At the first kitchen check, there's no fridge log and some cakes have no dates. The hotel stops the order.",
+          "outcome": "You deliver for Christmas and keep ₹9,000 in two weeks. At the first kitchen check, the inspector finds one overfull fridge and wooden tables. The hotel stops the order.",
           "why": "You took the order but not the standard. A tough buyer only makes you better if you meet its rules.",
           "better": "Say yes, fix the kitchen this week, then start."
         },
@@ -187,7 +187,7 @@
     {
       "kind": "gap",
       "id": "fill",
-      "text": "A café sends back any cake that isn't even. It's tough on ___. A buyer who wants ₹200 off every order is tough on ___.",
+      "text": "A café sends back any cake that leans. It's tough on ___. A buyer who wants ₹200 off every order is tough on ___.",
       "bank": ["quality", "price", "delivery", "taste"],
       "answer": ["quality", "price"],
       "why": "Exactly. Porter called the first kind demanding buyers. Meeting them makes you better. The second kind only makes you poorer."
@@ -201,7 +201,7 @@
   "cards": [
     {
       "id": "m62-tough-1",
-      "front": "A hotel wants your snacks but checks your kitchen monthly. What should you do?",
+      "front": "A hotel wants your cakes but checks your kitchen monthly. What should you do?",
       "options": ["Say no: too fussy", "Meet its standard, then say yes"],
       "answer": 1,
       "back": "Tough buyers make you better. Seek them out."

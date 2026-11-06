@@ -31,19 +31,19 @@
         }
       ],
       "answer": "b",
-      "why": "It made only its best sellers. Britannia made about one in five of its brands, like Good Day and Marie, and those brought in about 80% of its money. A short list of products needed fewer hands, so the factories kept running."
+      "why": "It made only its best sellers. Britannia made about one in five of its brands, like Good Day and Marie, and those brought in about 80% of its money. Fewer kinds needed fewer hands. And every kind you drop is one less thing to buy, store and run."
     },
     {
       "kind": "explain",
       "id": "complexity",
       "title": "The cost you don't see",
-      "text": "Every new item means one more thing to buy, store, learn and throw away when it goes bad. This is called complexity cost. Each separate item is a SKU, short for stock keeping unit. A bigger menu feels like more sales. Often it's more cost."
+      "text": "Think of your fridge. Every new item needs its own stock, its own shelf and its own recipe to learn, and it goes bad if it doesn't sell. That's called complexity cost: costs that grow with every item but never show on its price. A bigger menu feels like more sales. Often it's more cost."
     },
     {
       "kind": "explain",
       "id": "home",
       "title": "Now look at your bakery",
-      "text": "Big factories and your home bakery have the same problem. It's July, your fifth year. Your menu has grown to 18 items: cakes in six flavours, cupcakes, cookies, breads, the party pack, the Sunday box and more. Your chocolate cake still sells for ₹850, and you keep ₹450."
+      "text": "Now picture your home bakery. It's July, your fifth year. Your menu has grown to 18 items: six cake flavours, cupcakes, cookies, breads, the party pack and more. Your chocolate cake sells for ₹850; you keep ₹450. You're so busy you turn away about 3 chocolate orders a month."
     },
     {
       "kind": "choice",
@@ -67,7 +67,7 @@
       "why": "Exactly. 3 cakes × ₹450 is ₹1,350. Take away the ₹1,000 of fruit and cream you throw away, and the pineapple cake really earns ₹350 a month. The waste was a hidden cost: it never showed on the cake's price.",
       "wrong": {
         "a": "I see what you did: 3 × ₹450 = ₹1,350. But that's before the waste. Take away the ₹1,000 of pineapple and cream you throw away, and it earns only ₹350 a month.",
-        "b": "It's close, but it still earns a little. 3 × ₹450 = ₹1,350, and ₹1,350 minus ₹1,000 of waste leaves ₹350 a month."
+        "b": "It doesn't lose money. 3 × ₹450 = ₹1,350, and ₹1,350 minus ₹1,000 of waste leaves ₹350 a month. It still earns a little."
       }
     },
     {
@@ -77,22 +77,22 @@
       "options": [
         {
           "id": "a",
-          "label": "They pay about the same"
+          "label": "Keep pineapple, for the variety"
         },
         {
           "id": "b",
-          "label": "The 3 chocolate cakes"
+          "label": "Bake the 3 chocolate cakes"
         },
         {
           "id": "c",
-          "label": "Pineapple, for the variety"
+          "label": "About the same either way"
         }
       ],
       "answer": "b",
       "why": "Right. 3 chocolate cakes × ₹450 is ₹1,350, almost four times the pineapple cake's ₹350. Your time is a hidden cost too. Every hour spent on a slow item is an hour taken from an item people already want.",
       "wrong": {
-        "a": "Let's check. 3 chocolate cakes × ₹450 = ₹1,350. The pineapple cake earns ₹350. That's ₹1,000 more for the same 5 hours.",
-        "c": "Variety can bring people in. But here people are already asking for chocolate, and you turn them away. 3 × ₹450 = ₹1,350 beats the pineapple cake's ₹350."
+        "a": "Variety can bring people in. But here people are already asking for chocolate, and you turn them away. 3 × ₹450 = ₹1,350 beats the pineapple cake's ₹350.",
+        "c": "Let's check. 3 chocolate cakes × ₹450 = ₹1,350. The pineapple cake earns ₹350. That's ₹1,000 more for the same 5 hours."
       }
     },
     {
@@ -118,7 +118,7 @@
           "bucket": 1
         },
         {
-          "text": "Gas to bake that one cake",
+          "text": "The candle you give with each cake",
           "bucket": 0
         },
         {
@@ -126,7 +126,7 @@
           "bucket": 1
         }
       ],
-      "why": "Exactly. Flour, the box and the gas go into every cake, so they're inside the ₹400. Waste, learning time and fridge space grow with every item you add, but no single cake's price shows them. That's why a long menu can quietly eat your profit."
+      "why": "Exactly. Flour, the box and the candle go into every cake, so they're inside the ₹400. Waste, learning time and fridge space grow with every item you add, but no single cake's price shows them. That's why a long menu can quietly eat your profit."
     },
     {
       "kind": "choice",
@@ -147,7 +147,7 @@
         }
       ],
       "answer": "a",
-      "why": "Exactly. ₹15,000 minus ₹6,000 is ₹9,000 that no longer sits on a shelf. Remember frozen cash from Unit 1: money tied up in stock can't pay a bill. Fewer items free it once, and they keep less of it stuck.",
+      "why": "Exactly. ₹15,000 minus ₹6,000 is ₹9,000 that no longer sits on a shelf. Remember frozen cash from Unit 1: money in stock can't pay a bill. You get ₹9,000 back once. After that, less money sits on the shelf.",
       "wrong": {
         "b": "Not every month. You get it back once. ₹15,000 minus ₹6,000 is ₹9,000 of cash that no longer sits on a shelf, the frozen cash from Unit 1.",
         "c": "Stock is money you've already spent. ₹15,000 minus ₹6,000 means ₹9,000 you no longer have to keep tied up on a shelf. That's cash you can use."
@@ -156,7 +156,7 @@
     {
       "kind": "scenario",
       "id": "mango",
-      "setup": "It's late July. Four customers ask for mango cake. About 6 would sell a month, leaving you ₹2,100 after the mango that goes bad. It takes about 5 hours a month. Pineapple and coffee earn ₹500 together and take 10 hours.",
+      "setup": "It's July. Four customers ask for mango cake. About 6 would sell a month, leaving you ₹2,100 after the mango that goes bad, and it takes 5 hours a month. Pineapple earns ₹350 and coffee ₹150, and each takes 5 hours. Every 5 free hours means 3 more chocolate cakes: ₹1,350.",
       "question": "What do you do about the mango cake?",
       "options": [
         {
@@ -168,19 +168,19 @@
           "better": "Add mango, and drop pineapple and coffee."
         },
         {
+          "id": "c",
+          "label": "Add mango, and drop only pineapple",
+          "grade": "ok",
+          "outcome": "You lose pineapple's ₹350, and mango earns ₹2,100. Mango uses the 5 hours pineapple took, so no time is left for extra chocolate cakes. You gain ₹1,750 a month. Coffee still earns only ₹150 for 5 hours, and your menu stays at 18.",
+          "why": "A good swap, but you kept one weak item. Coffee's 5 hours could have baked 3 chocolate cakes, ₹1,350, instead of ₹150.",
+          "better": "Add mango, and drop pineapple and coffee."
+        },
+        {
           "id": "b",
           "label": "Add mango, and drop pineapple and coffee",
           "grade": "great",
           "outcome": "You lose the ₹500 that pineapple and coffee earned. Mango earns ₹2,100. You get 10 hours back; mango uses 5, and in the other 5 you bake 3 chocolate cakes you used to turn away: ₹1,350. You gain ₹2,950 a month, and your menu shrinks to 17.",
           "why": "Exactly. You let a new item in only by pushing out two weak ones. Your menu got shorter, your waste fell, and your hours went to cakes people want."
-        },
-        {
-          "id": "c",
-          "label": "Say no, and keep the menu as it is",
-          "grade": "ok",
-          "outcome": "You add no new waste. But pineapple and coffee still earn only ₹500 a month for 10 hours, and the mango customers buy from another baker.",
-          "why": "You were right to guard against a longer menu. But the problem wasn't the new item. It was the two weak items already on it.",
-          "better": "Add mango, and drop pineapple and coffee."
         }
       ]
     },

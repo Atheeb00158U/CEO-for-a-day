@@ -9,7 +9,7 @@
       "kind": "explain",
       "id": "hook",
       "media": "img:ls_eye_ward",
-      "text": "Let me tell you about an eye hospital in Madurai. Aravind Eye Hospital does cataract operations, which clear cloudy eyes. An Aravind surgeon does about 2,000 a year; the Indian average is about 250. Yet Aravind has half the problems after surgery that Britain's hospitals have. Have a guess how."
+      "text": "Let me tell you about an eye hospital in Madurai. Aravind Eye Hospital does cataract operations, which clear cloudy eyes. An Aravind surgeon does about 2,000 a year; the Indian average is about 250. Yet its patients have about half as many problems after surgery as in Britain. Have a guess how."
     },
     {
       "kind": "choice",
@@ -19,11 +19,11 @@
       "options": [
         {
           "id": "a",
-          "label": "Its doctors work much longer hours"
+          "label": "Its doctors work far longer hours"
         },
         {
           "id": "b",
-          "label": "Each job is done one fixed way, every time"
+          "label": "Each job is done one fixed way"
         },
         {
           "id": "c",
@@ -31,7 +31,7 @@
         }
       ],
       "answer": "b",
-      "why": "Each job is done one fixed way, every time. While a surgeon operates on one patient, the next one is already being made ready. The surgeon does only the key steps, and trained helpers do the rest in the same order, like a factory line."
+      "why": "Each job is done one fixed way, every time. While a surgeon operates on one patient, the next one is already being made ready. The surgeon does only the key steps, and trained helpers do the rest in the same order, like a factory line. When every step is fixed, a mistake stands out."
     },
     {
       "kind": "explain",
@@ -43,12 +43,12 @@
       "kind": "explain",
       "id": "home",
       "title": "Now look at your bakery",
-      "text": "A hospital and a home bakery both repeat the same jobs every day. It's August, your fifth year. Your sister and your cousin now bake with you, about 30 cakes a week, at ₹850 each. But their chocolate cakes don't taste like yours. Each of you has your own way."
+      "text": "Now picture your home bakery. It's August, your fifth year. Your sister and your cousin now bake with you, about 30 cakes a week, at ₹850 each. But their chocolate cakes don't taste like yours. Each of you has your own way."
     },
     {
       "kind": "choice",
       "id": "remakes",
-      "prompt": "You bake 30 cakes a week. 3 go wrong and are baked again, at ₹400 each. What do the mistakes cost a month?",
+      "prompt": "You bake 30 cakes a week. 3 go wrong, and baking each one again costs you ₹400. What do the mistakes cost a month?",
       "options": [
         {
           "id": "a",
@@ -97,11 +97,11 @@
           "bucket": 0
         },
         {
-          "text": "Beat the batter until smooth",
+          "text": "Beat it well",
           "bucket": 1
         }
       ],
-      "why": "Exactly. A standard card says things anyone can check: grams, a temperature, a time, a test. \"Until it tastes right\", \"the way Mummy did\" and \"until smooth\" mean something different to each person. Write \"beat for 4 minutes\" instead."
+      "why": "Exactly. A standard card says things anyone can check: grams, a temperature, a time, a test. \"Until it tastes right\", \"the way Mummy did\" and \"beat it well\" mean something different to each person. Write \"beat for 4 minutes\" instead."
     },
     {
       "kind": "order",
@@ -123,7 +123,7 @@
       "options": [
         {
           "id": "a",
-          "label": "Yes. The cake came out perfect"
+          "label": "Yes. It worked, so her way works"
         },
         {
           "id": "b",
@@ -169,7 +169,7 @@
     {
       "kind": "scenario",
       "id": "cafe",
-      "setup": "It's late August. A café wants 10 chocolate cakes every Friday, all exactly alike, at ₹700 each. Each costs ₹400 to make, so you'd keep ₹3,000 a week. Your sister and cousin will bake most of them.",
+      "setup": "It's late August. A café wants 10 chocolate cakes every Friday, all exactly alike. It buys many, so it pays ₹700 each. Each costs ₹400 to make, so you'd keep ₹3,000 a week. Your sister and cousin will bake most of them.",
       "question": "How do you get ready for the café?",
       "options": [
         {
@@ -189,11 +189,11 @@
         },
         {
           "id": "c",
-          "label": "Let them bake, and taste each one yourself",
-          "grade": "bad",
-          "outcome": "Each Friday, 2 or 3 cakes taste different, and you bake them again: about ₹1,000 a week lost. You keep only about ₹2,000 a week. In the fourth week, the café says the cakes aren't the same and stops ordering.",
-          "why": "Tasting at the end catches mistakes, but too late, and it can't stop them coming back. Three ways of baking made three kinds of cake.",
-          "better": "Write a card, bake the first batch with your helpers, and check it."
+          "label": "Give them the card, and taste every cake",
+          "grade": "ok",
+          "outcome": "The card helps, but nobody watched them bake. Your cousin reads \"60 g\" as a heaped spoon. Each Friday one cake tastes wrong, and you bake it again: you keep ₹2,600 a week. The café is happy, but you spend Friday mornings fixing cakes.",
+          "why": "The card was the right start. But a card nobody has tried out together leaves room for each person to read it their own way.",
+          "better": "Write the card, bake the first batch together, and check it."
         }
       ]
     },

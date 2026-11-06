@@ -31,19 +31,19 @@
         }
       ],
       "answer": "c",
-      "why": "Airtel decided its core was its brand and its customers, not running towers. It paid for the network it used, not to own it, and 200 of its engineers moved to IBM. By July 2006 it had more than 2.4 crore mobile customers."
+      "why": "It paid only for the network it used. It did not own it. So Airtel could spend its time and money on winning customers. By July 2006 it had more than 2.4 crore mobile customers."
     },
     {
       "kind": "explain",
       "id": "core",
       "title": "Your core skill",
-      "text": "In 1990, two professors gave this idea a name: core competence. It's the one skill that makes customers choose you, and that other businesses find hard to copy. Own that skill yourself. For the rest, pay people who do it better or cheaper than you."
+      "text": "Airtel kept one thing for itself: its customers. In 1990, two business professors gave this idea a name: core competence. It's the one skill that makes customers choose you, and that others find hard to copy. Own that skill. For the rest, pay people who do it better or cheaper."
     },
     {
       "kind": "explain",
       "id": "home",
       "title": "Now look at your bakery",
-      "text": "A phone company and a home bakery both have one thing customers come for. It's September, your fifth year, and Diwali is coming. You, your sister and your cousin bake. But you still do the rest yourself: about 120 deliveries a month, printing the boxes, even your GST filing."
+      "text": "A phone company and a home bakery both have one thing customers come for. It's September, your fifth year. Your ₹850 chocolate cake costs ₹400 to make. You three bake, but you also make 120 deliveries a month, print the boxes and file GST yourself."
     },
     {
       "kind": "sort",
@@ -68,15 +68,15 @@
           "bucket": 1
         },
         {
-          "text": "Talking to your regular customers",
+          "text": "Taking special orders from regulars",
           "bucket": 0
         },
         {
-          "text": "Filing your GST returns, which a CA could do",
+          "text": "Filing your GST returns",
           "bucket": 1
         }
       ],
-      "why": "Exactly. Your taste, your checks and your customers are why people pay ₹850 for your cake. That's your core. Delivery, printing and GST matter too, and you stay responsible for them, but others can do them well, and often cheaper."
+      "why": "Exactly. For Airtel, the core was customers. For you, it's taste: your recipe, your checks and your regulars are why people pay ₹850. Delivery, printing and GST matter too, and you stay responsible for them, but a rider, a printer or a CA can do them well, often cheaper."
     },
     {
       "kind": "choice",
@@ -106,7 +106,7 @@
     {
       "kind": "choice",
       "id": "same-cost",
-      "prompt": "Your own rider costs ₹12,000 a month, whatever happens. The service costs ₹60 a trip. At how many trips do they cost the same?",
+      "prompt": "Your own rider costs ₹12,000 a month. The service costs ₹60 a trip. At how many trips do they cost the same?",
       "options": [
         {
           "id": "a",
@@ -131,7 +131,7 @@
     {
       "kind": "choice",
       "id": "factory",
-      "prompt": "A big factory offers to make chocolate cakes for you, from its own recipe, at ₹300 each, ₹100 below your cost. The biggest risk?",
+      "prompt": "A factory that bakes for 50 shops offers you chocolate cakes from its own recipe, at ₹300 each. What's the biggest risk?",
       "options": [
         {
           "id": "a",
@@ -161,9 +161,9 @@
       "options": [
         {
           "id": "a",
-          "label": "Buy factory cakes, and sell them as yours",
+          "label": "Buy factory cakes for the extra Diwali orders",
           "grade": "bad",
-          "outcome": "You meet every Diwali order. But regular customers notice the taste has changed, and three of them say so in your colony group. In November, orders fall below 120.",
+          "outcome": "You meet every Diwali order. But some regulars get a factory cake, notice the taste has changed, and say so in your colony group. In November, orders fall below 120.",
           "why": "You gave away the one thing customers came for. Your taste is your core, so it's the last thing to give away.",
           "better": "Keep the baking. Pay others for delivery and printing."
         },
@@ -171,15 +171,15 @@
           "id": "b",
           "label": "Buy a scooter, and hire your own rider",
           "grade": "ok",
-          "outcome": "Diwali deliveries go well, at ₹12,000 a month for the rider plus the scooter's loan. In November, trips fall to about 90. The service would have cost ₹5,400. Your rider still costs ₹12,000.",
+          "outcome": "Diwali deliveries go well, at ₹12,000 a month for the rider plus ₹2,500 a month for the scooter loan. In November, trips fall to about 90. The service would have cost ₹5,400. Your rider still costs ₹12,000.",
           "why": "Deliveries worked, but you took on a fixed cost for a busy month. Delivery isn't your core, so there was no need to own it.",
           "better": "Pay a delivery service per trip, and keep the baking yourselves."
         },
         {
           "id": "c",
-          "label": "Pay a delivery service and a printer",
+          "label": "Pay a delivery service, a printer and a CA",
           "grade": "great",
-          "outcome": "The delivery service takes 200 trips in October for ₹12,000, and about 90 in November for ₹5,400. The printer sends boxes on time, and a CA files your GST. You spend Diwali baking and tasting, and regulars order again.",
+          "outcome": "In October the service takes 200 trips for ₹12,000, the same as a rider. In November it takes about 90 for ₹5,400, so you save ₹6,600. The printer and a CA do their part. You spend Diwali baking, and regulars order again.",
           "why": "Exactly. You kept your core, the baking, and paid others only for what you used. When the rush ended, the cost fell with it."
         }
       ]
@@ -187,10 +187,10 @@
     {
       "kind": "gap",
       "id": "fill",
-      "text": "A tailor is famous for perfect fitting. Fitting is her ___ skill. She should pay a rider for ___.",
-      "bank": ["core", "delivery", "extra", "fitting"],
-      "answer": ["core", "delivery"],
-      "why": "Exactly. She keeps the fitting, the reason people come to her, and pays others for jobs anyone can do. That's core competence."
+      "text": "Your ___ is your taste, so you do the baking. You pay a CA to file your ___.",
+      "bank": ["core", "GST", "price", "tasting"],
+      "answer": ["core", "GST"],
+      "why": "Exactly. Keep the skill that makes customers choose you. Pay others for jobs they can do as well, or better. That's core competence."
     }
   ],
   "summary": [
