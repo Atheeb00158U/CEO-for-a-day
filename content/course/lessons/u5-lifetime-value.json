@@ -48,7 +48,7 @@
     {
       "kind": "choice",
       "id": "ltv-sum",
-      "prompt": "A family orders 4 cakes a year. Each leaves you ₹450. If they stay 5 years, what's their lifetime value?",
+      "prompt": "A family orders 4 cakes a year. Each leaves you ₹450. If they stay 5 more years, what's their lifetime value from now?",
       "options": [
         {
           "id": "a",
@@ -73,10 +73,10 @@
     {
       "kind": "gap",
       "id": "box-ltv",
-      "text": "Your July breakfast box leaves ₹150 a week. A family takes it 40 weeks a year, 2 years: ₹150 × ___ × 2 = ___.",
-      "bank": ["40", "₹12,000", "52", "₹6,000"],
-      "answer": ["40", "₹12,000"],
-      "why": "Right. ₹150 × 40 = ₹6,000 a year, and 2 years makes ₹12,000. Count the weeks they really take it, not all 52."
+      "text": "The café deal leaves you ₹1,750 a week. Over 50 weeks a year: ₹1,750 × 50 = ___ a year, and 2 years make ___.",
+      "bank": ["₹87,500", "₹1,75,000", "₹8,750", "₹3,50,000"],
+      "answer": ["₹87,500", "₹1,75,000"],
+      "why": "Right. ₹1,750 × 50 = ₹87,500 a year, and 2 years make ₹1,75,000. That café isn't one order. It's your biggest customer."
     },
     {
       "kind": "sort",

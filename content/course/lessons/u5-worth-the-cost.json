@@ -37,7 +37,7 @@
       "kind": "explain",
       "id": "cac",
       "title": "LTV:CAC",
-      "text": "What one customer costs to win is your spend divided by the new customers it brought: ₹6,000 for 20 is ₹300 each. That's called CAC, the cost to acquire, or win, a customer. Lifetime value must be well above it. People write this as LTV:CAC."
+      "text": "What one customer costs to win is your spend divided by the new customers it brought: ₹4,000 for 10 is ₹400 each. That's called CAC, the cost to win a customer. Lifetime value must be well above it. People write this as LTV:CAC."
     },
     {
       "kind": "choice",

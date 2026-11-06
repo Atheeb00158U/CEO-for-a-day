@@ -54,13 +54,13 @@
         },
         {
           "id": "c",
-          "label": "\"Which price are you comparing it with?\""
+          "label": "\"What were you expecting to pay?\""
         }
       ],
       "answer": "c",
       "why": "Yes. First find out what they compare with. If it's a ₹60 roadside cut, you can show what's different. If it's the salon next door at ₹250, you know where you stand.",
       "wrong": {
-        "a": "You cut ₹50 before you know what they're comparing with. They might be thinking of ₹280. Ask first: \"Which price are you comparing it with?\"",
+        "a": "You cut ₹50 before you know what they're comparing with. They might be thinking of ₹280. Ask first: \"What were you expecting to pay?\"",
         "b": "That may be true, but you don't know their comparison yet. If they're thinking of a ₹60 roadside cut, Mumbai training won't help. Ask first."
       }
     },
@@ -73,7 +73,7 @@
     {
       "kind": "choice",
       "id": "per-piece",
-      "prompt": "A slice costs him ₹30 and sells at ₹50. Your ₹45 brownie sells at ₹80. What does he keep per brownie, compared with a slice?",
+      "prompt": "His supplier's slice costs ₹30 and sells at ₹50. Your ₹45 brownie sells at ₹80. Per brownie, what does he keep compared with a slice?",
       "options": [
         {
           "id": "a",

@@ -55,7 +55,7 @@
       "kind": "explain",
       "id": "home",
       "title": "Now look at your business",
-      "text": "A tech company and a home bakery both need a road to their customers. It's April. You bake cakes at home: each ₹850 cake leaves you ₹450. You want 10 new families a month, so last month you tested six roads."
+      "text": "A tech company and a home bakery both need a road to their customers. It's early May. You bake cakes at home: each ₹850 cake leaves you ₹450. You want 10 new families a month, so last month you tested six roads."
     },
     {
       "kind": "sort",
@@ -143,14 +143,14 @@
     {
       "kind": "scenario",
       "id": "insert-offer",
-      "setup": "It's May. WhatsApp groups now bring 8 new families a month. A sales agent offers a newspaper insert to 50,000 homes for ₹15,000. Each cake leaves you ₹450.",
+      "setup": "It's mid-May. WhatsApp groups now bring 8 new families a month. A sales agent offers a newspaper insert to 50,000 homes for ₹15,000. Each cake leaves you ₹450.",
       "question": "What do you do with your time and money this month?",
       "options": [
         {
           "id": "a",
           "label": "Take the insert. It reaches far more homes",
           "grade": "bad",
-          "outcome": "The insert brings 3 orders: ₹1,350 for ₹15,000. With your time on the insert, WhatsApp brings only 5 families this month.",
+          "outcome": "The insert brings 3 orders: ₹1,350 for ₹15,000. Busy with the insert, you post less in your WhatsApp groups, and they bring only 5 families this month.",
           "why": "50,000 homes sounded big, but your own test showed newspaper inserts bring almost nothing for you.",
           "better": "Go deeper on WhatsApp: join the groups of the colonies next to yours."
         },

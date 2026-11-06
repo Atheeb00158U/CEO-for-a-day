@@ -110,10 +110,10 @@
       "steps": [
         "Ask what stops her this term",
         "Agree on a day to call back",
-        "Plan a useful new idea for her",
-        "Call on that day with your idea"
+        "After the meeting, plan an offer for next term",
+        "Call on that day with your offer"
       ],
-      "why": "Well done. First learn what stops her, then fix a day together. Before you call, plan something useful, so the call is more than \"any orders?\""
+      "why": "Well done. First learn what stops her, then fix a day together. After the meeting, plan something useful, like cakes for sports day, so the call is more than \"any orders?\""
     },
     {
       "kind": "choice",

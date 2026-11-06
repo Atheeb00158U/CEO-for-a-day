@@ -42,7 +42,7 @@
     {
       "kind": "choice",
       "id": "k-sum",
-      "prompt": "20 families order cakes in May. Their party guests bring 6 new families in June. What's your K-factor?",
+      "prompt": "20 families order cakes in April. Their party guests bring 6 new families in May. What's your K-factor?",
       "options": [
         {
           "id": "a",
@@ -68,7 +68,7 @@
       "kind": "explain",
       "id": "home",
       "title": "Now look at your business",
-      "text": "Hotmail's line rode on every email, and your cake rides into every party. It's May. About 15 guests see each birthday cake you make. Some ask the family, \"Who made this?\" But most families can't remember your name or number."
+      "text": "Hotmail's line rode on every email, and your cake rides into every party. It's late May. About 15 guests see each birthday cake you make. Some ask the family, \"Who made this?\" But most families can't remember your name or number."
     },
     {
       "kind": "sort",
@@ -151,7 +151,7 @@
     {
       "kind": "scenario",
       "id": "loop-or-ads",
-      "setup": "It's late May. Cards in boxes now bring 6 new families from every 20 orders. You have ₹4,000 to spend on getting more. Each cake leaves you ₹450.",
+      "setup": "It's the end of May. Cards in boxes now bring 6 new families from every 20 orders. You have ₹4,000 to spend on getting more. Each cake leaves you ₹450. Count first cakes only.",
       "question": "How do you spend it?",
       "options": [
         {
@@ -159,14 +159,14 @@
           "label": "Boost Instagram reels with all ₹4,000",
           "grade": "ok",
           "outcome": "The ads bring 10 families. Their first cakes leave you ₹4,500, so you're only ₹500 up. When the ads stop, so do the new families.",
-          "why": "It paid this month, but you paid for each buyer. The money stopped working the day the ads ended.",
+          "why": "Ads can pay, and you'll check that sum soon. But you paid for each buyer, so the new families stopped the day the ads ended.",
           "better": "Give ₹50 off to the family and ₹50 off to each friend who orders, so buyers bring buyers."
         },
         {
           "id": "b",
           "label": "₹50 off for the family, and ₹50 off for each friend",
           "grade": "great",
-          "outcome": "Families start sharing your number. 20 orders now bring 12 new families, not 6. The 6 extra families leave you ₹2,700. The ₹50 discounts cost ₹1,200, so you're ₹1,500 up, with ₹2,800 still in hand. And the new families start bringing friends too.",
+          "outcome": "Families start sharing your number. 20 orders now bring 12 new families, not 6. The 6 extra families leave you ₹2,700. The ₹50 discounts cost ₹1,200, so you're ₹1,500 up. And the new families start bringing friends too.",
           "why": "You made sharing worth it, so your K-factor doubled from 0.3 to 0.6, and the loop keeps paying next month."
         },
         {

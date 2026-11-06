@@ -85,7 +85,7 @@
           "bucket": 1
         },
         {
-          "text": "A wedding planner booking cakes for weddings in March",
+          "text": "A caterer booking cakes for parties in March",
           "bucket": 0
         },
         {
@@ -101,7 +101,7 @@
           "bucket": 1
         }
       ],
-      "why": "Good sorting. The café owner, the planner and the manager pass all four checks. The peon can't decide, the student can't pay, and the hotel doesn't need you. Be kind to them, but spend your visits on the first three."
+      "why": "Good sorting. The café owner, the caterer and the manager pass all four checks. The peon can't decide, the student can't pay, and the hotel doesn't need you. Be kind to them, but spend your visits on the first three."
     },
     {
       "kind": "choice",
@@ -110,15 +110,15 @@
       "options": [
         {
           "id": "a",
-          "label": "Nothing new yet"
+          "label": "Nothing: kind words are free"
         },
         {
           "id": "b",
-          "label": "That he will pay"
+          "label": "That he can pay your price"
         },
         {
           "id": "c",
-          "label": "That he will order soon"
+          "label": "That he will order this week"
         }
       ],
       "answer": "a",
@@ -136,9 +136,9 @@
       "options": [
         {
           "id": "a",
-          "label": "A big IT office's front desk, for 200 staff",
+          "label": "An IT office with 200 staff, from March",
           "grade": "bad",
-          "outcome": "The front desk asks for a price list and samples. You go back three times. The admin head never meets you, and in March the office picks a chain shop. You spent four visits and ₹1,200 of samples.",
+          "outcome": "The call came from its front desk. You go back three times for a price list and samples. The admin head never meets you, and in March the office picks a chain shop. You spent four visits and ₹1,200 of samples.",
           "why": "200 staff sounded big, but you never met the person who decides. Authority failed, so the size of the office didn't matter.",
           "better": "Visit the factory owner, who called you himself and wants cakes from February."
         },
@@ -151,10 +151,10 @@
         },
         {
           "id": "c",
-          "label": "A chain café that wants samples sometime this year",
+          "label": "A chain café with 12 branches, from next year",
           "grade": "ok",
-          "outcome": "The manager likes your samples, but says to call again in September. You spent ₹600 on samples, and there's no order yet.",
-          "why": "The café can pay and may need you, but timing failed: \"sometime this year\" is not soon. Keep its number and call again in September.",
+          "outcome": "The manager likes your samples, but the café won't change bakers until next year. You spent ₹600 on samples, and there's no order yet.",
+          "why": "The café can pay and may need you, but timing failed: next year is not soon. Keep its number and call again nearer the time.",
           "better": "Visit the factory owner, who called you himself and wants cakes from February."
         }
       ]
@@ -163,7 +163,7 @@
       "kind": "gap",
       "id": "fill",
       "text": "Before you spend time on a buyer, check: can they ___, can this person ___, do they need it, will they buy soon?",
-      "bank": ["pay", "decide", "wait", "talk"],
+      "bank": ["pay", "decide", "like", "wait"],
       "answer": ["pay", "decide"],
       "why": "Exactly. That's BANT: Budget, Authority, Need and Timing. IBM's sellers used it for computers, and you can use it for cakes."
     }
