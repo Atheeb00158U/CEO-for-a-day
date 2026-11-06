@@ -650,7 +650,10 @@
       "routes": [
         {
           "when": {
-            "minFuture": 70
+            "minFuture": 70,
+            "notFlags": [
+              "shrink"
+            ]
           },
           "to": "legend"
         },

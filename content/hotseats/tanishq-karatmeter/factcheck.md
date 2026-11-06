@@ -1,5 +1,5 @@
 # Fact-check: tanishq-karatmeter
-checked-sha256: 9fb5ce005fd29d29a92e31defa1a40223ac0c3650a505926e4d25b235044feb6
+checked-sha256: d6504ba6555c24e3da469d956f2e6f172b6489ea96d3bd7812e20e7a431a8a8f
 Checked: 2026-11-06 · by: fresh-context fact-check agent (delta re-check)
 
 ## Sources opened
@@ -68,3 +68,4 @@ Real-path lines changed since the last stamp, checked against the sources above:
 
 ## Re-check 2026-11-06 (after the delta re-check)
 - d4.question reworded to "How do you bring more people into your stores?" (no factual content). Checked by the author; no claim changed.
+- Ending route: paths that closed stores (shrink) now end on survivor, not legend. Routing only; no claim changed.
