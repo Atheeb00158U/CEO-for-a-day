@@ -9,7 +9,7 @@
       "kind": "explain",
       "id": "hook",
       "media": "img:ls_pug_kennel",
-      "text": "Let me tell you about a small dog. In the early 2000s, a phone company called Hutch made ads with a pug following a boy everywhere. The line was: \"Wherever you go, our network follows.\" People loved that pug, and pug sales in India went up."
+      "text": "Let me tell you about a small dog. In the early 2000s, a phone company called Hutch made ads showing a pug following a boy everywhere. The line was: \"Wherever you go, our network follows.\" People loved the pug, and more people in India began buying pugs."
     },
     {
       "kind": "choice",
@@ -19,37 +19,37 @@
       "options": [
         {
           "id": "a",
-          "label": "Dropped it, to make a fresh start"
+          "label": "Stopped using it and tried something new"
         },
         {
           "id": "b",
-          "label": "Kept it, to carry people to the new name"
+          "label": "Kept using it with the new name"
         },
         {
           "id": "c",
-          "label": "Swapped it for a famous film star"
+          "label": "Replaced it with a famous film star"
         }
       ],
       "answer": "b",
-      "why": "Vodafone kept the pug. In the new ad, the pug walked out of a pink kennel, Hutch's colour, into a red one, Vodafone's colour. The name changed, but the thing people remembered stayed."
+      "why": "Vodafone kept the pug. In the new ad, the pug left a pink dog house, Hutch's colour, and walked into a red one, Vodafone's colour. The name changed, but people still saw the dog they remembered."
     },
     {
       "kind": "explain",
       "id": "rule",
       "title": "Mental availability",
-      "text": "Byron Sharp, a marketing professor, calls this mental availability: how easily your name comes to mind when it's time to buy. People pick from the names that come to mind. A shop they can't think of doesn't get picked, even if it's better."
+      "text": "Byron Sharp, a marketing professor, calls this mental availability. It means how easily people remember your name when they want to buy. People choose from names they remember. Even a better shop may lose buyers if nobody thinks of it."
     },
     {
       "kind": "explain",
       "id": "assets",
       "title": "Things that remind them",
-      "text": "So what brings a name to mind? Things people link to you, even without your name: a colour, a sound, a character like the pug. Marketers call them distinctive brand assets. A funny line people repeat also carries your name."
+      "text": "So what makes people remember your name? Things they link to you, like a colour, a sound or a character like the pug. These are called distinctive brand assets. Even a funny line people repeat can help them remember you."
     },
     {
       "kind": "explain",
       "id": "home",
       "title": "Now look at your business",
-      "text": "Phone networks are huge, but people forget small bakeries even faster. It's the first week of December. You pack every cake in a pink box. A mother who loved your cake in March just bought her son's birthday cake from a chain shop. She said, \"I forgot your name.\""
+      "text": "Phone networks are huge, but people can forget small bakeries too. It's the first week of December. You pack every cake in a pink box. A mother who loved your cake in March just bought her son's birthday cake from a chain shop. She said, \"I forgot your name.\""
     },
     {
       "kind": "choice",
@@ -68,7 +68,7 @@
       "answer": "b",
       "why": "False. The mother loved your cake, but months later, your name didn't come to mind. When it's time to buy, people pick what they remember.",
       "wrong": {
-        "a": "That's what most bakers believe. But the mother loved your cake and still bought elsewhere, because months later she couldn't remember your name. A great cake isn't enough."
+        "a": "Many bakers think so. But the mother loved your cake and still bought from another shop. Months later, she couldn't remember your name. A great cake alone isn't enough."
       }
     },
     {
@@ -78,22 +78,22 @@
       "options": [
         {
           "id": "a",
-          "label": "A fresh new box design, a different one every month"
+          "label": "A new box design every month"
         },
         {
           "id": "b",
-          "label": "The same ₹100 discount, posted every single week"
+          "label": "The same ₹100 discount every week"
         },
         {
           "id": "c",
-          "label": "Your pink box and ribbon, on every cake, always"
+          "label": "The same pink box on every cake"
         }
       ],
       "answer": "c",
-      "why": "Yes. Seen again and again, the same pink box becomes yours, like the pug became Hutch's. Families think of you when they see it.",
+      "why": "Yes. When families see the same pink box again and again, they start linking it to your bakery. That's how the pug became linked to Hutch.",
       "wrong": {
-        "a": "New designs look exciting, but families can't link any of them to you. Keep one look, the same pink box every time, so it becomes yours.",
-        "b": "A discount brings a quick order, but people remember the deal, not you. Your pink box on every cake becomes something they link to you."
+        "a": "New designs may look nice, but families won't know which one is yours. Use the same pink box every time, so people start linking it to you.",
+        "b": "A discount may bring an order, but people may remember only the offer. When they see your pink box again and again, they start linking it to you."
       }
     },
     {
@@ -115,10 +115,10 @@
         }
       ],
       "answer": "a",
-      "why": "Exactly. It's short, funny and true to how people feel. You post it with your name and number every time, so when people repeat the line, your name travels with it.",
+      "why": "Exactly. It's short, funny and easy to remember. You post it with your name and number every time. So when people share the line, they can share your name too.",
       "wrong": {
-        "b": "It's clear, but every baker says it. Nobody repeats a line they've read a hundred times. A short, funny line gets passed on.",
-        "c": "Every shop says \"best quality, best price\", so nobody notices it. A short, funny line is the one people pass on."
+        "b": "It's clear, but many bakers say the same thing. People have seen it many times, so they may not repeat it. A short, funny line is easier to share.",
+        "c": "Many shops say \"best quality, best price\", so people may not notice it. A short, funny line is easier to remember and share."
       }
     },
     {
@@ -152,7 +152,7 @@
           "bucket": 1
         }
       ],
-      "why": "Things that stay the same, seen often, help families remember you. Changing logos and names, or posting only for offers, leaves nothing to remember."
+      "why": "When families see the same things often, they start remembering your bakery. But if you keep changing your name and logo, they may forget you. Posting only offers doesn't help them remember your shop."
     },
     {
       "kind": "scenario",
@@ -162,26 +162,26 @@
       "options": [
         {
           "id": "a",
-          "label": "One big ad in the local paper for ₹10,000",
+          "label": "Spend ₹10,000 on one big newspaper ad",
           "grade": "ok",
-          "outcome": "Many people see the ad, once. Most forget it by the next day. 8 new orders come in December, leaving you ₹3,600. That's ₹6,400 less than the ad cost.",
-          "why": "An ad seen once is soon forgotten. People need to see your name again and again, close to when they buy.",
-          "better": "Give past buyers something they'll see every day, with your name and number."
+          "outcome": "Many people see your ad once, but most forget it by the next day. You get 8 new orders in December and earn ₹3,600. That's ₹6,400 less than what you spent on the ad.",
+          "why": "People soon forget an ad they see only once. They need to see your name often, especially when they want to buy.",
+          "better": "Give past buyers something with your name and number that they'll see every day."
         },
         {
           "id": "b",
-          "label": "A fancy new name and logo for the new year",
+          "label": "Spend ₹10,000 on a new name and logo",
           "grade": "bad",
-          "outcome": "The new name, logo and boxes cost ₹10,000. They look smart. But families who knew \"the pink box baker\" can't find you. Orders in December fall by 10. You lose ₹4,500, on top of the ₹10,000.",
-          "why": "You threw away what families remembered. Even Vodafone kept the pug when it changed its name.",
-          "better": "Give past buyers something they'll see every day, with your name and number."
+          "outcome": "Your new name, logo and boxes cost ₹10,000. They look nice. But families who knew \"the pink box baker\" can no longer find you. December orders fall by 10. You lose ₹4,500, besides the ₹10,000 you spent.",
+          "why": "You changed the things families remembered about you. Even Vodafone kept the pug when it changed its name.",
+          "better": "Give past buyers something with your name and number that they'll see every day."
         },
         {
           "id": "c",
-          "label": "Pink fridge magnets with your number, for 500 past buyers",
+          "label": "Give 500 past buyers pink magnets with your number",
           "grade": "great",
-          "outcome": "Each magnet costs ₹20. You hand one out with every order and drop the rest on delivery rounds. When a party comes up, your number is on the fridge. 25 extra orders come in December, leaving you ₹11,250: more than you spent, and the magnets keep working.",
-          "why": "Your colour and number sit where families look every day. When it's time to buy, you come to mind first."
+          "outcome": "Each magnet costs ₹20. You give one with every order and deliver the rest to past buyers. When families plan a party, they see your number on the fridge. You get 25 extra orders in December and earn ₹11,250, more than you spent. The magnets stay useful.",
+          "why": "Your colour and number stay on the fridge, where families see them every day. So when they want to buy a cake, they may remember you first."
         }
       ]
     },
@@ -189,7 +189,7 @@
       "kind": "explain",
       "id": "honest-line",
       "title": "The honest line",
-      "text": "The line again: use on others only what you'd accept being used on you. Making your own name easy to remember is fair. Copying a famous shop's colours, so buyers think your cake is theirs, is a trick. You'd be angry if someone did it to you."
+      "text": "The line again: use on others only what you'd accept being used on you. Helping people remember your shop is fair. But copying a famous shop's colours to make buyers think your cakes are theirs is cheating. You wouldn't like someone doing that to you."
     },
     {
       "kind": "gap",
@@ -197,21 +197,21 @@
       "text": "People buy the names that come to ___ first, so make yours easy to ___.",
       "bank": ["mind", "remember", "sell", "change"],
       "answer": ["mind", "remember"],
-      "why": "Exactly. Vodafone kept the pug because people remembered it. Your pink box, your funny line and your magnet on the fridge do the same for you."
+      "why": "Exactly. Vodafone kept the pug because people remembered it. Your pink box, funny line and fridge magnet help families remember your bakery too."
     }
   ],
   "summary": [
-    "Mental availability: when it's time to buy, people pick the name that comes to mind first.",
-    "Distinctive brand assets: keep one colour, one look, one funny line, and show them often.",
-    "A great product isn't enough if people forget your name. Never copy another brand's look."
+    "Mental availability: when people want to buy, they choose from names they remember.",
+    "Distinctive brand assets: use the same colour, look and funny line often.",
+    "Even a great product may not sell if people forget your name. Never copy another brand's look."
   ],
   "cards": [
     {
       "id": "m42-remember-1",
-      "front": "Your ghee is better than a famous brand, but it has no name people know. Who wins?",
-      "options": ["Your better ghee", "The name people remember"],
+      "front": "Your ghee is better than a famous brand, but buyers don't know its name. Which will they buy?",
+      "options": ["Your better ghee", "The brand they remember"],
       "answer": 1,
-      "back": "People buy the names that come to mind first."
+      "back": "People choose from the names they remember when they want to buy."
     },
     {
       "id": "m42-remember-2",
@@ -223,7 +223,7 @@
     {
       "id": "m42-remember-3",
       "front": "A big company buys yours and changes the name. What should it keep?",
-      "options": ["Nothing, start fresh", "What people remember, like a mascot"],
+      "options": ["Nothing, make everything new", "Things buyers remember, like a mascot"],
       "answer": 1,
       "back": "Vodafone kept Hutch's pug. Keep the thing people link to you."
     }

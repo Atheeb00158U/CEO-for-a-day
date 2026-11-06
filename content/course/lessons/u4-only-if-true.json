@@ -9,29 +9,29 @@
       "kind": "explain",
       "id": "hook",
       "media": "img:ls_phone_invite",
-      "text": "Let me tell you about a phone. On 2 December 2014, the OnePlus One went on sale in India. You could buy it only on Amazon, and only with an invite. Why make a phone so hard to buy? A study about cookies gives a clue."
+      "text": "Let me tell you about a phone. On 2 December 2014, the OnePlus One went on sale in India. You could buy it only on Amazon, and you needed an invite. Why make it so hard to buy? A study about cookies helps explain."
     },
     {
       "kind": "choice",
       "id": "guess",
       "guess": true,
-      "prompt": "In a 1975 study, people tasted the same cookies, from a jar with 10 cookies or a jar with 2. Which did they like more?",
+      "prompt": "In a 1975 study, people tasted the same cookies from two jars. One had 10 cookies, the other had 2. Which did they like more?",
       "options": [
         {
           "id": "a",
-          "label": "The cookies from the jar with 10"
+          "label": "The jar that had 10 cookies"
         },
         {
           "id": "b",
-          "label": "The cookies from the jar with 2"
+          "label": "The jar that had 2 cookies"
         },
         {
           "id": "c",
-          "label": "Both the same, as they were the same cookies"
+          "label": "Both jars had equally good cookies"
         }
       ],
       "answer": "b",
-      "why": "The jar with 2. Same cookies, but fewer in the jar made them feel more special. Nothing about the cookies changed."
+      "why": "They liked the cookies from the jar with 2 more. The cookies were the same, but having fewer made them feel more special."
     },
     {
       "kind": "explain",
@@ -43,24 +43,24 @@
       "kind": "explain",
       "id": "on-you",
       "title": "It's used on you",
-      "text": "You see it all the time: \"only 2 rooms left, 30 people looking\", countdown timers, \"limited drop\". Some are true, but many are not. In 2023, India's consumer authority banned \"false urgency\": saying stock or time is running out when it isn't."
+      "text": "You see this often: \"only 2 rooms left, 30 people looking\", timers counting down, and \"limited stock\". Some claims are true, but many are not. In 2023, India's consumer authority banned \"false urgency\": saying stock or time is running out when it isn't."
     },
     {
       "kind": "explain",
       "id": "home",
       "title": "Now look at your business",
-      "text": "A phone launch and a home bakery seem far apart, but you've seen this go wrong already. In June, posting \"Only 5 cakes left!\" twice made the new colony stop ordering for a while. Now Christmas plum cakes are your biggest order of the year."
+      "text": "A phone and a home bakery seem very different, but you've seen this go wrong. In June, you posted \"Only 5 cakes left!\" twice. After that, the new colony stopped ordering for a while. Now Christmas plum cakes bring your biggest order of the year."
     },
     {
       "kind": "explain",
       "id": "plum",
       "title": "A real limit",
-      "text": "Plum cake fruit must soak for weeks. In November, you soaked fruit for 40 cakes and no more, so you can sell only 40 this Christmas. Each sells for ₹1,200 and costs ₹600 to make. That limit is real."
+      "text": "Fruit for plum cakes must soak for weeks. In November, you soaked enough fruit for 40 cakes, and no more. So you can sell only 40 this Christmas. Each cake sells for ₹1,200 and costs ₹600 to make. This limit is real."
     },
     {
       "kind": "choice",
       "id": "true-false",
-      "prompt": "True or false: \"Only 40 plum cakes\" is fair, even if you could have soaked fruit for 80 but chose 40.",
+      "prompt": "True or false: Saying \"Only 40 plum cakes\" is fair, even if you could have made 80 but chose to make 40.",
       "options": [
         {
           "id": "a",
@@ -72,40 +72,40 @@
         }
       ],
       "answer": "a",
-      "why": "True. You chose 40, and you'll make exactly 40. The limit is real, so saying it is honest. False urgency is a limit that isn't real.",
+      "why": "True. You chose to make 40, and you'll make exactly 40. The limit is real, so saying it is honest. False urgency means claiming a limit that isn't real.",
       "wrong": {
-        "b": "A batch size you choose is still a real limit, as long as you keep it. Many bakers make a set number. False urgency is a limit that isn't real at all."
+        "b": "A limit you choose is still real if you keep it. Many bakers choose how many cakes to make. False urgency means claiming a limit that isn't real."
       }
     },
     {
       "kind": "choice",
       "id": "which-post",
-      "prompt": "You must close orders in time to bake every cake before Christmas. Which post is honest?",
+      "prompt": "You must stop taking orders in time to bake every cake before Christmas. Which post is honest?",
       "options": [
         {
           "id": "a",
-          "label": "\"Only 3 left!\" on every post, all month"
+          "label": "\"Only 3 left!\" in every post, all month"
         },
         {
           "id": "b",
-          "label": "\"Order in 10 minutes, or the price goes up!\""
+          "label": "\"Order in 10 minutes or pay more!\""
         },
         {
           "id": "c",
-          "label": "\"40 plum cakes only. Orders close 20 December.\""
+          "label": "\"Only 40 plum cakes. Order by 20 December.\""
         }
       ],
       "answer": "c",
-      "why": "Exactly. The number and the date are both real, and you said them plainly. Buyers can plan, and nobody feels tricked.",
+      "why": "Exactly. The number and date are both real, and you said them clearly. Buyers can plan without feeling cheated.",
       "wrong": {
-        "a": "\"Only 3 left\" every day for a month is false. Buyers notice, like the mother in June did. Say the real limit plainly: 40 cakes, orders close 20 December.",
-        "b": "That's a fake deadline. Nothing changes in 10 minutes, and buyers who feel pushed often walk away. Say the real limit: 40 cakes, orders close 20 December."
+        "a": "Saying \"Only 3 left\" every day for a month is false. Buyers notice, like the mother in June did. Tell them the real limit: 40 cakes, orders close 20 December.",
+        "b": "That time limit is false. Nothing changes in 10 minutes. Buyers who feel forced may decide not to buy. Tell them the real limit: 40 cakes, orders close 20 December."
       }
     },
     {
       "kind": "sort",
       "id": "true-or-false",
-      "prompt": "I'll show you six messages. For each one, tell me: is the limit true, or is it false urgency?",
+      "prompt": "I'll show you six messages. For each one, tell me: is the limit real, or is it false urgency?",
       "buckets": ["The limit is true", "False urgency"],
       "items": [
         {
@@ -113,7 +113,7 @@
           "bucket": 0
         },
         {
-          "text": "A countdown timer that starts again every day",
+          "text": "A timer that counts down but starts again every day",
           "bucket": 1
         },
         {
@@ -121,7 +121,7 @@
           "bucket": 0
         },
         {
-          "text": "\"Only 2 left!\" when you can bake 20 more",
+          "text": "\"Only 2 left!\" when you could bake 20 more",
           "bucket": 1
         },
         {
@@ -129,40 +129,40 @@
           "bucket": 0
         },
         {
-          "text": "\"30 people are looking right now!\", a made-up count",
+          "text": "\"30 people are looking right now!\" when nobody counted",
           "bucket": 1
         }
       ],
-      "why": "A true limit has a real reason behind it: fruit, seats, time. A timer that restarts, a fake \"only 2 left\" or made-up viewers are false urgency, and India bans them."
+      "why": "A real limit has a real reason, like fruit, seats or time. A timer that starts again, a fake \"only 2 left\" or a made-up number of viewers is false urgency. India bans these false claims."
     },
     {
       "kind": "scenario",
       "id": "office-twenty",
-      "setup": "It's 18 December. 34 of your 40 plum cakes are booked, so 6 are left. An office on your birthday-cake plan now wants 20 plum cakes. Each leaves you ₹600. Your chocolate cake leaves you ₹450.",
+      "setup": "It's 18 December. 34 of your 40 plum cakes are booked, so 6 are left. An office that buys your birthday cakes now wants 20 plum cakes. Each plum cake leaves you ₹600. Each chocolate cake leaves you ₹450.",
       "question": "What do you tell the office?",
       "options": [
         {
           "id": "a",
-          "label": "\"Yes to all 20.\" Then rush 14 more with unsoaked fruit",
+          "label": "\"Yes, all 20.\" Make 14 more without soaked fruit",
           "grade": "bad",
-          "outcome": "The rushed cakes taste dry. The office pays for the 6 good ones and returns the 14. They cost you ₹8,400 to make. After the 6 good cakes, you're ₹4,800 down.",
-          "why": "Your limit was real, and ignoring it broke the product. A real limit protects quality.",
-          "better": "Offer the 6 plum cakes, plus chocolate cakes for the rest."
+          "outcome": "The 14 cakes made in a hurry taste dry. The office pays for the 6 good cakes and returns the 14. Those 14 cost you ₹8,400 to make. After the 6 good cakes, you've lost ₹4,800.",
+          "why": "Your limit was real. Making more cakes without soaked fruit made them worse. A real limit helps you keep your quality.",
+          "better": "Offer the 6 plum cakes and chocolate cakes for the rest."
         },
         {
           "id": "b",
           "label": "\"Sorry, we're sold out\", and keep the 6 for others",
           "grade": "ok",
-          "outcome": "The office orders elsewhere. The last 6 plum cakes sell to families by 20 December, leaving you ₹3,600.",
-          "why": "Honest, and the limit stayed real. But you didn't offer what you could make.",
-          "better": "Offer the 6 plum cakes, plus chocolate cakes for the rest."
+          "outcome": "The office buys from another shop. The last 6 plum cakes sell to families by 20 December, leaving you ₹3,600.",
+          "why": "You were honest and kept your limit. But you could have offered the office cakes you were able to make.",
+          "better": "Offer the 6 plum cakes and chocolate cakes for the rest."
         },
         {
           "id": "c",
-          "label": "\"6 plum cakes left, and chocolate cakes for the rest\"",
+          "label": "\"6 plum cakes left. Chocolate cakes for the rest\"",
           "grade": "great",
-          "outcome": "The office takes 6 plum cakes and 14 chocolate cakes. You keep ₹3,600 plus ₹6,300: ₹9,900. The manager asks to book 30 plum cakes in October, for next Christmas.",
-          "why": "You kept your real limit and still helped. Next year, they'll order early because they know the limit is true."
+          "outcome": "The office buys 6 plum cakes and 14 chocolate cakes. You keep ₹3,600 plus ₹6,300: ₹9,900. The manager asks to book 30 plum cakes in October for next Christmas.",
+          "why": "You kept your real limit and still helped the office. Next year, they'll order early because they trust that your limit is real."
         }
       ]
     },
@@ -170,7 +170,7 @@
       "kind": "explain",
       "id": "honest-line",
       "title": "The honest line",
-      "text": "The line one last time: use on others only what you'd accept being used on you. Say a real limit plainly: how many, and until when. Never fake one. False urgency is against the law in India, and buyers who catch it stop trusting you."
+      "text": "The line one last time: use on others only what you'd accept being used on you. Tell buyers your real limit: how many, and until when. Never make up a limit. False urgency is against the law in India, and buyers who find out may stop trusting you."
     },
     {
       "kind": "gap",
@@ -178,13 +178,13 @@
       "text": "Scarce things feel more ___. Only claim scarcity that is ___.",
       "bank": ["valuable", "true", "cheap", "loud"],
       "answer": ["valuable", "true"],
-      "why": "Exactly. Hard-to-get invites made the phone feel special. Your 40 real plum cakes, with a real closing date, feel special too, and nobody feels tricked."
+      "why": "Exactly. The invites made the phone hard to get, so it felt special. Your 40 plum cakes also feel special because the number and closing date are real. Buyers don't feel cheated."
     }
   ],
   "summary": [
     "Scarcity: when something is hard to get, we want it more.",
-    "Say real limits plainly: the number, the date, and the reason.",
-    "False urgency (fake \"only 2 left\", restarting timers) is banned in India and kills trust."
+    "Tell buyers the real number, closing date and reason for the limit.",
+    "False urgency, like fake \"only 2 left\" claims or timers that restart, is banned in India and makes buyers lose trust."
   ],
   "cards": [
     {
@@ -192,21 +192,21 @@
       "front": "You can make only 40 hampers. Is \"Only 40 hampers, orders close Friday\" fair?",
       "options": ["Yes, the limit is real", "No, every limit is a trick"],
       "answer": 0,
-      "back": "Scarcity that is true and said plainly is fair."
+      "back": "A real limit, stated clearly, is fair."
     },
     {
       "id": "m42-scarce-2",
       "front": "A website shows \"Only 2 left!\" every day for a month. What is it?",
       "options": ["Honest scarcity", "False urgency"],
       "answer": 1,
-      "back": "False urgency is one of the dark patterns India banned in 2023."
+      "back": "India banned false urgency as a dark pattern in 2023."
     },
     {
       "id": "m42-scarce-3",
-      "front": "In one study, cookies from which jar did people like more?",
+      "front": "In one study, which jar's cookies did people like more?",
       "options": ["A jar with 10 cookies", "A jar with 2 cookies"],
       "answer": 1,
-      "back": "Scarce things feel more valuable, even when nothing else changes."
+      "back": "Things that are hard to get feel more valuable, even when nothing else changes."
     }
   ],
   "sources": [
