@@ -48,7 +48,7 @@
     {
       "kind": "choice",
       "id": "payback",
-      "prompt": "The hotel buys 15 cakes a week at ₹700. Each costs ₹400 to make. The kitchen fix costs ₹30,000. About how many weeks to earn it back?",
+      "prompt": "The hotel buys 15 cakes a week at ₹700. Each costs ₹400 to make. The kitchen fix is ₹30,000. How many weeks to earn it back?",
       "options": [
         {
           "id": "a",

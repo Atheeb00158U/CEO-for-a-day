@@ -48,7 +48,7 @@
     {
       "kind": "choice",
       "id": "pineapple",
-      "prompt": "You sell 3 pineapple cakes a month, keeping ₹450 on each. But ₹1,000 of its fruit and cream goes bad monthly. What do you really earn?",
+      "prompt": "You sell 3 pineapple cakes a month, keeping ₹450 on each. But ₹1,000 of its fruit and cream goes bad. What do you really earn?",
       "options": [
         {
           "id": "a",
