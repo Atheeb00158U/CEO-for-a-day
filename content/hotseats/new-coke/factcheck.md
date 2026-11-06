@@ -1,5 +1,5 @@
 # Fact-check: new-coke
-checked-sha256: 0e76a94c619adf812d6dd9b77c31a324fc22c551b725b1243394e5c47a02061f
+checked-sha256: 48e8bcafec7e208f7ae5f59d1da0d42075e83bfec866c82f25be5353dfccf0a8
 Checked: 2026-11-06 · by: fresh-context fact-check agent (delta re-check)
 
 ## Sources opened
@@ -70,3 +70,4 @@ Real-path lines changed since the last stamp, checked against the sources above:
 - [supported] survivor.title "The return of the old Coke" — [1], [6]
 - Off-path changes (d1.brand/price, d2.extra/city, d3.ads/wait, d3alt.*, d4.star/push, legend/collapse/fired titles, fired.text) were read: hypothetical "you" outcomes, no invented history about Coca-Cola or Pepsi.
 - d2.replace.better now reads "Sell the new taste as an extra drink beside the old Coke, and keep selling the old one." (it no longer suggests the test-cities option, which is itself a costly call). Off-path advice; no claim changed.
+- Rule sentences at the start of some `why` lines now use the Unit 4 lesson wording from PR #45 (no claim changed).

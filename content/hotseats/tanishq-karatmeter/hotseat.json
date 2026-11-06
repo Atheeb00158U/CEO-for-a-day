@@ -587,7 +587,7 @@
               "text": "Old jewellery that tests between 19 and 22 karat can now be swapped for 22-karat Tanishq jewellery. Families pay only the making charge, and Tanishq pays for the missing gold. It costs you a lot, but families start leaving their old jewellers for you."
             }
           ],
-          "why": "Remember: take the risk off the buyer. Switching jewellers felt risky and would have cost families money. You carried that cost, so leaving the old jeweller became the safe choice.",
+          "why": "Remember: take the risk off the buyer, the risk they really fear. Switching jewellers felt risky and would have cost families money. You carried that cost, so leaving the old jeweller became the safe choice.",
           "takeaway": "In 2002 you paid to solve the customer's problem and earned their trust.",
           "traits": {
             "horizon": 1,
@@ -609,7 +609,7 @@
           "next": "ending_route",
           "media": "img:tq_d5_coupon",
           "outcome": "Some families use the coupon on a small piece. But their old jewellery still holds less gold than they paid for, and most of them take it back to the jeweller they know.",
-          "why": "Remember: take the risk off the buyer. A coupon is a small gift, but the big loss stayed with the family: the gold they had already lost. Few people switch while they still carry that loss.",
+          "why": "Remember: take the risk off the buyer, the risk they really fear. A coupon is a small gift, but the big loss stayed with the family: the gold they had already lost. Few people switch while they still carry that loss.",
           "better": "Swap their old pieces for your 22-karat gold, and pay for the missing gold yourself.",
           "takeaway": "In 2002 you gave a small gift, but left buyers carrying the big loss.",
           "traits": {
@@ -633,7 +633,7 @@
           "next": "ending_route",
           "media": "img:tq_d5_value",
           "outcome": "The offer is fair, but buyers lose money on the deal. Many leave angry with their old jeweller, but they don't come to you either.",
-          "why": "Remember: take the risk off the buyer. The price was fair, but the buyer still carried the whole loss from someone else's cheating. Few people switch when switching itself costs them money.",
+          "why": "Remember: take the risk off the buyer, the risk they really fear. The price was fair, but the buyer still carried the whole loss from someone else's cheating. Few people switch when switching itself costs them money.",
           "better": "Swap their old pieces for your 22-karat gold, and pay for the missing gold yourself.",
           "takeaway": "In 2002 you offered a fair price but did not make switching easy.",
           "traits": {

@@ -250,7 +250,7 @@
           "next": "d4",
           "media": "img:pb_d3_plain",
           "outcome": "The packs look neat, and buyers can see there is no fizz and nothing artificial. But nothing on the pack makes them smile or want to buy another one.",
-          "why": "Remember: people pick brands they remember, and a voice they enjoy helps. Clear facts helped, but every juice pack has facts. Your pack gave people no reason to remember your brand.",
+          "why": "Remember: people buy the names that come to mind first. Clear facts helped, but every juice pack has facts. Your pack gave people no reason to remember your brand.",
           "better": "Add a short, warm story or a small joke to each pack, so people enjoy reading it.",
           "takeaway": "In 2013 you kept the pack simple. Clear facts are useful, but they may not help people remember your brand.",
           "traits": {
@@ -274,7 +274,7 @@
           "next": "d4",
           "media": "img:pb_d3_star",
           "outcome": "You spend most of your money for the year paying the film star. People notice the packs, but they remember the star, not your drink. When the deal ends, you have nothing special of your own.",
-          "why": "Remember: people pick brands they remember, and a voice they enjoy helps. People remembered the star, not your drink. You paid a lot to use someone else's fame instead of giving your brand its own voice.",
+          "why": "Remember: people buy the names that come to mind first. People remembered the star, not your drink. You paid a lot to use someone else's fame instead of giving your brand its own voice.",
           "better": "Write a short, warm story on each pack, so people remember the drink itself.",
           "takeaway": "In 2013 you paid to use a film star's face. Your brand needs something people can remember on its own.",
           "traits": {
@@ -298,7 +298,7 @@
           "next": "d4",
           "media": "img:pb_d3_story",
           "outcome": "Each pack tells a short childhood story, like climbing mango trees. There is also a small joke at the bottom for anyone who reads it. Your drink now has its own way of talking to people.",
-          "why": "Remember: people pick brands they remember, and a voice they enjoy helps. The pack was your only ad, so you gave people something they would enjoy reading. The warm stories made people feel close to your brand and remember it.",
+          "why": "Remember: people buy the names that come to mind first. The pack was your only ad, so you gave people something they would enjoy reading. The warm stories made people feel close to your brand and remember it.",
           "takeaway": "In 2013 you gave every pack a story. When people enjoy reading your pack, it can also work as an ad.",
           "traits": {
             "horizon": 1,
@@ -332,7 +332,7 @@
           "next": "y2014",
           "media": "img:pb_d4_tv",
           "outcome": "People like your ads, and many across India hear your name. But they still cannot find the drink in their local shops. You are running out of money, so by the end of the year you must spend less to save cash.",
-          "why": "Remember: take the risk off the buyer. Shops were afraid they would be left with drinks they couldn't sell. Ads made people want to try the drinks, but shops still had that risk. So people couldn't find the drink easily.",
+          "why": "Remember: take the risk off the buyer, the risk they really fear. Shops were afraid they would be left with drinks they couldn't sell. Ads made people want to try the drinks, but shops still had that risk. So people couldn't find the drink easily.",
           "better": "Let shops return packs they cannot sell, and sell the drink in places where people already go. Run ads later.",
           "takeaway": "In 2013 you paid for ads before enough shops sold the drink. Help people find and try it first.",
           "traits": {
@@ -368,7 +368,7 @@
               "text": "You quietly sell the drinks in big stores with no ads, and they sell faster than you hoped. Flights and office canteens serve your drinks. Shops can also return unsold packs for a full refund."
             }
           ],
-          "why": "Remember: take the risk off the buyer. Your first buyers were the shops. They were afraid of being left with drinks they couldn't sell. A full refund on unsold packs removed that fear, and the drinks sold well.",
+          "why": "Remember: take the risk off the buyer, the risk they really fear. Your first buyers were the shops. They were afraid of being left with drinks they couldn't sell. A full refund on unsold packs removed that fear, and the drinks sold well.",
           "takeaway": "In 2013 you let people try the drink before running ads. Make it easier for shops to sell something new.",
           "traits": {
             "horizon": 1,
@@ -391,7 +391,7 @@
           "next": "y2014",
           "media": "img:pb_d4_cheap",
           "outcome": "Many people try the drink, but you now lose money on every pack. The more you sell, the faster you run out of cash. Your drink also starts to look like an ordinary cola, and raising the price later is hard.",
-          "why": "Remember: take the risk off the buyer. Shops were afraid of being left with drinks they couldn't sell. Price wasn't the problem. Charging the same as cola made you lose money on every pack and made your special drink look ordinary.",
+          "why": "Remember: take the risk off the buyer, the risk they really fear. Shops were afraid of being left with drinks they couldn't sell. Price wasn't the problem. Charging the same as cola made you lose money on every pack and made your special drink look ordinary.",
           "better": "Keep your price, but let shops return packs they cannot sell.",
           "takeaway": "In 2013 you cut the price to get more people to try your drink. Raising it later was hard, and the drink looked ordinary.",
           "traits": {
@@ -488,7 +488,7 @@
               "text": "Your line is 'Drinks and Memories', and your TV ads show childhood summers and drinks made at home. People feel close to the stories, and sales start growing."
             }
           ],
-          "why": "Remember: sell what you stand for, not just specs. Many juice brands can talk about what's inside. Your brand was about the drinks people grew up with, and those memories made people remember you and pay more.",
+          "why": "Remember: sell what it means to them, not just what it is. Many juice brands can talk about what's inside. Your brand was about the drinks people grew up with, and those memories made people remember you and pay more.",
           "takeaway": "In 2015 you sold childhood memories, not just facts about the drink. Tell people what makes your brand special.",
           "traits": {
             "horizon": 1,
@@ -510,7 +510,7 @@
           "next": "ending_route",
           "media": "img:pb_d5_specs",
           "outcome": "Your ads show fresh fruit and clearly tell people what is not in the drink. People like that, but the ad looks like other juice ads on TV. Few remember which brand it was for, so sales grow slowly.",
-          "why": "Remember: sell what you stand for, not just specs. A list of what's inside tells people about the product. Other juice brands can say much the same, so your ad didn't give people anything special to remember.",
+          "why": "Remember: sell what it means to them, not just what it is. A list of what's inside tells people about the product. Other juice brands can say much the same, so your ad didn't give people anything special to remember.",
           "takeaway": "In 2015 you told people what was inside. Other brands can do that too, so tell people what makes yours special.",
           "traits": {
             "horizon": 1,
@@ -534,7 +534,7 @@
           "next": "ending_route",
           "media": "img:pb_d5_price",
           "outcome": "Buyers start comparing your drink with colas, and your drink looks costly beside them. The ad makes people think about price instead of memories, so sales slow down.",
-          "why": "Remember: sell what you stand for, not just specs. Price is a number people can easily compare. Your drink cost more than cola, so the ad made people think about money instead of why your brand was special.",
+          "why": "Remember: sell what it means to them, not just what it is. Price is a number people can easily compare. Your drink cost more than cola, so the ad made people think about money instead of why your brand was special.",
           "better": "Talk about childhood and home, and clearly say what's not inside. Don't make price the first thing people notice.",
           "takeaway": "In 2015 you made people compare prices. When buyers only look at price, they may choose the cheaper drink.",
           "traits": {
