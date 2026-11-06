@@ -9,7 +9,7 @@
       "kind": "explain",
       "id": "hook",
       "media": "img:ls_radiator_caps",
-      "text": "Let me tell you about a Chennai company. General Motors, the American carmaker, had factories in England making radiator caps, small parts that stop engines getting too hot. In 1992 it sold them to Sundram Fasteners. Sundram became GM's main cap supplier, and its Supplier of the Year from 1996 to 2000."
+      "text": "Let me tell you about a Chennai company. General Motors, the American carmaker, had factories making radiator caps, small parts that stop engines getting too hot. In 1992 it sold them to Sundram Fasteners. Sundram became GM's main cap supplier, and its Supplier of the Year from 1996 to 2000."
     },
     {
       "kind": "choice",
@@ -123,7 +123,7 @@
     {
       "kind": "choice",
       "id": "bulk",
-      "prompt": "Your butter shop offers 120 kg at ₹480 a kg, ₹20 off a kg. You use 40 kg a month, and Diwali is near. What's the problem?",
+      "prompt": "Your butter shop offers 120 kg at ₹480 a kg, ₹20 off. You use 40 kg a month, and Diwali is near. What's the problem?",
       "options": [
         {
           "id": "a",

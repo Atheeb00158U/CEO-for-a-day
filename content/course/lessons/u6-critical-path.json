@@ -167,7 +167,7 @@
     {
       "kind": "gap",
       "id": "fill",
-      "text": "Chain A takes 7 days. Chain B's jobs take 4, 3 and 1 days. Both start together. The critical path is chain ___, taking ___ days.",
+      "text": "Chain A takes 7 days. Chain B's jobs take 4, 3 and 1 days. Both start together. Critical path: chain ___, taking ___ days.",
       "bank": ["A", "B", "7", "8"],
       "answer": ["B", "8"],
       "why": "Exactly. Chain B takes 4 + 3 + 1 = 8 days, longer than Chain A's 7 days. So B is your critical path. Keep extra days for it, and buy ready-made things if making them could delay you."
