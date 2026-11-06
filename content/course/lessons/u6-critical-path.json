@@ -37,7 +37,7 @@
       "kind": "explain",
       "id": "path",
       "title": "The critical path",
-      "text": "Some jobs must wait for others. Say special boxes take 10 days to arrive from Mumbai, and you cannot pack before they arrive. That's one chain of jobs. The longest chain is your critical path, and it decides when you finish. If waiting could make you late, buy ready-made boxes nearby."
+      "text": "Some jobs must wait for others. Say boxes take 10 days to come from Mumbai, and you cannot pack before they arrive. That's one chain of jobs. The longest chain is your critical path, and it decides when you finish. If waiting could make you late, buy ready-made boxes nearby."
     },
     {
       "kind": "explain",
