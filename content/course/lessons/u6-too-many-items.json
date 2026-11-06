@@ -1,0 +1,234 @@
+{
+  "id": "u6-too-many-items",
+  "title": "Why can a bigger menu earn less?",
+  "principle": "Every extra item you sell adds hidden costs.",
+  "minutes": 5,
+  "draft": true,
+  "screens": [
+    {
+      "kind": "explain",
+      "id": "hook",
+      "media": "img:ls_few_lines",
+      "text": "Let me take you to April 2020. India was in lockdown. Britannia, the biscuit maker, could run its factories, but with far fewer workers than usual. It sold many kinds of biscuit. Should it make all of them, a few of each, or make fewer kinds? Have a guess."
+    },
+    {
+      "kind": "choice",
+      "id": "guess",
+      "guess": true,
+      "prompt": "With far fewer workers, what do you think Britannia chose to make?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Made every product, just fewer of each"
+        },
+        {
+          "id": "b",
+          "label": "Made only their best-selling products"
+        },
+        {
+          "id": "c",
+          "label": "Waited until all the workers came back"
+        }
+      ],
+      "answer": "b",
+      "why": "It made only its best sellers. Britannia made about one in five of its brands, like Good Day and Marie, and those brought in about 80% of its money. Fewer kinds that needed fewer hands kept the factories running."
+    },
+    {
+      "kind": "explain",
+      "id": "complexity",
+      "title": "The cost you don't see",
+      "text": "This is called complexity cost. Each separate item you sell is called a SKU, short for stock keeping unit. Every extra SKU brings costs its price doesn't show: stock that can go bad, more to buy, more to learn. A bigger menu feels like more sales. Often it's more cost."
+    },
+    {
+      "kind": "explain",
+      "id": "home",
+      "title": "Now look at your bakery",
+      "text": "Big factories and your bakery have the same problem. It's July of your fifth year. Your menu has grown to 18 items: cakes in six flavours, cupcakes, cookies, breads, the party pack and the Sunday box. Your chocolate cake still sells for ₹850, and you keep ₹450."
+    },
+    {
+      "kind": "choice",
+      "id": "pineapple",
+      "prompt": "Pineapple cake: 3 sold a month, ₹450 kept on each. ₹1,000 of its fruit and cream goes bad each month. What does it really earn?",
+      "options": [
+        {
+          "id": "a",
+          "label": "₹1,350 a month"
+        },
+        {
+          "id": "b",
+          "label": "Nothing. It loses money"
+        },
+        {
+          "id": "c",
+          "label": "₹350 a month"
+        }
+      ],
+      "answer": "c",
+      "why": "Exactly. 3 cakes × ₹450 is ₹1,350. Take away the ₹1,000 of fruit and cream you throw away, and the pineapple cake really earns ₹350 a month. The waste was a hidden cost: it never showed on the cake's price.",
+      "wrong": {
+        "a": "I see what you did: 3 × ₹450 = ₹1,350. But that's before the waste. Take away the ₹1,000 of pineapple and cream you throw away, and it earns only ₹350 a month.",
+        "b": "It's close, but it still earns a little. 3 × ₹450 = ₹1,350, and ₹1,350 minus ₹1,000 of waste leaves ₹350 a month."
+      }
+    },
+    {
+      "kind": "choice",
+      "id": "hours",
+      "prompt": "Pineapple earns ₹350 a month and takes 5 hours. In those hours you could bake 3 chocolate cakes you now turn away. Which pays more?",
+      "options": [
+        {
+          "id": "a",
+          "label": "They pay about the same"
+        },
+        {
+          "id": "b",
+          "label": "3 chocolate cakes: ₹1,350"
+        },
+        {
+          "id": "c",
+          "label": "Pineapple: it brings variety"
+        }
+      ],
+      "answer": "b",
+      "why": "Right. 3 chocolate cakes × ₹450 is ₹1,350, almost four times the pineapple cake's ₹350. Your time is a hidden cost too. Every hour spent on a slow item is an hour taken from an item people already want.",
+      "wrong": {
+        "a": "Let's check. 3 chocolate cakes × ₹450 = ₹1,350. The pineapple cake earns ₹350. That's ₹1,000 more for the same 5 hours.",
+        "c": "Variety can bring people in. But here people are already asking for chocolate, and you turn them away. 3 × ₹450 = ₹1,350 beats the pineapple cake's ₹350."
+      }
+    },
+    {
+      "kind": "sort",
+      "id": "hidden",
+      "prompt": "It costs you ₹400 to make one cake. I'll show you six costs. For each one, tell me: is it inside that ₹400, or hidden?",
+      "buckets": ["Inside the ₹400", "Hidden cost"],
+      "items": [
+        {
+          "text": "Flour, sugar and cocoa for the cake",
+          "bucket": 0
+        },
+        {
+          "text": "Cream that goes bad before you use it",
+          "bucket": 1
+        },
+        {
+          "text": "The box the cake goes in",
+          "bucket": 0
+        },
+        {
+          "text": "Hours spent learning a new recipe",
+          "bucket": 1
+        },
+        {
+          "text": "Gas to bake the cake",
+          "bucket": 0
+        },
+        {
+          "text": "Fridge space for 18 kinds of stock",
+          "bucket": 1
+        }
+      ],
+      "why": "Exactly. Flour, the box and the gas go into every cake, so they're inside the ₹400. Waste, learning time and fridge space grow with every item you add, but no single cake's price shows them. That's why a long menu can quietly eat your profit."
+    },
+    {
+      "kind": "choice",
+      "id": "stock",
+      "prompt": "With 18 items, ₹15,000 of stock sits on your shelves. With 8 items, you'd need ₹6,000. What does cutting to 8 give you?",
+      "options": [
+        {
+          "id": "a",
+          "label": "₹9,000 of cash you can use"
+        },
+        {
+          "id": "b",
+          "label": "₹9,000 more profit every month"
+        },
+        {
+          "id": "c",
+          "label": "Nothing. Stock is not money"
+        }
+      ],
+      "answer": "a",
+      "why": "Exactly. ₹15,000 minus ₹6,000 is ₹9,000 that no longer sits on a shelf. Remember frozen cash from Unit 1: money tied up in stock can't pay a bill. Fewer items free it once, and they keep less of it stuck.",
+      "wrong": {
+        "b": "Not every month. You get it back once. ₹15,000 minus ₹6,000 is ₹9,000 of cash that no longer sits on a shelf, the frozen cash from Unit 1.",
+        "c": "Stock is money you've already spent. ₹15,000 minus ₹6,000 means ₹9,000 you no longer have to keep tied up on a shelf. That's cash you can use."
+      }
+    },
+    {
+      "kind": "scenario",
+      "id": "mango",
+      "setup": "It's late July. Four customers ask for a mango cake. You think about 6 would sell a month, leaving you ₹2,700, minus ₹600 of pulp that goes bad. Your pineapple and coffee cakes earn only ₹350 and ₹150 a month, and take 10 hours.",
+      "question": "What do you do about the mango cake?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Add mango cake, and keep the rest",
+          "grade": "ok",
+          "outcome": "Mango sells 6 a month and earns ₹2,100 after waste. Pineapple and coffee still earn ₹500 between them. Those three now bring ₹2,600 a month, but your menu has 19 items and you still turn chocolate orders away.",
+          "why": "Mango was a good add. But each new item brings new hidden costs, so it should push out a weak one.",
+          "better": "Add mango, and drop your two slowest cakes."
+        },
+        {
+          "id": "b",
+          "label": "Add mango, and drop your two slowest cakes",
+          "grade": "great",
+          "outcome": "Mango earns ₹2,100 a month after waste. In the 10 hours you get back, you bake 3 chocolate cakes you used to turn away: ₹1,350 more. That's ₹3,450 a month, and your menu shrinks to 17.",
+          "why": "Exactly. You let a new item in only by pushing out two weak ones. Your menu got shorter, your waste fell, and your hours went to cakes people already want."
+        },
+        {
+          "id": "c",
+          "label": "Say no. The menu is long enough",
+          "grade": "ok",
+          "outcome": "You add no new waste. But pineapple and coffee still earn only ₹500 a month together, and the mango customers buy their cake from another baker.",
+          "why": "You were right to guard against a longer menu. But the problem wasn't the new item. It was the two weak items already on the list.",
+          "better": "Add mango, and drop your two slowest cakes."
+        }
+      ]
+    },
+    {
+      "kind": "gap",
+      "id": "fill",
+      "text": "Every extra ___ you sell adds ___ costs.",
+      "bank": ["item", "hidden", "profit", "lower"],
+      "answer": ["item", "hidden"],
+      "why": "Exactly. That's complexity cost. Before you add something to your menu, ask what it will really cost you in waste, stock and hours, and what you could drop to make room."
+    }
+  ],
+  "summary": [
+    "Complexity cost: every extra item (SKU) adds waste, stock and time that its price doesn't show.",
+    "Count what an item really earns: profit on each sale, minus the waste and the hours it takes.",
+    "Let a new item in only by pushing out a weak one."
+  ],
+  "cards": [
+    {
+      "id": "m61-items-1",
+      "front": "A cake earns you ₹900 a month, but ₹700 of its stock goes bad. What does it really earn?",
+      "options": ["₹900", "₹200", "₹1,600"],
+      "answer": 1,
+      "back": "₹900 minus ₹700 of waste is ₹200. Waste is a hidden cost."
+    },
+    {
+      "id": "m61-items-2",
+      "front": "Customers ask for a new flavour. What's the smart way to add it?",
+      "options": ["Add it to everything else", "Add it, and drop a slow item"],
+      "answer": 1,
+      "back": "Every extra item adds hidden costs. Let a new one in by pushing a weak one out."
+    },
+    {
+      "id": "m61-items-3",
+      "front": "What is a SKU?",
+      "options": ["A type of tax", "Each separate item you stock and sell", "A supplier's bill"],
+      "answer": 1,
+      "back": "SKU means stock keeping unit: each separate item you sell. More SKUs, more hidden cost."
+    }
+  ],
+  "sources": [
+    {
+      "label": "With limited workforce, Britannia working on 65% of its capacity (Agro & Food Processing, April 2020)",
+      "url": "https://agronfoodprocessing.com/with-limited-workforce-britannia-working-on-65-of-its-capacity/"
+    },
+    {
+      "label": "Britannia's focus on production of 20% brands amid lockdown brought in 80% revenue (DNA, 2021)",
+      "url": "https://dnaindia.com/india/news-britannia-s-focus-on-production-of-20-brands-amid-lockdown-brought-in-80-revenue-says-md-2859466"
+    }
+  ]
+}

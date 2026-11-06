@@ -1,0 +1,238 @@
+{
+  "id": "u6-tough-buyers",
+  "title": "Why say yes to a fussy buyer?",
+  "principle": "Tough buyers make you better. Seek them out.",
+  "minutes": 5,
+  "draft": true,
+  "screens": [
+    {
+      "kind": "explain",
+      "id": "hook",
+      "media": "img:ls_bike_pump",
+      "text": "Let me tell you about Indian bike riders in the 1980s. They counted every rupee of petrol. About 9 in 10 two-wheelers then had two-stroke engines. In 1985, Hero Honda launched the CD 100, India's first four-stroke bike. It gave about 80 km a litre."
+    },
+    {
+      "kind": "choice",
+      "id": "guess",
+      "guess": true,
+      "prompt": "Riders who count every rupee are tough buyers. What do you think they did for Hero Honda?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Forced it to keep cutting its prices"
+        },
+        {
+          "id": "b",
+          "label": "Pushed it to sell outside India"
+        },
+        {
+          "id": "c",
+          "label": "Helped make it India's biggest bike maker"
+        }
+      ],
+      "answer": "c",
+      "why": "Hero Honda built what these careful buyers wanted: an engine that sipped petrol. By 2009 it sold about half of all motorcycles in India, and it had been the world's biggest two-wheeler maker for eight years."
+    },
+    {
+      "kind": "explain",
+      "id": "porter",
+      "title": "Demanding buyers",
+      "text": "In 1990, Michael Porter, a Harvard professor, asked why some countries' companies lead the world. One answer was demanding buyers at home. Buyers who want more push you to get better, faster than easy buyers ever would. So don't run from tough buyers. Seek them out."
+    },
+    {
+      "kind": "explain",
+      "id": "home",
+      "title": "Now look at your bakery",
+      "text": "Hero Honda's buyers were tough about petrol. Your bakery can find tough buyers too. It's December. A hotel near you wants 15 cakes a week at ₹700 each. But its rules are strict: hair nets, a fridge temperature log, a date on every cake, and a kitchen check each month."
+    },
+    {
+      "kind": "choice",
+      "id": "payback",
+      "prompt": "The hotel buys 15 cakes a week at ₹700. Each costs ₹400. Fixing your kitchen costs ₹30,000 once. How long to earn it back?",
+      "options": [
+        {
+          "id": "a",
+          "label": "About 3 weeks"
+        },
+        {
+          "id": "b",
+          "label": "About 7 weeks"
+        },
+        {
+          "id": "c",
+          "label": "About 75 weeks"
+        }
+      ],
+      "answer": "b",
+      "why": "Exactly. You keep ₹300 on each cake, so 15 cakes give you ₹4,500 a week. ₹30,000 ÷ ₹4,500 is about 7 weeks. After that, the hotel's money is yours, and your kitchen is better for every order.",
+      "wrong": {
+        "a": "I see what you did: ₹30,000 ÷ ₹10,500, the hotel's whole weekly payment. But ₹400 of each ₹700 pays for the cake. You keep ₹300 × 15 = ₹4,500 a week, so about 7 weeks.",
+        "c": "That's ₹30,000 ÷ ₹400, one cake's cost. But you keep ₹300 on each of 15 cakes, so ₹4,500 a week. ₹30,000 ÷ ₹4,500 is about 7 weeks."
+      }
+    },
+    {
+      "kind": "sort",
+      "id": "which-tough",
+      "prompt": "Not every tough buyer helps. I'll show you six buyers. For each one, tell me: will they make you better, or just cost you?",
+      "buckets": ["Makes me better", "Just costs me"],
+      "items": [
+        {
+          "text": "A hotel that checks your kitchen every month",
+          "bucket": 0
+        },
+        {
+          "text": "A buyer who wants ₹200 off every time",
+          "bucket": 1
+        },
+        {
+          "text": "A café that sends back cakes that don't match",
+          "bucket": 0
+        },
+        {
+          "text": "A shop that pays you 90 days late",
+          "bucket": 1
+        },
+        {
+          "text": "A customer who asks what's in every cake",
+          "bucket": 0
+        },
+        {
+          "text": "A buyer who wants free delivery across town",
+          "bucket": 1
+        }
+      ],
+      "why": "Exactly. The helpful kind is tough on quality: clean kitchens, matching cakes, honest labels. Meeting them makes every cake better. The other kind is tough on your price or your cash. Meeting them just makes you poorer."
+    },
+    {
+      "kind": "choice",
+      "id": "spread",
+      "prompt": "For the hotel, you now date every cake and log your fridge. What happens to your other orders?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Nothing. Only the hotel's cakes change"
+        },
+        {
+          "id": "b",
+          "label": "They cost twice as much to make"
+        },
+        {
+          "id": "c",
+          "label": "They get better too, and less goes bad"
+        }
+      ],
+      "answer": "c",
+      "why": "Right. You don't run two kitchens. Dates on every cake mean you use the oldest cream first, and the fridge log catches a warm fridge before cream goes bad. One tough buyer raised the standard for everyone.",
+      "wrong": {
+        "a": "You don't run two kitchens. Once every cake has a date and the fridge is logged, all your cakes are made the better way, and less goes bad.",
+        "b": "Hair nets, labels and a log cost very little each day. And with dates on everything, you use the oldest cream first, so less goes bad."
+      }
+    },
+    {
+      "kind": "choice",
+      "id": "chef",
+      "prompt": "Your friends say your cakes are perfect. The hotel's chef finds three problems. Whose words help you more?",
+      "options": [
+        {
+          "id": "b",
+          "label": "The chef's. She shows what to fix"
+        },
+        {
+          "id": "a",
+          "label": "Your friends'. They know your cakes"
+        },
+        {
+          "id": "c",
+          "label": "Neither. Only sales matter"
+        }
+      ],
+      "answer": "b",
+      "why": "Right. Remember Unit 2: praise is not proof. Kind words cost nothing and teach you nothing. The chef's three problems are three things to fix before other buyers find them.",
+      "wrong": {
+        "a": "Your friends are kind. But remember Unit 2: praise is not proof. The chef's three problems tell you what to fix.",
+        "c": "Sales matter. But the chef's three problems are what will keep sales coming. Praise is not proof; a tough buyer's notes are useful."
+      }
+    },
+    {
+      "kind": "scenario",
+      "id": "hotel",
+      "setup": "It's mid-December. The hotel wants 15 cakes a week at ₹700, from Christmas onwards. Each costs ₹400, so you'd keep ₹4,500 a week. Its rules need a ₹30,000 kitchen fix: a second fridge and steel tables.",
+      "question": "What do you tell the hotel?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Yes, but fix the kitchen as you go",
+          "grade": "bad",
+          "outcome": "You deliver for Christmas and keep ₹9,000 in two weeks. At the first kitchen check, there's no fridge log and some cakes have no dates. The hotel stops the order.",
+          "why": "You took the order but not the standard. A tough buyer only makes you better if you meet its rules.",
+          "better": "Say yes, fix the kitchen first, then start."
+        },
+        {
+          "id": "b",
+          "label": "No. They're too fussy for a home bakery",
+          "grade": "ok",
+          "outcome": "You keep your ₹30,000 and your old ways. Nothing goes wrong. But the hotel buys from a bigger bakery, and your kitchen stays as it was.",
+          "why": "Saying no was safe, but you turned away the buyer most likely to make you better.",
+          "better": "Say yes, fix the kitchen first, then start."
+        },
+        {
+          "id": "c",
+          "label": "Yes, but fix the kitchen first, then start",
+          "grade": "great",
+          "outcome": "You fix the kitchen in a week and start just before Christmas. You keep ₹4,500 a week, so the ₹30,000 comes back in about 7 weeks. You pass every check, and less cream goes bad across all your orders.",
+          "why": "Exactly. You met the tough standard before you started, so the hotel stayed, and every customer got a better cake."
+        }
+      ]
+    },
+    {
+      "kind": "gap",
+      "id": "fill",
+      "text": "___ buyers make you better. Seek them ___.",
+      "bank": ["Tough", "out", "Easy", "away"],
+      "answer": ["Tough", "out"],
+      "why": "Exactly. Porter called them demanding buyers. Pick the ones who are tough on quality, meet their standard, and every customer gains."
+    }
+  ],
+  "summary": [
+    "Demanding buyers (Michael Porter): buyers who want more push you to get better.",
+    "Seek buyers who are tough on quality. Avoid buyers who are only tough on your price.",
+    "Meet the tough standard before you start, and every customer gains."
+  ],
+  "cards": [
+    {
+      "id": "m62-tough-1",
+      "front": "A hotel wants your snacks but checks your kitchen monthly. What should you do?",
+      "options": ["Say no: too fussy", "Meet its standard, then say yes"],
+      "answer": 1,
+      "back": "Tough buyers make you better. Seek them out."
+    },
+    {
+      "id": "m62-tough-2",
+      "front": "Which tough buyer helps you most?",
+      "options": ["One who wants ₹100 off every time", "One who sends back anything uneven"],
+      "answer": 1,
+      "back": "Buyers tough on quality make you better. Buyers tough on price just cost you."
+    },
+    {
+      "id": "m62-tough-3",
+      "front": "Kitchen fix ₹20,000. A new buyer leaves you ₹4,000 a week. Weeks to earn it back?",
+      "options": ["5 weeks", "20 weeks"],
+      "answer": 0,
+      "back": "₹20,000 ÷ ₹4,000 = 5 weeks."
+    }
+  ],
+  "sources": [
+    {
+      "label": "Milestone in mileage (Down To Earth, 2001)",
+      "url": "https://www.downtoearth.org.in/environment/milestone-in-mileage-17271"
+    },
+    {
+      "label": "Pawan Munjal, 2009 (Autocar Professional)",
+      "url": "https://www.autocarpro.in/news-national/pawan-munjal-2009-1675"
+    },
+    {
+      "label": "Michael Porter, The Competitive Advantage of Nations (Harvard Business Review, March 1990)",
+      "url": "https://hbr.org/1990/03/the-competitive-advantage-of-nations"
+    }
+  ]
+}

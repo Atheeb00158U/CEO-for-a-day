@@ -1,0 +1,246 @@
+{
+  "id": "u6-own-the-core",
+  "title": "What should you do yourself?",
+  "principle": "Own your core skill. Rent or hand out the rest.",
+  "minutes": 5,
+  "draft": true,
+  "screens": [
+    {
+      "kind": "explain",
+      "id": "hook",
+      "media": "img:ls_phone_tower",
+      "text": "Let me tell you about a big gamble. In 2004, Bharti Airtel had about 58 lakh mobile customers and was growing fast. Then it handed the running of its mobile network to Ericsson and Nokia, and its computers to IBM. Its own network, run by others! Have a guess why."
+    },
+    {
+      "kind": "choice",
+      "id": "guess",
+      "guess": true,
+      "prompt": "Why do you think a phone company would let other companies run its own network?",
+      "options": [
+        {
+          "id": "a",
+          "label": "It was running out of money"
+        },
+        {
+          "id": "b",
+          "label": "The government told it to"
+        },
+        {
+          "id": "c",
+          "label": "To spend its time on winning customers"
+        }
+      ],
+      "answer": "c",
+      "why": "It wanted its people working on customers and its brand. Airtel paid for the network it used, not to own it, and 200 of its engineers moved to IBM. By July 2006 it had more than 2.4 crore mobile customers."
+    },
+    {
+      "kind": "explain",
+      "id": "core",
+      "title": "Your core skill",
+      "text": "In 1990, two professors, C.K. Prahalad and Gary Hamel, gave this idea a name: core competence. It's the one skill that makes customers choose you, and that rivals find hard to copy. Own that skill. Rent or hand out the rest to people who do it better or cheaper."
+    },
+    {
+      "kind": "explain",
+      "id": "home",
+      "title": "Now look at your bakery",
+      "text": "A phone company and a bakery both have one thing customers come for. It's September, and Diwali is coming. You make about 120 deliveries a month, and you still do almost everything yourself: baking, delivery, printing the boxes, even your GST filing. What should stay in your hands?"
+    },
+    {
+      "kind": "sort",
+      "id": "own-or-rent",
+      "prompt": "I'll show you six jobs in your bakery. For each one, tell me: should you own it, or hand it out?",
+      "buckets": ["Own it", "Rent or hand it out"],
+      "items": [
+        {
+          "text": "Your chocolate cake recipe",
+          "bucket": 0
+        },
+        {
+          "text": "Delivering cakes across town",
+          "bucket": 1
+        },
+        {
+          "text": "Tasting every cake before it leaves",
+          "bucket": 0
+        },
+        {
+          "text": "Printing the cake boxes",
+          "bucket": 1
+        },
+        {
+          "text": "Talking to your regular customers",
+          "bucket": 0
+        },
+        {
+          "text": "Filing your GST returns",
+          "bucket": 1
+        }
+      ],
+      "why": "Exactly. Your taste, your checks and your customers are why people pay ₹850 for your cake. Those are your core. Delivery, printing and GST matter too, but others can do them well, and often cheaper."
+    },
+    {
+      "kind": "choice",
+      "id": "rider",
+      "prompt": "You make 120 deliveries a month. A rider of your own costs ₹12,000 a month. A delivery service charges ₹60 a trip. Which costs less?",
+      "options": [
+        {
+          "id": "a",
+          "label": "The delivery service: ₹7,200"
+        },
+        {
+          "id": "b",
+          "label": "Your own rider: ₹12,000"
+        },
+        {
+          "id": "c",
+          "label": "They cost about the same"
+        }
+      ],
+      "answer": "a",
+      "why": "Right. 120 trips × ₹60 is ₹7,200, so the service costs ₹4,800 less than your own rider each month. And you pay only for the trips you make.",
+      "wrong": {
+        "b": "Your own rider costs ₹12,000 whatever happens. The service is 120 × ₹60 = ₹7,200. That's ₹4,800 less each month.",
+        "c": "Let's check. 120 × ₹60 = ₹7,200. Your rider costs ₹12,000. That's a gap of ₹4,800 a month."
+      }
+    },
+    {
+      "kind": "choice",
+      "id": "same-cost",
+      "prompt": "Your own rider costs ₹12,000 a month. The service costs ₹60 a trip. At how many trips do they cost the same?",
+      "options": [
+        {
+          "id": "a",
+          "label": "120 trips"
+        },
+        {
+          "id": "b",
+          "label": "200 trips"
+        },
+        {
+          "id": "c",
+          "label": "600 trips"
+        }
+      ],
+      "answer": "b",
+      "why": "Exactly. ₹12,000 ÷ ₹60 = 200 trips. Below 200, the service is cheaper. And remember Unit 1: a fixed cost hurts in a slow month. At 60 trips, the service costs ₹3,600, but your rider still costs ₹12,000.",
+      "wrong": {
+        "a": "That's how many trips you make now. To find where they cost the same, divide ₹12,000 by ₹60. That's 200 trips.",
+        "c": "Close, but check the sum: ₹12,000 ÷ ₹60 = 200, not 600. At 200 trips a month, both cost ₹12,000."
+      }
+    },
+    {
+      "kind": "choice",
+      "id": "factory",
+      "prompt": "A big cake factory offers to bake your chocolate cakes for ₹300 each, ₹100 less than your cost. What's the biggest risk?",
+      "options": [
+        {
+          "id": "a",
+          "label": "None. You save ₹100 a cake"
+        },
+        {
+          "id": "c",
+          "label": "The cakes might arrive late"
+        },
+        {
+          "id": "b",
+          "label": "Your cake tastes like everyone else's"
+        }
+      ],
+      "answer": "b",
+      "why": "Exactly. Your taste is your core. Customers pay ₹850 for your cake, not for any cake. If a factory bakes it, anyone can buy the same cake from that factory, and your reason to exist is gone.",
+      "wrong": {
+        "a": "You'd save ₹100 a cake. But customers pay ₹850 for your taste. Hand that out, and anyone can sell the same factory cake. That's your core.",
+        "c": "Late cakes are a problem you could fix. The bigger risk is that your taste, the reason people pay ₹850, would no longer be yours."
+      }
+    },
+    {
+      "kind": "scenario",
+      "id": "diwali",
+      "setup": "It's late September. In October you expect about 200 orders, not 120. You can't bake, deliver, print and file it all yourself. Your cake sells for ₹850 and costs ₹400 to make.",
+      "question": "How do you get ready for Diwali?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Buy ready cakes and sell them as yours",
+          "grade": "bad",
+          "outcome": "You meet every Diwali order. But regular customers notice the taste has changed, and three of them say so in your colony group. In November, orders fall below 120.",
+          "why": "You handed out the one thing customers came for. Your core is your taste, so it's the last thing to give away.",
+          "better": "Keep the baking. Hand delivery and printing to others."
+        },
+        {
+          "id": "b",
+          "label": "Buy a scooter and hire a rider",
+          "grade": "ok",
+          "outcome": "Diwali deliveries go well, at ₹12,000 a month for the rider plus the scooter's loan. In November, trips fall to about 90. The service would have cost ₹5,400. Your rider still costs ₹12,000.",
+          "why": "Deliveries worked, but you took on a fixed cost for a busy month. Delivery isn't your core, so there was no need to own it.",
+          "better": "Pay a delivery service per trip, and keep the baking yourself."
+        },
+        {
+          "id": "c",
+          "label": "Hand out delivery and printing; you bake",
+          "grade": "great",
+          "outcome": "The delivery service takes 200 trips in October for ₹12,000, and about 90 in November for ₹5,400. The printer sends boxes on time. You spend Diwali baking and tasting, and regulars order again.",
+          "why": "Exactly. You kept your core, the baking, and paid others only for what you used. When the rush ended, the cost fell with it."
+        }
+      ]
+    },
+    {
+      "kind": "gap",
+      "id": "fill",
+      "text": "Own your ___ skill. Rent or hand out the ___.",
+      "bank": ["core", "rest", "every", "recipe"],
+      "answer": ["core", "rest"],
+      "why": "Exactly. That's core competence. Keep the skill that makes customers choose you. Rent or hand out the work others can do as well, or better."
+    }
+  ],
+  "summary": [
+    "Core competence: the skill that makes customers choose you, and that rivals find hard to copy.",
+    "Own your core. Rent or hand out the rest, and pay for what you use.",
+    "Never hand out your core, even when it's cheaper."
+  ],
+  "cards": [
+    {
+      "id": "m61-core-1",
+      "front": "Your tailoring shop is known for perfect fitting. What should you never hand out?",
+      "options": ["Delivery", "The fitting", "Accounts"],
+      "answer": 1,
+      "back": "That's your core competence. Own it. Rent or hand out the rest."
+    },
+    {
+      "id": "m61-core-2",
+      "front": "Own rider: ₹10,000 a month. Service: ₹50 a trip. You make 100 trips. Which costs less?",
+      "options": ["The service: ₹5,000", "Own rider: ₹10,000"],
+      "answer": 0,
+      "back": "100 × ₹50 = ₹5,000. Delivery isn't your core, so pay per trip."
+    },
+    {
+      "id": "m61-core-3",
+      "front": "A factory offers to make your best seller for less. What's the risk?",
+      "options": ["None", "Your product becomes anyone's"],
+      "answer": 1,
+      "back": "Hand out your core, and customers lose their reason to choose you."
+    }
+  ],
+  "sources": [
+    {
+      "label": "Ericsson and Bharti sign managed services and infrastructure contract (Ericsson, Feb 2004)",
+      "url": "https://www.ericsson.com/en/press-releases/2004/2/ericsson-and-bharti-sign-managed-services-and-infrastructure-contract"
+    },
+    {
+      "label": "India's Airtel outsources again (Light Reading)",
+      "url": "https://www.lightreading.com/services/india-s-airtel-outsources-again"
+    },
+    {
+      "label": "Indian firm outsources work to IBM (Al Jazeera, Mar 2004)",
+      "url": "https://www.aljazeera.com/news/2004/3/26/indian-firm-outsources-work-to-ibm"
+    },
+    {
+      "label": "Ericsson awarded major expansion managed services deal with Bharti Airtel (Ericsson, Aug 2006)",
+      "url": "https://www.ericsson.com/en/press-releases/2006/8/ericsson-awarded-major-expansion-managed-services-deal-with-bharti-airtel-in-india"
+    },
+    {
+      "label": "Prahalad and Hamel, The Core Competence of the Corporation (Harvard Business Review, May 1990)",
+      "url": "https://hbr.org/1990/05/the-core-competence-of-the-corporation"
+    }
+  ]
+}

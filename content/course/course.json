@@ -65,6 +65,28 @@
           "gates": []
         }
       ]
+    },
+    {
+      "id": "u6-running",
+      "title": "Running the business",
+      "goal": "Run the business with less mess, better suppliers and on-time work.",
+      "draft": true,
+      "modules": [
+        {
+          "id": "u6-keep-simple",
+          "title": "Keep it simple",
+          "goal": "Cut the mess that eats your time and money.",
+          "lessons": ["u6-too-many-items", "u6-one-way", "u6-own-the-core"],
+          "gates": []
+        },
+        {
+          "id": "u6-suppliers",
+          "title": "Suppliers, quality and speed",
+          "goal": "Get good parts, on time, without losing control.",
+          "lessons": ["u6-few-suppliers", "u6-critical-path", "u6-tough-buyers"],
+          "gates": ["maruti-800"]
+        }
+      ]
     }
   ]
 }

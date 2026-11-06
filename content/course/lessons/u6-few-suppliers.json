@@ -1,0 +1,234 @@
+{
+  "id": "u6-few-suppliers",
+  "title": "Why not just buy the cheapest?",
+  "principle": "Pick a few strong suppliers on quality, and push them.",
+  "minutes": 5,
+  "draft": true,
+  "screens": [
+    {
+      "kind": "explain",
+      "id": "hook",
+      "media": "img:ls_radiator_caps",
+      "text": "Let me tell you about a company from Chennai. In 1992, General Motors, the American carmaker, offered Sundram Fasteners its radiator cap factories in England. Sundram became GM's main supplier of radiator caps. Then, from 1996 to 2000, GM named it Supplier of the Year five years in a row."
+    },
+    {
+      "kind": "choice",
+      "id": "guess",
+      "guess": true,
+      "prompt": "GM could buy from hundreds of firms. Why do you think it gave so much to one?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Its caps were the cheapest anywhere"
+        },
+        {
+          "id": "b",
+          "label": "Its caps were good, year after year"
+        },
+        {
+          "id": "c",
+          "label": "GM had no other choice"
+        }
+      ],
+      "answer": "b",
+      "why": "Good quality, year after year. A radiator cap costs little, but if it fails, the engine can overheat. Five Supplier of the Year awards in a row tell you Sundram kept earning GM's trust."
+    },
+    {
+      "kind": "explain",
+      "id": "deming",
+      "title": "Deming's point 4",
+      "text": "W. Edwards Deming, an American quality expert, wrote 14 points for managers. Point 4 says: stop buying on the price tag alone. A cheap part can cost the most when it fails. Instead, work with one or a few suppliers for a long time, and help them get better."
+    },
+    {
+      "kind": "explain",
+      "id": "home",
+      "title": "Now look at your bakery",
+      "text": "A carmaker and a bakery both need parts they can trust. It's October. Each week you buy cream from whichever of five shops is cheapest. But the cream changes from week to week. Some weeks it won't whip, and cakes fail."
+    },
+    {
+      "kind": "choice",
+      "id": "cheap-cream",
+      "prompt": "The cheapest cream saves you ₹200 a week. But 2 cakes a week fail, and each costs ₹400 to bake again. Is it really cheaper?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Yes. It saves you ₹200 a week"
+        },
+        {
+          "id": "b",
+          "label": "It works out about even"
+        },
+        {
+          "id": "c",
+          "label": "No. It costs you ₹600 a week"
+        }
+      ],
+      "answer": "c",
+      "why": "Exactly. 2 failed cakes × ₹400 is ₹800 a week. Take away the ₹200 you saved, and the cheap cream costs you ₹600 more each week. That's Deming's point: the price tag isn't the whole cost.",
+      "wrong": {
+        "a": "That's the price tag. But 2 failed cakes × ₹400 = ₹800 a week. ₹800 minus the ₹200 you saved means you lose ₹600 a week.",
+        "b": "Let's check. You save ₹200, but lose 2 × ₹400 = ₹800 on failed cakes. That's ₹600 a week worse, not even."
+      }
+    },
+    {
+      "kind": "choice",
+      "id": "whos-right",
+      "prompt": "Your sister says: buy from all five shops, so nobody can cheat you. Your cousin says: buy only from the best one. Who's right?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Your sister: use all five"
+        },
+        {
+          "id": "b",
+          "label": "Neither: pick two good ones"
+        },
+        {
+          "id": "c",
+          "label": "Your cousin: use only the best"
+        }
+      ],
+      "answer": "b",
+      "why": "Right. Five shops means five kinds of cream. But only one can hurt too. In 1997, a fire hit the Aisin factory that made almost all of Toyota's brake valves, and Toyota's car plants in Japan stopped for days. So pick a few strong suppliers, not one.",
+      "wrong": {
+        "a": "Five shops means five kinds of cream, and none of them treats you as an important buyer. Pick a few good ones, so each one cares about your orders.",
+        "c": "Close. Deming liked one supplier for each item. But in 1997, a fire at the Aisin factory, which made almost all of Toyota's brake valves, stopped Toyota's car plants in Japan for days. Keep a second good one."
+      }
+    },
+    {
+      "kind": "choice",
+      "id": "push",
+      "prompt": "You now buy from two good shops. One shop's cream still fails about twice a month. What should you do first?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Show him the failed cakes, and agree a standard"
+        },
+        {
+          "id": "b",
+          "label": "Drop him, and go back to the cheapest"
+        },
+        {
+          "id": "c",
+          "label": "Pay him less for each bad week"
+        }
+      ],
+      "answer": "a",
+      "why": "Exactly. Picking good suppliers is half of it. The other half is pushing them: show what went wrong, agree what good cream means, like how thick it is and how fresh, and check it together. A supplier who knows your standard can meet it.",
+      "wrong": {
+        "b": "The cheapest shop is how the trouble began. First tell this one what went wrong, and agree on what good cream means. Push a good supplier before you drop one.",
+        "c": "Paying less won't fix his cream. Show him the failed cakes, and agree on what good cream means, so he knows what to fix."
+      }
+    },
+    {
+      "kind": "choice",
+      "id": "bulk",
+      "prompt": "Your butter shop offers 120 kg at once for ₹480 a kg, ₹20 off. You use 40 kg a month. What's the catch?",
+      "options": [
+        {
+          "id": "a",
+          "label": "None. You save ₹2,400"
+        },
+        {
+          "id": "b",
+          "label": "The butter will taste better"
+        },
+        {
+          "id": "c",
+          "label": "₹57,600 sits in your fridge for three months"
+        }
+      ],
+      "answer": "c",
+      "why": "Exactly. 120 kg × ₹480 is ₹57,600 paid today for butter you'll use over three months. Remember frozen cash from Unit 1: the ₹2,400 you save may be worth less than the cash you can't use.",
+      "wrong": {
+        "a": "You do save 120 × ₹20 = ₹2,400. But you pay 120 × ₹480 = ₹57,600 today, for butter you'll use over three months. That's frozen cash from Unit 1.",
+        "b": "The butter is the same butter. The catch is the cash: 120 × ₹480 = ₹57,600 paid today, for butter that sits in your fridge for three months."
+      }
+    },
+    {
+      "kind": "scenario",
+      "id": "diwali-cream",
+      "setup": "It's late October. Your best cream shop says it will close for five days at Diwali. That week you'll need 30 kg of cream for about 50 cakes. Your second good shop can't supply that much.",
+      "question": "How do you make sure you have good cream at Diwali?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Buy that week from the cheapest shops",
+          "grade": "bad",
+          "outcome": "The cheap cream won't whip on the busiest day of the year. 8 cakes fail: ₹3,200 to bake again, and four orders reach families late. Two of them post about it.",
+          "why": "You were back to buying on price alone, on the week you could least afford a failed cake.",
+          "better": "Find and test a third good shop before Diwali."
+        },
+        {
+          "id": "b",
+          "label": "Find and test a third good shop now",
+          "grade": "great",
+          "outcome": "You test cream from three shops on two cakes each, and one whips well every time. It covers the Diwali week. No cakes fail, and you keep it as your backup.",
+          "why": "Exactly. You chose on quality, tested before you needed it, and now have a few strong suppliers, not one."
+        },
+        {
+          "id": "c",
+          "label": "Buy a week's cream early and store it",
+          "grade": "ok",
+          "outcome": "The cream lasts, but by day four some has gone sour. You throw away 6 kg and bake 2 cakes again. It works, just.",
+          "why": "Storing it saved the week, but fresh cream doesn't keep well, and you'll face the same problem every holiday.",
+          "better": "Find and test a third good shop before Diwali."
+        }
+      ]
+    },
+    {
+      "kind": "gap",
+      "id": "fill",
+      "text": "Pick a ___ strong suppliers on ___, and push them.",
+      "bank": ["few", "quality", "price", "hundred"],
+      "answer": ["few", "quality"],
+      "why": "Exactly. That's Deming's point 4. Don't buy on the price tag alone. Pick a few good suppliers, work with them for years, and keep pushing them to get better."
+    }
+  ],
+  "summary": [
+    "Deming's point 4: stop buying on the price tag alone. A cheap part can cost the most.",
+    "Work with a few strong suppliers for years, and push them to get better.",
+    "Keep a few, not one: if your only supplier stops, so do you."
+  ],
+  "cards": [
+    {
+      "id": "m62-supply-1",
+      "front": "Cheap flour saves ₹150 a week, but 2 batches of bread fail at ₹300 each. Is it cheaper?",
+      "options": ["Yes, it saves ₹150", "No, it costs ₹450 more"],
+      "answer": 1,
+      "back": "2 × ₹300 = ₹600 lost, minus ₹150 saved = ₹450 worse. Don't buy on price alone."
+    },
+    {
+      "id": "m62-supply-2",
+      "front": "How many suppliers for one key item?",
+      "options": ["As many as possible", "A few strong ones", "Exactly one"],
+      "answer": 1,
+      "back": "Few enough that each cares about you, more than one so a fire or a holiday can't stop you."
+    },
+    {
+      "id": "m62-supply-3",
+      "front": "A good supplier's goods fail now and then. What first?",
+      "options": ["Drop them", "Show them what failed, and agree a standard"],
+      "answer": 1,
+      "back": "Pick good suppliers, then push them to get better."
+    }
+  ],
+  "sources": [
+    {
+      "label": "The bolts and nuts of enterprise (Madras Musings)",
+      "url": "https://madrasmusings.com/vol-28-no-9/the-bolts-nuts-of-enterprise/"
+    },
+    {
+      "label": "Sundram Fasteners wins GM's Supplier of the Year award for the eighth time (Autocar Professional)",
+      "url": "https://www.autocarpro.in/news-international/sundram-fasteners-wins-gms-supplier-of-the-year-award-for-the-eighth-time-79457"
+    },
+    {
+      "label": "Deming's 14 points (Michel Baudin)",
+      "url": "https://michelbaudin.com/?p=3336"
+    },
+    {
+      "label": "1997 Aisin fire (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/1997_Aisin_fire"
+    }
+  ]
+}

@@ -1,0 +1,255 @@
+{
+  "id": "u6-one-way",
+  "title": "Why should everyone work the same way?",
+  "principle": "One standard way of working cuts cost and mistakes.",
+  "minutes": 5,
+  "draft": true,
+  "screens": [
+    {
+      "kind": "explain",
+      "id": "hook",
+      "media": "img:ls_eye_ward",
+      "text": "Let me tell you about an eye hospital in Madurai. Aravind Eye Hospital does cataract operations, which clear cloudy eyes. An Aravind surgeon does about 2,000 a year, while the Indian average is about 250. Yet Aravind has fewer problems after surgery than Britain's health service. Have a guess how."
+    },
+    {
+      "kind": "choice",
+      "id": "guess",
+      "guess": true,
+      "prompt": "How do you think Aravind's surgeons can do so many operations, and safely?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Its doctors work much longer hours"
+        },
+        {
+          "id": "b",
+          "label": "Every step is done the same way, every time"
+        },
+        {
+          "id": "c",
+          "label": "It buys costly machines from abroad"
+        }
+      ],
+      "answer": "b",
+      "why": "Every step is done the same way, every time. While a surgeon operates on one patient, the next one is already being made ready. The surgeon does only the key steps, and trained helpers do the rest, like a factory line."
+    },
+    {
+      "kind": "explain",
+      "id": "standard",
+      "title": "Standard work",
+      "text": "This is called standard work: one written best way for each job, and everyone follows it. Toyota made it famous in its car factories. It isn't about working harder. When everyone does a job the same way, a mistake shows up fast, and one fix helps everyone."
+    },
+    {
+      "kind": "explain",
+      "id": "home",
+      "title": "Now look at your bakery",
+      "text": "A hospital and a bakery both repeat the same jobs every day. It's August. Your sister and your cousin now bake with you, and together you make about 30 cakes a week. But their chocolate cakes don't taste like yours. Each of you has your own way."
+    },
+    {
+      "kind": "choice",
+      "id": "remakes",
+      "prompt": "You bake 30 cakes a week. 3 go wrong and are baked again, at ₹400 each. What do the mistakes cost a month?",
+      "options": [
+        {
+          "id": "a",
+          "label": "₹1,200"
+        },
+        {
+          "id": "b",
+          "label": "₹4,800"
+        },
+        {
+          "id": "c",
+          "label": "₹10,200"
+        }
+      ],
+      "answer": "b",
+      "why": "Exactly. 3 cakes × ₹400 is ₹1,200 a week, and 4 weeks make ₹4,800 a month. That's more than ten chocolate cakes' worth of profit, lost to three different ways of baking.",
+      "wrong": {
+        "a": "That's one week: 3 × ₹400 = ₹1,200. A month has about 4 weeks, so the mistakes cost ₹4,800.",
+        "c": "I see what you did: 3 × ₹850 × 4. But you don't lose the price. You lose what it costs to bake again: 3 × ₹400 × 4 weeks = ₹4,800."
+      }
+    },
+    {
+      "kind": "sort",
+      "id": "card",
+      "prompt": "You'll write your chocolate cake on one card. I'll show you six notes. For each one, tell me: should it go on the card?",
+      "buckets": ["Yes, put it on", "No, leave it off"],
+      "items": [
+        {
+          "text": "Cocoa: 60 grams, weighed on the scale",
+          "bucket": 0
+        },
+        {
+          "text": "Add sugar until it tastes right",
+          "bucket": 1
+        },
+        {
+          "text": "Oven at 170°C for 40 minutes",
+          "bucket": 0
+        },
+        {
+          "text": "Bake it the way Mummy did",
+          "bucket": 1
+        },
+        {
+          "text": "Done when a knife comes out clean",
+          "bucket": 0
+        },
+        {
+          "text": "Use any cream you can find",
+          "bucket": 1
+        }
+      ],
+      "why": "Exactly. A standard card says things anyone can check: grams, a temperature, a time, a test. \"Until it tastes right\" or \"the way Mummy did\" means something different to each person, and that's how three cakes come out three ways."
+    },
+    {
+      "kind": "order",
+      "id": "steps",
+      "prompt": "Here are five steps for bringing in standard work, mixed up. Put them in the right order.",
+      "steps": [
+        "Bake your best cake, and weigh everything",
+        "Write the weights, times and checks on one card",
+        "Show your helpers, then watch each one bake once",
+        "Check every cake against the card",
+        "When someone finds a better way, change the card for all"
+      ],
+      "why": "Exactly. First find your best way and measure it, then write it down, teach it, and check it. The last step matters most: a standard isn't fixed forever. When anyone finds a better way, it becomes the new card for everyone."
+    },
+    {
+      "kind": "choice",
+      "id": "lucky",
+      "prompt": "Your cousin skipped the card and guessed the sugar. Her cake came out perfect. Was her way a good way?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Yes. The cake was perfect"
+        },
+        {
+          "id": "b",
+          "label": "Only if the customer liked it"
+        },
+        {
+          "id": "c",
+          "label": "No. One good cake proves little"
+        }
+      ],
+      "answer": "c",
+      "why": "Right. Remember Unit 1: judge the thinking, not the luck. A guess can work once. The card works every time, for anyone, and that's what lets three people bake one cake.",
+      "wrong": {
+        "a": "The cake was perfect this time. But remember Unit 1: judge the thinking, not the luck. Guessing the sugar can go wrong next time, and nobody would know why.",
+        "b": "The customer's happiness matters, but it can't tell you if guessing will work next time. Judge the thinking, not the luck. The card works every time."
+      }
+    },
+    {
+      "kind": "choice",
+      "id": "better-way",
+      "prompt": "Your sister finds that whisking 5 minutes longer makes the cake lighter. Customers notice. What should you do?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Test it, then change the card for all"
+        },
+        {
+          "id": "b",
+          "label": "Tell her to stick to the card"
+        },
+        {
+          "id": "c",
+          "label": "Let her whisk longer on her cakes"
+        }
+      ],
+      "answer": "a",
+      "why": "Exactly. Standard work doesn't mean nobody may improve. It means the best way so far, written down. Test her idea, and if it works, it goes on the card, so every cake gets lighter, not just hers.",
+      "wrong": {
+        "b": "The card is the best way so far, not forever. If her change really works, put it on the card, so every cake gets lighter.",
+        "c": "Then her cakes and yours taste different again. Test her idea, and if it works, change the card for everyone."
+      }
+    },
+    {
+      "kind": "scenario",
+      "id": "cafe",
+      "setup": "It's late August. A café wants 10 chocolate cakes every Friday, all exactly alike, at ₹700 each. Each costs ₹400 to make, so you'd keep ₹3,000 a week. Your sister and cousin will bake most of them.",
+      "question": "How do you get ready for the café?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Bake all 10 yourself on Thursday nights",
+          "grade": "ok",
+          "outcome": "The café's cakes are all alike, and you keep ₹3,000 a week. But you bake till midnight every Thursday, and in two weeks your home orders start to slip.",
+          "why": "You got the cakes right, but only you can make them. That way, the business can't grow past your own hands.",
+          "better": "Write the card, train your helpers, and check the first batch."
+        },
+        {
+          "id": "b",
+          "label": "Write the card, train them, check the first batch",
+          "grade": "great",
+          "outcome": "The first Friday, one cake fails your check, and you fix that step on the card. After that, all 10 match every week. You keep ₹3,000 a week, and your Thursday nights are free.",
+          "why": "Exactly. The card let three people bake one cake. Checking the first batch found the weak step early, and the fix reached everyone at once."
+        },
+        {
+          "id": "c",
+          "label": "Let each bake her way, then taste them all",
+          "grade": "bad",
+          "outcome": "Each Friday, 2 or 3 cakes taste different, and you bake them again: about ₹1,000 a week lost. You keep only about ₹2,000 a week. In the fourth week, the café says the cakes aren't the same and stops ordering.",
+          "why": "Tasting at the end catches mistakes, but too late, and it can't stop them coming back. Three ways of baking made three kinds of cake.",
+          "better": "Write the card, train your helpers, and check the first batch."
+        }
+      ]
+    },
+    {
+      "kind": "gap",
+      "id": "fill",
+      "text": "One ___ way of working cuts cost and ___.",
+      "bank": ["standard", "mistakes", "flour", "ovens"],
+      "answer": ["standard", "mistakes"],
+      "why": "Exactly. That's standard work. Write your best way on one card, teach it to everyone, and change it only when someone finds a better way."
+    }
+  ],
+  "summary": [
+    "Standard work: one written best way for each job, which everyone follows.",
+    "Write things anyone can check: grams, temperatures, times and tests.",
+    "When someone finds a better way, test it and change the card for everyone."
+  ],
+  "cards": [
+    {
+      "id": "m61-way-1",
+      "front": "Three helpers bake the same cake three ways, and some cakes fail. What fixes it?",
+      "options": ["Taste every cake at the end", "One written card everyone follows"],
+      "answer": 1,
+      "back": "Standard work: one written best way that everyone follows."
+    },
+    {
+      "id": "m61-way-2",
+      "front": "Which line belongs on a standard recipe card?",
+      "options": ["Add salt to taste", "Bake at 170°C for 40 minutes", "Make it like last time"],
+      "answer": 1,
+      "back": "Write things anyone can check: grams, temperatures, times."
+    },
+    {
+      "id": "m61-way-3",
+      "front": "A helper finds a better way to do one step. What now?",
+      "options": ["Test it, then change the card for all", "Tell her to follow the card"],
+      "answer": 0,
+      "back": "A standard is the best way so far. Improve it for everyone."
+    }
+  ],
+  "sources": [
+    {
+      "label": "India eye care center finds middle way to capitalism (NPR, Nov 2011)",
+      "url": "https://www.kazu.org/2011-11-18/india-eye-care-center-finds-middle-way-to-capitalism"
+    },
+    {
+      "label": "The eye surgery that could save the world (Governing)",
+      "url": "https://governing.com/archive/gov-eye-surgery-that-could-save-world.html"
+    },
+    {
+      "label": "Cataract surgery costs, complications low at Aravind (Ophthalmology Times)",
+      "url": "https://ophthalmologytimes.com/view/cataract-surgery-costs-complications-low-aravind"
+    },
+    {
+      "label": "Standard work (Lean Enterprise Institute)",
+      "url": "https://www.lean.org/lexicon-terms/standardized-work/"
+    }
+  ]
+}
