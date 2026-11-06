@@ -9,87 +9,87 @@
       "kind": "explain",
       "id": "hook",
       "media": "img:ls_few_lines",
-      "text": "Let me take you to April 2020, when India was in lockdown. Britannia, the biscuit maker, could run its factories, but with far fewer workers. It sold many kinds of biscuit, so should it make all of them, a few of each, or make fewer kinds? Have a guess."
+      "text": "Let me take you to April 2020, when India was in lockdown. Britannia, the biscuit maker, could still run its factories, but with far fewer workers. It made many kinds of biscuits. Should it make a little of each kind, or focus on fewer kinds? Have a guess."
     },
     {
       "kind": "choice",
       "id": "guess",
       "guess": true,
-      "prompt": "With far fewer workers, what do you think Britannia chose to make?",
+      "prompt": "With far fewer workers, which biscuits do you think Britannia chose to make?",
       "options": [
         {
           "id": "a",
-          "label": "Kept every product, a few of each, so shops stay full"
+          "label": "Small amounts of every kind of biscuit"
         },
         {
           "id": "b",
-          "label": "Made only the products that sold the most"
+          "label": "More of the biscuits people bought most"
         },
         {
           "id": "c",
-          "label": "Made its newest products, to win new buyers"
+          "label": "More new biscuits, to attract buyers"
         }
       ],
       "answer": "b",
-      "why": "It made only its best sellers. Britannia made about one in five of its brands, like Good Day and Marie, and those brought in about 80% of its money. Fewer kinds needed fewer hands. And every kind you drop is one less thing to buy, store and run."
+      "why": "It made only its best sellers. Britannia made about one in five of its brands, like Good Day and Marie, and these brought in about 80% of its money. Making fewer kinds needed fewer workers. It also meant fewer things to buy, store and make."
     },
     {
       "kind": "explain",
       "id": "complexity",
       "title": "The cost you don't see",
-      "text": "Think of your fridge. Every new item needs its own stock, shelf and recipe, and it goes bad if it doesn't sell. That's complexity cost: costs that grow with every item but don't show on its price. A bigger menu feels like more sales. Often it's more cost."
+      "text": "Think of your fridge. Every new item needs its own ingredients, space and recipe, and some ingredients go bad if they don't sell. These are called complexity costs. They grow as you add items, but don't show in any item's price. More items can mean more cost, not more sales."
     },
     {
       "kind": "explain",
       "id": "home",
       "title": "Now look at your bakery",
-      "text": "Now picture your home bakery in July of its fifth year. Your menu has grown to 18 items: six cake flavours, cupcakes, cookies, breads, the party pack and more. Your chocolate cake sells for ₹850; you keep ₹450. You're so busy you turn away about 3 chocolate orders a month."
+      "text": "Now think about your home bakery in July of its fifth year. Your menu has 18 items: six cake flavours, cupcakes, cookies, breads, the party pack and more. Your chocolate cake sells for ₹850, and you keep ₹450. You're so busy you turn away about 3 chocolate orders a month."
     },
     {
       "kind": "choice",
       "id": "pineapple",
-      "prompt": "Pineapple cake: 3 sold a month, ₹450 kept on each. ₹1,000 of its fruit and cream goes bad each month. What does it really earn?",
+      "prompt": "You sell 3 pineapple cakes a month, keeping ₹450 on each. But ₹1,000 of its fruit and cream goes bad monthly. What do you really earn?",
       "options": [
         {
           "id": "a",
-          "label": "₹1,350 a month"
+          "label": "You earn ₹1,350 a month"
         },
         {
           "id": "b",
-          "label": "Nothing. It loses money"
+          "label": "You lose money each month"
         },
         {
           "id": "c",
-          "label": "₹350 a month"
+          "label": "You earn ₹350 a month"
         }
       ],
       "answer": "c",
-      "why": "Exactly. 3 cakes × ₹450 is ₹1,350. Take away the ₹1,000 of fruit and cream you throw away, and the pineapple cake really earns ₹350 a month. The waste was a hidden cost: it never showed on the cake's price.",
+      "why": "Exactly. 3 cakes × ₹450 = ₹1,350. Take away the ₹1,000 of fruit and cream you throw away, and you earn only ₹350 a month from pineapple cakes. The waste is a hidden cost that never showed in the cake's price.",
       "wrong": {
-        "a": "I see what you did: 3 × ₹450 = ₹1,350. But that's before the waste. Take away the ₹1,000 of pineapple and cream you throw away, and it earns only ₹350 a month.",
-        "b": "It doesn't lose money. 3 × ₹450 = ₹1,350, and ₹1,350 minus ₹1,000 of waste leaves ₹350 a month. It still earns a little."
+        "a": "You worked out 3 × ₹450 = ₹1,350. But that's before the waste. Take away the ₹1,000 of fruit and cream that goes bad, and you earn only ₹350 a month.",
+        "b": "You don't lose money. 3 × ₹450 = ₹1,350, and after taking away ₹1,000 of waste, you still earn ₹350 a month."
       }
     },
     {
       "kind": "choice",
       "id": "hours",
-      "prompt": "Pineapple earns ₹350 and takes 5 hours a month. In those hours you could bake 3 chocolate cakes you turn away. Which pays more?",
+      "prompt": "Pineapple earns ₹350 and takes 5 hours a month. In those 5 hours, you could bake 3 chocolate cakes customers want. Which earns more?",
       "options": [
         {
           "id": "a",
-          "label": "Keep pineapple, for the variety"
+          "label": "Keep pineapple cakes, for more choice"
         },
         {
           "id": "b",
-          "label": "Bake the 3 chocolate cakes"
+          "label": "Use the time to bake 3 chocolate cakes"
         },
         {
           "id": "c",
-          "label": "About the same either way"
+          "label": "Both would earn about the same"
         }
       ],
       "answer": "b",
-      "why": "Right. 3 chocolate cakes × ₹450 is ₹1,350, almost four times the pineapple cake's ₹350. Your time is a hidden cost too. Every hour spent on a slow item is an hour taken from an item people already want.",
+      "why": "Right. 3 chocolate cakes × ₹450 = ₹1,350, almost four times pineapple's ₹350. Your time is a hidden cost too. When you spend 5 hours on pineapple, you can't use those hours for chocolate cakes that customers already want.",
       "wrong": {
         "a": "Variety can bring people in. But here people are already asking for chocolate, and you turn them away. 3 × ₹450 = ₹1,350 beats the pineapple cake's ₹350.",
         "c": "Let's check. 3 chocolate cakes × ₹450 = ₹1,350. The pineapple cake earns ₹350. That's ₹1,000 more for the same 5 hours."
@@ -98,23 +98,23 @@
     {
       "kind": "sort",
       "id": "hidden",
-      "prompt": "It costs you ₹400 to make one cake. I'll show you six costs. For each one, tell me: is it inside that ₹400, or hidden?",
+      "prompt": "Making one cake costs ₹400. I'll show you six costs. For each one, tell me: is it inside that ₹400, or a hidden extra cost?",
       "buckets": ["Inside the ₹400", "Hidden cost"],
       "items": [
         {
-          "text": "Flour, sugar and cocoa in each cake",
+          "text": "The flour, sugar and cocoa in one cake",
           "bucket": 0
         },
         {
-          "text": "Cream thrown away because it went bad",
+          "text": "Cream you throw away because it went bad",
           "bucket": 1
         },
         {
-          "text": "The box each cake goes in",
+          "text": "The box you pack each cake in",
           "bucket": 0
         },
         {
-          "text": "Hours spent learning a new recipe",
+          "text": "Time you spend learning a new recipe",
           "bucket": 1
         },
         {
@@ -122,32 +122,32 @@
           "bucket": 0
         },
         {
-          "text": "Fridge space for 18 kinds of stock",
+          "text": "Fridge space for stock for 18 items",
           "bucket": 1
         }
       ],
-      "why": "Exactly. Flour, the box and the candle go into every cake, so they're inside the ₹400. Waste, learning time and fridge space grow with every item you add, but no single cake's price shows them. That's why a long menu can quietly eat your profit."
+      "why": "Exactly. Flour, the box and the candle are inside the ₹400 cost of each cake. But wasted cream, learning time and fridge space are hidden costs that grow as you add items. That's why a long menu can eat your profit without you noticing."
     },
     {
       "kind": "choice",
       "id": "stock",
-      "prompt": "With 18 items, ₹15,000 of stock sits on your shelves. With only your 8 best sellers, you'd need ₹6,000. What does cutting give you?",
+      "prompt": "With 18 items, you keep ₹15,000 of stock. With only your 8 best sellers, you'd need ₹6,000. What does cutting give you?",
       "options": [
         {
           "id": "a",
-          "label": "₹9,000 of cash to use"
+          "label": "₹9,000 of cash back, once"
         },
         {
           "id": "b",
-          "label": "₹9,000 more profit every month"
+          "label": "₹9,000 extra profit each month"
         },
         {
           "id": "c",
-          "label": "Nothing. Stock isn't money"
+          "label": "Nothing, because stock isn't cash"
         }
       ],
       "answer": "a",
-      "why": "Exactly. ₹15,000 minus ₹6,000 is ₹9,000 that no longer sits on a shelf. Remember frozen cash from Unit 1: money in stock can't pay a bill. You get ₹9,000 back once. After that, less money sits on the shelf.",
+      "why": "Exactly. ₹15,000 − ₹6,000 = ₹9,000 you no longer need to keep in stock. As you use up the extra stock and don't buy it again, that cash comes back. Remember frozen cash from Unit 1: money in stock can't pay your bills. You get it back once, not every month.",
       "wrong": {
         "b": "Not every month. You get it back once. ₹15,000 minus ₹6,000 is ₹9,000 of cash that no longer sits on a shelf, the frozen cash from Unit 1.",
         "c": "Stock is money you've already spent. ₹15,000 minus ₹6,000 means ₹9,000 you no longer have to keep tied up on a shelf. That's cash you can use."
@@ -156,30 +156,30 @@
     {
       "kind": "scenario",
       "id": "mango",
-      "setup": "It's July. Four customers ask for mango cake. About 6 would sell a month, leaving you ₹2,100 after the mango that goes bad, and it takes 5 hours a month. Pineapple earns ₹350 and coffee ₹150, and each takes 5 hours. Every 5 free hours means 3 more chocolate cakes: ₹1,350.",
+      "setup": "It's July. Four customers ask for mango cake. You could sell about 6 a month, earning ₹2,100 after wasted mango, in 5 hours a month. Pineapple earns ₹350 and coffee ₹150, each taking 5 hours. Every 5 hours you free up lets you bake the 3 chocolate cakes you turn away: ₹1,350.",
       "question": "What do you do about the mango cake?",
       "options": [
         {
           "id": "a",
-          "label": "Add mango, and keep every other cake",
+          "label": "Add mango cake, and keep every other cake",
           "grade": "ok",
-          "outcome": "Mango earns ₹2,100. But its 5 hours have to come from somewhere, so you turn away 3 more chocolate cakes: ₹1,350 lost. All in, you gain ₹750 a month, and your menu grows to 19 items.",
+          "outcome": "Mango earns ₹2,100. But you need 5 hours to make it, so you turn away 3 more chocolate cakes: ₹1,350 you could have earned. You gain ₹750 a month, and your menu grows to 19 items.",
           "why": "Mango was a good add. But every new item brings new hidden costs, here 5 hours of your time, so it should push out a weak item.",
           "better": "Add mango, and drop pineapple and coffee."
         },
         {
           "id": "c",
-          "label": "Add mango, and drop only pineapple",
+          "label": "Add mango cake, and stop pineapple",
           "grade": "ok",
-          "outcome": "You lose pineapple's ₹350, and mango earns ₹2,100. Mango uses the 5 hours pineapple took, so no time is left for extra chocolate cakes. You gain ₹1,750 a month. Coffee still earns only ₹150 for 5 hours, and your menu stays at 18.",
+          "outcome": "You lose pineapple's ₹350, but mango earns ₹2,100. Mango takes the 5 hours you used for pineapple, so you can't bake extra chocolate cakes. You gain ₹1,750 a month. Coffee still earns only ₹150 for 5 hours, and your menu stays at 18 items.",
           "why": "A good swap, but you kept one weak item. Coffee's 5 hours could have baked 3 chocolate cakes, ₹1,350, instead of ₹150.",
           "better": "Add mango, and drop pineapple and coffee."
         },
         {
           "id": "b",
-          "label": "Add mango, and drop pineapple and coffee",
+          "label": "Add mango cake, and stop pineapple and coffee",
           "grade": "great",
-          "outcome": "You lose the ₹500 that pineapple and coffee earned. Mango earns ₹2,100. You get 10 hours back; mango uses 5, and in the other 5 you bake 3 chocolate cakes you used to turn away: ₹1,350. You gain ₹2,950 a month, and your menu shrinks to 17.",
+          "outcome": "You give up the ₹500 from pineapple and coffee, and mango earns ₹2,100. Dropping both frees 10 hours. Mango takes 5, and in the other 5 you bake the 3 chocolate cakes you used to turn away: ₹1,350. You gain ₹2,950 a month, and your menu drops to 17 items.",
           "why": "Exactly. You let a new item in only by pushing out two weak ones. Your menu got shorter, your waste fell, and your hours went to cakes people want."
         }
       ]
@@ -187,7 +187,7 @@
     {
       "kind": "gap",
       "id": "fill",
-      "text": "Your menu grows from 10 items to 20. Sales may grow, but your ___ grows too: more waste, more stock and more ___.",
+      "text": "Your menu grows from 10 items to 20. Sales may rise, but your ___ grows too. You have more waste, more stock and more ___.",
       "bank": ["cost", "hours", "profit", "prices"],
       "answer": ["cost", "hours"],
       "why": "Exactly. That's complexity cost. Before you add an item, ask what it will really cost in waste, stock and hours, and what you could drop to make room."
