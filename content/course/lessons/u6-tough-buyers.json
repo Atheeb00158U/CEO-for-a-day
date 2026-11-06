@@ -9,7 +9,7 @@
       "kind": "explain",
       "id": "hook",
       "media": "img:ls_bike_pump",
-      "text": "Let me tell you about bike riders in the 1980s. They watched every rupee spent on petrol, yet almost every bike had a two-stroke engine, which used more petrol. In 1985, Hero Honda launched the CD 100, India's first 100 cc four-stroke bike. It ran about 80 km a litre."
+      "text": "Let me tell you about bike riders in the 1980s. They watched every rupee spent on petrol, yet almost every bike had a two-stroke engine, which used more. In 1985, Hero Honda launched the CD 100, India's first 100 cc four-stroke bike, which burns less. It ran 80 km a litre."
     },
     {
       "kind": "choice",
@@ -85,7 +85,7 @@
           "bucket": 1
         },
         {
-          "text": "A café that sends back cakes that don't match",
+          "text": "A café that sends back cakes that don't look the same",
           "bucket": 0
         },
         {
@@ -97,7 +97,7 @@
           "bucket": 0
         },
         {
-          "text": "A buyer who asks for a free new design every week",
+          "text": "A buyer who wants the design redone free, again and again",
           "bucket": 1
         }
       ],
@@ -135,11 +135,11 @@
       "options": [
         {
           "id": "b",
-          "label": "The chef, who found three things to fix"
+          "label": "The chef, who tasted your cake with care"
         },
         {
           "id": "a",
-          "label": "Your regular, who buys 20 cakes each month"
+          "label": "Your regular, who buys every month and never complains"
         },
         {
           "id": "c",
@@ -156,7 +156,7 @@
     {
       "kind": "scenario",
       "id": "hotel",
-      "setup": "It's mid-December. The hotel needs cakes before Christmas. Its rules require a second fridge and steel tables, costing ₹30,000, and the work takes a week. A bigger bakery has offered to start tomorrow, so you could lose the order if you take too long.",
+      "setup": "It's mid-December. The hotel needs cakes before Christmas, and it wants a supplier who will pass its checks. Its rules need a second fridge and steel tables, costing ₹30,000, and the work takes a week. A bigger bakery has offered to start tomorrow.",
       "question": "What do you tell the hotel?",
       "options": [
         {
@@ -209,7 +209,7 @@
     {
       "id": "m62-tough-2",
       "front": "Which tough buyer helps you most?",
-      "options": ["One who wants ₹100 off every time", "One who sends back anything uneven"],
+      "options": ["One who wants ₹200 off every time", "One who sends back anything uneven"],
       "answer": 1,
       "back": "Buyers tough on quality make you better. Buyers tough on price just cost you."
     },
