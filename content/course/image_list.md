@@ -47,3 +47,14 @@ text or signs, no real person's likeness.
 | `ls_burnt_stock` | u3-discount-signal | A large, dim warehouse, 2018: racks of fine unsold beige trench coats and leather bags in neat rows; at the end, the open door of an industrial furnace glowing orange. No people, no check pattern, no logos or readable text. |
 | `ls_hot_vending` | u3-fair-rise | A sunny city street on a very hot day, 1999: a plain red drinks vending machine with no brand name, heat haze over the road, a sweating man in a shirt looking at it. No logos or readable text. |
 | `ls_scooter_queue` | u3-queue-signal | An Indian scooter showroom, early 1980s: a long line of men and a few women outside, some holding booking papers, a pale blue scooter behind the glass. Faces not in focus; no logos, brand names or readable text. |
+
+## Unit 6: Running the business
+
+| Image id | Lesson | Picture |
+|---|---|---|
+| `ls_few_lines` | u6-too-many-items | Inside a biscuit factory in India, April 2020: one packing line running with plain golden biscuits, only a few workers in masks, hairnets and gloves, spread apart; the other lines stand idle and dark. Wide shot. No logos, brand names or readable text. |
+| `ls_eye_ward` | u6-one-way | A clean, bright eye-surgery theatre in a south Indian hospital: two operating tables side by side, a masked surgeon at a microscope over one patient while masked nurses prepare the next patient on the other table. Calm, orderly. No logos, brand names or readable text. |
+| `ls_phone_tower` | u6-own-the-core | An Indian city rooftop at dusk, 2004: a mobile phone tower with antennas, two engineers in plain overalls and helmets working on it, the city below. No logos. No logos, brand names or readable text. |
+| `ls_radiator_caps` | u6-few-suppliers | A factory workbench in Chennai, 1990s: neat rows of shiny new car radiator caps on a tray, a worker's hands checking one with a gauge, more trays behind. Close-up, no logos. No logos, brand names or readable text. |
+| `ls_metro_build` | u6-critical-path | Construction of an elevated metro line in Delhi, early 2000s: tall concrete viaduct pillars, cranes, workers in hard hats; a plain new silver metro coach waits on a trailer below. No logos or writing. No logos, brand names or readable text. |
+| `ls_bike_pump` | u6-tough-buyers | A petrol pump in a small Indian town, mid-1980s: a man fills a small plain motorcycle, two other riders wait their turn, an attendant holds the nozzle. Warm evening light. No brand names. No logos, brand names or readable text. |
