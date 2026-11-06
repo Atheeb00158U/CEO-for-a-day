@@ -43,13 +43,13 @@
       "kind": "explain",
       "id": "on-you",
       "title": "It's used on you",
-      "text": "You see this every day: \"bestseller\" tags, star ratings, \"1,200 bought this week\". Some of it is fake. Fake or paid reviews mislead buyers, and India has a standard against them, called IS 19000. So never fake it."
+      "text": "You see this every day: \"bestseller\" tags, star ratings, \"1,200 bought this week\". Some of it is fake. Fake or paid reviews mislead buyers. India's review standard, IS 19000, says bought reviews must not be published. So never fake it."
     },
     {
       "kind": "explain",
       "id": "backfire",
       "title": "Where it goes wrong",
-      "text": "Social proof can also work against you. In an American national park, a sign said many visitors had taken pieces of old wood that had turned to stone. Theft went up, because the sign told people, \"everyone does it\". Never tell buyers that most people do the wrong thing."
+      "text": "Social proof can also work against you. In an American national park, one sign said many past visitors had taken pieces of old wood that had turned to stone. Under that sign, the most wood went missing. It told people, \"everyone does it\"."
     },
     {
       "kind": "explain",
@@ -211,7 +211,7 @@
       "front": "Your cousin offers to post a 5-star review. Should you let her?",
       "options": ["Yes, it helps", "No, it misleads buyers"],
       "answer": 1,
-      "back": "Fake or paid reviews mislead buyers, and India has a standard against them."
+      "back": "Fake or paid reviews mislead buyers, and India's review standard says bought reviews must not be published."
     }
   ],
   "sources": [

@@ -9,7 +9,7 @@
       "kind": "explain",
       "id": "hook",
       "media": "img:ls_pug_kennel",
-      "text": "Let me tell you about a small dog. In 2003, a phone company called Hutch made ads with a pug following a boy everywhere. The line was: \"Wherever you go, our network follows.\" People loved that pug, and pug sales in India went up."
+      "text": "Let me tell you about a small dog. In the early 2000s, a phone company called Hutch made ads with a pug following a boy everywhere. The line was: \"Wherever you go, our network follows.\" People loved that pug, and pug sales in India went up."
     },
     {
       "kind": "choice",
@@ -37,7 +37,7 @@
       "kind": "explain",
       "id": "rule",
       "title": "Mental availability",
-      "text": "Byron Sharp, a marketing professor, calls this mental availability: how easily your name comes to mind when it's time to buy. Most people don't compare every shop. They pick the name they remember, even if another shop is a little better."
+      "text": "Byron Sharp, a marketing professor, calls this mental availability: how easily your name comes to mind when it's time to buy. People pick from the names that come to mind. A shop they can't think of doesn't get picked, even if it's better."
     },
     {
       "kind": "explain",
@@ -234,12 +234,16 @@
       "url": "https://theprint.in/feature/when-hutch-sold-the-idea-of-a-loyal-network-but-instead-triggered-a-pug-mania-in-india/731314"
     },
     {
-      "label": "From Hutch to Vodafone, the pug follows faithfully (exchange4media, 2007)",
-      "url": "https://www.exchange4media.com/advertising-news/from-hutch-to-vodafonethe-pug-follows-faithfully-27839.html"
+      "label": "India calling: Vodafone's strategy unplugged (afaqs, 2007)",
+      "url": "https://www.afaqs.com/news/advertising/19184_india-calling-vodafones-strategy-unplugged"
     },
     {
       "label": "Ehrenberg-Bass Institute: mental availability and distinctive assets (Byron Sharp, Jenni Romaniuk)",
       "url": "https://marketingscience.info/how-do-you-measure-how-brands-grow"
+    },
+    {
+      "label": "Brand Saga: Vodafone India part 1, the pug that taught us to dial (Social Samosa, 2019)",
+      "url": "https://www.socialsamosa.com/2019/11/brand-saga-vodafone-india-part-1-the-pug-that-taught-us-to-dial"
     }
   ]
 }

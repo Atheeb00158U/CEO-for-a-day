@@ -15,7 +15,7 @@
       "kind": "choice",
       "id": "guess",
       "guess": true,
-      "prompt": "In the last group, the waiter gave one chocolate, walked away, then turned back and gave a second, \"just for you\". Which group tipped most?",
+      "prompt": "In the last group, the waiter gave one chocolate, walked away, then turned back and gave a second one. Which group tipped most?",
       "options": [
         {
           "id": "a",
@@ -31,7 +31,7 @@
         }
       ],
       "answer": "b",
-      "why": "Compared with no chocolate, one chocolate raised tips by about 3%. Two raised them by about 14%. But one, then a second \"just for you\", raised them by about 21%."
+      "why": "Compared with no chocolate, one chocolate raised tips a little, about 3% more. Two chocolates: about 14% more. One, then a second after turning back: about 21% more."
     },
     {
       "kind": "explain",
@@ -208,7 +208,7 @@
       "text": "Give a ___ gift ___, and people want to give back.",
       "bank": ["real", "first", "costly", "later"],
       "answer": ["real", "first"],
-      "why": "Exactly. The waiter's second chocolate felt real and personal. Full cupcakes for a whole team, with nothing asked, work the same way. Give first, ask later."
+      "why": "Exactly. The waiter's second chocolate felt personal. Full cupcakes for a whole team, with nothing asked, work the same way. Give first, ask later."
     }
   ],
   "summary": [

@@ -9,7 +9,7 @@
       "kind": "explain",
       "id": "hook",
       "media": "img:ls_rope_cut",
-      "text": "Let me tell you about a man named Elisha Otis. In the 1850s, people in America were scared of lifts, because if the rope broke, the lift fell. Otis had built a lift with a safety brake. But every seller said \"my lift is safe\", so nobody listened."
+      "text": "Let me tell you about a man named Elisha Otis. In the 1850s, people in America were scared of lifts, because if the rope broke, the lift fell. Otis had built a lift with a safety brake. But after a few early orders, nobody else bought one."
     },
     {
       "kind": "explain",
@@ -21,7 +21,7 @@
       "kind": "choice",
       "id": "guess",
       "guess": true,
-      "prompt": "Otis had said \"my lift is safe\" for a long time, and few believed him. Why do you think the show worked?",
+      "prompt": "Otis had a safe lift, but few people were buying it. Why do you think the show worked?",
       "options": [
         {
           "id": "a",

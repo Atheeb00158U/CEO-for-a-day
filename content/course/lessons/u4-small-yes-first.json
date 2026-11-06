@@ -15,13 +15,13 @@
       "kind": "explain",
       "id": "small-ask",
       "title": "The small ask",
-      "text": "Two weeks earlier, someone had asked that group for something tiny: put a small \"Be a safe driver\" sign in a window or car. Almost all said yes. Two weeks later, a different person came and asked about the big lawn sign."
+      "text": "Two weeks earlier, someone had asked that group for something tiny: put a small \"Be a safe driver\" sign in a window or car. It was an easy thing to say yes to. Two weeks later, a different person came and asked about the big lawn sign."
     },
     {
       "kind": "choice",
       "id": "guess",
       "guess": true,
-      "prompt": "Of those asked only about the big sign, 17 in 100 said yes. How many said yes after first agreeing to the small sign?",
+      "prompt": "Of those asked only about the big sign, 17 in 100 said yes. How many said yes if first asked about the small sign?",
       "options": [
         {
           "id": "a",
@@ -37,7 +37,7 @@
         }
       ],
       "answer": "c",
-      "why": "About 76 in 100. A small yes two weeks earlier, to a different person, made the big yes more than four times as likely."
+      "why": "About 76 in 100. A small ask two weeks earlier, to a different person, made the big yes more than four times as likely."
     },
     {
       "kind": "explain",

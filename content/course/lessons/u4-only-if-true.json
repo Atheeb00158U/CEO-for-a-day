@@ -37,7 +37,7 @@
       "kind": "explain",
       "id": "scarcity",
       "title": "Scarcity",
-      "text": "This is called scarcity. When something is hard to get, we want it more. In the same study, a third group watched their jar go from 10 cookies to 2, and they liked the cookies most of all. The OnePlus invites worked on the same feeling."
+      "text": "This is called scarcity. When something is hard to get, we want it more. In the same study, a third group had their jar go from 10 cookies to 2 just before tasting, and they liked the cookies most of all. The OnePlus invites worked on the same feeling."
     },
     {
       "kind": "explain",
@@ -203,7 +203,7 @@
     },
     {
       "id": "m42-scarce-3",
-      "front": "In one study, cookies from which jar were rated tastier?",
+      "front": "In one study, cookies from which jar did people like more?",
       "options": ["A jar with 10 cookies", "A jar with 2 cookies"],
       "answer": 1,
       "back": "Scarce things feel more valuable, even when nothing else changes."
@@ -213,6 +213,10 @@
     {
       "label": "OnePlus One available in India without an invite on Feb 10 (FoneArena, 2015)",
       "url": "https://www.fonearena.com/blog/130822/oneplus-one-available-in-india-without-an-invite-on-feb-10.html"
+    },
+    {
+      "label": "OnePlus One launched in India on December 2, to retail exclusively on Amazon India (Mobigyaan)",
+      "url": "https://www.mobigyaan.com/oneplus-one-launched-india-december-2-retail-exclusively-amazon-india"
     },
     {
       "label": "Scarcity (social psychology): Worchel, Lee and Adewole's cookie jar study (1975)",

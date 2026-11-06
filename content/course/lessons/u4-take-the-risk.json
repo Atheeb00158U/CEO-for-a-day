@@ -9,7 +9,7 @@
       "kind": "explain",
       "id": "hook",
       "media": "img:ls_cash_parcel",
-      "text": "Let me take you back to 2010. Flipkart sold books and phones online. But few Indians had a debit or credit card, and many didn't trust paying on a website. What if the money went and the parcel never came? Flipkart had to fix that fear. Guess how."
+      "text": "Let me take you back to 2010. Flipkart sold books and phones online. But few Indians had a debit or credit card, and many weren't used to paying on a website. What if the money went and the parcel never came? Flipkart had to fix that fear. Guess how."
     },
     {
       "kind": "choice",
@@ -31,7 +31,7 @@
         }
       ],
       "answer": "b",
-      "why": "It let people pay cash at the door. If no parcel came, the buyer lost nothing. Two months after cash on delivery began, 30 of every 100 orders were paid this way. By 2013, it was 80."
+      "why": "It let people pay cash at the door. If no parcel came, the buyer lost nothing. Two months after cash on delivery began, 30 of every 100 sales were paid this way. By 2013, it was 80."
     },
     {
       "kind": "explain",
@@ -235,6 +235,10 @@
     {
       "label": "Flipkart: every wish will be fulfilled (Harvard Digital Innovation and Transformation)",
       "url": "https://d3.harvard.edu/platform-rctom/submission/flipkart-every-wish-will-be-fulfilled/"
+    },
+    {
+      "label": "How Flipkart decided to sell phones online (ThePrint, book excerpt)",
+      "url": "https://theprint.in/pageturner/excerpt/screw-it-well-do-it-this-is-how-flipkart-decided-to-sell-phones-online/312291"
     }
   ]
 }
