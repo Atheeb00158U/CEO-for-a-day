@@ -66,3 +66,16 @@ export const phoneCrop = (name: SceneName) => ((SCENES[name] as Scene).square ? 
 
 export const sceneSrcSet = (name: SceneName, tall: boolean, ext: "avif" | "webp") =>
   (tall ? phoneCrop(name) : SCENE_WIDE).widths.map((w) => `/brand/site/${name}${tall ? "-tall" : ""}-${w}.${ext} ${w}w`).join(", ");
+
+// Course map banners: one per module, showing what its lessons are about (made with ChatGPT, 6 Nov 2026; briefs in
+// docs/MODULE-ART.md). Masters (exactly MODULE_BANNER's size) in content/brand/modules/<module id>.webp, served at
+// public/course/modules/<module id>-<width>.<ext>. A module listed here shows its own banner on the map; one that
+// isn't falls back to its gate Hot Seat's cover. Draft modules may be listed early: nothing shows until they're live.
+export const MODULE_BANNER = { width: 1440, height: 600, widths: [480, 960, 1440] } as const;
+
+export const MODULE_BANNERS: Record<string, string> = {
+  "u1-where-money-goes": "A kirana shop owner at night, staring into an almost empty cash box beside a spike of unpaid bills",
+};
+
+export const moduleSrcSet = (id: string, ext: "avif" | "webp") =>
+  MODULE_BANNER.widths.map((w) => `/course/modules/${id}-${w}.${ext} ${w}w`).join(", ");

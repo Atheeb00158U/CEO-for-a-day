@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import { MODULE_BANNERS, moduleSrcSet } from "@/lib/brand";
 import { showPaywall } from "@/lib/content-client";
 import { coursePath, type NodeState } from "@/lib/course-path";
 import type { CourseOutline } from "@/lib/course-types";
@@ -81,7 +82,20 @@ export function CoursePath({
             const cover = gates.find((g) => g.hs.cover)?.hs.cover;
             return (
               <article key={m.id}>
-                {cover ? (
+                {/* The module's own banner, else its gate Hot Seat's cover, else a plain gold block. */}
+                {MODULE_BANNERS[m.id] ? (
+                  <picture className="wavy-b relative block h-[148px] w-full overflow-hidden rounded-t-3xl bg-surface-2">
+                    <source type="image/avif" srcSet={moduleSrcSet(m.id, "avif")} sizes="(max-width: 480px) 100vw, 448px" />
+                    <source type="image/webp" srcSet={moduleSrcSet(m.id, "webp")} sizes="(max-width: 480px) 100vw, 448px" />
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={`/course/modules/${m.id}-960.webp`}
+                      alt={MODULE_BANNERS[m.id]}
+                      loading="lazy"
+                      className="absolute inset-0 size-full object-cover"
+                    />
+                  </picture>
+                ) : cover ? (
                   <MediaView media={cover} kenBurns={false} className="wavy-b h-[148px] w-full !rounded-t-3xl !rounded-b-none" />
                 ) : (
                   <div className="wavy-b grid h-[148px] place-items-center rounded-t-3xl" style={{ background: GOLD }}>

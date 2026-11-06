@@ -6,7 +6,7 @@ import { existsSync, mkdirSync, renameSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import sharp from "sharp";
-import { SCENES, SCENE_WIDE, WOLF, phoneCrop } from "../src/lib/brand.ts";
+import { MODULE_BANNER, MODULE_BANNERS, SCENES, SCENE_WIDE, WOLF, phoneCrop } from "../src/lib/brand.ts";
 
 const root = new URL("../", import.meta.url);
 const dir = (p) => fileURLToPath(new URL(p, root));
@@ -54,7 +54,16 @@ for (const [name, scene] of Object.entries(SCENES)) {
     );
   }
 }
-console.log(`brand: ${made} image(s) made in public/brand/`);
+const moduleOut = dir("public/course/modules/");
+mkdirSync(moduleOut, { recursive: true });
+for (const id of Object.keys(MODULE_BANNERS)) {
+  for (const w of MODULE_BANNER.widths) {
+    await make(join(dir("content/brand/modules/"), `${id}.webp`), join(moduleOut, `${id}-${w}`), (s) =>
+      s.resize({ width: w, withoutEnlargement: true }),
+    );
+  }
+}
+console.log(`brand: ${made} image(s) made in public/brand/ and public/course/modules/`);
 
 // Notification pictures (src/lib/server/reminders.ts): each pose centred on a wide 2:1 banner, which is the shape
 // Android shows under a notification, as small JPEGs. And the badge: Android's status-bar icon, which it draws as a
