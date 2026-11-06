@@ -87,7 +87,7 @@
         },
         {
           "id": "b",
-          "label": "Full ₹6,000 back after the party, no questions asked"
+          "label": "Half now, and the other half only after the party"
         },
         {
           "id": "c",
@@ -97,7 +97,7 @@
       "answer": "a",
       "why": "Yes. The tasting lets them check the cake before the big day. Early delivery leaves time to fix anything, and if you're late, you pay. Now the risk is yours, not theirs.",
       "wrong": {
-        "b": "That fixes the money, but the refund comes after the party, when 150 guests have already seen the cake. A tasting first and early delivery remove the fear they really have.",
+        "b": "That moves some money risk onto you, but the fear stays: a bad cake in front of 150 guests. A tasting first and early delivery remove the fear they really have.",
         "c": "A discount and a free cake make the deal cheaper, but the fear stays the same. A tasting first and early delivery remove the real risk."
       }
     },
@@ -177,7 +177,7 @@
           "id": "b",
           "label": "Tell them, and say the cake is free",
           "grade": "great",
-          "outcome": "You return the ₹6,000. Making the cake cost you ₹2,800, so you're ₹2,800 down. The family is amazed and tells everyone. In September, 4 guests order cakes, leaving you ₹12,800. You end ₹10,000 up.",
+          "outcome": "You return the ₹6,000. Making the cake cost you ₹2,800, so you're ₹2,800 down. The family is amazed and tells everyone. In September, 4 guests order party cakes, leaving you ₹12,800. You end ₹10,000 up.",
           "why": "Keeping a promise when it costs you is when people remember it. That story sells your next cakes for you."
         },
         {
@@ -193,9 +193,9 @@
     {
       "kind": "gap",
       "id": "fill",
-      "text": "Find the risk they really ___, and take it ___ yourself.",
-      "bank": ["fear", "on", "pay", "off"],
-      "answer": ["fear", "on"],
+      "text": "Find the risk they really ___, and carry it ___.",
+      "bank": ["fear", "yourself", "like", "later"],
+      "answer": ["fear", "yourself"],
       "why": "Exactly. Flipkart took on the risk of a parcel that never came. You took on the risk of a bad cake on the big day, and you kept your promise even when it cost you. That's risk reversal."
     }
   ],

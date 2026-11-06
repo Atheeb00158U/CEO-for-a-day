@@ -43,31 +43,31 @@
       "kind": "explain",
       "id": "on-you",
       "title": "It's used on you",
-      "text": "You'll see this everywhere. The free sample at the mall. The extra laddoo the sweet shop drops into your box. The cup of chai a saree shop serves you before you start to bargain. Each one makes you feel you owe something back."
+      "text": "You'll see this everywhere. The free first class a tuition teacher gives. The extra laddoo the sweet shop drops into your box. The cup of chai a saree shop serves you before you start to bargain. Each one makes you feel you owe something back."
     },
     {
       "kind": "choice",
-      "id": "chai",
-      "prompt": "A saree shop serves you free chai and shows you 20 sarees. You feel bad leaving without buying. What's the main reason?",
+      "id": "jeweller",
+      "prompt": "A jeweller cleans your old chain for free while you wait. Then he shows you new chains. You feel bad leaving without buying. Why?",
       "options": [
         {
           "id": "a",
-          "label": "The sarees were better than you expected"
+          "label": "The new chains were better than you expected"
         },
         {
           "id": "b",
-          "label": "The chai made you stay much longer"
+          "label": "Waiting there made you stay much longer"
         },
         {
           "id": "c",
-          "label": "You got something free first"
+          "label": "He did something for you first"
         }
       ],
       "answer": "c",
-      "why": "Yes. The chai and the effort came first, so leaving with nothing feels like not paying back. That's reciprocity at work on you.",
+      "why": "Yes. He gave first, so leaving with nothing feels like not paying back. That's reciprocity at work on you.",
       "wrong": {
-        "a": "Maybe, but you'd feel bad leaving even if the sarees were ordinary. The free chai and the effort came first, so you feel you owe them.",
-        "b": "A longer visit adds a little. But even a short visit with free chai leaves you feeling you owe them. The gift came first."
+        "a": "Maybe, but you'd feel bad leaving even if they were ordinary. He cleaned your chain for free first, so you feel you owe him.",
+        "b": "A longer visit adds a little. But even a short visit with a free cleaning leaves you feeling you owe him. The gift came first."
       }
     },
     {
@@ -200,7 +200,7 @@
       "kind": "explain",
       "id": "honest-line",
       "title": "The honest line",
-      "text": "Remember the line from the price lessons: use on others only what you'd accept being used on you. Would you want a shop to give you chai only so you feel bad leaving? Give a real gift because it's kind, and let buying be their choice."
+      "text": "Here's a line to keep for this whole unit: use on others only what you'd accept being used on you. Your cupcakes are fair: nothing asked, no pressure, and buying stays their choice. Chai served only to make people feel bad leaving is not."
     },
     {
       "kind": "gap",

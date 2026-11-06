@@ -60,27 +60,27 @@
     {
       "kind": "choice",
       "id": "true-false",
-      "prompt": "True or false: posting \"Only 40 plum cakes this Christmas\" is fair, because you soaked fruit for just 40.",
+      "prompt": "True or false: \"Only 40 plum cakes\" is fair, even if you could have soaked fruit for 80 but chose 40.",
       "options": [
         {
           "id": "a",
-          "label": "True: the limit is real"
+          "label": "True: a limit I chose is still real"
         },
         {
           "id": "b",
-          "label": "False: any limit is a trick"
+          "label": "False: only limits I can't change count"
         }
       ],
       "answer": "a",
-      "why": "True. You really can make only 40. Saying so is honest, and it helps buyers plan. False urgency is a limit that isn't real.",
+      "why": "True. You chose 40, and you'll make exactly 40. The limit is real, so saying it is honest. False urgency is a limit that isn't real.",
       "wrong": {
-        "b": "Not every limit is a trick. You really can make only 40, so saying it is honest and helps buyers plan. False urgency is a limit that isn't real."
+        "b": "A batch size you choose is still a real limit, as long as you keep it. Many bakers make a set number. False urgency is a limit that isn't real at all."
       }
     },
     {
       "kind": "choice",
       "id": "which-post",
-      "prompt": "You can make 40 plum cakes, and need every order by 20 December to bake them in time. Which post is honest?",
+      "prompt": "You must close orders in time to bake every cake before Christmas. Which post is honest?",
       "options": [
         {
           "id": "a",
@@ -161,7 +161,7 @@
           "id": "c",
           "label": "\"6 plum cakes left, and chocolate cakes for the rest\"",
           "grade": "great",
-          "outcome": "The office takes 6 plum cakes and 14 chocolate cakes. You keep ₹3,600 plus ₹6,300: ₹9,900. The manager asks to book 30 plum cakes for next Christmas, in October.",
+          "outcome": "The office takes 6 plum cakes and 14 chocolate cakes. You keep ₹3,600 plus ₹6,300: ₹9,900. The manager asks to book 30 plum cakes in October, for next Christmas.",
           "why": "You kept your real limit and still helped. Next year, they'll order early because they know the limit is true."
         }
       ]

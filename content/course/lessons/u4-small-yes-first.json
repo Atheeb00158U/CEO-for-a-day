@@ -58,22 +58,9 @@
       "text": "A lawn sign and a cake order work the same way. It's late October. Another big office, one that has never ordered from you, has 120 staff: about 10 birthdays a month. But the manager won't sign a year's plan with a baker she's never tried."
     },
     {
-      "kind": "order",
-      "id": "steps",
-      "prompt": "Here are five steps to win the office's year plan, mixed up. Drag them into order, first step at the top.",
-      "steps": [
-        "Offer one ₹850 cake for this Friday's birthday",
-        "Ask the manager what her staff liked about Friday's cake",
-        "Agree a one-month trial, with a date to talk",
-        "Meet on that date and look at the month together",
-        "Offer the next step, a longer plan"
-      ],
-      "why": "Well done. Each step is a small yes that is useful by itself. The manager says what her staff liked in her own words, then picks the next step. Each yes makes the next one feel natural."
-    },
-    {
       "kind": "choice",
       "id": "let-me-think",
-      "prompt": "After the first cake, you suggest a one-month trial. The manager says, \"Let me think.\" What do you say?",
+      "prompt": "After your first free chat, you suggest one trial cake. The manager says, \"Let me think.\" What do you say?",
       "options": [
         {
           "id": "a",
@@ -96,6 +83,19 @@
       }
     },
     {
+      "kind": "order",
+      "id": "steps",
+      "prompt": "Here are five steps to win the office's year plan, mixed up. Drag them into order, first step at the top.",
+      "steps": [
+        "Offer one ₹850 cake for this Friday's birthday",
+        "On Monday, ask the manager what staff liked about it",
+        "Agree a one-month trial, with a date to talk",
+        "Meet on that date and look at the month together",
+        "Offer the next step, a longer plan"
+      ],
+      "why": "Well done. Each step is a small yes that is useful by itself. The manager says what her staff liked in her own words, then picks the next step. Each yes makes the next one feel natural."
+    },
+    {
       "kind": "choice",
       "id": "fair-small",
       "prompt": "You want more offices to try your cakes. Which small first step is fair to ask for?",
@@ -116,7 +116,7 @@
       "answer": "c",
       "why": "Yes. The cupcake box is useful by itself, and the office decides if it wants more. A fair small step never traps anyone into the big one.",
       "wrong": {
-        "a": "A ₹1 trial that quietly becomes ₹10,000 is a trap, like the free trials from the price lessons. The small step must be useful by itself, with the big step their choice.",
+        "a": "A ₹1 trial that quietly becomes ₹10,000 is a trap. The small step must be useful by itself, and the big step must be their choice.",
         "b": "That asks for the big yes first, with a gift as bait. A small step should come before the big one, not with it."
       }
     },
@@ -161,7 +161,7 @@
       "kind": "gap",
       "id": "fill",
       "text": "Ask for a small ___ first, because people like to stay true to what they've ___.",
-      "bank": ["yes", "said", "gift", "lost"],
+      "bank": ["yes", "said", "price", "lost"],
       "answer": ["yes", "said"],
       "why": "Exactly. The small window sign led to the big lawn sign. One Friday cake led to a trial, then three months, then the year."
     }

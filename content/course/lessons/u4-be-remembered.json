@@ -78,11 +78,11 @@
       "options": [
         {
           "id": "a",
-          "label": "A fresh new box design every month"
+          "label": "A fresh new box design, a different one every month"
         },
         {
           "id": "b",
-          "label": "The same ₹100 discount every week"
+          "label": "The same ₹100 discount, posted every single week"
         },
         {
           "id": "c",
@@ -115,7 +115,7 @@
         }
       ],
       "answer": "a",
-      "why": "Exactly. It's short, funny and true to how people feel. A line people enjoy gets repeated, and your name travels with it.",
+      "why": "Exactly. It's short, funny and true to how people feel. You post it with your name and number every time, so when people repeat the line, your name travels with it.",
       "wrong": {
         "b": "It's clear, but every baker says it. Nobody repeats a line they've read a hundred times. A short, funny line gets passed on.",
         "c": "Every shop says \"best quality, best price\", so nobody notices it. A short, funny line is the one people pass on."

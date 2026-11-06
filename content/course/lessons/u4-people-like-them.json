@@ -31,7 +31,7 @@
         }
       ],
       "answer": "c",
-      "why": "\"This room\" won. With the environment card, about 35 of every 100 guests used their towels again. \"Most guests at this hotel\" got 44. \"Guests who stayed in this room\" got 49."
+      "why": "\"This room\" won. In one test, the environment card got 35 of every 100 guests to use towels again, and \"most guests at this hotel\" got 44. In a second test, \"this room\" got 49, against 37 for the environment card."
     },
     {
       "kind": "explain",
@@ -55,7 +55,7 @@
       "kind": "explain",
       "id": "home",
       "title": "Now look at your business",
-      "text": "Hotel guests and cake buyers think alike. It's early October. The new colony has 120 homes, and 38 of them now order from you. Next you want Lake View, a society of 300 flats nearby. Only 6 Lake View families have ordered so far."
+      "text": "Hotel guests and cake buyers think alike. It's early October. Your birthday-cake plan has grown to 15 offices. The new colony has 120 homes, and 38 now order from you. Next you want Lake View, 300 flats nearby, where only 6 families have ordered."
     },
     {
       "kind": "choice",
@@ -97,14 +97,14 @@
         },
         {
           "id": "c",
-          "label": "\"Pay by Friday, or deliveries will stop\""
+          "label": "\"Why haven't you paid yet? Please pay now\""
         }
       ],
       "answer": "b",
       "why": "Exactly. It shows that most offices pay on time, and that makes the late ones want to do the same.",
       "wrong": {
         "a": "That's the national park sign again. \"Many pay late\" tells them everyone does it. Show that most offices pay: \"9 of our 15 have already paid\".",
-        "c": "A threat makes people push back, and you may lose an office. Show that most offices pay: \"9 of our 15 have already paid\"."
+        "c": "An angry message makes people push back, and you may lose an office. Show that most offices pay: \"9 of our 15 have already paid\"."
       }
     },
     {
@@ -167,7 +167,7 @@
           "label": "\"6 Lake View families have ordered\", with their OK",
           "grade": "great",
           "outcome": "Two of the six reply with photos of their cakes. Their neighbours ask questions. 10 new families order in a month, leaving you ₹4,500.",
-          "why": "6 real neighbours beat 38 strangers. People copy people like them."
+          "why": "6 real neighbours beat 38 strangers. The number is small, but they live next door, and people copy people like them."
         }
       ]
     },
@@ -195,7 +195,7 @@
     {
       "id": "m42-proof-1",
       "front": "Which line wins more orders in a colony?",
-      "options": ["\"Thousands love us\"", "\"35 families in your colony order from us\""],
+      "options": ["\"Thousands love us\"", "\"38 families in your colony order from us\""],
       "answer": 1,
       "back": "People copy people like them. Real, exact, nearby buyers pull hardest."
     },

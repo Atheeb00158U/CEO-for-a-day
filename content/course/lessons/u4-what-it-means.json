@@ -55,14 +55,14 @@
       "kind": "explain",
       "id": "home",
       "title": "Now look at your business",
-      "text": "Washing powder and cakes seem far apart, but your bakery has a ladder too. It's the second week of December. Your cakes use real butter and no preservatives, and your posts say exactly that. Families nod, then compare your ₹850 with the chain shop's ₹700."
+      "text": "Washing powder and cakes seem far apart, but your bakery has a ladder too. It's mid-December. The butter videos kept your old buyers. But new buyers still compare your ₹850 with the chain shop's ₹700, even when your posts say \"real butter\"."
     },
     {
       "kind": "order",
       "id": "your-ladder",
       "prompt": "Here are three lines about your cake, mixed up. Put them in ladder order, from the bottom step to the top.",
       "steps": ["Real butter, no preservatives", "Fresh, and safe for your child to eat", "A birthday made at home, with love"],
-      "why": "Well done. Real butter is what it is. Safe for your child is what that lets you do. A birthday made with love is what it means to a parent. That's the step families choose with."
+      "why": "Well done. Real butter is what it is. Safe for your child is what that lets you do. A birthday made with love is what it means. Families choose with the top step, but only when a true fact holds it up."
     },
     {
       "kind": "choice",
@@ -133,7 +133,7 @@
           "bucket": 0
         },
         {
-          "text": "Made the way your family would make it",
+          "text": "Your child's happiest day of the year",
           "bucket": 1
         },
         {
@@ -145,7 +145,7 @@
           "bucket": 1
         }
       ],
-      "why": "Butter, eggless and no preservatives say what the cake is. A birthday to remember, made like family and shared moments say what it means. The best line joins one of each."
+      "why": "Butter, eggless and no preservatives say what the cake is. A birthday to remember, a happiest day and shared moments say what it means. The best line joins one of each."
     },
     {
       "kind": "scenario",
@@ -165,7 +165,7 @@
           "id": "b",
           "label": "\"₹100 off this week only, real butter cakes!\"",
           "grade": "bad",
-          "outcome": "14 order at ₹750, leaving you ₹350 each: ₹4,900. In December, families wait for your next offer.",
+          "outcome": "14 order at ₹750, leaving you ₹350 each: ₹4,900. In January, families wait for your next offer.",
           "why": "You moved the talk to price, the one thing the chain shop wins on.",
           "better": "Join the facts to what they mean: \"Real butter, no preservatives: New Year, made like home.\""
         },
@@ -188,7 +188,7 @@
       "kind": "gap",
       "id": "fill",
       "text": "Sell what it ___ to them, not just what it ___.",
-      "bank": ["means", "is", "costs", "weighs"],
+      "bank": ["means", "is", "eats", "runs"],
       "answer": ["means", "is"],
       "why": "Exactly. Surf sold children who stand up for others, not just clean clothes. You sell a party made like home, on top of real butter."
     }

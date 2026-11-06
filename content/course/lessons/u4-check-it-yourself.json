@@ -49,13 +49,13 @@
       "kind": "explain",
       "id": "check",
       "title": "Let them check",
-      "text": "A small shop doesn't need to risk its life. The easiest costly signal is to let buyers check the claim themselves. A dairy tests the milk's fat in front of you. A liar can't do that. When buyers can check, they don't need to trust you."
+      "text": "A small shop doesn't need to risk its life. The easiest costly signal is to let buyers check the claim themselves. A milk seller dips a lactometer into your milk while you watch. A liar can't do that. When buyers can check, they don't need to trust you."
     },
     {
       "kind": "explain",
       "id": "home",
       "title": "Now look at your business",
-      "text": "Otis sold lifts, but your bakery has the same problem with words. It's the first week of September. Many Jain families in the new colony want eggless cakes. Your cakes really are eggless, and they cost ₹850. But families ask, \"How do we know?\""
+      "text": "Otis sold lifts, but your bakery has the same problem with words. It's the first week of September. Many vegetarian families in the new colony want eggless cakes. Your cakes really are eggless, and they cost ₹850. But families ask, \"How do we know?\""
     },
     {
       "kind": "choice",
@@ -64,11 +64,11 @@
       "options": [
         {
           "id": "a",
-          "label": "\"100% eggless, I promise\" on every post"
+          "label": "\"100% eggless, I promise\", written on every post"
         },
         {
           "id": "b",
-          "label": "Five happy customers post reviews for you"
+          "label": "Five happy customers post reviews about you"
         },
         {
           "id": "c",
@@ -89,7 +89,7 @@
       "options": [
         {
           "id": "a",
-          "label": "Your sister: the costly ad"
+          "label": "Your sister: the big ad"
         },
         {
           "id": "b",
@@ -101,9 +101,9 @@
         }
       ],
       "answer": "b",
-      "why": "Right. Any family can send a slice to a lab. The ₹5,000 promise costs you nothing if you're honest, but it would ruin a liar. That's why families believe it. A liar could pay for the same ad.",
+      "why": "Right. Any family can send a slice to a lab. The ₹5,000 promise costs you nothing if you're honest, but it would ruin a liar. An ad costs an honest shop and a liar the same, so it proves nothing.",
       "wrong": {
-        "a": "The ad does cost money, but a liar could pay ₹8,000 for the same ad. Your friend's promise would only cost a liar, so families believe it.",
+        "a": "The ad costs money, but it costs an honest shop and a liar the same, so it proves nothing. Your friend's promise would only cost a liar, so families believe it.",
         "c": "Plain words don't work, but this promise isn't plain words. It would cost a liar ₹5,000 each time, so families believe it."
       }
     },
@@ -181,9 +181,9 @@
     }
   ],
   "summary": [
-    "Costly signalling: proof that would cost a liar a lot is believed. Cheap words are not.",
-    "A costly ad isn't a costly signal. A liar can pay for an ad too.",
-    "Let buyers check your claim themselves: show the baking, the packs, the date."
+    "Costly signal: proof that would cost a liar a lot is believed. Cheap words are not.",
+    "An ad costs an honest shop and a liar the same, so it proves nothing.",
+    "Let buyers check your claim themselves: a live video of their cake, the packs on show, a taste before paying."
   ],
   "cards": [
     {
@@ -198,7 +198,7 @@
       "front": "Which promise is a costly signal?",
       "options": ["A ₹20,000 ad saying \"best quality\"", "₹5,000 to anyone who finds a fault"],
       "answer": 1,
-      "back": "A costly signal costs only a liar. Anyone, honest or not, can pay for an ad."
+      "back": "A costly signal costs only a liar. An ad costs an honest shop and a liar the same."
     },
     {
       "id": "m41-signal-3",
