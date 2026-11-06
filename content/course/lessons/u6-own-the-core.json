@@ -31,7 +31,7 @@
         }
       ],
       "answer": "c",
-      "why": "Airtel paid only for the network capacity its calls used, not to own the network. That left more time and money to win customers. By July 2006, it had more than 2.4 crore mobile customers."
+      "why": "Airtel paid for the network space its calls needed, instead of owning the network. This left more time and money to win customers. By July 2006, it had more than 2.4 crore mobile customers."
     },
     {
       "kind": "explain",
@@ -122,7 +122,7 @@
         }
       ],
       "answer": "b",
-      "why": "Exactly. ₹12,000 ÷ ₹60 = 200 trips. Below 200 trips, the service costs less. And your rider costs ₹12,000 even in a slow month: at 60 trips, the service costs ₹3,600.",
+      "why": "Exactly. ₹12,000 ÷ ₹60 = 200 trips. Below 200 trips, the service costs less. And your rider still costs ₹12,000 in a slow month: at 60 trips, the service costs only ₹3,600.",
       "wrong": {
         "a": "That's how many trips you make now. To find where they cost the same, divide ₹12,000 by ₹60. That's 200 trips.",
         "c": "Let's check: 300 trips × ₹60 = ₹18,000, more than the rider's ₹12,000. Divide instead: ₹12,000 ÷ ₹60 = 200 trips."
@@ -169,7 +169,7 @@
         },
         {
           "id": "b",
-          "label": "Hire your own rider; he's there every day",
+          "label": "Hire a rider for daily help, but pay every month",
           "grade": "ok",
           "outcome": "Diwali deliveries go well. You pay ₹12,000 a month for the rider and ₹2,500 a month for his scooter loan. In November, deliveries fall to about 90. A delivery service would cost ₹5,400, but your rider still costs ₹12,000.",
           "why": "Deliveries worked, but you took on a fixed cost for a busy month. Delivery isn't your core, so there was no need to own it.",
@@ -177,7 +177,7 @@
         },
         {
           "id": "c",
-          "label": "Pay a delivery service per trip; you bake",
+          "label": "Pay a service per trip, but depend on its riders",
           "grade": "great",
           "outcome": "In October, the service makes 200 deliveries for ₹12,000, the same as your own rider. In November, it makes about 90 for ₹5,400, saving you ₹6,600. You spend Diwali baking, and your regular customers keep ordering.",
           "why": "Exactly. You kept your core, the baking, and paid others only for what you used. When the rush ended, the cost fell with it."

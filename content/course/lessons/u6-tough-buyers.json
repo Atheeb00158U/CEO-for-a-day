@@ -31,7 +31,7 @@
         }
       ],
       "answer": "c",
-      "why": "Riders who counted every rupee chose the bike that wasted the least petrol, so Hero Honda had to keep its engines saving petrol. That helped it sell more bikes. By 2009, it sold about half of India's motorcycles, and it had been the world's biggest two-wheeler maker for eight years."
+      "why": "Riders who watched every rupee wanted bikes that used less petrol, so Hero Honda had to make engines that went farther on each litre. That helped it sell more bikes. By 2009, it sold about half of India's motorcycles, and it had been the world's biggest two-wheeler maker for eight years."
     },
     {
       "kind": "explain",
@@ -97,11 +97,11 @@
           "bucket": 0
         },
         {
-          "text": "A buyer who wants a new design every week, free",
+          "text": "A buyer who asks for a free new design every week",
           "bucket": 1
         }
       ],
-      "why": "Exactly. Some buyers ask for better quality: a clean kitchen, cakes that match, a full ingredient list. Meeting them makes every cake better. Others only ask for lower prices, free extras or more time to pay, and that just leaves you with less money."
+      "why": "Exactly. Some buyers want better quality: clean kitchens, cakes that look alike and full ingredient lists. Their demands help you improve. Others ask only for lower prices, free extras or more time to pay, and meeting those demands just leaves you with less money."
     },
     {
       "kind": "choice",
@@ -118,7 +118,7 @@
         },
         {
           "id": "c",
-          "label": "Less cream goes bad in every order"
+          "label": "Less cream goes bad in your other orders"
         }
       ],
       "answer": "c",
@@ -135,19 +135,19 @@
       "options": [
         {
           "id": "b",
-          "label": "The chef's. She named three problems"
+          "label": "The chef, who found three things to fix"
         },
         {
           "id": "a",
-          "label": "The regular's. She buys the most"
+          "label": "Your regular, who buys 20 cakes each month"
         },
         {
           "id": "c",
-          "label": "Neither. Only sales numbers matter"
+          "label": "Neither, because what sells matters more"
         }
       ],
       "answer": "b",
-      "why": "Right. Remember Unit 2: praise is not proof. \"All good\" costs nothing and teaches you nothing. The chef's three problems are three things to fix before other buyers find them.",
+      "why": "Right. Remember Unit 2: praise is not proof. Your regular's praise is good to hear, but it doesn't tell you what to improve. The chef found three problems you can fix before other customers notice them.",
       "wrong": {
         "a": "Your regular matters a lot. But \"all good\" tells you nothing to fix. Remember Unit 2: praise is not proof. The chef's three problems tell you what to fix before other buyers notice.",
         "c": "Sales matter. But the chef's three problems are what will keep cakes selling. Remember Unit 2: praise is not proof. A tough buyer's notes tell you what to fix."
@@ -156,14 +156,14 @@
     {
       "kind": "scenario",
       "id": "hotel",
-      "setup": "It's mid-December. The hotel wants cakes before Christmas. To meet its rules, you must spend ₹30,000 on a second fridge and steel tables. The work takes a week. And a bigger bakery has offered to start tomorrow.",
+      "setup": "It's mid-December. The hotel needs cakes before Christmas. Its rules require a second fridge and steel tables, costing ₹30,000, and the work takes a week. A bigger bakery has offered to start tomorrow, so you could lose the order if you take too long.",
       "question": "What do you tell the hotel?",
       "options": [
         {
           "id": "a",
           "label": "Accept, and fix the kitchen in January",
           "grade": "bad",
-          "outcome": "You deliver the Christmas cakes and earn ₹9,000 in two weeks. But at the first kitchen check, in week two, the inspector finds one fridge that's too full and wooden tables. The hotel moves to the bigger bakery.",
+          "outcome": "You deliver the Christmas cakes and earn ₹9,000 in two weeks. But at the first kitchen check, in week two, the inspector finds one fridge that's too full and wooden tables. The hotel stops buying from you and chooses the bigger bakery.",
           "why": "You took the order but not the standard. A tough buyer only makes you better if you meet its rules.",
           "better": "Say yes, fix the kitchen this week, then start."
         },
@@ -179,7 +179,7 @@
           "id": "c",
           "label": "Accept, but start once the kitchen is fixed",
           "grade": "great",
-          "outcome": "You fix the kitchen in a week and start just before Christmas. You earn ₹4,500 a week, so the ₹30,000 comes back in about 7 weeks. You pass every check, and less cream goes bad across all your orders.",
+          "outcome": "You show the hotel your plan, and it agrees to wait a week. You fix the kitchen and start just before Christmas. You earn ₹4,500 a week, so the ₹30,000 comes back in about 7 weeks, and less cream goes bad across all your orders.",
           "why": "Exactly. You met the tough standard before you started, so the hotel stayed, and every customer got a better cake."
         }
       ]

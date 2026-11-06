@@ -19,15 +19,15 @@
       "options": [
         {
           "id": "a",
-          "label": "It worked day and night at its sites"
+          "label": "It kept workers busy day and night"
         },
         {
           "id": "b",
-          "label": "It made every part itself"
+          "label": "It made all parts with its own workers"
         },
         {
           "id": "c",
-          "label": "It bought its first trains ready-made"
+          "label": "It bought trains instead of making them"
         }
       ],
       "answer": "c",
@@ -37,7 +37,7 @@
       "kind": "explain",
       "id": "path",
       "title": "The critical path",
-      "text": "Some jobs must wait for others. Say special boxes come from Mumbai in 10 days, and you can't pack until they arrive. That's a chain. The longest chain is your critical path, and it decides when you finish. If a job on it is slow, buy it ready-made nearby."
+      "text": "Some jobs must wait for others. Say special boxes take 10 days to arrive from Mumbai, and you cannot pack before they arrive. That's one chain of jobs. The longest chain is your critical path, and it decides when you finish. If waiting could make you late, buy ready-made boxes nearby."
     },
     {
       "kind": "explain",
@@ -89,7 +89,7 @@
         }
       ],
       "answer": "c",
-      "why": "Plan for 13. A writer, Douglas Hofstadter, made this a law: things take longer than you plan, even when you allow for delays. 12 days would have been late one time in three. Plan for the longest time you've seen, and keep extra days if you can.",
+      "why": "Plan for 13 days. A writer named Douglas Hofstadter gave this idea a name: things take longer than planned, even when you allow for delays. If you planned for 12 days, one of your three past orders would have been late. Use the longest time you've seen, and keep extra days if you can.",
       "guess": true
     },
     {
@@ -115,15 +115,15 @@
           "id": "a",
           "label": "Order from Mumbai, and bake cupcakes early",
           "grade": "bad",
-          "outcome": "You bake the cupcakes by 20 November to get ahead. But you can't finish until the stands arrive on the 27th. By then the cupcakes are a week old, so you bake all 200 again, about ₹3,000 more, and decorate three tiers all night.",
-          "why": "You rushed a job that wasn't on the critical path. It couldn't make you finish sooner, and the cupcakes went stale waiting for the stands.",
+          "outcome": "To get ahead, you bake the cupcakes by 20 November. But the stands arrive only on the 27th, and by then the cupcakes are a week old. You bake all 200 again, spending about ₹3,000 more, and stay up all night decorating three tiers.",
+          "why": "You finished the cupcakes early, but the stands still took the longest, so baking early didn't help you finish sooner. And the cupcakes went stale while you waited.",
           "better": "Rent the stands nearby today, and buy your own later."
         },
         {
           "id": "b",
           "label": "Order from Mumbai and save ₹600 on stands",
           "grade": "ok",
-          "outcome": "The stands arrive on day 12, the evening before the wedding. With no time to test them, you decorate all night. One tier leans, and you fix it at the wedding hall an hour before the guests arrive.",
+          "outcome": "The stands arrive on day 12, the evening before the wedding. You have no time to test them, so you decorate all night. One tier leans to one side, and you must fix it at the wedding hall an hour before the guests arrive.",
           "why": "You saved ₹600, but you kept no extra days for the slowest job. The stands almost made you late.",
           "better": "Rent the stands nearby today, and buy your own later."
         },

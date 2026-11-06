@@ -31,7 +31,7 @@
         }
       ],
       "answer": "b",
-      "why": "Everyone follows the same steps each time. While a surgeon operates on one patient, helpers prepare the next. The surgeon does the most important steps, and trained helpers do the rest in the same order, like a factory line. When every step has a fixed order, a missed step stands out."
+      "why": "Everyone follows the same steps each time. While a surgeon operates on one patient, helpers prepare the next. The surgeon does the most important steps, and trained helpers do the rest in the same order. When everyone knows the order, a missed step is easier to see."
     },
     {
       "kind": "explain",
@@ -123,22 +123,22 @@
       "options": [
         {
           "id": "a",
-          "label": "Yes. A perfect cake proves it"
+          "label": "Yes, because this cake came out well"
         },
         {
           "id": "c",
-          "label": "It depends on the oven that day"
+          "label": "It depends on how the oven worked"
         },
         {
           "id": "b",
-          "label": "No. Guessing can fail next time"
+          "label": "No, because she might guess wrong next time"
         }
       ],
       "answer": "b",
-      "why": "Right. Remember Unit 1: judge the thinking, not the luck. A good result from a guess doesn't make guessing a good way. A clear card helps everyone make the same cake every time, and that's how three people bake cakes that taste alike.",
+      "why": "Right. Remember Unit 1: judge the thinking, not the luck. A cake can come out well even when someone guesses, but that doesn't make guessing a good method. A clear card helps all three of you bake cakes that taste alike.",
       "wrong": {
-        "a": "Her cake was perfect this time. But remember Unit 1: judge the thinking, not the luck. A good result from a guess doesn't make guessing a good way. Next time it can fail, and nobody would know why.",
-        "c": "The oven matters, but that's another reason to write things down: then you can tell whether the oven or the guess went wrong. Judge the thinking, not the luck. Guessing can fail next time."
+        "a": "Her cake came out well this time. But remember Unit 1: judge the thinking, not the luck. One good result doesn't prove that guessing works. Next time she may guess wrong, and nobody will know why.",
+        "c": "The oven matters too, and that's another reason to write down each step: then you can check whether the oven or the guess caused a problem. Judge the thinking, not the luck. Guessing may fail next time."
       }
     },
     {
@@ -160,7 +160,7 @@
         }
       ],
       "answer": "a",
-      "why": "Exactly. Standard work doesn't mean you can't improve. Your sister tried it once and told you: that's the right way to suggest a change. Test it on a few cakes, and if it works, change the card, so everyone's cakes get lighter.",
+      "why": "Exactly. Standard work can improve. Your sister tried a new way once and told you, which is a good start, but one cake is not enough. Test it on a few cakes, and if it keeps working, change the card so everyone follows the better method.",
       "wrong": {
         "b": "The card is the best way so far, not forever. Try her idea on a few cakes. If it really works, put it on the card, so every cake gets lighter.",
         "c": "Then her cakes and yours taste different again. Test her idea, and if it works, change the card for everyone."

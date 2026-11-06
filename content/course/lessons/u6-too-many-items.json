@@ -98,7 +98,7 @@
     {
       "kind": "sort",
       "id": "hidden",
-      "prompt": "Each cake's ₹400 covers its ingredients and its box. I'll show you six costs. For each one, tell me: inside that ₹400, or hidden?",
+      "prompt": "Each cake's ₹400 covers its ingredients and box. I'll show you six costs. For each one, tell me: included in the ₹400, or extra?",
       "buckets": ["Inside the ₹400", "Hidden cost"],
       "items": [
         {
@@ -126,7 +126,7 @@
           "bucket": 1
         }
       ],
-      "why": "Exactly. Flour, the box and the cream on top go into every cake, so they're inside the ₹400. But wasted cream, learning time and fridge space are hidden costs that grow as you add items. That's why a long menu can eat your profit without you noticing."
+      "why": "Exactly. Flour, the box and the cream on top are part of the ₹400 cost. But wasted cream, learning time and fridge space are hidden extra costs that grow when you add items. That's why a long menu can eat your profit without you noticing."
     },
     {
       "kind": "choice",
@@ -156,14 +156,14 @@
     {
       "kind": "scenario",
       "id": "mango",
-      "setup": "It's July, and you're fully booked: any hour for something new must come from something you bake now. Four customers ask for mango cake. About 6 would sell a month, baked in one batch: ₹2,100 after wasted mango, for 5 hours. Pineapple earns ₹350 and coffee cake ₹150, each for 5 hours. 5 hours also bakes 3 chocolate cakes: ₹1,350.",
+      "setup": "It's July, and you're fully booked, so any new work must replace something you bake now. Four customers ask for mango cake. You could sell about 6 a month, baking them together in 5 hours, and earn ₹2,100 after wasted mango. Pineapple earns ₹350 and coffee cake ₹150, each using 5 hours. Any 5 free hours could bake the 3 chocolate cakes you now turn away: ₹1,350.",
       "question": "What do you do about the mango cake?",
       "options": [
         {
           "id": "a",
           "label": "Add mango, keep every cake",
           "grade": "ok",
-          "outcome": "Mango earns ₹2,100. But its 5 hours come out of your chocolate baking, so you bake 3 fewer chocolate cakes: ₹1,350 less. All in, you gain ₹750 a month, and your menu grows to 19 items.",
+          "outcome": "Mango earns ₹2,100. But you need 5 hours to bake it, so you make 3 fewer chocolate cakes and lose ₹1,350 from those orders. You gain ₹750 a month, and your menu grows to 19 items.",
           "why": "Mango was a good add. But every new item brings new hidden costs, here 5 hours of your time, so it should push out a weak item.",
           "better": "Add mango, and drop pineapple and coffee."
         },
