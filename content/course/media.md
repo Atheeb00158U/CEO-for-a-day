@@ -23,3 +23,11 @@ Lesson hook images, prepared like `npm run media` does (webp, 1080 px wide at mo
 | ls_burnt_stock | u3-discount-signal | generated (ChatGPT, 2026-11-03) | A dim warehouse of unsold beige trench coats and leather bags, an industrial furnace glowing at the far end (2018). |
 | ls_hot_vending | u3-fair-rise | generated (ChatGPT, 2026-11-03) | A sweating man with coins in his hand at a plain red drinks vending machine on a hot street (1999). |
 | ls_scooter_queue | u3-queue-signal | generated (ChatGPT, 2026-11-03) | A long line of people outside a 1980s scooter showroom, a pale blue scooter behind the glass; no readable signs. |
+| ls_cash_parcel | u4-take-the-risk | generated (ChatGPT, 2026-11-06) | A delivery man in a grey uniform hands a parcel to a woman at an apartment door as she counts rupee notes into his hand (2010). |
+| ls_rope_cut | u4-check-it-yourself | generated (ChatGPT, 2026-11-06) | An 1850s exhibition hall of iron and glass: a man in a top hat stands on a raised lift platform, a cut rope above him, a crowd looking up. |
+| ls_bill_sweets | u4-give-first | generated (ChatGPT, 2026-11-06) | A waiter places a second small wrapped chocolate on a leather bill folder as two diners smile. |
+| ls_hotel_towels | u4-people-like-them | generated (ChatGPT, 2026-11-06) | A hotel bathroom: folded white towels on a chrome rail and a small blank card on the counter. |
+| ls_lawn_sign | u4-small-yes-first | generated (ChatGPT, 2026-11-06) | A 1960s California front lawn: a man with hands on hips looks at a huge, blank, roughly painted board against his fence. |
+| ls_pug_kennel | u4-be-remembered | generated (ChatGPT, 2026-11-06) | A fawn pug walks from a pink kennel towards a red one in a sunny garden. |
+| ls_muddy_kid | u4-what-it-means | generated (ChatGPT, 2026-11-06) | An Indian lane after rain: a muddy schoolboy stamps in a puddle as his laughing little sister watches and their mother smiles from a doorway. |
+| ls_phone_invite | u4-only-if-true | generated (ChatGPT, 2026-11-06) | Three young men in a college canteen look at a plain black phone showing a blank glowing card, glasses of chai on the table (2014). |

@@ -9,7 +9,7 @@
       "kind": "explain",
       "id": "hook",
       "media": "img:ls_cash_parcel",
-      "text": "Let me take you back to 2010. Flipkart sold books and phones online. But few Indians had a debit or credit card, and many weren't used to paying on a website. What if the money went and the parcel never came? Flipkart had to fix that fear. Guess how."
+      "text": "Let me take you back to 2010. Flipkart sold books and phones online. But few Indians had a debit or credit card, and many had never paid on a website. What if they paid but the parcel never came? Flipkart had to fix that fear. Guess how."
     },
     {
       "kind": "choice",
@@ -19,11 +19,11 @@
       "options": [
         {
           "id": "a",
-          "label": "Gave big discounts on every order"
+          "label": "Gave big discounts on all orders"
         },
         {
           "id": "b",
-          "label": "Let people pay cash when the parcel came"
+          "label": "Took cash when the parcel came"
         },
         {
           "id": "c",
@@ -43,18 +43,18 @@
       "kind": "explain",
       "id": "which-risk",
       "title": "Which risk?",
-      "text": "Here's what most sellers miss. Money is not the only risk. A buyer can also lose time, or look foolish in front of family. A money-back offer fixes only the money. So first ask: what is this buyer really afraid of losing?"
+      "text": "Here's what many sellers miss. Money is not the only risk. A buyer can also lose time, or feel bad in front of family. Giving money back fixes only the money. So first ask: what is this buyer most afraid of losing?"
     },
     {
       "kind": "explain",
       "id": "home",
       "title": "Now look at your business",
-      "text": "Flipkart sold across India, but your home bakery meets the same fear. You've already used this once: in June, \"full money back\" won you the new colony. Now it's August of your fourth year, and a family asks about a ₹6,000 cake for their daughter's engagement."
+      "text": "Flipkart sold across India, but your home bakery faces the same fear. You've seen this before: in June, \"full money back\" helped you win the new colony. Now it's August of your fourth year, and a family asks about a ₹6,000 cake for their daughter's engagement."
     },
     {
       "kind": "choice",
       "id": "real-fear",
-      "prompt": "The family has never tried your cakes. 150 guests will see this ₹6,000 engagement cake. What are they most afraid of?",
+      "prompt": "The family has never tried your cakes. 150 guests will see this ₹6,000 engagement cake. What worries them most?",
       "options": [
         {
           "id": "a",
@@ -62,11 +62,11 @@
         },
         {
           "id": "b",
-          "label": "The cake going wrong in front of guests"
+          "label": "Serving a bad cake in front of guests"
         },
         {
           "id": "c",
-          "label": "Losing the ₹6,000 if they don't like it"
+          "label": "Losing ₹6,000 if they dislike the cake"
         }
       ],
       "answer": "b",
@@ -79,19 +79,19 @@
     {
       "kind": "choice",
       "id": "fix-the-fear",
-      "prompt": "The family fears a bad cake in front of 150 guests. Which offer takes that risk off them?",
+      "prompt": "The family fears serving a bad cake to 150 guests. Which offer would help them feel safe?",
       "options": [
         {
           "id": "a",
-          "label": "A free tasting, and delivery 3 hours early or it's free"
+          "label": "Free tasting, and 3 hours early or it's free"
         },
         {
           "id": "b",
-          "label": "Half now, and the other half only after the party"
+          "label": "Pay half now, the rest only after the party"
         },
         {
           "id": "c",
-          "label": "₹600 off today, and a free cake next time"
+          "label": "Get ₹600 off today, and a free cake next time"
         }
       ],
       "answer": "a",
@@ -104,7 +104,7 @@
     {
       "kind": "choice",
       "id": "tasting-sum",
-      "prompt": "10 families ask for a tasting box. Each box costs you ₹300. 6 then book. Each cake leaves you ₹3,200. What's left?",
+      "prompt": "10 families want tasting boxes. Each box costs you ₹300. Then 6 book cakes, and each cake leaves you ₹3,200. What's left?",
       "options": [
         {
           "id": "a",
@@ -141,7 +141,7 @@
           "bucket": 1
         },
         {
-          "text": "A photo of the cake 3 hours early, any mistake fixed free",
+          "text": "See a photo of the cake 3 hours early, with free fixes",
           "bucket": 0
         },
         {
@@ -177,15 +177,15 @@
           "id": "b",
           "label": "Tell them, and say the cake is free",
           "grade": "great",
-          "outcome": "You return the ₹6,000. Making the cake cost you ₹2,800, so you're ₹2,800 down. The family is amazed and tells everyone. In September, 4 guests order party cakes, leaving you ₹12,800. You end ₹10,000 up.",
-          "why": "Keeping a promise when it costs you is when people remember it. That story sells your next cakes for you."
+          "outcome": "You return the ₹6,000. Making the cake cost you ₹2,800, so you lose ₹2,800. The family is amazed and tells everyone. In September, 4 guests order party cakes, leaving you ₹12,800. You end with ₹10,000 more.",
+          "why": "People remember when you keep a promise even though it costs you money. They tell others, and that brings you more orders."
         },
         {
           "id": "c",
           "label": "Explain the rain and give ₹1,000 back",
           "grade": "ok",
-          "outcome": "The family says thank you politely. You keep ₹2,200. One guest orders later, leaving you ₹3,200. You end ₹5,400 up, but your promise now sounds like \"free, unless something happens\".",
-          "why": "Being honest helped. But you changed the promise after the event. A guarantee with excuses is worth less next time.",
+          "outcome": "The family thanks you politely. You keep ₹2,200. One guest orders later, leaving you ₹3,200. You end with ₹5,400 more, but now your promise sounds like \"free, unless something happens\".",
+          "why": "Telling the truth was good. But you changed your promise after the event, and next time buyers may not trust a promise with excuses.",
           "better": "Keep the promise in full: the cake is free."
         }
       ]
@@ -201,13 +201,13 @@
   ],
   "summary": [
     "Risk reversal: you carry the risk, so saying yes feels safe for the buyer.",
-    "Find the risk they really fear. Money back can't fix a ruined party; a tasting first can.",
-    "Check what the promise costs you, and keep it when it hurts. That's when people remember."
+    "Find the risk they really fear. Money back can't fix a ruined party, but a tasting first can.",
+    "Check what your promise costs you, and keep it even when it costs you money. People remember that."
   ],
   "cards": [
     {
       "id": "m41-risk-1",
-      "front": "Parents worry their child won't like your tuition class. Which offer takes that risk off them?",
+      "front": "Parents worry their child won't like your tuition class. Which offer helps with that fear?",
       "options": ["₹500 off the first month", "Pay after the first week, only if the child likes it"],
       "answer": 1,
       "back": "Risk reversal: you carry the risk, so saying yes feels safe."
@@ -221,10 +221,10 @@
     },
     {
       "id": "m41-risk-3",
-      "front": "You promised \"on time or free\". You were late, and nobody noticed. What now?",
+      "front": "You promised \"on time or free\". You were late, but nobody noticed. What do you do?",
       "options": ["Say nothing", "Tell them, and keep the promise", "Offer a small discount"],
       "answer": 1,
-      "back": "Keep the promise when it costs you. That's when people remember it."
+      "back": "Keep your promise even when it costs you money. People remember that."
     }
   ],
   "sources": [

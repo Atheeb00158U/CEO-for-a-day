@@ -37,7 +37,7 @@
         }
       ],
       "answer": "b",
-      "why": "The crowd helped, but here's the real reason. A liar would never stand on that platform. The show would have cost Otis his life if his claim were false, so people believed it."
+      "why": "The crowd helped, but here's the real reason. A liar would not risk his life like that. If Otis's claim had been false, he could have died, so people believed him."
     },
     {
       "kind": "explain",
@@ -49,13 +49,13 @@
       "kind": "explain",
       "id": "check",
       "title": "Let them check",
-      "text": "A small shop doesn't need to risk its life. The easiest costly signal is to let buyers check the claim themselves. A milk seller dips a lactometer into your milk while you watch. A liar can't do that. When buyers can check, they don't need to trust you."
+      "text": "A small shop doesn't need to risk anyone's life. One easy costly signal is letting buyers check your claim themselves. A milk seller tests your milk with a lactometer while you watch, and a liar would not want that test. When buyers can check, they don't need to trust your words."
     },
     {
       "kind": "explain",
       "id": "home",
       "title": "Now look at your business",
-      "text": "Otis sold lifts, but your bakery has the same problem with words. It's the first week of September. Many vegetarian families in the new colony want eggless cakes. Your cakes really are eggless, and they cost ₹850. But families ask, \"How do we know?\""
+      "text": "Otis sold lifts, but your bakery has the same problem. It's the first week of September. Many vegetarian families in the new colony want eggless cakes. Your cakes really are eggless and cost ₹850. But families ask, \"How do we know?\""
     },
     {
       "kind": "choice",
@@ -64,19 +64,19 @@
       "options": [
         {
           "id": "a",
-          "label": "\"100% eggless, I promise\", written on every post"
+          "label": "Write \"100% eggless, I promise\" on every post"
         },
         {
           "id": "b",
-          "label": "Five happy customers post reviews about you"
+          "label": "Ask five happy customers to post reviews"
         },
         {
           "id": "c",
-          "label": "Families can watch their own cake baked, live on video"
+          "label": "Let families watch their cake being made on live video"
         }
       ],
       "answer": "c",
-      "why": "Yes. On a live video, families watch their own cake being made. They don't have to trust your words.",
+      "why": "Yes. On a live video, families watch their own cake being made and see every ingredient go in. They can see for themselves instead of trusting your words.",
       "wrong": {
         "a": "Anyone can write \"I promise\". It costs nothing, so a family that was fooled before won't believe it. A live video lets them see for themselves.",
         "b": "Reviews help, and you'll learn more about them soon. But a review can't prove there's no egg in this family's cake. A live video of their own cake lets them check."
@@ -85,33 +85,33 @@
     {
       "kind": "choice",
       "id": "who-right",
-      "prompt": "Your sister: \"Spend ₹8,000 on an ad saying 'pure eggless'.\" Your friend: \"Pay ₹5,000 if a food lab ever finds egg.\" Who's right?",
+      "prompt": "Your sister says, \"Spend ₹8,000 on a 'pure eggless' ad.\" Your friend says, \"Pay ₹5,000 if a food lab finds egg.\" Who's right?",
       "options": [
         {
           "id": "a",
-          "label": "Your sister: the big ad"
+          "label": "Your sister: pay for the big ad"
         },
         {
           "id": "b",
-          "label": "Your friend: the ₹5,000 promise"
+          "label": "Your friend: offer the ₹5,000 promise"
         },
         {
           "id": "c",
-          "label": "Neither: words never work"
+          "label": "Neither: don't make any promises"
         }
       ],
       "answer": "b",
-      "why": "Right. Any family can send a slice to a lab. The ₹5,000 promise costs you nothing if you're honest, but it would ruin a liar. An ad costs an honest shop and a liar the same, so it proves nothing.",
+      "why": "Right. Any family can send a slice to a lab. If you're honest, you won't have to pay the ₹5,000, but a liar could lose a lot. An ad costs an honest shop and a liar the same, so it proves nothing.",
       "wrong": {
         "a": "The ad costs money, but it costs an honest shop and a liar the same, so it proves nothing. Your friend's promise would only cost a liar, so families believe it.",
-        "c": "Plain words don't work, but this promise isn't plain words. It would cost a liar ₹5,000 each time, so families believe it."
+        "c": "Words alone may not work, but this promise is different. A liar would lose ₹5,000 each time a lab finds egg, so families believe it."
       }
     },
     {
       "kind": "sort",
       "id": "check-or-trust",
       "prompt": "I'll show you six things a baker might do. For each one, tell me: can buyers check it, or must they trust you?",
-      "buckets": ["They can check it", "They must just trust you"],
+      "buckets": ["Buyers can check it", "Buyers must trust you"],
       "items": [
         {
           "text": "A live video of the cake being baked",
@@ -122,7 +122,7 @@
           "bucket": 1
         },
         {
-          "text": "Every ingredient listed, with the packs shown",
+          "text": "List every ingredient and show the packs",
           "bucket": 0
         },
         {
@@ -130,7 +130,7 @@
           "bucket": 1
         },
         {
-          "text": "A slice of the same cake to taste before you pay",
+          "text": "Taste a slice of the same cake before paying",
           "bucket": 0
         },
         {
@@ -138,20 +138,20 @@
           "bucket": 1
         }
       ],
-      "why": "A video, the packs on show and a taste before paying are things buyers can check for themselves. \"Made with love\", \"freshest\" and \"always happy\" cost nothing to say, so buyers must just trust you."
+      "why": "Buyers can check a video, the packs you show and a taste before paying. But anyone can say \"made with love\", \"freshest\" or \"always happy\". Buyers can't check these words, so they must trust you."
     },
     {
       "kind": "scenario",
       "id": "butter-war",
-      "setup": "A week later, a chain bakery opens near the colony. Its cakes cost ₹700, and its sign says \"pure butter\". Your real-butter cakes cost ₹400 to make and sell for ₹850. You sell 20 a week. A mother says, \"They say butter too, and they're cheaper.\"",
+      "setup": "A week later, a chain bakery opens near the colony. Its cakes cost ₹700, and its sign says \"pure butter\". Your cakes use real butter. They cost ₹400 to make and sell for ₹850. You sell 20 a week. A mother says, \"They say butter too, and they're cheaper.\"",
       "question": "What do you do?",
       "options": [
         {
           "id": "a",
           "label": "Cut your cake to ₹700 to match them",
           "grade": "bad",
-          "outcome": "You still sell 20 cakes a week, but each now leaves you ₹300, not ₹450. That's ₹6,000 a week, not ₹9,000. Families still can't tell your butter from theirs.",
-          "why": "A price cut didn't prove anything. You lost ₹3,000 a week and gave buyers no way to see the difference.",
+          "outcome": "You still sell 20 cakes a week, but each now leaves you ₹300, not ₹450. That's ₹6,000 a week, not ₹9,000. Families still can't tell which bakery uses real butter.",
+          "why": "Cutting the price didn't prove anything. You lost ₹3,000 a week, and buyers still couldn't see the difference.",
           "better": "Let families check: show the butter packs and the baking."
         },
         {
@@ -166,8 +166,8 @@
           "id": "c",
           "label": "Show the butter packs in every baking video",
           "grade": "great",
-          "outcome": "Families see the butter packs and the bill in every video. A mother asks the chain shop to show the same. It has nothing to show. You keep all 20 weekly buyers at ₹850, leaving you ₹9,000 a week.",
-          "why": "You gave proof that buyers could check. Now the chain's claim looks weak next to yours."
+          "outcome": "Families see the butter packs and the bill in every video. A mother asks the chain shop to show the same, and it has no packs or bills to show. You keep all 20 weekly buyers at ₹850, leaving you ₹9,000 a week.",
+          "why": "You showed proof that buyers could check. Now the chain's claim is harder to believe than yours."
         }
       ]
     },
@@ -177,35 +177,35 @@
       "text": "Words cost ___, so buyers believe proof they can ___ for themselves.",
       "bank": ["nothing", "check", "money", "hear"],
       "answer": ["nothing", "check"],
-      "why": "Exactly. Otis let the crowd see the brake catch. You let families watch their own cake and see the butter. Proof they can check is a costly signal any honest shop can afford."
+      "why": "Exactly. Otis let the crowd see his brake work. You let families watch their own cake being made and see the butter packs. Proof that buyers can check is a costly signal an honest shop can afford."
     }
   ],
   "summary": [
-    "Costly signal: proof that would cost a liar a lot is believed. Cheap words are not.",
+    "Costly signal: proof that would cost a liar a lot. Buyers believe it more than words.",
     "An ad costs an honest shop and a liar the same, so it proves nothing.",
-    "Let buyers check your claim themselves: a live video of their cake, the packs on show, a taste before paying."
+    "Let buyers check your claim themselves. Show a live video of their cake, the packs you use, or a taste before paying."
   ],
   "cards": [
     {
       "id": "m41-signal-1",
       "front": "A ghee seller wants buyers to believe it's pure. What works best?",
-      "options": ["\"100% pure\" on a big sign", "Melt a spoon so buyers can smell and taste it"],
+      "options": ["Put \"100% pure\" on a big sign", "Show the lab report for this batch"],
       "answer": 1,
       "back": "Let buyers check the claim themselves. Words cost nothing, so they prove nothing."
     },
     {
       "id": "m41-signal-2",
       "front": "Which promise is a costly signal?",
-      "options": ["A ₹20,000 ad saying \"best quality\"", "₹5,000 to anyone who finds a fault"],
+      "options": ["Spend ₹20,000 on a \"best quality\" ad", "Pay ₹5,000 to anyone who finds a fault"],
       "answer": 1,
       "back": "A costly signal costs only a liar. An ad costs an honest shop and a liar the same."
     },
     {
       "id": "m41-signal-3",
-      "front": "A rival copies your claim, \"pure butter\". How do you show yours is true?",
-      "options": ["Cut your price", "Show the butter packs and the baking", "Say it louder"],
+      "front": "A rival also says \"pure butter\". How do you prove your claim?",
+      "options": ["Sell at a lower price", "Show butter packs and baking", "Repeat the claim more often"],
       "answer": 1,
-      "back": "When both say the same words, the one who shows proof wins."
+      "back": "When both make the same claim, buyers believe the one who shows proof."
     }
   ],
   "sources": [

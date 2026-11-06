@@ -9,13 +9,13 @@
       "kind": "explain",
       "id": "hook",
       "media": "img:ls_bill_sweets",
-      "text": "Let me tell you about a test in an American restaurant. When waiters brought the bill, some gave no sweet at all, some put one chocolate on the bill, and some put two. And some did something a little different. Let me show you."
+      "text": "Let me tell you about a test in an American restaurant. When waiters brought the bill, some gave no chocolate, some gave one, and some gave two. One group gave the chocolates in a different way. Let me show you."
     },
     {
       "kind": "choice",
       "id": "guess",
       "guess": true,
-      "prompt": "In the last group, the waiter gave one chocolate, walked away, then turned back and gave a second one. Which group tipped most?",
+      "prompt": "In the last group, the waiter gave one chocolate, walked away, then came back with a second. Which group gave the biggest tip?",
       "options": [
         {
           "id": "a",
@@ -23,7 +23,7 @@
         },
         {
           "id": "b",
-          "label": "One, then a second on turning back"
+          "label": "One, then another after coming back"
         },
         {
           "id": "c",
@@ -31,24 +31,24 @@
         }
       ],
       "answer": "b",
-      "why": "Compared with no chocolate, one chocolate raised tips a little, about 3% more. Two chocolates: about 14% more. One, then a second after turning back: about 21% more."
+      "why": "Compared with no chocolate, one chocolate raised tips a little, about 3% more. Two chocolates: about 14% more. One, then another after coming back: about 21% more."
     },
     {
       "kind": "explain",
       "id": "reciprocity",
       "title": "Reciprocity",
-      "text": "This is called reciprocity. When someone gives us something first, we feel we owe them, and we want to give back. Robert Cialdini wrote about it in his book Influence. And look at the chocolates again: how a gift is given matters as much as the gift."
+      "text": "This is called reciprocity. When someone gives us something first, we feel we owe them, and we want to give back. Robert Cialdini wrote about it in his book Influence. And the chocolates show that how you give a gift matters as much as what you give."
     },
     {
       "kind": "explain",
       "id": "on-you",
       "title": "It's used on you",
-      "text": "You'll see this everywhere. The free first class a tuition teacher gives. The extra laddoo the sweet shop drops into your box. The cup of chai a saree shop serves you before you start to bargain. Each one makes you feel you owe something back."
+      "text": "You may have seen this. A tuition teacher gives a free first class. A sweet shop adds an extra laddoo to your box. A saree shop serves chai before you discuss the price. Each gift makes you feel you should give something back."
     },
     {
       "kind": "choice",
       "id": "jeweller",
-      "prompt": "A jeweller cleans your old chain for free while you wait. Then he shows you new chains. You feel bad leaving without buying. Why?",
+      "prompt": "A jeweller cleans your old chain for free, then shows you new chains. You feel bad leaving without buying. Why?",
       "options": [
         {
           "id": "a",
@@ -64,17 +64,17 @@
         }
       ],
       "answer": "c",
-      "why": "Yes. He gave first, so leaving with nothing feels like not paying back. That's reciprocity at work on you.",
+      "why": "Yes. He helped you first, so leaving without buying makes you feel you owe him something. That's reciprocity.",
       "wrong": {
         "a": "Maybe, but you'd feel bad leaving even if they were ordinary. He cleaned your chain for free first, so you feel you owe him.",
-        "b": "A longer visit adds a little. But even a short visit with a free cleaning leaves you feeling you owe him. The gift came first."
+        "b": "Staying longer may add to that feeling. But even after a short visit, the free cleaning makes you feel you owe him something."
       }
     },
     {
       "kind": "explain",
       "id": "backfire",
       "title": "Where it goes wrong",
-      "text": "Reciprocity can backfire. A tiny gift, like a crumb, feels cheap. A gift with a hook, like \"free, if you order now\", feels like a deal, so nobody feels they owe you. And a costly gift to one person, just before you ask for an order, feels like a bribe."
+      "text": "Reciprocity can go wrong. A tiny gift, like a crumb, feels cheap. A gift that needs an order first feels like a deal, not a gift, so nobody feels they owe you. And a costly gift to one person, just before you ask for an order, looks like a bribe."
     },
     {
       "kind": "explain",
@@ -151,7 +151,7 @@
           "bucket": 0
         },
         {
-          "text": "A \"free\" cake that comes with a ₹2,000 order",
+          "text": "A \"free\" cake only with a ₹2,000 order",
           "bucket": 1
         },
         {
@@ -159,7 +159,7 @@
           "bucket": 0
         },
         {
-          "text": "A free taste, then a push to order on the spot",
+          "text": "A free taste, followed by pressure to order right away",
           "bucket": 1
         }
       ],
@@ -176,8 +176,8 @@
           "label": "Send the manager a ₹3,000 gift, hoping for an order",
           "grade": "bad",
           "outcome": "The manager feels uneasy. A costly gift to one person, just before Diwali orders, looks like a bribe. She returns it politely and orders elsewhere. You've lost ₹3,000.",
-          "why": "A gift to one decision-maker, timed for an order, has a hook. It makes people feel bought, not thankful.",
-          "better": "Send cupcakes for the whole team, with a note and no ask."
+          "why": "A gift to the person who decides, just before you ask for an order, feels like pressure. It makes people feel bought, not thanked.",
+          "better": "Send cupcakes to the whole team, with a note asking for nothing."
         },
         {
           "id": "b",
@@ -185,14 +185,14 @@
           "grade": "ok",
           "outcome": "The manager orders 20 boxes at ₹450. Each leaves you ₹150: ₹3,000 in all. The staff never taste your baking, so nobody asks for you next year.",
           "why": "A discount is a deal, not a gift. It won a small order, but nobody felt they owed you anything.",
-          "better": "Send cupcakes for the whole team, with a note and no ask."
+          "better": "Send cupcakes to the whole team, with a note asking for nothing."
         },
         {
           "id": "c",
           "label": "Send 60 cupcakes for the staff, with a note",
           "grade": "great",
           "outcome": "The cupcakes cost you ₹2,400. The staff love them. A week later, the manager calls and orders 60 Diwali boxes at ₹500. Each leaves you ₹200: ₹12,000. After the cupcakes, ₹9,600 is left.",
-          "why": "A real gift to the whole team, with nothing asked, made them want to give back."
+          "why": "You gave a real gift to the whole team without asking for anything back. They enjoyed it and wanted to give back."
         }
       ]
     },
@@ -200,7 +200,7 @@
       "kind": "explain",
       "id": "honest-line",
       "title": "The honest line",
-      "text": "Here's a line to keep for this whole unit: use on others only what you'd accept being used on you. Your cupcakes are fair: nothing asked, no pressure, and buying stays their choice. Chai served only to make people feel bad leaving is not."
+      "text": "Keep this line in mind for the whole unit: use on others only what you'd accept being used on you. Giving cupcakes without asking for anything is fair, and people can still choose not to buy. Serving chai just to make someone feel bad about leaving is not."
     },
     {
       "kind": "gap",
@@ -208,13 +208,13 @@
       "text": "Give a ___ gift ___, and people want to give back.",
       "bank": ["real", "first", "costly", "later"],
       "answer": ["real", "first"],
-      "why": "Exactly. The waiter's second chocolate felt personal. Full cupcakes for a whole team, with nothing asked, work the same way. Give first, ask later."
+      "why": "Exactly. The waiter's second chocolate felt special. Full cupcakes for a whole team, with nothing asked, work the same way. Give first, and let buying be their choice."
     }
   ],
   "summary": [
     "Reciprocity: when someone gives us something first, we want to give back.",
-    "A real gift works. Crumbs feel cheap, and a gift with a hook is a deal, not a gift.",
-    "Give to the whole team, with nothing asked. A costly gift to one person to win an order looks like a bribe."
+    "A real gift makes people want to give back. Crumbs feel cheap, and a gift that asks for something back is a deal.",
+    "Give to the whole team without asking for anything back. A costly gift to one person, just before an order, looks like a bribe."
   ],
   "cards": [
     {
@@ -229,7 +229,7 @@
       "front": "\"Free cupcake if you share our post with 10 friends.\" What is it?",
       "options": ["A real gift", "A gift with a hook"],
       "answer": 1,
-      "back": "A gift that asks for something back is a deal. Nobody feels they owe you."
+      "back": "It's a deal, because you must share the post first. It is not a gift given freely."
     },
     {
       "id": "m41-give-3",

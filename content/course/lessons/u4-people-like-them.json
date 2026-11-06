@@ -31,36 +31,36 @@
         }
       ],
       "answer": "c",
-      "why": "\"This room\" won. In one test, the environment card got 35 of every 100 guests to use towels again, and \"most guests at this hotel\" got 44. In a second test, \"this room\" got 49, against 37 for the environment card."
+      "why": "\"This room\" worked best. In one test, 35 of every 100 guests used towels again with the environment card, compared with 44 for \"most guests at this hotel\". In a second test, \"this room\" got 49, compared with 37 for the environment card."
     },
     {
       "kind": "explain",
       "id": "social-proof",
       "title": "Social proof",
-      "text": "This is called social proof. When we're not sure what to do, we copy other people, most of all people like us. \"This room\" felt closer than \"this hotel\". The closer those people are to you, the stronger the pull."
+      "text": "This is called social proof. When we're not sure what to do, we copy others, mostly people like us. \"This room\" felt closer than \"this hotel\". The more those people are like you, the more you want to copy them."
     },
     {
       "kind": "explain",
       "id": "on-you",
       "title": "It's used on you",
-      "text": "You see this every day: \"bestseller\" tags, star ratings, \"1,200 bought this week\". Some of it is fake. Fake or paid reviews mislead buyers. India's review standard, IS 19000, says bought reviews must not be published. So never fake it."
+      "text": "You see this every day: \"bestseller\" tags, star ratings, \"1,200 bought this week\". Some reviews are fake or paid for, and they mislead buyers. India's review standard, IS 19000, says bought reviews must not be published. So never fake reviews."
     },
     {
       "kind": "explain",
       "id": "backfire",
       "title": "Where it goes wrong",
-      "text": "Social proof can also work against you. In an American national park, one sign said many past visitors had taken pieces of old wood that had turned to stone. Under that sign, the most wood went missing. It told people, \"everyone does it\"."
+      "text": "Social proof can also make things worse. In an American national park, one sign said many past visitors had taken pieces of old wood that had turned to stone. The most wood went missing near that sign. It made taking wood seem normal."
     },
     {
       "kind": "explain",
       "id": "home",
       "title": "Now look at your business",
-      "text": "Hotel guests and cake buyers think alike. It's early October. Your birthday-cake plan has grown to 15 offices. The new colony has 120 homes, and 38 now order from you. Next you want Lake View, 300 flats nearby, where only 6 families have ordered."
+      "text": "Hotel guests and cake buyers think alike. It's early October. Your birthday-cake plan now serves 15 offices. The new colony has 120 homes, and 38 now order from you. Next is Lake View, with 300 flats nearby. Only 6 families there have ordered."
     },
     {
       "kind": "choice",
       "id": "best-post",
-      "prompt": "The new colony has 120 homes, and 38 order from you. Which post in its WhatsApp group will win the most new orders?",
+      "prompt": "The new colony has 120 homes, and 38 order from you. Which message in its WhatsApp group will bring the most new orders?",
       "options": [
         {
           "id": "a",
@@ -68,28 +68,28 @@
         },
         {
           "id": "b",
-          "label": "\"Thousands of people love our cakes!\""
+          "label": "\"Thousands of people order our cakes\""
         },
         {
           "id": "c",
-          "label": "\"The best eggless cakes in the whole city\""
+          "label": "\"The best eggless cakes in the city\""
         }
       ],
       "answer": "a",
-      "why": "Yes. 38 neighbours are people like them, and the number is real and exact. \"Thousands\" and \"the best\" are vague, and buyers have heard them a hundred times.",
+      "why": "Yes. Those 38 neighbours are people like them, and the number is real and exact. \"Thousands\" and \"the best\" tell buyers very little. They've heard such claims many times.",
       "wrong": {
-        "b": "\"Thousands\" sounds big, but it's vague, and buyers can't tell who those people are. 38 real neighbours in their own colony pull much harder.",
-        "c": "Every baker says \"the best\". It shows no people at all. 38 real neighbours in their own colony are people like them."
+        "b": "\"Thousands\" sounds big, but buyers don't know who those people are. 38 real neighbours in their own colony are more likely to make them order.",
+        "c": "Every baker can say \"the best\". It tells buyers nothing about who orders from you. 38 real neighbours in their colony mean more to them."
       }
     },
     {
       "kind": "choice",
       "id": "reminder",
-      "prompt": "6 of the 15 offices on your birthday-cake plan haven't paid this month. Which reminder will get the most of them to pay?",
+      "prompt": "6 of the 15 offices on your birthday-cake plan haven't paid this month. Which message will make them most likely to pay?",
       "options": [
         {
           "id": "a",
-          "label": "\"Many offices pay late, but please pay soon\""
+          "label": "\"Many offices pay late. Please pay soon\""
         },
         {
           "id": "b",
@@ -101,10 +101,10 @@
         }
       ],
       "answer": "b",
-      "why": "Exactly. It shows that most offices pay on time, and that makes the late ones want to do the same.",
+      "why": "Exactly. It shows that most offices have paid, so the ones who haven't paid may want to do the same.",
       "wrong": {
-        "a": "That's the national park sign again. \"Many pay late\" tells them everyone does it. Show that most offices pay: \"9 of our 15 have already paid\".",
-        "c": "An angry message makes people push back, and you may lose an office. Show that most offices pay: \"9 of our 15 have already paid\"."
+        "a": "That's like the national park sign. \"Many pay late\" makes paying late seem normal. Instead, show that most offices have paid: \"9 of our 15 have already paid\".",
+        "c": "An angry message may upset people, and you could lose an office. Instead, show that most offices have paid: \"9 of our 15 have already paid\"."
       }
     },
     {
@@ -114,7 +114,7 @@
       "buckets": ["Honest", "Misleads"],
       "items": [
         {
-          "text": "A customer's party photo, shared with her OK",
+          "text": "A customer's party photo, shared with her permission",
           "bucket": 0
         },
         {
@@ -130,7 +130,7 @@
           "bucket": 1
         },
         {
-          "text": "A real buyer's voice note, shared with her OK",
+          "text": "A real buyer's voice note, shared with her permission",
           "bucket": 0
         },
         {
@@ -138,7 +138,7 @@
           "bucket": 1
         }
       ],
-      "why": "Honest proof is real buyers, shared with their OK. Reviews from family, paid reviews and hiding bad reviews all mislead buyers."
+      "why": "Honest proof comes from real buyers who agree to share it. Reviews from family, paid reviews and hiding bad reviews all mislead buyers."
     },
     {
       "kind": "scenario",
@@ -148,26 +148,26 @@
       "options": [
         {
           "id": "a",
-          "label": "\"38 happy families!\", with the other colony's photos and OK",
+          "label": "\"38 happy families!\" with their photos and permission",
           "grade": "ok",
           "outcome": "It's true, but Lake View families don't know those people. 4 new families order in a month, leaving you ₹1,800.",
-          "why": "Real proof helped, but from people they don't know. Neighbours pull harder than strangers.",
-          "better": "Show your 6 Lake View buyers, with their OK."
+          "why": "Real proof helped, but it came from people they didn't know. People are more likely to copy their neighbours.",
+          "better": "Show your 6 Lake View buyers, with their permission."
         },
         {
           "id": "b",
-          "label": "\"Lake View's favourite bakery!\" with reviews from relatives",
+          "label": "\"Lake View's favourite!\" with reviews from relatives",
           "grade": "bad",
-          "outcome": "2 families order. Then someone notices a reviewer is your cousin. She posts it in the group, and the admin removes your post. You earn ₹900 and lose trust.",
-          "why": "Fake proof works only until someone checks. Then it costs you more than it won.",
-          "better": "Show your 6 Lake View buyers, with their OK."
+          "outcome": "2 families order. Then someone sees that a review came from your cousin. She tells the group, and the admin removes your post. You earn ₹900 and lose trust.",
+          "why": "Fake proof may work until someone finds out. Then you can lose more than you gained.",
+          "better": "Show your 6 Lake View buyers, with their permission."
         },
         {
           "id": "c",
-          "label": "\"6 Lake View families have ordered\", with their OK",
+          "label": "\"6 Lake View families ordered!\" with their permission",
           "grade": "great",
-          "outcome": "Two of the six reply with photos of their cakes. Their neighbours ask questions. 10 new families order in a month, leaving you ₹4,500.",
-          "why": "6 real neighbours beat 38 strangers. The number is small, but they live next door, and people copy people like them."
+          "outcome": "Two of the six share photos of their cakes. Their neighbours ask questions. 10 new families order in a month, leaving you ₹4,500.",
+          "why": "6 real neighbours worked better than 38 people from another colony. The number is small, but buyers are more likely to copy people who live near them."
         }
       ]
     },
@@ -175,7 +175,7 @@
       "kind": "explain",
       "id": "honest-line",
       "title": "The honest line",
-      "text": "The line again: use on others only what you'd accept being used on you. Show real buyers, with their OK. Never buy, fake or hide reviews. You wouldn't want to buy from a shop that did."
+      "text": "The line again: use on others only what you'd accept being used on you. Show real buyers, with their permission. Never buy or fake reviews, or hide bad ones. You wouldn't want to buy from a shop that did this."
     },
     {
       "kind": "gap",
@@ -183,28 +183,28 @@
       "text": "People copy people ___ them, so show ___ buyers.",
       "bank": ["like", "real", "unlike", "many"],
       "answer": ["like", "real"],
-      "why": "Exactly. \"Guests who stayed in this room\" beat \"save the environment\". Your 6 Lake View neighbours beat 38 strangers. Real, similar buyers pull hardest."
+      "why": "Exactly. \"Guests who stayed in this room\" worked better than \"save the environment\". Your 6 Lake View neighbours worked better than 38 people from another colony. Real buyers who are like you are the best proof."
     }
   ],
   "summary": [
-    "Social proof: when unsure, we copy others, most of all people like us.",
-    "Show real, exact, nearby buyers: \"38 families in this colony\" beats \"thousands love us\".",
-    "Never say most people do the wrong thing. Never buy, fake or hide reviews."
+    "Social proof: when we're unsure, we copy others, mostly people like us.",
+    "Show real, exact numbers from nearby buyers: \"38 families in this colony\" works better than \"thousands love us\".",
+    "Never make wrong actions seem normal. Never buy or fake reviews, or hide bad ones."
   ],
   "cards": [
     {
       "id": "m42-proof-1",
-      "front": "Which line wins more orders in a colony?",
-      "options": ["\"Thousands love us\"", "\"38 families in your colony order from us\""],
+      "front": "Which message brings more orders in a colony?",
+      "options": ["\"Thousands of people order our cakes\"", "\"38 families in your colony order from us\""],
       "answer": 1,
-      "back": "People copy people like them. Real, exact, nearby buyers pull hardest."
+      "back": "People copy others like them. Real numbers from nearby buyers work best."
     },
     {
       "id": "m42-proof-2",
       "front": "Some clients pay late. Which reminder works best?",
       "options": ["\"Many clients pay late, but please pay\"", "\"Most of our clients have already paid\""],
       "answer": 1,
-      "back": "Never tell people that most do the wrong thing. Show that most do the right thing."
+      "back": "Don't make paying late seem normal. Show that most clients have already paid."
     },
     {
       "id": "m42-proof-3",
