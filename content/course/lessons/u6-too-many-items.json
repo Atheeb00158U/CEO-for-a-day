@@ -37,7 +37,7 @@
       "kind": "explain",
       "id": "complexity",
       "title": "The cost you don't see",
-      "text": "Think of your fridge. Every new item needs its own ingredients, space and recipe, and some ingredients go bad if they don't sell. These are called complexity costs. They grow as you add items, but don't show in any item's price. More items can mean more cost, not more sales."
+      "text": "Think of a baker's fridge. Every new item needs its own ingredients, space and recipe, and some go bad if they don't sell. These are complexity costs: they grow with every item, but don't show in any price. Each separate item is a SKU. More items can mean more cost."
     },
     {
       "kind": "explain",
@@ -73,19 +73,19 @@
     {
       "kind": "choice",
       "id": "hours",
-      "prompt": "Pineapple earns ₹350 and takes 5 hours a month. In those 5 hours, you could bake 3 chocolate cakes customers want. Which earns more?",
+      "prompt": "Pineapple earns ₹350 and takes 5 hours a month. Those hours could bake 3 chocolate cakes you turn away, at ₹450 each. Which earns more?",
       "options": [
         {
           "id": "a",
-          "label": "Keep pineapple cakes, for more choice"
+          "label": "Keep pineapple, for more choice"
         },
         {
           "id": "b",
-          "label": "Use the time to bake 3 chocolate cakes"
+          "label": "Drop pineapple, bake what sells"
         },
         {
           "id": "c",
-          "label": "Both would earn about the same"
+          "label": "Both earn about the same"
         }
       ],
       "answer": "b",
@@ -98,7 +98,7 @@
     {
       "kind": "sort",
       "id": "hidden",
-      "prompt": "Making one cake costs ₹400. I'll show you six costs. For each one, tell me: is it inside that ₹400, or a hidden extra cost?",
+      "prompt": "Each cake's ₹400 covers its ingredients and its box. I'll show you six costs. For each one, tell me: inside that ₹400, or hidden?",
       "buckets": ["Inside the ₹400", "Hidden cost"],
       "items": [
         {
@@ -118,7 +118,7 @@
           "bucket": 1
         },
         {
-          "text": "The candle you give with each cake",
+          "text": "The cream on top of each cake",
           "bucket": 0
         },
         {
@@ -126,12 +126,12 @@
           "bucket": 1
         }
       ],
-      "why": "Exactly. Flour, the box and the candle are inside the ₹400 cost of each cake. But wasted cream, learning time and fridge space are hidden costs that grow as you add items. That's why a long menu can eat your profit without you noticing."
+      "why": "Exactly. Flour, the box and the cream on top go into every cake, so they're inside the ₹400. But wasted cream, learning time and fridge space are hidden costs that grow as you add items. That's why a long menu can eat your profit without you noticing."
     },
     {
       "kind": "choice",
       "id": "stock",
-      "prompt": "With 18 items, you keep ₹15,000 of stock. With only your 8 best sellers, you'd need ₹6,000. What does cutting give you?",
+      "prompt": "Your 8 best sellers bring most of your money. Selling only those, you'd need ₹6,000 of stock, not ₹15,000. What would that cut give you?",
       "options": [
         {
           "id": "a",
@@ -156,20 +156,20 @@
     {
       "kind": "scenario",
       "id": "mango",
-      "setup": "It's July. Four customers ask for mango cake. You could sell about 6 a month, earning ₹2,100 after wasted mango, in 5 hours a month. Pineapple earns ₹350 and coffee ₹150, each taking 5 hours. Every 5 hours you free up lets you bake the 3 chocolate cakes you turn away: ₹1,350.",
+      "setup": "It's July, and you're fully booked: any hour for something new must come from something you bake now. Four customers ask for mango cake. About 6 would sell a month, baked in one batch: ₹2,100 after wasted mango, for 5 hours. Pineapple earns ₹350 and coffee cake ₹150, each for 5 hours. 5 hours also bakes 3 chocolate cakes: ₹1,350.",
       "question": "What do you do about the mango cake?",
       "options": [
         {
           "id": "a",
-          "label": "Add mango cake, and keep every other cake",
+          "label": "Add mango, keep every cake",
           "grade": "ok",
-          "outcome": "Mango earns ₹2,100. But you need 5 hours to make it, so you turn away 3 more chocolate cakes: ₹1,350 you could have earned. You gain ₹750 a month, and your menu grows to 19 items.",
+          "outcome": "Mango earns ₹2,100. But its 5 hours come out of your chocolate baking, so you bake 3 fewer chocolate cakes: ₹1,350 less. All in, you gain ₹750 a month, and your menu grows to 19 items.",
           "why": "Mango was a good add. But every new item brings new hidden costs, here 5 hours of your time, so it should push out a weak item.",
           "better": "Add mango, and drop pineapple and coffee."
         },
         {
           "id": "c",
-          "label": "Add mango cake, and stop pineapple",
+          "label": "Add mango, drop pineapple",
           "grade": "ok",
           "outcome": "You lose pineapple's ₹350, but mango earns ₹2,100. Mango takes the 5 hours you used for pineapple, so you can't bake extra chocolate cakes. You gain ₹1,750 a month. Coffee still earns only ₹150 for 5 hours, and your menu stays at 18 items.",
           "why": "A good swap, but you kept one weak item. Coffee's 5 hours could have baked 3 chocolate cakes, ₹1,350, instead of ₹150.",
@@ -177,7 +177,7 @@
         },
         {
           "id": "b",
-          "label": "Add mango cake, and stop pineapple and coffee",
+          "label": "Add mango, drop pineapple and coffee",
           "grade": "great",
           "outcome": "You give up the ₹500 from pineapple and coffee, and mango earns ₹2,100. Dropping both frees 10 hours. Mango takes 5, and in the other 5 you bake the 3 chocolate cakes you used to turn away: ₹1,350. You gain ₹2,950 a month, and your menu drops to 17 items.",
           "why": "Exactly. You let a new item in only by pushing out two weak ones. Your menu got shorter, your waste fell, and your hours went to cakes people want."
@@ -187,7 +187,7 @@
     {
       "kind": "gap",
       "id": "fill",
-      "text": "Your menu grows from 10 items to 20. Sales may rise, but your ___ grows too. You have more waste, more stock and more ___.",
+      "text": "Your menu grows from 18 items to 25. Sales may rise, but your ___ grows too. You have more waste, more stock and more ___.",
       "bank": ["cost", "hours", "profit", "prices"],
       "answer": ["cost", "hours"],
       "why": "Exactly. That's complexity cost. Before you add an item, ask what it will really cost in waste, stock and hours, and what you could drop to make room."

@@ -19,36 +19,36 @@
       "options": [
         {
           "id": "a",
-          "label": "It worked at its sites day and night"
+          "label": "It worked day and night at its sites"
         },
         {
           "id": "b",
-          "label": "It made all the parts on its own"
+          "label": "It made every part itself"
         },
         {
           "id": "c",
-          "label": "It checked each day's work against its plan"
+          "label": "It bought its first trains ready-made"
         }
       ],
       "answer": "c",
-      "why": "Its chief, E. Sreedharan, checked every deadline each day. Instead of waiting to learn how to make trains, it bought the first trains ready-made from South Korea. Later trains were finished in India by BEML, an Indian company."
+      "why": "Rather than wait to learn to build trains, it bought the first ones ready-made from South Korea. Later trains were finished in India by BEML, an Indian company. And its chief, E. Sreedharan, checked every deadline each day."
     },
     {
       "kind": "explain",
       "id": "path",
       "title": "The critical path",
-      "text": "Some jobs must wait for others: first buy flour, then bake, then pack. These jobs form a chain. The longest chain is your critical path, and it decides when you finish. Making other jobs faster won't help. If a job on this chain is slow, buy it ready-made."
+      "text": "Some jobs must wait for others. Say special boxes come from Mumbai in 10 days, and you can't pack until they arrive. That's a chain. The longest chain is your critical path, and it decides when you finish. If a job on it is slow, buy it ready-made nearby."
     },
     {
       "kind": "explain",
       "id": "home",
       "title": "Now look at your bakery",
-      "text": "A metro and a wedding cake both have a date that cannot change. It's November, the fifth year of your home bakery, and wedding season. A family wants a three-tier cake and 200 cupcakes for 28 November. You can do some jobs together, but others must wait."
+      "text": "A metro and a wedding cake both have a date that cannot change. It's November, your home bakery's fifth year. A family wants a three-tier cake and 200 cupcakes for 28 November. You need cake stands from Mumbai, the family's okay on a design, and a test cake first."
     },
     {
       "kind": "choice",
       "id": "which-chain",
-      "prompt": "Chain 1: stands from Mumbai, 10 days. Chain 2: design approval, 3 days, then test cake, 2 days. Both start together. Which sets your date?",
+      "prompt": "Chain 1: cake stands from Mumbai, 10 days. Chain 2: design okay, 3 days, then test cake, 2 days. Both start together. Which decides?",
       "options": [
         {
           "id": "a",
@@ -81,7 +81,7 @@
         },
         {
           "id": "b",
-          "label": "12 days, between the two ends"
+          "label": "12 days, the middle time"
         },
         {
           "id": "c",
@@ -89,11 +89,8 @@
         }
       ],
       "answer": "c",
-      "why": "Right. A writer named Douglas Hofstadter gave this idea a name: things take longer than you plan, even when you allow for delays. Plan for the longest time you've seen, and keep some extra days if you can.",
-      "wrong": {
-        "a": "That's what the shop promises. But your past orders took 10, 12 and 13 days. Plan for the longest time you've seen: 13 days.",
-        "b": "If you planned for 12 days, one of your three past orders would have been late. The longest took 13 days, so plan for 13. Things can take longer than you expect."
-      }
+      "why": "Plan for 13. A writer, Douglas Hofstadter, made this a law: things take longer than you plan, even when you allow for delays. 12 days would have been late one time in three. Plan for the longest time you've seen, and keep extra days if you can.",
+      "guess": true
     },
     {
       "kind": "order",
@@ -116,17 +113,17 @@
       "options": [
         {
           "id": "a",
-          "label": "Order from Mumbai and bake the cupcakes early",
+          "label": "Order from Mumbai, and bake cupcakes early",
           "grade": "bad",
-          "outcome": "The cupcakes are ready by 20 November. The stands arrive on the 27th, the night before the wedding. The cupcakes are now a week old, so you bake all 200 again. That costs about ₹3,000 more, while you spend the whole night decorating three tiers.",
-          "why": "You finished the cupcakes early, but they weren't on the critical path, so the order couldn't finish sooner. You still had to wait for the stands.",
+          "outcome": "You bake the cupcakes by 20 November to get ahead. But you can't finish until the stands arrive on the 27th. By then the cupcakes are a week old, so you bake all 200 again, about ₹3,000 more, and decorate three tiers all night.",
+          "why": "You rushed a job that wasn't on the critical path. It couldn't make you finish sooner, and the cupcakes went stale waiting for the stands.",
           "better": "Rent the stands nearby today, and buy your own later."
         },
         {
           "id": "b",
           "label": "Order from Mumbai and save ₹600 on stands",
           "grade": "ok",
-          "outcome": "The stands arrive on day 12, the evening before the wedding. You spend the night decorating. The cake is ready, but one tier leans to one side, and you fix it at the wedding hall an hour before the guests arrive.",
+          "outcome": "The stands arrive on day 12, the evening before the wedding. With no time to test them, you decorate all night. One tier leans, and you fix it at the wedding hall an hour before the guests arrive.",
           "why": "You saved ₹600, but you kept no extra days for the slowest job. The stands almost made you late.",
           "better": "Rent the stands nearby today, and buy your own later."
         },
@@ -189,9 +186,9 @@
     {
       "id": "m62-path-2",
       "front": "A part from far away may make you late. What should you do?",
-      "options": ["Wait and hope", "Buy or rent it nearby, and make it yourself later"],
+      "options": ["Wait and hope it comes on time", "Rent or buy it nearby; get your own later"],
       "answer": 1,
-      "back": "Buy ready-made anything that could make you late."
+      "back": "Buy ready-made anything that could make you late, and get your own later."
     },
     {
       "id": "m62-path-3",

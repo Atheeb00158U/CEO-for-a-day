@@ -9,7 +9,7 @@
       "kind": "explain",
       "id": "hook",
       "media": "img:ls_phone_tower",
-      "text": "Let me tell you about a big decision. In 2004, Bharti Airtel had about 58 lakh mobile customers and was growing fast. Then it asked Ericsson and Nokia to run its mobile network, and IBM to run its computers. A phone company letting others run its network! Guess why."
+      "text": "Let me tell you about a big decision. In 2004, Bharti Airtel had about 58 lakh mobile customers and was growing fast. Then it asked Ericsson and Nokia to run its network, the towers and machines that carry calls, and IBM to run its computers. Can you guess why?"
     },
     {
       "kind": "choice",
@@ -19,7 +19,7 @@
       "options": [
         {
           "id": "a",
-          "label": "It did not have enough money left"
+          "label": "Its own network kept breaking down"
         },
         {
           "id": "b",
@@ -31,19 +31,19 @@
         }
       ],
       "answer": "c",
-      "why": "Airtel paid for the network capacity it used, not for the network itself. This gave Airtel more time and money to win customers. By July 2006, it had more than 2.4 crore mobile customers."
+      "why": "Airtel paid only for the network capacity its calls used, not to own the network. That left more time and money to win customers. By July 2006, it had more than 2.4 crore mobile customers."
     },
     {
       "kind": "explain",
       "id": "core",
       "title": "Your core skill",
-      "text": "Airtel kept one job for itself: winning and keeping customers. In 1990, two professors named this idea core competence: a skill that makes customers choose you and is hard for others to copy. Keep that skill in your business, and pay others for work they can do better or cheaper."
+      "text": "Airtel kept the job it saw as most important: winning and keeping customers. In 1990, two professors named this idea core competence: a skill that makes customers choose you and is hard to copy. Keep that skill, and pay others for work they can do better or cheaper."
     },
     {
       "kind": "explain",
       "id": "home",
       "title": "Now look at your bakery",
-      "text": "A phone company and a home bakery both have something customers choose them for. It's September, your fifth year. Your ₹850 chocolate cake costs ₹400 to make. You three bake the cakes, but you also make 120 deliveries a month, print boxes and file GST returns yourself."
+      "text": "A phone company and a home bakery both have something customers choose them for. It's September, your fifth year. Your ₹850 chocolate cake costs ₹400 to make. You, your sister and your cousin bake, but you also make 120 deliveries a month, print boxes and file GST yourselves."
     },
     {
       "kind": "sort",
@@ -52,7 +52,7 @@
       "buckets": ["Do it yourselves", "Pay someone else"],
       "items": [
         {
-          "text": "Your chocolate cake recipe",
+          "text": "Mixing cakes from your own recipe",
           "bucket": 0
         },
         {
@@ -122,7 +122,7 @@
         }
       ],
       "answer": "b",
-      "why": "Exactly. ₹12,000 ÷ ₹60 = 200 trips. Below 200 trips, the service costs less, and your own rider costs the same even when orders are low. At 60 trips, the service costs ₹3,600, but your rider still costs ₹12,000.",
+      "why": "Exactly. ₹12,000 ÷ ₹60 = 200 trips. Below 200 trips, the service costs less. And your rider costs ₹12,000 even in a slow month: at 60 trips, the service costs ₹3,600.",
       "wrong": {
         "a": "That's how many trips you make now. To find where they cost the same, divide ₹12,000 by ₹60. That's 200 trips.",
         "c": "Let's check: 300 trips × ₹60 = ₹18,000, more than the rider's ₹12,000. Divide instead: ₹12,000 ÷ ₹60 = 200 trips."
@@ -131,7 +131,7 @@
     {
       "kind": "choice",
       "id": "factory",
-      "prompt": "A factory making cakes for 50 shops offers you chocolate cakes from its own recipe, at ₹300 each. What's your biggest risk?",
+      "prompt": "Your cake costs ₹400 to make. A factory that bakes for 50 shops offers you cakes from its own recipe at ₹300. Biggest risk?",
       "options": [
         {
           "id": "a",
@@ -143,7 +143,7 @@
         },
         {
           "id": "b",
-          "label": "Other shops could sell that same cake"
+          "label": "Your cake tastes like other shops' cakes"
         }
       ],
       "answer": "b",
@@ -156,7 +156,7 @@
     {
       "kind": "scenario",
       "id": "diwali",
-      "setup": "It's late September. You expect about 200 orders in October, up from 120. The three of you can bake that many cakes, but you can't also handle deliveries, printing and GST. Each cake sells for ₹850.",
+      "setup": "It's late September. You expect about 200 orders in October, up from 120. The three of you can bake that many cakes, but not also deliver 200 orders yourselves. Each cake sells for ₹850.",
       "question": "How do you get ready for Diwali?",
       "options": [
         {
@@ -169,17 +169,17 @@
         },
         {
           "id": "b",
-          "label": "Buy a scooter and employ your own rider",
+          "label": "Hire your own rider; he's there every day",
           "grade": "ok",
-          "outcome": "Diwali deliveries go well. You pay ₹12,000 a month for the rider and ₹2,500 a month for the scooter loan. In November, deliveries fall to about 90. A delivery service would cost ₹5,400, but your rider still costs ₹12,000.",
+          "outcome": "Diwali deliveries go well. You pay ₹12,000 a month for the rider and ₹2,500 a month for his scooter loan. In November, deliveries fall to about 90. A delivery service would cost ₹5,400, but your rider still costs ₹12,000.",
           "why": "Deliveries worked, but you took on a fixed cost for a busy month. Delivery isn't your core, so there was no need to own it.",
           "better": "Pay a delivery service per trip, and keep the baking yourselves."
         },
         {
           "id": "c",
-          "label": "Pay a delivery service, a printer and a CA",
+          "label": "Pay a delivery service per trip; you bake",
           "grade": "great",
-          "outcome": "In October, the service makes 200 deliveries for ₹12,000, the same as your own rider. In November, it makes about 90 for ₹5,400, saving you ₹6,600. The printer and the CA do their jobs. You spend Diwali baking, and your regular customers keep ordering.",
+          "outcome": "In October, the service makes 200 deliveries for ₹12,000, the same as your own rider. In November, it makes about 90 for ₹5,400, saving you ₹6,600. You spend Diwali baking, and your regular customers keep ordering.",
           "why": "Exactly. You kept your core, the baking, and paid others only for what you used. When the rush ended, the cost fell with it."
         }
       ]

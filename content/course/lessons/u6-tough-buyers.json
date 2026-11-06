@@ -31,13 +31,13 @@
         }
       ],
       "answer": "c",
-      "why": "Riders wanted to go as far as possible on one litre of petrol, so Hero Honda had to make bikes that used less petrol. That helped it sell more bikes. By 2009, it sold about half of India's motorcycles, and it had been the world's biggest two-wheeler maker for eight years."
+      "why": "Riders who counted every rupee chose the bike that wasted the least petrol, so Hero Honda had to keep its engines saving petrol. That helped it sell more bikes. By 2009, it sold about half of India's motorcycles, and it had been the world's biggest two-wheeler maker for eight years."
     },
     {
       "kind": "explain",
       "id": "porter",
       "title": "Demanding buyers",
-      "text": "That wasn't luck. In 1990, Michael Porter, a Harvard professor, studied why some countries make better products. One answer was demanding buyers at home: buyers who want more push companies to improve faster than easy buyers do. So don't run from tough buyers. Learn from them."
+      "text": "Here's why that wasn't luck. In 1990, a Harvard professor, Michael Porter, argued that demanding buyers at home push companies to improve faster than easy buyers do. That helps them beat rivals everywhere else too. So don't run from tough buyers. Learn from them."
     },
     {
       "kind": "explain",
@@ -97,16 +97,16 @@
           "bucket": 0
         },
         {
-          "text": "A buyer who wants free delivery across town",
+          "text": "A buyer who wants a new design every week, free",
           "bucket": 1
         }
       ],
-      "why": "Exactly. Some buyers ask for better quality: a clean kitchen, cakes that match and clear ingredient lists. Meeting them makes every cake better. Other buyers only ask for lower prices or more time to pay, and that just leaves you with less money."
+      "why": "Exactly. Some buyers ask for better quality: a clean kitchen, cakes that match, a full ingredient list. Meeting them makes every cake better. Others only ask for lower prices, free extras or more time to pay, and that just leaves you with less money."
     },
     {
       "kind": "choice",
       "id": "spread",
-      "prompt": "For the hotel, you now put a date on every cake and write down fridge temperatures. How does this affect your other orders?",
+      "prompt": "If you take the hotel order, you'll date every cake and write down fridge temperatures. What happens to your other orders?",
       "options": [
         {
           "id": "a",
@@ -118,7 +118,7 @@
         },
         {
           "id": "c",
-          "label": "Your other cakes become better too"
+          "label": "Less cream goes bad in every order"
         }
       ],
       "answer": "c",
@@ -131,39 +131,39 @@
     {
       "kind": "choice",
       "id": "chef",
-      "prompt": "Your friends say your cakes are perfect, but the hotel's chef finds three problems. Whose words will help you improve more?",
+      "prompt": "A regular who buys 20 cakes a month says \"all good\". The hotel's chef tastes a sample and finds three problems. Whose words help more?",
       "options": [
         {
           "id": "b",
-          "label": "The chef, who has tried many bakers' cakes"
+          "label": "The chef's. She named three problems"
         },
         {
           "id": "a",
-          "label": "Your friends, who already buy your cakes"
+          "label": "The regular's. She buys the most"
         },
         {
           "id": "c",
-          "label": "Neither, because only sales matter"
+          "label": "Neither. Only sales numbers matter"
         }
       ],
       "answer": "b",
-      "why": "Right. Remember Unit 2: praise is not proof. Kind words cost nothing and teach you nothing. The chef's three problems are three things to fix before other buyers find them.",
+      "why": "Right. Remember Unit 2: praise is not proof. \"All good\" costs nothing and teaches you nothing. The chef's three problems are three things to fix before other buyers find them.",
       "wrong": {
-        "a": "Your friends are kind. But remember Unit 2: praise is not proof. The chef's three problems tell you what to fix.",
-        "c": "What sells matters. But the chef's three problems are what will keep cakes selling. Remember Unit 2: praise is not proof. A tough buyer's notes tell you what to fix."
+        "a": "Your regular matters a lot. But \"all good\" tells you nothing to fix. Remember Unit 2: praise is not proof. The chef's three problems tell you what to fix before other buyers notice.",
+        "c": "Sales matter. But the chef's three problems are what will keep cakes selling. Remember Unit 2: praise is not proof. A tough buyer's notes tell you what to fix."
       }
     },
     {
       "kind": "scenario",
       "id": "hotel",
-      "setup": "It's mid-December. The hotel wants cakes before Christmas. To meet its rules, you must spend ₹30,000 on a second fridge and steel tables. The work takes a week, so it can be ready just in time, but only if you start now.",
+      "setup": "It's mid-December. The hotel wants cakes before Christmas. To meet its rules, you must spend ₹30,000 on a second fridge and steel tables. The work takes a week. And a bigger bakery has offered to start tomorrow.",
       "question": "What do you tell the hotel?",
       "options": [
         {
           "id": "a",
           "label": "Accept, and fix the kitchen in January",
           "grade": "bad",
-          "outcome": "You deliver the Christmas cakes and earn ₹9,000 in two weeks. But at the first kitchen check, the inspector finds one fridge that's too full and wooden tables. The hotel stops ordering from you.",
+          "outcome": "You deliver the Christmas cakes and earn ₹9,000 in two weeks. But at the first kitchen check, in week two, the inspector finds one fridge that's too full and wooden tables. The hotel moves to the bigger bakery.",
           "why": "You took the order but not the standard. A tough buyer only makes you better if you meet its rules.",
           "better": "Say yes, fix the kitchen this week, then start."
         },
@@ -187,7 +187,7 @@
     {
       "kind": "gap",
       "id": "fill",
-      "text": "A café returns any cake that leans. It is tough on ___. A buyer who wants ₹200 off every order is tough on ___.",
+      "text": "A café returns any cake with uneven layers. It is tough on ___. A buyer who wants ₹200 off every order is tough on ___.",
       "bank": ["quality", "price", "delivery", "taste"],
       "answer": ["quality", "price"],
       "why": "Exactly. Porter called the first kind demanding buyers. Meeting them makes you better. The second kind only makes you poorer."

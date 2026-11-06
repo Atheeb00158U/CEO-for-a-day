@@ -9,7 +9,7 @@
       "kind": "explain",
       "id": "hook",
       "media": "img:ls_eye_ward",
-      "text": "Let me tell you about an eye hospital in Madurai. Aravind Eye Hospital does cataract operations, which help people see clearly again. An Aravind surgeon does about 2,000 a year; India's average is 250. Yet its patients have half the problems after surgery that Britain's do. Can you guess how?"
+      "text": "Let me tell you about an eye hospital in Madurai. Aravind Eye Hospital does cataract operations, which help people see clearly again. An Aravind surgeon does about 2,000 a year; India's average is 250. And its patients have half as many problems after surgery as patients in Britain. Guess how."
     },
     {
       "kind": "choice",
@@ -31,19 +31,19 @@
         }
       ],
       "answer": "b",
-      "why": "Everyone follows the same steps each time. While a surgeon operates on one patient, helpers prepare the next. The surgeon does the most important steps, and trained helpers do the rest in the same order, like a factory line. When everyone follows the same steps, mistakes are easier to spot."
+      "why": "Everyone follows the same steps each time. While a surgeon operates on one patient, helpers prepare the next. The surgeon does the most important steps, and trained helpers do the rest in the same order, like a factory line. When every step has a fixed order, a missed step stands out."
     },
     {
       "kind": "explain",
       "id": "standard",
       "title": "Standard work",
-      "text": "This is called standard work: writing down the best way to do a job, so everyone follows it. Toyota made it famous. It isn't about working harder. When everyone follows the same steps, mistakes show up fast, and one fix helps everyone. Does your shop pack the same way?"
+      "text": "This is called standard work: writing down the best way to do a job, so everyone follows it. Toyota made it famous in its factories. It isn't about working harder. When everyone follows the same steps, mistakes show up fast, and one fix helps everyone. Now, your bakery."
     },
     {
       "kind": "explain",
       "id": "home",
       "title": "Now look at your bakery",
-      "text": "Now think about your home bakery in August of its fifth year. Your sister and cousin now bake with you, and together you make about 30 cakes a week, at ₹850 each. But their chocolate cakes taste different from yours, because each of you bakes a different way."
+      "text": "Now think about your home bakery in August of its fifth year. Your sister and cousin now bake with you: about 30 cakes a week, at ₹850 each, costing ₹400 to make. But their chocolate cakes taste different from yours, because each of you bakes a different way."
     },
     {
       "kind": "choice",
@@ -123,28 +123,28 @@
       "options": [
         {
           "id": "a",
-          "label": "Yes, her cake came out right"
-        },
-        {
-          "id": "b",
-          "label": "Yes, if the customer liked the cake"
+          "label": "Yes. A perfect cake proves it"
         },
         {
           "id": "c",
-          "label": "No, her guess might fail next time"
+          "label": "It depends on the oven that day"
+        },
+        {
+          "id": "b",
+          "label": "No. Guessing can fail next time"
         }
       ],
-      "answer": "c",
-      "why": "Right. Remember Unit 1: judge the thinking, not the luck. Guessing can work once, but it may fail next time. A clear card helps everyone make the same cake each time, and that's how three people can bake cakes that taste alike.",
+      "answer": "b",
+      "why": "Right. Remember Unit 1: judge the thinking, not the luck. A good result from a guess doesn't make guessing a good way. A clear card helps everyone make the same cake every time, and that's how three people bake cakes that taste alike.",
       "wrong": {
-        "a": "Her cake was perfect this time. But remember Unit 1: judge the thinking, not the luck. Guessing the sugar might fail next time, and nobody would know why.",
-        "b": "It's good that the customer liked it, but that doesn't mean guessing will work next time. Judge the thinking, not the luck. The card helps everyone get the same result."
+        "a": "Her cake was perfect this time. But remember Unit 1: judge the thinking, not the luck. A good result from a guess doesn't make guessing a good way. Next time it can fail, and nobody would know why.",
+        "c": "The oven matters, but that's another reason to write things down: then you can tell whether the oven or the guess went wrong. Judge the thinking, not the luck. Guessing can fail next time."
       }
     },
     {
       "kind": "choice",
       "id": "better-way",
-      "prompt": "Your sister finds that beating the mixture 5 minutes longer makes the cake lighter. Customers notice. What should you do?",
+      "prompt": "Your sister tried beating the mixture 5 minutes longer on one cake, and it came out lighter. She tells you. What should you do?",
       "options": [
         {
           "id": "a",
@@ -160,7 +160,7 @@
         }
       ],
       "answer": "a",
-      "why": "Exactly. Standard work doesn't mean you can't improve. The card shows the best way you know today. Test her idea on a few cakes, and if it works, change the card. Then everyone's cakes get lighter, not just hers.",
+      "why": "Exactly. Standard work doesn't mean you can't improve. Your sister tried it once and told you: that's the right way to suggest a change. Test it on a few cakes, and if it works, change the card, so everyone's cakes get lighter.",
       "wrong": {
         "b": "The card is the best way so far, not forever. Try her idea on a few cakes. If it really works, put it on the card, so every cake gets lighter.",
         "c": "Then her cakes and yours taste different again. Test her idea, and if it works, change the card for everyone."
@@ -176,7 +176,7 @@
           "id": "a",
           "label": "Bake all 10 cakes yourself each week",
           "grade": "ok",
-          "outcome": "All the café's cakes come out the same, and you earn ₹3,000 a week. But you bake until midnight every Thursday, and after two weeks your home orders start getting late.",
+          "outcome": "All the café's cakes come out the same, and you earn ₹3,000 a week. But you bake late every Thursday, and after two weeks your home orders start getting late.",
           "why": "You made the cakes right, but only you know how. If every cake depends on you, your business cannot grow beyond what you can bake yourself.",
           "better": "Write a card, bake the first batch with your helpers, and check it."
         },
@@ -200,7 +200,7 @@
     {
       "kind": "gap",
       "id": "fill",
-      "text": "Three tailors cut shirts in different ways, so the sleeves never ___. One written ___ way could fix this.",
+      "text": "Same idea, different shop: three tailors cut shirts in different ways, so the sleeves never ___. One written ___ way could fix this.",
       "bank": ["match", "standard", "shrink", "faster"],
       "answer": ["match", "standard"],
       "why": "Exactly. Same job, three ways, three results. Write the one best way down, teach it, and the shirts match, just like your cakes."

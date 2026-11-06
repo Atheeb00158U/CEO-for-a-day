@@ -32,7 +32,7 @@
       "type": "scene",
       "year": "1981",
       "media": "img:mu_intro",
-      "text": "Gurgaon, 1981. Ten years ago, a company on this land promised Indians a small car of their own, but it made only a handful of cars before it was shut down. Now the government is trying again with a new company, Maruti Udyog, and it has put you in charge.",
+      "text": "Gurgaon, 1981. Ten years ago, a company here promised to make a small car for Indian families, but it made only a handful before it shut down. Now the government is trying again. The new company is called Maruti Udyog, and you are in charge.",
       "next": "s_goal"
     },
     "s_goal": {
@@ -40,7 +40,7 @@
       "type": "scene",
       "year": "1981",
       "media": "img:mu_goal",
-      "text": "Your goal is 1 lakh cars a year, while all of India buys fewer than 40,000, nearly all of them big, old Ambassadors and Padminis. Nobody on your team has ever built a car, so first you need a foreign carmaker that can show you how.",
+      "text": "Your goal is to make 1 lakh cars a year, but all of India buys fewer than 40,000 cars a year, mostly big, old Ambassadors and Padminis. Nobody on your team has built a car before, so you need a foreign carmaker to teach your people how.",
       "next": "d1"
     },
     "d1": {
@@ -49,23 +49,25 @@
       "year": "1982",
       "title": "Find a partner",
       "media": "img:mu_d1",
-      "setup": "Fiat, Volkswagen, Renault, Peugeot and Nissan have all said no, and most other carmakers want to send their own people to run the plant. Daihatsu of Japan has been your best hope for months, but now a message shows it plans to build its car with another Indian firm. A few days later, a message arrives from Suzuki, a smaller Japanese maker. It wants in.",
+      "setup": "Fiat, Volkswagen, Renault, Peugeot and Nissan have all said no, and most other carmakers want their own people to run your factory. Daihatsu of Japan looked like your best hope for months, but now it plans to build with another Indian company. A few days later, Suzuki, a smaller Japanese carmaker, sends a message. It wants in.",
       "question": "Who do you build India's car with?",
-      "advisor": "The last Maruti made promises and no cars, so we cannot move slowly. But this partner will shape the company for years.",
+      "advisor": "We cannot afford another failed start, so we need to move quickly. But the company we choose will shape how Maruti works for years.",
       "options": [
         {
           "id": "wait",
-          "label": "Keep pushing Daihatsu. The talks are far along, but its last message was cold.",
+          "label": "Keep talking to Daihatsu, but risk losing more time",
           "grade": "ok",
           "effect": {
             "profit": -5,
             "future": 0,
-            "flags": ["waited"]
+            "flags": [
+              "waited"
+            ]
           },
           "next": "d2",
           "media": "img:mu_d1_wait",
-          "outcome": "You push Daihatsu for months, and late in the year it agrees to help. But India is a side project for it, so it sends only a small team, and you are behind before the first machine arrives.",
-          "why": "Remember: own your core skill, and get help with the rest. Maruti's core was learning to build cars, so it needed a partner keen to teach. Daihatsu was not keen, so it sent little help, and you lost months finding that out.",
+          "outcome": "You spend months trying to bring Daihatsu back. Late in the year it agrees to help, but India is not its main concern, so it sends only a small team. You are already late before the first machine arrives.",
+          "why": "Remember: own your core skill, and get help with the rest. Maruti needed to learn how to build cars, so it needed a partner keen to teach. Daihatsu was not keen, so it sent little help, and you spent months waiting for it.",
           "better": "Go with the partner that comes to you hungry, even if it is smaller and less famous.",
           "takeaway": "In 1982 you waited on a partner that had stopped caring.",
           "traits": {
@@ -76,18 +78,20 @@
         },
         {
           "id": "suzuki",
-          "label": "Open talks with Suzuki. It came to you, but it is small and unknown in India.",
+          "label": "Talk to Suzuki, but risk a smaller, unknown maker",
           "grade": "great",
           "real": true,
           "effect": {
             "profit": 5,
             "future": 15,
-            "flags": ["suzuki"]
+            "flags": [
+              "suzuki"
+            ]
           },
           "next": "d2",
           "media": "img:mu_d1_suzuki",
-          "outcome": "Talks begin in April 1982. Suzuki's president meets your team himself, and his money offer is the best you get. On 2 October 1982 you sign, and Suzuki buys about a quarter of Maruti, with a plan to own more later.",
-          "why": "Remember: own your core skill, and get help with the rest. Maruti's core was learning to build cars in India. Suzuki was keen to teach, and your people went to Japan to learn, so the know-how stayed with Maruti.",
+          "outcome": "Talks begin in April 1982. Suzuki's president meets your team himself, and Suzuki offers more money than any other company. On 2 October 1982 you sign the deal. Suzuki buys about a quarter of Maruti and plans to own more later.",
+          "why": "Remember: own your core skill, and get help with the rest. Maruti needed to learn how to build cars in India. Suzuki was ready to teach, and your people went to Japan to learn, so Maruti's own team gained the skills.",
           "takeaway": "In 1982 you picked the hungry partner over the famous one.",
           "traits": {
             "horizon": 1,
@@ -97,18 +101,20 @@
         },
         {
           "id": "turnkey",
-          "label": "Sign with a maker that will run the plant itself. It's fast, but its people decide.",
+          "label": "Let a foreign maker run the plant, but lose control",
           "grade": "bad",
           "effect": {
             "profit": 5,
             "future": -15,
             "trust": -1,
-            "flags": ["turnkey"]
+            "flags": [
+              "turnkey"
+            ]
           },
           "next": "d2",
           "media": "img:mu_d1_turnkey",
-          "outcome": "A foreign maker signs quickly and flies in its own managers and machines. Work starts fast, but your Indian staff are kept at the side, watching, while every big decision is made far away.",
-          "why": "Remember: own your core skill, and get help with the rest. Building cars was the one skill Maruti had to own. When a partner runs everything, you end up with a factory but none of the know-how.",
+          "outcome": "A foreign carmaker signs quickly. Its managers and machines arrive, and work begins fast. But your Indian staff mostly stand and watch, while the foreign managers make every big decision far away.",
+          "why": "Remember: own your core skill, and get help with the rest. Maruti had to learn how to build cars. If the foreign company did everything, your team would not learn, and you would have a factory that others must run.",
           "better": "Pick a partner that will train your own people and help Indian suppliers grow.",
           "takeaway": "In 1982 you bought a factory instead of learning to build one.",
           "traits": {
@@ -128,47 +134,55 @@
       "setup": [
         {
           "when": {
-            "flags": ["suzuki"]
+            "flags": [
+              "suzuki"
+            ]
           },
-          "text": "Suzuki makes three vehicles you could build: a tiny four-seat car, a small van and a light jeep. A survey shows that 9 in 10 car trips in India carry four people or fewer, mostly inside cities. But one of your board members says Maruti should make vans and trucks, not cars."
+          "text": "Suzuki has three vehicles you could make: a tiny four-seat car, a small van and a light jeep. A survey shows that 9 in 10 car trips in India carry four people or fewer, mostly in cities. But one board member wants Maruti to make work vehicles, not cars."
         },
         {
           "when": {
-            "flags": ["waited"]
+            "flags": [
+              "waited"
+            ]
           },
-          "text": "Daihatsu makes three vehicles you could build: a tiny four-seat car, a small van and a light jeep. A survey shows that 9 in 10 car trips in India carry four people or fewer, mostly inside cities. But one of your board members says Maruti should make vans and trucks, not cars."
+          "text": "Daihatsu has three vehicles you could make: a tiny four-seat car, a small van and a light jeep. A survey shows that 9 in 10 car trips in India carry four people or fewer, mostly in cities. But one board member wants Maruti to make work vehicles, not cars."
         },
         {
-          "text": "Your partner offers three vehicles you could build: a tiny four-seat car, a small van and a light jeep. A survey shows that 9 in 10 car trips in India carry four people or fewer, mostly inside cities. But one of your board members says Maruti should make vans and trucks, not cars."
+          "text": "Your partner has three vehicles you could make: a tiny four-seat car, a small van and a light jeep. A survey shows that 9 in 10 car trips in India carry four people or fewer, mostly in cities. But one board member wants Maruti to make work vehicles, not cars."
         }
       ],
       "question": "What do you build first?",
-      "advisor": "If we build all three, every kind of buyer has a reason to come to us. If we build only one, we must guess right the first time.",
+      "advisor": "More models could bring in different buyers. But each model needs its own parts, tools and training, and we have never built even one.",
       "options": [
         {
           "id": "small",
-          "label": "Build only the small car. It's the cheapest to buy and run, but it's tiny.",
+          "label": "Build the small car first, but offer less space",
           "grade": "great",
           "real": true,
           "effect": {
             "profit": 5,
             "future": 15,
-            "flags": ["small"]
+            "flags": [
+              "small"
+            ]
           },
           "next": "s1983",
           "media": "img:mu_d2_small",
           "outcome": [
             {
               "when": {
-                "flags": ["suzuki"]
+                "flags": [
+                  "suzuki"
+                ]
               },
-              "text": "You pick a car based on Suzuki's 1979 Alto, with a small 796 cc engine, and call it the Maruti 800. Front-wheel drive and disc brakes will be new to Indian buyers."
+              "text": "You choose a car based on Suzuki's 1979 Alto. It has a small 796 cc engine, and you name it the Maruti 800. Its front-wheel drive and disc brakes will be new to Indian buyers."
             },
             {
               "text": "Your partner's small car is light and cheap to run, which is just what city families need, although it will take work to make it ready for Indian roads."
             }
           ],
-          "why": "Remember: every extra model adds hidden costs. One car meant one set of parts, one line and one kind of training. It was also the car most families could afford, and the van and jeep could follow later.",
+          "why": "Remember: every extra model adds hidden costs. One car meant one set of parts, one line and one kind of training. It was also a car most families could afford, and the van and jeep could come later.",
           "takeaway": "In 1982 you built one car, the one most families could use and afford.",
           "traits": {
             "horizon": 1,
@@ -178,17 +192,19 @@
         },
         {
           "id": "all",
-          "label": "Build all three at once, so every kind of buyer finds a Maruti to suit them.",
+          "label": "Build all three models, but take on more work",
           "grade": "bad",
           "effect": {
             "profit": 0,
             "future": -15,
             "trust": -1,
-            "flags": ["all"]
+            "flags": [
+              "all"
+            ]
           },
           "next": "s1983",
           "media": "img:mu_d2_all",
-          "outcome": "Your new plant must now learn three vehicles at once: three sets of parts, three sets of tools and three kinds of training. Every line moves slowly, and the December date starts to slip.",
+          "outcome": "You make all three vehicles at once. Your new factory needs three sets of parts, three sets of tools and three kinds of training, and your workers must learn much more. Every line moves slowly, and the December launch date starts to slip.",
           "why": "Remember: every extra model adds hidden costs. Three vehicles meant three times the parts to find and the skills to learn, in a plant that had never built even one.",
           "better": "Build one vehicle well first, the small car, and add the others once the plant runs smoothly.",
           "takeaway": "In 1982 you tried to build three vehicles before you could build one.",
@@ -200,17 +216,19 @@
         },
         {
           "id": "van",
-          "label": "Build the van first. It fits a big family and a shop's goods, but costs more.",
+          "label": "Build the van first, but charge families more",
           "grade": "ok",
           "effect": {
             "profit": 5,
             "future": 5,
-            "flags": ["van"]
+            "flags": [
+              "van"
+            ]
           },
           "next": "s1983",
           "media": "img:mu_d2_van",
-          "outcome": "Shopkeepers and taxi owners will like the van. But a family on a scooter still won't be able to buy a car, and that is why Maruti was started.",
-          "why": "Remember: every extra model adds hidden costs, so start with one, and make it the one most buyers need. You picked one, but the van mostly served shops and taxis. India's biggest gap was a car a family could afford.",
+          "outcome": "Shopkeepers and taxi owners like the idea, because a van can carry a big family or goods. But it costs more than the small car, and families who ride scooters still cannot afford a car, which is why Maruti was started.",
+          "why": "Remember: every extra model adds hidden costs. You kept things simple by choosing one model, but that model mainly helped shops and taxis. Maruti was meant to give Indian families a car they could afford.",
           "better": "Build the small car first, and add the van soon after.",
           "takeaway": "In 1982 you started with a useful van, but missed the biggest need.",
           "traits": {
@@ -229,19 +247,25 @@
       "text": [
         {
           "when": {
-            "flags": ["all"]
+            "flags": [
+              "all"
+            ]
           },
           "text": "The launch is set for December 1983, but your plant is learning three vehicles at once. You still need hundreds of Indian firms to make parts, and dealers across the country."
         },
         {
           "when": {
-            "flags": ["suzuki"]
+            "flags": [
+              "suzuki"
+            ]
           },
-          "text": "The launch is set for December 1983. In just 14 months you must build a factory, find hundreds of Indian firms to make parts, and sign up dealers across the country. Your people fly to Japan to learn how Suzuki does it."
+          "text": "The launch date is December 1983. You have just 14 months to build a factory, find hundreds of Indian companies to make parts, and choose dealers across the country. Your people fly to Japan to learn how Suzuki builds cars."
         },
         {
           "when": {
-            "flags": ["waited"]
+            "flags": [
+              "waited"
+            ]
           },
           "text": "The launch is set for December 1983, and Daihatsu's slow start has eaten into your time. You still need a factory, hundreds of Indian firms to make parts, and dealers across the country."
         },
@@ -257,22 +281,24 @@
       "year": "1983",
       "title": "Make the date",
       "media": "img:mu_d3",
-      "setup": "The Indian parts makers are not ready. Their quality is uneven and their parts often arrive late. If you wait for them, there will be no car in December.",
+      "setup": "The factory is taking shape, but there's a problem. Indian parts makers are not ready: some parts are good, others are not, and deliveries often come late. If you wait for them to improve, you will miss the December launch.",
       "question": "How do you make the launch date?",
-      "advisor": "If we miss the date, people will say Maruti has failed again. But if everything comes from abroad, how Indian is our car?",
+      "advisor": "We promised a car in December, and waiting puts that date at risk. But buying parts from abroad means less of our first car is made in India.",
       "options": [
         {
           "id": "delay",
-          "label": "Wait until Indian parts makers are ready, even if the launch slips a year.",
+          "label": "Wait for better Indian parts, but launch a year late",
           "grade": "ok",
           "effect": {
             "profit": -10,
             "future": 0,
-            "flags": ["delayed"]
+            "flags": [
+              "delayed"
+            ]
           },
           "next": "s_launch_late",
           "media": "img:mu_d3_delay",
-          "outcome": "December comes and goes with no car. The papers start calling Maruti another failed dream, and Delhi starts asking hard questions.",
+          "outcome": "You wait for Indian suppliers to improve. December comes and goes without a car. Newspapers begin calling Maruti another failed dream, and Delhi starts asking why the project is late.",
           "why": "Remember: find the longest chain of work, and buy ready-made anything that could make you late. Indian parts were that chain, so waiting for them made the whole launch wait.",
           "better": "Launch on time with imported parts, and set firm dates for switching to Indian ones.",
           "takeaway": "In 1983 you put a perfect car ahead of an on-time car.",
@@ -284,18 +310,22 @@
         },
         {
           "id": "oldparts",
-          "label": "Use Indian parts as they are today. You keep the date, but quality is uneven.",
+          "label": "Use Indian parts now, but risk quality problems",
           "grade": "bad",
           "effect": {
             "profit": 0,
             "future": -15,
             "trust": -1,
-            "flags": ["oldparts"]
+            "flags": [
+              "oldparts"
+            ]
           },
           "next": [
             {
               "when": {
-                "flags": ["all"]
+                "flags": [
+                  "all"
+                ]
               },
               "to": "s_launch_late"
             },
@@ -304,7 +334,7 @@
             }
           ],
           "media": "img:mu_d3_oldparts",
-          "outcome": "You make the date with an all-Indian vehicle. But within weeks, buyers are back at the dealers with leaks, rattles and breakdowns, and they say the new Maruti is no better than the old cars.",
+          "outcome": "You launch on time with the Indian parts you have, but their quality is uneven. Within weeks, buyers return to dealers with leaks, rattles and breakdowns, and they say the new Maruti is no better than the old cars.",
           "why": "Remember: buy ready-made anything that could make you late, then learn to make it. You kept the date with parts that were not ready, and a car built from them broke down in front of everyone.",
           "better": "Use proven imported parts at first, and raise Indian suppliers to the new standard step by step.",
           "takeaway": "In 1983 you chose a local label over real quality.",
@@ -316,18 +346,22 @@
         },
         {
           "id": "kits",
-          "label": "Launch with parts shipped from Japan, and promise to go Indian within five years.",
+          "label": "Use Japanese parts now, but depend on imports first",
           "grade": "great",
           "real": true,
           "effect": {
             "profit": 5,
             "future": 10,
-            "flags": ["kits"]
+            "flags": [
+              "kits"
+            ]
           },
           "next": [
             {
               "when": {
-                "flags": ["all"]
+                "flags": [
+                  "all"
+                ]
               },
               "to": "s_launch_late"
             },
@@ -339,15 +373,18 @@
           "outcome": [
             {
               "when": {
-                "flags": ["suzuki", "small"]
+                "flags": [
+                  "suzuki",
+                  "small"
+                ]
               },
-              "text": "Your workers put together kits shipped from Japan. When the first 192 cars roll out in December 1983, only the tyres and the batteries are Indian, less than 3% of the car. You promise 95% within five years."
+              "text": "Your workers put together kits shipped from Japan. The first 192 cars are ready in December 1983, and only the tyres and batteries are Indian, less than 3% of the car. You promise to reach 95% Indian parts within five years."
             },
             {
               "text": "You put together parts shipped from abroad. Very little of the vehicle is Indian yet, but you now have a firm plan to change that."
             }
           ],
-          "why": "Remember: find the longest chain of work, and buy ready-made anything that could make you late. Indian parts were on that chain. Imported kits kept the date, and a firm five-year plan meant you would still make the parts yourself.",
+          "why": "Remember: find the longest chain of work, and buy ready-made anything that could make you late. Indian parts were delaying the cars, so kits from Japan let you launch on time, and a five-year plan meant you would still make the parts yourself.",
           "takeaway": "In 1983 you launched on time and made a firm plan to go local.",
           "traits": {
             "horizon": 1,
@@ -365,13 +402,19 @@
       "text": [
         {
           "when": {
-            "flags": ["suzuki", "small", "kits"]
+            "flags": [
+              "suzuki",
+              "small",
+              "kits"
+            ]
           },
           "text": "14 December 1983, New Delhi. The Prime Minister, Indira Gandhi, hands the keys of the first Maruti 800 to its owner, an Indian Airlines employee who paid ₹47,500. The plant, the suppliers and the dealers were all built in 14 months."
         },
         {
           "when": {
-            "flags": ["oldparts"]
+            "flags": [
+              "oldparts"
+            ]
           },
           "text": "Your first vehicles rolled out on time in December 1983, but the repair bills are growing, and so are the jokes about Maruti."
         },
@@ -389,7 +432,9 @@
       "text": [
         {
           "when": {
-            "flags": ["delayed"]
+            "flags": [
+              "delayed"
+            ]
           },
           "text": "Late 1984. Almost a year behind plan, your first vehicle finally rolls out of Gurgaon, and this one is mostly Indian. People are glad to see it, but many had stopped believing it would ever come."
         },
@@ -408,13 +453,19 @@
       "setup": [
         {
           "when": {
-            "flags": ["suzuki", "small", "kits"]
+            "flags": [
+              "suzuki",
+              "small",
+              "kits"
+            ]
           },
           "text": "About 1,20,000 people have booked a car, but this year you can make only about 20,000. More machines need foreign money, and India has very little to spare. So every extra car must come from the plant you already have."
         },
         {
           "when": {
-            "flags": ["turnkey"]
+            "flags": [
+              "turnkey"
+            ]
           },
           "text": "Far more people have booked than you can supply. Delhi now wants your own managers to run the shop floor, not your partner's. More machines need foreign money that India lacks, so every extra car must come from this plant."
         },
@@ -433,7 +484,9 @@
             "profit": 0,
             "future": -15,
             "trust": -1,
-            "flags": ["ownway"]
+            "flags": [
+              "ownway"
+            ]
           },
           "next": "d5",
           "media": "img:mu_d4_ownway",
@@ -455,14 +508,18 @@
           "effect": {
             "profit": 10,
             "future": 10,
-            "flags": ["suzukiway"]
+            "flags": [
+              "suzukiway"
+            ]
           },
           "next": "d5",
           "media": "img:mu_d4_suzukiway",
           "outcome": [
             {
               "when": {
-                "flags": ["suzuki"]
+                "flags": [
+                  "suzuki"
+                ]
               },
               "text": "Officers and workers eat the same food in one canteen and work in open offices. Shifts start with exercises, tea breaks are short, and nobody leaves dust on the floor. Training never stops, and in 1984–85 Gurgaon beats its target of 20,000 cars."
             },
@@ -485,7 +542,9 @@
           "effect": {
             "profit": 5,
             "future": -5,
-            "flags": ["shift"]
+            "flags": [
+              "shift"
+            ]
           },
           "next": "d5",
           "media": "img:mu_d4_shift",
@@ -510,25 +569,34 @@
       "setup": [
         {
           "when": {
-            "flags": ["suzuki", "kits"]
+            "flags": [
+              "suzuki",
+              "kits"
+            ]
           },
           "text": "Less than a tenth of each car is made in India so far, and every imported part costs foreign money. To keep your promise, hundreds of small Indian firms must learn to make much better parts, and fast."
         },
         {
           "when": {
-            "flags": ["oldparts"]
+            "flags": [
+              "oldparts"
+            ]
           },
           "text": "Your Indian parts break too often, and buyers are angry. Hundreds of Indian firms must learn to make much better parts, or your vehicles will never be trusted."
         },
         {
           "when": {
-            "flags": ["turnkey"]
+            "flags": [
+              "turnkey"
+            ]
           },
           "text": "Your partner's managers want to keep buying from their own suppliers abroad, and every imported part costs foreign money. Hundreds of Indian firms are waiting for a chance."
         },
         {
           "when": {
-            "flags": ["delayed"]
+            "flags": [
+              "delayed"
+            ]
           },
           "text": "Your Indian suppliers are making parts now, but their quality is uneven, and hundreds of them must learn to work to a higher standard."
         },
@@ -547,14 +615,19 @@
           "effect": {
             "profit": 5,
             "future": 15,
-            "flags": ["quality"]
+            "flags": [
+              "quality"
+            ]
           },
           "next": "s1987",
           "media": "img:mu_d5_quality",
           "outcome": [
             {
               "when": {
-                "flags": ["suzuki", "kits"]
+                "flags": [
+                  "suzuki",
+                  "kits"
+                ]
               },
               "text": "A powerful politician asks to become a supplier. Your supplier team tells him to bring a sample and be tested like everyone else, and he never comes back. Hundreds of firms have to change their machines and their habits, and once it is clear that Maruti will not fail, they take it seriously."
             },
@@ -578,7 +651,9 @@
             "profit": 0,
             "future": -15,
             "trust": -1,
-            "flags": ["spread"]
+            "flags": [
+              "spread"
+            ]
           },
           "next": "s1987",
           "media": "img:mu_d5_spread",
@@ -599,7 +674,9 @@
           "effect": {
             "profit": -5,
             "future": 0,
-            "flags": ["imported"]
+            "flags": [
+              "imported"
+            ]
           },
           "next": "s1987",
           "media": "img:mu_d5_import",
@@ -623,25 +700,37 @@
       "text": [
         {
           "when": {
-            "flags": ["suzuki", "small", "kits", "suzukiway", "quality"]
+            "flags": [
+              "suzuki",
+              "small",
+              "kits",
+              "suzukiway",
+              "quality"
+            ]
           },
           "text": "It is 1987, and Maruti is growing up fast. A van joined the 800 in 1984 and the Gypsy jeep came in 1985. In 1986 the 1,00,000th Maruti rolled out, and the 800 got a newer body. Yet the queue at home is still years long."
         },
         {
           "when": {
-            "flags": ["spread"]
+            "flags": [
+              "spread"
+            ]
           },
           "text": "It is 1987. Your parts now come from all over India, but quality is uneven, and many small firms can't keep up with your orders."
         },
         {
           "when": {
-            "flags": ["ownway"]
+            "flags": [
+              "ownway"
+            ]
           },
           "text": "It is 1987. Your cars sell, but each shop still works its own way, and faults that one shop fixes keep coming back in another."
         },
         {
           "when": {
-            "flags": ["shift"]
+            "flags": [
+              "shift"
+            ]
           },
           "text": "It is 1987. The extra shift made more cars, and you are slowly teaching everyone one way of working, but the repair bills from those early months still hurt."
         },
@@ -660,7 +749,9 @@
       "setup": [
         {
           "when": {
-            "flags": ["suzuki"]
+            "flags": [
+              "suzuki"
+            ]
           },
           "text": "Buyers at home are still queuing, so you could sell every car you make in India. Suzuki and the head of your board both say you should not try to sell abroad."
         },
@@ -678,7 +769,9 @@
           "effect": {
             "profit": 5,
             "future": 0,
-            "flags": ["home"]
+            "flags": [
+              "home"
+            ]
           },
           "next": "ending_route",
           "media": "img:mu_d6_home",
@@ -700,7 +793,9 @@
             "profit": 5,
             "future": -15,
             "trust": -1,
-            "flags": ["big"]
+            "flags": [
+              "big"
+            ]
           },
           "next": "ending_route",
           "media": "img:mu_d6_big",
@@ -722,14 +817,19 @@
           "effect": {
             "profit": 0,
             "future": 10,
-            "flags": ["export"]
+            "flags": [
+              "export"
+            ]
           },
           "next": "ending_route",
           "media": "img:mu_d6_export",
           "outcome": [
             {
               "when": {
-                "flags": ["suzuki", "small"]
+                "flags": [
+                  "suzuki",
+                  "small"
+                ]
               },
               "text": "You ship 500 cars to Hungary, and the first ones arrive on 24 October 1987. France follows in 1989 and the Netherlands in 1990. To sell in Europe, the 800 gets seat belts, which it never had before."
             },
@@ -777,7 +877,14 @@
       "text": [
         {
           "when": {
-            "flags": ["suzuki", "small", "kits", "suzukiway", "quality", "export"]
+            "flags": [
+              "suzuki",
+              "small",
+              "kits",
+              "suzukiway",
+              "quality",
+              "export"
+            ]
           },
           "text": "By 1988 Gurgaon can make 1,00,000 cars a year, the goal you were given in 1981. The 800 stays on sale until 2014, and nearly 29 lakh are built. In 2024, about 4 in every 10 cars sold in India are still Marutis."
         },
@@ -796,13 +903,17 @@
       "text": [
         {
           "when": {
-            "flags": ["all"]
+            "flags": [
+              "all"
+            ]
           },
           "text": "Maruti makes three good vehicles, but none of them early or cheap enough. It never becomes the family car of India, and when foreign rivals arrive in the 1990s, they take that prize."
         },
         {
           "when": {
-            "flags": ["van"]
+            "flags": [
+              "van"
+            ]
           },
           "text": "Maruti's vans are everywhere, carrying goods and families. But the small family car comes late, and when foreign rivals arrive in the 1990s, Maruti is a strong player, not the clear leader."
         },
