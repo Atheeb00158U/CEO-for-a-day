@@ -11,24 +11,12 @@ import { Icon, MediaView } from "./ui";
 
 const COPY = {
   members: "For members",
-  lessons: (n: number) => `${n} lesson${n === 1 ? "" : "s"}`,
-  jump: "Skip ahead",
-  jumpSub: "Take a quiz",
   next: "Back to your place",
 };
 
-/** Each unit gets its own colour: the unit header and the banner of a module without a picture. */
-// Hex, not var(--color-…): Tailwind only emits the theme colours that classes use. Brand, blue, green, purple.
-const TONES = [
-  ["#f3ae47", "#b87a1f"],
-  ["#1cb0f6", "#1287c0"],
-  ["#58cc02", "#3f9a00"],
-  ["#b583ff", "#8a5ad8"],
-];
-const gradient = (ui: number) => {
-  const [a, b] = TONES[ui % TONES.length];
-  return `linear-gradient(135deg, ${a}, ${b})`;
-};
+/** Every unit header, and the banner of a module without a picture, is the brand gold (Atheeb, 6 Nov 2026: no rainbow). */
+// Hex, not var(--color-…): Tailwind only emits the theme colours that classes use.
+const GOLD = "linear-gradient(135deg, #f3ae47, #b87a1f)";
 
 const RING: Record<NodeState, string> = {
   done: "bg-[#2a1f0d] text-brand",
@@ -39,21 +27,19 @@ const RING: Record<NodeState, string> = {
 
 /**
  * Home's course map: each unit's header, then one unboxed block per module (on the page background): a picture banner, the title, and a grid of round
- * tiles (a test-out to jump ahead, the lessons in order, Practice) closed by the module's Hot Seats as wide tiles.
- * Lessons unlock in order; a module can be skipped with a short test-out quiz.
+ * tiles (the lessons in order, then Practice) closed by the module's Hot Seats as wide tiles.
+ * Lessons unlock in order; there is no skipping ahead (Atheeb, 6 Nov 2026: players miss the learning).
  */
 export function CoursePath({
   outline,
   catalog,
   onLesson,
-  onTestOut,
   onPractice,
   onPlay,
 }: {
   outline: CourseOutline;
   catalog: CatalogEntry[];
   onLesson: (lessonId: string) => void;
-  onTestOut: (moduleId: string, lessonIds: string[]) => void;
   onPractice: (title: string, lessonIds: string[]) => void;
   onPlay: (hotSeatId: string) => void;
 }) {
@@ -82,7 +68,7 @@ export function CoursePath({
     <div ref={root} className="flex flex-col gap-8">
       {path.units.map((u, ui) => (
         <section key={u.id} className="flex flex-col gap-10">
-          <div className="rounded-3xl border-b-4 border-black/30 px-4 py-3 text-[#1a1206]" style={{ background: gradient(ui) }}>
+          <div className="rounded-3xl border-b-4 border-black/30 px-4 py-3 text-[#1a1206]" style={{ background: GOLD }}>
             <p className="text-[12px] font-black tracking-[.14em] uppercase opacity-70">Unit {ui + 1}</p>
             <h2 className="text-[21px] leading-tight font-black">{u.title}</h2>
             <p className="text-[14px] font-bold opacity-80">{u.goal}</p>
@@ -93,34 +79,19 @@ export function CoursePath({
               return hs ? [{ ...g, hs }] : [];
             });
             const cover = gates.find((g) => g.hs.cover)?.hs.cover;
-            const lessonIds = m.lessons.map((l) => l.id);
-            const testOutPaid = locked({ kind: "testout", id: m.id });
             return (
               <article key={m.id}>
                 {cover ? (
                   <MediaView media={cover} kenBurns={false} className="wavy-b h-[148px] w-full !rounded-t-3xl !rounded-b-none" />
                 ) : (
-                  <div className="wavy-b grid h-[148px] place-items-center rounded-t-3xl" style={{ background: gradient(ui) }}>
+                  <div className="wavy-b grid h-[148px] place-items-center rounded-t-3xl" style={{ background: GOLD }}>
                     <Icon.chair className="size-14 text-[#1a1206] opacity-25" />
                   </div>
                 )}
                 <div className="pt-3">
                   <h3 className="text-[20px] leading-tight font-black">{m.title}</h3>
-                  <p className="mt-0.5 text-[12px] font-black tracking-[.12em] text-brand uppercase">{COPY.lessons(m.lessons.length)}</p>
                   <p className="mt-1 text-[14px] font-bold text-muted">{m.goal}</p>
                   <div className="mt-5 grid grid-cols-3 gap-x-2 gap-y-5">
-                    {m.canTestOut && (
-                      <Tile
-                        state="open"
-                        tone="ghost"
-                        members={testOutPaid}
-                        label={COPY.jump}
-                        sub={testOutPaid ? COPY.members : COPY.jumpSub}
-                        onClick={() => (testOutPaid ? showPaywall({ testOut: m.id, lessonIds }) : onTestOut(m.id, lessonIds))}
-                      >
-                        <Skip />
-                      </Tile>
-                    )}
                     {m.lessons.map((l) => {
                       const paid = locked({ kind: "lesson", id: l.id });
                       return (
@@ -206,13 +177,6 @@ export function CoursePath({
     </div>
   );
 }
-
-/** Two chevrons: skip ahead. */
-const Skip = () => (
-  <svg viewBox="0 0 24 24" className="size-8" aria-hidden>
-    <path d="M5 6l6 6-6 6M13 6l6 6-6 6" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
 
 const MembersBadge = () => (
   <span className="absolute -right-1 -bottom-1 grid size-7 place-items-center rounded-full border-[3px] border-bg bg-gold text-[#2a1d00]">

@@ -18,7 +18,6 @@ export function HomeTab({
   onDaily,
   onShop,
   onLesson,
-  onTestOut,
   onPractice,
   calm,
 }: {
@@ -28,7 +27,6 @@ export function HomeTab({
   onDaily: () => void;
   onShop: () => void;
   onLesson: (lessonId: string) => void;
-  onTestOut: (moduleId: string, lessonIds: string[]) => void;
   onPractice: (title: string, lessonIds: string[]) => void;
   /** No cheer or sheet is open, so the wolf may drop in. */
   calm: boolean;
@@ -90,9 +88,7 @@ export function HomeTab({
         </button>
       )}
 
-      {course && (
-        <CoursePath outline={course} catalog={catalog} onLesson={onLesson} onTestOut={onTestOut} onPractice={onPractice} onPlay={onPlay} />
-      )}
+      {course && <CoursePath outline={course} catalog={catalog} onLesson={onLesson} onPractice={onPractice} onPlay={onPlay} />}
 
       {/* Current Hot Seat */}
       {!course && (

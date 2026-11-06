@@ -31,22 +31,32 @@ const call = (method: "GET" | "POST", path: string[], token?: string, body?: unk
     { params: Promise.resolve({ path }) },
   );
 
-afterEach(() => vi.unstubAllEnvs());
+// The Club on for everyone: COMMUNITY_ON plus a named Grievance Officer (filled in for the test, then put back).
+const saved = { ...GRIEVANCE };
+const switchOn = () => {
+  vi.stubEnv("COMMUNITY_ON", "1");
+  Object.assign(GRIEVANCE, { name: "Test Officer", address: "1 Test Road", company: "Test Pvt Ltd" });
+};
+afterEach(() => {
+  vi.unstubAllEnvs();
+  Object.assign(GRIEVANCE, saved);
+});
 
 describe("/api/club/*", () => {
   it("is 401 without a token", async () => {
-    vi.stubEnv("PAYWALL_TESTERS", "tester@example.com");
+    switchOn();
     expect((await call("GET", ["me"])).status).toBe(401);
   });
 
-  it("is 404 while the Club is off for the player", async () => {
-    vi.stubEnv("PAYWALL_TESTERS", "");
+  it("is 404 while the Club is off, even for testers", async () => {
+    vi.stubEnv("PAYWALL_TESTERS", "tester@example.com");
+    expect((await call("GET", ["me"], "good")).status).toBe(404);
     vi.stubEnv("COMMUNITY_ON", "1"); // still off: no Grievance Officer named yet
     expect((await call("GET", ["me"], "good")).status).toBe(404);
   });
 
-  it("answers testers, and a gate refusal is 403 with `can`", async () => {
-    vi.stubEnv("PAYWALL_TESTERS", "tester@example.com");
+  it("answers once on, and a gate refusal is 403 with `can`", async () => {
+    switchOn();
     const me = await call("GET", ["me"], "good");
     expect(me.status).toBe(200);
     expect((await me.json()).can).toEqual({ post: "join", interact: "join" });
@@ -57,7 +67,7 @@ describe("/api/club/*", () => {
   });
 
   it("takes a picture as multipart, after the gate", async () => {
-    vi.stubEnv("PAYWALL_TESTERS", "tester@example.com");
+    switchOn();
     const form = new FormData();
     form.append("file", new Blob([new Uint8Array([0xff, 0xd8, 0xff, 0])], { type: "image/jpeg" }), "a.jpg");
     const upload = (headers: Record<string, string> = {}) =>
@@ -71,12 +81,12 @@ describe("/api/club/*", () => {
 });
 
 describe("clubOn", () => {
-  it("stays off for everyone but testers until the Grievance Officer is named", () => {
+  it("is coming soon for everyone, testers too, until COMMUNITY_ON and a named Grievance Officer", () => {
     vi.stubEnv("PAYWALL_TESTERS", "t@x.in");
     vi.stubEnv("COMMUNITY_ON", "1");
     expect(GRIEVANCE.name).toBe("TODO");
-    expect(clubOn("t@x.in")).toBe(true);
-    expect(clubOn("someone@x.in")).toBe(false);
-    expect(clubOn(undefined)).toBe(false);
+    expect(clubOn()).toBe(false);
+    switchOn();
+    expect(clubOn()).toBe(true);
   });
 });

@@ -278,8 +278,10 @@ but there may be more right paths. And more wrong paths."
 - **Sort ends with a list** where the player can change answers before checking.
 - **The player owns the path:** "You chose…", "Where your choice led", "The road you didn't take".
 - **No boxed UI** around lesson and Hot Seat content (5 Nov: "the whole UI looks boxed").
-- **Skip ahead (test-out)** never shows on the free Module 1.1 or before a player's first lesson (approved by
-  Atheeb on 5 Nov, PR #38).
+- **No skipping ahead.** The map has no test-out ("Skip ahead") at all: "people miss out a lot of learning, even
+  though they're smart" (Atheeb, 6 Nov). Don't promise a skip in lesson or Hot Seat copy.
+- **The map is one colour:** every unit header and plain module banner is the brand gold, and modules don't show a
+  lesson count (6 Nov: "users aren't going to count… it doesn't matter").
 
 ## 10. The QA every lesson and Hot Seat passes before Atheeb sees it
 

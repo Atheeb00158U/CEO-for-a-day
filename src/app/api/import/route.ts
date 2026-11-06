@@ -15,7 +15,7 @@ export const POST = (request: Request) =>
         cardLesson: cardLessons(),
       });
       const email = await emailFrom(request);
-      return { ...synced, membership: await membershipView(db, userId), paywall: paywallFor(email), club: clubOn(email) };
+      return { ...synced, membership: await membershipView(db, userId), paywall: paywallFor(email), club: clubOn() };
     },
     5,
   );

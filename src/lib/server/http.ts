@@ -93,7 +93,7 @@ export function club(request: Request, route: string, act: (db: Db, userId: stri
     request,
     `club-${route}`,
     async (db, userId) => {
-      if (!clubOn(await emailFrom(request))) return json({ error: "Not found" }, 404);
+      if (!clubOn()) return json({ error: "Not found" }, 404);
       try {
         return await act(db, userId);
       } catch (e) {
