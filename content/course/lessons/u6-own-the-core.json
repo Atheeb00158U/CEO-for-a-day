@@ -9,46 +9,46 @@
       "kind": "explain",
       "id": "hook",
       "media": "img:ls_phone_tower",
-      "text": "Let me tell you about a bold move. In 2004, Bharti Airtel had about 58 lakh mobile customers and was growing fast. Then it let Ericsson and Nokia run its mobile network, and IBM run its computers. A phone company that didn't run its own network! Have a guess why."
+      "text": "Let me tell you about a big decision. In 2004, Bharti Airtel had about 58 lakh mobile customers and was growing fast. Then it asked Ericsson and Nokia to run its mobile network, and IBM to run its computers. A phone company letting others run its network! Guess why."
     },
     {
       "kind": "choice",
       "id": "guess",
       "guess": true,
-      "prompt": "Why do you think a phone company would let other companies run its own network?",
+      "prompt": "Why would a phone company pay other companies to run its mobile network?",
       "options": [
         {
           "id": "a",
-          "label": "It was running out of money"
+          "label": "It did not have enough money left"
         },
         {
           "id": "b",
-          "label": "The government told it to"
+          "label": "The government asked it to do this"
         },
         {
           "id": "c",
-          "label": "To spend its time on winning customers"
+          "label": "It wanted more time to win customers"
         }
       ],
       "answer": "c",
-      "why": "It paid only for the network it used. It did not own it. So Airtel could spend its time and money on winning customers. By July 2006 it had more than 2.4 crore mobile customers."
+      "why": "Airtel paid for the network capacity it used, not for the network itself. This gave Airtel more time and money to win customers. By July 2006, it had more than 2.4 crore mobile customers."
     },
     {
       "kind": "explain",
       "id": "core",
       "title": "Your core skill",
-      "text": "Airtel kept one thing for itself: its customers. In 1990, two professors gave this idea a name: core competence. It's the one skill that makes customers choose you, and that others find hard to copy. Own that skill, and for the rest, pay people who do it better or cheaper."
+      "text": "Airtel kept one job for itself: winning and keeping customers. In 1990, two professors named this idea core competence: a skill that makes customers choose you and is hard for others to copy. Keep that skill in your business, and pay others for work they can do better or cheaper."
     },
     {
       "kind": "explain",
       "id": "home",
       "title": "Now look at your bakery",
-      "text": "A phone company and a home bakery both have one thing customers come for. It's September, your fifth year. Your ₹850 chocolate cake costs ₹400 to make. You three bake, but you also make 120 deliveries a month, print the boxes and file GST yourself."
+      "text": "A phone company and a home bakery both have something customers choose them for. It's September, your fifth year. Your ₹850 chocolate cake costs ₹400 to make. You three bake the cakes, but you also make 120 deliveries a month, print boxes and file GST returns yourself."
     },
     {
       "kind": "sort",
       "id": "own-or-rent",
-      "prompt": "I'll show you six jobs in your bakery. For each one, tell me: do it yourselves, or pay someone else?",
+      "prompt": "I'll show you six jobs at your bakery. For each one, tell me: should you do it yourselves, or pay someone else?",
       "buckets": ["Do it yourselves", "Pay someone else"],
       "items": [
         {
@@ -76,12 +76,12 @@
           "bucket": 1
         }
       ],
-      "why": "Exactly. For Airtel, the core was customers. For you, it's taste: your recipe, your checks and your regulars are why people pay ₹850. Delivery, printing and GST matter too, and you stay responsible for them, but a rider, a printer or a CA can do them well, often cheaper."
+      "why": "Exactly. Airtel's core was its customers. Yours is making cakes people love: your recipe, your checks and your regular customers are why you can sell cakes for ₹850. Delivery, printing and GST matter too, and you're still responsible for them, but a rider, a printer or a CA can do them well, often for less."
     },
     {
       "kind": "choice",
       "id": "rider",
-      "prompt": "You make 120 deliveries a month. A rider of your own costs ₹12,000 a month. A delivery service charges ₹60 a trip. Which costs less?",
+      "prompt": "You make 120 deliveries a month. Your own rider costs ₹12,000 a month. A delivery service charges ₹60 per trip. Which is cheaper?",
       "options": [
         {
           "id": "a",
@@ -106,7 +106,7 @@
     {
       "kind": "choice",
       "id": "same-cost",
-      "prompt": "Your own rider costs ₹12,000 a month. The service costs ₹60 a trip. At how many trips do they cost the same?",
+      "prompt": "Your own rider costs ₹12,000 a month. A delivery service charges ₹60 per trip. At how many trips will both cost the same?",
       "options": [
         {
           "id": "a",
@@ -122,7 +122,7 @@
         }
       ],
       "answer": "b",
-      "why": "Exactly. ₹12,000 ÷ ₹60 = 200 trips. Below 200, the service is cheaper. And a fixed cost hurts in a slow month: at 60 trips, the service costs ₹3,600, but your rider still costs ₹12,000.",
+      "why": "Exactly. ₹12,000 ÷ ₹60 = 200 trips. Below 200 trips, the service costs less, and your own rider costs the same even when orders are low. At 60 trips, the service costs ₹3,600, but your rider still costs ₹12,000.",
       "wrong": {
         "a": "That's how many trips you make now. To find where they cost the same, divide ₹12,000 by ₹60. That's 200 trips.",
         "c": "Let's check: 300 trips × ₹60 = ₹18,000, more than the rider's ₹12,000. Divide instead: ₹12,000 ÷ ₹60 = 200 trips."
@@ -131,23 +131,23 @@
     {
       "kind": "choice",
       "id": "factory",
-      "prompt": "A factory that bakes for 50 shops offers you chocolate cakes from its own recipe, at ₹300 each. What's the biggest risk?",
+      "prompt": "A factory making cakes for 50 shops offers you chocolate cakes from its own recipe, at ₹300 each. What's your biggest risk?",
       "options": [
         {
           "id": "a",
-          "label": "None. You save ₹100 a cake"
+          "label": "No risk, you save ₹100 per cake"
         },
         {
           "id": "c",
-          "label": "The cakes might arrive late"
+          "label": "The factory might deliver cakes late"
         },
         {
           "id": "b",
-          "label": "Other shops can sell the same cake"
+          "label": "Other shops could sell that same cake"
         }
       ],
       "answer": "b",
-      "why": "Exactly. Your taste is your core. Customers pay ₹850 for your cake, not for any cake. If a factory makes it, other shops can buy the same cake, and your customers lose their reason to come to you.",
+      "why": "Exactly. Your cake's taste is your core. Customers pay ₹850 because they like your cake. If you buy factory cakes, other shops can sell the same ones, and customers have less reason to choose you.",
       "wrong": {
         "a": "You'd save ₹100 a cake. But customers pay ₹850 for your taste. Use a factory's recipe, and any shop can sell the same cake. Your taste is what you must keep.",
         "c": "Late cakes are a problem you could fix. The bigger risk is that your taste, the reason people pay ₹850, would no longer be yours."
@@ -156,22 +156,22 @@
     {
       "kind": "scenario",
       "id": "diwali",
-      "setup": "It's late September. In October you expect about 200 orders, not 120. The three of you can bake that many, but you can't also deliver, print and file GST. Your cake sells for ₹850.",
+      "setup": "It's late September. You expect about 200 orders in October, up from 120. The three of you can bake that many cakes, but you can't also handle deliveries, printing and GST. Each cake sells for ₹850.",
       "question": "How do you get ready for Diwali?",
       "options": [
         {
           "id": "a",
           "label": "Buy factory cakes for the extra Diwali orders",
           "grade": "bad",
-          "outcome": "You meet every Diwali order. But some regulars get a factory cake, notice the taste has changed, and say so in your colony group. In November, orders fall below 120.",
+          "outcome": "You finish every Diwali order. But some regular customers get factory cakes, notice the different taste, and talk about it in the colony group. In November, your orders fall below 120.",
           "why": "You gave away the one thing customers came for. Your taste is your core, so it's the last thing to give away.",
           "better": "Keep the baking. Pay others for delivery and printing."
         },
         {
           "id": "b",
-          "label": "Buy a scooter, and hire your own rider",
+          "label": "Buy a scooter and employ your own rider",
           "grade": "ok",
-          "outcome": "Diwali deliveries go well, at ₹12,000 a month for the rider plus ₹2,500 a month for the scooter loan. In November, trips fall to about 90. The service would have cost ₹5,400. Your rider still costs ₹12,000.",
+          "outcome": "Diwali deliveries go well. You pay ₹12,000 a month for the rider and ₹2,500 a month for the scooter loan. In November, deliveries fall to about 90. A delivery service would cost ₹5,400, but your rider still costs ₹12,000.",
           "why": "Deliveries worked, but you took on a fixed cost for a busy month. Delivery isn't your core, so there was no need to own it.",
           "better": "Pay a delivery service per trip, and keep the baking yourselves."
         },
@@ -179,7 +179,7 @@
           "id": "c",
           "label": "Pay a delivery service, a printer and a CA",
           "grade": "great",
-          "outcome": "In October the service takes 200 trips for ₹12,000, the same as a rider. In November it takes about 90 for ₹5,400, so you save ₹6,600. The printer and a CA do their part. You spend Diwali baking, and regulars order again.",
+          "outcome": "In October, the service makes 200 deliveries for ₹12,000, the same as your own rider. In November, it makes about 90 for ₹5,400, saving you ₹6,600. The printer and the CA do their jobs. You spend Diwali baking, and your regular customers keep ordering.",
           "why": "Exactly. You kept your core, the baking, and paid others only for what you used. When the rush ended, the cost fell with it."
         }
       ]
@@ -187,7 +187,7 @@
     {
       "kind": "gap",
       "id": "fill",
-      "text": "Your ___ is your taste, so you do the baking. You pay a CA to file your ___.",
+      "text": "Your ___ is your cake's taste, so you bake the cakes. You pay a CA to file your ___.",
       "bank": ["core", "GST", "price", "tasting"],
       "answer": ["core", "GST"],
       "why": "Exactly. Keep the skill that makes customers choose you. Pay others for jobs they can do as well, or better. That's core competence."

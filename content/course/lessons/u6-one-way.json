@@ -9,46 +9,46 @@
       "kind": "explain",
       "id": "hook",
       "media": "img:ls_eye_ward",
-      "text": "Let me tell you about an eye hospital in Madurai. Aravind Eye Hospital does cataract operations, which clear cloudy eyes. An Aravind surgeon does about 2,000 a year; the Indian average is 250. Yet its patients have about half the problems after surgery that Britain's do. Have a guess how."
+      "text": "Let me tell you about an eye hospital in Madurai. Aravind Eye Hospital does cataract operations, which help people see clearly again. An Aravind surgeon does about 2,000 a year; India's average is 250. Yet its patients have about half as many problems after surgery as patients in Britain. Can you guess how?"
     },
     {
       "kind": "choice",
       "id": "guess",
       "guess": true,
-      "prompt": "How do you think Aravind's surgeons can do so many operations, and safely?",
+      "prompt": "How do Aravind's surgeons do so many operations while keeping patients safe?",
       "options": [
         {
           "id": "a",
-          "label": "Its doctors work far longer hours"
+          "label": "Its doctors work many more hours"
         },
         {
           "id": "b",
-          "label": "Each job is done one fixed way"
+          "label": "Everyone follows the same steps each time"
         },
         {
           "id": "c",
-          "label": "It buys costly machines from abroad"
+          "label": "It uses costly machines from abroad"
         }
       ],
       "answer": "b",
-      "why": "Each job is done one fixed way, every time. While a surgeon operates on one patient, the next one is already being made ready. The surgeon does only the key steps, and trained helpers do the rest in the same order, like a factory line. When every step is fixed, a mistake stands out."
+      "why": "Everyone follows the same steps each time. While a surgeon operates on one patient, helpers prepare the next. The surgeon does the most important steps, and trained helpers do the rest in the same order, like a factory line. When everyone follows the same steps, mistakes are easier to spot."
     },
     {
       "kind": "explain",
       "id": "standard",
       "title": "Standard work",
-      "text": "This is called standard work: one written best way for each job, which everyone follows. Toyota made it famous. It isn't about working harder. When everyone works the same way, a mistake shows up fast, and one fix helps everyone. Does everyone in your shop pack the same way?"
+      "text": "This is called standard work: writing down the best way to do a job, so everyone follows it. Toyota made it famous. It isn't about working harder. When everyone follows the same steps, you find mistakes quickly, and one fix helps everyone. Does everyone in your shop pack the same way?"
     },
     {
       "kind": "explain",
       "id": "home",
       "title": "Now look at your bakery",
-      "text": "Now picture your home bakery in August of its fifth year. Your sister and your cousin now bake with you, about 30 cakes a week, at ₹850 each. But their chocolate cakes don't taste like yours, because each of you has your own way."
+      "text": "Now think about your home bakery in August of its fifth year. Your sister and cousin now bake with you, and together you make about 30 cakes a week, at ₹850 each. But their chocolate cakes taste different from yours, because each of you bakes a different way."
     },
     {
       "kind": "choice",
       "id": "remakes",
-      "prompt": "You bake 30 cakes a week. 3 go wrong, and baking each one again costs you ₹400. What do the mistakes cost a month?",
+      "prompt": "You bake 30 cakes a week. 3 go wrong, and baking each again costs ₹400. How much do these mistakes cost in 4 weeks?",
       "options": [
         {
           "id": "a",
@@ -64,103 +64,103 @@
         }
       ],
       "answer": "b",
-      "why": "Exactly. 3 cakes × ₹400 is ₹1,200 a week, and 4 weeks make ₹4,800 a month. You keep ₹450 on a ₹850 cake, so that's more than ten cakes' worth of profit, lost to three different ways of baking.",
+      "why": "Exactly. 3 cakes × ₹400 = ₹1,200 a week, so in 4 weeks that's ₹4,800. You earn ₹450 on each ₹850 cake, so you've lost more than ten cakes' worth of profit, all because there are three different ways to bake.",
       "wrong": {
-        "a": "That's one week: 3 × ₹400 = ₹1,200. A month has about 4 weeks, so the mistakes cost ₹4,800.",
-        "c": "I see what you did: 3 × ₹850 × 4. But you don't lose the price. You lose what it costs to bake again: 3 × ₹400 × 4 weeks = ₹4,800."
+        "a": "That's the cost for one week: 3 × ₹400 = ₹1,200. In 4 weeks, the mistakes cost ₹4,800.",
+        "c": "You worked out 3 × ₹850 × 4. But ₹850 is the selling price. Your loss here is the cost of baking again: 3 × ₹400 × 4 weeks = ₹4,800."
       }
     },
     {
       "kind": "sort",
       "id": "card",
-      "prompt": "You'll write your chocolate cake on one card. I'll show you six notes. For each one, tell me: should it go on the card?",
+      "prompt": "Let's write your chocolate cake on one card. I'll show you six notes. For each one, tell me: should it go on the card?",
       "buckets": ["Yes, put it on", "No, leave it off"],
       "items": [
         {
-          "text": "Cocoa: 60 grams, weighed on the scale",
+          "text": "Weigh 60 grams of cocoa on a scale",
           "bucket": 0
         },
         {
-          "text": "Add sugar until it tastes right",
+          "text": "Add sugar until you like the taste",
           "bucket": 1
         },
         {
-          "text": "Oven at 170°C for 40 minutes",
+          "text": "Bake at 170°C for 40 minutes",
           "bucket": 0
         },
         {
-          "text": "Bake it the way Mummy did",
+          "text": "Bake it just like Mummy used to",
           "bucket": 1
         },
         {
-          "text": "Done when a knife comes out clean",
+          "text": "Ready when a knife in the middle comes out clean",
           "bucket": 0
         },
         {
-          "text": "Beat it well",
+          "text": "Beat the mixture until it looks good",
           "bucket": 1
         }
       ],
-      "why": "Exactly. A standard card says things anyone can check: grams, a temperature, a time, a test. \"Until it tastes right\", \"the way Mummy did\" and \"beat it well\" mean something different to each person. Write \"beat for 4 minutes\" instead."
+      "why": "Exactly. A standard card gives steps anyone can follow and check: weights, temperatures, times and tests. \"Until you like the taste\", \"like Mummy used to\" and \"until it looks good\" mean different things to different people. Write \"beat for 4 minutes\" instead."
     },
     {
       "kind": "order",
       "id": "steps",
-      "prompt": "Here are five steps for bringing in standard work, mixed up. Put them in the right order.",
+      "prompt": "Here are five steps to get everyone working the same way. They're mixed up. Put them in the right order.",
       "steps": [
-        "Bake your best cake, and weigh everything",
-        "Write the weights, times and checks on one card",
-        "Show your helpers, then watch each one bake once",
-        "Check every cake against the card",
-        "When someone finds a better way, test it and update the card"
+        "Bake your best cake and weigh every ingredient",
+        "Write down the weights, times and checks on a card",
+        "Teach your helpers and watch each person bake once",
+        "Check every cake using the card",
+        "When someone finds a better way, test it and change the card"
       ],
-      "why": "Exactly. First find your best way and measure it, then write it down, teach it, and check it. The last step matters most: a standard isn't fixed forever. When anyone finds a better way, it becomes the new card for everyone."
+      "why": "Exactly. First, find your best way and measure everything. Then write it down, teach everyone and check their cakes. The last step matters most, because the card can change: when someone finds a better way and it works, everyone follows the new card."
     },
     {
       "kind": "choice",
       "id": "lucky",
-      "prompt": "Your cousin skipped the card and guessed the sugar. Her cake came out perfect. Was her way a good way?",
+      "prompt": "Your cousin didn't follow the card. She guessed how much sugar to add, and her cake came out perfect. Was her method good?",
       "options": [
         {
           "id": "a",
-          "label": "Yes. It worked, so her way works"
+          "label": "Yes, her cake came out right"
         },
         {
           "id": "b",
-          "label": "Only if the customer liked it"
+          "label": "Yes, if the customer liked the cake"
         },
         {
           "id": "c",
-          "label": "No. She may not get it right next time"
+          "label": "No, her guess might fail next time"
         }
       ],
       "answer": "c",
-      "why": "Right. Remember Unit 1: judge the thinking, not the luck. A guess can work once. The card works every time, for anyone, and that's what lets three people bake one cake.",
+      "why": "Right. Remember Unit 1: judge the thinking, not the luck. Guessing can work once, but it may fail next time. A clear card helps everyone make the same cake each time, and that's how three people can bake cakes that taste alike.",
       "wrong": {
-        "a": "The cake was perfect this time. But remember Unit 1: judge the thinking, not the luck. Guessing the sugar can go wrong next time, and nobody would know why.",
-        "b": "The customer's happiness matters, but it can't tell you if guessing will work next time. Judge the thinking, not the luck. The card works every time."
+        "a": "Her cake was perfect this time. But remember Unit 1: judge the thinking, not the luck. Guessing the sugar might fail next time, and nobody would know why.",
+        "b": "It's good that the customer liked it, but that doesn't mean guessing will work next time. Judge the thinking, not the luck. The card helps everyone get the same result."
       }
     },
     {
       "kind": "choice",
       "id": "better-way",
-      "prompt": "Your sister finds that whisking 5 minutes longer makes the cake lighter. Customers notice. What should you do?",
+      "prompt": "Your sister finds that beating the mixture 5 minutes longer makes the cake lighter. Customers notice. What should you do?",
       "options": [
         {
           "id": "a",
-          "label": "Try it on a few cakes, then decide"
+          "label": "Test it on a few cakes before deciding"
         },
         {
           "id": "b",
-          "label": "Tell her to follow the card as written"
+          "label": "Ask her to keep following the old card"
         },
         {
           "id": "c",
-          "label": "Let her whisk longer on her own cakes"
+          "label": "Let her use it only for her cakes"
         }
       ],
       "answer": "a",
-      "why": "Exactly. Standard work doesn't mean nobody may improve. It means the best way so far, written down. Try her idea on a few cakes. If it works, it goes on the card, so every cake gets lighter, not just hers.",
+      "why": "Exactly. Standard work doesn't mean you can't improve. The card shows the best way you know today. Test her idea on a few cakes, and if it works, change the card. Then everyone's cakes get lighter, not just hers.",
       "wrong": {
         "b": "The card is the best way so far, not forever. Try her idea on a few cakes. If it really works, put it on the card, so every cake gets lighter.",
         "c": "Then her cakes and yours taste different again. Test her idea, and if it works, change the card for everyone."
@@ -169,30 +169,30 @@
     {
       "kind": "scenario",
       "id": "cafe",
-      "setup": "It's late August. A café wants 10 chocolate cakes every Friday, all exactly alike. It buys many, so it pays ₹700 each. Each costs ₹400 to make, so you'd keep ₹3,000 a week. Your sister and cousin will bake most of them.",
+      "setup": "It's late August. A café wants 10 chocolate cakes every Friday, all tasting and looking the same. Because it buys many, it pays ₹700 per cake. Each costs ₹400 to make, so you would earn ₹3,000 a week. Your sister and cousin will bake most of them.",
       "question": "How do you get ready for the café?",
       "options": [
         {
           "id": "a",
-          "label": "Bake them yourself. It's only 10 cakes",
+          "label": "Bake all 10 cakes yourself each week",
           "grade": "ok",
-          "outcome": "The café's cakes are all alike, and you keep ₹3,000 a week. But you bake till midnight every Thursday, and in two weeks your home orders start to slip.",
-          "why": "You got the cakes right, but only you can make them. That way, the business can't grow past your own hands.",
+          "outcome": "All the café's cakes come out the same, and you earn ₹3,000 a week. But you bake until midnight every Thursday, and after two weeks your home orders start getting late.",
+          "why": "You made the cakes right, but only you know how. If every cake depends on you, your business cannot grow beyond what you can bake yourself.",
           "better": "Write a card, bake the first batch with your helpers, and check it."
         },
         {
           "id": "b",
-          "label": "Bake the first batch together, with a card",
+          "label": "Bake the first batch together using a card",
           "grade": "great",
-          "outcome": "You write the card and bake the first batch together. One cake fails your check, so that week you keep ₹2,600, and you fix that step on the card. After that, all 10 match every week. You keep ₹3,000 a week, and your Thursday nights are free.",
+          "outcome": "You write the card and bake the first batch together. One cake fails your check, so you earn ₹2,600 that week, and you fix that step on the card. After that, all 10 cakes turn out alike every week. You earn ₹3,000 a week, and your Thursday nights are free.",
           "why": "Exactly. The card let three people bake one cake. Checking the first batch found the weak step early, and the fix reached everyone at once."
         },
         {
           "id": "c",
-          "label": "Give them the card, and taste every cake",
+          "label": "Give them the card and taste every cake",
           "grade": "ok",
-          "outcome": "The card helps, but nobody watched them bake. Your cousin reads \"60 g\" as a heaped spoon. Each Friday one cake tastes wrong, and you bake it again: you keep ₹2,600 a week. The café is happy, but you spend Friday mornings fixing cakes.",
-          "why": "The card was the right start. But a card nobody has tried out together leaves room for each person to read it their own way.",
+          "outcome": "The card helps, but you never watched them bake. Your cousin uses a heaped spoon of cocoa instead of weighing 60 g. Every Friday one cake tastes wrong, so you bake it again and earn ₹2,600 a week. The café is happy, but you spend Friday mornings fixing cakes.",
+          "why": "Writing the card was a good start. But you didn't bake together, so each person could understand it differently. Show them every step, and watch them do it once.",
           "better": "Write the card, bake the first batch together, and check it."
         }
       ]
@@ -200,7 +200,7 @@
     {
       "kind": "gap",
       "id": "fill",
-      "text": "Three tailors cut shirts three ways, so the sleeves never ___. One written ___ way would fix it.",
+      "text": "Three tailors cut shirts in different ways, so the sleeves never ___. One written ___ way could fix this.",
       "bank": ["match", "standard", "shrink", "faster"],
       "answer": ["match", "standard"],
       "why": "Exactly. Same job, three ways, three results. Write the one best way down, teach it, and the shirts match, just like your cakes."
