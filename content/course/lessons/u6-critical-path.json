@@ -1,7 +1,7 @@
 {
   "id": "u6-critical-path",
   "title": "What decides your finish date?",
-  "principle": "Find the critical path. Buy in whatever would make you late.",
+  "principle": "Find the critical path. Buy ready-made what would make you late.",
   "minutes": 5,
   "draft": true,
   "screens": [
@@ -27,28 +27,28 @@
         },
         {
           "id": "c",
-          "label": "It watched the jobs that could make it late"
+          "label": "It planned around its slowest jobs"
         }
       ],
       "answer": "c",
-      "why": "Its chief, E. Sreedharan, tracked deadlines day by day. And it didn't wait to learn to build trains: the first ones were made in South Korea, and later ones were finished in India by BEML, an Indian company."
+      "why": "Its chief, E. Sreedharan, tracked every deadline day by day. And building trains in India would have taken years, so the first ones were bought from South Korea, while later ones were finished in India by BEML, an Indian company."
     },
     {
       "kind": "explain",
       "id": "path",
       "title": "The critical path",
-      "text": "This is called the critical path. List every job, see which jobs must wait for others, and add up each chain. The longest chain is your critical path, and it sets your finish date. Speed up any other job, and you still finish on the same day."
+      "text": "Here's how to find what decides your date. Some jobs must wait for others: buy flour, then bake, then pack. That's a chain. Add up each chain's days. The longest chain is called the critical path. Speed up any other job, and you still finish the same day."
     },
     {
       "kind": "explain",
       "id": "home",
       "title": "Now look at your bakery",
-      "text": "A metro and a wedding cake both have a date that can't move. It's November, the wedding season. A family wants a three-tier cake and 200 cupcakes for a wedding on 28 November. Some jobs can happen side by side. Others must wait."
+      "text": "A metro and a wedding cake both have a date that can't move. It's November, your home bakery's fifth year, and the wedding season. A family wants a three-tier cake and 200 cupcakes for 28 November. Some jobs can happen side by side. Others must wait."
     },
     {
       "kind": "choice",
       "id": "which-chain",
-      "prompt": "Stands from Mumbai: 10 days. Design approval: 3 days, then a test cake: 2 days. Both run side by side. Which sets your date?",
+      "prompt": "Chain 1: stands from Mumbai, 10 days. Chain 2: design approval, 3 days, then test cake, 2 days. Side by side. Which sets your date?",
       "options": [
         {
           "id": "a",
@@ -73,7 +73,7 @@
     {
       "kind": "choice",
       "id": "hofstadter",
-      "prompt": "Hofstadter's law: it always takes longer than you expect. Mumbai stands took 10, 12 and 13 days before. How many days do you plan?",
+      "prompt": "Cake stands from Mumbai took 10, 12 and 13 days the last three times. The shop says 10. How many days do you plan for?",
       "options": [
         {
           "id": "a",
@@ -81,7 +81,7 @@
         },
         {
           "id": "b",
-          "label": "11 days, about the middle"
+          "label": "12 days, the middle one"
         },
         {
           "id": "c",
@@ -89,10 +89,10 @@
         }
       ],
       "answer": "c",
-      "why": "Right. Douglas Hofstadter wrote in 1979: it always takes longer than you expect, even when you take this law into account. Plan for the slowest time you've seen, then add spare days.",
+      "why": "Right. Douglas Hofstadter, a writer, put it this way in 1979: it always takes longer than you expect, even when you expect that. It's called Hofstadter's law. Plan for the slowest time you've seen, then add spare days.",
       "wrong": {
         "a": "That's the shop's promise. But they took 10, 12 and 13 days before. Plan for the slowest, 13 days, or more.",
-        "b": "The middle means you're late about half the time. They took up to 13 days before, so plan for 13 or more."
+        "b": "12 days would have been late one time in three. They took up to 13 days before, so plan for 13 or more. It always takes longer than you expect."
       }
     },
     {
@@ -104,14 +104,14 @@
         "Mark which jobs must wait for another",
         "Add up the days in each chain of jobs",
         "Find the longest chain: your critical path",
-        "Add spare days, and buy in what would make you late"
+        "Add spare days, and buy ready-made what would make you late"
       ],
-      "why": "Exactly. You can't find the longest chain until you know every job and which ones wait for others. Then plan spare days, because of Hofstadter's law, and buy in anything on the critical path that could make you late."
+      "why": "Exactly. You can't find the longest chain until you know every job and which ones wait for others. Then add spare days, because things take longer than you expect, and buy ready-made anything on the critical path that could make you late."
     },
     {
       "kind": "choice",
       "id": "advance",
-      "prompt": "The family will pay ₹18,000. You must spend ₹8,000 on stands, cream and boxes before the wedding. What should you ask for?",
+      "prompt": "The stands are sorted. Now, who pays? The family will pay ₹18,000. You must spend ₹8,000 first. What should you ask for?",
       "options": [
         {
           "id": "b",
@@ -136,47 +136,47 @@
     {
       "kind": "scenario",
       "id": "wedding",
-      "setup": "It's 15 November. The wedding is in 13 days. Tier stands from Mumbai cost ₹900 and took 10 to 13 days before. A local shop rents them today for ₹1,500, ₹600 more.",
+      "setup": "It's 15 November. The wedding is in 13 days. Cake stands from Mumbai cost ₹900 and took 10 to 13 days before. No shop nearby sells them, but one rents them today for ₹1,500.",
       "question": "How do you plan the wedding order?",
       "options": [
         {
           "id": "a",
-          "label": "Order from Mumbai, and bake cupcakes early",
+          "label": "Order from Mumbai, and bake the cupcakes early",
           "grade": "bad",
           "outcome": "The cupcakes are ready by 20 November. The stands arrive on the 27th, the night before. By then the cupcakes are a week old, and you bake all 200 again, about ₹3,000 more, while decorating three tiers all night.",
           "why": "You sped up a job that wasn't on the critical path, so the finish date didn't move. The stands were the long chain.",
-          "better": "Rent the stands locally today, and buy your own later."
+          "better": "Rent the stands nearby today, and buy your own later."
         },
         {
           "id": "b",
           "label": "Order from Mumbai, and save ₹600",
           "grade": "ok",
           "outcome": "The stands arrive on day 12, the evening before the wedding. You decorate through the night. The cake is ready, but one tier leans, and you fix it at the hall an hour before the guests arrive.",
-          "why": "You saved ₹600, but you put your slowest job on the critical path with no spare days. Hofstadter's law nearly caught you.",
-          "better": "Rent the stands locally today, and buy your own later."
+          "why": "You saved ₹600, but you put your slowest job on the critical path with no spare days. It took longer than you expected, just as Hofstadter's law says.",
+          "better": "Rent the stands nearby today, and buy your own later."
         },
         {
           "id": "c",
-          "label": "Rent the stands locally today",
+          "label": "Rent stands nearby today, for ₹600 more",
           "grade": "great",
           "outcome": "You have the stands today. The test cake is done by the 20th and the family approves it. You bake the cupcakes two days before, and the cake is ready a day early. In January, you order your own stands for next season.",
-          "why": "Exactly. You paid ₹600 to take the slowest job off the critical path, with spare days left. Buy in whatever would make you late, and make it yours later."
+          "why": "Exactly. You paid ₹600 to take the slowest job off the critical path, with spare days left. Buy ready-made whatever would make you late, and make it yours later."
         }
       ]
     },
     {
       "kind": "gap",
       "id": "fill",
-      "text": "The longest ___ of jobs sets your finish date. And it always takes ___ than you expect.",
-      "bank": ["chain", "longer", "shorter", "price"],
-      "answer": ["chain", "longer"],
-      "why": "Exactly. Find that longest chain, your critical path. Plan spare days, and buy in anything on it that could make you late."
+      "text": "Chain A takes 6 days. Chain B takes 4 days, then 3 more. Side by side, the critical path is chain ___, taking ___ days.",
+      "bank": ["A", "B", "6", "7"],
+      "answer": ["B", "7"],
+      "why": "Exactly. Chain B is 4 + 3 = 7 days, longer than A's 6. That's your critical path. Plan spare days on it, and buy ready-made anything on it that could make you late."
     }
   ],
   "summary": [
     "Critical path: the longest chain of jobs that must wait for each other. It sets your finish date.",
     "Speeding up a job off the critical path doesn't move the finish date.",
-    "Hofstadter's law: it always takes longer than you expect. Plan spare days, and buy in what would make you late."
+    "Hofstadter's law: it always takes longer than you expect. Plan spare days, and buy ready-made what would make you late."
   ],
   "cards": [
     {
@@ -191,7 +191,7 @@
       "front": "A part from far away may make you late. What should you do?",
       "options": ["Wait and hope", "Buy or rent it nearby, and make it yourself later"],
       "answer": 1,
-      "back": "Buy in whatever would make you late."
+      "back": "Buy ready-made whatever would make you late."
     },
     {
       "id": "m62-path-3",

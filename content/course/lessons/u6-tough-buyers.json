@@ -9,7 +9,7 @@
       "kind": "explain",
       "id": "hook",
       "media": "img:ls_bike_pump",
-      "text": "Let me tell you about Indian bike riders in the 1980s. They counted every rupee of petrol. About 9 in 10 two-wheelers then had two-stroke engines. In 1985, Hero Honda launched the CD 100, India's first four-stroke bike. It gave about 80 km a litre."
+      "text": "Let me tell you about Indian bike riders in the 1980s. They counted every rupee of petrol. About 9 in 10 two-wheelers then had two-stroke engines, which used more petrol. In 1985, Hero Honda launched the CD 100, India's first four-stroke bike. It gave about 80 km a litre."
     },
     {
       "kind": "choice",
@@ -27,28 +27,28 @@
         },
         {
           "id": "c",
-          "label": "Helped make it India's biggest bike maker"
+          "label": "Helped it become India's biggest bike maker"
         }
       ],
       "answer": "c",
-      "why": "Hero Honda built what these careful buyers wanted: an engine that sipped petrol. By 2009 it sold about half of all motorcycles in India, and it had been the world's biggest two-wheeler maker for eight years."
+      "why": "Riders like these wanted every km they could get from a litre, so Hero Honda had to be very good at saving petrol. That skill won the market. By 2009 it sold about half of all motorcycles in India, and it had been the world's biggest two-wheeler maker for eight years."
     },
     {
       "kind": "explain",
       "id": "porter",
       "title": "Demanding buyers",
-      "text": "In 1990, Michael Porter, a Harvard professor, asked why some countries' companies lead the world. One answer was demanding buyers at home. Buyers who want more push you to get better, faster than easy buyers ever would. So don't run from tough buyers. Seek them out."
+      "text": "That wasn't luck. In 1990, Michael Porter, a Harvard professor, asked why some countries' companies lead the world. One answer was demanding buyers at home. Buyers who want more push you to get better, faster than easy buyers ever would. So don't run from tough buyers. Look for them."
     },
     {
       "kind": "explain",
       "id": "home",
       "title": "Now look at your bakery",
-      "text": "Hero Honda's buyers were tough about petrol. Your bakery can find tough buyers too. It's December. A hotel near you wants 15 cakes a week at ₹700 each. But its rules are strict: hair nets, a fridge temperature log, a date on every cake, and a kitchen check each month."
+      "text": "Your home bakery can find tough buyers too. It's December, your fifth year. A hotel nearby wants 15 cakes a week at ₹700 each. But its rules are strict: hair nets, a daily note of the fridge's temperature, a date on every cake, and a kitchen check each month."
     },
     {
       "kind": "choice",
       "id": "payback",
-      "prompt": "The hotel buys 15 cakes a week at ₹700. Each costs ₹400. Fixing your kitchen costs ₹30,000 once. How long to earn it back?",
+      "prompt": "The hotel buys 15 cakes a week at ₹700. Each costs you ₹400 to make. Fixing your kitchen costs ₹30,000 once. How long to earn it back?",
       "options": [
         {
           "id": "a",
@@ -93,7 +93,7 @@
           "bucket": 1
         },
         {
-          "text": "A customer who asks what's in every cake",
+          "text": "A mother whose child has a nut allergy",
           "bucket": 0
         },
         {
@@ -101,7 +101,7 @@
           "bucket": 1
         }
       ],
-      "why": "Exactly. The helpful kind is tough on quality: clean kitchens, matching cakes, honest labels. Meeting them makes every cake better. The other kind is tough on your price or your cash. Meeting them just makes you poorer."
+      "why": "Exactly. The helpful kind is tough on quality: clean kitchens, matching cakes, exact labels, so an allergy-safe cake is truly safe. Meeting them makes every cake better. The other kind is tough on your price or your cash. Meeting them just makes you poorer."
     },
     {
       "kind": "choice",
@@ -114,18 +114,18 @@
         },
         {
           "id": "b",
-          "label": "They cost twice as much to make"
+          "label": "They slow down, because dating takes time"
         },
         {
           "id": "c",
-          "label": "They get better too, and less goes bad"
+          "label": "They get better, and less cream goes bad"
         }
       ],
       "answer": "c",
       "why": "Right. You don't run two kitchens. Dates on every cake mean you use the oldest cream first, and the fridge log catches a warm fridge before cream goes bad. One tough buyer raised the standard for everyone.",
       "wrong": {
         "a": "You don't run two kitchens. Once every cake has a date and the fridge is logged, all your cakes are made the better way, and less goes bad.",
-        "b": "Hair nets, labels and a log cost very little each day. And with dates on everything, you use the oldest cream first, so less goes bad."
+        "b": "Writing a date takes a few seconds a cake. And with dates on everything, you use the oldest cream first, so less goes bad. All your cakes get better."
       }
     },
     {
@@ -135,15 +135,15 @@
       "options": [
         {
           "id": "b",
-          "label": "The chef's. She shows what to fix"
+          "label": "The chef's. She's tasted cakes from many bakers"
         },
         {
           "id": "a",
-          "label": "Your friends'. They know your cakes"
+          "label": "Your friends'. They've eaten your cakes for years"
         },
         {
           "id": "c",
-          "label": "Neither. Only sales matter"
+          "label": "Neither. Only sales numbers matter"
         }
       ],
       "answer": "b",
@@ -156,28 +156,28 @@
     {
       "kind": "scenario",
       "id": "hotel",
-      "setup": "It's mid-December. The hotel wants 15 cakes a week at ₹700, from Christmas onwards. Each costs ₹400, so you'd keep ₹4,500 a week. Its rules need a ₹30,000 kitchen fix: a second fridge and steel tables.",
+      "setup": "It's mid-December. The hotel wants to start before Christmas. Its rules need a ₹30,000 kitchen fix: a second fridge and steel tables. The fix takes a week, and the Christmas rush won't wait.",
       "question": "What do you tell the hotel?",
       "options": [
         {
           "id": "a",
-          "label": "Yes, but fix the kitchen as you go",
+          "label": "Yes, and fix the kitchen in January",
           "grade": "bad",
           "outcome": "You deliver for Christmas and keep ₹9,000 in two weeks. At the first kitchen check, there's no fridge log and some cakes have no dates. The hotel stops the order.",
           "why": "You took the order but not the standard. A tough buyer only makes you better if you meet its rules.",
-          "better": "Say yes, fix the kitchen first, then start."
+          "better": "Say yes, fix the kitchen this week, then start."
         },
         {
           "id": "b",
-          "label": "No. They're too fussy for a home bakery",
+          "label": "No. Their rules are too much for us",
           "grade": "ok",
           "outcome": "You keep your ₹30,000 and your old ways. Nothing goes wrong. But the hotel buys from a bigger bakery, and your kitchen stays as it was.",
           "why": "Saying no was safe, but you turned away the buyer most likely to make you better.",
-          "better": "Say yes, fix the kitchen first, then start."
+          "better": "Say yes, fix the kitchen this week, then start."
         },
         {
           "id": "c",
-          "label": "Yes, but fix the kitchen first, then start",
+          "label": "Yes, starting once the kitchen is fixed",
           "grade": "great",
           "outcome": "You fix the kitchen in a week and start just before Christmas. You keep ₹4,500 a week, so the ₹30,000 comes back in about 7 weeks. You pass every check, and less cream goes bad across all your orders.",
           "why": "Exactly. You met the tough standard before you started, so the hotel stayed, and every customer got a better cake."
@@ -187,10 +187,10 @@
     {
       "kind": "gap",
       "id": "fill",
-      "text": "___ buyers make you better. Seek them ___.",
-      "bank": ["Tough", "out", "Easy", "away"],
-      "answer": ["Tough", "out"],
-      "why": "Exactly. Porter called them demanding buyers. Pick the ones who are tough on quality, meet their standard, and every customer gains."
+      "text": "A café sends back any cake that isn't even. It's tough on ___. A buyer who wants ₹200 off every order is tough on ___.",
+      "bank": ["quality", "price", "delivery", "taste"],
+      "answer": ["quality", "price"],
+      "why": "Exactly. Porter called the first kind demanding buyers. Meeting them makes you better. The second kind only makes you poorer."
     }
   ],
   "summary": [

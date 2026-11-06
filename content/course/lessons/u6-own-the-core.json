@@ -1,7 +1,7 @@
 {
   "id": "u6-own-the-core",
   "title": "What should you do yourself?",
-  "principle": "Own your core skill. Rent or hand out the rest.",
+  "principle": "Own your core skill. Pay others for the rest.",
   "minutes": 5,
   "draft": true,
   "screens": [
@@ -9,7 +9,7 @@
       "kind": "explain",
       "id": "hook",
       "media": "img:ls_phone_tower",
-      "text": "Let me tell you about a big gamble. In 2004, Bharti Airtel had about 58 lakh mobile customers and was growing fast. Then it handed the running of its mobile network to Ericsson and Nokia, and its computers to IBM. Its own network, run by others! Have a guess why."
+      "text": "Let me tell you about a bold move. In 2004, Bharti Airtel had about 58 lakh mobile customers and was growing fast. Then it let Ericsson and Nokia run its mobile network, and IBM run its computers. A phone company that didn't run its own network! Have a guess why."
     },
     {
       "kind": "choice",
@@ -31,25 +31,25 @@
         }
       ],
       "answer": "c",
-      "why": "It wanted its people working on customers and its brand. Airtel paid for the network it used, not to own it, and 200 of its engineers moved to IBM. By July 2006 it had more than 2.4 crore mobile customers."
+      "why": "Airtel decided its core was its brand and its customers, not running towers. It paid for the network it used, not to own it, and 200 of its engineers moved to IBM. By July 2006 it had more than 2.4 crore mobile customers."
     },
     {
       "kind": "explain",
       "id": "core",
       "title": "Your core skill",
-      "text": "In 1990, two professors, C.K. Prahalad and Gary Hamel, gave this idea a name: core competence. It's the one skill that makes customers choose you, and that rivals find hard to copy. Own that skill. Rent or hand out the rest to people who do it better or cheaper."
+      "text": "In 1990, two professors gave this idea a name: core competence. It's the one skill that makes customers choose you, and that other businesses find hard to copy. Own that skill yourself. For the rest, pay people who do it better or cheaper than you."
     },
     {
       "kind": "explain",
       "id": "home",
       "title": "Now look at your bakery",
-      "text": "A phone company and a bakery both have one thing customers come for. It's September, and Diwali is coming. You make about 120 deliveries a month, and you still do almost everything yourself: baking, delivery, printing the boxes, even your GST filing. What should stay in your hands?"
+      "text": "A phone company and a home bakery both have one thing customers come for. It's September, your fifth year, and Diwali is coming. You, your sister and your cousin bake. But you still do the rest yourself: about 120 deliveries a month, printing the boxes, even your GST filing."
     },
     {
       "kind": "sort",
       "id": "own-or-rent",
-      "prompt": "I'll show you six jobs in your bakery. For each one, tell me: should you own it, or hand it out?",
-      "buckets": ["Own it", "Rent or hand it out"],
+      "prompt": "I'll show you six jobs in your bakery. For each one, tell me: do it yourselves, or pay someone else?",
+      "buckets": ["Do it yourselves", "Pay someone else"],
       "items": [
         {
           "text": "Your chocolate cake recipe",
@@ -72,11 +72,11 @@
           "bucket": 0
         },
         {
-          "text": "Filing your GST returns",
+          "text": "Filing your GST returns, which a CA could do",
           "bucket": 1
         }
       ],
-      "why": "Exactly. Your taste, your checks and your customers are why people pay ₹850 for your cake. Those are your core. Delivery, printing and GST matter too, but others can do them well, and often cheaper."
+      "why": "Exactly. Your taste, your checks and your customers are why people pay ₹850 for your cake. That's your core. Delivery, printing and GST matter too, and you stay responsible for them, but others can do them well, and often cheaper."
     },
     {
       "kind": "choice",
@@ -85,11 +85,11 @@
       "options": [
         {
           "id": "a",
-          "label": "The delivery service: ₹7,200"
+          "label": "The delivery service"
         },
         {
           "id": "b",
-          "label": "Your own rider: ₹12,000"
+          "label": "Your own rider"
         },
         {
           "id": "c",
@@ -106,7 +106,7 @@
     {
       "kind": "choice",
       "id": "same-cost",
-      "prompt": "Your own rider costs ₹12,000 a month. The service costs ₹60 a trip. At how many trips do they cost the same?",
+      "prompt": "Your own rider costs ₹12,000 a month, whatever happens. The service costs ₹60 a trip. At how many trips do they cost the same?",
       "options": [
         {
           "id": "a",
@@ -118,20 +118,20 @@
         },
         {
           "id": "c",
-          "label": "600 trips"
+          "label": "300 trips"
         }
       ],
       "answer": "b",
-      "why": "Exactly. ₹12,000 ÷ ₹60 = 200 trips. Below 200, the service is cheaper. And remember Unit 1: a fixed cost hurts in a slow month. At 60 trips, the service costs ₹3,600, but your rider still costs ₹12,000.",
+      "why": "Exactly. ₹12,000 ÷ ₹60 = 200 trips. Below 200, the service is cheaper. And a fixed cost hurts in a slow month: at 60 trips, the service costs ₹3,600, but your rider still costs ₹12,000.",
       "wrong": {
         "a": "That's how many trips you make now. To find where they cost the same, divide ₹12,000 by ₹60. That's 200 trips.",
-        "c": "Close, but check the sum: ₹12,000 ÷ ₹60 = 200, not 600. At 200 trips a month, both cost ₹12,000."
+        "c": "Let's check: 300 trips × ₹60 = ₹18,000, more than the rider's ₹12,000. Divide instead: ₹12,000 ÷ ₹60 = 200 trips."
       }
     },
     {
       "kind": "choice",
       "id": "factory",
-      "prompt": "A big cake factory offers to bake your chocolate cakes for ₹300 each, ₹100 less than your cost. What's the biggest risk?",
+      "prompt": "A big cake factory offers to make chocolate cakes for you, from its own recipe, at ₹300 each. That's ₹100 below your cost. What's the biggest risk?",
       "options": [
         {
           "id": "a",
@@ -143,43 +143,43 @@
         },
         {
           "id": "b",
-          "label": "Your cake tastes like everyone else's"
+          "label": "Other shops can sell the same cake"
         }
       ],
       "answer": "b",
-      "why": "Exactly. Your taste is your core. Customers pay ₹850 for your cake, not for any cake. If a factory bakes it, anyone can buy the same cake from that factory, and your reason to exist is gone.",
+      "why": "Exactly. Your taste is your core. Customers pay ₹850 for your cake, not for any cake. If a factory makes it, other shops can buy the same cake, and your customers lose their reason to come to you.",
       "wrong": {
-        "a": "You'd save ₹100 a cake. But customers pay ₹850 for your taste. Hand that out, and anyone can sell the same factory cake. That's your core.",
+        "a": "You'd save ₹100 a cake. But customers pay ₹850 for your taste. Use a factory's recipe, and any shop can sell the same cake. Your taste is what you must keep.",
         "c": "Late cakes are a problem you could fix. The bigger risk is that your taste, the reason people pay ₹850, would no longer be yours."
       }
     },
     {
       "kind": "scenario",
       "id": "diwali",
-      "setup": "It's late September. In October you expect about 200 orders, not 120. You can't bake, deliver, print and file it all yourself. Your cake sells for ₹850 and costs ₹400 to make.",
+      "setup": "It's late September. In October you expect about 200 orders, not 120. The three of you can bake that many, but you can't also deliver, print and file GST. Your cake sells for ₹850.",
       "question": "How do you get ready for Diwali?",
       "options": [
         {
           "id": "a",
-          "label": "Buy ready cakes and sell them as yours",
+          "label": "Buy factory cakes, and sell them as yours",
           "grade": "bad",
           "outcome": "You meet every Diwali order. But regular customers notice the taste has changed, and three of them say so in your colony group. In November, orders fall below 120.",
-          "why": "You handed out the one thing customers came for. Your core is your taste, so it's the last thing to give away.",
-          "better": "Keep the baking. Hand delivery and printing to others."
+          "why": "You gave away the one thing customers came for. Your taste is your core, so it's the last thing to give away.",
+          "better": "Keep the baking. Pay others for delivery and printing."
         },
         {
           "id": "b",
-          "label": "Buy a scooter and hire a rider",
+          "label": "Buy a scooter, and hire your own rider",
           "grade": "ok",
           "outcome": "Diwali deliveries go well, at ₹12,000 a month for the rider plus the scooter's loan. In November, trips fall to about 90. The service would have cost ₹5,400. Your rider still costs ₹12,000.",
           "why": "Deliveries worked, but you took on a fixed cost for a busy month. Delivery isn't your core, so there was no need to own it.",
-          "better": "Pay a delivery service per trip, and keep the baking yourself."
+          "better": "Pay a delivery service per trip, and keep the baking yourselves."
         },
         {
           "id": "c",
-          "label": "Hand out delivery and printing; you bake",
+          "label": "Pay a delivery service and a printer",
           "grade": "great",
-          "outcome": "The delivery service takes 200 trips in October for ₹12,000, and about 90 in November for ₹5,400. The printer sends boxes on time. You spend Diwali baking and tasting, and regulars order again.",
+          "outcome": "The delivery service takes 200 trips in October for ₹12,000, and about 90 in November for ₹5,400. The printer sends boxes on time, and a CA files your GST. You spend Diwali baking and tasting, and regulars order again.",
           "why": "Exactly. You kept your core, the baking, and paid others only for what you used. When the rush ended, the cost fell with it."
         }
       ]
@@ -187,24 +187,24 @@
     {
       "kind": "gap",
       "id": "fill",
-      "text": "Own your ___ skill. Rent or hand out the ___.",
-      "bank": ["core", "rest", "every", "recipe"],
-      "answer": ["core", "rest"],
-      "why": "Exactly. That's core competence. Keep the skill that makes customers choose you. Rent or hand out the work others can do as well, or better."
+      "text": "A tailor is famous for perfect fitting. Fitting is her ___ skill. She should pay a rider for ___.",
+      "bank": ["core", "delivery", "extra", "fitting"],
+      "answer": ["core", "delivery"],
+      "why": "Exactly. She keeps the fitting, the reason people come to her, and pays others for jobs anyone can do. That's core competence."
     }
   ],
   "summary": [
-    "Core competence: the skill that makes customers choose you, and that rivals find hard to copy.",
-    "Own your core. Rent or hand out the rest, and pay for what you use.",
-    "Never hand out your core, even when it's cheaper."
+    "Core competence: the skill that makes customers choose you, and that others find hard to copy.",
+    "Own your core. Pay others for the rest, and pay only for what you use.",
+    "Never give away your core, even when it's cheaper."
   ],
   "cards": [
     {
       "id": "m61-core-1",
-      "front": "Your tailoring shop is known for perfect fitting. What should you never hand out?",
+      "front": "Your tailoring shop is known for perfect fitting. What should you never give to others?",
       "options": ["Delivery", "The fitting", "Accounts"],
       "answer": 1,
-      "back": "That's your core competence. Own it. Rent or hand out the rest."
+      "back": "That's your core competence. Own it. Pay others for the rest."
     },
     {
       "id": "m61-core-2",
@@ -218,7 +218,7 @@
       "front": "A factory offers to make your best seller for less. What's the risk?",
       "options": ["None", "Your product becomes anyone's"],
       "answer": 1,
-      "back": "Hand out your core, and customers lose their reason to choose you."
+      "back": "Give away your core, and customers lose their reason to choose you."
     }
   ],
   "sources": [

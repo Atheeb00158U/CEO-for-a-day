@@ -1,6 +1,6 @@
 {
   "id": "u6-one-way",
-  "title": "Why should everyone work the same way?",
+  "title": "How does one surgeon do 2,000 operations?",
   "principle": "One standard way of working cuts cost and mistakes.",
   "minutes": 5,
   "draft": true,
@@ -9,7 +9,7 @@
       "kind": "explain",
       "id": "hook",
       "media": "img:ls_eye_ward",
-      "text": "Let me tell you about an eye hospital in Madurai. Aravind Eye Hospital does cataract operations, which clear cloudy eyes. An Aravind surgeon does about 2,000 a year, while the Indian average is about 250. Yet Aravind has fewer problems after surgery than Britain's health service. Have a guess how."
+      "text": "Let me tell you about an eye hospital in Madurai. Aravind Eye Hospital does cataract operations, which clear cloudy eyes. An Aravind surgeon does about 2,000 a year, while the Indian average is about 250. Yet Aravind has half the problems after surgery that hospitals in Britain have. Have a guess how."
     },
     {
       "kind": "choice",
@@ -23,7 +23,7 @@
         },
         {
           "id": "b",
-          "label": "Every step is done the same way, every time"
+          "label": "Each job is done one fixed way, every time"
         },
         {
           "id": "c",
@@ -31,19 +31,19 @@
         }
       ],
       "answer": "b",
-      "why": "Every step is done the same way, every time. While a surgeon operates on one patient, the next one is already being made ready. The surgeon does only the key steps, and trained helpers do the rest, like a factory line."
+      "why": "Each job is done one fixed way, every time. While a surgeon operates on one patient, the next one is already being made ready. The surgeon does only the key steps, and trained helpers do the rest in the same order, like a factory line."
     },
     {
       "kind": "explain",
       "id": "standard",
       "title": "Standard work",
-      "text": "This is called standard work: one written best way for each job, and everyone follows it. Toyota made it famous in its car factories. It isn't about working harder. When everyone does a job the same way, a mistake shows up fast, and one fix helps everyone."
+      "text": "This is called standard work: one written best way for each job, which everyone follows. Toyota made it famous in its car factories. It isn't about working harder. When everyone does a job the same way, a mistake shows up fast, and one fix helps everyone. Does everyone in your shop pack the same way?"
     },
     {
       "kind": "explain",
       "id": "home",
       "title": "Now look at your bakery",
-      "text": "A hospital and a bakery both repeat the same jobs every day. It's August. Your sister and your cousin now bake with you, and together you make about 30 cakes a week. But their chocolate cakes don't taste like yours. Each of you has your own way."
+      "text": "A hospital and a home bakery both repeat the same jobs every day. It's August, your fifth year. Your sister and your cousin now bake with you, about 30 cakes a week, at ₹850 each. But their chocolate cakes don't taste like yours. Each of you has your own way."
     },
     {
       "kind": "choice",
@@ -64,7 +64,7 @@
         }
       ],
       "answer": "b",
-      "why": "Exactly. 3 cakes × ₹400 is ₹1,200 a week, and 4 weeks make ₹4,800 a month. That's more than ten chocolate cakes' worth of profit, lost to three different ways of baking.",
+      "why": "Exactly. 3 cakes × ₹400 is ₹1,200 a week, and 4 weeks make ₹4,800 a month. You keep ₹450 on a ₹850 cake, so that's more than ten cakes' worth of profit, lost to three different ways of baking.",
       "wrong": {
         "a": "That's one week: 3 × ₹400 = ₹1,200. A month has about 4 weeks, so the mistakes cost ₹4,800.",
         "c": "I see what you did: 3 × ₹850 × 4. But you don't lose the price. You lose what it costs to bake again: 3 × ₹400 × 4 weeks = ₹4,800."
@@ -97,11 +97,11 @@
           "bucket": 0
         },
         {
-          "text": "Use any cream you can find",
+          "text": "Beat the batter until smooth",
           "bucket": 1
         }
       ],
-      "why": "Exactly. A standard card says things anyone can check: grams, a temperature, a time, a test. \"Until it tastes right\" or \"the way Mummy did\" means something different to each person, and that's how three cakes come out three ways."
+      "why": "Exactly. A standard card says things anyone can check: grams, a temperature, a time, a test. \"Until it tastes right\", \"the way Mummy did\" and \"until smooth\" mean something different to each person. Write \"beat for 4 minutes\" instead."
     },
     {
       "kind": "order",
@@ -112,7 +112,7 @@
         "Write the weights, times and checks on one card",
         "Show your helpers, then watch each one bake once",
         "Check every cake against the card",
-        "When someone finds a better way, change the card for all"
+        "When someone finds a better way, test it and update the card"
       ],
       "why": "Exactly. First find your best way and measure it, then write it down, teach it, and check it. The last step matters most: a standard isn't fixed forever. When anyone finds a better way, it becomes the new card for everyone."
     },
@@ -123,7 +123,7 @@
       "options": [
         {
           "id": "a",
-          "label": "Yes. The cake was perfect"
+          "label": "Yes. The cake came out perfect"
         },
         {
           "id": "b",
@@ -131,7 +131,7 @@
         },
         {
           "id": "c",
-          "label": "No. One good cake proves little"
+          "label": "No. She may not get it right next time"
         }
       ],
       "answer": "c",
@@ -148,21 +148,21 @@
       "options": [
         {
           "id": "a",
-          "label": "Test it, then change the card for all"
+          "label": "Try it on a few cakes, then decide"
         },
         {
           "id": "b",
-          "label": "Tell her to stick to the card"
+          "label": "Tell her to follow the card as written"
         },
         {
           "id": "c",
-          "label": "Let her whisk longer on her cakes"
+          "label": "Let her whisk longer on her own cakes"
         }
       ],
       "answer": "a",
-      "why": "Exactly. Standard work doesn't mean nobody may improve. It means the best way so far, written down. Test her idea, and if it works, it goes on the card, so every cake gets lighter, not just hers.",
+      "why": "Exactly. Standard work doesn't mean nobody may improve. It means the best way so far, written down. Try her idea on a few cakes. If it works, it goes on the card, so every cake gets lighter, not just hers.",
       "wrong": {
-        "b": "The card is the best way so far, not forever. If her change really works, put it on the card, so every cake gets lighter.",
+        "b": "The card is the best way so far, not forever. Try her idea on a few cakes. If it really works, put it on the card, so every cake gets lighter.",
         "c": "Then her cakes and yours taste different again. Test her idea, and if it works, change the card for everyone."
       }
     },
@@ -174,36 +174,36 @@
       "options": [
         {
           "id": "a",
-          "label": "Bake all 10 yourself on Thursday nights",
+          "label": "Bake them yourself. It's only 10 cakes",
           "grade": "ok",
           "outcome": "The café's cakes are all alike, and you keep ₹3,000 a week. But you bake till midnight every Thursday, and in two weeks your home orders start to slip.",
           "why": "You got the cakes right, but only you can make them. That way, the business can't grow past your own hands.",
-          "better": "Write the card, train your helpers, and check the first batch."
+          "better": "Write a card, bake the first batch with your helpers, and check it."
         },
         {
           "id": "b",
-          "label": "Write the card, train them, check the first batch",
+          "label": "Bake the first batch together, with a card",
           "grade": "great",
-          "outcome": "The first Friday, one cake fails your check, and you fix that step on the card. After that, all 10 match every week. You keep ₹3,000 a week, and your Thursday nights are free.",
+          "outcome": "You write the card and bake the first batch together. One cake fails your check, so that week you keep ₹2,600, and you fix that step on the card. After that, all 10 match every week. You keep ₹3,000 a week, and your Thursday nights are free.",
           "why": "Exactly. The card let three people bake one cake. Checking the first batch found the weak step early, and the fix reached everyone at once."
         },
         {
           "id": "c",
-          "label": "Let each bake her way, then taste them all",
+          "label": "Let them bake, and taste each one yourself",
           "grade": "bad",
           "outcome": "Each Friday, 2 or 3 cakes taste different, and you bake them again: about ₹1,000 a week lost. You keep only about ₹2,000 a week. In the fourth week, the café says the cakes aren't the same and stops ordering.",
           "why": "Tasting at the end catches mistakes, but too late, and it can't stop them coming back. Three ways of baking made three kinds of cake.",
-          "better": "Write the card, train your helpers, and check the first batch."
+          "better": "Write a card, bake the first batch with your helpers, and check it."
         }
       ]
     },
     {
       "kind": "gap",
       "id": "fill",
-      "text": "One ___ way of working cuts cost and ___.",
-      "bank": ["standard", "mistakes", "flour", "ovens"],
-      "answer": ["standard", "mistakes"],
-      "why": "Exactly. That's standard work. Write your best way on one card, teach it to everyone, and change it only when someone finds a better way."
+      "text": "Three tailors cut shirts three ways, so the sleeves never ___. One written ___ way would fix it.",
+      "bank": ["match", "standard", "shrink", "faster"],
+      "answer": ["match", "standard"],
+      "why": "Exactly. Same job, three ways, three results. Write the one best way down, teach it, and the shirts match, just like your cakes."
     }
   ],
   "summary": [

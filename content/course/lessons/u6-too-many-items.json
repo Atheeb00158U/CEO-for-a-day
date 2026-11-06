@@ -19,31 +19,31 @@
       "options": [
         {
           "id": "a",
-          "label": "Made every product, just fewer of each"
+          "label": "Kept every product, a few of each, so shops stay full"
         },
         {
           "id": "b",
-          "label": "Made only their best-selling products"
+          "label": "Made only the products that sold the most"
         },
         {
           "id": "c",
-          "label": "Waited until all the workers came back"
+          "label": "Made its newest products, to win new buyers"
         }
       ],
       "answer": "b",
-      "why": "It made only its best sellers. Britannia made about one in five of its brands, like Good Day and Marie, and those brought in about 80% of its money. Fewer kinds that needed fewer hands kept the factories running."
+      "why": "It made only its best sellers. Britannia made about one in five of its brands, like Good Day and Marie, and those brought in about 80% of its money. A short list of products needed fewer hands, so the factories kept running."
     },
     {
       "kind": "explain",
       "id": "complexity",
       "title": "The cost you don't see",
-      "text": "This is called complexity cost. Each separate item you sell is called a SKU, short for stock keeping unit. Every extra SKU brings costs its price doesn't show: stock that can go bad, more to buy, more to learn. A bigger menu feels like more sales. Often it's more cost."
+      "text": "Every new item means one more thing to buy, store, learn and throw away when it goes bad. This is called complexity cost. Each separate item is a SKU, short for stock keeping unit. A bigger menu feels like more sales. Often it's more cost."
     },
     {
       "kind": "explain",
       "id": "home",
       "title": "Now look at your bakery",
-      "text": "Big factories and your bakery have the same problem. It's July of your fifth year. Your menu has grown to 18 items: cakes in six flavours, cupcakes, cookies, breads, the party pack and the Sunday box. Your chocolate cake still sells for ₹850, and you keep ₹450."
+      "text": "Big factories and your home bakery have the same problem. It's July, your fifth year. Your menu has grown to 18 items: cakes in six flavours, cupcakes, cookies, breads, the party pack, the Sunday box and more. Your chocolate cake still sells for ₹850, and you keep ₹450."
     },
     {
       "kind": "choice",
@@ -73,7 +73,7 @@
     {
       "kind": "choice",
       "id": "hours",
-      "prompt": "Pineapple earns ₹350 a month and takes 5 hours. In those hours you could bake 3 chocolate cakes you now turn away. Which pays more?",
+      "prompt": "Pineapple earns ₹350 a month and takes 5 hours a month. In those hours you could bake 3 chocolate cakes you now turn away. Which pays more?",
       "options": [
         {
           "id": "a",
@@ -81,11 +81,11 @@
         },
         {
           "id": "b",
-          "label": "3 chocolate cakes: ₹1,350"
+          "label": "The 3 chocolate cakes"
         },
         {
           "id": "c",
-          "label": "Pineapple: it brings variety"
+          "label": "Pineapple, for the variety"
         }
       ],
       "answer": "b",
@@ -102,15 +102,15 @@
       "buckets": ["Inside the ₹400", "Hidden cost"],
       "items": [
         {
-          "text": "Flour, sugar and cocoa for the cake",
+          "text": "Flour, sugar and cocoa in each cake",
           "bucket": 0
         },
         {
-          "text": "Cream that goes bad before you use it",
+          "text": "Cream thrown away because it went bad",
           "bucket": 1
         },
         {
-          "text": "The box the cake goes in",
+          "text": "The box each cake goes in",
           "bucket": 0
         },
         {
@@ -118,7 +118,7 @@
           "bucket": 1
         },
         {
-          "text": "Gas to bake the cake",
+          "text": "Gas to bake that one cake",
           "bucket": 0
         },
         {
@@ -131,11 +131,11 @@
     {
       "kind": "choice",
       "id": "stock",
-      "prompt": "With 18 items, ₹15,000 of stock sits on your shelves. With 8 items, you'd need ₹6,000. What does cutting to 8 give you?",
+      "prompt": "With 18 items, ₹15,000 of stock sits on your shelves. If you cut to your 8 best sellers, you'd need ₹6,000. What does the cut give you?",
       "options": [
         {
           "id": "a",
-          "label": "₹9,000 of cash you can use"
+          "label": "₹9,000 of cash to use"
         },
         {
           "id": "b",
@@ -143,7 +143,7 @@
         },
         {
           "id": "c",
-          "label": "Nothing. Stock is not money"
+          "label": "Nothing. Stock isn't money"
         }
       ],
       "answer": "a",
@@ -156,41 +156,41 @@
     {
       "kind": "scenario",
       "id": "mango",
-      "setup": "It's late July. Four customers ask for a mango cake. You think about 6 would sell a month, leaving you ₹2,700, minus ₹600 of pulp that goes bad. Your pineapple and coffee cakes earn only ₹350 and ₹150 a month, and take 10 hours.",
+      "setup": "It's late July. Four customers ask for mango cake. About 6 would sell a month, leaving you ₹2,100 after the mango that goes bad. It takes about 5 hours a month. Pineapple and coffee earn ₹500 together and take 10 hours.",
       "question": "What do you do about the mango cake?",
       "options": [
         {
           "id": "a",
-          "label": "Add mango cake, and keep the rest",
+          "label": "Add mango, and keep every other cake",
           "grade": "ok",
-          "outcome": "Mango sells 6 a month and earns ₹2,100 after waste. Pineapple and coffee still earn ₹500 between them. Those three now bring ₹2,600 a month, but your menu has 19 items and you still turn chocolate orders away.",
-          "why": "Mango was a good add. But each new item brings new hidden costs, so it should push out a weak one.",
-          "better": "Add mango, and drop your two slowest cakes."
+          "outcome": "Mango earns ₹2,100. But its 5 hours have to come from somewhere, so you turn away 3 more chocolate cakes: ₹1,350 lost. All in, you gain ₹750 a month, and your menu grows to 19 items.",
+          "why": "Mango was a good add. But every new item brings new hidden costs, here 5 hours of your time, so it should push out a weak item.",
+          "better": "Add mango, and drop pineapple and coffee."
         },
         {
           "id": "b",
-          "label": "Add mango, and drop your two slowest cakes",
+          "label": "Add mango, and drop pineapple and coffee",
           "grade": "great",
-          "outcome": "Mango earns ₹2,100 a month after waste. In the 10 hours you get back, you bake 3 chocolate cakes you used to turn away: ₹1,350 more. That's ₹3,450 a month, and your menu shrinks to 17.",
-          "why": "Exactly. You let a new item in only by pushing out two weak ones. Your menu got shorter, your waste fell, and your hours went to cakes people already want."
+          "outcome": "You lose the ₹500 that pineapple and coffee earned. Mango earns ₹2,100. You get 10 hours back; mango uses 5, and in the other 5 you bake 3 chocolate cakes you used to turn away: ₹1,350. You gain ₹2,950 a month, and your menu shrinks to 17.",
+          "why": "Exactly. You let a new item in only by pushing out two weak ones. Your menu got shorter, your waste fell, and your hours went to cakes people want."
         },
         {
           "id": "c",
-          "label": "Say no. The menu is long enough",
+          "label": "Say no, and keep the menu as it is",
           "grade": "ok",
-          "outcome": "You add no new waste. But pineapple and coffee still earn only ₹500 a month together, and the mango customers buy their cake from another baker.",
-          "why": "You were right to guard against a longer menu. But the problem wasn't the new item. It was the two weak items already on the list.",
-          "better": "Add mango, and drop your two slowest cakes."
+          "outcome": "You add no new waste. But pineapple and coffee still earn only ₹500 a month for 10 hours, and the mango customers buy from another baker.",
+          "why": "You were right to guard against a longer menu. But the problem wasn't the new item. It was the two weak items already on it.",
+          "better": "Add mango, and drop pineapple and coffee."
         }
       ]
     },
     {
       "kind": "gap",
       "id": "fill",
-      "text": "Every extra ___ you sell adds ___ costs.",
-      "bank": ["item", "hidden", "profit", "lower"],
-      "answer": ["item", "hidden"],
-      "why": "Exactly. That's complexity cost. Before you add something to your menu, ask what it will really cost you in waste, stock and hours, and what you could drop to make room."
+      "text": "Your menu grows from 10 items to 20. Sales may grow, but your ___ grows too: more waste, more stock and more ___.",
+      "bank": ["cost", "hours", "profit", "prices"],
+      "answer": ["cost", "hours"],
+      "why": "Exactly. That's complexity cost. Before you add an item, ask what it will really cost in waste, stock and hours, and what you could drop to make room."
     }
   ],
   "summary": [
