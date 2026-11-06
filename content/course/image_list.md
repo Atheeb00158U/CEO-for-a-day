@@ -47,3 +47,21 @@ text or signs, no real person's likeness.
 | `ls_burnt_stock` | u3-discount-signal | A large, dim warehouse, 2018: racks of fine unsold beige trench coats and leather bags in neat rows; at the end, the open door of an industrial furnace glowing orange. No people, no check pattern, no logos or readable text. |
 | `ls_hot_vending` | u3-fair-rise | A sunny city street on a very hot day, 1999: a plain red drinks vending machine with no brand name, heat haze over the road, a sweating man in a shirt looking at it. No logos or readable text. |
 | `ls_scooter_queue` | u3-queue-signal | An Indian scooter showroom, early 1980s: a long line of men and a few women outside, some holding booking papers, a pale blue scooter behind the glass. Faces not in focus; no logos, brand names or readable text. |
+
+## Module 4.1: Trust
+
+| Image id | Lesson | Picture |
+|---|---|---|
+| `ls_cash_parcel` | u4-take-the-risk | An Indian apartment doorway, 2010: a delivery man in a plain uniform hands a brown cardboard parcel to a woman, who counts rupee notes into his hand. No logos, brand names or readable text. |
+| `ls_rope_cut` | u4-check-it-yourself | New York, 1854, an exhibition hall with iron and glass: a man in a top hat stands on an open lift platform high on a wooden frame, a rope cut and hanging loose, a crowd below looking up. No readable text. |
+| `ls_bill_sweets` | u4-give-first | A restaurant table at night, about 2000: a waiter's hand places a small wrapped chocolate on a bill tray beside a second one; diners' hands in soft focus. No logos or readable text. |
+
+## Module 4.2: Why people pick you
+
+| Image id | Lesson | Picture |
+|---|---|---|
+| `ls_hotel_towels` | u4-people-like-them | A neat hotel bathroom: folded white towels on a rail, a small blank card standing on the counter. No logos or readable text. |
+| `ls_lawn_sign` | u4-small-yes-first | A 1960s California street of small houses: a man on a front lawn looks at a very large, plain, badly painted board leaning on the fence, blank of letters. |
+| `ls_pug_kennel` | u4-be-remembered | A fawn pug sitting in a sunny garden between two small wooden kennels, one painted pink and one painted red. No text or logos. |
+| `ls_muddy_kid` | u4-what-it-means | An Indian lane after rain: a boy in a white school shirt, splashed with mud, helps his little sister up from a puddle; mother watching from a doorway, smiling. No logos or readable text. |
+| `ls_phone_invite` | u4-only-if-true | A young Indian man in 2014 looking at a plain black smartphone in his hand, the screen showing a blank card with no letters or digits; his friends lean in. No logos. |

@@ -43,19 +43,19 @@
       "kind": "explain",
       "id": "rule",
       "title": "Commitment and consistency",
-      "text": "This is called commitment and consistency, or \"foot in the door\". Once we say yes, we start to see ourselves as that kind of person. Saying no later feels like going against ourselves. So a small yes makes a big yes easier."
+      "text": "This is called commitment and consistency, or \"foot in the door\". In simple words: people like to keep doing what they've said yes to. Saying no later feels like going against themselves. So a small yes makes a big yes easier."
     },
     {
       "kind": "explain",
       "id": "on-you",
       "title": "It's used on you",
-      "text": "It's used on you all the time: \"just answer three quick questions\", a ₹1 first month, a free account before the paid plan. Each small yes makes the next one easier. Later studies found a smaller effect than 76 against 17, but it is real."
+      "text": "It's used on you all the time: \"just answer three quick questions\", a ₹1 first month that later costs full price, a free account before the paid plan. Each small yes makes the next one easier. Later studies found a smaller effect than 76 against 17, but it is real."
     },
     {
       "kind": "explain",
       "id": "home",
       "title": "Now look at your business",
-      "text": "A lawn sign and a cake order work the same way. It's late October. A big office with 120 staff could use your ₹850 birthday cakes, about 10 a month. But the manager won't sign a year's plan with a baker she's never tried."
+      "text": "A lawn sign and a cake order work the same way. It's late October. Another big office, one that has never ordered from you, has 120 staff: about 10 birthdays a month. But the manager won't sign a year's plan with a baker she's never tried."
     },
     {
       "kind": "order",
@@ -63,12 +63,12 @@
       "prompt": "Here are five steps to win the office's year plan, mixed up. Drag them into order, first step at the top.",
       "steps": [
         "Offer one ₹850 cake for this Friday's birthday",
-        "Ask the manager what her staff liked about it",
+        "Ask the manager what her staff liked about Friday's cake",
         "Agree a one-month trial, with a date to talk",
         "Meet on that date and look at the month together",
-        "Offer the year plan"
+        "Offer the next step, a longer plan"
       ],
-      "why": "Well done. Each step is a small yes that is useful by itself. The manager says what her staff liked in her own words, then picks the next step. By the time you offer the year plan, saying yes fits what she has already said."
+      "why": "Well done. Each step is a small yes that is useful by itself. The manager says what her staff liked in her own words, then picks the next step. Each yes makes the next one feel natural."
     },
     {
       "kind": "choice",
@@ -123,7 +123,7 @@
     {
       "kind": "scenario",
       "id": "after-trial",
-      "setup": "It's late November. The one-month trial went well: 10 cakes, all liked. You meet on the agreed date. The manager says a whole year at ₹850 a cake feels like too much to sign right now. Each cake leaves you ₹450.",
+      "setup": "It's the end of November. The one-month trial went well: 10 cakes, all liked. You meet on the agreed date. The manager says a whole year at ₹850 a cake feels like too much to sign right now. Each cake leaves you ₹450.",
       "question": "What do you say?",
       "options": [
         {
@@ -160,9 +160,9 @@
     {
       "kind": "gap",
       "id": "fill",
-      "text": "Ask for a small ___ first. People like to stay ___ with what they've already said.",
-      "bank": ["yes", "consistent", "gift", "quiet"],
-      "answer": ["yes", "consistent"],
+      "text": "Ask for a small ___ first, because people like to stay true to what they've ___.",
+      "bank": ["yes", "said", "gift", "lost"],
+      "answer": ["yes", "said"],
       "why": "Exactly. The small window sign led to the big lawn sign. One Friday cake led to a trial, then three months, then the year."
     }
   ],

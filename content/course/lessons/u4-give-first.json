@@ -43,7 +43,7 @@
       "kind": "explain",
       "id": "on-you",
       "title": "It's used on you",
-      "text": "You'll see this everywhere. The free sample at the mall. The \"free gift\" if you spend ₹500 more. The cup of chai a saree shop serves you before you start to bargain. Each one makes you feel you owe something back."
+      "text": "You'll see this everywhere. The free sample at the mall. The extra laddoo the sweet shop drops into your box. The cup of chai a saree shop serves you before you start to bargain. Each one makes you feel you owe something back."
     },
     {
       "kind": "choice",
@@ -60,7 +60,7 @@
         },
         {
           "id": "c",
-          "label": "They gave you something, so you feel you owe them"
+          "label": "You got something free first"
         }
       ],
       "answer": "c",
@@ -72,6 +72,12 @@
     },
     {
       "kind": "explain",
+      "id": "backfire",
+      "title": "Where it goes wrong",
+      "text": "Reciprocity can backfire. A tiny gift, like a crumb, feels cheap. A gift with a hook, like \"free, if you order now\", feels like a deal, so nobody feels they owe you. And a costly gift to one person, just before you ask for an order, feels like a bribe."
+    },
+    {
+      "kind": "explain",
       "id": "home",
       "title": "Now look at your business",
       "text": "A restaurant in America and your bakery seem far apart, but people feel the same pull everywhere. It's mid-September. Your housing society holds a ten-day Ganesh festival. About 200 families come each evening, and you can set up a small table."
@@ -79,7 +85,7 @@
     {
       "kind": "choice",
       "id": "crumbs",
-      "prompt": "You can spend ₹2,000 on free tasting at the festival. Which gift will bring you the most orders?",
+      "prompt": "On the first evening, you can spend ₹2,000 on free tasting. Which gift will bring you the most orders?",
       "options": [
         {
           "id": "a",
@@ -153,7 +159,7 @@
           "bucket": 0
         },
         {
-          "text": "A free taste, then \"So, how many boxes?\"",
+          "text": "A free taste, then a push to order on the spot",
           "bucket": 1
         }
       ],
@@ -162,7 +168,7 @@
     {
       "kind": "scenario",
       "id": "office-gift",
-      "setup": "It's late September. A big office down the road has never ordered from you. Diwali is a month away, and offices buy gift boxes then. Your ₹500 Diwali box costs ₹300 to make. You have ₹3,000 to spend winning them.",
+      "setup": "It's the end of September. A big office down the road has never ordered from you. Diwali is a month away, and offices buy gift boxes then. Your ₹500 Diwali box costs ₹300 to make. You have ₹3,000 to spend winning them.",
       "question": "What do you do?",
       "options": [
         {
@@ -194,15 +200,15 @@
       "kind": "explain",
       "id": "honest-line",
       "title": "The honest line",
-      "text": "Remember the line from the price lessons: use on others only what you'd accept being used on you. A real gift with nothing asked is fair. A gift with a hook, or a costly gift to one person to win an order, feels like a bribe."
+      "text": "Remember the line from the price lessons: use on others only what you'd accept being used on you. Would you want a shop to give you chai only so you feel bad leaving? Give a real gift because it's kind, and let buying be their choice."
     },
     {
       "kind": "gap",
       "id": "fill",
       "text": "Give a ___ gift ___, and people want to give back.",
-      "bank": ["real", "first", "fake", "later"],
+      "bank": ["real", "first", "costly", "later"],
       "answer": ["real", "first"],
-      "why": "Exactly. The waiter's second chocolate felt real and personal. Your full cupcakes and the office's 60 cupcakes did the same. Give first, ask later."
+      "why": "Exactly. The waiter's second chocolate felt real and personal. Full cupcakes for a whole team, with nothing asked, work the same way. Give first, ask later."
     }
   ],
   "summary": [

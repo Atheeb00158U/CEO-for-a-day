@@ -15,7 +15,7 @@
       "kind": "explain",
       "id": "story",
       "title": "Stains are good",
-      "text": "In one ad, a little girl falls into a muddy puddle. Her brother jumps into the puddle to take revenge for her, and gets dirty. The idea was simple: if a stain comes from doing something good, the stain is good. Surf will wash it out."
+      "text": "In one ad, a little girl falls into a muddy puddle and cries. Her big brother jumps in and fights the puddle, to stand up for his sister. He gets very dirty. The idea: if a stain comes from doing something good, the stain is good."
     },
     {
       "kind": "choice",
@@ -25,11 +25,11 @@
       "options": [
         {
           "id": "a",
-          "label": "Whiter clothes than other powders give"
+          "label": "Whiter clothes than other powders"
         },
         {
           "id": "b",
-          "label": "Letting children play and do good, without worry"
+          "label": "Freedom for children to play"
         },
         {
           "id": "c",
@@ -43,7 +43,7 @@
       "kind": "explain",
       "id": "ladder",
       "title": "Means–end laddering",
-      "text": "Marketers call this means–end laddering. Think of a ladder with three steps. The bottom step is a feature: what it is. The middle step is a benefit: what it does for you. The top step is a value: what it means to you."
+      "text": "Marketers call this a means–end ladder. Think of a ladder with three steps. The bottom step is a feature: what it is or does. The middle step is a benefit: what that lets you do. The top step is a value: what it means to you."
     },
     {
       "kind": "explain",
@@ -55,38 +55,38 @@
       "kind": "explain",
       "id": "home",
       "title": "Now look at your business",
-      "text": "Washing powder and cakes seem far apart, but your bakery has a ladder too. It's late November. Your cakes use real butter and no preservatives, and your posts say exactly that. Families nod, then compare your ₹850 with the chain shop's ₹700."
+      "text": "Washing powder and cakes seem far apart, but your bakery has a ladder too. It's the second week of December. Your cakes use real butter and no preservatives, and your posts say exactly that. Families nod, then compare your ₹850 with the chain shop's ₹700."
     },
     {
       "kind": "order",
       "id": "your-ladder",
-      "prompt": "Here are three lines about your cake, mixed up. Climb the ladder: put what it is first, then what it does, then what it means.",
-      "steps": ["Real butter, no preservatives", "Fresh and safe for your child to eat", "A birthday that feels made at home, with love"],
-      "why": "Well done. Real butter is what it is. Fresh and safe is what it does. A birthday made with love is what it means to a parent. That's the step families choose with."
+      "prompt": "Here are three lines about your cake, mixed up. Put them in ladder order, from the bottom step to the top.",
+      "steps": ["Real butter, no preservatives", "Fresh, and safe for your child to eat", "A birthday made at home, with love"],
+      "why": "Well done. Real butter is what it is. Safe for your child is what that lets you do. A birthday made with love is what it means to a parent. That's the step families choose with."
     },
     {
       "kind": "choice",
       "id": "who-right",
-      "prompt": "Your sister wants your posts to say: \"Real butter, no preservatives.\" Your friend wants: \"Like the cake your mother baked.\" Who's right?",
+      "prompt": "Which line should your New Year post use?",
       "options": [
         {
           "id": "a",
-          "label": "Your sister: give the facts"
+          "label": "\"Real butter, no preservatives, eggless, fresh daily\""
         },
         {
           "id": "b",
-          "label": "Your friend: give the feeling"
+          "label": "\"Real butter, no preservatives: made like home\""
         },
         {
           "id": "c",
-          "label": "Both, joined in one line"
+          "label": "\"Made with love, like a cake from home\""
         }
       ],
-      "answer": "c",
-      "why": "Exactly. \"Real butter, no preservatives: like the cake your mother baked.\" The fact makes the feeling true, and the feeling makes the fact matter.",
+      "answer": "b",
+      "why": "Exactly. The fact makes the feeling true, and the feeling makes the fact matter. That's the whole ladder in one line.",
       "wrong": {
-        "a": "Facts alone get compared on price, and the chain says \"butter\" too. Join the fact to what it means: \"Real butter, no preservatives: like the cake your mother baked.\"",
-        "b": "A feeling with no fact under it sounds empty; any shop can say it. Join them: \"Real butter, no preservatives: like the cake your mother baked.\""
+        "a": "All true, but only the bottom step, and facts get compared on price. The chain says \"butter\" too. Join the fact to what it means: \"Real butter, no preservatives: made like home.\"",
+        "c": "A feeling with no fact under it sounds empty, because any shop can say it. Join them: \"Real butter, no preservatives: made like home.\""
       }
     },
     {
@@ -117,8 +117,8 @@
     {
       "kind": "sort",
       "id": "is-or-means",
-      "prompt": "I'll show you six lines about a cake. For each one, tell me: does it say what it is, or what it means?",
-      "buckets": ["What it is", "What it means"],
+      "prompt": "I'll show you six lines about a cake. For each one, tell me: does it say what it is or does, or what it means?",
+      "buckets": ["What it is or does", "What it means"],
       "items": [
         {
           "text": "Made with real butter",
@@ -149,8 +149,8 @@
     },
     {
       "kind": "scenario",
-      "id": "christmas-post",
-      "setup": "It's the end of November. Christmas is coming. The chain shop sells cakes at ₹700; yours are ₹850 and leave you ₹450 each. Your next post goes to 500 past buyers.",
+      "id": "new-year-post",
+      "setup": "It's mid-December. New Year parties are coming. The chain shop sells cakes at ₹700; yours are ₹850 and leave you ₹450 each. Your next post goes to 500 past buyers.",
       "question": "What does it say?",
       "options": [
         {
@@ -159,7 +159,7 @@
           "grade": "ok",
           "outcome": "Families agree it's good, then compare ₹850 with ₹700. 12 order, leaving you ₹5,400.",
           "why": "True facts, but only the bottom step. Facts get compared on price.",
-          "better": "Join the facts to what they mean: \"Real butter, no preservatives: Christmas like home.\""
+          "better": "Join the facts to what they mean: \"Real butter, no preservatives: New Year, made like home.\""
         },
         {
           "id": "b",
@@ -167,13 +167,13 @@
           "grade": "bad",
           "outcome": "14 order at ₹750, leaving you ₹350 each: ₹4,900. In December, families wait for your next offer.",
           "why": "You moved the talk to price, the one thing the chain shop wins on.",
-          "better": "Join the facts to what they mean: \"Real butter, no preservatives: Christmas like home.\""
+          "better": "Join the facts to what they mean: \"Real butter, no preservatives: New Year, made like home.\""
         },
         {
           "id": "c",
-          "label": "\"Real butter, no preservatives: Christmas like home\"",
+          "label": "\"Real butter, no preservatives: New Year, made like home\"",
           "grade": "great",
-          "outcome": "Families reply with memories of their own mothers' baking. 20 order at ₹850, leaving you ₹9,000. Nobody asks about the chain shop's price.",
+          "outcome": "Families reply with photos of last year's party at home. 20 order at ₹850, leaving you ₹9,000. Nobody asks about the chain shop's price.",
           "why": "A true fact carried a value families care about. They chose the value, not the cheaper cake."
         }
       ]
@@ -190,11 +190,11 @@
       "text": "Sell what it ___ to them, not just what it ___.",
       "bank": ["means", "is", "costs", "weighs"],
       "answer": ["means", "is"],
-      "why": "Exactly. Surf sold children who do good, not just clean clothes. You sell a birthday like home, on top of real butter."
+      "why": "Exactly. Surf sold children who stand up for others, not just clean clothes. You sell a party made like home, on top of real butter."
     }
   ],
   "summary": [
-    "Means–end laddering: feature (what it is) → benefit (what it does) → value (what it means).",
+    "A means–end ladder: feature (what it is or does) → benefit (what that lets you do) → value (what it means).",
     "Buyers compare features, but choose values. Join the two in one line.",
     "Every step must be true. A feeling with nothing true under it is a trick."
   ],
@@ -211,7 +211,7 @@
       "front": "\"Removes tough stains\" is which step of the ladder?",
       "options": ["Feature", "Benefit", "Value"],
       "answer": 0,
-      "back": "Feature: what it is. Benefit: what it does. Value: what it means."
+      "back": "Feature: what it is or does. Benefit: what that lets you do. Value: what it means."
     },
     {
       "id": "m42-ladder-3",

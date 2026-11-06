@@ -49,13 +49,13 @@
       "kind": "explain",
       "id": "home",
       "title": "Now look at your business",
-      "text": "A phone launch and a home bakery seem far apart, but you've seen this go wrong already. In June, posting \"Only 5 cakes left!\" twice made the new colony stop ordering. Now it's December, and Christmas plum cakes are your biggest order of the year."
+      "text": "A phone launch and a home bakery seem far apart, but you've seen this go wrong already. In June, posting \"Only 5 cakes left!\" twice made the new colony stop ordering for a while. Now Christmas plum cakes are your biggest order of the year."
     },
     {
       "kind": "explain",
       "id": "plum",
       "title": "A real limit",
-      "text": "Plum cake fruit must soak for four weeks. In November, you soaked fruit for 40 cakes, and no more. Each cake sells for ₹1,200 and costs ₹600 to make. So you can sell only 40 this Christmas. That limit is real."
+      "text": "Plum cake fruit must soak for weeks. In November, you soaked fruit for 40 cakes, and no more. Each cake sells for ₹1,200 and costs ₹600 to make. So you can sell only 40 this Christmas. That limit is real."
     },
     {
       "kind": "choice",
@@ -80,7 +80,7 @@
     {
       "kind": "choice",
       "id": "which-post",
-      "prompt": "You can make 40 plum cakes, and fruit soaking ends on 15 December. Which post is honest?",
+      "prompt": "You can make 40 plum cakes, and need every order by 20 December to bake them in time. Which post is honest?",
       "options": [
         {
           "id": "a",
@@ -92,14 +92,14 @@
         },
         {
           "id": "c",
-          "label": "\"40 plum cakes only. Orders close 15 December.\""
+          "label": "\"40 plum cakes only. Orders close 20 December.\""
         }
       ],
       "answer": "c",
       "why": "Exactly. The number and the date are both real, and you said them plainly. Buyers can plan, and nobody feels tricked.",
       "wrong": {
-        "a": "\"Only 3 left\" every day for a month is false. Buyers notice, like the mother in June did. Say the real limit plainly: 40 cakes, orders close 15 December.",
-        "b": "That's a fake deadline. Nothing changes in 10 minutes, and buyers who feel pushed often walk away. Say the real limit: 40 cakes, orders close 15 December."
+        "a": "\"Only 3 left\" every day for a month is false. Buyers notice, like the mother in June did. Say the real limit plainly: 40 cakes, orders close 20 December.",
+        "b": "That's a fake deadline. Nothing changes in 10 minutes, and buyers who feel pushed often walk away. Say the real limit: 40 cakes, orders close 20 December."
       }
     },
     {
@@ -125,11 +125,11 @@
           "bucket": 1
         },
         {
-          "text": "\"Orders close 15 December\", so the fruit can soak",
+          "text": "\"Orders close 20 December\", so every cake is ready for Christmas",
           "bucket": 0
         },
         {
-          "text": "\"30 people are looking at this cake right now!\"",
+          "text": "\"30 people are looking right now!\", a made-up count",
           "bucket": 1
         }
       ],
@@ -138,7 +138,7 @@
     {
       "kind": "scenario",
       "id": "office-twenty",
-      "setup": "It's 10 December. 34 of your 40 plum cakes are booked, so 6 are left. A big office now wants 20 plum cakes. Each leaves you ₹600. Your chocolate cake leaves you ₹450.",
+      "setup": "It's 18 December. 34 of your 40 plum cakes are booked, so 6 are left. An office on your birthday-cake plan now wants 20 plum cakes. Each leaves you ₹600. Your chocolate cake leaves you ₹450.",
       "question": "What do you tell the office?",
       "options": [
         {
@@ -153,7 +153,7 @@
           "id": "b",
           "label": "\"Sorry, we're sold out\", and keep the 6 for others",
           "grade": "ok",
-          "outcome": "The office orders elsewhere. The last 6 plum cakes sell to families by 15 December, leaving you ₹3,600.",
+          "outcome": "The office orders elsewhere. The last 6 plum cakes sell to families by 20 December, leaving you ₹3,600.",
           "why": "Honest, and the limit stayed real. But you didn't offer what you could make.",
           "better": "Offer the 6 plum cakes, plus chocolate cakes for the rest."
         },

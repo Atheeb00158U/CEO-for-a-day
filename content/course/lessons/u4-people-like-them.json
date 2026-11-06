@@ -49,18 +49,18 @@
       "kind": "explain",
       "id": "backfire",
       "title": "Where it goes wrong",
-      "text": "Social proof can also work against you. In an American national park, a sign said many visitors had taken pieces of old stone wood. Theft went up. The sign told people, \"everyone does it\". Never tell buyers that most people do the wrong thing."
+      "text": "Social proof can also work against you. In an American national park, a sign said many visitors had taken pieces of old wood that had turned to stone. Theft went up. The sign told people, \"everyone does it\". Never tell buyers that most people do the wrong thing."
     },
     {
       "kind": "explain",
       "id": "home",
       "title": "Now look at your business",
-      "text": "Hotel guests and cake buyers think alike. It's early October. 38 families in the new colony now order from you. Next you want orders from Lake View, a society of 300 flats nearby. Only 6 Lake View families have ordered so far."
+      "text": "Hotel guests and cake buyers think alike. It's early October. The new colony has 120 homes, and 38 of them now order from you. Next you want Lake View, a society of 300 flats nearby. Only 6 Lake View families have ordered so far."
     },
     {
       "kind": "choice",
       "id": "best-post",
-      "prompt": "Which post in the new colony's WhatsApp group will win the most new orders there?",
+      "prompt": "The new colony has 120 homes, and 38 order from you. Which post in its WhatsApp group will win the most new orders?",
       "options": [
         {
           "id": "a",
@@ -85,15 +85,15 @@
     {
       "kind": "choice",
       "id": "reminder",
-      "prompt": "6 of your 15 office clients haven't paid this month. Which reminder will get the most of them to pay?",
+      "prompt": "6 of the 15 offices on your birthday-cake plan haven't paid this month. Which reminder will get the most of them to pay?",
       "options": [
         {
           "id": "a",
-          "label": "\"Many clients pay late, but please pay soon\""
+          "label": "\"Many offices pay late, but please pay soon\""
         },
         {
           "id": "b",
-          "label": "\"9 of our 15 clients have already paid\""
+          "label": "\"9 of our 15 offices have already paid\""
         },
         {
           "id": "c",
@@ -101,10 +101,10 @@
         }
       ],
       "answer": "b",
-      "why": "Exactly. It shows that most clients pay on time, and that makes the late ones want to do the same.",
+      "why": "Exactly. It shows that most offices pay on time, and that makes the late ones want to do the same.",
       "wrong": {
-        "a": "That's the national park sign again. \"Many pay late\" tells them everyone does it. Show that most clients pay: \"9 of our 15 have already paid\".",
-        "c": "A threat makes people push back, and you may lose a client. Show that most clients pay: \"9 of our 15 have already paid\"."
+        "a": "That's the national park sign again. \"Many pay late\" tells them everyone does it. Show that most offices pay: \"9 of our 15 have already paid\".",
+        "c": "A threat makes people push back, and you may lose an office. Show that most offices pay: \"9 of our 15 have already paid\"."
       }
     },
     {
@@ -143,12 +143,12 @@
     {
       "kind": "scenario",
       "id": "lake-view",
-      "setup": "It's mid-October. You start delivering to Lake View, a society of 300 flats. 6 families there have ordered and liked your cakes. 38 families in the new colony order often. Each cake leaves you ₹450.",
+      "setup": "It's mid-October. You now deliver to Lake View every day. The 6 families there who ordered liked your cakes. 38 families in the new colony order often. Each cake leaves you ₹450.",
       "question": "What do you post in the Lake View group?",
       "options": [
         {
           "id": "a",
-          "label": "\"38 happy families!\" with photos from the other colony",
+          "label": "\"38 happy families!\", with the other colony's photos and OK",
           "grade": "ok",
           "outcome": "It's true, but Lake View families don't know those people. 4 new families order in a month, leaving you ₹1,800.",
           "why": "Real proof helped, but from people they don't know. Neighbours pull harder than strangers.",
@@ -164,7 +164,7 @@
         },
         {
           "id": "c",
-          "label": "\"6 Lake View families ordered this month\", with their OK",
+          "label": "\"6 Lake View families have ordered\", with their OK",
           "grade": "great",
           "outcome": "Two of the six reply with photos of their cakes. Their neighbours ask questions. 10 new families order in a month, leaving you ₹4,500.",
           "why": "6 real neighbours beat 38 strangers. People copy people like them."
@@ -181,7 +181,7 @@
       "kind": "gap",
       "id": "fill",
       "text": "People copy people ___ them, so show ___ buyers.",
-      "bank": ["like", "real", "above", "famous"],
+      "bank": ["like", "real", "unlike", "many"],
       "answer": ["like", "real"],
       "why": "Exactly. \"Guests who stayed in this room\" beat \"save the environment\". Your 6 Lake View neighbours beat 38 strangers. Real, similar buyers pull hardest."
     }
@@ -195,7 +195,7 @@
     {
       "id": "m42-proof-1",
       "front": "Which line wins more orders in a colony?",
-      "options": ["\"Thousands love us\"", "\"40 families in your colony order from us\""],
+      "options": ["\"Thousands love us\"", "\"35 families in your colony order from us\""],
       "answer": 1,
       "back": "People copy people like them. Real, exact, nearby buyers pull hardest."
     },

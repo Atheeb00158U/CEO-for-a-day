@@ -9,7 +9,7 @@
       "kind": "explain",
       "id": "hook",
       "media": "img:ls_cash_parcel",
-      "text": "Let me take you back to 2010. Flipkart was selling books and phones online. But very few Indians had cards, and many didn't trust paying on a website. What if the money went and the parcel never came? Flipkart had to fix that fear. Have a guess how."
+      "text": "Let me take you back to 2010. Flipkart sold books and phones online. But few Indians had a debit or credit card, and many didn't trust paying on a website. What if the money went and the parcel never came? Flipkart had to fix that fear. Guess how."
     },
     {
       "kind": "choice",
@@ -31,7 +31,7 @@
         }
       ],
       "answer": "b",
-      "why": "It let people pay cash at the door. If no parcel came, the buyer lost nothing. Two months later, 30 of every 100 orders were paid this way. By 2013, it was 80."
+      "why": "It let people pay cash at the door. If no parcel came, the buyer lost nothing. Two months after cash on delivery began, 30 of every 100 orders were paid this way. By 2013, it was 80."
     },
     {
       "kind": "explain",
@@ -83,28 +83,28 @@
       "options": [
         {
           "id": "a",
-          "label": "A free tasting first, and delivery 3 hours early"
+          "label": "A free tasting, and delivery 3 hours early or it's free"
         },
         {
           "id": "b",
-          "label": "Full ₹6,000 back after the party if unhappy"
+          "label": "Full ₹6,000 back after the party, no questions asked"
         },
         {
           "id": "c",
-          "label": "₹600 off if they book with you today"
+          "label": "₹600 off today, and a free cake next time"
         }
       ],
       "answer": "a",
-      "why": "Yes. The tasting lets them check the cake before the big day. Early delivery leaves time to fix anything. Now the risk is yours, not theirs.",
+      "why": "Yes. The tasting lets them check the cake before the big day. Early delivery leaves time to fix anything, and if you're late, you pay. Now the risk is yours, not theirs.",
       "wrong": {
         "b": "That fixes the money, but the refund comes after the party, when 150 guests have already seen the cake. A tasting first and early delivery remove the fear they really have.",
-        "c": "A discount makes the cake cheaper, but the fear stays the same. And \"today only\" adds pressure. A tasting first and early delivery remove the real risk."
+        "c": "A discount and a free cake make the deal cheaper, but the fear stays the same. A tasting first and early delivery remove the real risk."
       }
     },
     {
       "kind": "choice",
       "id": "tasting-sum",
-      "prompt": "Let's do the sum. 10 tasting boxes cost you ₹300 each. 6 families then book, and each cake leaves you ₹3,200. What's left?",
+      "prompt": "10 families ask for a tasting box. Each box costs you ₹300. 6 then book. Each cake leaves you ₹3,200. What's left?",
       "options": [
         {
           "id": "a",
@@ -141,7 +141,7 @@
           "bucket": 1
         },
         {
-          "text": "A new cake free if the name is spelt wrong",
+          "text": "A photo of the cake 3 hours early, any mistake fixed free",
           "bucket": 0
         },
         {
@@ -157,12 +157,12 @@
           "bucket": 1
         }
       ],
-      "why": "Paying later, a free fix for a mistake and a tasting all move the risk onto you. Paying early and \"no changes\" leave it with the buyer, and a boast removes no risk at all."
+      "why": "Paying later, a photo with time to fix mistakes, and a tasting all move the risk onto you. Paying early and \"no changes\" leave it with the buyer, and a boast removes no risk at all."
     },
     {
       "kind": "scenario",
       "id": "rainy-day",
-      "setup": "It's late August. You promised the family: \"Delivered 3 hours early, or the cake is free.\" On the day, heavy rain floods the roads. The cake arrives perfect, but only 1 hour early. The family hasn't noticed. The cake leaves you ₹3,200.",
+      "setup": "It's late August. The family booked, and you promised: \"Delivered 3 hours early, or the cake is free.\" On the day, heavy rain floods the roads. The cake arrives perfect, but only 1 hour early. The family hasn't noticed. The cake leaves you ₹3,200.",
       "question": "What do you do?",
       "options": [
         {
@@ -193,10 +193,10 @@
     {
       "kind": "gap",
       "id": "fill",
-      "text": "Risk ___ means you carry the risk, so saying ___ feels safe for the buyer.",
-      "bank": ["reversal", "yes", "return", "sorry"],
-      "answer": ["reversal", "yes"],
-      "why": "Exactly. Flipkart let buyers pay at the door. You let the family taste first. Find the risk they really fear, take it on, and keep your promise even when it costs you."
+      "text": "Find the risk they really ___, and take it ___ yourself.",
+      "bank": ["fear", "on", "pay", "off"],
+      "answer": ["fear", "on"],
+      "why": "Exactly. Flipkart took on the risk of a parcel that never came. You took on the risk of a bad cake on the big day, and you kept your promise even when it cost you. That's risk reversal."
     }
   ],
   "summary": [

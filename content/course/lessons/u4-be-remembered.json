@@ -37,19 +37,19 @@
       "kind": "explain",
       "id": "rule",
       "title": "Mental availability",
-      "text": "Byron Sharp, who studies how brands grow, calls this mental availability. When it's time to buy, people pick a name that comes to mind quickly. Most don't compare every shop. They pick what they remember, even if another shop is a little better."
+      "text": "Byron Sharp, a marketing professor, calls this mental availability: how easily your name comes to mind when it's time to buy. Most people don't compare every shop. They pick the name they remember, even if another shop is a little better."
     },
     {
       "kind": "explain",
       "id": "assets",
       "title": "Things that remind them",
-      "text": "So what makes a name come to mind? Things people link to you, even without your name: a colour, a sound, a character like the pug. Marketers call them distinctive brand assets. And a voice people enjoy, a line they repeat, gets your name talked about."
+      "text": "So what brings a name to mind? Things people link to you, even without your name: a colour, a sound, a character like the pug. Marketers call them distinctive brand assets. A funny line people repeat also carries your name."
     },
     {
       "kind": "explain",
       "id": "home",
       "title": "Now look at your business",
-      "text": "Phone networks are huge, but people forget small bakeries even faster. It's early November. A mother who loved your cake in March just bought her son's birthday cake from a chain shop. She told you: \"I forgot your name, and I couldn't find your number.\""
+      "text": "Phone networks are huge, but people forget small bakeries even faster. It's the first week of December. You pack every cake in a pink box. A mother who loved your cake in March just bought her son's birthday cake from a chain shop. She said, \"I forgot your name.\""
     },
     {
       "kind": "choice",
@@ -78,22 +78,22 @@
       "options": [
         {
           "id": "a",
-          "label": "A fresh new design for your box every month"
+          "label": "A fresh new box design every month"
         },
         {
           "id": "b",
-          "label": "A new special offer posted every week"
+          "label": "The same ₹100 discount every week"
         },
         {
           "id": "c",
-          "label": "The same pink box and ribbon on every cake"
+          "label": "Your pink box and ribbon, on every cake, always"
         }
       ],
       "answer": "c",
       "why": "Yes. Seen again and again, the same pink box becomes yours, like the pug became Hutch's. Families think of you when they see it.",
       "wrong": {
         "a": "New designs look exciting, but families can't link any of them to you. Keep one look, the same pink box every time, so it becomes yours.",
-        "b": "Offers bring a quick order, but people remember the deal, not you. The same pink box every time becomes something they link to you."
+        "b": "A discount brings a quick order, but people remember the deal, not you. Your pink box on every cake becomes something they link to you."
       }
     },
     {
@@ -157,14 +157,14 @@
     {
       "kind": "scenario",
       "id": "magnets",
-      "setup": "It's mid-November. Christmas and New Year parties are coming. You have ₹10,000 to spend so families remember you. Each cake leaves you ₹450. About 500 families have bought from you this year.",
+      "setup": "It's the first week of December. Christmas and New Year parties are coming. You have ₹10,000 to spend so families remember you. Each cake leaves you ₹450. About 500 families have bought from you this year.",
       "question": "How do you spend it?",
       "options": [
         {
           "id": "a",
           "label": "One big ad in the local paper for ₹10,000",
           "grade": "ok",
-          "outcome": "Many people see the ad, once. Most forget it by the next day. 8 new orders come in December, leaving you ₹3,600.",
+          "outcome": "Many people see the ad, once. Most forget it by the next day. 8 new orders come in December, leaving you ₹3,600. That's ₹6,400 less than the ad cost.",
           "why": "An ad seen once is soon forgotten. People need to see your name again and again, close to when they buy.",
           "better": "Give past buyers something they'll see every day, with your name and number."
         },
@@ -172,15 +172,15 @@
           "id": "b",
           "label": "A fancy new name and logo for the new year",
           "grade": "bad",
-          "outcome": "The new name looks smart. But families who knew \"the pink box baker\" can't find you. Your orders in December fall by 10, and you lose ₹4,500.",
+          "outcome": "The new name, logo and boxes cost ₹10,000. They look smart. But families who knew \"the pink box baker\" can't find you. Orders in December fall by 10. You lose ₹4,500, on top of the ₹10,000.",
           "why": "You threw away what families remembered. Even Vodafone kept the pug when it changed its name.",
           "better": "Give past buyers something they'll see every day, with your name and number."
         },
         {
           "id": "c",
-          "label": "Pink fridge magnets with your number for 500 buyers",
+          "label": "Pink fridge magnets with your number, for 500 past buyers",
           "grade": "great",
-          "outcome": "Each magnet costs ₹20. Families see your pink magnet every day on the fridge. When a party comes up, your number is right there. 25 extra orders come in December, leaving you ₹11,250.",
+          "outcome": "Each magnet costs ₹20. You hand one out with every order and drop the rest on delivery rounds. When a party comes up, your number is on the fridge. 25 extra orders come in December, leaving you ₹11,250: more than you spent, and the magnets keep working.",
           "why": "Your colour and number sit where families look every day. When it's time to buy, you come to mind first."
         }
       ]
@@ -195,14 +195,14 @@
       "kind": "gap",
       "id": "fill",
       "text": "People buy the names that come to ___ first, so make yours easy to ___.",
-      "bank": ["mind", "remember", "market", "change"],
+      "bank": ["mind", "remember", "sell", "change"],
       "answer": ["mind", "remember"],
       "why": "Exactly. Vodafone kept the pug because people remembered it. Your pink box, your funny line and your magnet on the fridge do the same for you."
     }
   ],
   "summary": [
     "Mental availability: when it's time to buy, people pick the name that comes to mind first.",
-    "Distinctive brand assets: keep one colour, one look, one voice, and show them often.",
+    "Distinctive brand assets: keep one colour, one look, one funny line, and show them often.",
     "A great product isn't enough if people forget your name. Never copy another brand's look."
   ],
   "cards": [
