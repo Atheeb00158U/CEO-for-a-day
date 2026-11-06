@@ -9,7 +9,7 @@
       "kind": "explain",
       "id": "hook",
       "media": "img:ls_phone_tower",
-      "text": "Let me tell you about a big decision. In 2004, Bharti Airtel had about 58 lakh mobile customers and was growing fast. Then it asked Ericsson and Nokia to run its network, the towers and machines that carry calls, and IBM to run its computers. Can you guess why?"
+      "text": "Let me tell you about a big decision. In 2004, Bharti Airtel had about 59 lakh mobile customers and was growing fast. Then it asked Ericsson and Nokia to run its network, the towers and machines that carry calls, and IBM to run its computers. Can you guess why?"
     },
     {
       "kind": "choice",
@@ -225,6 +225,10 @@
     {
       "label": "Ericsson and Bharti sign managed services and infrastructure contract (Ericsson, Feb 2004)",
       "url": "https://www.ericsson.com/en/press-releases/2004/2/ericsson-and-bharti-sign-managed-services-and-infrastructure-contract"
+    },
+    {
+      "label": "Nokia to expand Bharti's GSM networks in five circles (Nokia, May 2004)",
+      "url": "https://globenewswire.com/news-release/2004/05/27/1847240/0/en/Nokia-to-expand-Bharti-s-GSM-GPRS-EDGE-networks-in-five-circles-in-an-approximately-275-million-USD-deal.html"
     },
     {
       "label": "India's Airtel outsources again (Light Reading)",

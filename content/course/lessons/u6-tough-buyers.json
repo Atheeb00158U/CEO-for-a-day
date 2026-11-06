@@ -9,7 +9,7 @@
       "kind": "explain",
       "id": "hook",
       "media": "img:ls_bike_pump",
-      "text": "Let me tell you about Indian bike riders in the 1980s. They watched every rupee spent on petrol. About 9 in 10 two-wheelers had two-stroke engines, which used more petrol. In 1985, Hero Honda launched the CD 100, India's first four-stroke bike. It went about 80 km a litre."
+      "text": "Let me tell you about Indian bike riders in the 1980s. They watched every rupee spent on petrol, yet almost every bike then had a two-stroke engine, which used more petrol. In 1985, Hero Honda launched the CD 100, India's first 100 cc four-stroke bike. It went about 80 km a litre."
     },
     {
       "kind": "choice",
@@ -222,6 +222,14 @@
     }
   ],
   "sources": [
+    {
+      "label": "Hero Honda CD 100 (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Hero_Honda_CD_100"
+    },
+    {
+      "label": "Those Japanese bikes (Business Standard, Nov 2015)",
+      "url": "https://www.business-standard.com/article/beyond-business/those-japanese-bikes-115110601004_1.html"
+    },
     {
       "label": "Milestone in mileage (Down To Earth, 2001)",
       "url": "https://www.downtoearth.org.in/environment/milestone-in-mileage-17271"

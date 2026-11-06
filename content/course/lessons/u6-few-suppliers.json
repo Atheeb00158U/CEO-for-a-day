@@ -37,7 +37,7 @@
       "kind": "explain",
       "id": "deming",
       "title": "Deming's rule 4",
-      "text": "Here's the idea behind that. W. Edwards Deming, an American quality expert, told managers: don't buy on price alone, because a cheap part that fails costs more. Work with a few good suppliers for years, and help them improve. It was rule 4 of his 14 rules."
+      "text": "Here's the idea behind that. W. Edwards Deming, an American quality expert, told managers: don't buy on price alone, because a cheap part that fails costs more. Move towards one good supplier for each item, work with them for years, and help them improve. It was rule 4 of his 14."
     },
     {
       "kind": "explain",
@@ -92,7 +92,7 @@
       "why": "Right. Five shops mean your cream keeps changing. But one shop is also risky. In 1997, a fire at Aisin, the factory making almost all of Toyota's brake valves, stopped Toyota's car factories in Japan for days. So choose a few good suppliers, not just one.",
       "wrong": {
         "a": "With five shops, your cream keeps changing, and none gets much work from you. With two good shops, both get regular orders and have a reason to keep you happy.",
-        "c": "Close. Deming wanted few suppliers, but one is risky. Remember Holi, when your only milk shop closed. In 1997, a fire at Aisin, which made almost all of Toyota's brake valves, stopped Toyota's car factories in Japan for days. Keep a second good shop."
+        "c": "Close. Deming wanted one supplier for each item, but one is risky. Remember Holi, when your only milk shop closed. In 1997, a fire at Aisin, which made almost all of Toyota's brake valves, stopped Toyota's car factories in Japan for days. Keep a second good shop."
       }
     },
     {
@@ -179,7 +179,7 @@
     {
       "kind": "gap",
       "id": "fill",
-      "text": "You buy flour from whoever is ___ each week, and the flour keeps changing. Deming would say: buy from a ___ good suppliers.",
+      "text": "You buy flour from whoever is ___ each week, and the flour keeps changing. Deming would say: buy from as ___ suppliers as you can.",
       "bank": ["cheapest", "few", "nearest", "many"],
       "answer": ["cheapest", "few"],
       "why": "Exactly. Buying on price alone brings a different flour every week. A few good suppliers, kept for years and pushed to improve, bring the same good flour every week."
@@ -187,7 +187,7 @@
   ],
   "summary": [
     "Deming's rule 4: stop buying on the price tag alone. A cheap part can cost the most.",
-    "Work with a few strong suppliers for years, and push them to get better.",
+    "Work with as few strong suppliers as you can, for years, and push them to get better.",
     "Keep a few, not one: if your only supplier stops, so do you."
   ],
   "cards": [
