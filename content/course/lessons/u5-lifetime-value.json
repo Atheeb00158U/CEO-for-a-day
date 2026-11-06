@@ -15,40 +15,40 @@
       "kind": "choice",
       "id": "guess",
       "guess": true,
-      "prompt": "Imagine a business keeps 5 more customers out of every 100 each year. What do you think they estimated for its profit?",
+      "prompt": "Imagine a business keeps 5 more customers out of every 100 each year. What do you think happens to its profit?",
       "options": [
         {
           "id": "a",
-          "label": "Up by about 5%"
+          "label": "Profit rises by about 5%"
         },
         {
           "id": "b",
-          "label": "About the same"
+          "label": "Profit stays about the same"
         },
         {
           "id": "c",
-          "label": "Up by 25% to 85%"
+          "label": "Profit rises by 25% to 85%"
         }
       ],
       "answer": "c",
-      "why": "They estimated profits could rise by 25% to 85%, depending on the business. Five more customers out of 100 doesn't sound like much. But a customer who stays keeps buying, year after year."
+      "why": "They estimated profits could rise by 25% to 85%, depending on the business. Keeping 5 more customers out of 100 may seem small. But customers who stay keep buying year after year."
     },
     {
       "kind": "explain",
       "id": "ltv",
       "title": "Customer lifetime value",
-      "text": "The money one customer brings you over all their years is called customer lifetime value, or LTV. Count the margin you keep, not the price they pay. The sum: margin on each order × orders a year × years they stay."
+      "text": "The money you keep from one customer over the years is called customer lifetime value, or LTV. Count the margin you keep, not the full price. To find LTV, multiply the margin on each order × orders a year × years they stay."
     },
     {
       "kind": "explain",
       "id": "home",
       "title": "Now look at your business",
-      "text": "Those studies looked at banks, but your best customers work the same way. It's June. One family has ordered from you for three years: four birthday cakes every year. Each ₹850 cake leaves you ₹450."
+      "text": "The studies looked at banks, but the same idea works for your bakery. It's June. One family has ordered from you for three years. They buy four birthday cakes every year. You keep ₹450 from each ₹850 cake."
     },
     {
       "kind": "choice",
       "id": "ltv-sum",
-      "prompt": "A family orders 4 cakes a year. Each leaves you ₹450. If they stay 5 more years, what's their lifetime value from now?",
+      "prompt": "A family orders 4 cakes a year. You keep ₹450 per cake. If they stay 5 more years, how much will you keep?",
       "options": [
         {
           "id": "a",
@@ -64,144 +64,144 @@
         }
       ],
       "answer": "b",
-      "why": "Exactly. ₹450 × 4 cakes = ₹1,800 a year, and 5 years makes ₹9,000. That family isn't an ₹850 order. It's ₹9,000 of profit, if you keep them happy.",
+      "why": "Yes. ₹450 × 4 cakes = ₹1,800 a year. Over 5 years, that makes ₹9,000. Don't think of this family as just one ₹850 order. You could earn ₹9,000 from them if they keep buying.",
       "wrong": {
         "a": "₹1,800 is one year: ₹450 × 4. They stay 5 years, so ₹1,800 × 5 = ₹9,000.",
-        "c": "You used the price: ₹850 × 4 × 5. Lifetime value counts what you keep: ₹450 × 4 × 5 = ₹9,000."
+        "c": "You used the full price: ₹850 × 4 × 5. Lifetime value counts what you keep: ₹450 × 4 × 5 = ₹9,000."
       }
     },
     {
       "kind": "gap",
       "id": "box-ltv",
-      "text": "The café deal leaves you ₹1,750 a week. Over 50 weeks a year: ₹1,750 × 50 = ___ a year, and 2 years make ___.",
+      "text": "The café deal leaves you ₹1,750 a week. Over 50 weeks: ₹1,750 × 50 = ___ a year, and 2 years make ___.",
       "bank": ["₹87,500", "₹1,75,000", "₹8,750", "₹3,50,000"],
       "answer": ["₹87,500", "₹1,75,000"],
-      "why": "Right. ₹1,750 × 50 = ₹87,500 a year, and 2 years make ₹1,75,000. That café isn't one order. It's your biggest customer."
+      "why": "Yes. ₹1,750 × 50 = ₹87,500 a year. Over 2 years, that makes ₹1,75,000. The café brings you much more than one order. It's your biggest customer."
     },
     {
       "kind": "sort",
       "id": "raise-ltv",
-      "prompt": "I'll show you six ideas. For each one, tell me: does it raise lifetime value, or only today's sale?",
+      "prompt": "I'll show you six ideas. For each one, tell me: will it increase lifetime value, or only help you sell today?",
       "buckets": ["Raises lifetime value", "Only today's sale"],
       "items": [
         {
-          "text": "A message a week before each child's birthday",
+          "text": "Send a message a week before each child's birthday",
           "bucket": 0
         },
         {
-          "text": "₹100 off for anyone, this Sunday only",
+          "text": "Give anyone ₹100 off this Sunday only",
           "bucket": 1
         },
         {
-          "text": "Remember each family's favourite flavour",
+          "text": "Remember each family's favourite cake flavour",
           "bucket": 0
         },
         {
-          "text": "A bigger cake at the same price, just this once",
+          "text": "Give a bigger cake at the same price, just once",
           "bucket": 1
         },
         {
-          "text": "Keep a note of each family's birthdays and orders",
+          "text": "Write down each family's birthdays and past orders",
           "bucket": 0
         },
         {
-          "text": "A festival sale banner on your menu",
+          "text": "Put a festival sale banner on your menu",
           "bucket": 1
         }
       ],
-      "why": "Good. The first kind makes families stay and order again: a reminder, their favourite flavour, knowing their dates. The second kind helps one sale and then stops."
+      "why": "Good. The first group helps families stay and order again. You remind them, remember their favourite flavour and know their birthdays. The second group helps you make one sale but may not bring them back."
     },
     {
       "kind": "choice",
       "id": "trial-cake",
-      "prompt": "You think of a ₹400 trial cake, which leaves you nothing, to win new families. When does it make sense?",
+      "prompt": "You want to offer a ₹400 trial cake to new families. You earn nothing from it. When is this a good idea?",
       "options": [
         {
           "id": "a",
-          "label": "When most of them come back at ₹850"
+          "label": "When most return and pay ₹850"
         },
         {
           "id": "b",
-          "label": "When it brings lots of first orders"
+          "label": "When many families place first orders"
         },
         {
           "id": "c",
-          "label": "When other bakers are cheaper than you"
+          "label": "When other bakers charge lower prices"
         }
       ],
       "answer": "a",
-      "why": "Exactly. You met this in Unit 3: a cheap first offer pays only if buyers return at full price. The trial cake earns nothing. Lifetime value is what pays for it.",
+      "why": "Yes. Remember Unit 3: a cheap first offer works only if buyers return and pay full price. You earn nothing from the trial cake. You earn money when the family comes back.",
       "wrong": {
-        "b": "Lots of ₹0 orders still make ₹0. Remember Unit 3: a cheap first offer pays only if buyers come back at full price.",
-        "c": "Then you'd be fighting on price. Remember Unit 3: a cheap first offer pays only if buyers come back at the full ₹850."
+        "b": "Many orders that earn ₹0 still leave you ₹0. Remember Unit 3: a cheap first offer works only if buyers return and pay full price.",
+        "c": "Then you would be trying to beat other bakers on price. Remember Unit 3: a cheap first offer works only if buyers return and pay the full ₹850."
       }
     },
     {
       "kind": "scenario",
       "id": "squashed",
-      "setup": "It's mid-June, 3 pm. A family who orders 4 cakes a year calls, upset: today's birthday cake arrived squashed. Baking a fresh one costs you ₹400 and two hours. The party starts at 7 pm.",
+      "setup": "It's mid-June, 3 pm. A family that orders 4 cakes a year calls. Their birthday cake arrived crushed. Making a new one costs ₹400 and takes two hours. The party starts at 7 pm.",
       "question": "What do you do?",
       "options": [
         {
           "id": "a",
-          "label": "Say sorry and give ₹100 off their next cake",
+          "label": "Say sorry and offer ₹100 off the next cake",
           "grade": "bad",
-          "outcome": "They have a party tonight and a squashed cake. They thank you coldly. Next birthday, they order from someone else. You saved ₹400 and lost about ₹9,000 over the next five years.",
-          "why": "You protected today's ₹400 and lost a family worth about ₹9,000.",
-          "better": "Bake a fresh cake now and deliver it before 7 pm, free."
+          "outcome": "They still have a crushed cake for tonight's party. They thank you, but they are unhappy. Next birthday, they order from someone else. You saved ₹400 but lost about ₹9,000 over the next five years.",
+          "why": "You saved ₹400 today but lost a family worth about ₹9,000.",
+          "better": "Make a new cake now and deliver it free before 7 pm."
         },
         {
           "id": "b",
-          "label": "Bake a fresh cake now and deliver it free",
+          "label": "Make a new cake and deliver it for free",
           "grade": "great",
-          "outcome": "The new cake arrives at 6:30 pm. The mother sends a photo of the candles and thanks you in the colony group. They keep ordering. You spent ₹400 to keep a family worth about ₹9,000.",
-          "why": "You judged the cost against the family's lifetime value, not against one cake."
+          "outcome": "The new cake arrives at 6:30 pm. The mother shares a photo of the candles and thanks you in the colony group. They keep ordering. You spent ₹400 to keep a family worth about ₹9,000.",
+          "why": "You compared the ₹400 cost with what the family could earn you over the years, not just one cake."
         },
         {
           "id": "c",
-          "label": "Refund the full ₹850 and say sorry",
+          "label": "Give back the full ₹850 and say sorry",
           "grade": "ok",
-          "outcome": "They're glad to get the money back, but they buy a shop cake for tonight. Next time, they're not sure about you. You're ₹850 down and may lose the family.",
-          "why": "A refund is fair, but it didn't save the party, and the party was what they paid for.",
-          "better": "Bake a fresh cake now and deliver it before 7 pm, free."
+          "outcome": "They're happy to get their money back, but they must buy a cake from a shop for tonight. Next time, they're not sure they can trust you. You lost ₹850 and may lose the family.",
+          "why": "Giving the money back was fair. But they needed a cake for the party, and you did not give them one.",
+          "better": "Make a new cake now and deliver it free before 7 pm."
         }
       ]
     },
     {
       "kind": "gap",
       "id": "fill",
-      "text": "A customer is worth the ___ on all their ___ buys, not just the first.",
+      "text": "A customer is worth the ___ from all their ___ orders, not just the first.",
       "bank": ["margin", "future", "price", "past"],
       "answer": ["margin", "future"],
-      "why": "Exactly. Reichheld and Sasser estimated that keeping a few more customers could raise profits a lot. Your squashed-cake family is worth about ₹9,000, not ₹850."
+      "why": "Yes. Reichheld and Sasser estimated that keeping a few more customers could increase profits a lot. The family whose cake was crushed is worth about ₹9,000, not just ₹850."
     }
   ],
   "summary": [
-    "Customer lifetime value (LTV): the margin one customer brings you over all their years.",
-    "LTV = margin on each order × orders a year × years they stay.",
-    "When a problem comes up, compare its cost with the customer's lifetime value, not one order."
+    "Customer lifetime value (LTV): the total margin you keep from one customer over the years.",
+    "LTV = margin per order × orders per year × years they stay.",
+    "When a customer has a problem, compare the cost of fixing it with their lifetime value, not just one order."
   ],
   "cards": [
     {
       "id": "m52-ltv-1",
-      "front": "A family orders 4 cakes a year at ₹450 margin and stays 5 years. LTV?",
+      "front": "A family buys 4 cakes a year. You keep ₹450 per cake for 5 years. What is their LTV?",
       "options": ["₹1,800", "₹9,000", "₹17,000"],
       "answer": 1,
       "back": "₹450 × 4 × 5 = ₹9,000."
     },
     {
       "id": "m52-ltv-2",
-      "front": "Lifetime value counts which number from each order?",
+      "front": "Which amount from each order do you use to find lifetime value?",
       "options": ["The price they pay", "The margin you keep"],
       "answer": 1,
-      "back": "Count what you keep, not what they pay."
+      "back": "Count the margin you keep, not the full price."
     },
     {
       "id": "m52-ltv-3",
-      "front": "Fixing a regular customer's problem costs ₹400. They're worth ₹9,000 over the years. Fix it?",
+      "front": "Fixing a regular customer's problem costs ₹400. Their lifetime value is ₹9,000. Should you fix it?",
       "options": ["Yes", "No, ₹400 is too much"],
       "answer": 0,
-      "back": "Compare the cost with lifetime value, not one order."
+      "back": "Compare the cost of fixing the problem with the customer's lifetime value."
     }
   ],
   "sources": [
