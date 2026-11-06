@@ -273,7 +273,7 @@
           "next": "s_launch_late",
           "media": "img:mu_d3_delay",
           "outcome": "December comes and goes with no car. The papers start calling Maruti another failed dream, and Delhi starts asking hard questions.",
-          "why": "Remember: find the longest chain of work, and buy in whatever would make you late. Indian parts were that chain, so waiting for them made the whole launch wait.",
+          "why": "Remember: find the longest chain of work, and buy ready-made anything that could make you late. Indian parts were that chain, so waiting for them made the whole launch wait.",
           "better": "Launch on time with imported parts, and set firm dates for switching to Indian ones.",
           "takeaway": "In 1983 you put a perfect car ahead of an on-time car.",
           "traits": {
@@ -305,7 +305,7 @@
           ],
           "media": "img:mu_d3_oldparts",
           "outcome": "You make the date with an all-Indian vehicle. But within weeks, buyers are back at the dealers with leaks, rattles and breakdowns, and they say the new Maruti is no better than the old cars.",
-          "why": "Remember: buy in whatever would make you late, then learn to make it. You kept the date with parts that were not ready, and a car built from them broke down in front of everyone.",
+          "why": "Remember: buy ready-made anything that could make you late, then learn to make it. You kept the date with parts that were not ready, and a car built from them broke down in front of everyone.",
           "better": "Use proven imported parts at first, and raise Indian suppliers to the new standard step by step.",
           "takeaway": "In 1983 you chose a local label over real quality.",
           "traits": {
@@ -347,7 +347,7 @@
               "text": "You put together parts shipped from abroad. Very little of the vehicle is Indian yet, but you now have a firm plan to change that."
             }
           ],
-          "why": "Remember: find the longest chain of work, and buy in whatever would make you late. Indian parts were on that chain. Imported kits kept the date, and a firm five-year plan meant you would still make the parts yourself.",
+          "why": "Remember: find the longest chain of work, and buy ready-made anything that could make you late. Indian parts were on that chain. Imported kits kept the date, and a firm five-year plan meant you would still make the parts yourself.",
           "takeaway": "In 1983 you launched on time and made a firm plan to go local.",
           "traits": {
             "horizon": 1,
@@ -438,7 +438,7 @@
           "next": "d5",
           "media": "img:mu_d4_ownway",
           "outcome": "Each shop runs its own way. The weld shop and the paint shop check cars differently, a car that passes one shop fails the next, and nobody can say which way is right. Output creeps up slowly.",
-          "why": "Remember: one standard way of working cuts cost and errors. Six ways of working meant six kinds of mistakes, and no way to learn which way worked best.",
+          "why": "Remember: one standard way of working cuts cost and mistakes. Six ways of working meant six kinds of mistakes, and no way to learn which way worked best.",
           "better": "Pick one way for every job, write it down, and train everyone in it, bosses included.",
           "takeaway": "In 1984 you let every shop work its own way.",
           "traits": {
@@ -470,7 +470,7 @@
               "text": "Bosses and workers follow the same rules, from the first exercise of the shift to the last check on the line. Every worker is trained in the same way, and month by month more cars roll out right first time."
             }
           ],
-          "why": "Remember: one standard way of working cuts cost and errors. When every shop and every rank works the same way, a mistake shows up fast, and every fix reaches everyone.",
+          "why": "Remember: one standard way of working cuts cost and mistakes. When every shop and every rank works the same way, a mistake shows up fast, and every fix reaches everyone.",
           "takeaway": "In 1984 you ran the whole plant one standard way, bosses included.",
           "traits": {
             "horizon": 1,
@@ -490,7 +490,7 @@
           "next": "d5",
           "media": "img:mu_d4_shift",
           "outcome": "More cars roll out, but each new worker copies whoever stands beside them. Small faults creep in, and more cars come back to dealers to be fixed.",
-          "why": "Remember: one standard way of working cuts cost and errors. More hands helped, but with no single way to learn, every new worker learned a slightly different job.",
+          "why": "Remember: one standard way of working cuts cost and mistakes. More hands helped, but with no single way to learn, every new worker learned a slightly different job.",
           "better": "Set one standard way first, train everyone in it, then add the shift.",
           "takeaway": "In 1984 you added hands before you had one way of working.",
           "traits": {
