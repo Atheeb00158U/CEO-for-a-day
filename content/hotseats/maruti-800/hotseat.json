@@ -2,7 +2,7 @@
   "id": "maruti-800",
   "company": "Maruti Udyog",
   "title": "A car for every Indian family",
-  "hook": "A failed car company, no car experts, and a huge goal. Can you build India's first family car?",
+  "hook": "A failed car company, no car experts, and a huge goal. Can you build a car every Indian family can afford?",
   "role": "You run Maruti Udyog, 1981 to 1987",
   "years": "1981–1990",
   "cover": "img:mu_cover",
@@ -40,7 +40,7 @@
       "type": "scene",
       "year": "1981",
       "media": "img:mu_goal",
-      "text": "Your goal is to make 1 lakh cars a year, but all of India buys fewer than 40,000 cars a year, mostly big, old Ambassadors and Padminis. Nobody on your team has built a car before, so you need a foreign carmaker to teach your people how.",
+      "text": "Your goal is to make 1 lakh cars a year, but all of India buys fewer than 40,000, mostly big, old Ambassadors and Padminis. Your own chairman even thinks Maruti should make work vehicles, not small cars. And nobody on your team has built a car, so you need a foreign carmaker to teach you.",
       "next": "d1"
     },
     "d1": {
@@ -130,16 +130,16 @@
           "when": {
             "flags": ["suzuki"]
           },
-          "text": "Suzuki has three vehicles you could make: a tiny four-seat car, a small van and a light jeep. A survey shows that 9 in 10 car trips in India carry four people or fewer, mostly in cities. But one board member wants Maruti to make work vehicles, not cars."
+          "text": "Suzuki has three vehicles you could make: a tiny four-seat car, a small van and a light jeep. A survey shows that 9 in 10 car trips in India carry four people or fewer, mostly in cities. But Indian families are big, and a van carries more."
         },
         {
           "when": {
             "flags": ["waited"]
           },
-          "text": "Daihatsu has three vehicles you could make: a tiny four-seat car, a small van and a light jeep. A survey shows that 9 in 10 car trips in India carry four people or fewer, mostly in cities. But one board member wants Maruti to make work vehicles, not cars."
+          "text": "Daihatsu has three vehicles you could make: a tiny four-seat car, a small van and a light jeep. A survey shows that 9 in 10 car trips in India carry four people or fewer, mostly in cities. But Indian families are big, and a van carries more."
         },
         {
-          "text": "Your partner has three vehicles you could make: a tiny four-seat car, a small van and a light jeep. A survey shows that 9 in 10 car trips in India carry four people or fewer, mostly in cities. But one board member wants Maruti to make work vehicles, not cars."
+          "text": "Your partner has three vehicles you could make: a tiny four-seat car, a small van and a light jeep. A survey shows that 9 in 10 car trips in India carry four people or fewer, mostly in cities. But Indian families are big, and a van carries more."
         }
       ],
       "question": "What do you build first?",
