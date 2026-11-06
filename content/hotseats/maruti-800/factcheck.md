@@ -1,7 +1,7 @@
 # Fact-check: maruti-800
-checked-sha256: PENDING
-Checked: 2026-11-06 · by: independent fact-check agent (fresh context)
-(Version checked: hotseat.json sha256 e1c1dbd2a274f01df703216fc31d51701f08752cbdf56e3aedc13b59090b0ea9. Stamp it once the open claims below are fixed and re-checked.)
+checked-sha256: 98d615aa56d876a518b646f0621732ef7b41fbf69d8c8c218ebbd7fc5d5d9c17
+Checked: 2026-11-06 (re-check) · by: independent fact-check agent (fresh context)
+(First check: 2026-11-06 on sha256 e1c1dbd2…0ea9, with two open claims. Re-check: both fixed, and every line changed since then re-checked against [1][2][3][5][7][8][10][11][14]; the stamp above is the current hotseat.json.)
 
 ## Sources opened
 1. [The Incredible Maruti Story (Autocar Professional, 2023)](https://www.autocarpro.in/opinion-blogs/the-incredible-maruti-story-118430)
@@ -18,8 +18,10 @@ Checked: 2026-11-06 · by: independent fact-check agent (fresh context)
 12. [Sumant Moolgaokar (Wikipedia)](https://en.wikipedia.org/wiki/Sumant_Moolgaokar) (non-executive chairman; no dates)
 13. Prior check's sources still relied on for unchanged claims: [Suzuki Jimny (Wikipedia)](https://en.wikipedia.org/wiki/Suzuki_Jimny), [Suzuki Carry (Wikipedia)](https://en.wikipedia.org/wiki/Suzuki_Carry), [30 years of Maruti (Autocar India, 2013)](https://www.autocarindia.com/auto-features/30-years-of-maruti-367623), FY2024 market-share reports (41.6% in [9]).
 
+14. [1991 Indian economic crisis (Wikipedia)](https://en.wikipedia.org/wiki/1991_Indian_economic_crisis) and the [1991–92 Union Budget speech](https://www.indiabudget.gov.in/doc/bspeech/bs199192.pdf) (via search extract: balance-of-payments problems from the mid-1980s; current-account deficit near 2% of GDP for several years; reserves falling)
+
 ## Claims
-- [unsupported] Hook: "Can you build India's first family car?" (hook) — Ambassadors and Padminis were already family cars ([7], and the Hot Seat's own s_goal). The 800 is usually called the first people's/affordable car. See Open claims.
+- [fixed, supported] Hook: "A car company that failed, no car experts, and a big goal. Can you build a car every Indian family can afford?" (hook) — was "India's first family car". The failed earlier company [6], a team that had never built a car [3][8], and the 1 lakh goal [8] are supported; the 800 is called "the first affordable people's car" in India [5].
 - [supported] A company on the same land promised a small car ten years earlier, made only a handful, shut down (nodes.intro.text) — [6] (Aug 1971; 21 cars by Mar 1976; dissolution ordered 1978)
 - [supported] Government starts Maruti Udyog in 1981 (nodes.intro.text; realHistory) — [6][8] (24 Feb 1981)
 - [supported] Goal 1 lakh cars a year; India buys fewer than 40,000, mostly Ambassadors and Padminis (nodes.s_goal.text) — [3] ("35,000-40,000"); [7]; [8] (100,000 minimum for viability)
@@ -31,7 +33,8 @@ Checked: 2026-11-06 · by: independent fact-check agent (fresh context)
 - [supported] Your people went to Japan to learn (nodes.d1.options.suzuki.why; nodes.s1983.text[1]) — [4] ("training in Japan")
 - [supported] Suzuki's tiny four-seat car, small van and light jeep (nodes.d2.setup[0]) — prior check via Alto [5], Carry, Jimny [13]
 - [supported] Survey: 9 in 10 car trips carry four or fewer, mostly in cities (nodes.d2.setup) — [3]; [8] (Maruti commissioned a market survey)
-- [contradicted: timing] "But one board member wants Maruti to make work vehicles, not cars." (nodes.d2.setup[0], [1], [2]) — The view is real: Moolgaokar "insisted on the development of light commercial vehicles" and told a board meeting Maruti should not make cars [8]; he wanted Maruti to start with commercial vehicles [10]. But he was the chairman, not just a board member [8][10][12], and he left in December 1981 [11] — before Daihatsu fell away and Suzuki telexed (Feb 1982) [2]. The game puts the push in 1982 after Suzuki is picked and Suzuki's three vehicles are on the table. See Open claims.
+- [fixed, supported] "Even your chairman wants Maruti to make work vehicles, not small cars." (nodes.s_goal.text, 1981) — was "one board member" in d2. Moolgaokar, Maruti's chairman from 22 Apr to 24 Dec 1981 [10][11], "felt that small and compact cars would be unsafe and unsuitable", "insisted on the development of light commercial vehicles", and said at a board meeting Maruti should not make cars [8]. Now placed in 1981, while he was chairman.
+- [fixed, ok] "But Indian families are big, and a van has more space." (nodes.d2.setup[0], [1], [2]) — the board-member line is gone; this is the advisor-style counterpoint to the survey, general and not a claim about a person.
 - [supported] Based on Suzuki's 1979 Alto, 796 cc, named Maruti 800; front-wheel drive and disc brakes new to Indian buyers (nodes.d2.options.small.outcome[0]) — [5][7]
 - [supported] Launch set for December 1983; factory, hundreds of parts firms and dealers in 14 months (nodes.s1983.text[1]; nodes.s_launch.text[0]) — [1][2][7]
 - [supported] Indian parts makers not ready; quality uneven; deliveries late (nodes.d3.setup) — [2]
@@ -57,11 +60,18 @@ Checked: 2026-11-06 · by: independent fact-check agent (fresh context)
 - [ok] No quotes from real people anywhere in the file. No real people are named except Indira Gandhi (by role and name, public act).
 - [ok] Off-path text (wait, turnkey, all three, van, delay, oldparts, ownway, shift, spread, import, home, a third abroad, survivor/collapse/fired endings) describes the player's own invented company; no false statements about real history found. "Foreign carmakers enter India in the 1990s" (survivor) is true in general.
 
-## Open claims
-1. **nodes.d2.setup[0], [1], [2]** — "But one board member wants Maruti to make work vehicles, not cars." The man was the chairman, and he left in Dec 1981, before Suzuki came in [8][10][11]. Minimal rewrites (pick one):
-   - Keep it in d2, past tense: "Your first chairman wanted Maruti to make work vehicles, not cars, but he has left." (true for all three variants)
-   - Or move it to 1981 (nodes.s_goal.text) and drop it from d2: "...so you need a foreign carmaker to teach your people how. Your chairman even wants Maruti to make work vehicles, not cars."
-   If kept as "board member", it should at least be in 1981 (s_goal), not after the partner is chosen.
-2. **hook** — "Can you build India's first family car?" India already had family cars (Ambassador, Padmini). Minimal rewrite: "Can you build a car every Indian family can afford?" (or "India's first people's car").
-
-After these fixes, re-hash hotseat.json and replace `PENDING` with the new sha256; no other claims are open.
+### Re-check of lines changed after the first check
+- [supported] "Five big carmakers, including Fiat and Volkswagen, have said no, and most others want their own people to run your factory" (nodes.d1.setup) — [1] (Fiat, Peugeot, Volkswagen, Renault and Nissan "turned down Maruti"); [3] (others wanted to bring their own manpower). Daihatsu as the front-runner [1]; going with another Indian company and Suzuki contacting Maruti within days [2].
+- [supported] "Talk to the small Japanese maker that came to you, though unknown here" (nodes.d1.options.suzuki.label) — Suzuki approached Maruti after hearing of the talks [1][2]; small next to the carmakers above; no Suzuki cars were sold in India then.
+- [supported] "Suzuki offers more money than any other company" (nodes.d1.options.suzuki.outcome) — [3] Bhargava: Suzuki "gave us the most financially attractive offer". Rest of the line (April 1982, president meets the team, 2 Oct 1982, about a quarter with more later) as in the first check [1][3][4].
+- [supported] "based on Suzuki's 1979 Alto ... small, light and costs little to run, and Indian buyers have not seen a modern design like this before" (nodes.d2.options.small.outcome[0]) — [5] ("based on the 1979 Suzuki Alto"; about 620–655 kg; about 20 km/L; "the only reasonably modern car available in India" while the Ambassador and Padmini were "based on long-obsolete 1950s designs"); [7] (616 kg, "tiny", fuel efficiency for "cost-conscious Indians"); [1] (first car with disc brakes, front-wheel drive).
+- [ok] d2 advisor (big families, a van carries people and goods, shopkeepers might buy it) — a reasonable view of the time; the van (Omni) was sold from 1984 [6]. No factual claim.
+- [supported] "The first 192 cars are ready in December 1983, and only the tyres and batteries are Indian, less than 3% of each car. You promise to use 95% Indian parts within five years." (nodes.d3.options.kits.outcome[0]; label; takeaway) — [2] ("The first 192 cars ... in December 1983 were almost entirely Japanese ... only the tyres and the batteries being Indian"; "2.76 per cent"; "95 per cent indigenisation in five years"; "imported SKD kits").
+- [supported] d3 setups and advisor: partner wanted to import almost everything, Delhi wanted Indian parts, parts makers not ready, December deadline (nodes.d3.setup[0], [1]; nodes.d3.advisor) — [2] (deadline forced imported kits; indigenisation commitment; vendor base not ready).
+- [ok] d3 oldparts outcome (leaks, rattles, breakdowns) — off-path, an estimate; it does not claim this happened.
+- [ok] d4 labels and advisor (second shift; partner's rules in every shop, same rules for managers) — framing for the choice; the same-rules practices are supported in the d4 claims above [8][9].
+- [ok] d5 labels, quality takeaway and import why — restate the supported supplier push [2]; the import line is off-path.
+- [supported] "But India badly needs foreign money" (nodes.d6.setup[0], [1]; d6 advisor "foreign money India needs"; big label) — [14] (balance-of-payments strain from the mid-1980s, current-account deficit near 2% of GDP for years, reserves falling into the 1991 crisis); [4] (foreign money short for machines in 1984). Suzuki and chairman V. Krishnamurthy advised against exports [3]. "Indian families still wait years" as in the first check [4].
+- [supported] d6 labels: small first batch to Europe against the partner's warning; "as your partner and board advise" — [3][5] (500 cars to Hungary, against Suzuki and the chairman).
+- [supported] "Maruti becomes the car most Indian families buy first. Other carmakers enter India in the 1990s, but for millions of families, their first car is still a Maruti." (nodes.legend.text[1]) — [6][9] (market leader then and now, 41.6% in FY2024); [6][7] (rivals arrive after 1991 opening). Broad, not a figure.
+- [ok] No quotes from real people in any changed line; Moolgaokar and Krishnamurthy appear only as "your chairman" / "the head of your board".
