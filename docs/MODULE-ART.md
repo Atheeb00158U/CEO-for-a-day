@@ -15,6 +15,11 @@ with no gate showed a plain gold block.
 - **Framing:** the main subject sits in the centre third, so the image survives the thin crop.
 - **Never in the image:** text, readable words or numbers, logos, brand names, or a real person's likeness.
 
+## Status (6 Nov 2026)
+
+Made: 1.1, 1.2, 2.1, 2.2, 3.1, 3.3, 4.1 and 4.2. Still to make, after ChatGPT's daily image limit resets: 3.2, 5.1, 5.2, 6.1 and 6.2.
+Until then those modules keep their gate cover or the gold block.
+
 ## Briefs
 
 | Module | Idea | Scene |

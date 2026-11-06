@@ -75,6 +75,13 @@ export const MODULE_BANNER = { width: 1440, height: 600, widths: [480, 960, 1440
 
 export const MODULE_BANNERS: Record<string, string> = {
   "u1-where-money-goes": "A kirana shop owner at night, staring into an almost empty cash box beside a spike of unpaid bills",
+  "u1-what-costs-decide": "Women on a city rooftop rolling papad by hand, a small, cheap start",
+  "u2-real-problem": "A young man with a notebook listening to a customer hold up a plain bag of idli batter",
+  "u2-who-buys": "A book seller at a college gate talking with one student while the crowd passes",
+  "u3-set-price": "A shopkeeper handing one shampoo sachet to a worker holding out a few coins",
+  "u3-judge-price": "A young couple comparing three pressure cookers of different sizes",
+  "u4-trust": "A woman checking a new phone in its parcel at her door, cash in hand, as the delivery man waits",
+  "u4-why-you": "One food stall in a market lane with a happy crowd while the stalls beside it stay quiet",
 };
 
 export const moduleSrcSet = (id: string, ext: "avif" | "webp") =>

@@ -87,7 +87,6 @@ export function CoursePath({
                   <picture className="wavy-b relative block h-[148px] w-full overflow-hidden rounded-t-3xl bg-surface-2">
                     <source type="image/avif" srcSet={moduleSrcSet(m.id, "avif")} sizes="(max-width: 480px) 100vw, 448px" />
                     <source type="image/webp" srcSet={moduleSrcSet(m.id, "webp")} sizes="(max-width: 480px) 100vw, 448px" />
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={`/course/modules/${m.id}-960.webp`}
                       alt={MODULE_BANNERS[m.id]}
