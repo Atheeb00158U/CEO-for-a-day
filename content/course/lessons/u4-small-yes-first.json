@@ -60,7 +60,7 @@
     {
       "kind": "choice",
       "id": "let-me-think",
-      "prompt": "During the chat, you offer one ₹850 cake for Friday's birthday. The manager says, \"Let me think.\" What do you say?",
+      "prompt": "During the chat, you offer one ₹850 cake for next Friday's birthday. The manager says, \"Let me think.\" What do you say?",
       "options": [
         {
           "id": "a",
@@ -87,8 +87,8 @@
       "id": "steps",
       "prompt": "Here are five steps to get the office's yearly plan. They are in the wrong order. Put the first step at the top.",
       "steps": [
-        "Offer one ₹850 cake for this Friday's birthday",
-        "On Monday, ask what the manager's staff liked about it",
+        "Offer one ₹850 cake for next Friday's birthday",
+        "After the birthday, ask what the staff liked about it",
         "Agree to a one-month trial and a date to talk again",
         "Meet on that date and review the month together",
         "Offer the next step: a longer plan"

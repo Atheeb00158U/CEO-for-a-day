@@ -76,9 +76,9 @@
         }
       ],
       "answer": "a",
-      "why": "Yes. Those 38 neighbours are people like them, and the number is real and exact. \"Thousands\" and \"the best\" tell buyers very little. They've heard such claims many times.",
+      "why": "Yes. Those 38 neighbours are people like them, and the number is real. \"500 across the city\" and \"the best\" say little about people like them.",
       "wrong": {
-        "b": "\"Thousands\" sounds big, but buyers don't know who those people are. 38 real neighbours in their own colony are more likely to make them order.",
+        "b": "\"500 customers across the city\" sounds big, but buyers don't know who those people are. 38 real neighbours in their own colony are more likely to make them order.",
         "c": "Every baker can say \"the best\". It tells buyers nothing about who orders from you. 38 real neighbours in their colony mean more to them."
       }
     },
@@ -183,7 +183,7 @@
       "text": "People copy people ___ them, so show ___ buyers.",
       "bank": ["like", "real", "unlike", "many"],
       "answer": ["like", "real"],
-      "why": "Exactly. \"Guests who stayed in this room\" worked better than \"save the environment\". Your 6 Lake View neighbours worked better than 38 people from another colony. Real buyers who are like you are the best proof."
+      "why": "Exactly. \"Guests who stayed in this room\" worked better than \"save the environment\". Your 6 Lake View neighbours worked better than 38 people from another colony. Real buyers who are like your buyers are the best proof."
     }
   ],
   "summary": [

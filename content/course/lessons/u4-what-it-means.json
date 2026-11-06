@@ -55,7 +55,7 @@
       "kind": "explain",
       "id": "home",
       "title": "Now look at your business",
-      "text": "Washing powder and cakes are different, but your bakery has a ladder too. It's mid-December. Your butter videos kept your old buyers, but new buyers still compare your ₹850 cake with the chain shop's ₹700 cake, even though your posts say \"real butter\"."
+      "text": "Washing powder and cakes are different, but your bakery has a ladder too. It's mid-December. Your butter videos helped you keep your regular buyers, but families who order only sometimes still compare your ₹850 cake with the chain shop's ₹700 cake."
     },
     {
       "kind": "order",
@@ -67,7 +67,7 @@
     {
       "kind": "choice",
       "id": "who-right",
-      "prompt": "Which line should your New Year post use?",
+      "prompt": "Which line should go on your cake boxes?",
       "options": [
         {
           "id": "a",
