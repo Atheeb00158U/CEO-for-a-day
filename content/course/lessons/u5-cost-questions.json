@@ -9,7 +9,7 @@
       "kind": "explain",
       "id": "hook",
       "media": "img:ls_sales_calls",
-      "text": "Let me tell you about a very long study. A British researcher, Neil Rackham, and his team watched more than 35,000 sales calls in 23 countries, over 12 years. They wanted to know one thing: in big sales, what do the best sellers do differently?"
+      "text": "Let me tell you about a long study. British researcher Neil Rackham and his team studied more than 35,000 sales calls in 23 countries over 12 years. They wanted to know what the best sellers did differently in big sales."
     },
     {
       "kind": "choice",
@@ -19,7 +19,7 @@
       "options": [
         {
           "id": "a",
-          "label": "Explained every feature of the product"
+          "label": "Talked about the product's features"
         },
         {
           "id": "b",
@@ -27,65 +27,65 @@
         },
         {
           "id": "c",
-          "label": "Offered a lower price early"
+          "label": "Offered a lower price to buyers"
         }
       ],
       "answer": "b",
-      "why": "They asked questions, most of all about what the buyer's problems were costing them. Most people expect great sellers to be great talkers. And one kind of question mattered most."
+      "why": "They asked questions, especially about how much the buyer's problems cost them. Many people think good sellers talk a lot. But asking the right questions mattered more."
     },
     {
       "kind": "explain",
       "id": "spin",
       "title": "SPIN questions",
-      "text": "Rackham named four kinds of questions, SPIN. Situation: the facts. Problem: what goes wrong. Implication: what the problem costs. Need-payoff: what fixing it would mean. In big sales, implication questions mattered most, because they make a small problem look as big as it really is."
+      "text": "Rackham called the four kinds of questions SPIN. Situation: ask for facts. Problem: ask what goes wrong. Implication: ask what the problem costs. Need-payoff: ask how fixing it would help. In big sales, Implication questions mattered most because they showed the full cost of a problem."
     },
     {
       "kind": "choice",
       "id": "which-kind",
-      "prompt": "You ask a café owner, \"When snacks run out at 5 pm, how many customers walk away?\" What kind of question is this?",
+      "prompt": "You ask a café owner, \"When snacks run out at 5 pm, how many customers leave?\" Which kind of question is this?",
       "options": [
         {
           "id": "a",
-          "label": "Situation: a plain fact"
+          "label": "Situation: asking for facts"
         },
         {
           "id": "b",
-          "label": "Problem: does it go wrong?"
+          "label": "Problem: asking what goes wrong"
         },
         {
           "id": "c",
-          "label": "Implication: what it costs"
+          "label": "Implication: asking what it costs"
         }
       ],
       "answer": "c",
-      "why": "Yes. You already know the snacks run out. Now you're asking what that costs him: customers who walk away. That's an implication question.",
+      "why": "Right. You already know his snacks run out. Now you are asking how many customers he loses because of it. This is an Implication question.",
       "wrong": {
-        "a": "A situation question asks a plain fact, like \"How many snacks do you sell?\" This one asks what running out costs him. That's an implication question.",
-        "b": "A problem question asks if something goes wrong: \"Do snacks run out?\" You know they do. Asking how many customers walk away is an implication question."
+        "a": "A Situation question asks for facts, like \"How many snacks do you sell?\" This question asks how many customers he loses when snacks run out. That's an Implication question.",
+        "b": "A Problem question asks what goes wrong, like \"Do snacks run out?\" You already know they do. Asking how many customers leave is an Implication question."
       }
     },
     {
       "kind": "explain",
       "id": "home",
       "title": "Now look at your business",
-      "text": "Rackham studied big company deals, but the same questions work at a café counter. Remember the café owner who said \"I will surely buy\" but never ordered? It's February, and you go back to him. Each brownie costs you ₹20 to make."
+      "text": "Rackham studied sales to big companies, but you can ask the same questions at a café. Remember the café owner who said, \"I will surely buy,\" but never ordered? It's February, and you visit him again. Each brownie costs you ₹20 to make."
     },
     {
       "kind": "order",
       "id": "spin-order",
-      "prompt": "Here are four questions for the café owner, mixed up. Put them in the order you'd ask them, first one at the top.",
+      "prompt": "Here are four questions for the café owner. Put them in the order you would ask them, with the first question at the top.",
       "steps": [
         "How many snacks do you sell each evening?",
         "Do your snacks ever run out early?",
         "When they run out, how many customers walk away?",
-        "What would a full shelf until 9 pm mean for you?"
+        "How would it help you if the shelf stayed full until 9 pm?"
       ],
-      "why": "Well done. Start with plain facts, then the problem, then what it costs, then what fixing it would mean. By the end, he's telling you why he needs you."
+      "why": "Good. First ask for facts. Then ask what goes wrong and how much it costs. Last, ask how fixing it would help. This helps the owner see why he needs your brownies."
     },
     {
       "kind": "choice",
       "id": "cost-sum",
-      "prompt": "The owner says about 15 customers walk away each evening. Each would spend about ₹60. What does this cost him in a 30-day month?",
+      "prompt": "About 15 customers leave each evening. Each would spend about ₹60. How much sales money does he lose in a 30-day month?",
       "options": [
         {
           "id": "a",
@@ -101,16 +101,16 @@
         }
       ],
       "answer": "b",
-      "why": "Exactly. 15 customers × ₹60 is ₹900 of sales an evening, and 30 evenings make ₹27,000 of sales a month walking out of his door. He never added it up. Once he says it out loud, a brownie order looks small.",
+      "why": "Right. 15 customers × ₹60 = ₹900 in lost sales each evening. Over 30 evenings, that's ₹27,000 in lost sales. He had not counted this before. Now he can see how much the problem costs him.",
       "wrong": {
-        "a": "₹900 is one evening: 15 × ₹60. Now multiply by 30 evenings. About ₹27,000 of sales walk away each month.",
-        "c": "₹6,300 is one week: ₹900 × 7. The question asked about a 30-day month: ₹900 × 30 is ₹27,000."
+        "a": "₹900 is the sales he loses in one evening: 15 × ₹60. For 30 evenings, multiply ₹900 × 30. That's ₹27,000 in lost sales.",
+        "c": "₹6,300 is for one week: ₹900 × 7. But the question asks about 30 days. ₹900 × 30 = ₹27,000."
       }
     },
     {
       "kind": "choice",
       "id": "true-answer",
-      "prompt": "You want a fact from the owner, not a polite answer. Which question should you ask?",
+      "prompt": "You want to know what really happened, not what the owner thinks he might do. Which question should you ask?",
       "options": [
         {
           "id": "a",
@@ -118,64 +118,64 @@
         },
         {
           "id": "b",
-          "label": "Would you buy brownies from me every day?"
+          "label": "Would you buy brownies from me each day?"
         },
         {
           "id": "c",
-          "label": "Don't you think your café needs brownies?"
+          "label": "Do you think your café needs more brownies?"
         }
       ],
       "answer": "a",
-      "why": "Right. This is the Mom Test from Unit 2: ask what happened last time. \"Last week\" gets a fact. Then ask what those evenings cost him.",
+      "why": "Right. This is the Mom Test from Unit 2. Ask what happened last time. Asking about last week gives you facts. Then ask how much those evenings cost him.",
       "wrong": {
-        "b": "He'll say yes to be polite, and it proves nothing. Remember the Mom Test from Unit 2: ask what happened last week, not what he would do.",
-        "c": "This tells him the answer you want, so he'll just agree. Remember the Mom Test from Unit 2: ask what happened last week."
+        "b": "He may say yes just to be polite. That does not prove he will buy. Remember the Mom Test from Unit 2: ask what happened last week, not what he might do.",
+        "c": "Your question suggests the answer you want. He may agree just to be polite. Remember the Mom Test from Unit 2: ask what happened last week."
       }
     },
     {
       "kind": "scenario",
       "id": "the-visit",
-      "setup": "It's late February. The owner gives you ten minutes. About 15 customers walk away each evening when his snacks run out. You want ₹45 a brownie; his snack supplier charges ₹30. You've brought a box.",
-      "question": "How do you use your ten minutes?",
+      "setup": "It's late February. The owner has ten minutes for you. About 15 customers leave each evening when snacks run out. You want ₹45 for each brownie. His current snack supplier charges ₹30. You have brought a box of brownies.",
+      "question": "What will you do in those ten minutes?",
       "options": [
         {
           "id": "a",
-          "label": "Open the box first and talk about your recipe",
+          "label": "Show your brownies first, then explain the recipe",
           "grade": "ok",
-          "outcome": "He tastes one and smiles. \"Very nice. Let me think about it.\" Ten minutes pass, and he never says what the empty shelf costs him. A week later, he still hasn't called.",
-          "why": "You showed the fix before he felt the problem. A brownie was just a nice brownie to him.",
-          "better": "Ask what the empty shelf costs him first. Then open the box."
+          "outcome": "He tastes a brownie and smiles. \"Very nice. Let me think about it.\" Your ten minutes end before you ask about his lost sales. A week later, he still has not called.",
+          "why": "You showed him your brownies before asking about his problem. He liked the taste but did not see how your brownies could help his business.",
+          "better": "First ask how much he loses when snacks run out. Then show your brownies."
         },
         {
           "id": "b",
-          "label": "Ask about the evenings he runs out, then open the box",
+          "label": "Ask when snacks run out, then show your brownies",
           "grade": "great",
-          "outcome": "He works it out himself: about ₹27,000 of sales a month walk away. Then you open the box. He orders 10 brownies a day for a two-week trial at ₹45 each. You keep ₹25 on each: ₹250 a day.",
-          "why": "He said the cost in his own words, so your brownies became the fix for a ₹27,000 problem."
+          "outcome": "He calculates his lost sales: about ₹27,000 a month. Then you show your brownies. He orders 10 brownies a day for a two-week trial at ₹45 each. You keep ₹25 per brownie, or ₹250 a day.",
+          "why": "He calculated the ₹27,000 in lost sales himself. Now he sees how your brownies could help him reduce that loss."
         },
         {
           "id": "c",
-          "label": "Match his supplier and offer brownies at ₹30",
+          "label": "Match his supplier's price, then show your brownies",
           "grade": "bad",
-          "outcome": "He agrees to 10 brownies a day at ₹30 each. You keep only ₹10 on each: ₹100 a day. He thinks of you as the cheap baker.",
-          "why": "He had a ₹27,000 problem, but you sold on price. You keep less than half of what the trial at ₹45 would pay.",
-          "better": "Ask what the empty shelf costs him first. Then open the box."
+          "outcome": "He agrees to buy 10 brownies a day at ₹30 each. You keep only ₹10 per brownie, or ₹100 a day. He now sees you as a low-price baker.",
+          "why": "His problem costs him ₹27,000 in lost sales, but you focused on price. You now earn less than half of what you could earn at ₹45 per brownie.",
+          "better": "First ask how much he loses when snacks run out. Then show your brownies."
         }
       ]
     },
     {
       "kind": "gap",
       "id": "fill",
-      "text": "Before you show your fix, ask what the ___ costs them, and ___ more than you talk.",
+      "text": "Before you show how you can help, ask what the ___ costs the buyer. Then ___ more than you talk.",
       "bank": ["problem", "listen", "price", "smile"],
       "answer": ["problem", "listen"],
-      "why": "Exactly. Rackham's best sellers asked implication questions and listened. The café owner found his own ₹27,000 problem, so your brownies sold themselves."
+      "why": "Right. Rackham's best sellers asked Implication questions and listened. The café owner calculated his own ₹27,000 in lost sales. That helped him see why he needed your brownies."
     }
   ],
   "summary": [
-    "SPIN questions: Situation, Problem, Implication, Need-payoff. Implication questions ask what the problem costs.",
-    "When buyers add up the cost in their own words, your fix starts to look cheap.",
-    "Ask what happened last time, and listen more than you talk."
+    "SPIN has four kinds of questions: Situation, Problem, Implication and Need-payoff. Implication questions ask how much a problem costs.",
+    "When buyers calculate how much a problem costs, they can see why paying for your help makes sense.",
+    "Ask what happened last time. Then listen more than you talk."
   ],
   "cards": [
     {
@@ -183,21 +183,21 @@
       "front": "\"When the machine breaks, how many orders do you lose?\" What kind of SPIN question is this?",
       "options": ["Situation", "Implication", "Problem"],
       "answer": 1,
-      "back": "Implication: it asks what the problem costs."
+      "back": "Implication. It asks how many orders the buyer loses because of the problem."
     },
     {
       "id": "m51-spin-2",
-      "front": "15 customers walk away each evening, each worth ₹60. What's that over 30 days?",
+      "front": "15 customers leave each evening. Each would spend ₹60. How much sales money is lost over 30 days?",
       "options": ["₹27,000", "₹900"],
       "answer": 0,
-      "back": "₹900 an evening × 30 = ₹27,000 a month."
+      "back": "₹900 in lost sales each evening × 30 = ₹27,000 in lost sales a month."
     },
     {
       "id": "m51-spin-3",
       "front": "You have ten minutes with a buyer. What comes first?",
       "options": ["Show the product", "Ask what the problem costs"],
       "answer": 1,
-      "back": "Ask first. A fix only looks cheap once the buyer feels the cost."
+      "back": "Ask questions first. Help the buyer see how much the problem costs before you offer a fix."
     }
   ],
   "sources": [
