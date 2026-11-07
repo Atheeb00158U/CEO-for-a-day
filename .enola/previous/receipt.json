@@ -1,0 +1,142 @@
+{
+  "snapshot_id": "sha256:f7c016bbedcce36c9d7927e06321085ce575cb681344c1d87c22e822f04ffc29",
+  "format_version": 1,
+  "enola_version": "0.4.21",
+  "extractor_version": "v270",
+  "generated_at": "2026-11-05T16:39:22Z",
+  "duration": "36.89759s",
+  "repo_path": "/Users/atheebh/Desktop/CEO for a day",
+  "git": {
+    "ref": "main",
+    "commit": "ec412de56f2e1821a47db0a2483067f9ec8eca0b",
+    "dirty": false,
+    "remote": "github.com/atheeb-gridd/ceo-for-a-day-web"
+  },
+  "extractors": [
+    "manifests",
+    "mdintent",
+    "python",
+    "typescript"
+  ],
+  "explainers": [
+    "cycles",
+    "layers",
+    "crossrepo",
+    "coverage",
+    "unused-routes",
+    "domain",
+    "query-loops",
+    "dead-methods",
+    "entry-points",
+    "messaging-coverage",
+    "god-class",
+    "hotspots",
+    "dependency-depth",
+    "exported-surface",
+    "complexity-outliers",
+    "intent",
+    "constraints",
+    "vendored-candidates",
+    "import-closure",
+    "package-metrics",
+    "dead-code",
+    "performance"
+  ],
+  "renderers": [
+    "llm_context"
+  ],
+  "config_hash": "sha256:73d78ea79f51e19979d4c7d00bd9463ae684ebcb909116abad86675323c32c05",
+  "ignore_glob_hash": "sha256:7523cc6397a498e151125a682d28fbf6df20c6f51f6dfaf18fd8f5239a20d2d8",
+  "output_hashes": {
+    "facts.jsonl": "sha256:09e64c04b9924652c9d3ee839ac01d9213ad1114d227f1a1ffb6b0765b32a7c0",
+    "insights.json": "sha256:3df96ca5212d7176cfff3646c4b4df8de684ef2df980077a1ca62fe428314592",
+    "llm_context.md": "sha256:bb6d2184de5f1bb856addd86c357f73ee6ce32d22fbc1bb84de4d1043521dd0e"
+  },
+  "fact_count": 53903,
+  "insight_count": 228,
+  "quality": {
+    "files_seen": 64080,
+    "files_parsed": 4474,
+    "files_skipped": 592,
+    "dirs_skipped": 26,
+    "skipped_sample": [
+      ".claude/worktrees/admin-payment-issues-8478f3/.git (glob: **/.git/**)",
+      ".claude/worktrees/admin-payment-issues-8478f3/.next/build/ (glob: **/build/**)",
+      ".claude/worktrees/admin-payment-issues-8478f3/.next/node_modules/ (glob: **/node_modules/**)",
+      ".claude/worktrees/admin-payment-issues-8478f3/node_modules/ (glob: **/node_modules/**)",
+      ".claude/worktrees/admin-payment-issues-8478f3/src/content/hotseats.test.ts (glob: **/*.test.ts)",
+      ".claude/worktrees/admin-payment-issues-8478f3/src/lib/access.test.ts (glob: **/*.test.ts)",
+      ".claude/worktrees/admin-payment-issues-8478f3/src/lib/achievements.test.ts (glob: **/*.test.ts)",
+      ".claude/worktrees/admin-payment-issues-8478f3/src/lib/brand.test.ts (glob: **/*.test.ts)",
+      ".claude/worktrees/admin-payment-issues-8478f3/src/lib/career.test.ts (glob: **/*.test.ts)",
+      ".claude/worktrees/admin-payment-issues-8478f3/src/lib/celebrate.test.ts (glob: **/*.test.ts)",
+      ".claude/worktrees/admin-payment-issues-8478f3/src/lib/community.test.ts (glob: **/*.test.ts)",
+      ".claude/worktrees/admin-payment-issues-8478f3/src/lib/course-path.test.ts (glob: **/*.test.ts)",
+      ".claude/worktrees/admin-payment-issues-8478f3/src/lib/course-state.test.ts (glob: **/*.test.ts)",
+      ".claude/worktrees/admin-payment-issues-8478f3/src/lib/daily.test.ts (glob: **/*.test.ts)",
+      ".claude/worktrees/admin-payment-issues-8478f3/src/lib/engine.test.ts (glob: **/*.test.ts)",
+      ".claude/worktrees/admin-payment-issues-8478f3/src/lib/game-state.test.ts (glob: **/*.test.ts)",
+      ".claude/worktrees/admin-payment-issues-8478f3/src/lib/hotseat-tree.test.ts (glob: **/*.test.ts)",
+      ".claude/worktrees/admin-payment-issues-8478f3/src/lib/lesson-play.test.ts (glob: **/*.test.ts)",
+      ".claude/worktrees/admin-payment-issues-8478f3/src/lib/live.test.ts (glob: **/*.test.ts)",
+      ".claude/worktrees/admin-payment-issues-8478f3/src/lib/locks.test.ts (glob: **/*.test.ts)"
+    ],
+    "parse_errors": 0,
+    "heuristic_insights": 227,
+    "coverage": {
+      "services_total": 0,
+      "coverage_gaps": 0,
+      "unresolved_edges": 0,
+      "extractors_reporting": 1,
+      "extraction_unresolved": 16367
+    },
+    "census": {
+      "files_walked": 64672,
+      "parsed": 4474,
+      "excluded_by_ignore": 592,
+      "excluded_by_kind": 58486,
+      "excluded_kinds": {
+        "(no extension)": 37,
+        ".avif": 532,
+        ".body": 12,
+        ".css": 47,
+        ".del": 6,
+        ".example": 17,
+        ".gitignore": 17,
+        ".jpg": 651,
+        ".json": 2243,
+        ".local": 4,
+        ".log": 3,
+        ".map": 1059,
+        ".meta": 187,
+        ".mmd": 10,
+        ".mp3": 44545,
+        ".mp4": 405,
+        ".nvmrc": 17,
+        ".png": 134,
+        ".prettierignore": 17,
+        ".previewinfo": 4,
+        ".rsc": 528,
+        ".rscinfo": 7,
+        ".sql": 263,
+        ".sst": 75,
+        ".tsbuildinfo": 19,
+        ".wav": 43,
+        ".webp": 7552,
+        ".woff2": 35,
+        ".yml": 17
+      },
+      "skipped_with_cause": 1120,
+      "top_skip_causes": [
+        {
+          "cause": "claimed by typescript, no facts emitted",
+          "count": 1080
+        },
+        {
+          "cause": "claimed by manifests, no facts emitted",
+          "count": 40
+        }
+      ]
+    }
+  }
+}
